@@ -1,5 +1,6 @@
 # seltabl
-
+[
+https://www.phorm.ai/query?projectId=3e6f9d42-0098-4178-ab54-4a0b9c89353b
 A golang library for configurably parsing html tables into stucts.
 
 ## Installation

@@ -28,7 +28,7 @@ func SetStructField[T any](
 	}
 	fieldType := field.Type().Kind()
 	cellText := cellValue.Text()
-	exists := true
+	var exists bool
 	switch selector {
 	case innerTextSelector:
 		cellText = strings.TrimSpace(cellText)

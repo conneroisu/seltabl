@@ -8,6 +8,7 @@ import (
 	"strings"
 
 	"github.com/PuerkitoBio/goquery"
+	"github.com/conneroisu/seltabl/internal/errors"
 )
 
 const (
@@ -94,40 +95,41 @@ func NewFromString[T any](htmlInput string) ([]T, error) {
 		}
 		headSelector := field.Tag.Get(headerSelectorTag)
 		if headSelector == "" {
-			return nil, fmt.Errorf(
-				"no header selector (%s) defined for field %s",
-				headerSelectorTag,
-				headName,
-			)
+			return nil, &errors.SelectorNotFound[T]{
+				Struct:    *new(T),
+				FieldName: headName,
+				Selector:  headerSelectorTag,
+			}
 		}
 		headerRow := doc.Find(headSelector)
 		if headerRow.Length() == 0 {
-			return nil, fmt.Errorf(
-				"selector (%s) found no header for field %s",
-				headName,
-				headSelector,
-			)
+			return nil, &errors.SelectionNotFound[T]{
+				Struct:         *new(T),
+				FieldName:      headName,
+				SelectionQuery: headSelector,
+			}
 		}
 		dataSelector := field.Tag.Get(dataSelectorTag)
 		if dataSelector == "" {
-			return nil, fmt.Errorf(
-				"no data selector (%s) for field %s",
-				dataSelectorTag,
-				headName,
-			)
-		}
-		cellSelector := field.Tag.Get(cellSelectorTag)
-		if cellSelector == "" {
-			cellSelector = innerTextSelector
+			return nil, &errors.SelectorNotFound[T]{
+				Struct:    *new(T),
+				FieldName: headName,
+				Selector:  dataSelectorTag,
+			}
 		}
 		dataRows := doc.Find(
 			fmt.Sprintf("%s:not(%s)", dataSelector, headSelector),
 		)
 		if dataRows.Length() == 0 {
-			return nil, fmt.Errorf(
-				"no data row for field %s",
-				headName,
-			)
+			return nil, &errors.SelectionNotFound[T]{
+				Struct:         *new(T),
+				FieldName:      headName,
+				SelectionQuery: dataSelector,
+			}
+		}
+		cellSelector := field.Tag.Get(cellSelectorTag)
+		if cellSelector == "" {
+			cellSelector = innerTextSelector
 		}
 		if len(results) == 0 {
 			results = make([]T, dataRows.Length())

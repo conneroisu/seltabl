@@ -31,6 +31,3 @@ type SuperNovaStruct struct {
 
 //go:embed supernova.html
 var SuperNovaTable string
-
-//go:embed supernova.json
-var SuperNovaJSON string

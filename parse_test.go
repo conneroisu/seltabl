@@ -1,10 +1,8 @@
 package seltabl
 
 import (
-	"fmt"
 	"testing"
 
-	"github.com/bytedance/sonic"
 	"github.com/conneroisu/seltabl/testdata"
 	"github.com/stretchr/testify/assert"
 )
@@ -13,9 +11,6 @@ import (
 func TestFixtureTables(t *testing.T) {
 	p, err := NewFromString[testdata.FixtureStruct](testdata.FixtureABNumTable)
 	assert.Nil(t, err)
-	for _, pp := range p {
-		fmt.Printf("pp %+v\n", pp)
-	}
 	assert.Equal(t, "1", p[0].A)
 	assert.Equal(t, "2", p[0].B)
 	assert.Equal(t, "3", p[1].A)
@@ -31,7 +26,6 @@ func TestNumberedTable(t *testing.T) {
 	p, err := NewFromString[testdata.NumberedStruct](testdata.NumberedTable)
 	assert.Nil(t, err)
 	assert.NoError(t, err)
-
 	assert.Equal(t, "Row 1, Cell 1", p[0].Header1)
 	assert.Equal(t, "Row 1, Cell 2", p[0].Header2)
 	assert.Equal(t, "Row 1, Cell 3", p[0].Header3)
@@ -43,63 +37,32 @@ func TestNumberedTable(t *testing.T) {
 	assert.Equal(t, "Row 3, Cell 3", p[2].Header3)
 }
 
-// <table>
-//         <tr>
-//                 <th>Supernova</th>
-//                 <th>Year</th>
-//                 <th>Type</th>
-//                 <th>Distance (light-years)</th>
-//                 <th>Notes</th>
-//         </tr>
-//         <tr>
-//                 <td>SN 1006</td>
-//                 <td>1006</td>
-//                 <td>Type Ia</td>
-//                 <td>7,200</td>
-//                 <td>Brightest recorded supernova in history</td>
-//         </tr>
-//         <tr>
-//                 <td>SN 1054 (Crab Nebula)</td>
-//                 <td>1054</td>
-//                 <td>Type II</td>
-//                 <td>6,500</td>
-//                 <td>Formed the Crab Nebula and pulsar</td>
-//         </tr>
-//         <tr>
-//                 <td>SN 1572 (Tycho's Supernova)</td>
-//                 <td>1572</td>
-//                 <td>Type Ia</td>
-//                 <td>8,000-10,000</td>
-//                 <td>Observed by Tycho Brahe</td>
-//         </tr>
-//         <tr>
-//                 <td>SN 1604 (Kepler's Supernova)</td>
-//                 <td>1604</td>
-//                 <td>Type Ia</td>
-//                 <td>20,000</td>
-//                 <td>Last observed supernova in the Milky Way</td>
-//         </tr>
-//         <tr>
-//                 <td>SN 1987A</td>
-//                 <td>1987</td>
-//                 <td>Type II</td>
-//                 <td>168,000</td>
-//                 <td>Closest observed supernova since 1604</td>
-//         </tr>
-//         <tr>
-//                 <td>SN 1993J</td>
-//                 <td>1993</td>
-//                 <td>Type IIb</td>
-//                 <td>11,000,000</td>
-//                 <td>In the galaxy M81</td>
-//         </tr>
-// </table>
-
+// TestSuperNovaTable tests the parsing of a table with supernova data.
 func TestSuperNovaTable(t *testing.T) {
 	p, err := NewFromString[testdata.SuperNovaStruct](testdata.SuperNovaTable)
 	assert.Nil(t, err)
+	assert.Equal(t, "SN 1006", p[0].Supernova)
+	assert.Equal(t, "1006", p[0].Year)
+	assert.Equal(t, "Type Ia", p[0].Type)
+	assert.Equal(t, "7,200", p[0].Distance)
+	assert.Equal(t, "Brightest recorded supernova in history", p[0].Notes)
 
-	var data testdata.SuperNovaStruct
-	// Marshal
-	output, err := sonic.Marshal(&data)
+	assert.Equal(t, "SN 1054 (Crab Nebula)", p[1].Supernova)
+	assert.Equal(t, "1054", p[1].Year)
+	assert.Equal(t, "Type II", p[1].Type)
+	assert.Equal(t, "6,500", p[1].Distance)
+	assert.Equal(t, "Formed the Crab Nebula and pulsar", p[1].Notes)
+
+	assert.Equal(t, "SN 1572 (Tycho's Supernova)", p[2].Supernova)
+	assert.Equal(t, "1572", p[2].Year)
+	assert.Equal(t, "Type Ia", p[2].Type)
+	assert.Equal(t, "8,000-10,000", p[2].Distance)
+	assert.Equal(t, "Observed by Tycho Brahe", p[2].Notes)
+
+	assert.Equal(t, "SN 1604 (Kepler's Supernova)", p[3].Supernova)
+	assert.Equal(t, "1604", p[3].Year)
+	assert.Equal(t, "Type Ia", p[3].Type)
+	assert.Equal(t, "20,000", p[3].Distance)
+	assert.Equal(t, "Last observed supernova in the Milky Way", p[3].Notes)
+
 }

@@ -21,8 +21,8 @@ const (
 
 // NewFromString parses a string into a slice of structs.
 //
-// The struct must have a field with the tag `seltabl`, a header selector with
-// the tag `hSel`, and a data selector with the tag `dSel`.
+// The struct must have a field with the tag seltabl, a header selector with
+// the tag hSel, and a data selector with the tag dSel.
 //
 // The selectors responsibilties:
 //
@@ -92,7 +92,7 @@ func NewFromString[T any](htmlInput string) ([]T, error) {
 		headSelector := field.Tag.Get(headerSelectorTag)
 		if headSelector == "" {
 			return nil, fmt.Errorf(
-				"no header selector (%s) for field %s",
+				"no header selector (%s) defined for field %s",
 				headerSelectorTag,
 				headName,
 			)
@@ -100,7 +100,7 @@ func NewFromString[T any](htmlInput string) ([]T, error) {
 		headerRow := doc.Find(headSelector)
 		if headerRow.Length() == 0 {
 			return nil, fmt.Errorf(
-				"no header for field %s with selector (%s)",
+				"selector (%s) found no header for field %s",
 				headName,
 				headSelector,
 			)

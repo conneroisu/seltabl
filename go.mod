@@ -4,6 +4,7 @@ go 1.22.3
 
 require (
 	github.com/PuerkitoBio/goquery v1.9.2
+	github.com/brianvoe/gofakeit v3.18.0+incompatible
 	github.com/stretchr/testify v1.9.0
 )
 

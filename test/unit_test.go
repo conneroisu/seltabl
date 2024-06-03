@@ -1,11 +1,14 @@
 package test_test
 
 import (
+	"fmt"
 	"net/http"
 	"net/http/httptest"
 	"reflect"
+	"strings"
 	"testing"
 
+	"github.com/brianvoe/gofakeit"
 	"github.com/conneroisu/seltabl"
 )
 
@@ -121,6 +124,63 @@ func TestNewFromURL(t *testing.T) {
 
 	if !reflect.DeepEqual(expected, result) {
 		t.Fatalf("Expected %v,\n got %v", expected, result)
+	}
+}
+
+// Sample HTML fixture template
+var fixtureTemplate = `
+<table>
+	<tr>
+		<td>%s</td>
+		<td>%s</td>
+	</tr>
+	%s
+</table>
+`
+
+func generateRandomHTML(numRows int) (string, []fixtureStruct) {
+	var rows string
+	var structs []fixtureStruct
+	for i := 0; i < numRows; i++ {
+		a := gofakeit.Word()
+		b := gofakeit.Word()
+		rows += `<tr><td>` + a + `</td><td>` + b + `</td></tr>`
+		structs = append(structs, fixtureStruct{A: a, B: b})
+	}
+	return strings.TrimSpace(rows), structs
+}
+
+func TestNewFromStringWithRandomData(t *testing.T) {
+	numRows := 5
+	rows, expected := generateRandomHTML(numRows)
+	htmlInput := fmt.Sprintf(fixtureTemplate, "a", "b", rows)
+
+	result, err := seltabl.NewFromString[fixtureStruct](htmlInput)
+	if err != nil {
+		t.Fatalf("Expected no error, got %v", err)
+	}
+
+	if !reflect.DeepEqual(result, expected) {
+		t.Fatalf("Expected %+v, got %+v", expected, result)
+	}
+}
+
+func TestNewFromURLWithRandomData(t *testing.T) {
+	numRows := 5
+	rows, expected := generateRandomHTML(numRows)
+	htmlInput := fmt.Sprintf(fixtureTemplate, "a", "b", rows)
+
+	// Mock HTTP server for testing
+	server := httpTestServer(t, htmlInput)
+	defer server.Close()
+
+	result, err := seltabl.NewFromURL[fixtureStruct](server.URL)
+	if err != nil {
+		t.Fatalf("Expected no error, got %v", err)
+	}
+
+	if !reflect.DeepEqual(result, expected) {
+		t.Fatalf("Expected %+v, got %+v", expected, result)
 	}
 }
 

@@ -18,20 +18,71 @@ const (
 )
 
 // NewFromString parses a string into a slice of structs.
-// The struct must have a field with the tag `seltabl`, a header selector with the tag
-// `hSel`, and a data selector with the tag `dSel`.
+//
+// The struct must have a field with the tag `seltabl`, a header selector with
+// the tag `hSel`, and a data selector with the tag `dSel`.
+//
+// The selectors responsibilties:
+//
+//   - header selector (hSel): used to find the header row
+//   - data selector (dSel): used to find the data rows
+//   - cell selector (cSel): used to find the inner text or attribute of the cell
+//
+// Example:
+//
+//	var fixture = `
+//	<table>
+//
+//	     <tr>
+//	     	<td>W a</td>
+//	     	<td>b</td>
+//	     </tr>
+//	     <tr>
+//	     	<td> 1 </td>
+//	     	<td>2</td>
+//	     </tr>
+//	     <tr>
+//	     	<td>3 </td>
+//	     	<td> 4</td>
+//	     </tr>
+//	     <tr>
+//	     	<td> 5 </td>
+//	     	<td> 6</td>
+//	     </tr>
+//	     <tr>
+//	     	<td>7 </td>
+//	     	<td> 8</td>
+//	     </tr>
+//
+//	</table>
+//	`
+//
+//	type fixtureStruct struct {
+//		A string `json:"a" seltabl:"a" hSel:"tr:nth-child(1) td:nth-child(1)" dSel:"tr td:nth-child(1)" cSel:"$text"`
+//		B string `json:"b" seltabl:"b" hSel:"tr:nth-child(1) td:nth-child(2)" dSel:"tr td:nth-child(2)" cSel:"$text"`
+//	}
+//
+//	func main() {
+//		p, err := seltabl.NewFromString[fixtureStruct](fixture)
+//		if err != nil {
+//			panic(err)
+//		}
+//		for _, pp := range p {
+//			fmt.Printf("pp %+v\n", pp)
+//		}
+//	}
 func NewFromString[T any](htmlInput string) ([]T, error) {
 	doc, err := goquery.NewDocumentFromReader(strings.NewReader(htmlInput))
 	if err != nil {
 		return nil, fmt.Errorf("failed to parse html: %w", err)
 	}
-	dataType := reflect.TypeOf((*T)(nil)).Elem()
-	if dataType.Kind() != reflect.Struct {
-		return nil, fmt.Errorf("expected struct, got %s", dataType.Kind())
+	dType := reflect.TypeOf((*T)(nil)).Elem()
+	if dType.Kind() != reflect.Struct {
+		return nil, fmt.Errorf("expected struct, got %s", dType.Kind())
 	}
 	results := make([]T, 0)
-	for i := 0; i < dataType.NumField(); i++ {
-		field := dataType.Field(i)
+	for i := 0; i < dType.NumField(); i++ {
+		field := dType.Field(i)
 		headName := field.Tag.Get("seltabl")
 		if headName == "" {
 			continue
@@ -47,9 +98,8 @@ func NewFromString[T any](htmlInput string) ([]T, error) {
 		headerRow := doc.Find(headSelector)
 		if headerRow.Length() == 0 {
 			return nil, fmt.Errorf(
-				"no header row for field %s with selector %s (%s)",
+				"no header for field %s with selector (%s)",
 				headName,
-				headerSelectorTag,
 				headSelector,
 			)
 		}

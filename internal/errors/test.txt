@@ -1,0 +1,8 @@
+Selector: tr:nth-child(1) th:nth-child(1)
+type struct SuperNovaStruct {
+	Supernova:   Supernova: string `json:"Supernova" seltabl:"Supernova" hSel:"tr:nth-child(1) th:nth-child(1)" dSel:"tr td:nth-child(1)" cSel:"$text" `
+	Year:   Year: string `json:"Year" seltabl:"Year" hSel:"tr:nth-child(1) th:nth-child(2)" dSel:"tr td:nth-child(2)" cSel:"$text" `
+	Type:   Type: string `json:"Type" seltabl:"Type" hSel:"tr:nth-child(1) th:nth-child(3)" dSel:"tr td:nth-child(3)" cSel:"$text" `
+	Distance:   Distance: string `seltabl:"Distance" hSel:"tr:nth-child(1) th:nth-child(4)" dSel:"tr td:nth-child(4)" json:"Distance"  `
+	Notes:   Notes: string `json:"Notes" seltabl:"Notes" hSel:"tr:nth-child(1) th:nth-child(5)" dSel:"tr td:nth-child(5)" `
+}

@@ -10,77 +10,77 @@ import (
 
 const (
 	innerTextSelector = "$text"
+	attrSelector      = "@"
 )
 
+// NewFromString parses a string into a slice of structs.
+// The struct must have a field with the tag `seltabl`, a header selector with the tag
+// `hSel`, and a data selector with the tag `dSel`.
 func NewFromString[T any](htmlInput string) ([]T, error) {
 	doc, err := goquery.NewDocumentFromReader(strings.NewReader(htmlInput))
 	if err != nil {
 		return nil, fmt.Errorf("failed to parse html: %w", err)
 	}
-	dt := reflect.TypeOf((*T)(nil)).Elem()
-	if dt.Kind() != reflect.Struct {
-		return nil, fmt.Errorf("expected struct, got %s", dt.Kind())
+	dataType := reflect.TypeOf((*T)(nil)).Elem()
+	if dataType.Kind() != reflect.Struct {
+		return nil, fmt.Errorf("expected struct, got %s", dataType.Kind())
 	}
 	results := make([]T, 0)
-	for i := 0; i < dt.NumField(); i++ {
-		field := dt.Field(i)
+	for i := 0; i < dataType.NumField(); i++ {
+		field := dataType.Field(i)
 		headName := field.Tag.Get("seltabl")
 		if headName == "" {
 			continue
 		}
 		headSelector := field.Tag.Get("hSel")
 		if headSelector == "" {
-			headSelector = innerTextSelector
+			return nil, fmt.Errorf(
+				"failed to find header goquery selector for field %s",
+				headName,
+			)
 		}
 		headerRow := doc.Find(headSelector)
 		if headerRow.Length() == 0 {
-			return nil, fmt.Errorf("failed to find header row for field %s", headName)
+			return nil, fmt.Errorf(
+				"failed to find header row for field %s",
+				headName,
+			)
 		}
 		dataSelector := field.Tag.Get("dSel")
 		if dataSelector == "" {
-			dataSelector = innerTextSelector
+			return nil, fmt.Errorf(
+				"failed to find data goquery selector for field %s",
+				headName,
+			)
 		}
-		dataRow := doc.Find(dataSelector + ":not(" + headSelector + ")")
-		if dataRow.Length() == 0 {
-			return nil, fmt.Errorf("failed to find data row for field %s", headName)
+		cellSelector := field.Tag.Get("cSel")
+		if cellSelector == "" {
+			cellSelector = innerTextSelector
 		}
-		fmt.Printf("headName: %s\n", headName)
-		fmt.Printf("headSelector: %s\n", headSelector)
-		fmt.Printf("headerRow: %s\n", headerRow.Text())
-		fmt.Printf("dataSelector: %s\n", dataSelector)
-		fmt.Printf("dataRow: %s\n", dataRow.Text())
-		pieces := []string{}
-		dataRow.Each(func(i int, s *goquery.Selection) {
-			pieces = append(pieces, strings.TrimSpace(s.Text()))
-			return
-		})
+		dataRows := doc.Find(fmt.Sprintf("%s:not(%s)", dataSelector, headSelector))
+		if dataRows.Length() == 0 {
+			return nil, fmt.Errorf(
+				"failed to find data row for field %s",
+				headName,
+			)
+		}
 		if len(results) == 0 {
-			results = make([]T, len(pieces))
+			results = make([]T, dataRows.Length())
 		}
-		for j := 0; j < len(pieces); j++ {
-			fmt.Printf("pieces[%d]: %s\n", i, pieces[i])
-			if err := SetStructField(&results[j], field.Name, pieces[j]); err != nil {
-				return nil, fmt.Errorf("failed to set field %s: %s", field.Name, err)
+		for j := 0; j < dataRows.Length(); j++ {
+			if err := SetStructField(
+				&results[j],
+				field.Name,
+				dataRows.Eq(j),
+				cellSelector,
+			); err != nil {
+				return nil, fmt.Errorf(
+					"failed to set field %s: %s",
+					field.Name,
+					err,
+				)
 			}
 		}
 	}
-	fmt.Printf("result: %v\n", results)
 	return results, nil
-}
-
-func SetStructField[T any](structPtr *T, fieldName string, value interface{}) error {
-	v := reflect.ValueOf(structPtr).Elem()
-	field := v.FieldByName(fieldName)
-	if !field.IsValid() {
-		return fmt.Errorf("no such field: %s in struct", fieldName)
-	}
-	if !field.CanSet() {
-		return fmt.Errorf("cannot set field: %s", fieldName)
-	}
-	val := reflect.ValueOf(value)
-	if field.Type() != val.Type() {
-		return fmt.Errorf("provided value type didn't match struct field type")
-	}
-	field.Set(val)
-	return nil
 }

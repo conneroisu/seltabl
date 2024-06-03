@@ -4,29 +4,27 @@ import (
 	"fmt"
 	"testing"
 
+	"github.com/conneroisu/seltabl/testdata"
 	"github.com/stretchr/testify/assert"
 )
 
-const fixture = `
-	<table>
-	<tr><td>W a</td><td>b</td></tr>
-	<tr><td> 1 </td><td>2</td></tr>
-	<tr><td>3  </td><td>4   </td></tr>
-	<tr><td> 5 </td><td>   6</td></tr>
-	<tr><td>7  </td><td>   8</td></tr>
-	</table>
-`
-
 type fixtureStruct struct {
-	A string `seltabl:"a" hSel:"tr:nth-child(1) td:nth-child(1)" dSel:"tr td:nth-child(1)"`
-	B string `seltabl:"b" hSel:"tr:nth-child(1) td:nth-child(2)" dSel:"tr td:nth-child(2)"`
+	A string `json:"a" seltabl:"a" hSel:"tr:nth-child(1) td:nth-child(1)" dSel:"tr td:nth-child(1)" cSel:"$text"`
+	B string `json:"b" seltabl:"b" hSel:"tr:nth-child(1) td:nth-child(2)" dSel:"tr td:nth-child(2)" cSel:"$text"`
 }
 
-func TestFindsAllTables(t *testing.T) {
-	p, err := NewFromString[fixtureStruct](fixture)
+func TestFixtureTables(t *testing.T) {
+	p, err := NewFromString[fixtureStruct](testdata.FixtureABNumTable)
 	assert.Nil(t, err)
 	for _, pp := range p {
 		fmt.Printf("pp %+v\n", pp)
 	}
-	t.Fail()
+	assert.Equal(t, "1", p[0].A)
+	assert.Equal(t, "2", p[0].B)
+	assert.Equal(t, "3", p[1].A)
+	assert.Equal(t, "4", p[1].B)
+	assert.Equal(t, "5", p[2].A)
+	assert.Equal(t, "6", p[2].B)
+	assert.Equal(t, "7", p[3].A)
+	assert.Equal(t, "8", p[3].B)
 }

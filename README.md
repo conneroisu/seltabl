@@ -34,7 +34,7 @@ func main() {
 		panic(err)
 	}
 	for _, pp := range p {
-		fmt.Printf("pp %+v\n", pp)
+		fmt.Printf("%+v\n", pp)
 	}
 }
 ```
@@ -42,9 +42,9 @@ func main() {
 Output:
 
 ```bash
-pp {A:1 B:2}
-pp {A:3 B:4}
-pp {A:5 B:6}
-pp {A:7 B:8}
+{A:1 B:2}
+{A:3 B:4}
+{A:5 B:6}
+{A:7 B:8}
 ```
 

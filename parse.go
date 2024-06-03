@@ -26,9 +26,12 @@ const (
 //
 // The selectors responsibilties:
 //
-//   - header selector (hSel): used to find the header row
-//   - data selector (dSel): used to find the data rows
-//   - cell selector (cSel): used to find the inner text or attribute of the cell
+//   - header selector (hSel): used to find the header row and column for the
+//     field in the given struct.
+//   - data selector (dSel): used to find the data column for the field in the
+//     given struct.
+//   - cell selector (cSel): used to find the inner text or attribute of the
+//     cell.
 //
 // Example:
 //

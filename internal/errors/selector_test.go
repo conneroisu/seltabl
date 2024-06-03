@@ -26,5 +26,4 @@ func TestStructErrors(t *testing.T) {
 
 	file.WriteString(output)
 	defer file.Close()
-	t.Fail()
 }

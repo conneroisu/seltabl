@@ -3,9 +3,8 @@ package errors
 import (
 	"fmt"
 	"reflect"
+	"regexp"
 	"strings"
-
-	"github.com/conneroisu/seltabl/internal"
 )
 
 // SelectorNotFound is returned when a header selector is not found
@@ -28,10 +27,10 @@ type SelectorNotFound[T any] struct {
 // not found.
 //
 // It is used by the HeaderNotFoundError struct.
-func genStructReprAndHighlight(structPtr interface{}, selector string) string {
+func genStructReprAndHighlight(structPtr interface{}, selector string) (string, error) {
 	val := reflect.ValueOf(structPtr)
 	if val.Kind() != reflect.Ptr || val.Elem().Kind() != reflect.Struct {
-		return "Provided argument is not a pointer to a struct"
+		return "", fmt.Errorf("expected struct pointer, got %s", val.Kind())
 	}
 	val = val.Elem()
 	structType := val.Type()
@@ -40,17 +39,12 @@ func genStructReprAndHighlight(structPtr interface{}, selector string) string {
 	result.WriteString(fmt.Sprintf("type struct %s {\n", structType.Name()))
 	for i := 0; i < val.NumField(); i++ {
 		field := structType.Field(i)
-		fieldValue := val.Field(i).Interface()
-		hSel := field.Tag.Get("hSel")
-		rSel := internal.Warn(hSel)
-		result.WriteString(fmt.Sprintf("\t%s: %v %s\n", field.Name, fieldValue, genStructTagString(field, rSel)))
+		fieldValue := val.Field(i)
+		result.WriteString(fmt.Sprintf("\t%s %v %s\n", field.Name, fieldValue.Type(), genStructTagString(field, selector)))
 	}
 	result.WriteString("}")
-
 	fmt.Println(result.String())
-	print(result.String())
-
-	return result.String()
+	return result.String(), nil
 }
 
 // genStructTagString returns a string representation of the struct tag
@@ -59,16 +53,20 @@ func genStructReprAndHighlight(structPtr interface{}, selector string) string {
 // It is used by the HeaderNotFoundError struct.
 func genStructTagString(field reflect.StructField, highlightSelector string) string {
 	var result strings.Builder
-	result.WriteString(fmt.Sprintf(" %s: %v `", field.Name, field.Type))
-	// Split the tags by space and iterate over them
-	tags := strings.Split(string(field.Tag), " ")
-	for _, tag := range tags {
-		if strings.HasPrefix(tag, highlightSelector) {
-			internal.Warn(tag)
+	result.WriteString("`")
+	// split on '"' s and iterate over them
+	tags := string(field.Tag)
+	re := regexp.MustCompile(`(\w+):"([^"]*)"`)
+	matches := re.FindAllStringSubmatch(tags, -1)
+	for _, match := range matches {
+		key := match[1]
+		value := match[2]
+		if strings.Contains(value, highlightSelector) {
+			result.WriteString(fmt.Sprintf(" %s:%s", key, "==\""+value+"\"=="))
+		} else {
+			result.WriteString(fmt.Sprintf(" %v:\"%v\"", match[1], match[2]))
 		}
-		result.WriteString(fmt.Sprintf("%v ", tag))
 	}
-
 	result.WriteString("`")
 	return result.String()
 }

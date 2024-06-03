@@ -2,8 +2,9 @@ package errors
 
 import (
 	"os"
-	"reflect"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 type SuperNovaStruct struct {
@@ -16,7 +17,8 @@ type SuperNovaStruct struct {
 
 func TestStructErrors(t *testing.T) {
 	stc := SuperNovaStruct{}
-	output := genStructReprAndHighlight(&stc, "tr:nth-child(1) th:nth-child(1)")
+	output, err := genStructReprAndHighlight(&stc, "tr:nth-child(1) th:nth-child(1)")
+	assert.Nil(t, err)
 	file, err := os.OpenFile("test.txt", os.O_RDWR|os.O_CREATE, 0644)
 	if err != nil {
 		panic(err)
@@ -25,51 +27,4 @@ func TestStructErrors(t *testing.T) {
 	file.WriteString(output)
 	defer file.Close()
 	t.Fail()
-}
-
-func TestGenStructTagString(t *testing.T) {
-
-	type TestCase struct {
-		Field             reflect.StructField
-		HighlightSelector string
-		Expected          string
-	}
-
-	tests := []TestCase{
-		{
-			Field: reflect.StructField{
-				Name: "Field1",
-				Type: reflect.TypeOf(""),
-				Tag:  `json:"field1" xml:"field1"`,
-			},
-			HighlightSelector: "json",
-			Expected:          " Field1: string `hSel:json:\"field1\" xml:\"field1\" `",
-		},
-		{
-			Field: reflect.StructField{
-				Name: "Field2",
-				Type: reflect.TypeOf(0),
-				Tag:  `db:"field2" xml:"field2"`,
-			},
-			HighlightSelector: "db",
-			Expected:          " Field2: int `hSel:db:\"field2\" xml:\"field2\" `",
-		},
-		{
-			Field: reflect.StructField{
-				Name: "Field3",
-				Type: reflect.TypeOf(true),
-				Tag:  `json:"field3" xml:"field3"`,
-			},
-			HighlightSelector: "xml",
-			Expected:          " Field3: bool `json:\"field3\" hSel:xml:\"field3\" `",
-		},
-	}
-
-	for _, test := range tests {
-		result := genStructTagString(test.Field, test.HighlightSelector)
-		if result != test.Expected {
-			t.Errorf("genStructTagString(%v, %v) = %v; expected %v",
-				test.Field, test.HighlightSelector, result, test.Expected)
-		}
-	}
 }

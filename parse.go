@@ -21,9 +21,8 @@ func NewFromString[T any](htmlInput string) ([]T, error) {
 	if dt.Kind() != reflect.Struct {
 		return nil, fmt.Errorf("expected struct, got %s", dt.Kind())
 	}
-	results := new([]T)
+	results := make([]T, 0)
 	for i := 0; i < dt.NumField(); i++ {
-		result := new(T)
 		field := dt.Field(i)
 		headName := field.Tag.Get("seltabl")
 		if headName == "" {
@@ -50,28 +49,27 @@ func NewFromString[T any](htmlInput string) ([]T, error) {
 		fmt.Printf("headerRow: %s\n", headerRow.Text())
 		fmt.Printf("dataSelector: %s\n", dataSelector)
 		fmt.Printf("dataRow: %s\n", dataRow.Text())
-		// surround each of the data cells with +++, so we can easily find them
 		pieces := []string{}
 		dataRow.Each(func(i int, s *goquery.Selection) {
 			pieces = append(pieces, strings.TrimSpace(s.Text()))
 			return
 		})
-		for i := 0; i < len(pieces); i++ {
-			fmt.Printf("pieces[%d]: %s\n", i, pieces[i])
+		if len(results) == 0 {
+			results = make([]T, len(pieces))
 		}
-		cell := headerRow.Eq(i)
-		cellText := cell.Text()
-		if err := SetStructField(result, field.Name, cellText); err != nil {
-			return nil, fmt.Errorf("failed to set field %s: %s", field.Name, err)
+		for j := 0; j < len(pieces); j++ {
+			fmt.Printf("pieces[%d]: %s\n", i, pieces[i])
+			if err := SetStructField(&results[j], field.Name, pieces[j]); err != nil {
+				return nil, fmt.Errorf("failed to set field %s: %s", field.Name, err)
+			}
 		}
 	}
-	fmt.Printf("result: %v\n", *results)
-	return *results, nil
+	fmt.Printf("result: %v\n", results)
+	return results, nil
 }
 
 func SetStructField[T any](structPtr *T, fieldName string, value interface{}) error {
 	v := reflect.ValueOf(structPtr).Elem()
-
 	field := v.FieldByName(fieldName)
 	if !field.IsValid() {
 		return fmt.Errorf("no such field: %s in struct", fieldName)
@@ -79,12 +77,10 @@ func SetStructField[T any](structPtr *T, fieldName string, value interface{}) er
 	if !field.CanSet() {
 		return fmt.Errorf("cannot set field: %s", fieldName)
 	}
-
 	val := reflect.ValueOf(value)
 	if field.Type() != val.Type() {
 		return fmt.Errorf("provided value type didn't match struct field type")
 	}
 	field.Set(val)
-
 	return nil
 }

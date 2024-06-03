@@ -1,7 +1,8 @@
 # seltabl
-[
-https://www.phorm.ai/query?projectId=3e6f9d42-0098-4178-ab54-4a0b9c89353b
-A golang library for configurably parsing html tables into stucts.
+
+A golang library for configurably parsing html sequences into stucts originally built for html tables, but can be used for any html sequence.
+
+Enables data binding to structs and provides a simple, but dynamic way to define a table schema.
 
 ## Installation
 
@@ -44,3 +45,4 @@ pp {A:3 B:4}
 pp {A:5 B:6}
 pp {A:7 B:8}
 ```
+

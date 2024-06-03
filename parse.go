@@ -2,6 +2,8 @@ package seltabl
 
 import (
 	"fmt"
+	"io"
+	"net/http"
 	"reflect"
 	"strings"
 
@@ -34,7 +36,7 @@ const (
 //	<table>
 //
 //	     <tr>
-//	     	<td>W a</td>
+//	     	<td>a</td>
 //	     	<td>b</td>
 //	     </tr>
 //	     <tr>
@@ -143,4 +145,19 @@ func NewFromString[T any](htmlInput string) ([]T, error) {
 		}
 	}
 	return results, nil
+}
+
+// NewFromURL parses a URL into a slice of structs.
+func NewFromURL[T any](url string) ([]T, error) {
+	client := &http.Client{}
+	resp, err := client.Get(url)
+	if err != nil {
+		return nil, fmt.Errorf("failed to get url: %w", err)
+	}
+	defer resp.Body.Close()
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return nil, fmt.Errorf("failed to read body: %w", err)
+	}
+	return NewFromString[T](string(body))
 }

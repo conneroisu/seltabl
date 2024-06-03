@@ -28,16 +28,14 @@ func SetStructField[T any](
 	}
 	fieldType := field.Type().Kind()
 	cellText := cellValue.Text()
-	value := strings.TrimSpace(cellText)
 	switch selector {
 	case innerTextSelector:
-		cellText = cellValue.Text()
-	default:
-		cellValue = cellValue.Find(selector)
+		cellText = strings.TrimSpace(cellText)
 		if cellValue.Length() == 0 {
 			return fmt.Errorf("failed to find selector: %s", selector)
 		}
-		cellText = cellValue.Text()
+	default:
+		print("default")
 	}
 	switch fieldType {
 	case reflect.String:
@@ -117,10 +115,10 @@ func SetStructField[T any](
 	default:
 		return fmt.Errorf("unsupported type: %s", fieldType)
 	}
-	val := reflect.ValueOf(value)
-	if field.Type() != val.Type() {
-		return fmt.Errorf("provided value type didn't match struct field type")
-	}
-	field.Set(val)
+	// val := reflect.ValueOf(value)
+	// if field.Type() != val.Type() {
+	//         return fmt.Errorf("provided value type didn't match struct field type")
+	// }
+	// field.Set(val)
 	return nil
 }

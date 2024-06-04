@@ -8,8 +8,10 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/PuerkitoBio/goquery"
 	"github.com/brianvoe/gofakeit"
 	"github.com/conneroisu/seltabl"
+	"github.com/stretchr/testify/assert"
 )
 
 // Sample HTML fixture
@@ -51,8 +53,9 @@ func TestNewFromString(t *testing.T) {
 		{A: "5", B: "6"},
 		{A: "7", B: "8"},
 	}
-
-	result, err := seltabl.NewFromString[fixtureStruct](fixture)
+	doc, err := goquery.NewDocumentFromReader(strings.NewReader(fixture))
+	assert.Nil(t, err)
+	result, err := seltabl.New[fixtureStruct](doc)
 	if err != nil {
 		t.Fatalf("Expected no error, got %v", err)
 	}
@@ -65,7 +68,9 @@ func TestNewFromString(t *testing.T) {
 func TestNewFromString_InvalidHTML(t *testing.T) {
 	invalidHTML := `<table><tr><td>a</td></tr>`
 
-	_, err := seltabl.NewFromString[fixtureStruct](invalidHTML)
+	doc, err := goquery.NewDocumentFromReader(strings.NewReader(invalidHTML))
+	assert.Nil(t, err)
+	_, err = seltabl.New[fixtureStruct](doc)
 	if err == nil {
 		t.Fatal("Expected an error, got nil")
 	}
@@ -77,7 +82,9 @@ func TestNewFromString_MissingHeaderSelector(t *testing.T) {
 		B string `json:"b" seltabl:"b" dSel:"tr td:nth-child(2)" cSel:"$text"`
 	}
 
-	_, err := seltabl.NewFromString[invalidStruct](fixture)
+	doc, err := goquery.NewDocumentFromReader(strings.NewReader(fixture))
+	assert.Nil(t, err)
+	_, err = seltabl.New[invalidStruct](doc)
 	if err == nil {
 		t.Fatal("Expected an error, got nil")
 	}
@@ -89,7 +96,9 @@ func TestNewFromString_MissingDataSelector(t *testing.T) {
 		B string `json:"b" seltabl:"b" hSel:"tr:nth-child(1) td:nth-child(2)" cSel:"$text"`
 	}
 
-	_, err := seltabl.NewFromString[invalidStruct](fixture)
+	doc, err := goquery.NewDocumentFromReader(strings.NewReader(fixture))
+	assert.Nil(t, err)
+	_, err = seltabl.New[invalidStruct](doc)
 	if err == nil {
 		t.Fatal("Expected an error, got nil")
 	}
@@ -98,7 +107,9 @@ func TestNewFromString_MissingDataSelector(t *testing.T) {
 func TestNewFromString_EmptyHTML(t *testing.T) {
 	emptyHTML := ``
 
-	_, err := seltabl.NewFromString[fixtureStruct](emptyHTML)
+	doc, err := goquery.NewDocumentFromReader(strings.NewReader(emptyHTML))
+	assert.Nil(t, err)
+	_, err = seltabl.New[fixtureStruct](doc)
 	if err == nil {
 		t.Fatal("Expected an error, got nil")
 	}
@@ -155,7 +166,9 @@ func TestNewFromStringWithRandomData(t *testing.T) {
 	rows, expected := generateRandomHTML(numRows)
 	htmlInput := fmt.Sprintf(fixtureTemplate, "a", "b", rows)
 
-	result, err := seltabl.NewFromString[fixtureStruct](htmlInput)
+	doc, err := goquery.NewDocumentFromReader(strings.NewReader(htmlInput))
+	assert.Nil(t, err)
+	result, err := seltabl.New[fixtureStruct](doc)
 	if err != nil {
 		t.Fatalf("Expected no error, got %v", err)
 	}

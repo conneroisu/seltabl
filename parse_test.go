@@ -2,8 +2,10 @@ package seltabl
 
 import (
 	"reflect"
+	"strings"
 	"testing"
 
+	"github.com/PuerkitoBio/goquery"
 	"github.com/conneroisu/seltabl/testdata"
 	"github.com/stretchr/testify/assert"
 )
@@ -11,7 +13,9 @@ import (
 // TestFixtureTables tests the parsing of a table with headers.
 func TestFixtureTables(t *testing.T) {
 	t.Parallel()
-	p, err := NewFromString[testdata.FixtureStruct](testdata.FixtureABNumTable)
+	doc, err := goquery.NewDocumentFromReader(strings.NewReader(testdata.FixtureABNumTable))
+	assert.Nil(t, err)
+	p, err := New[testdata.FixtureStruct](doc)
 	assert.Nil(t, err)
 	assert.Equal(t, "1", p[0].A)
 	assert.Equal(t, "2", p[0].B)
@@ -26,7 +30,9 @@ func TestFixtureTables(t *testing.T) {
 // TestNumberedTable tests the parsing of a table with numbered headers.
 func TestNumberedTable(t *testing.T) {
 	t.Parallel()
-	p, err := NewFromString[testdata.NumberedStruct](testdata.NumberedTable)
+	doc, err := goquery.NewDocumentFromReader(strings.NewReader(testdata.NumberedTable))
+	assert.Nil(t, err)
+	p, err := New[testdata.NumberedStruct](doc)
 	assert.Nil(t, err)
 	assert.NoError(t, err)
 	assert.Equal(t, "Row 1, Cell 1", p[0].Header1)
@@ -74,7 +80,9 @@ func TestNewFromString(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, err := NewFromString[testdata.SuperNovaStruct](tt.args.htmlInput)
+			doc, err := goquery.NewDocumentFromReader(strings.NewReader(tt.args.htmlInput))
+			assert.Nil(t, err)
+			got, err := New[testdata.SuperNovaStruct](doc)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("NewFromString() error = %v, wantErr %v", err, tt.wantErr)
 				return

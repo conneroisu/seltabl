@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime/internal/sys.PCQuantum</title>
+<link href="../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../../../pkg/runtime/internal/sys.html">runtime/internal/sys</a>.<a href="../../../src/runtime/internal/sys/consts.go.html#line-22">PCQuantum</a></b></span>
+
+<span class="title">20 uses</span>
+
+	runtime/internal/sys (current package)
+		<a href="../../../src/runtime/internal/sys/consts.go.html#line-22">consts.go#L22</a>: const <b>PCQuantum</b> = goarch.PCQuantum
+
+	<a href="../../../pkg/runtime.html">runtime</a>
+		<a href="../../../src/runtime/cpuprof.go.html#line-180">cpuprof.go#L180</a>: 			abi.FuncPCABIInternal(_LostExternalCode) + sys.<b>PCQuantum</b>,
+		<a href="../../../src/runtime/cpuprof.go.html#line-181" class="path-duplicate">cpuprof.go</a><a href="../../../src/runtime/cpuprof.go.html#line-181">#L181</a>: 			abi.FuncPCABIInternal(_ExternalCode) + sys.<b>PCQuantum</b>,
+		<a href="../../../src/runtime/cpuprof.go.html#line-190" class="path-duplicate">cpuprof.go</a><a href="../../../src/runtime/cpuprof.go.html#line-190">#L190</a>: 			abi.FuncPCABIInternal(_LostSIGPROFDuringAtomic64) + sys.<b>PCQuantum</b>,
+		<a href="../../../src/runtime/cpuprof.go.html#line-191" class="path-duplicate">cpuprof.go</a><a href="../../../src/runtime/cpuprof.go.html#line-191">#L191</a>: 			abi.FuncPCABIInternal(_System) + sys.<b>PCQuantum</b>,
+		<a href="../../../src/runtime/mprof.go.html#line-694">mprof.go#L694</a>: 		prof.stack[0] = abi.FuncPCABIInternal(_LostContendedRuntimeLock) + sys.<b>PCQuantum</b>
+		<a href="../../../src/runtime/mprof.go.html#line-736" class="path-duplicate">mprof.go</a><a href="../../../src/runtime/mprof.go.html#line-736">#L736</a>: 			abi.FuncPCABIInternal(_LostContendedRuntimeLock) + sys.<b>PCQuantum</b>,
+		<a href="../../../src/runtime/proc.go.html#line-2287">proc.go#L2287</a>: 	gp.sched.pc = abi.FuncPCABI0(goexit) + sys.<b>PCQuantum</b>
+		<a href="../../../src/runtime/proc.go.html#line-2310" class="path-duplicate">proc.go</a><a href="../../../src/runtime/proc.go.html#line-2310">#L2310</a>: 		gp.racectx = racegostart(abi.FuncPCABIInternal(newextram) + sys.<b>PCQuantum</b>)
+		<a href="../../../src/runtime/proc.go.html#line-4929" class="path-duplicate">proc.go</a><a href="../../../src/runtime/proc.go.html#line-4929">#L4929</a>: 	newg.sched.pc = abi.FuncPCABI0(goexit) + sys.<b>PCQuantum</b> // +PCQuantum so that previous instruction is in same function
+		<a href="../../../src/runtime/proc.go.html#line-5382" class="path-duplicate">proc.go</a><a href="../../../src/runtime/proc.go.html#line-5382">#L5382</a>: 			pc = abi.FuncPCABIInternal(_VDSO) + sys.<b>PCQuantum</b>
+		<a href="../../../src/runtime/proc.go.html#line-5385" class="path-duplicate">proc.go</a><a href="../../../src/runtime/proc.go.html#line-5385">#L5385</a>: 			pc = abi.FuncPCABIInternal(_ExternalCode) + sys.<b>PCQuantum</b>
+		<a href="../../../src/runtime/proc.go.html#line-5389" class="path-duplicate">proc.go</a><a href="../../../src/runtime/proc.go.html#line-5389">#L5389</a>: 			stk[1] = abi.FuncPCABIInternal(_GC) + sys.<b>PCQuantum</b>
+		<a href="../../../src/runtime/proc.go.html#line-5391" class="path-duplicate">proc.go</a><a href="../../../src/runtime/proc.go.html#line-5391">#L5391</a>: 			stk[1] = abi.FuncPCABIInternal(_System) + sys.<b>PCQuantum</b>
+		<a href="../../../src/runtime/signal_unix.go.html#line-542">signal_unix.go#L542</a>: 			abi.FuncPCABIInternal(_ExternalCode) + sys.<b>PCQuantum</b>,
+		<a href="../../../src/runtime/symtab.go.html#line-528">symtab.go#L528</a>: 		hdr.minLC != sys.<b>PCQuantum</b> || hdr.ptrSize != goarch.PtrSize || hdr.textStart != datap.text {
+		<a href="../../../src/runtime/symtab.go.html#line-1126" class="path-duplicate">symtab.go</a><a href="../../../src/runtime/symtab.go.html#line-1126">#L1126</a>: 	*pc += uintptr(pcdelta * sys.<b>PCQuantum</b>)
+		<a href="../../../src/runtime/time.go.html#line-845">time.go#L845</a>: 			ppcur.timerRaceCtx = racegostart(abi.FuncPCABIInternal(runtimer) + sys.<b>PCQuantum</b>)
+		<a href="../../../src/runtime/trace2event.go.html#line-178">trace2event.go#L178</a>: 		startPCForTrace(pc) + sys.<b>PCQuantum</b>,
+		<a href="../../../src/runtime/traceback.go.html#line-806">traceback.go#L806</a>: 		tracepc -= sys.<b>PCQuantum</b>
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

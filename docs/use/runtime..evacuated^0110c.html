@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.evacuated</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/map.go.html#line-204">evacuated</a></b></span>
+
+<span class="title">19 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/map.go.html#line-204">map.go#L204</a>: func <b>evacuated</b>(b *bmap) bool {
+		<a href="../src/runtime/map.go.html#line-427" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-427">#L427</a>: 		if !<b>evacuated</b>(oldb) {
+		<a href="../src/runtime/map.go.html#line-488" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-488">#L488</a>: 		if !<b>evacuated</b>(oldb) {
+		<a href="../src/runtime/map.go.html#line-532" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-532">#L532</a>: 		if !<b>evacuated</b>(oldb) {
+		<a href="../src/runtime/map.go.html#line-892" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-892">#L892</a>: 			if !<b>evacuated</b>(b) {
+		<a href="../src/runtime/map.go.html#line-1153" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1153">#L1153</a>: 	return <b>evacuated</b>(b)
+		<a href="../src/runtime/map.go.html#line-1167" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1167">#L1167</a>: 	if !<b>evacuated</b>(b) {
+		<a href="../src/runtime/map.go.html#line-1557" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1557">#L1557</a>: 		if <b>evacuated</b>(srcBmap) {
+		<a href="../src/runtime/map.go.html#line-1636" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1636">#L1636</a>: 			if <b>evacuated</b>(b) {
+		<a href="../src/runtime/map.go.html#line-1699" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1699">#L1699</a>: 			if <b>evacuated</b>(b) {
+		<a href="../src/runtime/map_fast32.go.html#line-38">map_fast32.go#L38</a>: 			if !<b>evacuated</b>(oldb) {
+		<a href="../src/runtime/map_fast32.go.html#line-78" class="path-duplicate">map_fast32.go</a><a href="../src/runtime/map_fast32.go.html#line-78">#L78</a>: 			if !<b>evacuated</b>(oldb) {
+		<a href="../src/runtime/map_fast32.go.html#line-377" class="path-duplicate">map_fast32.go</a><a href="../src/runtime/map_fast32.go.html#line-377">#L377</a>: 	if !<b>evacuated</b>(b) {
+		<a href="../src/runtime/map_fast64.go.html#line-38">map_fast64.go#L38</a>: 			if !<b>evacuated</b>(oldb) {
+		<a href="../src/runtime/map_fast64.go.html#line-78" class="path-duplicate">map_fast64.go</a><a href="../src/runtime/map_fast64.go.html#line-78">#L78</a>: 			if !<b>evacuated</b>(oldb) {
+		<a href="../src/runtime/map_fast64.go.html#line-379" class="path-duplicate">map_fast64.go</a><a href="../src/runtime/map_fast64.go.html#line-379">#L379</a>: 	if !<b>evacuated</b>(b) {
+		<a href="../src/runtime/map_faststr.go.html#line-89">map_faststr.go#L89</a>: 		if !<b>evacuated</b>(oldb) {
+		<a href="../src/runtime/map_faststr.go.html#line-184" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-184">#L184</a>: 		if !<b>evacuated</b>(oldb) {
+		<a href="../src/runtime/map_faststr.go.html#line-405" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-405">#L405</a>: 	if !<b>evacuated</b>(b) {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

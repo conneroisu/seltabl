@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/cipher.Stream</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../pkg/crypto/cipher.html">crypto/cipher</a>.<a href="../../src/crypto/cipher/cipher.go.html#line-29">Stream</a></b></span>
+
+<span class="title">15 uses</span>
+
+	crypto/cipher (current package)
+		<a href="../../src/crypto/cipher/cfb.go.html#line-56">cfb.go#L56</a>: func NewCFBEncrypter(block Block, iv []byte) <b>Stream</b> {
+		<a href="../../src/crypto/cipher/cfb.go.html#line-63" class="path-duplicate">cfb.go</a><a href="../../src/crypto/cipher/cfb.go.html#line-63">#L63</a>: func NewCFBDecrypter(block Block, iv []byte) <b>Stream</b> {
+		<a href="../../src/crypto/cipher/cfb.go.html#line-67" class="path-duplicate">cfb.go</a><a href="../../src/crypto/cipher/cfb.go.html#line-67">#L67</a>: func newCFB(block Block, iv []byte, decrypt bool) <b>Stream</b> {
+		<a href="../../src/crypto/cipher/cipher.go.html#line-29">cipher.go#L29</a>: type <b>Stream</b> interface {
+		<a href="../../src/crypto/cipher/ctr.go.html#line-34">ctr.go#L34</a>: 	NewCTR(iv []byte) <b>Stream</b>
+		<a href="../../src/crypto/cipher/ctr.go.html#line-39" class="path-duplicate">ctr.go</a><a href="../../src/crypto/cipher/ctr.go.html#line-39">#L39</a>: func NewCTR(block Block, iv []byte) <b>Stream</b> {
+		<a href="../../src/crypto/cipher/io.go.html#line-15">io.go#L15</a>: 	S <b>Stream</b>
+		<a href="../../src/crypto/cipher/io.go.html#line-31" class="path-duplicate">io.go</a><a href="../../src/crypto/cipher/io.go.html#line-31">#L31</a>: 	S   <b>Stream</b>
+		<a href="../../src/crypto/cipher/ofb.go.html#line-24">ofb.go#L24</a>: func NewOFB(b Block, iv []byte) <b>Stream</b> {
+
+	<a href="../../pkg/crypto/aes.html">crypto/aes</a>
+		<a href="../../src/crypto/aes/modes.go.html#line-36">modes.go#L36</a>: 	NewCTR(iv []byte) cipher.<b>Stream</b>
+
+	<a href="../../pkg/crypto/tls.html">crypto/tls</a>
+		<a href="../../src/crypto/tls/conn.go.html#line-262">conn.go#L262</a>: 	case cipher.<b>Stream</b>:
+		<a href="../../src/crypto/tls/conn.go.html#line-357" class="path-duplicate">conn.go</a><a href="../../src/crypto/tls/conn.go.html#line-357">#L357</a>: 		case cipher.<b>Stream</b>:
+		<a href="../../src/crypto/tls/conn.go.html#line-507" class="path-duplicate">conn.go</a><a href="../../src/crypto/tls/conn.go.html#line-507">#L507</a>: 	case cipher.<b>Stream</b>:
+		<a href="../../src/crypto/tls/conn.go.html#line-905" class="path-duplicate">conn.go</a><a href="../../src/crypto/tls/conn.go.html#line-905">#L905</a>: 		case cipher.<b>Stream</b>:
+
+	<a href="../../pkg/vendor/golang.org/x/crypto/chacha20.html">vendor/golang.org/x/crypto/chacha20</a>
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-61">chacha_generic.go#L61</a>: var _ cipher.<b>Stream</b> = (*Cipher)(nil)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

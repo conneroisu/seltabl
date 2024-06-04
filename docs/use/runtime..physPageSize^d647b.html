@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.physPageSize</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">var <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/malloc.go.html#line-355">physPageSize</a></b></span>
+
+<span class="title">46 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/arena.go.html#line-208">arena.go#L208</a>: 	if userArenaChunkBytes%<b>physPageSize</b> != 0 {
+		<a href="../src/runtime/arena.go.html#line-653" class="path-duplicate">arena.go</a><a href="../src/runtime/arena.go.html#line-653">#L653</a>: 	if uintptr(x)%<b>physPageSize</b> != 0 {
+		<a href="../src/runtime/malloc.go.html#line-355">malloc.go#L355</a>: var <b>physPageSize</b> uintptr
+		<a href="../src/runtime/malloc.go.html#line-386" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-386">#L386</a>: 	if <b>physPageSize</b> == 0 {
+		<a href="../src/runtime/malloc.go.html#line-390" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-390">#L390</a>: 	if <b>physPageSize</b> &gt; maxPhysPageSize {
+		<a href="../src/runtime/malloc.go.html#line-391" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-391">#L391</a>: 		print("system page size (", <b>physPageSize</b>, ") is larger than maximum page size (", maxPhysPageSize, ")\n")
+		<a href="../src/runtime/malloc.go.html#line-394" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-394">#L394</a>: 	if <b>physPageSize</b> &lt; minPhysPageSize {
+		<a href="../src/runtime/malloc.go.html#line-395" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-395">#L395</a>: 		print("system page size (", <b>physPageSize</b>, ") is smaller than minimum page size (", minPhysPageSize, ")\n")
+		<a href="../src/runtime/malloc.go.html#line-398" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-398">#L398</a>: 	if <b>physPageSize</b>&amp;(<b>physPageSize</b>-1) != 0 {
+		<a href="../src/runtime/malloc.go.html#line-399" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-399">#L399</a>: 		print("system page size (", <b>physPageSize</b>, ") must be a power of 2\n")
+		<a href="../src/runtime/malloc.go.html#line-787" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-787">#L787</a>: 					size = <b>physPageSize</b>
+		<a href="../src/runtime/malloc.go.html#line-1651" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-1651">#L1651</a>: 	if pEnd := alignUp(l.next-1, <b>physPageSize</b>); pEnd &gt; l.mapped {
+		<a href="../src/runtime/mem_linux.go.html#line-42">mem_linux.go#L42</a>: 	if uintptr(v)&amp;(<b>physPageSize</b>-1) != 0 || n&amp;(<b>physPageSize</b>-1) != 0 {
+		<a href="../src/runtime/mem_linux.go.html#line-111" class="path-duplicate">mem_linux.go</a><a href="../src/runtime/mem_linux.go.html#line-111">#L111</a>: 	if uintptr(v)&amp;(<b>physPageSize</b>-1) != 0 {
+		<a href="../src/runtime/mem_linux.go.html#line-120" class="path-duplicate">mem_linux.go</a><a href="../src/runtime/mem_linux.go.html#line-120">#L120</a>: 	if uintptr(v)&amp;(<b>physPageSize</b>-1) != 0 {
+		<a href="../src/runtime/mgcscavenge.go.html#line-211">mgcscavenge.go#L211</a>: 	gcPercentGoal = (gcPercentGoal + uint64(<b>physPageSize</b>) - 1) &amp;^ (uint64(<b>physPageSize</b>) - 1)
+		<a href="../src/runtime/mgcscavenge.go.html#line-229" class="path-duplicate">mgcscavenge.go</a><a href="../src/runtime/mgcscavenge.go.html#line-229">#L229</a>: 	if heapRetainedNow &lt;= gcPercentGoal || heapRetainedNow-gcPercentGoal &lt; uint64(<b>physPageSize</b>) {
+		<a href="../src/runtime/mgcscavenge.go.html#line-613" class="path-duplicate">mgcscavenge.go</a><a href="../src/runtime/mgcscavenge.go.html#line-613">#L613</a>: 			worked += approxWorkedNSPerPhysicalPage * float64(r/<b>physPageSize</b>)
+		<a href="../src/runtime/mgcscavenge.go.html#line-634" class="path-duplicate">mgcscavenge.go</a><a href="../src/runtime/mgcscavenge.go.html#line-634">#L634</a>: 	if released &gt; 0 &amp;&amp; released &lt; <b>physPageSize</b> {
+		<a href="../src/runtime/mgcscavenge.go.html#line-749" class="path-duplicate">mgcscavenge.go</a><a href="../src/runtime/mgcscavenge.go.html#line-749">#L749</a>: 	minPages := <b>physPageSize</b> / pageSize
+		<a href="../src/runtime/mgcscavenge.go.html#line-964" class="path-duplicate">mgcscavenge.go</a><a href="../src/runtime/mgcscavenge.go.html#line-964">#L964</a>: 	if physHugePageSize &gt; pageSize &amp;&amp; physHugePageSize &gt; <b>physPageSize</b> {
+		<a href="../src/runtime/mheap.go.html#line-1180">mheap.go#L1180</a>: 	needPhysPageAlign := physPageAlignedStacks &amp;&amp; typ == spanAllocStack &amp;&amp; pageSize &lt; <b>physPageSize</b>
+		<a href="../src/runtime/mheap.go.html#line-1214" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1214">#L1214</a>: 		extraPages := <b>physPageSize</b> / pageSize
+		<a href="../src/runtime/mheap.go.html#line-1237" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1237">#L1237</a>: 		base = alignUp(base, <b>physPageSize</b>)
+		<a href="../src/runtime/mheap.go.html#line-1479" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1479">#L1479</a>: 	nBase := alignUp(end, <b>physPageSize</b>)
+		<a href="../src/runtime/mheap.go.html#line-1522" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1522">#L1522</a>: 		nBase = alignUp(h.curArena.base+ask, <b>physPageSize</b>)
+		<a href="../src/runtime/mpagealloc_64bit.go.html#line-78">mpagealloc_64bit.go#L78</a>: 		b := alignUp(uintptr(entries)*pallocSumBytes, <b>physPageSize</b>)
+		<a href="../src/runtime/mpagealloc_64bit.go.html#line-118" class="path-duplicate">mpagealloc_64bit.go</a><a href="../src/runtime/mpagealloc_64bit.go.html#line-118">#L118</a>: 		baseOffset := alignDown(uintptr(sumIdxBase)*pallocSumBytes, <b>physPageSize</b>)
+		<a href="../src/runtime/mpagealloc_64bit.go.html#line-119" class="path-duplicate">mpagealloc_64bit.go</a><a href="../src/runtime/mpagealloc_64bit.go.html#line-119">#L119</a>: 		limitOffset := alignUp(uintptr(sumIdxLimit)*pallocSumBytes, <b>physPageSize</b>)
+		<a href="../src/runtime/mpagealloc_64bit.go.html#line-210" class="path-duplicate">mpagealloc_64bit.go</a><a href="../src/runtime/mpagealloc_64bit.go.html#line-210">#L210</a>: 	needMin := alignDown(uintptr(chunkIndex(base)), <b>physPageSize</b>/scSize)
+		<a href="../src/runtime/mpagealloc_64bit.go.html#line-211" class="path-duplicate">mpagealloc_64bit.go</a><a href="../src/runtime/mpagealloc_64bit.go.html#line-211">#L211</a>: 	needMax := alignUp(uintptr(chunkIndex(limit)), <b>physPageSize</b>/scSize)
+		<a href="../src/runtime/os_linux.go.html#line-268">os_linux.go#L268</a>: 				<b>physPageSize</b> = n
+		<a href="../src/runtime/os_linux.go.html#line-272" class="path-duplicate">os_linux.go</a><a href="../src/runtime/os_linux.go.html#line-272">#L272</a>: 		if <b>physPageSize</b> == 0 {
+		<a href="../src/runtime/os_linux.go.html#line-273" class="path-duplicate">os_linux.go</a><a href="../src/runtime/os_linux.go.html#line-273">#L273</a>: 			<b>physPageSize</b> = size
+		<a href="../src/runtime/os_linux.go.html#line-305" class="path-duplicate">os_linux.go</a><a href="../src/runtime/os_linux.go.html#line-305">#L305</a>: 			<b>physPageSize</b> = val
+		<a href="../src/runtime/runtime.go.html#line-124">runtime.go#L124</a>: func syscall_Getpagesize() int { return int(<b>physPageSize</b>) }
+		<a href="../src/runtime/signal_unix.go.html#line-831">signal_unix.go#L831</a>: 		if n &gt; <b>physPageSize</b>-pc%<b>physPageSize</b> {
+		<a href="../src/runtime/signal_unix.go.html#line-832" class="path-duplicate">signal_unix.go</a><a href="../src/runtime/signal_unix.go.html#line-832">#L832</a>: 			n = <b>physPageSize</b> - pc%<b>physPageSize</b>
+		<a href="../src/runtime/stack.go.html#line-352">stack.go#L352</a>: 		n = uint32(alignUp(uintptr(n), <b>physPageSize</b>))
+		<a href="../src/runtime/vdso_linux.go.html#line-290">vdso_linux.go#L290</a>: 			page := *k.ptr &amp;^ (<b>physPageSize</b> - 1)
+		<a href="../src/runtime/vdso_linux.go.html#line-291" class="path-duplicate">vdso_linux.go</a><a href="../src/runtime/vdso_linux.go.html#line-291">#L291</a>: 			return pc &gt;= page &amp;&amp; pc &lt; page+<b>physPageSize</b>
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

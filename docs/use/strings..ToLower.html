@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: strings.ToLower</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/strings.html">strings</a>.<a href="../src/strings/strings.go.html#line-636">ToLower</a></b></span>
+
+<span class="title">36 uses</span>
+
+	strings (current package)
+		<a href="../src/strings/strings.go.html#line-636">strings.go#L636</a>: func <b>ToLower</b>(s string) string {
+
+	<a href="../pkg/crypto/tls.html">crypto/tls</a>
+		<a href="../src/crypto/tls/common.go.html#line-1142">common.go#L1142</a>: 		name := strings.<b>ToLower</b>(clientHello.ServerName)
+
+	<a href="../pkg/github.com/andybalholm/cascadia.html">github.com/andybalholm/cascadia</a>
+		<a href="../src/github.com/andybalholm/cascadia/parser.go.html#line-511">parser.go#L511</a>: 		val = strings.<b>ToLower</b>(val)
+		<a href="../src/github.com/andybalholm/cascadia/parser.go.html#line-585" class="path-duplicate">parser.go</a><a href="../src/github.com/andybalholm/cascadia/parser.go.html#line-585">#L585</a>: 		val = strings.<b>ToLower</b>(val)
+		<a href="../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-100">pseudo_classes.go#L100</a>: 		text = strings.<b>ToLower</b>(nodeOwnText(n))
+		<a href="../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-103" class="path-duplicate">pseudo_classes.go</a><a href="../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-103">#L103</a>: 		text = strings.<b>ToLower</b>(nodeText(n))
+		<a href="../src/github.com/andybalholm/cascadia/selector.go.html#line-377">selector.go#L377</a>: 				return strings.HasPrefix(strings.<b>ToLower</b>(s), strings.<b>ToLower</b>(val))
+		<a href="../src/github.com/andybalholm/cascadia/selector.go.html#line-392" class="path-duplicate">selector.go</a><a href="../src/github.com/andybalholm/cascadia/selector.go.html#line-392">#L392</a>: 				return strings.HasSuffix(strings.<b>ToLower</b>(s), strings.<b>ToLower</b>(val))
+		<a href="../src/github.com/andybalholm/cascadia/selector.go.html#line-407" class="path-duplicate">selector.go</a><a href="../src/github.com/andybalholm/cascadia/selector.go.html#line-407">#L407</a>: 				return strings.Contains(strings.<b>ToLower</b>(s), strings.<b>ToLower</b>(val))
+
+	<a href="../pkg/golang.org/x/net/html.html">golang.org/x/net/html</a>
+		<a href="../src/golang.org/x/net/html/doctype.go.html#line-29">doctype.go#L29</a>: 	n.Data = strings.<b>ToLower</b>(n.Data)
+		<a href="../src/golang.org/x/net/html/doctype.go.html#line-38" class="path-duplicate">doctype.go</a><a href="../src/golang.org/x/net/html/doctype.go.html#line-38">#L38</a>: 	key := strings.<b>ToLower</b>(s[:6])
+		<a href="../src/golang.org/x/net/html/doctype.go.html#line-71" class="path-duplicate">doctype.go</a><a href="../src/golang.org/x/net/html/doctype.go.html#line-71">#L71</a>: 			public := strings.<b>ToLower</b>(n.Attr[0].Val)
+		<a href="../src/golang.org/x/net/html/doctype.go.html#line-90" class="path-duplicate">doctype.go</a><a href="../src/golang.org/x/net/html/doctype.go.html#line-90">#L90</a>: 			strings.<b>ToLower</b>(lastAttr.Val) == "http://www.ibm.com/data/dtd/v11/ibmxhtml1-transitional.dtd" {
+		<a href="../src/golang.org/x/net/html/foreign.go.html#line-43">foreign.go#L43</a>: 					val := strings.<b>ToLower</b>(a.Val)
+		<a href="../src/golang.org/x/net/html/parse.go.html#line-1034">parse.go#L1034</a>: 						if strings.<b>ToLower</b>(t.Val) == "hidden" {
+		<a href="../src/golang.org/x/net/html/parse.go.html#line-1462" class="path-duplicate">parse.go</a><a href="../src/golang.org/x/net/html/parse.go.html#line-1462">#L1462</a>: 				if t.Key == "type" &amp;&amp; strings.<b>ToLower</b>(t.Val) == "hidden" {
+		<a href="../src/golang.org/x/net/html/token.go.html#line-840">token.go#L840</a>: 		z.rawTag = strings.<b>ToLower</b>(string(z.buf[z.data.start:z.data.end]))
+		<a href="../src/golang.org/x/net/html/token.go.html#line-1266" class="path-duplicate">token.go</a><a href="../src/golang.org/x/net/html/token.go.html#line-1266">#L1266</a>: 		switch s := strings.<b>ToLower</b>(contextTag); s {
+
+	<a href="../pkg/mime.html">mime</a>
+		<a href="../src/mime/encodedword.go.html#line-335">encodedword.go#L335</a>: 		r, err := d.CharsetReader(strings.<b>ToLower</b>(charset), bytes.NewReader(content))
+		<a href="../src/mime/mediatype.go.html#line-26">mediatype.go#L26</a>: 		b.WriteString(strings.<b>ToLower</b>(t))
+		<a href="../src/mime/mediatype.go.html#line-31" class="path-duplicate">mediatype.go</a><a href="../src/mime/mediatype.go.html#line-31">#L31</a>: 		b.WriteString(strings.<b>ToLower</b>(major))
+		<a href="../src/mime/mediatype.go.html#line-33" class="path-duplicate">mediatype.go</a><a href="../src/mime/mediatype.go.html#line-33">#L33</a>: 		b.WriteString(strings.<b>ToLower</b>(sub))
+		<a href="../src/mime/mediatype.go.html#line-49" class="path-duplicate">mediatype.go</a><a href="../src/mime/mediatype.go.html#line-49">#L49</a>: 		b.WriteString(strings.<b>ToLower</b>(attribute))
+		<a href="../src/mime/mediatype.go.html#line-141" class="path-duplicate">mediatype.go</a><a href="../src/mime/mediatype.go.html#line-141">#L141</a>: 	mediatype = strings.TrimSpace(strings.<b>ToLower</b>(base))
+		<a href="../src/mime/mediatype.go.html#line-243" class="path-duplicate">mediatype.go</a><a href="../src/mime/mediatype.go.html#line-243">#L243</a>: 	charset := strings.<b>ToLower</b>(sv[0])
+		<a href="../src/mime/mediatype.go.html#line-330" class="path-duplicate">mediatype.go</a><a href="../src/mime/mediatype.go.html#line-330">#L330</a>: 	param = strings.<b>ToLower</b>(param)
+		<a href="../src/mime/type.go.html#line-129">type.go#L129</a>: 			si, _ := mimeTypesLower.Load(strings.<b>ToLower</b>(ext))
+		<a href="../src/mime/type.go.html#line-184" class="path-duplicate">type.go</a><a href="../src/mime/type.go.html#line-184">#L184</a>: 	extLower := strings.<b>ToLower</b>(extension)
+
+	<a href="../pkg/net/http.html">net/http</a>
+		<a href="../src/net/http/h2_bundle.go.html#line-99">h2_bundle.go#L99</a>: 	return strings.<b>ToLower</b>(s), true
+
+	<a href="../pkg/net/http/internal/ascii.html">net/http/internal/ascii</a>
+		<a href="../src/net/http/internal/ascii/print.go.html#line-60">print.go#L60</a>: 	return strings.<b>ToLower</b>(s), true
+
+	<a href="../pkg/net/url.html">net/url</a>
+		<a href="../src/net/url/url.go.html#line-529">url.go#L529</a>: 	url.Scheme = strings.<b>ToLower</b>(url.Scheme)
+
+	<a href="../pkg/vendor/golang.org/x/net/http/httpproxy.html">vendor/golang.org/x/net/http/httpproxy</a>
+		<a href="../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-190">proxy.go#L190</a>: 	addr = strings.<b>ToLower</b>(strings.TrimSpace(host))
+		<a href="../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-216" class="path-duplicate">proxy.go</a><a href="../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-216">#L216</a>: 		p = strings.<b>ToLower</b>(strings.TrimSpace(p))
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

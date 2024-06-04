@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.funcval</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/runtime2.go.html#line-200">funcval</a></b></span>
+
+<span class="title">17 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/cgocall.go.html#line-401">cgocall.go#L401</a>: 	cbFV := <b>funcval</b>{uintptr(fn)}
+		<a href="../src/runtime/coro.go.html#line-41">coro.go#L41</a>: 		startfv := *(**<b>funcval</b>)(unsafe.Pointer(&amp;start))
+		<a href="../src/runtime/debugcall.go.html#line-127">debugcall.go#L127</a>: 		newg := newproc1(*(**<b>funcval</b>)(unsafe.Pointer(&amp;fn)), gp, callerpc)
+		<a href="../src/runtime/debugcall.go.html#line-254" class="path-duplicate">debugcall.go</a><a href="../src/runtime/debugcall.go.html#line-254">#L254</a>: 	dispatchFV := <b>funcval</b>{dispatch}
+		<a href="../src/runtime/heapdump.go.html#line-226">heapdump.go#L226</a>: func dumpfinalizer(obj unsafe.Pointer, fn *<b>funcval</b>, fint *_type, ot *ptrtype) {
+		<a href="../src/runtime/heapdump.go.html#line-386" class="path-duplicate">heapdump.go</a><a href="../src/runtime/heapdump.go.html#line-386">#L386</a>: 		fn := *(**<b>funcval</b>)(unsafe.Pointer(&amp;d.fn))
+		<a href="../src/runtime/heapdump.go.html#line-428" class="path-duplicate">heapdump.go</a><a href="../src/runtime/heapdump.go.html#line-428">#L428</a>: func finq_callback(fn *<b>funcval</b>, obj unsafe.Pointer, nret uintptr, fint *_type, ot *ptrtype) {
+		<a href="../src/runtime/mfinal.go.html#line-54">mfinal.go#L54</a>: 	fn   *<b>funcval</b>       // function to call (may be a heap pointer)
+		<a href="../src/runtime/mfinal.go.html#line-95" class="path-duplicate">mfinal.go</a><a href="../src/runtime/mfinal.go.html#line-95">#L95</a>: func queuefinalizer(p unsafe.Pointer, fn *<b>funcval</b>, nret uintptr, fint *_type, ot *ptrtype) {
+		<a href="../src/runtime/mfinal.go.html#line-145" class="path-duplicate">mfinal.go</a><a href="../src/runtime/mfinal.go.html#line-145">#L145</a>: func iterate_finq(callback func(*<b>funcval</b>, unsafe.Pointer, uintptr, *_type, *ptrtype)) {
+		<a href="../src/runtime/mfinal.go.html#line-511" class="path-duplicate">mfinal.go</a><a href="../src/runtime/mfinal.go.html#line-511">#L511</a>: 		if !addfinalizer(e.data, (*<b>funcval</b>)(f.data), nret, fint, ot) {
+		<a href="../src/runtime/mheap.go.html#line-1936">mheap.go#L1936</a>: 	fn      *<b>funcval</b> // May be a heap pointer.
+		<a href="../src/runtime/mheap.go.html#line-1943" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1943">#L1943</a>: func addfinalizer(p unsafe.Pointer, f *<b>funcval</b>, nret uintptr, fint *_type, ot *ptrtype) bool {
+		<a href="../src/runtime/proc.go.html#line-4874">proc.go#L4874</a>: func newproc(fn *<b>funcval</b>) {
+		<a href="../src/runtime/proc.go.html#line-4892" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4892">#L4892</a>: func newproc1(fn *<b>funcval</b>, callergp *g, callerpc uintptr) *g {
+		<a href="../src/runtime/runtime2.go.html#line-200">runtime2.go#L200</a>: type <b>funcval</b> struct {
+		<a href="../src/runtime/stack.go.html#line-1127">stack.go#L1127</a>: func gostartcallfn(gobuf *gobuf, fv *<b>funcval</b>) {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

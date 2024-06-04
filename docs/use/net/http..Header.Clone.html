@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/http.Header.Clone</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/net/http.html">net/http</a>.<a href="../../src/net/http/header.go.html#line-24">Header</a>.<a href="../../src/net/http/header.go.html#line-94">Clone</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">12 uses</span>
+
+	net/http (current package)
+		<a href="../../src/net/http/clone.go.html#line-19">clone.go#L19</a>: 	return url.Values(Header(v).<b>Clone</b>())
+		<a href="../../src/net/http/clone.go.html#line-40" class="path-duplicate">clone.go</a><a href="../../src/net/http/clone.go.html#line-40">#L40</a>: 		Value: (map[string][]string)(Header(f.Value).<b>Clone</b>()),
+		<a href="../../src/net/http/clone.go.html#line-62" class="path-duplicate">clone.go</a><a href="../../src/net/http/clone.go.html#line-62">#L62</a>: 	fh2.Header = textproto.MIMEHeader(Header(fh.Header).<b>Clone</b>())
+		<a href="../../src/net/http/clone.go.html#line-69" class="path-duplicate">clone.go</a><a href="../../src/net/http/clone.go.html#line-69">#L69</a>: 	clone := hdr.<b>Clone</b>()
+		<a href="../../src/net/http/h2_bundle.go.html#line-6736">h2_bundle.go#L6736</a>: 			h = h.<b>Clone</b>()
+		<a href="../../src/net/http/header.go.html#line-94">header.go#L94</a>: func (h Header) <b>Clone</b>() Header {
+		<a href="../../src/net/http/request.go.html#line-387">request.go#L387</a>: 		r2.Header = r.Header.<b>Clone</b>()
+		<a href="../../src/net/http/request.go.html#line-390" class="path-duplicate">request.go</a><a href="../../src/net/http/request.go.html#line-390">#L390</a>: 		r2.Trailer = r.Trailer.<b>Clone</b>()
+		<a href="../../src/net/http/server.go.html#line-1097">server.go#L1097</a>: 		w.cw.header = w.handlerHeader.<b>Clone</b>()
+		<a href="../../src/net/http/server.go.html#line-1188" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1188">#L1188</a>: 		w.cw.header = w.handlerHeader.<b>Clone</b>()
+		<a href="../../src/net/http/transport.go.html#line-335">transport.go#L335</a>: 		ProxyConnectHeader:     t.ProxyConnectHeader.<b>Clone</b>(),
+		<a href="../../src/net/http/transport.go.html#line-1710" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-1710">#L1710</a>: 			hdr = hdr.<b>Clone</b>()
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

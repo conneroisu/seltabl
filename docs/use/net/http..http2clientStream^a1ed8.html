@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/http.http2clientStream</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../pkg/net/http.html">net/http</a>.<a href="../../src/net/http/h2_bundle.go.html#line-7416">http2clientStream</a></b></span>
+
+<span class="title">26 uses</span>
+
+	net/http (current package)
+		<a href="../../src/net/http/h2_bundle.go.html#line-7383">h2_bundle.go#L7383</a>: 	streams         map[uint32]*<b>http2clientStream</b> // client-initiated
+		<a href="../../src/net/http/h2_bundle.go.html#line-7416" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-7416">#L7416</a>: type <b>http2clientStream</b> struct {
+		<a href="../../src/net/http/h2_bundle.go.html#line-7469" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-7469">#L7469</a>: func (cs *<b>http2clientStream</b>) get1xxTraceFunc() func(int, textproto.MIMEHeader) error {
+		<a href="../../src/net/http/h2_bundle.go.html#line-7476" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-7476">#L7476</a>: func (cs *<b>http2clientStream</b>) abortStream(err error) {
+		<a href="../../src/net/http/h2_bundle.go.html#line-7482" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-7482">#L7482</a>: func (cs *<b>http2clientStream</b>) abortStreamLocked(err error) {
+		<a href="../../src/net/http/h2_bundle.go.html#line-7497" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-7497">#L7497</a>: func (cs *<b>http2clientStream</b>) abortRequestBodyWrite() {
+		<a href="../../src/net/http/h2_bundle.go.html#line-7507" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-7507">#L7507</a>: func (cs *<b>http2clientStream</b>) closeReqBodyLocked() {
+		<a href="../../src/net/http/h2_bundle.go.html#line-7814" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-7814">#L7814</a>: 		streams:               make(map[uint32]*<b>http2clientStream</b>),
+		<a href="../../src/net/http/h2_bundle.go.html#line-8285" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-8285">#L8285</a>: 	cs := &amp;<b>http2clientStream</b>{
+		<a href="../../src/net/http/h2_bundle.go.html#line-8338" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-8338">#L8338</a>: 	cancelRequest := func(cs *<b>http2clientStream</b>, err error) error {
+		<a href="../../src/net/http/h2_bundle.go.html#line-8391" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-8391">#L8391</a>: func (cs *<b>http2clientStream</b>) doRequest(req *Request) {
+		<a href="../../src/net/http/h2_bundle.go.html#line-8403" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-8403">#L8403</a>: func (cs *<b>http2clientStream</b>) writeRequest(req *Request) (err error) {
+		<a href="../../src/net/http/h2_bundle.go.html#line-8548" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-8548">#L8548</a>: func (cs *<b>http2clientStream</b>) encodeAndWriteHeaders(req *Request) error {
+		<a href="../../src/net/http/h2_bundle.go.html#line-8595" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-8595">#L8595</a>: func (cs *<b>http2clientStream</b>) cleanupWriteRequest(err error) {
+		<a href="../../src/net/http/h2_bundle.go.html#line-8667" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-8667">#L8667</a>: func (cc *http2ClientConn) awaitOpenSlotForStreamLocked(cs *<b>http2clientStream</b>) error {
+		<a href="../../src/net/http/h2_bundle.go.html#line-8730" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-8730">#L8730</a>: func (cs *<b>http2clientStream</b>) frameScratchBufferLen(maxFrameSize int) int {
+		<a href="../../src/net/http/h2_bundle.go.html#line-8772" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-8772">#L8772</a>: func (cs *<b>http2clientStream</b>) writeRequestBody(req *Request) (err error) {
+		<a href="../../src/net/http/h2_bundle.go.html#line-8908" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-8908">#L8908</a>: func (cs *<b>http2clientStream</b>) awaitFlowControl(maxBytes int) (taken int32, err error) {
+		<a href="../../src/net/http/h2_bundle.go.html#line-9187" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9187">#L9187</a>: func (cc *http2ClientConn) addStreamLocked(cs *<b>http2clientStream</b>) {
+		<a href="../../src/net/http/h2_bundle.go.html#line-9465" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9465">#L9465</a>: func (rl *http2clientConnReadLoop) handleResponse(cs *<b>http2clientStream</b>, f *http2MetaHeadersFrame) (*Response, error) {
+		<a href="../../src/net/http/h2_bundle.go.html#line-9584" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9584">#L9584</a>: func (rl *http2clientConnReadLoop) processTrailers(cs *<b>http2clientStream</b>, f *http2MetaHeadersFrame) error {
+		<a href="../../src/net/http/h2_bundle.go.html#line-9615" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9615">#L9615</a>: 	cs *<b>http2clientStream</b>
+		<a href="../../src/net/http/h2_bundle.go.html#line-9826" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9826">#L9826</a>: func (rl *http2clientConnReadLoop) endStream(cs *<b>http2clientStream</b>) {
+		<a href="../../src/net/http/h2_bundle.go.html#line-9842" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9842">#L9842</a>: func (rl *http2clientConnReadLoop) endStreamError(cs *<b>http2clientStream</b>, err error) {
+		<a href="../../src/net/http/h2_bundle.go.html#line-9847" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9847">#L9847</a>: func (rl *http2clientConnReadLoop) streamByID(id uint32) *<b>http2clientStream</b> {
+		<a href="../../src/net/http/h2_bundle.go.html#line-9857" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9857">#L9857</a>: func (cs *<b>http2clientStream</b>) copyTrailers() {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

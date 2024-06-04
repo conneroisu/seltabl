@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/tls.VersionTLS12</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../../pkg/crypto/tls.html">crypto/tls</a>.<a href="../../src/crypto/tls/common.go.html#line-32">VersionTLS12</a></b></span>
+
+<span class="title">45 uses</span>
+
+	crypto/tls (current package)
+		<a href="../../src/crypto/tls/auth.go.html#line-161">auth.go#L161</a>: 	{PKCS1WithSHA256, 19 + crypto.SHA256.Size() + 11, <b>VersionTLS12</b>},
+		<a href="../../src/crypto/tls/auth.go.html#line-162" class="path-duplicate">auth.go</a><a href="../../src/crypto/tls/auth.go.html#line-162">#L162</a>: 	{PKCS1WithSHA384, 19 + crypto.SHA384.Size() + 11, <b>VersionTLS12</b>},
+		<a href="../../src/crypto/tls/auth.go.html#line-163" class="path-duplicate">auth.go</a><a href="../../src/crypto/tls/auth.go.html#line-163">#L163</a>: 	{PKCS1WithSHA512, 19 + crypto.SHA512.Size() + 11, <b>VersionTLS12</b>},
+		<a href="../../src/crypto/tls/auth.go.html#line-164" class="path-duplicate">auth.go</a><a href="../../src/crypto/tls/auth.go.html#line-164">#L164</a>: 	{PKCS1WithSHA1, 15 + crypto.SHA1.Size() + 11, <b>VersionTLS12</b>},
+		<a href="../../src/crypto/tls/auth.go.html#line-237" class="path-duplicate">auth.go</a><a href="../../src/crypto/tls/auth.go.html#line-237">#L237</a>: 	if len(peerAlgs) == 0 &amp;&amp; vers == <b>VersionTLS12</b> {
+		<a href="../../src/crypto/tls/cipher_suites.go.html#line-41">cipher_suites.go#L41</a>: 	supportedUpToTLS12 = []uint16{VersionTLS10, VersionTLS11, <b>VersionTLS12</b>}
+		<a href="../../src/crypto/tls/cipher_suites.go.html#line-42" class="path-duplicate">cipher_suites.go</a><a href="../../src/crypto/tls/cipher_suites.go.html#line-42">#L42</a>: 	supportedOnlyTLS12 = []uint16{<b>VersionTLS12</b>}
+		<a href="../../src/crypto/tls/common.go.html#line-32">common.go#L32</a>: 	<b>VersionTLS12</b> = 0x0303
+		<a href="../../src/crypto/tls/common.go.html#line-51" class="path-duplicate">common.go</a><a href="../../src/crypto/tls/common.go.html#line-51">#L51</a>: 	case <b>VersionTLS12</b>:
+		<a href="../../src/crypto/tls/common.go.html#line-1028" class="path-duplicate">common.go</a><a href="../../src/crypto/tls/common.go.html#line-1028">#L1028</a>: 	<b>VersionTLS12</b>,
+		<a href="../../src/crypto/tls/common.go.html#line-1046" class="path-duplicate">common.go</a><a href="../../src/crypto/tls/common.go.html#line-1046">#L1046</a>: 		if (c == nil || c.MinVersion == 0) &amp;&amp; v &lt; <b>VersionTLS12</b> {
+		<a href="../../src/crypto/tls/common.go.html#line-1229" class="path-duplicate">common.go</a><a href="../../src/crypto/tls/common.go.html#line-1229">#L1229</a>: 			if vers &lt; <b>VersionTLS12</b> &amp;&amp; c.flags&amp;suiteTLS12 != 0 {
+		<a href="../../src/crypto/tls/common.go.html#line-1287" class="path-duplicate">common.go</a><a href="../../src/crypto/tls/common.go.html#line-1287">#L1287</a>: 			if vers &lt; <b>VersionTLS12</b> || len(chi.SignatureSchemes) == 0 {
+		<a href="../../src/crypto/tls/common.go.html#line-1315" class="path-duplicate">common.go</a><a href="../../src/crypto/tls/common.go.html#line-1315">#L1315</a>: 		if vers &lt; <b>VersionTLS12</b> &amp;&amp; c.flags&amp;suiteTLS12 != 0 {
+		<a href="../../src/crypto/tls/conn.go.html#line-655">conn.go#L655</a>: 		expectedVers = <b>VersionTLS12</b>
+		<a href="../../src/crypto/tls/conn.go.html#line-1014" class="path-duplicate">conn.go</a><a href="../../src/crypto/tls/conn.go.html#line-1014">#L1014</a>: 			vers = <b>VersionTLS12</b>
+		<a href="../../src/crypto/tls/conn.go.html#line-1128" class="path-duplicate">conn.go</a><a href="../../src/crypto/tls/conn.go.html#line-1128">#L1128</a>: 				hasSignatureAlgorithm: c.vers &gt;= <b>VersionTLS12</b>,
+		<a href="../../src/crypto/tls/conn.go.html#line-1141" class="path-duplicate">conn.go</a><a href="../../src/crypto/tls/conn.go.html#line-1141">#L1141</a>: 			hasSignatureAlgorithm: c.vers &gt;= <b>VersionTLS12</b>,
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-69">handshake_client.go#L69</a>: 	if clientHelloVersion &gt; <b>VersionTLS12</b> {
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-70" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-70">#L70</a>: 		clientHelloVersion = <b>VersionTLS12</b>
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-106" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-106">#L106</a>: 		if hello.vers &lt; <b>VersionTLS12</b> &amp;&amp; suite.flags&amp;suiteTLS12 != 0 {
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-129" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-129">#L129</a>: 	if hello.vers &gt;= <b>VersionTLS12</b> {
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-244" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-244">#L244</a>: 	if maxVers == VersionTLS13 &amp;&amp; c.vers &lt;= <b>VersionTLS12</b> &amp;&amp; (tls12Downgrade || tls11Downgrade) ||
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-245" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-245">#L245</a>: 		maxVers == <b>VersionTLS12</b> &amp;&amp; c.vers &lt;= VersionTLS11 &amp;&amp; tls11Downgrade {
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-682" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-682">#L682</a>: 		if c.vers &gt;= <b>VersionTLS12</b> {
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-132">handshake_client_tls13.go#L132</a>: 	if hs.serverHello.vers != <b>VersionTLS12</b> {
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-171">handshake_server.go#L171</a>: 	if c.config.MinVersion == 0 &amp;&amp; c.vers &lt; <b>VersionTLS12</b> {
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-202" class="path-duplicate">handshake_server.go</a><a href="../../src/crypto/tls/handshake_server.go.html#line-202">#L202</a>: 	if maxVers &gt;= <b>VersionTLS12</b> &amp;&amp; c.vers &lt; maxVers || testingOnlyForceDowngradeCanary {
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-203" class="path-duplicate">handshake_server.go</a><a href="../../src/crypto/tls/handshake_server.go.html#line-203">#L203</a>: 		if c.vers == <b>VersionTLS12</b> {
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-406" class="path-duplicate">handshake_server.go</a><a href="../../src/crypto/tls/handshake_server.go.html#line-406">#L406</a>: 	if hs.c.vers &lt; <b>VersionTLS12</b> &amp;&amp; c.flags&amp;suiteTLS12 != 0 {
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-601" class="path-duplicate">handshake_server.go</a><a href="../../src/crypto/tls/handshake_server.go.html#line-601">#L601</a>: 		if c.vers &gt;= <b>VersionTLS12</b> {
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-712" class="path-duplicate">handshake_server.go</a><a href="../../src/crypto/tls/handshake_server.go.html#line-712">#L712</a>: 		if c.vers &gt;= <b>VersionTLS12</b> {
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-97">handshake_server_tls13.go#L97</a>: 	hs.hello.vers = <b>VersionTLS12</b>
+		<a href="../../src/crypto/tls/key_agreement.go.html#line-140">key_agreement.go#L140</a>: 	if version &gt;= <b>VersionTLS12</b> {
+		<a href="../../src/crypto/tls/key_agreement.go.html#line-208" class="path-duplicate">key_agreement.go</a><a href="../../src/crypto/tls/key_agreement.go.html#line-208">#L208</a>: 	if ka.version &gt;= <b>VersionTLS12</b> {
+		<a href="../../src/crypto/tls/key_agreement.go.html#line-240" class="path-duplicate">key_agreement.go</a><a href="../../src/crypto/tls/key_agreement.go.html#line-240">#L240</a>: 	if ka.version &gt;= <b>VersionTLS12</b> {
+		<a href="../../src/crypto/tls/key_agreement.go.html#line-246" class="path-duplicate">key_agreement.go</a><a href="../../src/crypto/tls/key_agreement.go.html#line-246">#L246</a>: 	if ka.version &gt;= <b>VersionTLS12</b> {
+		<a href="../../src/crypto/tls/key_agreement.go.html#line-323" class="path-duplicate">key_agreement.go</a><a href="../../src/crypto/tls/key_agreement.go.html#line-323">#L323</a>: 	if ka.version &gt;= <b>VersionTLS12</b> {
+		<a href="../../src/crypto/tls/prf.go.html#line-92">prf.go#L92</a>: 	case <b>VersionTLS12</b>:
+		<a href="../../src/crypto/tls/prf.go.html#line-154" class="path-duplicate">prf.go</a><a href="../../src/crypto/tls/prf.go.html#line-154">#L154</a>: 	if version &gt;= <b>VersionTLS12</b> {
+		<a href="../../src/crypto/tls/prf.go.html#line-187" class="path-duplicate">prf.go</a><a href="../../src/crypto/tls/prf.go.html#line-187">#L187</a>: 	if h.version &lt; <b>VersionTLS12</b> {
+		<a href="../../src/crypto/tls/prf.go.html#line-200" class="path-duplicate">prf.go</a><a href="../../src/crypto/tls/prf.go.html#line-200">#L200</a>: 	if h.version &gt;= <b>VersionTLS12</b> {
+		<a href="../../src/crypto/tls/prf.go.html#line-228" class="path-duplicate">prf.go</a><a href="../../src/crypto/tls/prf.go.html#line-228">#L228</a>: 	if (h.version &gt;= <b>VersionTLS12</b> || sigType == signatureEd25519) &amp;&amp; h.buffer == nil {
+		<a href="../../src/crypto/tls/prf.go.html#line-236" class="path-duplicate">prf.go</a><a href="../../src/crypto/tls/prf.go.html#line-236">#L236</a>: 	if h.version &gt;= <b>VersionTLS12</b> {
+
+	<a href="../../pkg/net/http.html">net/http</a>
+		<a href="../../src/net/http/h2_bundle.go.html#line-4291">h2_bundle.go#L4291</a>: 		if sc.tlsState.Version &lt; tls.<b>VersionTLS12</b> {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

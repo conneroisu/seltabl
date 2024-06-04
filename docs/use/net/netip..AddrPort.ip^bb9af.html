@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/netip.AddrPort.ip</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/net/netip.html">net/netip</a>.<a href="../../src/net/netip/netip.go.html#line-1021">AddrPort</a>.<a href="../../src/net/netip/netip.go.html#line-1022">ip</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">17 uses</span>
+
+	net/netip (current package)
+		<a href="../../src/net/netip/netip.go.html#line-1022">netip.go#L1022</a>: 	<b>ip</b>   Addr
+		<a href="../../src/net/netip/netip.go.html#line-1028" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-1028">#L1028</a>: func AddrPortFrom(ip Addr, port uint16) AddrPort { return AddrPort{<b>ip</b>: ip, port: port} }
+		<a href="../../src/net/netip/netip.go.html#line-1031" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-1031">#L1031</a>: func (p AddrPort) Addr() Addr { return p.<b>ip</b> }
+		<a href="../../src/net/netip/netip.go.html#line-1080" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-1080">#L1080</a>: 	ipp.<b>ip</b>, err = ParseAddr(ip)
+		<a href="../../src/net/netip/netip.go.html#line-1084" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-1084">#L1084</a>: 	if v6 &amp;&amp; ipp.<b>ip</b>.Is4() {
+		<a href="../../src/net/netip/netip.go.html#line-1086" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-1086">#L1086</a>: 	} else if !v6 &amp;&amp; ipp.<b>ip</b>.Is6() {
+		<a href="../../src/net/netip/netip.go.html#line-1104" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-1104">#L1104</a>: func (p AddrPort) IsValid() bool { return p.<b>ip</b>.IsValid() }
+		<a href="../../src/net/netip/netip.go.html#line-1117" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-1117">#L1117</a>: 	switch p.<b>ip</b>.z {
+		<a href="../../src/net/netip/netip.go.html#line-1123" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-1123">#L1123</a>: 		buf = p.<b>ip</b>.appendTo4(buf)
+		<a href="../../src/net/netip/netip.go.html#line-1129" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-1129">#L1129</a>: 		return "[" + p.<b>ip</b>.String() + "]:" + itoa.Uitoa(uint(p.port))
+		<a href="../../src/net/netip/netip.go.html#line-1137" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-1137">#L1137</a>: 	switch p.<b>ip</b>.z {
+		<a href="../../src/net/netip/netip.go.html#line-1141" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-1141">#L1141</a>: 		b = p.<b>ip</b>.appendTo4(b)
+		<a href="../../src/net/netip/netip.go.html#line-1143" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-1143">#L1143</a>: 		if p.<b>ip</b>.Is4In6() {
+		<a href="../../src/net/netip/netip.go.html#line-1145" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-1145">#L1145</a>: 			b = p.<b>ip</b>.Unmap().appendTo4(b)
+		<a href="../../src/net/netip/netip.go.html#line-1146" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-1146">#L1146</a>: 			if z := p.<b>ip</b>.Zone(); z != "" {
+		<a href="../../src/net/netip/netip.go.html#line-1152" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-1152">#L1152</a>: 			b = p.<b>ip</b>.appendTo6(b)
+		<a href="../../src/net/netip/netip.go.html#line-1166" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-1166">#L1166</a>: 	switch p.<b>ip</b>.z {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: regexp/syntax.OpLiteral</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../../pkg/regexp/syntax.html">regexp/syntax</a>.<a href="../../src/regexp/syntax/regexp.go.html#line-41">OpLiteral</a></b></span>
+
+<span class="title">22 uses</span>
+
+	regexp/syntax (current package)
+		<a href="../../src/regexp/syntax/compile.go.html#line-95">compile.go#L95</a>: 	case <b>OpLiteral</b>:
+		<a href="../../src/regexp/syntax/op_string.go.html#line-13">op_string.go#L13</a>: 	_ = x[<b>OpLiteral</b>-3]
+		<a href="../../src/regexp/syntax/parse.go.html#line-220">parse.go#L220</a>: 	case <b>OpLiteral</b>:
+		<a href="../../src/regexp/syntax/parse.go.html#line-301" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-301">#L301</a>: 		re.Op = <b>OpLiteral</b>
+		<a href="../../src/regexp/syntax/parse.go.html#line-318" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-318">#L318</a>: 		re.Op = <b>OpLiteral</b>
+		<a href="../../src/regexp/syntax/parse.go.html#line-348" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-348">#L348</a>: 	if re1.Op != <b>OpLiteral</b> || re2.Op != <b>OpLiteral</b> || re1.Flags&amp;FoldCase != re2.Flags&amp;FoldCase {
+		<a href="../../src/regexp/syntax/parse.go.html#line-370" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-370">#L370</a>: 	re := p.newRegexp(<b>OpLiteral</b>)
+		<a href="../../src/regexp/syntax/parse.go.html#line-637" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-637">#L637</a>: 			prefix := p.newRegexp(<b>OpLiteral</b>)
+		<a href="../../src/regexp/syntax/parse.go.html#line-783" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-783">#L783</a>: 	if re.Op != <b>OpLiteral</b> {
+		<a href="../../src/regexp/syntax/parse.go.html#line-817" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-817">#L817</a>: 	if re.Op == <b>OpLiteral</b> {
+		<a href="../../src/regexp/syntax/parse.go.html#line-869" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-869">#L869</a>: 	re := &amp;Regexp{Op: <b>OpLiteral</b>}
+		<a href="../../src/regexp/syntax/parse.go.html#line-1306" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1306">#L1306</a>: 	return re.Op == <b>OpLiteral</b> &amp;&amp; len(re.Rune) == 1 ||
+		<a href="../../src/regexp/syntax/parse.go.html#line-1315" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1315">#L1315</a>: 	case <b>OpLiteral</b>:
+		<a href="../../src/regexp/syntax/parse.go.html#line-1361" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1361">#L1361</a>: 		if src.Op == <b>OpLiteral</b> {
+		<a href="../../src/regexp/syntax/parse.go.html#line-1366" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1366">#L1366</a>: 	case <b>OpLiteral</b>:
+		<a href="../../src/regexp/syntax/regexp.go.html#line-41">regexp.go#L41</a>: 	<b>OpLiteral</b>                      // matches Runes sequence
+		<a href="../../src/regexp/syntax/regexp.go.html#line-77" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-77">#L77</a>: 	case <b>OpLiteral</b>, OpCharClass:
+		<a href="../../src/regexp/syntax/regexp.go.html#line-147" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-147">#L147</a>: 	case <b>OpLiteral</b>:
+		<a href="../../src/regexp/syntax/regexp.go.html#line-281" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-281">#L281</a>: 	case <b>OpLiteral</b>:
+		<a href="../../src/regexp/syntax/regexp.go.html#line-353" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-353">#L353</a>: 		if sub.Op &gt; OpCapture || sub.Op == <b>OpLiteral</b> &amp;&amp; len(sub.Rune) &gt; 1 {
+
+	<a href="../../pkg/regexp.html">regexp</a>
+		<a href="../../src/regexp/regexp.go.html#line-278">regexp.go#L278</a>: 	case syntax.<b>OpLiteral</b>:
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/internal/edwards25519.projP2.Z</title>
+<link href="../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../../pkg/crypto/internal/edwards25519.html">crypto/internal/edwards25519</a>.<a href="../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-18">projP2</a>.<a href="../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-19">Z</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">8 uses</span>
+
+	crypto/internal/edwards25519 (current package)
+		<a href="../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-19">edwards25519.go#L19</a>: 	X, Y, <b>Z</b> field.Element
+		<a href="../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-61" class="path-duplicate">edwards25519.go</a><a href="../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-61">#L61</a>: 	v.<b>Z</b>.One()
+		<a href="../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-198" class="path-duplicate">edwards25519.go</a><a href="../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-198">#L198</a>: 	v.<b>Z</b>.Multiply(&amp;p.Z, &amp;p.T)
+		<a href="../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-205" class="path-duplicate">edwards25519.go</a><a href="../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-205">#L205</a>: 	v.<b>Z</b>.Set(&amp;p.z)
+		<a href="../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-218" class="path-duplicate">edwards25519.go</a><a href="../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-218">#L218</a>: 	v.x.Multiply(&amp;p.X, &amp;p.<b>Z</b>)
+		<a href="../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-219" class="path-duplicate">edwards25519.go</a><a href="../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-219">#L219</a>: 	v.y.Multiply(&amp;p.Y, &amp;p.<b>Z</b>)
+		<a href="../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-220" class="path-duplicate">edwards25519.go</a><a href="../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-220">#L220</a>: 	v.z.Square(&amp;p.<b>Z</b>)
+		<a href="../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-357" class="path-duplicate">edwards25519.go</a><a href="../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-357">#L357</a>: 	ZZ2.Square(&amp;p.<b>Z</b>)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

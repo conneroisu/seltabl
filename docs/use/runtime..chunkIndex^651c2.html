@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.chunkIndex</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/mpagealloc.go.html#line-106">chunkIndex</a></b></span>
+
+<span class="title">24 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/mgcscavenge.go.html#line-1072">mgcscavenge.go#L1072</a>: 	if baseIdx := uintptr(<b>chunkIndex</b>(base)); minHeapIdx == 0 || baseIdx &lt; minHeapIdx {
+		<a href="../src/runtime/mgcscavenge.go.html#line-1094" class="path-duplicate">mgcscavenge.go</a><a href="../src/runtime/mgcscavenge.go.html#line-1094">#L1094</a>: 	start := <b>chunkIndex</b>(searchAddr)
+		<a href="../src/runtime/mpagealloc.go.html#line-106">mpagealloc.go#L106</a>: func <b>chunkIndex</b>(p uintptr) chunkIdx {
+		<a href="../src/runtime/mpagealloc.go.html#line-376" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-376">#L376</a>: 	start, end := <b>chunkIndex</b>(base), <b>chunkIndex</b>(limit)
+		<a href="../src/runtime/mpagealloc.go.html#line-400" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-400">#L400</a>: 	for c := <b>chunkIndex</b>(base); c &lt; <b>chunkIndex</b>(limit); c++ {
+		<a href="../src/runtime/mpagealloc.go.html#line-469" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-469">#L469</a>: 		for i := <b>chunkIndex</b>(r.base.addr()).l1(); i &lt; <b>chunkIndex</b>(r.limit.addr()-1).l1(); i++ {
+		<a href="../src/runtime/mpagealloc.go.html#line-490" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-490">#L490</a>: 	sc, ec := <b>chunkIndex</b>(base), <b>chunkIndex</b>(limit)
+		<a href="../src/runtime/mpagealloc.go.html#line-577" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-577">#L577</a>: 	sc, ec := <b>chunkIndex</b>(base), <b>chunkIndex</b>(limit)
+		<a href="../src/runtime/mpagealloc.go.html#line-880" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-880">#L880</a>: 	if <b>chunkIndex</b>(p.searchAddr.addr()) &gt;= p.end {
+		<a href="../src/runtime/mpagealloc.go.html#line-889" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-889">#L889</a>: 		i := <b>chunkIndex</b>(p.searchAddr.addr())
+		<a href="../src/runtime/mpagealloc.go.html#line-947" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-947">#L947</a>: 		i := <b>chunkIndex</b>(base)
+		<a href="../src/runtime/mpagealloc.go.html#line-953" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-953">#L953</a>: 		sc, ec := <b>chunkIndex</b>(base), <b>chunkIndex</b>(limit)
+		<a href="../src/runtime/mpagealloc_64bit.go.html#line-210">mpagealloc_64bit.go#L210</a>: 	needMin := alignDown(uintptr(<b>chunkIndex</b>(base)), physPageSize/scSize)
+		<a href="../src/runtime/mpagealloc_64bit.go.html#line-211" class="path-duplicate">mpagealloc_64bit.go</a><a href="../src/runtime/mpagealloc_64bit.go.html#line-211">#L211</a>: 	needMax := alignUp(uintptr(<b>chunkIndex</b>(limit)), physPageSize/scSize)
+		<a href="../src/runtime/mpagecache.go.html#line-84">mpagecache.go#L84</a>: 	ci := <b>chunkIndex</b>(c.base)
+		<a href="../src/runtime/mpagecache.go.html#line-124" class="path-duplicate">mpagecache.go</a><a href="../src/runtime/mpagecache.go.html#line-124">#L124</a>: 	if <b>chunkIndex</b>(p.searchAddr.addr()) &gt;= p.end {
+		<a href="../src/runtime/mpagecache.go.html#line-128" class="path-duplicate">mpagecache.go</a><a href="../src/runtime/mpagecache.go.html#line-128">#L128</a>: 	ci := <b>chunkIndex</b>(p.searchAddr.addr()) // chunk index
+		<a href="../src/runtime/mpagecache.go.html#line-152" class="path-duplicate">mpagecache.go</a><a href="../src/runtime/mpagecache.go.html#line-152">#L152</a>: 		ci = <b>chunkIndex</b>(addr)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

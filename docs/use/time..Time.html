@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: time.Time</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../pkg/time.html">time</a>.<a href="../src/time/time.go.html#line-135">Time</a></b></span>
+
+<span class="title">278 uses</span>
+
+	time (current package)
+		<a href="../src/time/format.go.html#line-527">format.go#L527</a>: func (t <b>Time</b>) String() string {
+		<a href="../src/time/format.go.html#line-558" class="path-duplicate">format.go</a><a href="../src/time/format.go.html#line-558">#L558</a>: func (t <b>Time</b>) GoString() string {
+		<a href="../src/time/format.go.html#line-620" class="path-duplicate">format.go</a><a href="../src/time/format.go.html#line-620">#L620</a>: func (t <b>Time</b>) Format(layout string) string {
+		<a href="../src/time/format.go.html#line-636" class="path-duplicate">format.go</a><a href="../src/time/format.go.html#line-636">#L636</a>: func (t <b>Time</b>) AppendFormat(b []byte, layout string) []byte {
+		<a href="../src/time/format.go.html#line-648" class="path-duplicate">format.go</a><a href="../src/time/format.go.html#line-648">#L648</a>: func (t <b>Time</b>) appendFormat(b []byte, layout string) []byte {
+		<a href="../src/time/format.go.html#line-1007" class="path-duplicate">format.go</a><a href="../src/time/format.go.html#line-1007">#L1007</a>: func Parse(layout, value string) (<b>Time</b>, error) {
+		<a href="../src/time/format.go.html#line-1022" class="path-duplicate">format.go</a><a href="../src/time/format.go.html#line-1022">#L1022</a>: func ParseInLocation(layout, value string, loc *Location) (<b>Time</b>, error) {
+		<a href="../src/time/format.go.html#line-1032" class="path-duplicate">format.go</a><a href="../src/time/format.go.html#line-1032">#L1032</a>: func parse(layout, value string, defaultLocation, local *Location) (<b>Time</b>, error) {
+		<a href="../src/time/format.go.html#line-1060" class="path-duplicate">format.go</a><a href="../src/time/format.go.html#line-1060">#L1060</a>: 			return <b>Time</b>{}, newParseError(alayout, avalue, prefix, value, "")
+		<a href="../src/time/format.go.html#line-1064" class="path-duplicate">format.go</a><a href="../src/time/format.go.html#line-1064">#L1064</a>: 				return <b>Time</b>{}, newParseError(alayout, avalue, "", value, ": extra text: "+quote(value))
+		<a href="../src/time/format.go.html#line-1296" class="path-duplicate">format.go</a><a href="../src/time/format.go.html#line-1296">#L1296</a>: 			return <b>Time</b>{}, newParseError(alayout, avalue, stdstr, value, ": "+rangeErrString+" out of range")
+		<a href="../src/time/format.go.html#line-1299" class="path-duplicate">format.go</a><a href="../src/time/format.go.html#line-1299">#L1299</a>: 			return <b>Time</b>{}, newParseError(alayout, avalue, stdstr, hold, "")
+		<a href="../src/time/format.go.html#line-1321" class="path-duplicate">format.go</a><a href="../src/time/format.go.html#line-1321">#L1321</a>: 			return <b>Time</b>{}, newParseError(alayout, avalue, "", value, ": day-of-year out of range")
+		<a href="../src/time/format.go.html#line-1333" class="path-duplicate">format.go</a><a href="../src/time/format.go.html#line-1333">#L1333</a>: 			return <b>Time</b>{}, newParseError(alayout, avalue, "", value, ": day-of-year does not match month")
+		<a href="../src/time/format.go.html#line-1337" class="path-duplicate">format.go</a><a href="../src/time/format.go.html#line-1337">#L1337</a>: 			return <b>Time</b>{}, newParseError(alayout, avalue, "", value, ": day-of-year does not match day")
+		<a href="../src/time/format.go.html#line-1351" class="path-duplicate">format.go</a><a href="../src/time/format.go.html#line-1351">#L1351</a>: 		return <b>Time</b>{}, newParseError(alayout, avalue, "", value, ": day out of range")
+		<a href="../src/time/format_rfc3339.go.html#line-18">format_rfc3339.go#L18</a>: func (t <b>Time</b>) appendFormatRFC3339(b []byte, nanos bool) []byte {
+		<a href="../src/time/format_rfc3339.go.html#line-62" class="path-duplicate">format_rfc3339.go</a><a href="../src/time/format_rfc3339.go.html#line-62">#L62</a>: func (t <b>Time</b>) appendStrictRFC3339(b []byte) ([]byte, error) {
+		<a href="../src/time/format_rfc3339.go.html#line-82" class="path-duplicate">format_rfc3339.go</a><a href="../src/time/format_rfc3339.go.html#line-82">#L82</a>: func parseRFC3339[bytes []byte | string](s bytes, local *Location) (<b>Time</b>, bool) {
+		<a href="../src/time/format_rfc3339.go.html#line-105" class="path-duplicate">format_rfc3339.go</a><a href="../src/time/format_rfc3339.go.html#line-105">#L105</a>: 		return <b>Time</b>{}, false
+		<a href="../src/time/format_rfc3339.go.html#line-114" class="path-duplicate">format_rfc3339.go</a><a href="../src/time/format_rfc3339.go.html#line-114">#L114</a>: 		return <b>Time</b>{}, false
+		<a href="../src/time/format_rfc3339.go.html#line-132" class="path-duplicate">format_rfc3339.go</a><a href="../src/time/format_rfc3339.go.html#line-132">#L132</a>: 			return <b>Time</b>{}, false
+		<a href="../src/time/format_rfc3339.go.html#line-137" class="path-duplicate">format_rfc3339.go</a><a href="../src/time/format_rfc3339.go.html#line-137">#L137</a>: 			return <b>Time</b>{}, false
+		<a href="../src/time/format_rfc3339.go.html#line-155" class="path-duplicate">format_rfc3339.go</a><a href="../src/time/format_rfc3339.go.html#line-155">#L155</a>: func parseStrictRFC3339(b []byte) (<b>Time</b>, error) {
+		<a href="../src/time/format_rfc3339.go.html#line-160" class="path-duplicate">format_rfc3339.go</a><a href="../src/time/format_rfc3339.go.html#line-160">#L160</a>: 			return <b>Time</b>{}, err
+		<a href="../src/time/format_rfc3339.go.html#line-173" class="path-duplicate">format_rfc3339.go</a><a href="../src/time/format_rfc3339.go.html#line-173">#L173</a>: 			return <b>Time</b>{}, &amp;ParseError{RFC3339, string(b), "15", string(b[len("2006-01-02T"):][:1]), ""}
+		<a href="../src/time/format_rfc3339.go.html#line-175" class="path-duplicate">format_rfc3339.go</a><a href="../src/time/format_rfc3339.go.html#line-175">#L175</a>: 			return <b>Time</b>{}, &amp;ParseError{RFC3339, string(b), ".", ",", ""}
+		<a href="../src/time/format_rfc3339.go.html#line-179" class="path-duplicate">format_rfc3339.go</a><a href="../src/time/format_rfc3339.go.html#line-179">#L179</a>: 				return <b>Time</b>{}, &amp;ParseError{RFC3339, string(b), "Z07:00", string(b[len(b)-len("Z07:00"):]), ": timezone hour out of range"}
+		<a href="../src/time/format_rfc3339.go.html#line-181" class="path-duplicate">format_rfc3339.go</a><a href="../src/time/format_rfc3339.go.html#line-181">#L181</a>: 				return <b>Time</b>{}, &amp;ParseError{RFC3339, string(b), "Z07:00", string(b[len(b)-len("Z07:00"):]), ": timezone minute out of range"}
+		<a href="../src/time/format_rfc3339.go.html#line-184" class="path-duplicate">format_rfc3339.go</a><a href="../src/time/format_rfc3339.go.html#line-184">#L184</a>: 			return <b>Time</b>{}, &amp;ParseError{RFC3339, string(b), RFC3339, string(b), ""}
+		<a href="../src/time/sleep.go.html#line-51">sleep.go#L51</a>: 	C &lt;-chan <b>Time</b>
+		<a href="../src/time/sleep.go.html#line-87" class="path-duplicate">sleep.go</a><a href="../src/time/sleep.go.html#line-87">#L87</a>: 	c := make(chan <b>Time</b>, 1)
+		<a href="../src/time/sleep.go.html#line-145" class="path-duplicate">sleep.go</a><a href="../src/time/sleep.go.html#line-145">#L145</a>: 	case c.(chan <b>Time</b>) &lt;- Now():
+		<a href="../src/time/sleep.go.html#line-156" class="path-duplicate">sleep.go</a><a href="../src/time/sleep.go.html#line-156">#L156</a>: func After(d Duration) &lt;-chan <b>Time</b> {
+		<a href="../src/time/tick.go.html#line-10">tick.go#L10</a>: 	C &lt;-chan <b>Time</b> // The channel on which the ticks are delivered.
+		<a href="../src/time/tick.go.html#line-27" class="path-duplicate">tick.go</a><a href="../src/time/tick.go.html#line-27">#L27</a>: 	c := make(chan <b>Time</b>, 1)
+		<a href="../src/time/tick.go.html#line-66" class="path-duplicate">tick.go</a><a href="../src/time/tick.go.html#line-66">#L66</a>: func Tick(d Duration) &lt;-chan <b>Time</b> {
+		<a href="../src/time/time.go.html#line-135">time.go#L135</a>: type <b>Time</b> struct {
+		<a href="../src/time/time.go.html#line-171" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-171">#L171</a>: func (t *<b>Time</b>) nsec() int32 {
+		<a href="../src/time/time.go.html#line-176" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-176">#L176</a>: func (t *<b>Time</b>) sec() int64 {
+		<a href="../src/time/time.go.html#line-184" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-184">#L184</a>: func (t *<b>Time</b>) unixSec() int64 { return t.sec() + internalToUnix }
+		<a href="../src/time/time.go.html#line-187" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-187">#L187</a>: func (t *<b>Time</b>) addSec(d int64) {
+		<a href="../src/time/time.go.html#line-212" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-212">#L212</a>: func (t *<b>Time</b>) setLoc(loc *Location) {
+		<a href="../src/time/time.go.html#line-221" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-221">#L221</a>: func (t *<b>Time</b>) stripMono() {
+		<a href="../src/time/time.go.html#line-232" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-232">#L232</a>: func (t *<b>Time</b>) setMono(m int64) {
+		<a href="../src/time/time.go.html#line-248" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-248">#L248</a>: func (t *<b>Time</b>) mono() int64 {
+		<a href="../src/time/time.go.html#line-256" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-256">#L256</a>: func (t <b>Time</b>) After(u <b>Time</b>) bool {
+		<a href="../src/time/time.go.html#line-266" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-266">#L266</a>: func (t <b>Time</b>) Before(u <b>Time</b>) bool {
+		<a href="../src/time/time.go.html#line-277" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-277">#L277</a>: func (t <b>Time</b>) Compare(u <b>Time</b>) int {
+		<a href="../src/time/time.go.html#line-301" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-301">#L301</a>: func (t <b>Time</b>) Equal(u <b>Time</b>) bool {
+		<a href="../src/time/time.go.html#line-461" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-461">#L461</a>: func (t <b>Time</b>) IsZero() bool {
+		<a href="../src/time/time.go.html#line-467" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-467">#L467</a>: func (t <b>Time</b>) abs() uint64 {
+		<a href="../src/time/time.go.html#line-487" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-487">#L487</a>: func (t <b>Time</b>) locabs() (name string, offset int, abs uint64) {
+		<a href="../src/time/time.go.html#line-510" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-510">#L510</a>: func (t <b>Time</b>) Date() (year int, month Month, day int) {
+		<a href="../src/time/time.go.html#line-516" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-516">#L516</a>: func (t <b>Time</b>) Year() int {
+		<a href="../src/time/time.go.html#line-522" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-522">#L522</a>: func (t <b>Time</b>) Month() Month {
+		<a href="../src/time/time.go.html#line-528" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-528">#L528</a>: func (t <b>Time</b>) Day() int {
+		<a href="../src/time/time.go.html#line-534" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-534">#L534</a>: func (t <b>Time</b>) Weekday() Weekday {
+		<a href="../src/time/time.go.html#line-549" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-549">#L549</a>: func (t <b>Time</b>) ISOWeek() (year, week int) {
+		<a href="../src/time/time.go.html#line-573" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-573">#L573</a>: func (t <b>Time</b>) Clock() (hour, min, sec int) {
+		<a href="../src/time/time.go.html#line-588" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-588">#L588</a>: func (t <b>Time</b>) Hour() int {
+		<a href="../src/time/time.go.html#line-593" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-593">#L593</a>: func (t <b>Time</b>) Minute() int {
+		<a href="../src/time/time.go.html#line-598" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-598">#L598</a>: func (t <b>Time</b>) Second() int {
+		<a href="../src/time/time.go.html#line-604" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-604">#L604</a>: func (t <b>Time</b>) Nanosecond() int {
+		<a href="../src/time/time.go.html#line-610" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-610">#L610</a>: func (t <b>Time</b>) YearDay() int {
+		<a href="../src/time/time.go.html#line-872" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-872">#L872</a>: func (t <b>Time</b>) Add(d Duration) <b>Time</b> {
+		<a href="../src/time/time.go.html#line-900" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-900">#L900</a>: func (t <b>Time</b>) Sub(u <b>Time</b>) Duration {
+		<a href="../src/time/time.go.html#line-929" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-929">#L929</a>: func Since(t <b>Time</b>) Duration {
+		<a href="../src/time/time.go.html#line-939" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-939">#L939</a>: func Until(t <b>Time</b>) Duration {
+		<a href="../src/time/time.go.html#line-964" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-964">#L964</a>: func (t <b>Time</b>) AddDate(years int, months int, days int) <b>Time</b> {
+		<a href="../src/time/time.go.html#line-982" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-982">#L982</a>: func (t <b>Time</b>) date(full bool) (year int, month Month, day int, yday int) {
+		<a href="../src/time/time.go.html#line-1131" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-1131">#L1131</a>: func Now() <b>Time</b> {
+		<a href="../src/time/time.go.html#line-1139" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-1139">#L1139</a>: 		return <b>Time</b>{uint64(nsec), sec + minWall, Local}
+		<a href="../src/time/time.go.html#line-1141" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-1141">#L1141</a>: 	return <b>Time</b>{hasMonotonic | uint64(sec)&lt;&lt;nsecShift | uint64(nsec), mono, Local}
+		<a href="../src/time/time.go.html#line-1144" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-1144">#L1144</a>: func unixTime(sec int64, nsec int32) <b>Time</b> {
+		<a href="../src/time/time.go.html#line-1145" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-1145">#L1145</a>: 	return <b>Time</b>{uint64(nsec), sec + unixToInternal, Local}
+		<a href="../src/time/time.go.html#line-1149" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-1149">#L1149</a>: func (t <b>Time</b>) UTC() <b>Time</b> {
+		<a href="../src/time/time.go.html#line-1155" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-1155">#L1155</a>: func (t <b>Time</b>) Local() <b>Time</b> {
+		<a href="../src/time/time.go.html#line-1165" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-1165">#L1165</a>: func (t <b>Time</b>) In(loc *Location) <b>Time</b> {
+		<a href="../src/time/time.go.html#line-1174" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-1174">#L1174</a>: func (t <b>Time</b>) Location() *Location {
+		<a href="../src/time/time.go.html#line-1184" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-1184">#L1184</a>: func (t <b>Time</b>) Zone() (name string, offset int) {
+		<a href="../src/time/time.go.html#line-1194" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-1194">#L1194</a>: func (t <b>Time</b>) ZoneBounds() (start, end <b>Time</b>) {
+		<a href="../src/time/time.go.html#line-1213" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-1213">#L1213</a>: func (t <b>Time</b>) Unix() int64 {
+		<a href="../src/time/time.go.html#line-1222" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-1222">#L1222</a>: func (t <b>Time</b>) UnixMilli() int64 {
+		<a href="../src/time/time.go.html#line-1231" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-1231">#L1231</a>: func (t <b>Time</b>) UnixMicro() int64 {
+		<a href="../src/time/time.go.html#line-1241" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-1241">#L1241</a>: func (t <b>Time</b>) UnixNano() int64 {
+		<a href="../src/time/time.go.html#line-1251" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-1251">#L1251</a>: func (t <b>Time</b>) MarshalBinary() ([]byte, error) {
+		<a href="../src/time/time.go.html#line-1299" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-1299">#L1299</a>: func (t *<b>Time</b>) UnmarshalBinary(data []byte) error {
+		<a href="../src/time/time.go.html#line-1331" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-1331">#L1331</a>: 	*t = <b>Time</b>{}
+		<a href="../src/time/time.go.html#line-1351" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-1351">#L1351</a>: func (t <b>Time</b>) GobEncode() ([]byte, error) {
+		<a href="../src/time/time.go.html#line-1356" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-1356">#L1356</a>: func (t *<b>Time</b>) GobDecode(data []byte) error {
+		<a href="../src/time/time.go.html#line-1364" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-1364">#L1364</a>: func (t <b>Time</b>) MarshalJSON() ([]byte, error) {
+		<a href="../src/time/time.go.html#line-1377" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-1377">#L1377</a>: func (t *<b>Time</b>) UnmarshalJSON(data []byte) error {
+		<a href="../src/time/time.go.html#line-1395" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-1395">#L1395</a>: func (t <b>Time</b>) MarshalText() ([]byte, error) {
+		<a href="../src/time/time.go.html#line-1406" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-1406">#L1406</a>: func (t *<b>Time</b>) UnmarshalText(data []byte) error {
+		<a href="../src/time/time.go.html#line-1417" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-1417">#L1417</a>: func Unix(sec int64, nsec int64) <b>Time</b> {
+		<a href="../src/time/time.go.html#line-1432" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-1432">#L1432</a>: func UnixMilli(msec int64) <b>Time</b> {
+		<a href="../src/time/time.go.html#line-1438" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-1438">#L1438</a>: func UnixMicro(usec int64) <b>Time</b> {
+		<a href="../src/time/time.go.html#line-1443" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-1443">#L1443</a>: func (t <b>Time</b>) IsDST() bool {
+		<a href="../src/time/time.go.html#line-1488" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-1488">#L1488</a>: func Date(year int, month Month, day, hour, min, sec, nsec int, loc *Location) <b>Time</b> {
+		<a href="../src/time/time.go.html#line-1549" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-1549">#L1549</a>: func (t <b>Time</b>) Truncate(d Duration) <b>Time</b> {
+		<a href="../src/time/time.go.html#line-1566" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-1566">#L1566</a>: func (t <b>Time</b>) Round(d Duration) <b>Time</b> {
+		<a href="../src/time/time.go.html#line-1581" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-1581">#L1581</a>: func div(t <b>Time</b>, d Duration) (qmod2 int, r Duration) {
+
+	<a href="../pkg/compress/gzip.html">compress/gzip</a>
+		<a href="../src/compress/gzip/gunzip.go.html#line-55">gunzip.go#L55</a>: 	ModTime time.<b>Time</b> // modification time
+
+	<a href="../pkg/context.html">context</a>
+		<a href="../src/context/context.go.html#line-72">context.go#L72</a>: 	Deadline() (deadline time.<b>Time</b>, ok bool)
+		<a href="../src/context/context.go.html#line-179" class="path-duplicate">context.go</a><a href="../src/context/context.go.html#line-179">#L179</a>: func (emptyCtx) Deadline() (deadline time.<b>Time</b>, ok bool) {
+		<a href="../src/context/context.go.html#line-582" class="path-duplicate">context.go</a><a href="../src/context/context.go.html#line-582">#L582</a>: func (withoutCancelCtx) Deadline() (deadline time.<b>Time</b>, ok bool) {
+		<a href="../src/context/context.go.html#line-611" class="path-duplicate">context.go</a><a href="../src/context/context.go.html#line-611">#L611</a>: func WithDeadline(parent Context, d time.<b>Time</b>) (Context, CancelFunc) {
+		<a href="../src/context/context.go.html#line-618" class="path-duplicate">context.go</a><a href="../src/context/context.go.html#line-618">#L618</a>: func WithDeadlineCause(parent Context, d time.<b>Time</b>, cause error) (Context, CancelFunc) {
+		<a href="../src/context/context.go.html#line-652" class="path-duplicate">context.go</a><a href="../src/context/context.go.html#line-652">#L652</a>: 	deadline time.<b>Time</b>
+		<a href="../src/context/context.go.html#line-655" class="path-duplicate">context.go</a><a href="../src/context/context.go.html#line-655">#L655</a>: func (c *timerCtx) Deadline() (deadline time.<b>Time</b>, ok bool) {
+
+	<a href="../pkg/crypto/tls.html">crypto/tls</a>
+		<a href="../src/crypto/tls/common.go.html#line-536">common.go#L536</a>: 	Time func() time.<b>Time</b>
+		<a href="../src/crypto/tls/common.go.html#line-805" class="path-duplicate">common.go</a><a href="../src/crypto/tls/common.go.html#line-805">#L805</a>: 	created time.<b>Time</b>
+		<a href="../src/crypto/tls/common.go.html#line-1003" class="path-duplicate">common.go</a><a href="../src/crypto/tls/common.go.html#line-1003">#L1003</a>: func (c *Config) time() time.<b>Time</b> {
+		<a href="../src/crypto/tls/conn.go.html#line-142">conn.go#L142</a>: func (c *Conn) SetDeadline(t time.<b>Time</b>) error {
+		<a href="../src/crypto/tls/conn.go.html#line-148" class="path-duplicate">conn.go</a><a href="../src/crypto/tls/conn.go.html#line-148">#L148</a>: func (c *Conn) SetReadDeadline(t time.<b>Time</b>) error {
+		<a href="../src/crypto/tls/conn.go.html#line-155" class="path-duplicate">conn.go</a><a href="../src/crypto/tls/conn.go.html#line-155">#L155</a>: func (c *Conn) SetWriteDeadline(t time.<b>Time</b>) error {
+
+	<a href="../pkg/crypto/x509.html">crypto/x509</a>
+		<a href="../src/crypto/x509/parser.go.html#line-169">parser.go#L169</a>: func parseTime(der *cryptobyte.String) (time.<b>Time</b>, error) {
+		<a href="../src/crypto/x509/parser.go.html#line-170" class="path-duplicate">parser.go</a><a href="../src/crypto/x509/parser.go.html#line-170">#L170</a>: 	var t time.<b>Time</b>
+		<a href="../src/crypto/x509/parser.go.html#line-186" class="path-duplicate">parser.go</a><a href="../src/crypto/x509/parser.go.html#line-186">#L186</a>: func parseValidity(der cryptobyte.String) (time.<b>Time</b>, time.<b>Time</b>, error) {
+		<a href="../src/crypto/x509/parser.go.html#line-189" class="path-duplicate">parser.go</a><a href="../src/crypto/x509/parser.go.html#line-189">#L189</a>: 		return time.<b>Time</b>{}, time.<b>Time</b>{}, err
+		<a href="../src/crypto/x509/parser.go.html#line-193" class="path-duplicate">parser.go</a><a href="../src/crypto/x509/parser.go.html#line-193">#L193</a>: 		return time.<b>Time</b>{}, time.<b>Time</b>{}, err
+		<a href="../src/crypto/x509/verify.go.html#line-191">verify.go#L191</a>: 	CurrentTime time.<b>Time</b>
+		<a href="../src/crypto/x509/x509.go.html#line-198">x509.go#L198</a>: 	NotBefore, NotAfter time.<b>Time</b>
+		<a href="../src/crypto/x509/x509.go.html#line-694" class="path-duplicate">x509.go</a><a href="../src/crypto/x509/x509.go.html#line-694">#L694</a>: 	NotBefore, NotAfter time.<b>Time</b> // Validity bounds.
+		<a href="../src/crypto/x509/x509.go.html#line-1753" class="path-duplicate">x509.go</a><a href="../src/crypto/x509/x509.go.html#line-1753">#L1753</a>: func (c *Certificate) CreateCRL(rand io.Reader, priv any, revokedCerts []pkix.RevokedCertificate, now, expiry time.<b>Time</b>) (crlBytes []byte, err error) {
+		<a href="../src/crypto/x509/x509.go.html#line-2214" class="path-duplicate">x509.go</a><a href="../src/crypto/x509/x509.go.html#line-2214">#L2214</a>: 	RevocationTime time.<b>Time</b>
+		<a href="../src/crypto/x509/x509.go.html#line-2284" class="path-duplicate">x509.go</a><a href="../src/crypto/x509/x509.go.html#line-2284">#L2284</a>: 	ThisUpdate time.<b>Time</b>
+		<a href="../src/crypto/x509/x509.go.html#line-2288" class="path-duplicate">x509.go</a><a href="../src/crypto/x509/x509.go.html#line-2288">#L2288</a>: 	NextUpdate time.<b>Time</b>
+		<a href="../src/crypto/x509/x509.go.html#line-2316" class="path-duplicate">x509.go</a><a href="../src/crypto/x509/x509.go.html#line-2316">#L2316</a>: 	ThisUpdate          time.<b>Time</b>
+		<a href="../src/crypto/x509/x509.go.html#line-2317" class="path-duplicate">x509.go</a><a href="../src/crypto/x509/x509.go.html#line-2317">#L2317</a>: 	NextUpdate          time.<b>Time</b>                 `asn1:"optional"`
+
+	<a href="../pkg/crypto/x509/pkix.html">crypto/x509/pkix</a>
+		<a href="../src/crypto/x509/pkix/pkix.go.html#line-295">pkix.go#L295</a>: func (certList *CertificateList) HasExpired(now time.<b>Time</b>) bool {
+		<a href="../src/crypto/x509/pkix/pkix.go.html#line-308" class="path-duplicate">pkix.go</a><a href="../src/crypto/x509/pkix/pkix.go.html#line-308">#L308</a>: 	ThisUpdate          time.<b>Time</b>
+		<a href="../src/crypto/x509/pkix/pkix.go.html#line-309" class="path-duplicate">pkix.go</a><a href="../src/crypto/x509/pkix/pkix.go.html#line-309">#L309</a>: 	NextUpdate          time.<b>Time</b>            `asn1:"optional"`
+		<a href="../src/crypto/x509/pkix/pkix.go.html#line-318" class="path-duplicate">pkix.go</a><a href="../src/crypto/x509/pkix/pkix.go.html#line-318">#L318</a>: 	RevocationTime time.<b>Time</b>
+
+	<a href="../pkg/embed.html">embed</a>
+		<a href="../src/embed/embed.go.html#line-233">embed.go#L233</a>: func (f *file) ModTime() time.<b>Time</b>         { return time.<b>Time</b>{} }
+
+	<a href="../pkg/encoding/asn1.html">encoding/asn1</a>
+		<a href="../src/encoding/asn1/asn1.go.html#line-342">asn1.go#L342</a>: func parseUTCTime(bytes []byte) (ret time.<b>Time</b>, err error) {
+		<a href="../src/encoding/asn1/asn1.go.html#line-370" class="path-duplicate">asn1.go</a><a href="../src/encoding/asn1/asn1.go.html#line-370">#L370</a>: func parseGeneralizedTime(bytes []byte) (ret time.<b>Time</b>, err error) {
+		<a href="../src/encoding/asn1/asn1.go.html#line-663" class="path-duplicate">asn1.go</a><a href="../src/encoding/asn1/asn1.go.html#line-663">#L663</a>: 	timeType             = reflect.TypeFor[time.<b>Time</b>]()
+		<a href="../src/encoding/asn1/asn1.go.html#line-867" class="path-duplicate">asn1.go</a><a href="../src/encoding/asn1/asn1.go.html#line-867">#L867</a>: 	case *time.<b>Time</b>:
+		<a href="../src/encoding/asn1/marshal.go.html#line-366">marshal.go#L366</a>: func outsideUTCRange(t time.<b>Time</b>) bool {
+		<a href="../src/encoding/asn1/marshal.go.html#line-371" class="path-duplicate">marshal.go</a><a href="../src/encoding/asn1/marshal.go.html#line-371">#L371</a>: func makeUTCTime(t time.<b>Time</b>) (e encoder, err error) {
+		<a href="../src/encoding/asn1/marshal.go.html#line-382" class="path-duplicate">marshal.go</a><a href="../src/encoding/asn1/marshal.go.html#line-382">#L382</a>: func makeGeneralizedTime(t time.<b>Time</b>) (e encoder, err error) {
+		<a href="../src/encoding/asn1/marshal.go.html#line-393" class="path-duplicate">marshal.go</a><a href="../src/encoding/asn1/marshal.go.html#line-393">#L393</a>: func appendUTCTime(dst []byte, t time.<b>Time</b>) (ret []byte, err error) {
+		<a href="../src/encoding/asn1/marshal.go.html#line-408" class="path-duplicate">marshal.go</a><a href="../src/encoding/asn1/marshal.go.html#line-408">#L408</a>: func appendGeneralizedTime(dst []byte, t time.<b>Time</b>) (ret []byte, err error) {
+		<a href="../src/encoding/asn1/marshal.go.html#line-419" class="path-duplicate">marshal.go</a><a href="../src/encoding/asn1/marshal.go.html#line-419">#L419</a>: func appendTimeCommon(dst []byte, t time.<b>Time</b>) []byte {
+		<a href="../src/encoding/asn1/marshal.go.html#line-466" class="path-duplicate">marshal.go</a><a href="../src/encoding/asn1/marshal.go.html#line-466">#L466</a>: 		t := value.Interface().(time.<b>Time</b>)
+		<a href="../src/encoding/asn1/marshal.go.html#line-656" class="path-duplicate">marshal.go</a><a href="../src/encoding/asn1/marshal.go.html#line-656">#L656</a>: 		if params.timeType == TagGeneralizedTime || outsideUTCRange(v.Interface().(time.<b>Time</b>)) {
+
+	<a href="../pkg/internal/poll.html">internal/poll</a>
+		<a href="../src/internal/poll/fd_poll_runtime.go.html#line-132">fd_poll_runtime.go#L132</a>: func (fd *FD) SetDeadline(t time.<b>Time</b>) error {
+		<a href="../src/internal/poll/fd_poll_runtime.go.html#line-137" class="path-duplicate">fd_poll_runtime.go</a><a href="../src/internal/poll/fd_poll_runtime.go.html#line-137">#L137</a>: func (fd *FD) SetReadDeadline(t time.<b>Time</b>) error {
+		<a href="../src/internal/poll/fd_poll_runtime.go.html#line-142" class="path-duplicate">fd_poll_runtime.go</a><a href="../src/internal/poll/fd_poll_runtime.go.html#line-142">#L142</a>: func (fd *FD) SetWriteDeadline(t time.<b>Time</b>) error {
+		<a href="../src/internal/poll/fd_poll_runtime.go.html#line-146" class="path-duplicate">fd_poll_runtime.go</a><a href="../src/internal/poll/fd_poll_runtime.go.html#line-146">#L146</a>: func setDeadlineImpl(fd *FD, t time.<b>Time</b>, mode int) error {
+
+	<a href="../pkg/io/fs.html">io/fs</a>
+		<a href="../src/io/fs/fs.go.html#line-161">fs.go#L161</a>: 	ModTime() time.<b>Time</b> // modification time
+
+	<a href="../pkg/log.html">log</a>
+		<a href="../src/log/log.go.html#line-114">log.go#L114</a>: func formatHeader(buf *[]byte, t time.<b>Time</b>, prefix string, flag int, file string, line int) {
+
+	<a href="../pkg/net.html">net</a>
+		<a href="../src/net/dial.go.html#line-90">dial.go#L90</a>: 	Deadline time.<b>Time</b>
+		<a href="../src/net/dial.go.html#line-164" class="path-duplicate">dial.go</a><a href="../src/net/dial.go.html#line-164">#L164</a>: func minNonzeroTime(a, b time.<b>Time</b>) time.<b>Time</b> {
+		<a href="../src/net/dial.go.html#line-180" class="path-duplicate">dial.go</a><a href="../src/net/dial.go.html#line-180">#L180</a>: func (d *Dialer) deadline(ctx context.Context, now time.<b>Time</b>) (earliest time.<b>Time</b>) {
+		<a href="../src/net/dial.go.html#line-199" class="path-duplicate">dial.go</a><a href="../src/net/dial.go.html#line-199">#L199</a>: func partialDeadline(now, deadline time.<b>Time</b>, addrsRemaining int) (time.<b>Time</b>, error) {
+		<a href="../src/net/dial.go.html#line-205" class="path-duplicate">dial.go</a><a href="../src/net/dial.go.html#line-205">#L205</a>: 		return time.<b>Time</b>{}, errTimeout
+		<a href="../src/net/dnsclient_unix.go.html#line-364">dnsclient_unix.go#L364</a>: 	lastChecked time.<b>Time</b>     // last time resolv.conf was checked
+		<a href="../src/net/dnsclient_unix.go.html#line-418" class="path-duplicate">dnsclient_unix.go</a><a href="../src/net/dnsclient_unix.go.html#line-418">#L418</a>: 		var mtime time.<b>Time</b>
+		<a href="../src/net/dnsconfig.go.html#line-28">dnsconfig.go#L28</a>: 	mtime         time.<b>Time</b>     // time of resolv.conf modification
+		<a href="../src/net/fd_posix.go.html#line-137">fd_posix.go#L137</a>: func (fd *netFD) SetDeadline(t time.<b>Time</b>) error {
+		<a href="../src/net/fd_posix.go.html#line-141" class="path-duplicate">fd_posix.go</a><a href="../src/net/fd_posix.go.html#line-141">#L141</a>: func (fd *netFD) SetReadDeadline(t time.<b>Time</b>) error {
+		<a href="../src/net/fd_posix.go.html#line-145" class="path-duplicate">fd_posix.go</a><a href="../src/net/fd_posix.go.html#line-145">#L145</a>: func (fd *netFD) SetWriteDeadline(t time.<b>Time</b>) error {
+		<a href="../src/net/hosts.go.html#line-46">hosts.go#L46</a>: 	expire time.<b>Time</b>
+		<a href="../src/net/hosts.go.html#line-48" class="path-duplicate">hosts.go</a><a href="../src/net/hosts.go.html#line-48">#L48</a>: 	mtime  time.<b>Time</b>
+		<a href="../src/net/interface.go.html#line-183">interface.go#L183</a>: 	lastFetched  time.<b>Time</b>      // last time routing information was fetched
+		<a href="../src/net/net.go.html#line-151">net.go#L151</a>: 	SetDeadline(t time.<b>Time</b>) error
+		<a href="../src/net/net.go.html#line-156" class="path-duplicate">net.go</a><a href="../src/net/net.go.html#line-156">#L156</a>: 	SetReadDeadline(t time.<b>Time</b>) error
+		<a href="../src/net/net.go.html#line-163" class="path-duplicate">net.go</a><a href="../src/net/net.go.html#line-163">#L163</a>: 	SetWriteDeadline(t time.<b>Time</b>) error
+		<a href="../src/net/net.go.html#line-231" class="path-duplicate">net.go</a><a href="../src/net/net.go.html#line-231">#L231</a>: func (c *conn) SetDeadline(t time.<b>Time</b>) error {
+		<a href="../src/net/net.go.html#line-242" class="path-duplicate">net.go</a><a href="../src/net/net.go.html#line-242">#L242</a>: func (c *conn) SetReadDeadline(t time.<b>Time</b>) error {
+		<a href="../src/net/net.go.html#line-253" class="path-duplicate">net.go</a><a href="../src/net/net.go.html#line-253">#L253</a>: func (c *conn) SetWriteDeadline(t time.<b>Time</b>) error {
+		<a href="../src/net/net.go.html#line-351" class="path-duplicate">net.go</a><a href="../src/net/net.go.html#line-351">#L351</a>: 	SetDeadline(t time.<b>Time</b>) error
+		<a href="../src/net/net.go.html#line-356" class="path-duplicate">net.go</a><a href="../src/net/net.go.html#line-356">#L356</a>: 	SetReadDeadline(t time.<b>Time</b>) error
+		<a href="../src/net/net.go.html#line-363" class="path-duplicate">net.go</a><a href="../src/net/net.go.html#line-363">#L363</a>: 	SetWriteDeadline(t time.<b>Time</b>) error
+		<a href="../src/net/net.go.html#line-499" class="path-duplicate">net.go</a><a href="../src/net/net.go.html#line-499">#L499</a>: 	noDeadline = time.<b>Time</b>{}
+		<a href="../src/net/nss.go.html#line-27">nss.go#L27</a>: 	lastChecked time.<b>Time</b>     // last time nsswitch.conf was checked
+		<a href="../src/net/nss.go.html#line-64" class="path-duplicate">nss.go</a><a href="../src/net/nss.go.html#line-64">#L64</a>: 	var mtime time.<b>Time</b>
+		<a href="../src/net/nss.go.html#line-97" class="path-duplicate">nss.go</a><a href="../src/net/nss.go.html#line-97">#L97</a>: 	mtime   time.<b>Time</b>              // time of nsswitch.conf modification
+		<a href="../src/net/parse.go.html#line-67">parse.go#L67</a>: func (f *file) stat() (mtime time.<b>Time</b>, size int64, err error) {
+		<a href="../src/net/parse.go.html#line-70" class="path-duplicate">parse.go</a><a href="../src/net/parse.go.html#line-70">#L70</a>: 		return time.<b>Time</b>{}, 0, err
+		<a href="../src/net/parse.go.html#line-83" class="path-duplicate">parse.go</a><a href="../src/net/parse.go.html#line-83">#L83</a>: func stat(name string) (mtime time.<b>Time</b>, size int64, err error) {
+		<a href="../src/net/parse.go.html#line-86" class="path-duplicate">parse.go</a><a href="../src/net/parse.go.html#line-86">#L86</a>: 		return time.<b>Time</b>{}, 0, err
+		<a href="../src/net/pipe.go.html#line-31">pipe.go#L31</a>: func (d *pipeDeadline) set(t time.<b>Time</b>) {
+		<a href="../src/net/pipe.go.html#line-210" class="path-duplicate">pipe.go</a><a href="../src/net/pipe.go.html#line-210">#L210</a>: func (p *pipe) SetDeadline(t time.<b>Time</b>) error {
+		<a href="../src/net/pipe.go.html#line-219" class="path-duplicate">pipe.go</a><a href="../src/net/pipe.go.html#line-219">#L219</a>: func (p *pipe) SetReadDeadline(t time.<b>Time</b>) error {
+		<a href="../src/net/pipe.go.html#line-227" class="path-duplicate">pipe.go</a><a href="../src/net/pipe.go.html#line-227">#L227</a>: func (p *pipe) SetWriteDeadline(t time.<b>Time</b>) error {
+		<a href="../src/net/tcpsock.go.html#line-353">tcpsock.go#L353</a>: func (l *TCPListener) SetDeadline(t time.<b>Time</b>) error {
+		<a href="../src/net/unixsock.go.html#line-286">unixsock.go#L286</a>: func (l *UnixListener) SetDeadline(t time.<b>Time</b>) error {
+
+	<a href="../pkg/net/http.html">net/http</a>
+		<a href="../src/net/http/client.go.html#line-174">client.go#L174</a>: func (c *Client) send(req *Request, deadline time.<b>Time</b>) (resp *Response, didTimeout func() bool, err error) {
+		<a href="../src/net/http/client.go.html#line-192" class="path-duplicate">client.go</a><a href="../src/net/http/client.go.html#line-192">#L192</a>: func (c *Client) deadline() time.<b>Time</b> {
+		<a href="../src/net/http/client.go.html#line-196" class="path-duplicate">client.go</a><a href="../src/net/http/client.go.html#line-196">#L196</a>: 	return time.<b>Time</b>{}
+		<a href="../src/net/http/client.go.html#line-211" class="path-duplicate">client.go</a><a href="../src/net/http/client.go.html#line-211">#L211</a>: func send(ireq *Request, rt RoundTripper, deadline time.<b>Time</b>) (resp *Response, didTimeout func() bool, err error) {
+		<a href="../src/net/http/client.go.html#line-307" class="path-duplicate">client.go</a><a href="../src/net/http/client.go.html#line-307">#L307</a>: func timeBeforeContextDeadline(t time.<b>Time</b>, ctx context.Context) bool {
+		<a href="../src/net/http/client.go.html#line-351" class="path-duplicate">client.go</a><a href="../src/net/http/client.go.html#line-351">#L351</a>: func setRequestCancel(req *Request, rt RoundTripper, deadline time.<b>Time</b>) (stopTimer func(), didTimeout func() bool) {
+		<a href="../src/net/http/cookie.go.html#line-29">cookie.go#L29</a>: 	Expires    time.<b>Time</b> // optional
+		<a href="../src/net/http/cookie.go.html#line-149" class="path-duplicate">cookie.go</a><a href="../src/net/http/cookie.go.html#line-149">#L149</a>: 						c.Expires = time.<b>Time</b>{}
+		<a href="../src/net/http/cookie.go.html#line-324" class="path-duplicate">cookie.go</a><a href="../src/net/http/cookie.go.html#line-324">#L324</a>: func validCookieExpires(t time.<b>Time</b>) bool {
+		<a href="../src/net/http/fs.go.html#line-194">fs.go#L194</a>: func ServeContent(w ResponseWriter, req *Request, name string, modtime time.<b>Time</b>, content io.ReadSeeker) {
+		<a href="../src/net/http/fs.go.html#line-223" class="path-duplicate">fs.go</a><a href="../src/net/http/fs.go.html#line-223">#L223</a>: func serveContent(w ResponseWriter, r *Request, name string, modtime time.<b>Time</b>, sizeFunc func() (int64, error), content io.ReadSeeker) {
+		<a href="../src/net/http/fs.go.html#line-462" class="path-duplicate">fs.go</a><a href="../src/net/http/fs.go.html#line-462">#L462</a>: func checkIfUnmodifiedSince(r *Request, modtime time.<b>Time</b>) condResult {
+		<a href="../src/net/http/fs.go.html#line-511" class="path-duplicate">fs.go</a><a href="../src/net/http/fs.go.html#line-511">#L511</a>: func checkIfModifiedSince(r *Request, modtime time.<b>Time</b>) condResult {
+		<a href="../src/net/http/fs.go.html#line-532" class="path-duplicate">fs.go</a><a href="../src/net/http/fs.go.html#line-532">#L532</a>: func checkIfRange(w ResponseWriter, r *Request, modtime time.<b>Time</b>) condResult {
+		<a href="../src/net/http/fs.go.html#line-566" class="path-duplicate">fs.go</a><a href="../src/net/http/fs.go.html#line-566">#L566</a>: func isZeroTime(t time.<b>Time</b>) bool {
+		<a href="../src/net/http/fs.go.html#line-570" class="path-duplicate">fs.go</a><a href="../src/net/http/fs.go.html#line-570">#L570</a>: func setLastModified(w ResponseWriter, modtime time.<b>Time</b>) {
+		<a href="../src/net/http/fs.go.html#line-594" class="path-duplicate">fs.go</a><a href="../src/net/http/fs.go.html#line-594">#L594</a>: func checkPreconditions(w ResponseWriter, r *Request, modtime time.<b>Time</b>) (done bool, rangeHeader string) {
+		<a href="../src/net/http/h2_bundle.go.html#line-4252">h2_bundle.go#L4252</a>: 		sc.conn.SetWriteDeadline(time.<b>Time</b>{})
+		<a href="../src/net/http/h2_bundle.go.html#line-5845" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-5845">#L5845</a>: 		sc.conn.SetReadDeadline(time.<b>Time</b>{})
+		<a href="../src/net/http/h2_bundle.go.html#line-5866" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-5866">#L5866</a>: 		sc.conn.SetReadDeadline(time.<b>Time</b>{})
+		<a href="../src/net/http/h2_bundle.go.html#line-6584" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-6584">#L6584</a>: func (w *http2responseWriter) SetReadDeadline(deadline time.<b>Time</b>) error {
+		<a href="../src/net/http/h2_bundle.go.html#line-6610" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-6610">#L6610</a>: func (w *http2responseWriter) SetWriteDeadline(deadline time.<b>Time</b>) error {
+		<a href="../src/net/http/h2_bundle.go.html#line-7389" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-7389">#L7389</a>: 	lastActive      time.<b>Time</b>
+		<a href="../src/net/http/h2_bundle.go.html#line-7390" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-7390">#L7390</a>: 	lastIdle        time.<b>Time</b> // time last idle
+		<a href="../src/net/http/h2_bundle.go.html#line-7540" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-7540">#L7540</a>: 			sew.conn.SetWriteDeadline(time.<b>Time</b>{})
+		<a href="../src/net/http/h2_bundle.go.html#line-7990" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-7990">#L7990</a>: 	LastIdle time.<b>Time</b>
+		<a href="../src/net/http/h2_bundle.go.html#line-8518" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-8518">#L8518</a>: 	var respHeaderTimer &lt;-chan time.<b>Time</b>
+		<a href="../src/net/http/h2_bundle.go.html#line-8673" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-8673">#L8673</a>: 		cc.lastIdle = time.<b>Time</b>{}
+		<a href="../src/net/http/header.go.html#line-129">header.go#L129</a>: func ParseTime(text string) (t time.<b>Time</b>, err error) {
+		<a href="../src/net/http/responsecontroller.go.html#line-85">responsecontroller.go#L85</a>: func (c *ResponseController) SetReadDeadline(deadline time.<b>Time</b>) error {
+		<a href="../src/net/http/responsecontroller.go.html#line-89" class="path-duplicate">responsecontroller.go</a><a href="../src/net/http/responsecontroller.go.html#line-89">#L89</a>: 		case interface{ SetReadDeadline(time.<b>Time</b>) error }:
+		<a href="../src/net/http/responsecontroller.go.html#line-105" class="path-duplicate">responsecontroller.go</a><a href="../src/net/http/responsecontroller.go.html#line-105">#L105</a>: func (c *ResponseController) SetWriteDeadline(deadline time.<b>Time</b>) error {
+		<a href="../src/net/http/responsecontroller.go.html#line-109" class="path-duplicate">responsecontroller.go</a><a href="../src/net/http/responsecontroller.go.html#line-109">#L109</a>: 		case interface{ SetWriteDeadline(time.<b>Time</b>) error }:
+		<a href="../src/net/http/server.go.html#line-323">server.go#L323</a>: 	rwc.SetDeadline(time.<b>Time</b>{})
+		<a href="../src/net/http/server.go.html#line-495" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-495">#L495</a>: func (c *response) SetReadDeadline(deadline time.<b>Time</b>) error {
+		<a href="../src/net/http/server.go.html#line-499" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-499">#L499</a>: func (c *response) SetWriteDeadline(deadline time.<b>Time</b>) error {
+		<a href="../src/net/http/server.go.html#line-676" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-676">#L676</a>: 	cr.conn.rwc.SetReadDeadline(time.<b>Time</b>{})
+		<a href="../src/net/http/server.go.html#line-731" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-731">#L731</a>: 	cr.conn.rwc.SetReadDeadline(time.<b>Time</b>{})
+		<a href="../src/net/http/server.go.html#line-951" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-951">#L951</a>: func appendTime(b []byte, t time.<b>Time</b>) []byte {
+		<a href="../src/net/http/server.go.html#line-981" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-981">#L981</a>: 		wholeReqDeadline time.<b>Time</b> // or zero if none
+		<a href="../src/net/http/server.go.html#line-982" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-982">#L982</a>: 		hdrDeadline      time.<b>Time</b> // or zero if none
+		<a href="../src/net/http/server.go.html#line-1935" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-1935">#L1935</a>: 			c.rwc.SetReadDeadline(time.<b>Time</b>{})
+		<a href="../src/net/http/server.go.html#line-1936" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-1936">#L1936</a>: 			c.rwc.SetWriteDeadline(time.<b>Time</b>{})
+		<a href="../src/net/http/server.go.html#line-2046" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-2046">#L2046</a>: 		c.rwc.SetWriteDeadline(time.<b>Time</b>{})
+		<a href="../src/net/http/server.go.html#line-2067" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-2067">#L2067</a>: 			c.rwc.SetReadDeadline(time.<b>Time</b>{})
+		<a href="../src/net/http/server.go.html#line-2078" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-2078">#L2078</a>: 		c.rwc.SetReadDeadline(time.<b>Time</b>{})
+		<a href="../src/net/http/socks_bundle.go.html#line-23">socks_bundle.go#L23</a>: 	socksnoDeadline   = time.<b>Time</b>{}
+		<a href="../src/net/http/transport.go.html#line-1045">transport.go#L1045</a>: 	var oldTime time.<b>Time</b>
+		<a href="../src/net/http/transport.go.html#line-1948" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-1948">#L1948</a>: 	idleAt    time.<b>Time</b>   // time it last become idle
+		<a href="../src/net/http/transport.go.html#line-2009" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-2009">#L2009</a>: func (pc *persistConn) gotIdleConnTrace(idleAt time.<b>Time</b>) (t httptrace.GotConnInfo) {
+		<a href="../src/net/http/transport.go.html#line-2668" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-2668">#L2668</a>: 	var respHeaderTimer &lt;-chan time.<b>Time</b>
+
+	<a href="../pkg/os.html">os</a>
+		<a href="../src/os/file.go.html#line-624">file.go#L624</a>: func (f *File) SetDeadline(t time.<b>Time</b>) error {
+		<a href="../src/os/file.go.html#line-632" class="path-duplicate">file.go</a><a href="../src/os/file.go.html#line-632">#L632</a>: func (f *File) SetReadDeadline(t time.<b>Time</b>) error {
+		<a href="../src/os/file.go.html#line-642" class="path-duplicate">file.go</a><a href="../src/os/file.go.html#line-642">#L642</a>: func (f *File) SetWriteDeadline(t time.<b>Time</b>) error {
+		<a href="../src/os/file_posix.go.html#line-179">file_posix.go#L179</a>: func Chtimes(name string, atime time.<b>Time</b>, mtime time.<b>Time</b>) error {
+		<a href="../src/os/file_posix.go.html#line-181" class="path-duplicate">file_posix.go</a><a href="../src/os/file_posix.go.html#line-181">#L181</a>: 	set := func(i int, t time.<b>Time</b>) {
+		<a href="../src/os/file_posix.go.html#line-210" class="path-duplicate">file_posix.go</a><a href="../src/os/file_posix.go.html#line-210">#L210</a>: func (f *File) setDeadline(t time.<b>Time</b>) error {
+		<a href="../src/os/file_posix.go.html#line-218" class="path-duplicate">file_posix.go</a><a href="../src/os/file_posix.go.html#line-218">#L218</a>: func (f *File) setReadDeadline(t time.<b>Time</b>) error {
+		<a href="../src/os/file_posix.go.html#line-226" class="path-duplicate">file_posix.go</a><a href="../src/os/file_posix.go.html#line-226">#L226</a>: func (f *File) setWriteDeadline(t time.<b>Time</b>) error {
+		<a href="../src/os/stat_linux.go.html#line-45">stat_linux.go#L45</a>: func atime(fi FileInfo) time.<b>Time</b> {
+		<a href="../src/os/types_unix.go.html#line-19">types_unix.go#L19</a>: 	modTime time.<b>Time</b>
+		<a href="../src/os/types_unix.go.html#line-25" class="path-duplicate">types_unix.go</a><a href="../src/os/types_unix.go.html#line-25">#L25</a>: func (fs *fileStat) ModTime() time.<b>Time</b> { return fs.modTime }
+
+	<a href="../pkg/vendor/golang.org/x/crypto/cryptobyte.html">vendor/golang.org/x/crypto/cryptobyte</a>
+		<a href="../src/vendor/golang.org/x/crypto/cryptobyte/asn1.go.html#line-110">asn1.go#L110</a>: func (b *Builder) AddASN1GeneralizedTime(t time.<b>Time</b>) {
+		<a href="../src/vendor/golang.org/x/crypto/cryptobyte/asn1.go.html#line-121" class="path-duplicate">asn1.go</a><a href="../src/vendor/golang.org/x/crypto/cryptobyte/asn1.go.html#line-121">#L121</a>: func (b *Builder) AddASN1UTCTime(t time.<b>Time</b>) {
+		<a href="../src/vendor/golang.org/x/crypto/cryptobyte/asn1.go.html#line-492" class="path-duplicate">asn1.go</a><a href="../src/vendor/golang.org/x/crypto/cryptobyte/asn1.go.html#line-492">#L492</a>: func (s *String) ReadASN1GeneralizedTime(out *time.<b>Time</b>) bool {
+		<a href="../src/vendor/golang.org/x/crypto/cryptobyte/asn1.go.html#line-513" class="path-duplicate">asn1.go</a><a href="../src/vendor/golang.org/x/crypto/cryptobyte/asn1.go.html#line-513">#L513</a>: func (s *String) ReadASN1UTCTime(out *time.<b>Time</b>) bool {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

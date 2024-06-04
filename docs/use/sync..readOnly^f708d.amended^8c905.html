@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: sync.readOnly.amended</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/sync.html">sync</a>.<a href="../src/sync/map.go.html#line-71">readOnly</a>.<a href="../src/sync/map.go.html#line-73">amended</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">14 uses</span>
+
+	sync (current package)
+		<a href="../src/sync/map.go.html#line-73">map.go#L73</a>: 	<b>amended</b> bool // true if the dirty map contains some key not in m.
+		<a href="../src/sync/map.go.html#line-123" class="path-duplicate">map.go</a><a href="../src/sync/map.go.html#line-123">#L123</a>: 	if !ok &amp;&amp; read.<b>amended</b> {
+		<a href="../src/sync/map.go.html#line-130" class="path-duplicate">map.go</a><a href="../src/sync/map.go.html#line-130">#L130</a>: 		if !ok &amp;&amp; read.<b>amended</b> {
+		<a href="../src/sync/map.go.html#line-224" class="path-duplicate">map.go</a><a href="../src/sync/map.go.html#line-224">#L224</a>: 		if !read.<b>amended</b> {
+		<a href="../src/sync/map.go.html#line-228" class="path-duplicate">map.go</a><a href="../src/sync/map.go.html#line-228">#L228</a>: 			m.read.Store(&amp;readOnly{m: read.m, <b>amended</b>: true})
+		<a href="../src/sync/map.go.html#line-275" class="path-duplicate">map.go</a><a href="../src/sync/map.go.html#line-275">#L275</a>: 	if !ok &amp;&amp; read.<b>amended</b> {
+		<a href="../src/sync/map.go.html#line-279" class="path-duplicate">map.go</a><a href="../src/sync/map.go.html#line-279">#L279</a>: 		if !ok &amp;&amp; read.<b>amended</b> {
+		<a href="../src/sync/map.go.html#line-359" class="path-duplicate">map.go</a><a href="../src/sync/map.go.html#line-359">#L359</a>: 		if !read.<b>amended</b> {
+		<a href="../src/sync/map.go.html#line-363" class="path-duplicate">map.go</a><a href="../src/sync/map.go.html#line-363">#L363</a>: 			m.read.Store(&amp;readOnly{m: read.m, <b>amended</b>: true})
+		<a href="../src/sync/map.go.html#line-378" class="path-duplicate">map.go</a><a href="../src/sync/map.go.html#line-378">#L378</a>: 	} else if !read.<b>amended</b> {
+		<a href="../src/sync/map.go.html#line-409" class="path-duplicate">map.go</a><a href="../src/sync/map.go.html#line-409">#L409</a>: 	if !ok &amp;&amp; read.<b>amended</b> {
+		<a href="../src/sync/map.go.html#line-413" class="path-duplicate">map.go</a><a href="../src/sync/map.go.html#line-413">#L413</a>: 		if !ok &amp;&amp; read.<b>amended</b> {
+		<a href="../src/sync/map.go.html#line-455" class="path-duplicate">map.go</a><a href="../src/sync/map.go.html#line-455">#L455</a>: 	if read.<b>amended</b> {
+		<a href="../src/sync/map.go.html#line-462" class="path-duplicate">map.go</a><a href="../src/sync/map.go.html#line-462">#L462</a>: 		if read.<b>amended</b> {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

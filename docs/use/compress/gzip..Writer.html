@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: compress/gzip.Writer</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../pkg/compress/gzip.html">compress/gzip</a>.<a href="../../src/compress/gzip/gzip.go.html#line-28">Writer</a></b></span>
+
+<span class="title">12 uses</span>
+
+	compress/gzip (current package)
+		<a href="../../src/compress/gzip/gzip.go.html#line-28">gzip.go#L28</a>: type <b>Writer</b> struct {
+		<a href="../../src/compress/gzip/gzip.go.html#line-49" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-49">#L49</a>: func NewWriter(w io.Writer) *<b>Writer</b> {
+		<a href="../../src/compress/gzip/gzip.go.html#line-60" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-60">#L60</a>: func NewWriterLevel(w io.Writer, level int) (*<b>Writer</b>, error) {
+		<a href="../../src/compress/gzip/gzip.go.html#line-64" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-64">#L64</a>: 	z := new(<b>Writer</b>)
+		<a href="../../src/compress/gzip/gzip.go.html#line-69" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-69">#L69</a>: func (z *<b>Writer</b>) init(w io.Writer, level int) {
+		<a href="../../src/compress/gzip/gzip.go.html#line-74" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-74">#L74</a>: 	*z = <b>Writer</b>{
+		<a href="../../src/compress/gzip/gzip.go.html#line-88" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-88">#L88</a>: func (z *<b>Writer</b>) Reset(w io.Writer) {
+		<a href="../../src/compress/gzip/gzip.go.html#line-93" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-93">#L93</a>: func (z *<b>Writer</b>) writeBytes(b []byte) error {
+		<a href="../../src/compress/gzip/gzip.go.html#line-108" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-108">#L108</a>: func (z *<b>Writer</b>) writeString(s string) (err error) {
+		<a href="../../src/compress/gzip/gzip.go.html#line-139" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-139">#L139</a>: func (z *<b>Writer</b>) Write(p []byte) (int, error) {
+		<a href="../../src/compress/gzip/gzip.go.html#line-208" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-208">#L208</a>: func (z *<b>Writer</b>) Flush() error {
+		<a href="../../src/compress/gzip/gzip.go.html#line-228" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-228">#L228</a>: func (z *<b>Writer</b>) Close() error {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

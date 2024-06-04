@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: encoding/asn1.SyntaxError</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../pkg/encoding/asn1.html">encoding/asn1</a>.<a href="../../src/encoding/asn1/asn1.go.html#line-44">SyntaxError</a></b></span>
+
+<span class="title">24 uses</span>
+
+	encoding/asn1 (current package)
+		<a href="../../src/encoding/asn1/asn1.go.html#line-44">asn1.go#L44</a>: type <b>SyntaxError</b> struct {
+		<a href="../../src/encoding/asn1/asn1.go.html#line-48" class="path-duplicate">asn1.go</a><a href="../../src/encoding/asn1/asn1.go.html#line-48">#L48</a>: func (e <b>SyntaxError</b>) Error() string { return "asn1: syntax error: " + e.Msg }
+		<a href="../../src/encoding/asn1/asn1.go.html#line-56" class="path-duplicate">asn1.go</a><a href="../../src/encoding/asn1/asn1.go.html#line-56">#L56</a>: 		err = <b>SyntaxError</b>{"invalid boolean"}
+		<a href="../../src/encoding/asn1/asn1.go.html#line-69" class="path-duplicate">asn1.go</a><a href="../../src/encoding/asn1/asn1.go.html#line-69">#L69</a>: 		err = <b>SyntaxError</b>{"invalid boolean"}
+		<a href="../../src/encoding/asn1/asn1.go.html#line-197" class="path-duplicate">asn1.go</a><a href="../../src/encoding/asn1/asn1.go.html#line-197">#L197</a>: 		err = <b>SyntaxError</b>{"zero length BIT STRING"}
+		<a href="../../src/encoding/asn1/asn1.go.html#line-204" class="path-duplicate">asn1.go</a><a href="../../src/encoding/asn1/asn1.go.html#line-204">#L204</a>: 		err = <b>SyntaxError</b>{"invalid padding bits in BIT STRING"}
+		<a href="../../src/encoding/asn1/asn1.go.html#line-259" class="path-duplicate">asn1.go</a><a href="../../src/encoding/asn1/asn1.go.html#line-259">#L259</a>: 		err = <b>SyntaxError</b>{"zero length OBJECT IDENTIFIER"}
+		<a href="../../src/encoding/asn1/asn1.go.html#line-322" class="path-duplicate">asn1.go</a><a href="../../src/encoding/asn1/asn1.go.html#line-322">#L322</a>: 			err = <b>SyntaxError</b>{"integer is not minimally encoded"}
+		<a href="../../src/encoding/asn1/asn1.go.html#line-336" class="path-duplicate">asn1.go</a><a href="../../src/encoding/asn1/asn1.go.html#line-336">#L336</a>: 	err = <b>SyntaxError</b>{"truncated base 128 integer"}
+		<a href="../../src/encoding/asn1/asn1.go.html#line-392" class="path-duplicate">asn1.go</a><a href="../../src/encoding/asn1/asn1.go.html#line-392">#L392</a>: 			return "", <b>SyntaxError</b>{"NumericString contains invalid character"}
+		<a href="../../src/encoding/asn1/asn1.go.html#line-411" class="path-duplicate">asn1.go</a><a href="../../src/encoding/asn1/asn1.go.html#line-411">#L411</a>: 			err = <b>SyntaxError</b>{"PrintableString contains invalid character"}
+		<a href="../../src/encoding/asn1/asn1.go.html#line-461" class="path-duplicate">asn1.go</a><a href="../../src/encoding/asn1/asn1.go.html#line-461">#L461</a>: 			err = <b>SyntaxError</b>{"IA5String contains invalid character"}
+		<a href="../../src/encoding/asn1/asn1.go.html#line-553" class="path-duplicate">asn1.go</a><a href="../../src/encoding/asn1/asn1.go.html#line-553">#L553</a>: 			err = <b>SyntaxError</b>{"non-minimal tag"}
+		<a href="../../src/encoding/asn1/asn1.go.html#line-558" class="path-duplicate">asn1.go</a><a href="../../src/encoding/asn1/asn1.go.html#line-558">#L558</a>: 		err = <b>SyntaxError</b>{"truncated tag or length"}
+		<a href="../../src/encoding/asn1/asn1.go.html#line-570" class="path-duplicate">asn1.go</a><a href="../../src/encoding/asn1/asn1.go.html#line-570">#L570</a>: 			err = <b>SyntaxError</b>{"indefinite length found (not DER)"}
+		<a href="../../src/encoding/asn1/asn1.go.html#line-576" class="path-duplicate">asn1.go</a><a href="../../src/encoding/asn1/asn1.go.html#line-576">#L576</a>: 				err = <b>SyntaxError</b>{"truncated tag or length"}
+		<a href="../../src/encoding/asn1/asn1.go.html#line-640" class="path-duplicate">asn1.go</a><a href="../../src/encoding/asn1/asn1.go.html#line-640">#L640</a>: 			err = <b>SyntaxError</b>{"truncated sequence"}
+		<a href="../../src/encoding/asn1/asn1.go.html#line-685" class="path-duplicate">asn1.go</a><a href="../../src/encoding/asn1/asn1.go.html#line-685">#L685</a>: 			err = <b>SyntaxError</b>{"sequence truncated"}
+		<a href="../../src/encoding/asn1/asn1.go.html#line-698" class="path-duplicate">asn1.go</a><a href="../../src/encoding/asn1/asn1.go.html#line-698">#L698</a>: 			err = <b>SyntaxError</b>{"data truncated"}
+		<a href="../../src/encoding/asn1/asn1.go.html#line-850" class="path-duplicate">asn1.go</a><a href="../../src/encoding/asn1/asn1.go.html#line-850">#L850</a>: 		err = <b>SyntaxError</b>{"data truncated"}
+		<a href="../../src/encoding/asn1/asn1.go.html#line-983" class="path-duplicate">asn1.go</a><a href="../../src/encoding/asn1/asn1.go.html#line-983">#L983</a>: 			err = <b>SyntaxError</b>{fmt.Sprintf("internal error: unknown string type %d", universalTag)}
+
+	<a href="../../pkg/crypto/x509.html">crypto/x509</a>
+		<a href="../../src/crypto/x509/pkcs1.go.html#line-51">pkcs1.go#L51</a>: 		return nil, asn1.<b>SyntaxError</b>{Msg: "trailing data"}
+		<a href="../../src/crypto/x509/pkcs1.go.html#line-148" class="path-duplicate">pkcs1.go</a><a href="../../src/crypto/x509/pkcs1.go.html#line-148">#L148</a>: 		return nil, asn1.<b>SyntaxError</b>{Msg: "trailing data"}
+		<a href="../../src/crypto/x509/x509.go.html#line-2139">x509.go#L2139</a>: 		return nil, asn1.<b>SyntaxError</b>{Msg: "trailing data"}
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

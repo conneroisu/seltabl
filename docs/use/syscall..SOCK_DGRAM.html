@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: syscall.SOCK_DGRAM</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../pkg/syscall.html">syscall</a>.<a href="../src/syscall/zerrors_linux_amd64.go.html#line-982">SOCK_DGRAM</a></b></span>
+
+<span class="title">16 uses</span>
+
+	syscall (current package)
+		<a href="../src/syscall/lsf_linux.go.html#line-51">lsf_linux.go#L51</a>: 	s, e := Socket(AF_INET, <b>SOCK_DGRAM</b>|SOCK_CLOEXEC, 0)
+		<a href="../src/syscall/syscall_linux.go.html#line-778">syscall_linux.go#L778</a>: 			if sockType != <b>SOCK_DGRAM</b> {
+		<a href="../src/syscall/syscall_linux.go.html#line-814" class="path-duplicate">syscall_linux.go</a><a href="../src/syscall/syscall_linux.go.html#line-814">#L814</a>: 			if sockType != <b>SOCK_DGRAM</b> {
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-982">zerrors_linux_amd64.go#L982</a>: 	<b>SOCK_DGRAM</b>                       = 0x2
+
+	<a href="../pkg/net.html">net</a>
+		<a href="../src/net/fd_unix.go.html#line-31">fd_unix.go#L31</a>: 			ZeroReadIsEOF: sotype != syscall.<b>SOCK_DGRAM</b> &amp;&amp; sotype != syscall.SOCK_RAW,
+		<a href="../src/net/sock_posix.go.html#line-62">sock_posix.go#L62</a>: 		case syscall.<b>SOCK_DGRAM</b>:
+		<a href="../src/net/sockaddr_posix.go.html#line-42">sockaddr_posix.go#L42</a>: 		case syscall.<b>SOCK_DGRAM</b>:
+		<a href="../src/net/sockaddr_posix.go.html#line-51" class="path-duplicate">sockaddr_posix.go</a><a href="../src/net/sockaddr_posix.go.html#line-51">#L51</a>: 		case syscall.<b>SOCK_DGRAM</b>:
+		<a href="../src/net/sockopt_linux.go.html#line-19">sockopt_linux.go#L19</a>: 	if (sotype == syscall.<b>SOCK_DGRAM</b> || sotype == syscall.SOCK_RAW) &amp;&amp; family != syscall.AF_UNIX {
+		<a href="../src/net/udpsock_posix.go.html#line-212">udpsock_posix.go#L212</a>: 	fd, err := internetSocket(ctx, sd.network, laddr, raddr, syscall.<b>SOCK_DGRAM</b>, 0, "dial", ctrlCtxFn)
+		<a href="../src/net/udpsock_posix.go.html#line-226" class="path-duplicate">udpsock_posix.go</a><a href="../src/net/udpsock_posix.go.html#line-226">#L226</a>: 	fd, err := internetSocket(ctx, sl.network, laddr, nil, syscall.<b>SOCK_DGRAM</b>, 0, "listen", ctrlCtxFn)
+		<a href="../src/net/udpsock_posix.go.html#line-240" class="path-duplicate">udpsock_posix.go</a><a href="../src/net/udpsock_posix.go.html#line-240">#L240</a>: 	fd, err := internetSocket(ctx, sl.network, gaddr, nil, syscall.<b>SOCK_DGRAM</b>, 0, "listen", ctrlCtxFn)
+		<a href="../src/net/unixsock_posix.go.html#line-22">unixsock_posix.go#L22</a>: 		sotype = syscall.<b>SOCK_DGRAM</b>
+		<a href="../src/net/unixsock_posix.go.html#line-37" class="path-duplicate">unixsock_posix.go</a><a href="../src/net/unixsock_posix.go.html#line-37">#L37</a>: 		if raddr == nil &amp;&amp; (sotype != syscall.<b>SOCK_DGRAM</b> || laddr == nil) {
+		<a href="../src/net/unixsock_posix.go.html#line-77" class="path-duplicate">unixsock_posix.go</a><a href="../src/net/unixsock_posix.go.html#line-77">#L77</a>: 	case syscall.<b>SOCK_DGRAM</b>:
+		<a href="../src/net/unixsock_posix.go.html#line-144" class="path-duplicate">unixsock_posix.go</a><a href="../src/net/unixsock_posix.go.html#line-144">#L144</a>: 	if c.fd.sotype == syscall.<b>SOCK_DGRAM</b> &amp;&amp; c.fd.isConnected {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

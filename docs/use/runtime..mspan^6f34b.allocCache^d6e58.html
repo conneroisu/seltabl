@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.mspan.allocCache</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/mheap.go.html#line-398">mspan</a>.<a href="../src/runtime/mheap.go.html#line-442">allocCache</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">9 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/malloc.go.html#line-912">malloc.go#L912</a>: 	theBit := sys.TrailingZeros64(s.<b>allocCache</b>) // Is there a free object in the allocCache?
+		<a href="../src/runtime/malloc.go.html#line-920" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-920">#L920</a>: 			s.<b>allocCache</b> &gt;&gt;= uint(theBit + 1)
+		<a href="../src/runtime/mbitmap.go.html#line-96">mbitmap.go#L96</a>: 	s.<b>allocCache</b> = ^aCache
+		<a href="../src/runtime/mbitmap.go.html#line-113" class="path-duplicate">mbitmap.go</a><a href="../src/runtime/mbitmap.go.html#line-113">#L113</a>: 	aCache := s.<b>allocCache</b>
+		<a href="../src/runtime/mbitmap.go.html#line-126" class="path-duplicate">mbitmap.go</a><a href="../src/runtime/mbitmap.go.html#line-126">#L126</a>: 		aCache = s.<b>allocCache</b>
+		<a href="../src/runtime/mbitmap.go.html#line-137" class="path-duplicate">mbitmap.go</a><a href="../src/runtime/mbitmap.go.html#line-137">#L137</a>: 	s.<b>allocCache</b> &gt;&gt;= uint(bitIndex + 1)
+		<a href="../src/runtime/mcentral.go.html#line-195">mcentral.go#L195</a>: 	s.<b>allocCache</b> &gt;&gt;= s.freeindex % 64
+		<a href="../src/runtime/mheap.go.html#line-442">mheap.go#L442</a>: 	<b>allocCache</b> uint64
+		<a href="../src/runtime/mheap.go.html#line-1412" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1412">#L1412</a>: 		s.<b>allocCache</b> = ^uint64(0) // all 1s indicating all free.
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

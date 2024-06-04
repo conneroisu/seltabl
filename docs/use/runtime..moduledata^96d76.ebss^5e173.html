@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.moduledata.ebss</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/symtab.go.html#line-333">moduledata</a>.<a href="../src/runtime/symtab.go.html#line-349">ebss</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">17 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/cgocall.go.html#line-697">cgocall.go#L697</a>: 		if cgoInRange(p, datap.data, datap.edata) || cgoInRange(p, datap.bss, datap.<b>ebss</b>) {
+		<a href="../src/runtime/cgocall.go.html#line-725" class="path-duplicate">cgocall.go</a><a href="../src/runtime/cgocall.go.html#line-725">#L725</a>: 		if cgoInRange(p, datap.data, datap.edata) || cgoInRange(p, datap.bss, datap.<b>ebss</b>) {
+		<a href="../src/runtime/cgocheck.go.html#line-157">cgocheck.go#L157</a>: 		if cgoInRange(src, datap.bss, datap.<b>ebss</b>) {
+		<a href="../src/runtime/checkptr.go.html#line-103">checkptr.go#L103</a>: 		if datap.bss &lt;= uintptr(p) &amp;&amp; uintptr(p) &lt; datap.<b>ebss</b> {
+		<a href="../src/runtime/heapdump.go.html#line-451">heapdump.go#L451</a>: 	dumpmemrange(unsafe.Pointer(firstmoduledata.bss), firstmoduledata.<b>ebss</b>-firstmoduledata.bss)
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-438">mbitmap_allocheaders.go#L438</a>: 			if datap.bss &lt;= dst &amp;&amp; dst &lt; datap.<b>ebss</b> {
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-1155" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-1155">#L1155</a>: 		if datap.bss &lt;= uintptr(p) &amp;&amp; uintptr(p) &lt; datap.<b>ebss</b> {
+		<a href="../src/runtime/mfinal.go.html#line-295">mfinal.go#L295</a>: 			datap.bss &lt;= uintptr(p) &amp;&amp; uintptr(p) &lt; datap.<b>ebss</b> ||
+		<a href="../src/runtime/mgc.go.html#line-1837">mgc.go#L1837</a>: 		if datap.bss &lt;= p2 &amp;&amp; p2 &lt; datap.<b>ebss</b> || datap.noptrbss &lt;= p2 &amp;&amp; p2 &lt;= datap.enoptrbss {
+		<a href="../src/runtime/mgcmark.go.html#line-79">mgcmark.go#L79</a>: 		nBSSRoots := nBlocks(datap.<b>ebss</b> - datap.bss)
+		<a href="../src/runtime/mgcmark.go.html#line-178" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-178">#L178</a>: 			workDone += markrootBlock(datap.bss, datap.<b>ebss</b>-datap.bss, datap.gcbssmask.bytedata, gcw, int(i-work.baseBSS))
+		<a href="../src/runtime/plugin.go.html#line-36">plugin.go#L36</a>: 			inRange(pmd.bss, pmd.<b>ebss</b>, md.bss, md.<b>ebss</b>) ||
+		<a href="../src/runtime/plugin.go.html#line-41" class="path-duplicate">plugin.go</a><a href="../src/runtime/plugin.go.html#line-41">#L41</a>: 			println("\tpmd.bss-ebss=", hex(pmd.bss), "-", hex(pmd.<b>ebss</b>))
+		<a href="../src/runtime/plugin.go.html#line-45" class="path-duplicate">plugin.go</a><a href="../src/runtime/plugin.go.html#line-45">#L45</a>: 			println("\tmd.bss-ebss=", hex(md.bss), "-", hex(md.<b>ebss</b>))
+		<a href="../src/runtime/symtab.go.html#line-349">symtab.go#L349</a>: 	bss, <b>ebss</b>             uintptr
+		<a href="../src/runtime/symtab.go.html#line-461" class="path-duplicate">symtab.go</a><a href="../src/runtime/symtab.go.html#line-461">#L461</a>: 			scanBSSSize := md.<b>ebss</b> - md.bss
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

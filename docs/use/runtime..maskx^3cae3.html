@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.maskx</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/utf8.go.html#line-28">maskx</a></b></span>
+
+<span class="title">13 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/utf8.go.html#line-28">utf8.go#L28</a>: 	<b>maskx</b> = 0x3F // 0011 1111
+		<a href="../src/runtime/utf8.go.html#line-73" class="path-duplicate">utf8.go</a><a href="../src/runtime/utf8.go.html#line-73">#L73</a>: 			r = rune(s[0]&amp;mask2)&lt;&lt;6 | rune(s[1]&amp;<b>maskx</b>)
+		<a href="../src/runtime/utf8.go.html#line-82" class="path-duplicate">utf8.go</a><a href="../src/runtime/utf8.go.html#line-82">#L82</a>: 			r = rune(s[0]&amp;mask3)&lt;&lt;12 | rune(s[1]&amp;<b>maskx</b>)&lt;&lt;6 | rune(s[2]&amp;<b>maskx</b>)
+		<a href="../src/runtime/utf8.go.html#line-91" class="path-duplicate">utf8.go</a><a href="../src/runtime/utf8.go.html#line-91">#L91</a>: 			r = rune(s[0]&amp;mask4)&lt;&lt;18 | rune(s[1]&amp;<b>maskx</b>)&lt;&lt;12 | rune(s[2]&amp;<b>maskx</b>)&lt;&lt;6 | rune(s[3]&amp;<b>maskx</b>)
+		<a href="../src/runtime/utf8.go.html#line-113" class="path-duplicate">utf8.go</a><a href="../src/runtime/utf8.go.html#line-113">#L113</a>: 		p[1] = tx | byte(r)&amp;<b>maskx</b>
+		<a href="../src/runtime/utf8.go.html#line-121" class="path-duplicate">utf8.go</a><a href="../src/runtime/utf8.go.html#line-121">#L121</a>: 		p[1] = tx | byte(r&gt;&gt;6)&amp;<b>maskx</b>
+		<a href="../src/runtime/utf8.go.html#line-122" class="path-duplicate">utf8.go</a><a href="../src/runtime/utf8.go.html#line-122">#L122</a>: 		p[2] = tx | byte(r)&amp;<b>maskx</b>
+		<a href="../src/runtime/utf8.go.html#line-127" class="path-duplicate">utf8.go</a><a href="../src/runtime/utf8.go.html#line-127">#L127</a>: 		p[1] = tx | byte(r&gt;&gt;12)&amp;<b>maskx</b>
+		<a href="../src/runtime/utf8.go.html#line-128" class="path-duplicate">utf8.go</a><a href="../src/runtime/utf8.go.html#line-128">#L128</a>: 		p[2] = tx | byte(r&gt;&gt;6)&amp;<b>maskx</b>
+		<a href="../src/runtime/utf8.go.html#line-129" class="path-duplicate">utf8.go</a><a href="../src/runtime/utf8.go.html#line-129">#L129</a>: 		p[3] = tx | byte(r)&amp;<b>maskx</b>
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

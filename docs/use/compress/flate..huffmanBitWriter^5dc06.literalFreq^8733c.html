@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: compress/flate.huffmanBitWriter.literalFreq</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/compress/flate.html">compress/flate</a>.<a href="../../src/compress/flate/huffman_bit_writer.go.html#line-71">huffmanBitWriter</a>.<a href="../../src/compress/flate/huffman_bit_writer.go.html#line-85">literalFreq</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">17 uses</span>
+
+	compress/flate (current package)
+		<a href="../../src/compress/flate/huffman_bit_writer.go.html#line-85">huffman_bit_writer.go#L85</a>: 	<b>literalFreq</b>     []int32
+		<a href="../../src/compress/flate/huffman_bit_writer.go.html#line-97" class="path-duplicate">huffman_bit_writer.go</a><a href="../../src/compress/flate/huffman_bit_writer.go.html#line-97">#L97</a>: 		<b>literalFreq</b>:     make([]int32, maxNumLit),
+		<a href="../../src/compress/flate/huffman_bit_writer.go.html#line-299" class="path-duplicate">huffman_bit_writer.go</a><a href="../../src/compress/flate/huffman_bit_writer.go.html#line-299">#L299</a>: 		litEnc.bitLength(w.<b>literalFreq</b>) +
+		<a href="../../src/compress/flate/huffman_bit_writer.go.html#line-309" class="path-duplicate">huffman_bit_writer.go</a><a href="../../src/compress/flate/huffman_bit_writer.go.html#line-309">#L309</a>: 		fixedLiteralEncoding.bitLength(w.<b>literalFreq</b>) +
+		<a href="../../src/compress/flate/huffman_bit_writer.go.html#line-448" class="path-duplicate">huffman_bit_writer.go</a><a href="../../src/compress/flate/huffman_bit_writer.go.html#line-448">#L448</a>: 			extraBits += int(w.<b>literalFreq</b>[lengthCode]) * int(lengthExtraBits[lengthCode-lengthCodesStart])
+		<a href="../../src/compress/flate/huffman_bit_writer.go.html#line-533" class="path-duplicate">huffman_bit_writer.go</a><a href="../../src/compress/flate/huffman_bit_writer.go.html#line-533">#L533</a>: 	for i := range w.<b>literalFreq</b> {
+		<a href="../../src/compress/flate/huffman_bit_writer.go.html#line-534" class="path-duplicate">huffman_bit_writer.go</a><a href="../../src/compress/flate/huffman_bit_writer.go.html#line-534">#L534</a>: 		w.<b>literalFreq</b>[i] = 0
+		<a href="../../src/compress/flate/huffman_bit_writer.go.html#line-542" class="path-duplicate">huffman_bit_writer.go</a><a href="../../src/compress/flate/huffman_bit_writer.go.html#line-542">#L542</a>: 			w.<b>literalFreq</b>[t.literal()]++
+		<a href="../../src/compress/flate/huffman_bit_writer.go.html#line-547" class="path-duplicate">huffman_bit_writer.go</a><a href="../../src/compress/flate/huffman_bit_writer.go.html#line-547">#L547</a>: 		w.<b>literalFreq</b>[lengthCodesStart+lengthCode(length)]++
+		<a href="../../src/compress/flate/huffman_bit_writer.go.html#line-552" class="path-duplicate">huffman_bit_writer.go</a><a href="../../src/compress/flate/huffman_bit_writer.go.html#line-552">#L552</a>: 	numLiterals = len(w.<b>literalFreq</b>)
+		<a href="../../src/compress/flate/huffman_bit_writer.go.html#line-553" class="path-duplicate">huffman_bit_writer.go</a><a href="../../src/compress/flate/huffman_bit_writer.go.html#line-553">#L553</a>: 	for w.<b>literalFreq</b>[numLiterals-1] == 0 {
+		<a href="../../src/compress/flate/huffman_bit_writer.go.html#line-567" class="path-duplicate">huffman_bit_writer.go</a><a href="../../src/compress/flate/huffman_bit_writer.go.html#line-567">#L567</a>: 	w.literalEncoding.generate(w.<b>literalFreq</b>, 15)
+		<a href="../../src/compress/flate/huffman_bit_writer.go.html#line-624" class="path-duplicate">huffman_bit_writer.go</a><a href="../../src/compress/flate/huffman_bit_writer.go.html#line-624">#L624</a>: 	for i := range w.<b>literalFreq</b> {
+		<a href="../../src/compress/flate/huffman_bit_writer.go.html#line-625" class="path-duplicate">huffman_bit_writer.go</a><a href="../../src/compress/flate/huffman_bit_writer.go.html#line-625">#L625</a>: 		w.<b>literalFreq</b>[i] = 0
+		<a href="../../src/compress/flate/huffman_bit_writer.go.html#line-629" class="path-duplicate">huffman_bit_writer.go</a><a href="../../src/compress/flate/huffman_bit_writer.go.html#line-629">#L629</a>: 	histogram(input, w.<b>literalFreq</b>)
+		<a href="../../src/compress/flate/huffman_bit_writer.go.html#line-631" class="path-duplicate">huffman_bit_writer.go</a><a href="../../src/compress/flate/huffman_bit_writer.go.html#line-631">#L631</a>: 	w.<b>literalFreq</b>[endBlockMarker] = 1
+		<a href="../../src/compress/flate/huffman_bit_writer.go.html#line-637" class="path-duplicate">huffman_bit_writer.go</a><a href="../../src/compress/flate/huffman_bit_writer.go.html#line-637">#L637</a>: 	w.literalEncoding.generate(w.<b>literalFreq</b>, 15)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

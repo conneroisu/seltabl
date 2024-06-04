@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: io.pipe</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../pkg/io.html">io</a>.<a href="../src/io/pipe.go.html#line-39">pipe</a></b></span>
+
+<span class="title">9 uses</span>
+
+	io (current package)
+		<a href="../src/io/pipe.go.html#line-39">pipe.go#L39</a>: type <b>pipe</b> struct {
+		<a href="../src/io/pipe.go.html#line-50" class="path-duplicate">pipe.go</a><a href="../src/io/pipe.go.html#line-50">#L50</a>: func (p *<b>pipe</b>) read(b []byte) (n int, err error) {
+		<a href="../src/io/pipe.go.html#line-67" class="path-duplicate">pipe.go</a><a href="../src/io/pipe.go.html#line-67">#L67</a>: func (p *<b>pipe</b>) closeRead(err error) error {
+		<a href="../src/io/pipe.go.html#line-76" class="path-duplicate">pipe.go</a><a href="../src/io/pipe.go.html#line-76">#L76</a>: func (p *<b>pipe</b>) write(b []byte) (n int, err error) {
+		<a href="../src/io/pipe.go.html#line-98" class="path-duplicate">pipe.go</a><a href="../src/io/pipe.go.html#line-98">#L98</a>: func (p *<b>pipe</b>) closeWrite(err error) error {
+		<a href="../src/io/pipe.go.html#line-108" class="path-duplicate">pipe.go</a><a href="../src/io/pipe.go.html#line-108">#L108</a>: func (p *<b>pipe</b>) readCloseError() error {
+		<a href="../src/io/pipe.go.html#line-117" class="path-duplicate">pipe.go</a><a href="../src/io/pipe.go.html#line-117">#L117</a>: func (p *<b>pipe</b>) writeCloseError() error {
+		<a href="../src/io/pipe.go.html#line-126" class="path-duplicate">pipe.go</a><a href="../src/io/pipe.go.html#line-126">#L126</a>: type PipeReader struct{ <b>pipe</b> }
+		<a href="../src/io/pipe.go.html#line-196" class="path-duplicate">pipe.go</a><a href="../src/io/pipe.go.html#line-196">#L196</a>: 	pw := &amp;PipeWriter{r: PipeReader{pipe: <b>pipe</b>{
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

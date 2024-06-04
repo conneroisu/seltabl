@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.p.wbBuf</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/runtime2.go.html#line-646">p</a>.<a href="../src/runtime/runtime2.go.html#line-746">wbBuf</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">16 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/atomic_pointer.go.html#line-24">atomic_pointer.go#L24</a>: 	buf := getg().m.p.ptr().<b>wbBuf</b>.get2()
+		<a href="../src/runtime/mbitmap.go.html#line-364">mbitmap.go#L364</a>: 	buf := &amp;getg().m.p.ptr().<b>wbBuf</b>
+		<a href="../src/runtime/mbitmap.go.html#line-424" class="path-duplicate">mbitmap.go</a><a href="../src/runtime/mbitmap.go.html#line-424">#L424</a>: 	buf := &amp;getg().m.p.ptr().<b>wbBuf</b>
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-453">mbitmap_allocheaders.go#L453</a>: 	buf := &amp;getg().m.p.ptr().<b>wbBuf</b>
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-513" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-513">#L513</a>: 	buf := &amp;getg().m.p.ptr().<b>wbBuf</b>
+		<a href="../src/runtime/mgc.go.html#line-1514">mgc.go#L1514</a>: 			p.<b>wbBuf</b>.reset()
+		<a href="../src/runtime/mwbbuf.go.html#line-174">mwbbuf.go#L174</a>: 		getg().m.p.ptr().<b>wbBuf</b>.discard()
+		<a href="../src/runtime/mwbbuf.go.html#line-197" class="path-duplicate">mwbbuf.go</a><a href="../src/runtime/mwbbuf.go.html#line-197">#L197</a>: 	start := uintptr(unsafe.Pointer(&amp;pp.<b>wbBuf</b>.buf[0]))
+		<a href="../src/runtime/mwbbuf.go.html#line-198" class="path-duplicate">mwbbuf.go</a><a href="../src/runtime/mwbbuf.go.html#line-198">#L198</a>: 	n := (pp.<b>wbBuf</b>.next - start) / unsafe.Sizeof(pp.<b>wbBuf</b>.buf[0])
+		<a href="../src/runtime/mwbbuf.go.html#line-199" class="path-duplicate">mwbbuf.go</a><a href="../src/runtime/mwbbuf.go.html#line-199">#L199</a>: 	ptrs := pp.<b>wbBuf</b>.buf[:n]
+		<a href="../src/runtime/mwbbuf.go.html#line-203" class="path-duplicate">mwbbuf.go</a><a href="../src/runtime/mwbbuf.go.html#line-203">#L203</a>: 	pp.<b>wbBuf</b>.next = 0
+		<a href="../src/runtime/mwbbuf.go.html#line-210" class="path-duplicate">mwbbuf.go</a><a href="../src/runtime/mwbbuf.go.html#line-210">#L210</a>: 		pp.<b>wbBuf</b>.reset()
+		<a href="../src/runtime/mwbbuf.go.html#line-269" class="path-duplicate">mwbbuf.go</a><a href="../src/runtime/mwbbuf.go.html#line-269">#L269</a>: 	pp.<b>wbBuf</b>.reset()
+		<a href="../src/runtime/proc.go.html#line-5465">proc.go#L5465</a>: 	pp.<b>wbBuf</b>.reset()
+		<a href="../src/runtime/runtime2.go.html#line-746">runtime2.go#L746</a>: 	<b>wbBuf</b> wbBuf
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

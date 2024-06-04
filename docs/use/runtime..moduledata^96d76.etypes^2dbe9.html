@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.moduledata.etypes</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/symtab.go.html#line-333">moduledata</a>.<a href="../src/runtime/symtab.go.html#line-353">etypes</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">15 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/plugin.go.html#line-38">plugin.go#L38</a>: 			inRange(pmd.types, pmd.<b>etypes</b>, md.types, md.<b>etypes</b>) {
+		<a href="../src/runtime/plugin.go.html#line-43" class="path-duplicate">plugin.go</a><a href="../src/runtime/plugin.go.html#line-43">#L43</a>: 			println("\tpmd.types-etypes=", hex(pmd.types), "-", hex(pmd.<b>etypes</b>))
+		<a href="../src/runtime/plugin.go.html#line-47" class="path-duplicate">plugin.go</a><a href="../src/runtime/plugin.go.html#line-47">#L47</a>: 			println("\tmd.types-etypes=", hex(md.types), "-", hex(md.<b>etypes</b>))
+		<a href="../src/runtime/symtab.go.html#line-353">symtab.go#L353</a>: 	types, <b>etypes</b>         uintptr
+		<a href="../src/runtime/type.go.html#line-115">type.go#L115</a>: 		if base &gt;= md.types &amp;&amp; base &lt; md.<b>etypes</b> {
+		<a href="../src/runtime/type.go.html#line-117" class="path-duplicate">type.go</a><a href="../src/runtime/type.go.html#line-117">#L117</a>: 			if res &gt; md.<b>etypes</b> {
+		<a href="../src/runtime/type.go.html#line-118" class="path-duplicate">type.go</a><a href="../src/runtime/type.go.html#line-118">#L118</a>: 				println("runtime: nameOff", hex(off), "out of range", hex(md.types), "-", hex(md.<b>etypes</b>))
+		<a href="../src/runtime/type.go.html#line-132" class="path-duplicate">type.go</a><a href="../src/runtime/type.go.html#line-132">#L132</a>: 			println("\ttypes", hex(next.types), "etypes", hex(next.<b>etypes</b>))
+		<a href="../src/runtime/type.go.html#line-152" class="path-duplicate">type.go</a><a href="../src/runtime/type.go.html#line-152">#L152</a>: 		if base &gt;= next.types &amp;&amp; base &lt; next.<b>etypes</b> {
+		<a href="../src/runtime/type.go.html#line-164" class="path-duplicate">type.go</a><a href="../src/runtime/type.go.html#line-164">#L164</a>: 				println("\ttypes", hex(next.types), "etypes", hex(next.<b>etypes</b>))
+		<a href="../src/runtime/type.go.html#line-174" class="path-duplicate">type.go</a><a href="../src/runtime/type.go.html#line-174">#L174</a>: 	if res &gt; md.<b>etypes</b> {
+		<a href="../src/runtime/type.go.html#line-175" class="path-duplicate">type.go</a><a href="../src/runtime/type.go.html#line-175">#L175</a>: 		println("runtime: typeOff", hex(off), "out of range", hex(md.types), "-", hex(md.<b>etypes</b>))
+		<a href="../src/runtime/type.go.html#line-194" class="path-duplicate">type.go</a><a href="../src/runtime/type.go.html#line-194">#L194</a>: 		if base &gt;= next.types &amp;&amp; base &lt; next.<b>etypes</b> {
+		<a href="../src/runtime/type.go.html#line-206" class="path-duplicate">type.go</a><a href="../src/runtime/type.go.html#line-206">#L206</a>: 				println("\ttypes", hex(next.types), "etypes", hex(next.<b>etypes</b>))
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

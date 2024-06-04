@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: bytes.Buffer.Reset</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/bytes.html">bytes</a>.<a href="../src/bytes/buffer.go.html#line-20">Buffer</a>.<a href="../src/bytes/buffer.go.html#line-106">Reset</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">18 uses</span>
+
+	bytes (current package)
+		<a href="../src/bytes/buffer.go.html#line-93">buffer.go#L93</a>: 		b.<b>Reset</b>()
+		<a href="../src/bytes/buffer.go.html#line-106" class="path-duplicate">buffer.go</a><a href="../src/bytes/buffer.go.html#line-106">#L106</a>: func (b *Buffer) <b>Reset</b>() {
+		<a href="../src/bytes/buffer.go.html#line-130" class="path-duplicate">buffer.go</a><a href="../src/bytes/buffer.go.html#line-130">#L130</a>: 		b.<b>Reset</b>()
+		<a href="../src/bytes/buffer.go.html#line-277" class="path-duplicate">buffer.go</a><a href="../src/bytes/buffer.go.html#line-277">#L277</a>: 	b.<b>Reset</b>()
+		<a href="../src/bytes/buffer.go.html#line-322" class="path-duplicate">buffer.go</a><a href="../src/bytes/buffer.go.html#line-322">#L322</a>: 		b.<b>Reset</b>()
+		<a href="../src/bytes/buffer.go.html#line-359" class="path-duplicate">buffer.go</a><a href="../src/bytes/buffer.go.html#line-359">#L359</a>: 		b.<b>Reset</b>()
+		<a href="../src/bytes/buffer.go.html#line-376" class="path-duplicate">buffer.go</a><a href="../src/bytes/buffer.go.html#line-376">#L376</a>: 		b.<b>Reset</b>()
+
+	<a href="../pkg/net/http.html">net/http</a>
+		<a href="../src/net/http/h2_bundle.go.html#line-8949">h2_bundle.go#L8949</a>: 	cc.hbuf.<b>Reset</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-9144" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-9144">#L9144</a>: 	cc.hbuf.<b>Reset</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-10501" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-10501">#L10501</a>: 	buf.<b>Reset</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-10560" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-10560">#L10560</a>: 	buf.<b>Reset</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-10595" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-10595">#L10595</a>: 	buf.<b>Reset</b>()
+
+	<a href="../pkg/vendor/golang.org/x/net/http2/hpack.html">vendor/golang.org/x/net/http2/hpack</a>
+		<a href="../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-237">hpack.go#L237</a>: 		d.saveBuf.<b>Reset</b>()
+		<a href="../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-258" class="path-duplicate">hpack.go</a><a href="../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-258">#L258</a>: 		d.saveBuf.<b>Reset</b>()
+		<a href="../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-514" class="path-duplicate">hpack.go</a><a href="../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-514">#L514</a>: 	buf.<b>Reset</b>() // don't trust others
+		<a href="../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-520" class="path-duplicate">hpack.go</a><a href="../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-520">#L520</a>: 	buf.<b>Reset</b>() // be nice to GC
+		<a href="../src/vendor/golang.org/x/net/http2/hpack/huffman.go.html#line-23">huffman.go#L23</a>: 	buf.<b>Reset</b>()
+		<a href="../src/vendor/golang.org/x/net/http2/hpack/huffman.go.html#line-34" class="path-duplicate">huffman.go</a><a href="../src/vendor/golang.org/x/net/http2/hpack/huffman.go.html#line-34">#L34</a>: 	buf.<b>Reset</b>()
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/x509.ExtKeyUsage</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../pkg/crypto/x509.html">crypto/x509</a>.<a href="../../src/crypto/x509/x509.go.html#line-618">ExtKeyUsage</a></b></span>
+
+<span class="title">15 uses</span>
+
+	crypto/x509 (current package)
+		<a href="../../src/crypto/x509/parser.go.html#line-418">parser.go#L418</a>: func parseExtKeyUsageExtension(der cryptobyte.String) ([]<b>ExtKeyUsage</b>, []asn1.ObjectIdentifier, error) {
+		<a href="../../src/crypto/x509/parser.go.html#line-419" class="path-duplicate">parser.go</a><a href="../../src/crypto/x509/parser.go.html#line-419">#L419</a>: 	var extKeyUsages []<b>ExtKeyUsage</b>
+		<a href="../../src/crypto/x509/verify.go.html#line-196">verify.go#L196</a>: 	KeyUsages []<b>ExtKeyUsage</b>
+		<a href="../../src/crypto/x509/verify.go.html#line-813" class="path-duplicate">verify.go</a><a href="../../src/crypto/x509/verify.go.html#line-813">#L813</a>: 		opts.KeyUsages = []<b>ExtKeyUsage</b>{ExtKeyUsageServerAuth}
+		<a href="../../src/crypto/x509/verify.go.html#line-1134" class="path-duplicate">verify.go</a><a href="../../src/crypto/x509/verify.go.html#line-1134">#L1134</a>: func checkChainForKeyUsage(chain []*Certificate, keyUsages []<b>ExtKeyUsage</b>) bool {
+		<a href="../../src/crypto/x509/verify.go.html#line-1135" class="path-duplicate">verify.go</a><a href="../../src/crypto/x509/verify.go.html#line-1135">#L1135</a>: 	usages := make([]<b>ExtKeyUsage</b>, len(keyUsages))
+		<a href="../../src/crypto/x509/verify.go.html#line-1163" class="path-duplicate">verify.go</a><a href="../../src/crypto/x509/verify.go.html#line-1163">#L1163</a>: 		const invalidUsage <b>ExtKeyUsage</b> = -1
+		<a href="../../src/crypto/x509/x509.go.html#line-618">x509.go#L618</a>: type <b>ExtKeyUsage</b> int
+		<a href="../../src/crypto/x509/x509.go.html#line-621" class="path-duplicate">x509.go</a><a href="../../src/crypto/x509/x509.go.html#line-621">#L621</a>: 	ExtKeyUsageAny <b>ExtKeyUsage</b> = iota
+		<a href="../../src/crypto/x509/x509.go.html#line-639" class="path-duplicate">x509.go</a><a href="../../src/crypto/x509/x509.go.html#line-639">#L639</a>: 	extKeyUsage <b>ExtKeyUsage</b>
+		<a href="../../src/crypto/x509/x509.go.html#line-658" class="path-duplicate">x509.go</a><a href="../../src/crypto/x509/x509.go.html#line-658">#L658</a>: func extKeyUsageFromOID(oid asn1.ObjectIdentifier) (eku <b>ExtKeyUsage</b>, ok bool) {
+		<a href="../../src/crypto/x509/x509.go.html#line-667" class="path-duplicate">x509.go</a><a href="../../src/crypto/x509/x509.go.html#line-667">#L667</a>: func oidFromExtKeyUsage(eku <b>ExtKeyUsage</b>) (oid asn1.ObjectIdentifier, ok bool) {
+		<a href="../../src/crypto/x509/x509.go.html#line-719" class="path-duplicate">x509.go</a><a href="../../src/crypto/x509/x509.go.html#line-719">#L719</a>: 	ExtKeyUsage        []<b>ExtKeyUsage</b>           // Sequence of extended key usages.
+		<a href="../../src/crypto/x509/x509.go.html#line-1348" class="path-duplicate">x509.go</a><a href="../../src/crypto/x509/x509.go.html#line-1348">#L1348</a>: func marshalExtKeyUsage(extUsages []<b>ExtKeyUsage</b>, unknownUsages []asn1.ObjectIdentifier) (pkix.Extension, error) {
+
+	<a href="../../pkg/crypto/tls.html">crypto/tls</a>
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-898">handshake_server.go#L898</a>: 			KeyUsages:     []x509.<b>ExtKeyUsage</b>{x509.ExtKeyUsageClientAuth},
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

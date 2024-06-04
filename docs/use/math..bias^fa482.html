@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: math.bias</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../pkg/math.html">math</a>.<a href="../src/math/bits.go.html#line-14">bias</a></b></span>
+
+<span class="title">21 uses</span>
+
+	math (current package)
+		<a href="../src/math/bits.go.html#line-14">bits.go#L14</a>: 	<b>bias</b>     = 1023
+		<a href="../src/math/floor.go.html#line-95">floor.go#L95</a>: 	if e &lt; <b>bias</b> {
+		<a href="../src/math/floor.go.html#line-98" class="path-duplicate">floor.go</a><a href="../src/math/floor.go.html#line-98">#L98</a>: 		if e == <b>bias</b>-1 {
+		<a href="../src/math/floor.go.html#line-101" class="path-duplicate">floor.go</a><a href="../src/math/floor.go.html#line-101">#L101</a>: 	} else if e &lt; <b>bias</b>+shift {
+		<a href="../src/math/floor.go.html#line-107" class="path-duplicate">floor.go</a><a href="../src/math/floor.go.html#line-107">#L107</a>: 		e -= <b>bias</b>
+		<a href="../src/math/floor.go.html#line-134" class="path-duplicate">floor.go</a><a href="../src/math/floor.go.html#line-134">#L134</a>: 	if e &gt;= <b>bias</b> {
+		<a href="../src/math/floor.go.html#line-140" class="path-duplicate">floor.go</a><a href="../src/math/floor.go.html#line-140">#L140</a>: 		e -= <b>bias</b>
+		<a href="../src/math/floor.go.html#line-143" class="path-duplicate">floor.go</a><a href="../src/math/floor.go.html#line-143">#L143</a>: 	} else if e == <b>bias</b>-1 &amp;&amp; bits&amp;fracMask != 0 {
+		<a href="../src/math/fma.go.html#line-116">fma.go#L116</a>: 	pe := xe + ye - <b>bias</b> + 1
+		<a href="../src/math/fma.go.html#line-163" class="path-duplicate">fma.go</a><a href="../src/math/fma.go.html#line-163">#L163</a>: 	if pe &gt; 1022+<b>bias</b> || pe == 1022+<b>bias</b> &amp;&amp; (m+1&lt;&lt;9)&gt;&gt;63 == 1 {
+		<a href="../src/math/frexp.go.html#line-34">frexp.go#L34</a>: 	exp += int((x&gt;&gt;shift)&amp;mask) - <b>bias</b> + 1
+		<a href="../src/math/frexp.go.html#line-36" class="path-duplicate">frexp.go</a><a href="../src/math/frexp.go.html#line-36">#L36</a>: 	x |= (-1 + <b>bias</b>) &lt;&lt; shift
+		<a href="../src/math/ldexp.go.html#line-33">ldexp.go#L33</a>: 	exp += int(x&gt;&gt;shift)&amp;mask - <b>bias</b>
+		<a href="../src/math/ldexp.go.html#line-49" class="path-duplicate">ldexp.go</a><a href="../src/math/ldexp.go.html#line-49">#L49</a>: 	x |= uint64(exp+<b>bias</b>) &lt;&lt; shift
+		<a href="../src/math/logb.go.html#line-51">logb.go#L51</a>: 	return int((Float64bits(x)&gt;&gt;shift)&amp;mask) - <b>bias</b> + exp
+		<a href="../src/math/modf.go.html#line-34">modf.go#L34</a>: 	e := uint(x&gt;&gt;shift)&amp;mask - <b>bias</b>
+		<a href="../src/math/sqrt.go.html#line-118">sqrt.go#L118</a>: 	exp -= <b>bias</b> // unbias exponent
+		<a href="../src/math/sqrt.go.html#line-143" class="path-duplicate">sqrt.go</a><a href="../src/math/sqrt.go.html#line-143">#L143</a>: 	ix = q&gt;&gt;1 + uint64(exp-1+<b>bias</b>)&lt;&lt;shift // significand + biased exponent
+		<a href="../src/math/trig_reduce.go.html#line-39">trig_reduce.go#L39</a>: 	exp := int(ix&gt;&gt;shift&amp;mask) - <b>bias</b> - shift
+		<a href="../src/math/trig_reduce.go.html#line-60" class="path-duplicate">trig_reduce.go</a><a href="../src/math/trig_reduce.go.html#line-60">#L60</a>: 	e := uint64(<b>bias</b> - (lz + 1))
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

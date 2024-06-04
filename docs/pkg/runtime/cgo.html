@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: runtime/cgo</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>cgo</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../index.html#pkg-runtime/cgo">runtime/cgo</a><i> (on <a href="https://pkg.go.dev/runtime/cgo" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../../dep/runtime/cgo.html">4 packages</a>, and imported by <a href="../../dep/runtime/cgo.html#imported-by">one package</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<span class="nodocs">    <a href="../../src/runtime/cgo/callbacks.go.html">callbacks.go</a></span>
+	<span class="nodocs">    <a href="../../src/runtime/cgo/callbacks_traceback.go.html">callbacks_traceback.go</a></span>
+	<span class="nodocs">    <a href="../../src/runtime/cgo/handle.go.html">handle.go</a></span>
+	<span class="nodocs">    <a href="../../src/runtime/cgo/iscgo.go.html">iscgo.go</a></span>
+	<span class="nodocs">    <a href="../../src/runtime/cgo/linux.go.html">linux.go</a></span>
+	<span class="nodocs">    <a href="../../src/runtime/cgo/mmap.go.html">mmap.go</a></span>
+	<span class="nodocs">    <a href="../../src/runtime/cgo/setenv.go.html">setenv.go</a></span>
+	<span class="nodocs">    <a href="../../src/runtime/cgo/sigaction.go.html">sigaction.go</a></span>
+	<input type='checkbox' checked class="fold" id="file-8-fold-content"><label for="file-8-fold-content">  <a href="../../src/runtime/cgo/cgo.go.html#doc">d</a> <a href="../../src/runtime/cgo/cgo.go.html">cgo.go</a></label><span id='file-8-fold-content-items' class="fold-items">
+<span class="md-text">		Package cgo contains runtime support for code generated
+		by the cgo tool.  See the documentation for the cgo command
+		for details on using cgo.</span>
+</span>
+	<span class="nodocs">    <a href="../../src/runtime/cgo/gcc_context.c.html">gcc_context.c</a></span>
+	<span class="nodocs">    <a href="../../src/runtime/cgo/gcc_fatalf.c.html">gcc_fatalf.c</a></span>
+	<span class="nodocs">    <a href="../../src/runtime/cgo/gcc_libinit.c.html">gcc_libinit.c</a></span>
+	<span class="nodocs">    <a href="../../src/runtime/cgo/gcc_linux_amd64.c.html">gcc_linux_amd64.c</a></span>
+	<span class="nodocs">    <a href="../../src/runtime/cgo/gcc_mmap.c.html">gcc_mmap.c</a></span>
+	<span class="nodocs">    <a href="../../src/runtime/cgo/gcc_setenv.c.html">gcc_setenv.c</a></span>
+	<span class="nodocs">    <a href="../../src/runtime/cgo/gcc_sigaction.c.html">gcc_sigaction.c</a></span>
+	<span class="nodocs">    <a href="../../src/runtime/cgo/gcc_stack_unix.c.html">gcc_stack_unix.c</a></span>
+	<span class="nodocs">    <a href="../../src/runtime/cgo/gcc_traceback.c.html">gcc_traceback.c</a></span>
+	<span class="nodocs">    <a href="../../src/runtime/cgo/gcc_util.c.html">gcc_util.c</a></span>
+	<span class="nodocs">    <a href="../../src/runtime/cgo/linux_syscall.c.html">linux_syscall.c</a></span>
+	<span class="nodocs">    <a href="../../src/runtime/cgo/abi_amd64.h.html">abi_amd64.h</a></span>
+	<span class="nodocs">    <a href="../../src/runtime/cgo/abi_ppc64x.h.html">abi_ppc64x.h</a></span>
+	<span class="nodocs">    <a href="../../src/runtime/cgo/libcgo.h.html">libcgo.h</a></span>
+	<span class="nodocs">    <a href="../../src/runtime/cgo/libcgo_unix.h.html">libcgo_unix.h</a></span>
+	<span class="nodocs">    <a href="../../src/runtime/cgo/asm_amd64.s.html">asm_amd64.s</a></span>
+	<span class="nodocs">    <a href="../../src/runtime/cgo/gcc_amd64.S^3000a.html">gcc_amd64.S</a></span></div>
+<div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (total 3, in which 2 are exported)</i></span></span>
+
+<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-Handle" data-popularity="175">	<input type='checkbox' class="fold" id="Handle-fold-content"><label for="Handle-fold-content"> <a href="../../use/runtime/cgo..Handle.html">type</a> <a href="../../src/runtime/cgo/handle.go.html#line-97">Handle</a> <a href="../builtin.html#name-uintptr">uintptr</a> <i>(basic type)</i></label><span id='Handle-fold-content-docs' class="fold-docs">
+<span class="md-text">		Handle provides a way to pass values that contain Go pointers
+		(pointers to memory allocated by Go) between Go and C without
+		breaking the cgo pointer passing rules. A Handle is an integer
+		value that can represent any Go value. A Handle can be passed
+		through C and back to Go, and Go code can use the Handle to
+		retrieve the original Go value.
+		
+		The underlying type of Handle is guaranteed to fit in an integer type
+		that is large enough to hold the bit pattern of any pointer. The zero
+		value of a Handle is not valid, and thus is safe to use as a sentinel
+		in C APIs.
+		
+		For instance, on the Go side:
+		
+			package main
+		
+			/*
+			#include &lt;stdint.h&gt; // for uintptr_t
+		
+			extern void MyGoPrint(uintptr_t handle);
+			void myprint(uintptr_t handle);
+			*/
+			import "C"
+			import "runtime/cgo"
+		
+			//export MyGoPrint
+			func MyGoPrint(handle C.uintptr_t) {
+				h := cgo.Handle(handle)
+				val := h.Value().(string)
+				println(val)
+				h.Delete()
+			}
+		
+			func main() {
+				val := "hello Go"
+				C.myprint(C.uintptr_t(cgo.NewHandle(val)))
+				// Output: hello Go
+			}
+		
+		and on the C side:
+		
+			#include &lt;stdint.h&gt; // for uintptr_t
+		
+			// A Go function
+			extern void MyGoPrint(uintptr_t handle);
+		
+			// A C function
+			void myprint(uintptr_t handle) {
+			    MyGoPrint(handle);
+			}
+		
+		Some C functions accept a void* argument that points to an arbitrary
+		data value supplied by the caller. It is not safe to coerce a [cgo.Handle]
+		(an integer) to a Go [unsafe.Pointer], but instead we can pass the address
+		of the cgo.Handle to the void* parameter, as in this variant of the
+		previous example:
+		
+			package main
+		
+			/*
+			extern void MyGoPrint(void *context);
+			static inline void myprint(void *context) {
+			    MyGoPrint(context);
+			}
+			*/
+			import "C"
+			import (
+				"runtime/cgo"
+				"unsafe"
+			)
+		
+			//export MyGoPrint
+			func MyGoPrint(context unsafe.Pointer) {
+				h := *(*cgo.Handle)(context)
+				val := h.Value().(string)
+				println(val)
+				h.Delete()
+			}
+		
+			func main() {
+				val := "hello Go"
+				h := cgo.NewHandle(val)
+				C.myprint(unsafe.Pointer(&amp;h))
+				// Output: hello Go
+			}</span>
+
+		<input type='checkbox' class="fold" id="Handle-fold-methods"><label for="Handle-fold-methods">Methods (<i>total 2, both are exported</i>)</label><span id='Handle-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Handle-fold-method-Delete"><label for="Handle-fold-method-Delete">( Handle) <a href="../../src/runtime/cgo/handle.go.html#line-134">Delete</a>()</label><span id='Handle-fold-method-Delete-docs' class="fold-docs">
+<span class="md-text">				Delete invalidates a handle. This method should only be called once
+				the program no longer needs to pass the handle to C and the C code
+				no longer has a copy of the handle value.
+				
+				The method panics if the handle is invalid.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Handle-fold-method-Value"><label for="Handle-fold-method-Value">( Handle) <a href="../../src/runtime/cgo/handle.go.html#line-121">Value</a>() <a href="../builtin.html#name-any">any</a></label><span id='Handle-fold-method-Value-docs' class="fold-docs">
+<span class="md-text">				Value returns the associated Go value for a valid handle.
+				
+				The method panics if the handle is invalid.</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="Handle-fold-results"><label for="Handle-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='Handle-fold-results-items' class="fold-items"><span>
+			func <a href="#name-NewHandle">NewHandle</a>(v <a href="../builtin.html#name-any">any</a>) <b>Handle</b></span></span>
+
+</span></div><div class="anchor type-res" id="name-Incomplete" data-popularity="0">	<input type='checkbox' class="fold" id="Incomplete-fold-content"><label for="Incomplete-fold-content"> <a href="../../use/runtime/cgo..Incomplete.html">type</a> <a href="../../src/runtime/cgo/cgo.go.html#line-41">Incomplete</a> <i>(struct)</i></label><span id='Incomplete-fold-content-docs' class="fold-docs">
+<span class="md-text">		Incomplete is used specifically for the semantics of incomplete C types.</span>
+
+</span></div></div><div>	<input type='checkbox' class="showhide" id="unexported-typenames-showhide"><i><label for="unexported-typenames-showhide" class="show-inline">/* one unexported ... */</label><label for="unexported-typenames-showhide" class="hide-inline">/* one unexported: */</label></i><div class="anchor type-res hidden" id="name-_Ctype_void" data-popularity="0">	<span class="nodocs"> <a href="../../use/runtime/cgo.._Ctype_void^bd225.html">type</a> <a href="../../src/runtime/cgo/ced259c1a8c0a3bd2847df0cb50b06b0f96fa83e27e1a5022b618cd8da6ec8d4-d.html#line-18">_Ctype_void</a> <i>([...])</i></span></div></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 10, in which 1 is exported)</i></span></span>
+
+<div class="anchor value-res" id="name-NewHandle">	<input type='checkbox' class="fold" id="NewHandle-fold-content"><label for="NewHandle-fold-content"> <a href="../../use/runtime/cgo..NewHandle.html">func</a> <a href="../../src/runtime/cgo/handle.go.html#line-108">NewHandle</a>(v <a href="../builtin.html#name-any">any</a>) <a href="#name-Handle">Handle</a></label><span id='NewHandle-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewHandle returns a handle for a given value.
+		
+		The handle is valid until the program calls Delete on it. The handle
+		uses resources, and this package assumes that C code may hold on to
+		the handle, so a program must explicitly call Delete when the handle
+		is no longer needed.
+		
+		The intended use is to pass the returned handle to C code, which
+		passes it back to Go, which calls Value.</span>
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-functions-showhide"><i><label for="unexported-functions-showhide" class="show-inline">/* 9 unexporteds ... */</label><label for="unexported-functions-showhide" class="hide-inline">/* 9 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-_Cgo_no_callback"><i>	<span class="nodocs"> <a href="../../use/runtime/cgo.._Cgo_no_callback^f8017.html">func</a> <a href="../../src/runtime/cgo/ced259c1a8c0a3bd2847df0cb50b06b0f96fa83e27e1a5022b618cd8da6ec8d4-d.html#line-17">_Cgo_no_callback</a>(<a href="../builtin.html#name-bool">bool</a>)</span></i></div><div class="anchor value-res hidden" id="name-_cgo_panic"><i>	<span class="nodocs"> <a href="../../use/runtime/cgo.._cgo_panic^63975.html">func</a> <a href="../../src/runtime/cgo/callbacks.go.html#line-46">_cgo_panic</a>(a *struct{cstr *<a href="../builtin.html#name-byte">byte</a>})</span></i></div><div class="anchor value-res hidden" id="name-_Cgo_ptr"><i>	<span class="nodocs"> <a href="../../use/runtime/cgo.._Cgo_ptr^84ba4.html">func</a> <a href="../../src/runtime/cgo/ced259c1a8c0a3bd2847df0cb50b06b0f96fa83e27e1a5022b618cd8da6ec8d4-d.html#line-10">_Cgo_ptr</a>(ptr <a href="../unsafe.html">unsafe</a>.<a href="../unsafe.html#name-Pointer">Pointer</a>) <a href="../unsafe.html">unsafe</a>.<a href="../unsafe.html#name-Pointer">Pointer</a></span></i></div><div class="anchor value-res hidden" id="name-_cgo_runtime_cgocall"><i>	<span class="nodocs"> <a href="../../use/runtime/cgo.._cgo_runtime_cgocall^8ec3f.html">func</a> <a href="../../src/runtime/cgo/ced259c1a8c0a3bd2847df0cb50b06b0f96fa83e27e1a5022b618cd8da6ec8d4-d.html#line-21">_cgo_runtime_cgocall</a>(<a href="../unsafe.html">unsafe</a>.<a href="../unsafe.html#name-Pointer">Pointer</a>, <a href="../builtin.html#name-uintptr">uintptr</a>) <a href="../builtin.html#name-int32">int32</a></span></i></div><div class="anchor value-res hidden" id="name-_Cgo_use"><i>	<span class="nodocs"> <a href="../../use/runtime/cgo.._Cgo_use^35a7c.html">func</a> <a href="../../src/runtime/cgo/ced259c1a8c0a3bd2847df0cb50b06b0f96fa83e27e1a5022b618cd8da6ec8d4-d.html#line-15">_Cgo_use</a>(interface{})</span></i></div><div class="anchor value-res hidden" id="name-_cgoCheckPointer"><i>	<span class="nodocs"> <a href="../../use/runtime/cgo.._cgoCheckPointer^13193.html">func</a> <a href="../../src/runtime/cgo/ced259c1a8c0a3bd2847df0cb50b06b0f96fa83e27e1a5022b618cd8da6ec8d4-d.html#line-25">_cgoCheckPointer</a>(interface{}, interface{})</span></i></div><div class="anchor value-res hidden" id="name-_cgoCheckResult"><i>	<span class="nodocs"> <a href="../../use/runtime/cgo.._cgoCheckResult^4e07f.html">func</a> <a href="../../src/runtime/cgo/ced259c1a8c0a3bd2847df0cb50b06b0f96fa83e27e1a5022b618cd8da6ec8d4-d.html#line-29">_cgoCheckResult</a>(interface{})</span></i></div><div class="anchor value-res hidden" id="name-_runtime_cgo_panic_internal"><i>	<span class="nodocs"> <a href="../../use/runtime/cgo.._runtime_cgo_panic_internal^5c6ba.html">func</a> <a href="../../src/runtime/cgo/callbacks.go.html#line-41">_runtime_cgo_panic_internal</a>(p *<a href="../builtin.html#name-byte">byte</a>)</span></i></div><div class="anchor value-res hidden" id="name-set_crosscall2"><i>	<input type='checkbox' class="fold" id="set_crosscall2-fold-content"><label for="set_crosscall2-fold-content"> <a href="../../use/runtime/cgo..set_crosscall2^e3830.html">func</a> <a href="../../src/runtime/cgo/callbacks.go.html#line-96">set_crosscall2</a>()</label><span id='set_crosscall2-fold-content-docs' class="fold-docs">
+<span class="md-text">		Set the x_crosscall2_ptr C function pointer variable point to crosscall2.
+		It's for the runtime package to call at init time.</span>
+
+</span></i></div></div>
+<div id="exported-variables"><span class="title">Package-Level Variables<span class="title-stat"><i> (total 54, none are exported)</i></span></span>
+
+	<input type='checkbox' class="showhide" id="unexported-variables-showhide"><i><label for="unexported-variables-showhide" class="show-inline">/* 54 unexporteds ... */</label><label for="unexported-variables-showhide" class="hide-inline">/* 54 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-_Cgo_always_false"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo.._Cgo_always_false^0c2a0.html">var</a> <a href="../../src/runtime/cgo/ced259c1a8c0a3bd2847df0cb50b06b0f96fa83e27e1a5022b618cd8da6ec8d4-d.html#line-13">_Cgo_always_false</a> <a href="../builtin.html#name-bool">bool</a></span></i></div><div class="anchor value-res hidden" id="name-_cgo_bindm"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo.._cgo_bindm^311d1.html">var</a> <a href="../../src/runtime/cgo/callbacks.go.html#line-108">_cgo_bindm</a> *<a href="../builtin.html#name-byte">byte</a></span></i></div><div class="anchor value-res hidden" id="name-_cgo_callers"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo.._cgo_callers^33be4.html">var</a> <a href="../../src/runtime/cgo/callbacks_traceback.go.html#line-17">_cgo_callers</a> *<a href="../builtin.html#name-byte">byte</a></span></i></div><div class="anchor value-res hidden" id="name-_cgo_getstackbound"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo.._cgo_getstackbound^d9ce4.html">var</a> <a href="../../src/runtime/cgo/callbacks.go.html#line-152">_cgo_getstackbound</a> *<a href="../builtin.html#name-byte">byte</a></span></i></div><div class="anchor value-res hidden" id="name-_cgo_init"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo.._cgo_init^2f0ae.html">var</a> <a href="../../src/runtime/cgo/callbacks.go.html#line-54">_cgo_init</a> *<a href="../builtin.html#name-byte">byte</a></span></i></div><div class="anchor value-res hidden" id="name-_cgo_libc_setegid"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo.._cgo_libc_setegid^93444.html">var</a> <a href="../../src/runtime/cgo/linux.go.html#line-25">_cgo_libc_setegid</a> <a href="../builtin.html#name-byte">byte</a></span></i></div><div class="anchor value-res hidden" id="name-_cgo_libc_seteuid"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo.._cgo_libc_seteuid^9cb63.html">var</a> <a href="../../src/runtime/cgo/linux.go.html#line-31">_cgo_libc_seteuid</a> <a href="../builtin.html#name-byte">byte</a></span></i></div><div class="anchor value-res hidden" id="name-_cgo_libc_setgid"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo.._cgo_libc_setgid^bf7c6.html">var</a> <a href="../../src/runtime/cgo/linux.go.html#line-67">_cgo_libc_setgid</a> <a href="../builtin.html#name-byte">byte</a></span></i></div><div class="anchor value-res hidden" id="name-_cgo_libc_setgroups"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo.._cgo_libc_setgroups^b923f.html">var</a> <a href="../../src/runtime/cgo/linux.go.html#line-61">_cgo_libc_setgroups</a> <a href="../builtin.html#name-byte">byte</a></span></i></div><div class="anchor value-res hidden" id="name-_cgo_libc_setregid"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo.._cgo_libc_setregid^f84e4.html">var</a> <a href="../../src/runtime/cgo/linux.go.html#line-37">_cgo_libc_setregid</a> <a href="../builtin.html#name-byte">byte</a></span></i></div><div class="anchor value-res hidden" id="name-_cgo_libc_setresgid"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo.._cgo_libc_setresgid^074d6.html">var</a> <a href="../../src/runtime/cgo/linux.go.html#line-43">_cgo_libc_setresgid</a> <a href="../builtin.html#name-byte">byte</a></span></i></div><div class="anchor value-res hidden" id="name-_cgo_libc_setresuid"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo.._cgo_libc_setresuid^08572.html">var</a> <a href="../../src/runtime/cgo/linux.go.html#line-49">_cgo_libc_setresuid</a> <a href="../builtin.html#name-byte">byte</a></span></i></div><div class="anchor value-res hidden" id="name-_cgo_libc_setreuid"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo.._cgo_libc_setreuid^7b170.html">var</a> <a href="../../src/runtime/cgo/linux.go.html#line-55">_cgo_libc_setreuid</a> <a href="../builtin.html#name-byte">byte</a></span></i></div><div class="anchor value-res hidden" id="name-_cgo_libc_setuid"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo.._cgo_libc_setuid^2c254.html">var</a> <a href="../../src/runtime/cgo/linux.go.html#line-73">_cgo_libc_setuid</a> <a href="../builtin.html#name-byte">byte</a></span></i></div><div class="anchor value-res hidden" id="name-_cgo_mmap"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo.._cgo_mmap^e581b.html">var</a> <a href="../../src/runtime/cgo/mmap.go.html#line-25">_cgo_mmap</a> *<a href="../builtin.html#name-byte">byte</a></span></i></div><div class="anchor value-res hidden" id="name-_cgo_munmap"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo.._cgo_munmap^40e99.html">var</a> <a href="../../src/runtime/cgo/mmap.go.html#line-31">_cgo_munmap</a> *<a href="../builtin.html#name-byte">byte</a></span></i></div><div class="anchor value-res hidden" id="name-_cgo_notify_runtime_init_done"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo.._cgo_notify_runtime_init_done^e97b3.html">var</a> <a href="../../src/runtime/cgo/callbacks.go.html#line-122">_cgo_notify_runtime_init_done</a> *<a href="../builtin.html#name-byte">byte</a></span></i></div><div class="anchor value-res hidden" id="name-_cgo_pthread_key_created"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo.._cgo_pthread_key_created^09f71.html">var</a> <a href="../../src/runtime/cgo/callbacks.go.html#line-83">_cgo_pthread_key_created</a> *<a href="../builtin.html#name-byte">byte</a></span></i></div><div class="anchor value-res hidden" id="name-_cgo_set_context_function"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo.._cgo_set_context_function^267c8.html">var</a> <a href="../../src/runtime/cgo/callbacks.go.html#line-130">_cgo_set_context_function</a> *<a href="../builtin.html#name-byte">byte</a></span></i></div><div class="anchor value-res hidden" id="name-_cgo_setenv"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo.._cgo_setenv^f805c.html">var</a> <a href="../../src/runtime/cgo/setenv.go.html#line-15">_cgo_setenv</a> *<a href="../builtin.html#name-byte">byte</a></span></i></div><div class="anchor value-res hidden" id="name-_cgo_sigaction"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo.._cgo_sigaction^3b03a.html">var</a> <a href="../../src/runtime/cgo/sigaction.go.html#line-22">_cgo_sigaction</a> *<a href="../builtin.html#name-byte">byte</a></span></i></div><div class="anchor value-res hidden" id="name-_cgo_sys_thread_create"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo.._cgo_sys_thread_create^04576.html">var</a> <a href="../../src/runtime/cgo/callbacks.go.html#line-72">_cgo_sys_thread_create</a> *<a href="../builtin.html#name-byte">byte</a></span></i></div><div class="anchor value-res hidden" id="name-_cgo_thread_start"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo.._cgo_thread_start^f8259.html">var</a> <a href="../../src/runtime/cgo/callbacks.go.html#line-60">_cgo_thread_start</a> *<a href="../builtin.html#name-byte">byte</a></span></i></div><div class="anchor value-res hidden" id="name-_cgo_unsetenv"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo.._cgo_unsetenv^0909c.html">var</a> <a href="../../src/runtime/cgo/setenv.go.html#line-21">_cgo_unsetenv</a> *<a href="../builtin.html#name-byte">byte</a></span></i></div><div class="anchor value-res hidden" id="name-_cgo_yield"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo.._cgo_yield^4c874.html">var</a> <a href="../../src/runtime/cgo/callbacks.go.html#line-140">_cgo_yield</a> <a href="../unsafe.html">unsafe</a>.<a href="../unsafe.html#name-Pointer">Pointer</a></span></i></div><div class="anchor value-res hidden" id="name-_crosscall2_ptr"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo.._crosscall2_ptr^ae38a.html">var</a> <a href="../../src/runtime/cgo/callbacks.go.html#line-92">_crosscall2_ptr</a> *<a href="../builtin.html#name-byte">byte</a></span></i></div><div class="anchor value-res hidden" id="name-_iscgo"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo.._iscgo^0dc1e.html">var</a> <a href="../../src/runtime/cgo/iscgo.go.html#line-17">_iscgo</a> <a href="../builtin.html#name-bool">bool</a></span></i></div><div class="anchor value-res hidden" id="name-_set_crosscall2"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo.._set_crosscall2^8293b.html">var</a> <a href="../../src/runtime/cgo/callbacks.go.html#line-99">_set_crosscall2</a> func()</span></i></div><div class="anchor value-res hidden" id="name-cgo_libc_setegid"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo..cgo_libc_setegid^c45ec.html">var</a> <a href="../../src/runtime/cgo/linux.go.html#line-26">cgo_libc_setegid</a> <a href="../builtin.html#name-Pointer">Pointer</a></span></i></div><div class="anchor value-res hidden" id="name-cgo_libc_seteuid"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo..cgo_libc_seteuid^ff19c.html">var</a> <a href="../../src/runtime/cgo/linux.go.html#line-32">cgo_libc_seteuid</a> <a href="../builtin.html#name-Pointer">Pointer</a></span></i></div><div class="anchor value-res hidden" id="name-cgo_libc_setgid"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo..cgo_libc_setgid^c5c4c.html">var</a> <a href="../../src/runtime/cgo/linux.go.html#line-68">cgo_libc_setgid</a> <a href="../builtin.html#name-Pointer">Pointer</a></span></i></div><div class="anchor value-res hidden" id="name-cgo_libc_setgroups"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo..cgo_libc_setgroups^2d269.html">var</a> <a href="../../src/runtime/cgo/linux.go.html#line-62">cgo_libc_setgroups</a> <a href="../builtin.html#name-Pointer">Pointer</a></span></i></div><div class="anchor value-res hidden" id="name-cgo_libc_setregid"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo..cgo_libc_setregid^88390.html">var</a> <a href="../../src/runtime/cgo/linux.go.html#line-38">cgo_libc_setregid</a> <a href="../builtin.html#name-Pointer">Pointer</a></span></i></div><div class="anchor value-res hidden" id="name-cgo_libc_setresgid"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo..cgo_libc_setresgid^a5cce.html">var</a> <a href="../../src/runtime/cgo/linux.go.html#line-44">cgo_libc_setresgid</a> <a href="../builtin.html#name-Pointer">Pointer</a></span></i></div><div class="anchor value-res hidden" id="name-cgo_libc_setresuid"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo..cgo_libc_setresuid^47eb2.html">var</a> <a href="../../src/runtime/cgo/linux.go.html#line-50">cgo_libc_setresuid</a> <a href="../builtin.html#name-Pointer">Pointer</a></span></i></div><div class="anchor value-res hidden" id="name-cgo_libc_setreuid"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo..cgo_libc_setreuid^307a7.html">var</a> <a href="../../src/runtime/cgo/linux.go.html#line-56">cgo_libc_setreuid</a> <a href="../builtin.html#name-Pointer">Pointer</a></span></i></div><div class="anchor value-res hidden" id="name-cgo_libc_setuid"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo..cgo_libc_setuid^d1bed.html">var</a> <a href="../../src/runtime/cgo/linux.go.html#line-74">cgo_libc_setuid</a> <a href="../builtin.html#name-Pointer">Pointer</a></span></i></div><div class="anchor value-res hidden" id="name-handleIdx"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo..handleIdx^a5d80.html">var</a> <a href="../../src/runtime/cgo/handle.go.html#line-143">handleIdx</a> <a href="../sync/atomic.html">atomic</a>.<a href="../sync/atomic.html#name-Uintptr">Uintptr</a></span></i></div><div class="anchor value-res hidden" id="name-handles"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo..handles^53982.html">var</a> <a href="../../src/runtime/cgo/handle.go.html#line-142">handles</a> <a href="../sync.html">sync</a>.<a href="../sync.html#name-Map">Map</a> // <span class="md-text">map[Handle]interface{}</span></span></i></div><div class="anchor value-res hidden" id="name-x_cgo_bindm"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo..x_cgo_bindm^4be89.html">var</a> <a href="../../src/runtime/cgo/callbacks.go.html#line-107">x_cgo_bindm</a> <a href="../builtin.html#name-byte">byte</a></span></i></div><div class="anchor value-res hidden" id="name-x_cgo_callers"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo..x_cgo_callers^56a1c.html">var</a> <a href="../../src/runtime/cgo/callbacks_traceback.go.html#line-16">x_cgo_callers</a> <a href="../builtin.html#name-byte">byte</a></span></i></div><div class="anchor value-res hidden" id="name-x_cgo_getstackbound"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo..x_cgo_getstackbound^22ec2.html">var</a> <a href="../../src/runtime/cgo/callbacks.go.html#line-151">x_cgo_getstackbound</a> <a href="../builtin.html#name-byte">byte</a></span></i></div><div class="anchor value-res hidden" id="name-x_cgo_init"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo..x_cgo_init^8b5b9.html">var</a> <a href="../../src/runtime/cgo/callbacks.go.html#line-53">x_cgo_init</a> <a href="../builtin.html#name-byte">byte</a></span></i></div><div class="anchor value-res hidden" id="name-x_cgo_mmap"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo..x_cgo_mmap^04d78.html">var</a> <a href="../../src/runtime/cgo/mmap.go.html#line-24">x_cgo_mmap</a> <a href="../builtin.html#name-byte">byte</a></span></i></div><div class="anchor value-res hidden" id="name-x_cgo_munmap"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo..x_cgo_munmap^08b45.html">var</a> <a href="../../src/runtime/cgo/mmap.go.html#line-30">x_cgo_munmap</a> <a href="../builtin.html#name-byte">byte</a></span></i></div><div class="anchor value-res hidden" id="name-x_cgo_notify_runtime_init_done"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo..x_cgo_notify_runtime_init_done^cd845.html">var</a> <a href="../../src/runtime/cgo/callbacks.go.html#line-121">x_cgo_notify_runtime_init_done</a> <a href="../builtin.html#name-byte">byte</a></span></i></div><div class="anchor value-res hidden" id="name-x_cgo_pthread_key_created"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo..x_cgo_pthread_key_created^7aa0e.html">var</a> <a href="../../src/runtime/cgo/callbacks.go.html#line-82">x_cgo_pthread_key_created</a> <a href="../builtin.html#name-byte">byte</a></span></i></div><div class="anchor value-res hidden" id="name-x_cgo_set_context_function"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo..x_cgo_set_context_function^bed0d.html">var</a> <a href="../../src/runtime/cgo/callbacks.go.html#line-129">x_cgo_set_context_function</a> <a href="../builtin.html#name-byte">byte</a></span></i></div><div class="anchor value-res hidden" id="name-x_cgo_setenv"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo..x_cgo_setenv^44823.html">var</a> <a href="../../src/runtime/cgo/setenv.go.html#line-14">x_cgo_setenv</a> <a href="../builtin.html#name-byte">byte</a></span></i></div><div class="anchor value-res hidden" id="name-x_cgo_sigaction"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo..x_cgo_sigaction^48b5a.html">var</a> <a href="../../src/runtime/cgo/sigaction.go.html#line-21">x_cgo_sigaction</a> <a href="../builtin.html#name-byte">byte</a></span></i></div><div class="anchor value-res hidden" id="name-x_cgo_sys_thread_create"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo..x_cgo_sys_thread_create^dbbc5.html">var</a> <a href="../../src/runtime/cgo/callbacks.go.html#line-71">x_cgo_sys_thread_create</a> <a href="../builtin.html#name-byte">byte</a></span></i></div><div class="anchor value-res hidden" id="name-x_cgo_thread_start"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo..x_cgo_thread_start^65a4d.html">var</a> <a href="../../src/runtime/cgo/callbacks.go.html#line-59">x_cgo_thread_start</a> <a href="../builtin.html#name-byte">byte</a></span></i></div><div class="anchor value-res hidden" id="name-x_cgo_unsetenv"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo..x_cgo_unsetenv^8f67e.html">var</a> <a href="../../src/runtime/cgo/setenv.go.html#line-20">x_cgo_unsetenv</a> <a href="../builtin.html#name-byte">byte</a></span></i></div><div class="anchor value-res hidden" id="name-x_crosscall2_ptr"><i>	<span class="nodocs">  <a href="../../use/runtime/cgo..x_crosscall2_ptr^3227c.html">var</a> <a href="../../src/runtime/cgo/callbacks.go.html#line-91">x_crosscall2_ptr</a> <a href="../builtin.html#name-byte">byte</a></span></i></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

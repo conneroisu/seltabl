@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: internal/abi.InterfaceType.PkgPath</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/internal/abi.html">internal/abi</a>.<a href="../../src/internal/abi/type.go.html#line-421">InterfaceType</a>.<a href="../../src/internal/abi/type.go.html#line-423">PkgPath</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">12 uses</span>
+
+	internal/abi (current package)
+		<a href="../../src/internal/abi/type.go.html#line-423">type.go#L423</a>: 	<b>PkgPath</b> Name      // import path
+
+	<a href="../../pkg/internal/reflectlite.html">internal/reflectlite</a>
+		<a href="../../src/internal/reflectlite/type.go.html#line-466">type.go#L466</a>: 						tmPkgPath = t.<b>PkgPath</b>.Name()
+		<a href="../../src/internal/reflectlite/type.go.html#line-470" class="path-duplicate">type.go</a><a href="../../src/internal/reflectlite/type.go.html#line-470">#L470</a>: 						vmPkgPath = v.<b>PkgPath</b>.Name()
+		<a href="../../src/internal/reflectlite/type.go.html#line-499" class="path-duplicate">type.go</a><a href="../../src/internal/reflectlite/type.go.html#line-499">#L499</a>: 					tmPkgPath = t.<b>PkgPath</b>.Name()
+
+	<a href="../../pkg/reflect.html">reflect</a>
+		<a href="../../src/reflect/type.go.html#line-849">type.go#L849</a>: 			m.PkgPath = t.<b>PkgPath</b>.Name()
+		<a href="../../src/reflect/type.go.html#line-1310" class="path-duplicate">type.go</a><a href="../../src/reflect/type.go.html#line-1310">#L1310</a>: 						tmPkgPath = t.<b>PkgPath</b>.Name()
+		<a href="../../src/reflect/type.go.html#line-1314" class="path-duplicate">type.go</a><a href="../../src/reflect/type.go.html#line-1314">#L1314</a>: 						vmPkgPath = v.<b>PkgPath</b>.Name()
+		<a href="../../src/reflect/type.go.html#line-1343" class="path-duplicate">type.go</a><a href="../../src/reflect/type.go.html#line-1343">#L1343</a>: 					tmPkgPath = t.<b>PkgPath</b>.Name()
+
+	<a href="../../pkg/runtime.html">runtime</a>
+		<a href="../../src/runtime/iface.go.html#line-216">iface.go#L216</a>: 			ipkg = inter.<b>PkgPath</b>.Name()
+		<a href="../../src/runtime/type.go.html#line-70">type.go#L70</a>: 		return it.<b>PkgPath</b>.Name()
+		<a href="../../src/runtime/type.go.html#line-397" class="path-duplicate">type.go</a><a href="../../src/runtime/type.go.html#line-397">#L397</a>: 		if it.<b>PkgPath</b>.Name() != iv.<b>PkgPath</b>.Name() {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

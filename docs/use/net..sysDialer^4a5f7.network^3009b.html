@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net.sysDialer.network</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/net.html">net</a>.<a href="../src/net/dial.go.html#line-420">sysDialer</a>.<a href="../src/net/dial.go.html#line-422">network</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">21 uses</span>
+
+	net (current package)
+		<a href="../src/net/dial.go.html#line-422">dial.go#L422</a>: 	<b>network</b>, address string
+		<a href="../src/net/dial.go.html#line-497" class="path-duplicate">dial.go</a><a href="../src/net/dial.go.html#line-497">#L497</a>: 		<b>network</b>: network,
+		<a href="../src/net/dial.go.html#line-595" class="path-duplicate">dial.go</a><a href="../src/net/dial.go.html#line-595">#L595</a>: 			return nil, &amp;OpError{Op: "dial", Net: sd.<b>network</b>, Source: sd.LocalAddr, Addr: ra, Err: mapErr(ctx.Err())}
+		<a href="../src/net/dial.go.html#line-605" class="path-duplicate">dial.go</a><a href="../src/net/dial.go.html#line-605">#L605</a>: 					firstErr = &amp;OpError{Op: "dial", Net: sd.<b>network</b>, Source: sd.LocalAddr, Addr: ra, Err: err}
+		<a href="../src/net/dial.go.html#line-626" class="path-duplicate">dial.go</a><a href="../src/net/dial.go.html#line-626">#L626</a>: 		firstErr = &amp;OpError{Op: "dial", Net: sd.<b>network</b>, Source: nil, Addr: nil, Err: errMissingAddress}
+		<a href="../src/net/dial.go.html#line-638" class="path-duplicate">dial.go</a><a href="../src/net/dial.go.html#line-638">#L638</a>: 			trace.ConnectStart(sd.<b>network</b>, raStr)
+		<a href="../src/net/dial.go.html#line-641" class="path-duplicate">dial.go</a><a href="../src/net/dial.go.html#line-641">#L641</a>: 			defer func() { trace.ConnectDone(sd.<b>network</b>, raStr, err) }()
+		<a href="../src/net/dial.go.html#line-663" class="path-duplicate">dial.go</a><a href="../src/net/dial.go.html#line-663">#L663</a>: 		return nil, &amp;OpError{Op: "dial", Net: sd.<b>network</b>, Source: la, Addr: ra, Err: &amp;AddrError{Err: "unexpected address type", Addr: sd.address}}
+		<a href="../src/net/dial.go.html#line-666" class="path-duplicate">dial.go</a><a href="../src/net/dial.go.html#line-666">#L666</a>: 		return nil, &amp;OpError{Op: "dial", Net: sd.<b>network</b>, Source: la, Addr: ra, Err: err} // c is non-nil interface containing nil pointer
+		<a href="../src/net/iprawsock.go.html#line-215">iprawsock.go#L215</a>: 	sd := &amp;sysDialer{<b>network</b>: network, address: raddr.String()}
+		<a href="../src/net/iprawsock_posix.go.html#line-116">iprawsock_posix.go#L116</a>: 	network, proto, err := parseNetwork(ctx, sd.<b>network</b>, true)
+		<a href="../src/net/iprawsock_posix.go.html#line-123" class="path-duplicate">iprawsock_posix.go</a><a href="../src/net/iprawsock_posix.go.html#line-123">#L123</a>: 		return nil, UnknownNetworkError(sd.<b>network</b>)
+		<a href="../src/net/tcpsock.go.html#line-281">tcpsock.go#L281</a>: 	sd := &amp;sysDialer{<b>network</b>: network, address: raddr.String()}
+		<a href="../src/net/tcpsock_posix.go.html#line-66">tcpsock_posix.go#L66</a>: 		return h(ctx, sd.<b>network</b>, laddr, raddr)
+		<a href="../src/net/tcpsock_posix.go.html#line-69" class="path-duplicate">tcpsock_posix.go</a><a href="../src/net/tcpsock_posix.go.html#line-69">#L69</a>: 		return h(ctx, sd.<b>network</b>, laddr, raddr)
+		<a href="../src/net/tcpsock_posix.go.html#line-85" class="path-duplicate">tcpsock_posix.go</a><a href="../src/net/tcpsock_posix.go.html#line-85">#L85</a>: 	fd, err := internetSocket(ctx, sd.<b>network</b>, laddr, raddr, syscall.SOCK_STREAM, proto, "dial", ctrlCtxFn)
+		<a href="../src/net/tcpsock_posix.go.html#line-115" class="path-duplicate">tcpsock_posix.go</a><a href="../src/net/tcpsock_posix.go.html#line-115">#L115</a>: 		fd, err = internetSocket(ctx, sd.<b>network</b>, laddr, raddr, syscall.SOCK_STREAM, proto, "dial", ctrlCtxFn)
+		<a href="../src/net/udpsock.go.html#line-299">udpsock.go#L299</a>: 	sd := &amp;sysDialer{<b>network</b>: network, address: raddr.String()}
+		<a href="../src/net/udpsock_posix.go.html#line-212">udpsock_posix.go#L212</a>: 	fd, err := internetSocket(ctx, sd.<b>network</b>, laddr, raddr, syscall.SOCK_DGRAM, 0, "dial", ctrlCtxFn)
+		<a href="../src/net/unixsock.go.html#line-209">unixsock.go#L209</a>: 	sd := &amp;sysDialer{<b>network</b>: network, address: raddr.String()}
+		<a href="../src/net/unixsock_posix.go.html#line-164">unixsock_posix.go#L164</a>: 	fd, err := unixSocket(ctx, sd.<b>network</b>, laddr, raddr, "dial", ctrlCtxFn)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

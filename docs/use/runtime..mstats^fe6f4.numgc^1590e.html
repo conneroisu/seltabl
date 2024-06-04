@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.mstats.numgc</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/mstats.go.html#line-14">mstats</a>.<a href="../src/runtime/mstats.go.html#line-39">numgc</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">12 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/metrics.go.html#line-653">metrics.go#L653</a>: 	a.gcCyclesDone = uint64(memstats.<b>numgc</b>)
+		<a href="../src/runtime/mgc.go.html#line-1017">mgc.go#L1017</a>: 	memstats.pause_ns[memstats.<b>numgc</b>%uint32(len(memstats.pause_ns))] = uint64(work.pauseNS)
+		<a href="../src/runtime/mgc.go.html#line-1018" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1018">#L1018</a>: 	memstats.pause_end[memstats.<b>numgc</b>%uint32(len(memstats.pause_end))] = uint64(unixNow)
+		<a href="../src/runtime/mgc.go.html#line-1050" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1050">#L1050</a>: 	memstats.<b>numgc</b>++
+		<a href="../src/runtime/mgc.go.html#line-1153" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1153">#L1153</a>: 		print("gc ", memstats.<b>numgc</b>,
+		<a href="../src/runtime/mgclimit.go.html#line-282">mgclimit.go#L282</a>: 			l.lastEnabledCycle.Store(memstats.<b>numgc</b> + 1)
+		<a href="../src/runtime/mgclimit.go.html#line-334" class="path-duplicate">mgclimit.go</a><a href="../src/runtime/mgclimit.go.html#line-334">#L334</a>: 		l.lastEnabledCycle.Store(memstats.<b>numgc</b> + 1)
+		<a href="../src/runtime/mstats.go.html#line-39">mstats.go#L39</a>: 	<b>numgc</b>           uint32
+		<a href="../src/runtime/mstats.go.html#line-552" class="path-duplicate">mstats.go</a><a href="../src/runtime/mstats.go.html#line-552">#L552</a>: 	stats.NumGC = memstats.<b>numgc</b>
+		<a href="../src/runtime/mstats.go.html#line-585" class="path-duplicate">mstats.go</a><a href="../src/runtime/mstats.go.html#line-585">#L585</a>: 	n := memstats.<b>numgc</b>
+		<a href="../src/runtime/mstats.go.html#line-596" class="path-duplicate">mstats.go</a><a href="../src/runtime/mstats.go.html#line-596">#L596</a>: 		j := (memstats.<b>numgc</b> - 1 - i) % uint32(len(memstats.pause_ns))
+		<a href="../src/runtime/mstats.go.html#line-602" class="path-duplicate">mstats.go</a><a href="../src/runtime/mstats.go.html#line-602">#L602</a>: 	p[n+n+1] = uint64(memstats.<b>numgc</b>)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: sync.Map.LoadOrStore</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/sync.html">sync</a>.<a href="../src/sync/map.go.html#line-35">Map</a>.<a href="../src/sync/map.go.html#line-203">LoadOrStore</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">14 uses</span>
+
+	sync (current package)
+		<a href="../src/sync/map.go.html#line-203">map.go#L203</a>: func (m *Map) <b>LoadOrStore</b>(key, value any) (actual any, loaded bool) {
+
+	<a href="../pkg/crypto/tls.html">crypto/tls</a>
+		<a href="../src/crypto/tls/cache.go.html#line-91">cache.go#L91</a>: 	if entry, loaded := cc.<b>LoadOrStore</b>(string(der), entry); loaded {
+
+	<a href="../pkg/internal/godebug.html">internal/godebug</a>
+		<a href="../src/internal/godebug/godebug.go.html#line-159">godebug.go#L159</a>: 	if v, loaded := cache.<b>LoadOrStore</b>(name, s); loaded {
+
+	<a href="../pkg/reflect.html">reflect</a>
+		<a href="../src/reflect/type.go.html#line-1209">type.go#L1209</a>: 		pi, _ := ptrMap.<b>LoadOrStore</b>(t, p)
+		<a href="../src/reflect/type.go.html#line-1231" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1231">#L1231</a>: 	pi, _ := ptrMap.<b>LoadOrStore</b>(t, &amp;pp)
+		<a href="../src/reflect/type.go.html#line-1633" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1633">#L1633</a>: 			ti, _ := lookupCache.<b>LoadOrStore</b>(ckey, toRType(tt))
+		<a href="../src/reflect/type.go.html#line-1648" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1648">#L1648</a>: 	ti, _ := lookupCache.<b>LoadOrStore</b>(ckey, toRType(&amp;ch.Type))
+		<a href="../src/reflect/type.go.html#line-1677" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1677">#L1677</a>: 			ti, _ := lookupCache.<b>LoadOrStore</b>(ckey, toRType(tt))
+		<a href="../src/reflect/type.go.html#line-1721" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1721">#L1721</a>: 	ti, _ := lookupCache.<b>LoadOrStore</b>(ckey, toRType(&amp;mt.Type))
+		<a href="../src/reflect/type.go.html#line-2095" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2095">#L2095</a>: 			ti, _ := lookupCache.<b>LoadOrStore</b>(ckey, toRType(tt))
+		<a href="../src/reflect/type.go.html#line-2110" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2110">#L2110</a>: 	ti, _ := lookupCache.<b>LoadOrStore</b>(ckey, toRType(&amp;slice.Type))
+		<a href="../src/reflect/type.go.html#line-2611" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2611">#L2611</a>: 			ti, _ := lookupCache.<b>LoadOrStore</b>(ckey, toRType(tt))
+		<a href="../src/reflect/type.go.html#line-2724" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2724">#L2724</a>: 	ti, _ := lookupCache.<b>LoadOrStore</b>(ckey, toRType(&amp;array.Type))
+		<a href="../src/reflect/type.go.html#line-2810" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2810">#L2810</a>: 	lti, _ := layoutCache.<b>LoadOrStore</b>(k, layoutType{
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

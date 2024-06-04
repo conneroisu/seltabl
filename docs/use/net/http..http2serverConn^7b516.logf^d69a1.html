@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/http.http2serverConn.logf</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/net/http.html">net/http</a>.<a href="../../src/net/http/h2_bundle.go.html#line-4365">http2serverConn</a>.<a href="../../src/net/http/h2_bundle.go.html#line-4525">logf</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">9 uses</span>
+
+	net/http (current package)
+		<a href="../../src/net/http/h2_bundle.go.html#line-4521">h2_bundle.go#L4521</a>: 		sc.<b>logf</b>(format, args...)
+		<a href="../../src/net/http/h2_bundle.go.html#line-4525" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-4525">#L4525</a>: func (sc *http2serverConn) <b>logf</b>(format string, args ...interface{}) {
+		<a href="../../src/net/http/h2_bundle.go.html#line-4585" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-4585">#L4585</a>: 		sc.<b>logf</b>(format, args...)
+		<a href="../../src/net/http/h2_bundle.go.html#line-4793" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-4793">#L4793</a>: 					sc.<b>logf</b>("timeout waiting for SETTINGS frames from %v", sc.conn.RemoteAddr())
+		<a href="../../src/net/http/h2_bundle.go.html#line-5308" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5308">#L5308</a>: 		sc.<b>logf</b>("http2: server connection error from %v: %v", sc.conn.RemoteAddr(), ev)
+		<a href="../../src/net/http/h2_bundle.go.html#line-5315" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5315">#L5315</a>: 			sc.<b>logf</b>("http2: server closing client connection: %v", err)
+		<a href="../../src/net/http/h2_bundle.go.html#line-5678" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5678">#L5678</a>: 		sc.<b>logf</b>("http2: received GOAWAY %+v, starting graceful shutdown", f)
+		<a href="../../src/net/http/h2_bundle.go.html#line-6186" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-6186">#L6186</a>: 				sc.<b>logf</b>("http2: panic serving %v: %v\n%s", sc.conn.RemoteAddr(), e, buf)
+		<a href="../../src/net/http/h2_bundle.go.html#line-6414" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-6414">#L6414</a>: 		rws.conn.<b>logf</b>("ignoring invalid trailer %q", k)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.srcFunc</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/symtab.go.html#line-802">srcFunc</a></b></span>
+
+<span class="title">9 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/symtab.go.html#line-802">symtab.go#L802</a>: type <b>srcFunc</b> struct {
+		<a href="../src/runtime/symtab.go.html#line-809" class="path-duplicate">symtab.go</a><a href="../src/runtime/symtab.go.html#line-809">#L809</a>: func (f funcInfo) srcFunc() <b>srcFunc</b> {
+		<a href="../src/runtime/symtab.go.html#line-811" class="path-duplicate">symtab.go</a><a href="../src/runtime/symtab.go.html#line-811">#L811</a>: 		return <b>srcFunc</b>{}
+		<a href="../src/runtime/symtab.go.html#line-813" class="path-duplicate">symtab.go</a><a href="../src/runtime/symtab.go.html#line-813">#L813</a>: 	return <b>srcFunc</b>{f.datap, f.nameOff, f.startLine, f.funcID}
+		<a href="../src/runtime/symtab.go.html#line-816" class="path-duplicate">symtab.go</a><a href="../src/runtime/symtab.go.html#line-816">#L816</a>: func (s <b>srcFunc</b>) name() string {
+		<a href="../src/runtime/symtabinl.go.html#line-93">symtabinl.go#L93</a>: func (u *inlineUnwinder) srcFunc(uf inlineFrame) <b>srcFunc</b> {
+		<a href="../src/runtime/symtabinl.go.html#line-98" class="path-duplicate">symtabinl.go</a><a href="../src/runtime/symtabinl.go.html#line-98">#L98</a>: 	return <b>srcFunc</b>{
+		<a href="../src/runtime/traceback.go.html#line-1117">traceback.go#L1117</a>: func showframe(sf <b>srcFunc</b>, gp *g, firstFrame bool, calleeID abi.FuncID) bool {
+		<a href="../src/runtime/traceback.go.html#line-1127" class="path-duplicate">traceback.go</a><a href="../src/runtime/traceback.go.html#line-1127">#L1127</a>: func showfuncinfo(sf <b>srcFunc</b>, firstFrame bool, calleeID abi.FuncID) bool {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

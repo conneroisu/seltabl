@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto.SHA256</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../pkg/crypto.html">crypto</a>.<a href="../src/crypto/crypto.go.html#line-73">SHA256</a></b></span>
+
+<span class="title">18 uses</span>
+
+	crypto (current package)
+		<a href="../src/crypto/crypto.go.html#line-33">crypto.go#L33</a>: 	case <b>SHA256</b>:
+		<a href="../src/crypto/crypto.go.html#line-73" class="path-duplicate">crypto.go</a><a href="../src/crypto/crypto.go.html#line-73">#L73</a>: 	<b>SHA256</b>                      // import crypto/sha256
+		<a href="../src/crypto/crypto.go.html#line-96" class="path-duplicate">crypto.go</a><a href="../src/crypto/crypto.go.html#line-96">#L96</a>: 	<b>SHA256</b>:      32,
+
+	<a href="../pkg/crypto/rsa.html">crypto/rsa</a>
+		<a href="../src/crypto/rsa/pkcs1v15.go.html#line-268">pkcs1v15.go#L268</a>: 	crypto.<b>SHA256</b>:    {0x30, 0x31, 0x30, 0x0d, 0x06, 0x09, 0x60, 0x86, 0x48, 0x01, 0x65, 0x03, 0x04, 0x02, 0x01, 0x05, 0x00, 0x04, 0x20},
+
+	<a href="../pkg/crypto/sha256.html">crypto/sha256</a>
+		<a href="../src/crypto/sha256/sha256.go.html#line-19">sha256.go#L19</a>: 	crypto.RegisterHash(crypto.<b>SHA256</b>, New)
+
+	<a href="../pkg/crypto/tls.html">crypto/tls</a>
+		<a href="../src/crypto/tls/auth.go.html#line-115">auth.go#L115</a>: 		hash = crypto.<b>SHA256</b>
+		<a href="../src/crypto/tls/auth.go.html#line-155" class="path-duplicate">auth.go</a><a href="../src/crypto/tls/auth.go.html#line-155">#L155</a>: 	{PSSWithSHA256, crypto.<b>SHA256</b>.Size()*2 + 2, VersionTLS13},
+		<a href="../src/crypto/tls/auth.go.html#line-161" class="path-duplicate">auth.go</a><a href="../src/crypto/tls/auth.go.html#line-161">#L161</a>: 	{PKCS1WithSHA256, 19 + crypto.<b>SHA256</b>.Size() + 11, VersionTLS12},
+		<a href="../src/crypto/tls/cipher_suites.go.html#line-201">cipher_suites.go#L201</a>: 	{TLS_AES_128_GCM_SHA256, 16, aeadAESGCMTLS13, crypto.<b>SHA256</b>},
+		<a href="../src/crypto/tls/cipher_suites.go.html#line-202" class="path-duplicate">cipher_suites.go</a><a href="../src/crypto/tls/cipher_suites.go.html#line-202">#L202</a>: 	{TLS_CHACHA20_POLY1305_SHA256, 32, aeadChaCha20Poly1305, crypto.<b>SHA256</b>},
+		<a href="../src/crypto/tls/prf.go.html#line-96">prf.go#L96</a>: 		return prf12(sha256.New), crypto.<b>SHA256</b>
+
+	<a href="../pkg/crypto/x509.html">crypto/x509</a>
+		<a href="../src/crypto/x509/x509.go.html#line-366">x509.go#L366</a>: 	{SHA256WithRSA, "SHA256-RSA", oidSignatureSHA256WithRSA, RSA, crypto.<b>SHA256</b>},
+		<a href="../src/crypto/x509/x509.go.html#line-369" class="path-duplicate">x509.go</a><a href="../src/crypto/x509/x509.go.html#line-369">#L369</a>: 	{SHA256WithRSAPSS, "SHA256-RSAPSS", oidSignatureRSAPSS, RSA, crypto.<b>SHA256</b>},
+		<a href="../src/crypto/x509/x509.go.html#line-373" class="path-duplicate">x509.go</a><a href="../src/crypto/x509/x509.go.html#line-373">#L373</a>: 	{DSAWithSHA256, "DSA-SHA256", oidSignatureDSAWithSHA256, DSA, crypto.<b>SHA256</b>},
+		<a href="../src/crypto/x509/x509.go.html#line-375" class="path-duplicate">x509.go</a><a href="../src/crypto/x509/x509.go.html#line-375">#L375</a>: 	{ECDSAWithSHA256, "ECDSA-SHA256", oidSignatureECDSAWithSHA256, ECDSA, crypto.<b>SHA256</b>},
+		<a href="../src/crypto/x509/x509.go.html#line-389" class="path-duplicate">x509.go</a><a href="../src/crypto/x509/x509.go.html#line-389">#L389</a>: 	crypto.<b>SHA256</b>: asn1.RawValue{FullBytes: []byte{48, 52, 160, 15, 48, 13, 6, 9, 96, 134, 72, 1, 101, 3, 4, 2, 1, 5, 0, 161, 28, 48, 26, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 8, 48, 13, 6, 9, 96, 134, 72, 1, 101, 3, 4, 2, 1, 5, 0, 162, 3, 2, 1, 32}},
+		<a href="../src/crypto/x509/x509.go.html#line-1448" class="path-duplicate">x509.go</a><a href="../src/crypto/x509/x509.go.html#line-1448">#L1448</a>: 		hashFunc = crypto.<b>SHA256</b>
+		<a href="../src/crypto/x509/x509.go.html#line-1457" class="path-duplicate">x509.go</a><a href="../src/crypto/x509/x509.go.html#line-1457">#L1457</a>: 			hashFunc = crypto.<b>SHA256</b>
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: time.absWeekday</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/time.html">time</a>.<a href="../src/time/time.go.html#line-539">absWeekday</a></b></span>
+
+<span class="title">5 uses</span>
+
+	time (current package)
+		<a href="../src/time/format.go.html#line-702">format.go#L702</a>: 			b = append(b, <b>absWeekday</b>(abs).String()[:3]...)
+		<a href="../src/time/format.go.html#line-704" class="path-duplicate">format.go</a><a href="../src/time/format.go.html#line-704">#L704</a>: 			s := <b>absWeekday</b>(abs).String()
+		<a href="../src/time/time.go.html#line-535">time.go#L535</a>: 	return <b>absWeekday</b>(t.abs())
+		<a href="../src/time/time.go.html#line-539" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-539">#L539</a>: func <b>absWeekday</b>(abs uint64) Weekday {
+		<a href="../src/time/time.go.html#line-561" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-561">#L561</a>: 	d := Thursday - <b>absWeekday</b>(abs)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

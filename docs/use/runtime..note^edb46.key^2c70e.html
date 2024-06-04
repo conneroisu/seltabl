@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.note.key</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/runtime2.go.html#line-193">note</a>.<a href="../src/runtime/runtime2.go.html#line-197">key</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">12 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/lock_futex.go.html#line-146">lock_futex.go#L146</a>: 	n.<b>key</b> = 0
+		<a href="../src/runtime/lock_futex.go.html#line-150" class="path-duplicate">lock_futex.go</a><a href="../src/runtime/lock_futex.go.html#line-150">#L150</a>: 	old := atomic.Xchg(key32(&amp;n.<b>key</b>), 1)
+		<a href="../src/runtime/lock_futex.go.html#line-155" class="path-duplicate">lock_futex.go</a><a href="../src/runtime/lock_futex.go.html#line-155">#L155</a>: 	futexwakeup(key32(&amp;n.<b>key</b>), 1)
+		<a href="../src/runtime/lock_futex.go.html#line-168" class="path-duplicate">lock_futex.go</a><a href="../src/runtime/lock_futex.go.html#line-168">#L168</a>: 	for atomic.Load(key32(&amp;n.<b>key</b>)) == 0 {
+		<a href="../src/runtime/lock_futex.go.html#line-170" class="path-duplicate">lock_futex.go</a><a href="../src/runtime/lock_futex.go.html#line-170">#L170</a>: 		futexsleep(key32(&amp;n.<b>key</b>), 0, ns)
+		<a href="../src/runtime/lock_futex.go.html#line-191" class="path-duplicate">lock_futex.go</a><a href="../src/runtime/lock_futex.go.html#line-191">#L191</a>: 		for atomic.Load(key32(&amp;n.<b>key</b>)) == 0 {
+		<a href="../src/runtime/lock_futex.go.html#line-193" class="path-duplicate">lock_futex.go</a><a href="../src/runtime/lock_futex.go.html#line-193">#L193</a>: 			futexsleep(key32(&amp;n.<b>key</b>), 0, ns)
+		<a href="../src/runtime/lock_futex.go.html#line-202" class="path-duplicate">lock_futex.go</a><a href="../src/runtime/lock_futex.go.html#line-202">#L202</a>: 	if atomic.Load(key32(&amp;n.<b>key</b>)) != 0 {
+		<a href="../src/runtime/lock_futex.go.html#line-212" class="path-duplicate">lock_futex.go</a><a href="../src/runtime/lock_futex.go.html#line-212">#L212</a>: 		futexsleep(key32(&amp;n.<b>key</b>), 0, ns)
+		<a href="../src/runtime/lock_futex.go.html#line-217" class="path-duplicate">lock_futex.go</a><a href="../src/runtime/lock_futex.go.html#line-217">#L217</a>: 		if atomic.Load(key32(&amp;n.<b>key</b>)) != 0 {
+		<a href="../src/runtime/lock_futex.go.html#line-226" class="path-duplicate">lock_futex.go</a><a href="../src/runtime/lock_futex.go.html#line-226">#L226</a>: 	return atomic.Load(key32(&amp;n.<b>key</b>)) != 0
+		<a href="../src/runtime/runtime2.go.html#line-197">runtime2.go#L197</a>: 	<b>key</b> uintptr
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

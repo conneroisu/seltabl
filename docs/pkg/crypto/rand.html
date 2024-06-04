@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: crypto/rand</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>rand</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../index.html#pkg-crypto/rand">crypto/rand</a><i> (on <a href="https://pkg.go.dev/crypto/rand" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../../dep/crypto/rand.html">12 packages</a>, and imported by <a href="../../dep/crypto/rand.html#imported-by">5 packages</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<input type='checkbox' checked class="fold" id="file-0-fold-content"><label for="file-0-fold-content">  <a href="../../src/crypto/rand/rand.go.html#doc">d</a> <a href="../../src/crypto/rand/rand.go.html">rand.go</a></label><span id='file-0-fold-content-items' class="fold-items">
+<span class="md-text">		Package rand implements a cryptographically secure
+		random number generator.</span>
+</span>
+	<span class="nodocs">    <a href="../../src/crypto/rand/rand_getrandom.go.html">rand_getrandom.go</a></span>
+	<span class="nodocs">    <a href="../../src/crypto/rand/rand_unix.go.html">rand_unix.go</a></span>
+	<span class="nodocs">    <a href="../../src/crypto/rand/util.go.html">util.go</a></span></div>
+<div id="examples"><span class="title">Code Examples</span>
+
+	<input type='checkbox' class="fold" id="example-0-fold-content"><label for="example-0-fold-content">Read</label><span id='example-0-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"crypto/rand"
+			"fmt"
+		)
+		
+		func main() {
+			c := 10
+			b := make([]byte, c)
+			_, err := rand.Read(b)
+			if err != nil {
+				fmt.Println("error:", err)
+				return
+			}
+			// The slice should now contain random bytes instead of only zeroes.
+			fmt.Println(bytes.Equal(b, make([]byte, c)))
+		
+		}
+</span>
+</div>
+<div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (total 2, neither is exported)</i></span></span>
+
+<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div></div><div>	<input type='checkbox' class="showhide" id="unexported-typenames-showhide"><i><label for="unexported-typenames-showhide" class="show-inline">/* 2 unexporteds ... */</label><label for="unexported-typenames-showhide" class="hide-inline">/* 2 unexporteds: */</label></i><div class="anchor type-res hidden" id="name-hideAgainReader" data-popularity="100">	<input type='checkbox' class="fold" id="hideAgainReader-fold-content"><label for="hideAgainReader-fold-content"> <a href="../../use/crypto/rand..hideAgainReader^0f0e0.html">type</a> <a href="../../src/crypto/rand/rand_unix.go.html#line-77">hideAgainReader</a> <i>(struct)</i></label><span id='hideAgainReader-fold-content-docs' class="fold-docs">
+<span class="md-text">		hideAgainReader masks EAGAIN reads from /dev/urandom.
+		See golang.org/issue/9205</span>
+
+		<input type='checkbox' class="fold" id="hideAgainReader-fold-fields"><label for="hideAgainReader-fold-fields">Fields (<i>only one, which is unexported</i>)</label><span id='hideAgainReader-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="hideAgainReader-showhide-fields"><i><label for="hideAgainReader-showhide-fields" class="show-inline">/* one unexported ... */</label><label for="hideAgainReader-showhide-fields" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/crypto/rand/rand_unix.go.html#line-78">r</a> <i><a href="../io.html">io</a>.<a href="../io.html#name-Reader">Reader</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="hideAgainReader-fold-methods"><label for="hideAgainReader-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='hideAgainReader-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( hideAgainReader) <a href="../../src/crypto/rand/rand_unix.go.html#line-81">Read</a>(p []<a href="../builtin.html#name-byte">byte</a>) (n <a href="../builtin.html#name-int">int</a>, err <a href="../builtin.html#name-error">error</a>)</span></span></span>
+		<input type='checkbox' class="fold" id="hideAgainReader-fold-impls"><label for="hideAgainReader-fold-impls">Implements (<i>at least one exported</i>)</label><span id='hideAgainReader-fold-impls-items' class="fold-items"><span>
+			 hideAgainReader : io.<a href="../io.html#name-Reader">Reader</a></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-reader" data-popularity="100">	<input type='checkbox' class="fold" id="reader-fold-content"><label for="reader-fold-content"> <a href="../../use/crypto/rand..reader^3d094.html">type</a> <a href="../../src/crypto/rand/rand_unix.go.html#line-34">reader</a> <i>(struct)</i></label><span id='reader-fold-content-docs' class="fold-docs">
+<span class="md-text">		A reader satisfies reads by reading from urandomDevice</span>
+
+		<input type='checkbox' class="fold" id="reader-fold-fields"><label for="reader-fold-fields">Fields (<i>total 3, none are exported</i>)</label><span id='reader-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="reader-showhide-fields"><i><label for="reader-showhide-fields" class="show-inline">/* 3 unexporteds ... */</label><label for="reader-showhide-fields" class="hide-inline">/* 3 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/crypto/rand/rand_unix.go.html#line-35">f</a> <i><a href="../io.html">io</a>.<a href="../io.html#name-Reader">Reader</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/crypto/rand/rand_unix.go.html#line-36">mu</a> <i><a href="../sync.html">sync</a>.<a href="../sync.html#name-Mutex">Mutex</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="reader-fold-field-used"><label for="reader-fold-field-used"><a href="../../src/crypto/rand/rand_unix.go.html#line-37">used</a> <i><a href="../sync/atomic.html">atomic</a>.<a href="../sync/atomic.html#name-Uint32">Uint32</a></i></label><span id='reader-fold-field-used-docs' class="fold-docs">
+<span class="md-text">				// Atomic: 0 - never used, 1 - used, but f == nil, 2 - used, and f != nil</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="reader-fold-methods"><label for="reader-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='reader-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">(*reader) <a href="../../src/crypto/rand/rand_unix.go.html#line-48">Read</a>(b []<a href="../builtin.html#name-byte">byte</a>) (n <a href="../builtin.html#name-int">int</a>, err <a href="../builtin.html#name-error">error</a>)</span></span></span>
+		<input type='checkbox' class="fold" id="reader-fold-impls"><label for="reader-fold-impls">Implements (<i>at least one exported</i>)</label><span id='reader-fold-impls-items' class="fold-items"><span>
+			*reader : io.<a href="../io.html#name-Reader">Reader</a></span></span>
+
+</span></div></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 8, in which 3 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-Int">	<input type='checkbox' class="fold" id="Int-fold-content"><label for="Int-fold-content"> <a href="../../use/crypto/rand..Int.html">func</a> <a href="../../src/crypto/rand/util.go.html#line-62">Int</a>(rand <a href="../io.html">io</a>.<a href="../io.html#name-Reader">Reader</a>, max *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>) (n *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>, err <a href="../builtin.html#name-error">error</a>)</label><span id='Int-fold-content-docs' class="fold-docs">
+<span class="md-text">		Int returns a uniform random value in [0, max). It panics if max &lt;= 0.</span>
+
+</span></div><div class="anchor value-res" id="name-Prime">	<input type='checkbox' class="fold" id="Prime-fold-content"><label for="Prime-fold-content"> <a href="../../use/crypto/rand..Prime.html">func</a> <a href="../../src/crypto/rand/util.go.html#line-16">Prime</a>(rand <a href="../io.html">io</a>.<a href="../io.html#name-Reader">Reader</a>, bits <a href="../builtin.html#name-int">int</a>) (*<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>, <a href="../builtin.html#name-error">error</a>)</label><span id='Prime-fold-content-docs' class="fold-docs">
+<span class="md-text">		Prime returns a number of the given bit length that is prime with high probability.
+		Prime will return error for any error returned by [rand.Read] or if bits &lt; 2.</span>
+
+</span></div><div class="anchor value-res" id="name-Read">	<input type='checkbox' class="fold" id="Read-fold-content"><label for="Read-fold-content"> <a href="../../use/crypto/rand..Read.html">func</a> <a href="../../src/crypto/rand/rand.go.html#line-25">Read</a>(b []<a href="../builtin.html#name-byte">byte</a>) (n <a href="../builtin.html#name-int">int</a>, err <a href="../builtin.html#name-error">error</a>)</label><span id='Read-fold-content-docs' class="fold-docs">
+<span class="md-text">		Read is a helper function that calls Reader.Read using io.ReadFull.
+		On return, n == len(b) if and only if err == nil.</span>
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-functions-showhide"><i><label for="unexported-functions-showhide" class="show-inline">/* 5 unexporteds ... */</label><label for="unexported-functions-showhide" class="hide-inline">/* 5 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-batched"><i>	<input type='checkbox' class="fold" id="batched-fold-content"><label for="batched-fold-content"> <a href="../../use/crypto/rand..batched^8425f.html">func</a> <a href="../../src/crypto/rand/rand.go.html#line-31">batched</a>(f func([]<a href="../builtin.html#name-byte">byte</a>) <a href="../builtin.html#name-error">error</a>, readMax <a href="../builtin.html#name-int">int</a>) func([]<a href="../builtin.html#name-byte">byte</a>) <a href="../builtin.html#name-error">error</a></label><span id='batched-fold-content-docs' class="fold-docs">
+<span class="md-text">		batched returns a function that calls f to populate a []byte by chunking it
+		into subslices of, at most, readMax bytes.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-getRandom"><i>	<input type='checkbox' class="fold" id="getRandom-fold-content"><label for="getRandom-fold-content"> <a href="../../use/crypto/rand..getRandom^d699c.html">func</a> <a href="../../src/crypto/rand/rand_getrandom.go.html#line-39">getRandom</a>(p []<a href="../builtin.html#name-byte">byte</a>) <a href="../builtin.html#name-error">error</a></label><span id='getRandom-fold-content-docs' class="fold-docs">
+<span class="md-text">		If the kernel is too old to support the getrandom syscall(),
+		unix.GetRandom will immediately return ENOSYS and we will then fall back to
+		reading from /dev/urandom in rand_unix.go. unix.GetRandom caches the ENOSYS
+		result so we only suffer the syscall overhead once in this case.
+		If the kernel supports the getrandom() syscall, unix.GetRandom will block
+		until the kernel has sufficient randomness (as we don't use GRND_NONBLOCK).
+		In this case, unix.GetRandom will not return an error.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-init"><i>	<span class="nodocs"> <a href="../../use/crypto/rand..init^bb540.html">func</a> <a href="../../src/crypto/rand/rand_getrandom.go.html#line-15">init</a>()</span></i></div><div class="anchor value-res hidden" id="name-init"><i>	<span class="nodocs"> <a href="../../use/crypto/rand..init^bb540.html">func</a> <a href="../../src/crypto/rand/rand_unix.go.html#line-25">init</a>()</span></i></div><div class="anchor value-res hidden" id="name-warnBlocked"><i>	<span class="nodocs"> <a href="../../use/crypto/rand..warnBlocked^30ce8.html">func</a> <a href="../../src/crypto/rand/rand_unix.go.html#line-44">warnBlocked</a>()</span></i></div></div>
+<div id="exported-variables"><span class="title">Package-Level Variables<span class="title-stat"><i> (total 2, in which 1 is exported)</i></span></span>
+
+<div class="anchor value-res" id="name-Reader">	<input type='checkbox' class="fold" id="Reader-fold-content"><label for="Reader-fold-content">  <a href="../../use/crypto/rand..Reader.html">var</a> <a href="../../src/crypto/rand/rand.go.html#line-21">Reader</a> <a href="../io.html">io</a>.<a href="../io.html#name-Reader">Reader</a></label><span id='Reader-fold-content-docs' class="fold-docs">
+<span class="md-text">		Reader is a global, shared instance of a cryptographically
+		secure random number generator.
+		
+		On Linux, FreeBSD, Dragonfly, NetBSD and Solaris, Reader uses getrandom(2) if
+		available, /dev/urandom otherwise.
+		On OpenBSD and macOS, Reader uses getentropy(2).
+		On other Unix-like systems, Reader reads from /dev/urandom.
+		On Windows systems, Reader uses the ProcessPrng API.
+		On JS/Wasm, Reader uses the Web Crypto API.
+		On WASIP1/Wasm, Reader uses random_get from wasi_snapshot_preview1.</span>
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-variables-showhide"><i><label for="unexported-variables-showhide" class="show-inline">/* one unexported ... */</label><label for="unexported-variables-showhide" class="hide-inline">/* one unexported: */</label></i><div class="anchor value-res hidden" id="name-altGetRandom"><i>	<input type='checkbox' class="fold" id="altGetRandom-fold-content"><label for="altGetRandom-fold-content">  <a href="../../use/crypto/rand..altGetRandom^fa3d3.html">var</a> <a href="../../src/crypto/rand/rand_unix.go.html#line-42">altGetRandom</a> ([]<a href="../builtin.html#name-byte">byte</a>) (err <a href="../builtin.html#name-error">error</a>)</label><span id='altGetRandom-fold-content-docs' class="fold-docs">
+<span class="md-text">		altGetRandom if non-nil specifies an OS-specific function to get
+		urandom-style randomness.</span>
+
+</span></i></div></div>
+<div id="exported-constants"><span class="title">Package-Level Constants<span class="title-stat"><i> (only one, which is unexported)</i></span></span>
+
+	<input type='checkbox' class="showhide" id="unexported-constants-showhide"><i><label for="unexported-constants-showhide" class="show-inline">/* one unexported ... */</label><label for="unexported-constants-showhide" class="hide-inline">/* one unexported: */</label></i><div class="anchor value-res hidden" id="name-urandomDevice"><i>	<span class="nodocs"><a href="../../use/crypto/rand..urandomDevice^cf8ba.html">const</a> <a href="../../src/crypto/rand/rand_unix.go.html#line-23">urandomDevice</a> = "/dev/urandom"</span></i></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.mallocgc</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/malloc.go.html#line-971">mallocgc</a></b></span>
+
+<span class="title">31 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/chan.go.html#line-96">chan.go#L96</a>: 		c = (*hchan)(<b>mallocgc</b>(hchanSize, nil, true))
+		<a href="../src/runtime/chan.go.html#line-102" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-102">#L102</a>: 		c = (*hchan)(<b>mallocgc</b>(hchanSize+mem, nil, true))
+		<a href="../src/runtime/chan.go.html#line-107" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-107">#L107</a>: 		c.buf = <b>mallocgc</b>(mem, elem, true)
+		<a href="../src/runtime/iface.go.html#line-138">iface.go#L138</a>: 		t2 := (*itabTableType)(<b>mallocgc</b>((2+2*t.size)*goarch.PtrSize, nil, true))
+		<a href="../src/runtime/iface.go.html#line-331" class="path-duplicate">iface.go</a><a href="../src/runtime/iface.go.html#line-331">#L331</a>: 	x := <b>mallocgc</b>(t.Size_, t, true)
+		<a href="../src/runtime/iface.go.html#line-347" class="path-duplicate">iface.go</a><a href="../src/runtime/iface.go.html#line-347">#L347</a>: 	x := <b>mallocgc</b>(t.Size_, t, false)
+		<a href="../src/runtime/iface.go.html#line-359" class="path-duplicate">iface.go</a><a href="../src/runtime/iface.go.html#line-359">#L359</a>: 		x = <b>mallocgc</b>(2, uint16Type, false)
+		<a href="../src/runtime/iface.go.html#line-372" class="path-duplicate">iface.go</a><a href="../src/runtime/iface.go.html#line-372">#L372</a>: 		x = <b>mallocgc</b>(4, uint32Type, false)
+		<a href="../src/runtime/iface.go.html#line-382" class="path-duplicate">iface.go</a><a href="../src/runtime/iface.go.html#line-382">#L382</a>: 		x = <b>mallocgc</b>(8, uint64Type, false)
+		<a href="../src/runtime/iface.go.html#line-392" class="path-duplicate">iface.go</a><a href="../src/runtime/iface.go.html#line-392">#L392</a>: 		x = <b>mallocgc</b>(unsafe.Sizeof(val), stringType, true)
+		<a href="../src/runtime/iface.go.html#line-403" class="path-duplicate">iface.go</a><a href="../src/runtime/iface.go.html#line-403">#L403</a>: 		x = <b>mallocgc</b>(unsafe.Sizeof(val), sliceType, true)
+		<a href="../src/runtime/iface.go.html#line-486" class="path-duplicate">iface.go</a><a href="../src/runtime/iface.go.html#line-486">#L486</a>: 	newC := (*abi.TypeAssertCache)(<b>mallocgc</b>(newSize, nil, true))
+		<a href="../src/runtime/iface.go.html#line-592" class="path-duplicate">iface.go</a><a href="../src/runtime/iface.go.html#line-592">#L592</a>: 	newC := (*abi.InterfaceSwitchCache)(<b>mallocgc</b>(newSize, nil, true))
+		<a href="../src/runtime/malloc.go.html#line-971">malloc.go#L971</a>: func <b>mallocgc</b>(size uintptr, typ *_type, needzero bool) unsafe.Pointer {
+		<a href="../src/runtime/malloc.go.html#line-1390" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-1390">#L1390</a>: 	return <b>mallocgc</b>(typ.Size_, typ, true)
+		<a href="../src/runtime/malloc.go.html#line-1395" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-1395">#L1395</a>: 	return <b>mallocgc</b>(typ.Size_, typ, true)
+		<a href="../src/runtime/malloc.go.html#line-1400" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-1400">#L1400</a>: 	return <b>mallocgc</b>(typ.Size_, typ, true)
+		<a href="../src/runtime/malloc.go.html#line-1406" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-1406">#L1406</a>: 		return <b>mallocgc</b>(typ.Size_, typ, true)
+		<a href="../src/runtime/malloc.go.html#line-1412" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-1412">#L1412</a>: 	return <b>mallocgc</b>(mem, typ, true)
+		<a href="../src/runtime/mfinal.go.html#line-221">mfinal.go#L221</a>: 					frame = <b>mallocgc</b>(framesz, nil, true)
+		<a href="../src/runtime/slice.go.html#line-57">slice.go#L57</a>: 		to = <b>mallocgc</b>(tomem, nil, false)
+		<a href="../src/runtime/slice.go.html#line-63" class="path-duplicate">slice.go</a><a href="../src/runtime/slice.go.html#line-63">#L63</a>: 		to = <b>mallocgc</b>(tomem, et, true)
+		<a href="../src/runtime/slice.go.html#line-107" class="path-duplicate">slice.go</a><a href="../src/runtime/slice.go.html#line-107">#L107</a>: 	return <b>mallocgc</b>(mem, et, true)
+		<a href="../src/runtime/slice.go.html#line-242" class="path-duplicate">slice.go</a><a href="../src/runtime/slice.go.html#line-242">#L242</a>: 		p = <b>mallocgc</b>(capmem, nil, false)
+		<a href="../src/runtime/slice.go.html#line-250" class="path-duplicate">slice.go</a><a href="../src/runtime/slice.go.html#line-250">#L250</a>: 		p = <b>mallocgc</b>(capmem, et, true)
+		<a href="../src/runtime/slice.go.html#line-369" class="path-duplicate">slice.go</a><a href="../src/runtime/slice.go.html#line-369">#L369</a>: 	return unsafe.Slice((*byte)(<b>mallocgc</b>(uintptr(len), nil, false)), len)
+		<a href="../src/runtime/string.go.html#line-112">string.go#L112</a>: 		p = <b>mallocgc</b>(uintptr(n), nil, false)
+		<a href="../src/runtime/string.go.html#line-267" class="path-duplicate">string.go</a><a href="../src/runtime/string.go.html#line-267">#L267</a>: 	p := <b>mallocgc</b>(uintptr(size), nil, false)
+		<a href="../src/runtime/string.go.html#line-274" class="path-duplicate">string.go</a><a href="../src/runtime/string.go.html#line-274">#L274</a>: 	p := <b>mallocgc</b>(cap, nil, false)
+		<a href="../src/runtime/string.go.html#line-289" class="path-duplicate">string.go</a><a href="../src/runtime/string.go.html#line-289">#L289</a>: 	p := <b>mallocgc</b>(mem, nil, false)
+		<a href="../src/runtime/string.go.html#line-308" class="path-duplicate">string.go</a><a href="../src/runtime/string.go.html#line-308">#L308</a>: 	bp := <b>mallocgc</b>(uintptr(n), nil, false)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

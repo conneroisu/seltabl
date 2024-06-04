@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: internal/abi.UncommonType.PkgPath</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/internal/abi.html">internal/abi</a>.<a href="../../src/internal/abi/type.go.html#line-203">UncommonType</a>.<a href="../../src/internal/abi/type.go.html#line-204">PkgPath</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">11 uses</span>
+
+	internal/abi (current package)
+		<a href="../../src/internal/abi/type.go.html#line-204">type.go#L204</a>: 	<b>PkgPath</b> NameOff // import path; empty for built-in types like int, string
+
+	<a href="../../pkg/internal/reflectlite.html">internal/reflectlite</a>
+		<a href="../../src/internal/reflectlite/type.go.html#line-293">type.go#L293</a>: 	return t.nameOff(ut.<b>PkgPath</b>).Name()
+		<a href="../../src/internal/reflectlite/type.go.html#line-503" class="path-duplicate">type.go</a><a href="../../src/internal/reflectlite/type.go.html#line-503">#L503</a>: 					vmPkgPath = rV.nameOff(v.<b>PkgPath</b>).Name()
+
+	<a href="../../pkg/reflect.html">reflect</a>
+		<a href="../../src/reflect/type.go.html#line-665">type.go#L665</a>: 	return t.nameOff(ut.<b>PkgPath</b>).Name()
+		<a href="../../src/reflect/type.go.html#line-1347" class="path-duplicate">type.go</a><a href="../../src/reflect/type.go.html#line-1347">#L1347</a>: 					vmPkgPath = nameOffFor(V, v.<b>PkgPath</b>).Name()
+
+	<a href="../../pkg/runtime.html">runtime</a>
+		<a href="../../src/runtime/heapdump.go.html#line-199">heapdump.go#L199</a>: 	if x := t.Uncommon(); x == nil || rt.nameOff(x.<b>PkgPath</b>).Name() == "" {
+		<a href="../../src/runtime/heapdump.go.html#line-202" class="path-duplicate">heapdump.go</a><a href="../../src/runtime/heapdump.go.html#line-202">#L202</a>: 		pkgpath := rt.nameOff(x.<b>PkgPath</b>).Name()
+		<a href="../../src/runtime/iface.go.html#line-225">iface.go#L225</a>: 					pkgPath = rtyp.nameOff(x.<b>PkgPath</b>).Name()
+		<a href="../../src/runtime/type.go.html#line-62">type.go#L62</a>: 		return t.nameOff(u.<b>PkgPath</b>).Name()
+		<a href="../../src/runtime/type.go.html#line-355" class="path-duplicate">type.go</a><a href="../../src/runtime/type.go.html#line-355">#L355</a>: 		pkgpatht := rt.nameOff(ut.<b>PkgPath</b>).Name()
+		<a href="../../src/runtime/type.go.html#line-356" class="path-duplicate">type.go</a><a href="../../src/runtime/type.go.html#line-356">#L356</a>: 		pkgpathv := rv.nameOff(uv.<b>PkgPath</b>).Name()
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

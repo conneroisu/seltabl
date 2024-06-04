@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/tls.certificateRequestMsg.supportedSignatureAlgorithms</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/crypto/tls.html">crypto/tls</a>.<a href="../../src/crypto/tls/handshake_messages.go.html#line-1645">certificateRequestMsg</a>.<a href="../../src/crypto/tls/handshake_messages.go.html#line-1652">supportedSignatureAlgorithms</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">12 uses</span>
+
+	crypto/tls (current package)
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-683">handshake_client.go#L683</a>: 			signatureAlgorithm, err := selectSignatureScheme(c.vers, chainToSend, certReq.<b>supportedSignatureAlgorithms</b>)
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-1077" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-1077">#L1077</a>: 	cri.SignatureSchemes = make([]SignatureScheme, 0, len(certReq.<b>supportedSignatureAlgorithms</b>))
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-1078" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-1078">#L1078</a>: 	for _, sigScheme := range certReq.<b>supportedSignatureAlgorithms</b> {
+		<a href="../../src/crypto/tls/handshake_messages.go.html#line-1652">handshake_messages.go#L1652</a>: 	<b>supportedSignatureAlgorithms</b> []SignatureScheme
+		<a href="../../src/crypto/tls/handshake_messages.go.html#line-1670" class="path-duplicate">handshake_messages.go</a><a href="../../src/crypto/tls/handshake_messages.go.html#line-1670">#L1670</a>: 		length += 2 + 2*len(m.<b>supportedSignatureAlgorithms</b>)
+		<a href="../../src/crypto/tls/handshake_messages.go.html#line-1685" class="path-duplicate">handshake_messages.go</a><a href="../../src/crypto/tls/handshake_messages.go.html#line-1685">#L1685</a>: 		n := len(m.<b>supportedSignatureAlgorithms</b>) * 2
+		<a href="../../src/crypto/tls/handshake_messages.go.html#line-1689" class="path-duplicate">handshake_messages.go</a><a href="../../src/crypto/tls/handshake_messages.go.html#line-1689">#L1689</a>: 		for _, sigAlgo := range m.<b>supportedSignatureAlgorithms</b> {
+		<a href="../../src/crypto/tls/handshake_messages.go.html#line-1749" class="path-duplicate">handshake_messages.go</a><a href="../../src/crypto/tls/handshake_messages.go.html#line-1749">#L1749</a>: 		m.<b>supportedSignatureAlgorithms</b> = make([]SignatureScheme, numSigAlgos)
+		<a href="../../src/crypto/tls/handshake_messages.go.html#line-1750" class="path-duplicate">handshake_messages.go</a><a href="../../src/crypto/tls/handshake_messages.go.html#line-1750">#L1750</a>: 		for i := range m.<b>supportedSignatureAlgorithms</b> {
+		<a href="../../src/crypto/tls/handshake_messages.go.html#line-1751" class="path-duplicate">handshake_messages.go</a><a href="../../src/crypto/tls/handshake_messages.go.html#line-1751">#L1751</a>: 			m.<b>supportedSignatureAlgorithms</b>[i] = SignatureScheme(data[0])&lt;&lt;8 | SignatureScheme(data[1])
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-603">handshake_server.go#L603</a>: 			certReq.<b>supportedSignatureAlgorithms</b> = supportedSignatureAlgorithms()
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-713" class="path-duplicate">handshake_server.go</a><a href="../../src/crypto/tls/handshake_server.go.html#line-713">#L713</a>: 			if !isSupportedSignatureAlgorithm(certVerify.signatureAlgorithm, certReq.<b>supportedSignatureAlgorithms</b>) {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

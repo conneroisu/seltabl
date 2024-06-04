@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: regexp/syntax.Regexp.Sub</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/regexp/syntax.html">regexp/syntax</a>.<a href="../../src/regexp/syntax/regexp.go.html#line-17">Regexp</a>.<a href="../../src/regexp/syntax/regexp.go.html#line-20">Sub</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">109 uses</span>
+
+	regexp/syntax (current package)
+		<a href="../../src/regexp/syntax/compile.go.html#line-129">compile.go#L129</a>: 		sub := c.compile(re.<b>Sub</b>[0])
+		<a href="../../src/regexp/syntax/compile.go.html#line-133" class="path-duplicate">compile.go</a><a href="../../src/regexp/syntax/compile.go.html#line-133">#L133</a>: 		return c.star(c.compile(re.<b>Sub</b>[0]), re.Flags&amp;NonGreedy != 0)
+		<a href="../../src/regexp/syntax/compile.go.html#line-135" class="path-duplicate">compile.go</a><a href="../../src/regexp/syntax/compile.go.html#line-135">#L135</a>: 		return c.plus(c.compile(re.<b>Sub</b>[0]), re.Flags&amp;NonGreedy != 0)
+		<a href="../../src/regexp/syntax/compile.go.html#line-137" class="path-duplicate">compile.go</a><a href="../../src/regexp/syntax/compile.go.html#line-137">#L137</a>: 		return c.quest(c.compile(re.<b>Sub</b>[0]), re.Flags&amp;NonGreedy != 0)
+		<a href="../../src/regexp/syntax/compile.go.html#line-139" class="path-duplicate">compile.go</a><a href="../../src/regexp/syntax/compile.go.html#line-139">#L139</a>: 		if len(re.<b>Sub</b>) == 0 {
+		<a href="../../src/regexp/syntax/compile.go.html#line-143" class="path-duplicate">compile.go</a><a href="../../src/regexp/syntax/compile.go.html#line-143">#L143</a>: 		for i, sub := range re.<b>Sub</b> {
+		<a href="../../src/regexp/syntax/compile.go.html#line-153" class="path-duplicate">compile.go</a><a href="../../src/regexp/syntax/compile.go.html#line-153">#L153</a>: 		for _, sub := range re.<b>Sub</b> {
+		<a href="../../src/regexp/syntax/parse.go.html#line-224">parse.go#L224</a>: 		size = 2 + p.calcSize(re.<b>Sub</b>[0], false)
+		<a href="../../src/regexp/syntax/parse.go.html#line-226" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-226">#L226</a>: 		size = 1 + p.calcSize(re.<b>Sub</b>[0], false)
+		<a href="../../src/regexp/syntax/parse.go.html#line-228" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-228">#L228</a>: 		for _, sub := range re.<b>Sub</b> {
+		<a href="../../src/regexp/syntax/parse.go.html#line-232" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-232">#L232</a>: 		for _, sub := range re.<b>Sub</b> {
+		<a href="../../src/regexp/syntax/parse.go.html#line-235" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-235">#L235</a>: 		if len(re.<b>Sub</b>) &gt; 1 {
+		<a href="../../src/regexp/syntax/parse.go.html#line-236" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-236">#L236</a>: 			size += int64(len(re.<b>Sub</b>)) - 1
+		<a href="../../src/regexp/syntax/parse.go.html#line-239" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-239">#L239</a>: 		sub := p.calcSize(re.<b>Sub</b>[0], false)
+		<a href="../../src/regexp/syntax/parse.go.html#line-281" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-281">#L281</a>: 	for _, sub := range re.<b>Sub</b> {
+		<a href="../../src/regexp/syntax/parse.go.html#line-432" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-432">#L432</a>: 	re.<b>Sub</b> = re.Sub0[:1]
+		<a href="../../src/regexp/syntax/parse.go.html#line-433" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-433">#L433</a>: 	re.<b>Sub</b>[0] = sub
+		<a href="../../src/regexp/syntax/parse.go.html#line-469" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-469">#L469</a>: 	for _, sub := range re.<b>Sub</b> {
+		<a href="../../src/regexp/syntax/parse.go.html#line-555" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-555">#L555</a>: 	re.<b>Sub</b> = re.Sub0[:0]
+		<a href="../../src/regexp/syntax/parse.go.html#line-558" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-558">#L558</a>: 			re.<b>Sub</b> = append(re.<b>Sub</b>, sub.<b>Sub</b>...)
+		<a href="../../src/regexp/syntax/parse.go.html#line-561" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-561">#L561</a>: 			re.<b>Sub</b> = append(re.<b>Sub</b>, sub)
+		<a href="../../src/regexp/syntax/parse.go.html#line-565" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-565">#L565</a>: 		re.<b>Sub</b> = p.factor(re.<b>Sub</b>)
+		<a href="../../src/regexp/syntax/parse.go.html#line-566" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-566">#L566</a>: 		if len(re.<b>Sub</b>) == 1 {
+		<a href="../../src/regexp/syntax/parse.go.html#line-568" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-568">#L568</a>: 			re = re.<b>Sub</b>[0]
+		<a href="../../src/regexp/syntax/parse.go.html#line-648" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-648">#L648</a>: 			re.<b>Sub</b> = append(re.<b>Sub</b>[:0], prefix, suffix)
+		<a href="../../src/regexp/syntax/parse.go.html#line-681" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-681">#L681</a>: 				(isCharClass(first) || (first.Op == OpRepeat &amp;&amp; first.Min == first.Max &amp;&amp; isCharClass(first.<b>Sub</b>[0]))) {
+		<a href="../../src/regexp/syntax/parse.go.html#line-706" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-706">#L706</a>: 			re.<b>Sub</b> = append(re.<b>Sub</b>[:0], prefix, suffix)
+		<a href="../../src/regexp/syntax/parse.go.html#line-780" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-780">#L780</a>: 	if re.Op == OpConcat &amp;&amp; len(re.<b>Sub</b>) &gt; 0 {
+		<a href="../../src/regexp/syntax/parse.go.html#line-781" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-781">#L781</a>: 		re = re.<b>Sub</b>[0]
+		<a href="../../src/regexp/syntax/parse.go.html#line-792" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-792">#L792</a>: 	if re.Op == OpConcat &amp;&amp; len(re.<b>Sub</b>) &gt; 0 {
+		<a href="../../src/regexp/syntax/parse.go.html#line-795" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-795">#L795</a>: 		sub := re.<b>Sub</b>[0]
+		<a href="../../src/regexp/syntax/parse.go.html#line-797" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-797">#L797</a>: 		re.<b>Sub</b>[0] = sub
+		<a href="../../src/regexp/syntax/parse.go.html#line-800" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-800">#L800</a>: 			switch len(re.<b>Sub</b>) {
+		<a href="../../src/regexp/syntax/parse.go.html#line-804" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-804">#L804</a>: 				re.<b>Sub</b> = nil
+		<a href="../../src/regexp/syntax/parse.go.html#line-807" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-807">#L807</a>: 				re = re.<b>Sub</b>[1]
+		<a href="../../src/regexp/syntax/parse.go.html#line-810" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-810">#L810</a>: 				copy(re.<b>Sub</b>, re.<b>Sub</b>[1:])
+		<a href="../../src/regexp/syntax/parse.go.html#line-811" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-811">#L811</a>: 				re.<b>Sub</b> = re.<b>Sub</b>[:len(re.<b>Sub</b>)-1]
+		<a href="../../src/regexp/syntax/parse.go.html#line-832" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-832">#L832</a>: 	if re.Op == OpConcat &amp;&amp; len(re.<b>Sub</b>) &gt; 0 {
+		<a href="../../src/regexp/syntax/parse.go.html#line-833" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-833">#L833</a>: 		sub := re.<b>Sub</b>[0]
+		<a href="../../src/regexp/syntax/parse.go.html#line-846" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-846">#L846</a>: 	if re.Op == OpConcat &amp;&amp; len(re.<b>Sub</b>) &gt; 0 {
+		<a href="../../src/regexp/syntax/parse.go.html#line-848" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-848">#L848</a>: 			p.reuse(re.<b>Sub</b>[0])
+		<a href="../../src/regexp/syntax/parse.go.html#line-850" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-850">#L850</a>: 		re.<b>Sub</b> = re.<b>Sub</b>[:copy(re.<b>Sub</b>, re.<b>Sub</b>[1:])]
+		<a href="../../src/regexp/syntax/parse.go.html#line-851" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-851">#L851</a>: 		switch len(re.<b>Sub</b>) {
+		<a href="../../src/regexp/syntax/parse.go.html#line-854" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-854">#L854</a>: 			re.<b>Sub</b> = nil
+		<a href="../../src/regexp/syntax/parse.go.html#line-857" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-857">#L857</a>: 			re = re.<b>Sub</b>[0]
+		<a href="../../src/regexp/syntax/parse.go.html#line-1441" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1441">#L1441</a>: 		re2.<b>Sub</b> = re2.Sub0[:1]
+		<a href="../../src/regexp/syntax/parse.go.html#line-1442" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1442">#L1442</a>: 		re2.<b>Sub</b>[0] = re1
+		<a href="../../src/regexp/syntax/regexp.go.html#line-20">regexp.go#L20</a>: 	<b>Sub</b>      []*Regexp  // subexpressions, if any
+		<a href="../../src/regexp/syntax/regexp.go.html#line-88" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-88">#L88</a>: 		if len(x.<b>Sub</b>) != len(y.<b>Sub</b>) {
+		<a href="../../src/regexp/syntax/regexp.go.html#line-91" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-91">#L91</a>: 		for i, sub := range x.<b>Sub</b> {
+		<a href="../../src/regexp/syntax/regexp.go.html#line-92" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-92">#L92</a>: 			if !sub.Equal(y.<b>Sub</b>[i]) {
+		<a href="../../src/regexp/syntax/regexp.go.html#line-98" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-98">#L98</a>: 		if x.Flags&amp;NonGreedy != y.Flags&amp;NonGreedy || !x.<b>Sub</b>[0].Equal(y.<b>Sub</b>[0]) {
+		<a href="../../src/regexp/syntax/regexp.go.html#line-103" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-103">#L103</a>: 		if x.Flags&amp;NonGreedy != y.Flags&amp;NonGreedy || x.Min != y.Min || x.Max != y.Max || !x.<b>Sub</b>[0].Equal(y.<b>Sub</b>[0]) {
+		<a href="../../src/regexp/syntax/regexp.go.html#line-108" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-108">#L108</a>: 		if x.Cap != y.Cap || x.Name != y.Name || !x.<b>Sub</b>[0].Equal(y.<b>Sub</b>[0]) {
+		<a href="../../src/regexp/syntax/regexp.go.html#line-194" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-194">#L194</a>: 		return calcFlags(re.<b>Sub</b>[0], flags)
+		<a href="../../src/regexp/syntax/regexp.go.html#line-204" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-204">#L204</a>: 		for i, sub := range re.<b>Sub</b> {
+		<a href="../../src/regexp/syntax/regexp.go.html#line-208" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-208">#L208</a>: 					addSpan(re.<b>Sub</b>[start], re.<b>Sub</b>[last], must, flags)
+		<a href="../../src/regexp/syntax/regexp.go.html#line-231" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-231">#L231</a>: 			addSpan(re.<b>Sub</b>[start], re.<b>Sub</b>[last], must, flags)
+		<a href="../../src/regexp/syntax/regexp.go.html#line-346" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-346">#L346</a>: 		if re.<b>Sub</b>[0].Op != OpEmptyMatch {
+		<a href="../../src/regexp/syntax/regexp.go.html#line-347" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-347">#L347</a>: 			writeRegexp(b, re.<b>Sub</b>[0], flags[re.<b>Sub</b>[0]], flags)
+		<a href="../../src/regexp/syntax/regexp.go.html#line-352" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-352">#L352</a>: 		sub := re.<b>Sub</b>[0]
+		<a href="../../src/regexp/syntax/regexp.go.html#line-380" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-380">#L380</a>: 		for _, sub := range re.<b>Sub</b> {
+		<a href="../../src/regexp/syntax/regexp.go.html#line-388" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-388">#L388</a>: 		for i, sub := range re.<b>Sub</b> {
+		<a href="../../src/regexp/syntax/regexp.go.html#line-455" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-455">#L455</a>: 	for _, sub := range re.<b>Sub</b> {
+		<a href="../../src/regexp/syntax/regexp.go.html#line-474" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-474">#L474</a>: 	for _, sub := range re.<b>Sub</b> {
+		<a href="../../src/regexp/syntax/simplify.go.html#line-22">simplify.go#L22</a>: 		for i, sub := range re.<b>Sub</b> {
+		<a href="../../src/regexp/syntax/simplify.go.html#line-29" class="path-duplicate">simplify.go</a><a href="../../src/regexp/syntax/simplify.go.html#line-29">#L29</a>: 				nre.<b>Sub</b> = append(nre.Sub0[:0], re.<b>Sub</b>[:i]...)
+		<a href="../../src/regexp/syntax/simplify.go.html#line-32" class="path-duplicate">simplify.go</a><a href="../../src/regexp/syntax/simplify.go.html#line-32">#L32</a>: 				nre.<b>Sub</b> = append(nre.<b>Sub</b>, nsub)
+		<a href="../../src/regexp/syntax/simplify.go.html#line-38" class="path-duplicate">simplify.go</a><a href="../../src/regexp/syntax/simplify.go.html#line-38">#L38</a>: 		sub := re.<b>Sub</b>[0].Simplify()
+		<a href="../../src/regexp/syntax/simplify.go.html#line-49" class="path-duplicate">simplify.go</a><a href="../../src/regexp/syntax/simplify.go.html#line-49">#L49</a>: 		sub := re.<b>Sub</b>[0].Simplify()
+		<a href="../../src/regexp/syntax/simplify.go.html#line-65" class="path-duplicate">simplify.go</a><a href="../../src/regexp/syntax/simplify.go.html#line-65">#L65</a>: 			nre.<b>Sub</b> = nre.Sub0[:0]
+		<a href="../../src/regexp/syntax/simplify.go.html#line-67" class="path-duplicate">simplify.go</a><a href="../../src/regexp/syntax/simplify.go.html#line-67">#L67</a>: 				nre.<b>Sub</b> = append(nre.<b>Sub</b>, sub)
+		<a href="../../src/regexp/syntax/simplify.go.html#line-69" class="path-duplicate">simplify.go</a><a href="../../src/regexp/syntax/simplify.go.html#line-69">#L69</a>: 			nre.<b>Sub</b> = append(nre.<b>Sub</b>, simplify1(OpPlus, re.Flags, sub, nil))
+		<a href="../../src/regexp/syntax/simplify.go.html#line-88" class="path-duplicate">simplify.go</a><a href="../../src/regexp/syntax/simplify.go.html#line-88">#L88</a>: 			prefix.<b>Sub</b> = prefix.Sub0[:0]
+		<a href="../../src/regexp/syntax/simplify.go.html#line-90" class="path-duplicate">simplify.go</a><a href="../../src/regexp/syntax/simplify.go.html#line-90">#L90</a>: 				prefix.<b>Sub</b> = append(prefix.<b>Sub</b>, sub)
+		<a href="../../src/regexp/syntax/simplify.go.html#line-99" class="path-duplicate">simplify.go</a><a href="../../src/regexp/syntax/simplify.go.html#line-99">#L99</a>: 				nre2.<b>Sub</b> = append(nre2.Sub0[:0], sub, suffix)
+		<a href="../../src/regexp/syntax/simplify.go.html#line-105" class="path-duplicate">simplify.go</a><a href="../../src/regexp/syntax/simplify.go.html#line-105">#L105</a>: 			prefix.<b>Sub</b> = append(prefix.<b>Sub</b>, suffix)
+		<a href="../../src/regexp/syntax/simplify.go.html#line-144" class="path-duplicate">simplify.go</a><a href="../../src/regexp/syntax/simplify.go.html#line-144">#L144</a>: 	if re != nil &amp;&amp; re.Op == op &amp;&amp; re.Flags&amp;NonGreedy == flags&amp;NonGreedy &amp;&amp; sub == re.<b>Sub</b>[0] {
+		<a href="../../src/regexp/syntax/simplify.go.html#line-149" class="path-duplicate">simplify.go</a><a href="../../src/regexp/syntax/simplify.go.html#line-149">#L149</a>: 	re.<b>Sub</b> = append(re.Sub0[:0], sub)
+
+	<a href="../../pkg/regexp.html">regexp</a>
+		<a href="../../src/regexp/regexp.go.html#line-289">regexp.go#L289</a>: 		return minInputLen(re.<b>Sub</b>[0])
+		<a href="../../src/regexp/regexp.go.html#line-291" class="path-duplicate">regexp.go</a><a href="../../src/regexp/regexp.go.html#line-291">#L291</a>: 		return re.Min * minInputLen(re.<b>Sub</b>[0])
+		<a href="../../src/regexp/regexp.go.html#line-294" class="path-duplicate">regexp.go</a><a href="../../src/regexp/regexp.go.html#line-294">#L294</a>: 		for _, sub := range re.<b>Sub</b> {
+		<a href="../../src/regexp/regexp.go.html#line-299" class="path-duplicate">regexp.go</a><a href="../../src/regexp/regexp.go.html#line-299">#L299</a>: 		l := minInputLen(re.<b>Sub</b>[0])
+		<a href="../../src/regexp/regexp.go.html#line-301" class="path-duplicate">regexp.go</a><a href="../../src/regexp/regexp.go.html#line-301">#L301</a>: 		for _, sub := range re.<b>Sub</b>[1:] {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

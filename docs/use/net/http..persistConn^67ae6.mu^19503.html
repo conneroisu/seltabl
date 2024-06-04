@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/http.persistConn.mu</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/net/http.html">net/http</a>.<a href="../../src/net/http/transport.go.html#line-1920">persistConn</a>.<a href="../../src/net/http/transport.go.html#line-1951">mu</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">22 uses</span>
+
+	net/http (current package)
+		<a href="../../src/net/http/transport.go.html#line-1951">transport.go#L1951</a>: 	<b>mu</b>                   sync.Mutex // guards following fields
+		<a href="../../src/net/http/transport.go.html#line-1987" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-1987">#L1987</a>: 	pc.<b>mu</b>.Lock()
+		<a href="../../src/net/http/transport.go.html#line-1989" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-1989">#L1989</a>: 	pc.<b>mu</b>.Unlock()
+		<a href="../../src/net/http/transport.go.html#line-1996" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-1996">#L1996</a>: 	pc.<b>mu</b>.Lock()
+		<a href="../../src/net/http/transport.go.html#line-1997" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-1997">#L1997</a>: 	defer pc.<b>mu</b>.Unlock()
+		<a href="../../src/net/http/transport.go.html#line-2003" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-2003">#L2003</a>: 	pc.<b>mu</b>.Lock()
+		<a href="../../src/net/http/transport.go.html#line-2005" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-2005">#L2005</a>: 	pc.<b>mu</b>.Unlock()
+		<a href="../../src/net/http/transport.go.html#line-2010" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-2010">#L2010</a>: 	pc.<b>mu</b>.Lock()
+		<a href="../../src/net/http/transport.go.html#line-2011" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-2011">#L2011</a>: 	defer pc.<b>mu</b>.Unlock()
+		<a href="../../src/net/http/transport.go.html#line-2022" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-2022">#L2022</a>: 	pc.<b>mu</b>.Lock()
+		<a href="../../src/net/http/transport.go.html#line-2023" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-2023">#L2023</a>: 	defer pc.<b>mu</b>.Unlock()
+		<a href="../../src/net/http/transport.go.html#line-2143" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-2143">#L2143</a>: 		pc.<b>mu</b>.Lock()
+		<a href="../../src/net/http/transport.go.html#line-2146" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-2146">#L2146</a>: 			pc.<b>mu</b>.Unlock()
+		<a href="../../src/net/http/transport.go.html#line-2149" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-2149">#L2149</a>: 		pc.<b>mu</b>.Unlock()
+		<a href="../../src/net/http/transport.go.html#line-2176" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-2176">#L2176</a>: 		pc.<b>mu</b>.Lock()
+		<a href="../../src/net/http/transport.go.html#line-2178" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-2178">#L2178</a>: 		pc.<b>mu</b>.Unlock()
+		<a href="../../src/net/http/transport.go.html#line-2595" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-2595">#L2595</a>: 	pc.<b>mu</b>.Lock()
+		<a href="../../src/net/http/transport.go.html#line-2598" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-2598">#L2598</a>: 	pc.<b>mu</b>.Unlock()
+		<a href="../../src/net/http/transport.go.html#line-2741" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-2741">#L2741</a>: 	pc.<b>mu</b>.Lock()
+		<a href="../../src/net/http/transport.go.html#line-2743" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-2743">#L2743</a>: 	pc.<b>mu</b>.Unlock()
+		<a href="../../src/net/http/transport.go.html#line-2752" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-2752">#L2752</a>: 	pc.<b>mu</b>.Lock()
+		<a href="../../src/net/http/transport.go.html#line-2753" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-2753">#L2753</a>: 	defer pc.<b>mu</b>.Unlock()
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

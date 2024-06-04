@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.sudog.parent</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/runtime2.go.html#line-356">sudog</a>.<a href="../src/runtime/runtime2.go.html#line-393">parent</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">30 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/runtime2.go.html#line-393">runtime2.go#L393</a>: 	<b>parent</b>   *sudog // semaRoot binary tree
+		<a href="../src/runtime/sema.go.html#line-284">sema.go#L284</a>: 				s.<b>parent</b> = t.<b>parent</b>
+		<a href="../src/runtime/sema.go.html#line-288" class="path-duplicate">sema.go</a><a href="../src/runtime/sema.go.html#line-288">#L288</a>: 					s.prev.<b>parent</b> = s
+		<a href="../src/runtime/sema.go.html#line-291" class="path-duplicate">sema.go</a><a href="../src/runtime/sema.go.html#line-291">#L291</a>: 					s.next.<b>parent</b> = s
+		<a href="../src/runtime/sema.go.html#line-303" class="path-duplicate">sema.go</a><a href="../src/runtime/sema.go.html#line-303">#L303</a>: 				t.<b>parent</b> = nil
+		<a href="../src/runtime/sema.go.html#line-342" class="path-duplicate">sema.go</a><a href="../src/runtime/sema.go.html#line-342">#L342</a>: 	s.<b>parent</b> = last
+		<a href="../src/runtime/sema.go.html#line-346" class="path-duplicate">sema.go</a><a href="../src/runtime/sema.go.html#line-346">#L346</a>: 	for s.<b>parent</b> != nil &amp;&amp; s.<b>parent</b>.ticket &gt; s.ticket {
+		<a href="../src/runtime/sema.go.html#line-347" class="path-duplicate">sema.go</a><a href="../src/runtime/sema.go.html#line-347">#L347</a>: 		if s.<b>parent</b>.prev == s {
+		<a href="../src/runtime/sema.go.html#line-348" class="path-duplicate">sema.go</a><a href="../src/runtime/sema.go.html#line-348">#L348</a>: 			root.rotateRight(s.<b>parent</b>)
+		<a href="../src/runtime/sema.go.html#line-350" class="path-duplicate">sema.go</a><a href="../src/runtime/sema.go.html#line-350">#L350</a>: 			if s.<b>parent</b>.next != s {
+		<a href="../src/runtime/sema.go.html#line-353" class="path-duplicate">sema.go</a><a href="../src/runtime/sema.go.html#line-353">#L353</a>: 			root.rotateLeft(s.<b>parent</b>)
+		<a href="../src/runtime/sema.go.html#line-389" class="path-duplicate">sema.go</a><a href="../src/runtime/sema.go.html#line-389">#L389</a>: 		t.<b>parent</b> = s.<b>parent</b>
+		<a href="../src/runtime/sema.go.html#line-392" class="path-duplicate">sema.go</a><a href="../src/runtime/sema.go.html#line-392">#L392</a>: 			t.prev.<b>parent</b> = t
+		<a href="../src/runtime/sema.go.html#line-396" class="path-duplicate">sema.go</a><a href="../src/runtime/sema.go.html#line-396">#L396</a>: 			t.next.<b>parent</b> = t
+		<a href="../src/runtime/sema.go.html#line-425" class="path-duplicate">sema.go</a><a href="../src/runtime/sema.go.html#line-425">#L425</a>: 		if s.<b>parent</b> != nil {
+		<a href="../src/runtime/sema.go.html#line-426" class="path-duplicate">sema.go</a><a href="../src/runtime/sema.go.html#line-426">#L426</a>: 			if s.<b>parent</b>.prev == s {
+		<a href="../src/runtime/sema.go.html#line-427" class="path-duplicate">sema.go</a><a href="../src/runtime/sema.go.html#line-427">#L427</a>: 				s.<b>parent</b>.prev = nil
+		<a href="../src/runtime/sema.go.html#line-429" class="path-duplicate">sema.go</a><a href="../src/runtime/sema.go.html#line-429">#L429</a>: 				s.<b>parent</b>.next = nil
+		<a href="../src/runtime/sema.go.html#line-436" class="path-duplicate">sema.go</a><a href="../src/runtime/sema.go.html#line-436">#L436</a>: 	s.<b>parent</b> = nil
+		<a href="../src/runtime/sema.go.html#line-448" class="path-duplicate">sema.go</a><a href="../src/runtime/sema.go.html#line-448">#L448</a>: 	p := x.<b>parent</b>
+		<a href="../src/runtime/sema.go.html#line-453" class="path-duplicate">sema.go</a><a href="../src/runtime/sema.go.html#line-453">#L453</a>: 	x.<b>parent</b> = y
+		<a href="../src/runtime/sema.go.html#line-456" class="path-duplicate">sema.go</a><a href="../src/runtime/sema.go.html#line-456">#L456</a>: 		b.<b>parent</b> = x
+		<a href="../src/runtime/sema.go.html#line-459" class="path-duplicate">sema.go</a><a href="../src/runtime/sema.go.html#line-459">#L459</a>: 	y.<b>parent</b> = p
+		<a href="../src/runtime/sema.go.html#line-476" class="path-duplicate">sema.go</a><a href="../src/runtime/sema.go.html#line-476">#L476</a>: 	p := y.<b>parent</b>
+		<a href="../src/runtime/sema.go.html#line-481" class="path-duplicate">sema.go</a><a href="../src/runtime/sema.go.html#line-481">#L481</a>: 	y.<b>parent</b> = x
+		<a href="../src/runtime/sema.go.html#line-484" class="path-duplicate">sema.go</a><a href="../src/runtime/sema.go.html#line-484">#L484</a>: 		b.<b>parent</b> = y
+		<a href="../src/runtime/sema.go.html#line-487" class="path-duplicate">sema.go</a><a href="../src/runtime/sema.go.html#line-487">#L487</a>: 	x.<b>parent</b> = p
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

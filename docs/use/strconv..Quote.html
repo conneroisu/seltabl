@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: strconv.Quote</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/strconv.html">strconv</a>.<a href="../src/strconv/quote.go.html#line-125">Quote</a></b></span>
+
+<span class="title">19 uses</span>
+
+	strconv (current package)
+		<a href="../src/strconv/atoi.go.html#line-31">atoi.go#L31</a>: 	return "strconv." + e.Func + ": " + "parsing " + <b>Quote</b>(e.Num) + ": " + e.Err.Error()
+		<a href="../src/strconv/quote.go.html#line-125">quote.go#L125</a>: func <b>Quote</b>(s string) string {
+
+	<a href="../pkg/net/netip.html">net/netip</a>
+		<a href="../src/net/netip/netip.go.html#line-148">netip.go#L148</a>: 	q := strconv.<b>Quote</b>
+		<a href="../src/net/netip/netip.go.html#line-1077" class="path-duplicate">netip.go</a><a href="../src/net/netip/netip.go.html#line-1077">#L1077</a>: 		return ipp, errors.New("invalid port " + strconv.<b>Quote</b>(port) + " parsing " + strconv.<b>Quote</b>(s))
+		<a href="../src/net/netip/netip.go.html#line-1085" class="path-duplicate">netip.go</a><a href="../src/net/netip/netip.go.html#line-1085">#L1085</a>: 		return AddrPort{}, errors.New("invalid ip:port " + strconv.<b>Quote</b>(s) + ", square brackets can only be used with IPv6 addresses")
+		<a href="../src/net/netip/netip.go.html#line-1087" class="path-duplicate">netip.go</a><a href="../src/net/netip/netip.go.html#line-1087">#L1087</a>: 		return AddrPort{}, errors.New("invalid ip:port " + strconv.<b>Quote</b>(s) + ", IPv6 addresses must be surrounded by square brackets")
+		<a href="../src/net/netip/netip.go.html#line-1292" class="path-duplicate">netip.go</a><a href="../src/net/netip/netip.go.html#line-1292">#L1292</a>: 		return Prefix{}, errors.New("netip.ParsePrefix(" + strconv.<b>Quote</b>(s) + "): no '/'")
+		<a href="../src/net/netip/netip.go.html#line-1296" class="path-duplicate">netip.go</a><a href="../src/net/netip/netip.go.html#line-1296">#L1296</a>: 		return Prefix{}, errors.New("netip.ParsePrefix(" + strconv.<b>Quote</b>(s) + "): " + err.Error())
+		<a href="../src/net/netip/netip.go.html#line-1300" class="path-duplicate">netip.go</a><a href="../src/net/netip/netip.go.html#line-1300">#L1300</a>: 		return Prefix{}, errors.New("netip.ParsePrefix(" + strconv.<b>Quote</b>(s) + "): IPv6 zones cannot be present in a prefix")
+		<a href="../src/net/netip/netip.go.html#line-1307" class="path-duplicate">netip.go</a><a href="../src/net/netip/netip.go.html#line-1307">#L1307</a>: 		return Prefix{}, errors.New("netip.ParsePrefix(" + strconv.<b>Quote</b>(s) + "): bad bits after slash: " + strconv.<b>Quote</b>(bitsStr))
+		<a href="../src/net/netip/netip.go.html#line-1312" class="path-duplicate">netip.go</a><a href="../src/net/netip/netip.go.html#line-1312">#L1312</a>: 		return Prefix{}, errors.New("netip.ParsePrefix(" + strconv.<b>Quote</b>(s) + "): bad bits after slash: " + strconv.<b>Quote</b>(bitsStr))
+		<a href="../src/net/netip/netip.go.html#line-1319" class="path-duplicate">netip.go</a><a href="../src/net/netip/netip.go.html#line-1319">#L1319</a>: 		return Prefix{}, errors.New("netip.ParsePrefix(" + strconv.<b>Quote</b>(s) + "): prefix length out of range")
+
+	<a href="../pkg/net/url.html">net/url</a>
+		<a href="../src/net/url/url.go.html#line-87">url.go#L87</a>: 	return "invalid URL escape " + strconv.<b>Quote</b>(string(e))
+		<a href="../src/net/url/url.go.html#line-93" class="path-duplicate">url.go</a><a href="../src/net/url/url.go.html#line-93">#L93</a>: 	return "invalid character " + strconv.<b>Quote</b>(string(e)) + " in host name"
+
+	<a href="../pkg/reflect.html">reflect</a>
+		<a href="../src/reflect/type.go.html#line-2311">type.go#L2311</a>: 			repr = append(repr, (" " + strconv.<b>Quote</b>(f.Name.Tag()))...)
+
+	<a href="../pkg/regexp.html">regexp</a>
+		<a href="../src/regexp/regexp.go.html#line-337">regexp.go#L337</a>: 	return strconv.<b>Quote</b>(s)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

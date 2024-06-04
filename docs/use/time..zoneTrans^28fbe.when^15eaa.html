@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: time.zoneTrans.when</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/time.html">time</a>.<a href="../src/time/zoneinfo.go.html#line-57">zoneTrans</a>.<a href="../src/time/zoneinfo.go.html#line-58">when</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">11 uses</span>
+
+	time (current package)
+		<a href="../src/time/zoneinfo.go.html#line-58">zoneinfo.go#L58</a>: 	<b>when</b>         int64 // transition time, in seconds since 1970 GMT
+		<a href="../src/time/zoneinfo.go.html#line-170" class="path-duplicate">zoneinfo.go</a><a href="../src/time/zoneinfo.go.html#line-170">#L170</a>: 	if len(l.tx) == 0 || sec &lt; l.tx[0].<b>when</b> {
+		<a href="../src/time/zoneinfo.go.html#line-176" class="path-duplicate">zoneinfo.go</a><a href="../src/time/zoneinfo.go.html#line-176">#L176</a>: 			end = l.tx[0].<b>when</b>
+		<a href="../src/time/zoneinfo.go.html#line-192" class="path-duplicate">zoneinfo.go</a><a href="../src/time/zoneinfo.go.html#line-192">#L192</a>: 		lim := tx[m].<b>when</b>
+		<a href="../src/time/zoneinfo.go.html#line-203" class="path-duplicate">zoneinfo.go</a><a href="../src/time/zoneinfo.go.html#line-203">#L203</a>: 	start = tx[lo].<b>when</b>
+		<a href="../src/time/zoneinfo_read.go.html#line-297">zoneinfo_read.go#L297</a>: 		tx[i].<b>when</b> = n
+		<a href="../src/time/zoneinfo_read.go.html#line-313" class="path-duplicate">zoneinfo_read.go</a><a href="../src/time/zoneinfo_read.go.html#line-313">#L313</a>: 		tx = append(tx, zoneTrans{<b>when</b>: alpha, index: 0})
+		<a href="../src/time/zoneinfo_read.go.html#line-323" class="path-duplicate">zoneinfo_read.go</a><a href="../src/time/zoneinfo_read.go.html#line-323">#L323</a>: 		if tx[i].<b>when</b> &lt;= sec &amp;&amp; (i+1 == len(tx) || sec &lt; tx[i+1].<b>when</b>) {
+		<a href="../src/time/zoneinfo_read.go.html#line-324" class="path-duplicate">zoneinfo_read.go</a><a href="../src/time/zoneinfo_read.go.html#line-324">#L324</a>: 			l.cacheStart = tx[i].<b>when</b>
+		<a href="../src/time/zoneinfo_read.go.html#line-328" class="path-duplicate">zoneinfo_read.go</a><a href="../src/time/zoneinfo_read.go.html#line-328">#L328</a>: 				l.cacheEnd = tx[i+1].<b>when</b>
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

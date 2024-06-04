@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.gcCPULimiterState</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/mgclimit.go.html#line-32">gcCPULimiterState</a></b></span>
+
+<span class="title">14 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/mgclimit.go.html#line-30">mgclimit.go#L30</a>: var gcCPULimiter <b>gcCPULimiterState</b>
+		<a href="../src/runtime/mgclimit.go.html#line-32" class="path-duplicate">mgclimit.go</a><a href="../src/runtime/mgclimit.go.html#line-32">#L32</a>: type <b>gcCPULimiterState</b> struct {
+		<a href="../src/runtime/mgclimit.go.html#line-89" class="path-duplicate">mgclimit.go</a><a href="../src/runtime/mgclimit.go.html#line-89">#L89</a>: func (l *<b>gcCPULimiterState</b>) limiting() bool {
+		<a href="../src/runtime/mgclimit.go.html#line-99" class="path-duplicate">mgclimit.go</a><a href="../src/runtime/mgclimit.go.html#line-99">#L99</a>: func (l *<b>gcCPULimiterState</b>) startGCTransition(enableGC bool, now int64) {
+		<a href="../src/runtime/mgclimit.go.html#line-121" class="path-duplicate">mgclimit.go</a><a href="../src/runtime/mgclimit.go.html#line-121">#L121</a>: func (l *<b>gcCPULimiterState</b>) finishGCTransition(now int64) {
+		<a href="../src/runtime/mgclimit.go.html#line-143" class="path-duplicate">mgclimit.go</a><a href="../src/runtime/mgclimit.go.html#line-143">#L143</a>: func (l *<b>gcCPULimiterState</b>) needUpdate(now int64) bool {
+		<a href="../src/runtime/mgclimit.go.html#line-149" class="path-duplicate">mgclimit.go</a><a href="../src/runtime/mgclimit.go.html#line-149">#L149</a>: func (l *<b>gcCPULimiterState</b>) addAssistTime(t int64) {
+		<a href="../src/runtime/mgclimit.go.html#line-155" class="path-duplicate">mgclimit.go</a><a href="../src/runtime/mgclimit.go.html#line-155">#L155</a>: func (l *<b>gcCPULimiterState</b>) addIdleTime(t int64) {
+		<a href="../src/runtime/mgclimit.go.html#line-163" class="path-duplicate">mgclimit.go</a><a href="../src/runtime/mgclimit.go.html#line-163">#L163</a>: func (l *<b>gcCPULimiterState</b>) update(now int64) {
+		<a href="../src/runtime/mgclimit.go.html#line-178" class="path-duplicate">mgclimit.go</a><a href="../src/runtime/mgclimit.go.html#line-178">#L178</a>: func (l *<b>gcCPULimiterState</b>) updateLocked(now int64) {
+		<a href="../src/runtime/mgclimit.go.html#line-265" class="path-duplicate">mgclimit.go</a><a href="../src/runtime/mgclimit.go.html#line-265">#L265</a>: func (l *<b>gcCPULimiterState</b>) accumulate(mutatorTime, gcTime int64) {
+		<a href="../src/runtime/mgclimit.go.html#line-301" class="path-duplicate">mgclimit.go</a><a href="../src/runtime/mgclimit.go.html#line-301">#L301</a>: func (l *<b>gcCPULimiterState</b>) tryLock() bool {
+		<a href="../src/runtime/mgclimit.go.html#line-306" class="path-duplicate">mgclimit.go</a><a href="../src/runtime/mgclimit.go.html#line-306">#L306</a>: func (l *<b>gcCPULimiterState</b>) unlock() {
+		<a href="../src/runtime/mgclimit.go.html#line-320" class="path-duplicate">mgclimit.go</a><a href="../src/runtime/mgclimit.go.html#line-320">#L320</a>: func (l *<b>gcCPULimiterState</b>) resetCapacity(now int64, nprocs int32) {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

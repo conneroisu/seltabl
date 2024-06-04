@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.memhash</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/alg.go.html#line-48">memhash</a></b></span>
+
+<span class="title">10 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/alg.go.html#line-24">alg.go#L24</a>: 	return <b>memhash</b>(p, h, 1)
+		<a href="../src/runtime/alg.go.html#line-28" class="path-duplicate">alg.go</a><a href="../src/runtime/alg.go.html#line-28">#L28</a>: 	return <b>memhash</b>(p, h, 2)
+		<a href="../src/runtime/alg.go.html#line-32" class="path-duplicate">alg.go</a><a href="../src/runtime/alg.go.html#line-32">#L32</a>: 	return <b>memhash</b>(p, h, 16)
+		<a href="../src/runtime/alg.go.html#line-39" class="path-duplicate">alg.go</a><a href="../src/runtime/alg.go.html#line-39">#L39</a>: 	return <b>memhash</b>(p, h, size)
+		<a href="../src/runtime/alg.go.html#line-48" class="path-duplicate">alg.go</a><a href="../src/runtime/alg.go.html#line-48">#L48</a>: func <b>memhash</b>(p unsafe.Pointer, h, s uintptr) uintptr
+		<a href="../src/runtime/alg.go.html#line-71" class="path-duplicate">alg.go</a><a href="../src/runtime/alg.go.html#line-71">#L71</a>: 		return <b>memhash</b>(p, h, 4)
+		<a href="../src/runtime/alg.go.html#line-83" class="path-duplicate">alg.go</a><a href="../src/runtime/alg.go.html#line-83">#L83</a>: 		return <b>memhash</b>(p, h, 8)
+		<a href="../src/runtime/alg.go.html#line-154" class="path-duplicate">alg.go</a><a href="../src/runtime/alg.go.html#line-154">#L154</a>: 			return <b>memhash</b>(p, h, t.Size_)
+		<a href="../src/runtime/alg.go.html#line-351" class="path-duplicate">alg.go</a><a href="../src/runtime/alg.go.html#line-351">#L351</a>: 	return <b>memhash</b>(s.array, seed, uintptr(s.len))
+		<a href="../src/runtime/trace2map.go.html#line-62">trace2map.go#L62</a>: 	hash := <b>memhash</b>(data, 0, size)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

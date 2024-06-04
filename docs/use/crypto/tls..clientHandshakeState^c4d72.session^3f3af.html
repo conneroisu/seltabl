@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/tls.clientHandshakeState.session</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/crypto/tls.html">crypto/tls</a>.<a href="../../src/crypto/tls/handshake_client.go.html#line-28">clientHandshakeState</a>.<a href="../../src/crypto/tls/handshake_client.go.html#line-36">session</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">13 uses</span>
+
+	crypto/tls (current package)
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-36">handshake_client.go#L36</a>: 	<b>session</b>      *SessionState // the session being resumed
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-271" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-271">#L271</a>: 		<b>session</b>:     session,
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-748" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-748">#L748</a>: 	return hs.<b>session</b> != nil &amp;&amp; hs.hello.sessionId != nil &amp;&amp;
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-794" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-794">#L794</a>: 	if hs.<b>session</b>.version != c.vers {
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-799" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-799">#L799</a>: 	if hs.<b>session</b>.cipherSuite != hs.suite.id {
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-805" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-805">#L805</a>: 	if hs.<b>session</b>.extMasterSecret != hs.serverHello.extendedMasterSecret {
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-811" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-811">#L811</a>: 	hs.masterSecret = hs.<b>session</b>.secret
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-812" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-812">#L812</a>: 	c.extMasterSecret = hs.<b>session</b>.extMasterSecret
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-813" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-813">#L813</a>: 	c.peerCertificates = hs.<b>session</b>.peerCertificates
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-815" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-815">#L815</a>: 	c.verifiedChains = hs.<b>session</b>.verifiedChains
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-816" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-816">#L816</a>: 	c.ocspResponse = hs.<b>session</b>.ocspResponse
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-819" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-819">#L819</a>: 	if len(c.scts) == 0 &amp;&amp; len(hs.<b>session</b>.scts) != 0 {
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-820" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-820">#L820</a>: 		c.scts = hs.<b>session</b>.scts
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

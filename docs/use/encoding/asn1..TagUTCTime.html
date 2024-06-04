@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: encoding/asn1.TagUTCTime</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../../pkg/encoding/asn1.html">encoding/asn1</a>.<a href="../../src/encoding/asn1/common.go.html#line-37">TagUTCTime</a></b></span>
+
+<span class="title">10 uses</span>
+
+	encoding/asn1 (current package)
+		<a href="../../src/encoding/asn1/asn1.go.html#line-630">asn1.go#L630</a>: 		case TagGeneralizedTime, <b>TagUTCTime</b>:
+		<a href="../../src/encoding/asn1/asn1.go.html#line-632" class="path-duplicate">asn1.go</a><a href="../../src/encoding/asn1/asn1.go.html#line-632">#L632</a>: 			t.tag = <b>TagUTCTime</b>
+		<a href="../../src/encoding/asn1/asn1.go.html#line-721" class="path-duplicate">asn1.go</a><a href="../../src/encoding/asn1/asn1.go.html#line-721">#L721</a>: 			case <b>TagUTCTime</b>:
+		<a href="../../src/encoding/asn1/asn1.go.html#line-807" class="path-duplicate">asn1.go</a><a href="../../src/encoding/asn1/asn1.go.html#line-807">#L807</a>: 	if universalTag == <b>TagUTCTime</b> &amp;&amp; t.tag == TagGeneralizedTime &amp;&amp; t.class == ClassUniversal {
+		<a href="../../src/encoding/asn1/asn1.go.html#line-868" class="path-duplicate">asn1.go</a><a href="../../src/encoding/asn1/asn1.go.html#line-868">#L868</a>: 		if universalTag == <b>TagUTCTime</b> {
+		<a href="../../src/encoding/asn1/common.go.html#line-37">common.go#L37</a>: 	<b>TagUTCTime</b>         = 23
+		<a href="../../src/encoding/asn1/common.go.html#line-109" class="path-duplicate">common.go</a><a href="../../src/encoding/asn1/common.go.html#line-109">#L109</a>: 			ret.timeType = <b>TagUTCTime</b>
+		<a href="../../src/encoding/asn1/common.go.html#line-160" class="path-duplicate">common.go</a><a href="../../src/encoding/asn1/common.go.html#line-160">#L160</a>: 		return false, <b>TagUTCTime</b>, false, true
+		<a href="../../src/encoding/asn1/marshal.go.html#line-629">marshal.go#L629</a>: 	if params.timeType != 0 &amp;&amp; tag != <b>TagUTCTime</b> {
+		<a href="../../src/encoding/asn1/marshal.go.html#line-655" class="path-duplicate">marshal.go</a><a href="../../src/encoding/asn1/marshal.go.html#line-655">#L655</a>: 	case <b>TagUTCTime</b>:
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

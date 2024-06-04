@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/x509/pkix.RDNSequence</title>
+<link href="../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../../pkg/crypto/x509/pkix.html">crypto/x509/pkix</a>.<a href="../../../src/crypto/x509/pkix/pkix.go.html#line-24">RDNSequence</a></b></span>
+
+<span class="title">12 uses</span>
+
+	crypto/x509/pkix (current package)
+		<a href="../../../src/crypto/x509/pkix/pkix.go.html#line-24">pkix.go#L24</a>: type <b>RDNSequence</b> []RelativeDistinguishedNameSET
+		<a href="../../../src/crypto/x509/pkix/pkix.go.html#line-40" class="path-duplicate">pkix.go</a><a href="../../../src/crypto/x509/pkix/pkix.go.html#line-40">#L40</a>: func (r <b>RDNSequence</b>) String() string {
+		<a href="../../../src/crypto/x509/pkix/pkix.go.html#line-144" class="path-duplicate">pkix.go</a><a href="../../../src/crypto/x509/pkix/pkix.go.html#line-144">#L144</a>: func (n *Name) FillFromRDNSequence(rdns *<b>RDNSequence</b>) {
+		<a href="../../../src/crypto/x509/pkix/pkix.go.html#line-200" class="path-duplicate">pkix.go</a><a href="../../../src/crypto/x509/pkix/pkix.go.html#line-200">#L200</a>: func (n Name) appendRDNs(in <b>RDNSequence</b>, values []string, oid asn1.ObjectIdentifier) <b>RDNSequence</b> {
+		<a href="../../../src/crypto/x509/pkix/pkix.go.html#line-226" class="path-duplicate">pkix.go</a><a href="../../../src/crypto/x509/pkix/pkix.go.html#line-226">#L226</a>: func (n Name) ToRDNSequence() (ret <b>RDNSequence</b>) {
+		<a href="../../../src/crypto/x509/pkix/pkix.go.html#line-250" class="path-duplicate">pkix.go</a><a href="../../../src/crypto/x509/pkix/pkix.go.html#line-250">#L250</a>: 	var rdns <b>RDNSequence</b>
+		<a href="../../../src/crypto/x509/pkix/pkix.go.html#line-307" class="path-duplicate">pkix.go</a><a href="../../../src/crypto/x509/pkix/pkix.go.html#line-307">#L307</a>: 	Issuer              <b>RDNSequence</b>
+
+	<a href="../../../pkg/crypto/x509.html">crypto/x509</a>
+		<a href="../../../src/crypto/x509/parser.go.html#line-111">parser.go#L111</a>: func parseName(raw cryptobyte.String) (*pkix.<b>RDNSequence</b>, error) {
+		<a href="../../../src/crypto/x509/parser.go.html#line-116" class="path-duplicate">parser.go</a><a href="../../../src/crypto/x509/parser.go.html#line-116">#L116</a>: 	var rdnSeq pkix.<b>RDNSequence</b>
+		<a href="../../../src/crypto/x509/x509.go.html#line-999">x509.go#L999</a>: 	RelativeName pkix.<b>RDNSequence</b> `asn1:"optional,tag:1"`
+		<a href="../../../src/crypto/x509/x509.go.html#line-2169" class="path-duplicate">x509.go</a><a href="../../../src/crypto/x509/x509.go.html#line-2169">#L2169</a>: 	var subject pkix.<b>RDNSequence</b>
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

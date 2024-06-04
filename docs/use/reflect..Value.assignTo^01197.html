@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: reflect.Value.assignTo</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/reflect.html">reflect</a>.<a href="../src/reflect/value.go.html#line-39">Value</a>.<a href="../src/reflect/value.go.html#line-3323">assignTo</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">12 uses</span>
+
+	reflect (current package)
+		<a href="../src/reflect/value.go.html#line-534">value.go#L534</a>: 		v = v.<b>assignTo</b>("reflect.Value.Call", &amp;targ.t, nil)
+		<a href="../src/reflect/value.go.html#line-818" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-818">#L818</a>: 			v = v.<b>assignTo</b>("reflect.MakeFunc", typ, nil)
+		<a href="../src/reflect/value.go.html#line-1821" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1821">#L1821</a>: 		key = key.<b>assignTo</b>("reflect.Value.MapIndex", tt.Key, nil)
+		<a href="../src/reflect/value.go.html#line-1945" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1945">#L1945</a>: 	key = key.<b>assignTo</b>("reflect.MapIter.SetKey", v.typ(), target)
+		<a href="../src/reflect/value.go.html#line-1988" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1988">#L1988</a>: 	elem = elem.<b>assignTo</b>("reflect.MapIter.SetValue", v.typ(), target)
+		<a href="../src/reflect/value.go.html#line-2304" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2304">#L2304</a>: 	x = x.<b>assignTo</b>("reflect.Value.Send", tt.Elem, nil)
+		<a href="../src/reflect/value.go.html#line-2325" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2325">#L2325</a>: 	x = x.<b>assignTo</b>("reflect.Set", v.typ(), target)
+		<a href="../src/reflect/value.go.html#line-2460" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2460">#L2460</a>: 		elem = elem.<b>assignTo</b>("reflect.Value.SetMapIndex", tt.Elem, nil)
+		<a href="../src/reflect/value.go.html#line-2471" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2471">#L2471</a>: 	key = key.<b>assignTo</b>("reflect.Value.SetMapIndex", tt.Key, nil)
+		<a href="../src/reflect/value.go.html#line-2483" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2483">#L2483</a>: 	elem = elem.<b>assignTo</b>("reflect.Value.SetMapIndex", tt.Elem, nil)
+		<a href="../src/reflect/value.go.html#line-3139" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3139">#L3139</a>: 			v = v.<b>assignTo</b>("reflect.Select", tt.Elem, nil)
+		<a href="../src/reflect/value.go.html#line-3323" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3323">#L3323</a>: func (v Value) <b>assignTo</b>(context string, dst *abi.Type, target unsafe.Pointer) Value {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

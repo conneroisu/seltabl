@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.hmap</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/map.go.html#line-117">hmap</a></b></span>
+
+<span class="title">69 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/map.go.html#line-117">map.go#L117</a>: type <b>hmap</b> struct {
+		<a href="../src/runtime/map.go.html#line-170" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-170">#L170</a>: 	h           *<b>hmap</b>
+		<a href="../src/runtime/map.go.html#line-228" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-228">#L228</a>: func (h *<b>hmap</b>) incrnoverflow() {
+		<a href="../src/runtime/map.go.html#line-247" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-247">#L247</a>: func (h *<b>hmap</b>) newoverflow(t *maptype, b *bmap) *bmap {
+		<a href="../src/runtime/map.go.html#line-275" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-275">#L275</a>: func (h *<b>hmap</b>) createOverflow() {
+		<a href="../src/runtime/map.go.html#line-284" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-284">#L284</a>: func makemap64(t *maptype, hint int64, h *<b>hmap</b>) *<b>hmap</b> {
+		<a href="../src/runtime/map.go.html#line-294" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-294">#L294</a>: func makemap_small() *<b>hmap</b> {
+		<a href="../src/runtime/map.go.html#line-295" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-295">#L295</a>: 	h := new(<b>hmap</b>)
+		<a href="../src/runtime/map.go.html#line-305" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-305">#L305</a>: func makemap(t *maptype, hint int, h *<b>hmap</b>) *<b>hmap</b> {
+		<a href="../src/runtime/map.go.html#line-313" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-313">#L313</a>: 		h = new(<b>hmap</b>)
+		<a href="../src/runtime/map.go.html#line-396" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-396">#L396</a>: func mapaccess1(t *maptype, h *<b>hmap</b>, key unsafe.Pointer) unsafe.Pointer {
+		<a href="../src/runtime/map.go.html#line-457" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-457">#L457</a>: func mapaccess2(t *maptype, h *<b>hmap</b>, key unsafe.Pointer) (unsafe.Pointer, bool) {
+		<a href="../src/runtime/map.go.html#line-519" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-519">#L519</a>: func mapaccessK(t *maptype, h *<b>hmap</b>, key unsafe.Pointer) (unsafe.Pointer, unsafe.Pointer) {
+		<a href="../src/runtime/map.go.html#line-562" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-562">#L562</a>: func mapaccess1_fat(t *maptype, h *<b>hmap</b>, key, zero unsafe.Pointer) unsafe.Pointer {
+		<a href="../src/runtime/map.go.html#line-570" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-570">#L570</a>: func mapaccess2_fat(t *maptype, h *<b>hmap</b>, key, zero unsafe.Pointer) (unsafe.Pointer, bool) {
+		<a href="../src/runtime/map.go.html#line-579" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-579">#L579</a>: func mapassign(t *maptype, h *<b>hmap</b>, key unsafe.Pointer) unsafe.Pointer {
+		<a href="../src/runtime/map.go.html#line-696" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-696">#L696</a>: func mapdelete(t *maptype, h *<b>hmap</b>, key unsafe.Pointer) {
+		<a href="../src/runtime/map.go.html#line-816" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-816">#L816</a>: func mapiterinit(t *maptype, h *<b>hmap</b>, it *hiter) {
+		<a href="../src/runtime/map.go.html#line-989" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-989">#L989</a>: func mapclear(t *maptype, h *<b>hmap</b>) {
+		<a href="../src/runtime/map.go.html#line-1053" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1053">#L1053</a>: func hashGrow(t *maptype, h *<b>hmap</b>) {
+		<a href="../src/runtime/map.go.html#line-1117" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1117">#L1117</a>: func (h *<b>hmap</b>) growing() bool {
+		<a href="../src/runtime/map.go.html#line-1122" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1122">#L1122</a>: func (h *<b>hmap</b>) sameSizeGrow() bool {
+		<a href="../src/runtime/map.go.html#line-1127" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1127">#L1127</a>: func (h *<b>hmap</b>) noldbuckets() uintptr {
+		<a href="../src/runtime/map.go.html#line-1136" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1136">#L1136</a>: func (h *<b>hmap</b>) oldbucketmask() uintptr {
+		<a href="../src/runtime/map.go.html#line-1140" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1140">#L1140</a>: func growWork(t *maptype, h *<b>hmap</b>, bucket uintptr) {
+		<a href="../src/runtime/map.go.html#line-1151" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1151">#L1151</a>: func bucketEvacuated(t *maptype, h *<b>hmap</b>, bucket uintptr) bool {
+		<a href="../src/runtime/map.go.html#line-1164" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1164">#L1164</a>: func evacuate(t *maptype, h *<b>hmap</b>, oldbucket uintptr) {
+		<a href="../src/runtime/map.go.html#line-1278" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1278">#L1278</a>: func advanceEvacuationMark(h *<b>hmap</b>, t *maptype, newbit uintptr) {
+		<a href="../src/runtime/map.go.html#line-1305" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1305">#L1305</a>: func reflect_makemap(t *maptype, cap int) *<b>hmap</b> {
+		<a href="../src/runtime/map.go.html#line-1344" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1344">#L1344</a>: func reflect_mapaccess(t *maptype, h *<b>hmap</b>, key unsafe.Pointer) unsafe.Pointer {
+		<a href="../src/runtime/map.go.html#line-1354" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1354">#L1354</a>: func reflect_mapaccess_faststr(t *maptype, h *<b>hmap</b>, key string) unsafe.Pointer {
+		<a href="../src/runtime/map.go.html#line-1364" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1364">#L1364</a>: func reflect_mapassign(t *maptype, h *<b>hmap</b>, key unsafe.Pointer, elem unsafe.Pointer) {
+		<a href="../src/runtime/map.go.html#line-1370" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1370">#L1370</a>: func reflect_mapassign_faststr(t *maptype, h *<b>hmap</b>, key string, elem unsafe.Pointer) {
+		<a href="../src/runtime/map.go.html#line-1376" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1376">#L1376</a>: func reflect_mapdelete(t *maptype, h *<b>hmap</b>, key unsafe.Pointer) {
+		<a href="../src/runtime/map.go.html#line-1381" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1381">#L1381</a>: func reflect_mapdelete_faststr(t *maptype, h *<b>hmap</b>, key string) {
+		<a href="../src/runtime/map.go.html#line-1386" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1386">#L1386</a>: func reflect_mapiterinit(t *maptype, h *<b>hmap</b>, it *hiter) {
+		<a href="../src/runtime/map.go.html#line-1406" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1406">#L1406</a>: func reflect_maplen(h *<b>hmap</b>) int {
+		<a href="../src/runtime/map.go.html#line-1418" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1418">#L1418</a>: func reflect_mapclear(t *maptype, h *<b>hmap</b>) {
+		<a href="../src/runtime/map.go.html#line-1423" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1423">#L1423</a>: func reflectlite_maplen(h *<b>hmap</b>) int {
+		<a href="../src/runtime/map.go.html#line-1448" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1448">#L1448</a>: 	e.data = unsafe.Pointer(mapclone2((*maptype)(unsafe.Pointer(e._type)), (*<b>hmap</b>)(e.data)))
+		<a href="../src/runtime/map.go.html#line-1454" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1454">#L1454</a>: func moveToBmap(t *maptype, h *<b>hmap</b>, dst *bmap, pos int, src *bmap) (*bmap, int) {
+		<a href="../src/runtime/map.go.html#line-1505" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1505">#L1505</a>: func mapclone2(t *maptype, src *<b>hmap</b>) *<b>hmap</b> {
+		<a href="../src/runtime/map.go.html#line-1611" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1611">#L1611</a>: 	h := (*<b>hmap</b>)(e.data)
+		<a href="../src/runtime/map.go.html#line-1645" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1645">#L1645</a>: func copyKeys(t *maptype, h *<b>hmap</b>, b *bmap, s *slice, offset uint8) {
+		<a href="../src/runtime/map.go.html#line-1675" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1675">#L1675</a>: 	h := (*<b>hmap</b>)(e.data)
+		<a href="../src/runtime/map.go.html#line-1708" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1708">#L1708</a>: func copyValues(t *maptype, h *<b>hmap</b>, b *bmap, s *slice, offset uint8) {
+		<a href="../src/runtime/map_fast32.go.html#line-13">map_fast32.go#L13</a>: func mapaccess1_fast32(t *maptype, h *<b>hmap</b>, key uint32) unsafe.Pointer {
+		<a href="../src/runtime/map_fast32.go.html#line-53" class="path-duplicate">map_fast32.go</a><a href="../src/runtime/map_fast32.go.html#line-53">#L53</a>: func mapaccess2_fast32(t *maptype, h *<b>hmap</b>, key uint32) (unsafe.Pointer, bool) {
+		<a href="../src/runtime/map_fast32.go.html#line-93" class="path-duplicate">map_fast32.go</a><a href="../src/runtime/map_fast32.go.html#line-93">#L93</a>: func mapassign_fast32(t *maptype, h *<b>hmap</b>, key uint32) unsafe.Pointer {
+		<a href="../src/runtime/map_fast32.go.html#line-183" class="path-duplicate">map_fast32.go</a><a href="../src/runtime/map_fast32.go.html#line-183">#L183</a>: func mapassign_fast32ptr(t *maptype, h *<b>hmap</b>, key unsafe.Pointer) unsafe.Pointer {
+		<a href="../src/runtime/map_fast32.go.html#line-273" class="path-duplicate">map_fast32.go</a><a href="../src/runtime/map_fast32.go.html#line-273">#L273</a>: func mapdelete_fast32(t *maptype, h *<b>hmap</b>, key uint32) {
+		<a href="../src/runtime/map_fast32.go.html#line-363" class="path-duplicate">map_fast32.go</a><a href="../src/runtime/map_fast32.go.html#line-363">#L363</a>: func growWork_fast32(t *maptype, h *<b>hmap</b>, bucket uintptr) {
+		<a href="../src/runtime/map_fast32.go.html#line-374" class="path-duplicate">map_fast32.go</a><a href="../src/runtime/map_fast32.go.html#line-374">#L374</a>: func evacuate_fast32(t *maptype, h *<b>hmap</b>, oldbucket uintptr) {
+		<a href="../src/runtime/map_fast64.go.html#line-13">map_fast64.go#L13</a>: func mapaccess1_fast64(t *maptype, h *<b>hmap</b>, key uint64) unsafe.Pointer {
+		<a href="../src/runtime/map_fast64.go.html#line-53" class="path-duplicate">map_fast64.go</a><a href="../src/runtime/map_fast64.go.html#line-53">#L53</a>: func mapaccess2_fast64(t *maptype, h *<b>hmap</b>, key uint64) (unsafe.Pointer, bool) {
+		<a href="../src/runtime/map_fast64.go.html#line-93" class="path-duplicate">map_fast64.go</a><a href="../src/runtime/map_fast64.go.html#line-93">#L93</a>: func mapassign_fast64(t *maptype, h *<b>hmap</b>, key uint64) unsafe.Pointer {
+		<a href="../src/runtime/map_fast64.go.html#line-183" class="path-duplicate">map_fast64.go</a><a href="../src/runtime/map_fast64.go.html#line-183">#L183</a>: func mapassign_fast64ptr(t *maptype, h *<b>hmap</b>, key unsafe.Pointer) unsafe.Pointer {
+		<a href="../src/runtime/map_fast64.go.html#line-273" class="path-duplicate">map_fast64.go</a><a href="../src/runtime/map_fast64.go.html#line-273">#L273</a>: func mapdelete_fast64(t *maptype, h *<b>hmap</b>, key uint64) {
+		<a href="../src/runtime/map_fast64.go.html#line-365" class="path-duplicate">map_fast64.go</a><a href="../src/runtime/map_fast64.go.html#line-365">#L365</a>: func growWork_fast64(t *maptype, h *<b>hmap</b>, bucket uintptr) {
+		<a href="../src/runtime/map_fast64.go.html#line-376" class="path-duplicate">map_fast64.go</a><a href="../src/runtime/map_fast64.go.html#line-376">#L376</a>: func evacuate_fast64(t *maptype, h *<b>hmap</b>, oldbucket uintptr) {
+		<a href="../src/runtime/map_faststr.go.html#line-13">map_faststr.go#L13</a>: func mapaccess1_faststr(t *maptype, h *<b>hmap</b>, ky string) unsafe.Pointer {
+		<a href="../src/runtime/map_faststr.go.html#line-108" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-108">#L108</a>: func mapaccess2_faststr(t *maptype, h *<b>hmap</b>, ky string) (unsafe.Pointer, bool) {
+		<a href="../src/runtime/map_faststr.go.html#line-203" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-203">#L203</a>: func mapassign_faststr(t *maptype, h *<b>hmap</b>, s string) unsafe.Pointer {
+		<a href="../src/runtime/map_faststr.go.html#line-301" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-301">#L301</a>: func mapdelete_faststr(t *maptype, h *<b>hmap</b>, ky string) {
+		<a href="../src/runtime/map_faststr.go.html#line-391" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-391">#L391</a>: func growWork_faststr(t *maptype, h *<b>hmap</b>, bucket uintptr) {
+		<a href="../src/runtime/map_faststr.go.html#line-402" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-402">#L402</a>: func evacuate_faststr(t *maptype, h *<b>hmap</b>, oldbucket uintptr) {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

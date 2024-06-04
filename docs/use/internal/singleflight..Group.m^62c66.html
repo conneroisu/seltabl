@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: internal/singleflight.Group.m</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/internal/singleflight.html">internal/singleflight</a>.<a href="../../src/internal/singleflight/singleflight.go.html#line-29">Group</a>.<a href="../../src/internal/singleflight/singleflight.go.html#line-31">m</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">13 uses</span>
+
+	internal/singleflight (current package)
+		<a href="../../src/internal/singleflight/singleflight.go.html#line-31">singleflight.go#L31</a>: 	<b>m</b>  map[string]*call // lazily initialized
+		<a href="../../src/internal/singleflight/singleflight.go.html#line-49" class="path-duplicate">singleflight.go</a><a href="../../src/internal/singleflight/singleflight.go.html#line-49">#L49</a>: 	if g.<b>m</b> == nil {
+		<a href="../../src/internal/singleflight/singleflight.go.html#line-50" class="path-duplicate">singleflight.go</a><a href="../../src/internal/singleflight/singleflight.go.html#line-50">#L50</a>: 		g.<b>m</b> = make(map[string]*call)
+		<a href="../../src/internal/singleflight/singleflight.go.html#line-52" class="path-duplicate">singleflight.go</a><a href="../../src/internal/singleflight/singleflight.go.html#line-52">#L52</a>: 	if c, ok := g.<b>m</b>[key]; ok {
+		<a href="../../src/internal/singleflight/singleflight.go.html#line-60" class="path-duplicate">singleflight.go</a><a href="../../src/internal/singleflight/singleflight.go.html#line-60">#L60</a>: 	g.<b>m</b>[key] = c
+		<a href="../../src/internal/singleflight/singleflight.go.html#line-72" class="path-duplicate">singleflight.go</a><a href="../../src/internal/singleflight/singleflight.go.html#line-72">#L72</a>: 	if g.<b>m</b> == nil {
+		<a href="../../src/internal/singleflight/singleflight.go.html#line-73" class="path-duplicate">singleflight.go</a><a href="../../src/internal/singleflight/singleflight.go.html#line-73">#L73</a>: 		g.<b>m</b> = make(map[string]*call)
+		<a href="../../src/internal/singleflight/singleflight.go.html#line-75" class="path-duplicate">singleflight.go</a><a href="../../src/internal/singleflight/singleflight.go.html#line-75">#L75</a>: 	if c, ok := g.<b>m</b>[key]; ok {
+		<a href="../../src/internal/singleflight/singleflight.go.html#line-83" class="path-duplicate">singleflight.go</a><a href="../../src/internal/singleflight/singleflight.go.html#line-83">#L83</a>: 	g.<b>m</b>[key] = c
+		<a href="../../src/internal/singleflight/singleflight.go.html#line-97" class="path-duplicate">singleflight.go</a><a href="../../src/internal/singleflight/singleflight.go.html#line-97">#L97</a>: 	if g.<b>m</b>[key] == c {
+		<a href="../../src/internal/singleflight/singleflight.go.html#line-98" class="path-duplicate">singleflight.go</a><a href="../../src/internal/singleflight/singleflight.go.html#line-98">#L98</a>: 		delete(g.<b>m</b>, key)
+		<a href="../../src/internal/singleflight/singleflight.go.html#line-114" class="path-duplicate">singleflight.go</a><a href="../../src/internal/singleflight/singleflight.go.html#line-114">#L114</a>: 	c, ok := g.<b>m</b>[key]
+		<a href="../../src/internal/singleflight/singleflight.go.html#line-119" class="path-duplicate">singleflight.go</a><a href="../../src/internal/singleflight/singleflight.go.html#line-119">#L119</a>: 		delete(g.<b>m</b>, key)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

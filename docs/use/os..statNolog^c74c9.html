@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: os.statNolog</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/os.html">os</a>.<a href="../src/os/stat_unix.go.html#line-29">statNolog</a></b></span>
+
+<span class="title">6 uses</span>
+
+	os (current package)
+		<a href="../src/os/getwd.go.html#line-29">getwd.go#L29</a>: 	dot, err := <b>statNolog</b>(".")
+		<a href="../src/os/getwd.go.html#line-35" class="path-duplicate">getwd.go</a><a href="../src/os/getwd.go.html#line-35">#L35</a>: 		d, err := <b>statNolog</b>(dir)
+		<a href="../src/os/getwd.go.html#line-62" class="path-duplicate">getwd.go</a><a href="../src/os/getwd.go.html#line-62">#L62</a>: 		d, err := <b>statNolog</b>(dir)
+		<a href="../src/os/getwd.go.html#line-70" class="path-duplicate">getwd.go</a><a href="../src/os/getwd.go.html#line-70">#L70</a>: 	root, err := <b>statNolog</b>("/")
+		<a href="../src/os/stat.go.html#line-13">stat.go#L13</a>: 	return <b>statNolog</b>(name)
+		<a href="../src/os/stat_unix.go.html#line-29">stat_unix.go#L29</a>: func <b>statNolog</b>(name string) (FileInfo, error) {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

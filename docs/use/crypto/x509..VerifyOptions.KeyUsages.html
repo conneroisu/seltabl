@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/x509.VerifyOptions.KeyUsages</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/crypto/x509.html">crypto/x509</a>.<a href="../../src/crypto/x509/verify.go.html#line-176">VerifyOptions</a>.<a href="../../src/crypto/x509/verify.go.html#line-196">KeyUsages</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">6 uses</span>
+
+	crypto/x509 (current package)
+		<a href="../../src/crypto/x509/verify.go.html#line-196">verify.go#L196</a>: 	<b>KeyUsages</b> []ExtKeyUsage
+		<a href="../../src/crypto/x509/verify.go.html#line-812" class="path-duplicate">verify.go</a><a href="../../src/crypto/x509/verify.go.html#line-812">#L812</a>: 	if len(opts.<b>KeyUsages</b>) == 0 {
+		<a href="../../src/crypto/x509/verify.go.html#line-813" class="path-duplicate">verify.go</a><a href="../../src/crypto/x509/verify.go.html#line-813">#L813</a>: 		opts.<b>KeyUsages</b> = []ExtKeyUsage{ExtKeyUsageServerAuth}
+		<a href="../../src/crypto/x509/verify.go.html#line-816" class="path-duplicate">verify.go</a><a href="../../src/crypto/x509/verify.go.html#line-816">#L816</a>: 	for _, eku := range opts.<b>KeyUsages</b> {
+		<a href="../../src/crypto/x509/verify.go.html#line-826" class="path-duplicate">verify.go</a><a href="../../src/crypto/x509/verify.go.html#line-826">#L826</a>: 		if checkChainForKeyUsage(candidate, opts.<b>KeyUsages</b>) {
+
+	<a href="../../pkg/crypto/tls.html">crypto/tls</a>
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-898">handshake_server.go#L898</a>: 			<b>KeyUsages</b>:     []x509.ExtKeyUsage{x509.ExtKeyUsageClientAuth},
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

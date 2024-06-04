@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: vendor/golang.org/x/text/transform.Transformer.Transform</title>
+<link href="../../../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../../../../pkg/vendor/golang.org/x/text/transform.html">vendor/golang.org/x/text/transform</a>.<a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-41">Transformer</a>.<a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-61">Transform</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">9 uses</span>
+
+	vendor/golang.org/x/text/transform (current package)
+		<a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-61">transform.go#L61</a>: 	<b>Transform</b>(dst, src []byte, atEOF bool) (nDst, nSrc int, err error)
+		<a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-166" class="path-duplicate">transform.go</a><a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-166">#L166</a>: 			r.dst1, n, err = r.t.<b>Transform</b>(r.dst, r.src[r.src0:r.src1], r.err == io.EOF)
+		<a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-244" class="path-duplicate">transform.go</a><a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-244">#L244</a>: 		nDst, nSrc, err := w.t.<b>Transform</b>(w.dst, src, false)
+		<a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-299" class="path-duplicate">transform.go</a><a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-299">#L299</a>: 		nDst, nSrc, err := w.t.<b>Transform</b>(w.dst, src, true)
+		<a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-422" class="path-duplicate">transform.go</a><a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-422">#L422</a>: 		nDst, nSrc, err0 := in.t.<b>Transform</b>(out.dst(), in.src(), atEOF &amp;&amp; low == i)
+		<a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-573" class="path-duplicate">transform.go</a><a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-573">#L573</a>: 		if _, _, err := t.<b>Transform</b>(nil, nil, true); err == nil {
+		<a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-601" class="path-duplicate">transform.go</a><a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-601">#L601</a>: 		nDst, nSrc, err = t.<b>Transform</b>(dst, src[:n], pSrc+n == len(s))
+		<a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-652" class="path-duplicate">transform.go</a><a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-652">#L652</a>: 		nDst, nSrc, err := t.<b>Transform</b>(dst[pDst:], src[:n], atEOF)
+		<a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-696" class="path-duplicate">transform.go</a><a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-696">#L696</a>: 		nDst, nSrc, err := t.<b>Transform</b>(dst[pDst:], src[pSrc:], true)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

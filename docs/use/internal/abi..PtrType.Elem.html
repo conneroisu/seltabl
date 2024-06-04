@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: internal/abi.PtrType.Elem</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/internal/abi.html">internal/abi</a>.<a href="../../src/internal/abi/type.go.html#line-548">PtrType</a>.<a href="../../src/internal/abi/type.go.html#line-486">Elem</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">16 uses</span>
+
+	internal/abi (current package)
+		<a href="../../src/internal/abi/type.go.html#line-368">type.go#L368</a>: 		return tt.<b>Elem</b>
+		<a href="../../src/internal/abi/type.go.html#line-486" class="path-duplicate">type.go</a><a href="../../src/internal/abi/type.go.html#line-486">#L486</a>: 	<b>Elem</b> *Type // slice element type
+
+	<a href="../../pkg/reflect.html">reflect</a>
+		<a href="../../src/reflect/type.go.html#line-1860">type.go#L1860</a>: 			repr = append(repr, stringFor((*sliceType)(unsafe.Pointer(t)).<b>Elem</b>)...)
+		<a href="../../src/reflect/type.go.html#line-2094" class="path-duplicate">type.go</a><a href="../../src/reflect/type.go.html#line-2094">#L2094</a>: 		if slice.<b>Elem</b> == typ {
+		<a href="../../src/reflect/type.go.html#line-2107" class="path-duplicate">type.go</a><a href="../../src/reflect/type.go.html#line-2107">#L2107</a>: 	slice.<b>Elem</b> = typ
+		<a href="../../src/reflect/value.go.html#line-1433">value.go#L1433</a>: 		typ := tt.<b>Elem</b>
+		<a href="../../src/reflect/value.go.html#line-2583" class="path-duplicate">value.go</a><a href="../../src/reflect/value.go.html#line-2583">#L2583</a>: 		s.Data = arrayAt(base, i, typ.<b>Elem</b>.Size(), "i &lt; cap")
+		<a href="../../src/reflect/value.go.html#line-2635" class="path-duplicate">value.go</a><a href="../../src/reflect/value.go.html#line-2635">#L2635</a>: 		s.Data = arrayAt(base, i, typ.<b>Elem</b>.Size(), "i &lt; k &lt;= cap")
+		<a href="../../src/reflect/value.go.html#line-2931" class="path-duplicate">value.go</a><a href="../../src/reflect/value.go.html#line-2931">#L2931</a>: 		typedarrayclear(st.<b>Elem</b>, sh.Data, sh.Len)
+
+	<a href="../../pkg/runtime.html">runtime</a>
+		<a href="../../src/runtime/arena.go.html#line-172">arena.go#L172</a>: 		et := (*slicetype)(unsafe.Pointer(t)).<b>Elem</b>
+		<a href="../../src/runtime/arena.go.html#line-305" class="path-duplicate">arena.go</a><a href="../../src/runtime/arena.go.html#line-305">#L305</a>: 	typ = (*slicetype)(unsafe.Pointer(typ)).<b>Elem</b>
+		<a href="../../src/runtime/cgocall.go.html#line-607">cgocall.go#L607</a>: 		if st.<b>Elem</b>.PtrBytes == 0 {
+		<a href="../../src/runtime/cgocall.go.html#line-611" class="path-duplicate">cgocall.go</a><a href="../../src/runtime/cgocall.go.html#line-611">#L611</a>: 			cgoCheckArg(st.<b>Elem</b>, p, true, false, msg)
+		<a href="../../src/runtime/cgocall.go.html#line-612" class="path-duplicate">cgocall.go</a><a href="../../src/runtime/cgocall.go.html#line-612">#L612</a>: 			p = add(p, st.<b>Elem</b>.Size_)
+		<a href="../../src/runtime/type.go.html#line-434">type.go#L434</a>: 		return typesEqual(st.<b>Elem</b>, sv.<b>Elem</b>, seen)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

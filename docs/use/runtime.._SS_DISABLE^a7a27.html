@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime._SS_DISABLE</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/os_linux_generic.go.html#line-10">_SS_DISABLE</a></b></span>
+
+<span class="title">5 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/os_linux_generic.go.html#line-10">os_linux_generic.go#L10</a>: 	<b>_SS_DISABLE</b>  = 2
+		<a href="../src/runtime/signal_unix.go.html#line-564">signal_unix.go#L564</a>: 	if st.ss_flags&amp;<b>_SS_DISABLE</b> == 0 &amp;&amp; sp &gt;= stsp &amp;&amp; sp &lt; stsp+st.ss_size {
+		<a href="../src/runtime/signal_unix.go.html#line-589" class="path-duplicate">signal_unix.go</a><a href="../src/runtime/signal_unix.go.html#line-589">#L589</a>: 	if st.ss_flags&amp;<b>_SS_DISABLE</b> != 0 {
+		<a href="../src/runtime/signal_unix.go.html#line-1280" class="path-duplicate">signal_unix.go</a><a href="../src/runtime/signal_unix.go.html#line-1280">#L1280</a>: 	if st.ss_flags&amp;<b>_SS_DISABLE</b> != 0 || !iscgo {
+		<a href="../src/runtime/signal_unix.go.html#line-1313" class="path-duplicate">signal_unix.go</a><a href="../src/runtime/signal_unix.go.html#line-1313">#L1313</a>: 		st := stackt{ss_flags: <b>_SS_DISABLE</b>}
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

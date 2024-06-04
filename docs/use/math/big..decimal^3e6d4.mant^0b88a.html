@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: math/big.decimal.mant</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/math/big.html">math/big</a>.<a href="../../src/math/big/decimal.go.html#line-27">decimal</a>.<a href="../../src/math/big/decimal.go.html#line-28">mant</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">69 uses</span>
+
+	math/big (current package)
+		<a href="../../src/math/big/decimal.go.html#line-28">decimal.go#L28</a>: 	<b>mant</b> []byte // mantissa ASCII digits, big-endian
+		<a href="../../src/math/big/decimal.go.html#line-34" class="path-duplicate">decimal.go</a><a href="../../src/math/big/decimal.go.html#line-34">#L34</a>: 	if 0 &lt;= i &amp;&amp; i &lt; len(d.<b>mant</b>) {
+		<a href="../../src/math/big/decimal.go.html#line-35" class="path-duplicate">decimal.go</a><a href="../../src/math/big/decimal.go.html#line-35">#L35</a>: 		return d.<b>mant</b>[i]
+		<a href="../../src/math/big/decimal.go.html#line-58" class="path-duplicate">decimal.go</a><a href="../../src/math/big/decimal.go.html#line-58">#L58</a>: 		x.<b>mant</b> = x.<b>mant</b>[:0]
+		<a href="../../src/math/big/decimal.go.html#line-91" class="path-duplicate">decimal.go</a><a href="../../src/math/big/decimal.go.html#line-91">#L91</a>: 	x.<b>mant</b> = append(x.<b>mant</b>[:0], s[:n]...)
+		<a href="../../src/math/big/decimal.go.html#line-110" class="path-duplicate">decimal.go</a><a href="../../src/math/big/decimal.go.html#line-110">#L110</a>: 	for n&gt;&gt;s == 0 &amp;&amp; r &lt; len(x.<b>mant</b>) {
+		<a href="../../src/math/big/decimal.go.html#line-111" class="path-duplicate">decimal.go</a><a href="../../src/math/big/decimal.go.html#line-111">#L111</a>: 		ch := Word(x.<b>mant</b>[r])
+		<a href="../../src/math/big/decimal.go.html#line-117" class="path-duplicate">decimal.go</a><a href="../../src/math/big/decimal.go.html#line-117">#L117</a>: 		x.<b>mant</b> = x.<b>mant</b>[:0]
+		<a href="../../src/math/big/decimal.go.html#line-129" class="path-duplicate">decimal.go</a><a href="../../src/math/big/decimal.go.html#line-129">#L129</a>: 	for r &lt; len(x.<b>mant</b>) {
+		<a href="../../src/math/big/decimal.go.html#line-130" class="path-duplicate">decimal.go</a><a href="../../src/math/big/decimal.go.html#line-130">#L130</a>: 		ch := Word(x.<b>mant</b>[r])
+		<a href="../../src/math/big/decimal.go.html#line-134" class="path-duplicate">decimal.go</a><a href="../../src/math/big/decimal.go.html#line-134">#L134</a>: 		x.<b>mant</b>[w] = byte(d + '0')
+		<a href="../../src/math/big/decimal.go.html#line-140" class="path-duplicate">decimal.go</a><a href="../../src/math/big/decimal.go.html#line-140">#L140</a>: 	for n &gt; 0 &amp;&amp; w &lt; len(x.<b>mant</b>) {
+		<a href="../../src/math/big/decimal.go.html#line-143" class="path-duplicate">decimal.go</a><a href="../../src/math/big/decimal.go.html#line-143">#L143</a>: 		x.<b>mant</b>[w] = byte(d + '0')
+		<a href="../../src/math/big/decimal.go.html#line-147" class="path-duplicate">decimal.go</a><a href="../../src/math/big/decimal.go.html#line-147">#L147</a>: 	x.<b>mant</b> = x.<b>mant</b>[:w] // the number may be shorter (e.g. 1024 &gt;&gt; 10)
+		<a href="../../src/math/big/decimal.go.html#line-153" class="path-duplicate">decimal.go</a><a href="../../src/math/big/decimal.go.html#line-153">#L153</a>: 		x.<b>mant</b> = append(x.<b>mant</b>, byte(d+'0'))
+		<a href="../../src/math/big/decimal.go.html#line-161" class="path-duplicate">decimal.go</a><a href="../../src/math/big/decimal.go.html#line-161">#L161</a>: 	if len(x.<b>mant</b>) == 0 {
+		<a href="../../src/math/big/decimal.go.html#line-169" class="path-duplicate">decimal.go</a><a href="../../src/math/big/decimal.go.html#line-169">#L169</a>: 		buf = make([]byte, 0, 2+(-x.exp)+len(x.<b>mant</b>))
+		<a href="../../src/math/big/decimal.go.html#line-172" class="path-duplicate">decimal.go</a><a href="../../src/math/big/decimal.go.html#line-172">#L172</a>: 		buf = append(buf, x.<b>mant</b>...)
+		<a href="../../src/math/big/decimal.go.html#line-174" class="path-duplicate">decimal.go</a><a href="../../src/math/big/decimal.go.html#line-174">#L174</a>: 	case /* 0 &lt; */ x.exp &lt; len(x.<b>mant</b>):
+		<a href="../../src/math/big/decimal.go.html#line-176" class="path-duplicate">decimal.go</a><a href="../../src/math/big/decimal.go.html#line-176">#L176</a>: 		buf = make([]byte, 0, 1+len(x.<b>mant</b>))
+		<a href="../../src/math/big/decimal.go.html#line-177" class="path-duplicate">decimal.go</a><a href="../../src/math/big/decimal.go.html#line-177">#L177</a>: 		buf = append(buf, x.<b>mant</b>[:x.exp]...)
+		<a href="../../src/math/big/decimal.go.html#line-179" class="path-duplicate">decimal.go</a><a href="../../src/math/big/decimal.go.html#line-179">#L179</a>: 		buf = append(buf, x.<b>mant</b>[x.exp:]...)
+		<a href="../../src/math/big/decimal.go.html#line-184" class="path-duplicate">decimal.go</a><a href="../../src/math/big/decimal.go.html#line-184">#L184</a>: 		buf = append(buf, x.<b>mant</b>...)
+		<a href="../../src/math/big/decimal.go.html#line-185" class="path-duplicate">decimal.go</a><a href="../../src/math/big/decimal.go.html#line-185">#L185</a>: 		buf = appendZeros(buf, x.exp-len(x.<b>mant</b>))
+		<a href="../../src/math/big/decimal.go.html#line-203" class="path-duplicate">decimal.go</a><a href="../../src/math/big/decimal.go.html#line-203">#L203</a>: 	if x.<b>mant</b>[n] == '5' &amp;&amp; n+1 == len(x.<b>mant</b>) {
+		<a href="../../src/math/big/decimal.go.html#line-205" class="path-duplicate">decimal.go</a><a href="../../src/math/big/decimal.go.html#line-205">#L205</a>: 		return n &gt; 0 &amp;&amp; (x.<b>mant</b>[n-1]-'0')&amp;1 != 0
+		<a href="../../src/math/big/decimal.go.html#line-208" class="path-duplicate">decimal.go</a><a href="../../src/math/big/decimal.go.html#line-208">#L208</a>: 	return x.<b>mant</b>[n] &gt;= '5'
+		<a href="../../src/math/big/decimal.go.html#line-215" class="path-duplicate">decimal.go</a><a href="../../src/math/big/decimal.go.html#line-215">#L215</a>: 	if n &lt; 0 || n &gt;= len(x.<b>mant</b>) {
+		<a href="../../src/math/big/decimal.go.html#line-227" class="path-duplicate">decimal.go</a><a href="../../src/math/big/decimal.go.html#line-227">#L227</a>: 	if n &lt; 0 || n &gt;= len(x.<b>mant</b>) {
+		<a href="../../src/math/big/decimal.go.html#line-233" class="path-duplicate">decimal.go</a><a href="../../src/math/big/decimal.go.html#line-233">#L233</a>: 	for n &gt; 0 &amp;&amp; x.<b>mant</b>[n-1] &gt;= '9' {
+		<a href="../../src/math/big/decimal.go.html#line-239" class="path-duplicate">decimal.go</a><a href="../../src/math/big/decimal.go.html#line-239">#L239</a>: 		x.<b>mant</b>[0] = '1' // ok since len(x.mant) &gt; n
+		<a href="../../src/math/big/decimal.go.html#line-240" class="path-duplicate">decimal.go</a><a href="../../src/math/big/decimal.go.html#line-240">#L240</a>: 		x.<b>mant</b> = x.<b>mant</b>[:1]
+		<a href="../../src/math/big/decimal.go.html#line-246" class="path-duplicate">decimal.go</a><a href="../../src/math/big/decimal.go.html#line-246">#L246</a>: 	x.<b>mant</b>[n-1]++
+		<a href="../../src/math/big/decimal.go.html#line-247" class="path-duplicate">decimal.go</a><a href="../../src/math/big/decimal.go.html#line-247">#L247</a>: 	x.<b>mant</b> = x.<b>mant</b>[:n]
+		<a href="../../src/math/big/decimal.go.html#line-252" class="path-duplicate">decimal.go</a><a href="../../src/math/big/decimal.go.html#line-252">#L252</a>: 	if n &lt; 0 || n &gt;= len(x.<b>mant</b>) {
+		<a href="../../src/math/big/decimal.go.html#line-255" class="path-duplicate">decimal.go</a><a href="../../src/math/big/decimal.go.html#line-255">#L255</a>: 	x.<b>mant</b> = x.<b>mant</b>[:n]
+		<a href="../../src/math/big/decimal.go.html#line-262" class="path-duplicate">decimal.go</a><a href="../../src/math/big/decimal.go.html#line-262">#L262</a>: 	i := len(x.<b>mant</b>)
+		<a href="../../src/math/big/decimal.go.html#line-263" class="path-duplicate">decimal.go</a><a href="../../src/math/big/decimal.go.html#line-263">#L263</a>: 	for i &gt; 0 &amp;&amp; x.<b>mant</b>[i-1] == '0' {
+		<a href="../../src/math/big/decimal.go.html#line-266" class="path-duplicate">decimal.go</a><a href="../../src/math/big/decimal.go.html#line-266">#L266</a>: 	x.<b>mant</b> = x.<b>mant</b>[:i]
+		<a href="../../src/math/big/ftoa.go.html#line-107">ftoa.go#L107</a>: 			prec = len(d.<b>mant</b>) - 1
+		<a href="../../src/math/big/ftoa.go.html#line-109" class="path-duplicate">ftoa.go</a><a href="../../src/math/big/ftoa.go.html#line-109">#L109</a>: 			prec = max(len(d.<b>mant</b>)-d.exp, 0)
+		<a href="../../src/math/big/ftoa.go.html#line-111" class="path-duplicate">ftoa.go</a><a href="../../src/math/big/ftoa.go.html#line-111">#L111</a>: 			prec = len(d.<b>mant</b>)
+		<a href="../../src/math/big/ftoa.go.html#line-139" class="path-duplicate">ftoa.go</a><a href="../../src/math/big/ftoa.go.html#line-139">#L139</a>: 		if eprec &gt; len(d.<b>mant</b>) &amp;&amp; len(d.<b>mant</b>) &gt;= d.exp {
+		<a href="../../src/math/big/ftoa.go.html#line-140" class="path-duplicate">ftoa.go</a><a href="../../src/math/big/ftoa.go.html#line-140">#L140</a>: 			eprec = len(d.<b>mant</b>)
+		<a href="../../src/math/big/ftoa.go.html#line-151" class="path-duplicate">ftoa.go</a><a href="../../src/math/big/ftoa.go.html#line-151">#L151</a>: 			if prec &gt; len(d.<b>mant</b>) {
+		<a href="../../src/math/big/ftoa.go.html#line-152" class="path-duplicate">ftoa.go</a><a href="../../src/math/big/ftoa.go.html#line-152">#L152</a>: 				prec = len(d.<b>mant</b>)
+		<a href="../../src/math/big/ftoa.go.html#line-157" class="path-duplicate">ftoa.go</a><a href="../../src/math/big/ftoa.go.html#line-157">#L157</a>: 			prec = len(d.<b>mant</b>)
+		<a href="../../src/math/big/ftoa.go.html#line-171" class="path-duplicate">ftoa.go</a><a href="../../src/math/big/ftoa.go.html#line-171">#L171</a>: 	if len(d.<b>mant</b>) == 0 {
+		<a href="../../src/math/big/ftoa.go.html#line-214" class="path-duplicate">ftoa.go</a><a href="../../src/math/big/ftoa.go.html#line-214">#L214</a>: 	for i, m := range d.<b>mant</b> {
+		<a href="../../src/math/big/ftoa.go.html#line-221" class="path-duplicate">ftoa.go</a><a href="../../src/math/big/ftoa.go.html#line-221">#L221</a>: 		okdown := l != m || inclusive &amp;&amp; i+1 == len(lower.<b>mant</b>)
+		<a href="../../src/math/big/ftoa.go.html#line-225" class="path-duplicate">ftoa.go</a><a href="../../src/math/big/ftoa.go.html#line-225">#L225</a>: 		okup := m != u &amp;&amp; (inclusive || m+1 &lt; u || i+1 &lt; len(upper.<b>mant</b>))
+		<a href="../../src/math/big/ftoa.go.html#line-247" class="path-duplicate">ftoa.go</a><a href="../../src/math/big/ftoa.go.html#line-247">#L247</a>: 	if len(d.<b>mant</b>) &gt; 0 {
+		<a href="../../src/math/big/ftoa.go.html#line-248" class="path-duplicate">ftoa.go</a><a href="../../src/math/big/ftoa.go.html#line-248">#L248</a>: 		ch = d.<b>mant</b>[0]
+		<a href="../../src/math/big/ftoa.go.html#line-256" class="path-duplicate">ftoa.go</a><a href="../../src/math/big/ftoa.go.html#line-256">#L256</a>: 		m := min(len(d.<b>mant</b>), prec+1)
+		<a href="../../src/math/big/ftoa.go.html#line-258" class="path-duplicate">ftoa.go</a><a href="../../src/math/big/ftoa.go.html#line-258">#L258</a>: 			buf = append(buf, d.<b>mant</b>[i:m]...)
+		<a href="../../src/math/big/ftoa.go.html#line-269" class="path-duplicate">ftoa.go</a><a href="../../src/math/big/ftoa.go.html#line-269">#L269</a>: 	if len(d.<b>mant</b>) &gt; 0 {
+		<a href="../../src/math/big/ftoa.go.html#line-291" class="path-duplicate">ftoa.go</a><a href="../../src/math/big/ftoa.go.html#line-291">#L291</a>: 		m := min(len(d.<b>mant</b>), d.exp)
+		<a href="../../src/math/big/ftoa.go.html#line-292" class="path-duplicate">ftoa.go</a><a href="../../src/math/big/ftoa.go.html#line-292">#L292</a>: 		buf = append(buf, d.<b>mant</b>[:m]...)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: reflect.TypeOf</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/reflect.html">reflect</a>.<a href="../src/reflect/type.go.html#line-1160">TypeOf</a></b></span>
+
+<span class="title">19 uses</span>
+
+	reflect (current package)
+		<a href="../src/reflect/type.go.html#line-1160">type.go#L1160</a>: func <b>TypeOf</b>(i any) Type {
+		<a href="../src/reflect/type.go.html#line-1743" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1743">#L1743</a>: 			Type: <b>TypeOf</b>(funcType{}),
+		<a href="../src/reflect/type.go.html#line-1747" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1747">#L1747</a>: 			Type: ArrayOf(n, <b>TypeOf</b>(&amp;rtype{})),
+		<a href="../src/reflect/type.go.html#line-2365" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2365">#L2365</a>: 			{Name: "S", Type: <b>TypeOf</b>(structType{})},
+		<a href="../src/reflect/type.go.html#line-2366" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2366">#L2366</a>: 			{Name: "U", Type: <b>TypeOf</b>(uncommonType{})},
+		<a href="../src/reflect/type.go.html#line-2367" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2367">#L2367</a>: 			{Name: "M", Type: ArrayOf(len(methods), <b>TypeOf</b>(methods[0]))},
+		<a href="../src/reflect/type.go.html#line-2884" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2884">#L2884</a>: 	return <b>TypeOf</b>((*T)(nil)).Elem()
+
+	<a href="../pkg/encoding/asn1.html">encoding/asn1</a>
+		<a href="../src/encoding/asn1/asn1.go.html#line-1117">asn1.go#L1117</a>: 		return nil, &amp;invalidUnmarshalError{reflect.<b>TypeOf</b>(val)}
+
+	<a href="../pkg/encoding/binary.html">encoding/binary</a>
+		<a href="../src/encoding/binary/binary.go.html#line-328">binary.go#L328</a>: 		return errors.New("binary.Read: invalid type " + reflect.<b>TypeOf</b>(data).String())
+		<a href="../src/encoding/binary/binary.go.html#line-458" class="path-duplicate">binary.go</a><a href="../src/encoding/binary/binary.go.html#line-458">#L458</a>: 		return errors.New("binary.Write: some values are not fixed-sized in type " + reflect.<b>TypeOf</b>(data).String())
+
+	<a href="../pkg/fmt.html">fmt</a>
+		<a href="../src/fmt/print.go.html#line-388">print.go#L388</a>: 		p.buf.writeString(reflect.<b>TypeOf</b>(p.arg).String())
+		<a href="../src/fmt/print.go.html#line-699" class="path-duplicate">print.go</a><a href="../src/fmt/print.go.html#line-699">#L699</a>: 		p.fmt.fmtS(reflect.<b>TypeOf</b>(arg).String())
+		<a href="../src/fmt/print.go.html#line-1192" class="path-duplicate">print.go</a><a href="../src/fmt/print.go.html#line-1192">#L1192</a>: 				p.buf.writeString(reflect.<b>TypeOf</b>(arg).String())
+		<a href="../src/fmt/print.go.html#line-1204" class="path-duplicate">print.go</a><a href="../src/fmt/print.go.html#line-1204">#L1204</a>: 		isString := arg != nil &amp;&amp; reflect.<b>TypeOf</b>(arg).Kind() == reflect.String
+
+	<a href="../pkg/github.com/conneroisu/seltabl.html">github.com/conneroisu/seltabl</a>
+		<a href="../src/github.com/conneroisu/seltabl/parse.go.html#line-85">parse.go#L85</a>: 	dType := reflect.<b>TypeOf</b>((*T)(nil)).Elem()
+
+	<a href="../pkg/net/http.html">net/http</a>
+		<a href="../src/net/http/client.go.html#line-336">client.go#L336</a>: 	if reflect.<b>TypeOf</b>(rt).String() == "*http2.Transport" {
+		<a href="../src/net/http/transfer.go.html#line-1090">transfer.go#L1090</a>: var nopCloserType = reflect.<b>TypeOf</b>(io.NopCloser(nil))
+		<a href="../src/net/http/transfer.go.html#line-1091" class="path-duplicate">transfer.go</a><a href="../src/net/http/transfer.go.html#line-1091">#L1091</a>: var nopCloserWriterToType = reflect.<b>TypeOf</b>(io.NopCloser(struct {
+		<a href="../src/net/http/transfer.go.html#line-1099" class="path-duplicate">transfer.go</a><a href="../src/net/http/transfer.go.html#line-1099">#L1099</a>: 	switch reflect.<b>TypeOf</b>(r) {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

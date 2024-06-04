@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.g.syscallsp</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/runtime2.go.html#line-422">g</a>.<a href="../src/runtime/runtime2.go.html#line-438">syscallsp</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">33 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/cgocall.go.html#line-308">cgocall.go#L308</a>: 	savedsp := unsafe.Pointer(gp.<b>syscallsp</b>)
+		<a href="../src/runtime/heapdump.go.html#line-343">heapdump.go#L343</a>: 	if gp.<b>syscallsp</b> != 0 {
+		<a href="../src/runtime/heapdump.go.html#line-344" class="path-duplicate">heapdump.go</a><a href="../src/runtime/heapdump.go.html#line-344">#L344</a>: 		sp = gp.<b>syscallsp</b>
+		<a href="../src/runtime/mgcmark.go.html#line-858">mgcmark.go#L858</a>: 	if gp.<b>syscallsp</b> != 0 {
+		<a href="../src/runtime/mgcmark.go.html#line-859" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-859">#L859</a>: 		sp = gp.<b>syscallsp</b> // If in a system call this is the stack pointer (gp.sched.sp can be 0 in this case on Windows).
+		<a href="../src/runtime/panic.go.html#line-1385">panic.go#L1385</a>: 	if status&amp;^_Gscan != _Grunning || gp.<b>syscallsp</b> != 0 {
+		<a href="../src/runtime/proc.go.html#line-2293">proc.go#L2293</a>: 	gp.<b>syscallsp</b> = gp.sched.sp
+		<a href="../src/runtime/proc.go.html#line-3125" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-3125">#L3125</a>: 		if !goexperiment.ExecTracer2 &amp;&amp; gp.<b>syscallsp</b> != 0 {
+		<a href="../src/runtime/proc.go.html#line-4332" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4332">#L4332</a>: 	gp.<b>syscallsp</b> = sp
+		<a href="../src/runtime/proc.go.html#line-4340" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4340">#L4340</a>: 	if gp.<b>syscallsp</b> &lt; gp.stack.lo || gp.stack.hi &lt; gp.<b>syscallsp</b> {
+		<a href="../src/runtime/proc.go.html#line-4342" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4342">#L4342</a>: 			print("entersyscall inconsistent ", hex(gp.<b>syscallsp</b>), " [", hex(gp.stack.lo), ",", hex(gp.stack.hi), "]\n")
+		<a href="../src/runtime/proc.go.html#line-4453" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4453">#L4453</a>: 	gp.<b>syscallsp</b> = gp.sched.sp
+		<a href="../src/runtime/proc.go.html#line-4455" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4455">#L4455</a>: 	if gp.<b>syscallsp</b> &lt; gp.stack.lo || gp.stack.hi &lt; gp.<b>syscallsp</b> {
+		<a href="../src/runtime/proc.go.html#line-4458" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4458">#L4458</a>: 		sp3 := gp.<b>syscallsp</b>
+		<a href="../src/runtime/proc.go.html#line-4465" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4465">#L4465</a>: 	if gp.<b>syscallsp</b> &lt; gp.stack.lo || gp.stack.hi &lt; gp.<b>syscallsp</b> {
+		<a href="../src/runtime/proc.go.html#line-4467" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4467">#L4467</a>: 			print("entersyscallblock inconsistent ", hex(sp), " ", hex(gp.sched.sp), " ", hex(gp.<b>syscallsp</b>), " [", hex(gp.stack.lo), ",", hex(gp.stack.hi), "]\n")
+		<a href="../src/runtime/proc.go.html#line-4506" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4506">#L4506</a>: 	if getcallersp() &gt; gp.<b>syscallsp</b> {
+		<a href="../src/runtime/proc.go.html#line-4554" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4554">#L4554</a>: 		gp.<b>syscallsp</b> = 0
+		<a href="../src/runtime/proc.go.html#line-4595" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4595">#L4595</a>: 	gp.<b>syscallsp</b> = 0
+		<a href="../src/runtime/proc.go.html#line-5347" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-5347">#L5347</a>: 	if mp.ncgo &gt; 0 &amp;&amp; mp.curg != nil &amp;&amp; mp.curg.syscallpc != 0 &amp;&amp; mp.curg.<b>syscallsp</b> != 0 {
+		<a href="../src/runtime/proc.go.html#line-5363" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-5363">#L5363</a>: 		u.initAt(mp.curg.syscallpc, mp.curg.<b>syscallsp</b>, 0, mp.curg, unwindSilentErrors)
+		<a href="../src/runtime/runtime2.go.html#line-438">runtime2.go#L438</a>: 	<b>syscallsp</b> uintptr // if status==Gsyscall, syscallsp = sched.sp to use during gc
+		<a href="../src/runtime/stack.go.html#line-855">stack.go#L855</a>: 	if gp.<b>syscallsp</b> != 0 {
+		<a href="../src/runtime/stack.go.html#line-980" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-980">#L980</a>: 		gp.<b>syscallsp</b> = morebuf.sp
+		<a href="../src/runtime/stack.go.html#line-1153" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-1153">#L1153</a>: 	return gp.<b>syscallsp</b> == 0 &amp;&amp; !gp.asyncSafePoint &amp;&amp; !gp.parkingOnChan.Load()
+		<a href="../src/runtime/traceback.go.html#line-151">traceback.go#L151</a>: 		if gp.<b>syscallsp</b> != 0 {
+		<a href="../src/runtime/traceback.go.html#line-153" class="path-duplicate">traceback.go</a><a href="../src/runtime/traceback.go.html#line-153">#L153</a>: 			sp0 = gp.<b>syscallsp</b>
+		<a href="../src/runtime/traceback.go.html#line-222" class="path-duplicate">traceback.go</a><a href="../src/runtime/traceback.go.html#line-222">#L222</a>: 	isSyscall := frame.pc == pc0 &amp;&amp; frame.sp == sp0 &amp;&amp; pc0 == gp.syscallpc &amp;&amp; sp0 == gp.<b>syscallsp</b>
+		<a href="../src/runtime/traceback.go.html#line-839" class="path-duplicate">traceback.go</a><a href="../src/runtime/traceback.go.html#line-839">#L839</a>: 	if iscgo &amp;&amp; gp.m != nil &amp;&amp; gp.m.ncgo &gt; 0 &amp;&amp; gp.<b>syscallsp</b> != 0 &amp;&amp; gp.m.cgoCallers != nil &amp;&amp; gp.m.cgoCallers[0] != 0 {
+		<a href="../src/runtime/traceback.go.html#line-857" class="path-duplicate">traceback.go</a><a href="../src/runtime/traceback.go.html#line-857">#L857</a>: 		sp = gp.<b>syscallsp</b>
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

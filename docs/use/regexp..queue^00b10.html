@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: regexp.queue</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../pkg/regexp.html">regexp</a>.<a href="../src/regexp/exec.go.html#line-15">queue</a></b></span>
+
+<span class="title">7 uses</span>
+
+	regexp (current package)
+		<a href="../src/regexp/exec.go.html#line-15">exec.go#L15</a>: type <b>queue</b> struct {
+		<a href="../src/regexp/exec.go.html#line-41" class="path-duplicate">exec.go</a><a href="../src/regexp/exec.go.html#line-41">#L41</a>: 	q0, q1   <b>queue</b>        // two queues for runq, nextq
+		<a href="../src/regexp/exec.go.html#line-246" class="path-duplicate">exec.go</a><a href="../src/regexp/exec.go.html#line-246">#L246</a>: func (m *machine) clear(q *<b>queue</b>) {
+		<a href="../src/regexp/exec.go.html#line-260" class="path-duplicate">exec.go</a><a href="../src/regexp/exec.go.html#line-260">#L260</a>: func (m *machine) step(runq, nextq *<b>queue</b>, pos, nextPos int, c rune, nextCond *lazyFlag) {
+		<a href="../src/regexp/exec.go.html#line-317" class="path-duplicate">exec.go</a><a href="../src/regexp/exec.go.html#line-317">#L317</a>: func (m *machine) add(q *<b>queue</b>, pc uint32, pos int, cap []int, cond *lazyFlag, t *thread) *thread {
+		<a href="../src/regexp/regexp.go.html#line-257">regexp.go#L257</a>: 		m.q0 = <b>queue</b>{make([]uint32, n), make([]entry, 0, n)}
+		<a href="../src/regexp/regexp.go.html#line-258" class="path-duplicate">regexp.go</a><a href="../src/regexp/regexp.go.html#line-258">#L258</a>: 		m.q1 = <b>queue</b>{make([]uint32, n), make([]entry, 0, n)}
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

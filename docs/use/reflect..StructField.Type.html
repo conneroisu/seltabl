@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: reflect.StructField.Type</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/reflect.html">reflect</a>.<a href="../src/reflect/type.go.html#line-876">StructField</a>.<a href="../src/reflect/type.go.html#line-885">Type</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">25 uses</span>
+
+	reflect (current package)
+		<a href="../src/reflect/type.go.html#line-885">type.go#L885</a>: 	<b>Type</b>      Type      // field type
+		<a href="../src/reflect/type.go.html#line-983" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-983">#L983</a>: 	f.<b>Type</b> = toType(p.Typ)
+		<a href="../src/reflect/type.go.html#line-1010" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1010">#L1010</a>: 	f.<b>Type</b> = toType(&amp;t.Type)
+		<a href="../src/reflect/type.go.html#line-1013" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1013">#L1013</a>: 			ft := f.<b>Type</b>
+		<a href="../src/reflect/type.go.html#line-1017" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1017">#L1017</a>: 			f.<b>Type</b> = ft
+		<a href="../src/reflect/type.go.html#line-1019" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1019">#L1019</a>: 		f = f.<b>Type</b>.Field(x)
+		<a href="../src/reflect/type.go.html#line-1743" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1743">#L1743</a>: 			<b>Type</b>: TypeOf(funcType{}),
+		<a href="../src/reflect/type.go.html#line-1747" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1747">#L1747</a>: 			<b>Type</b>: ArrayOf(n, TypeOf(&amp;rtype{})),
+		<a href="../src/reflect/type.go.html#line-2186" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2186">#L2186</a>: 		if field.<b>Type</b> == nil {
+		<a href="../src/reflect/type.go.html#line-2365" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2365">#L2365</a>: 			{Name: "S", <b>Type</b>: TypeOf(structType{})},
+		<a href="../src/reflect/type.go.html#line-2366" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2366">#L2366</a>: 			{Name: "U", <b>Type</b>: TypeOf(uncommonType{})},
+		<a href="../src/reflect/type.go.html#line-2367" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2367">#L2367</a>: 			{Name: "M", <b>Type</b>: ArrayOf(len(methods), TypeOf(methods[0]))},
+		<a href="../src/reflect/type.go.html#line-2550" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2550">#L2550</a>: 	resolveReflectType(field.<b>Type</b>.common()) // install in runtime
+		<a href="../src/reflect/type.go.html#line-2553" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2553">#L2553</a>: 		Typ:    field.<b>Type</b>.common(),
+		<a href="../src/reflect/visiblefields.go.html#line-95">visiblefields.go#L95</a>: 			if f.<b>Type</b>.Kind() == Pointer {
+		<a href="../src/reflect/visiblefields.go.html#line-96" class="path-duplicate">visiblefields.go</a><a href="../src/reflect/visiblefields.go.html#line-96">#L96</a>: 				f.<b>Type</b> = f.<b>Type</b>.Elem()
+		<a href="../src/reflect/visiblefields.go.html#line-98" class="path-duplicate">visiblefields.go</a><a href="../src/reflect/visiblefields.go.html#line-98">#L98</a>: 			if f.<b>Type</b>.Kind() == Struct {
+		<a href="../src/reflect/visiblefields.go.html#line-99" class="path-duplicate">visiblefields.go</a><a href="../src/reflect/visiblefields.go.html#line-99">#L99</a>: 				w.walk(f.<b>Type</b>)
+
+	<a href="../pkg/encoding/asn1.html">encoding/asn1</a>
+		<a href="../src/encoding/asn1/asn1.go.html#line-927">asn1.go#L927</a>: 			structType.Field(0).<b>Type</b> == rawContentsType {
+		<a href="../src/encoding/asn1/asn1.go.html#line-935" class="path-duplicate">asn1.go</a><a href="../src/encoding/asn1/asn1.go.html#line-935">#L935</a>: 			if i == 0 &amp;&amp; field.<b>Type</b> == rawContentsType {
+		<a href="../src/encoding/asn1/marshal.go.html#line-505">marshal.go#L505</a>: 		if t.Field(0).<b>Type</b> == rawContentsType {
+
+	<a href="../pkg/encoding/binary.html">encoding/binary</a>
+		<a href="../src/encoding/binary/binary.go.html#line-516">binary.go#L516</a>: 			s := sizeof(t.Field(i).<b>Type</b>)
+
+	<a href="../pkg/net/http.html">net/http</a>
+		<a href="../src/net/http/h2_error.go.html#line-28">h2_error.go#L28</a>: 		if sf.Name != df.Name || !sf.<b>Type</b>.ConvertibleTo(df.<b>Type</b>) {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/http.response</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../pkg/net/http.html">net/http</a>.<a href="../../src/net/http/server.go.html#line-422">response</a></b></span>
+
+<span class="title">28 uses</span>
+
+	net/http (current package)
+		<a href="../../src/net/http/server.go.html#line-295">server.go#L295</a>: 	curReq atomic.Pointer[<b>response</b>] // (which has a Request in it)
+		<a href="../../src/net/http/server.go.html#line-349" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-349">#L349</a>: 	res *<b>response</b>
+		<a href="../../src/net/http/server.go.html#line-422" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-422">#L422</a>: type <b>response</b> struct {
+		<a href="../../src/net/http/server.go.html#line-495" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-495">#L495</a>: func (c *<b>response</b>) SetReadDeadline(deadline time.Time) error {
+		<a href="../../src/net/http/server.go.html#line-499" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-499">#L499</a>: func (c *<b>response</b>) SetWriteDeadline(deadline time.Time) error {
+		<a href="../../src/net/http/server.go.html#line-503" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-503">#L503</a>: func (c *<b>response</b>) EnableFullDuplex() error {
+		<a href="../../src/net/http/server.go.html#line-525" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-525">#L525</a>: func (w *<b>response</b>) finalTrailers() Header {
+		<a href="../../src/net/http/server.go.html#line-549" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-549">#L549</a>: func (w *<b>response</b>) declareTrailer(k string) {
+		<a href="../../src/net/http/server.go.html#line-560" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-560">#L560</a>: func (w *<b>response</b>) requestTooLarge() {
+		<a href="../../src/net/http/server.go.html#line-577" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-577">#L577</a>: func (w *<b>response</b>) ReadFrom(src io.Reader) (n int64, err error) {
+		<a href="../../src/net/http/server.go.html#line-909" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-909">#L909</a>: 	resp       *<b>response</b>
+		<a href="../../src/net/http/server.go.html#line-975" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-975">#L975</a>: func (c *conn) readRequest(ctx context.Context) (w *<b>response</b>, err error) {
+		<a href="../../src/net/http/server.go.html#line-1052" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1052">#L1052</a>: 	w = &amp;<b>response</b>{
+		<a href="../../src/net/http/server.go.html#line-1092" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1092">#L1092</a>: func (w *<b>response</b>) Header() Header {
+		<a href="../../src/net/http/server.go.html#line-1149" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1149">#L1149</a>: func (w *<b>response</b>) WriteHeader(code int) {
+		<a href="../../src/net/http/server.go.html#line-1569" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1569">#L1569</a>: func (w *<b>response</b>) bodyAllowed() bool {
+		<a href="../../src/net/http/server.go.html#line-1610" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1610">#L1610</a>: func (w *<b>response</b>) Write(data []byte) (n int, err error) {
+		<a href="../../src/net/http/server.go.html#line-1614" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1614">#L1614</a>: func (w *<b>response</b>) WriteString(data string) (n int, err error) {
+		<a href="../../src/net/http/server.go.html#line-1619" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1619">#L1619</a>: func (w *<b>response</b>) write(lenData int, dataB []byte, dataS string) (n int, err error) {
+		<a href="../../src/net/http/server.go.html#line-1659" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1659">#L1659</a>: func (w *<b>response</b>) finishRequest() {
+		<a href="../../src/net/http/server.go.html#line-1684" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1684">#L1684</a>: func (w *<b>response</b>) shouldReuseConnection() bool {
+		<a href="../../src/net/http/server.go.html#line-1710" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1710">#L1710</a>: func (w *<b>response</b>) closedRequestBodyEarly() bool {
+		<a href="../../src/net/http/server.go.html#line-1715" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1715">#L1715</a>: func (w *<b>response</b>) Flush() {
+		<a href="../../src/net/http/server.go.html#line-1719" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1719">#L1719</a>: func (w *<b>response</b>) FlushError() error {
+		<a href="../../src/net/http/server.go.html#line-1893" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1893">#L1893</a>: 	var inFlightResponse *<b>response</b>
+		<a href="../../src/net/http/server.go.html#line-2082" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-2082">#L2082</a>: func (w *<b>response</b>) sendExpectationFailed() {
+		<a href="../../src/net/http/server.go.html#line-2102" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-2102">#L2102</a>: func (w *<b>response</b>) Hijack() (rwc net.Conn, buf *bufio.ReadWriter, err error) {
+		<a href="../../src/net/http/server.go.html#line-2124" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-2124">#L2124</a>: func (w *<b>response</b>) CloseNotify() &lt;-chan bool {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

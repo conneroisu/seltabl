@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime/internal/atomic.Uintptr.Load</title>
+<link href="../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../../pkg/runtime/internal/atomic.html">runtime/internal/atomic</a>.<a href="../../../src/runtime/internal/atomic/types.go.html#line-350">Uintptr</a>.<a href="../../../src/runtime/internal/atomic/types.go.html#line-358">Load</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">37 uses</span>
+
+	runtime/internal/atomic (current package)
+		<a href="../../../src/runtime/internal/atomic/types.go.html#line-358">types.go#L358</a>: func (u *Uintptr) <b>Load</b>() uintptr {
+
+	<a href="../../../pkg/runtime.html">runtime</a>
+		<a href="../../../src/runtime/mgcscavenge.go.html#line-1071">mgcscavenge.go#L1071</a>: 	minHeapIdx := s.minHeapIdx.<b>Load</b>()
+		<a href="../../../src/runtime/mgcscavenge.go.html#line-1093" class="path-duplicate">mgcscavenge.go</a><a href="../../../src/runtime/mgcscavenge.go.html#line-1093">#L1093</a>: 	min := chunkIdx(s.minHeapIdx.<b>Load</b>())
+		<a href="../../../src/runtime/mgcsweep.go.html#line-427">mgcsweep.go#L427</a>: 				releasedBg := mheap_.pages.scav.releasedBg.<b>Load</b>()
+		<a href="../../../src/runtime/mgcsweep.go.html#line-428" class="path-duplicate">mgcsweep.go</a><a href="../../../src/runtime/mgcsweep.go.html#line-428">#L428</a>: 				releasedEager := mheap_.pages.scav.releasedEager.<b>Load</b>()
+		<a href="../../../src/runtime/mgcsweep.go.html#line-984" class="path-duplicate">mgcsweep.go</a><a href="../../../src/runtime/mgcsweep.go.html#line-984">#L984</a>: 		pagesInUse := mheap_.pagesInUse.<b>Load</b>()
+		<a href="../../../src/runtime/mheap.go.html#line-804">mheap.go#L804</a>: 		if credit := h.reclaimCredit.<b>Load</b>(); credit &gt; 0 {
+		<a href="../../../src/runtime/mpagealloc_64bit.go.html#line-208">mpagealloc_64bit.go#L208</a>: 	haveMin := s.min.<b>Load</b>()
+		<a href="../../../src/runtime/mpagealloc_64bit.go.html#line-209" class="path-duplicate">mpagealloc_64bit.go</a><a href="../../../src/runtime/mpagealloc_64bit.go.html#line-209">#L209</a>: 	haveMax := s.max.<b>Load</b>()
+		<a href="../../../src/runtime/mspanset.go.html#line-80">mspanset.go#L80</a>: 	spineLen := b.spineLen.<b>Load</b>()
+		<a href="../../../src/runtime/mspanset.go.html#line-91" class="path-duplicate">mspanset.go</a><a href="../../../src/runtime/mspanset.go.html#line-91">#L91</a>: 		spineLen = b.spineLen.<b>Load</b>()
+		<a href="../../../src/runtime/mspanset.go.html#line-153" class="path-duplicate">mspanset.go</a><a href="../../../src/runtime/mspanset.go.html#line-153">#L153</a>: 		spineLen := b.spineLen.<b>Load</b>()
+		<a href="../../../src/runtime/mspanset.go.html#line-237" class="path-duplicate">mspanset.go</a><a href="../../../src/runtime/mspanset.go.html#line-237">#L237</a>: 	if uintptr(top) &lt; b.spineLen.<b>Load</b>() {
+		<a href="../../../src/runtime/netpoll.go.html#line-162">netpoll.go#L162</a>: 	info |= uint32(pd.fdseq.<b>Load</b>()&amp;pollFDSeqMask) &lt;&lt; pollFDSeq
+		<a href="../../../src/runtime/netpoll.go.html#line-241" class="path-duplicate">netpoll.go</a><a href="../../../src/runtime/netpoll.go.html#line-241">#L241</a>: 	wg := pd.wg.<b>Load</b>()
+		<a href="../../../src/runtime/netpoll.go.html#line-245" class="path-duplicate">netpoll.go</a><a href="../../../src/runtime/netpoll.go.html#line-245">#L245</a>: 	rg := pd.rg.<b>Load</b>()
+		<a href="../../../src/runtime/netpoll.go.html#line-250" class="path-duplicate">netpoll.go</a><a href="../../../src/runtime/netpoll.go.html#line-250">#L250</a>: 	if pd.fdseq.<b>Load</b>() == 0 {
+		<a href="../../../src/runtime/netpoll.go.html#line-279" class="path-duplicate">netpoll.go</a><a href="../../../src/runtime/netpoll.go.html#line-279">#L279</a>: 	wg := pd.wg.<b>Load</b>()
+		<a href="../../../src/runtime/netpoll.go.html#line-283" class="path-duplicate">netpoll.go</a><a href="../../../src/runtime/netpoll.go.html#line-283">#L283</a>: 	rg := pd.rg.<b>Load</b>()
+		<a href="../../../src/runtime/netpoll.go.html#line-298" class="path-duplicate">netpoll.go</a><a href="../../../src/runtime/netpoll.go.html#line-298">#L298</a>: 	fdseq := pd.fdseq.<b>Load</b>()
+		<a href="../../../src/runtime/netpoll.go.html#line-564" class="path-duplicate">netpoll.go</a><a href="../../../src/runtime/netpoll.go.html#line-564">#L564</a>: 		if v := gpp.<b>Load</b>(); v != pdReady &amp;&amp; v != pdNil {
+		<a href="../../../src/runtime/netpoll.go.html#line-596" class="path-duplicate">netpoll.go</a><a href="../../../src/runtime/netpoll.go.html#line-596">#L596</a>: 		old := gpp.<b>Load</b>()
+		<a href="../../../src/runtime/netpoll_epoll.go.html#line-55">netpoll_epoll.go#L55</a>: 	tp := taggedPointerPack(unsafe.Pointer(pd), pd.fdseq.<b>Load</b>())
+		<a href="../../../src/runtime/netpoll_epoll.go.html#line-166" class="path-duplicate">netpoll_epoll.go</a><a href="../../../src/runtime/netpoll_epoll.go.html#line-166">#L166</a>: 			if pd.fdseq.<b>Load</b>() == tag {
+		<a href="../../../src/runtime/proc.go.html#line-2522">proc.go#L2522</a>: 		old := extraM.<b>Load</b>()
+		<a href="../../../src/runtime/trace2.go.html#line-282">trace2.go#L282</a>: 	gen := trace.gen.<b>Load</b>()
+		<a href="../../../src/runtime/trace2.go.html#line-456" class="path-duplicate">trace2.go</a><a href="../../../src/runtime/trace2.go.html#line-456">#L456</a>: 				if mp.trace.seqlock.<b>Load</b>()%2 != 0 {
+		<a href="../../../src/runtime/trace2.go.html#line-751" class="path-duplicate">trace2.go</a><a href="../../../src/runtime/trace2.go.html#line-751">#L751</a>: 	if trace.readerGen.<b>Load</b>() == 0 {
+		<a href="../../../src/runtime/trace2.go.html#line-757" class="path-duplicate">trace2.go</a><a href="../../../src/runtime/trace2.go.html#line-757">#L757</a>: 		gen = trace.readerGen.<b>Load</b>()
+		<a href="../../../src/runtime/trace2.go.html#line-769" class="path-duplicate">trace2.go</a><a href="../../../src/runtime/trace2.go.html#line-769">#L769</a>: 		if trace.flushedGen.<b>Load</b>() == gen {
+		<a href="../../../src/runtime/trace2.go.html#line-792" class="path-duplicate">trace2.go</a><a href="../../../src/runtime/trace2.go.html#line-792">#L792</a>: 			trace.readerGen.Store(trace.gen.<b>Load</b>())
+		<a href="../../../src/runtime/trace2.go.html#line-861" class="path-duplicate">trace2.go</a><a href="../../../src/runtime/trace2.go.html#line-861">#L861</a>: 	if trace.flushedGen.<b>Load</b>() == trace.readerGen.<b>Load</b>() || trace.workAvailable.Load() || trace.shutdown.Load() {
+		<a href="../../../src/runtime/trace2cpu.go.html#line-234">trace2cpu.go#L234</a>: 	if mp.trace.seqlock.<b>Load</b>()%2 == 0 {
+		<a href="../../../src/runtime/trace2cpu.go.html#line-238" class="path-duplicate">trace2cpu.go</a><a href="../../../src/runtime/trace2cpu.go.html#line-238">#L238</a>: 	gen := trace.gen.<b>Load</b>()
+		<a href="../../../src/runtime/trace2runtime.go.html#line-144">trace2runtime.go#L144</a>: 	return trace.gen.<b>Load</b>() != 0
+		<a href="../../../src/runtime/trace2runtime.go.html#line-214" class="path-duplicate">trace2runtime.go</a><a href="../../../src/runtime/trace2runtime.go.html#line-214">#L214</a>: 	gen := trace.gen.<b>Load</b>()
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

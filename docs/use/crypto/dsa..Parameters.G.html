@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/dsa.Parameters.G</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/crypto/dsa.html">crypto/dsa</a>.<a href="../../src/crypto/dsa/dsa.go.html#line-26">Parameters</a>.<a href="../../src/crypto/dsa/dsa.go.html#line-27">G</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">10 uses</span>
+
+	crypto/dsa (current package)
+		<a href="../../src/crypto/dsa/dsa.go.html#line-27">dsa.go#L27</a>: 	P, Q, <b>G</b> *big.Int
+		<a href="../../src/crypto/dsa/dsa.go.html#line-152" class="path-duplicate">dsa.go</a><a href="../../src/crypto/dsa/dsa.go.html#line-152">#L152</a>: 		params.<b>G</b> = g
+		<a href="../../src/crypto/dsa/dsa.go.html#line-160" class="path-duplicate">dsa.go</a><a href="../../src/crypto/dsa/dsa.go.html#line-160">#L160</a>: 	if priv.P == nil || priv.Q == nil || priv.<b>G</b> == nil {
+		<a href="../../src/crypto/dsa/dsa.go.html#line-180" class="path-duplicate">dsa.go</a><a href="../../src/crypto/dsa/dsa.go.html#line-180">#L180</a>: 	priv.Y.Exp(priv.<b>G</b>, x, priv.P)
+		<a href="../../src/crypto/dsa/dsa.go.html#line-211" class="path-duplicate">dsa.go</a><a href="../../src/crypto/dsa/dsa.go.html#line-211">#L211</a>: 	if priv.Q.Sign() &lt;= 0 || priv.P.Sign() &lt;= 0 || priv.<b>G</b>.Sign() &lt;= 0 || priv.X.Sign() &lt;= 0 || n%8 != 0 {
+		<a href="../../src/crypto/dsa/dsa.go.html#line-238" class="path-duplicate">dsa.go</a><a href="../../src/crypto/dsa/dsa.go.html#line-238">#L238</a>: 		r = new(big.Int).Exp(priv.<b>G</b>, k, priv.P)
+		<a href="../../src/crypto/dsa/dsa.go.html#line-302" class="path-duplicate">dsa.go</a><a href="../../src/crypto/dsa/dsa.go.html#line-302">#L302</a>: 	v := u1.Exp(pub.<b>G</b>, u1, pub.P)
+
+	<a href="../../pkg/crypto/x509.html">crypto/x509</a>
+		<a href="../../src/crypto/x509/parser.go.html#line-299">parser.go#L299</a>: 				<b>G</b>: new(big.Int),
+		<a href="../../src/crypto/x509/parser.go.html#line-306" class="path-duplicate">parser.go</a><a href="../../src/crypto/x509/parser.go.html#line-306">#L306</a>: 			!paramsDer.ReadASN1Integer(pub.Parameters.<b>G</b>) {
+		<a href="../../src/crypto/x509/parser.go.html#line-310" class="path-duplicate">parser.go</a><a href="../../src/crypto/x509/parser.go.html#line-310">#L310</a>: 			pub.Parameters.Q.Sign() &lt;= 0 || pub.Parameters.<b>G</b>.Sign() &lt;= 0 {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

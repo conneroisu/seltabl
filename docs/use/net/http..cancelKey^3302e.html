@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/http.cancelKey</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../pkg/net/http.html">net/http</a>.<a href="../../src/net/http/transport.go.html#line-298">cancelKey</a></b></span>
+
+<span class="title">10 uses</span>
+
+	net/http (current package)
+		<a href="../../src/net/http/transport.go.html#line-103">transport.go#L103</a>: 	reqCanceler map[<b>cancelKey</b>]func(error)
+		<a href="../../src/net/http/transport.go.html#line-298" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-298">#L298</a>: type <b>cancelKey</b> struct {
+		<a href="../../src/net/http/transport.go.html#line-471" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-471">#L471</a>: 	cancelKey <b>cancelKey</b>
+		<a href="../../src/net/http/transport.go.html#line-549" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-549">#L549</a>: 	cancelKey := <b>cancelKey</b>{origReq}
+		<a href="../../src/net/http/transport.go.html#line-808" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-808">#L808</a>: 	t.cancelRequest(<b>cancelKey</b>{req}, errRequestCanceled)
+		<a href="../../src/net/http/transport.go.html#line-813" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-813">#L813</a>: func (t *Transport) cancelRequest(key <b>cancelKey</b>, err error) bool {
+		<a href="../../src/net/http/transport.go.html#line-1151" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-1151">#L1151</a>: func (t *Transport) setReqCanceler(key <b>cancelKey</b>, fn func(error)) {
+		<a href="../../src/net/http/transport.go.html#line-1155" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-1155">#L1155</a>: 		t.reqCanceler = make(map[<b>cancelKey</b>]func(error))
+		<a href="../../src/net/http/transport.go.html#line-1168" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-1168">#L1168</a>: func (t *Transport) replaceReqCanceler(key <b>cancelKey</b>, fn func(error)) bool {
+		<a href="../../src/net/http/transport.go.html#line-2528" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-2528">#L2528</a>: 	cancelKey <b>cancelKey</b>
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

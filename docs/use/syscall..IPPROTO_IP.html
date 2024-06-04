@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: syscall.IPPROTO_IP</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../pkg/syscall.html">syscall</a>.<a href="../src/syscall/zerrors_linux_amd64.go.html#line-363">IPPROTO_IP</a></b></span>
+
+<span class="title">4 uses</span>
+
+	syscall (current package)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-363">zerrors_linux_amd64.go#L363</a>: 	<b>IPPROTO_IP</b>                       = 0x0
+
+	<a href="../pkg/net.html">net</a>
+		<a href="../src/net/sockoptip_linux.go.html#line-18">sockoptip_linux.go#L18</a>: 	err := fd.pfd.SetsockoptIPMreqn(syscall.<b>IPPROTO_IP</b>, syscall.IP_MULTICAST_IF, mreq)
+		<a href="../src/net/sockoptip_linux.go.html#line-24" class="path-duplicate">sockoptip_linux.go</a><a href="../src/net/sockoptip_linux.go.html#line-24">#L24</a>: 	err := fd.pfd.SetsockoptInt(syscall.<b>IPPROTO_IP</b>, syscall.IP_MULTICAST_LOOP, boolint(v))
+		<a href="../src/net/sockoptip_posix.go.html#line-19">sockoptip_posix.go#L19</a>: 	err := fd.pfd.SetsockoptIPMreq(syscall.<b>IPPROTO_IP</b>, syscall.IP_ADD_MEMBERSHIP, mreq)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

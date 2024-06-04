@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/http/internal/ascii.ToLower</title>
+<link href="../../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../../../../pkg/net/http/internal/ascii.html">net/http/internal/ascii</a>.<a href="../../../../src/net/http/internal/ascii/print.go.html#line-56">ToLower</a></b></span>
+
+<span class="title">4 uses</span>
+
+	net/http/internal/ascii (current package)
+		<a href="../../../../src/net/http/internal/ascii/print.go.html#line-56">print.go#L56</a>: func <b>ToLower</b>(s string) (lower string, ok bool) {
+
+	<a href="../../../../pkg/net/http.html">net/http</a>
+		<a href="../../../../src/net/http/client.go.html#line-546">client.go#L546</a>: 	if lowerMethod, ok := ascii.<b>ToLower</b>(method); ok {
+		<a href="../../../../src/net/http/cookie.go.html#line-96">cookie.go#L96</a>: 			lowerAttr, isASCII := ascii.<b>ToLower</b>(attr)
+		<a href="../../../../src/net/http/cookie.go.html#line-108" class="path-duplicate">cookie.go</a><a href="../../../../src/net/http/cookie.go.html#line-108">#L108</a>: 				lowerVal, ascii := ascii.<b>ToLower</b>(val)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

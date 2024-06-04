@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: encoding/binary.LittleEndian</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">var <b><a href="../../pkg/encoding/binary.html">encoding/binary</a>.<a href="../../src/encoding/binary/binary.go.html#line-58">LittleEndian</a></b></span>
+
+<span class="title">87 uses</span>
+
+	encoding/binary (current package)
+		<a href="../../src/encoding/binary/binary.go.html#line-58">binary.go#L58</a>: var <b>LittleEndian</b> littleEndian
+
+	<a href="../../pkg/compress/gzip.html">compress/gzip</a>
+		<a href="../../src/compress/gzip/gunzip.go.html#line-37">gunzip.go#L37</a>: var le = binary.<b>LittleEndian</b>
+
+	<a href="../../pkg/crypto/ecdh.html">crypto/ecdh</a>
+		<a href="../../src/crypto/ecdh/nist.go.html#line-159">nist.go#L159</a>: 		limbA, limbB := binary.<b>LittleEndian</b>.Uint64(bufA[i:]), binary.<b>LittleEndian</b>.Uint64(bufB[i:])
+
+	<a href="../../pkg/crypto/internal/edwards25519.html">crypto/internal/edwards25519</a>
+		<a href="../../src/crypto/internal/edwards25519/scalar.go.html#line-274">scalar.go#L274</a>: 		digits[i] = binary.<b>LittleEndian</b>.Uint64(b[i*8:])
+
+	<a href="../../pkg/crypto/internal/edwards25519/field.html">crypto/internal/edwards25519/field</a>
+		<a href="../../src/crypto/internal/edwards25519/field/fe.go.html#line-204">fe.go#L204</a>: 	v.l0 = binary.<b>LittleEndian</b>.Uint64(x[0:8])
+		<a href="../../src/crypto/internal/edwards25519/field/fe.go.html#line-207" class="path-duplicate">fe.go</a><a href="../../src/crypto/internal/edwards25519/field/fe.go.html#line-207">#L207</a>: 	v.l1 = binary.<b>LittleEndian</b>.Uint64(x[6:14]) &gt;&gt; 3
+		<a href="../../src/crypto/internal/edwards25519/field/fe.go.html#line-210" class="path-duplicate">fe.go</a><a href="../../src/crypto/internal/edwards25519/field/fe.go.html#line-210">#L210</a>: 	v.l2 = binary.<b>LittleEndian</b>.Uint64(x[12:20]) &gt;&gt; 6
+		<a href="../../src/crypto/internal/edwards25519/field/fe.go.html#line-213" class="path-duplicate">fe.go</a><a href="../../src/crypto/internal/edwards25519/field/fe.go.html#line-213">#L213</a>: 	v.l3 = binary.<b>LittleEndian</b>.Uint64(x[19:27]) &gt;&gt; 1
+		<a href="../../src/crypto/internal/edwards25519/field/fe.go.html#line-217" class="path-duplicate">fe.go</a><a href="../../src/crypto/internal/edwards25519/field/fe.go.html#line-217">#L217</a>: 	v.l4 = binary.<b>LittleEndian</b>.Uint64(x[24:32]) &gt;&gt; 12
+		<a href="../../src/crypto/internal/edwards25519/field/fe.go.html#line-238" class="path-duplicate">fe.go</a><a href="../../src/crypto/internal/edwards25519/field/fe.go.html#line-238">#L238</a>: 		binary.<b>LittleEndian</b>.PutUint64(buf[:], l&lt;&lt;uint(bitsOffset%8))
+
+	<a href="../../pkg/crypto/internal/nistec.html">crypto/internal/nistec</a>
+		<a href="../../src/crypto/internal/nistec/p256_asm.go.html#line-330">p256_asm.go#L330</a>: 			newTable[i] = binary.<b>LittleEndian</b>.Uint64(x[:])
+
+	<a href="../../pkg/crypto/md5.html">crypto/md5</a>
+		<a href="../../src/crypto/md5/md5.go.html#line-160">md5.go#L160</a>: 	binary.<b>LittleEndian</b>.PutUint64(tmp[1+pad:], d.len&lt;&lt;3) // append length in bits
+		<a href="../../src/crypto/md5/md5.go.html#line-170" class="path-duplicate">md5.go</a><a href="../../src/crypto/md5/md5.go.html#line-170">#L170</a>: 	binary.<b>LittleEndian</b>.PutUint32(digest[0:], d.s[0])
+		<a href="../../src/crypto/md5/md5.go.html#line-171" class="path-duplicate">md5.go</a><a href="../../src/crypto/md5/md5.go.html#line-171">#L171</a>: 	binary.<b>LittleEndian</b>.PutUint32(digest[4:], d.s[1])
+		<a href="../../src/crypto/md5/md5.go.html#line-172" class="path-duplicate">md5.go</a><a href="../../src/crypto/md5/md5.go.html#line-172">#L172</a>: 	binary.<b>LittleEndian</b>.PutUint32(digest[8:], d.s[2])
+		<a href="../../src/crypto/md5/md5.go.html#line-173" class="path-duplicate">md5.go</a><a href="../../src/crypto/md5/md5.go.html#line-173">#L173</a>: 	binary.<b>LittleEndian</b>.PutUint32(digest[12:], d.s[3])
+		<a href="../../src/crypto/md5/md5block.go.html#line-27">md5block.go#L27</a>: 		x0 := binary.<b>LittleEndian</b>.Uint32(q[4*0x0:])
+		<a href="../../src/crypto/md5/md5block.go.html#line-28" class="path-duplicate">md5block.go</a><a href="../../src/crypto/md5/md5block.go.html#line-28">#L28</a>: 		x1 := binary.<b>LittleEndian</b>.Uint32(q[4*0x1:])
+		<a href="../../src/crypto/md5/md5block.go.html#line-29" class="path-duplicate">md5block.go</a><a href="../../src/crypto/md5/md5block.go.html#line-29">#L29</a>: 		x2 := binary.<b>LittleEndian</b>.Uint32(q[4*0x2:])
+		<a href="../../src/crypto/md5/md5block.go.html#line-30" class="path-duplicate">md5block.go</a><a href="../../src/crypto/md5/md5block.go.html#line-30">#L30</a>: 		x3 := binary.<b>LittleEndian</b>.Uint32(q[4*0x3:])
+		<a href="../../src/crypto/md5/md5block.go.html#line-31" class="path-duplicate">md5block.go</a><a href="../../src/crypto/md5/md5block.go.html#line-31">#L31</a>: 		x4 := binary.<b>LittleEndian</b>.Uint32(q[4*0x4:])
+		<a href="../../src/crypto/md5/md5block.go.html#line-32" class="path-duplicate">md5block.go</a><a href="../../src/crypto/md5/md5block.go.html#line-32">#L32</a>: 		x5 := binary.<b>LittleEndian</b>.Uint32(q[4*0x5:])
+		<a href="../../src/crypto/md5/md5block.go.html#line-33" class="path-duplicate">md5block.go</a><a href="../../src/crypto/md5/md5block.go.html#line-33">#L33</a>: 		x6 := binary.<b>LittleEndian</b>.Uint32(q[4*0x6:])
+		<a href="../../src/crypto/md5/md5block.go.html#line-34" class="path-duplicate">md5block.go</a><a href="../../src/crypto/md5/md5block.go.html#line-34">#L34</a>: 		x7 := binary.<b>LittleEndian</b>.Uint32(q[4*0x7:])
+		<a href="../../src/crypto/md5/md5block.go.html#line-35" class="path-duplicate">md5block.go</a><a href="../../src/crypto/md5/md5block.go.html#line-35">#L35</a>: 		x8 := binary.<b>LittleEndian</b>.Uint32(q[4*0x8:])
+		<a href="../../src/crypto/md5/md5block.go.html#line-36" class="path-duplicate">md5block.go</a><a href="../../src/crypto/md5/md5block.go.html#line-36">#L36</a>: 		x9 := binary.<b>LittleEndian</b>.Uint32(q[4*0x9:])
+		<a href="../../src/crypto/md5/md5block.go.html#line-37" class="path-duplicate">md5block.go</a><a href="../../src/crypto/md5/md5block.go.html#line-37">#L37</a>: 		xa := binary.<b>LittleEndian</b>.Uint32(q[4*0xa:])
+		<a href="../../src/crypto/md5/md5block.go.html#line-38" class="path-duplicate">md5block.go</a><a href="../../src/crypto/md5/md5block.go.html#line-38">#L38</a>: 		xb := binary.<b>LittleEndian</b>.Uint32(q[4*0xb:])
+		<a href="../../src/crypto/md5/md5block.go.html#line-39" class="path-duplicate">md5block.go</a><a href="../../src/crypto/md5/md5block.go.html#line-39">#L39</a>: 		xc := binary.<b>LittleEndian</b>.Uint32(q[4*0xc:])
+		<a href="../../src/crypto/md5/md5block.go.html#line-40" class="path-duplicate">md5block.go</a><a href="../../src/crypto/md5/md5block.go.html#line-40">#L40</a>: 		xd := binary.<b>LittleEndian</b>.Uint32(q[4*0xd:])
+		<a href="../../src/crypto/md5/md5block.go.html#line-41" class="path-duplicate">md5block.go</a><a href="../../src/crypto/md5/md5block.go.html#line-41">#L41</a>: 		xe := binary.<b>LittleEndian</b>.Uint32(q[4*0xe:])
+		<a href="../../src/crypto/md5/md5block.go.html#line-42" class="path-duplicate">md5block.go</a><a href="../../src/crypto/md5/md5block.go.html#line-42">#L42</a>: 		xf := binary.<b>LittleEndian</b>.Uint32(q[4*0xf:])
+
+	<a href="../../pkg/crypto/tls.html">crypto/tls</a>
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-872">handshake_server_tls13.go#L872</a>: 	m.ageAdd = binary.<b>LittleEndian</b>.Uint32(ageAdd)
+
+	<a href="../../pkg/vendor/golang.org/x/crypto/chacha20.html">vendor/golang.org/x/crypto/chacha20</a>
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-98">chacha_generic.go#L98</a>: 		binary.<b>LittleEndian</b>.Uint32(key[0:4]),
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-99" class="path-duplicate">chacha_generic.go</a><a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-99">#L99</a>: 		binary.<b>LittleEndian</b>.Uint32(key[4:8]),
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-100" class="path-duplicate">chacha_generic.go</a><a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-100">#L100</a>: 		binary.<b>LittleEndian</b>.Uint32(key[8:12]),
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-101" class="path-duplicate">chacha_generic.go</a><a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-101">#L101</a>: 		binary.<b>LittleEndian</b>.Uint32(key[12:16]),
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-102" class="path-duplicate">chacha_generic.go</a><a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-102">#L102</a>: 		binary.<b>LittleEndian</b>.Uint32(key[16:20]),
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-103" class="path-duplicate">chacha_generic.go</a><a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-103">#L103</a>: 		binary.<b>LittleEndian</b>.Uint32(key[20:24]),
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-104" class="path-duplicate">chacha_generic.go</a><a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-104">#L104</a>: 		binary.<b>LittleEndian</b>.Uint32(key[24:28]),
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-105" class="path-duplicate">chacha_generic.go</a><a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-105">#L105</a>: 		binary.<b>LittleEndian</b>.Uint32(key[28:32]),
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-108" class="path-duplicate">chacha_generic.go</a><a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-108">#L108</a>: 		binary.<b>LittleEndian</b>.Uint32(nonce[0:4]),
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-109" class="path-duplicate">chacha_generic.go</a><a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-109">#L109</a>: 		binary.<b>LittleEndian</b>.Uint32(nonce[4:8]),
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-110" class="path-duplicate">chacha_generic.go</a><a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-110">#L110</a>: 		binary.<b>LittleEndian</b>.Uint32(nonce[8:12]),
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-361" class="path-duplicate">chacha_generic.go</a><a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-361">#L361</a>: 	x4 := binary.<b>LittleEndian</b>.Uint32(key[0:4])
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-362" class="path-duplicate">chacha_generic.go</a><a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-362">#L362</a>: 	x5 := binary.<b>LittleEndian</b>.Uint32(key[4:8])
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-363" class="path-duplicate">chacha_generic.go</a><a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-363">#L363</a>: 	x6 := binary.<b>LittleEndian</b>.Uint32(key[8:12])
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-364" class="path-duplicate">chacha_generic.go</a><a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-364">#L364</a>: 	x7 := binary.<b>LittleEndian</b>.Uint32(key[12:16])
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-365" class="path-duplicate">chacha_generic.go</a><a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-365">#L365</a>: 	x8 := binary.<b>LittleEndian</b>.Uint32(key[16:20])
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-366" class="path-duplicate">chacha_generic.go</a><a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-366">#L366</a>: 	x9 := binary.<b>LittleEndian</b>.Uint32(key[20:24])
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-367" class="path-duplicate">chacha_generic.go</a><a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-367">#L367</a>: 	x10 := binary.<b>LittleEndian</b>.Uint32(key[24:28])
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-368" class="path-duplicate">chacha_generic.go</a><a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-368">#L368</a>: 	x11 := binary.<b>LittleEndian</b>.Uint32(key[28:32])
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-369" class="path-duplicate">chacha_generic.go</a><a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-369">#L369</a>: 	x12 := binary.<b>LittleEndian</b>.Uint32(nonce[0:4])
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-370" class="path-duplicate">chacha_generic.go</a><a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-370">#L370</a>: 	x13 := binary.<b>LittleEndian</b>.Uint32(nonce[4:8])
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-371" class="path-duplicate">chacha_generic.go</a><a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-371">#L371</a>: 	x14 := binary.<b>LittleEndian</b>.Uint32(nonce[8:12])
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-372" class="path-duplicate">chacha_generic.go</a><a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-372">#L372</a>: 	x15 := binary.<b>LittleEndian</b>.Uint32(nonce[12:16])
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-389" class="path-duplicate">chacha_generic.go</a><a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-389">#L389</a>: 	binary.<b>LittleEndian</b>.PutUint32(out[0:4], x0)
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-390" class="path-duplicate">chacha_generic.go</a><a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-390">#L390</a>: 	binary.<b>LittleEndian</b>.PutUint32(out[4:8], x1)
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-391" class="path-duplicate">chacha_generic.go</a><a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-391">#L391</a>: 	binary.<b>LittleEndian</b>.PutUint32(out[8:12], x2)
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-392" class="path-duplicate">chacha_generic.go</a><a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-392">#L392</a>: 	binary.<b>LittleEndian</b>.PutUint32(out[12:16], x3)
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-393" class="path-duplicate">chacha_generic.go</a><a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-393">#L393</a>: 	binary.<b>LittleEndian</b>.PutUint32(out[16:20], x12)
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-394" class="path-duplicate">chacha_generic.go</a><a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-394">#L394</a>: 	binary.<b>LittleEndian</b>.PutUint32(out[20:24], x13)
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-395" class="path-duplicate">chacha_generic.go</a><a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-395">#L395</a>: 	binary.<b>LittleEndian</b>.PutUint32(out[24:28], x14)
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-396" class="path-duplicate">chacha_generic.go</a><a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-396">#L396</a>: 	binary.<b>LittleEndian</b>.PutUint32(out[28:32], x15)
+
+	<a href="../../pkg/vendor/golang.org/x/crypto/chacha20poly1305.html">vendor/golang.org/x/crypto/chacha20poly1305</a>
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20poly1305/chacha20poly1305_amd64.go.html#line-34">chacha20poly1305_amd64.go#L34</a>: 	state[4] = binary.<b>LittleEndian</b>.Uint32(key[0:4])
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20poly1305/chacha20poly1305_amd64.go.html#line-35" class="path-duplicate">chacha20poly1305_amd64.go</a><a href="../../src/vendor/golang.org/x/crypto/chacha20poly1305/chacha20poly1305_amd64.go.html#line-35">#L35</a>: 	state[5] = binary.<b>LittleEndian</b>.Uint32(key[4:8])
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20poly1305/chacha20poly1305_amd64.go.html#line-36" class="path-duplicate">chacha20poly1305_amd64.go</a><a href="../../src/vendor/golang.org/x/crypto/chacha20poly1305/chacha20poly1305_amd64.go.html#line-36">#L36</a>: 	state[6] = binary.<b>LittleEndian</b>.Uint32(key[8:12])
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20poly1305/chacha20poly1305_amd64.go.html#line-37" class="path-duplicate">chacha20poly1305_amd64.go</a><a href="../../src/vendor/golang.org/x/crypto/chacha20poly1305/chacha20poly1305_amd64.go.html#line-37">#L37</a>: 	state[7] = binary.<b>LittleEndian</b>.Uint32(key[12:16])
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20poly1305/chacha20poly1305_amd64.go.html#line-38" class="path-duplicate">chacha20poly1305_amd64.go</a><a href="../../src/vendor/golang.org/x/crypto/chacha20poly1305/chacha20poly1305_amd64.go.html#line-38">#L38</a>: 	state[8] = binary.<b>LittleEndian</b>.Uint32(key[16:20])
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20poly1305/chacha20poly1305_amd64.go.html#line-39" class="path-duplicate">chacha20poly1305_amd64.go</a><a href="../../src/vendor/golang.org/x/crypto/chacha20poly1305/chacha20poly1305_amd64.go.html#line-39">#L39</a>: 	state[9] = binary.<b>LittleEndian</b>.Uint32(key[20:24])
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20poly1305/chacha20poly1305_amd64.go.html#line-40" class="path-duplicate">chacha20poly1305_amd64.go</a><a href="../../src/vendor/golang.org/x/crypto/chacha20poly1305/chacha20poly1305_amd64.go.html#line-40">#L40</a>: 	state[10] = binary.<b>LittleEndian</b>.Uint32(key[24:28])
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20poly1305/chacha20poly1305_amd64.go.html#line-41" class="path-duplicate">chacha20poly1305_amd64.go</a><a href="../../src/vendor/golang.org/x/crypto/chacha20poly1305/chacha20poly1305_amd64.go.html#line-41">#L41</a>: 	state[11] = binary.<b>LittleEndian</b>.Uint32(key[28:32])
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20poly1305/chacha20poly1305_amd64.go.html#line-44" class="path-duplicate">chacha20poly1305_amd64.go</a><a href="../../src/vendor/golang.org/x/crypto/chacha20poly1305/chacha20poly1305_amd64.go.html#line-44">#L44</a>: 	state[13] = binary.<b>LittleEndian</b>.Uint32(nonce[0:4])
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20poly1305/chacha20poly1305_amd64.go.html#line-45" class="path-duplicate">chacha20poly1305_amd64.go</a><a href="../../src/vendor/golang.org/x/crypto/chacha20poly1305/chacha20poly1305_amd64.go.html#line-45">#L45</a>: 	state[14] = binary.<b>LittleEndian</b>.Uint32(nonce[4:8])
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20poly1305/chacha20poly1305_amd64.go.html#line-46" class="path-duplicate">chacha20poly1305_amd64.go</a><a href="../../src/vendor/golang.org/x/crypto/chacha20poly1305/chacha20poly1305_amd64.go.html#line-46">#L46</a>: 	state[15] = binary.<b>LittleEndian</b>.Uint32(nonce[8:12])
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20poly1305/chacha20poly1305_generic.go.html#line-26">chacha20poly1305_generic.go#L26</a>: 	binary.<b>LittleEndian</b>.PutUint64(buf[:], uint64(n))
+
+	<a href="../../pkg/vendor/golang.org/x/crypto/internal/poly1305.html">vendor/golang.org/x/crypto/internal/poly1305</a>
+		<a href="../../src/vendor/golang.org/x/crypto/internal/poly1305/sum_generic.go.html#line-104">sum_generic.go#L104</a>: 	m.r[0] = binary.<b>LittleEndian</b>.Uint64(key[0:8]) &amp; rMask0
+		<a href="../../src/vendor/golang.org/x/crypto/internal/poly1305/sum_generic.go.html#line-105" class="path-duplicate">sum_generic.go</a><a href="../../src/vendor/golang.org/x/crypto/internal/poly1305/sum_generic.go.html#line-105">#L105</a>: 	m.r[1] = binary.<b>LittleEndian</b>.Uint64(key[8:16]) &amp; rMask1
+		<a href="../../src/vendor/golang.org/x/crypto/internal/poly1305/sum_generic.go.html#line-106" class="path-duplicate">sum_generic.go</a><a href="../../src/vendor/golang.org/x/crypto/internal/poly1305/sum_generic.go.html#line-106">#L106</a>: 	m.s[0] = binary.<b>LittleEndian</b>.Uint64(key[16:24])
+		<a href="../../src/vendor/golang.org/x/crypto/internal/poly1305/sum_generic.go.html#line-107" class="path-duplicate">sum_generic.go</a><a href="../../src/vendor/golang.org/x/crypto/internal/poly1305/sum_generic.go.html#line-107">#L107</a>: 	m.s[1] = binary.<b>LittleEndian</b>.Uint64(key[24:32])
+		<a href="../../src/vendor/golang.org/x/crypto/internal/poly1305/sum_generic.go.html#line-158" class="path-duplicate">sum_generic.go</a><a href="../../src/vendor/golang.org/x/crypto/internal/poly1305/sum_generic.go.html#line-158">#L158</a>: 			h0, c = bitsAdd64(h0, binary.<b>LittleEndian</b>.Uint64(msg[0:8]), 0)
+		<a href="../../src/vendor/golang.org/x/crypto/internal/poly1305/sum_generic.go.html#line-159" class="path-duplicate">sum_generic.go</a><a href="../../src/vendor/golang.org/x/crypto/internal/poly1305/sum_generic.go.html#line-159">#L159</a>: 			h1, c = bitsAdd64(h1, binary.<b>LittleEndian</b>.Uint64(msg[8:16]), c)
+		<a href="../../src/vendor/golang.org/x/crypto/internal/poly1305/sum_generic.go.html#line-168" class="path-duplicate">sum_generic.go</a><a href="../../src/vendor/golang.org/x/crypto/internal/poly1305/sum_generic.go.html#line-168">#L168</a>: 			h0, c = bitsAdd64(h0, binary.<b>LittleEndian</b>.Uint64(buf[0:8]), 0)
+		<a href="../../src/vendor/golang.org/x/crypto/internal/poly1305/sum_generic.go.html#line-169" class="path-duplicate">sum_generic.go</a><a href="../../src/vendor/golang.org/x/crypto/internal/poly1305/sum_generic.go.html#line-169">#L169</a>: 			h1, c = bitsAdd64(h1, binary.<b>LittleEndian</b>.Uint64(buf[8:16]), c)
+		<a href="../../src/vendor/golang.org/x/crypto/internal/poly1305/sum_generic.go.html#line-307" class="path-duplicate">sum_generic.go</a><a href="../../src/vendor/golang.org/x/crypto/internal/poly1305/sum_generic.go.html#line-307">#L307</a>: 	binary.<b>LittleEndian</b>.PutUint64(out[0:8], h0)
+		<a href="../../src/vendor/golang.org/x/crypto/internal/poly1305/sum_generic.go.html#line-308" class="path-duplicate">sum_generic.go</a><a href="../../src/vendor/golang.org/x/crypto/internal/poly1305/sum_generic.go.html#line-308">#L308</a>: 	binary.<b>LittleEndian</b>.PutUint64(out[8:16], h1)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

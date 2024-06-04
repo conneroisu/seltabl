@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.offAddr.lessThan</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/mranges.go.html#line-123">offAddr</a>.<a href="../src/runtime/mranges.go.html#line-147">lessThan</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">21 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/mgcscavenge.go.html#line-797">mgcscavenge.go#L797</a>: 			if b := (offAddr{addr}); b.<b>lessThan</b>(p.searchAddr) {
+		<a href="../src/runtime/mgcscavenge.go.html#line-1156" class="path-duplicate">mgcscavenge.go</a><a href="../src/runtime/mgcscavenge.go.html#line-1156">#L1156</a>: 	if s.freeHWM.<b>lessThan</b>(offAddr{addr}) {
+		<a href="../src/runtime/mgcscavenge.go.html#line-1165" class="path-duplicate">mgcscavenge.go</a><a href="../src/runtime/mgcscavenge.go.html#line-1165">#L1165</a>: 	if (offAddr{searchAddr}).<b>lessThan</b>(offAddr{addr}) {
+		<a href="../src/runtime/mgcscavenge.go.html#line-1178" class="path-duplicate">mgcscavenge.go</a><a href="../src/runtime/mgcscavenge.go.html#line-1178">#L1178</a>: 	if (offAddr{searchAddr}).<b>lessThan</b>(s.freeHWM) {
+		<a href="../src/runtime/mpagealloc.go.html#line-391">mpagealloc.go#L391</a>: 	if b := (offAddr{base}); b.<b>lessThan</b>(p.searchAddr) {
+		<a href="../src/runtime/mpagealloc.go.html#line-715" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-715">#L715</a>: 		} else if !(addr.add(size-1).<b>lessThan</b>(firstFree.base) || firstFree.bound.<b>lessThan</b>(addr)) {
+		<a href="../src/runtime/mpagealloc.go.html#line-923" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-923">#L923</a>: 	if p.searchAddr.<b>lessThan</b>(searchAddr) {
+		<a href="../src/runtime/mpagealloc.go.html#line-940" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-940">#L940</a>: 	if b := (offAddr{base}); b.<b>lessThan</b>(p.searchAddr) {
+		<a href="../src/runtime/mpagecache.go.html#line-103">mpagecache.go#L103</a>: 	if b := (offAddr{c.base}); b.<b>lessThan</b>(p.searchAddr) {
+		<a href="../src/runtime/mranges.go.html#line-43">mranges.go#L43</a>: 	if !a.base.<b>lessThan</b>(a.limit) {
+		<a href="../src/runtime/mranges.go.html#line-53" class="path-duplicate">mranges.go</a><a href="../src/runtime/mranges.go.html#line-53">#L53</a>: 	return a.base.lessEqual(offAddr{addr}) &amp;&amp; (offAddr{addr}).<b>lessThan</b>(a.limit)
+		<a href="../src/runtime/mranges.go.html#line-63" class="path-duplicate">mranges.go</a><a href="../src/runtime/mranges.go.html#line-63">#L63</a>: 	} else if a.base.<b>lessThan</b>(b.base) &amp;&amp; b.limit.<b>lessThan</b>(a.limit) {
+		<a href="../src/runtime/mranges.go.html#line-65" class="path-duplicate">mranges.go</a><a href="../src/runtime/mranges.go.html#line-65">#L65</a>: 	} else if b.limit.<b>lessThan</b>(a.limit) &amp;&amp; a.base.<b>lessThan</b>(b.limit) {
+		<a href="../src/runtime/mranges.go.html#line-67" class="path-duplicate">mranges.go</a><a href="../src/runtime/mranges.go.html#line-67">#L67</a>: 	} else if a.base.<b>lessThan</b>(b.base) &amp;&amp; b.base.<b>lessThan</b>(a.limit) {
+		<a href="../src/runtime/mranges.go.html#line-147" class="path-duplicate">mranges.go</a><a href="../src/runtime/mranges.go.html#line-147">#L147</a>: func (l1 offAddr) <b>lessThan</b>(l2 offAddr) bool {
+		<a href="../src/runtime/mranges.go.html#line-280" class="path-duplicate">mranges.go</a><a href="../src/runtime/mranges.go.html#line-280">#L280</a>: 		if base.<b>lessThan</b>(a.ranges[i].base) {
+		<a href="../src/runtime/mranges.go.html#line-298" class="path-duplicate">mranges.go</a><a href="../src/runtime/mranges.go.html#line-298">#L298</a>: 		if base.<b>lessThan</b>(a.ranges[i].base) {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

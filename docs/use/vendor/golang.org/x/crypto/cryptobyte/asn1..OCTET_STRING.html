@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: vendor/golang.org/x/crypto/cryptobyte/asn1.OCTET_STRING</title>
+<link href="../../../../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../../../../../../pkg/vendor/golang.org/x/crypto/cryptobyte/asn1.html">vendor/golang.org/x/crypto/cryptobyte/asn1</a>.<a href="../../../../../../src/vendor/golang.org/x/crypto/cryptobyte/asn1/asn1.go.html#line-33">OCTET_STRING</a></b></span>
+
+<span class="title">5 uses</span>
+
+	vendor/golang.org/x/crypto/cryptobyte/asn1 (current package)
+		<a href="../../../../../../src/vendor/golang.org/x/crypto/cryptobyte/asn1/asn1.go.html#line-33">asn1.go#L33</a>: 	<b>OCTET_STRING</b>      = Tag(4)
+
+	<a href="../../../../../../pkg/vendor/golang.org/x/crypto/cryptobyte.html">vendor/golang.org/x/crypto/cryptobyte</a>
+		<a href="../../../../../../src/vendor/golang.org/x/crypto/cryptobyte/asn1.go.html#line-102">asn1.go#L102</a>: 	b.AddASN1(asn1.<b>OCTET_STRING</b>, func(c *Builder) {
+		<a href="../../../../../../src/vendor/golang.org/x/crypto/cryptobyte/asn1.go.html#line-726" class="path-duplicate">asn1.go</a><a href="../../../../../../src/vendor/golang.org/x/crypto/cryptobyte/asn1.go.html#line-726">#L726</a>: 		if !child.ReadASN1(&amp;oct, asn1.<b>OCTET_STRING</b>) || !child.Empty() {
+
+	<a href="../../../../../../pkg/crypto/x509.html">crypto/x509</a>
+		<a href="../../../../../../src/crypto/x509/parser.go.html#line-210">parser.go#L210</a>: 	if !der.ReadASN1(&amp;val, cryptobyte_asn1.<b>OCTET_STRING</b>) {
+		<a href="../../../../../../src/crypto/x509/parser.go.html#line-746" class="path-duplicate">parser.go</a><a href="../../../../../../src/crypto/x509/parser.go.html#line-746">#L746</a>: 				if !val.ReadASN1(&amp;skid, cryptobyte_asn1.<b>OCTET_STRING</b>) {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: strconv.decimalSlice</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../pkg/strconv.html">strconv</a>.<a href="../src/strconv/ftoa.go.html#line-373">decimalSlice</a></b></span>
+
+<span class="title">14 uses</span>
+
+	strconv (current package)
+		<a href="../src/strconv/ftoa.go.html#line-111">ftoa.go#L111</a>: 	var digs <b>decimalSlice</b>
+		<a href="../src/strconv/ftoa.go.html#line-167" class="path-duplicate">ftoa.go</a><a href="../src/strconv/ftoa.go.html#line-167">#L167</a>: 	var digs <b>decimalSlice</b>
+		<a href="../src/strconv/ftoa.go.html#line-171" class="path-duplicate">ftoa.go</a><a href="../src/strconv/ftoa.go.html#line-171">#L171</a>: 		digs = <b>decimalSlice</b>{d: d.d[:], nd: d.nd, dp: d.dp}
+		<a href="../src/strconv/ftoa.go.html#line-194" class="path-duplicate">ftoa.go</a><a href="../src/strconv/ftoa.go.html#line-194">#L194</a>: 		digs = <b>decimalSlice</b>{d: d.d[:], nd: d.nd, dp: d.dp}
+		<a href="../src/strconv/ftoa.go.html#line-199" class="path-duplicate">ftoa.go</a><a href="../src/strconv/ftoa.go.html#line-199">#L199</a>: func formatDigits(dst []byte, shortest bool, neg bool, digs <b>decimalSlice</b>, prec int, fmt byte) []byte {
+		<a href="../src/strconv/ftoa.go.html#line-373" class="path-duplicate">ftoa.go</a><a href="../src/strconv/ftoa.go.html#line-373">#L373</a>: type <b>decimalSlice</b> struct {
+		<a href="../src/strconv/ftoa.go.html#line-379" class="path-duplicate">ftoa.go</a><a href="../src/strconv/ftoa.go.html#line-379">#L379</a>: func fmtE(dst []byte, neg bool, d <b>decimalSlice</b>, prec int, fmt byte) []byte {
+		<a href="../src/strconv/ftoa.go.html#line-434" class="path-duplicate">ftoa.go</a><a href="../src/strconv/ftoa.go.html#line-434">#L434</a>: func fmtF(dst []byte, neg bool, d <b>decimalSlice</b>, prec int) []byte {
+		<a href="../src/strconv/ftoaryu.go.html#line-20">ftoaryu.go#L20</a>: func ryuFtoaFixed32(d *<b>decimalSlice</b>, mant uint32, exp int, prec int) {
+		<a href="../src/strconv/ftoaryu.go.html#line-90" class="path-duplicate">ftoaryu.go</a><a href="../src/strconv/ftoaryu.go.html#line-90">#L90</a>: func ryuFtoaFixed64(d *<b>decimalSlice</b>, mant uint64, exp int, prec int) {
+		<a href="../src/strconv/ftoaryu.go.html#line-167" class="path-duplicate">ftoaryu.go</a><a href="../src/strconv/ftoaryu.go.html#line-167">#L167</a>: func formatDecimal(d *<b>decimalSlice</b>, m uint64, trunc bool, roundUp bool, prec int) {
+		<a href="../src/strconv/ftoaryu.go.html#line-227" class="path-duplicate">ftoaryu.go</a><a href="../src/strconv/ftoaryu.go.html#line-227">#L227</a>: func ryuFtoaShortest(d *<b>decimalSlice</b>, mant uint64, exp int, flt *floatInfo) {
+		<a href="../src/strconv/ftoaryu.go.html#line-366" class="path-duplicate">ftoaryu.go</a><a href="../src/strconv/ftoaryu.go.html#line-366">#L366</a>: func ryuDigits(d *<b>decimalSlice</b>, lower, central, upper uint64,
+		<a href="../src/strconv/ftoaryu.go.html#line-412" class="path-duplicate">ftoaryu.go</a><a href="../src/strconv/ftoaryu.go.html#line-412">#L412</a>: func ryuDigits32(d *<b>decimalSlice</b>, lower, central, upper uint32,
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: sync.Once.Do</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/sync.html">sync</a>.<a href="../src/sync/once.go.html#line-18">Once</a>.<a href="../src/sync/once.go.html#line-48">Do</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">83 uses</span>
+
+	sync (current package)
+		<a href="../src/sync/once.go.html#line-48">once.go#L48</a>: func (o *Once) <b>Do</b>(f func()) {
+		<a href="../src/sync/oncefunc.go.html#line-32">oncefunc.go#L32</a>: 		once.<b>Do</b>(g)
+		<a href="../src/sync/oncefunc.go.html#line-62" class="path-duplicate">oncefunc.go</a><a href="../src/sync/oncefunc.go.html#line-62">#L62</a>: 		once.<b>Do</b>(g)
+		<a href="../src/sync/oncefunc.go.html#line-94" class="path-duplicate">oncefunc.go</a><a href="../src/sync/oncefunc.go.html#line-94">#L94</a>: 		once.<b>Do</b>(g)
+
+	<a href="../pkg/compress/flate.html">compress/flate</a>
+		<a href="../src/compress/flate/inflate.go.html#line-767">inflate.go#L767</a>: 	fixedOnce.<b>Do</b>(func() {
+
+	<a href="../pkg/context.html">context</a>
+		<a href="../src/context/context.go.html#line-322">context.go#L322</a>: 		a.once.<b>Do</b>(func() {
+		<a href="../src/context/context.go.html#line-347" class="path-duplicate">context.go</a><a href="../src/context/context.go.html#line-347">#L347</a>: 	a.once.<b>Do</b>(func() {
+
+	<a href="../pkg/crypto/des.html">crypto/des</a>
+		<a href="../src/crypto/des/block.go.html#line-218">block.go#L218</a>: 	feistelBoxOnce.<b>Do</b>(initFeistelBox)
+
+	<a href="../pkg/crypto/ecdh.html">crypto/ecdh</a>
+		<a href="../src/crypto/ecdh/ecdh.go.html#line-162">ecdh.go#L162</a>: 	k.publicKeyOnce.<b>Do</b>(func() {
+
+	<a href="../pkg/crypto/ecdsa.html">crypto/ecdsa</a>
+		<a href="../src/crypto/ecdsa/ecdsa.go.html#line-615">ecdsa.go#L615</a>: 	p224Once.<b>Do</b>(func() {
+		<a href="../src/crypto/ecdsa/ecdsa.go.html#line-628" class="path-duplicate">ecdsa.go</a><a href="../src/crypto/ecdsa/ecdsa.go.html#line-628">#L628</a>: 	p256Once.<b>Do</b>(func() {
+		<a href="../src/crypto/ecdsa/ecdsa.go.html#line-641" class="path-duplicate">ecdsa.go</a><a href="../src/crypto/ecdsa/ecdsa.go.html#line-641">#L641</a>: 	p384Once.<b>Do</b>(func() {
+		<a href="../src/crypto/ecdsa/ecdsa.go.html#line-654" class="path-duplicate">ecdsa.go</a><a href="../src/crypto/ecdsa/ecdsa.go.html#line-654">#L654</a>: 	p521Once.<b>Do</b>(func() {
+
+	<a href="../pkg/crypto/elliptic.html">crypto/elliptic</a>
+		<a href="../src/crypto/elliptic/elliptic.go.html#line-241">elliptic.go#L241</a>: 	initonce.<b>Do</b>(initAll)
+		<a href="../src/crypto/elliptic/elliptic.go.html#line-254" class="path-duplicate">elliptic.go</a><a href="../src/crypto/elliptic/elliptic.go.html#line-254">#L254</a>: 	initonce.<b>Do</b>(initAll)
+		<a href="../src/crypto/elliptic/elliptic.go.html#line-266" class="path-duplicate">elliptic.go</a><a href="../src/crypto/elliptic/elliptic.go.html#line-266">#L266</a>: 	initonce.<b>Do</b>(initAll)
+		<a href="../src/crypto/elliptic/elliptic.go.html#line-278" class="path-duplicate">elliptic.go</a><a href="../src/crypto/elliptic/elliptic.go.html#line-278">#L278</a>: 	initonce.<b>Do</b>(initAll)
+
+	<a href="../pkg/crypto/internal/edwards25519.html">crypto/internal/edwards25519</a>
+		<a href="../src/crypto/internal/edwards25519/scalarmult.go.html#line-12">scalarmult.go#L12</a>: 	basepointTablePrecomp.initOnce.<b>Do</b>(func() {
+		<a href="../src/crypto/internal/edwards25519/scalarmult.go.html#line-128" class="path-duplicate">scalarmult.go</a><a href="../src/crypto/internal/edwards25519/scalarmult.go.html#line-128">#L128</a>: 	basepointNafTablePrecomp.initOnce.<b>Do</b>(func() {
+
+	<a href="../pkg/crypto/internal/nistec.html">crypto/internal/nistec</a>
+		<a href="../src/crypto/internal/nistec/p224.go.html#line-114">p224.go#L114</a>: 	_p224BOnce.<b>Do</b>(func() {
+		<a href="../src/crypto/internal/nistec/p224.go.html#line-393" class="path-duplicate">p224.go</a><a href="../src/crypto/internal/nistec/p224.go.html#line-393">#L393</a>: 	p224GeneratorTableOnce.<b>Do</b>(func() {
+		<a href="../src/crypto/internal/nistec/p224_sqrt.go.html#line-27">p224_sqrt.go#L27</a>: 	p224GGOnce.<b>Do</b>(func() {
+		<a href="../src/crypto/internal/nistec/p384.go.html#line-114">p384.go#L114</a>: 	_p384BOnce.<b>Do</b>(func() {
+		<a href="../src/crypto/internal/nistec/p384.go.html#line-393" class="path-duplicate">p384.go</a><a href="../src/crypto/internal/nistec/p384.go.html#line-393">#L393</a>: 	p384GeneratorTableOnce.<b>Do</b>(func() {
+		<a href="../src/crypto/internal/nistec/p521.go.html#line-114">p521.go#L114</a>: 	_p521BOnce.<b>Do</b>(func() {
+		<a href="../src/crypto/internal/nistec/p521.go.html#line-393" class="path-duplicate">p521.go</a><a href="../src/crypto/internal/nistec/p521.go.html#line-393">#L393</a>: 	p521GeneratorTableOnce.<b>Do</b>(func() {
+
+	<a href="../pkg/crypto/internal/randutil.html">crypto/internal/randutil</a>
+		<a href="../src/crypto/internal/randutil/randutil.go.html#line-26">randutil.go#L26</a>: 	closedChanOnce.<b>Do</b>(func() {
+
+	<a href="../pkg/crypto/x509.html">crypto/x509</a>
+		<a href="../src/crypto/x509/cert_pool.go.html#line-240">cert_pool.go#L240</a>: 			lazyCert.<b>Do</b>(func() {
+		<a href="../src/crypto/x509/root.go.html#line-21">root.go#L21</a>: 	once.<b>Do</b>(initSystemRoots)
+
+	<a href="../pkg/hash/crc32.html">hash/crc32</a>
+		<a href="../src/hash/crc32/crc32.go.html#line-126">crc32.go#L126</a>: 		ieeeOnce.<b>Do</b>(ieeeInit)
+		<a href="../src/hash/crc32/crc32.go.html#line-129" class="path-duplicate">crc32.go</a><a href="../src/hash/crc32/crc32.go.html#line-129">#L129</a>: 		castagnoliOnce.<b>Do</b>(castagnoliInit)
+		<a href="../src/hash/crc32/crc32.go.html#line-149" class="path-duplicate">crc32.go</a><a href="../src/hash/crc32/crc32.go.html#line-149">#L149</a>: 		ieeeOnce.<b>Do</b>(ieeeInit)
+		<a href="../src/hash/crc32/crc32.go.html#line-218" class="path-duplicate">crc32.go</a><a href="../src/hash/crc32/crc32.go.html#line-218">#L218</a>: 			ieeeOnce.<b>Do</b>(ieeeInit)
+		<a href="../src/hash/crc32/crc32.go.html#line-254" class="path-duplicate">crc32.go</a><a href="../src/hash/crc32/crc32.go.html#line-254">#L254</a>: 	ieeeOnce.<b>Do</b>(ieeeInit)
+
+	<a href="../pkg/internal/godebug.html">internal/godebug</a>
+		<a href="../src/internal/godebug/godebug.go.html#line-102">godebug.go#L102</a>: 	s.nonDefaultOnce.<b>Do</b>(s.register)
+		<a href="../src/internal/godebug/godebug.go.html#line-138" class="path-duplicate">godebug.go</a><a href="../src/internal/godebug/godebug.go.html#line-138">#L138</a>: 	s.once.<b>Do</b>(func() {
+
+	<a href="../pkg/internal/poll.html">internal/poll</a>
+		<a href="../src/internal/poll/copy_file_range_linux.go.html#line-23">copy_file_range_linux.go#L23</a>: 	kernelVersion53Once.<b>Do</b>(func() {
+		<a href="../src/internal/poll/fd_poll_runtime.go.html#line-39">fd_poll_runtime.go#L39</a>: 	serverInit.<b>Do</b>(runtime_pollServerInit)
+
+	<a href="../pkg/io.html">io</a>
+		<a href="../src/io/pipe.go.html#line-72">pipe.go#L72</a>: 	p.once.<b>Do</b>(func() { close(p.done) })
+		<a href="../src/io/pipe.go.html#line-103" class="path-duplicate">pipe.go</a><a href="../src/io/pipe.go.html#line-103">#L103</a>: 	p.once.<b>Do</b>(func() { close(p.done) })
+
+	<a href="../pkg/math/big.html">math/big</a>
+		<a href="../src/math/big/sqrt.go.html#line-18">sqrt.go#L18</a>: 	threeOnce.<b>Do</b>(func() {
+
+	<a href="../pkg/mime.html">mime</a>
+		<a href="../src/mime/type.go.html#line-112">type.go#L112</a>: 	once.<b>Do</b>(initMime)
+		<a href="../src/mime/type.go.html#line-154" class="path-duplicate">type.go</a><a href="../src/mime/type.go.html#line-154">#L154</a>: 	once.<b>Do</b>(initMime)
+		<a href="../src/mime/type.go.html#line-171" class="path-duplicate">type.go</a><a href="../src/mime/type.go.html#line-171">#L171</a>: 	once.<b>Do</b>(initMime)
+
+	<a href="../pkg/net.html">net</a>
+		<a href="../src/net/conf.go.html#line-79">conf.go#L79</a>: 	confOnce.<b>Do</b>(initConfVal)
+		<a href="../src/net/dnsclient_unix.go.html#line-392">dnsclient_unix.go#L392</a>: 	conf.initOnce.<b>Do</b>(conf.init)
+		<a href="../src/net/ipsock.go.html#line-33">ipsock.go#L33</a>: 	ipStackCaps.Once.<b>Do</b>(ipStackCaps.probe)
+		<a href="../src/net/ipsock.go.html#line-40" class="path-duplicate">ipsock.go</a><a href="../src/net/ipsock.go.html#line-40">#L40</a>: 	ipStackCaps.Once.<b>Do</b>(ipStackCaps.probe)
+		<a href="../src/net/ipsock.go.html#line-55" class="path-duplicate">ipsock.go</a><a href="../src/net/ipsock.go.html#line-55">#L55</a>: 	ipStackCaps.Once.<b>Do</b>(ipStackCaps.probe)
+		<a href="../src/net/lookup_unix.go.html#line-51">lookup_unix.go#L51</a>: 	onceReadProtocols.<b>Do</b>(readProtocols)
+		<a href="../src/net/mptcpsock_linux.go.html#line-30">mptcpsock_linux.go#L30</a>: 	mptcpOnce.<b>Do</b>(initMPTCPavailable)
+		<a href="../src/net/net.go.html#line-373">net.go#L373</a>: 	listenerBacklogCache.<b>Do</b>(func() { listenerBacklogCache.val = maxListenerBacklog() })
+		<a href="../src/net/net.go.html#line-727" class="path-duplicate">net.go</a><a href="../src/net/net.go.html#line-727">#L727</a>: 	threadOnce.<b>Do</b>(func() {
+		<a href="../src/net/nss.go.html#line-50">nss.go#L50</a>: 	conf.initOnce.<b>Do</b>(conf.init)
+		<a href="../src/net/pipe.go.html#line-236">pipe.go#L236</a>: 	p.once.<b>Do</b>(func() { close(p.localDone) })
+		<a href="../src/net/port_unix.go.html#line-55">port_unix.go#L55</a>: 	onceReadServices.<b>Do</b>(readServices)
+		<a href="../src/net/unixsock_posix.go.html#line-191">unixsock_posix.go#L191</a>: 	ln.unlinkOnce.<b>Do</b>(func() {
+
+	<a href="../pkg/net/http.html">net/http</a>
+		<a href="../src/net/http/client.go.html#line-393">client.go#L393</a>: 		once.<b>Do</b>(func() {
+		<a href="../src/net/http/h2_bundle.go.html#line-3257">h2_bundle.go#L3257</a>: 	http2commonBuildOnce.<b>Do</b>(http2buildCommonHeaderMaps)
+		<a href="../src/net/http/h2_bundle.go.html#line-5209" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-5209">#L5209</a>: 	sc.shutdownOnce.<b>Do</b>(func() { sc.sendServeMsg(http2gracefulShutdownMsg) })
+		<a href="../src/net/http/h2_bundle.go.html#line-6315" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-6315">#L6315</a>: 	b.closeOnce.<b>Do</b>(func() {
+		<a href="../src/net/http/h2_bundle.go.html#line-7343" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-7343">#L7343</a>: 	t.connPoolOnce.<b>Do</b>(t.initConnPool)
+		<a href="../src/net/http/h2_bundle.go.html#line-7483" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-7483">#L7483</a>: 	cs.abortOnce.<b>Do</b>(func() {
+		<a href="../src/net/http/server.go.html#line-3489">server.go#L3489</a>: 	srv.nextProtoOnce.<b>Do</b>(srv.onceSetNextProtoDefaults)
+		<a href="../src/net/http/server.go.html#line-3502" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-3502">#L3502</a>: 	srv.nextProtoOnce.<b>Do</b>(srv.onceSetNextProtoDefaults_Serve)
+		<a href="../src/net/http/server.go.html#line-3697" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-3697">#L3697</a>: 	oc.once.<b>Do</b>(oc.close)
+		<a href="../src/net/http/transport.go.html#line-318">transport.go#L318</a>: 	t.nextProtoOnce.<b>Do</b>(t.onceSetNextProtoDefaults)
+		<a href="../src/net/http/transport.go.html#line-518" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-518">#L518</a>: 	t.nextProtoOnce.<b>Do</b>(t.onceSetNextProtoDefaults)
+		<a href="../src/net/http/transport.go.html#line-784" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-784">#L784</a>: 	t.nextProtoOnce.<b>Do</b>(t.onceSetNextProtoDefaults)
+		<a href="../src/net/http/transport.go.html#line-839" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-839">#L839</a>: 	envProxyOnce.<b>Do</b>(func() {
+
+	<a href="../pkg/net/textproto.html">net/textproto</a>
+		<a href="../src/net/textproto/reader.go.html#line-780">reader.go#L780</a>: 	commonHeaderOnce.<b>Do</b>(initCommonHeader)
+
+	<a href="../pkg/strings.html">strings</a>
+		<a href="../src/strings/replace.go.html#line-96">replace.go#L96</a>: 	r.once.<b>Do</b>(r.buildOnce)
+		<a href="../src/strings/replace.go.html#line-102" class="path-duplicate">replace.go</a><a href="../src/strings/replace.go.html#line-102">#L102</a>: 	r.once.<b>Do</b>(r.buildOnce)
+
+	<a href="../pkg/syscall.html">syscall</a>
+		<a href="../src/syscall/env_unix.go.html#line-56">env_unix.go#L56</a>: 	envOnce.<b>Do</b>(copyenv)
+		<a href="../src/syscall/env_unix.go.html#line-70" class="path-duplicate">env_unix.go</a><a href="../src/syscall/env_unix.go.html#line-70">#L70</a>: 	envOnce.<b>Do</b>(copyenv)
+		<a href="../src/syscall/env_unix.go.html#line-92" class="path-duplicate">env_unix.go</a><a href="../src/syscall/env_unix.go.html#line-92">#L92</a>: 	envOnce.<b>Do</b>(copyenv)
+		<a href="../src/syscall/env_unix.go.html#line-127" class="path-duplicate">env_unix.go</a><a href="../src/syscall/env_unix.go.html#line-127">#L127</a>: 	envOnce.<b>Do</b>(copyenv) // prevent copyenv in Getenv/Setenv
+		<a href="../src/syscall/env_unix.go.html#line-140" class="path-duplicate">env_unix.go</a><a href="../src/syscall/env_unix.go.html#line-140">#L140</a>: 	envOnce.<b>Do</b>(copyenv)
+
+	<a href="../pkg/time.html">time</a>
+		<a href="../src/time/zoneinfo.go.html#line-96">zoneinfo.go#L96</a>: 		localOnce.<b>Do</b>(initLocal)
+		<a href="../src/time/zoneinfo.go.html#line-119" class="path-duplicate">zoneinfo.go</a><a href="../src/time/zoneinfo.go.html#line-119">#L119</a>: 		unnamedFixedZonesOnce.<b>Do</b>(func() {
+		<a href="../src/time/zoneinfo.go.html#line-678" class="path-duplicate">zoneinfo.go</a><a href="../src/time/zoneinfo.go.html#line-678">#L678</a>: 	zoneinfoOnce.<b>Do</b>(func() {
+
+	<a href="../pkg/vendor/golang.org/x/net/http2/hpack.html">vendor/golang.org/x/net/http2/hpack</a>
+		<a href="../src/vendor/golang.org/x/net/http2/hpack/huffman.go.html#line-134">huffman.go#L134</a>: 	buildRootOnce.<b>Do</b>(buildRootHuffmanNode)
+
+	<a href="../pkg/vendor/golang.org/x/text/unicode/norm.html">vendor/golang.org/x/text/unicode/norm</a>
+		<a href="../src/vendor/golang.org/x/text/unicode/norm/composition.go.html#line-466">composition.go#L466</a>: 	recompMapOnce.<b>Do</b>(buildRecompMap)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

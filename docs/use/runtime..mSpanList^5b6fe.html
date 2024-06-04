@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.mSpanList</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/mheap.go.html#line-392">mSpanList</a></b></span>
+
+<span class="title">15 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/mgc.go.html#line-316">mgc.go#L316</a>: 		free <b>mSpanList</b>
+		<a href="../src/runtime/mgc.go.html#line-319" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-319">#L319</a>: 		busy <b>mSpanList</b>
+		<a href="../src/runtime/mheap.go.html#line-227">mheap.go#L227</a>: 		quarantineList <b>mSpanList</b>
+		<a href="../src/runtime/mheap.go.html#line-230" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-230">#L230</a>: 		readyList <b>mSpanList</b>
+		<a href="../src/runtime/mheap.go.html#line-392" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-392">#L392</a>: type <b>mSpanList</b> struct {
+		<a href="../src/runtime/mheap.go.html#line-402" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-402">#L402</a>: 	list *<b>mSpanList</b> // For debugging.
+		<a href="../src/runtime/mheap.go.html#line-1705" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1705">#L1705</a>: func (list *<b>mSpanList</b>) init() {
+		<a href="../src/runtime/mheap.go.html#line-1710" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1710">#L1710</a>: func (list *<b>mSpanList</b>) remove(span *mspan) {
+		<a href="../src/runtime/mheap.go.html#line-1731" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1731">#L1731</a>: func (list *<b>mSpanList</b>) isEmpty() bool {
+		<a href="../src/runtime/mheap.go.html#line-1735" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1735">#L1735</a>: func (list *<b>mSpanList</b>) insert(span *mspan) {
+		<a href="../src/runtime/mheap.go.html#line-1753" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1753">#L1753</a>: func (list *<b>mSpanList</b>) insertBack(span *mspan) {
+		<a href="../src/runtime/mheap.go.html#line-1772" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1772">#L1772</a>: func (list *<b>mSpanList</b>) takeAll(other *<b>mSpanList</b>) {
+		<a href="../src/runtime/stack.go.html#line-158">stack.go#L158</a>: 	span <b>mSpanList</b>
+		<a href="../src/runtime/stack.go.html#line-164" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-164">#L164</a>: 	free [heapAddrBits - pageShift]<b>mSpanList</b> // free lists by log_2(s.npages)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: internal/cpu.cpuid</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../../pkg/internal/cpu.html">internal/cpu</a>.<a href="../../src/internal/cpu/cpu_x86.go.html#line-12">cpuid</a></b></span>
+
+<span class="title">10 uses</span>
+
+	internal/cpu (current package)
+		<a href="../../src/internal/cpu/cpu_x86.go.html#line-12">cpu_x86.go#L12</a>: func <b>cpuid</b>(eaxArg, ecxArg uint32) (eax, ebx, ecx, edx uint32)
+		<a href="../../src/internal/cpu/cpu_x86.go.html#line-93" class="path-duplicate">cpu_x86.go</a><a href="../../src/internal/cpu/cpu_x86.go.html#line-93">#L93</a>: 	maxID, _, _, _ := <b>cpuid</b>(0, 0)
+		<a href="../../src/internal/cpu/cpu_x86.go.html#line-99" class="path-duplicate">cpu_x86.go</a><a href="../../src/internal/cpu/cpu_x86.go.html#line-99">#L99</a>: 	maxExtendedFunctionInformation, _, _, _ = <b>cpuid</b>(0x80000000, 0)
+		<a href="../../src/internal/cpu/cpu_x86.go.html#line-101" class="path-duplicate">cpu_x86.go</a><a href="../../src/internal/cpu/cpu_x86.go.html#line-101">#L101</a>: 	_, _, ecx1, _ := <b>cpuid</b>(1, 0)
+		<a href="../../src/internal/cpu/cpu_x86.go.html#line-143" class="path-duplicate">cpu_x86.go</a><a href="../../src/internal/cpu/cpu_x86.go.html#line-143">#L143</a>: 	_, ebx7, _, _ := <b>cpuid</b>(7, 0)
+		<a href="../../src/internal/cpu/cpu_x86.go.html#line-158" class="path-duplicate">cpu_x86.go</a><a href="../../src/internal/cpu/cpu_x86.go.html#line-158">#L158</a>: 	maxExtendedInformation, _, _, _ = <b>cpuid</b>(0x80000000, 0)
+		<a href="../../src/internal/cpu/cpu_x86.go.html#line-164" class="path-duplicate">cpu_x86.go</a><a href="../../src/internal/cpu/cpu_x86.go.html#line-164">#L164</a>: 	_, _, _, edxExt1 := <b>cpuid</b>(0x80000001, 0)
+		<a href="../../src/internal/cpu/cpu_x86.go.html#line-183" class="path-duplicate">cpu_x86.go</a><a href="../../src/internal/cpu/cpu_x86.go.html#line-183">#L183</a>: 	eax, ebx, ecx, edx = <b>cpuid</b>(0x80000002, 0)
+		<a href="../../src/internal/cpu/cpu_x86.go.html#line-185" class="path-duplicate">cpu_x86.go</a><a href="../../src/internal/cpu/cpu_x86.go.html#line-185">#L185</a>: 	eax, ebx, ecx, edx = <b>cpuid</b>(0x80000003, 0)
+		<a href="../../src/internal/cpu/cpu_x86.go.html#line-187" class="path-duplicate">cpu_x86.go</a><a href="../../src/internal/cpu/cpu_x86.go.html#line-187">#L187</a>: 	eax, ebx, ecx, edx = <b>cpuid</b>(0x80000004, 0)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.schedt.nmidle</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/runtime2.go.html#line-799">schedt</a>.<a href="../src/runtime/runtime2.go.html#line-810">nmidle</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">6 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/proc.go.html#line-5857">proc.go#L5857</a>: 	run := mcount() - sched.<b>nmidle</b> - sched.nmidlelocked - sched.nmsys
+		<a href="../src/runtime/proc.go.html#line-5862" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-5862">#L5862</a>: 		print("runtime: checkdead: nmidle=", sched.<b>nmidle</b>, " nmidlelocked=", sched.nmidlelocked, " mcount=", mcount(), " nmsys=", sched.nmsys, "\n")
+		<a href="../src/runtime/proc.go.html#line-6241" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6241">#L6241</a>: 	print("SCHED ", (now-starttime)/1e6, "ms: gomaxprocs=", gomaxprocs, " idleprocs=", sched.npidle.Load(), " threads=", mcount(), " spinningthreads=", sched.nmspinning.Load(), " needspinning=", sched.needspinning.Load(), " idlethreads=", sched.<b>nmidle</b>, " runqueue=", sched.runqsize)
+		<a href="../src/runtime/proc.go.html#line-6368" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6368">#L6368</a>: 	sched.<b>nmidle</b>++
+		<a href="../src/runtime/proc.go.html#line-6383" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6383">#L6383</a>: 		sched.<b>nmidle</b>--
+		<a href="../src/runtime/runtime2.go.html#line-810">runtime2.go#L810</a>: 	<b>nmidle</b>       int32    // number of idle m's waiting for work
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

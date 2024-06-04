@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/sha1.digest</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../pkg/crypto/sha1.html">crypto/sha1</a>.<a href="../../src/crypto/sha1/sha1.go.html#line-39">digest</a></b></span>
+
+<span class="title">17 uses</span>
+
+	crypto/sha1 (current package)
+		<a href="../../src/crypto/sha1/sha1.go.html#line-39">sha1.go#L39</a>: type <b>digest</b> struct {
+		<a href="../../src/crypto/sha1/sha1.go.html#line-51" class="path-duplicate">sha1.go</a><a href="../../src/crypto/sha1/sha1.go.html#line-51">#L51</a>: func (d *<b>digest</b>) MarshalBinary() ([]byte, error) {
+		<a href="../../src/crypto/sha1/sha1.go.html#line-65" class="path-duplicate">sha1.go</a><a href="../../src/crypto/sha1/sha1.go.html#line-65">#L65</a>: func (d *<b>digest</b>) UnmarshalBinary(b []byte) error {
+		<a href="../../src/crypto/sha1/sha1.go.html#line-97" class="path-duplicate">sha1.go</a><a href="../../src/crypto/sha1/sha1.go.html#line-97">#L97</a>: func (d *<b>digest</b>) Reset() {
+		<a href="../../src/crypto/sha1/sha1.go.html#line-114" class="path-duplicate">sha1.go</a><a href="../../src/crypto/sha1/sha1.go.html#line-114">#L114</a>: 	d := new(<b>digest</b>)
+		<a href="../../src/crypto/sha1/sha1.go.html#line-119" class="path-duplicate">sha1.go</a><a href="../../src/crypto/sha1/sha1.go.html#line-119">#L119</a>: func (d *<b>digest</b>) Size() int { return Size }
+		<a href="../../src/crypto/sha1/sha1.go.html#line-121" class="path-duplicate">sha1.go</a><a href="../../src/crypto/sha1/sha1.go.html#line-121">#L121</a>: func (d *<b>digest</b>) BlockSize() int { return BlockSize }
+		<a href="../../src/crypto/sha1/sha1.go.html#line-123" class="path-duplicate">sha1.go</a><a href="../../src/crypto/sha1/sha1.go.html#line-123">#L123</a>: func (d *<b>digest</b>) Write(p []byte) (nn int, err error) {
+		<a href="../../src/crypto/sha1/sha1.go.html#line-147" class="path-duplicate">sha1.go</a><a href="../../src/crypto/sha1/sha1.go.html#line-147">#L147</a>: func (d *<b>digest</b>) Sum(in []byte) []byte {
+		<a href="../../src/crypto/sha1/sha1.go.html#line-155" class="path-duplicate">sha1.go</a><a href="../../src/crypto/sha1/sha1.go.html#line-155">#L155</a>: func (d *<b>digest</b>) checkSum() [Size]byte {
+		<a href="../../src/crypto/sha1/sha1.go.html#line-189" class="path-duplicate">sha1.go</a><a href="../../src/crypto/sha1/sha1.go.html#line-189">#L189</a>: func (d *<b>digest</b>) ConstantTimeSum(in []byte) []byte {
+		<a href="../../src/crypto/sha1/sha1.go.html#line-195" class="path-duplicate">sha1.go</a><a href="../../src/crypto/sha1/sha1.go.html#line-195">#L195</a>: func (d *<b>digest</b>) constSum() [Size]byte {
+		<a href="../../src/crypto/sha1/sha1.go.html#line-261" class="path-duplicate">sha1.go</a><a href="../../src/crypto/sha1/sha1.go.html#line-261">#L261</a>: 	var d <b>digest</b>
+		<a href="../../src/crypto/sha1/sha1block.go.html#line-20">sha1block.go#L20</a>: func blockGeneric(dig *<b>digest</b>, p []byte) {
+		<a href="../../src/crypto/sha1/sha1block_amd64.go.html#line-10">sha1block_amd64.go#L10</a>: func blockAVX2(dig *<b>digest</b>, p []byte)
+		<a href="../../src/crypto/sha1/sha1block_amd64.go.html#line-13" class="path-duplicate">sha1block_amd64.go</a><a href="../../src/crypto/sha1/sha1block_amd64.go.html#line-13">#L13</a>: func blockAMD64(dig *<b>digest</b>, p []byte)
+		<a href="../../src/crypto/sha1/sha1block_amd64.go.html#line-17" class="path-duplicate">sha1block_amd64.go</a><a href="../../src/crypto/sha1/sha1block_amd64.go.html#line-17">#L17</a>: func block(dig *<b>digest</b>, p []byte) {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

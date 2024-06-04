@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: golang.org/x/net/html.TextNode</title>
+<link href="../../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../../../../pkg/golang.org/x/net/html.html">golang.org/x/net/html</a>.<a href="../../../../src/golang.org/x/net/html/node.go.html#line-16">TextNode</a></b></span>
+
+<span class="title">15 uses</span>
+
+	golang.org/x/net/html (current package)
+		<a href="../../../../src/golang.org/x/net/html/node.go.html#line-16">node.go#L16</a>: 	<b>TextNode</b>
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-290">parse.go#L290</a>: 	if prev != nil &amp;&amp; prev.Type == <b>TextNode</b> &amp;&amp; n.Type == <b>TextNode</b> {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-307" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-307">#L307</a>: 			Type: <b>TextNode</b>,
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-314" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-314">#L314</a>: 	if n := t.LastChild; n != nil &amp;&amp; n.Type == <b>TextNode</b> {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-319" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-319">#L319</a>: 		Type: <b>TextNode</b>,
+		<a href="../../../../src/golang.org/x/net/html/render.go.html#line-73">render.go#L73</a>: 	case <b>TextNode</b>:
+		<a href="../../../../src/golang.org/x/net/html/render.go.html#line-188" class="path-duplicate">render.go</a><a href="../../../../src/golang.org/x/net/html/render.go.html#line-188">#L188</a>: 	if c := n.FirstChild; c != nil &amp;&amp; c.Type == <b>TextNode</b> &amp;&amp; strings.HasPrefix(c.Data, "\n") {
+		<a href="../../../../src/golang.org/x/net/html/render.go.html#line-200" class="path-duplicate">render.go</a><a href="../../../../src/golang.org/x/net/html/render.go.html#line-200">#L200</a>: 			if c.Type == <b>TextNode</b> {
+
+	<a href="../../../../pkg/github.com/andybalholm/cascadia.html">github.com/andybalholm/cascadia</a>
+		<a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-129">pseudo_classes.go#L129</a>: 	case html.<b>TextNode</b>:
+		<a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-150" class="path-duplicate">pseudo_classes.go</a><a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-150">#L150</a>: 		if c.Type == html.<b>TextNode</b> {
+		<a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-329" class="path-duplicate">pseudo_classes.go</a><a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-329">#L329</a>: 		case html.<b>TextNode</b>:
+		<a href="../../../../src/github.com/andybalholm/cascadia/selector.go.html#line-539">selector.go#L539</a>: 			if n.Type == html.<b>TextNode</b> || n.Type == html.CommentNode {
+
+	<a href="../../../../pkg/github.com/PuerkitoBio^56e6a/goquery.html">github.com/PuerkitoBio/goquery</a>
+		<a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/property.go.html#line-68">property.go#L68</a>: 		if n.Type == html.<b>TextNode</b> {
+		<a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/utilities.go.html#line-17">utilities.go#L17</a>: 	html.<b>TextNode</b>:     "#text",
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

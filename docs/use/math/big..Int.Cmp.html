@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: math/big.Int.Cmp</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/math/big.html">math/big</a>.<a href="../../src/math/big/int.go.html#line-33">Int</a>.<a href="../../src/math/big/int.go.html#line-373">Cmp</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">35 uses</span>
+
+	math/big (current package)
+		<a href="../../src/math/big/int.go.html#line-256">int.go#L256</a>: 	for i.<b>Cmp</b>(&amp;K) &lt; 0 {
+		<a href="../../src/math/big/int.go.html#line-373" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-373">#L373</a>: func (x *Int) <b>Cmp</b>(y *Int) (r int) {
+		<a href="../../src/math/big/int.go.html#line-916" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-916">#L916</a>: 	if d.<b>Cmp</b>(intOne) != 0 {
+		<a href="../../src/math/big/int.go.html#line-959" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-959">#L959</a>: 		if b.<b>Cmp</b>(intOne) == 0 {
+		<a href="../../src/math/big/int.go.html#line-1062" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1062">#L1062</a>: 		for t.<b>Cmp</b>(intOne) != 0 {
+		<a href="../../src/math/big/int.go.html#line-1093" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1093">#L1093</a>: 	if x.neg || x.<b>Cmp</b>(p) &gt;= 0 { // ensure 0 &lt;= x &lt; p
+		<a href="../../src/math/big/rat.go.html#line-444">rat.go#L444</a>: 		if f := NewInt(0).lehmerGCD(nil, nil, &amp;z.a, &amp;z.b); f.<b>Cmp</b>(intOne) != 0 {
+		<a href="../../src/math/big/rat.go.html#line-488" class="path-duplicate">rat.go</a><a href="../../src/math/big/rat.go.html#line-488">#L488</a>: 	return a.<b>Cmp</b>(&amp;b)
+
+	<a href="../../pkg/crypto/dsa.html">crypto/dsa</a>
+		<a href="../../src/crypto/dsa/dsa.go.html#line-147">dsa.go#L147</a>: 		if g.<b>Cmp</b>(one) == 0 {
+		<a href="../../src/crypto/dsa/dsa.go.html#line-173" class="path-duplicate">dsa.go</a><a href="../../src/crypto/dsa/dsa.go.html#line-173">#L173</a>: 		if x.Sign() != 0 &amp;&amp; x.<b>Cmp</b>(priv.Q) &lt; 0 {
+		<a href="../../src/crypto/dsa/dsa.go.html#line-231" class="path-duplicate">dsa.go</a><a href="../../src/crypto/dsa/dsa.go.html#line-231">#L231</a>: 			if k.Sign() &gt; 0 &amp;&amp; k.<b>Cmp</b>(priv.Q) &lt; 0 {
+		<a href="../../src/crypto/dsa/dsa.go.html#line-280" class="path-duplicate">dsa.go</a><a href="../../src/crypto/dsa/dsa.go.html#line-280">#L280</a>: 	if r.Sign() &lt; 1 || r.<b>Cmp</b>(pub.Q) &gt;= 0 {
+		<a href="../../src/crypto/dsa/dsa.go.html#line-283" class="path-duplicate">dsa.go</a><a href="../../src/crypto/dsa/dsa.go.html#line-283">#L283</a>: 	if s.Sign() &lt; 1 || s.<b>Cmp</b>(pub.Q) &gt;= 0 {
+		<a href="../../src/crypto/dsa/dsa.go.html#line-308" class="path-duplicate">dsa.go</a><a href="../../src/crypto/dsa/dsa.go.html#line-308">#L308</a>: 	return v.<b>Cmp</b>(r) == 0
+
+	<a href="../../pkg/crypto/ecdsa.html">crypto/ecdsa</a>
+		<a href="../../src/crypto/ecdsa/ecdsa_legacy.go.html#line-142">ecdsa_legacy.go#L142</a>: 	if r.<b>Cmp</b>(N) &gt;= 0 || s.<b>Cmp</b>(N) &gt;= 0 {
+		<a href="../../src/crypto/ecdsa/ecdsa_legacy.go.html#line-163" class="path-duplicate">ecdsa_legacy.go</a><a href="../../src/crypto/ecdsa/ecdsa_legacy.go.html#line-163">#L163</a>: 	return x.<b>Cmp</b>(r) == 0
+		<a href="../../src/crypto/ecdsa/ecdsa_legacy.go.html#line-184" class="path-duplicate">ecdsa_legacy.go</a><a href="../../src/crypto/ecdsa/ecdsa_legacy.go.html#line-184">#L184</a>: 		if k.Sign() != 0 &amp;&amp; k.<b>Cmp</b>(N) &lt; 0 {
+
+	<a href="../../pkg/crypto/elliptic.html">crypto/elliptic</a>
+		<a href="../../src/crypto/elliptic/elliptic.go.html#line-94">elliptic.go#L94</a>: 		if new(big.Int).SetBytes(priv).<b>Cmp</b>(N) &gt;= 0 {
+		<a href="../../src/crypto/elliptic/elliptic.go.html#line-168" class="path-duplicate">elliptic.go</a><a href="../../src/crypto/elliptic/elliptic.go.html#line-168">#L168</a>: 	if x.<b>Cmp</b>(p) &gt;= 0 || y.<b>Cmp</b>(p) &gt;= 0 {
+		<a href="../../src/crypto/elliptic/elliptic.go.html#line-194" class="path-duplicate">elliptic.go</a><a href="../../src/crypto/elliptic/elliptic.go.html#line-194">#L194</a>: 	if x.<b>Cmp</b>(p) &gt;= 0 {
+		<a href="../../src/crypto/elliptic/nistec_p256.go.html#line-19">nistec_p256.go#L19</a>: 	if k.<b>Cmp</b>(c.params.N) &gt;= 0 {
+		<a href="../../src/crypto/elliptic/params.go.html#line-63">params.go#L63</a>: 	if x.Sign() &lt; 0 || x.<b>Cmp</b>(curve.P) &gt;= 0 ||
+		<a href="../../src/crypto/elliptic/params.go.html#line-64" class="path-duplicate">params.go</a><a href="../../src/crypto/elliptic/params.go.html#line-64">#L64</a>: 		y.Sign() &lt; 0 || y.<b>Cmp</b>(curve.P) &gt;= 0 {
+		<a href="../../src/crypto/elliptic/params.go.html#line-72" class="path-duplicate">params.go</a><a href="../../src/crypto/elliptic/params.go.html#line-72">#L72</a>: 	return curve.polynomial(x).<b>Cmp</b>(y2) == 0
+
+	<a href="../../pkg/crypto/rand.html">crypto/rand</a>
+		<a href="../../src/crypto/rand/util.go.html#line-95">util.go#L95</a>: 		if n.<b>Cmp</b>(max) &lt; 0 {
+
+	<a href="../../pkg/crypto/rsa.html">crypto/rsa</a>
+		<a href="../../src/crypto/rsa/rsa.go.html#line-243">rsa.go#L243</a>: 		if prime.<b>Cmp</b>(bigOne) &lt;= 0 {
+		<a href="../../src/crypto/rsa/rsa.go.html#line-248" class="path-duplicate">rsa.go</a><a href="../../src/crypto/rsa/rsa.go.html#line-248">#L248</a>: 	if modulus.<b>Cmp</b>(priv.N) != 0 {
+		<a href="../../src/crypto/rsa/rsa.go.html#line-263" class="path-duplicate">rsa.go</a><a href="../../src/crypto/rsa/rsa.go.html#line-263">#L263</a>: 		if congruence.<b>Cmp</b>(bigOne) != 0 {
+		<a href="../../src/crypto/rsa/rsa.go.html#line-406" class="path-duplicate">rsa.go</a><a href="../../src/crypto/rsa/rsa.go.html#line-406">#L406</a>: 				if prime.<b>Cmp</b>(primes[j]) == 0 {
+
+	<a href="../../pkg/crypto/tls.html">crypto/tls</a>
+		<a href="../../src/crypto/tls/tls.go.html#line-310">tls.go#L310</a>: 		if pub.N.<b>Cmp</b>(priv.N) != 0 {
+		<a href="../../src/crypto/tls/tls.go.html#line-318" class="path-duplicate">tls.go</a><a href="../../src/crypto/tls/tls.go.html#line-318">#L318</a>: 		if pub.X.<b>Cmp</b>(priv.X) != 0 || pub.Y.<b>Cmp</b>(priv.Y) != 0 {
+
+	<a href="../../pkg/crypto/x509.html">crypto/x509</a>
+		<a href="../../src/crypto/x509/sec1.go.html#line-111">sec1.go#L111</a>: 	if k.<b>Cmp</b>(curveOrder) &gt;= 0 {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

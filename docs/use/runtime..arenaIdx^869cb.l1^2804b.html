@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.arenaIdx.l1</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/mheap.go.html#line-601">arenaIdx</a>.<a href="../src/runtime/mheap.go.html#line-609">l1</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">19 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/malloc.go.html#line-748">malloc.go#L748</a>: 		l2 := h.arenas[ri.<b>l1</b>()]
+		<a href="../src/runtime/malloc.go.html#line-767" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-767">#L767</a>: 			atomic.StorepNoWB(unsafe.Pointer(&amp;h.arenas[ri.<b>l1</b>()]), unsafe.Pointer(l2))
+		<a href="../src/runtime/mcheckmark.go.html#line-43">mcheckmark.go#L43</a>: 		arena := mheap_.arenas[ai.<b>l1</b>()][ai.l2()]
+		<a href="../src/runtime/mcheckmark.go.html#line-92" class="path-duplicate">mcheckmark.go</a><a href="../src/runtime/mcheckmark.go.html#line-92">#L92</a>: 	arena := mheap_.arenas[ai.<b>l1</b>()][ai.l2()]
+		<a href="../src/runtime/mgc.go.html#line-1644">mgc.go#L1644</a>: 		ha := mheap_.arenas[ai.<b>l1</b>()][ai.l2()]
+		<a href="../src/runtime/mgcmark.go.html#line-338">mgcmark.go#L338</a>: 	ha := mheap_.arenas[ai.<b>l1</b>()][ai.l2()]
+		<a href="../src/runtime/mheap.go.html#line-609">mheap.go#L609</a>: func (i arenaIdx) <b>l1</b>() uint {
+		<a href="../src/runtime/mheap.go.html#line-686" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-686">#L686</a>: 		if ri.<b>l1</b>() &gt;= uint(len(mheap_.arenas)) {
+		<a href="../src/runtime/mheap.go.html#line-690" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-690">#L690</a>: 	l2 := mheap_.arenas[ri.<b>l1</b>()]
+		<a href="../src/runtime/mheap.go.html#line-709" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-709">#L709</a>: 	return mheap_.arenas[ai.<b>l1</b>()][ai.l2()].spans[(p/pageSize)%pagesPerArena]
+		<a href="../src/runtime/mheap.go.html#line-735" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-735">#L735</a>: 	arena = mheap_.arenas[ai.<b>l1</b>()][ai.l2()]
+		<a href="../src/runtime/mheap.go.html#line-874" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-874">#L874</a>: 		ha := h.arenas[ai.<b>l1</b>()][ai.l2()]
+		<a href="../src/runtime/mheap.go.html#line-998" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-998">#L998</a>: 	ha := h.arenas[ai.<b>l1</b>()][ai.l2()]
+		<a href="../src/runtime/mheap.go.html#line-1003" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1003">#L1003</a>: 			ha = h.arenas[ai.<b>l1</b>()][ai.l2()]
+		<a href="../src/runtime/mheap.go.html#line-1022" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1022">#L1022</a>: 		ha := h.arenas[ai.<b>l1</b>()][ai.l2()]
+		<a href="../src/runtime/mheap.go.html#line-1821" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1821">#L1821</a>: 	ha := mheap_.arenas[ai.<b>l1</b>()][ai.l2()]
+		<a href="../src/runtime/mheap.go.html#line-1829" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1829">#L1829</a>: 	ha := mheap_.arenas[ai.<b>l1</b>()][ai.l2()]
+		<a href="../src/runtime/mpagealloc.go.html#line-620">mpagealloc.go#L620</a>: 	if p.test || mheap_.arenas[ai.<b>l1</b>()] == nil || mheap_.arenas[ai.<b>l1</b>()][ai.l2()] == nil {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

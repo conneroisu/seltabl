@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.gomaxprocs</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">var <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/runtime2.go.html#line-1189">gomaxprocs</a></b></span>
+
+<span class="title">27 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/debug.go.html#line-22">debug.go#L22</a>: 	ret := int(<b>gomaxprocs</b>)
+		<a href="../src/runtime/metrics.go.html#line-436">metrics.go#L436</a>: 				out.scalar = uint64(<b>gomaxprocs</b>)
+		<a href="../src/runtime/mgc.go.html#line-667">mgc.go#L667</a>: 	work.stwprocs, work.maxprocs = <b>gomaxprocs</b>, <b>gomaxprocs</b>
+		<a href="../src/runtime/mgc.go.html#line-696" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-696">#L696</a>: 	gcController.startCycle(now, int(<b>gomaxprocs</b>), trigger)
+		<a href="../src/runtime/mgc.go.html#line-924" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-924">#L924</a>: 	gcController.endCycle(now, int(<b>gomaxprocs</b>), work.userForced)
+		<a href="../src/runtime/mgc.go.html#line-1233" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1233">#L1233</a>: 	for gcBgMarkWorkerCount &lt; <b>gomaxprocs</b> {
+		<a href="../src/runtime/mgcpacer.go.html#line-706">mgcpacer.go#L706</a>: 	if <b>gomaxprocs</b> &lt;= 1 {
+		<a href="../src/runtime/mgcpacer.go.html#line-715" class="path-duplicate">mgcpacer.go</a><a href="../src/runtime/mgcpacer.go.html#line-715">#L715</a>: 		id := int32(cheaprandn(uint32(<b>gomaxprocs</b> - 1)))
+		<a href="../src/runtime/mgcscavenge.go.html#line-413">mgcscavenge.go#L413</a>: 			return <b>gomaxprocs</b>
+		<a href="../src/runtime/mstats.go.html#line-633">mstats.go#L633</a>: 	for i := 0; i &lt; int(<b>gomaxprocs</b>); i++ {
+		<a href="../src/runtime/mstats.go.html#line-965" class="path-duplicate">mstats.go</a><a href="../src/runtime/mstats.go.html#line-965">#L965</a>: 	s.totalTime = sched.totaltime + (now-sched.procresizetime)*int64(<b>gomaxprocs</b>)
+		<a href="../src/runtime/proc.go.html#line-1465">proc.go#L1465</a>: 	sched.stopwait = <b>gomaxprocs</b>
+		<a href="../src/runtime/proc.go.html#line-1565" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-1565">#L1565</a>: 	procs := <b>gomaxprocs</b>
+		<a href="../src/runtime/proc.go.html#line-1928" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-1928">#L1928</a>: 	sched.safePointWait = <b>gomaxprocs</b> - 1
+		<a href="../src/runtime/proc.go.html#line-2955" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-2955">#L2955</a>: 	if sched.npidle.Load() == <b>gomaxprocs</b>-1 &amp;&amp; sched.lastpoll.Load() != 0 {
+		<a href="../src/runtime/proc.go.html#line-3249" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-3249">#L3249</a>: 	if mp.spinning || 2*sched.nmspinning.Load() &lt; <b>gomaxprocs</b>-sched.npidle.Load() {
+		<a href="../src/runtime/proc.go.html#line-5595" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-5595">#L5595</a>: 	old := <b>gomaxprocs</b>
+		<a href="../src/runtime/proc.go.html#line-5725" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-5725">#L5725</a>: 	var int32p *int32 = &amp;<b>gomaxprocs</b> // make compiler check that gomaxprocs is an int32
+		<a href="../src/runtime/proc.go.html#line-5983" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-5983">#L5983</a>: 		if debug.schedtrace &lt;= 0 &amp;&amp; (sched.gcwaiting.Load() || sched.npidle.Load() == <b>gomaxprocs</b>) {
+		<a href="../src/runtime/proc.go.html#line-5985" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-5985">#L5985</a>: 			if sched.gcwaiting.Load() || sched.npidle.Load() == <b>gomaxprocs</b> {
+		<a href="../src/runtime/proc.go.html#line-6241" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6241">#L6241</a>: 	print("SCHED ", (now-starttime)/1e6, "ms: gomaxprocs=", <b>gomaxprocs</b>, " idleprocs=", sched.npidle.Load(), " threads=", mcount(), " spinningthreads=", sched.nmspinning.Load(), " needspinning=", sched.needspinning.Load(), " idlethreads=", sched.nmidle, " runqueue=", sched.runqsize)
+		<a href="../src/runtime/proc.go.html#line-6435" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6435">#L6435</a>: 	n := sched.runqsize/<b>gomaxprocs</b> + 1
+		<a href="../src/runtime/proc.go.html#line-7051" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-7051">#L7051</a>: 	if i &gt;= active_spin || ncpu &lt;= 1 || <b>gomaxprocs</b> &lt;= sched.npidle.Load()+sched.nmspinning.Load()+1 {
+		<a href="../src/runtime/runtime2.go.html#line-1189">runtime2.go#L1189</a>: 	<b>gomaxprocs</b> int32
+		<a href="../src/runtime/trace2.go.html#line-238">trace2.go#L238</a>: 	tl.Gomaxprocs(<b>gomaxprocs</b>)  // Get this as early in the trace as possible. See comment in traceAdvance.
+		<a href="../src/runtime/trace2.go.html#line-392" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-392">#L392</a>: 		tl.Gomaxprocs(<b>gomaxprocs</b>)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

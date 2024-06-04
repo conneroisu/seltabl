@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.schedt.lastpoll</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/runtime2.go.html#line-799">schedt</a>.<a href="../src/runtime/runtime2.go.html#line-801">lastpoll</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">10 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/proc.go.html#line-822">proc.go#L822</a>: 	sched.<b>lastpoll</b>.Store(nanotime())
+		<a href="../src/runtime/proc.go.html#line-2955" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-2955">#L2955</a>: 	if sched.npidle.Load() == gomaxprocs-1 &amp;&amp; sched.<b>lastpoll</b>.Load() != 0 {
+		<a href="../src/runtime/proc.go.html#line-3229" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-3229">#L3229</a>: 	if netpollinited() &amp;&amp; netpollAnyWaiters() &amp;&amp; sched.<b>lastpoll</b>.Load() != 0 {
+		<a href="../src/runtime/proc.go.html#line-3448" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-3448">#L3448</a>: 	if netpollinited() &amp;&amp; (netpollAnyWaiters() || pollUntil != 0) &amp;&amp; sched.<b>lastpoll</b>.Swap(0) != 0 {
+		<a href="../src/runtime/proc.go.html#line-3474" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-3474">#L3474</a>: 		sched.<b>lastpoll</b>.Store(now)
+		<a href="../src/runtime/proc.go.html#line-3528" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-3528">#L3528</a>: 	if netpollinited() &amp;&amp; netpollAnyWaiters() &amp;&amp; sched.<b>lastpoll</b>.Load() != 0 {
+		<a href="../src/runtime/proc.go.html#line-3719" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-3719">#L3719</a>: 	if sched.<b>lastpoll</b>.Load() == 0 {
+		<a href="../src/runtime/proc.go.html#line-6027" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6027">#L6027</a>: 		lastpoll := sched.<b>lastpoll</b>.Load()
+		<a href="../src/runtime/proc.go.html#line-6029" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6029">#L6029</a>: 			sched.<b>lastpoll</b>.CompareAndSwap(lastpoll, now)
+		<a href="../src/runtime/runtime2.go.html#line-801">runtime2.go#L801</a>: 	<b>lastpoll</b>  atomic.Int64 // time of last network poll, 0 if currently polling
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: unicode.MaxASCII</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../pkg/unicode.html">unicode</a>.<a href="../src/unicode/letter.go.html#line-12">MaxASCII</a></b></span>
+
+<span class="title">7 uses</span>
+
+	unicode (current package)
+		<a href="../src/unicode/letter.go.html#line-12">letter.go#L12</a>: 	<b>MaxASCII</b>        = '\u007F'     // maximum ASCII value.
+		<a href="../src/unicode/letter.go.html#line-255" class="path-duplicate">letter.go</a><a href="../src/unicode/letter.go.html#line-255">#L255</a>: 	if r &lt;= <b>MaxASCII</b> {
+		<a href="../src/unicode/letter.go.html#line-266" class="path-duplicate">letter.go</a><a href="../src/unicode/letter.go.html#line-266">#L266</a>: 	if r &lt;= <b>MaxASCII</b> {
+		<a href="../src/unicode/letter.go.html#line-277" class="path-duplicate">letter.go</a><a href="../src/unicode/letter.go.html#line-277">#L277</a>: 	if r &lt;= <b>MaxASCII</b> {
+		<a href="../src/unicode/tables.go.html#line-7824">tables.go#L7824</a>: var asciiFold = [<b>MaxASCII</b> + 1]uint16{
+
+	<a href="../pkg/crypto/x509.html">crypto/x509</a>
+		<a href="../src/crypto/x509/x509.go.html#line-1097">x509.go#L1097</a>: 		if r &gt; unicode.<b>MaxASCII</b> {
+
+	<a href="../pkg/net/http/internal/ascii.html">net/http/internal/ascii</a>
+		<a href="../src/net/http/internal/ascii/print.go.html#line-48">print.go#L48</a>: 		if s[i] &gt; unicode.<b>MaxASCII</b> {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

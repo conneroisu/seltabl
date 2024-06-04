@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/internal/nistec/fiat.P521Element.Mul</title>
+<link href="../../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../../../pkg/crypto/internal/nistec/fiat.html">crypto/internal/nistec/fiat</a>.<a href="../../../../src/crypto/internal/nistec/fiat/p521.go.html#line-17">P521Element</a>.<a href="../../../../src/crypto/internal/nistec/fiat/p521.go.html#line-112">Mul</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">44 uses</span>
+
+	crypto/internal/nistec/fiat (current package)
+		<a href="../../../../src/crypto/internal/nistec/fiat/p521.go.html#line-112">p521.go#L112</a>: func (e *P521Element) <b>Mul</b>(t1, t2 *P521Element) *P521Element {
+		<a href="../../../../src/crypto/internal/nistec/fiat/p521_invert.go.html#line-39">p521_invert.go#L39</a>: 	z.<b>Mul</b>(x, z)
+		<a href="../../../../src/crypto/internal/nistec/fiat/p521_invert.go.html#line-44" class="path-duplicate">p521_invert.go</a><a href="../../../../src/crypto/internal/nistec/fiat/p521_invert.go.html#line-44">#L44</a>: 	z.<b>Mul</b>(z, t0)
+		<a href="../../../../src/crypto/internal/nistec/fiat/p521_invert.go.html#line-49" class="path-duplicate">p521_invert.go</a><a href="../../../../src/crypto/internal/nistec/fiat/p521_invert.go.html#line-49">#L49</a>: 	z.<b>Mul</b>(z, t0)
+		<a href="../../../../src/crypto/internal/nistec/fiat/p521_invert.go.html#line-54" class="path-duplicate">p521_invert.go</a><a href="../../../../src/crypto/internal/nistec/fiat/p521_invert.go.html#line-54">#L54</a>: 	z.<b>Mul</b>(z, t0)
+		<a href="../../../../src/crypto/internal/nistec/fiat/p521_invert.go.html#line-59" class="path-duplicate">p521_invert.go</a><a href="../../../../src/crypto/internal/nistec/fiat/p521_invert.go.html#line-59">#L59</a>: 	z.<b>Mul</b>(z, t0)
+		<a href="../../../../src/crypto/internal/nistec/fiat/p521_invert.go.html#line-64" class="path-duplicate">p521_invert.go</a><a href="../../../../src/crypto/internal/nistec/fiat/p521_invert.go.html#line-64">#L64</a>: 	z.<b>Mul</b>(z, t0)
+		<a href="../../../../src/crypto/internal/nistec/fiat/p521_invert.go.html#line-66" class="path-duplicate">p521_invert.go</a><a href="../../../../src/crypto/internal/nistec/fiat/p521_invert.go.html#line-66">#L66</a>: 	t0.<b>Mul</b>(x, t0)
+		<a href="../../../../src/crypto/internal/nistec/fiat/p521_invert.go.html#line-70" class="path-duplicate">p521_invert.go</a><a href="../../../../src/crypto/internal/nistec/fiat/p521_invert.go.html#line-70">#L70</a>: 	z.<b>Mul</b>(z, t0)
+		<a href="../../../../src/crypto/internal/nistec/fiat/p521_invert.go.html#line-72" class="path-duplicate">p521_invert.go</a><a href="../../../../src/crypto/internal/nistec/fiat/p521_invert.go.html#line-72">#L72</a>: 	t0.<b>Mul</b>(x, t0)
+		<a href="../../../../src/crypto/internal/nistec/fiat/p521_invert.go.html#line-76" class="path-duplicate">p521_invert.go</a><a href="../../../../src/crypto/internal/nistec/fiat/p521_invert.go.html#line-76">#L76</a>: 	z.<b>Mul</b>(z, t0)
+		<a href="../../../../src/crypto/internal/nistec/fiat/p521_invert.go.html#line-78" class="path-duplicate">p521_invert.go</a><a href="../../../../src/crypto/internal/nistec/fiat/p521_invert.go.html#line-78">#L78</a>: 	t0.<b>Mul</b>(x, t0)
+		<a href="../../../../src/crypto/internal/nistec/fiat/p521_invert.go.html#line-82" class="path-duplicate">p521_invert.go</a><a href="../../../../src/crypto/internal/nistec/fiat/p521_invert.go.html#line-82">#L82</a>: 	z.<b>Mul</b>(z, t0)
+		<a href="../../../../src/crypto/internal/nistec/fiat/p521_invert.go.html#line-86" class="path-duplicate">p521_invert.go</a><a href="../../../../src/crypto/internal/nistec/fiat/p521_invert.go.html#line-86">#L86</a>: 	z.<b>Mul</b>(x, z)
+
+	<a href="../../../../pkg/crypto/internal/nistec.html">crypto/internal/nistec</a>
+		<a href="../../../../src/crypto/internal/nistec/p521.go.html#line-123">p521.go#L123</a>: 	y2.<b>Mul</b>(y2, x)
+		<a href="../../../../src/crypto/internal/nistec/p521.go.html#line-158" class="path-duplicate">p521.go</a><a href="../../../../src/crypto/internal/nistec/p521.go.html#line-158">#L158</a>: 	x := new(fiat.P521Element).<b>Mul</b>(p.x, zinv)
+		<a href="../../../../src/crypto/internal/nistec/p521.go.html#line-159" class="path-duplicate">p521.go</a><a href="../../../../src/crypto/internal/nistec/p521.go.html#line-159">#L159</a>: 	y := new(fiat.P521Element).<b>Mul</b>(p.y, zinv)
+		<a href="../../../../src/crypto/internal/nistec/p521.go.html#line-182" class="path-duplicate">p521.go</a><a href="../../../../src/crypto/internal/nistec/p521.go.html#line-182">#L182</a>: 	x := new(fiat.P521Element).<b>Mul</b>(p.x, zinv)
+		<a href="../../../../src/crypto/internal/nistec/p521.go.html#line-203" class="path-duplicate">p521.go</a><a href="../../../../src/crypto/internal/nistec/p521.go.html#line-203">#L203</a>: 	x := new(fiat.P521Element).<b>Mul</b>(p.x, zinv)
+		<a href="../../../../src/crypto/internal/nistec/p521.go.html#line-204" class="path-duplicate">p521.go</a><a href="../../../../src/crypto/internal/nistec/p521.go.html#line-204">#L204</a>: 	y := new(fiat.P521Element).<b>Mul</b>(p.y, zinv)
+		<a href="../../../../src/crypto/internal/nistec/p521.go.html#line-219" class="path-duplicate">p521.go</a><a href="../../../../src/crypto/internal/nistec/p521.go.html#line-219">#L219</a>: 	t0 := new(fiat.P521Element).<b>Mul</b>(p1.x, p2.x)  // t0 := X1 * X2
+		<a href="../../../../src/crypto/internal/nistec/p521.go.html#line-220" class="path-duplicate">p521.go</a><a href="../../../../src/crypto/internal/nistec/p521.go.html#line-220">#L220</a>: 	t1 := new(fiat.P521Element).<b>Mul</b>(p1.y, p2.y)  // t1 := Y1 * Y2
+		<a href="../../../../src/crypto/internal/nistec/p521.go.html#line-221" class="path-duplicate">p521.go</a><a href="../../../../src/crypto/internal/nistec/p521.go.html#line-221">#L221</a>: 	t2 := new(fiat.P521Element).<b>Mul</b>(p1.z, p2.z)  // t2 := Z1 * Z2
+		<a href="../../../../src/crypto/internal/nistec/p521.go.html#line-224" class="path-duplicate">p521.go</a><a href="../../../../src/crypto/internal/nistec/p521.go.html#line-224">#L224</a>: 	t3.<b>Mul</b>(t3, t4)                               // t3 := t3 * t4
+		<a href="../../../../src/crypto/internal/nistec/p521.go.html#line-229" class="path-duplicate">p521.go</a><a href="../../../../src/crypto/internal/nistec/p521.go.html#line-229">#L229</a>: 	t4.<b>Mul</b>(t4, x3)                               // t4 := t4 * X3
+		<a href="../../../../src/crypto/internal/nistec/p521.go.html#line-234" class="path-duplicate">p521.go</a><a href="../../../../src/crypto/internal/nistec/p521.go.html#line-234">#L234</a>: 	x3.<b>Mul</b>(x3, y3)                               // X3 := X3 * Y3
+		<a href="../../../../src/crypto/internal/nistec/p521.go.html#line-237" class="path-duplicate">p521.go</a><a href="../../../../src/crypto/internal/nistec/p521.go.html#line-237">#L237</a>: 	z3 := new(fiat.P521Element).<b>Mul</b>(p521B(), t2) // Z3 := b * t2
+		<a href="../../../../src/crypto/internal/nistec/p521.go.html#line-243" class="path-duplicate">p521.go</a><a href="../../../../src/crypto/internal/nistec/p521.go.html#line-243">#L243</a>: 	y3.<b>Mul</b>(p521B(), y3)                          // Y3 := b * Y3
+		<a href="../../../../src/crypto/internal/nistec/p521.go.html#line-253" class="path-duplicate">p521.go</a><a href="../../../../src/crypto/internal/nistec/p521.go.html#line-253">#L253</a>: 	t1.<b>Mul</b>(t4, y3)                               // t1 := t4 * Y3
+		<a href="../../../../src/crypto/internal/nistec/p521.go.html#line-254" class="path-duplicate">p521.go</a><a href="../../../../src/crypto/internal/nistec/p521.go.html#line-254">#L254</a>: 	t2.<b>Mul</b>(t0, y3)                               // t2 := t0 * Y3
+		<a href="../../../../src/crypto/internal/nistec/p521.go.html#line-255" class="path-duplicate">p521.go</a><a href="../../../../src/crypto/internal/nistec/p521.go.html#line-255">#L255</a>: 	y3.<b>Mul</b>(x3, z3)                               // Y3 := X3 * Z3
+		<a href="../../../../src/crypto/internal/nistec/p521.go.html#line-257" class="path-duplicate">p521.go</a><a href="../../../../src/crypto/internal/nistec/p521.go.html#line-257">#L257</a>: 	x3.<b>Mul</b>(t3, x3)                               // X3 := t3 * X3
+		<a href="../../../../src/crypto/internal/nistec/p521.go.html#line-259" class="path-duplicate">p521.go</a><a href="../../../../src/crypto/internal/nistec/p521.go.html#line-259">#L259</a>: 	z3.<b>Mul</b>(t4, z3)                               // Z3 := t4 * Z3
+		<a href="../../../../src/crypto/internal/nistec/p521.go.html#line-260" class="path-duplicate">p521.go</a><a href="../../../../src/crypto/internal/nistec/p521.go.html#line-260">#L260</a>: 	t1.<b>Mul</b>(t3, t0)                               // t1 := t3 * t0
+		<a href="../../../../src/crypto/internal/nistec/p521.go.html#line-277" class="path-duplicate">p521.go</a><a href="../../../../src/crypto/internal/nistec/p521.go.html#line-277">#L277</a>: 	t3 := new(fiat.P521Element).<b>Mul</b>(p.x, p.y)    // t3 := X * Y
+		<a href="../../../../src/crypto/internal/nistec/p521.go.html#line-279" class="path-duplicate">p521.go</a><a href="../../../../src/crypto/internal/nistec/p521.go.html#line-279">#L279</a>: 	z3 := new(fiat.P521Element).<b>Mul</b>(p.x, p.z)    // Z3 := X * Z
+		<a href="../../../../src/crypto/internal/nistec/p521.go.html#line-281" class="path-duplicate">p521.go</a><a href="../../../../src/crypto/internal/nistec/p521.go.html#line-281">#L281</a>: 	y3 := new(fiat.P521Element).<b>Mul</b>(p521B(), t2) // Y3 := b * t2
+		<a href="../../../../src/crypto/internal/nistec/p521.go.html#line-287" class="path-duplicate">p521.go</a><a href="../../../../src/crypto/internal/nistec/p521.go.html#line-287">#L287</a>: 	y3.<b>Mul</b>(x3, y3)                               // Y3 := X3 * Y3
+		<a href="../../../../src/crypto/internal/nistec/p521.go.html#line-288" class="path-duplicate">p521.go</a><a href="../../../../src/crypto/internal/nistec/p521.go.html#line-288">#L288</a>: 	x3.<b>Mul</b>(x3, t3)                               // X3 := X3 * t3
+		<a href="../../../../src/crypto/internal/nistec/p521.go.html#line-291" class="path-duplicate">p521.go</a><a href="../../../../src/crypto/internal/nistec/p521.go.html#line-291">#L291</a>: 	z3.<b>Mul</b>(p521B(), z3)                          // Z3 := b * Z3
+		<a href="../../../../src/crypto/internal/nistec/p521.go.html#line-299" class="path-duplicate">p521.go</a><a href="../../../../src/crypto/internal/nistec/p521.go.html#line-299">#L299</a>: 	t0.<b>Mul</b>(t0, z3)                               // t0 := t0 * Z3
+		<a href="../../../../src/crypto/internal/nistec/p521.go.html#line-301" class="path-duplicate">p521.go</a><a href="../../../../src/crypto/internal/nistec/p521.go.html#line-301">#L301</a>: 	t0.<b>Mul</b>(p.y, p.z)                             // t0 := Y * Z
+		<a href="../../../../src/crypto/internal/nistec/p521.go.html#line-303" class="path-duplicate">p521.go</a><a href="../../../../src/crypto/internal/nistec/p521.go.html#line-303">#L303</a>: 	z3.<b>Mul</b>(t0, z3)                               // Z3 := t0 * Z3
+		<a href="../../../../src/crypto/internal/nistec/p521.go.html#line-305" class="path-duplicate">p521.go</a><a href="../../../../src/crypto/internal/nistec/p521.go.html#line-305">#L305</a>: 	z3.<b>Mul</b>(t0, t1)                               // Z3 := t0 * t1
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime._type</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/type.go.html#line-18">_type</a></b></span>
+
+<span class="title">131 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/alg.go.html#line-145">alg.go#L145</a>: func typehash(t *<b>_type</b>, p unsafe.Pointer, h uintptr) uintptr {
+		<a href="../src/runtime/alg.go.html#line-203" class="path-duplicate">alg.go</a><a href="../src/runtime/alg.go.html#line-203">#L203</a>: func mapKeyError2(t *<b>_type</b>, p unsafe.Pointer) error {
+		<a href="../src/runtime/alg.go.html#line-212" class="path-duplicate">alg.go</a><a href="../src/runtime/alg.go.html#line-212">#L212</a>: 		var t *<b>_type</b>
+		<a href="../src/runtime/alg.go.html#line-265" class="path-duplicate">alg.go</a><a href="../src/runtime/alg.go.html#line-265">#L265</a>: func reflect_typehash(t *<b>_type</b>, p unsafe.Pointer, h uintptr) uintptr {
+		<a href="../src/runtime/alg.go.html#line-312" class="path-duplicate">alg.go</a><a href="../src/runtime/alg.go.html#line-312">#L312</a>: func efaceeq(t *<b>_type</b>, x, y unsafe.Pointer) bool {
+		<a href="../src/runtime/arena.go.html#line-112">arena.go#L112</a>: 	t := (*<b>_type</b>)(efaceOf(&amp;typ).data)
+		<a href="../src/runtime/arena.go.html#line-231" class="path-duplicate">arena.go</a><a href="../src/runtime/arena.go.html#line-231">#L231</a>: 		return userArenaChunkBytes/goarch.PtrSize/8 + unsafe.Sizeof(<b>_type</b>{})
+		<a href="../src/runtime/arena.go.html#line-281" class="path-duplicate">arena.go</a><a href="../src/runtime/arena.go.html#line-281">#L281</a>: func (a *userArena) new(typ *<b>_type</b>) unsafe.Pointer {
+		<a href="../src/runtime/arena.go.html#line-369" class="path-duplicate">arena.go</a><a href="../src/runtime/arena.go.html#line-369">#L369</a>: func (a *userArena) alloc(typ *<b>_type</b>, cap int) unsafe.Pointer {
+		<a href="../src/runtime/arena.go.html#line-451" class="path-duplicate">arena.go</a><a href="../src/runtime/arena.go.html#line-451">#L451</a>: func (s *mspan) userArenaNextFree(typ *<b>_type</b>, cap int) unsafe.Pointer {
+		<a href="../src/runtime/arena.go.html#line-541" class="path-duplicate">arena.go</a><a href="../src/runtime/arena.go.html#line-541">#L541</a>: func userArenaHeapBitsSetSliceType(typ *<b>_type</b>, n int, ptr unsafe.Pointer, s *mspan) {
+		<a href="../src/runtime/arena.go.html#line-930" class="path-duplicate">arena.go</a><a href="../src/runtime/arena.go.html#line-930">#L930</a>: 		*(*uintptr)(unsafe.Pointer(&amp;s.largeType.GCData)) = s.limit + unsafe.Sizeof(<b>_type</b>{})
+		<a href="../src/runtime/cgocall.go.html#line-543">cgocall.go#L543</a>: func cgoCheckArg(t *<b>_type</b>, p unsafe.Pointer, indir, top bool, msg string) {
+		<a href="../src/runtime/cgocall.go.html#line-579" class="path-duplicate">cgocall.go</a><a href="../src/runtime/cgocall.go.html#line-579">#L579</a>: 		it := *(**<b>_type</b>)(p)
+		<a href="../src/runtime/cgocheck.go.html#line-80">cgocheck.go#L80</a>: func cgoCheckMemmove(typ *<b>_type</b>, dst, src unsafe.Pointer) {
+		<a href="../src/runtime/cgocheck.go.html#line-92" class="path-duplicate">cgocheck.go</a><a href="../src/runtime/cgocheck.go.html#line-92">#L92</a>: func cgoCheckMemmove2(typ *<b>_type</b>, dst, src unsafe.Pointer, off, size uintptr) {
+		<a href="../src/runtime/cgocheck.go.html#line-113" class="path-duplicate">cgocheck.go</a><a href="../src/runtime/cgocheck.go.html#line-113">#L113</a>: func cgoCheckSliceCopy(typ *<b>_type</b>, dst, src unsafe.Pointer, n int) {
+		<a href="../src/runtime/cgocheck.go.html#line-136" class="path-duplicate">cgocheck.go</a><a href="../src/runtime/cgocheck.go.html#line-136">#L136</a>: func cgoCheckTypedBlock(typ *<b>_type</b>, src unsafe.Pointer, off, size uintptr) {
+		<a href="../src/runtime/cgocheck.go.html#line-249" class="path-duplicate">cgocheck.go</a><a href="../src/runtime/cgocheck.go.html#line-249">#L249</a>: func cgoCheckUsingType(typ *<b>_type</b>, src unsafe.Pointer, off, size uintptr) {
+		<a href="../src/runtime/chan.go.html#line-39">chan.go#L39</a>: 	elemtype *<b>_type</b> // element type
+		<a href="../src/runtime/chan.go.html#line-335" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-335">#L335</a>: func sendDirect(t *<b>_type</b>, sg *sudog, src unsafe.Pointer) {
+		<a href="../src/runtime/chan.go.html#line-348" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-348">#L348</a>: func recvDirect(t *<b>_type</b>, sg *sudog, dst unsafe.Pointer) {
+		<a href="../src/runtime/checkptr.go.html#line-9">checkptr.go#L9</a>: func checkptrAlignment(p unsafe.Pointer, elem *<b>_type</b>, n uintptr) {
+		<a href="../src/runtime/error.go.html#line-22">error.go#L22</a>: 	_interface    *<b>_type</b>
+		<a href="../src/runtime/error.go.html#line-23" class="path-duplicate">error.go</a><a href="../src/runtime/error.go.html#line-23">#L23</a>: 	concrete      *<b>_type</b>
+		<a href="../src/runtime/error.go.html#line-24" class="path-duplicate">error.go</a><a href="../src/runtime/error.go.html#line-24">#L24</a>: 	asserted      *<b>_type</b>
+		<a href="../src/runtime/heapdump.go.html#line-120">heapdump.go#L120</a>: 	t [typeCacheAssoc]*<b>_type</b>
+		<a href="../src/runtime/heapdump.go.html#line-165" class="path-duplicate">heapdump.go</a><a href="../src/runtime/heapdump.go.html#line-165">#L165</a>: func dumptype(t *<b>_type</b>) {
+		<a href="../src/runtime/heapdump.go.html#line-226" class="path-duplicate">heapdump.go</a><a href="../src/runtime/heapdump.go.html#line-226">#L226</a>: func dumpfinalizer(obj unsafe.Pointer, fn *funcval, fint *<b>_type</b>, ot *ptrtype) {
+		<a href="../src/runtime/heapdump.go.html#line-428" class="path-duplicate">heapdump.go</a><a href="../src/runtime/heapdump.go.html#line-428">#L428</a>: func finq_callback(fn *funcval, obj unsafe.Pointer, nret uintptr, fint *<b>_type</b>, ot *ptrtype) {
+		<a href="../src/runtime/iface.go.html#line-30">iface.go#L30</a>: func itabHashFunc(inter *interfacetype, typ *<b>_type</b>) uintptr {
+		<a href="../src/runtime/iface.go.html#line-35" class="path-duplicate">iface.go</a><a href="../src/runtime/iface.go.html#line-35">#L35</a>: func getitab(inter *interfacetype, typ *<b>_type</b>, canfail bool) *itab {
+		<a href="../src/runtime/iface.go.html#line-98" class="path-duplicate">iface.go</a><a href="../src/runtime/iface.go.html#line-98">#L98</a>: func (t *itabTableType) find(inter *interfacetype, typ *<b>_type</b>) *itab {
+		<a href="../src/runtime/iface.go.html#line-261" class="path-duplicate">iface.go</a><a href="../src/runtime/iface.go.html#line-261">#L261</a>: func panicdottypeE(have, want, iface *<b>_type</b>) {
+		<a href="../src/runtime/iface.go.html#line-267" class="path-duplicate">iface.go</a><a href="../src/runtime/iface.go.html#line-267">#L267</a>: func panicdottypeI(have *itab, want, iface *<b>_type</b>) {
+		<a href="../src/runtime/iface.go.html#line-268" class="path-duplicate">iface.go</a><a href="../src/runtime/iface.go.html#line-268">#L268</a>: 	var t *<b>_type</b>
+		<a href="../src/runtime/iface.go.html#line-277" class="path-duplicate">iface.go</a><a href="../src/runtime/iface.go.html#line-277">#L277</a>: func panicnildottype(want *<b>_type</b>) {
+		<a href="../src/runtime/iface.go.html#line-305" class="path-duplicate">iface.go</a><a href="../src/runtime/iface.go.html#line-305">#L305</a>: 	uint16Type *<b>_type</b> = efaceOf(&amp;uint16Eface)._type
+		<a href="../src/runtime/iface.go.html#line-306" class="path-duplicate">iface.go</a><a href="../src/runtime/iface.go.html#line-306">#L306</a>: 	uint32Type *<b>_type</b> = efaceOf(&amp;uint32Eface)._type
+		<a href="../src/runtime/iface.go.html#line-307" class="path-duplicate">iface.go</a><a href="../src/runtime/iface.go.html#line-307">#L307</a>: 	uint64Type *<b>_type</b> = efaceOf(&amp;uint64Eface)._type
+		<a href="../src/runtime/iface.go.html#line-308" class="path-duplicate">iface.go</a><a href="../src/runtime/iface.go.html#line-308">#L308</a>: 	stringType *<b>_type</b> = efaceOf(&amp;stringEface)._type
+		<a href="../src/runtime/iface.go.html#line-309" class="path-duplicate">iface.go</a><a href="../src/runtime/iface.go.html#line-309">#L309</a>: 	sliceType  *<b>_type</b> = efaceOf(&amp;sliceEface)._type
+		<a href="../src/runtime/iface.go.html#line-321" class="path-duplicate">iface.go</a><a href="../src/runtime/iface.go.html#line-321">#L321</a>: func convT(t *<b>_type</b>, v unsafe.Pointer) unsafe.Pointer {
+		<a href="../src/runtime/iface.go.html#line-335" class="path-duplicate">iface.go</a><a href="../src/runtime/iface.go.html#line-335">#L335</a>: func convTnoptr(t *<b>_type</b>, v unsafe.Pointer) unsafe.Pointer {
+		<a href="../src/runtime/iface.go.html#line-409" class="path-duplicate">iface.go</a><a href="../src/runtime/iface.go.html#line-409">#L409</a>: func assertE2I(inter *interfacetype, t *<b>_type</b>) *itab {
+		<a href="../src/runtime/iface.go.html#line-417" class="path-duplicate">iface.go</a><a href="../src/runtime/iface.go.html#line-417">#L417</a>: func assertE2I2(inter *interfacetype, t *<b>_type</b>) *itab {
+		<a href="../src/runtime/iface.go.html#line-427" class="path-duplicate">iface.go</a><a href="../src/runtime/iface.go.html#line-427">#L427</a>: func typeAssert(s *abi.TypeAssert, t *<b>_type</b>) *itab {
+		<a href="../src/runtime/iface.go.html#line-467" class="path-duplicate">iface.go</a><a href="../src/runtime/iface.go.html#line-467">#L467</a>: func buildTypeAssertCache(oldC *abi.TypeAssertCache, typ *<b>_type</b>, tab *itab) *abi.TypeAssertCache {
+		<a href="../src/runtime/iface.go.html#line-491" class="path-duplicate">iface.go</a><a href="../src/runtime/iface.go.html#line-491">#L491</a>: 	addEntry := func(typ *<b>_type</b>, tab *itab) {
+		<a href="../src/runtime/iface.go.html#line-504" class="path-duplicate">iface.go</a><a href="../src/runtime/iface.go.html#line-504">#L504</a>: 			addEntry((*<b>_type</b>)(unsafe.Pointer(e.Typ)), (*itab)(unsafe.Pointer(e.Itab)))
+		<a href="../src/runtime/iface.go.html#line-521" class="path-duplicate">iface.go</a><a href="../src/runtime/iface.go.html#line-521">#L521</a>: func interfaceSwitch(s *abi.InterfaceSwitch, t *<b>_type</b>) (int, *itab) {
+		<a href="../src/runtime/iface.go.html#line-573" class="path-duplicate">iface.go</a><a href="../src/runtime/iface.go.html#line-573">#L573</a>: func buildInterfaceSwitchCache(oldC *abi.InterfaceSwitchCache, typ *<b>_type</b>, case_ int, tab *itab) *abi.InterfaceSwitchCache {
+		<a href="../src/runtime/iface.go.html#line-597" class="path-duplicate">iface.go</a><a href="../src/runtime/iface.go.html#line-597">#L597</a>: 	addEntry := func(typ *<b>_type</b>, case_ int, tab *itab) {
+		<a href="../src/runtime/iface.go.html#line-611" class="path-duplicate">iface.go</a><a href="../src/runtime/iface.go.html#line-611">#L611</a>: 			addEntry((*<b>_type</b>)(unsafe.Pointer(e.Typ)), e.Case, (*itab)(unsafe.Pointer(e.Itab)))
+		<a href="../src/runtime/malloc.go.html#line-971">malloc.go#L971</a>: func mallocgc(size uintptr, typ *<b>_type</b>, needzero bool) unsafe.Pointer {
+		<a href="../src/runtime/malloc.go.html#line-1044" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-1044">#L1044</a>: 	var header **<b>_type</b>
+		<a href="../src/runtime/malloc.go.html#line-1156" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-1156">#L1156</a>: 				header = (**<b>_type</b>)(x)
+		<a href="../src/runtime/malloc.go.html#line-1389" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-1389">#L1389</a>: func newobject(typ *<b>_type</b>) unsafe.Pointer {
+		<a href="../src/runtime/malloc.go.html#line-1394" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-1394">#L1394</a>: func reflect_unsafe_New(typ *<b>_type</b>) unsafe.Pointer {
+		<a href="../src/runtime/malloc.go.html#line-1399" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-1399">#L1399</a>: func reflectlite_unsafe_New(typ *<b>_type</b>) unsafe.Pointer {
+		<a href="../src/runtime/malloc.go.html#line-1404" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-1404">#L1404</a>: func newarray(typ *<b>_type</b>, n int) unsafe.Pointer {
+		<a href="../src/runtime/malloc.go.html#line-1416" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-1416">#L1416</a>: func reflect_unsafe_NewArray(typ *<b>_type</b>, n int) unsafe.Pointer {
+		<a href="../src/runtime/mbarrier.go.html#line-181">mbarrier.go#L181</a>: func wbZero(typ *<b>_type</b>, dst unsafe.Pointer) {
+		<a href="../src/runtime/mbarrier.go.html#line-194" class="path-duplicate">mbarrier.go</a><a href="../src/runtime/mbarrier.go.html#line-194">#L194</a>: func wbMove(typ *<b>_type</b>, dst, src unsafe.Pointer) {
+		<a href="../src/runtime/mbarrier.go.html#line-203" class="path-duplicate">mbarrier.go</a><a href="../src/runtime/mbarrier.go.html#line-203">#L203</a>: func reflect_typedmemmove(typ *<b>_type</b>, dst, src unsafe.Pointer) {
+		<a href="../src/runtime/mbarrier.go.html#line-220" class="path-duplicate">mbarrier.go</a><a href="../src/runtime/mbarrier.go.html#line-220">#L220</a>: func reflectlite_typedmemmove(typ *<b>_type</b>, dst, src unsafe.Pointer) {
+		<a href="../src/runtime/mbarrier.go.html#line-234" class="path-duplicate">mbarrier.go</a><a href="../src/runtime/mbarrier.go.html#line-234">#L234</a>: func reflectcallmove(typ *<b>_type</b>, dst, src unsafe.Pointer, size uintptr, regs *abi.RegArgs) {
+		<a href="../src/runtime/mbarrier.go.html#line-252" class="path-duplicate">mbarrier.go</a><a href="../src/runtime/mbarrier.go.html#line-252">#L252</a>: func typedslicecopy(typ *<b>_type</b>, dstPtr unsafe.Pointer, dstLen int, srcPtr unsafe.Pointer, srcLen int) int {
+		<a href="../src/runtime/mbarrier.go.html#line-307" class="path-duplicate">mbarrier.go</a><a href="../src/runtime/mbarrier.go.html#line-307">#L307</a>: func reflect_typedslicecopy(elemType *<b>_type</b>, dst, src slice) int {
+		<a href="../src/runtime/mbarrier.go.html#line-325" class="path-duplicate">mbarrier.go</a><a href="../src/runtime/mbarrier.go.html#line-325">#L325</a>: func typedmemclr(typ *<b>_type</b>, ptr unsafe.Pointer) {
+		<a href="../src/runtime/mbarrier.go.html#line-336" class="path-duplicate">mbarrier.go</a><a href="../src/runtime/mbarrier.go.html#line-336">#L336</a>: func reflect_typedmemclr(typ *<b>_type</b>, ptr unsafe.Pointer) {
+		<a href="../src/runtime/mbarrier.go.html#line-341" class="path-duplicate">mbarrier.go</a><a href="../src/runtime/mbarrier.go.html#line-341">#L341</a>: func reflect_typedmemclrpartial(typ *<b>_type</b>, ptr unsafe.Pointer, off, size uintptr) {
+		<a href="../src/runtime/mbarrier.go.html#line-353" class="path-duplicate">mbarrier.go</a><a href="../src/runtime/mbarrier.go.html#line-353">#L353</a>: func reflect_typedarrayclear(typ *<b>_type</b>, ptr unsafe.Pointer, len int) {
+		<a href="../src/runtime/mbitmap.go.html#line-408">mbitmap.go#L408</a>: func typeBitsBulkBarrier(typ *<b>_type</b>, dst, src, size uintptr) {
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-146">mbitmap_allocheaders.go#L146</a>: 	typ *<b>_type</b>
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-194" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-194">#L194</a>: 	var typ *<b>_type</b>
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-197" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-197">#L197</a>: 		typ = *(**<b>_type</b>)(unsafe.Pointer(addr))
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-786" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-786">#L786</a>: func (span *mspan) writeHeapBitsSmall(x, dataSize uintptr, typ *<b>_type</b>) (scanSize uintptr) {
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-835" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-835">#L835</a>: func heapBitsSetType(x, size, dataSize uintptr, typ *<b>_type</b>) {
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-854" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-854">#L854</a>: func heapSetType(x, dataSize uintptr, typ *<b>_type</b>, header **<b>_type</b>, span *mspan) (scanSize uintptr) {
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-872" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-872">#L872</a>: 			spaceNeeded := alignUp(unsafe.Sizeof(<b>_type</b>{}), goarch.PtrSize)
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-885" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-885">#L885</a>: 			gctyp = (*<b>_type</b>)(unsafe.Pointer(progSpan.base()))
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-931" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-931">#L931</a>: func doubleCheckHeapPointers(x, dataSize uintptr, typ *<b>_type</b>, header **<b>_type</b>, span *mspan) {
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-988" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-988">#L988</a>: func doubleCheckHeapPointersInterior(x, interior, size, dataSize uintptr, typ *<b>_type</b>, header **<b>_type</b>, span *mspan) {
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-1066" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-1066">#L1066</a>: func doubleCheckTypePointersOfType(s *mspan, typ *<b>_type</b>, addr, size uintptr) {
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-1134" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-1134">#L1134</a>: 	var et *<b>_type</b>
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-1297" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-1297">#L1297</a>: func userArenaHeapBitsSetType(typ *<b>_type</b>, ptr unsafe.Pointer, s *mspan) {
+		<a href="../src/runtime/mfinal.go.html#line-57">mfinal.go#L57</a>: 	fint *<b>_type</b>         // type of first argument of fn
+		<a href="../src/runtime/mfinal.go.html#line-95" class="path-duplicate">mfinal.go</a><a href="../src/runtime/mfinal.go.html#line-95">#L95</a>: func queuefinalizer(p unsafe.Pointer, fn *funcval, nret uintptr, fint *<b>_type</b>, ot *ptrtype) {
+		<a href="../src/runtime/mfinal.go.html#line-145" class="path-duplicate">mfinal.go</a><a href="../src/runtime/mfinal.go.html#line-145">#L145</a>: func iterate_finq(callback func(*funcval, unsafe.Pointer, uintptr, *<b>_type</b>, *ptrtype)) {
+		<a href="../src/runtime/mheap.go.html#line-491">mheap.go#L491</a>: 	largeType             *<b>_type</b>        // malloc header for large objects.
+		<a href="../src/runtime/mheap.go.html#line-1938" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1938">#L1938</a>: 	fint    *<b>_type</b>   // May be a heap pointer, but always live.
+		<a href="../src/runtime/mheap.go.html#line-1943" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1943">#L1943</a>: func addfinalizer(p unsafe.Pointer, f *funcval, nret uintptr, fint *<b>_type</b>, ot *ptrtype) bool {
+		<a href="../src/runtime/mprof.go.html#line-1465">mprof.go#L1465</a>: func tracealloc(p unsafe.Pointer, size uintptr, typ *<b>_type</b>) {
+		<a href="../src/runtime/netpoll.go.html#line-724">netpoll.go#L724</a>: 	pdType  *<b>_type</b> = efaceOf(&amp;pdEface)._type
+		<a href="../src/runtime/plugin.go.html#line-82">plugin.go#L82</a>: 		t := toRType((*<b>_type</b>)(unsafe.Pointer(md.types))).typeOff(ptab.typ) // TODO can this stack of conversions be simpler?
+		<a href="../src/runtime/race0.go.html#line-19">race0.go#L19</a>: func raceReadObjectPC(t *<b>_type</b>, addr unsafe.Pointer, callerpc, pc uintptr)  { throw("race") }
+		<a href="../src/runtime/race0.go.html#line-20" class="path-duplicate">race0.go</a><a href="../src/runtime/race0.go.html#line-20">#L20</a>: func raceWriteObjectPC(t *<b>_type</b>, addr unsafe.Pointer, callerpc, pc uintptr) { throw("race") }
+		<a href="../src/runtime/runtime1.go.html#line-618">runtime1.go#L618</a>: 	return unsafe.Pointer(toRType((*<b>_type</b>)(rtype)).typeOff(typeOff(off)))
+		<a href="../src/runtime/runtime1.go.html#line-625" class="path-duplicate">runtime1.go</a><a href="../src/runtime/runtime1.go.html#line-625">#L625</a>: 	return toRType((*<b>_type</b>)(rtype)).textOff(textOff(off))
+		<a href="../src/runtime/runtime1.go.html#line-639" class="path-duplicate">runtime1.go</a><a href="../src/runtime/runtime1.go.html#line-639">#L639</a>: 	return unsafe.Pointer(toRType((*<b>_type</b>)(rtype)).typeOff(typeOff(off)))
+		<a href="../src/runtime/runtime2.go.html#line-211">runtime2.go#L211</a>: 	_type *<b>_type</b>
+		<a href="../src/runtime/runtime2.go.html#line-999" class="path-duplicate">runtime2.go</a><a href="../src/runtime/runtime2.go.html#line-999">#L999</a>: 	_type *<b>_type</b>
+		<a href="../src/runtime/slice.go.html#line-38">slice.go#L38</a>: func makeslicecopy(et *<b>_type</b>, tolen int, fromlen int, from unsafe.Pointer) unsafe.Pointer {
+		<a href="../src/runtime/slice.go.html#line-92" class="path-duplicate">slice.go</a><a href="../src/runtime/slice.go.html#line-92">#L92</a>: func makeslice(et *<b>_type</b>, len, cap int) unsafe.Pointer {
+		<a href="../src/runtime/slice.go.html#line-110" class="path-duplicate">slice.go</a><a href="../src/runtime/slice.go.html#line-110">#L110</a>: func makeslice64(et *<b>_type</b>, len64, cap64 int64) unsafe.Pointer {
+		<a href="../src/runtime/slice.go.html#line-155" class="path-duplicate">slice.go</a><a href="../src/runtime/slice.go.html#line-155">#L155</a>: func growslice(oldPtr unsafe.Pointer, newLen, oldCap, num int, et *<b>_type</b>) slice {
+		<a href="../src/runtime/slice.go.html#line-302" class="path-duplicate">slice.go</a><a href="../src/runtime/slice.go.html#line-302">#L302</a>: func reflect_growslice(et *<b>_type</b>, old slice, num int) slice {
+		<a href="../src/runtime/stubs.go.html#line-208">stubs.go#L208</a>: func reflectcall(stackArgsType *<b>_type</b>, fn, stackArgs unsafe.Pointer, stackArgsSize, stackRetOffset, frameSize uint32, regArgs *abi.RegArgs)
+		<a href="../src/runtime/symtab.go.html#line-377">symtab.go#L377</a>: 	typemap map[typeOff]*<b>_type</b> // offset to *_rtype in previous module
+		<a href="../src/runtime/symtab.go.html#line-409" class="path-duplicate">symtab.go</a><a href="../src/runtime/symtab.go.html#line-409">#L409</a>: var pinnedTypemaps []map[typeOff]*<b>_type</b>
+		<a href="../src/runtime/type.go.html#line-18">type.go#L18</a>: type <b>_type</b> = abi.Type
+		<a href="../src/runtime/type.go.html#line-143" class="path-duplicate">type.go</a><a href="../src/runtime/type.go.html#line-143">#L143</a>: func resolveTypeOff(ptrInModule unsafe.Pointer, off typeOff) *<b>_type</b> {
+		<a href="../src/runtime/type.go.html#line-168" class="path-duplicate">type.go</a><a href="../src/runtime/type.go.html#line-168">#L168</a>: 		return (*<b>_type</b>)(res)
+		<a href="../src/runtime/type.go.html#line-178" class="path-duplicate">type.go</a><a href="../src/runtime/type.go.html#line-178">#L178</a>: 	return (*<b>_type</b>)(unsafe.Pointer(res))
+		<a href="../src/runtime/type.go.html#line-181" class="path-duplicate">type.go</a><a href="../src/runtime/type.go.html#line-181">#L181</a>: func (t rtype) typeOff(off typeOff) *<b>_type</b> {
+		<a href="../src/runtime/type.go.html#line-258" class="path-duplicate">type.go</a><a href="../src/runtime/type.go.html#line-258">#L258</a>: 	typehash := make(map[uint32][]*<b>_type</b>, len(firstmoduledata.typelinks))
+		<a href="../src/runtime/type.go.html#line-266" class="path-duplicate">type.go</a><a href="../src/runtime/type.go.html#line-266">#L266</a>: 			var t *<b>_type</b>
+		<a href="../src/runtime/type.go.html#line-268" class="path-duplicate">type.go</a><a href="../src/runtime/type.go.html#line-268">#L268</a>: 				t = (*<b>_type</b>)(unsafe.Pointer(prev.types + uintptr(tl)))
+		<a href="../src/runtime/type.go.html#line-286" class="path-duplicate">type.go</a><a href="../src/runtime/type.go.html#line-286">#L286</a>: 			tm := make(map[typeOff]*<b>_type</b>, len(md.typelinks))
+		<a href="../src/runtime/type.go.html#line-290" class="path-duplicate">type.go</a><a href="../src/runtime/type.go.html#line-290">#L290</a>: 				t := (*<b>_type</b>)(unsafe.Pointer(md.types + uintptr(tl)))
+		<a href="../src/runtime/type.go.html#line-307" class="path-duplicate">type.go</a><a href="../src/runtime/type.go.html#line-307">#L307</a>: 	t1 *<b>_type</b>
+		<a href="../src/runtime/type.go.html#line-308" class="path-duplicate">type.go</a><a href="../src/runtime/type.go.html#line-308">#L308</a>: 	t2 *<b>_type</b>
+		<a href="../src/runtime/type.go.html#line-327" class="path-duplicate">type.go</a><a href="../src/runtime/type.go.html#line-327">#L327</a>: func typesEqual(t, v *<b>_type</b>, seen map[_typePair]struct{}) bool {
+		<a href="../src/runtime/typekind.go.html#line-41">typekind.go#L41</a>: func isDirectIface(t *<b>_type</b>) bool {
+		<a href="../src/runtime/unsafe.go.html#line-53">unsafe.go#L53</a>: func unsafeslice(et *<b>_type</b>, ptr unsafe.Pointer, len int) {
+		<a href="../src/runtime/unsafe.go.html#line-74" class="path-duplicate">unsafe.go</a><a href="../src/runtime/unsafe.go.html#line-74">#L74</a>: func unsafeslice64(et *<b>_type</b>, ptr unsafe.Pointer, len64 int64) {
+		<a href="../src/runtime/unsafe.go.html#line-82" class="path-duplicate">unsafe.go</a><a href="../src/runtime/unsafe.go.html#line-82">#L82</a>: func unsafeslicecheckptr(et *<b>_type</b>, ptr unsafe.Pointer, len64 int64) {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

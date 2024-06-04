@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: fmt.ss.accept</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/fmt.html">fmt</a>.<a href="../src/fmt/scan.go.html#line-157">ss</a>.<a href="../src/fmt/scan.go.html#line-515">accept</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">32 uses</span>
+
+	fmt (current package)
+		<a href="../src/fmt/scan.go.html#line-515">scan.go#L515</a>: func (s *ss) <b>accept</b>(ok string) bool {
+		<a href="../src/fmt/scan.go.html#line-544" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-544">#L544</a>: 		if s.<b>accept</b>("rR") &amp;&amp; (!s.<b>accept</b>("uU") || !s.<b>accept</b>("eE")) {
+		<a href="../src/fmt/scan.go.html#line-549" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-549">#L549</a>: 		if s.<b>accept</b>("aA") &amp;&amp; (!s.<b>accept</b>("lL") || !s.<b>accept</b>("sS") || !s.<b>accept</b>("eE")) {
+		<a href="../src/fmt/scan.go.html#line-591" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-591">#L591</a>: 		if !s.<b>accept</b>(digits) {
+		<a href="../src/fmt/scan.go.html#line-595" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-595">#L595</a>: 	for s.<b>accept</b>(digits) {
+		<a href="../src/fmt/scan.go.html#line-619" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-619">#L619</a>: 	s.<b>accept</b>("0")
+		<a href="../src/fmt/scan.go.html#line-651" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-651">#L651</a>: 		s.<b>accept</b>(sign) // If there's a sign, it will be left in the token buffer.
+		<a href="../src/fmt/scan.go.html#line-705" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-705">#L705</a>: 	if s.<b>accept</b>("nN") &amp;&amp; s.<b>accept</b>("aA") &amp;&amp; s.<b>accept</b>("nN") {
+		<a href="../src/fmt/scan.go.html#line-709" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-709">#L709</a>: 	s.<b>accept</b>(sign)
+		<a href="../src/fmt/scan.go.html#line-711" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-711">#L711</a>: 	if s.<b>accept</b>("iI") &amp;&amp; s.<b>accept</b>("nN") &amp;&amp; s.<b>accept</b>("fF") {
+		<a href="../src/fmt/scan.go.html#line-716" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-716">#L716</a>: 	if s.<b>accept</b>("0") &amp;&amp; s.<b>accept</b>("xX") {
+		<a href="../src/fmt/scan.go.html#line-721" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-721">#L721</a>: 	for s.<b>accept</b>(digits) {
+		<a href="../src/fmt/scan.go.html#line-724" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-724">#L724</a>: 	if s.<b>accept</b>(period) {
+		<a href="../src/fmt/scan.go.html#line-726" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-726">#L726</a>: 		for s.<b>accept</b>(digits) {
+		<a href="../src/fmt/scan.go.html#line-730" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-730">#L730</a>: 	if s.<b>accept</b>(exp) {
+		<a href="../src/fmt/scan.go.html#line-732" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-732">#L732</a>: 		s.<b>accept</b>(sign)
+		<a href="../src/fmt/scan.go.html#line-734" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-734">#L734</a>: 		for s.<b>accept</b>(decimalDigits + "_") {
+		<a href="../src/fmt/scan.go.html#line-745" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-745">#L745</a>: 	parens := s.<b>accept</b>("(")
+		<a href="../src/fmt/scan.go.html#line-749" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-749">#L749</a>: 	if !s.<b>accept</b>("+-") {
+		<a href="../src/fmt/scan.go.html#line-755" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-755">#L755</a>: 	if !s.<b>accept</b>("i") {
+		<a href="../src/fmt/scan.go.html#line-758" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-758">#L758</a>: 	if parens &amp;&amp; !s.<b>accept</b>(")") {
+		<a href="../src/fmt/scan.go.html#line-947" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-947">#L947</a>: 	if !s.<b>accept</b>("%") {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

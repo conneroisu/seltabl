@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: internal/abi.Type.Align_</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/internal/abi.html">internal/abi</a>.<a href="../../src/internal/abi/type.go.html#line-20">Type</a>.<a href="../../src/internal/abi/type.go.html#line-25">Align_</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">23 uses</span>
+
+	internal/abi (current package)
+		<a href="../../src/internal/abi/type.go.html#line-25">type.go#L25</a>: 	<b>Align_</b>      uint8   // alignment of variable with this type
+		<a href="../../src/internal/abi/type.go.html#line-417" class="path-duplicate">type.go</a><a href="../../src/internal/abi/type.go.html#line-417">#L417</a>: func (t *Type) Align() int { return int(t.<b>Align_</b>) }
+
+	<a href="../../pkg/reflect.html">reflect</a>
+		<a href="../../src/reflect/type.go.html#line-1984">type.go#L1984</a>: 	if size&amp;uintptr(ktyp.<b>Align_</b>-1) != 0 || size&amp;uintptr(etyp.<b>Align_</b>-1) != 0 {
+		<a href="../../src/reflect/type.go.html#line-2019" class="path-duplicate">type.go</a><a href="../../src/reflect/type.go.html#line-2019">#L2019</a>: 		<b>Align_</b>:   goarch.PtrSize,
+		<a href="../../src/reflect/type.go.html#line-2319" class="path-duplicate">type.go</a><a href="../../src/reflect/type.go.html#line-2319">#L2319</a>: 		offset := align(size, uintptr(ft.<b>Align_</b>))
+		<a href="../../src/reflect/type.go.html#line-2323" class="path-duplicate">type.go</a><a href="../../src/reflect/type.go.html#line-2323">#L2323</a>: 		if ft.<b>Align_</b> &gt; typalign {
+		<a href="../../src/reflect/type.go.html#line-2324" class="path-duplicate">type.go</a><a href="../../src/reflect/type.go.html#line-2324">#L2324</a>: 			typalign = ft.<b>Align_</b>
+		<a href="../../src/reflect/type.go.html#line-2452" class="path-duplicate">type.go</a><a href="../../src/reflect/type.go.html#line-2452">#L2452</a>: 	typ.<b>Align_</b> = typalign
+		<a href="../../src/reflect/type.go.html#line-2639" class="path-duplicate">type.go</a><a href="../../src/reflect/type.go.html#line-2639">#L2639</a>: 	array.<b>Align_</b> = typ.<b>Align_</b>
+		<a href="../../src/reflect/type.go.html#line-2786" class="path-duplicate">type.go</a><a href="../../src/reflect/type.go.html#line-2786">#L2786</a>: 		<b>Align_</b>: goarch.PtrSize,
+
+	<a href="../../pkg/runtime.html">runtime</a>
+		<a href="../../src/runtime/arena.go.html#line-487">arena.go#L487</a>: 		v, ok := s.userArenaChunkFree.takeFromBack(size, typ.<b>Align_</b>)
+		<a href="../../src/runtime/arena.go.html#line-492" class="path-duplicate">arena.go</a><a href="../../src/runtime/arena.go.html#line-492">#L492</a>: 		v, ok := s.userArenaChunkFree.takeFromFront(size, typ.<b>Align_</b>)
+		<a href="../../src/runtime/chan.go.html#line-79">chan.go#L79</a>: 	if hchanSize%maxAlign != 0 || elem.<b>Align_</b> &gt; maxAlign {
+		<a href="../../src/runtime/checkptr.go.html#line-19">checkptr.go#L19</a>: 	if elem.PtrBytes != 0 &amp;&amp; uintptr(p)&amp;(uintptr(elem.<b>Align_</b>)-1) != 0 {
+		<a href="../../src/runtime/map.go.html#line-1318">map.go#L1318</a>: 	if t.Key.<b>Align_</b> &gt; bucketCnt {
+		<a href="../../src/runtime/map.go.html#line-1321" class="path-duplicate">map.go</a><a href="../../src/runtime/map.go.html#line-1321">#L1321</a>: 	if t.Elem.<b>Align_</b> &gt; bucketCnt {
+		<a href="../../src/runtime/map.go.html#line-1324" class="path-duplicate">map.go</a><a href="../../src/runtime/map.go.html#line-1324">#L1324</a>: 	if t.Key.Size_%uintptr(t.Key.<b>Align_</b>) != 0 {
+		<a href="../../src/runtime/map.go.html#line-1327" class="path-duplicate">map.go</a><a href="../../src/runtime/map.go.html#line-1327">#L1327</a>: 	if t.Elem.Size_%uintptr(t.Elem.<b>Align_</b>) != 0 {
+		<a href="../../src/runtime/map.go.html#line-1333" class="path-duplicate">map.go</a><a href="../../src/runtime/map.go.html#line-1333">#L1333</a>: 	if dataOffset%uintptr(t.Key.<b>Align_</b>) != 0 {
+		<a href="../../src/runtime/map.go.html#line-1336" class="path-duplicate">map.go</a><a href="../../src/runtime/map.go.html#line-1336">#L1336</a>: 	if dataOffset%uintptr(t.Elem.<b>Align_</b>) != 0 {
+		<a href="../../src/runtime/mfinal.go.html#line-503">mfinal.go#L503</a>: 		nret = alignUp(nret, uintptr(t.<b>Align_</b>)) + t.Size_
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/http.routingNode.pattern</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/net/http.html">net/http</a>.<a href="../../src/net/http/routing_tree.go.html#line-27">routingNode</a>.<a href="../../src/net/http/routing_tree.go.html#line-30">pattern</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">10 uses</span>
+
+	net/http (current package)
+		<a href="../../src/net/http/routing_tree.go.html#line-30">routing_tree.go#L30</a>: 	<b>pattern</b> *pattern
+		<a href="../../src/net/http/routing_tree.go.html#line-77" class="path-duplicate">routing_tree.go</a><a href="../../src/net/http/routing_tree.go.html#line-77">#L77</a>: 	if n.<b>pattern</b> != nil || n.handler != nil {
+		<a href="../../src/net/http/routing_tree.go.html#line-80" class="path-duplicate">routing_tree.go</a><a href="../../src/net/http/routing_tree.go.html#line-80">#L80</a>: 	n.<b>pattern</b> = p
+		<a href="../../src/net/http/routing_tree.go.html#line-161" class="path-duplicate">routing_tree.go</a><a href="../../src/net/http/routing_tree.go.html#line-161">#L161</a>: 		if n.<b>pattern</b> == nil {
+		<a href="../../src/net/http/routing_tree.go.html#line-191" class="path-duplicate">routing_tree.go</a><a href="../../src/net/http/routing_tree.go.html#line-191">#L191</a>: 		if c.<b>pattern</b>.lastSegment().s != "" {
+		<a href="../../src/net/http/server.go.html#line-2546">server.go#L2546</a>: 				patStr = n.<b>pattern</b>.String()
+		<a href="../../src/net/http/server.go.html#line-2565" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-2565">#L2565</a>: 	return n.handler, n.<b>pattern</b>.String(), n.<b>pattern</b>, matches
+		<a href="../../src/net/http/server.go.html#line-2626" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-2626">#L2626</a>: 	if !n.<b>pattern</b>.lastSegment().multi {
+		<a href="../../src/net/http/server.go.html#line-2640" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-2640">#L2640</a>: 	return len(n.<b>pattern</b>.segments) == strings.Count(path, "/")
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

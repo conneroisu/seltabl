@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/url.Values</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../pkg/net/url.html">net/url</a>.<a href="../../src/net/url/url.go.html#line-886">Values</a></b></span>
+
+<span class="title">25 uses</span>
+
+	net/url (current package)
+		<a href="../../src/net/url/url.go.html#line-886">url.go#L886</a>: type <b>Values</b> map[string][]string
+		<a href="../../src/net/url/url.go.html#line-892" class="path-duplicate">url.go</a><a href="../../src/net/url/url.go.html#line-892">#L892</a>: func (v <b>Values</b>) Get(key string) string {
+		<a href="../../src/net/url/url.go.html#line-902" class="path-duplicate">url.go</a><a href="../../src/net/url/url.go.html#line-902">#L902</a>: func (v <b>Values</b>) Set(key, value string) {
+		<a href="../../src/net/url/url.go.html#line-908" class="path-duplicate">url.go</a><a href="../../src/net/url/url.go.html#line-908">#L908</a>: func (v <b>Values</b>) Add(key, value string) {
+		<a href="../../src/net/url/url.go.html#line-913" class="path-duplicate">url.go</a><a href="../../src/net/url/url.go.html#line-913">#L913</a>: func (v <b>Values</b>) Del(key string) {
+		<a href="../../src/net/url/url.go.html#line-918" class="path-duplicate">url.go</a><a href="../../src/net/url/url.go.html#line-918">#L918</a>: func (v <b>Values</b>) Has(key string) bool {
+		<a href="../../src/net/url/url.go.html#line-933" class="path-duplicate">url.go</a><a href="../../src/net/url/url.go.html#line-933">#L933</a>: func ParseQuery(query string) (<b>Values</b>, error) {
+		<a href="../../src/net/url/url.go.html#line-934" class="path-duplicate">url.go</a><a href="../../src/net/url/url.go.html#line-934">#L934</a>: 	m := make(<b>Values</b>)
+		<a href="../../src/net/url/url.go.html#line-939" class="path-duplicate">url.go</a><a href="../../src/net/url/url.go.html#line-939">#L939</a>: func parseQuery(m <b>Values</b>, query string) (err error) {
+		<a href="../../src/net/url/url.go.html#line-972" class="path-duplicate">url.go</a><a href="../../src/net/url/url.go.html#line-972">#L972</a>: func (v <b>Values</b>) Encode() string {
+		<a href="../../src/net/url/url.go.html#line-1121" class="path-duplicate">url.go</a><a href="../../src/net/url/url.go.html#line-1121">#L1121</a>: func (u *URL) Query() <b>Values</b> {
+
+	<a href="../../pkg/net/http.html">net/http</a>
+		<a href="../../src/net/http/client.go.html#line-876">client.go#L876</a>: func PostForm(url string, data url.<b>Values</b>) (resp *Response, err error) {
+		<a href="../../src/net/http/client.go.html#line-894" class="path-duplicate">client.go</a><a href="../../src/net/http/client.go.html#line-894">#L894</a>: func (c *Client) PostForm(url string, data url.<b>Values</b>) (resp *Response, err error) {
+		<a href="../../src/net/http/clone.go.html#line-13">clone.go#L13</a>: func cloneURLValues(v url.<b>Values</b>) url.<b>Values</b> {
+		<a href="../../src/net/http/clone.go.html#line-19" class="path-duplicate">clone.go</a><a href="../../src/net/http/clone.go.html#line-19">#L19</a>: 	return url.<b>Values</b>(Header(v).Clone())
+		<a href="../../src/net/http/request.go.html#line-249">request.go#L249</a>: 	Form url.<b>Values</b>
+		<a href="../../src/net/http/request.go.html#line-256" class="path-duplicate">request.go</a><a href="../../src/net/http/request.go.html#line-256">#L256</a>: 	PostForm url.<b>Values</b>
+		<a href="../../src/net/http/request.go.html#line-1229" class="path-duplicate">request.go</a><a href="../../src/net/http/request.go.html#line-1229">#L1229</a>: func copyValues(dst, src url.<b>Values</b>) {
+		<a href="../../src/net/http/request.go.html#line-1235" class="path-duplicate">request.go</a><a href="../../src/net/http/request.go.html#line-1235">#L1235</a>: func parsePostForm(r *Request) (vs url.<b>Values</b>, err error) {
+		<a href="../../src/net/http/request.go.html#line-1306" class="path-duplicate">request.go</a><a href="../../src/net/http/request.go.html#line-1306">#L1306</a>: 			r.PostForm = make(url.<b>Values</b>)
+		<a href="../../src/net/http/request.go.html#line-1311" class="path-duplicate">request.go</a><a href="../../src/net/http/request.go.html#line-1311">#L1311</a>: 			r.Form = make(url.<b>Values</b>)
+		<a href="../../src/net/http/request.go.html#line-1314" class="path-duplicate">request.go</a><a href="../../src/net/http/request.go.html#line-1314">#L1314</a>: 		var newValues url.<b>Values</b>
+		<a href="../../src/net/http/request.go.html#line-1323" class="path-duplicate">request.go</a><a href="../../src/net/http/request.go.html#line-1323">#L1323</a>: 			newValues = make(url.<b>Values</b>)
+		<a href="../../src/net/http/request.go.html#line-1367" class="path-duplicate">request.go</a><a href="../../src/net/http/request.go.html#line-1367">#L1367</a>: 		r.PostForm = make(url.<b>Values</b>)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

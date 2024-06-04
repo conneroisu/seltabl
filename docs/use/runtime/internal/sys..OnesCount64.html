@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime/internal/sys.OnesCount64</title>
+<link href="../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../../../pkg/runtime/internal/sys.html">runtime/internal/sys</a>.<a href="../../../src/runtime/internal/sys/intrinsics.go.html#line-122">OnesCount64</a></b></span>
+
+<span class="title">8 uses</span>
+
+	runtime/internal/sys (current package)
+		<a href="../../../src/runtime/internal/sys/intrinsics.go.html#line-122">intrinsics.go#L122</a>: func <b>OnesCount64</b>(x uint64) int {
+
+	<a href="../../../pkg/runtime.html">runtime</a>
+		<a href="../../../src/runtime/mbitmap.go.html#line-458">mbitmap.go#L458</a>: 		count += sys.<b>OnesCount64</b>(mrkBits)
+		<a href="../../../src/runtime/mpagecache.go.html#line-63">mpagecache.go#L63</a>: 	scav := sys.<b>OnesCount64</b>(c.scav &amp; mask)
+		<a href="../../../src/runtime/mpagecache.go.html#line-171" class="path-duplicate">mpagecache.go</a><a href="../../../src/runtime/mpagecache.go.html#line-171">#L171</a>: 	p.scav.index.alloc(ci, uint(sys.<b>OnesCount64</b>(c.cache)))
+		<a href="../../../src/runtime/mpallocbits.go.html#line-117">mpallocbits.go#L117</a>: 		return uint(sys.<b>OnesCount64</b>((b[i/64] &gt;&gt; (i % 64)) &amp; ((1 &lt;&lt; n) - 1)))
+		<a href="../../../src/runtime/mpallocbits.go.html#line-120" class="path-duplicate">mpallocbits.go</a><a href="../../../src/runtime/mpallocbits.go.html#line-120">#L120</a>: 	s += uint(sys.<b>OnesCount64</b>(b[i/64] &gt;&gt; (i % 64)))
+		<a href="../../../src/runtime/mpallocbits.go.html#line-122" class="path-duplicate">mpallocbits.go</a><a href="../../../src/runtime/mpallocbits.go.html#line-122">#L122</a>: 		s += uint(sys.<b>OnesCount64</b>(b[k]))
+		<a href="../../../src/runtime/mpallocbits.go.html#line-124" class="path-duplicate">mpallocbits.go</a><a href="../../../src/runtime/mpallocbits.go.html#line-124">#L124</a>: 	s += uint(sys.<b>OnesCount64</b>(b[j/64] &amp; ((1 &lt;&lt; (j%64 + 1)) - 1)))
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.m.park</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/runtime2.go.html#line-550">m</a>.<a href="../src/runtime/runtime2.go.html#line-590">park</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">13 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/proc.go.html#line-1590">proc.go#L1590</a>: 			notewakeup(&amp;mp.<b>park</b>)
+		<a href="../src/runtime/proc.go.html#line-1761" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-1761">#L1761</a>: 	notesleep(&amp;gp.m.<b>park</b>)
+		<a href="../src/runtime/proc.go.html#line-1762" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-1762">#L1762</a>: 	noteclear(&amp;gp.m.<b>park</b>)
+		<a href="../src/runtime/proc.go.html#line-2895" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-2895">#L2895</a>: 	notewakeup(&amp;nmp.<b>park</b>)
+		<a href="../src/runtime/proc.go.html#line-3053" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-3053">#L3053</a>: 	notewakeup(&amp;mp.<b>park</b>)
+		<a href="../src/runtime/proc.go.html#line-5916" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-5916">#L5916</a>: 			notewakeup(&amp;mp.<b>park</b>)
+		<a href="../src/runtime/runtime2.go.html#line-590">runtime2.go#L590</a>: 	<b>park</b>          note
+		<a href="../src/runtime/rwmutex.go.html#line-95">rwmutex.go#L95</a>: 				notesleep(&amp;m.<b>park</b>)
+		<a href="../src/runtime/rwmutex.go.html#line-96" class="path-duplicate">rwmutex.go</a><a href="../src/runtime/rwmutex.go.html#line-96">#L96</a>: 				noteclear(&amp;m.<b>park</b>)
+		<a href="../src/runtime/rwmutex.go.html#line-114" class="path-duplicate">rwmutex.go</a><a href="../src/runtime/rwmutex.go.html#line-114">#L114</a>: 				notewakeup(&amp;w.<b>park</b>)
+		<a href="../src/runtime/rwmutex.go.html#line-137" class="path-duplicate">rwmutex.go</a><a href="../src/runtime/rwmutex.go.html#line-137">#L137</a>: 			notesleep(&amp;m.<b>park</b>)
+		<a href="../src/runtime/rwmutex.go.html#line-138" class="path-duplicate">rwmutex.go</a><a href="../src/runtime/rwmutex.go.html#line-138">#L138</a>: 			noteclear(&amp;m.<b>park</b>)
+		<a href="../src/runtime/rwmutex.go.html#line-158" class="path-duplicate">rwmutex.go</a><a href="../src/runtime/rwmutex.go.html#line-158">#L158</a>: 		notewakeup(&amp;reader.<b>park</b>)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: math/big.natOne</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">var <b><a href="../../pkg/math/big.html">math/big</a>.<a href="../../src/math/big/nat.go.html#line-37">natOne</a></b></span>
+
+<span class="title">45 uses</span>
+
+	math/big (current package)
+		<a href="../../src/math/big/ftoa.go.html#line-201">ftoa.go#L201</a>: 	lower.init(tmp.sub(mant, <b>natOne</b>), exp)
+		<a href="../../src/math/big/ftoa.go.html#line-205" class="path-duplicate">ftoa.go</a><a href="../../src/math/big/ftoa.go.html#line-205">#L205</a>: 	upper.init(tmp.add(mant, <b>natOne</b>), exp)
+		<a href="../../src/math/big/int.go.html#line-38">int.go#L38</a>: var intOne = &amp;Int{false, <b>natOne</b>}
+		<a href="../../src/math/big/int.go.html#line-1121" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1121">#L1121</a>: 		t := z.abs.sub(x.abs, <b>natOne</b>) // no underflow because |x| &gt; 0
+		<a href="../../src/math/big/int.go.html#line-1123" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1123">#L1123</a>: 		z.abs = t.add(t, <b>natOne</b>)
+		<a href="../../src/math/big/int.go.html#line-1147" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1147">#L1147</a>: 		t := nat(nil).sub(x.abs, <b>natOne</b>)
+		<a href="../../src/math/big/int.go.html#line-1163" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1163">#L1163</a>: 		t := z.abs.sub(x.abs, <b>natOne</b>)
+		<a href="../../src/math/big/int.go.html#line-1165" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1165">#L1165</a>: 		z.abs = t.add(t, <b>natOne</b>)
+		<a href="../../src/math/big/int.go.html#line-1179" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1179">#L1179</a>: 			x1 := nat(nil).sub(x.abs, <b>natOne</b>)
+		<a href="../../src/math/big/int.go.html#line-1180" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1180">#L1180</a>: 			y1 := nat(nil).sub(y.abs, <b>natOne</b>)
+		<a href="../../src/math/big/int.go.html#line-1181" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1181">#L1181</a>: 			z.abs = z.abs.add(z.abs.or(x1, y1), <b>natOne</b>)
+		<a href="../../src/math/big/int.go.html#line-1198" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1198">#L1198</a>: 	y1 := nat(nil).sub(y.abs, <b>natOne</b>)
+		<a href="../../src/math/big/int.go.html#line-1209" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1209">#L1209</a>: 			x1 := nat(nil).sub(x.abs, <b>natOne</b>)
+		<a href="../../src/math/big/int.go.html#line-1210" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1210">#L1210</a>: 			y1 := nat(nil).sub(y.abs, <b>natOne</b>)
+		<a href="../../src/math/big/int.go.html#line-1224" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1224">#L1224</a>: 		x1 := nat(nil).sub(x.abs, <b>natOne</b>)
+		<a href="../../src/math/big/int.go.html#line-1225" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1225">#L1225</a>: 		z.abs = z.abs.add(z.abs.or(x1, y.abs), <b>natOne</b>)
+		<a href="../../src/math/big/int.go.html#line-1231" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1231">#L1231</a>: 	y1 := nat(nil).sub(y.abs, <b>natOne</b>)
+		<a href="../../src/math/big/int.go.html#line-1242" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1242">#L1242</a>: 			x1 := nat(nil).sub(x.abs, <b>natOne</b>)
+		<a href="../../src/math/big/int.go.html#line-1243" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1243">#L1243</a>: 			y1 := nat(nil).sub(y.abs, <b>natOne</b>)
+		<a href="../../src/math/big/int.go.html#line-1244" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1244">#L1244</a>: 			z.abs = z.abs.add(z.abs.and(x1, y1), <b>natOne</b>)
+		<a href="../../src/math/big/int.go.html#line-1261" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1261">#L1261</a>: 	y1 := nat(nil).sub(y.abs, <b>natOne</b>)
+		<a href="../../src/math/big/int.go.html#line-1262" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1262">#L1262</a>: 	z.abs = z.abs.add(z.abs.andNot(y1, x.abs), <b>natOne</b>)
+		<a href="../../src/math/big/int.go.html#line-1272" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1272">#L1272</a>: 			x1 := nat(nil).sub(x.abs, <b>natOne</b>)
+		<a href="../../src/math/big/int.go.html#line-1273" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1273">#L1273</a>: 			y1 := nat(nil).sub(y.abs, <b>natOne</b>)
+		<a href="../../src/math/big/int.go.html#line-1291" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1291">#L1291</a>: 	y1 := nat(nil).sub(y.abs, <b>natOne</b>)
+		<a href="../../src/math/big/int.go.html#line-1292" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1292">#L1292</a>: 	z.abs = z.abs.add(z.abs.xor(x.abs, y1), <b>natOne</b>)
+		<a href="../../src/math/big/int.go.html#line-1301" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1301">#L1301</a>: 		z.abs = z.abs.sub(x.abs, <b>natOne</b>)
+		<a href="../../src/math/big/int.go.html#line-1307" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1307">#L1307</a>: 	z.abs = z.abs.add(x.abs, <b>natOne</b>)
+		<a href="../../src/math/big/nat.go.html#line-37">nat.go#L37</a>: 	<b>natOne</b>  = nat{1}
+		<a href="../../src/math/big/nat.go.html#line-1066" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-1066">#L1066</a>: 	m1 := nat(nil).shl(<b>natOne</b>, n)
+		<a href="../../src/math/big/nat.go.html#line-1131" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-1131">#L1131</a>: 	*powers[0] = powers[0].set(<b>natOne</b>)
+		<a href="../../src/math/big/nat.go.html#line-1359" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-1359">#L1359</a>: 	if x.cmp(<b>natOne</b>) &lt;= 0 {
+		<a href="../../src/math/big/nat.go.html#line-1421" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-1421">#L1421</a>: 	return z.add(z, <b>natOne</b>)
+		<a href="../../src/math/big/prime.go.html#line-87">prime.go#L87</a>: 	nm1 := nat(nil).sub(n, <b>natOne</b>)
+		<a href="../../src/math/big/prime.go.html#line-107" class="path-duplicate">prime.go</a><a href="../../src/math/big/prime.go.html#line-107">#L107</a>: 		if y.cmp(<b>natOne</b>) == 0 || y.cmp(nm1) == 0 {
+		<a href="../../src/math/big/prime.go.html#line-116" class="path-duplicate">prime.go</a><a href="../../src/math/big/prime.go.html#line-116">#L116</a>: 			if y.cmp(<b>natOne</b>) == 0 {
+		<a href="../../src/math/big/prime.go.html#line-152" class="path-duplicate">prime.go</a><a href="../../src/math/big/prime.go.html#line-152">#L152</a>: 	if len(n) == 0 || n.cmp(<b>natOne</b>) == 0 {
+		<a href="../../src/math/big/prime.go.html#line-216" class="path-duplicate">prime.go</a><a href="../../src/math/big/prime.go.html#line-216">#L216</a>: 	s := nat(nil).add(n, <b>natOne</b>)
+		<a href="../../src/math/big/rat.go.html#line-276">rat.go#L276</a>: 		b = <b>natOne</b>
+		<a href="../../src/math/big/rat.go.html#line-292" class="path-duplicate">rat.go</a><a href="../../src/math/big/rat.go.html#line-292">#L292</a>: 		b = <b>natOne</b>
+		<a href="../../src/math/big/rat.go.html#line-401" class="path-duplicate">rat.go</a><a href="../../src/math/big/rat.go.html#line-401">#L401</a>: 	return len(x.b.abs) == 0 || x.b.abs.cmp(<b>natOne</b>) == 0
+		<a href="../../src/math/big/ratconv.go.html#line-347">ratconv.go#L347</a>: 	p := <b>natOne</b>
+		<a href="../../src/math/big/ratconv.go.html#line-358" class="path-duplicate">ratconv.go</a><a href="../../src/math/big/ratconv.go.html#line-358">#L358</a>: 		r = r.add(r, <b>natOne</b>)
+		<a href="../../src/math/big/ratconv.go.html#line-360" class="path-duplicate">ratconv.go</a><a href="../../src/math/big/ratconv.go.html#line-360">#L360</a>: 			q = nat(nil).add(q, <b>natOne</b>)
+		<a href="../../src/math/big/ratconv.go.html#line-458" class="path-duplicate">ratconv.go</a><a href="../../src/math/big/ratconv.go.html#line-458">#L458</a>: 	return int(max(p2, p5)), q.cmp(<b>natOne</b>) == 0
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

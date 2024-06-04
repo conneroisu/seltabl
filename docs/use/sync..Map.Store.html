@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: sync.Map.Store</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/sync.html">sync</a>.<a href="../src/sync/map.go.html#line-35">Map</a>.<a href="../src/sync/map.go.html#line-154">Store</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">11 uses</span>
+
+	sync (current package)
+		<a href="../src/sync/map.go.html#line-154">map.go#L154</a>: func (m *Map) <b>Store</b>(key, value any) {
+
+	<a href="../pkg/encoding/binary.html">encoding/binary</a>
+		<a href="../src/encoding/binary/binary.go.html#line-493">binary.go#L493</a>: 		structSize.<b>Store</b>(t, size)
+
+	<a href="../pkg/mime.html">mime</a>
+		<a href="../src/mime/type.go.html#line-39">type.go#L39</a>: 		mimeTypesLower.<b>Store</b>(k, v)
+		<a href="../src/mime/type.go.html#line-42" class="path-duplicate">type.go</a><a href="../src/mime/type.go.html#line-42">#L42</a>: 		mimeTypes.<b>Store</b>(k, v)
+		<a href="../src/mime/type.go.html#line-56" class="path-duplicate">type.go</a><a href="../src/mime/type.go.html#line-56">#L56</a>: 		extensions.<b>Store</b>(justType, append(exts, k))
+		<a href="../src/mime/type.go.html#line-186" class="path-duplicate">type.go</a><a href="../src/mime/type.go.html#line-186">#L186</a>: 	mimeTypes.<b>Store</b>(extension, mimeType)
+		<a href="../src/mime/type.go.html#line-187" class="path-duplicate">type.go</a><a href="../src/mime/type.go.html#line-187">#L187</a>: 	mimeTypesLower.<b>Store</b>(extLower, mimeType)
+		<a href="../src/mime/type.go.html#line-200" class="path-duplicate">type.go</a><a href="../src/mime/type.go.html#line-200">#L200</a>: 	extensions.<b>Store</b>(justType, append(exts, extLower))
+
+	<a href="../pkg/reflect.html">reflect</a>
+		<a href="../src/reflect/type.go.html#line-1829">type.go#L1829</a>: 		funcLookupCache.m.<b>Store</b>(hash, append(rts, tt))
+		<a href="../src/reflect/type.go.html#line-2433" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2433">#L2433</a>: 		structLookupCache.m.<b>Store</b>(hash, append(ts, t))
+
+	<a href="../pkg/runtime/cgo.html">runtime/cgo</a>
+		<a href="../src/runtime/cgo/handle.go.html#line-114">handle.go#L114</a>: 	handles.<b>Store</b>(h, v)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

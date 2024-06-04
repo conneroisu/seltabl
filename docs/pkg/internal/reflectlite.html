@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: internal/reflectlite</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>reflectlite</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../index.html#pkg-internal/reflectlite">internal/reflectlite</a><i> (on <a href="https://pkg.go.dev/internal/reflectlite" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../../dep/internal/reflectlite.html">5 packages</a>, and imported by <a href="../../dep/internal/reflectlite.html#imported-by">3 packages</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<span class="nodocs">    <a href="../../src/internal/reflectlite/swapper.go.html">swapper.go</a></span>
+	<input type='checkbox' checked class="fold" id="file-1-fold-content"><label for="file-1-fold-content">  <a href="../../src/internal/reflectlite/type.go.html#doc">d</a> <a href="../../src/internal/reflectlite/type.go.html">type.go</a></label><span id='file-1-fold-content-items' class="fold-items">
+<span class="md-text">		Package reflectlite implements lightweight version of reflect, not using
+		any package except for "runtime", "unsafe", and "internal/abi"</span>
+</span>
+	<span class="nodocs">    <a href="../../src/internal/reflectlite/value.go.html">value.go</a></span>
+	<span class="nodocs">    <a href="../../src/internal/reflectlite/asm.s.html">asm.s</a></span></div>
+<div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (total 20, in which 4 are exported)</i></span></span>
+
+<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-Kind" data-popularity="0">	<input type='checkbox' class="fold" id="Kind-fold-content"><label for="Kind-fold-content"> <a href="../../use/internal/reflectlite..Kind.html">type</a> <a href="../../src/internal/reflectlite/type.go.html#line-78">Kind</a> = <a href="abi.html">abi</a>.<a href="abi.html#name-Kind">Kind</a> <i>(basic type)</i></label><span id='Kind-fold-content-docs' class="fold-docs">
+<span class="md-text">		A Kind represents the specific kind of type that a Type represents.
+		The zero Kind is not a valid kind.</span>
+
+</span></div><div class="anchor type-res" id="name-Type" data-popularity="1260">	<input type='checkbox' class="fold" id="Type-fold-content"><label for="Type-fold-content"> <a href="../../use/internal/reflectlite..Type.html">type</a> <a href="../../src/internal/reflectlite/type.go.html#line-25">Type</a> <b><i>(interface)</i></b></label><span id='Type-fold-content-docs' class="fold-docs">
+<span class="md-text">		Type is the representation of a Go type.
+		
+		Not all methods apply to all kinds of types. Restrictions,
+		if any, are noted in the documentation for each method.
+		Use the Kind method to find out the kind of type before
+		calling kind-specific methods. Calling a method
+		inappropriate to the kind of type causes a run-time panic.
+		
+		Type values are comparable, such as with the == operator,
+		so they can be used as map keys.
+		Two Type values are equal if they represent identical types.</span>
+
+		<input type='checkbox' class="fold" id="Type-fold-methods"><label for="Type-fold-methods">Methods (<i>total 11, in which 9 are exported</i>)</label><span id='Type-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Type-fold-method-AssignableTo"><label for="Type-fold-method-AssignableTo">( Type) <a href="../../src/internal/reflectlite/type.go.html#line-50">AssignableTo</a>(u <b>Type</b>) <a href="../builtin.html#name-bool">bool</a></label><span id='Type-fold-method-AssignableTo-docs' class="fold-docs">
+<span class="md-text">				AssignableTo reports whether a value of the type is assignable to type u.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Type-fold-method-Comparable"><label for="Type-fold-method-Comparable">( Type) <a href="../../src/internal/reflectlite/type.go.html#line-53">Comparable</a>() <a href="../builtin.html#name-bool">bool</a></label><span id='Type-fold-method-Comparable-docs' class="fold-docs">
+<span class="md-text">				Comparable reports whether values of this type are comparable.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Type-fold-method-Elem"><label for="Type-fold-method-Elem">( Type) <a href="../../src/internal/reflectlite/type.go.html#line-64">Elem</a>() <b>Type</b></label><span id='Type-fold-method-Elem-docs' class="fold-docs">
+<span class="md-text">				Elem returns a type's element type.
+				It panics if the type's Kind is not Ptr.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Type-fold-method-Implements"><label for="Type-fold-method-Implements">( Type) <a href="../../src/internal/reflectlite/type.go.html#line-47">Implements</a>(u <b>Type</b>) <a href="../builtin.html#name-bool">bool</a></label><span id='Type-fold-method-Implements-docs' class="fold-docs">
+<span class="md-text">				Implements reports whether the type implements the interface type u.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Type-fold-method-Kind"><label for="Type-fold-method-Kind">( Type) <a href="../../src/internal/reflectlite/type.go.html#line-44">Kind</a>() <a href="#name-Kind">Kind</a></label><span id='Type-fold-method-Kind-docs' class="fold-docs">
+<span class="md-text">				Kind returns the specific kind of this type.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Type-fold-method-Name"><label for="Type-fold-method-Name">( Type) <a href="../../src/internal/reflectlite/type.go.html#line-30">Name</a>() <a href="../builtin.html#name-string">string</a></label><span id='Type-fold-method-Name-docs' class="fold-docs">
+<span class="md-text">				Name returns the type's name within its package for a defined type.
+				For other (non-defined) types it returns the empty string.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Type-fold-method-PkgPath"><label for="Type-fold-method-PkgPath">( Type) <a href="../../src/internal/reflectlite/type.go.html#line-37">PkgPath</a>() <a href="../builtin.html#name-string">string</a></label><span id='Type-fold-method-PkgPath-docs' class="fold-docs">
+<span class="md-text">				PkgPath returns a defined type's package path, that is, the import path
+				that uniquely identifies the package, such as "encoding/base64".
+				If the type was predeclared (string, error) or not defined (*T, struct{},
+				[]int, or A where A is an alias for a non-defined type), the package path
+				will be the empty string.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Type-fold-method-Size"><label for="Type-fold-method-Size">( Type) <a href="../../src/internal/reflectlite/type.go.html#line-41">Size</a>() <a href="../builtin.html#name-uintptr">uintptr</a></label><span id='Type-fold-method-Size-docs' class="fold-docs">
+<span class="md-text">				Size returns the number of bytes needed to store
+				a value of the given type; it is analogous to unsafe.Sizeof.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Type-fold-method-String"><label for="Type-fold-method-String">( Type) <a href="../../src/internal/reflectlite/type.go.html#line-60">String</a>() <a href="../builtin.html#name-string">string</a></label><span id='Type-fold-method-String-docs' class="fold-docs">
+<span class="md-text">				String returns a string representation of the type.
+				The string representation may use shortened package names
+				(e.g., base64 instead of "encoding/base64") and is not
+				guaranteed to be unique among types. To test for type identity,
+				compare the Types directly.</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="Type-showhide-methods"><i><label for="Type-showhide-methods" class="show-inline">/* 2 unexporteds ... */</label><label for="Type-showhide-methods" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs">( Type) <a href="../../src/internal/reflectlite/type.go.html#line-66">common</a>() *<a href="abi.html">abi</a>.<a href="abi.html#name-Type">Type</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">( Type) <a href="../../src/internal/reflectlite/type.go.html#line-67">uncommon</a>() *<a href="#name-uncommonType">uncommonType</a></span></i></span></span>
+		<input type='checkbox' class="fold" id="Type-fold-impledby"><label for="Type-fold-impledby">Implemented By (<i>at least one unexported</i>)</label><span id='Type-fold-impledby-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="Type-showhide-impedBys"><i><label for="Type-showhide-impedBys" class="show-inline">/* at least one unexported ... */</label><label for="Type-showhide-impedBys" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			 <a href="#name-rtype">rtype</a></i></span></span>
+		<input type='checkbox' class="fold" id="Type-fold-impls"><label for="Type-fold-impls">Implements (<i>at least 3, in which 1 is exported</i>)</label><span id='Type-fold-impls-items' class="fold-items"><span>
+			 Type : fmt.<a href="../fmt.html#name-Stringer">Stringer</a></span>
+			<input type='checkbox' class="showhide" id="Type-showhide-impls"><i><label for="Type-showhide-impls" class="show-inline">/* 2+ unexporteds ... */</label><label for="Type-showhide-impls" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			 Type : context.<a href="../context.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			 Type : runtime.<a href="../runtime.html#name-stringer">stringer</a></i></span></span>
+		<input type='checkbox' class="fold" id="Type-fold-results"><label for="Type-fold-results">As Outputs Of (<i>at least 4, in which 3 are exported</i>)</label><span id='Type-fold-results-items' class="fold-items"><span>
+			func <a href="#name-TypeOf">TypeOf</a>(i <a href="../builtin.html#name-any">any</a>) <b>Type</b></span><span>
+			func Type.<a href="../../src/internal/reflectlite/type.go.html#line-64">Elem</a>() <b>Type</b></span><span>
+			func <a href="#name-Value">Value</a>.<a href="../../src/internal/reflectlite/value.go.html#line-391">Type</a>() <b>Type</b></span>
+			<input type='checkbox' class="showhide" id="Type-showhide-inputofs"><i><label for="Type-showhide-inputofs" class="show-inline">/* at least one unexported ... */</label><label for="Type-showhide-inputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func <a href="#name-toType">toType</a>(t *<a href="abi.html">abi</a>.<a href="abi.html#name-Type">Type</a>) <b>Type</b></i></span></span>
+		<input type='checkbox' class="fold" id="Type-fold-params"><label for="Type-fold-params">As Inputs Of (<i>at least 3, in which 2 are exported</i>)</label><span id='Type-fold-params-items' class="fold-items"><span>
+			func Type.<a href="../../src/internal/reflectlite/type.go.html#line-50">AssignableTo</a>(u <b>Type</b>) <a href="../builtin.html#name-bool">bool</a></span><span>
+			func Type.<a href="../../src/internal/reflectlite/type.go.html#line-47">Implements</a>(u <b>Type</b>) <a href="../builtin.html#name-bool">bool</a></span>
+			<input type='checkbox' class="showhide" id="Type-showhide-outputofs"><i><label for="Type-showhide-outputofs" class="show-inline">/* at least one unexported ... */</label><label for="Type-showhide-outputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func errors.<a href="../errors.html#name-as">as</a>(err <a href="../builtin.html#name-error">error</a>, target <a href="../builtin.html#name-any">any</a>, targetVal <a href="#name-Value">Value</a>, targetType <b>Type</b>) <a href="../builtin.html#name-bool">bool</a></i></span></span>
+		<input type='checkbox' class="fold" id="Type-fold-values"><label for="Type-fold-values">As Types Of (<i>only one, which is unexported</i>)</label><span id='Type-fold-values-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="Type-showhide-values"><i><label for="Type-showhide-values" class="show-inline">/* one unexported ... */</label><label for="Type-showhide-values" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			  var errors.<a href="../errors.html#name-errorType">errorType</a></i></span></span>
+
+</span></div><div class="anchor type-res" id="name-Value" data-popularity="1240">	<input type='checkbox' class="fold" id="Value-fold-content"><label for="Value-fold-content"> <a href="../../use/internal/reflectlite..Value.html">type</a> <a href="../../src/internal/reflectlite/value.go.html#line-36">Value</a> <i>(struct)</i></label><span id='Value-fold-content-docs' class="fold-docs">
+<span class="md-text">		Value is the reflection interface to a Go value.
+		
+		Not all methods apply to all kinds of values. Restrictions,
+		if any, are noted in the documentation for each method.
+		Use the Kind method to find out the kind of value before
+		calling kind-specific methods. Calling a method
+		inappropriate to the kind of type causes a run time panic.
+		
+		The zero Value represents no value.
+		Its IsValid method returns false, its Kind method returns Invalid,
+		its String method returns "&lt;invalid Value&gt;", and all other methods panic.
+		Most functions and methods never return an invalid value.
+		If one does, its documentation states the conditions explicitly.
+		
+		A Value can be used concurrently by multiple goroutines provided that
+		the underlying Go value can be used concurrently for the equivalent
+		direct operations.
+		
+		To compare two Values, compare the results of the Interface method.
+		Using == on two Values does not compare the underlying values
+		they represent.</span>
+
+		<input type='checkbox' class="fold" id="Value-fold-fields"><label for="Value-fold-fields">Fields (<i>total 3, none are exported</i>)</label><span id='Value-fold-fields-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="Value-showhide-fields"><i><label for="Value-showhide-fields" class="show-inline">/* 3 unexporteds ... */</label><label for="Value-showhide-fields" class="hide-inline">/* 3 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Value-fold-field-flag"><label for="Value-fold-field-flag"><a href="../../src/internal/reflectlite/value.go.html#line-57">flag</a> <i><a href="#name-flag">flag</a></i></label><span id='Value-fold-field-flag-docs' class="fold-docs">
+<span class="md-text">				flag holds metadata about the value.
+				The lowest bits are flag bits:
+					- flagStickyRO: obtained via unexported not embedded field, so read-only
+					- flagEmbedRO: obtained via unexported embedded field, so read-only
+					- flagIndir: val holds a pointer to the data
+					- flagAddr: v.CanAddr is true (implies flagIndir)
+				Value cannot represent method values.
+				The next five bits give the Kind of the value.
+				This repeats typ.Kind() except for method values.
+				The remaining 23+ bits give a method number for method values.
+				If flag.kind() != Func, code can assume that flagMethod is unset.
+				If ifaceIndir(typ), code can assume that flagIndir is set.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Value-fold-field-ptr"><label for="Value-fold-field-ptr"><a href="../../src/internal/reflectlite/value.go.html#line-43">ptr</a> <i><a href="../unsafe.html">unsafe</a>.<a href="../unsafe.html#name-Pointer">Pointer</a></i></label><span id='Value-fold-field-ptr-docs' class="fold-docs">
+<span class="md-text">				Pointer-valued data or, if flagIndir is set, pointer to data.
+				Valid when either flagIndir is set or typ.pointers() is true.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Value-fold-field-typ_"><label for="Value-fold-field-typ_"><a href="../../src/internal/reflectlite/value.go.html#line-39">typ_</a> <i>*<a href="abi.html">abi</a>.<a href="abi.html#name-Type">Type</a></i></label><span id='Value-fold-field-typ_-docs' class="fold-docs">
+<span class="md-text">				typ_ holds the type of the value represented by a Value.
+				Access using the typ method to avoid escape of v.</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="Value-fold-methods"><label for="Value-fold-methods">Methods (<i>total 16, in which 8 are exported</i>)</label><span id='Value-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Value-fold-method-CanSet"><label for="Value-fold-method-CanSet">( Value) <a href="../../src/internal/reflectlite/value.go.html#line-228">CanSet</a>() <a href="../builtin.html#name-bool">bool</a></label><span id='Value-fold-method-CanSet-docs' class="fold-docs">
+<span class="md-text">				CanSet reports whether the value of v can be changed.
+				A Value can be changed only if it is addressable and was not
+				obtained by the use of unexported struct fields.
+				If CanSet returns false, calling Set or any type-specific
+				setter (e.g., SetBool, SetInt) will panic.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Value-fold-method-Elem"><label for="Value-fold-method-Elem">( Value) <a href="../../src/internal/reflectlite/value.go.html#line-236">Elem</a>() <b>Value</b></label><span id='Value-fold-method-Elem-docs' class="fold-docs">
+<span class="md-text">				Elem returns the value that the interface v contains
+				or that the pointer v points to.
+				It panics if v's Kind is not Interface or Pointer.
+				It returns the zero Value if v is nil.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Value-fold-method-IsNil"><label for="Value-fold-method-IsNil">( Value) <a href="../../src/internal/reflectlite/value.go.html#line-299">IsNil</a>() <a href="../builtin.html#name-bool">bool</a></label><span id='Value-fold-method-IsNil-docs' class="fold-docs">
+<span class="md-text">				IsNil reports whether its argument v is nil. The argument must be
+				a chan, func, interface, map, pointer, or slice value; if it is
+				not, IsNil panics. Note that IsNil is not always equivalent to a
+				regular comparison with nil in Go. For example, if v was created
+				by calling ValueOf with an uninitialized interface variable i,
+				i==nil will be true but v.IsNil will panic as v will be the zero
+				Value.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Value-fold-method-IsValid"><label for="Value-fold-method-IsValid">( Value) <a href="../../src/internal/reflectlite/value.go.html#line-324">IsValid</a>() <a href="../builtin.html#name-bool">bool</a></label><span id='Value-fold-method-IsValid-docs' class="fold-docs">
+<span class="md-text">				IsValid reports whether v represents a value.
+				It returns false if v is the zero Value.
+				If IsValid returns false, all other methods except String panic.
+				Most functions and methods never return an invalid Value.
+				If one does, its documentation states the conditions explicitly.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Value-fold-method-Kind"><label for="Value-fold-method-Kind">( Value) <a href="../../src/internal/reflectlite/value.go.html#line-330">Kind</a>() <a href="#name-Kind">Kind</a></label><span id='Value-fold-method-Kind-docs' class="fold-docs">
+<span class="md-text">				Kind returns v's Kind.
+				If v is the zero Value (IsValid returns false), Kind returns Invalid.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Value-fold-method-Len"><label for="Value-fold-method-Len">( Value) <a href="../../src/internal/reflectlite/value.go.html#line-344">Len</a>() <a href="../builtin.html#name-int">int</a></label><span id='Value-fold-method-Len-docs' class="fold-docs">
+<span class="md-text">				Len returns v's length.
+				It panics if v's Kind is not Array, Chan, Map, Slice, or String.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Value-fold-method-Set"><label for="Value-fold-method-Set">( Value) <a href="../../src/internal/reflectlite/value.go.html#line-375">Set</a>(x <b>Value</b>)</label><span id='Value-fold-method-Set-docs' class="fold-docs">
+<span class="md-text">				Set assigns x to the value v.
+				It panics if CanSet returns false.
+				As in Go, x's value must be assignable to v's type.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Value-fold-method-Type"><label for="Value-fold-method-Type">( Value) <a href="../../src/internal/reflectlite/value.go.html#line-391">Type</a>() <a href="#name-Type">Type</a></label><span id='Value-fold-method-Type-docs' class="fold-docs">
+<span class="md-text">				Type returns v's type.</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="Value-showhide-methods"><i><label for="Value-showhide-methods" class="show-inline">/* 8 unexporteds ... */</label><label for="Value-showhide-methods" class="hide-inline">/* 8 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Value-fold-method-assignTo"><label for="Value-fold-method-assignTo">( Value) <a href="../../src/internal/reflectlite/value.go.html#line-421">assignTo</a>(context <a href="../builtin.html#name-string">string</a>, dst *<a href="abi.html">abi</a>.<a href="abi.html#name-Type">Type</a>, target <a href="../unsafe.html">unsafe</a>.<a href="../unsafe.html#name-Pointer">Pointer</a>) <b>Value</b></label><span id='Value-fold-method-assignTo-docs' class="fold-docs">
+<span class="md-text">				assignTo returns a value v that can be assigned directly to typ.
+				It panics if v is not assignable to typ.
+				For a conversion to an interface type, target is a suggested scratch space to use.</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs">( Value) <a href="../../src/internal/reflectlite/value.go.html#line-80">kind</a>() <a href="#name-Kind">Kind</a></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Value-fold-method-mustBeAssignable"><label for="Value-fold-method-mustBeAssignable">( Value) <a href="../../src/internal/reflectlite/value.go.html#line-210">mustBeAssignable</a>()</label><span id='Value-fold-method-mustBeAssignable-docs' class="fold-docs">
+<span class="md-text">				mustBeAssignable panics if f records that the value is not assignable,
+				which is to say that either it was obtained using an unexported field
+				or it is not addressable.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Value-fold-method-mustBeExported"><label for="Value-fold-method-mustBeExported">( Value) <a href="../../src/internal/reflectlite/value.go.html#line-198">mustBeExported</a>()</label><span id='Value-fold-method-mustBeExported-docs' class="fold-docs">
+<span class="md-text">				mustBeExported panics if f records that the value was obtained using
+				an unexported field.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Value-fold-method-numMethod"><label for="Value-fold-method-numMethod">( Value) <a href="../../src/internal/reflectlite/value.go.html#line-365">numMethod</a>() <a href="../builtin.html#name-int">int</a></label><span id='Value-fold-method-numMethod-docs' class="fold-docs">
+<span class="md-text">				NumMethod returns the number of exported methods in the value's method set.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Value-fold-method-pointer"><label for="Value-fold-method-pointer">( Value) <a href="../../src/internal/reflectlite/value.go.html#line-102">pointer</a>() <a href="../unsafe.html">unsafe</a>.<a href="../unsafe.html#name-Pointer">Pointer</a></label><span id='Value-fold-method-pointer-docs' class="fold-docs">
+<span class="md-text">				pointer returns the underlying pointer represented by v.
+				v.Kind() must be Pointer, Map, Chan, Func, or UnsafePointer</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs">( Value) <a href="../../src/internal/reflectlite/value.go.html#line-84">ro</a>() <a href="#name-flag">flag</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">( Value) <a href="../../src/internal/reflectlite/value.go.html#line-91">typ</a>() *<a href="abi.html">abi</a>.<a href="abi.html#name-Type">Type</a></span></i></span></span>
+		<input type='checkbox' class="fold" id="Value-fold-results"><label for="Value-fold-results">As Outputs Of (<i>at least 4, in which 2 are exported</i>)</label><span id='Value-fold-results-items' class="fold-items"><span>
+			func <a href="#name-ValueOf">ValueOf</a>(i <a href="../builtin.html#name-any">any</a>) <b>Value</b></span><span>
+			func Value.<a href="../../src/internal/reflectlite/value.go.html#line-236">Elem</a>() <b>Value</b></span>
+			<input type='checkbox' class="showhide" id="Value-showhide-inputofs"><i><label for="Value-showhide-inputofs" class="show-inline">/* 2+ unexporteds ... */</label><label for="Value-showhide-inputofs" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			func <a href="#name-unpackEface">unpackEface</a>(i <a href="../builtin.html#name-any">any</a>) <b>Value</b></i></span><span class="hidden"><i>
+			func Value.<a href="../../src/internal/reflectlite/value.go.html#line-421">assignTo</a>(context <a href="../builtin.html#name-string">string</a>, dst *<a href="abi.html">abi</a>.<a href="abi.html#name-Type">Type</a>, target <a href="../unsafe.html">unsafe</a>.<a href="../unsafe.html#name-Pointer">Pointer</a>) <b>Value</b></i></span></span>
+		<input type='checkbox' class="fold" id="Value-fold-params"><label for="Value-fold-params">As Inputs Of (<i>at least 4, in which 1 is exported</i>)</label><span id='Value-fold-params-items' class="fold-items"><span>
+			func Value.<a href="../../src/internal/reflectlite/value.go.html#line-375">Set</a>(x <b>Value</b>)</span>
+			<input type='checkbox' class="showhide" id="Value-showhide-outputofs"><i><label for="Value-showhide-outputofs" class="show-inline">/* 3+ unexporteds ... */</label><label for="Value-showhide-outputofs" class="hide-inline">/* 3+ unexporteds: */</label></i><span class="hidden"><i>
+			func <a href="#name-packEface">packEface</a>(v <b>Value</b>) <a href="../builtin.html#name-any">any</a></i></span><span class="hidden"><i>
+			func <a href="#name-valueInterface">valueInterface</a>(v <b>Value</b>) <a href="../builtin.html#name-any">any</a></i></span><span class="hidden"><i>
+			func errors.<a href="../errors.html#name-as">as</a>(err <a href="../builtin.html#name-error">error</a>, target <a href="../builtin.html#name-any">any</a>, targetVal <b>Value</b>, targetType <a href="#name-Type">Type</a>) <a href="../builtin.html#name-bool">bool</a></i></span></span>
+
+</span></div><div class="anchor type-res" id="name-ValueError" data-popularity="100">	<input type='checkbox' class="fold" id="ValueError-fold-content"><label for="ValueError-fold-content"> <a href="../../use/internal/reflectlite..ValueError.html">type</a> <a href="../../src/internal/reflectlite/value.go.html#line-167">ValueError</a> <i>(struct)</i></label><span id='ValueError-fold-content-docs' class="fold-docs">
+<span class="md-text">		A ValueError occurs when a Value method is invoked on
+		a Value that does not support it. Such cases are documented
+		in the description of each method.</span>
+
+		<input type='checkbox' class="fold" id="ValueError-fold-fields"><label for="ValueError-fold-fields">Fields (<i>total 2, both are exported</i>)</label><span id='ValueError-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../src/internal/reflectlite/value.go.html#line-169">Kind</a> <i><a href="#name-Kind">Kind</a></i></span></span><span>
+			<span class="nodocs"><a href="../../src/internal/reflectlite/value.go.html#line-168">Method</a> <i><a href="../builtin.html#name-string">string</a></i></span></span></span>
+		<input type='checkbox' class="fold" id="ValueError-fold-methods"><label for="ValueError-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='ValueError-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">(*ValueError) <a href="../../src/internal/reflectlite/value.go.html#line-172">Error</a>() <a href="../builtin.html#name-string">string</a></span></span></span>
+		<input type='checkbox' class="fold" id="ValueError-fold-impls"><label for="ValueError-fold-impls">Implements (<i>at least one exported</i>)</label><span id='ValueError-fold-impls-items' class="fold-items"><span>
+			*ValueError : <a href="../builtin.html#name-error">error</a></span></span>
+
+</span></div></div><div>	<input type='checkbox' class="showhide" id="unexported-typenames-showhide"><i><label for="unexported-typenames-showhide" class="show-inline">/* 16 unexporteds ... */</label><label for="unexported-typenames-showhide" class="hide-inline">/* 16 unexporteds: */</label></i><div class="anchor type-res hidden" id="name-arrayType" data-popularity="0">	<input type='checkbox' class="fold" id="arrayType-fold-content"><label for="arrayType-fold-content"> <a href="../../use/internal/reflectlite..arrayType^f6dc2.html">type</a> <a href="../../src/internal/reflectlite/type.go.html#line-105">arrayType</a> = <a href="abi.html">abi</a>.<a href="abi.html#name-ArrayType">ArrayType</a> <i>(struct)</i></label><span id='arrayType-fold-content-docs' class="fold-docs">
+<span class="md-text">		arrayType represents a fixed array type.</span>
+
+</span></div><div class="anchor type-res hidden" id="name-chanType" data-popularity="0">	<input type='checkbox' class="fold" id="chanType-fold-content"><label for="chanType-fold-content"> <a href="../../use/internal/reflectlite..chanType^c5fbc.html">type</a> <a href="../../src/internal/reflectlite/type.go.html#line-108">chanType</a> = <a href="abi.html">abi</a>.<a href="abi.html#name-ChanType">ChanType</a> <i>(struct)</i></label><span id='chanType-fold-content-docs' class="fold-docs">
+<span class="md-text">		chanType represents a channel type.</span>
+
+</span></div><div class="anchor type-res hidden" id="name-emptyInterface" data-popularity="0">	<input type='checkbox' class="fold" id="emptyInterface-fold-content"><label for="emptyInterface-fold-content"> <a href="../../use/internal/reflectlite..emptyInterface^8e5a7.html">type</a> <a href="../../src/internal/reflectlite/value.go.html#line-191">emptyInterface</a> <i>(struct)</i></label><span id='emptyInterface-fold-content-docs' class="fold-docs">
+<span class="md-text">		emptyInterface is the header for an interface{} value.</span>
+
+		<input type='checkbox' class="fold" id="emptyInterface-fold-fields"><label for="emptyInterface-fold-fields">Fields (<i>total 2, neither is exported</i>)</label><span id='emptyInterface-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="emptyInterface-showhide-fields"><i><label for="emptyInterface-showhide-fields" class="show-inline">/* 2 unexporteds ... */</label><label for="emptyInterface-showhide-fields" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/internal/reflectlite/value.go.html#line-192">typ</a> <i>*<a href="abi.html">abi</a>.<a href="abi.html#name-Type">Type</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/internal/reflectlite/value.go.html#line-193">word</a> <i><a href="../unsafe.html">unsafe</a>.<a href="../unsafe.html#name-Pointer">Pointer</a></i></span></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-flag" data-popularity="215">	<input type='checkbox' class="fold" id="flag-fold-content"><label for="flag-fold-content"> <a href="../../use/internal/reflectlite..flag^807d0.html">type</a> <a href="../../src/internal/reflectlite/value.go.html#line-66">flag</a> <a href="../builtin.html#name-uintptr">uintptr</a> <i>(basic type)</i></label><span id='flag-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="flag-fold-methods"><label for="flag-fold-methods">Methods (<i>total 4, none are exported</i>)</label><span id='flag-fold-methods-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="flag-showhide-methods"><i><label for="flag-showhide-methods" class="show-inline">/* 4 unexporteds ... */</label><label for="flag-showhide-methods" class="hide-inline">/* 4 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs">( flag) <a href="../../src/internal/reflectlite/value.go.html#line-80">kind</a>() <a href="#name-Kind">Kind</a></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="flag-fold-method-mustBeAssignable"><label for="flag-fold-method-mustBeAssignable">( flag) <a href="../../src/internal/reflectlite/value.go.html#line-210">mustBeAssignable</a>()</label><span id='flag-fold-method-mustBeAssignable-docs' class="fold-docs">
+<span class="md-text">				mustBeAssignable panics if f records that the value is not assignable,
+				which is to say that either it was obtained using an unexported field
+				or it is not addressable.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="flag-fold-method-mustBeExported"><label for="flag-fold-method-mustBeExported">( flag) <a href="../../src/internal/reflectlite/value.go.html#line-198">mustBeExported</a>()</label><span id='flag-fold-method-mustBeExported-docs' class="fold-docs">
+<span class="md-text">				mustBeExported panics if f records that the value was obtained using
+				an unexported field.</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs">( flag) <a href="../../src/internal/reflectlite/value.go.html#line-84">ro</a>() <b>flag</b></span></i></span></span>
+		<input type='checkbox' class="fold" id="flag-fold-values"><label for="flag-fold-values">As Types Of (<i>total 7, none are exported</i>)</label><span id='flag-fold-values-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="flag-showhide-values"><i><label for="flag-showhide-values" class="show-inline">/* 7 unexporteds ... */</label><label for="flag-showhide-values" class="hide-inline">/* 7 unexporteds: */</label></i><span class="hidden"><i>
+			const <a href="#name-flagAddr">flagAddr</a></i></span><span class="hidden"><i>
+			const <a href="#name-flagEmbedRO">flagEmbedRO</a></i></span><span class="hidden"><i>
+			const <a href="#name-flagIndir">flagIndir</a></i></span><span class="hidden"><i>
+			const <a href="#name-flagKindMask">flagKindMask</a></i></span><span class="hidden"><i>
+			const <a href="#name-flagMethod">flagMethod</a></i></span><span class="hidden"><i>
+			const <a href="#name-flagRO">flagRO</a></i></span><span class="hidden"><i>
+			const <a href="#name-flagStickyRO">flagStickyRO</a></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-funcType" data-popularity="0">	<span class="nodocs"> <a href="../../use/internal/reflectlite..funcType^48a18.html">type</a> <a href="../../src/internal/reflectlite/type.go.html#line-110">funcType</a> = <a href="abi.html">abi</a>.<a href="abi.html#name-FuncType">FuncType</a> <i>(struct)</i></span></div><div class="anchor type-res hidden" id="name-interfaceType" data-popularity="0">	<span class="nodocs"> <a href="../../use/internal/reflectlite..interfaceType^e2202.html">type</a> <a href="../../src/internal/reflectlite/type.go.html#line-112">interfaceType</a> = <a href="abi.html">abi</a>.<a href="abi.html#name-InterfaceType">InterfaceType</a> <i>(struct)</i></span></div><div class="anchor type-res hidden" id="name-mapType" data-popularity="1950">	<input type='checkbox' class="fold" id="mapType-fold-content"><label for="mapType-fold-content"> <a href="../../use/internal/reflectlite..mapType^a5b1e.html">type</a> <a href="../../src/internal/reflectlite/type.go.html#line-115">mapType</a> <i>(struct)</i></label><span id='mapType-fold-content-docs' class="fold-docs">
+<span class="md-text">		mapType represents a map type.</span>
+
+		<input type='checkbox' class="fold" id="mapType-fold-fields"><label for="mapType-fold-fields">Fields (<i>total 21, in which 20 are exported</i>)</label><span id='mapType-fold-fields-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="mapType-fold-field-Bucket"><label for="mapType-fold-field-Bucket"><a href="../../src/internal/reflectlite/type.go.html#line-119">Bucket</a> <i>*<a href="abi.html">abi</a>.<a href="abi.html#name-Type">Type</a></i></label><span id='mapType-fold-field-Bucket-docs' class="fold-docs">
+<span class="md-text">				// internal bucket structure</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="mapType-fold-field-BucketSize"><label for="mapType-fold-field-BucketSize"><a href="../../src/internal/reflectlite/type.go.html#line-124">BucketSize</a> <i><a href="../builtin.html#name-uint16">uint16</a></i></label><span id='mapType-fold-field-BucketSize-docs' class="fold-docs">
+<span class="md-text">				// size of bucket</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="mapType-fold-field-Elem"><label for="mapType-fold-field-Elem"><a href="../../src/internal/reflectlite/type.go.html#line-118">Elem</a> <i>*<a href="abi.html">abi</a>.<a href="abi.html#name-Type">Type</a></i></label><span id='mapType-fold-field-Elem-docs' class="fold-docs">
+<span class="md-text">				// map element (value) type</span>
+</span></span><span>
+			<span class="nodocs"><a href="../../src/internal/reflectlite/type.go.html#line-125">Flags</a> <i><a href="../builtin.html#name-uint32">uint32</a></i></span></span><span>
+			<input type='checkbox' class="fold" id="mapType-fold-field-Hasher"><label for="mapType-fold-field-Hasher"><a href="../../src/internal/reflectlite/type.go.html#line-121">Hasher</a> <i>func(<a href="../unsafe.html">unsafe</a>.<a href="../unsafe.html#name-Pointer">Pointer</a>, <a href="../builtin.html#name-uintptr">uintptr</a>) <a href="../builtin.html#name-uintptr">uintptr</a></i></label><span id='mapType-fold-field-Hasher-docs' class="fold-docs">
+<span class="md-text">				function for hashing keys (ptr to key, seed) -&gt; hash</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="mapType-fold-field-Key"><label for="mapType-fold-field-Key"><a href="../../src/internal/reflectlite/type.go.html#line-117">Key</a> <i>*<a href="abi.html">abi</a>.<a href="abi.html#name-Type">Type</a></i></label><span id='mapType-fold-field-Key-docs' class="fold-docs">
+<span class="md-text">				// map key type</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="mapType-fold-field-KeySize"><label for="mapType-fold-field-KeySize"><a href="../../src/internal/reflectlite/type.go.html#line-122">KeySize</a> <i><a href="../builtin.html#name-uint8">uint8</a></i></label><span id='mapType-fold-field-KeySize-docs' class="fold-docs">
+<span class="md-text">				// size of key slot</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="mapType-fold-field-Type"><label for="mapType-fold-field-Type"><a href="../../src/internal/reflectlite/type.go.html#line-116">rtype</a>.<a href="../../src/runtime/type.go.html#line-22">Type</a> <i>*<a href="abi.html">abi</a>.<a href="abi.html#name-Type">Type</a></i></label><span id='mapType-fold-field-Type-docs' class="fold-docs">
+<span class="md-text">				// embedding is okay here (unlike reflect) because none of this is public</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="mapType-fold-field-Align_"><label for="mapType-fold-field-Align_"><a href="../../src/internal/reflectlite/type.go.html#line-116" class="path-duplicate">rtype</a>.<a href="../../src/runtime/type.go.html#line-22" class="path-duplicate">Type</a>.<a href="../../src/internal/abi/type.go.html#line-25">Align_</a> <i><a href="../builtin.html#name-uint8">uint8</a></i></label><span id='mapType-fold-field-Align_-docs' class="fold-docs">
+<span class="md-text">				// alignment of variable with this type</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="mapType-fold-field-Equal"><label for="mapType-fold-field-Equal"><a href="../../src/internal/reflectlite/type.go.html#line-116" class="path-duplicate">rtype</a>.<a href="../../src/runtime/type.go.html#line-22" class="path-duplicate">Type</a>.<a href="../../src/internal/abi/type.go.html#line-30">Equal</a> <i>func(<a href="../unsafe.html">unsafe</a>.<a href="../unsafe.html#name-Pointer">Pointer</a>, <a href="../unsafe.html">unsafe</a>.<a href="../unsafe.html#name-Pointer">Pointer</a>) <a href="../builtin.html#name-bool">bool</a></i></label><span id='mapType-fold-field-Equal-docs' class="fold-docs">
+<span class="md-text">				function for comparing objects of this type
+				(ptr to object A, ptr to object B) -&gt; ==?</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="mapType-fold-field-FieldAlign_"><label for="mapType-fold-field-FieldAlign_"><a href="../../src/internal/reflectlite/type.go.html#line-116" class="path-duplicate">rtype</a>.<a href="../../src/runtime/type.go.html#line-22" class="path-duplicate">Type</a>.<a href="../../src/internal/abi/type.go.html#line-26">FieldAlign_</a> <i><a href="../builtin.html#name-uint8">uint8</a></i></label><span id='mapType-fold-field-FieldAlign_-docs' class="fold-docs">
+<span class="md-text">				// alignment of struct field with this type</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="mapType-fold-field-GCData"><label for="mapType-fold-field-GCData"><a href="../../src/internal/reflectlite/type.go.html#line-116" class="path-duplicate">rtype</a>.<a href="../../src/runtime/type.go.html#line-22" class="path-duplicate">Type</a>.<a href="../../src/internal/abi/type.go.html#line-34">GCData</a> <i>*<a href="../builtin.html#name-byte">byte</a></i></label><span id='mapType-fold-field-GCData-docs' class="fold-docs">
+<span class="md-text">				GCData stores the GC type data for the garbage collector.
+				If the KindGCProg bit is set in kind, GCData is a GC program.
+				Otherwise it is a ptrmask bitmap. See mbitmap.go for details.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="mapType-fold-field-Hash"><label for="mapType-fold-field-Hash"><a href="../../src/internal/reflectlite/type.go.html#line-116" class="path-duplicate">rtype</a>.<a href="../../src/runtime/type.go.html#line-22" class="path-duplicate">Type</a>.<a href="../../src/internal/abi/type.go.html#line-23">Hash</a> <i><a href="../builtin.html#name-uint32">uint32</a></i></label><span id='mapType-fold-field-Hash-docs' class="fold-docs">
+<span class="md-text">				// hash of type; avoids computation in hash tables</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="mapType-fold-field-Kind_"><label for="mapType-fold-field-Kind_"><a href="../../src/internal/reflectlite/type.go.html#line-116" class="path-duplicate">rtype</a>.<a href="../../src/runtime/type.go.html#line-22" class="path-duplicate">Type</a>.<a href="../../src/internal/abi/type.go.html#line-27">Kind_</a> <i><a href="../builtin.html#name-uint8">uint8</a></i></label><span id='mapType-fold-field-Kind_-docs' class="fold-docs">
+<span class="md-text">				// enumeration for C</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="mapType-fold-field-PtrBytes"><label for="mapType-fold-field-PtrBytes"><a href="../../src/internal/reflectlite/type.go.html#line-116" class="path-duplicate">rtype</a>.<a href="../../src/runtime/type.go.html#line-22" class="path-duplicate">Type</a>.<a href="../../src/internal/abi/type.go.html#line-22">PtrBytes</a> <i><a href="../builtin.html#name-uintptr">uintptr</a></i></label><span id='mapType-fold-field-PtrBytes-docs' class="fold-docs">
+<span class="md-text">				// number of (prefix) bytes in the type that can contain pointers</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="mapType-fold-field-PtrToThis"><label for="mapType-fold-field-PtrToThis"><a href="../../src/internal/reflectlite/type.go.html#line-116" class="path-duplicate">rtype</a>.<a href="../../src/runtime/type.go.html#line-22" class="path-duplicate">Type</a>.<a href="../../src/internal/abi/type.go.html#line-36">PtrToThis</a> <i><a href="abi.html">abi</a>.<a href="abi.html#name-TypeOff">TypeOff</a></i></label><span id='mapType-fold-field-PtrToThis-docs' class="fold-docs">
+<span class="md-text">				// type for pointer to this type, may be zero</span>
+</span></span><span>
+			<span class="nodocs"><a href="../../src/internal/reflectlite/type.go.html#line-116" class="path-duplicate">rtype</a>.<a href="../../src/runtime/type.go.html#line-22" class="path-duplicate">Type</a>.<a href="../../src/internal/abi/type.go.html#line-21">Size_</a> <i><a href="../builtin.html#name-uintptr">uintptr</a></i></span></span><span>
+			<input type='checkbox' class="fold" id="mapType-fold-field-Str"><label for="mapType-fold-field-Str"><a href="../../src/internal/reflectlite/type.go.html#line-116" class="path-duplicate">rtype</a>.<a href="../../src/runtime/type.go.html#line-22" class="path-duplicate">Type</a>.<a href="../../src/internal/abi/type.go.html#line-35">Str</a> <i><a href="abi.html">abi</a>.<a href="abi.html#name-NameOff">NameOff</a></i></label><span id='mapType-fold-field-Str-docs' class="fold-docs">
+<span class="md-text">				// string form</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="mapType-fold-field-TFlag"><label for="mapType-fold-field-TFlag"><a href="../../src/internal/reflectlite/type.go.html#line-116" class="path-duplicate">rtype</a>.<a href="../../src/runtime/type.go.html#line-22" class="path-duplicate">Type</a>.<a href="../../src/internal/abi/type.go.html#line-24">TFlag</a> <i><a href="abi.html">abi</a>.<a href="abi.html#name-TFlag">TFlag</a></i></label><span id='mapType-fold-field-TFlag-docs' class="fold-docs">
+<span class="md-text">				// extra type information flags</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="mapType-fold-field-ValueSize"><label for="mapType-fold-field-ValueSize"><a href="../../src/internal/reflectlite/type.go.html#line-123">ValueSize</a> <i><a href="../builtin.html#name-uint8">uint8</a></i></label><span id='mapType-fold-field-ValueSize-docs' class="fold-docs">
+<span class="md-text">				// size of value slot</span>
+</span></span>
+			<input type='checkbox' checked class="showhide" id="mapType-showhide-fields"><i><label for="mapType-showhide-fields" class="show-inline">/* one unexported ... */</label><label for="mapType-showhide-fields" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/internal/reflectlite/type.go.html#line-116">rtype</a> <i><a href="#name-rtype">rtype</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="mapType-fold-methods"><label for="mapType-fold-methods">Methods (<i>total 36, in which 31 are exported</i>)</label><span id='mapType-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="mapType-fold-method-Align"><label for="mapType-fold-method-Align">( mapType) <a href="../../src/internal/abi/type.go.html#line-417">Align</a>() <a href="../builtin.html#name-int">int</a></label><span id='mapType-fold-method-Align-docs' class="fold-docs">
+<span class="md-text">				Align returns the alignment of data with type t.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="mapType-fold-method-ArrayType"><label for="mapType-fold-method-ArrayType">( mapType) <a href="../../src/internal/abi/type.go.html#line-390">ArrayType</a>() *<a href="abi.html">abi</a>.<a href="abi.html#name-ArrayType">ArrayType</a></label><span id='mapType-fold-method-ArrayType-docs' class="fold-docs">
+<span class="md-text">				ArrayType returns t cast to a *ArrayType, or nil if its tag does not match.</span>
+</span></span><span>
+			<span class="nodocs">( mapType) <a href="../../src/internal/reflectlite/type.go.html#line-417">AssignableTo</a>(u <a href="#name-Type">Type</a>) <a href="../builtin.html#name-bool">bool</a></span></span><span>
+			<input type='checkbox' class="fold" id="mapType-fold-method-ChanDir"><label for="mapType-fold-method-ChanDir">( mapType) <a href="../../src/internal/abi/type.go.html#line-284">ChanDir</a>() <a href="abi.html">abi</a>.<a href="abi.html#name-ChanDir">ChanDir</a></label><span id='mapType-fold-method-ChanDir-docs' class="fold-docs">
+<span class="md-text">				ChanDir returns the direction of t if t is a channel type, otherwise InvalidDir (0).</span>
+</span></span><span>
+			<span class="nodocs">( mapType) <a href="../../src/internal/abi/type.go.html#line-258">Common</a>() *<a href="abi.html">abi</a>.<a href="abi.html#name-Type">Type</a></span></span><span>
+			<span class="nodocs">( mapType) <a href="../../src/internal/reflectlite/type.go.html#line-426">Comparable</a>() <a href="../builtin.html#name-bool">bool</a></span></span><span>
+			<span class="nodocs">( mapType) <a href="../../src/internal/abi/type.go.html#line-427">ExportedMethods</a>() []<a href="abi.html">abi</a>.<a href="abi.html#name-Method">Method</a></span></span><span>
+			<span class="nodocs">( mapType) <a href="../../src/internal/abi/type.go.html#line-419">FieldAlign</a>() <a href="../builtin.html#name-int">int</a></span></span><span>
+			<input type='checkbox' class="fold" id="mapType-fold-method-FuncType"><label for="mapType-fold-method-FuncType">( mapType) <a href="../../src/internal/abi/type.go.html#line-398">FuncType</a>() *<a href="abi.html">abi</a>.<a href="abi.html#name-FuncType">FuncType</a></label><span id='mapType-fold-method-FuncType-docs' class="fold-docs">
+<span class="md-text">				FuncType returns t cast to a *FuncType, or nil if its tag does not match.</span>
+</span></span><span>
+			<span class="nodocs">( mapType) <a href="../../src/internal/abi/type.go.html#line-187">GcSlice</a>(begin, end <a href="../builtin.html#name-uintptr">uintptr</a>) []<a href="../builtin.html#name-byte">byte</a></span></span><span>
+			<span class="nodocs">( mapType) <a href="../../src/internal/abi/type.go.html#line-171">HasName</a>() <a href="../builtin.html#name-bool">bool</a></span></span><span>
+			<input type='checkbox' class="fold" id="mapType-fold-method-IfaceIndir"><label for="mapType-fold-method-IfaceIndir">( mapType) <a href="../../src/internal/abi/type.go.html#line-178">IfaceIndir</a>() <a href="../builtin.html#name-bool">bool</a></label><span id='mapType-fold-method-IfaceIndir-docs' class="fold-docs">
+<span class="md-text">				IfaceIndir reports whether t is stored indirectly in an interface value.</span>
+</span></span><span>
+			<span class="nodocs">( mapType) <a href="../../src/internal/reflectlite/type.go.html#line-407">Implements</a>(u <a href="#name-Type">Type</a>) <a href="../builtin.html#name-bool">bool</a></span></span><span>
+			<span class="nodocs">( mapType) <a href="../../src/internal/reflectlite/type.go.html#line-331">In</a>(i <a href="../builtin.html#name-int">int</a>) <a href="#name-Type">Type</a></span></span><span>
+			<input type='checkbox' class="fold" id="mapType-fold-method-InterfaceType"><label for="mapType-fold-method-InterfaceType">( mapType) <a href="../../src/internal/abi/type.go.html#line-406">InterfaceType</a>() *<a href="abi.html">abi</a>.<a href="abi.html#name-InterfaceType">InterfaceType</a></label><span id='mapType-fold-method-InterfaceType-docs' class="fold-docs">
+<span class="md-text">				InterfaceType returns t cast to a *InterfaceType, or nil if its tag does not match.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="mapType-fold-method-IsDirectIface"><label for="mapType-fold-method-IsDirectIface">( mapType) <a href="../../src/internal/abi/type.go.html#line-183">IsDirectIface</a>() <a href="../builtin.html#name-bool">bool</a></label><span id='mapType-fold-method-IsDirectIface-docs' class="fold-docs">
+<span class="md-text">				isDirectIface reports whether t is stored directly in an interface value.</span>
+</span></span><span>
+			<span class="nodocs">( mapType) <a href="../../src/internal/abi/type.go.html#line-169">Kind</a>() <a href="abi.html">abi</a>.<a href="abi.html#name-Kind">Kind</a></span></span><span>
+			<span class="nodocs">( mapType) <a href="../../src/internal/reflectlite/type.go.html#line-347">Len</a>() <a href="../builtin.html#name-int">int</a></span></span><span>
+			<input type='checkbox' class="fold" id="mapType-fold-method-MapType"><label for="mapType-fold-method-MapType">( mapType) <a href="../../src/internal/abi/type.go.html#line-382">MapType</a>() *<a href="abi.html">abi</a>.<a href="abi.html#name-MapType">MapType</a></label><span id='mapType-fold-method-MapType-docs' class="fold-docs">
+<span class="md-text">				MapType returns t cast to a *MapType, or nil if its tag does not match.</span>
+</span></span><span>
+			<span class="nodocs">( mapType) <a href="../../src/internal/reflectlite/type.go.html#line-296">Name</a>() <a href="../builtin.html#name-string">string</a></span></span><span>
+			<span class="nodocs">( mapType) <a href="../../src/internal/reflectlite/type.go.html#line-355">NumField</a>() <a href="../builtin.html#name-int">int</a></span></span><span>
+			<span class="nodocs">( mapType) <a href="../../src/internal/reflectlite/type.go.html#line-363">NumIn</a>() <a href="../builtin.html#name-int">int</a></span></span><span>
+			<span class="nodocs">( mapType) <a href="../../src/internal/reflectlite/type.go.html#line-277">NumMethod</a>() <a href="../builtin.html#name-int">int</a></span></span><span>
+			<span class="nodocs">( mapType) <a href="../../src/internal/reflectlite/type.go.html#line-371">NumOut</a>() <a href="../builtin.html#name-int">int</a></span></span><span>
+			<span class="nodocs">( mapType) <a href="../../src/internal/reflectlite/type.go.html#line-379">Out</a>(i <a href="../builtin.html#name-int">int</a>) <a href="#name-Type">Type</a></span></span><span>
+			<span class="nodocs">( mapType) <a href="../../src/internal/reflectlite/type.go.html#line-285">PkgPath</a>() <a href="../builtin.html#name-string">string</a></span></span><span>
+			<span class="nodocs">( mapType) <a href="../../src/internal/abi/type.go.html#line-175">Pointers</a>() <a href="../builtin.html#name-bool">bool</a></span></span><span>
+			<input type='checkbox' class="fold" id="mapType-fold-method-Size"><label for="mapType-fold-method-Size">( mapType) <a href="../../src/internal/abi/type.go.html#line-414">Size</a>() <a href="../builtin.html#name-uintptr">uintptr</a></label><span id='mapType-fold-method-Size-docs' class="fold-docs">
+<span class="md-text">				Size returns the size of data with type t.</span>
+</span></span><span>
+			<span class="nodocs">( mapType) <a href="../../src/internal/reflectlite/type.go.html#line-259">String</a>() <a href="../builtin.html#name-string">string</a></span></span><span>
+			<input type='checkbox' class="fold" id="mapType-fold-method-StructType"><label for="mapType-fold-method-StructType">( mapType) <a href="../../src/internal/abi/type.go.html#line-374">StructType</a>() *<a href="abi.html">abi</a>.<a href="abi.html#name-StructType">StructType</a></label><span id='mapType-fold-method-StructType-docs' class="fold-docs">
+<span class="md-text">				StructType returns t cast to a *StructType, or nil if its tag does not match.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="mapType-fold-method-Uncommon"><label for="mapType-fold-method-Uncommon">( mapType) <a href="../../src/internal/abi/type.go.html#line-293">Uncommon</a>() *<a href="abi.html">abi</a>.<a href="abi.html#name-UncommonType">UncommonType</a></label><span id='mapType-fold-method-Uncommon-docs' class="fold-docs">
+<span class="md-text">				Uncommon returns a pointer to T's "uncommon" data if there is any, otherwise nil</span>
+</span></span>
+			<input type='checkbox' checked class="showhide" id="mapType-showhide-methods"><i><label for="mapType-showhide-methods" class="show-inline">/* 5 unexporteds ... */</label><label for="mapType-showhide-methods" class="hide-inline">/* 5 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs">( mapType) <a href="../../src/internal/reflectlite/type.go.html#line-267">common</a>() *<a href="abi.html">abi</a>.<a href="abi.html#name-Type">Type</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">( mapType) <a href="../../src/internal/reflectlite/type.go.html#line-269">exportedMethods</a>() []<a href="abi.html">abi</a>.<a href="abi.html#name-Method">Method</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">( mapType) <a href="../../src/internal/reflectlite/type.go.html#line-247">nameOff</a>(off <a href="#name-nameOff">nameOff</a>) <a href="abi.html">abi</a>.<a href="abi.html#name-Name">Name</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">( mapType) <a href="../../src/internal/reflectlite/type.go.html#line-251">typeOff</a>(off <a href="#name-typeOff">typeOff</a>) *<a href="abi.html">abi</a>.<a href="abi.html#name-Type">Type</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">( mapType) <a href="../../src/internal/reflectlite/type.go.html#line-255">uncommon</a>() *<a href="#name-uncommonType">uncommonType</a></span></i></span></span>
+		<input type='checkbox' class="fold" id="mapType-fold-impls"><label for="mapType-fold-impls">Implements (<i>at least 3, in which 1 is exported</i>)</label><span id='mapType-fold-impls-items' class="fold-items"><span>
+			 mapType : fmt.<a href="../fmt.html#name-Stringer">Stringer</a></span>
+			<input type='checkbox' checked class="showhide" id="mapType-showhide-impls"><i><label for="mapType-showhide-impls" class="show-inline">/* 2+ unexporteds ... */</label><label for="mapType-showhide-impls" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			 mapType : context.<a href="../context.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			 mapType : runtime.<a href="../runtime.html#name-stringer">stringer</a></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-name" data-popularity="350">	<input type='checkbox' class="fold" id="name-fold-content"><label for="name-fold-content"> <a href="../../use/internal/reflectlite..name^82a35.html">type</a> <a href="../../src/internal/reflectlite/type.go.html#line-160">name</a> <i>(struct)</i></label><span id='name-fold-content-docs' class="fold-docs">
+<span class="md-text">		name is an encoded type name with optional extra data.
+		
+		The first byte is a bit field containing:
+		
+			1&lt;&lt;0 the name is exported
+			1&lt;&lt;1 tag data follows the name
+			1&lt;&lt;2 pkgPath nameOff follows the name and tag
+		
+		The next two bytes are the data length:
+		
+			l := uint16(data[1])&lt;&lt;8 | uint16(data[2])
+		
+		Bytes [3:3+l] are the string data.
+		
+		If tag data follows then bytes 3+l and 3+l+1 are the tag length,
+		with the data following.
+		
+		If the import path follows, then 4 bytes at the end of
+		the data form a nameOff. The import path is only set for concrete
+		methods that are defined in a different package than their type.
+		
+		If a name starts with "*", then the exported bit represents
+		whether the pointed to type is exported.</span>
+
+		<input type='checkbox' class="fold" id="name-fold-fields"><label for="name-fold-fields">Fields (<i>only one, which is unexported</i>)</label><span id='name-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="name-showhide-fields"><i><label for="name-showhide-fields" class="show-inline">/* one unexported ... */</label><label for="name-showhide-fields" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/internal/reflectlite/type.go.html#line-161">bytes</a> <i>*<a href="../builtin.html#name-byte">byte</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="name-fold-methods"><label for="name-fold-methods">Methods (<i>total 7, none are exported</i>)</label><span id='name-fold-methods-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="name-showhide-methods"><i><label for="name-showhide-methods" class="show-inline">/* 7 unexporteds ... */</label><label for="name-showhide-methods" class="hide-inline">/* 7 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs">( name) <a href="../../src/internal/reflectlite/type.go.html#line-164">data</a>(off <a href="../builtin.html#name-int">int</a>, whySafe <a href="../builtin.html#name-string">string</a>) *<a href="../builtin.html#name-byte">byte</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">( name) <a href="../../src/internal/reflectlite/type.go.html#line-176">embedded</a>() <a href="../builtin.html#name-bool">bool</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">( name) <a href="../../src/internal/reflectlite/type.go.html#line-172">hasTag</a>() <a href="../builtin.html#name-bool">bool</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">( name) <a href="../../src/internal/reflectlite/type.go.html#line-168">isExported</a>() <a href="../builtin.html#name-bool">bool</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">( name) <a href="../../src/internal/reflectlite/type.go.html#line-193">name</a>() <a href="../builtin.html#name-string">string</a></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="name-fold-method-readVarint"><label for="name-fold-method-readVarint">( name) <a href="../../src/internal/reflectlite/type.go.html#line-182">readVarint</a>(off <a href="../builtin.html#name-int">int</a>) (<a href="../builtin.html#name-int">int</a>, <a href="../builtin.html#name-int">int</a>)</label><span id='name-fold-method-readVarint-docs' class="fold-docs">
+<span class="md-text">				readVarint parses a varint as encoded by encoding/binary.
+				It returns the number of encoded bytes and the encoded value.</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs">( name) <a href="../../src/internal/reflectlite/type.go.html#line-201">tag</a>() <a href="../builtin.html#name-string">string</a></span></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-nameOff" data-popularity="0">	<span class="nodocs"> <a href="../../use/internal/reflectlite..nameOff^8f94f.html">type</a> <a href="../../src/internal/reflectlite/type.go.html#line-90">nameOff</a> = <a href="abi.html">abi</a>.<a href="abi.html#name-NameOff">NameOff</a> <i>(basic type)</i></span></div><div class="anchor type-res hidden" id="name-ptrType" data-popularity="0">	<input type='checkbox' class="fold" id="ptrType-fold-content"><label for="ptrType-fold-content"> <a href="../../use/internal/reflectlite..ptrType^65142.html">type</a> <a href="../../src/internal/reflectlite/type.go.html#line-129">ptrType</a> = <a href="abi.html">abi</a>.<a href="abi.html#name-PtrType">PtrType</a> <i>(struct)</i></label><span id='ptrType-fold-content-docs' class="fold-docs">
+<span class="md-text">		ptrType represents a pointer type.</span>
+
+</span></div><div class="anchor type-res hidden" id="name-rtype" data-popularity="2175">	<input type='checkbox' class="fold" id="rtype-fold-content"><label for="rtype-fold-content"> <a href="../../use/internal/reflectlite..rtype^db49b.html">type</a> <a href="../../src/internal/reflectlite/type.go.html#line-94">rtype</a> <i>(struct)</i></label><span id='rtype-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="rtype-fold-fields"><label for="rtype-fold-fields">Fields (<i>total 12, all are exported</i>)</label><span id='rtype-fold-fields-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="rtype-fold-field-Type"><label for="rtype-fold-field-Type"><a href="../../src/runtime/type.go.html#line-22">Type</a> <i>*<a href="abi.html">abi</a>.<a href="abi.html#name-Type">Type</a></i></label><span id='rtype-fold-field-Type-docs' class="fold-docs">
+<span class="md-text">				// embedding is okay here (unlike reflect) because none of this is public</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="rtype-fold-field-Align_"><label for="rtype-fold-field-Align_"><a href="../../src/runtime/type.go.html#line-22" class="path-duplicate">Type</a>.<a href="../../src/internal/abi/type.go.html#line-25">Align_</a> <i><a href="../builtin.html#name-uint8">uint8</a></i></label><span id='rtype-fold-field-Align_-docs' class="fold-docs">
+<span class="md-text">				// alignment of variable with this type</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="rtype-fold-field-Equal"><label for="rtype-fold-field-Equal"><a href="../../src/runtime/type.go.html#line-22" class="path-duplicate">Type</a>.<a href="../../src/internal/abi/type.go.html#line-30">Equal</a> <i>func(<a href="../unsafe.html">unsafe</a>.<a href="../unsafe.html#name-Pointer">Pointer</a>, <a href="../unsafe.html">unsafe</a>.<a href="../unsafe.html#name-Pointer">Pointer</a>) <a href="../builtin.html#name-bool">bool</a></i></label><span id='rtype-fold-field-Equal-docs' class="fold-docs">
+<span class="md-text">				function for comparing objects of this type
+				(ptr to object A, ptr to object B) -&gt; ==?</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="rtype-fold-field-FieldAlign_"><label for="rtype-fold-field-FieldAlign_"><a href="../../src/runtime/type.go.html#line-22" class="path-duplicate">Type</a>.<a href="../../src/internal/abi/type.go.html#line-26">FieldAlign_</a> <i><a href="../builtin.html#name-uint8">uint8</a></i></label><span id='rtype-fold-field-FieldAlign_-docs' class="fold-docs">
+<span class="md-text">				// alignment of struct field with this type</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="rtype-fold-field-GCData"><label for="rtype-fold-field-GCData"><a href="../../src/runtime/type.go.html#line-22" class="path-duplicate">Type</a>.<a href="../../src/internal/abi/type.go.html#line-34">GCData</a> <i>*<a href="../builtin.html#name-byte">byte</a></i></label><span id='rtype-fold-field-GCData-docs' class="fold-docs">
+<span class="md-text">				GCData stores the GC type data for the garbage collector.
+				If the KindGCProg bit is set in kind, GCData is a GC program.
+				Otherwise it is a ptrmask bitmap. See mbitmap.go for details.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="rtype-fold-field-Hash"><label for="rtype-fold-field-Hash"><a href="../../src/runtime/type.go.html#line-22" class="path-duplicate">Type</a>.<a href="../../src/internal/abi/type.go.html#line-23">Hash</a> <i><a href="../builtin.html#name-uint32">uint32</a></i></label><span id='rtype-fold-field-Hash-docs' class="fold-docs">
+<span class="md-text">				// hash of type; avoids computation in hash tables</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="rtype-fold-field-Kind_"><label for="rtype-fold-field-Kind_"><a href="../../src/runtime/type.go.html#line-22" class="path-duplicate">Type</a>.<a href="../../src/internal/abi/type.go.html#line-27">Kind_</a> <i><a href="../builtin.html#name-uint8">uint8</a></i></label><span id='rtype-fold-field-Kind_-docs' class="fold-docs">
+<span class="md-text">				// enumeration for C</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="rtype-fold-field-PtrBytes"><label for="rtype-fold-field-PtrBytes"><a href="../../src/runtime/type.go.html#line-22" class="path-duplicate">Type</a>.<a href="../../src/internal/abi/type.go.html#line-22">PtrBytes</a> <i><a href="../builtin.html#name-uintptr">uintptr</a></i></label><span id='rtype-fold-field-PtrBytes-docs' class="fold-docs">
+<span class="md-text">				// number of (prefix) bytes in the type that can contain pointers</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="rtype-fold-field-PtrToThis"><label for="rtype-fold-field-PtrToThis"><a href="../../src/runtime/type.go.html#line-22" class="path-duplicate">Type</a>.<a href="../../src/internal/abi/type.go.html#line-36">PtrToThis</a> <i><a href="abi.html">abi</a>.<a href="abi.html#name-TypeOff">TypeOff</a></i></label><span id='rtype-fold-field-PtrToThis-docs' class="fold-docs">
+<span class="md-text">				// type for pointer to this type, may be zero</span>
+</span></span><span>
+			<span class="nodocs"><a href="../../src/runtime/type.go.html#line-22" class="path-duplicate">Type</a>.<a href="../../src/internal/abi/type.go.html#line-21">Size_</a> <i><a href="../builtin.html#name-uintptr">uintptr</a></i></span></span><span>
+			<input type='checkbox' class="fold" id="rtype-fold-field-Str"><label for="rtype-fold-field-Str"><a href="../../src/runtime/type.go.html#line-22" class="path-duplicate">Type</a>.<a href="../../src/internal/abi/type.go.html#line-35">Str</a> <i><a href="abi.html">abi</a>.<a href="abi.html#name-NameOff">NameOff</a></i></label><span id='rtype-fold-field-Str-docs' class="fold-docs">
+<span class="md-text">				// string form</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="rtype-fold-field-TFlag"><label for="rtype-fold-field-TFlag"><a href="../../src/runtime/type.go.html#line-22" class="path-duplicate">Type</a>.<a href="../../src/internal/abi/type.go.html#line-24">TFlag</a> <i><a href="abi.html">abi</a>.<a href="abi.html#name-TFlag">TFlag</a></i></label><span id='rtype-fold-field-TFlag-docs' class="fold-docs">
+<span class="md-text">				// extra type information flags</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="rtype-fold-methods"><label for="rtype-fold-methods">Methods (<i>total 38, in which 33 are exported</i>)</label><span id='rtype-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="rtype-fold-method-Align"><label for="rtype-fold-method-Align">( rtype) <a href="../../src/internal/abi/type.go.html#line-417">Align</a>() <a href="../builtin.html#name-int">int</a></label><span id='rtype-fold-method-Align-docs' class="fold-docs">
+<span class="md-text">				Align returns the alignment of data with type t.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="rtype-fold-method-ArrayType"><label for="rtype-fold-method-ArrayType">( rtype) <a href="../../src/internal/abi/type.go.html#line-390">ArrayType</a>() *<a href="abi.html">abi</a>.<a href="abi.html#name-ArrayType">ArrayType</a></label><span id='rtype-fold-method-ArrayType-docs' class="fold-docs">
+<span class="md-text">				ArrayType returns t cast to a *ArrayType, or nil if its tag does not match.</span>
+</span></span><span>
+			<span class="nodocs">( rtype) <a href="../../src/internal/reflectlite/type.go.html#line-417">AssignableTo</a>(u <a href="#name-Type">Type</a>) <a href="../builtin.html#name-bool">bool</a></span></span><span>
+			<input type='checkbox' class="fold" id="rtype-fold-method-ChanDir"><label for="rtype-fold-method-ChanDir">( rtype) <a href="../../src/internal/abi/type.go.html#line-284">ChanDir</a>() <a href="abi.html">abi</a>.<a href="abi.html#name-ChanDir">ChanDir</a></label><span id='rtype-fold-method-ChanDir-docs' class="fold-docs">
+<span class="md-text">				ChanDir returns the direction of t if t is a channel type, otherwise InvalidDir (0).</span>
+</span></span><span>
+			<span class="nodocs">( rtype) <a href="../../src/internal/abi/type.go.html#line-258">Common</a>() *<a href="abi.html">abi</a>.<a href="abi.html#name-Type">Type</a></span></span><span>
+			<span class="nodocs">( rtype) <a href="../../src/internal/reflectlite/type.go.html#line-426">Comparable</a>() <a href="../builtin.html#name-bool">bool</a></span></span><span>
+			<span class="nodocs">( rtype) <a href="../../src/internal/reflectlite/type.go.html#line-327">Elem</a>() <a href="#name-Type">Type</a></span></span><span>
+			<span class="nodocs">( rtype) <a href="../../src/internal/abi/type.go.html#line-427">ExportedMethods</a>() []<a href="abi.html">abi</a>.<a href="abi.html#name-Method">Method</a></span></span><span>
+			<span class="nodocs">( rtype) <a href="../../src/internal/abi/type.go.html#line-419">FieldAlign</a>() <a href="../builtin.html#name-int">int</a></span></span><span>
+			<input type='checkbox' class="fold" id="rtype-fold-method-FuncType"><label for="rtype-fold-method-FuncType">( rtype) <a href="../../src/internal/abi/type.go.html#line-398">FuncType</a>() *<a href="abi.html">abi</a>.<a href="abi.html#name-FuncType">FuncType</a></label><span id='rtype-fold-method-FuncType-docs' class="fold-docs">
+<span class="md-text">				FuncType returns t cast to a *FuncType, or nil if its tag does not match.</span>
+</span></span><span>
+			<span class="nodocs">( rtype) <a href="../../src/internal/abi/type.go.html#line-187">GcSlice</a>(begin, end <a href="../builtin.html#name-uintptr">uintptr</a>) []<a href="../builtin.html#name-byte">byte</a></span></span><span>
+			<span class="nodocs">( rtype) <a href="../../src/internal/abi/type.go.html#line-171">HasName</a>() <a href="../builtin.html#name-bool">bool</a></span></span><span>
+			<input type='checkbox' class="fold" id="rtype-fold-method-IfaceIndir"><label for="rtype-fold-method-IfaceIndir">( rtype) <a href="../../src/internal/abi/type.go.html#line-178">IfaceIndir</a>() <a href="../builtin.html#name-bool">bool</a></label><span id='rtype-fold-method-IfaceIndir-docs' class="fold-docs">
+<span class="md-text">				IfaceIndir reports whether t is stored indirectly in an interface value.</span>
+</span></span><span>
+			<span class="nodocs">( rtype) <a href="../../src/internal/reflectlite/type.go.html#line-407">Implements</a>(u <a href="#name-Type">Type</a>) <a href="../builtin.html#name-bool">bool</a></span></span><span>
+			<span class="nodocs">( rtype) <a href="../../src/internal/reflectlite/type.go.html#line-331">In</a>(i <a href="../builtin.html#name-int">int</a>) <a href="#name-Type">Type</a></span></span><span>
+			<input type='checkbox' class="fold" id="rtype-fold-method-InterfaceType"><label for="rtype-fold-method-InterfaceType">( rtype) <a href="../../src/internal/abi/type.go.html#line-406">InterfaceType</a>() *<a href="abi.html">abi</a>.<a href="abi.html#name-InterfaceType">InterfaceType</a></label><span id='rtype-fold-method-InterfaceType-docs' class="fold-docs">
+<span class="md-text">				InterfaceType returns t cast to a *InterfaceType, or nil if its tag does not match.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="rtype-fold-method-IsDirectIface"><label for="rtype-fold-method-IsDirectIface">( rtype) <a href="../../src/internal/abi/type.go.html#line-183">IsDirectIface</a>() <a href="../builtin.html#name-bool">bool</a></label><span id='rtype-fold-method-IsDirectIface-docs' class="fold-docs">
+<span class="md-text">				isDirectIface reports whether t is stored directly in an interface value.</span>
+</span></span><span>
+			<span class="nodocs">( rtype) <a href="../../src/internal/reflectlite/type.go.html#line-339">Key</a>() <a href="#name-Type">Type</a></span></span><span>
+			<span class="nodocs">( rtype) <a href="../../src/internal/abi/type.go.html#line-169">Kind</a>() <a href="abi.html">abi</a>.<a href="abi.html#name-Kind">Kind</a></span></span><span>
+			<span class="nodocs">( rtype) <a href="../../src/internal/reflectlite/type.go.html#line-347">Len</a>() <a href="../builtin.html#name-int">int</a></span></span><span>
+			<input type='checkbox' class="fold" id="rtype-fold-method-MapType"><label for="rtype-fold-method-MapType">( rtype) <a href="../../src/internal/abi/type.go.html#line-382">MapType</a>() *<a href="abi.html">abi</a>.<a href="abi.html#name-MapType">MapType</a></label><span id='rtype-fold-method-MapType-docs' class="fold-docs">
+<span class="md-text">				MapType returns t cast to a *MapType, or nil if its tag does not match.</span>
+</span></span><span>
+			<span class="nodocs">( rtype) <a href="../../src/internal/reflectlite/type.go.html#line-296">Name</a>() <a href="../builtin.html#name-string">string</a></span></span><span>
+			<span class="nodocs">( rtype) <a href="../../src/internal/reflectlite/type.go.html#line-355">NumField</a>() <a href="../builtin.html#name-int">int</a></span></span><span>
+			<span class="nodocs">( rtype) <a href="../../src/internal/reflectlite/type.go.html#line-363">NumIn</a>() <a href="../builtin.html#name-int">int</a></span></span><span>
+			<span class="nodocs">( rtype) <a href="../../src/internal/reflectlite/type.go.html#line-277">NumMethod</a>() <a href="../builtin.html#name-int">int</a></span></span><span>
+			<span class="nodocs">( rtype) <a href="../../src/internal/reflectlite/type.go.html#line-371">NumOut</a>() <a href="../builtin.html#name-int">int</a></span></span><span>
+			<span class="nodocs">( rtype) <a href="../../src/internal/reflectlite/type.go.html#line-379">Out</a>(i <a href="../builtin.html#name-int">int</a>) <a href="#name-Type">Type</a></span></span><span>
+			<span class="nodocs">( rtype) <a href="../../src/internal/reflectlite/type.go.html#line-285">PkgPath</a>() <a href="../builtin.html#name-string">string</a></span></span><span>
+			<span class="nodocs">( rtype) <a href="../../src/internal/abi/type.go.html#line-175">Pointers</a>() <a href="../builtin.html#name-bool">bool</a></span></span><span>
+			<input type='checkbox' class="fold" id="rtype-fold-method-Size"><label for="rtype-fold-method-Size">( rtype) <a href="../../src/internal/abi/type.go.html#line-414">Size</a>() <a href="../builtin.html#name-uintptr">uintptr</a></label><span id='rtype-fold-method-Size-docs' class="fold-docs">
+<span class="md-text">				Size returns the size of data with type t.</span>
+</span></span><span>
+			<span class="nodocs">( rtype) <a href="../../src/internal/reflectlite/type.go.html#line-259">String</a>() <a href="../builtin.html#name-string">string</a></span></span><span>
+			<input type='checkbox' class="fold" id="rtype-fold-method-StructType"><label for="rtype-fold-method-StructType">( rtype) <a href="../../src/internal/abi/type.go.html#line-374">StructType</a>() *<a href="abi.html">abi</a>.<a href="abi.html#name-StructType">StructType</a></label><span id='rtype-fold-method-StructType-docs' class="fold-docs">
+<span class="md-text">				StructType returns t cast to a *StructType, or nil if its tag does not match.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="rtype-fold-method-Uncommon"><label for="rtype-fold-method-Uncommon">( rtype) <a href="../../src/internal/abi/type.go.html#line-293">Uncommon</a>() *<a href="abi.html">abi</a>.<a href="abi.html#name-UncommonType">UncommonType</a></label><span id='rtype-fold-method-Uncommon-docs' class="fold-docs">
+<span class="md-text">				Uncommon returns a pointer to T's "uncommon" data if there is any, otherwise nil</span>
+</span></span>
+			<input type='checkbox' checked class="showhide" id="rtype-showhide-methods"><i><label for="rtype-showhide-methods" class="show-inline">/* 5 unexporteds ... */</label><label for="rtype-showhide-methods" class="hide-inline">/* 5 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs">( rtype) <a href="../../src/internal/reflectlite/type.go.html#line-267">common</a>() *<a href="abi.html">abi</a>.<a href="abi.html#name-Type">Type</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">( rtype) <a href="../../src/internal/reflectlite/type.go.html#line-269">exportedMethods</a>() []<a href="abi.html">abi</a>.<a href="abi.html#name-Method">Method</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">( rtype) <a href="../../src/internal/reflectlite/type.go.html#line-247">nameOff</a>(off <a href="#name-nameOff">nameOff</a>) <a href="abi.html">abi</a>.<a href="abi.html#name-Name">Name</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">( rtype) <a href="../../src/internal/reflectlite/type.go.html#line-251">typeOff</a>(off <a href="#name-typeOff">typeOff</a>) *<a href="abi.html">abi</a>.<a href="abi.html#name-Type">Type</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">( rtype) <a href="../../src/internal/reflectlite/type.go.html#line-255">uncommon</a>() *<a href="#name-uncommonType">uncommonType</a></span></i></span></span>
+		<input type='checkbox' class="fold" id="rtype-fold-impls"><label for="rtype-fold-impls">Implements (<i>at least 4, in which 2 are exported</i>)</label><span id='rtype-fold-impls-items' class="fold-items"><span>
+			 rtype : <a href="#name-Type">Type</a></span><span>
+			 rtype : fmt.<a href="../fmt.html#name-Stringer">Stringer</a></span>
+			<input type='checkbox' checked class="showhide" id="rtype-showhide-impls"><i><label for="rtype-showhide-impls" class="show-inline">/* 2+ unexporteds ... */</label><label for="rtype-showhide-impls" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			 rtype : context.<a href="../context.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			 rtype : runtime.<a href="../runtime.html#name-stringer">stringer</a></i></span></span>
+		<input type='checkbox' class="fold" id="rtype-fold-results"><label for="rtype-fold-results">As Outputs Of (<i>at least one unexported</i>)</label><span id='rtype-fold-results-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="rtype-showhide-inputofs"><i><label for="rtype-showhide-inputofs" class="show-inline">/* at least one unexported ... */</label><label for="rtype-showhide-inputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func <a href="#name-toRType">toRType</a>(t *<a href="abi.html">abi</a>.<a href="abi.html#name-Type">Type</a>) <b>rtype</b></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-sliceType" data-popularity="0">	<input type='checkbox' class="fold" id="sliceType-fold-content"><label for="sliceType-fold-content"> <a href="../../use/internal/reflectlite..sliceType^012ca.html">type</a> <a href="../../src/internal/reflectlite/type.go.html#line-132">sliceType</a> = <a href="abi.html">abi</a>.<a href="abi.html#name-SliceType">SliceType</a> <i>(struct)</i></label><span id='sliceType-fold-content-docs' class="fold-docs">
+<span class="md-text">		sliceType represents a slice type.</span>
+
+</span></div><div class="anchor type-res hidden" id="name-structType" data-popularity="0">	<input type='checkbox' class="fold" id="structType-fold-content"><label for="structType-fold-content"> <a href="../../use/internal/reflectlite..structType^4a0e8.html">type</a> <a href="../../src/internal/reflectlite/type.go.html#line-135">structType</a> = <a href="abi.html">abi</a>.<a href="abi.html#name-StructType">StructType</a> <i>(struct)</i></label><span id='structType-fold-content-docs' class="fold-docs">
+<span class="md-text">		structType represents a struct type.</span>
+
+</span></div><div class="anchor type-res hidden" id="name-textOff" data-popularity="0">	<span class="nodocs"> <a href="../../use/internal/reflectlite..textOff^9c5ed.html">type</a> <a href="../../src/internal/reflectlite/type.go.html#line-92">textOff</a> = <a href="abi.html">abi</a>.<a href="abi.html#name-TextOff">TextOff</a> <i>(basic type)</i></span></div><div class="anchor type-res hidden" id="name-typeOff" data-popularity="0">	<span class="nodocs"> <a href="../../use/internal/reflectlite..typeOff^691f5.html">type</a> <a href="../../src/internal/reflectlite/type.go.html#line-91">typeOff</a> = <a href="abi.html">abi</a>.<a href="abi.html#name-TypeOff">TypeOff</a> <i>(basic type)</i></span></div><div class="anchor type-res hidden" id="name-uncommonType" data-popularity="0">	<input type='checkbox' class="fold" id="uncommonType-fold-content"><label for="uncommonType-fold-content"> <a href="../../use/internal/reflectlite..uncommonType^89fb4.html">type</a> <a href="../../src/internal/reflectlite/type.go.html#line-102">uncommonType</a> = <a href="abi.html">abi</a>.<a href="abi.html#name-UncommonType">UncommonType</a> <i>(struct)</i></label><span id='uncommonType-fold-content-docs' class="fold-docs">
+<span class="md-text">		uncommonType is present only for defined types or types with methods
+		(if T is a defined type, the uncommonTypes for T and *T have methods).
+		Using a pointer to this struct reduces the overall size required
+		to describe a non-defined type with no methods.</span>
+
+</span></div></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 27, in which 3 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-Swapper">	<input type='checkbox' class="fold" id="Swapper-fold-content"><label for="Swapper-fold-content"> <a href="../../use/internal/reflectlite..Swapper.html">func</a> <a href="../../src/internal/reflectlite/swapper.go.html#line-17">Swapper</a>(slice <a href="../builtin.html#name-any">any</a>) func(i, j <a href="../builtin.html#name-int">int</a>)</label><span id='Swapper-fold-content-docs' class="fold-docs">
+<span class="md-text">		Swapper returns a function that swaps the elements in the provided
+		slice.
+		
+		Swapper panics if the provided interface is not a slice.</span>
+
+</span></div><div class="anchor value-res" id="name-TypeOf">	<input type='checkbox' class="fold" id="TypeOf-fold-content"><label for="TypeOf-fold-content"> <a href="../../use/internal/reflectlite..TypeOf.html">func</a> <a href="../../src/internal/reflectlite/type.go.html#line-400">TypeOf</a>(i <a href="../builtin.html#name-any">any</a>) <a href="#name-Type">Type</a></label><span id='TypeOf-fold-content-docs' class="fold-docs">
+<span class="md-text">		TypeOf returns the reflection Type that represents the dynamic type of i.
+		If i is a nil interface value, TypeOf returns nil.</span>
+
+</span></div><div class="anchor value-res" id="name-ValueOf">	<input type='checkbox' class="fold" id="ValueOf-fold-content"><label for="ValueOf-fold-content"> <a href="../../use/internal/reflectlite..ValueOf.html">func</a> <a href="../../src/internal/reflectlite/value.go.html#line-411">ValueOf</a>(i <a href="../builtin.html#name-any">any</a>) <a href="#name-Value">Value</a></label><span id='ValueOf-fold-content-docs' class="fold-docs">
+<span class="md-text">		ValueOf returns a new Value initialized to the concrete value
+		stored in the interface i. ValueOf(nil) returns the zero Value.</span>
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-functions-showhide"><i><label for="unexported-functions-showhide" class="show-inline">/* 24 unexporteds ... */</label><label for="unexported-functions-showhide" class="hide-inline">/* 24 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-add"><i>	<input type='checkbox' class="fold" id="add-fold-content"><label for="add-fold-content"> <a href="../../use/internal/reflectlite..add^7e9e5.html">func</a> <a href="../../src/internal/reflectlite/type.go.html#line-394">add</a>(p <a href="../unsafe.html">unsafe</a>.<a href="../unsafe.html#name-Pointer">Pointer</a>, x <a href="../builtin.html#name-uintptr">uintptr</a>, whySafe <a href="../builtin.html#name-string">string</a>) <a href="../unsafe.html">unsafe</a>.<a href="../unsafe.html#name-Pointer">Pointer</a></label><span id='add-fold-content-docs' class="fold-docs">
+<span class="md-text">		add returns p+x.
+		
+		The whySafe string is ignored, so that the function still inlines
+		as efficiently as p+x, but all call sites should use the string to
+		record why the addition is safe, which is to say why the addition
+		does not cause x to advance to the very end of p's allocation
+		and therefore point incorrectly at the next block in memory.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-arrayAt"><i>	<input type='checkbox' class="fold" id="arrayAt-fold-content"><label for="arrayAt-fold-content"> <a href="../../use/internal/reflectlite..arrayAt^9194f.html">func</a> <a href="../../src/internal/reflectlite/value.go.html#line-464">arrayAt</a>(p <a href="../unsafe.html">unsafe</a>.<a href="../unsafe.html#name-Pointer">Pointer</a>, i <a href="../builtin.html#name-int">int</a>, eltSize <a href="../builtin.html#name-uintptr">uintptr</a>, whySafe <a href="../builtin.html#name-string">string</a>) <a href="../unsafe.html">unsafe</a>.<a href="../unsafe.html#name-Pointer">Pointer</a></label><span id='arrayAt-fold-content-docs' class="fold-docs">
+<span class="md-text">		arrayAt returns the i-th element of p,
+		an array whose elements are eltSize bytes wide.
+		The array pointed at by p must have at least i+1 elements:
+		it is invalid (but impossible to check here) to pass i &gt;= len,
+		because then the result will point outside the array.
+		whySafe must explain why i &lt; len. (Passing "i &lt; len" is fine;
+		the benefit is to surface this assumption at the call site.)</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-chanlen"><i>	<span class="nodocs"> <a href="../../use/internal/reflectlite..chanlen^4c5b7.html">func</a> <a href="../../src/internal/reflectlite/value.go.html#line-337">chanlen</a>(<a href="../unsafe.html">unsafe</a>.<a href="../unsafe.html#name-Pointer">Pointer</a>) <a href="../builtin.html#name-int">int</a></span></i></div><div class="anchor value-res hidden" id="name-directlyAssignable"><i>	<input type='checkbox' class="fold" id="directlyAssignable-fold-content"><label for="directlyAssignable-fold-content"> <a href="../../use/internal/reflectlite..directlyAssignable^36d25.html">func</a> <a href="../../src/internal/reflectlite/type.go.html#line-522">directlyAssignable</a>(T, V *<a href="abi.html">abi</a>.<a href="abi.html#name-Type">Type</a>) <a href="../builtin.html#name-bool">bool</a></label><span id='directlyAssignable-fold-content-docs' class="fold-docs">
+<span class="md-text">		directlyAssignable reports whether a value x of type V can be directly
+		assigned (using memmove) to a value of type T.
+		https://golang.org/doc/go_spec.html#Assignability
+		Ignoring the interface rules (implemented elsewhere)
+		and the ideal constant rules (no ideal constants at run time).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-elem"><i>	<span class="nodocs"> <a href="../../use/internal/reflectlite..elem^7ddcd.html">func</a> <a href="../../src/internal/reflectlite/type.go.html#line-319">elem</a>(t *<a href="abi.html">abi</a>.<a href="abi.html#name-Type">Type</a>) *<a href="abi.html">abi</a>.<a href="abi.html#name-Type">Type</a></span></i></div><div class="anchor value-res hidden" id="name-escapes"><i>	<input type='checkbox' class="fold" id="escapes-fold-content"><label for="escapes-fold-content"> <a href="../../use/internal/reflectlite..escapes^5e7d9.html">func</a> <a href="../../src/internal/reflectlite/value.go.html#line-478">escapes</a>(x <a href="../builtin.html#name-any">any</a>)</label><span id='escapes-fold-content-docs' class="fold-docs">
+<span class="md-text">		Dummy annotation marking that the value x escapes,
+		for use in cases where the reflect code is so clever that
+		the compiler cannot follow.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-haveIdenticalType"><i>	<span class="nodocs"> <a href="../../use/internal/reflectlite..haveIdenticalType^de4e5.html">func</a> <a href="../../src/internal/reflectlite/type.go.html#line-538">haveIdenticalType</a>(T, V *<a href="abi.html">abi</a>.<a href="abi.html#name-Type">Type</a>, cmpTags <a href="../builtin.html#name-bool">bool</a>) <a href="../builtin.html#name-bool">bool</a></span></i></div><div class="anchor value-res hidden" id="name-haveIdenticalUnderlyingType"><i>	<span class="nodocs"> <a href="../../use/internal/reflectlite..haveIdenticalUnderlyingType^da9ac.html">func</a> <a href="../../src/internal/reflectlite/type.go.html#line-550">haveIdenticalUnderlyingType</a>(T, V *<a href="abi.html">abi</a>.<a href="abi.html#name-Type">Type</a>, cmpTags <a href="../builtin.html#name-bool">bool</a>) <a href="../builtin.html#name-bool">bool</a></span></i></div><div class="anchor value-res hidden" id="name-ifaceE2I"><i>	<span class="nodocs"> <a href="../../use/internal/reflectlite..ifaceE2I^6aad8.html">func</a> <a href="../../src/internal/reflectlite/value.go.html#line-468">ifaceE2I</a>(t *<a href="abi.html">abi</a>.<a href="abi.html#name-Type">Type</a>, src <a href="../builtin.html#name-any">any</a>, dst <a href="../unsafe.html">unsafe</a>.<a href="../unsafe.html#name-Pointer">Pointer</a>)</span></i></div><div class="anchor value-res hidden" id="name-ifaceIndir"><i>	<input type='checkbox' class="fold" id="ifaceIndir-fold-content"><label for="ifaceIndir-fold-content"> <a href="../../use/internal/reflectlite..ifaceIndir^ad846.html">func</a> <a href="../../src/internal/reflectlite/type.go.html#line-663">ifaceIndir</a>(t *<a href="abi.html">abi</a>.<a href="abi.html#name-Type">Type</a>) <a href="../builtin.html#name-bool">bool</a></label><span id='ifaceIndir-fold-content-docs' class="fold-docs">
+<span class="md-text">		ifaceIndir reports whether t is stored indirectly in an interface value.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-implements"><i>	<input type='checkbox' class="fold" id="implements-fold-content"><label for="implements-fold-content"> <a href="../../use/internal/reflectlite..implements^60c1a.html">func</a> <a href="../../src/internal/reflectlite/type.go.html#line-431">implements</a>(T, V *<a href="abi.html">abi</a>.<a href="abi.html#name-Type">Type</a>) <a href="../builtin.html#name-bool">bool</a></label><span id='implements-fold-content-docs' class="fold-docs">
+<span class="md-text">		implements reports whether the type V implements the interface type T.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-maplen"><i>	<span class="nodocs"> <a href="../../use/internal/reflectlite..maplen^1bc76.html">func</a> <a href="../../src/internal/reflectlite/value.go.html#line-340">maplen</a>(<a href="../unsafe.html">unsafe</a>.<a href="../unsafe.html#name-Pointer">Pointer</a>) <a href="../builtin.html#name-int">int</a></span></i></div><div class="anchor value-res hidden" id="name-methodName"><i>	<input type='checkbox' class="fold" id="methodName-fold-content"><label for="methodName-fold-content"> <a href="../../use/internal/reflectlite..methodName^4d82a.html">func</a> <a href="../../src/internal/reflectlite/value.go.html#line-181">methodName</a>() <a href="../builtin.html#name-string">string</a></label><span id='methodName-fold-content-docs' class="fold-docs">
+<span class="md-text">		methodName returns the name of the calling method,
+		assumed to be two stack frames above.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-noescape"><i>	<span class="nodocs"> <a href="../../use/internal/reflectlite..noescape^fbe54.html">func</a> <a href="../../src/internal/reflectlite/value.go.html#line-490">noescape</a>(p <a href="../unsafe.html">unsafe</a>.<a href="../unsafe.html#name-Pointer">Pointer</a>) <a href="../unsafe.html">unsafe</a>.<a href="../unsafe.html#name-Pointer">Pointer</a></span></i></div><div class="anchor value-res hidden" id="name-packEface"><i>	<input type='checkbox' class="fold" id="packEface-fold-content"><label for="packEface-fold-content"> <a href="../../use/internal/reflectlite..packEface^86133.html">func</a> <a href="../../src/internal/reflectlite/value.go.html#line-113">packEface</a>(v <a href="#name-Value">Value</a>) <a href="../builtin.html#name-any">any</a></label><span id='packEface-fold-content-docs' class="fold-docs">
+<span class="md-text">		packEface converts v to the empty interface.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-pkgPath"><i>	<span class="nodocs"> <a href="../../use/internal/reflectlite..pkgPath^06905.html">func</a> <a href="../../src/internal/reflectlite/type.go.html#line-210">pkgPath</a>(n <a href="abi.html">abi</a>.<a href="abi.html#name-Name">Name</a>) <a href="../builtin.html#name-string">string</a></span></i></div><div class="anchor value-res hidden" id="name-resolveNameOff"><i>	<input type='checkbox' class="fold" id="resolveNameOff-fold-content"><label for="resolveNameOff-fold-content"> <a href="../../use/internal/reflectlite..resolveNameOff^922d0.html">func</a> <a href="../../src/internal/reflectlite/type.go.html#line-238">resolveNameOff</a>(ptrInModule <a href="../unsafe.html">unsafe</a>.<a href="../unsafe.html#name-Pointer">Pointer</a>, off <a href="../builtin.html#name-int32">int32</a>) <a href="../unsafe.html">unsafe</a>.<a href="../unsafe.html#name-Pointer">Pointer</a></label><span id='resolveNameOff-fold-content-docs' class="fold-docs">
+<span class="md-text">		resolveNameOff resolves a name offset from a base pointer.
+		The (*rtype).nameOff method is a convenience wrapper for this function.
+		Implemented in the runtime package.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-resolveTypeOff"><i>	<input type='checkbox' class="fold" id="resolveTypeOff-fold-content"><label for="resolveTypeOff-fold-content"> <a href="../../use/internal/reflectlite..resolveTypeOff^de122.html">func</a> <a href="../../src/internal/reflectlite/type.go.html#line-245">resolveTypeOff</a>(rtype <a href="../unsafe.html">unsafe</a>.<a href="../unsafe.html#name-Pointer">Pointer</a>, off <a href="../builtin.html#name-int32">int32</a>) <a href="../unsafe.html">unsafe</a>.<a href="../unsafe.html#name-Pointer">Pointer</a></label><span id='resolveTypeOff-fold-content-docs' class="fold-docs">
+<span class="md-text">		resolveTypeOff resolves an *rtype offset from a base type.
+		The (*rtype).typeOff method is a convenience wrapper for this function.
+		Implemented in the runtime package.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-toRType"><i>	<span class="nodocs"> <a href="../../use/internal/reflectlite..toRType^fa578.html">func</a> <a href="../../src/internal/reflectlite/type.go.html#line-315">toRType</a>(t *<a href="abi.html">abi</a>.<a href="abi.html#name-Type">Type</a>) <a href="#name-rtype">rtype</a></span></i></div><div class="anchor value-res hidden" id="name-toType"><i>	<input type='checkbox' class="fold" id="toType-fold-content"><label for="toType-fold-content"> <a href="../../use/internal/reflectlite..toType^8f4b5.html">func</a> <a href="../../src/internal/reflectlite/type.go.html#line-655">toType</a>(t *<a href="abi.html">abi</a>.<a href="abi.html#name-Type">Type</a>) <a href="#name-Type">Type</a></label><span id='toType-fold-content-docs' class="fold-docs">
+<span class="md-text">		toType converts from a *rtype to a Type that can be returned
+		to the client of package reflect. In gc, the only concern is that
+		a nil *rtype must be replaced by a nil Type, but in gccgo this
+		function takes care of ensuring that multiple *rtype for the same
+		type are coalesced into a single Type.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-typedmemmove"><i>	<input type='checkbox' class="fold" id="typedmemmove-fold-content"><label for="typedmemmove-fold-content"> <a href="../../use/internal/reflectlite..typedmemmove^b547a.html">func</a> <a href="../../src/internal/reflectlite/value.go.html#line-473">typedmemmove</a>(t *<a href="abi.html">abi</a>.<a href="abi.html#name-Type">Type</a>, dst, src <a href="../unsafe.html">unsafe</a>.<a href="../unsafe.html#name-Pointer">Pointer</a>)</label><span id='typedmemmove-fold-content-docs' class="fold-docs">
+<span class="md-text">		typedmemmove copies a value of type t to dst from src.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-unpackEface"><i>	<input type='checkbox' class="fold" id="unpackEface-fold-content"><label for="unpackEface-fold-content"> <a href="../../use/internal/reflectlite..unpackEface^99370.html">func</a> <a href="../../src/internal/reflectlite/value.go.html#line-150">unpackEface</a>(i <a href="../builtin.html#name-any">any</a>) <a href="#name-Value">Value</a></label><span id='unpackEface-fold-content-docs' class="fold-docs">
+<span class="md-text">		unpackEface converts the empty interface i to a Value.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-unsafe_New"><i>	<span class="nodocs"> <a href="../../use/internal/reflectlite..unsafe_New^04130.html">func</a> <a href="../../src/internal/reflectlite/value.go.html#line-407">unsafe_New</a>(*<a href="abi.html">abi</a>.<a href="abi.html#name-Type">Type</a>) <a href="../unsafe.html">unsafe</a>.<a href="../unsafe.html#name-Pointer">Pointer</a></span></i></div><div class="anchor value-res hidden" id="name-valueInterface"><i>	<span class="nodocs"> <a href="../../use/internal/reflectlite..valueInterface^22a70.html">func</a> <a href="../../src/internal/reflectlite/value.go.html#line-271">valueInterface</a>(v <a href="#name-Value">Value</a>) <a href="../builtin.html#name-any">any</a></span></i></div></div>
+<div id="exported-variables"><span class="title">Package-Level Variables<span class="title-stat"><i> (only one, which is unexported)</i></span></span>
+
+	<input type='checkbox' class="showhide" id="unexported-variables-showhide"><i><label for="unexported-variables-showhide" class="show-inline">/* one unexported ... */</label><label for="unexported-variables-showhide" class="hide-inline">/* one unexported: */</label></i><div class="anchor value-res hidden" id="name-dummy"><i>	<span class="nodocs">  <a href="../../use/internal/reflectlite..dummy^b5a2c.html">var</a> <a href="../../src/internal/reflectlite/value.go.html#line-484">dummy</a> struct{b <a href="../builtin.html#name-bool">bool</a>; x <a href="../builtin.html#name-any">any</a>}</span></i></div></div>
+<div id="exported-constants"><span class="title">Package-Level Constants<span class="title-stat"><i> (total 14, in which 5 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-Interface">	<input type='checkbox' class="fold" id="Interface-fold-content"><label for="Interface-fold-content"><a href="../../use/internal/reflectlite..Interface.html">const</a> <a href="../../src/internal/reflectlite/type.go.html#line-84">Interface</a> <a href="abi.html">abi</a>.<a href="abi.html#name-Kind">Kind</a> = 20</label><span id='Interface-fold-content-docs' class="fold-docs">
+<span class="md-text">		Import-and-export these constants as necessary</span>
+
+</span></div><div class="anchor value-res" id="name-Ptr">	<span class="nodocs"><a href="../../use/internal/reflectlite..Ptr.html">const</a> <a href="../../src/internal/reflectlite/type.go.html#line-80">Ptr</a> <a href="abi.html">abi</a>.<a href="abi.html#name-Kind">Kind</a> = 22</span></div><div class="anchor value-res" id="name-Slice">	<span class="nodocs"><a href="../../use/internal/reflectlite..Slice.html">const</a> <a href="../../src/internal/reflectlite/type.go.html#line-85">Slice</a> <a href="abi.html">abi</a>.<a href="abi.html#name-Kind">Kind</a> = 23</span></div><div class="anchor value-res" id="name-String">	<span class="nodocs"><a href="../../use/internal/reflectlite..String.html">const</a> <a href="../../src/internal/reflectlite/type.go.html#line-86">String</a> <a href="abi.html">abi</a>.<a href="abi.html#name-Kind">Kind</a> = 24</span></div><div class="anchor value-res" id="name-Struct">	<span class="nodocs"><a href="../../use/internal/reflectlite..Struct.html">const</a> <a href="../../src/internal/reflectlite/type.go.html#line-87">Struct</a> <a href="abi.html">abi</a>.<a href="abi.html#name-Kind">Kind</a> = 25</span></div>	<input type='checkbox' class="showhide" id="unexported-constants-showhide"><i><label for="unexported-constants-showhide" class="show-inline">/* 9 unexporteds ... */</label><label for="unexported-constants-showhide" class="hide-inline">/* 9 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-flagAddr"><i>	<span class="nodocs"><a href="../../use/internal/reflectlite..flagAddr^f49dd.html">const</a> <a href="../../src/internal/reflectlite/value.go.html#line-74">flagAddr</a> <a href="#name-flag">flag</a> = 256</span></i></div><div class="anchor value-res hidden" id="name-flagEmbedRO"><i>	<span class="nodocs"><a href="../../use/internal/reflectlite..flagEmbedRO^0c986.html">const</a> <a href="../../src/internal/reflectlite/value.go.html#line-72">flagEmbedRO</a> <a href="#name-flag">flag</a> = 64</span></i></div><div class="anchor value-res hidden" id="name-flagIndir"><i>	<span class="nodocs"><a href="../../use/internal/reflectlite..flagIndir^aeda5.html">const</a> <a href="../../src/internal/reflectlite/value.go.html#line-73">flagIndir</a> <a href="#name-flag">flag</a> = 128</span></i></div><div class="anchor value-res hidden" id="name-flagKindMask"><i>	<span class="nodocs"><a href="../../use/internal/reflectlite..flagKindMask^da83c.html">const</a> <a href="../../src/internal/reflectlite/value.go.html#line-70">flagKindMask</a> <a href="#name-flag">flag</a> = 31</span></i></div><div class="anchor value-res hidden" id="name-flagKindWidth"><i>	<span class="nodocs"><a href="../../use/internal/reflectlite..flagKindWidth^67557.html">const</a> <a href="../../src/internal/reflectlite/value.go.html#line-69">flagKindWidth</a> = 5 // <span class="md-text">there are 27 kinds</span></span></i></div><div class="anchor value-res hidden" id="name-flagMethod"><i>	<span class="nodocs"><a href="../../use/internal/reflectlite..flagMethod^7b1bf.html">const</a> <a href="../../src/internal/reflectlite/value.go.html#line-75">flagMethod</a> <a href="#name-flag">flag</a> = 512</span></i></div><div class="anchor value-res hidden" id="name-flagMethodShift"><i>	<span class="nodocs"><a href="../../use/internal/reflectlite..flagMethodShift^263a6.html">const</a> <a href="../../src/internal/reflectlite/value.go.html#line-76">flagMethodShift</a> = 10</span></i></div><div class="anchor value-res hidden" id="name-flagRO"><i>	<span class="nodocs"><a href="../../use/internal/reflectlite..flagRO^790da.html">const</a> <a href="../../src/internal/reflectlite/value.go.html#line-77">flagRO</a> <a href="#name-flag">flag</a> = 96</span></i></div><div class="anchor value-res hidden" id="name-flagStickyRO"><i>	<span class="nodocs"><a href="../../use/internal/reflectlite..flagStickyRO^ce863.html">const</a> <a href="../../src/internal/reflectlite/value.go.html#line-71">flagStickyRO</a> <a href="#name-flag">flag</a> = 32</span></i></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

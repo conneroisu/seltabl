@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: unicode/utf8.RuneStart</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../../pkg/unicode/utf8.html">unicode/utf8</a>.<a href="../../src/unicode/utf8/utf8.go.html#line-474">RuneStart</a></b></span>
+
+<span class="title">7 uses</span>
+
+	unicode/utf8 (current package)
+		<a href="../../src/unicode/utf8/utf8.go.html#line-265">utf8.go#L265</a>: 		if <b>RuneStart</b>(p[start]) {
+		<a href="../../src/unicode/utf8/utf8.go.html#line-305" class="path-duplicate">utf8.go</a><a href="../../src/unicode/utf8/utf8.go.html#line-305">#L305</a>: 		if <b>RuneStart</b>(s[start]) {
+		<a href="../../src/unicode/utf8/utf8.go.html#line-474" class="path-duplicate">utf8.go</a><a href="../../src/unicode/utf8/utf8.go.html#line-474">#L474</a>: func <b>RuneStart</b>(b byte) bool { return b&amp;0xC0 != 0x80 }
+
+	<a href="../../pkg/vendor/golang.org/x/text/unicode/norm.html">vendor/golang.org/x/text/unicode/norm</a>
+		<a href="../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-52">input.go#L52</a>: 		for ; p &lt; len(in.str) &amp;&amp; !utf8.<b>RuneStart</b>(in.str[p]); p++ {
+		<a href="../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-55" class="path-duplicate">input.go</a><a href="../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-55">#L55</a>: 		for ; p &lt; len(in.bytes) &amp;&amp; !utf8.<b>RuneStart</b>(in.bytes[p]); p++ {
+		<a href="../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-187">iter.go#L187</a>: 	for j = 1; j &lt; len(d) &amp;&amp; !utf8.<b>RuneStart</b>(d[j]); j++ {
+		<a href="../../src/vendor/golang.org/x/text/unicode/norm/normalize.go.html#line-558">normalize.go#L558</a>: 	for ; p &gt;= 0 &amp;&amp; !utf8.<b>RuneStart</b>(buf[p]); p-- {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

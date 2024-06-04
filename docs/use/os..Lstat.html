@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: os.Lstat</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/os.html">os</a>.<a href="../src/os/stat.go.html#line-24">Lstat</a></b></span>
+
+<span class="title">10 uses</span>
+
+	os (current package)
+		<a href="../src/os/file.go.html#line-384">file.go#L384</a>: var lstat = <b>Lstat</b>
+		<a href="../src/os/file_unix.go.html#line-26">file_unix.go#L26</a>: 	fi, err := <b>Lstat</b>(newname)
+		<a href="../src/os/file_unix.go.html#line-36" class="path-duplicate">file_unix.go</a><a href="../src/os/file_unix.go.html#line-36">#L36</a>: 		if ofi, err := <b>Lstat</b>(oldname); err != nil {
+		<a href="../src/os/path.go.html#line-58">path.go#L58</a>: 		dir, err1 := <b>Lstat</b>(path)
+		<a href="../src/os/stat.go.html#line-24">stat.go#L24</a>: func <b>Lstat</b>(name string) (FileInfo, error) {
+
+	<a href="../pkg/path/filepath.html">path/filepath</a>
+		<a href="../src/path/filepath/match.go.html#line-258">match.go#L258</a>: 		if _, err = os.<b>Lstat</b>(pattern); err != nil {
+		<a href="../src/path/filepath/path.go.html#line-439">path.go#L439</a>: var lstat = os.<b>Lstat</b> // for testing
+		<a href="../src/path/filepath/path.go.html#line-529" class="path-duplicate">path.go</a><a href="../src/path/filepath/path.go.html#line-529">#L529</a>: 	info, err := os.<b>Lstat</b>(root)
+		<a href="../src/path/filepath/path.go.html#line-556" class="path-duplicate">path.go</a><a href="../src/path/filepath/path.go.html#line-556">#L556</a>: 	info, err := os.<b>Lstat</b>(root)
+		<a href="../src/path/filepath/symlink.go.html#line-84">symlink.go#L84</a>: 		fi, err := os.<b>Lstat</b>(dest)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

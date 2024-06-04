@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: vendor/golang.org/x/text/unicode/norm.Iter.buf</title>
+<link href="../../../../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../../../../../pkg/vendor/golang.org/x/text/unicode/norm.html">vendor/golang.org/x/text/unicode/norm</a>.<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-18">Iter</a>.<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-20">buf</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">29 uses</span>
+
+	vendor/golang.org/x/text/unicode/norm (current package)
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-20">iter.go#L20</a>: 	<b>buf</b>    [maxByteBufferSize]byte
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-99" class="path-duplicate">iter.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-99">#L99</a>: 		return i.<b>buf</b>[:copy(i.<b>buf</b>[:], i.rb.src.str[a:b])]
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-148" class="path-duplicate">iter.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-148">#L148</a>: 		i.<b>buf</b>[0] = i.rb.src.str[i.p]
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-150" class="path-duplicate">iter.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-150">#L150</a>: 		return i.<b>buf</b>[:1]
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-153" class="path-duplicate">iter.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-153">#L153</a>: 		i.<b>buf</b>[0] = i.rb.src.str[i.p]
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-155" class="path-duplicate">iter.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-155">#L155</a>: 		return i.<b>buf</b>[:1]
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-174" class="path-duplicate">iter.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-174">#L174</a>: 	return i.<b>buf</b>[:decomposeHangul(i.<b>buf</b>[:], i.rb.src.hangul(p))]
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-211" class="path-duplicate">iter.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-211">#L211</a>: 			seg := i.<b>buf</b>[:i.rb.flushCopy(i.<b>buf</b>[:])]
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-248" class="path-duplicate">iter.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-248">#L248</a>: 				i.rb.src.copySlice(i.<b>buf</b>[outCopyStart:], inCopyStart, i.p)
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-251" class="path-duplicate">iter.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-251">#L251</a>: 				if p &gt; len(i.<b>buf</b>) {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-252" class="path-duplicate">iter.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-252">#L252</a>: 					return i.<b>buf</b>[:outp]
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-280" class="path-duplicate">iter.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-280">#L280</a>: 					copy(i.<b>buf</b>[outp:], d)
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-281" class="path-duplicate">iter.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-281">#L281</a>: 					return i.<b>buf</b>[:p]
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-285" class="path-duplicate">iter.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-285">#L285</a>: 			copy(i.<b>buf</b>[outp:], d)
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-293" class="path-duplicate">iter.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-293">#L293</a>: 			outp = decomposeHangul(i.<b>buf</b>[:], r)
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-301" class="path-duplicate">iter.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-301">#L301</a>: 				return i.<b>buf</b>[:outp]
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-305" class="path-duplicate">iter.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-305">#L305</a>: 			if p &gt; len(i.<b>buf</b>) {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-330" class="path-duplicate">iter.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-330">#L330</a>: 		i.rb.src.copySlice(i.<b>buf</b>[outCopyStart:], inCopyStart, i.p)
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-332" class="path-duplicate">iter.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-332">#L332</a>: 	return i.<b>buf</b>[:outp]
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-336" class="path-duplicate">iter.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-336">#L336</a>: 	i.rb.src.copySlice(i.<b>buf</b>[outCopyStart:], inCopyStart, i.p)
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-337" class="path-duplicate">iter.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-337">#L337</a>: 	i.rb.insertDecomposed(i.<b>buf</b>[0:outp])
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-358" class="path-duplicate">iter.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-358">#L358</a>: 	return i.<b>buf</b>[:i.rb.flushCopy(i.<b>buf</b>[:])]
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-384" class="path-duplicate">iter.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-384">#L384</a>: 		if p &gt; len(i.<b>buf</b>) {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-444" class="path-duplicate">iter.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-444">#L444</a>: 	seg := i.<b>buf</b>[:i.rb.flushCopy(i.<b>buf</b>[:])]
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

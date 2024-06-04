@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/http.connectMethod.targetScheme</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/net/http.html">net/http</a>.<a href="../../src/net/http/transport.go.html#line-1847">connectMethod</a>.<a href="../../src/net/http/transport.go.html#line-1850">targetScheme</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">8 uses</span>
+
+	net/http (current package)
+		<a href="../../src/net/http/transport.go.html#line-852">transport.go#L852</a>: 	cm.<b>targetScheme</b> = treq.URL.Scheme
+		<a href="../../src/net/http/transport.go.html#line-1686" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-1686">#L1686</a>: 	case cm.<b>targetScheme</b> == "http":
+		<a href="../../src/net/http/transport.go.html#line-1693" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-1693">#L1693</a>: 	case cm.<b>targetScheme</b> == "https":
+		<a href="../../src/net/http/transport.go.html#line-1779" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-1779">#L1779</a>: 	if cm.proxyURL != nil &amp;&amp; cm.<b>targetScheme</b> == "https" {
+		<a href="../../src/net/http/transport.go.html#line-1850" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-1850">#L1850</a>: 	<b>targetScheme</b> string   // "http" or "https"
+		<a href="../../src/net/http/transport.go.html#line-1863" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-1863">#L1863</a>: 		if (cm.proxyURL.Scheme == "http" || cm.proxyURL.Scheme == "https") &amp;&amp; cm.<b>targetScheme</b> == "http" {
+		<a href="../../src/net/http/transport.go.html#line-1869" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-1869">#L1869</a>: 		scheme: cm.<b>targetScheme</b>,
+		<a href="../../src/net/http/transport.go.html#line-1880" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-1880">#L1880</a>: 	return cm.<b>targetScheme</b>
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

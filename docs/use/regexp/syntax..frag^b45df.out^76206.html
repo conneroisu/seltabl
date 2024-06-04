@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: regexp/syntax.frag.out</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/regexp/syntax.html">regexp/syntax</a>.<a href="../../src/regexp/syntax/compile.go.html#line-59">frag</a>.<a href="../../src/regexp/syntax/compile.go.html#line-61">out</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">20 uses</span>
+
+	regexp/syntax (current package)
+		<a href="../../src/regexp/syntax/compile.go.html#line-61">compile.go#L61</a>: 	<b>out</b>      patchList // where to record end instruction
+		<a href="../../src/regexp/syntax/compile.go.html#line-75" class="path-duplicate">compile.go</a><a href="../../src/regexp/syntax/compile.go.html#line-75">#L75</a>: 	f.<b>out</b>.patch(c.p, c.inst(InstMatch).i)
+		<a href="../../src/regexp/syntax/compile.go.html#line-170" class="path-duplicate">compile.go</a><a href="../../src/regexp/syntax/compile.go.html#line-170">#L170</a>: 	f.<b>out</b> = makePatchList(f.i &lt;&lt; 1)
+		<a href="../../src/regexp/syntax/compile.go.html#line-180" class="path-duplicate">compile.go</a><a href="../../src/regexp/syntax/compile.go.html#line-180">#L180</a>: 	f.<b>out</b> = makePatchList(f.i &lt;&lt; 1)
+		<a href="../../src/regexp/syntax/compile.go.html#line-197" class="path-duplicate">compile.go</a><a href="../../src/regexp/syntax/compile.go.html#line-197">#L197</a>: 	f1.<b>out</b>.patch(c.p, f2.i)
+		<a href="../../src/regexp/syntax/compile.go.html#line-198" class="path-duplicate">compile.go</a><a href="../../src/regexp/syntax/compile.go.html#line-198">#L198</a>: 	return frag{f1.i, f2.<b>out</b>, f1.nullable &amp;&amp; f2.nullable}
+		<a href="../../src/regexp/syntax/compile.go.html#line-214" class="path-duplicate">compile.go</a><a href="../../src/regexp/syntax/compile.go.html#line-214">#L214</a>: 	f.<b>out</b> = f1.<b>out</b>.append(c.p, f2.<b>out</b>)
+		<a href="../../src/regexp/syntax/compile.go.html#line-224" class="path-duplicate">compile.go</a><a href="../../src/regexp/syntax/compile.go.html#line-224">#L224</a>: 		f.<b>out</b> = makePatchList(f.i &lt;&lt; 1)
+		<a href="../../src/regexp/syntax/compile.go.html#line-227" class="path-duplicate">compile.go</a><a href="../../src/regexp/syntax/compile.go.html#line-227">#L227</a>: 		f.<b>out</b> = makePatchList(f.i&lt;&lt;1 | 1)
+		<a href="../../src/regexp/syntax/compile.go.html#line-229" class="path-duplicate">compile.go</a><a href="../../src/regexp/syntax/compile.go.html#line-229">#L229</a>: 	f.<b>out</b> = f.<b>out</b>.append(c.p, f1.<b>out</b>)
+		<a href="../../src/regexp/syntax/compile.go.html#line-243" class="path-duplicate">compile.go</a><a href="../../src/regexp/syntax/compile.go.html#line-243">#L243</a>: 		f.<b>out</b> = makePatchList(f.i &lt;&lt; 1)
+		<a href="../../src/regexp/syntax/compile.go.html#line-246" class="path-duplicate">compile.go</a><a href="../../src/regexp/syntax/compile.go.html#line-246">#L246</a>: 		f.<b>out</b> = makePatchList(f.i&lt;&lt;1 | 1)
+		<a href="../../src/regexp/syntax/compile.go.html#line-248" class="path-duplicate">compile.go</a><a href="../../src/regexp/syntax/compile.go.html#line-248">#L248</a>: 	f1.<b>out</b>.patch(c.p, f.i)
+		<a href="../../src/regexp/syntax/compile.go.html#line-262" class="path-duplicate">compile.go</a><a href="../../src/regexp/syntax/compile.go.html#line-262">#L262</a>: 	return frag{f1.i, c.loop(f1, nongreedy).<b>out</b>, f1.nullable}
+		<a href="../../src/regexp/syntax/compile.go.html#line-268" class="path-duplicate">compile.go</a><a href="../../src/regexp/syntax/compile.go.html#line-268">#L268</a>: 	f.<b>out</b> = makePatchList(f.i &lt;&lt; 1)
+		<a href="../../src/regexp/syntax/compile.go.html#line-283" class="path-duplicate">compile.go</a><a href="../../src/regexp/syntax/compile.go.html#line-283">#L283</a>: 	f.<b>out</b> = makePatchList(f.i &lt;&lt; 1)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.gcBits.bitp</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/mheap.go.html#line-2084">gcBits</a>.<a href="../src/runtime/mheap.go.html#line-2096">bitp</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">5 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/mbitmap.go.html#line-77">mbitmap.go#L77</a>: 	bytep, mask := s.allocBits.<b>bitp</b>(allocBitIndex)
+		<a href="../src/runtime/mbitmap.go.html#line-162" class="path-duplicate">mbitmap.go</a><a href="../src/runtime/mbitmap.go.html#line-162">#L162</a>: 	bytep, mask := s.allocBits.<b>bitp</b>(index)
+		<a href="../src/runtime/mbitmap.go.html#line-201" class="path-duplicate">mbitmap.go</a><a href="../src/runtime/mbitmap.go.html#line-201">#L201</a>: 	bytep, mask := s.gcmarkBits.<b>bitp</b>(objIndex)
+		<a href="../src/runtime/mheap.go.html#line-2096">mheap.go#L2096</a>: func (b *gcBits) <b>bitp</b>(n uintptr) (bytep *uint8, mask uint8) {
+		<a href="../src/runtime/pinner.go.html#line-264">pinner.go#L264</a>: 	bytep, mask := (*gcBits)(p).<b>bitp</b>(n * 2)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

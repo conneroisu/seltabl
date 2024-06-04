@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.timer.when</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/time.go.html#line-18">timer</a>.<a href="../src/runtime/time.go.html#line-29">when</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">31 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/time.go.html#line-29">time.go#L29</a>: 	<b>when</b>   int64
+		<a href="../src/runtime/time.go.html#line-261" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-261">#L261</a>: 	if t.<b>when</b> &lt;= 0 {
+		<a href="../src/runtime/time.go.html#line-272" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-272">#L272</a>: 	when := t.<b>when</b>
+		<a href="../src/runtime/time.go.html#line-305" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-305">#L305</a>: 		pp.timer0When.Store(t.<b>when</b>)
+		<a href="../src/runtime/time.go.html#line-505" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-505">#L505</a>: 		t.<b>when</b> = when
+		<a href="../src/runtime/time.go.html#line-524" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-524">#L524</a>: 		if when &lt; t.<b>when</b> {
+		<a href="../src/runtime/time.go.html#line-596" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-596">#L596</a>: 			t.<b>when</b> = t.nextwhen
+		<a href="../src/runtime/time.go.html#line-633" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-633">#L633</a>: 				t.<b>when</b> = t.nextwhen
+		<a href="../src/runtime/time.go.html#line-707" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-707">#L707</a>: 				t.<b>when</b> = t.nextwhen
+		<a href="../src/runtime/time.go.html#line-782" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-782">#L782</a>: 			if t.<b>when</b> &gt; now {
+		<a href="../src/runtime/time.go.html#line-784" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-784">#L784</a>: 				return t.<b>when</b>
+		<a href="../src/runtime/time.go.html#line-812" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-812">#L812</a>: 			t.<b>when</b> = t.nextwhen
+		<a href="../src/runtime/time.go.html#line-856" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-856">#L856</a>: 		delta := t.<b>when</b> - now
+		<a href="../src/runtime/time.go.html#line-857" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-857">#L857</a>: 		t.<b>when</b> += t.period * (1 + -delta/t.period)
+		<a href="../src/runtime/time.go.html#line-858" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-858">#L858</a>: 		if t.<b>when</b> &lt; 0 { // check for overflow.
+		<a href="../src/runtime/time.go.html#line-859" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-859">#L859</a>: 			t.<b>when</b> = maxWhen
+		<a href="../src/runtime/time.go.html#line-926" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-926">#L926</a>: 					t.<b>when</b> = t.nextwhen
+		<a href="../src/runtime/time.go.html#line-992" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-992">#L992</a>: 		if t.<b>when</b> &lt; pp.timers[p].<b>when</b> {
+		<a href="../src/runtime/time.go.html#line-993" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-993">#L993</a>: 			print("bad timer heap at ", i, ": ", p, ": ", pp.timers[p].<b>when</b>, ", ", i, ": ", t.<b>when</b>, "\n")
+		<a href="../src/runtime/time.go.html#line-1009" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-1009">#L1009</a>: 		pp.timer0When.Store(pp.timers[0].<b>when</b>)
+		<a href="../src/runtime/time.go.html#line-1074" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-1074">#L1074</a>: 	when := t[i].<b>when</b>
+		<a href="../src/runtime/time.go.html#line-1081" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-1081">#L1081</a>: 		if when &gt;= t[p].<b>when</b> {
+		<a href="../src/runtime/time.go.html#line-1100" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-1100">#L1100</a>: 	when := t[i].<b>when</b>
+		<a href="../src/runtime/time.go.html#line-1111" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-1111">#L1111</a>: 		w := t[c].<b>when</b>
+		<a href="../src/runtime/time.go.html#line-1112" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-1112">#L1112</a>: 		if c+1 &lt; n &amp;&amp; t[c+1].<b>when</b> &lt; w {
+		<a href="../src/runtime/time.go.html#line-1113" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-1113">#L1113</a>: 			w = t[c+1].<b>when</b>
+		<a href="../src/runtime/time.go.html#line-1117" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-1117">#L1117</a>: 			w3 := t[c3].<b>when</b>
+		<a href="../src/runtime/time.go.html#line-1118" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-1118">#L1118</a>: 			if c3+1 &lt; n &amp;&amp; t[c3+1].<b>when</b> &lt; w3 {
+		<a href="../src/runtime/time.go.html#line-1119" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-1119">#L1119</a>: 				w3 = t[c3+1].<b>when</b>
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

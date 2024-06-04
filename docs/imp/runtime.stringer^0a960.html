@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Method Implmentations: runtime.stringer</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+<pre><code><span style="font-size:x-large;">type <a href="../pkg/runtime.html">runtime</a>.<b><a href="../src/runtime/error.go.html#line-207">stringer</a></b></span><span style="font-size:large;"> <b><i>(interface)</i></b></span>
+
+<code><span class="title">Method Implmentations<span class="title-stat"><i></i></span></span>
+
+<div class="anchor" id="name-String">	<a href="../use/runtime..stringer^0a960.String.html">String</a>() <a href="../pkg/builtin.html#name-string">string</a>
+		*bytes.<a href="../pkg/bytes.html#name-Buffer">Buffer</a>.<b><a href="../src/bytes/buffer.go.html#line-66">String</a></b>
+		crypto.<a href="../pkg/crypto.html#name-Hash">Hash</a>.<b><a href="../src/crypto/crypto.go.html#line-23">String</a></b>
+		crypto/tls.<a href="../pkg/crypto/tls.html#name-ClientAuthType">ClientAuthType</a>.<b><a href="../src/crypto/tls/common_string.go.html#line-111">String</a></b>
+		crypto/tls.<a href="../pkg/crypto/tls.html#name-CurveID">CurveID</a>.<b><a href="../src/crypto/tls/common_string.go.html#line-85">String</a></b>
+		crypto/tls.<a href="../pkg/crypto/tls.html#name-QUICEncryptionLevel">QUICEncryptionLevel</a>.<b><a href="../src/crypto/tls/quic.go.html#line-24">String</a></b>
+		crypto/tls.<a href="../pkg/crypto/tls.html#name-SignatureScheme">SignatureScheme</a>.<b><a href="../src/crypto/tls/common_string.go.html#line-41">String</a></b>
+		crypto/x509.<a href="../pkg/crypto/x509.html#name-OID">OID</a>.<b><a href="../src/crypto/x509/oid.go.html#line-168">String</a></b>
+		crypto/x509.<a href="../pkg/crypto/x509.html#name-PublicKeyAlgorithm">PublicKeyAlgorithm</a>.<b><a href="../src/crypto/x509/x509.go.html#line-270">String</a></b>
+		crypto/x509.<a href="../pkg/crypto/x509.html#name-SignatureAlgorithm">SignatureAlgorithm</a>.<b><a href="../src/crypto/x509/x509.go.html#line-244">String</a></b>
+		crypto/x509/pkix.<a href="../pkg/crypto/x509/pkix.html#name-Name">Name</a>.<b><a href="../src/crypto/x509/pkix/pkix.go.html#line-249">String</a></b>
+		crypto/x509/pkix.<a href="../pkg/crypto/x509/pkix.html#name-RDNSequence">RDNSequence</a>.<b><a href="../src/crypto/x509/pkix/pkix.go.html#line-40">String</a></b>
+		encoding/asn1.<a href="../pkg/encoding/asn1.html#name-ObjectIdentifier">ObjectIdentifier</a>.<b><a href="../src/encoding/asn1/asn1.go.html#line-239">String</a></b>
+		encoding/binary.<a href="../pkg/encoding/binary.html#name-AppendByteOrder">AppendByteOrder</a>.<b><a href="../src/encoding/binary/binary.go.html#line-54">String</a></b>
+		encoding/binary.<a href="../pkg/encoding/binary.html#name-ByteOrder">ByteOrder</a>.<b><a href="../src/encoding/binary/binary.go.html#line-43">String</a></b>
+		fmt.<a href="../pkg/fmt.html#name-Stringer">Stringer</a>.<b><a href="../src/runtime/error.go.html#line-208">String</a></b>
+		github.com/andybalholm/cascadia.<a href="../pkg/github.com/andybalholm/cascadia.html#name-Sel">Sel</a>.<b><a href="../src/github.com/andybalholm/cascadia/selector.go.html#line-23">String</a></b>
+		github.com/andybalholm/cascadia.<a href="../pkg/github.com/andybalholm/cascadia.html#name-SelectorGroup">SelectorGroup</a>.<b><a href="../src/github.com/andybalholm/cascadia/serialize.go.html#line-170">String</a></b>
+		golang.org/x/net/html.<a href="../pkg/golang.org/x/net/html.html#name-Token">Token</a>.<b><a href="../src/golang.org/x/net/html/token.go.html#line-100">String</a></b>
+		golang.org/x/net/html.<a href="../pkg/golang.org/x/net/html.html#name-TokenType">TokenType</a>.<b><a href="../src/golang.org/x/net/html/token.go.html#line-41">String</a></b>
+		golang.org/x/net/html/atom.<a href="../pkg/golang.org/x/net/html/atom.html#name-Atom">Atom</a>.<b><a href="../src/golang.org/x/net/html/atom/atom.go.html#line-24">String</a></b>
+		internal/abi.<a href="../pkg/internal/abi.html#name-Kind">Kind</a>.<b><a href="../src/internal/abi/type.go.html#line-132">String</a></b>
+		*internal/godebug.<a href="../pkg/internal/godebug.html#name-Setting">Setting</a>.<b><a href="../src/internal/godebug/godebug.go.html#line-91">String</a></b>
+		internal/reflectlite.<a href="../pkg/internal/reflectlite.html#name-Type">Type</a>.<b><a href="../src/internal/reflectlite/type.go.html#line-60">String</a></b>
+		io/fs.<a href="../pkg/io/fs.html#name-FileMode">FileMode</a>.<b><a href="../src/io/fs/fs.go.html#line-201">String</a></b>
+		math/big.<a href="../pkg/math/big.html#name-Accuracy">Accuracy</a>.<b><a href="../src/math/big/accuracy_string.go.html#line-20">String</a></b>
+		*math/big.<a href="../pkg/math/big.html#name-Float">Float</a>.<b><a href="../src/math/big/ftoa.go.html#line-57">String</a></b>
+		*math/big.<a href="../pkg/math/big.html#name-Int">Int</a>.<b><a href="../src/math/big/intconv.go.html#line-39">String</a></b>
+		*math/big.<a href="../pkg/math/big.html#name-Rat">Rat</a>.<b><a href="../src/math/big/ratconv.go.html#line-301">String</a></b>
+		math/big.<a href="../pkg/math/big.html#name-RoundingMode">RoundingMode</a>.<b><a href="../src/math/big/roundingmode_string.go.html#line-23">String</a></b>
+		net.<a href="../pkg/net.html#name-Addr">Addr</a>.<b><a href="../src/net/net.go.html#line-103">String</a></b>
+		net.<a href="../pkg/net.html#name-Flags">Flags</a>.<b><a href="../src/net/interface.go.html#line-59">String</a></b>
+		net.<a href="../pkg/net.html#name-HardwareAddr">HardwareAddr</a>.<b><a href="../src/net/mac.go.html#line-12">String</a></b>
+		net.<a href="../pkg/net.html#name-IP">IP</a>.<b><a href="../src/net/ip.go.html#line-295">String</a></b>
+		*net.<a href="../pkg/net.html#name-IPAddr">IPAddr</a>.<b><a href="../src/net/iprawsock.go.html#line-39">String</a></b>
+		net.<a href="../pkg/net.html#name-IPMask">IPMask</a>.<b><a href="../src/net/ip.go.html#line-417">String</a></b>
+		*net.<a href="../pkg/net.html#name-IPNet">IPNet</a>.<b><a href="../src/net/ip.go.html#line-474">String</a></b>
+		*net.<a href="../pkg/net.html#name-TCPAddr">TCPAddr</a>.<b><a href="../src/net/tcpsock.go.html#line-44">String</a></b>
+		*net.<a href="../pkg/net.html#name-UDPAddr">UDPAddr</a>.<b><a href="../src/net/udpsock.go.html#line-47">String</a></b>
+		*net.<a href="../pkg/net.html#name-UnixAddr">UnixAddr</a>.<b><a href="../src/net/unixsock.go.html#line-33">String</a></b>
+		net/http.<a href="../pkg/net/http.html#name-ConnState">ConnState</a>.<b><a href="../src/net/http/server.go.html#line-3118">String</a></b>
+		*net/http.<a href="../pkg/net/http.html#name-Cookie">Cookie</a>.<b><a href="../src/net/http/cookie.go.html#line-179">String</a></b>
+		net/netip.<a href="../pkg/net/netip.html#name-Addr">Addr</a>.<b><a href="../src/net/netip/netip.go.html#line-751">String</a></b>
+		net/netip.<a href="../pkg/net/netip.html#name-AddrPort">AddrPort</a>.<b><a href="../src/net/netip/netip.go.html#line-1116">String</a></b>
+		net/netip.<a href="../pkg/net/netip.html#name-Prefix">Prefix</a>.<b><a href="../src/net/netip/netip.go.html#line-1496">String</a></b>
+		*net/url.<a href="../pkg/net/url.html#name-URL">URL</a>.<b><a href="../src/net/url/url.go.html#line-815">String</a></b>
+		*net/url.<a href="../pkg/net/url.html#name-Userinfo">Userinfo</a>.<b><a href="../src/net/url/url.go.html#line-429">String</a></b>
+		*os.<a href="../pkg/os.html#name-ProcessState">ProcessState</a>.<b><a href="../src/os/exec_posix.go.html#line-98">String</a></b>
+		os.<a href="../pkg/os.html#name-Signal">Signal</a>.<b><a href="../src/os/exec.go.html#line-73">String</a></b>
+		reflect.<a href="../pkg/reflect.html#name-ChanDir">ChanDir</a>.<b><a href="../src/reflect/type.go.html#line-826">String</a></b>
+		reflect.<a href="../pkg/reflect.html#name-Kind">Kind</a>.<b><a href="../src/reflect/type.go.html#line-448">String</a></b>
+		reflect.<a href="../pkg/reflect.html#name-Type">Type</a>.<b><a href="../src/reflect/type.go.html#line-100">String</a></b>
+		reflect.<a href="../pkg/reflect.html#name-Value">Value</a>.<b><a href="../src/reflect/value.go.html#line-2651">String</a></b>
+		*regexp.<a href="../pkg/regexp.html#name-Regexp">Regexp</a>.<b><a href="../src/regexp/regexp.go.html#line-107">String</a></b>
+		regexp/syntax.<a href="../pkg/regexp/syntax.html#name-ErrorCode">ErrorCode</a>.<b><a href="../src/regexp/syntax/parse.go.html#line-50">String</a></b>
+		*regexp/syntax.<a href="../pkg/regexp/syntax.html#name-Inst">Inst</a>.<b><a href="../src/regexp/syntax/prog.go.html#line-284">String</a></b>
+		regexp/syntax.<a href="../pkg/regexp/syntax.html#name-InstOp">InstOp</a>.<b><a href="../src/regexp/syntax/prog.go.html#line-55">String</a></b>
+		regexp/syntax.<a href="../pkg/regexp/syntax.html#name-Op">Op</a>.<b><a href="../src/regexp/syntax/op_string.go.html#line-42">String</a></b>
+		*regexp/syntax.<a href="../pkg/regexp/syntax.html#name-Prog">Prog</a>.<b><a href="../src/regexp/syntax/prog.go.html#line-122">String</a></b>
+		*regexp/syntax.<a href="../pkg/regexp/syntax.html#name-Regexp">Regexp</a>.<b><a href="../src/regexp/syntax/regexp.go.html#line-397">String</a></b>
+		*strings.<a href="../pkg/strings.html#name-Builder">Builder</a>.<b><a href="../src/strings/builder.go.html#line-48">String</a></b>
+		syscall.<a href="../pkg/syscall.html#name-Signal">Signal</a>.<b><a href="../src/syscall/syscall_unix.go.html#line-170">String</a></b>
+		time.<a href="../pkg/time.html#name-Duration">Duration</a>.<b><a href="../src/time/time.go.html#line-650">String</a></b>
+		*time.<a href="../pkg/time.html#name-Location">Location</a>.<b><a href="../src/time/zoneinfo.go.html#line-103">String</a></b>
+		time.<a href="../pkg/time.html#name-Month">Month</a>.<b><a href="../src/time/time.go.html#line-327">String</a></b>
+		time.<a href="../pkg/time.html#name-Time">Time</a>.<b><a href="../src/time/format.go.html#line-527">String</a></b>
+		time.<a href="../pkg/time.html#name-Weekday">Weekday</a>.<b><a href="../src/time/time.go.html#line-350">String</a></b>
+		vendor/golang.org/x/net/dns/dnsmessage.<a href="../pkg/vendor/golang.org/x/net/dns/dnsmessage.html#name-Class">Class</a>.<b><a href="../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-102">String</a></b>
+		vendor/golang.org/x/net/dns/dnsmessage.<a href="../pkg/vendor/golang.org/x/net/dns/dnsmessage.html#name-Name">Name</a>.<b><a href="../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-1942">String</a></b>
+		vendor/golang.org/x/net/dns/dnsmessage.<a href="../pkg/vendor/golang.org/x/net/dns/dnsmessage.html#name-RCode">RCode</a>.<b><a href="../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-148">String</a></b>
+		vendor/golang.org/x/net/dns/dnsmessage.<a href="../pkg/vendor/golang.org/x/net/dns/dnsmessage.html#name-Type">Type</a>.<b><a href="../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-64">String</a></b>
+		vendor/golang.org/x/net/http2/hpack.<a href="../pkg/vendor/golang.org/x/net/http2/hpack.html#name-HeaderField">HeaderField</a>.<b><a href="../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-52">String</a></b>
+		*vendor/golang.org/x/net/idna.<a href="../pkg/vendor/golang.org/x/net/idna.html#name-Profile">Profile</a>.<b><a href="../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-244">String</a></b>
+		*vendor/golang.org/x/text/unicode/bidi.<a href="../pkg/vendor/golang.org/x/text/unicode/bidi.html#name-Run">Run</a>.<b><a href="../src/vendor/golang.org/x/text/unicode/bidi/bidi.go.html#line-295">String</a></b>
+		<a href="../pkg/runtime.html#name-lockRank">lockRank</a>.<b><a href="../src/runtime/lockrank.go.html#line-139">String</a></b>
+		<a href="../pkg/runtime.html#name-stwReason">stwReason</a>.<b><a href="../src/runtime/proc.go.html#line-1279">String</a></b>
+		<a href="../pkg/runtime.html#name-waitReason">waitReason</a>.<b><a href="../src/runtime/runtime2.go.html#line-1174">String</a></b>
+		*context.<a href="../pkg/context.html#name-afterFuncCtx">afterFuncCtx</a>.<i><a href="../src/context/context.go.html#line-337">cancelCtx</a></i>.<b><a href="../src/context/context.go.html#line-529">String</a></b>
+		context.<a href="../pkg/context.html#name-backgroundCtx">backgroundCtx</a>.<b><a href="../src/context/context.go.html#line-197">String</a></b>
+		*context.<a href="../pkg/context.html#name-cancelCtx">cancelCtx</a>.<b><a href="../src/context/context.go.html#line-529">String</a></b>
+		context.<a href="../pkg/context.html#name-stringer">stringer</a>.<b><a href="../src/runtime/error.go.html#line-208">String</a></b>
+		*context.<a href="../pkg/context.html#name-timerCtx">timerCtx</a>.<b><a href="../src/context/context.go.html#line-659">String</a></b>
+		context.<a href="../pkg/context.html#name-todoCtx">todoCtx</a>.<b><a href="../src/context/context.go.html#line-203">String</a></b>
+		*context.<a href="../pkg/context.html#name-valueCtx">valueCtx</a>.<b><a href="../src/context/context.go.html#line-746">String</a></b>
+		context.<a href="../pkg/context.html#name-withoutCancelCtx">withoutCancelCtx</a>.<b><a href="../src/context/context.go.html#line-598">String</a></b>
+		*crypto/ecdh.<a href="../pkg/crypto/ecdh.html#name-nistCurve">nistCurve</a>[...].<b><a href="../src/crypto/ecdh/nist.go.html#line-32">String</a></b>
+		*crypto/ecdh.<a href="../pkg/crypto/ecdh.html#name-x25519Curve">x25519Curve</a>.<b><a href="../src/crypto/ecdh/x25519.go.html#line-31">String</a></b>
+		crypto/tls.<a href="../pkg/crypto/tls.html#name-alert">alert</a>.<b><a href="../src/crypto/tls/alert.go.html#line-99">String</a></b>
+		*embed.<a href="../pkg/embed.html#name-file">file</a>.<b><a href="../src/embed/embed.go.html#line-246">String</a></b>
+		encoding/binary.<a href="../pkg/encoding/binary.html#name-bigEndian">bigEndian</a>.<b><a href="../src/encoding/binary/binary.go.html#line-213">String</a></b>
+		encoding/binary.<a href="../pkg/encoding/binary.html#name-littleEndian">littleEndian</a>.<b><a href="../src/encoding/binary/binary.go.html#line-136">String</a></b>
+		encoding/binary.<a href="../pkg/encoding/binary.html#name-nativeEndian">nativeEndian</a>.<b><a href="../src/encoding/binary/binary.go.html#line-217">String</a></b>
+		github.com/andybalholm/cascadia.<a href="../pkg/github.com/andybalholm/cascadia.html#name-attrSelector">attrSelector</a>.<b><a href="../src/github.com/andybalholm/cascadia/serialize.go.html#line-36">String</a></b>
+		github.com/andybalholm/cascadia.<a href="../pkg/github.com/andybalholm/cascadia.html#name-checkedPseudoClassSelector">checkedPseudoClassSelector</a>.<b><a href="../src/github.com/andybalholm/cascadia/serialize.go.html#line-143">String</a></b>
+		github.com/andybalholm/cascadia.<a href="../pkg/github.com/andybalholm/cascadia.html#name-classSelector">classSelector</a>.<b><a href="../src/github.com/andybalholm/cascadia/serialize.go.html#line-32">String</a></b>
+		github.com/andybalholm/cascadia.<a href="../pkg/github.com/andybalholm/cascadia.html#name-combinedSelector">combinedSelector</a>.<b><a href="../src/github.com/andybalholm/cascadia/serialize.go.html#line-162">String</a></b>
+		github.com/andybalholm/cascadia.<a href="../pkg/github.com/andybalholm/cascadia.html#name-compoundSelector">compoundSelector</a>.<b><a href="../src/github.com/andybalholm/cascadia/serialize.go.html#line-147">String</a></b>
+		github.com/andybalholm/cascadia.<a href="../pkg/github.com/andybalholm/cascadia.html#name-containsPseudoClassSelector">containsPseudoClassSelector</a>.<b><a href="../src/github.com/andybalholm/cascadia/serialize.go.html#line-57">String</a></b>
+		github.com/andybalholm/cascadia.<a href="../pkg/github.com/andybalholm/cascadia.html#name-disabledPseudoClassSelector">disabledPseudoClassSelector</a>.<b><a href="../src/github.com/andybalholm/cascadia/serialize.go.html#line-139">String</a></b>
+		github.com/andybalholm/cascadia.<a href="../pkg/github.com/andybalholm/cascadia.html#name-emptyElementPseudoClassSelector">emptyElementPseudoClassSelector</a>.<b><a href="../src/github.com/andybalholm/cascadia/serialize.go.html#line-115">String</a></b>
+		github.com/andybalholm/cascadia.<a href="../pkg/github.com/andybalholm/cascadia.html#name-enabledPseudoClassSelector">enabledPseudoClassSelector</a>.<b><a href="../src/github.com/andybalholm/cascadia/serialize.go.html#line-135">String</a></b>
+		github.com/andybalholm/cascadia.<a href="../pkg/github.com/andybalholm/cascadia.html#name-idSelector">idSelector</a>.<b><a href="../src/github.com/andybalholm/cascadia/serialize.go.html#line-28">String</a></b>
+		github.com/andybalholm/cascadia.<a href="../pkg/github.com/andybalholm/cascadia.html#name-inputPseudoClassSelector">inputPseudoClassSelector</a>.<b><a href="../src/github.com/andybalholm/cascadia/serialize.go.html#line-111">String</a></b>
+		github.com/andybalholm/cascadia.<a href="../pkg/github.com/andybalholm/cascadia.html#name-langPseudoClassSelector">langPseudoClassSelector</a>.<b><a href="../src/github.com/andybalholm/cascadia/serialize.go.html#line-127">String</a></b>
+		github.com/andybalholm/cascadia.<a href="../pkg/github.com/andybalholm/cascadia.html#name-linkPseudoClassSelector">linkPseudoClassSelector</a>.<b><a href="../src/github.com/andybalholm/cascadia/serialize.go.html#line-123">String</a></b>
+		github.com/andybalholm/cascadia.<a href="../pkg/github.com/andybalholm/cascadia.html#name-neverMatchSelector">neverMatchSelector</a>.<b><a href="../src/github.com/andybalholm/cascadia/serialize.go.html#line-131">String</a></b>
+		github.com/andybalholm/cascadia.<a href="../pkg/github.com/andybalholm/cascadia.html#name-nthPseudoClassSelector">nthPseudoClassSelector</a>.<b><a href="../src/github.com/andybalholm/cascadia/serialize.go.html#line-73">String</a></b>
+		github.com/andybalholm/cascadia.<a href="../pkg/github.com/andybalholm/cascadia.html#name-onlyChildPseudoClassSelector">onlyChildPseudoClassSelector</a>.<b><a href="../src/github.com/andybalholm/cascadia/serialize.go.html#line-104">String</a></b>
+		github.com/andybalholm/cascadia.<a href="../pkg/github.com/andybalholm/cascadia.html#name-regexpPseudoClassSelector">regexpPseudoClassSelector</a>.<b><a href="../src/github.com/andybalholm/cascadia/serialize.go.html#line-65">String</a></b>
+		github.com/andybalholm/cascadia.<a href="../pkg/github.com/andybalholm/cascadia.html#name-relativePseudoClassSelector">relativePseudoClassSelector</a>.<b><a href="../src/github.com/andybalholm/cascadia/serialize.go.html#line-53">String</a></b>
+		github.com/andybalholm/cascadia.<a href="../pkg/github.com/andybalholm/cascadia.html#name-rootPseudoClassSelector">rootPseudoClassSelector</a>.<b><a href="../src/github.com/andybalholm/cascadia/serialize.go.html#line-119">String</a></b>
+		github.com/andybalholm/cascadia.<a href="../pkg/github.com/andybalholm/cascadia.html#name-tagSelector">tagSelector</a>.<b><a href="../src/github.com/andybalholm/cascadia/serialize.go.html#line-24">String</a></b>
+		internal/reflectlite.<a href="../pkg/internal/reflectlite.html#name-mapType">mapType</a>.<i><a href="../src/internal/reflectlite/type.go.html#line-116">rtype</a></i>.<b><a href="../src/internal/reflectlite/type.go.html#line-259">String</a></b>
+		internal/reflectlite.<a href="../pkg/internal/reflectlite.html#name-rtype">rtype</a>.<b><a href="../src/internal/reflectlite/type.go.html#line-259">String</a></b>
+		io/fs.<a href="../pkg/io/fs.html#name-dirInfo">dirInfo</a>.<b><a href="../src/io/fs/readdir.go.html#line-70">String</a></b>
+		*math/big.<a href="../pkg/math/big.html#name-decimal">decimal</a>.<b><a href="../src/math/big/decimal.go.html#line-160">String</a></b>
+		math/big.<a href="../pkg/math/big.html#name-nat">nat</a>.<b><a href="../src/math/big/nat.go.html#line-43">String</a></b>
+		net.<a href="../pkg/net.html#name-addrPortUDPAddr">addrPortUDPAddr</a>.<i><a href="../src/net/udpsock.go.html#line-115">AddrPort</a></i>.<b><a href="../src/net/netip/netip.go.html#line-1116">String</a></b>
+		net.<a href="../pkg/net.html#name-fileAddr">fileAddr</a>.<b><a href="../src/net/file.go.html#line-15">String</a></b>
+		net.<a href="../pkg/net.html#name-hostLookupOrder">hostLookupOrder</a>.<b><a href="../src/net/dnsclient_unix.go.html#line-563">String</a></b>
+		net.<a href="../pkg/net.html#name-pipeAddr">pipeAddr</a>.<b><a href="../src/net/pipe.go.html#line-85">String</a></b>
+		net.<a href="../pkg/net.html#name-sockaddr">sockaddr</a>.<b><a href="../src/net/net.go.html#line-103">String</a></b>
+		net/http.<a href="../pkg/net/http.html#name-connectMethodKey">connectMethodKey</a>.<b><a href="../src/net/http/transport.go.html#line-1909">String</a></b>
+		*net/http.<a href="../pkg/net/http.html#name-contextKey">contextKey</a>.<b><a href="../src/net/http/http.go.html#line-46">String</a></b>
+		net/http.<a href="../pkg/net/http.html#name-http2ContinuationFrame">http2ContinuationFrame</a>.<i><a href="../src/net/http/h2_bundle.go.html#line-2646">http2FrameHeader</a></i>.<b><a href="../src/net/http/h2_bundle.go.html#line-1577">String</a></b>
+		net/http.<a href="../pkg/net/http.html#name-http2DataFrame">http2DataFrame</a>.<i><a href="../src/net/http/h2_bundle.go.html#line-1987">http2FrameHeader</a></i>.<b><a href="../src/net/http/h2_bundle.go.html#line-1577">String</a></b>
+		net/http.<a href="../pkg/net/http.html#name-http2ErrCode">http2ErrCode</a>.<b><a href="../src/net/http/h2_bundle.go.html#line-1209">String</a></b>
+		net/http.<a href="../pkg/net/http.html#name-http2FrameHeader">http2FrameHeader</a>.<b><a href="../src/net/http/h2_bundle.go.html#line-1577">String</a></b>
+		net/http.<a href="../pkg/net/http.html#name-http2FrameType">http2FrameType</a>.<b><a href="../src/net/http/h2_bundle.go.html#line-1456">String</a></b>
+		net/http.<a href="../pkg/net/http.html#name-http2FrameWriteRequest">http2FrameWriteRequest</a>.<b><a href="../src/net/http/h2_bundle.go.html#line-10814">String</a></b>
+		net/http.<a href="../pkg/net/http.html#name-http2GoAwayFrame">http2GoAwayFrame</a>.<i><a href="../src/net/http/h2_bundle.go.html#line-2291">http2FrameHeader</a></i>.<b><a href="../src/net/http/h2_bundle.go.html#line-1577">String</a></b>
+		net/http.<a href="../pkg/net/http.html#name-http2HeadersFrame">http2HeadersFrame</a>.<i><a href="../src/net/http/h2_bundle.go.html#line-2402">http2FrameHeader</a></i>.<b><a href="../src/net/http/h2_bundle.go.html#line-1577">String</a></b>
+		net/http.<a href="../pkg/net/http.html#name-http2MetaHeadersFrame">http2MetaHeadersFrame</a>.<i><a href="../src/net/http/h2_bundle.go.html#line-2836">http2HeadersFrame</a></i>.<i><a href="../src/net/http/h2_bundle.go.html#line-2402">http2FrameHeader</a></i>.<b><a href="../src/net/http/h2_bundle.go.html#line-1577">String</a></b>
+		net/http.<a href="../pkg/net/http.html#name-http2PingFrame">http2PingFrame</a>.<i><a href="../src/net/http/h2_bundle.go.html#line-2258">http2FrameHeader</a></i>.<b><a href="../src/net/http/h2_bundle.go.html#line-1577">String</a></b>
+		net/http.<a href="../pkg/net/http.html#name-http2PriorityFrame">http2PriorityFrame</a>.<i><a href="../src/net/http/h2_bundle.go.html#line-2544">http2FrameHeader</a></i>.<b><a href="../src/net/http/h2_bundle.go.html#line-1577">String</a></b>
+		net/http.<a href="../pkg/net/http.html#name-http2PushPromiseFrame">http2PushPromiseFrame</a>.<i><a href="../src/net/http/h2_bundle.go.html#line-2687">http2FrameHeader</a></i>.<b><a href="../src/net/http/h2_bundle.go.html#line-1577">String</a></b>
+		net/http.<a href="../pkg/net/http.html#name-http2RSTStreamFrame">http2RSTStreamFrame</a>.<i><a href="../src/net/http/h2_bundle.go.html#line-2614">http2FrameHeader</a></i>.<b><a href="../src/net/http/h2_bundle.go.html#line-1577">String</a></b>
+		net/http.<a href="../pkg/net/http.html#name-http2Setting">http2Setting</a>.<b><a href="../src/net/http/h2_bundle.go.html#line-3433">String</a></b>
+		net/http.<a href="../pkg/net/http.html#name-http2SettingID">http2SettingID</a>.<b><a href="../src/net/http/h2_bundle.go.html#line-3479">String</a></b>
+		net/http.<a href="../pkg/net/http.html#name-http2SettingsFrame">http2SettingsFrame</a>.<i><a href="../src/net/http/h2_bundle.go.html#line-2119">http2FrameHeader</a></i>.<b><a href="../src/net/http/h2_bundle.go.html#line-1577">String</a></b>
+		net/http.<a href="../pkg/net/http.html#name-http2streamState">http2streamState</a>.<b><a href="../src/net/http/h2_bundle.go.html#line-3419">String</a></b>
+		net/http.<a href="../pkg/net/http.html#name-http2UnknownFrame">http2UnknownFrame</a>.<i><a href="../src/net/http/h2_bundle.go.html#line-2119">http2FrameHeader</a></i>.<b><a href="../src/net/http/h2_bundle.go.html#line-1577">String</a></b>
+		net/http.<a href="../pkg/net/http.html#name-http2WindowUpdateFrame">http2WindowUpdateFrame</a>.<i><a href="../src/net/http/h2_bundle.go.html#line-2355">http2FrameHeader</a></i>.<b><a href="../src/net/http/h2_bundle.go.html#line-1577">String</a></b>
+		*net/http.<a href="../pkg/net/http.html#name-http2writeData">http2writeData</a>.<b><a href="../src/net/http/h2_bundle.go.html#line-10392">String</a></b>
+		*net/http.<a href="../pkg/net/http.html#name-pattern">pattern</a>.<b><a href="../src/net/http/pattern.go.html#line-37">String</a></b>
+		*net/http.<a href="../pkg/net/http.html#name-socksAddr">socksAddr</a>.<b><a href="../src/net/http/socks_bundle.go.html#line-249">String</a></b>
+		net/http.<a href="../pkg/net/http.html#name-socksCommand">socksCommand</a>.<b><a href="../src/net/http/socks_bundle.go.html#line-179">String</a></b>
+		net/http.<a href="../pkg/net/http.html#name-socksReply">socksReply</a>.<b><a href="../src/net/http/socks_bundle.go.html#line-196">String</a></b>
+		*os.<a href="../pkg/os.html#name-unixDirent">unixDirent</a>.<b><a href="../src/os/file_unix.go.html#line-473">String</a></b>
+		*reflect.<a href="../pkg/reflect.html#name-rtype">rtype</a>.<b><a href="../src/reflect/type.go.html#line-548">String</a></b>
+		*regexp.<a href="../pkg/regexp.html#name-onePassInst">onePassInst</a>.<i><a href="../src/regexp/onepass.go.html#line-32">Inst</a></i>.<b><a href="../src/regexp/syntax/prog.go.html#line-284">String</a></b>
+		*strconv.<a href="../pkg/strconv.html#name-decimal">decimal</a>.<b><a href="../src/strconv/decimal.go.html#line-22">String</a></b>
+		*vendor/golang.org/x/text/unicode/bidi.<a href="../pkg/vendor/golang.org/x/text/unicode/bidi.html#name-bracketPair">bracketPair</a>.<b><a href="../src/vendor/golang.org/x/text/unicode/bidi/bracket.go.html#line-56">String</a></b></div></code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

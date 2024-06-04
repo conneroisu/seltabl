@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/sha256.digest</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../pkg/crypto/sha256.html">crypto/sha256</a>.<a href="../../src/crypto/sha256/sha256.go.html#line-52">digest</a></b></span>
+
+<span class="title">15 uses</span>
+
+	crypto/sha256 (current package)
+		<a href="../../src/crypto/sha256/sha256.go.html#line-52">sha256.go#L52</a>: type <b>digest</b> struct {
+		<a href="../../src/crypto/sha256/sha256.go.html#line-66" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-66">#L66</a>: func (d *<b>digest</b>) MarshalBinary() ([]byte, error) {
+		<a href="../../src/crypto/sha256/sha256.go.html#line-87" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-87">#L87</a>: func (d *<b>digest</b>) UnmarshalBinary(b []byte) error {
+		<a href="../../src/crypto/sha256/sha256.go.html#line-122" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-122">#L122</a>: func (d *<b>digest</b>) Reset() {
+		<a href="../../src/crypto/sha256/sha256.go.html#line-154" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-154">#L154</a>: 	d := new(<b>digest</b>)
+		<a href="../../src/crypto/sha256/sha256.go.html#line-164" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-164">#L164</a>: 	d := new(<b>digest</b>)
+		<a href="../../src/crypto/sha256/sha256.go.html#line-170" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-170">#L170</a>: func (d *<b>digest</b>) Size() int {
+		<a href="../../src/crypto/sha256/sha256.go.html#line-177" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-177">#L177</a>: func (d *<b>digest</b>) BlockSize() int { return BlockSize }
+		<a href="../../src/crypto/sha256/sha256.go.html#line-179" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-179">#L179</a>: func (d *<b>digest</b>) Write(p []byte) (nn int, err error) {
+		<a href="../../src/crypto/sha256/sha256.go.html#line-203" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-203">#L203</a>: func (d *<b>digest</b>) Sum(in []byte) []byte {
+		<a href="../../src/crypto/sha256/sha256.go.html#line-214" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-214">#L214</a>: func (d *<b>digest</b>) checkSum() [Size]byte {
+		<a href="../../src/crypto/sha256/sha256.go.html#line-257" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-257">#L257</a>: 	var d <b>digest</b>
+		<a href="../../src/crypto/sha256/sha256.go.html#line-268" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-268">#L268</a>: 	var d <b>digest</b>
+		<a href="../../src/crypto/sha256/sha256block.go.html#line-80">sha256block.go#L80</a>: func blockGeneric(dig *<b>digest</b>, p []byte) {
+		<a href="../../src/crypto/sha256/sha256block_decl.go.html#line-10">sha256block_decl.go#L10</a>: func block(dig *<b>digest</b>, p []byte)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

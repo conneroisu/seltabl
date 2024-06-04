@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/tls.clientHandshakeStateTLS13.certReq</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/crypto/tls.html">crypto/tls</a>.<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-19">clientHandshakeStateTLS13</a>.<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-30">certReq</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">8 uses</span>
+
+	crypto/tls (current package)
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-30">handshake_client_tls13.go#L30</a>: 	<b>certReq</b>       *certificateRequestMsgTLS13
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-510" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-510">#L510</a>: 		hs.<b>certReq</b> = certReq
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-630" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-630">#L630</a>: 	if hs.<b>certReq</b> == nil {
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-635" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-635">#L635</a>: 		AcceptableCAs:    hs.<b>certReq</b>.certificateAuthorities,
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-636" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-636">#L636</a>: 		SignatureSchemes: hs.<b>certReq</b>.supportedSignatureAlgorithms,
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-647" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-647">#L647</a>: 	certMsg.scts = hs.<b>certReq</b>.scts &amp;&amp; len(cert.SignedCertificateTimestamps) &gt; 0
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-648" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-648">#L648</a>: 	certMsg.ocspStapling = hs.<b>certReq</b>.ocspStapling &amp;&amp; len(cert.OCSPStaple) &gt; 0
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-662" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-662">#L662</a>: 	certVerifyMsg.signatureAlgorithm, err = selectSignatureScheme(c.vers, cert, hs.<b>certReq</b>.supportedSignatureAlgorithms)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

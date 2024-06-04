@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/internal/nistec.p256MovCond</title>
+<link href="../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../../../pkg/crypto/internal/nistec.html">crypto/internal/nistec</a>.<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-278">p256MovCond</a></b></span>
+
+<span class="title">10 uses</span>
+
+	crypto/internal/nistec (current package)
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-278">p256_asm.go#L278</a>: func <b>p256MovCond</b>(res, a, b *P256Point, cond int)
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-389" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-389">#L389</a>: 	<b>p256MovCond</b>(&amp;sum, &amp;double, &amp;sum, pointsEqual)
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-390" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-390">#L390</a>: 	<b>p256MovCond</b>(&amp;sum, r1, &amp;sum, r2IsInfinity)
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-391" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-391">#L391</a>: 	<b>p256MovCond</b>(&amp;sum, r2, &amp;sum, r1IsInfinity)
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-548" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-548">#L548</a>: 	<b>p256MovCond</b>(q, p1, p2, cond)
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-648" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-648">#L648</a>: 	<b>p256MovCond</b>(p, p, NewP256Point(), zero)
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-725" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-725">#L725</a>: 		<b>p256MovCond</b>(&amp;t1, &amp;t1, p, sel)
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-726" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-726">#L726</a>: 		<b>p256MovCond</b>(p, &amp;t1, &amp;t0, zero)
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-742" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-742">#L742</a>: 	<b>p256MovCond</b>(&amp;t1, &amp;t1, p, sel)
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-743" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-743">#L743</a>: 	<b>p256MovCond</b>(p, &amp;t1, &amp;t0, zero)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

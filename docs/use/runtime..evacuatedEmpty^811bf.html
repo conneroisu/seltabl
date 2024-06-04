@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.evacuatedEmpty</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/map.go.html#line-98">evacuatedEmpty</a></b></span>
+
+<span class="title">6 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/map.go.html#line-98">map.go#L98</a>: 	<b>evacuatedEmpty</b> = 4 // cell is empty, bucket is evacuated.
+		<a href="../src/runtime/map.go.html#line-911" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-911">#L911</a>: 		if isEmpty(b.tophash[offi]) || b.tophash[offi] == <b>evacuatedEmpty</b> {
+		<a href="../src/runtime/map.go.html#line-1193" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1193">#L1193</a>: 					b.tophash[i] = <b>evacuatedEmpty</b>
+		<a href="../src/runtime/map_fast32.go.html#line-403">map_fast32.go#L403</a>: 					b.tophash[i] = <b>evacuatedEmpty</b>
+		<a href="../src/runtime/map_fast64.go.html#line-405">map_fast64.go#L405</a>: 					b.tophash[i] = <b>evacuatedEmpty</b>
+		<a href="../src/runtime/map_faststr.go.html#line-431">map_faststr.go#L431</a>: 					b.tophash[i] = <b>evacuatedEmpty</b>
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

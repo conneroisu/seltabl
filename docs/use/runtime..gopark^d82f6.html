@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.gopark</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/proc.go.html#line-385">gopark</a></b></span>
+
+<span class="title">14 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/chan.go.html#line-165">chan.go#L165</a>: 		<b>gopark</b>(nil, nil, waitReasonChanSendNilChan, traceBlockForever, 2)
+		<a href="../src/runtime/chan.go.html#line-259" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-259">#L259</a>: 	<b>gopark</b>(chanparkcommit, unsafe.Pointer(&amp;c.lock), waitReasonChanSend, traceBlockChanSend, 2)
+		<a href="../src/runtime/chan.go.html#line-469" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-469">#L469</a>: 		<b>gopark</b>(nil, nil, waitReasonChanReceiveNilChan, traceBlockForever, 2)
+		<a href="../src/runtime/chan.go.html#line-583" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-583">#L583</a>: 	<b>gopark</b>(chanparkcommit, unsafe.Pointer(&amp;c.lock), waitReasonChanReceive, traceBlockChanRecv, 2)
+		<a href="../src/runtime/mfinal.go.html#line-194">mfinal.go#L194</a>: 			<b>gopark</b>(finalizercommit, unsafe.Pointer(&amp;finlock), waitReasonFinalizerWait, traceBlockSystemGoroutine, 1)
+		<a href="../src/runtime/mgc.go.html#line-1310">mgc.go#L1310</a>: 		<b>gopark</b>(func(g *g, nodep unsafe.Pointer) bool {
+		<a href="../src/runtime/netpoll.go.html#line-573">netpoll.go#L573</a>: 		<b>gopark</b>(netpollblockcommit, unsafe.Pointer(gpp), waitReasonIOWait, traceBlockNet, 5)
+		<a href="../src/runtime/proc.go.html#line-291">proc.go#L291</a>: 		<b>gopark</b>(nil, nil, waitReasonPanicWait, traceBlockForever, 1)
+		<a href="../src/runtime/proc.go.html#line-385" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-385">#L385</a>: func <b>gopark</b>(unlockf func(*g, unsafe.Pointer) bool, lock unsafe.Pointer, reason waitReason, traceReason traceBlockReason, traceskip int) {
+		<a href="../src/runtime/proc.go.html#line-408" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-408">#L408</a>: 	<b>gopark</b>(parkunlock_c, unsafe.Pointer(lock), reason, traceReason, traceskip)
+		<a href="../src/runtime/select.go.html#line-103">select.go#L103</a>: 	<b>gopark</b>(nil, nil, waitReasonSelectNoCases, traceBlockForever, 1) // forever
+		<a href="../src/runtime/select.go.html#line-327" class="path-duplicate">select.go</a><a href="../src/runtime/select.go.html#line-327">#L327</a>: 	<b>gopark</b>(selparkcommit, nil, waitReasonSelect, traceBlockSelect, 1)
+		<a href="../src/runtime/time.go.html#line-195">time.go#L195</a>: 	<b>gopark</b>(resetForSleep, unsafe.Pointer(t), waitReasonSleep, traceBlockSleep, 1)
+		<a href="../src/runtime/trace2.go.html#line-681">trace2.go#L681</a>: 		<b>gopark</b>(func(gp *g, _ unsafe.Pointer) bool {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

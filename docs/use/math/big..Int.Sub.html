@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: math/big.Int.Sub</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/math/big.html">math/big</a>.<a href="../../src/math/big/int.go.html#line-33">Int</a>.<a href="../../src/math/big/int.go.html#line-163">Sub</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">41 uses</span>
+
+	math/big (current package)
+		<a href="../../src/math/big/int.go.html#line-163">int.go#L163</a>: func (z *Int) <b>Sub</b>(x, y *Int) *Int {
+		<a href="../../src/math/big/int.go.html#line-257" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-257">#L257</a>: 		z.Mul(z, t.<b>Sub</b>(&amp;N, &amp;i))
+		<a href="../../src/math/big/int.go.html#line-310" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-310">#L310</a>: 			z.<b>Sub</b>(z, intOne)
+		<a href="../../src/math/big/int.go.html#line-328" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-328">#L328</a>: 			z.<b>Sub</b>(z, y0)
+		<a href="../../src/math/big/int.go.html#line-359" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-359">#L359</a>: 			m.<b>Sub</b>(m, y0)
+		<a href="../../src/math/big/int.go.html#line-361" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-361">#L361</a>: 			z.<b>Sub</b>(z, intOne)
+		<a href="../../src/math/big/int.go.html#line-748" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-748">#L748</a>: 		Ub.<b>Sub</b>(Ua, s)
+		<a href="../../src/math/big/int.go.html#line-866" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-866">#L866</a>: 		y.<b>Sub</b>(A, y)
+		<a href="../../src/math/big/int.go.html#line-1023" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1023">#L1023</a>: 	beta.<b>Sub</b>(beta, intOne)
+		<a href="../../src/math/big/int.go.html#line-1036" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1036">#L1036</a>: 	s.<b>Sub</b>(p, intOne)
+		<a href="../../src/math/big/rat.go.html#line-506">rat.go#L506</a>: 	z.a.<b>Sub</b>(&amp;a1, &amp;a2)
+
+	<a href="../../pkg/crypto/dsa.html">crypto/dsa</a>
+		<a href="../../src/crypto/dsa/dsa.go.html#line-122">dsa.go#L122</a>: 			rem.<b>Sub</b>(rem, one)
+		<a href="../../src/crypto/dsa/dsa.go.html#line-123" class="path-duplicate">dsa.go</a><a href="../../src/crypto/dsa/dsa.go.html#line-123">#L123</a>: 			p.<b>Sub</b>(p, rem)
+		<a href="../../src/crypto/dsa/dsa.go.html#line-142" class="path-duplicate">dsa.go</a><a href="../../src/crypto/dsa/dsa.go.html#line-142">#L142</a>: 	pm1 := new(big.Int).<b>Sub</b>(p, one)
+		<a href="../../src/crypto/dsa/dsa.go.html#line-190" class="path-duplicate">dsa.go</a><a href="../../src/crypto/dsa/dsa.go.html#line-190">#L190</a>: 	pMinus2 := new(big.Int).<b>Sub</b>(P, two)
+
+	<a href="../../pkg/crypto/ecdsa.html">crypto/ecdsa</a>
+		<a href="../../src/crypto/ecdsa/ecdsa.go.html#line-671">ecdsa.go#L671</a>: 	c.nMinus2 = new(big.Int).<b>Sub</b>(params.N, big.NewInt(2)).Bytes()
+
+	<a href="../../pkg/crypto/elliptic.html">crypto/elliptic</a>
+		<a href="../../src/crypto/elliptic/params.go.html#line-43">params.go#L43</a>: 	x3.<b>Sub</b>(x3, threeX)
+		<a href="../../src/crypto/elliptic/params.go.html#line-151" class="path-duplicate">params.go</a><a href="../../src/crypto/elliptic/params.go.html#line-151">#L151</a>: 	h := new(big.Int).<b>Sub</b>(u2, u1)
+		<a href="../../src/crypto/elliptic/params.go.html#line-166" class="path-duplicate">params.go</a><a href="../../src/crypto/elliptic/params.go.html#line-166">#L166</a>: 	r := new(big.Int).<b>Sub</b>(s2, s1)
+		<a href="../../src/crypto/elliptic/params.go.html#line-179" class="path-duplicate">params.go</a><a href="../../src/crypto/elliptic/params.go.html#line-179">#L179</a>: 	x3.<b>Sub</b>(x3, j)
+		<a href="../../src/crypto/elliptic/params.go.html#line-180" class="path-duplicate">params.go</a><a href="../../src/crypto/elliptic/params.go.html#line-180">#L180</a>: 	x3.<b>Sub</b>(x3, v)
+		<a href="../../src/crypto/elliptic/params.go.html#line-181" class="path-duplicate">params.go</a><a href="../../src/crypto/elliptic/params.go.html#line-181">#L181</a>: 	x3.<b>Sub</b>(x3, v)
+		<a href="../../src/crypto/elliptic/params.go.html#line-185" class="path-duplicate">params.go</a><a href="../../src/crypto/elliptic/params.go.html#line-185">#L185</a>: 	v.<b>Sub</b>(v, x3)
+		<a href="../../src/crypto/elliptic/params.go.html#line-189" class="path-duplicate">params.go</a><a href="../../src/crypto/elliptic/params.go.html#line-189">#L189</a>: 	y3.<b>Sub</b>(y3, s1)
+		<a href="../../src/crypto/elliptic/params.go.html#line-194" class="path-duplicate">params.go</a><a href="../../src/crypto/elliptic/params.go.html#line-194">#L194</a>: 	z3.<b>Sub</b>(z3, z1z1)
+		<a href="../../src/crypto/elliptic/params.go.html#line-195" class="path-duplicate">params.go</a><a href="../../src/crypto/elliptic/params.go.html#line-195">#L195</a>: 	z3.<b>Sub</b>(z3, z2z2)
+		<a href="../../src/crypto/elliptic/params.go.html#line-228" class="path-duplicate">params.go</a><a href="../../src/crypto/elliptic/params.go.html#line-228">#L228</a>: 	alpha := new(big.Int).<b>Sub</b>(x, delta)
+		<a href="../../src/crypto/elliptic/params.go.html#line-243" class="path-duplicate">params.go</a><a href="../../src/crypto/elliptic/params.go.html#line-243">#L243</a>: 	x3.<b>Sub</b>(x3, beta8)
+		<a href="../../src/crypto/elliptic/params.go.html#line-251" class="path-duplicate">params.go</a><a href="../../src/crypto/elliptic/params.go.html#line-251">#L251</a>: 	z3.<b>Sub</b>(z3, gamma)
+		<a href="../../src/crypto/elliptic/params.go.html#line-255" class="path-duplicate">params.go</a><a href="../../src/crypto/elliptic/params.go.html#line-255">#L255</a>: 	z3.<b>Sub</b>(z3, delta)
+		<a href="../../src/crypto/elliptic/params.go.html#line-262" class="path-duplicate">params.go</a><a href="../../src/crypto/elliptic/params.go.html#line-262">#L262</a>: 	beta.<b>Sub</b>(beta, x3)
+		<a href="../../src/crypto/elliptic/params.go.html#line-272" class="path-duplicate">params.go</a><a href="../../src/crypto/elliptic/params.go.html#line-272">#L272</a>: 	y3.<b>Sub</b>(y3, gamma)
+
+	<a href="../../pkg/crypto/rand.html">crypto/rand</a>
+		<a href="../../src/crypto/rand/util.go.html#line-67">util.go#L67</a>: 	n.<b>Sub</b>(max, n.SetUint64(1))
+
+	<a href="../../pkg/crypto/rsa.html">crypto/rsa</a>
+		<a href="../../src/crypto/rsa/rsa.go.html#line-261">rsa.go#L261</a>: 		pminus1 := new(big.Int).<b>Sub</b>(prime, bigOne)
+		<a href="../../src/crypto/rsa/rsa.go.html#line-417" class="path-duplicate">rsa.go</a><a href="../../src/crypto/rsa/rsa.go.html#line-417">#L417</a>: 			pminus1.<b>Sub</b>(prime, bigOne)
+		<a href="../../src/crypto/rsa/rsa.go.html#line-611" class="path-duplicate">rsa.go</a><a href="../../src/crypto/rsa/rsa.go.html#line-611">#L611</a>: 	priv.Precomputed.Dp = new(big.Int).<b>Sub</b>(priv.Primes[0], bigOne)
+		<a href="../../src/crypto/rsa/rsa.go.html#line-614" class="path-duplicate">rsa.go</a><a href="../../src/crypto/rsa/rsa.go.html#line-614">#L614</a>: 	priv.Precomputed.Dq = new(big.Int).<b>Sub</b>(priv.Primes[1], bigOne)
+		<a href="../../src/crypto/rsa/rsa.go.html#line-625" class="path-duplicate">rsa.go</a><a href="../../src/crypto/rsa/rsa.go.html#line-625">#L625</a>: 		values.Exp = new(big.Int).<b>Sub</b>(prime, bigOne)
+
+	<a href="../../pkg/crypto/x509.html">crypto/x509</a>
+		<a href="../../src/crypto/x509/oid.go.html#line-203">oid.go#L203</a>: 					bigVal = bigVal.<b>Sub</b>(bigVal, big.NewInt(80))
+
+	<a href="../../pkg/encoding/asn1.html">encoding/asn1</a>
+		<a href="../../src/encoding/asn1/marshal.go.html#line-208">marshal.go#L208</a>: 		nMinus1.<b>Sub</b>(nMinus1, bigOne)
+
+	<a href="../../pkg/vendor/golang.org/x/crypto/cryptobyte.html">vendor/golang.org/x/crypto/cryptobyte</a>
+		<a href="../../src/vendor/golang.org/x/crypto/cryptobyte/asn1.go.html#line-79">asn1.go#L79</a>: 			nMinus1.<b>Sub</b>(nMinus1, bigOne)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

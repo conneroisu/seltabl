@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: encoding/base64.decoder.buf</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/encoding/base64.html">encoding/base64</a>.<a href="../../src/encoding/base64/base64.go.html#line-432">decoder</a>.<a href="../../src/encoding/base64/base64.go.html#line-437">buf</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">9 uses</span>
+
+	encoding/base64 (current package)
+		<a href="../../src/encoding/base64/base64.go.html#line-437">base64.go#L437</a>: 	<b>buf</b>     [1024]byte // leftover input
+		<a href="../../src/encoding/base64/base64.go.html#line-463" class="path-duplicate">base64.go</a><a href="../../src/encoding/base64/base64.go.html#line-463">#L463</a>: 		if nn &gt; len(d.<b>buf</b>) {
+		<a href="../../src/encoding/base64/base64.go.html#line-464" class="path-duplicate">base64.go</a><a href="../../src/encoding/base64/base64.go.html#line-464">#L464</a>: 			nn = len(d.<b>buf</b>)
+		<a href="../../src/encoding/base64/base64.go.html#line-466" class="path-duplicate">base64.go</a><a href="../../src/encoding/base64/base64.go.html#line-466">#L466</a>: 		nn, d.readErr = d.r.Read(d.<b>buf</b>[d.nbuf:nn])
+		<a href="../../src/encoding/base64/base64.go.html#line-474" class="path-duplicate">base64.go</a><a href="../../src/encoding/base64/base64.go.html#line-474">#L474</a>: 			nw, d.err = d.enc.Decode(d.outbuf[:], d.<b>buf</b>[:d.nbuf])
+		<a href="../../src/encoding/base64/base64.go.html#line-497" class="path-duplicate">base64.go</a><a href="../../src/encoding/base64/base64.go.html#line-497">#L497</a>: 		nw, d.err = d.enc.Decode(d.outbuf[:], d.<b>buf</b>[:nr])
+		<a href="../../src/encoding/base64/base64.go.html#line-502" class="path-duplicate">base64.go</a><a href="../../src/encoding/base64/base64.go.html#line-502">#L502</a>: 		n, d.err = d.enc.Decode(p, d.<b>buf</b>[:nr])
+		<a href="../../src/encoding/base64/base64.go.html#line-505" class="path-duplicate">base64.go</a><a href="../../src/encoding/base64/base64.go.html#line-505">#L505</a>: 	copy(d.<b>buf</b>[:d.nbuf], d.<b>buf</b>[nr:])
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

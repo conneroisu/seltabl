@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/tls.clientHelloMsg.sessionTicket</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/crypto/tls.html">crypto/tls</a>.<a href="../../src/crypto/tls/handshake_messages.go.html#line-70">clientHelloMsg</a>.<a href="../../src/crypto/tls/handshake_messages.go.html#line-82">sessionTicket</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">8 uses</span>
+
+	crypto/tls (current package)
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-350">handshake_client.go#L350</a>: 		hello.<b>sessionTicket</b> = cs.ticket
+		<a href="../../src/crypto/tls/handshake_messages.go.html#line-82">handshake_messages.go#L82</a>: 	<b>sessionTicket</b>                    []uint8
+		<a href="../../src/crypto/tls/handshake_messages.go.html#line-151" class="path-duplicate">handshake_messages.go</a><a href="../../src/crypto/tls/handshake_messages.go.html#line-151">#L151</a>: 			exts.AddBytes(m.<b>sessionTicket</b>)
+		<a href="../../src/crypto/tls/handshake_messages.go.html#line-484" class="path-duplicate">handshake_messages.go</a><a href="../../src/crypto/tls/handshake_messages.go.html#line-484">#L484</a>: 			extData.ReadBytes(&amp;m.<b>sessionTicket</b>, len(extData))
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-422">handshake_server.go#L422</a>: 		ss, err := c.config.UnwrapSession(hs.clientHello.<b>sessionTicket</b>, c.connectionStateLocked())
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-431" class="path-duplicate">handshake_server.go</a><a href="../../src/crypto/tls/handshake_server.go.html#line-431">#L431</a>: 		plaintext := c.config.decryptTicket(hs.clientHello.<b>sessionTicket</b>, c.ticketKeys)
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-589">handshake_server_tls13.go#L589</a>: 		!bytes.Equal(ch.<b>sessionTicket</b>, ch1.<b>sessionTicket</b>) ||
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

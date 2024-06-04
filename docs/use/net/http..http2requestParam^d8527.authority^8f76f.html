@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/http.http2requestParam.authority</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/net/http.html">net/http</a>.<a href="../../src/net/http/h2_bundle.go.html#line-6020">http2requestParam</a>.<a href="../../src/net/http/h2_bundle.go.html#line-6022">authority</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">9 uses</span>
+
+	net/http (current package)
+		<a href="../../src/net/http/h2_bundle.go.html#line-5967">h2_bundle.go#L5967</a>: 		<b>authority</b>: f.PseudoValue("authority"),
+		<a href="../../src/net/http/h2_bundle.go.html#line-5973" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5973">#L5973</a>: 		if rp.path != "" || rp.scheme != "" || rp.<b>authority</b> == "" {
+		<a href="../../src/net/http/h2_bundle.go.html#line-5994" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5994">#L5994</a>: 	if rp.<b>authority</b> == "" {
+		<a href="../../src/net/http/h2_bundle.go.html#line-5995" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5995">#L5995</a>: 		rp.<b>authority</b> = rp.header.Get("Host")
+		<a href="../../src/net/http/h2_bundle.go.html#line-6022" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-6022">#L6022</a>: 	scheme, <b>authority</b>, path string
+		<a href="../../src/net/http/h2_bundle.go.html#line-6065" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-6065">#L6065</a>: 		url_ = &amp;url.URL{Host: rp.<b>authority</b>}
+		<a href="../../src/net/http/h2_bundle.go.html#line-6066" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-6066">#L6066</a>: 		requestURI = rp.<b>authority</b> // mimic HTTP/1 server behavior
+		<a href="../../src/net/http/h2_bundle.go.html#line-6091" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-6091">#L6091</a>: 		Host:       rp.<b>authority</b>,
+		<a href="../../src/net/http/h2_bundle.go.html#line-6988" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-6988">#L6988</a>: 			<b>authority</b>: msg.url.Host,
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

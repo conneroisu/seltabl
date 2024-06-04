@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: reflect.abiStep.ireg</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/reflect.html">reflect</a>.<a href="../src/reflect/abi.go.html#line-40">abiStep</a>.<a href="../src/reflect/abi.go.html#line-50">ireg</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">29 uses</span>
+
+	reflect (current package)
+		<a href="../src/reflect/abi.go.html#line-50">abi.go#L50</a>: 	<b>ireg</b>   int     // integer register index, used if kind == abiStepIntReg or kind == abiStepPointer
+		<a href="../src/reflect/abi.go.html#line-94" class="path-duplicate">abi.go</a><a href="../src/reflect/abi.go.html#line-94">#L94</a>: 		println("part", i, p.kind, p.offset, p.size, p.stkOff, p.<b>ireg</b>, p.freg)
+		<a href="../src/reflect/abi.go.html#line-280" class="path-duplicate">abi.go</a><a href="../src/reflect/abi.go.html#line-280">#L280</a>: 			<b>ireg</b>:   a.iregs,
+		<a href="../src/reflect/abi.go.html#line-428" class="path-duplicate">abi.go</a><a href="../src/reflect/abi.go.html#line-428">#L428</a>: 					inRegPtrs.Set(st.<b>ireg</b>)
+		<a href="../src/reflect/abi.go.html#line-459" class="path-duplicate">abi.go</a><a href="../src/reflect/abi.go.html#line-459">#L459</a>: 					outRegPtrs.Set(st.<b>ireg</b>)
+		<a href="../src/reflect/value.go.html#line-515">value.go#L515</a>: 			storeRcvr(rcvr, unsafe.Pointer(&amp;regArgs.Ptrs[st.<b>ireg</b>]))
+		<a href="../src/reflect/value.go.html#line-518" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-518">#L518</a>: 			storeRcvr(rcvr, unsafe.Pointer(&amp;regArgs.Ints[st.<b>ireg</b>]))
+		<a href="../src/reflect/value.go.html#line-556" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-556">#L556</a>: 						regArgs.Ptrs[st.<b>ireg</b>] = *(*unsafe.Pointer)(offset)
+		<a href="../src/reflect/value.go.html#line-558" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-558">#L558</a>: 					intToReg(&amp;regArgs, st.<b>ireg</b>, st.size, offset)
+		<a href="../src/reflect/value.go.html#line-562" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-562">#L562</a>: 						regArgs.Ptrs[st.<b>ireg</b>] = v.ptr
+		<a href="../src/reflect/value.go.html#line-564" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-564">#L564</a>: 					regArgs.Ints[st.<b>ireg</b>] = uintptr(v.ptr)
+		<a href="../src/reflect/value.go.html#line-649" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-649">#L649</a>: 				ret[i] = Value{tv, regArgs.Ptrs[steps[0].<b>ireg</b>], flag(tv.Kind())}
+		<a href="../src/reflect/value.go.html#line-667" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-667">#L667</a>: 					intFromReg(&amp;regArgs, st.<b>ireg</b>, st.size, offset)
+		<a href="../src/reflect/value.go.html#line-670" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-670">#L670</a>: 					*((*unsafe.Pointer)(s)) = regArgs.Ptrs[st.<b>ireg</b>]
+		<a href="../src/reflect/value.go.html#line-755" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-755">#L755</a>: 						intFromReg(regs, st.<b>ireg</b>, st.size, offset)
+		<a href="../src/reflect/value.go.html#line-758" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-758">#L758</a>: 						*((*unsafe.Pointer)(s)) = regs.Ptrs[st.<b>ireg</b>]
+		<a href="../src/reflect/value.go.html#line-775" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-775">#L775</a>: 				v.ptr = regs.Ptrs[steps[0].<b>ireg</b>]
+		<a href="../src/reflect/value.go.html#line-841" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-841">#L841</a>: 						intToReg(regs, st.<b>ireg</b>, st.size, offset)
+		<a href="../src/reflect/value.go.html#line-848" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-848">#L848</a>: 						regs.Ints[st.<b>ireg</b>] = uintptr(v.ptr)
+		<a href="../src/reflect/value.go.html#line-993" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-993">#L993</a>: 		storeRcvr(rcvr, unsafe.Pointer(&amp;methodRegs.Ptrs[st.<b>ireg</b>]))
+		<a href="../src/reflect/value.go.html#line-996" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-996">#L996</a>: 		storeRcvr(rcvr, unsafe.Pointer(&amp;methodRegs.Ints[st.<b>ireg</b>]))
+		<a href="../src/reflect/value.go.html#line-1044" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1044">#L1044</a>: 					methodRegs.Ptrs[mStep.<b>ireg</b>] = *(*unsafe.Pointer)(from)
+		<a href="../src/reflect/value.go.html#line-1047" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1047">#L1047</a>: 					intToReg(&amp;methodRegs, mStep.<b>ireg</b>, mStep.size, from)
+		<a href="../src/reflect/value.go.html#line-1063" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1063">#L1063</a>: 					*(*unsafe.Pointer)(to) = valueRegs.Ptrs[vStep.<b>ireg</b>]
+		<a href="../src/reflect/value.go.html#line-1065" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1065">#L1065</a>: 					intFromReg(valueRegs, vStep.<b>ireg</b>, vStep.size, to)
+		<a href="../src/reflect/value.go.html#line-1089" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1089">#L1089</a>: 				methodRegs.Ptrs[mStep.<b>ireg</b>] = valueRegs.Ptrs[vStep.<b>ireg</b>]
+		<a href="../src/reflect/value.go.html#line-1092" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1092">#L1092</a>: 				methodRegs.Ints[mStep.<b>ireg</b>] = valueRegs.Ints[vStep.<b>ireg</b>]
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: unicode.IsSpace</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/unicode.html">unicode</a>.<a href="../src/unicode/graphic.go.html#line-128">IsSpace</a></b></span>
+
+<span class="title">14 uses</span>
+
+	unicode (current package)
+		<a href="../src/unicode/graphic.go.html#line-128">graphic.go#L128</a>: func <b>IsSpace</b>(r rune) bool {
+
+	<a href="../pkg/bytes.html">bytes</a>
+		<a href="../src/bytes/bytes.go.html#line-416">bytes.go#L416</a>: 		return FieldsFunc(s, unicode.<b>IsSpace</b>)
+		<a href="../src/bytes/bytes.go.html#line-758" class="path-duplicate">bytes.go</a><a href="../src/bytes/bytes.go.html#line-758">#L758</a>: 	return unicode.<b>IsSpace</b>(r)
+		<a href="../src/bytes/bytes.go.html#line-1057" class="path-duplicate">bytes.go</a><a href="../src/bytes/bytes.go.html#line-1057">#L1057</a>: 			return TrimFunc(s[start:], unicode.<b>IsSpace</b>)
+		<a href="../src/bytes/bytes.go.html#line-1069" class="path-duplicate">bytes.go</a><a href="../src/bytes/bytes.go.html#line-1069">#L1069</a>: 			return TrimFunc(s[start:stop], unicode.<b>IsSpace</b>)
+
+	<a href="../pkg/mime.html">mime</a>
+		<a href="../src/mime/mediatype.go.html#line-157">mediatype.go#L157</a>: 		v = strings.TrimLeftFunc(v, unicode.<b>IsSpace</b>)
+		<a href="../src/mime/mediatype.go.html#line-322" class="path-duplicate">mediatype.go</a><a href="../src/mime/mediatype.go.html#line-322">#L322</a>: 	rest = strings.TrimLeftFunc(v, unicode.<b>IsSpace</b>)
+		<a href="../src/mime/mediatype.go.html#line-328" class="path-duplicate">mediatype.go</a><a href="../src/mime/mediatype.go.html#line-328">#L328</a>: 	rest = strings.TrimLeftFunc(rest, unicode.<b>IsSpace</b>)
+		<a href="../src/mime/mediatype.go.html#line-335" class="path-duplicate">mediatype.go</a><a href="../src/mime/mediatype.go.html#line-335">#L335</a>: 	rest = strings.TrimLeftFunc(rest, unicode.<b>IsSpace</b>)
+		<a href="../src/mime/mediatype.go.html#line-340" class="path-duplicate">mediatype.go</a><a href="../src/mime/mediatype.go.html#line-340">#L340</a>: 	rest = strings.TrimLeftFunc(rest, unicode.<b>IsSpace</b>)
+
+	<a href="../pkg/strings.html">strings</a>
+		<a href="../src/strings/strings.go.html#line-345">strings.go#L345</a>: 		return FieldsFunc(s, unicode.<b>IsSpace</b>)
+		<a href="../src/strings/strings.go.html#line-769" class="path-duplicate">strings.go</a><a href="../src/strings/strings.go.html#line-769">#L769</a>: 	return unicode.<b>IsSpace</b>(r)
+		<a href="../src/strings/strings.go.html#line-1010" class="path-duplicate">strings.go</a><a href="../src/strings/strings.go.html#line-1010">#L1010</a>: 			return TrimFunc(s[start:], unicode.<b>IsSpace</b>)
+		<a href="../src/strings/strings.go.html#line-1023" class="path-duplicate">strings.go</a><a href="../src/strings/strings.go.html#line-1023">#L1023</a>: 			return TrimRightFunc(s[start:stop], unicode.<b>IsSpace</b>)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

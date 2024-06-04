@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.readgstatus</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/proc.go.html#line-1039">readgstatus</a></b></span>
+
+<span class="title">43 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/heapdump.go.html#line-358">heapdump.go#L358</a>: 	dumpint(uint64(<b>readgstatus</b>(gp)))
+		<a href="../src/runtime/heapdump.go.html#line-413" class="path-duplicate">heapdump.go</a><a href="../src/runtime/heapdump.go.html#line-413">#L413</a>: 		status := <b>readgstatus</b>(gp) // The world is stopped so gp will not be in a scan state.
+		<a href="../src/runtime/mfinal.go.html#line-314">mfinal.go#L314</a>: 		empty = empty &amp;&amp; <b>readgstatus</b>(fing) == _Gwaiting &amp;&amp; fing.waitreason == waitReasonFinalizerWait
+		<a href="../src/runtime/mgcmark.go.html#line-141">mgcmark.go#L141</a>: 				"status", <b>readgstatus</b>(gp),
+		<a href="../src/runtime/mgcmark.go.html#line-208" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-208">#L208</a>: 		status := <b>readgstatus</b>(gp) // We are not in a scan state
+		<a href="../src/runtime/mgcmark.go.html#line-221" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-221">#L221</a>: 			selfScan := gp == userG &amp;&amp; <b>readgstatus</b>(userG) == _Grunning
+		<a href="../src/runtime/mgcmark.go.html#line-832" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-832">#L832</a>: 	if <b>readgstatus</b>(gp)&amp;_Gscan == 0 {
+		<a href="../src/runtime/mgcmark.go.html#line-833" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-833">#L833</a>: 		print("runtime:scanstack: gp=", gp, ", goid=", gp.goid, ", gp-&gt;atomicstatus=", hex(<b>readgstatus</b>(gp)), "\n")
+		<a href="../src/runtime/mgcmark.go.html#line-837" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-837">#L837</a>: 	switch <b>readgstatus</b>(gp) &amp;^ _Gscan {
+		<a href="../src/runtime/mgcmark.go.html#line-839" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-839">#L839</a>: 		print("runtime: gp=", gp, ", goid=", gp.goid, ", gp-&gt;atomicstatus=", <b>readgstatus</b>(gp), "\n")
+		<a href="../src/runtime/mgcmark.go.html#line-844" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-844">#L844</a>: 		print("runtime: gp=", gp, ", goid=", gp.goid, ", gp-&gt;atomicstatus=", <b>readgstatus</b>(gp), "\n")
+		<a href="../src/runtime/mprof.go.html#line-1186">mprof.go#L1186</a>: 		if <b>readgstatus</b>(fing) != _Gdead &amp;&amp; !isSystemGoroutine(fing, false) {
+		<a href="../src/runtime/mprof.go.html#line-1255" class="path-duplicate">mprof.go</a><a href="../src/runtime/mprof.go.html#line-1255">#L1255</a>: 	if <b>readgstatus</b>(gp1) == _Gdead {
+		<a href="../src/runtime/mprof.go.html#line-1304" class="path-duplicate">mprof.go</a><a href="../src/runtime/mprof.go.html#line-1304">#L1304</a>: 	if <b>readgstatus</b>(gp1) == _Grunning {
+		<a href="../src/runtime/mprof.go.html#line-1339" class="path-duplicate">mprof.go</a><a href="../src/runtime/mprof.go.html#line-1339">#L1339</a>: 		return gp1 != gp &amp;&amp; <b>readgstatus</b>(gp1) != _Gdead &amp;&amp; !isSystemGoroutine(gp1, false)
+		<a href="../src/runtime/panic.go.html#line-1384">panic.go#L1384</a>: 	status := <b>readgstatus</b>(gp)
+		<a href="../src/runtime/preempt.go.html#line-105">preempt.go#L105</a>: 	if mp := getg().m; mp.curg != nil &amp;&amp; <b>readgstatus</b>(mp.curg) == _Grunning {
+		<a href="../src/runtime/preempt.go.html#line-122" class="path-duplicate">preempt.go</a><a href="../src/runtime/preempt.go.html#line-122">#L122</a>: 		switch s := <b>readgstatus</b>(gp); s {
+		<a href="../src/runtime/preempt.go.html#line-264" class="path-duplicate">preempt.go</a><a href="../src/runtime/preempt.go.html#line-264">#L264</a>: 	switch s := <b>readgstatus</b>(gp); s {
+		<a href="../src/runtime/preempt.go.html#line-343" class="path-duplicate">preempt.go</a><a href="../src/runtime/preempt.go.html#line-343">#L343</a>: 	return (gp.preempt || gp.m.p != 0 &amp;&amp; gp.m.p.ptr().preempt) &amp;&amp; <b>readgstatus</b>(gp)&amp;^_Gscan == _Grunning
+		<a href="../src/runtime/proc.go.html#line-391">proc.go#L391</a>: 	status := <b>readgstatus</b>(gp)
+		<a href="../src/runtime/proc.go.html#line-619" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-619">#L619</a>: 	if <b>readgstatus</b>(gp) == _Gidle {
+		<a href="../src/runtime/proc.go.html#line-849" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-849">#L849</a>: 	print("runtime:   gp: gp=", gp, ", goid=", gp.goid, ", gp-&gt;atomicstatus=", <b>readgstatus</b>(gp), "\n")
+		<a href="../src/runtime/proc.go.html#line-850" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-850">#L850</a>: 	print("runtime: getg:  g=", thisg, ", goid=", thisg.goid, ",  g-&gt;atomicstatus=", <b>readgstatus</b>(thisg), "\n")
+		<a href="../src/runtime/proc.go.html#line-953" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-953">#L953</a>: 	status := <b>readgstatus</b>(gp)
+		<a href="../src/runtime/proc.go.html#line-1039" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-1039">#L1039</a>: func <b>readgstatus</b>(gp *g) uint32 {
+		<a href="../src/runtime/proc.go.html#line-1219" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-1219">#L1219</a>: 		oldstatus := <b>readgstatus</b>(gp) &amp;^ _Gscan
+		<a href="../src/runtime/proc.go.html#line-3027" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-3027">#L3027</a>: 	status := <b>readgstatus</b>(gp.m.lockedg.ptr())
+		<a href="../src/runtime/proc.go.html#line-4041" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4041">#L4041</a>: 	status := <b>readgstatus</b>(gp)
+		<a href="../src/runtime/proc.go.html#line-4089" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4089">#L4089</a>: 	status := <b>readgstatus</b>(gp)
+		<a href="../src/runtime/proc.go.html#line-4909" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4909">#L4909</a>: 	if <b>readgstatus</b>(newg) != _Gdead {
+		<a href="../src/runtime/proc.go.html#line-5030" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-5030">#L5030</a>: 	if <b>readgstatus</b>(gp) != _Gdead {
+		<a href="../src/runtime/proc.go.html#line-5872" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-5872">#L5872</a>: 		s := <b>readgstatus</b>(gp)
+		<a href="../src/runtime/proc.go.html#line-6303" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6303">#L6303</a>: 		print("  G", gp.goid, ": status=", <b>readgstatus</b>(gp), "(", gp.waitreason.String(), ") m=")
+		<a href="../src/runtime/signal_unix.go.html#line-743">signal_unix.go#L743</a>: 		if crashing.Load() &gt; 0 &amp;&amp; gp != mp.curg &amp;&amp; mp.curg != nil &amp;&amp; <b>readgstatus</b>(mp.curg)&amp;^_Gscan == _Grunning {
+		<a href="../src/runtime/stack.go.html#line-1045">stack.go#L1045</a>: 		print("runtime: gp=", gp, ", goid=", gp.goid, ", gp-&gt;status=", hex(<b>readgstatus</b>(gp)), "\n ")
+		<a href="../src/runtime/stack.go.html#line-1164" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-1164">#L1164</a>: 	if s := <b>readgstatus</b>(gp); s&amp;_Gscan == 0 {
+		<a href="../src/runtime/trace2.go.html#line-340">trace2.go#L340</a>: 				ug.status = <b>readgstatus</b>(s.g) &amp;^ _Gscan
+		<a href="../src/runtime/trace2status.go.html#line-91">trace2status.go#L91</a>: 		if w.mp.p.ptr() == pp &amp;&amp; w.mp.curg != nil &amp;&amp; <b>readgstatus</b>(w.mp.curg)&amp;^_Gscan == _Gsyscall {
+		<a href="../src/runtime/traceback.go.html#line-854">traceback.go#L854</a>: 	if <b>readgstatus</b>(gp)&amp;^_Gscan == _Gsyscall {
+		<a href="../src/runtime/traceback.go.html#line-1182" class="path-duplicate">traceback.go</a><a href="../src/runtime/traceback.go.html#line-1182">#L1182</a>: 	gpstatus := <b>readgstatus</b>(gp)
+		<a href="../src/runtime/traceback.go.html#line-1246" class="path-duplicate">traceback.go</a><a href="../src/runtime/traceback.go.html#line-1246">#L1246</a>: 		if gp == me || gp == curgp || <b>readgstatus</b>(gp) == _Gdead || isSystemGoroutine(gp, false) &amp;&amp; level &lt; 2 {
+		<a href="../src/runtime/traceback.go.html#line-1255" class="path-duplicate">traceback.go</a><a href="../src/runtime/traceback.go.html#line-1255">#L1255</a>: 		if gp.m != getg().m &amp;&amp; <b>readgstatus</b>(gp)&amp;^_Gscan == _Grunning {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

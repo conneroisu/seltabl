@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/http.http2FrameHeader.StreamID</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/net/http.html">net/http</a>.<a href="../../src/net/http/h2_bundle.go.html#line-1551">http2FrameHeader</a>.<a href="../../src/net/http/h2_bundle.go.html#line-1570">StreamID</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">52 uses</span>
+
+	net/http (current package)
+		<a href="../../src/net/http/h2_bundle.go.html#line-1570">h2_bundle.go#L1570</a>: 	<b>StreamID</b> uint32
+		<a href="../../src/net/http/h2_bundle.go.html#line-1606" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1606">#L1606</a>: 	if h.<b>StreamID</b> != 0 {
+		<a href="../../src/net/http/h2_bundle.go.html#line-1607" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1607">#L1607</a>: 		fmt.Fprintf(buf, " stream=%d", h.<b>StreamID</b>)
+		<a href="../../src/net/http/h2_bundle.go.html#line-1646" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1646">#L1646</a>: 		<b>StreamID</b>: binary.BigEndian.Uint32(buf[5:]) &amp; (1&lt;&lt;31 - 1),
+		<a href="../../src/net/http/h2_bundle.go.html#line-1959" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1959">#L1959</a>: 					fh.Type, fh.<b>StreamID</b>,
+		<a href="../../src/net/http/h2_bundle.go.html#line-1962" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1962">#L1962</a>: 		if fh.<b>StreamID</b> != fr.lastHeaderStream {
+		<a href="../../src/net/http/h2_bundle.go.html#line-1965" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1965">#L1965</a>: 					fh.<b>StreamID</b>, fr.lastHeaderStream))
+		<a href="../../src/net/http/h2_bundle.go.html#line-1968" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1968">#L1968</a>: 		return fr.connError(http2ErrCodeProtocol, fmt.Sprintf("unexpected CONTINUATION for stream %d", fh.<b>StreamID</b>))
+		<a href="../../src/net/http/h2_bundle.go.html#line-1976" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1976">#L1976</a>: 			fr.lastHeaderStream = fh.<b>StreamID</b>
+		<a href="../../src/net/http/h2_bundle.go.html#line-2005" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2005">#L2005</a>: 	if fh.<b>StreamID</b> == 0 {
+		<a href="../../src/net/http/h2_bundle.go.html#line-2134" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2134">#L2134</a>: 	if fh.<b>StreamID</b> != 0 {
+		<a href="../../src/net/http/h2_bundle.go.html#line-2269" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2269">#L2269</a>: 	if fh.<b>StreamID</b> != 0 {
+		<a href="../../src/net/http/h2_bundle.go.html#line-2307" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2307">#L2307</a>: 	if fh.<b>StreamID</b> != 0 {
+		<a href="../../src/net/http/h2_bundle.go.html#line-2372" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2372">#L2372</a>: 		if fh.<b>StreamID</b> == 0 {
+		<a href="../../src/net/http/h2_bundle.go.html#line-2377" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2377">#L2377</a>: 		return nil, http2streamError(fh.<b>StreamID</b>, http2ErrCodeProtocol)
+		<a href="../../src/net/http/h2_bundle.go.html#line-2431" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2431">#L2431</a>: 	if fh.<b>StreamID</b> == 0 {
+		<a href="../../src/net/http/h2_bundle.go.html#line-2463" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2463">#L2463</a>: 		return nil, http2streamError(fh.<b>StreamID</b>, http2ErrCodeProtocol)
+		<a href="../../src/net/http/h2_bundle.go.html#line-2570" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2570">#L2570</a>: 	if fh.<b>StreamID</b> == 0 {
+		<a href="../../src/net/http/h2_bundle.go.html#line-2623" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2623">#L2623</a>: 	if fh.<b>StreamID</b> == 0 {
+		<a href="../../src/net/http/h2_bundle.go.html#line-2651" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2651">#L2651</a>: 	if fh.<b>StreamID</b> == 0 {
+		<a href="../../src/net/http/h2_bundle.go.html#line-2705" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2705">#L2705</a>: 	if pp.<b>StreamID</b> == 0 {
+		<a href="../../src/net/http/h2_bundle.go.html#line-3043" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-3043">#L3043</a>: 		return nil, http2StreamError{mh.<b>StreamID</b>, http2ErrCodeProtocol, invalid}
+		<a href="../../src/net/http/h2_bundle.go.html#line-3050" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-3050">#L3050</a>: 		return nil, http2StreamError{mh.<b>StreamID</b>, http2ErrCodeProtocol, err}
+		<a href="../../src/net/http/h2_bundle.go.html#line-3083" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-3083">#L3083</a>: 		if f.<b>StreamID</b> == 0 {
+		<a href="../../src/net/http/h2_bundle.go.html#line-5304" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5304">#L5304</a>: 			if id := res.f.Header().<b>StreamID</b>; id &gt; sc.maxClientStreamID {
+		<a href="../../src/net/http/h2_bundle.go.html#line-5336" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5336">#L5336</a>: 	if sc.inGoAway &amp;&amp; (sc.goAwayCode != http2ErrCodeNo || f.Header().<b>StreamID</b> &gt; sc.maxClientStreamID) {
+		<a href="../../src/net/http/h2_bundle.go.html#line-5340" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5340">#L5340</a>: 				return sc.countError("data_flow", http2streamError(f.Header().<b>StreamID</b>, http2ErrCodeFlowControl))
+		<a href="../../src/net/http/h2_bundle.go.html#line-5381" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5381">#L5381</a>: 	if f.<b>StreamID</b> != 0 {
+		<a href="../../src/net/http/h2_bundle.go.html#line-5396" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5396">#L5396</a>: 	case f.<b>StreamID</b> != 0: // stream-level flow control
+		<a href="../../src/net/http/h2_bundle.go.html#line-5397" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5397">#L5397</a>: 		state, st := sc.state(f.<b>StreamID</b>)
+		<a href="../../src/net/http/h2_bundle.go.html#line-5414" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5414">#L5414</a>: 			return sc.countError("bad_flow", http2streamError(f.<b>StreamID</b>, http2ErrCodeFlowControl))
+		<a href="../../src/net/http/h2_bundle.go.html#line-5428" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5428">#L5428</a>: 	state, st := sc.state(f.<b>StreamID</b>)
+		<a href="../../src/net/http/h2_bundle.go.html#line-5439" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5439">#L5439</a>: 		sc.closeStream(st, http2streamError(f.<b>StreamID</b>, f.ErrCode))
+		<a href="../../src/net/http/h2_bundle.go.html#line-5580" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5580">#L5580</a>: 	id := f.Header().<b>StreamID</b>
+		<a href="../../src/net/http/h2_bundle.go.html#line-5743" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5743">#L5743</a>: 	id := f.<b>StreamID</b>
+		<a href="../../src/net/http/h2_bundle.go.html#line-5756" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5756">#L5756</a>: 	if st := sc.streams[f.<b>StreamID</b>]; st != nil {
+		<a href="../../src/net/http/h2_bundle.go.html#line-5812" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5812">#L5812</a>: 		if err := sc.checkPriority(f.<b>StreamID</b>, f.Priority); err != nil {
+		<a href="../../src/net/http/h2_bundle.go.html#line-5918" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5918">#L5918</a>: 	if err := sc.checkPriority(f.<b>StreamID</b>, f.http2PriorityParam); err != nil {
+		<a href="../../src/net/http/h2_bundle.go.html#line-5921" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5921">#L5921</a>: 	sc.writeSched.AdjustStream(f.<b>StreamID</b>, f.http2PriorityParam)
+		<a href="../../src/net/http/h2_bundle.go.html#line-5974" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5974">#L5974</a>: 			return nil, nil, sc.countError("bad_connect", http2streamError(f.<b>StreamID</b>, http2ErrCodeProtocol))
+		<a href="../../src/net/http/h2_bundle.go.html#line-5987" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5987">#L5987</a>: 		return nil, nil, sc.countError("bad_path_method", http2streamError(f.<b>StreamID</b>, http2ErrCodeProtocol))
+		<a href="../../src/net/http/h2_bundle.go.html#line-9402" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9402">#L9402</a>: 	cs := rl.streamByID(f.<b>StreamID</b>)
+		<a href="../../src/net/http/h2_bundle.go.html#line-9411" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9411">#L9411</a>: 			StreamID: f.<b>StreamID</b>,
+		<a href="../../src/net/http/h2_bundle.go.html#line-9440" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9440">#L9440</a>: 			StreamID: f.<b>StreamID</b>,
+		<a href="../../src/net/http/h2_bundle.go.html#line-9712" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9712">#L9712</a>: 	cs := rl.streamByID(f.<b>StreamID</b>)
+		<a href="../../src/net/http/h2_bundle.go.html#line-9718" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9718">#L9718</a>: 		if f.<b>StreamID</b> &gt;= neverSent {
+		<a href="../../src/net/http/h2_bundle.go.html#line-9749" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9749">#L9749</a>: 			StreamID: f.<b>StreamID</b>,
+		<a href="../../src/net/http/h2_bundle.go.html#line-9757" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9757">#L9757</a>: 			StreamID: f.<b>StreamID</b>,
+		<a href="../../src/net/http/h2_bundle.go.html#line-9766" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9766">#L9766</a>: 				StreamID: f.<b>StreamID</b>,
+		<a href="../../src/net/http/h2_bundle.go.html#line-9968" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9968">#L9968</a>: 	cs := rl.streamByID(f.<b>StreamID</b>)
+		<a href="../../src/net/http/h2_bundle.go.html#line-9969" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9969">#L9969</a>: 	if f.<b>StreamID</b> != 0 &amp;&amp; cs == nil {
+		<a href="../../src/net/http/h2_bundle.go.html#line-9988" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9988">#L9988</a>: 	cs := rl.streamByID(f.<b>StreamID</b>)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

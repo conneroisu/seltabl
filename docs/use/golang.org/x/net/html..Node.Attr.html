@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: golang.org/x/net/html.Node.Attr</title>
+<link href="../../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../../../pkg/golang.org/x/net/html.html">golang.org/x/net/html</a>.<a href="../../../../src/golang.org/x/net/html/node.go.html#line-44">Node</a>.<a href="../../../../src/golang.org/x/net/html/node.go.html#line-51">Attr</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">46 uses</span>
+
+	golang.org/x/net/html (current package)
+		<a href="../../../../src/golang.org/x/net/html/doctype.go.html#line-59">doctype.go#L59</a>: 		n.<b>Attr</b> = append(n.<b>Attr</b>, Attribute{Key: key, Val: id})
+		<a href="../../../../src/golang.org/x/net/html/doctype.go.html#line-69" class="path-duplicate">doctype.go</a><a href="../../../../src/golang.org/x/net/html/doctype.go.html#line-69">#L69</a>: 	} else if len(n.<b>Attr</b>) &gt; 0 {
+		<a href="../../../../src/golang.org/x/net/html/doctype.go.html#line-70" class="path-duplicate">doctype.go</a><a href="../../../../src/golang.org/x/net/html/doctype.go.html#line-70">#L70</a>: 		if n.<b>Attr</b>[0].Key == "public" {
+		<a href="../../../../src/golang.org/x/net/html/doctype.go.html#line-71" class="path-duplicate">doctype.go</a><a href="../../../../src/golang.org/x/net/html/doctype.go.html#line-71">#L71</a>: 			public := strings.ToLower(n.<b>Attr</b>[0].Val)
+		<a href="../../../../src/golang.org/x/net/html/doctype.go.html#line-84" class="path-duplicate">doctype.go</a><a href="../../../../src/golang.org/x/net/html/doctype.go.html#line-84">#L84</a>: 			if len(n.<b>Attr</b>) == 1 &amp;&amp; (strings.HasPrefix(public, "-//w3c//dtd html 4.01 frameset//") ||
+		<a href="../../../../src/golang.org/x/net/html/doctype.go.html#line-89" class="path-duplicate">doctype.go</a><a href="../../../../src/golang.org/x/net/html/doctype.go.html#line-89">#L89</a>: 		if lastAttr := n.<b>Attr</b>[len(n.<b>Attr</b>)-1]; lastAttr.Key == "system" &amp;&amp;
+		<a href="../../../../src/golang.org/x/net/html/foreign.go.html#line-41">foreign.go#L41</a>: 			for _, a := range n.<b>Attr</b> {
+		<a href="../../../../src/golang.org/x/net/html/node.go.html#line-51">node.go#L51</a>: 	<b>Attr</b>      []Attribute
+		<a href="../../../../src/golang.org/x/net/html/node.go.html#line-146" class="path-duplicate">node.go</a><a href="../../../../src/golang.org/x/net/html/node.go.html#line-146">#L146</a>: 		<b>Attr</b>:     make([]Attribute, len(n.<b>Attr</b>)),
+		<a href="../../../../src/golang.org/x/net/html/node.go.html#line-148" class="path-duplicate">node.go</a><a href="../../../../src/golang.org/x/net/html/node.go.html#line-148">#L148</a>: 	copy(m.<b>Attr</b>, n.<b>Attr</b>)
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-330">parse.go#L330</a>: 		<b>Attr</b>:     p.tok.Attr,
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-356" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-356">#L356</a>: 		if len(n.<b>Attr</b>) != len(attr) {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-360" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-360">#L360</a>: 		for _, t0 := range n.<b>Attr</b> {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-852" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-852">#L852</a>: 	for _, t := range dst.<b>Attr</b> {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-857" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-857">#L857</a>: 			dst.<b>Attr</b> = append(dst.<b>Attr</b>, t)
+		<a href="../../../../src/golang.org/x/net/html/render.go.html#line-102">render.go#L102</a>: 		if n.<b>Attr</b> != nil {
+		<a href="../../../../src/golang.org/x/net/html/render.go.html#line-104" class="path-duplicate">render.go</a><a href="../../../../src/golang.org/x/net/html/render.go.html#line-104">#L104</a>: 			for _, a := range n.<b>Attr</b> {
+		<a href="../../../../src/golang.org/x/net/html/render.go.html#line-151" class="path-duplicate">render.go</a><a href="../../../../src/golang.org/x/net/html/render.go.html#line-151">#L151</a>: 	for _, a := range n.<b>Attr</b> {
+
+	<a href="../../../../pkg/github.com/andybalholm/cascadia.html">github.com/andybalholm/cascadia</a>
+		<a href="../../../../src/github.com/andybalholm/cascadia/selector.go.html#line-314">selector.go#L314</a>: 	for _, a := range n.<b>Attr</b> {
+		<a href="../../../../src/github.com/andybalholm/cascadia/selector.go.html#line-328" class="path-duplicate">selector.go</a><a href="../../../../src/github.com/andybalholm/cascadia/selector.go.html#line-328">#L328</a>: 	for _, a := range n.<b>Attr</b> {
+
+	<a href="../../../../pkg/github.com/PuerkitoBio^56e6a/goquery.html">github.com/PuerkitoBio/goquery</a>
+		<a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/manipulation.go.html#line-611">manipulation.go#L611</a>: 		<b>Attr</b>:     make([]html.Attribute, len(n.<b>Attr</b>)),
+		<a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/manipulation.go.html#line-614" class="path-duplicate">manipulation.go</a><a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/manipulation.go.html#line-614">#L614</a>: 	copy(nn.<b>Attr</b>, n.<b>Attr</b>)
+		<a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/property.go.html#line-51">property.go#L51</a>: 			n.<b>Attr</b> = append(n.<b>Attr</b>, html.Attribute{Key: attrName, Val: val})
+		<a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/property.go.html#line-213" class="path-duplicate">property.go</a><a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/property.go.html#line-213">#L213</a>: 	for i, a := range n.<b>Attr</b> {
+		<a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/property.go.html#line-215" class="path-duplicate">property.go</a><a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/property.go.html#line-215">#L215</a>: 			return &amp;n.<b>Attr</b>[i]
+		<a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/property.go.html#line-236" class="path-duplicate">property.go</a><a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/property.go.html#line-236">#L236</a>: 			n.<b>Attr</b> = append(n.<b>Attr</b>, html.Attribute{
+		<a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/property.go.html#line-240" class="path-duplicate">property.go</a><a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/property.go.html#line-240">#L240</a>: 			attr = &amp;n.<b>Attr</b>[len(n.<b>Attr</b>)-1]
+		<a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/property.go.html#line-258" class="path-duplicate">property.go</a><a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/property.go.html#line-258">#L258</a>: 	for i, a := range n.<b>Attr</b> {
+		<a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/property.go.html#line-260" class="path-duplicate">property.go</a><a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/property.go.html#line-260">#L260</a>: 			n.<b>Attr</b>[i], n.<b>Attr</b>[len(n.<b>Attr</b>)-1], n.<b>Attr</b> =
+		<a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/property.go.html#line-261" class="path-duplicate">property.go</a><a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/property.go.html#line-261">#L261</a>: 				n.<b>Attr</b>[len(n.<b>Attr</b>)-1], html.Attribute{}, n.<b>Attr</b>[:len(n.<b>Attr</b>)-1]
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

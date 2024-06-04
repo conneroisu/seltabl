@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: vendor/golang.org/x/net/idna</title>
+<link href="../../../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>idna</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../../../../index.html#pkg-vendor/golang.org/x/net/idna">vendor/golang.org/x/net/idna</a><i> (on <a href="https://pkg.go.dev/golang.org/x/net/idna" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../../../../../dep/vendor/golang.org/x/net/idna.html">7 packages</a>, and imported by <a href="../../../../../dep/vendor/golang.org/x/net/idna.html#imported-by">3 packages</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<span class="nodocs">    <a href="../../../../../src/vendor/golang.org/x/net/idna/go118.go.html">go118.go</a></span>
+	<input type='checkbox' checked class="fold" id="file-1-fold-content"><label for="file-1-fold-content">  <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#doc">d</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html">idna10.0.0.go</a></label><span id='file-1-fold-content-items' class="fold-items">
+<span class="md-text">		Package idna implements IDNA2008 using the compatibility processing
+		defined by UTS (Unicode Technical Standard) #46, which defines a standard to
+		deal with the transition from IDNA2003.
+		
+		IDNA2008 (Internationalized Domain Names for Applications), is defined in RFC
+		5890, RFC 5891, RFC 5892, RFC 5893 and RFC 5894.
+		UTS #46 is defined in https://www.unicode.org/reports/tr46.
+		See https://unicode.org/cldr/utility/idna.jsp for a visualization of the
+		differences between these two standards.</span>
+</span>
+	<span class="nodocs">    <a href="../../../../../src/vendor/golang.org/x/net/idna/punycode.go.html">punycode.go</a></span>
+	<span class="nodocs">    <a href="../../../../../src/vendor/golang.org/x/net/idna/tables15.0.0.go.html">tables15.0.0.go</a></span>
+	<span class="nodocs">    <a href="../../../../../src/vendor/golang.org/x/net/idna/trie.go.html">trie.go</a></span>
+	<span class="nodocs">    <a href="../../../../../src/vendor/golang.org/x/net/idna/trie13.0.0.go.html">trie13.0.0.go</a></span>
+	<span class="nodocs">    <a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html">trieval.go</a></span></div>
+<div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (total 12, in which 2 are exported)</i></span></span>
+
+<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-Option" data-popularity="820">	<input type='checkbox' class="fold" id="Option-fold-content"><label for="Option-fold-content"> <a href="../../../../../use/vendor/golang.org/x/net/idna..Option.html">type</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-56">Option</a> <i>(func)</i></label><span id='Option-fold-content-docs' class="fold-docs">
+<span class="md-text">		An Option configures a Profile at creation time.</span>
+
+		<input type='checkbox' class="fold" id="Option-fold-results"><label for="Option-fold-results">As Outputs Of (<i>at least 10, all are exported</i>)</label><span id='Option-fold-results-items' class="fold-items"><span>
+			func <a href="#name-BidiRule">BidiRule</a>() <b>Option</b></span><span>
+			func <a href="#name-CheckHyphens">CheckHyphens</a>(enable <a href="../../../../builtin.html#name-bool">bool</a>) <b>Option</b></span><span>
+			func <a href="#name-CheckJoiners">CheckJoiners</a>(enable <a href="../../../../builtin.html#name-bool">bool</a>) <b>Option</b></span><span>
+			func <a href="#name-MapForLookup">MapForLookup</a>() <b>Option</b></span><span>
+			func <a href="#name-RemoveLeadingDots">RemoveLeadingDots</a>(remove <a href="../../../../builtin.html#name-bool">bool</a>) <b>Option</b></span><span>
+			func <a href="#name-StrictDomainName">StrictDomainName</a>(use <a href="../../../../builtin.html#name-bool">bool</a>) <b>Option</b></span><span>
+			func <a href="#name-Transitional">Transitional</a>(transitional <a href="../../../../builtin.html#name-bool">bool</a>) <b>Option</b></span><span>
+			func <a href="#name-ValidateForRegistration">ValidateForRegistration</a>() <b>Option</b></span><span>
+			func <a href="#name-ValidateLabels">ValidateLabels</a>(enable <a href="../../../../builtin.html#name-bool">bool</a>) <b>Option</b></span><span>
+			func <a href="#name-VerifyDNSLength">VerifyDNSLength</a>(verify <a href="../../../../builtin.html#name-bool">bool</a>) <b>Option</b></span></span>
+		<input type='checkbox' class="fold" id="Option-fold-params"><label for="Option-fold-params">As Inputs Of (<i>at least 2, in which 1 is exported</i>)</label><span id='Option-fold-params-items' class="fold-items"><span>
+			func <a href="#name-New">New</a>(o ...<b>Option</b>) *<a href="#name-Profile">Profile</a></span>
+			<input type='checkbox' class="showhide" id="Option-showhide-outputofs"><i><label for="Option-showhide-outputofs" class="show-inline">/* at least one unexported ... */</label><label for="Option-showhide-outputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func <a href="#name-apply">apply</a>(o *<a href="#name-options">options</a>, opts []<b>Option</b>)</i></span></span>
+
+</span></div><div class="anchor type-res" id="name-Profile" data-popularity="680">	<input type='checkbox' class="fold" id="Profile-fold-content"><label for="Profile-fold-content"> <a href="../../../../../use/vendor/golang.org/x/net/idna..Profile.html">type</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-200">Profile</a> <i>(struct)</i></label><span id='Profile-fold-content-docs' class="fold-docs">
+<span class="md-text">		A Profile defines the configuration of an IDNA mapper.</span>
+
+		<input type='checkbox' class="fold" id="Profile-fold-fields"><label for="Profile-fold-fields">Fields (<i>total 11, none are exported</i>)</label><span id='Profile-fold-fields-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="Profile-showhide-fields"><i><label for="Profile-showhide-fields" class="show-inline">/* 11 unexporteds ... */</label><label for="Profile-showhide-fields" class="hide-inline">/* 11 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-201">options</a> <i><a href="#name-options">options</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Profile-fold-field-bidirule"><label for="Profile-fold-field-bidirule"><a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-201" class="path-duplicate">options</a>.<a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-196">bidirule</a> <i>func(s <a href="../../../../builtin.html#name-string">string</a>) <a href="../../../../builtin.html#name-bool">bool</a></i></label><span id='Profile-fold-field-bidirule-docs' class="fold-docs">
+<span class="md-text">				bidirule, if specified, checks whether s conforms to the Bidi Rule
+				defined in RFC 5893.</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-201" class="path-duplicate">options</a>.<a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-180">checkHyphens</a> <i><a href="../../../../builtin.html#name-bool">bool</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-201" class="path-duplicate">options</a>.<a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-181">checkJoiners</a> <i><a href="../../../../builtin.html#name-bool">bool</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Profile-fold-field-fromPuny"><label for="Profile-fold-field-fromPuny"><a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-201" class="path-duplicate">options</a>.<a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-188">fromPuny</a> <i>func(p *<b>Profile</b>, s <a href="../../../../builtin.html#name-string">string</a>) <a href="../../../../builtin.html#name-error">error</a></i></label><span id='Profile-fold-field-fromPuny-docs' class="fold-docs">
+<span class="md-text">				fromPuny calls validation rules when converting A-labels to U-labels.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Profile-fold-field-mapping"><label for="Profile-fold-field-mapping"><a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-201" class="path-duplicate">options</a>.<a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-192">mapping</a> <i>func(p *<b>Profile</b>, s <a href="../../../../builtin.html#name-string">string</a>) (mapped <a href="../../../../builtin.html#name-string">string</a>, isBidi <a href="../../../../builtin.html#name-bool">bool</a>, err <a href="../../../../builtin.html#name-error">error</a>)</i></label><span id='Profile-fold-field-mapping-docs' class="fold-docs">
+<span class="md-text">				mapping implements a validation and mapping step as defined in RFC 5895
+				or UTS 46, tailored to, for example, domain registration or lookup.</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-201" class="path-duplicate">options</a>.<a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-183">removeLeadingDots</a> <i><a href="../../../../builtin.html#name-bool">bool</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-201" class="path-duplicate">options</a>.<a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-178">transitional</a> <i><a href="../../../../builtin.html#name-bool">bool</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-201" class="path-duplicate">options</a>.<a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-185">trie</a> <i>*<a href="#name-idnaTrie">idnaTrie</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-201" class="path-duplicate">options</a>.<a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-179">useSTD3Rules</a> <i><a href="../../../../builtin.html#name-bool">bool</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-201" class="path-duplicate">options</a>.<a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-182">verifyDNSLength</a> <i><a href="../../../../builtin.html#name-bool">bool</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="Profile-fold-methods"><label for="Profile-fold-methods">Methods (<i>total 6, in which 3 are exported</i>)</label><span id='Profile-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Profile-fold-method-String"><label for="Profile-fold-method-String">(*Profile) <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-244">String</a>() <a href="../../../../builtin.html#name-string">string</a></label><span id='Profile-fold-method-String-docs' class="fold-docs">
+<span class="md-text">				String reports a string with a description of the profile for debugging
+				purposes. The string format may change with different versions.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Profile-fold-method-ToASCII"><label for="Profile-fold-method-ToASCII">(*Profile) <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-228">ToASCII</a>(s <a href="../../../../builtin.html#name-string">string</a>) (<a href="../../../../builtin.html#name-string">string</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='Profile-fold-method-ToASCII-docs' class="fold-docs">
+<span class="md-text">				ToASCII converts a domain or domain label to its ASCII form. For example,
+				ToASCII("bücher.example.com") is "xn--bcher-kva.example.com", and
+				ToASCII("golang") is "golang". If an error is encountered it will return
+				an error and a (partially) processed result.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Profile-fold-method-ToUnicode"><label for="Profile-fold-method-ToUnicode">(*Profile) <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-236">ToUnicode</a>(s <a href="../../../../builtin.html#name-string">string</a>) (<a href="../../../../builtin.html#name-string">string</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='Profile-fold-method-ToUnicode-docs' class="fold-docs">
+<span class="md-text">				ToUnicode converts a domain or domain label to its Unicode form. For example,
+				ToUnicode("xn--bcher-kva.example.com") is "bücher.example.com", and
+				ToUnicode("golang") is "golang". If an error is encountered it will return
+				an error and a (partially) processed result.</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="Profile-showhide-methods"><i><label for="Profile-showhide-methods" class="show-inline">/* 3 unexporteds ... */</label><label for="Profile-showhide-methods" class="hide-inline">/* 3 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Profile-fold-method-process"><label for="Profile-fold-method-process">(*Profile) <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-336">process</a>(s <a href="../../../../builtin.html#name-string">string</a>, toASCII <a href="../../../../builtin.html#name-bool">bool</a>) (<a href="../../../../builtin.html#name-string">string</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='Profile-fold-method-process-docs' class="fold-docs">
+<span class="md-text">				process implements the algorithm described in section 4 of UTS #46,
+				see https://www.unicode.org/reports/tr46.</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*Profile) <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-601">simplify</a>(cat <a href="#name-category">category</a>) <a href="#name-category">category</a></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Profile-fold-method-validateLabel"><label for="Profile-fold-method-validateLabel">(*Profile) <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-709">validateLabel</a>(s <a href="../../../../builtin.html#name-string">string</a>) (err <a href="../../../../builtin.html#name-error">error</a>)</label><span id='Profile-fold-method-validateLabel-docs' class="fold-docs">
+<span class="md-text">				validateLabel validates the criteria from Section 4.1. Item 1, 4, and 6 are
+				already implicitly satisfied by the overall implementation.</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="Profile-fold-impls"><label for="Profile-fold-impls">Implements (<i>at least 3, in which 1 is exported</i>)</label><span id='Profile-fold-impls-items' class="fold-items"><span>
+			*Profile : fmt.<a href="../../../../fmt.html#name-Stringer">Stringer</a></span>
+			<input type='checkbox' class="showhide" id="Profile-showhide-impls"><i><label for="Profile-showhide-impls" class="show-inline">/* 2+ unexporteds ... */</label><label for="Profile-showhide-impls" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			*Profile : context.<a href="../../../../context.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			*Profile : runtime.<a href="../../../../runtime.html#name-stringer">stringer</a></i></span></span>
+		<input type='checkbox' class="fold" id="Profile-fold-results"><label for="Profile-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='Profile-fold-results-items' class="fold-items"><span>
+			func <a href="#name-New">New</a>(o ...<a href="#name-Option">Option</a>) *<b>Profile</b></span></span>
+		<input type='checkbox' class="fold" id="Profile-fold-params"><label for="Profile-fold-params">As Inputs Of (<i>at least 4, none are exported</i>)</label><span id='Profile-fold-params-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="Profile-showhide-outputofs"><i><label for="Profile-showhide-outputofs" class="show-inline">/* 4+ unexporteds ... */</label><label for="Profile-showhide-outputofs" class="hide-inline">/* 4+ unexporteds: */</label></i><span class="hidden"><i>
+			func <a href="#name-normalize">normalize</a>(p *<b>Profile</b>, s <a href="../../../../builtin.html#name-string">string</a>) (mapped <a href="../../../../builtin.html#name-string">string</a>, isBidi <a href="../../../../builtin.html#name-bool">bool</a>, err <a href="../../../../builtin.html#name-error">error</a>)</i></span><span class="hidden"><i>
+			func <a href="#name-validateAndMap">validateAndMap</a>(p *<b>Profile</b>, s <a href="../../../../builtin.html#name-string">string</a>) (vm <a href="../../../../builtin.html#name-string">string</a>, bidi <a href="../../../../builtin.html#name-bool">bool</a>, err <a href="../../../../builtin.html#name-error">error</a>)</i></span><span class="hidden"><i>
+			func <a href="#name-validateFromPunycode">validateFromPunycode</a>(p *<b>Profile</b>, s <a href="../../../../builtin.html#name-string">string</a>) <a href="../../../../builtin.html#name-error">error</a></i></span><span class="hidden"><i>
+			func <a href="#name-validateRegistration">validateRegistration</a>(p *<b>Profile</b>, s <a href="../../../../builtin.html#name-string">string</a>) (idem <a href="../../../../builtin.html#name-string">string</a>, bidi <a href="../../../../builtin.html#name-bool">bool</a>, err <a href="../../../../builtin.html#name-error">error</a>)</i></span></span>
+		<input type='checkbox' class="fold" id="Profile-fold-values"><label for="Profile-fold-values">As Types Of (<i>total 8, in which 4 are exported</i>)</label><span id='Profile-fold-values-items' class="fold-items"><span>
+			  var <a href="#name-Display">Display</a> *<b>Profile</b></span><span>
+			  var <a href="#name-Lookup">Lookup</a> *<b>Profile</b></span><span>
+			  var <a href="#name-Punycode">Punycode</a> *<b>Profile</b></span><span>
+			  var <a href="#name-Registration">Registration</a> *<b>Profile</b></span>
+			<input type='checkbox' class="showhide" id="Profile-showhide-values"><i><label for="Profile-showhide-values" class="show-inline">/* 4 unexporteds ... */</label><label for="Profile-showhide-values" class="hide-inline">/* 4 unexporteds: */</label></i><span class="hidden"><i>
+			  var <a href="#name-display">display</a> *Profile</i></span><span class="hidden"><i>
+			  var <a href="#name-lookup">lookup</a> *Profile</i></span><span class="hidden"><i>
+			  var <a href="#name-punycode">punycode</a> *Profile</i></span><span class="hidden"><i>
+			  var <a href="#name-registration">registration</a> *Profile</i></span></span>
+
+</span></div></div><div>	<input type='checkbox' class="showhide" id="unexported-typenames-showhide"><i><label for="unexported-typenames-showhide" class="show-inline">/* 10 unexporteds ... */</label><label for="unexported-typenames-showhide" class="hide-inline">/* 10 unexporteds: */</label></i><div class="anchor type-res hidden" id="name-category" data-popularity="125">	<input type='checkbox' class="fold" id="category-fold-content"><label for="category-fold-content"> <a href="../../../../../use/vendor/golang.org/x/net/idna..category^edb2c.html">type</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-62">category</a> <a href="../../../../builtin.html#name-uint16">uint16</a> <i>(basic type)</i></label><span id='category-fold-content-docs' class="fold-docs">
+<span class="md-text">		A category corresponds to a category defined in the IDNA mapping table.</span>
+
+		<input type='checkbox' class="fold" id="category-fold-results"><label for="category-fold-results">As Outputs Of (<i>at least one unexported</i>)</label><span id='category-fold-results-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="category-showhide-inputofs"><i><label for="category-showhide-inputofs" class="show-inline">/* at least one unexported ... */</label><label for="category-showhide-inputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func (*<a href="#name-Profile">Profile</a>).<a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-601">simplify</a>(cat <b>category</b>) <b>category</b></i></span></span>
+		<input type='checkbox' class="fold" id="category-fold-params"><label for="category-fold-params">As Inputs Of (<i>at least one unexported</i>)</label><span id='category-fold-params-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="category-showhide-outputofs"><i><label for="category-showhide-outputofs" class="show-inline">/* at least one unexported ... */</label><label for="category-showhide-outputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func (*<a href="#name-Profile">Profile</a>).<a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-601">simplify</a>(cat <b>category</b>) <b>category</b></i></span></span>
+		<input type='checkbox' class="fold" id="category-fold-values"><label for="category-fold-values">As Types Of (<i>total 10, none are exported</i>)</label><span id='category-fold-values-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="category-showhide-values"><i><label for="category-showhide-values" class="show-inline">/* 10 unexporteds ... */</label><label for="category-showhide-values" class="hide-inline">/* 10 unexporteds: */</label></i><span class="hidden"><i>
+			const <a href="#name-deviation">deviation</a></i></span><span class="hidden"><i>
+			const <a href="#name-disallowed">disallowed</a></i></span><span class="hidden"><i>
+			const <a href="#name-disallowedSTD3Mapped">disallowedSTD3Mapped</a></i></span><span class="hidden"><i>
+			const <a href="#name-disallowedSTD3Valid">disallowedSTD3Valid</a></i></span><span class="hidden"><i>
+			const <a href="#name-ignored">ignored</a></i></span><span class="hidden"><i>
+			const <a href="#name-mapped">mapped</a></i></span><span class="hidden"><i>
+			const <a href="#name-unknown">unknown</a></i></span><span class="hidden"><i>
+			const <a href="#name-valid">valid</a></i></span><span class="hidden"><i>
+			const <a href="#name-validNV8">validNV8</a></i></span><span class="hidden"><i>
+			const <a href="#name-validXV8">validXV8</a></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-idnaTrie" data-popularity="330">	<input type='checkbox' class="fold" id="idnaTrie-fold-content"><label for="idnaTrie-fold-content"> <a href="../../../../../use/vendor/golang.org/x/net/idna..idnaTrie^684b9.html">type</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/tables15.0.0.go.html#line-708">idnaTrie</a> <i>(struct)</i></label><span id='idnaTrie-fold-content-docs' class="fold-docs">
+<span class="md-text">		idnaTrie. Total size: 31598 bytes (30.86 KiB). Checksum: d3118eda0d6b5360.</span>
+
+		<input type='checkbox' class="fold" id="idnaTrie-fold-methods"><label for="idnaTrie-fold-methods">Methods (<i>total 5, none are exported</i>)</label><span id='idnaTrie-fold-methods-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="idnaTrie-showhide-methods"><i><label for="idnaTrie-showhide-methods" class="show-inline">/* 5 unexporteds ... */</label><label for="idnaTrie-showhide-methods" class="hide-inline">/* 5 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="idnaTrie-fold-method-lookup"><label for="idnaTrie-fold-method-lookup">(*idnaTrie) <a href="../../../../../src/vendor/golang.org/x/net/idna/tables15.0.0.go.html#line-540">lookup</a>(s []<a href="../../../../builtin.html#name-byte">byte</a>) (v <a href="../../../../builtin.html#name-uint16">uint16</a>, sz <a href="../../../../builtin.html#name-int">int</a>)</label><span id='idnaTrie-fold-method-lookup-docs' class="fold-docs">
+<span class="md-text">				lookup returns the trie value for the first UTF-8 encoding in s and
+				the width in bytes of this encoding. The size will be 0 if s does not
+				hold enough bytes to complete the encoding. len(s) must be greater than 0.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="idnaTrie-fold-method-lookupString"><label for="idnaTrie-fold-method-lookupString">(*idnaTrie) <a href="../../../../../src/vendor/golang.org/x/net/idna/tables15.0.0.go.html#line-625">lookupString</a>(s <a href="../../../../builtin.html#name-string">string</a>) (v <a href="../../../../builtin.html#name-uint16">uint16</a>, sz <a href="../../../../builtin.html#name-int">int</a>)</label><span id='idnaTrie-fold-method-lookupString-docs' class="fold-docs">
+<span class="md-text">				lookupString returns the trie value for the first UTF-8 encoding in s and
+				the width in bytes of this encoding. The size will be 0 if s does not
+				hold enough bytes to complete the encoding. len(s) must be greater than 0.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="idnaTrie-fold-method-lookupStringUnsafe"><label for="idnaTrie-fold-method-lookupStringUnsafe">(*idnaTrie) <a href="../../../../../src/vendor/golang.org/x/net/idna/tables15.0.0.go.html#line-687">lookupStringUnsafe</a>(s <a href="../../../../builtin.html#name-string">string</a>) <a href="../../../../builtin.html#name-uint16">uint16</a></label><span id='idnaTrie-fold-method-lookupStringUnsafe-docs' class="fold-docs">
+<span class="md-text">				lookupStringUnsafe returns the trie value for the first UTF-8 encoding in s.
+				s must start with a full and valid UTF-8 encoded rune.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="idnaTrie-fold-method-lookupUnsafe"><label for="idnaTrie-fold-method-lookupUnsafe">(*idnaTrie) <a href="../../../../../src/vendor/golang.org/x/net/idna/tables15.0.0.go.html#line-602">lookupUnsafe</a>(s []<a href="../../../../builtin.html#name-byte">byte</a>) <a href="../../../../builtin.html#name-uint16">uint16</a></label><span id='idnaTrie-fold-method-lookupUnsafe-docs' class="fold-docs">
+<span class="md-text">				lookupUnsafe returns the trie value for the first UTF-8 encoding in s.
+				s must start with a full and valid UTF-8 encoded rune.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="idnaTrie-fold-method-lookupValue"><label for="idnaTrie-fold-method-lookupValue">(*idnaTrie) <a href="../../../../../src/vendor/golang.org/x/net/idna/tables15.0.0.go.html#line-715">lookupValue</a>(n <a href="../../../../builtin.html#name-uint32">uint32</a>, b <a href="../../../../builtin.html#name-byte">byte</a>) <a href="../../../../builtin.html#name-uint16">uint16</a></label><span id='idnaTrie-fold-method-lookupValue-docs' class="fold-docs">
+<span class="md-text">				lookupValue determines the type of block n and looks up the value for b.</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="idnaTrie-fold-results"><label for="idnaTrie-fold-results">As Outputs Of (<i>at least one unexported</i>)</label><span id='idnaTrie-fold-results-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="idnaTrie-showhide-inputofs"><i><label for="idnaTrie-showhide-inputofs" class="show-inline">/* at least one unexported ... */</label><label for="idnaTrie-showhide-inputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func <a href="#name-newIdnaTrie">newIdnaTrie</a>(i <a href="../../../../builtin.html#name-int">int</a>) *<b>idnaTrie</b></i></span></span>
+		<input type='checkbox' class="fold" id="idnaTrie-fold-values"><label for="idnaTrie-fold-values">As Types Of (<i>only one, which is unexported</i>)</label><span id='idnaTrie-fold-values-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="idnaTrie-showhide-values"><i><label for="idnaTrie-showhide-values" class="show-inline">/* one unexported ... */</label><label for="idnaTrie-showhide-values" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			  var <a href="#name-trie">trie</a> *idnaTrie</i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-info" data-popularity="350">	<input type='checkbox' class="fold" id="info-fold-content"><label for="info-fold-content"> <a href="../../../../../use/vendor/golang.org/x/net/idna..info^06271.html">type</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-40">info</a> <a href="../../../../builtin.html#name-uint16">uint16</a> <i>(basic type)</i></label><span id='info-fold-content-docs' class="fold-docs">
+<span class="md-text">		info holds information from the IDNA mapping table for a single rune. It is
+		the value returned by a trie lookup. In most cases, all information fits in
+		a 16-bit value. For mappings, this value may contain an index into a slice
+		with the mapped string. Such mappings can consist of the actual mapped value
+		or an XOR pattern to be applied to the bytes of the UTF8 encoding of the
+		input rune. This technique is used by the cases packages and reduces the
+		table size significantly.
+		
+		The per-rune values have the following format:
+		
+			if mapped {
+			  if inlinedXOR {
+			    15..13 inline XOR marker
+			    12..11 unused
+			    10..3  inline XOR mask
+			  } else {
+			    15..3  index into xor or mapping table
+			  }
+			} else {
+			    15..14 unused
+			    13     mayNeedNorm
+			    12..11 attributes
+			    10..8  joining type
+			     7..3  category type
+			}
+			   2  use xor pattern
+			1..0  mapped category
+		
+		See the definitions below for a more detailed description of the various
+		bits.</span>
+
+		<input type='checkbox' class="fold" id="info-fold-methods"><label for="info-fold-methods">Methods (<i>total 7, none are exported</i>)</label><span id='info-fold-methods-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="info-showhide-methods"><i><label for="info-showhide-methods" class="show-inline">/* 7 unexporteds ... */</label><label for="info-showhide-methods" class="hide-inline">/* 7 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="info-fold-method-appendMapping"><label for="info-fold-method-appendMapping">( info) <a href="../../../../../src/vendor/golang.org/x/net/idna/trie13.0.0.go.html#line-13">appendMapping</a>(b []<a href="../../../../builtin.html#name-byte">byte</a>, s <a href="../../../../builtin.html#name-string">string</a>) []<a href="../../../../builtin.html#name-byte">byte</a></label><span id='info-fold-method-appendMapping-docs' class="fold-docs">
+<span class="md-text">				appendMapping appends the mapping for the respective rune. isMapped must be
+				true. A mapping is a categorization of a rune as defined in UTS #46.</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs">( info) <a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-98">category</a>() <a href="#name-category">category</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">( info) <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-461">isBidi</a>(s <a href="../../../../builtin.html#name-string">string</a>) <a href="../../../../builtin.html#name-bool">bool</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">( info) <a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-94">isMapped</a>() <a href="../../../../builtin.html#name-bool">bool</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">( info) <a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-113">isModifier</a>() <a href="../../../../builtin.html#name-bool">bool</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">( info) <a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-117">isViramaModifier</a>() <a href="../../../../builtin.html#name-bool">bool</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">( info) <a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-106">joinType</a>() <b>info</b></span></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-joinState" data-popularity="15">	<input type='checkbox' class="fold" id="joinState-fold-content"><label for="joinState-fold-content"> <a href="../../../../../use/vendor/golang.org/x/net/idna..joinState^bfb67.html">type</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-650">joinState</a> <a href="../../../../builtin.html#name-int8">int8</a> <i>(basic type)</i></label><span id='joinState-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="joinState-fold-values"><label for="joinState-fold-values">As Types Of (<i>total 6, none are exported</i>)</label><span id='joinState-fold-values-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="joinState-showhide-values"><i><label for="joinState-showhide-values" class="show-inline">/* 6 unexporteds ... */</label><label for="joinState-showhide-values" class="hide-inline">/* 6 unexporteds: */</label></i><span class="hidden"><i>
+			const <a href="#name-stateAfter">stateAfter</a></i></span><span class="hidden"><i>
+			const <a href="#name-stateBefore">stateBefore</a></i></span><span class="hidden"><i>
+			const <a href="#name-stateBeforeVirama">stateBeforeVirama</a></i></span><span class="hidden"><i>
+			const <a href="#name-stateFAIL">stateFAIL</a></i></span><span class="hidden"><i>
+			const <a href="#name-stateStart">stateStart</a></i></span><span class="hidden"><i>
+			const <a href="#name-stateVirama">stateVirama</a></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-labelError" data-popularity="150">	<input type='checkbox' class="fold" id="labelError-fold-content"><label for="labelError-fold-content"> <a href="../../../../../use/vendor/golang.org/x/net/idna..labelError^dd0cc.html">type</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-320">labelError</a> <i>(struct)</i></label><span id='labelError-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="labelError-fold-fields"><label for="labelError-fold-fields">Fields (<i>total 2, neither is exported</i>)</label><span id='labelError-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="labelError-showhide-fields"><i><label for="labelError-showhide-fields" class="show-inline">/* 2 unexporteds ... */</label><label for="labelError-showhide-fields" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-320">code_</a> <i><a href="../../../../builtin.html#name-string">string</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-320">label</a> <i><a href="../../../../builtin.html#name-string">string</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="labelError-fold-methods"><label for="labelError-fold-methods">Methods (<i>total 2, in which 1 is exported</i>)</label><span id='labelError-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( labelError) <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-323">Error</a>() <a href="../../../../builtin.html#name-string">string</a></span></span>
+			<input type='checkbox' checked class="showhide" id="labelError-showhide-methods"><i><label for="labelError-showhide-methods" class="show-inline">/* one unexported ... */</label><label for="labelError-showhide-methods" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs">( labelError) <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-322">code</a>() <a href="../../../../builtin.html#name-string">string</a></span></i></span></span>
+		<input type='checkbox' class="fold" id="labelError-fold-impls"><label for="labelError-fold-impls">Implements (<i>at least one exported</i>)</label><span id='labelError-fold-impls-items' class="fold-items"><span>
+			 labelError : <a href="../../../../builtin.html#name-error">error</a></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-labelIter" data-popularity="300">	<input type='checkbox' class="fold" id="labelIter-fold-content"><label for="labelIter-fold-content"> <a href="../../../../../use/vendor/golang.org/x/net/idna..labelIter^521b5.html">type</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-539">labelIter</a> <i>(struct)</i></label><span id='labelIter-fold-content-docs' class="fold-docs">
+<span class="md-text">		A labelIter allows iterating over domain name labels.</span>
+
+		<input type='checkbox' class="fold" id="labelIter-fold-fields"><label for="labelIter-fold-fields">Fields (<i>total 5, none are exported</i>)</label><span id='labelIter-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="labelIter-showhide-fields"><i><label for="labelIter-showhide-fields" class="show-inline">/* 5 unexporteds ... */</label><label for="labelIter-showhide-fields" class="hide-inline">/* 5 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-543">curEnd</a> <i><a href="../../../../builtin.html#name-int">int</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-542">curStart</a> <i><a href="../../../../builtin.html#name-int">int</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-544">i</a> <i><a href="../../../../builtin.html#name-int">int</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-540">orig</a> <i><a href="../../../../builtin.html#name-string">string</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-541">slice</a> <i>[]<a href="../../../../builtin.html#name-string">string</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="labelIter-fold-methods"><label for="labelIter-fold-methods">Methods (<i>total 6, none are exported</i>)</label><span id='labelIter-fold-methods-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="labelIter-showhide-methods"><i><label for="labelIter-showhide-methods" class="show-inline">/* 6 unexporteds ... */</label><label for="labelIter-showhide-methods" class="hide-inline">/* 6 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs">(*labelIter) <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-553">done</a>() <a href="../../../../builtin.html#name-bool">bool</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*labelIter) <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-564">label</a>() <a href="../../../../builtin.html#name-string">string</a></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="labelIter-fold-method-next"><label for="labelIter-fold-method-next">(*labelIter) <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-577">next</a>()</label><span id='labelIter-fold-method-next-docs' class="fold-docs">
+<span class="md-text">				next sets the value to the next label. It skips the last label if it is empty.</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*labelIter) <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-547">reset</a>()</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*labelIter) <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-557">result</a>() <a href="../../../../builtin.html#name-string">string</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*labelIter) <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-591">set</a>(s <a href="../../../../builtin.html#name-string">string</a>)</span></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-options" data-popularity="35">	<input type='checkbox' class="fold" id="options-fold-content"><label for="options-fold-content"> <a href="../../../../../use/vendor/golang.org/x/net/idna..options^a793a.html">type</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-177">options</a> <i>(struct)</i></label><span id='options-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="options-fold-fields"><label for="options-fold-fields">Fields (<i>total 10, none are exported</i>)</label><span id='options-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="options-showhide-fields"><i><label for="options-showhide-fields" class="show-inline">/* 10 unexporteds ... */</label><label for="options-showhide-fields" class="hide-inline">/* 10 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="options-fold-field-bidirule"><label for="options-fold-field-bidirule"><a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-196">bidirule</a> <i>func(s <a href="../../../../builtin.html#name-string">string</a>) <a href="../../../../builtin.html#name-bool">bool</a></i></label><span id='options-fold-field-bidirule-docs' class="fold-docs">
+<span class="md-text">				bidirule, if specified, checks whether s conforms to the Bidi Rule
+				defined in RFC 5893.</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-180">checkHyphens</a> <i><a href="../../../../builtin.html#name-bool">bool</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-181">checkJoiners</a> <i><a href="../../../../builtin.html#name-bool">bool</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="options-fold-field-fromPuny"><label for="options-fold-field-fromPuny"><a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-188">fromPuny</a> <i>func(p *<a href="#name-Profile">Profile</a>, s <a href="../../../../builtin.html#name-string">string</a>) <a href="../../../../builtin.html#name-error">error</a></i></label><span id='options-fold-field-fromPuny-docs' class="fold-docs">
+<span class="md-text">				fromPuny calls validation rules when converting A-labels to U-labels.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="options-fold-field-mapping"><label for="options-fold-field-mapping"><a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-192">mapping</a> <i>func(p *<a href="#name-Profile">Profile</a>, s <a href="../../../../builtin.html#name-string">string</a>) (mapped <a href="../../../../builtin.html#name-string">string</a>, isBidi <a href="../../../../builtin.html#name-bool">bool</a>, err <a href="../../../../builtin.html#name-error">error</a>)</i></label><span id='options-fold-field-mapping-docs' class="fold-docs">
+<span class="md-text">				mapping implements a validation and mapping step as defined in RFC 5895
+				or UTS 46, tailored to, for example, domain registration or lookup.</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-183">removeLeadingDots</a> <i><a href="../../../../builtin.html#name-bool">bool</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-178">transitional</a> <i><a href="../../../../builtin.html#name-bool">bool</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-185">trie</a> <i>*<a href="#name-idnaTrie">idnaTrie</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-179">useSTD3Rules</a> <i><a href="../../../../builtin.html#name-bool">bool</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-182">verifyDNSLength</a> <i><a href="../../../../builtin.html#name-bool">bool</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="options-fold-params"><label for="options-fold-params">As Inputs Of (<i>at least one unexported</i>)</label><span id='options-fold-params-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="options-showhide-outputofs"><i><label for="options-showhide-outputofs" class="show-inline">/* at least one unexported ... */</label><label for="options-showhide-outputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func <a href="#name-apply">apply</a>(o *<b>options</b>, opts []<a href="#name-Option">Option</a>)</i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-runeError" data-popularity="150">	<input type='checkbox' class="fold" id="runeError-fold-content"><label for="runeError-fold-content"> <a href="../../../../../use/vendor/golang.org/x/net/idna..runeError^c2641.html">type</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-327">runeError</a> <a href="../../../../builtin.html#name-rune">rune</a> <i>(basic type)</i></label><span id='runeError-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="runeError-fold-methods"><label for="runeError-fold-methods">Methods (<i>total 2, in which 1 is exported</i>)</label><span id='runeError-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( runeError) <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-330">Error</a>() <a href="../../../../builtin.html#name-string">string</a></span></span>
+			<input type='checkbox' checked class="showhide" id="runeError-showhide-methods"><i><label for="runeError-showhide-methods" class="show-inline">/* one unexported ... */</label><label for="runeError-showhide-methods" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs">( runeError) <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-329">code</a>() <a href="../../../../builtin.html#name-string">string</a></span></i></span></span>
+		<input type='checkbox' class="fold" id="runeError-fold-impls"><label for="runeError-fold-impls">Implements (<i>at least one exported</i>)</label><span id='runeError-fold-impls-items' class="fold-items"><span>
+			 runeError : <a href="../../../../builtin.html#name-error">error</a></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-sparseBlocks" data-popularity="55">	<input type='checkbox' class="fold" id="sparseBlocks-fold-content"><label for="sparseBlocks-fold-content"> <a href="../../../../../use/vendor/golang.org/x/net/idna..sparseBlocks^5ec6f.html">type</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/trie.go.html#line-16">sparseBlocks</a> <i>(struct)</i></label><span id='sparseBlocks-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="sparseBlocks-fold-fields"><label for="sparseBlocks-fold-fields">Fields (<i>total 2, neither is exported</i>)</label><span id='sparseBlocks-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="sparseBlocks-showhide-fields"><i><label for="sparseBlocks-showhide-fields" class="show-inline">/* 2 unexporteds ... */</label><label for="sparseBlocks-showhide-fields" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/vendor/golang.org/x/net/idna/trie.go.html#line-18">offset</a> <i>[]<a href="../../../../builtin.html#name-uint16">uint16</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../../src/vendor/golang.org/x/net/idna/trie.go.html#line-17">values</a> <i>[]<a href="#name-valueRange">valueRange</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="sparseBlocks-fold-methods"><label for="sparseBlocks-fold-methods">Methods (<i>only one, which is unexported</i>)</label><span id='sparseBlocks-fold-methods-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="sparseBlocks-showhide-methods"><i><label for="sparseBlocks-showhide-methods" class="show-inline">/* one unexported ... */</label><label for="sparseBlocks-showhide-methods" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="sparseBlocks-fold-method-lookup"><label for="sparseBlocks-fold-method-lookup">(*sparseBlocks) <a href="../../../../../src/vendor/golang.org/x/net/idna/trie.go.html#line-33">lookup</a>(n <a href="../../../../builtin.html#name-uint32">uint32</a>, b <a href="../../../../builtin.html#name-byte">byte</a>) <a href="../../../../builtin.html#name-uint16">uint16</a></label><span id='sparseBlocks-fold-method-lookup-docs' class="fold-docs">
+<span class="md-text">				lookup determines the type of block n and looks up the value for b.
+				For n &lt; t.cutoff, the block is a simple lookup table. Otherwise, the block
+				is a list of ranges with an accompanying value. Given a matching range r,
+				the value for b is by r.value + (b - r.lo) * stride.</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="sparseBlocks-fold-values"><label for="sparseBlocks-fold-values">As Types Of (<i>only one, which is unexported</i>)</label><span id='sparseBlocks-fold-values-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="sparseBlocks-showhide-values"><i><label for="sparseBlocks-showhide-values" class="show-inline">/* one unexported ... */</label><label for="sparseBlocks-showhide-values" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			  var <a href="#name-idnaSparse">idnaSparse</a></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-valueRange" data-popularity="0">	<input type='checkbox' class="fold" id="valueRange-fold-content"><label for="valueRange-fold-content"> <a href="../../../../../use/vendor/golang.org/x/net/idna..valueRange^d2489.html">type</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/trie.go.html#line-11">valueRange</a> <i>(struct)</i></label><span id='valueRange-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="valueRange-fold-fields"><label for="valueRange-fold-fields">Fields (<i>total 3, none are exported</i>)</label><span id='valueRange-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="valueRange-showhide-fields"><i><label for="valueRange-showhide-fields" class="show-inline">/* 3 unexporteds ... */</label><label for="valueRange-showhide-fields" class="hide-inline">/* 3 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="valueRange-fold-field-hi"><label for="valueRange-fold-field-hi"><a href="../../../../../src/vendor/golang.org/x/net/idna/trie.go.html#line-13">hi</a> <i><a href="../../../../builtin.html#name-byte">byte</a></i></label><span id='valueRange-fold-field-hi-docs' class="fold-docs">
+<span class="md-text">				// header: lo:n</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="valueRange-fold-field-lo"><label for="valueRange-fold-field-lo"><a href="../../../../../src/vendor/golang.org/x/net/idna/trie.go.html#line-13">lo</a> <i><a href="../../../../builtin.html#name-byte">byte</a></i></label><span id='valueRange-fold-field-lo-docs' class="fold-docs">
+<span class="md-text">				// header: lo:n</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="valueRange-fold-field-value"><label for="valueRange-fold-field-value"><a href="../../../../../src/vendor/golang.org/x/net/idna/trie.go.html#line-12">value</a> <i><a href="../../../../builtin.html#name-uint16">uint16</a></i></label><span id='valueRange-fold-field-value-docs' class="fold-docs">
+<span class="md-text">				// header: value:stride</span>
+</span></i></span></span>
+
+</span></div></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 27, in which 13 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-BidiRule">	<input type='checkbox' class="fold" id="BidiRule-fold-content"><label for="BidiRule-fold-content"> <a href="../../../../../use/vendor/golang.org/x/net/idna..BidiRule.html">func</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-145">BidiRule</a>() <a href="#name-Option">Option</a></label><span id='BidiRule-fold-content-docs' class="fold-docs">
+<span class="md-text">		BidiRule enables the Bidi rule as defined in RFC 5893. Any application
+		that relies on proper validation of labels should include this rule.
+		
+		This option corresponds to the CheckBidi flag in UTS #46.</span>
+
+</span></div><div class="anchor value-res" id="name-CheckHyphens">	<input type='checkbox' class="fold" id="CheckHyphens-fold-content"><label for="CheckHyphens-fold-content"> <a href="../../../../../use/vendor/golang.org/x/net/idna..CheckHyphens.html">func</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-109">CheckHyphens</a>(enable <a href="../../../../builtin.html#name-bool">bool</a>) <a href="#name-Option">Option</a></label><span id='CheckHyphens-fold-content-docs' class="fold-docs">
+<span class="md-text">		CheckHyphens sets whether to check for correct use of hyphens ('-') in
+		labels. Most web browsers do not have this option set, since labels such as
+		"r3---sn-apo3qvuoxuxbt-j5pe" are in common use.
+		
+		This option corresponds to the CheckHyphens flag in UTS #46.</span>
+
+</span></div><div class="anchor value-res" id="name-CheckJoiners">	<input type='checkbox' class="fold" id="CheckJoiners-fold-content"><label for="CheckJoiners-fold-content"> <a href="../../../../../use/vendor/golang.org/x/net/idna..CheckJoiners.html">func</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-117">CheckJoiners</a>(enable <a href="../../../../builtin.html#name-bool">bool</a>) <a href="#name-Option">Option</a></label><span id='CheckJoiners-fold-content-docs' class="fold-docs">
+<span class="md-text">		CheckJoiners sets whether to check the ContextJ rules as defined in Appendix
+		A of RFC 5892, concerning the use of joiner runes.
+		
+		This option corresponds to the CheckJoiners flag in UTS #46.</span>
+
+</span></div><div class="anchor value-res" id="name-MapForLookup">	<input type='checkbox' class="fold" id="MapForLookup-fold-content"><label for="MapForLookup-fold-content"> <a href="../../../../../use/vendor/golang.org/x/net/idna..MapForLookup.html">func</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-169">MapForLookup</a>() <a href="#name-Option">Option</a></label><span id='MapForLookup-fold-content-docs' class="fold-docs">
+<span class="md-text">		MapForLookup sets validation and mapping options such that a given IDN is
+		transformed for domain name lookup according to the requirements set out in
+		Section 5 of RFC 5891. The mappings follow the recommendations of RFC 5894,
+		RFC 5895 and UTS 46. It does not add the Bidi Rule. Use the BidiRule option
+		to add this check.
+		
+		The mappings include normalization and mapping case, width and other
+		compatibility mappings.</span>
+
+</span></div><div class="anchor value-res" id="name-New">	<input type='checkbox' class="fold" id="New-fold-content"><label for="New-fold-content"> <a href="../../../../../use/vendor/golang.org/x/net/idna..New.html">func</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-218">New</a>(o ...<a href="#name-Option">Option</a>) *<a href="#name-Profile">Profile</a></label><span id='New-fold-content-docs' class="fold-docs">
+<span class="md-text">		New creates a new Profile.
+		
+		With no options, the returned Profile is the most permissive and equals the
+		Punycode Profile. Options can be passed to further restrict the Profile. The
+		MapForLookup and ValidateForRegistration options set a collection of options,
+		for lookup and registration purposes respectively, which can be tailored by
+		adding more fine-grained options, where later options override earlier
+		options.</span>
+
+</span></div><div class="anchor value-res" id="name-RemoveLeadingDots">	<input type='checkbox' class="fold" id="RemoveLeadingDots-fold-content"><label for="RemoveLeadingDots-fold-content"> <a href="../../../../../use/vendor/golang.org/x/net/idna..RemoveLeadingDots.html">func</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-77">RemoveLeadingDots</a>(remove <a href="../../../../builtin.html#name-bool">bool</a>) <a href="#name-Option">Option</a></label><span id='RemoveLeadingDots-fold-content-docs' class="fold-docs">
+<span class="md-text">		RemoveLeadingDots removes leading label separators. Leading runes that map to
+		dots, such as U+3002 IDEOGRAPHIC FULL STOP, are removed as well.</span>
+
+</span></div><div class="anchor value-res" id="name-StrictDomainName">	<input type='checkbox' class="fold" id="StrictDomainName-fold-content"><label for="StrictDomainName-fold-content"> <a href="../../../../../use/vendor/golang.org/x/net/idna..StrictDomainName.html">func</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-134">StrictDomainName</a>(use <a href="../../../../builtin.html#name-bool">bool</a>) <a href="#name-Option">Option</a></label><span id='StrictDomainName-fold-content-docs' class="fold-docs">
+<span class="md-text">		StrictDomainName limits the set of permissible ASCII characters to those
+		allowed in domain names as defined in RFC 1034 (A-Z, a-z, 0-9 and the
+		hyphen). This is set by default for MapForLookup and ValidateForRegistration,
+		but is only useful if ValidateLabels is set.
+		
+		This option is useful, for instance, for browsers that allow characters
+		outside this range, for example a '_' (U+005F LOW LINE). See
+		http://www.rfc-editor.org/std/std3.txt for more details.
+		
+		This option corresponds to the UseSTD3ASCIIRules flag in UTS #46.</span>
+
+</span></div><div class="anchor value-res" id="name-ToASCII">	<input type='checkbox' class="fold" id="ToASCII-fold-content"><label for="ToASCII-fold-content"> <a href="../../../../../use/vendor/golang.org/x/net/idna..ToASCII.html">func</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-46">ToASCII</a>(s <a href="../../../../builtin.html#name-string">string</a>) (<a href="../../../../builtin.html#name-string">string</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='ToASCII-fold-content-docs' class="fold-docs">
+<span class="md-text">		ToASCII is a wrapper for Punycode.ToASCII.</span>
+
+</span></div><div class="anchor value-res" id="name-ToUnicode">	<input type='checkbox' class="fold" id="ToUnicode-fold-content"><label for="ToUnicode-fold-content"> <a href="../../../../../use/vendor/golang.org/x/net/idna..ToUnicode.html">func</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-51">ToUnicode</a>(s <a href="../../../../builtin.html#name-string">string</a>) (<a href="../../../../builtin.html#name-string">string</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='ToUnicode-fold-content-docs' class="fold-docs">
+<span class="md-text">		ToUnicode is a wrapper for Punycode.ToUnicode.</span>
+
+</span></div><div class="anchor value-res" id="name-Transitional">	<input type='checkbox' class="fold" id="Transitional-fold-content"><label for="Transitional-fold-content"> <a href="../../../../../use/vendor/golang.org/x/net/idna..Transitional.html">func</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-63">Transitional</a>(transitional <a href="../../../../builtin.html#name-bool">bool</a>) <a href="#name-Option">Option</a></label><span id='Transitional-fold-content-docs' class="fold-docs">
+<span class="md-text">		Transitional sets a Profile to use the Transitional mapping as defined in UTS
+		#46. This will cause, for example, "ß" to be mapped to "ss". Using the
+		transitional mapping provides a compromise between IDNA2003 and IDNA2008
+		compatibility. It is used by some browsers when resolving domain names. This
+		option is only meaningful if combined with MapForLookup.</span>
+
+</span></div><div class="anchor value-res" id="name-ValidateForRegistration">	<input type='checkbox' class="fold" id="ValidateForRegistration-fold-content"><label for="ValidateForRegistration-fold-content"> <a href="../../../../../use/vendor/golang.org/x/net/idna..ValidateForRegistration.html">func</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-151">ValidateForRegistration</a>() <a href="#name-Option">Option</a></label><span id='ValidateForRegistration-fold-content-docs' class="fold-docs">
+<span class="md-text">		ValidateForRegistration sets validation options to verify that a given IDN is
+		properly formatted for registration as defined by Section 4 of RFC 5891.</span>
+
+</span></div><div class="anchor value-res" id="name-ValidateLabels">	<input type='checkbox' class="fold" id="ValidateLabels-fold-content"><label for="ValidateLabels-fold-content"> <a href="../../../../../use/vendor/golang.org/x/net/idna..ValidateLabels.html">func</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-86">ValidateLabels</a>(enable <a href="../../../../builtin.html#name-bool">bool</a>) <a href="#name-Option">Option</a></label><span id='ValidateLabels-fold-content-docs' class="fold-docs">
+<span class="md-text">		ValidateLabels sets whether to check the mandatory label validation criteria
+		as defined in Section 5.4 of RFC 5891. This includes testing for correct use
+		of hyphens ('-'), normalization, validity of runes, and the context rules.
+		In particular, ValidateLabels also sets the CheckHyphens and CheckJoiners flags
+		in UTS #46.</span>
+
+</span></div><div class="anchor value-res" id="name-VerifyDNSLength">	<input type='checkbox' class="fold" id="VerifyDNSLength-fold-content"><label for="VerifyDNSLength-fold-content"> <a href="../../../../../use/vendor/golang.org/x/net/idna..VerifyDNSLength.html">func</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-71">VerifyDNSLength</a>(verify <a href="../../../../builtin.html#name-bool">bool</a>) <a href="#name-Option">Option</a></label><span id='VerifyDNSLength-fold-content-docs' class="fold-docs">
+<span class="md-text">		VerifyDNSLength sets whether a Profile should fail if any of the IDN parts
+		are longer than allowed by the RFC.
+		
+		This option corresponds to the VerifyDnsLength flag in UTS #46.</span>
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-functions-showhide"><i><label for="unexported-functions-showhide" class="show-inline">/* 14 unexporteds ... */</label><label for="unexported-functions-showhide" class="hide-inline">/* 14 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-adapt"><i>	<input type='checkbox' class="fold" id="adapt-fold-content"><label for="adapt-fold-content"> <a href="../../../../../use/vendor/golang.org/x/net/idna..adapt^f1f61.html">func</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/punycode.go.html#line-204">adapt</a>(delta, numPoints <a href="../../../../builtin.html#name-int32">int32</a>, firstTime <a href="../../../../builtin.html#name-bool">bool</a>) <a href="../../../../builtin.html#name-int32">int32</a></label><span id='adapt-fold-content-docs' class="fold-docs">
+<span class="md-text">		adapt is the bias adaptation function specified in section 6.1.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-apply"><i>	<span class="nodocs"> <a href="../../../../../use/vendor/golang.org/x/net/idna..apply^97a5e.html">func</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-204">apply</a>(o *<a href="#name-options">options</a>, opts []<a href="#name-Option">Option</a>)</span></i></div><div class="anchor value-res hidden" id="name-ascii"><i>	<span class="nodocs"> <a href="../../../../../use/vendor/golang.org/x/net/idna..ascii^c543e.html">func</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-762">ascii</a>(s <a href="../../../../builtin.html#name-string">string</a>) <a href="../../../../builtin.html#name-bool">bool</a></span></i></div><div class="anchor value-res hidden" id="name-decode"><i>	<input type='checkbox' class="fold" id="decode-fold-content"><label for="decode-fold-content"> <a href="../../../../../use/vendor/golang.org/x/net/idna..decode^713a1.html">func</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/punycode.go.html#line-34">decode</a>(encoded <a href="../../../../builtin.html#name-string">string</a>) (<a href="../../../../builtin.html#name-string">string</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='decode-fold-content-docs' class="fold-docs">
+<span class="md-text">		decode decodes a string as specified in section 6.2.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-decodeDigit"><i>	<span class="nodocs"> <a href="../../../../../use/vendor/golang.org/x/net/idna..decodeDigit^23083.html">func</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/punycode.go.html#line-181">decodeDigit</a>(x <a href="../../../../builtin.html#name-byte">byte</a>) (digit <a href="../../../../builtin.html#name-int32">int32</a>, ok <a href="../../../../builtin.html#name-bool">bool</a>)</span></i></div><div class="anchor value-res hidden" id="name-encode"><i>	<input type='checkbox' class="fold" id="encode-fold-content"><label for="encode-fold-content"> <a href="../../../../../use/vendor/golang.org/x/net/idna..encode^b7d18.html">func</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/punycode.go.html#line-105">encode</a>(prefix, s <a href="../../../../builtin.html#name-string">string</a>) (<a href="../../../../builtin.html#name-string">string</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='encode-fold-content-docs' class="fold-docs">
+<span class="md-text">		encode encodes a string as specified in section 6.3 and prepends prefix to
+		the result.
+		
+		The "while h &lt; length(input)" line in the specification becomes "for
+		remaining != 0" in the Go code, because len(s) in Go is in bytes, not runes.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-encodeDigit"><i>	<span class="nodocs"> <a href="../../../../../use/vendor/golang.org/x/net/idna..encodeDigit^31c21.html">func</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/punycode.go.html#line-193">encodeDigit</a>(digit <a href="../../../../builtin.html#name-int32">int32</a>) <a href="../../../../builtin.html#name-byte">byte</a></span></i></div><div class="anchor value-res hidden" id="name-madd"><i>	<input type='checkbox' class="fold" id="madd-fold-content"><label for="madd-fold-content"> <a href="../../../../../use/vendor/golang.org/x/net/idna..madd^de7db.html">func</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/punycode.go.html#line-173">madd</a>(a, b, c <a href="../../../../builtin.html#name-int32">int32</a>) (next <a href="../../../../builtin.html#name-int32">int32</a>, overflow <a href="../../../../builtin.html#name-bool">bool</a>)</label><span id='madd-fold-content-docs' class="fold-docs">
+<span class="md-text">		madd computes a + (b * c), detecting overflow.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-newIdnaTrie"><i>	<span class="nodocs"> <a href="../../../../../use/vendor/golang.org/x/net/idna..newIdnaTrie^2a945.html">func</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/tables15.0.0.go.html#line-710">newIdnaTrie</a>(i <a href="../../../../builtin.html#name-int">int</a>) *<a href="#name-idnaTrie">idnaTrie</a></span></i></div><div class="anchor value-res hidden" id="name-normalize"><i>	<span class="nodocs"> <a href="../../../../../use/vendor/golang.org/x/net/idna..normalize^76820.html">func</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-427">normalize</a>(p *<a href="#name-Profile">Profile</a>, s <a href="../../../../builtin.html#name-string">string</a>) (mapped <a href="../../../../builtin.html#name-string">string</a>, isBidi <a href="../../../../builtin.html#name-bool">bool</a>, err <a href="../../../../builtin.html#name-error">error</a>)</span></i></div><div class="anchor value-res hidden" id="name-punyError"><i>	<span class="nodocs"> <a href="../../../../../use/vendor/golang.org/x/net/idna..punyError^16e50.html">func</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/punycode.go.html#line-31">punyError</a>(s <a href="../../../../builtin.html#name-string">string</a>) <a href="../../../../builtin.html#name-error">error</a></span></i></div><div class="anchor value-res hidden" id="name-validateAndMap"><i>	<span class="nodocs"> <a href="../../../../../use/vendor/golang.org/x/net/idna..validateAndMap^008b8.html">func</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-475">validateAndMap</a>(p *<a href="#name-Profile">Profile</a>, s <a href="../../../../builtin.html#name-string">string</a>) (vm <a href="../../../../builtin.html#name-string">string</a>, bidi <a href="../../../../builtin.html#name-bool">bool</a>, err <a href="../../../../builtin.html#name-error">error</a>)</span></i></div><div class="anchor value-res hidden" id="name-validateFromPunycode"><i>	<span class="nodocs"> <a href="../../../../../use/vendor/golang.org/x/net/idna..validateFromPunycode^45aa3.html">func</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-626">validateFromPunycode</a>(p *<a href="#name-Profile">Profile</a>, s <a href="../../../../builtin.html#name-string">string</a>) <a href="../../../../builtin.html#name-error">error</a></span></i></div><div class="anchor value-res hidden" id="name-validateRegistration"><i>	<span class="nodocs"> <a href="../../../../../use/vendor/golang.org/x/net/idna..validateRegistration^4eed4.html">func</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-436">validateRegistration</a>(p *<a href="#name-Profile">Profile</a>, s <a href="../../../../builtin.html#name-string">string</a>) (idem <a href="../../../../builtin.html#name-string">string</a>, bidi <a href="../../../../builtin.html#name-bool">bool</a>, err <a href="../../../../builtin.html#name-error">error</a>)</span></i></div></div>
+<div id="exported-variables"><span class="title">Package-Level Variables<span class="title-stat"><i> (total 18, in which 4 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-Display">	<input type='checkbox' class="fold" id="Display-fold-content"><label for="Display-fold-content">  <a href="../../../../../use/vendor/golang.org/x/net/idna..Display.html">var</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-278">Display</a> *<a href="#name-Profile">Profile</a></label><span id='Display-fold-content-docs' class="fold-docs">
+<span class="md-text">		Display is the recommended profile for displaying domain names.
+		The configuration of this profile may change over time.</span>
+
+</span></div><div class="anchor value-res" id="name-Lookup">	<input type='checkbox' class="fold" id="Lookup-fold-content"><label for="Lookup-fold-content">  <a href="../../../../../use/vendor/golang.org/x/net/idna..Lookup.html">var</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-274">Lookup</a> *<a href="#name-Profile">Profile</a></label><span id='Lookup-fold-content-docs' class="fold-docs">
+<span class="md-text">		Lookup is the recommended profile for looking up domain names, according
+		to Section 5 of RFC 5891. The exact configuration of this profile may
+		change over time.</span>
+
+</span></div><div class="anchor value-res" id="name-Punycode">	<input type='checkbox' class="fold" id="Punycode-fold-content"><label for="Punycode-fold-content">  <a href="../../../../../use/vendor/golang.org/x/net/idna..Punycode.html">var</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-269">Punycode</a> *<a href="#name-Profile">Profile</a></label><span id='Punycode-fold-content-docs' class="fold-docs">
+<span class="md-text">		Punycode is a Profile that does raw punycode processing with a minimum
+		of validation.</span>
+
+</span></div><div class="anchor value-res" id="name-Registration">	<input type='checkbox' class="fold" id="Registration-fold-content"><label for="Registration-fold-content">  <a href="../../../../../use/vendor/golang.org/x/net/idna..Registration.html">var</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-282">Registration</a> *<a href="#name-Profile">Profile</a></label><span id='Registration-fold-content-docs' class="fold-docs">
+<span class="md-text">		Registration is the recommended profile for checking whether a given
+		IDN is valid for registration, according to Section 4 of RFC 5891.</span>
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-variables-showhide"><i><label for="unexported-variables-showhide" class="show-inline">/* 14 unexporteds ... */</label><label for="unexported-variables-showhide" class="hide-inline">/* 14 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-display"><i>	<span class="nodocs">  <a href="../../../../../use/vendor/golang.org/x/net/idna..display^dfbb8.html">var</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-295">display</a> *<a href="#name-Profile">Profile</a></span></i></div><div class="anchor value-res hidden" id="name-idnaIndex"><i>	<input type='checkbox' class="fold" id="idnaIndex-fold-content"><label for="idnaIndex-fold-content">  <a href="../../../../../use/vendor/golang.org/x/net/idna..idnaIndex^7ded5.html">var</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/tables15.0.0.go.html#line-2341">idnaIndex</a> [2496]<a href="../../../../builtin.html#name-uint16">uint16</a></label><span id='idnaIndex-fold-content-docs' class="fold-docs">
+<span class="md-text">		idnaIndex: 39 blocks, 2496 entries, 4992 bytes
+		Block 0 is the zero block.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-idnaSparse"><i>	<span class="nodocs">  <a href="../../../../../use/vendor/golang.org/x/net/idna..idnaSparse^2495b.html">var</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/trie.go.html#line-21">idnaSparse</a> <a href="#name-sparseBlocks">sparseBlocks</a></span></i></div><div class="anchor value-res hidden" id="name-idnaSparseOffset"><i>	<input type='checkbox' class="fold" id="idnaSparseOffset-fold-content"><label for="idnaSparseOffset-fold-content">  <a href="../../../../../use/vendor/golang.org/x/net/idna..idnaSparseOffset^eb8f5.html">var</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/tables15.0.0.go.html#line-2655">idnaSparseOffset</a> []<a href="../../../../builtin.html#name-uint16">uint16</a></label><span id='idnaSparseOffset-fold-content-docs' class="fold-docs">
+<span class="md-text">		idnaSparseOffset: 303 entries, 606 bytes</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-idnaSparseValues"><i>	<input type='checkbox' class="fold" id="idnaSparseValues-fold-content"><label for="idnaSparseValues-fold-content">  <a href="../../../../../use/vendor/golang.org/x/net/idna..idnaSparseValues^ba604.html">var</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/tables15.0.0.go.html#line-2658">idnaSparseValues</a> [2180]<a href="#name-valueRange">valueRange</a></label><span id='idnaSparseValues-fold-content-docs' class="fold-docs">
+<span class="md-text">		idnaSparseValues: 2180 entries, 8720 bytes</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-idnaValues"><i>	<input type='checkbox' class="fold" id="idnaValues-fold-content"><label for="idnaValues-fold-content">  <a href="../../../../../use/vendor/golang.org/x/net/idna..idnaValues^675b3.html">var</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/tables15.0.0.go.html#line-727">idnaValues</a> [8640]<a href="../../../../builtin.html#name-uint16">uint16</a></label><span id='idnaValues-fold-content-docs' class="fold-docs">
+<span class="md-text">		idnaValues: 135 blocks, 8640 entries, 17280 bytes
+		The third block is the zero block.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-joinStates"><i>	<span class="nodocs">  <a href="../../../../../use/vendor/golang.org/x/net/idna..joinStates^024f1.html">var</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-661">joinStates</a> [][8]<a href="#name-joinState">joinState</a></span></i></div><div class="anchor value-res hidden" id="name-lookup"><i>	<span class="nodocs">  <a href="../../../../../use/vendor/golang.org/x/net/idna..lookup^29a1a.html">var</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-285">lookup</a> *<a href="#name-Profile">Profile</a></span></i></div><div class="anchor value-res hidden" id="name-mappingIndex"><i>	<span class="nodocs">  <a href="../../../../../use/vendor/golang.org/x/net/idna..mappingIndex^0f094.html">var</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/tables15.0.0.go.html#line-57">mappingIndex</a> []<a href="../../../../builtin.html#name-uint16">uint16</a> // <span class="md-text">Size: 3482 bytes</span></span></i></div><div class="anchor value-res hidden" id="name-mappings"><i>	<span class="nodocs">  <a href="../../../../../use/vendor/golang.org/x/net/idna..mappings^4f166.html">var</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/tables15.0.0.go.html#line-10">mappings</a> <a href="../../../../builtin.html#name-string">string</a></span></i></div><div class="anchor value-res hidden" id="name-punycode"><i>	<span class="nodocs">  <a href="../../../../../use/vendor/golang.org/x/net/idna..punycode^b8b08.html">var</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-284">punycode</a> *<a href="#name-Profile">Profile</a></span></i></div><div class="anchor value-res hidden" id="name-registration"><i>	<span class="nodocs">  <a href="../../../../../use/vendor/golang.org/x/net/idna..registration^29c9c.html">var</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-304">registration</a> *<a href="#name-Profile">Profile</a></span></i></div><div class="anchor value-res hidden" id="name-trie"><i>	<input type='checkbox' class="fold" id="trie-fold-content"><label for="trie-fold-content">  <a href="../../../../../use/vendor/golang.org/x/net/idna..trie^133df.html">var</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/trie.go.html#line-27">trie</a> *<a href="#name-idnaTrie">idnaTrie</a></label><span id='trie-fold-content-docs' class="fold-docs">
+<span class="md-text">		Don't use newIdnaTrie to avoid unconditional linking in of the table.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-xorData"><i>	<span class="nodocs">  <a href="../../../../../use/vendor/golang.org/x/net/idna..xorData^8d891.html">var</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/tables15.0.0.go.html#line-305">xorData</a> <a href="../../../../builtin.html#name-string">string</a></span></i></div></div>
+<div id="exported-constants"><span class="title">Package-Level Constants<span class="title-stat"><i> (total 48, in which 1 is exported)</i></span></span>
+
+<div class="anchor value-res" id="name-UnicodeVersion">	<input type='checkbox' class="fold" id="UnicodeVersion-fold-content"><label for="UnicodeVersion-fold-content"><a href="../../../../../use/vendor/golang.org/x/net/idna..UnicodeVersion.html">const</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/tables15.0.0.go.html#line-8">UnicodeVersion</a> = "15.0.0"</label><span id='UnicodeVersion-fold-content-docs' class="fold-docs">
+<span class="md-text">		UnicodeVersion is the Unicode version from which the tables in this package are derived.</span>
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-constants-showhide"><i><label for="unexported-constants-showhide" class="show-inline">/* 47 unexporteds ... */</label><label for="unexported-constants-showhide" class="hide-inline">/* 47 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-acePrefix"><i>	<input type='checkbox' class="fold" id="acePrefix-fold-content"><label for="acePrefix-fold-content"><a href="../../../../../use/vendor/golang.org/x/net/idna..acePrefix^fb293.html">const</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-599">acePrefix</a> = "xn--"</label><span id='acePrefix-fold-content-docs' class="fold-docs">
+<span class="md-text">		acePrefix is the ASCII Compatible Encoding prefix.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-attributesMask"><i>	<input type='checkbox' class="fold" id="attributesMask-fold-content"><label for="attributesMask-fold-content"><a href="../../../../../use/vendor/golang.org/x/net/idna..attributesMask^99ca1.html">const</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-53">attributesMask</a> = 6144</label><span id='attributesMask-fold-content-docs' class="fold-docs">
+<span class="md-text">		Attributes</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-base"><i>	<input type='checkbox' class="fold" id="base-fold-content"><label for="base-fold-content"><a href="../../../../../use/vendor/golang.org/x/net/idna..base^cae66.html">const</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/punycode.go.html#line-22">base</a> <a href="../../../../builtin.html#name-int32">int32</a> = 36</label><span id='base-fold-content-docs' class="fold-docs">
+<span class="md-text">		These parameter values are specified in section 5.
+		
+		All computation is done with int32s, so that overflow behavior is identical
+		regardless of whether int is 32-bit or 64-bit.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-catBigMask"><i>	<span class="nodocs"><a href="../../../../../use/vendor/golang.org/x/net/idna..catBigMask^f5187.html">const</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-44">catBigMask</a> = 248</span></i></div><div class="anchor value-res hidden" id="name-catSmallMask"><i>	<span class="nodocs"><a href="../../../../../use/vendor/golang.org/x/net/idna..catSmallMask^9214c.html">const</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-43">catSmallMask</a> = 3</span></i></div><div class="anchor value-res hidden" id="name-damp"><i>	<input type='checkbox' class="fold" id="damp-fold-content"><label for="damp-fold-content"><a href="../../../../../use/vendor/golang.org/x/net/idna..damp^1b0cf.html">const</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/punycode.go.html#line-23">damp</a> <a href="../../../../builtin.html#name-int32">int32</a> = 700</label><span id='damp-fold-content-docs' class="fold-docs">
+<span class="md-text">		These parameter values are specified in section 5.
+		
+		All computation is done with int32s, so that overflow behavior is identical
+		regardless of whether int is 32-bit or 64-bit.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-deviation"><i>	<span class="nodocs"><a href="../../../../../use/vendor/golang.org/x/net/idna..deviation^1cb75.html">const</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-68">deviation</a> <a href="#name-category">category</a> = 3</span></i></div><div class="anchor value-res hidden" id="name-disallowed"><i>	<span class="nodocs"><a href="../../../../../use/vendor/golang.org/x/net/idna..disallowed^9d6ab.html">const</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-75">disallowed</a> <a href="#name-category">category</a> = 64</span></i></div><div class="anchor value-res hidden" id="name-disallowedSTD3Mapped"><i>	<span class="nodocs"><a href="../../../../../use/vendor/golang.org/x/net/idna..disallowedSTD3Mapped^04bdb.html">const</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-67">disallowedSTD3Mapped</a> <a href="#name-category">category</a> = 2</span></i></div><div class="anchor value-res hidden" id="name-disallowedSTD3Valid"><i>	<span class="nodocs"><a href="../../../../../use/vendor/golang.org/x/net/idna..disallowedSTD3Valid^14ea7.html">const</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-76">disallowedSTD3Valid</a> <a href="#name-category">category</a> = 128</span></i></div><div class="anchor value-res hidden" id="name-ignored"><i>	<span class="nodocs"><a href="../../../../../use/vendor/golang.org/x/net/idna..ignored^3514c.html">const</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-77">ignored</a> <a href="#name-category">category</a> = 192</span></i></div><div class="anchor value-res hidden" id="name-indexShift"><i>	<span class="nodocs"><a href="../../../../../use/vendor/golang.org/x/net/idna..indexShift^153aa.html">const</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-45">indexShift</a> = 3</span></i></div><div class="anchor value-res hidden" id="name-initialBias"><i>	<input type='checkbox' class="fold" id="initialBias-fold-content"><label for="initialBias-fold-content"><a href="../../../../../use/vendor/golang.org/x/net/idna..initialBias^de5bd.html">const</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/punycode.go.html#line-24">initialBias</a> <a href="../../../../builtin.html#name-int32">int32</a> = 72</label><span id='initialBias-fold-content-docs' class="fold-docs">
+<span class="md-text">		These parameter values are specified in section 5.
+		
+		All computation is done with int32s, so that overflow behavior is identical
+		regardless of whether int is 32-bit or 64-bit.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-initialN"><i>	<input type='checkbox' class="fold" id="initialN-fold-content"><label for="initialN-fold-content"><a href="../../../../../use/vendor/golang.org/x/net/idna..initialN^7c73d.html">const</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/punycode.go.html#line-25">initialN</a> <a href="../../../../builtin.html#name-int32">int32</a> = 128</label><span id='initialN-fold-content-docs' class="fold-docs">
+<span class="md-text">		These parameter values are specified in section 5.
+		
+		All computation is done with int32s, so that overflow behavior is identical
+		regardless of whether int is 32-bit or 64-bit.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-inlineXOR"><i>	<span class="nodocs"><a href="../../../../../use/vendor/golang.org/x/net/idna..inlineXOR^73c35.html">const</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-47">inlineXOR</a> = 57344 // <span class="md-text">These bits are set if the XOR pattern is inlined.</span></span></i></div><div class="anchor value-res hidden" id="name-joiningD"><i>	<input type='checkbox' class="fold" id="joiningD-fold-content"><label for="joiningD-fold-content"><a href="../../../../../use/vendor/golang.org/x/net/idna..joiningD^23240.html">const</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-83">joiningD</a> = 2</label><span id='joiningD-fold-content-docs' class="fold-docs">
+<span class="md-text">		join types and additional rune information</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-joiningL"><i>	<input type='checkbox' class="fold" id="joiningL-fold-content"><label for="joiningL-fold-content"><a href="../../../../../use/vendor/golang.org/x/net/idna..joiningL^4aef8.html">const</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-82">joiningL</a> = 1</label><span id='joiningL-fold-content-docs' class="fold-docs">
+<span class="md-text">		join types and additional rune information</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-joiningR"><i>	<input type='checkbox' class="fold" id="joiningR-fold-content"><label for="joiningR-fold-content"><a href="../../../../../use/vendor/golang.org/x/net/idna..joiningR^86a63.html">const</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-85">joiningR</a> = 4</label><span id='joiningR-fold-content-docs' class="fold-docs">
+<span class="md-text">		join types and additional rune information</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-joiningT"><i>	<input type='checkbox' class="fold" id="joiningT-fold-content"><label for="joiningT-fold-content"><a href="../../../../../use/vendor/golang.org/x/net/idna..joiningT^409a7.html">const</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-84">joiningT</a> = 3</label><span id='joiningT-fold-content-docs' class="fold-docs">
+<span class="md-text">		join types and additional rune information</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-joinMask"><i>	<span class="nodocs"><a href="../../../../../use/vendor/golang.org/x/net/idna..joinMask^29dc0.html">const</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-50">joinMask</a> = 7</span></i></div><div class="anchor value-res hidden" id="name-joinShift"><i>	<span class="nodocs"><a href="../../../../../use/vendor/golang.org/x/net/idna..joinShift^dc82b.html">const</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-49">joinShift</a> = 8</span></i></div><div class="anchor value-res hidden" id="name-joinVirama"><i>	<input type='checkbox' class="fold" id="joinVirama-fold-content"><label for="joinVirama-fold-content"><a href="../../../../../use/vendor/golang.org/x/net/idna..joinVirama^216eb.html">const</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-90">joinVirama</a> = 7</label><span id='joinVirama-fold-content-docs' class="fold-docs">
+<span class="md-text">		join types and additional rune information</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-joinZWJ"><i>	<input type='checkbox' class="fold" id="joinZWJ-fold-content"><label for="joinZWJ-fold-content"><a href="../../../../../use/vendor/golang.org/x/net/idna..joinZWJ^580dd.html">const</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-88">joinZWJ</a> = 5</label><span id='joinZWJ-fold-content-docs' class="fold-docs">
+<span class="md-text">		the following types are derived during processing</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-joinZWNJ"><i>	<input type='checkbox' class="fold" id="joinZWNJ-fold-content"><label for="joinZWNJ-fold-content"><a href="../../../../../use/vendor/golang.org/x/net/idna..joinZWNJ^cd921.html">const</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-89">joinZWNJ</a> = 6</label><span id='joinZWNJ-fold-content-docs' class="fold-docs">
+<span class="md-text">		join types and additional rune information</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-mapped"><i>	<span class="nodocs"><a href="../../../../../use/vendor/golang.org/x/net/idna..mapped^03f88.html">const</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-66">mapped</a> <a href="#name-category">category</a> = 1</span></i></div><div class="anchor value-res hidden" id="name-mayNeedNorm"><i>	<span class="nodocs"><a href="../../../../../use/vendor/golang.org/x/net/idna..mayNeedNorm^b2d8e.html">const</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-58">mayNeedNorm</a> = 8192</span></i></div><div class="anchor value-res hidden" id="name-modifier"><i>	<span class="nodocs"><a href="../../../../../use/vendor/golang.org/x/net/idna..modifier^c7061.html">const</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-55">modifier</a> = 4096</span></i></div><div class="anchor value-res hidden" id="name-numJoinTypes"><i>	<input type='checkbox' class="fold" id="numJoinTypes-fold-content"><label for="numJoinTypes-fold-content"><a href="../../../../../use/vendor/golang.org/x/net/idna..numJoinTypes^bc926.html">const</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-91">numJoinTypes</a> = 8</label><span id='numJoinTypes-fold-content-docs' class="fold-docs">
+<span class="md-text">		join types and additional rune information</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-rtl"><i>	<span class="nodocs"><a href="../../../../../use/vendor/golang.org/x/net/idna..rtl^09317.html">const</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-56">rtl</a> = 2048</span></i></div><div class="anchor value-res hidden" id="name-skew"><i>	<input type='checkbox' class="fold" id="skew-fold-content"><label for="skew-fold-content"><a href="../../../../../use/vendor/golang.org/x/net/idna..skew^fd147.html">const</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/punycode.go.html#line-26">skew</a> <a href="../../../../builtin.html#name-int32">int32</a> = 38</label><span id='skew-fold-content-docs' class="fold-docs">
+<span class="md-text">		These parameter values are specified in section 5.
+		
+		All computation is done with int32s, so that overflow behavior is identical
+		regardless of whether int is 32-bit or 64-bit.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-stateAfter"><i>	<span class="nodocs"><a href="../../../../../use/vendor/golang.org/x/net/idna..stateAfter^e715c.html">const</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-657">stateAfter</a> <a href="#name-joinState">joinState</a> = 4</span></i></div><div class="anchor value-res hidden" id="name-stateBefore"><i>	<span class="nodocs"><a href="../../../../../use/vendor/golang.org/x/net/idna..stateBefore^556c0.html">const</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-655">stateBefore</a> <a href="#name-joinState">joinState</a> = 2</span></i></div><div class="anchor value-res hidden" id="name-stateBeforeVirama"><i>	<span class="nodocs"><a href="../../../../../use/vendor/golang.org/x/net/idna..stateBeforeVirama^4a8fb.html">const</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-656">stateBeforeVirama</a> <a href="#name-joinState">joinState</a> = 3</span></i></div><div class="anchor value-res hidden" id="name-stateFAIL"><i>	<span class="nodocs"><a href="../../../../../use/vendor/golang.org/x/net/idna..stateFAIL^868cc.html">const</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-658">stateFAIL</a> <a href="#name-joinState">joinState</a> = 5</span></i></div><div class="anchor value-res hidden" id="name-stateStart"><i>	<span class="nodocs"><a href="../../../../../use/vendor/golang.org/x/net/idna..stateStart^dd06f.html">const</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-653">stateStart</a> <a href="#name-joinState">joinState</a> = 0</span></i></div><div class="anchor value-res hidden" id="name-stateVirama"><i>	<span class="nodocs"><a href="../../../../../use/vendor/golang.org/x/net/idna..stateVirama^3afb2.html">const</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-654">stateVirama</a> <a href="#name-joinState">joinState</a> = 1</span></i></div><div class="anchor value-res hidden" id="name-tmax"><i>	<input type='checkbox' class="fold" id="tmax-fold-content"><label for="tmax-fold-content"><a href="../../../../../use/vendor/golang.org/x/net/idna..tmax^efbed.html">const</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/punycode.go.html#line-27">tmax</a> <a href="../../../../builtin.html#name-int32">int32</a> = 26</label><span id='tmax-fold-content-docs' class="fold-docs">
+<span class="md-text">		These parameter values are specified in section 5.
+		
+		All computation is done with int32s, so that overflow behavior is identical
+		regardless of whether int is 32-bit or 64-bit.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-tmin"><i>	<input type='checkbox' class="fold" id="tmin-fold-content"><label for="tmin-fold-content"><a href="../../../../../use/vendor/golang.org/x/net/idna..tmin^e95b6.html">const</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/punycode.go.html#line-28">tmin</a> <a href="../../../../builtin.html#name-int32">int32</a> = 1</label><span id='tmin-fold-content-docs' class="fold-docs">
+<span class="md-text">		These parameter values are specified in section 5.
+		
+		All computation is done with int32s, so that overflow behavior is identical
+		regardless of whether int is 32-bit or 64-bit.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-transitionalLookup"><i>	<input type='checkbox' class="fold" id="transitionalLookup-fold-content"><label for="transitionalLookup-fold-content"><a href="../../../../../use/vendor/golang.org/x/net/idna..transitionalLookup^8050c.html">const</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/go118.go.html#line-13">transitionalLookup</a> = false</label><span id='transitionalLookup-fold-content-docs' class="fold-docs">
+<span class="md-text">		Transitional processing is disabled by default in Go 1.18.
+		https://golang.org/issue/47510</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-unknown"><i>	<span class="nodocs"><a href="../../../../../use/vendor/golang.org/x/net/idna..unknown^b23a6.html">const</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-65">unknown</a> <a href="#name-category">category</a> = 0 // <span class="md-text">not currently defined in unicode.</span></span></i></div><div class="anchor value-res hidden" id="name-valid"><i>	<span class="nodocs"><a href="../../../../../use/vendor/golang.org/x/net/idna..valid^ec654.html">const</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-72">valid</a> <a href="#name-category">category</a> = 8</span></i></div><div class="anchor value-res hidden" id="name-validNV8"><i>	<span class="nodocs"><a href="../../../../../use/vendor/golang.org/x/net/idna..validNV8^4a0bd.html">const</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-73">validNV8</a> <a href="#name-category">category</a> = 24</span></i></div><div class="anchor value-res hidden" id="name-validXV8"><i>	<span class="nodocs"><a href="../../../../../use/vendor/golang.org/x/net/idna..validXV8^3b443.html">const</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-74">validXV8</a> <a href="#name-category">category</a> = 40</span></i></div><div class="anchor value-res hidden" id="name-viramaModifier"><i>	<span class="nodocs"><a href="../../../../../use/vendor/golang.org/x/net/idna..viramaModifier^f33de.html">const</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-54">viramaModifier</a> = 6144</span></i></div><div class="anchor value-res hidden" id="name-xorBit"><i>	<span class="nodocs"><a href="../../../../../use/vendor/golang.org/x/net/idna..xorBit^503f8.html">const</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-46">xorBit</a> = 4 // <span class="md-text">interpret the index as an xor pattern</span></span></i></div><div class="anchor value-res hidden" id="name-zwj"><i>	<span class="nodocs"><a href="../../../../../use/vendor/golang.org/x/net/idna..zwj^47344.html">const</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-647">zwj</a> = "\u200d"</span></i></div><div class="anchor value-res hidden" id="name-zwnj"><i>	<span class="nodocs"><a href="../../../../../use/vendor/golang.org/x/net/idna..zwnj^5fefc.html">const</a> <a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-646">zwnj</a> = "\u200c"</span></i></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

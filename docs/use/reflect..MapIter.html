@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: reflect.MapIter</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../pkg/reflect.html">reflect</a>.<a href="../src/reflect/value.go.html#line-1901">MapIter</a></b></span>
+
+<span class="title">9 uses</span>
+
+	reflect (current package)
+		<a href="../src/reflect/value.go.html#line-1901">value.go#L1901</a>: type <b>MapIter</b> struct {
+		<a href="../src/reflect/value.go.html#line-1907" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1907">#L1907</a>: func (iter *<b>MapIter</b>) Key() Value {
+		<a href="../src/reflect/value.go.html#line-1925" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1925">#L1925</a>: func (v Value) SetIterKey(iter *<b>MapIter</b>) {
+		<a href="../src/reflect/value.go.html#line-1950" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1950">#L1950</a>: func (iter *<b>MapIter</b>) Value() Value {
+		<a href="../src/reflect/value.go.html#line-1968" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1968">#L1968</a>: func (v Value) SetIterValue(iter *<b>MapIter</b>) {
+		<a href="../src/reflect/value.go.html#line-1995" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1995">#L1995</a>: func (iter *<b>MapIter</b>) Next() bool {
+		<a href="../src/reflect/value.go.html#line-2014" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2014">#L2014</a>: func (iter *<b>MapIter</b>) Reset(v Value) {
+		<a href="../src/reflect/value.go.html#line-2037" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2037">#L2037</a>: func (v Value) MapRange() *<b>MapIter</b> {
+		<a href="../src/reflect/value.go.html#line-2045" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2045">#L2045</a>: 	return &amp;<b>MapIter</b>{m: v}
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

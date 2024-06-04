@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/internal/nistec.p256Mul</title>
+<link href="../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../../../pkg/crypto/internal/nistec.html">crypto/internal/nistec</a>.<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-257">p256Mul</a></b></span>
+
+<span class="title">28 uses</span>
+
+	crypto/internal/nistec (current package)
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-99">p256_asm.go#L99</a>: 		<b>p256Mul</b>(&amp;r.x, &amp;r.x, &amp;rr)
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-100" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-100">#L100</a>: 		<b>p256Mul</b>(&amp;r.y, &amp;r.y, &amp;rr)
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-114" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-114">#L114</a>: 		<b>p256Mul</b>(&amp;r.x, &amp;r.x, &amp;rr)
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-141" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-141">#L141</a>: 	<b>p256Mul</b>(x3, x3, x)
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-229" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-229">#L229</a>: 	<b>p256Mul</b>(t0, x, t0)
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-231" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-231">#L231</a>: 	<b>p256Mul</b>(t0, t0, t1)
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-233" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-233">#L233</a>: 	<b>p256Mul</b>(t0, t0, t1)
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-235" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-235">#L235</a>: 	<b>p256Mul</b>(t0, t0, t1)
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-237" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-237">#L237</a>: 	<b>p256Mul</b>(t0, t0, t1)
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-239" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-239">#L239</a>: 	<b>p256Mul</b>(t0, x, t0)
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-241" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-241">#L241</a>: 	<b>p256Mul</b>(t0, x, t0)
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-257" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-257">#L257</a>: func <b>p256Mul</b>(res, in1, in2 *p256Element)
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-489" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-489">#L489</a>: 	<b>p256Mul</b>(y, y, x)
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-491" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-491">#L491</a>: 	<b>p256Mul</b>(x, &amp;p.x, x)
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-492" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-492">#L492</a>: 	<b>p256Mul</b>(y, &amp;p.y, y)
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-515" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-515">#L515</a>: 	<b>p256Mul</b>(x, &amp;p.x, x)
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-581" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-581">#L581</a>: 	<b>p256Mul</b>(z, in, z)
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-583" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-583">#L583</a>: 	<b>p256Mul</b>(z, in, z)
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-585" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-585">#L585</a>: 	<b>p256Mul</b>(t0, z, t0)
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-587" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-587">#L587</a>: 	<b>p256Mul</b>(t0, t0, t1)
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-589" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-589">#L589</a>: 	<b>p256Mul</b>(z, z, t0)
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-591" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-591">#L591</a>: 	<b>p256Mul</b>(t0, in, t0)
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-593" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-593">#L593</a>: 	<b>p256Mul</b>(t0, t0, t1)
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-595" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-595">#L595</a>: 	<b>p256Mul</b>(z, z, t0)
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-597" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-597">#L597</a>: 	<b>p256Mul</b>(t0, in, t0)
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-599" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-599">#L599</a>: 	<b>p256Mul</b>(t0, z, t0)
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-601" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-601">#L601</a>: 	<b>p256Mul</b>(z, z, t0)
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-603" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-603">#L603</a>: 	<b>p256Mul</b>(out, in, z)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

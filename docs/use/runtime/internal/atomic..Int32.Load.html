@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime/internal/atomic.Int32.Load</title>
+<link href="../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../../pkg/runtime/internal/atomic.html">runtime/internal/atomic</a>.<a href="../../../src/runtime/internal/atomic/types.go.html#line-12">Int32</a>.<a href="../../../src/runtime/internal/atomic/types.go.html#line-20">Load</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">39 uses</span>
+
+	runtime/internal/atomic (current package)
+		<a href="../../../src/runtime/internal/atomic/types.go.html#line-20">types.go#L20</a>: func (i *Int32) <b>Load</b>() int32 {
+
+	<a href="../../../pkg/runtime.html">runtime</a>
+		<a href="../../../src/runtime/cpuprof.go.html#line-113">cpuprof.go#L113</a>: 	if prof.hz.<b>Load</b>() != 0 { // implies cpuprof.log != nil
+		<a href="../../../src/runtime/metrics.go.html#line-288">metrics.go#L288</a>: 				out.scalar = uint64(gcController.gcPercent.<b>Load</b>())
+		<a href="../../../src/runtime/mgc.go.html#line-577">mgc.go#L577</a>: 		if gcController.gcPercent.<b>Load</b>() &lt; 0 {
+		<a href="../../../src/runtime/mgcpacer.go.html#line-491">mgcpacer.go#L491</a>: 	gcPercent := c.gcPercent.<b>Load</b>()
+		<a href="../../../src/runtime/mgcpacer.go.html#line-1203" class="path-duplicate">mgcpacer.go</a><a href="../../../src/runtime/mgcpacer.go.html#line-1203">#L1203</a>: 	if gcPercent := c.gcPercent.<b>Load</b>(); gcPercent &gt;= 0 {
+		<a href="../../../src/runtime/mgcpacer.go.html#line-1248" class="path-duplicate">mgcpacer.go</a><a href="../../../src/runtime/mgcpacer.go.html#line-1248">#L1248</a>: 	out := c.gcPercent.<b>Load</b>()
+		<a href="../../../src/runtime/mprof.go.html#line-693">mprof.go#L693</a>: 	if debug.runtimeContentionStacks.<b>Load</b>() == 0 {
+		<a href="../../../src/runtime/panic.go.html#line-722">panic.go#L722</a>: 		if debug.panicnil.<b>Load</b>() != 1 {
+		<a href="../../../src/runtime/proc.go.html#line-362">proc.go#L362</a>: 	if !gp.preempt &amp;&amp; sched.npidle.<b>Load</b>() &gt; 0 {
+		<a href="../../../src/runtime/proc.go.html#line-2926" class="path-duplicate">proc.go</a><a href="../../../src/runtime/proc.go.html#line-2926">#L2926</a>: 	if sched.nmspinning.<b>Load</b>()+sched.npidle.<b>Load</b>() == 0 &amp;&amp; sched.nmspinning.CompareAndSwap(0, 1) { // TODO: fast atomic
+		<a href="../../../src/runtime/proc.go.html#line-2955" class="path-duplicate">proc.go</a><a href="../../../src/runtime/proc.go.html#line-2955">#L2955</a>: 	if sched.npidle.<b>Load</b>() == gomaxprocs-1 &amp;&amp; sched.lastpoll.Load() != 0 {
+		<a href="../../../src/runtime/proc.go.html#line-2978" class="path-duplicate">proc.go</a><a href="../../../src/runtime/proc.go.html#line-2978">#L2978</a>: 	if sched.nmspinning.<b>Load</b>() != 0 || !sched.nmspinning.CompareAndSwap(0, 1) {
+		<a href="../../../src/runtime/proc.go.html#line-3249" class="path-duplicate">proc.go</a><a href="../../../src/runtime/proc.go.html#line-3249">#L3249</a>: 	if mp.spinning || 2*sched.nmspinning.<b>Load</b>() &lt; gomaxprocs-sched.npidle.<b>Load</b>() {
+		<a href="../../../src/runtime/proc.go.html#line-3817" class="path-duplicate">proc.go</a><a href="../../../src/runtime/proc.go.html#line-3817">#L3817</a>: 	npidle := int(sched.npidle.<b>Load</b>())
+		<a href="../../../src/runtime/proc.go.html#line-4841" class="path-duplicate">proc.go</a><a href="../../../src/runtime/proc.go.html#line-4841">#L4841</a>: 		for pendingPreemptSignals.<b>Load</b>() &gt; 0 {
+		<a href="../../../src/runtime/proc.go.html#line-5265" class="path-duplicate">proc.go</a><a href="../../../src/runtime/proc.go.html#line-5265">#L5265</a>: 	n := int32(atomic.Loaduintptr(&amp;allglen)) - sched.gFree.n - sched.ngsys.<b>Load</b>()
+		<a href="../../../src/runtime/proc.go.html#line-5303" class="path-duplicate">proc.go</a><a href="../../../src/runtime/proc.go.html#line-5303">#L5303</a>: 	if prof.hz.<b>Load</b>() == 0 {
+		<a href="../../../src/runtime/proc.go.html#line-5395" class="path-duplicate">proc.go</a><a href="../../../src/runtime/proc.go.html#line-5395">#L5395</a>: 	if prof.hz.<b>Load</b>() != 0 {
+		<a href="../../../src/runtime/proc.go.html#line-5441" class="path-duplicate">proc.go</a><a href="../../../src/runtime/proc.go.html#line-5441">#L5441</a>: 	if prof.hz.<b>Load</b>() != hz {
+		<a href="../../../src/runtime/proc.go.html#line-5983" class="path-duplicate">proc.go</a><a href="../../../src/runtime/proc.go.html#line-5983">#L5983</a>: 		if debug.schedtrace &lt;= 0 &amp;&amp; (sched.gcwaiting.Load() || sched.npidle.<b>Load</b>() == gomaxprocs) {
+		<a href="../../../src/runtime/proc.go.html#line-5985" class="path-duplicate">proc.go</a><a href="../../../src/runtime/proc.go.html#line-5985">#L5985</a>: 			if sched.gcwaiting.Load() || sched.npidle.<b>Load</b>() == gomaxprocs {
+		<a href="../../../src/runtime/proc.go.html#line-6146" class="path-duplicate">proc.go</a><a href="../../../src/runtime/proc.go.html#line-6146">#L6146</a>: 			if runqempty(pp) &amp;&amp; sched.nmspinning.<b>Load</b>()+sched.npidle.<b>Load</b>() &gt; 0 &amp;&amp; pd.syscallwhen+10*1000*1000 &gt; now {
+		<a href="../../../src/runtime/proc.go.html#line-6241" class="path-duplicate">proc.go</a><a href="../../../src/runtime/proc.go.html#line-6241">#L6241</a>: 	print("SCHED ", (now-starttime)/1e6, "ms: gomaxprocs=", gomaxprocs, " idleprocs=", sched.npidle.<b>Load</b>(), " threads=", mcount(), " spinningthreads=", sched.nmspinning.<b>Load</b>(), " needspinning=", sched.needspinning.Load(), " idlethreads=", sched.nmidle, " runqueue=", sched.runqsize)
+		<a href="../../../src/runtime/proc.go.html#line-6337" class="path-duplicate">proc.go</a><a href="../../../src/runtime/proc.go.html#line-6337">#L6337</a>: 		for ; n != 0 &amp;&amp; sched.npidle.<b>Load</b>() != 0; n-- {
+		<a href="../../../src/runtime/proc.go.html#line-7051" class="path-duplicate">proc.go</a><a href="../../../src/runtime/proc.go.html#line-7051">#L7051</a>: 	if i &gt;= active_spin || ncpu &lt;= 1 || gomaxprocs &lt;= sched.npidle.<b>Load</b>()+sched.nmspinning.<b>Load</b>()+1 {
+		<a href="../../../src/runtime/signal_unix.go.html#line-516">signal_unix.go#L516</a>: 	if prof.hz.<b>Load</b>() != 0 {
+		<a href="../../../src/runtime/signal_unix.go.html#line-539" class="path-duplicate">signal_unix.go</a><a href="../../../src/runtime/signal_unix.go.html#line-539">#L539</a>: 	if prof.hz.<b>Load</b>() != 0 {
+		<a href="../../../src/runtime/signal_unix.go.html#line-733" class="path-duplicate">signal_unix.go</a><a href="../../../src/runtime/signal_unix.go.html#line-733">#L733</a>: 	if crashing.<b>Load</b>() == 0 {
+		<a href="../../../src/runtime/signal_unix.go.html#line-743" class="path-duplicate">signal_unix.go</a><a href="../../../src/runtime/signal_unix.go.html#line-743">#L743</a>: 		if crashing.<b>Load</b>() &gt; 0 &amp;&amp; gp != mp.curg &amp;&amp; mp.curg != nil &amp;&amp; readgstatus(mp.curg)&amp;^_Gscan == _Grunning {
+		<a href="../../../src/runtime/signal_unix.go.html#line-747" class="path-duplicate">signal_unix.go</a><a href="../../../src/runtime/signal_unix.go.html#line-747">#L747</a>: 		} else if crashing.<b>Load</b>() == 0 {
+		<a href="../../../src/runtime/signal_unix.go.html#line-761" class="path-duplicate">signal_unix.go</a><a href="../../../src/runtime/signal_unix.go.html#line-761">#L761</a>: 		if crashing.<b>Load</b>() &lt; mcount()-int32(extraMLength.Load()) {
+		<a href="../../../src/runtime/signal_unix.go.html#line-779" class="path-duplicate">signal_unix.go</a><a href="../../../src/runtime/signal_unix.go.html#line-779">#L779</a>: 			for (crashing.<b>Load</b>() &lt; mcount()-int32(extraMLength.Load())) &amp;&amp; i &lt; 10 {
+		<a href="../../../src/runtime/trace2.go.html#line-230">trace2.go#L230</a>: 	for trace.exitingSyscall.<b>Load</b>() != 0 {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

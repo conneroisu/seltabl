@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/http.http2priorityNode</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../pkg/net/http.html">net/http</a>.<a href="../../src/net/http/h2_bundle.go.html#line-10990">http2priorityNode</a></b></span>
+
+<span class="title">23 uses</span>
+
+	net/http (current package)
+		<a href="../../src/net/http/h2_bundle.go.html#line-10965">h2_bundle.go#L10965</a>: 		nodes:                make(map[uint32]*<b>http2priorityNode</b>),
+		<a href="../../src/net/http/h2_bundle.go.html#line-10990" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-10990">#L10990</a>: type <b>http2priorityNode</b> struct {
+		<a href="../../src/net/http/h2_bundle.go.html#line-10999" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-10999">#L10999</a>: 	parent     *<b>http2priorityNode</b>
+		<a href="../../src/net/http/h2_bundle.go.html#line-11000" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11000">#L11000</a>: 	kids       *<b>http2priorityNode</b> // start of the kids list
+		<a href="../../src/net/http/h2_bundle.go.html#line-11001" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11001">#L11001</a>: 	prev, next *<b>http2priorityNode</b> // doubly-linked list of siblings
+		<a href="../../src/net/http/h2_bundle.go.html#line-11004" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11004">#L11004</a>: func (n *<b>http2priorityNode</b>) setParent(parent *<b>http2priorityNode</b>) {
+		<a href="../../src/net/http/h2_bundle.go.html#line-11039" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11039">#L11039</a>: func (n *<b>http2priorityNode</b>) addBytes(b int64) {
+		<a href="../../src/net/http/h2_bundle.go.html#line-11052" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11052">#L11052</a>: func (n *<b>http2priorityNode</b>) walkReadyInOrder(openParent bool, tmp *[]*<b>http2priorityNode</b>, f func(*<b>http2priorityNode</b>, bool) bool) bool {
+		<a href="../../src/net/http/h2_bundle.go.html#line-11105" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11105">#L11105</a>: type http2sortPriorityNodeSiblings []*<b>http2priorityNode</b>
+		<a href="../../src/net/http/h2_bundle.go.html#line-11128" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11128">#L11128</a>: 	root <b>http2priorityNode</b>
+		<a href="../../src/net/http/h2_bundle.go.html#line-11131" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11131">#L11131</a>: 	nodes map[uint32]*<b>http2priorityNode</b>
+		<a href="../../src/net/http/h2_bundle.go.html#line-11139" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11139">#L11139</a>: 	closedNodes, idleNodes []*<b>http2priorityNode</b>
+		<a href="../../src/net/http/h2_bundle.go.html#line-11148" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11148">#L11148</a>: 	tmp []*<b>http2priorityNode</b>
+		<a href="../../src/net/http/h2_bundle.go.html#line-11172" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11172">#L11172</a>: 	n := &amp;<b>http2priorityNode</b>{
+		<a href="../../src/net/http/h2_bundle.go.html#line-11224" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11224">#L11224</a>: 		n = &amp;<b>http2priorityNode</b>{
+		<a href="../../src/net/http/h2_bundle.go.html#line-11282" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11282">#L11282</a>: 	var n *<b>http2priorityNode</b>
+		<a href="../../src/net/http/h2_bundle.go.html#line-11302" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11302">#L11302</a>: 	ws.root.walkReadyInOrder(false, &amp;ws.tmp, func(n *<b>http2priorityNode</b>, openParent bool) bool {
+		<a href="../../src/net/http/h2_bundle.go.html#line-11328" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11328">#L11328</a>: func (ws *http2priorityWriteScheduler) addClosedOrIdleNode(list *[]*<b>http2priorityNode</b>, maxSize int, n *<b>http2priorityNode</b>) {
+		<a href="../../src/net/http/h2_bundle.go.html#line-11342" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11342">#L11342</a>: func (ws *http2priorityWriteScheduler) removeNode(n *<b>http2priorityNode</b>) {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

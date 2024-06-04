@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.stackObject.off</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/mgcstack.go.html#line-148">stackObject</a>.<a href="../src/runtime/mgcstack.go.html#line-150">off</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">8 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/mgcmark.go.html#line-953">mgcmark.go#L953</a>: 			print("  live stkobj at", hex(state.stack.lo+uintptr(obj.<b>off</b>)), "of size", obj.size)
+		<a href="../src/runtime/mgcmark.go.html#line-976" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-976">#L976</a>: 		b := state.stack.lo + uintptr(obj.<b>off</b>)
+		<a href="../src/runtime/mgcmark.go.html#line-999" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-999">#L999</a>: 				println("  dead stkobj at", hex(gp.stack.lo+uintptr(obj.<b>off</b>)), "of size", obj.r.size)
+		<a href="../src/runtime/mgcstack.go.html#line-150">mgcstack.go#L150</a>: 	<b>off</b>   uint32             // offset above stack.lo
+		<a href="../src/runtime/mgcstack.go.html#line-279" class="path-duplicate">mgcstack.go</a><a href="../src/runtime/mgcstack.go.html#line-279">#L279</a>: 	if x.nobj &gt; 0 &amp;&amp; uint32(addr-s.stack.lo) &lt; x.obj[x.nobj-1].<b>off</b>+x.obj[x.nobj-1].size {
+		<a href="../src/runtime/mgcstack.go.html#line-292" class="path-duplicate">mgcstack.go</a><a href="../src/runtime/mgcstack.go.html#line-292">#L292</a>: 	obj.<b>off</b> = uint32(addr - s.stack.lo)
+		<a href="../src/runtime/mgcstack.go.html#line-338" class="path-duplicate">mgcstack.go</a><a href="../src/runtime/mgcstack.go.html#line-338">#L338</a>: 		if off &lt; obj.<b>off</b> {
+		<a href="../src/runtime/mgcstack.go.html#line-342" class="path-duplicate">mgcstack.go</a><a href="../src/runtime/mgcstack.go.html#line-342">#L342</a>: 		if off &gt;= obj.<b>off</b>+obj.size {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

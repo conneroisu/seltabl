@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: vendor/golang.org/x/crypto/cryptobyte.Builder.AddBytes</title>
+<link href="../../../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../../../../pkg/vendor/golang.org/x/crypto/cryptobyte.html">vendor/golang.org/x/crypto/cryptobyte</a>.<a href="../../../../../src/vendor/golang.org/x/crypto/cryptobyte/builder.go.html#line-23">Builder</a>.<a href="../../../../../src/vendor/golang.org/x/crypto/cryptobyte/builder.go.html#line-109">AddBytes</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">56 uses</span>
+
+	vendor/golang.org/x/crypto/cryptobyte (current package)
+		<a href="../../../../../src/vendor/golang.org/x/crypto/cryptobyte/asn1.go.html#line-103">asn1.go#L103</a>: 		c.<b>AddBytes</b>(bytes)
+		<a href="../../../../../src/vendor/golang.org/x/crypto/cryptobyte/asn1.go.html#line-116" class="path-duplicate">asn1.go</a><a href="../../../../../src/vendor/golang.org/x/crypto/cryptobyte/asn1.go.html#line-116">#L116</a>: 		c.<b>AddBytes</b>([]byte(t.Format(generalizedTimeFormatStr)))
+		<a href="../../../../../src/vendor/golang.org/x/crypto/cryptobyte/asn1.go.html#line-129" class="path-duplicate">asn1.go</a><a href="../../../../../src/vendor/golang.org/x/crypto/cryptobyte/asn1.go.html#line-129">#L129</a>: 		c.<b>AddBytes</b>([]byte(t.Format(defaultUTCTimeFormatStr)))
+		<a href="../../../../../src/vendor/golang.org/x/crypto/cryptobyte/asn1.go.html#line-138" class="path-duplicate">asn1.go</a><a href="../../../../../src/vendor/golang.org/x/crypto/cryptobyte/asn1.go.html#line-138">#L138</a>: 		b.<b>AddBytes</b>(data)
+		<a href="../../../../../src/vendor/golang.org/x/crypto/cryptobyte/asn1.go.html#line-223" class="path-duplicate">asn1.go</a><a href="../../../../../src/vendor/golang.org/x/crypto/cryptobyte/asn1.go.html#line-223">#L223</a>: 	b.<b>AddBytes</b>(bytes)
+		<a href="../../../../../src/vendor/golang.org/x/crypto/cryptobyte/builder.go.html#line-109">builder.go#L109</a>: func (b *Builder) <b>AddBytes</b>(v []byte) {
+
+	<a href="../../../../../pkg/crypto/ecdsa.html">crypto/ecdsa</a>
+		<a href="../../../../../src/crypto/ecdsa/ecdsa.go.html#line-361">ecdsa.go#L361</a>: 		c.<b>AddBytes</b>(bytes)
+
+	<a href="../../../../../pkg/crypto/tls.html">crypto/tls</a>
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-30">handshake_messages.go#L30</a>: 		b.<b>AddBytes</b>(v)
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-113" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-113">#L113</a>: 					exts.<b>AddBytes</b>([]byte(m.serverName))
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-143" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-143">#L143</a>: 				exts.<b>AddBytes</b>(m.supportedPoints)
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-151" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-151">#L151</a>: 			exts.<b>AddBytes</b>(m.sessionTicket)
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-181" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-181">#L181</a>: 				exts.<b>AddBytes</b>(m.secureRenegotiation)
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-197" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-197">#L197</a>: 						exts.<b>AddBytes</b>([]byte(proto))
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-224" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-224">#L224</a>: 				exts.<b>AddBytes</b>(m.cookie)
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-236" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-236">#L236</a>: 						exts.<b>AddBytes</b>(ks.data)
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-252" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-252">#L252</a>: 				exts.<b>AddBytes</b>(m.pskModes)
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-260" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-260">#L260</a>: 			exts.<b>AddBytes</b>(m.quicTransportParameters)
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-270" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-270">#L270</a>: 						exts.<b>AddBytes</b>(psk.label)
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-278" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-278">#L278</a>: 						exts.<b>AddBytes</b>(binder)
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-295" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-295">#L295</a>: 			b.<b>AddBytes</b>(m.sessionId)
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-303" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-303">#L303</a>: 			b.<b>AddBytes</b>(m.compressionMethods)
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-308" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-308">#L308</a>: 				b.<b>AddBytes</b>(extBytes)
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-357" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-357">#L357</a>: 					b.<b>AddBytes</b>(binder)
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-671" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-671">#L671</a>: 				exts.<b>AddBytes</b>(m.secureRenegotiation)
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-684" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-684">#L684</a>: 					exts.<b>AddBytes</b>([]byte(m.alpnProtocol))
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-695" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-695">#L695</a>: 						exts.<b>AddBytes</b>(sct)
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-712" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-712">#L712</a>: 				exts.<b>AddBytes</b>(m.serverShare.data)
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-727" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-727">#L727</a>: 				exts.<b>AddBytes</b>(m.cookie)
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-741" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-741">#L741</a>: 				exts.<b>AddBytes</b>(m.supportedPoints)
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-757" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-757">#L757</a>: 			b.<b>AddBytes</b>(m.sessionId)
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-764" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-764">#L764</a>: 				b.<b>AddBytes</b>(extBytes)
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-912" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-912">#L912</a>: 							b.<b>AddBytes</b>([]byte(m.alpnProtocol))
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-921" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-921">#L921</a>: 					b.<b>AddBytes</b>(m.quicTransportParameters)
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-1065" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-1065">#L1065</a>: 			b.<b>AddBytes</b>(m.nonce)
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-1068" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-1068">#L1068</a>: 			b.<b>AddBytes</b>(m.label)
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-1188" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-1188">#L1188</a>: 								b.<b>AddBytes</b>(ca)
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-1391" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-1391">#L1391</a>: 				b.<b>AddBytes</b>(cert)
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-1403" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-1403">#L1403</a>: 							b.<b>AddBytes</b>(certificate.OCSPStaple)
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-1413" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-1413">#L1413</a>: 									b.<b>AddBytes</b>(sct)
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-1547" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-1547">#L1547</a>: 			b.<b>AddBytes</b>(m.response)
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-1629" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-1629">#L1629</a>: 		b.<b>AddBytes</b>(m.verifyData)
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-1806" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-1806">#L1806</a>: 			b.<b>AddBytes</b>(m.signature)
+		<a href="../../../../../src/crypto/tls/key_schedule.go.html#line-39">key_schedule.go#L39</a>: 		b.<b>AddBytes</b>([]byte("tls13 "))
+		<a href="../../../../../src/crypto/tls/key_schedule.go.html#line-40" class="path-duplicate">key_schedule.go</a><a href="../../../../../src/crypto/tls/key_schedule.go.html#line-40">#L40</a>: 		b.<b>AddBytes</b>([]byte(label))
+		<a href="../../../../../src/crypto/tls/key_schedule.go.html#line-43" class="path-duplicate">key_schedule.go</a><a href="../../../../../src/crypto/tls/key_schedule.go.html#line-43">#L43</a>: 		b.<b>AddBytes</b>(context)
+		<a href="../../../../../src/crypto/tls/ticket.go.html#line-118">ticket.go#L118</a>: 		b.<b>AddBytes</b>(s.secret)
+		<a href="../../../../../src/crypto/tls/ticket.go.html#line-123" class="path-duplicate">ticket.go</a><a href="../../../../../src/crypto/tls/ticket.go.html#line-123">#L123</a>: 				b.<b>AddBytes</b>(extra)
+		<a href="../../../../../src/crypto/tls/ticket.go.html#line-152" class="path-duplicate">ticket.go</a><a href="../../../../../src/crypto/tls/ticket.go.html#line-152">#L152</a>: 						b.<b>AddBytes</b>(cert.Raw)
+		<a href="../../../../../src/crypto/tls/ticket.go.html#line-160" class="path-duplicate">ticket.go</a><a href="../../../../../src/crypto/tls/ticket.go.html#line-160">#L160</a>: 			b.<b>AddBytes</b>([]byte(s.alpnProtocol))
+
+	<a href="../../../../../pkg/crypto/x509.html">crypto/x509</a>
+		<a href="../../../../../src/crypto/x509/x509.go.html#line-1228">x509.go#L1228</a>: 						b.<b>AddBytes</b>([]byte(name))
+		<a href="../../../../../src/crypto/x509/x509.go.html#line-1236" class="path-duplicate">x509.go</a><a href="../../../../../src/crypto/x509/x509.go.html#line-1236">#L1236</a>: 						b.<b>AddBytes</b>(ipAndMask(ipNet))
+		<a href="../../../../../src/crypto/x509/x509.go.html#line-1248" class="path-duplicate">x509.go</a><a href="../../../../../src/crypto/x509/x509.go.html#line-1248">#L1248</a>: 						b.<b>AddBytes</b>([]byte(email))
+		<a href="../../../../../src/crypto/x509/x509.go.html#line-1260" class="path-duplicate">x509.go</a><a href="../../../../../src/crypto/x509/x509.go.html#line-1260">#L1260</a>: 						b.<b>AddBytes</b>([]byte(uriDomain))
+		<a href="../../../../../src/crypto/x509/x509.go.html#line-1282" class="path-duplicate">x509.go</a><a href="../../../../../src/crypto/x509/x509.go.html#line-1282">#L1282</a>: 					b.<b>AddBytes</b>(permitted)
+		<a href="../../../../../src/crypto/x509/x509.go.html#line-1288" class="path-duplicate">x509.go</a><a href="../../../../../src/crypto/x509/x509.go.html#line-1288">#L1288</a>: 					b.<b>AddBytes</b>(excluded)
+		<a href="../../../../../src/crypto/x509/x509.go.html#line-1394" class="path-duplicate">x509.go</a><a href="../../../../../src/crypto/x509/x509.go.html#line-1394">#L1394</a>: 						child.<b>AddBytes</b>(v.der)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

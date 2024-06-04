@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: sync/atomic.efaceWords.data</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/sync/atomic.html">sync/atomic</a>.<a href="../../src/sync/atomic/value.go.html#line-21">efaceWords</a>.<a href="../../src/sync/atomic/value.go.html#line-23">data</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">18 uses</span>
+
+	sync/atomic (current package)
+		<a href="../../src/sync/atomic/value.go.html#line-23">value.go#L23</a>: 	<b>data</b> unsafe.Pointer
+		<a href="../../src/sync/atomic/value.go.html#line-35" class="path-duplicate">value.go</a><a href="../../src/sync/atomic/value.go.html#line-35">#L35</a>: 	data := LoadPointer(&amp;vp.<b>data</b>)
+		<a href="../../src/sync/atomic/value.go.html#line-38" class="path-duplicate">value.go</a><a href="../../src/sync/atomic/value.go.html#line-38">#L38</a>: 	vlp.<b>data</b> = data
+		<a href="../../src/sync/atomic/value.go.html#line-65" class="path-duplicate">value.go</a><a href="../../src/sync/atomic/value.go.html#line-65">#L65</a>: 			StorePointer(&amp;vp.<b>data</b>, vlp.<b>data</b>)
+		<a href="../../src/sync/atomic/value.go.html#line-80" class="path-duplicate">value.go</a><a href="../../src/sync/atomic/value.go.html#line-80">#L80</a>: 		StorePointer(&amp;vp.<b>data</b>, vlp.<b>data</b>)
+		<a href="../../src/sync/atomic/value.go.html#line-109" class="path-duplicate">value.go</a><a href="../../src/sync/atomic/value.go.html#line-109">#L109</a>: 			StorePointer(&amp;vp.<b>data</b>, np.<b>data</b>)
+		<a href="../../src/sync/atomic/value.go.html#line-125" class="path-duplicate">value.go</a><a href="../../src/sync/atomic/value.go.html#line-125">#L125</a>: 		op.typ, op.<b>data</b> = np.typ, SwapPointer(&amp;vp.<b>data</b>, np.<b>data</b>)
+		<a href="../../src/sync/atomic/value.go.html#line-161" class="path-duplicate">value.go</a><a href="../../src/sync/atomic/value.go.html#line-161">#L161</a>: 			StorePointer(&amp;vp.<b>data</b>, np.<b>data</b>)
+		<a href="../../src/sync/atomic/value.go.html#line-181" class="path-duplicate">value.go</a><a href="../../src/sync/atomic/value.go.html#line-181">#L181</a>: 		data := LoadPointer(&amp;vp.<b>data</b>)
+		<a href="../../src/sync/atomic/value.go.html#line-184" class="path-duplicate">value.go</a><a href="../../src/sync/atomic/value.go.html#line-184">#L184</a>: 		(*efaceWords)(unsafe.Pointer(&amp;i)).<b>data</b> = data
+		<a href="../../src/sync/atomic/value.go.html#line-188" class="path-duplicate">value.go</a><a href="../../src/sync/atomic/value.go.html#line-188">#L188</a>: 		return CompareAndSwapPointer(&amp;vp.<b>data</b>, data, np.<b>data</b>)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

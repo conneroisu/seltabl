@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/tls.Config.ServerName</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/crypto/tls.html">crypto/tls</a>.<a href="../../src/crypto/tls/common.go.html#line-527">Config</a>.<a href="../../src/crypto/tls/common.go.html#line-652">ServerName</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">15 uses</span>
+
+	crypto/tls (current package)
+		<a href="../../src/crypto/tls/common.go.html#line-652">common.go#L652</a>: 	<b>ServerName</b> string
+		<a href="../../src/crypto/tls/common.go.html#line-847" class="path-duplicate">common.go</a><a href="../../src/crypto/tls/common.go.html#line-847">#L847</a>: 		<b>ServerName</b>:                  c.<b>ServerName</b>,
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-44">handshake_client.go#L44</a>: 	if len(config.<b>ServerName</b>) == 0 &amp;&amp; !config.InsecureSkipVerify {
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-80" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-80">#L80</a>: 		serverName:                   hostnameInSNI(config.<b>ServerName</b>),
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-338" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-338">#L338</a>: 		if err := session.peerCertificates[0].VerifyHostname(c.config.<b>ServerName</b>); err != nil {
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-989" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-989">#L989</a>: 			DNSName:       c.config.<b>ServerName</b>,
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-1117" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-1117">#L1117</a>: 	if len(c.config.<b>ServerName</b>) &gt; 0 {
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-1118" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-1118">#L1118</a>: 		return c.config.<b>ServerName</b>
+		<a href="../../src/crypto/tls/tls.go.html#line-149">tls.go#L149</a>: 	if config.<b>ServerName</b> == "" {
+		<a href="../../src/crypto/tls/tls.go.html#line-152" class="path-duplicate">tls.go</a><a href="../../src/crypto/tls/tls.go.html#line-152">#L152</a>: 		c.<b>ServerName</b> = hostname
+
+	<a href="../../pkg/net/http.html">net/http</a>
+		<a href="../../src/net/http/h2_bundle.go.html#line-7746">h2_bundle.go#L7746</a>: 	if cfg.<b>ServerName</b> == "" {
+		<a href="../../src/net/http/h2_bundle.go.html#line-7747" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-7747">#L7747</a>: 		cfg.<b>ServerName</b> = host
+		<a href="../../src/net/http/transport.go.html#line-1554">transport.go#L1554</a>: 	if cfg.<b>ServerName</b> == "" {
+		<a href="../../src/net/http/transport.go.html#line-1555" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-1555">#L1555</a>: 		cfg.<b>ServerName</b> = name
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

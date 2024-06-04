@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.offAddr</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/mranges.go.html#line-123">offAddr</a></b></span>
+
+<span class="title">54 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/mgcscavenge.go.html#line-797">mgcscavenge.go#L797</a>: 			if b := (<b>offAddr</b>{addr}); b.lessThan(p.searchAddr) {
+		<a href="../src/runtime/mgcscavenge.go.html#line-1045" class="path-duplicate">mgcscavenge.go</a><a href="../src/runtime/mgcscavenge.go.html#line-1045">#L1045</a>: 	freeHWM <b>offAddr</b>
+		<a href="../src/runtime/mgcscavenge.go.html#line-1156" class="path-duplicate">mgcscavenge.go</a><a href="../src/runtime/mgcscavenge.go.html#line-1156">#L1156</a>: 	if s.freeHWM.lessThan(<b>offAddr</b>{addr}) {
+		<a href="../src/runtime/mgcscavenge.go.html#line-1157" class="path-duplicate">mgcscavenge.go</a><a href="../src/runtime/mgcscavenge.go.html#line-1157">#L1157</a>: 		s.freeHWM = <b>offAddr</b>{addr}
+		<a href="../src/runtime/mgcscavenge.go.html#line-1165" class="path-duplicate">mgcscavenge.go</a><a href="../src/runtime/mgcscavenge.go.html#line-1165">#L1165</a>: 	if (<b>offAddr</b>{searchAddr}).lessThan(<b>offAddr</b>{addr}) {
+		<a href="../src/runtime/mgcscavenge.go.html#line-1178" class="path-duplicate">mgcscavenge.go</a><a href="../src/runtime/mgcscavenge.go.html#line-1178">#L1178</a>: 	if (<b>offAddr</b>{searchAddr}).lessThan(s.freeHWM) {
+		<a href="../src/runtime/mpagealloc.go.html#line-95">mpagealloc.go#L95</a>: func maxSearchAddr() <b>offAddr</b> { return maxOffAddr }
+		<a href="../src/runtime/mpagealloc.go.html#line-143" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-143">#L143</a>: func offAddrToLevelIndex(level int, addr <b>offAddr</b>) int {
+		<a href="../src/runtime/mpagealloc.go.html#line-149" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-149">#L149</a>: func levelIndexToOffAddr(level, idx int) <b>offAddr</b> {
+		<a href="../src/runtime/mpagealloc.go.html#line-150" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-150">#L150</a>: 	return <b>offAddr</b>{(uintptr(idx) &lt;&lt; levelShift[level]) + arenaBaseOffset}
+		<a href="../src/runtime/mpagealloc.go.html#line-249" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-249">#L249</a>: 	searchAddr <b>offAddr</b>
+		<a href="../src/runtime/mpagealloc.go.html#line-391" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-391">#L391</a>: 	if b := (<b>offAddr</b>{base}); b.lessThan(p.searchAddr) {
+		<a href="../src/runtime/mpagealloc.go.html#line-614" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-614">#L614</a>: func (p *pageAlloc) findMappedAddr(addr <b>offAddr</b>) <b>offAddr</b> {
+		<a href="../src/runtime/mpagealloc.go.html#line-623" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-623">#L623</a>: 			return <b>offAddr</b>{vAddr}
+		<a href="../src/runtime/mpagealloc.go.html#line-650" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-650">#L650</a>: func (p *pageAlloc) find(npages uintptr) (uintptr, <b>offAddr</b>) {
+		<a href="../src/runtime/mpagealloc.go.html#line-695" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-695">#L695</a>: 		base, bound <b>offAddr</b>
+		<a href="../src/runtime/mpagealloc.go.html#line-709" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-709">#L709</a>: 	foundFree := func(addr <b>offAddr</b>, size uintptr) {
+		<a href="../src/runtime/mpagealloc.go.html#line-859" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-859">#L859</a>: 	foundFree(<b>offAddr</b>{searchAddr}, chunkBase(ci+1)-searchAddr)
+		<a href="../src/runtime/mpagealloc.go.html#line-898" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-898">#L898</a>: 			searchAddr = <b>offAddr</b>{chunkBase(i) + uintptr(searchIdx)*pageSize}
+		<a href="../src/runtime/mpagealloc.go.html#line-940" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-940">#L940</a>: 	if b := (<b>offAddr</b>{base}); b.lessThan(p.searchAddr) {
+		<a href="../src/runtime/mpagealloc_64bit.go.html#line-122">mpagealloc_64bit.go#L122</a>: 			<b>offAddr</b>{uintptr(add(base, baseOffset))},
+		<a href="../src/runtime/mpagealloc_64bit.go.html#line-123" class="path-duplicate">mpagealloc_64bit.go</a><a href="../src/runtime/mpagealloc_64bit.go.html#line-123">#L123</a>: 			<b>offAddr</b>{uintptr(add(base, limitOffset))},
+		<a href="../src/runtime/mpagecache.go.html#line-103">mpagecache.go#L103</a>: 	if b := (<b>offAddr</b>{c.base}); b.lessThan(p.searchAddr) {
+		<a href="../src/runtime/mpagecache.go.html#line-181" class="path-duplicate">mpagecache.go</a><a href="../src/runtime/mpagecache.go.html#line-181">#L181</a>: 	p.searchAddr = <b>offAddr</b>{c.base + pageSize*(pageCachePages-1)}
+		<a href="../src/runtime/mranges.go.html#line-27">mranges.go#L27</a>: 	base, limit <b>offAddr</b>
+		<a href="../src/runtime/mranges.go.html#line-34" class="path-duplicate">mranges.go</a><a href="../src/runtime/mranges.go.html#line-34">#L34</a>: 	r := addrRange{<b>offAddr</b>{base}, <b>offAddr</b>{limit}}
+		<a href="../src/runtime/mranges.go.html#line-53" class="path-duplicate">mranges.go</a><a href="../src/runtime/mranges.go.html#line-53">#L53</a>: 	return a.base.lessEqual(<b>offAddr</b>{addr}) &amp;&amp; (<b>offAddr</b>{addr}).lessThan(a.limit)
+		<a href="../src/runtime/mranges.go.html#line-81" class="path-duplicate">mranges.go</a><a href="../src/runtime/mranges.go.html#line-81">#L81</a>: 	a.base = <b>offAddr</b>{base}
+		<a href="../src/runtime/mranges.go.html#line-93" class="path-duplicate">mranges.go</a><a href="../src/runtime/mranges.go.html#line-93">#L93</a>: 	a.limit = <b>offAddr</b>{limit}
+		<a href="../src/runtime/mranges.go.html#line-100" class="path-duplicate">mranges.go</a><a href="../src/runtime/mranges.go.html#line-100">#L100</a>: 	if (<b>offAddr</b>{addr}).lessEqual(a.base) {
+		<a href="../src/runtime/mranges.go.html#line-103" class="path-duplicate">mranges.go</a><a href="../src/runtime/mranges.go.html#line-103">#L103</a>: 	if a.limit.lessEqual(<b>offAddr</b>{addr}) {
+		<a href="../src/runtime/mranges.go.html#line-112" class="path-duplicate">mranges.go</a><a href="../src/runtime/mranges.go.html#line-112">#L112</a>: 	minOffAddr = <b>offAddr</b>{arenaBaseOffset}
+		<a href="../src/runtime/mranges.go.html#line-117" class="path-duplicate">mranges.go</a><a href="../src/runtime/mranges.go.html#line-117">#L117</a>: 	maxOffAddr = <b>offAddr</b>{(((1 &lt;&lt; heapAddrBits) - 1) + arenaBaseOffset) &amp; uintptrMask}
+		<a href="../src/runtime/mranges.go.html#line-123" class="path-duplicate">mranges.go</a><a href="../src/runtime/mranges.go.html#line-123">#L123</a>: type <b>offAddr</b> struct {
+		<a href="../src/runtime/mranges.go.html#line-130" class="path-duplicate">mranges.go</a><a href="../src/runtime/mranges.go.html#line-130">#L130</a>: func (l <b>offAddr</b>) add(bytes uintptr) <b>offAddr</b> {
+		<a href="../src/runtime/mranges.go.html#line-131" class="path-duplicate">mranges.go</a><a href="../src/runtime/mranges.go.html#line-131">#L131</a>: 	return <b>offAddr</b>{a: l.a + bytes}
+		<a href="../src/runtime/mranges.go.html#line-135" class="path-duplicate">mranges.go</a><a href="../src/runtime/mranges.go.html#line-135">#L135</a>: func (l <b>offAddr</b>) sub(bytes uintptr) <b>offAddr</b> {
+		<a href="../src/runtime/mranges.go.html#line-136" class="path-duplicate">mranges.go</a><a href="../src/runtime/mranges.go.html#line-136">#L136</a>: 	return <b>offAddr</b>{a: l.a - bytes}
+		<a href="../src/runtime/mranges.go.html#line-141" class="path-duplicate">mranges.go</a><a href="../src/runtime/mranges.go.html#line-141">#L141</a>: func (l1 <b>offAddr</b>) diff(l2 <b>offAddr</b>) uintptr {
+		<a href="../src/runtime/mranges.go.html#line-147" class="path-duplicate">mranges.go</a><a href="../src/runtime/mranges.go.html#line-147">#L147</a>: func (l1 <b>offAddr</b>) lessThan(l2 <b>offAddr</b>) bool {
+		<a href="../src/runtime/mranges.go.html#line-153" class="path-duplicate">mranges.go</a><a href="../src/runtime/mranges.go.html#line-153">#L153</a>: func (l1 <b>offAddr</b>) lessEqual(l2 <b>offAddr</b>) bool {
+		<a href="../src/runtime/mranges.go.html#line-158" class="path-duplicate">mranges.go</a><a href="../src/runtime/mranges.go.html#line-158">#L158</a>: func (l1 <b>offAddr</b>) equal(l2 <b>offAddr</b>) bool {
+		<a href="../src/runtime/mranges.go.html#line-165" class="path-duplicate">mranges.go</a><a href="../src/runtime/mranges.go.html#line-165">#L165</a>: func (l <b>offAddr</b>) addr() uintptr {
+		<a href="../src/runtime/mranges.go.html#line-266" class="path-duplicate">mranges.go</a><a href="../src/runtime/mranges.go.html#line-266">#L266</a>: 	base := <b>offAddr</b>{addr}
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

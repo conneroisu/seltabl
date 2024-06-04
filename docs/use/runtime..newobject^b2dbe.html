@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.newobject</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/malloc.go.html#line-1389">newobject</a></b></span>
+
+<span class="title">16 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/arena.go.html#line-180">arena.go#L180</a>: 		e2 := <b>newobject</b>(et)
+		<a href="../src/runtime/arena.go.html#line-469" class="path-duplicate">arena.go</a><a href="../src/runtime/arena.go.html#line-469">#L469</a>: 		return <b>newobject</b>(typ)
+		<a href="../src/runtime/malloc.go.html#line-1389">malloc.go#L1389</a>: func <b>newobject</b>(typ *_type) unsafe.Pointer {
+		<a href="../src/runtime/map.go.html#line-264">map.go#L264</a>: 		ovf = (*bmap)(<b>newobject</b>(t.Bucket))
+		<a href="../src/runtime/map.go.html#line-605" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-605">#L605</a>: 		h.buckets = <b>newobject</b>(t.Bucket) // newarray(t.Bucket, 1)
+		<a href="../src/runtime/map.go.html#line-673" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-673">#L673</a>: 		kmem := <b>newobject</b>(t.Key)
+		<a href="../src/runtime/map.go.html#line-678" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-678">#L678</a>: 		vmem := <b>newobject</b>(t.Elem)
+		<a href="../src/runtime/map.go.html#line-1480" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1480">#L1480</a>: 				kStore := <b>newobject</b>(t.Key)
+		<a href="../src/runtime/map.go.html#line-1493" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1493">#L1493</a>: 			eStore := <b>newobject</b>(t.Elem)
+		<a href="../src/runtime/map.go.html#line-1521" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1521">#L1521</a>: 		dst.buckets = <b>newobject</b>(t.Bucket)
+		<a href="../src/runtime/map.go.html#line-1528" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1528">#L1528</a>: 		dst.buckets = <b>newobject</b>(t.Bucket)
+		<a href="../src/runtime/map_fast32.go.html#line-110">map_fast32.go#L110</a>: 		h.buckets = <b>newobject</b>(t.Bucket) // newarray(t.bucket, 1)
+		<a href="../src/runtime/map_fast32.go.html#line-200" class="path-duplicate">map_fast32.go</a><a href="../src/runtime/map_fast32.go.html#line-200">#L200</a>: 		h.buckets = <b>newobject</b>(t.Bucket) // newarray(t.bucket, 1)
+		<a href="../src/runtime/map_fast64.go.html#line-110">map_fast64.go#L110</a>: 		h.buckets = <b>newobject</b>(t.Bucket) // newarray(t.bucket, 1)
+		<a href="../src/runtime/map_fast64.go.html#line-200" class="path-duplicate">map_fast64.go</a><a href="../src/runtime/map_fast64.go.html#line-200">#L200</a>: 		h.buckets = <b>newobject</b>(t.Bucket) // newarray(t.bucket, 1)
+		<a href="../src/runtime/map_faststr.go.html#line-221">map_faststr.go#L221</a>: 		h.buckets = <b>newobject</b>(t.Bucket) // newarray(t.bucket, 1)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

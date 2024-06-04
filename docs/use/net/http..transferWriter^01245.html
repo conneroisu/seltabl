@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/http.transferWriter</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../pkg/net/http.html">net/http</a>.<a href="../../src/net/http/transfer.go.html#line-60">transferWriter</a></b></span>
+
+<span class="title">11 uses</span>
+
+	net/http (current package)
+		<a href="../../src/net/http/transfer.go.html#line-60">transfer.go#L60</a>: type <b>transferWriter</b> struct {
+		<a href="../../src/net/http/transfer.go.html#line-77" class="path-duplicate">transfer.go</a><a href="../../src/net/http/transfer.go.html#line-77">#L77</a>: func newTransferWriter(r any) (t *<b>transferWriter</b>, err error) {
+		<a href="../../src/net/http/transfer.go.html#line-78" class="path-duplicate">transfer.go</a><a href="../../src/net/http/transfer.go.html#line-78">#L78</a>: 	t = &amp;<b>transferWriter</b>{}
+		<a href="../../src/net/http/transfer.go.html#line-169" class="path-duplicate">transfer.go</a><a href="../../src/net/http/transfer.go.html#line-169">#L169</a>: func (t *<b>transferWriter</b>) shouldSendChunkedRequestBody() bool {
+		<a href="../../src/net/http/transfer.go.html#line-207" class="path-duplicate">transfer.go</a><a href="../../src/net/http/transfer.go.html#line-207">#L207</a>: func (t *<b>transferWriter</b>) probeRequestBody() {
+		<a href="../../src/net/http/transfer.go.html#line-253" class="path-duplicate">transfer.go</a><a href="../../src/net/http/transfer.go.html#line-253">#L253</a>: func (t *<b>transferWriter</b>) shouldSendContentLength() bool {
+		<a href="../../src/net/http/transfer.go.html#line-277" class="path-duplicate">transfer.go</a><a href="../../src/net/http/transfer.go.html#line-277">#L277</a>: func (t *<b>transferWriter</b>) writeHeader(w io.Writer, trace *httptrace.ClientTrace) error {
+		<a href="../../src/net/http/transfer.go.html#line-337" class="path-duplicate">transfer.go</a><a href="../../src/net/http/transfer.go.html#line-337">#L337</a>: func (t *<b>transferWriter</b>) writeBody(w io.Writer) (err error) {
+		<a href="../../src/net/http/transfer.go.html#line-412" class="path-duplicate">transfer.go</a><a href="../../src/net/http/transfer.go.html#line-412">#L412</a>: func (t *<b>transferWriter</b>) doBodyCopy(dst io.Writer, src io.Reader) (n int64, err error) {
+		<a href="../../src/net/http/transfer.go.html#line-428" class="path-duplicate">transfer.go</a><a href="../../src/net/http/transfer.go.html#line-428">#L428</a>: func (t *<b>transferWriter</b>) unwrapBody() io.Reader {
+		<a href="../../src/net/http/transfer.go.html#line-1072" class="path-duplicate">transfer.go</a><a href="../../src/net/http/transfer.go.html#line-1072">#L1072</a>: 	tw *<b>transferWriter</b>
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

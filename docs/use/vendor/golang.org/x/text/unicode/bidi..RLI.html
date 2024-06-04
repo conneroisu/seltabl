@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: vendor/golang.org/x/text/unicode/bidi.RLI</title>
+<link href="../../../../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../../../../../../pkg/vendor/golang.org/x/text/unicode/bidi.html">vendor/golang.org/x/text/unicode/bidi</a>.<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/trieval.go.html#line-33">RLI</a></b></span>
+
+<span class="title">15 uses</span>
+
+	vendor/golang.org/x/text/unicode/bidi (current package)
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-215">core.go#L215</a>: 		if t := p.resultTypes[i]; t.in(LRI, <b>RLI</b>, FSI) {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-218" class="path-duplicate">core.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-218">#L218</a>: 				if u := p.resultTypes[j]; u.in(LRI, <b>RLI</b>, FSI) {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-248" class="path-duplicate">core.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-248">#L248</a>: 		} else if t.in(FSI, LRI, <b>RLI</b>) {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-312" class="path-duplicate">core.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-312">#L312</a>: 		case RLE, LRE, RLO, LRO, <b>RLI</b>, LRI, FSI:
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-313" class="path-duplicate">core.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-313">#L313</a>: 			isIsolate := t.in(<b>RLI</b>, LRI, FSI)
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-314" class="path-duplicate">core.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-314">#L314</a>: 			isRTL := t.in(RLE, RLO, <b>RLI</b>)
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-458" class="path-duplicate">core.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-458">#L458</a>: 	if lastType.in(LRI, <b>RLI</b>, FSI) {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-489" class="path-duplicate">core.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-489">#L489</a>: 	s.assertOnly(L, R, AL, EN, ES, ET, AN, CS, B, S, WS, ON, NSM, LRI, <b>RLI</b>, FSI, PDI)
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-609" class="path-duplicate">core.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-609">#L609</a>: 	s.assertOnly(L, R, EN, AN, B, S, WS, ON, <b>RLI</b>, LRI, FSI, PDI)
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-613" class="path-duplicate">core.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-613">#L613</a>: 		case WS, ON, B, S, <b>RLI</b>, LRI, FSI, PDI:
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-616" class="path-duplicate">core.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-616">#L616</a>: 			runEnd := s.findRunLimit(runStart, B, S, WS, ON, <b>RLI</b>, LRI, FSI, PDI)
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-802" class="path-duplicate">core.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-802">#L802</a>: 				if lastT.in(LRI, <b>RLI</b>, FSI) &amp;&amp; p.matchingPDI[last] != p.Len() {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-991" class="path-duplicate">core.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-991">#L991</a>: 	case LRE, RLE, LRO, RLO, PDF, LRI, <b>RLI</b>, FSI, PDI, BN, WS:
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/prop.go.html#line-55">prop.go#L55</a>: 	0x7: <b>RLI</b>, // U+2067 RightToLeftIsolate,
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/trieval.go.html#line-33">trieval.go#L33</a>: 	<b>RLI</b> // RightToLeftIsolate
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

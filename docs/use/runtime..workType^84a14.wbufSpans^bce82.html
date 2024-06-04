@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.workType.wbufSpans</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/mgc.go.html#line-306">workType</a>.<a href="../src/runtime/mgc.go.html#line-312">wbufSpans</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">24 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/mgc.go.html#line-193">mgc.go#L193</a>: 	lockInit(&amp;work.<b>wbufSpans</b>.lock, lockRankWbufSpans)
+		<a href="../src/runtime/mgc.go.html#line-312" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-312">#L312</a>: 	<b>wbufSpans</b> struct {
+		<a href="../src/runtime/mgcwork.go.html#line-118">mgcwork.go#L118</a>: 	lockWithRankMayAcquire(&amp;work.<b>wbufSpans</b>.lock, lockRankWbufSpans)
+		<a href="../src/runtime/mgcwork.go.html#line-362" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-362">#L362</a>: 	lockWithRankMayAcquire(&amp;work.<b>wbufSpans</b>.lock, lockRankWbufSpans)
+		<a href="../src/runtime/mgcwork.go.html#line-367" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-367">#L367</a>: 		if work.<b>wbufSpans</b>.free.first != nil {
+		<a href="../src/runtime/mgcwork.go.html#line-368" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-368">#L368</a>: 			lock(&amp;work.<b>wbufSpans</b>.lock)
+		<a href="../src/runtime/mgcwork.go.html#line-369" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-369">#L369</a>: 			s = work.<b>wbufSpans</b>.free.first
+		<a href="../src/runtime/mgcwork.go.html#line-371" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-371">#L371</a>: 				work.<b>wbufSpans</b>.free.remove(s)
+		<a href="../src/runtime/mgcwork.go.html#line-372" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-372">#L372</a>: 				work.<b>wbufSpans</b>.busy.insert(s)
+		<a href="../src/runtime/mgcwork.go.html#line-374" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-374">#L374</a>: 			unlock(&amp;work.<b>wbufSpans</b>.lock)
+		<a href="../src/runtime/mgcwork.go.html#line-384" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-384">#L384</a>: 			lock(&amp;work.<b>wbufSpans</b>.lock)
+		<a href="../src/runtime/mgcwork.go.html#line-385" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-385">#L385</a>: 			work.<b>wbufSpans</b>.busy.insert(s)
+		<a href="../src/runtime/mgcwork.go.html#line-386" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-386">#L386</a>: 			unlock(&amp;work.<b>wbufSpans</b>.lock)
+		<a href="../src/runtime/mgcwork.go.html#line-454" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-454">#L454</a>: 	lock(&amp;work.<b>wbufSpans</b>.lock)
+		<a href="../src/runtime/mgcwork.go.html#line-462" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-462">#L462</a>: 	work.<b>wbufSpans</b>.free.takeAll(&amp;work.<b>wbufSpans</b>.busy)
+		<a href="../src/runtime/mgcwork.go.html#line-463" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-463">#L463</a>: 	unlock(&amp;work.<b>wbufSpans</b>.lock)
+		<a href="../src/runtime/mgcwork.go.html#line-470" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-470">#L470</a>: 	lock(&amp;work.<b>wbufSpans</b>.lock)
+		<a href="../src/runtime/mgcwork.go.html#line-471" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-471">#L471</a>: 	if gcphase != _GCoff || work.<b>wbufSpans</b>.free.isEmpty() {
+		<a href="../src/runtime/mgcwork.go.html#line-472" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-472">#L472</a>: 		unlock(&amp;work.<b>wbufSpans</b>.lock)
+		<a href="../src/runtime/mgcwork.go.html#line-478" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-478">#L478</a>: 			span := work.<b>wbufSpans</b>.free.first
+		<a href="../src/runtime/mgcwork.go.html#line-482" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-482">#L482</a>: 			work.<b>wbufSpans</b>.free.remove(span)
+		<a href="../src/runtime/mgcwork.go.html#line-486" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-486">#L486</a>: 	more := !work.<b>wbufSpans</b>.free.isEmpty()
+		<a href="../src/runtime/mgcwork.go.html#line-487" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-487">#L487</a>: 	unlock(&amp;work.<b>wbufSpans</b>.lock)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

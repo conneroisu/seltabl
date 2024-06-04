@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: internal/unsafeheader.Slice.Cap</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/internal/unsafeheader.html">internal/unsafeheader</a>.<a href="../../src/internal/unsafeheader/unsafeheader.go.html#line-22">Slice</a>.<a href="../../src/internal/unsafeheader/unsafeheader.go.html#line-25">Cap</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">14 uses</span>
+
+	internal/unsafeheader (current package)
+		<a href="../../src/internal/unsafeheader/unsafeheader.go.html#line-25">unsafeheader.go#L25</a>: 	<b>Cap</b>  int
+
+	<a href="../../pkg/reflect.html">reflect</a>
+		<a href="../../src/reflect/value.go.html#line-1168">value.go#L1168</a>: 		return (*unsafeheader.Slice)(v.ptr).<b>Cap</b>
+		<a href="../../src/reflect/value.go.html#line-2422" class="path-duplicate">value.go</a><a href="../../src/reflect/value.go.html#line-2422">#L2422</a>: 	if uint(n) &gt; uint(s.<b>Cap</b>) {
+		<a href="../../src/reflect/value.go.html#line-2435" class="path-duplicate">value.go</a><a href="../../src/reflect/value.go.html#line-2435">#L2435</a>: 	if n &lt; s.Len || n &gt; s.<b>Cap</b> {
+		<a href="../../src/reflect/value.go.html#line-2438" class="path-duplicate">value.go</a><a href="../../src/reflect/value.go.html#line-2438">#L2438</a>: 	s.<b>Cap</b> = n
+		<a href="../../src/reflect/value.go.html#line-2557" class="path-duplicate">value.go</a><a href="../../src/reflect/value.go.html#line-2557">#L2557</a>: 		cap = s.<b>Cap</b>
+		<a href="../../src/reflect/value.go.html#line-2581" class="path-duplicate">value.go</a><a href="../../src/reflect/value.go.html#line-2581">#L2581</a>: 	s.<b>Cap</b> = cap - i
+		<a href="../../src/reflect/value.go.html#line-2619" class="path-duplicate">value.go</a><a href="../../src/reflect/value.go.html#line-2619">#L2619</a>: 		cap = s.<b>Cap</b>
+		<a href="../../src/reflect/value.go.html#line-2633" class="path-duplicate">value.go</a><a href="../../src/reflect/value.go.html#line-2633">#L2633</a>: 	s.<b>Cap</b> = k - i
+		<a href="../../src/reflect/value.go.html#line-2896" class="path-duplicate">value.go</a><a href="../../src/reflect/value.go.html#line-2896">#L2896</a>: 	case p.Len+n &gt; p.<b>Cap</b>:
+		<a href="../../src/reflect/value.go.html#line-3001" class="path-duplicate">value.go</a><a href="../../src/reflect/value.go.html#line-3001">#L3001</a>: 		ds.<b>Cap</b> = ds.Len
+		<a href="../../src/reflect/value.go.html#line-3008" class="path-duplicate">value.go</a><a href="../../src/reflect/value.go.html#line-3008">#L3008</a>: 		ss.<b>Cap</b> = ss.Len
+		<a href="../../src/reflect/value.go.html#line-3015" class="path-duplicate">value.go</a><a href="../../src/reflect/value.go.html#line-3015">#L3015</a>: 		ss.<b>Cap</b> = sh.Len
+		<a href="../../src/reflect/value.go.html#line-3212" class="path-duplicate">value.go</a><a href="../../src/reflect/value.go.html#line-3212">#L3212</a>: 	s := unsafeheader.Slice{Data: unsafe_NewArray(&amp;(typ.Elem().(*rtype).t), cap), Len: len, <b>Cap</b>: cap}
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

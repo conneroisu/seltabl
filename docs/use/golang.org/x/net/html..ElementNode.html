@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: golang.org/x/net/html.ElementNode</title>
+<link href="../../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../../../../pkg/golang.org/x/net/html.html">golang.org/x/net/html</a>.<a href="../../../../src/golang.org/x/net/html/node.go.html#line-18">ElementNode</a></b></span>
+
+<span class="title">44 uses</span>
+
+	golang.org/x/net/html (current package)
+		<a href="../../../../src/golang.org/x/net/html/foreign.go.html#line-35">foreign.go#L35</a>: 	if n.Type != <b>ElementNode</b> {
+		<a href="../../../../src/golang.org/x/net/html/node.go.html#line-18">node.go#L18</a>: 	<b>ElementNode</b>
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-206">parse.go#L206</a>: 		if n.Type != <b>ElementNode</b> {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-233" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-233">#L233</a>: 	if n.Type == <b>ElementNode</b> {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-327" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-327">#L327</a>: 		Type:     <b>ElementNode</b>,
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-347" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-347">#L347</a>: 		if n.Type != <b>ElementNode</b> {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-905" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-905">#L905</a>: 				if body.Type == <b>ElementNode</b> &amp;&amp; body.DataAtom == a.Body {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-994" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-994">#L994</a>: 				if n := p.afe[i]; n.Type == <b>ElementNode</b> &amp;&amp; n.DataAtom == a.A {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2395" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2395">#L2395</a>: 		if context.Type != <b>ElementNode</b> {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2425" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2425">#L2425</a>: 		Type:     <b>ElementNode</b>,
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2437" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2437">#L2437</a>: 		if n.Type == <b>ElementNode</b> &amp;&amp; n.DataAtom == a.Form {
+		<a href="../../../../src/golang.org/x/net/html/render.go.html#line-82">render.go#L82</a>: 	case <b>ElementNode</b>:
+
+	<a href="../../../../pkg/github.com/andybalholm/cascadia.html">github.com/andybalholm/cascadia</a>
+		<a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-32">pseudo_classes.go#L32</a>: 	if n.Type != html.<b>ElementNode</b> {
+		<a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-65" class="path-duplicate">pseudo_classes.go</a><a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-65">#L65</a>: 		if a.Match(c) || (c.Type == html.<b>ElementNode</b> &amp;&amp; hasDescendantMatch(c, a)) {
+		<a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-131" class="path-duplicate">pseudo_classes.go</a><a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-131">#L131</a>: 	case html.<b>ElementNode</b>:
+		<a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-178" class="path-duplicate">pseudo_classes.go</a><a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-178">#L178</a>: 	if n.Type != html.<b>ElementNode</b> {
+		<a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-190" class="path-duplicate">pseudo_classes.go</a><a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-190">#L190</a>: 		if (c.Type != html.<b>ElementNode</b>) || (ofType &amp;&amp; c.Data != n.Data) {
+		<a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-222" class="path-duplicate">pseudo_classes.go</a><a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-222">#L222</a>: 	if n.Type != html.<b>ElementNode</b> {
+		<a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-233" class="path-duplicate">pseudo_classes.go</a><a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-233">#L233</a>: 		if c.Type != html.<b>ElementNode</b> || (ofType &amp;&amp; c.Data != n.Data) {
+		<a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-250" class="path-duplicate">pseudo_classes.go</a><a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-250">#L250</a>: 	if n.Type != html.<b>ElementNode</b> {
+		<a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-261" class="path-duplicate">pseudo_classes.go</a><a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-261">#L261</a>: 		if c.Type != html.<b>ElementNode</b> || (ofType &amp;&amp; c.Data != n.Data) {
+		<a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-283" class="path-duplicate">pseudo_classes.go</a><a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-283">#L283</a>: 	if n.Type != html.<b>ElementNode</b> {
+		<a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-294" class="path-duplicate">pseudo_classes.go</a><a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-294">#L294</a>: 		if (c.Type != html.<b>ElementNode</b>) || (s.ofType &amp;&amp; c.Data != n.Data) {
+		<a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-312" class="path-duplicate">pseudo_classes.go</a><a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-312">#L312</a>: 	return n.Type == html.<b>ElementNode</b> &amp;&amp; (n.Data == "input" || n.Data == "select" || n.Data == "textarea" || n.Data == "button")
+		<a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-321" class="path-duplicate">pseudo_classes.go</a><a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-321">#L321</a>: 	if n.Type != html.<b>ElementNode</b> {
+		<a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-327" class="path-duplicate">pseudo_classes.go</a><a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-327">#L327</a>: 		case html.<b>ElementNode</b>:
+		<a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-347" class="path-duplicate">pseudo_classes.go</a><a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-347">#L347</a>: 	if n.Type != html.<b>ElementNode</b> {
+		<a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-389" class="path-duplicate">pseudo_classes.go</a><a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-389">#L389</a>: 	if n.Type != html.<b>ElementNode</b> {
+		<a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-408" class="path-duplicate">pseudo_classes.go</a><a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-408">#L408</a>: 	if n.Type != html.<b>ElementNode</b> {
+		<a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-445" class="path-duplicate">pseudo_classes.go</a><a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-445">#L445</a>: 	if n.Type != html.<b>ElementNode</b> {
+		<a href="../../../../src/github.com/andybalholm/cascadia/selector.go.html#line-216">selector.go#L216</a>: 	return n.Type == html.<b>ElementNode</b> &amp;&amp; n.Data == t.tag
+		<a href="../../../../src/github.com/andybalholm/cascadia/selector.go.html#line-311" class="path-duplicate">selector.go</a><a href="../../../../src/github.com/andybalholm/cascadia/selector.go.html#line-311">#L311</a>: 	if n.Type != html.<b>ElementNode</b> {
+		<a href="../../../../src/github.com/andybalholm/cascadia/selector.go.html#line-325" class="path-duplicate">selector.go</a><a href="../../../../src/github.com/andybalholm/cascadia/selector.go.html#line-325">#L325</a>: 	if n.Type != html.<b>ElementNode</b> {
+		<a href="../../../../src/github.com/andybalholm/cascadia/selector.go.html#line-457" class="path-duplicate">selector.go</a><a href="../../../../src/github.com/andybalholm/cascadia/selector.go.html#line-457">#L457</a>: 		return n.Type == html.<b>ElementNode</b>
+
+	<a href="../../../../pkg/github.com/PuerkitoBio^56e6a/goquery.html">github.com/PuerkitoBio/goquery</a>
+		<a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/manipulation.go.html#line-383">manipulation.go#L383</a>: 			parent = &amp;html.Node{Type: html.<b>ElementNode</b>}
+		<a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/manipulation.go.html#line-567" class="path-duplicate">manipulation.go</a><a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/manipulation.go.html#line-567">#L567</a>: 	nodes, err := html.ParseFragment(strings.NewReader(h), &amp;html.Node{Type: html.<b>ElementNode</b>})
+		<a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/manipulation.go.html#line-587" class="path-duplicate">manipulation.go</a><a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/manipulation.go.html#line-587">#L587</a>: 	for c != nil &amp;&amp; c.Type != html.<b>ElementNode</b> {
+		<a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/manipulation.go.html#line-664" class="path-duplicate">manipulation.go</a><a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/manipulation.go.html#line-664">#L664</a>: 			if n.Type != html.<b>ElementNode</b> {
+		<a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/property.go.html#line-233">property.go#L233</a>: 	if n.Type == html.<b>ElementNode</b> {
+		<a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-552">traversal.go#L552</a>: 			if c.Type == html.<b>ElementNode</b> {
+		<a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-575" class="path-duplicate">traversal.go</a><a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-575">#L575</a>: 			if p.Type == html.<b>ElementNode</b> {
+		<a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-657" class="path-duplicate">traversal.go</a><a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-657">#L657</a>: 			if ret == nil || ret.Type == html.<b>ElementNode</b> || st == siblingAllIncludingNonElements {
+		<a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-685" class="path-duplicate">traversal.go</a><a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-685">#L685</a>: 		if n.Parent != nil &amp;&amp; n.Parent.Type == html.<b>ElementNode</b> {
+		<a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/utilities.go.html#line-51">utilities.go#L51</a>: 	case html.<b>ElementNode</b>, html.DoctypeNode:
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

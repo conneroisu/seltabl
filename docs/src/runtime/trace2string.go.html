@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: trace2string.go in package runtime</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	trace2string.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../pkg/runtime.html">runtime</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19],
+input[id=r20]:checked ~pre label[for=r20],
+input[id=r21]:checked ~pre label[for=r21]
+{background: #226; color: #ff8;}
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
+<input id="r20" type="radio" name="g"/>
+<input id="r21" type="radio" name="g"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="comment">// Copyright 2023 The Go Authors. All rights reserved.</span></code></span>
+<span class="codeline" id="line-2"><code><span class="comment">// Use of this source code is governed by a BSD-style</span></code></span>
+<span class="codeline" id="line-3"><code><span class="comment">// license that can be found in the LICENSE file.</span></code></span>
+<span class="codeline" id="line-4"><code></code></span>
+<span class="codeline" id="line-5"><code><span class="comment">//go:build goexperiment.exectracer2</span></code></span>
+<span class="codeline" id="line-6"><code></code></span>
+<span class="codeline" id="line-7"><code><span class="comment">// Trace string management.</span></code></span>
+<span class="codeline" id="line-8"><code></code></span>
+<span class="codeline" id="line-9"><code><span class="keyword">package</span> runtime</code></span>
+<span class="codeline" id="line-10"><code></code></span>
+<span class="codeline" id="line-11"><code><span class="comment">// Trace strings.</span></code></span>
+<span class="codeline" id="line-12"><code></code></span>
+<span class="codeline" id="line-13"><code><span class="keyword">const</span> <a href="../../pkg/runtime.html#name-maxTraceStringLen" class="ident">maxTraceStringLen</a> = <span class="lit-number">1024</span></code></span>
+<span class="codeline" id="line-14"><code></code></span>
+<span class="codeline" id="line-15"><code><span class="comment">// traceStringTable is map of string -&gt; unique ID that also manages</span></code></span>
+<span class="codeline" id="line-16"><code><span class="comment">// writing strings out into the trace.</span></code></span>
+<span class="codeline" id="line-17"><code><span class="keyword">type</span> <a href="../../pkg/runtime.html#name-traceStringTable" class="ident">traceStringTable</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-18"><code>	<span class="comment">// lock protects buf.</span></code></span>
+<span class="codeline" id="line-19"><code>	<a href="../../use/runtime..traceStringTable^12fa6.lock^0c030.html" class="ident">lock</a> <a href="runtime2.go.html#line-164" class="ident">mutex</a></code></span>
+<span class="codeline" id="line-20"><code>	<a href="../../use/runtime..traceStringTable^12fa6.buf^3ef31.html" class="ident">buf</a>  *<a href="trace2buf.go.html#line-170" class="ident">traceBuf</a> <span class="comment">// string batches to write out to the trace.</span></code></span>
+<span class="codeline" id="line-21"><code></code></span>
+<span class="codeline" id="line-22"><code>	<span class="comment">// tab is a mapping of string -&gt; unique ID.</span></code></span>
+<span class="codeline" id="line-23"><code>	<a href="../../use/runtime..traceStringTable^12fa6.tab^75083.html" class="ident">tab</a> <a href="trace2map.go.html#line-26" class="ident">traceMap</a></code></span>
+<span class="codeline" id="line-24"><code>}</code></span>
+<span class="codeline" id="line-25"><code></code></span>
+<span class="codeline" id="line-26"><code><span class="comment">// put adds a string to the table, emits it, and returns a unique ID for it.</span></code></span>
+<span class="codeline" id="line-27"><code><span class="keyword">func</span> (<label for="r0" class="ident">t</label> *<a href="#line-17" class="ident">traceStringTable</a>) <label for="r1" class="ident"><a href="../../use/runtime..traceStringTable^12fa6.put^373cb.html" class="ident">put</a></label>(<label for="r2" class="ident">gen</label> <a href="../../pkg/builtin.html#name-uintptr" class="ident">uintptr</a>, <label for="r3" class="ident">s</label> <a href="../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="../../pkg/builtin.html#name-uint64" class="ident">uint64</a> {</code></span>
+<span class="codeline" id="line-28"><code>	<span class="comment">// Put the string in the table.</span></code></span>
+<span class="codeline" id="line-29"><code>	<label for="r4" class="ident">ss</label> := <a href="string.go.html#line-243" class="ident">stringStructOf</a>(&amp;<label for="r3" class="ident">s</label>)</code></span>
+<span class="codeline" id="line-30"><code>	<label for="r5" class="ident">id</label>, <label for="r6" class="ident">added</label> := <label for="r0" class="ident">t</label>.<a href="#line-23" class="ident">tab</a>.<a href="trace2map.go.html#line-58" class="ident">put</a>(<label for="r4" class="ident">ss</label>.<a href="string.go.html#line-233" class="ident">str</a>, <a href="../../pkg/builtin.html#name-uintptr" class="ident">uintptr</a>(<label for="r4" class="ident">ss</label>.<a href="string.go.html#line-234" class="ident">len</a>))</code></span>
+<span class="codeline" id="line-31"><code>	<span class="keyword">if</span> <label for="r6" class="ident">added</label> {</code></span>
+<span class="codeline" id="line-32"><code>		<span class="comment">// Write the string to the buffer.</span></code></span>
+<span class="codeline" id="line-33"><code>		<a href="stubs.go.html#line-58" class="ident">systemstack</a>(<span class="keyword">func</span>() {</code></span>
+<span class="codeline" id="line-34"><code>			<label for="r0" class="ident">t</label>.<a href="#line-55" class="ident">writeString</a>(<label for="r2" class="ident">gen</label>, <label for="r5" class="ident">id</label>, <label for="r3" class="ident">s</label>)</code></span>
+<span class="codeline" id="line-35"><code>		})</code></span>
+<span class="codeline" id="line-36"><code>	}</code></span>
+<span class="codeline" id="line-37"><code>	<span class="keyword">return</span> <label for="r5" class="ident">id</label></code></span>
+<span class="codeline" id="line-38"><code>}</code></span>
+<span class="codeline" id="line-39"><code></code></span>
+<span class="codeline" id="line-40"><code><span class="comment">// emit emits a string and creates an ID for it, but doesn't add it to the table. Returns the ID.</span></code></span>
+<span class="codeline" id="line-41"><code><span class="keyword">func</span> (<label for="r7" class="ident">t</label> *<a href="#line-17" class="ident">traceStringTable</a>) <label for="r8" class="ident"><a href="../../use/runtime..traceStringTable^12fa6.emit^967dd.html" class="ident">emit</a></label>(<label for="r9" class="ident">gen</label> <a href="../../pkg/builtin.html#name-uintptr" class="ident">uintptr</a>, <label for="r10" class="ident">s</label> <a href="../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="../../pkg/builtin.html#name-uint64" class="ident">uint64</a> {</code></span>
+<span class="codeline" id="line-42"><code>	<span class="comment">// Grab an ID and write the string to the buffer.</span></code></span>
+<span class="codeline" id="line-43"><code>	<label for="r11" class="ident">id</label> := <label for="r7" class="ident">t</label>.<a href="#line-23" class="ident">tab</a>.<a href="trace2map.go.html#line-48" class="ident">stealID</a>()</code></span>
+<span class="codeline" id="line-44"><code>	<a href="stubs.go.html#line-58" class="ident">systemstack</a>(<span class="keyword">func</span>() {</code></span>
+<span class="codeline" id="line-45"><code>		<label for="r7" class="ident">t</label>.<a href="#line-55" class="ident">writeString</a>(<label for="r9" class="ident">gen</label>, <label for="r11" class="ident">id</label>, <label for="r10" class="ident">s</label>)</code></span>
+<span class="codeline" id="line-46"><code>	})</code></span>
+<span class="codeline" id="line-47"><code>	<span class="keyword">return</span> <label for="r11" class="ident">id</label></code></span>
+<span class="codeline" id="line-48"><code>}</code></span>
+<span class="codeline" id="line-49"><code></code></span>
+<span class="codeline" id="line-50"><code><span class="comment">// writeString writes the string to t.buf.</span></code></span>
+<span class="codeline" id="line-51"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-52"><code><span class="comment">// Must run on the systemstack because it may flush buffers and thus could acquire trace.lock.</span></code></span>
+<span class="codeline" id="line-53"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-54"><code><span class="comment">//go:systemstack</span></code></span>
+<span class="codeline" id="line-55"><code><span class="keyword">func</span> (<label for="r12" class="ident">t</label> *<a href="#line-17" class="ident">traceStringTable</a>) <label for="r13" class="ident"><a href="../../use/runtime..traceStringTable^12fa6.writeString^0bb6c.html" class="ident">writeString</a></label>(<label for="r14" class="ident">gen</label> <a href="../../pkg/builtin.html#name-uintptr" class="ident">uintptr</a>, <label for="r15" class="ident">id</label> <a href="../../pkg/builtin.html#name-uint64" class="ident">uint64</a>, <label for="r16" class="ident">s</label> <a href="../../pkg/builtin.html#name-string" class="ident">string</a>) {</code></span>
+<span class="codeline" id="line-56"><code>	<span class="comment">// Truncate the string if necessary.</span></code></span>
+<span class="codeline" id="line-57"><code>	<span class="keyword">if</span> <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r16" class="ident">s</label>) &gt; <a href="#line-13" class="ident">maxTraceStringLen</a> {</code></span>
+<span class="codeline" id="line-58"><code>		<label for="r16" class="ident">s</label> = <label for="r16" class="ident">s</label>[:<a href="#line-13" class="ident">maxTraceStringLen</a>]</code></span>
+<span class="codeline" id="line-59"><code>	}</code></span>
+<span class="codeline" id="line-60"><code></code></span>
+<span class="codeline" id="line-61"><code>	<a href="lock_futex.go.html#line-51" class="ident">lock</a>(&amp;<label for="r12" class="ident">t</label>.<a href="#line-19" class="ident">lock</a>)</code></span>
+<span class="codeline" id="line-62"><code>	<label for="r17" class="ident">w</label> := <a href="trace2buf.go.html#line-44" class="ident">unsafeTraceWriter</a>(<label for="r14" class="ident">gen</label>, <label for="r12" class="ident">t</label>.<a href="#line-20" class="ident">buf</a>)</code></span>
+<span class="codeline" id="line-63"><code></code></span>
+<span class="codeline" id="line-64"><code>	<span class="comment">// Ensure we have a place to write to.</span></code></span>
+<span class="codeline" id="line-65"><code>	<span class="keyword">var</span> <label for="r18" class="ident">flushed</label> <a href="../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-66"><code>	<label for="r17" class="ident">w</label>, <label for="r18" class="ident">flushed</label> = <label for="r17" class="ident">w</label>.<a href="trace2buf.go.html#line-61" class="ident">ensure</a>(<span class="lit-number">2</span> + <span class="lit-number">2</span>*<a href="trace2buf.go.html#line-17" class="ident">traceBytesPerNumber</a> + <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r16" class="ident">s</label>) <span class="comment">/* traceEvStrings + traceEvString + ID + len + string data */</span>)</code></span>
+<span class="codeline" id="line-67"><code>	<span class="keyword">if</span> <label for="r18" class="ident">flushed</label> {</code></span>
+<span class="codeline" id="line-68"><code>		<span class="comment">// Annotate the batch as containing strings.</span></code></span>
+<span class="codeline" id="line-69"><code>		<label for="r17" class="ident">w</label>.<a href="trace2buf.go.html#line-177" class="ident">byte</a>(<a href="../../pkg/builtin.html#name-byte" class="ident">byte</a>(<a href="trace2event.go.html#line-33" class="ident">traceEvStrings</a>))</code></span>
+<span class="codeline" id="line-70"><code>	}</code></span>
+<span class="codeline" id="line-71"><code></code></span>
+<span class="codeline" id="line-72"><code>	<span class="comment">// Write out the string.</span></code></span>
+<span class="codeline" id="line-73"><code>	<label for="r17" class="ident">w</label>.<a href="trace2buf.go.html#line-177" class="ident">byte</a>(<a href="../../pkg/builtin.html#name-byte" class="ident">byte</a>(<a href="trace2event.go.html#line-34" class="ident">traceEvString</a>))</code></span>
+<span class="codeline" id="line-74"><code>	<label for="r17" class="ident">w</label>.<a href="trace2buf.go.html#line-183" class="ident">varint</a>(<label for="r15" class="ident">id</label>)</code></span>
+<span class="codeline" id="line-75"><code>	<label for="r17" class="ident">w</label>.<a href="trace2buf.go.html#line-183" class="ident">varint</a>(<a href="../../pkg/builtin.html#name-uint64" class="ident">uint64</a>(<a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r16" class="ident">s</label>)))</code></span>
+<span class="codeline" id="line-76"><code>	<label for="r17" class="ident">w</label>.<a href="trace2buf.go.html#line-208" class="ident">stringData</a>(<label for="r16" class="ident">s</label>)</code></span>
+<span class="codeline" id="line-77"><code></code></span>
+<span class="codeline" id="line-78"><code>	<span class="comment">// Store back buf if it was updated during ensure.</span></code></span>
+<span class="codeline" id="line-79"><code>	<label for="r12" class="ident">t</label>.<a href="#line-20" class="ident">buf</a> = <label for="r17" class="ident">w</label>.<a href="trace2buf.go.html#line-29" class="ident">traceBuf</a></code></span>
+<span class="codeline" id="line-80"><code>	<a href="lock_futex.go.html#line-120" class="ident">unlock</a>(&amp;<label for="r12" class="ident">t</label>.<a href="#line-19" class="ident">lock</a>)</code></span>
+<span class="codeline" id="line-81"><code>}</code></span>
+<span class="codeline" id="line-82"><code></code></span>
+<span class="codeline" id="line-83"><code><span class="comment">// reset clears the string table and flushes any buffers it has.</span></code></span>
+<span class="codeline" id="line-84"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-85"><code><span class="comment">// Must be called only once the caller is certain nothing else will be</span></code></span>
+<span class="codeline" id="line-86"><code><span class="comment">// added to this table.</span></code></span>
+<span class="codeline" id="line-87"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-88"><code><span class="comment">// Because it flushes buffers, this may acquire trace.lock and thus</span></code></span>
+<span class="codeline" id="line-89"><code><span class="comment">// must run on the systemstack.</span></code></span>
+<span class="codeline" id="line-90"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-91"><code><span class="comment">//go:systemstack</span></code></span>
+<span class="codeline" id="line-92"><code><span class="keyword">func</span> (<label for="r19" class="ident">t</label> *<a href="#line-17" class="ident">traceStringTable</a>) <label for="r20" class="ident"><a href="../../use/runtime..traceStringTable^12fa6.reset^01be3.html" class="ident">reset</a></label>(<label for="r21" class="ident">gen</label> <a href="../../pkg/builtin.html#name-uintptr" class="ident">uintptr</a>) {</code></span>
+<span class="codeline" id="line-93"><code>	<span class="keyword">if</span> <label for="r19" class="ident">t</label>.<a href="#line-20" class="ident">buf</a> != <a href="../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-94"><code>		<a href="lock_futex.go.html#line-51" class="ident">lock</a>(&amp;<a href="trace2.go.html#line-32" class="ident">trace</a>.<a href="trace2.go.html#line-35" class="ident">lock</a>)</code></span>
+<span class="codeline" id="line-95"><code>		<a href="trace2buf.go.html#line-240" class="ident">traceBufFlush</a>(<label for="r19" class="ident">t</label>.<a href="#line-20" class="ident">buf</a>, <label for="r21" class="ident">gen</label>)</code></span>
+<span class="codeline" id="line-96"><code>		<a href="lock_futex.go.html#line-120" class="ident">unlock</a>(&amp;<a href="trace2.go.html#line-32" class="ident">trace</a>.<a href="trace2.go.html#line-35" class="ident">lock</a>)</code></span>
+<span class="codeline" id="line-97"><code>		<label for="r19" class="ident">t</label>.<a href="#line-20" class="ident">buf</a> = <a href="../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-98"><code>	}</code></span>
+<span class="codeline" id="line-99"><code></code></span>
+<span class="codeline" id="line-100"><code>	<span class="comment">// Reset the table.</span></code></span>
+<span class="codeline" id="line-101"><code>	<a href="lock_futex.go.html#line-51" class="ident">lock</a>(&amp;<label for="r19" class="ident">t</label>.<a href="#line-23" class="ident">tab</a>.<a href="trace2map.go.html#line-27" class="ident">lock</a>)</code></span>
+<span class="codeline" id="line-102"><code>	<label for="r19" class="ident">t</label>.<a href="#line-23" class="ident">tab</a>.<a href="trace2map.go.html#line-140" class="ident">reset</a>()</code></span>
+<span class="codeline" id="line-103"><code>	<a href="lock_futex.go.html#line-120" class="ident">unlock</a>(&amp;<label for="r19" class="ident">t</label>.<a href="#line-23" class="ident">tab</a>.<a href="trace2map.go.html#line-27" class="ident">lock</a>)</code></span>
+<span class="codeline" id="line-104"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

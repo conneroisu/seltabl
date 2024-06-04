@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/http.http2Setting.Val</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/net/http.html">net/http</a>.<a href="../../src/net/http/h2_bundle.go.html#line-3424">http2Setting</a>.<a href="../../src/net/http/h2_bundle.go.html#line-3430">Val</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">30 uses</span>
+
+	net/http (current package)
+		<a href="../../src/net/http/h2_bundle.go.html#line-2169">h2_bundle.go#L2169</a>: 			return s.<b>Val</b>, true
+		<a href="../../src/net/http/h2_bundle.go.html#line-2181" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2181">#L2181</a>: 		<b>Val</b>: binary.BigEndian.Uint32(buf[i*6+2 : i*6+6]),
+		<a href="../../src/net/http/h2_bundle.go.html#line-2239" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2239">#L2239</a>: 		f.writeUint32(s.<b>Val</b>)
+		<a href="../../src/net/http/h2_bundle.go.html#line-3066" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-3066">#L3066</a>: 			fmt.Fprintf(&amp;buf, " %v=%v,", s.ID, s.<b>Val</b>)
+		<a href="../../src/net/http/h2_bundle.go.html#line-3430" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-3430">#L3430</a>: 	<b>Val</b> uint32
+		<a href="../../src/net/http/h2_bundle.go.html#line-3434" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-3434">#L3434</a>: 	return fmt.Sprintf("[%v = %d]", s.ID, s.<b>Val</b>)
+		<a href="../../src/net/http/h2_bundle.go.html#line-3442" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-3442">#L3442</a>: 		if s.<b>Val</b> != 1 &amp;&amp; s.<b>Val</b> != 0 {
+		<a href="../../src/net/http/h2_bundle.go.html#line-3446" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-3446">#L3446</a>: 		if s.<b>Val</b> &gt; 1&lt;&lt;31-1 {
+		<a href="../../src/net/http/h2_bundle.go.html#line-3450" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-3450">#L3450</a>: 		if s.<b>Val</b> &lt; 16384 || s.<b>Val</b> &gt; 1&lt;&lt;24-1 {
+		<a href="../../src/net/http/h2_bundle.go.html#line-5528" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5528">#L5528</a>: 		sc.hpackEncoder.SetMaxDynamicTableSize(s.<b>Val</b>)
+		<a href="../../src/net/http/h2_bundle.go.html#line-5530" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5530">#L5530</a>: 		sc.pushEnabled = s.<b>Val</b> != 0
+		<a href="../../src/net/http/h2_bundle.go.html#line-5532" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5532">#L5532</a>: 		sc.clientMaxStreams = s.<b>Val</b>
+		<a href="../../src/net/http/h2_bundle.go.html#line-5534" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5534">#L5534</a>: 		return sc.processSettingInitialWindowSize(s.<b>Val</b>)
+		<a href="../../src/net/http/h2_bundle.go.html#line-5536" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5536">#L5536</a>: 		sc.maxFrameSize = int32(s.<b>Val</b>) // the maximum valid s.Val is &lt; 2^31
+		<a href="../../src/net/http/h2_bundle.go.html#line-5538" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5538">#L5538</a>: 		sc.peerMaxHeaderListSize = s.<b>Val</b>
+		<a href="../../src/net/http/h2_bundle.go.html#line-7864" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-7864">#L7864</a>: 		{ID: http2SettingEnablePush, <b>Val</b>: 0},
+		<a href="../../src/net/http/h2_bundle.go.html#line-7865" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-7865">#L7865</a>: 		{ID: http2SettingInitialWindowSize, <b>Val</b>: http2transportDefaultStreamFlow},
+		<a href="../../src/net/http/h2_bundle.go.html#line-7868" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-7868">#L7868</a>: 		initialSettings = append(initialSettings, http2Setting{ID: http2SettingMaxFrameSize, <b>Val</b>: max})
+		<a href="../../src/net/http/h2_bundle.go.html#line-7871" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-7871">#L7871</a>: 		initialSettings = append(initialSettings, http2Setting{ID: http2SettingMaxHeaderListSize, <b>Val</b>: max})
+		<a href="../../src/net/http/h2_bundle.go.html#line-7874" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-7874">#L7874</a>: 		initialSettings = append(initialSettings, http2Setting{ID: http2SettingHeaderTableSize, <b>Val</b>: maxHeaderTableSize})
+		<a href="../../src/net/http/h2_bundle.go.html#line-9915" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9915">#L9915</a>: 			cc.maxFrameSize = s.<b>Val</b>
+		<a href="../../src/net/http/h2_bundle.go.html#line-9917" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9917">#L9917</a>: 			cc.maxConcurrentStreams = s.<b>Val</b>
+		<a href="../../src/net/http/h2_bundle.go.html#line-9920" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9920">#L9920</a>: 			cc.peerMaxHeaderListSize = uint64(s.<b>Val</b>)
+		<a href="../../src/net/http/h2_bundle.go.html#line-9926" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9926">#L9926</a>: 			if s.<b>Val</b> &gt; math.MaxInt32 {
+		<a href="../../src/net/http/h2_bundle.go.html#line-9933" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9933">#L9933</a>: 			delta := int32(s.<b>Val</b>) - int32(cc.initialWindowSize)
+		<a href="../../src/net/http/h2_bundle.go.html#line-9939" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9939">#L9939</a>: 			cc.initialWindowSize = s.<b>Val</b>
+		<a href="../../src/net/http/h2_bundle.go.html#line-9941" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9941">#L9941</a>: 			cc.henc.SetMaxDynamicTableSize(s.<b>Val</b>)
+		<a href="../../src/net/http/h2_bundle.go.html#line-9942" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9942">#L9942</a>: 			cc.peerMaxHeaderTableSize = s.<b>Val</b>
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

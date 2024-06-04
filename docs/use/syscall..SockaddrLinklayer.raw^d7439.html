@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: syscall.SockaddrLinklayer.raw</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/syscall.html">syscall</a>.<a href="../src/syscall/syscall_linux.go.html#line-575">SockaddrLinklayer</a>.<a href="../src/syscall/syscall_linux.go.html#line-582">raw</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">9 uses</span>
+
+	syscall (current package)
+		<a href="../src/syscall/syscall_linux.go.html#line-582">syscall_linux.go#L582</a>: 	<b>raw</b>      RawSockaddrLinklayer
+		<a href="../src/syscall/syscall_linux.go.html#line-589" class="path-duplicate">syscall_linux.go</a><a href="../src/syscall/syscall_linux.go.html#line-589">#L589</a>: 	sa.<b>raw</b>.Family = AF_PACKET
+		<a href="../src/syscall/syscall_linux.go.html#line-590" class="path-duplicate">syscall_linux.go</a><a href="../src/syscall/syscall_linux.go.html#line-590">#L590</a>: 	sa.<b>raw</b>.Protocol = sa.Protocol
+		<a href="../src/syscall/syscall_linux.go.html#line-591" class="path-duplicate">syscall_linux.go</a><a href="../src/syscall/syscall_linux.go.html#line-591">#L591</a>: 	sa.<b>raw</b>.Ifindex = int32(sa.Ifindex)
+		<a href="../src/syscall/syscall_linux.go.html#line-592" class="path-duplicate">syscall_linux.go</a><a href="../src/syscall/syscall_linux.go.html#line-592">#L592</a>: 	sa.<b>raw</b>.Hatype = sa.Hatype
+		<a href="../src/syscall/syscall_linux.go.html#line-593" class="path-duplicate">syscall_linux.go</a><a href="../src/syscall/syscall_linux.go.html#line-593">#L593</a>: 	sa.<b>raw</b>.Pkttype = sa.Pkttype
+		<a href="../src/syscall/syscall_linux.go.html#line-594" class="path-duplicate">syscall_linux.go</a><a href="../src/syscall/syscall_linux.go.html#line-594">#L594</a>: 	sa.<b>raw</b>.Halen = sa.Halen
+		<a href="../src/syscall/syscall_linux.go.html#line-595" class="path-duplicate">syscall_linux.go</a><a href="../src/syscall/syscall_linux.go.html#line-595">#L595</a>: 	sa.<b>raw</b>.Addr = sa.Addr
+		<a href="../src/syscall/syscall_linux.go.html#line-596" class="path-duplicate">syscall_linux.go</a><a href="../src/syscall/syscall_linux.go.html#line-596">#L596</a>: 	return unsafe.Pointer(&amp;sa.<b>raw</b>), SizeofSockaddrLinklayer, nil
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

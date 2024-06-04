@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: syscall.Signal</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../pkg/syscall.html">syscall</a>.<a href="../src/syscall/syscall_unix.go.html#line-166">Signal</a></b></span>
+
+<span class="title">47 uses</span>
+
+	syscall (current package)
+		<a href="../src/syscall/exec_linux.go.html#line-91">exec_linux.go#L91</a>: 	Pdeathsig    <b>Signal</b>
+		<a href="../src/syscall/syscall_linux.go.html#line-486">syscall_linux.go#L486</a>: func (w WaitStatus) Signal() <b>Signal</b> {
+		<a href="../src/syscall/syscall_linux.go.html#line-490" class="path-duplicate">syscall_linux.go</a><a href="../src/syscall/syscall_linux.go.html#line-490">#L490</a>: 	return <b>Signal</b>(w &amp; mask)
+		<a href="../src/syscall/syscall_linux.go.html#line-493" class="path-duplicate">syscall_linux.go</a><a href="../src/syscall/syscall_linux.go.html#line-493">#L493</a>: func (w WaitStatus) StopSignal() <b>Signal</b> {
+		<a href="../src/syscall/syscall_linux.go.html#line-497" class="path-duplicate">syscall_linux.go</a><a href="../src/syscall/syscall_linux.go.html#line-497">#L497</a>: 	return <b>Signal</b>(w&gt;&gt;shift) &amp; 0xFF
+		<a href="../src/syscall/syscall_unix.go.html#line-166">syscall_unix.go#L166</a>: type <b>Signal</b> int
+		<a href="../src/syscall/syscall_unix.go.html#line-168" class="path-duplicate">syscall_unix.go</a><a href="../src/syscall/syscall_unix.go.html#line-168">#L168</a>: func (s <b>Signal</b>) Signal() {}
+		<a href="../src/syscall/syscall_unix.go.html#line-170" class="path-duplicate">syscall_unix.go</a><a href="../src/syscall/syscall_unix.go.html#line-170">#L170</a>: func (s <b>Signal</b>) String() string {
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1321">zerrors_linux_amd64.go#L1321</a>: 	SIGABRT   = <b>Signal</b>(0x6)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1322" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1322">#L1322</a>: 	SIGALRM   = <b>Signal</b>(0xe)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1323" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1323">#L1323</a>: 	SIGBUS    = <b>Signal</b>(0x7)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1324" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1324">#L1324</a>: 	SIGCHLD   = <b>Signal</b>(0x11)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1325" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1325">#L1325</a>: 	SIGCLD    = <b>Signal</b>(0x11)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1326" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1326">#L1326</a>: 	SIGCONT   = <b>Signal</b>(0x12)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1327" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1327">#L1327</a>: 	SIGFPE    = <b>Signal</b>(0x8)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1328" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1328">#L1328</a>: 	SIGHUP    = <b>Signal</b>(0x1)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1329" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1329">#L1329</a>: 	SIGILL    = <b>Signal</b>(0x4)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1330" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1330">#L1330</a>: 	SIGINT    = <b>Signal</b>(0x2)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1331" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1331">#L1331</a>: 	SIGIO     = <b>Signal</b>(0x1d)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1332" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1332">#L1332</a>: 	SIGIOT    = <b>Signal</b>(0x6)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1333" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1333">#L1333</a>: 	SIGKILL   = <b>Signal</b>(0x9)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1334" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1334">#L1334</a>: 	SIGPIPE   = <b>Signal</b>(0xd)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1335" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1335">#L1335</a>: 	SIGPOLL   = <b>Signal</b>(0x1d)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1336" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1336">#L1336</a>: 	SIGPROF   = <b>Signal</b>(0x1b)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1337" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1337">#L1337</a>: 	SIGPWR    = <b>Signal</b>(0x1e)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1338" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1338">#L1338</a>: 	SIGQUIT   = <b>Signal</b>(0x3)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1339" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1339">#L1339</a>: 	SIGSEGV   = <b>Signal</b>(0xb)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1340" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1340">#L1340</a>: 	SIGSTKFLT = <b>Signal</b>(0x10)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1341" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1341">#L1341</a>: 	SIGSTOP   = <b>Signal</b>(0x13)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1342" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1342">#L1342</a>: 	SIGSYS    = <b>Signal</b>(0x1f)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1343" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1343">#L1343</a>: 	SIGTERM   = <b>Signal</b>(0xf)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1344" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1344">#L1344</a>: 	SIGTRAP   = <b>Signal</b>(0x5)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1345" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1345">#L1345</a>: 	SIGTSTP   = <b>Signal</b>(0x14)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1346" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1346">#L1346</a>: 	SIGTTIN   = <b>Signal</b>(0x15)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1347" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1347">#L1347</a>: 	SIGTTOU   = <b>Signal</b>(0x16)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1348" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1348">#L1348</a>: 	SIGUNUSED = <b>Signal</b>(0x1f)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1349" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1349">#L1349</a>: 	SIGURG    = <b>Signal</b>(0x17)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1350" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1350">#L1350</a>: 	SIGUSR1   = <b>Signal</b>(0xa)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1351" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1351">#L1351</a>: 	SIGUSR2   = <b>Signal</b>(0xc)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1352" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1352">#L1352</a>: 	SIGVTALRM = <b>Signal</b>(0x1a)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1353" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1353">#L1353</a>: 	SIGWINCH  = <b>Signal</b>(0x1c)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1354" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1354">#L1354</a>: 	SIGXCPU   = <b>Signal</b>(0x18)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1355" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1355">#L1355</a>: 	SIGXFSZ   = <b>Signal</b>(0x19)
+		<a href="../src/syscall/zsyscall_linux_amd64.go.html#line-610">zsyscall_linux_amd64.go#L610</a>: func Kill(pid int, sig <b>Signal</b>) (err error) {
+		<a href="../src/syscall/zsyscall_linux_amd64.go.html#line-893" class="path-duplicate">zsyscall_linux_amd64.go</a><a href="../src/syscall/zsyscall_linux_amd64.go.html#line-893">#L893</a>: func Tgkill(tgid int, tid int, sig <b>Signal</b>) (err error) {
+
+	<a href="../pkg/internal/syscall/unix.html">internal/syscall/unix</a>
+		<a href="../src/internal/syscall/unix/pidfd_linux.go.html#line-9">pidfd_linux.go#L9</a>: func PidFDSendSignal(pidfd uintptr, s syscall.<b>Signal</b>) error {
+
+	<a href="../pkg/os.html">os</a>
+		<a href="../src/os/exec_unix.go.html#line-72">exec_unix.go#L72</a>: 	s, ok := sig.(syscall.<b>Signal</b>)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: math/rand.Rand.src</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/math/rand.html">math/rand</a>.<a href="../../src/math/rand/rand.go.html#line-62">Rand</a>.<a href="../../src/math/rand/rand.go.html#line-63">src</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">9 uses</span>
+
+	math/rand (current package)
+		<a href="../../src/math/rand/rand.go.html#line-63">rand.go#L63</a>: 	<b>src</b> Source
+		<a href="../../src/math/rand/rand.go.html#line-80" class="path-duplicate">rand.go</a><a href="../../src/math/rand/rand.go.html#line-80">#L80</a>: 	return &amp;Rand{<b>src</b>: src, s64: s64}
+		<a href="../../src/math/rand/rand.go.html#line-86" class="path-duplicate">rand.go</a><a href="../../src/math/rand/rand.go.html#line-86">#L86</a>: 	if lk, ok := r.<b>src</b>.(*lockedSource); ok {
+		<a href="../../src/math/rand/rand.go.html#line-91" class="path-duplicate">rand.go</a><a href="../../src/math/rand/rand.go.html#line-91">#L91</a>: 	r.<b>src</b>.Seed(seed)
+		<a href="../../src/math/rand/rand.go.html#line-96" class="path-duplicate">rand.go</a><a href="../../src/math/rand/rand.go.html#line-96">#L96</a>: func (r *Rand) Int63() int64 { return r.<b>src</b>.Int63() }
+		<a href="../../src/math/rand/rand.go.html#line-273" class="path-duplicate">rand.go</a><a href="../../src/math/rand/rand.go.html#line-273">#L273</a>: 	switch src := r.<b>src</b>.(type) {
+		<a href="../../src/math/rand/rand.go.html#line-279" class="path-duplicate">rand.go</a><a href="../../src/math/rand/rand.go.html#line-279">#L279</a>: 	return read(p, r.<b>src</b>, &amp;r.readVal, &amp;r.readPos)
+		<a href="../../src/math/rand/rand.go.html#line-331" class="path-duplicate">rand.go</a><a href="../../src/math/rand/rand.go.html#line-331">#L331</a>: 			<b>src</b>: &amp;runtimeSource{},
+		<a href="../../src/math/rand/rand.go.html#line-399" class="path-duplicate">rand.go</a><a href="../../src/math/rand/rand.go.html#line-399">#L399</a>: 		if _, ok := orig.<b>src</b>.(*lockedSource); ok {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

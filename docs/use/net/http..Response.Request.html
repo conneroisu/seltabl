@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/http.Response.Request</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/net/http.html">net/http</a>.<a href="../../src/net/http/response.go.html#line-35">Response</a>.<a href="../../src/net/http/response.go.html#line-115">Request</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">15 uses</span>
+
+	net/http (current package)
+		<a href="../../src/net/http/client.go.html#line-624">client.go#L624</a>: 		if resp != nil &amp;&amp; resp.<b>Request</b> != nil {
+		<a href="../../src/net/http/client.go.html#line-625" class="path-duplicate">client.go</a><a href="../../src/net/http/client.go.html#line-625">#L625</a>: 			urlStr = stripPassword(resp.<b>Request</b>.URL)
+		<a href="../../src/net/http/h2_bundle.go.html#line-8325">h2_bundle.go#L8325</a>: 		res.<b>Request</b> = req
+		<a href="../../src/net/http/response.go.html#line-115">response.go#L115</a>: 	<b>Request</b> *Request
+		<a href="../../src/net/http/response.go.html#line-142" class="path-duplicate">response.go</a><a href="../../src/net/http/response.go.html#line-142">#L142</a>: 	if r.<b>Request</b> != nil &amp;&amp; r.<b>Request</b>.URL != nil {
+		<a href="../../src/net/http/response.go.html#line-143" class="path-duplicate">response.go</a><a href="../../src/net/http/response.go.html#line-143">#L143</a>: 		return r.<b>Request</b>.URL.Parse(lv)
+		<a href="../../src/net/http/response.go.html#line-157" class="path-duplicate">response.go</a><a href="../../src/net/http/response.go.html#line-157">#L157</a>: 		<b>Request</b>: req,
+		<a href="../../src/net/http/transfer.go.html#line-112">transfer.go#L112</a>: 		if rr.<b>Request</b> != nil {
+		<a href="../../src/net/http/transfer.go.html#line-113" class="path-duplicate">transfer.go</a><a href="../../src/net/http/transfer.go.html#line-113">#L113</a>: 			t.Method = rr.<b>Request</b>.Method
+		<a href="../../src/net/http/transfer.go.html#line-503" class="path-duplicate">transfer.go</a><a href="../../src/net/http/transfer.go.html#line-503">#L503</a>: 		if rr.<b>Request</b> != nil {
+		<a href="../../src/net/http/transfer.go.html#line-504" class="path-duplicate">transfer.go</a><a href="../../src/net/http/transfer.go.html#line-504">#L504</a>: 			t.RequestMethod = rr.<b>Request</b>.Method
+		<a href="../../src/net/http/transport.go.html#line-611">transport.go#L611</a>: 			resp.<b>Request</b> = origReq
+
+	<a href="../../pkg/github.com/PuerkitoBio^56e6a/goquery.html">github.com/PuerkitoBio/goquery</a>
+		<a href="../../src/github.com/PuerkitoBio^56e6a/goquery/type.go.html#line-69">type.go#L69</a>: 	if res.<b>Request</b> == nil {
+		<a href="../../src/github.com/PuerkitoBio^56e6a/goquery/type.go.html#line-80" class="path-duplicate">type.go</a><a href="../../src/github.com/PuerkitoBio^56e6a/goquery/type.go.html#line-80">#L80</a>: 	return newDocument(root, res.<b>Request</b>.URL), nil
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

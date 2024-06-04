@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: crypto/elliptic</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>elliptic</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../index.html#pkg-crypto/elliptic">crypto/elliptic</a><i> (on <a href="https://pkg.go.dev/crypto/elliptic" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../../dep/crypto/elliptic.html">5 packages</a>, and imported by <a href="../../dep/crypto/elliptic.html#imported-by">3 packages</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<input type='checkbox' checked class="fold" id="file-0-fold-content"><label for="file-0-fold-content">  <a href="../../src/crypto/elliptic/elliptic.go.html#doc">d</a> <a href="../../src/crypto/elliptic/elliptic.go.html">elliptic.go</a></label><span id='file-0-fold-content-items' class="fold-items">
+<span class="md-text">		Package elliptic implements the standard NIST P-224, P-256, P-384, and P-521
+		elliptic curves over prime fields.
+		
+		Direct use of this package is deprecated, beyond the [P224], [P256], [P384],
+		and [P521] values necessary to use [crypto/ecdsa]. Most other uses
+		should migrate to the more efficient and safer [crypto/ecdh], or to
+		third-party modules for lower-level functionality.</span>
+</span>
+	<span class="nodocs">    <a href="../../src/crypto/elliptic/nistec.go.html">nistec.go</a></span>
+	<span class="nodocs">    <a href="../../src/crypto/elliptic/nistec_p256.go.html">nistec_p256.go</a></span>
+	<span class="nodocs">    <a href="../../src/crypto/elliptic/params.go.html">params.go</a></span></div>
+<div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (total 6, in which 2 are exported)</i></span></span>
+
+<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-Curve" data-popularity="1955">	<input type='checkbox' class="fold" id="Curve-fold-content"><label for="Curve-fold-content"> <a href="../../use/crypto/elliptic..Curve.html">type</a> <a href="../../src/crypto/elliptic/elliptic.go.html#line-31">Curve</a> <b><i>(interface)</i></b></label><span id='Curve-fold-content-docs' class="fold-docs">
+<span class="md-text">		A Curve represents a short-form Weierstrass curve with a=-3.
+		
+		The behavior of Add, Double, and ScalarMult when the input is not a point on
+		the curve is undefined.
+		
+		Note that the conventional point at infinity (0, 0) is not considered on the
+		curve, although it can be returned by Add, Double, ScalarMult, or
+		ScalarBaseMult (but not the [Unmarshal] or [UnmarshalCompressed] functions).
+		
+		Using Curve implementations besides those returned by [P224], [P256], [P384],
+		and [P521] is deprecated.</span>
+
+		<input type='checkbox' class="fold" id="Curve-fold-methods"><label for="Curve-fold-methods">Methods (<i>total 6, all are exported</i>)</label><span id='Curve-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Curve-fold-method-Add"><label for="Curve-fold-method-Add">( Curve) <a href="../../src/crypto/elliptic/elliptic.go.html#line-45">Add</a>(x1, y1, x2, y2 *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>) (x, y *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>)</label><span id='Curve-fold-method-Add-docs' class="fold-docs">
+<span class="md-text">				Add returns the sum of (x1,y1) and (x2,y2).
+				
+				Deprecated: this is a low-level unsafe API.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Curve-fold-method-Double"><label for="Curve-fold-method-Double">( Curve) <a href="../../src/crypto/elliptic/elliptic.go.html#line-50">Double</a>(x1, y1 *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>) (x, y *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>)</label><span id='Curve-fold-method-Double-docs' class="fold-docs">
+<span class="md-text">				Double returns 2*(x,y).
+				
+				Deprecated: this is a low-level unsafe API.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Curve-fold-method-IsOnCurve"><label for="Curve-fold-method-IsOnCurve">( Curve) <a href="../../src/crypto/elliptic/elliptic.go.html#line-40">IsOnCurve</a>(x, y *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>) <a href="../builtin.html#name-bool">bool</a></label><span id='Curve-fold-method-IsOnCurve-docs' class="fold-docs">
+<span class="md-text">				IsOnCurve reports whether the given (x,y) lies on the curve.
+				
+				Deprecated: this is a low-level unsafe API. For ECDH, use the crypto/ecdh
+				package. The NewPublicKey methods of NIST curves in crypto/ecdh accept
+				the same encoding as the Unmarshal function, and perform on-curve checks.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Curve-fold-method-Params"><label for="Curve-fold-method-Params">( Curve) <a href="../../src/crypto/elliptic/elliptic.go.html#line-33">Params</a>() *<a href="#name-CurveParams">CurveParams</a></label><span id='Curve-fold-method-Params-docs' class="fold-docs">
+<span class="md-text">				Params returns the parameters for the curve.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Curve-fold-method-ScalarBaseMult"><label for="Curve-fold-method-ScalarBaseMult">( Curve) <a href="../../src/crypto/elliptic/elliptic.go.html#line-65">ScalarBaseMult</a>(k []<a href="../builtin.html#name-byte">byte</a>) (x, y *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>)</label><span id='Curve-fold-method-ScalarBaseMult-docs' class="fold-docs">
+<span class="md-text">				ScalarBaseMult returns k*G, where G is the base point of the group
+				and k is an integer in big-endian form.
+				
+				Deprecated: this is a low-level unsafe API. For ECDH, use the crypto/ecdh
+				package. Most uses of ScalarBaseMult can be replaced by a call to the
+				PrivateKey.PublicKey method in crypto/ecdh.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Curve-fold-method-ScalarMult"><label for="Curve-fold-method-ScalarMult">( Curve) <a href="../../src/crypto/elliptic/elliptic.go.html#line-57">ScalarMult</a>(x1, y1 *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>, k []<a href="../builtin.html#name-byte">byte</a>) (x, y *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>)</label><span id='Curve-fold-method-ScalarMult-docs' class="fold-docs">
+<span class="md-text">				ScalarMult returns k*(x,y) where k is an integer in big-endian form.
+				
+				Deprecated: this is a low-level unsafe API. For ECDH, use the crypto/ecdh
+				package. Most uses of ScalarMult can be replaced by a call to the ECDH
+				methods of NIST curves in crypto/ecdh.</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="Curve-fold-impledby"><label for="Curve-fold-impledby">Implemented By (<i>at least 5, in which 3 are exported</i>)</label><span id='Curve-fold-impledby-items' class="fold-items"><span>
+			*<a href="#name-CurveParams">CurveParams</a></span><span>
+			 crypto/ecdsa.<a href="ecdsa.html#name-PrivateKey">PrivateKey</a></span><span>
+			 crypto/ecdsa.<a href="ecdsa.html#name-PublicKey">PublicKey</a></span>
+			<input type='checkbox' class="showhide" id="Curve-showhide-impedBys"><i><label for="Curve-showhide-impedBys" class="show-inline">/* 2+ unexporteds ... */</label><label for="Curve-showhide-impedBys" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			*<a href="#name-nistCurve">nistCurve</a>[...]</i></span><span class="hidden"><i>
+			*<a href="#name-p256Curve">p256Curve</a></i></span></span>
+		<input type='checkbox' class="fold" id="Curve-fold-results"><label for="Curve-fold-results">As Outputs Of (<i>at least 6, in which 4 are exported</i>)</label><span id='Curve-fold-results-items' class="fold-items"><span>
+			func <a href="#name-P224">P224</a>() <b>Curve</b></span><span>
+			func <a href="#name-P256">P256</a>() <b>Curve</b></span><span>
+			func <a href="#name-P384">P384</a>() <b>Curve</b></span><span>
+			func <a href="#name-P521">P521</a>() <b>Curve</b></span>
+			<input type='checkbox' class="showhide" id="Curve-showhide-inputofs"><i><label for="Curve-showhide-inputofs" class="show-inline">/* 2+ unexporteds ... */</label><label for="Curve-showhide-inputofs" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			func <a href="#name-matchesSpecificCurve">matchesSpecificCurve</a>(params *<a href="#name-CurveParams">CurveParams</a>) (<b>Curve</b>, <a href="../builtin.html#name-bool">bool</a>)</i></span><span class="hidden"><i>
+			func crypto/x509.<a href="x509.html#name-namedCurveFromOID">namedCurveFromOID</a>(oid <a href="../encoding/asn1.html">asn1</a>.<a href="../encoding/asn1.html#name-ObjectIdentifier">ObjectIdentifier</a>) <b>Curve</b></i></span></span>
+		<input type='checkbox' class="fold" id="Curve-fold-params"><label for="Curve-fold-params">As Inputs Of (<i>at least 13, in which 6 are exported</i>)</label><span id='Curve-fold-params-items' class="fold-items"><span>
+			func <a href="#name-GenerateKey">GenerateKey</a>(curve <b>Curve</b>, rand <a href="../io.html">io</a>.<a href="../io.html#name-Reader">Reader</a>) (priv []<a href="../builtin.html#name-byte">byte</a>, x, y *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>, err <a href="../builtin.html#name-error">error</a>)</span><span>
+			func <a href="#name-Marshal">Marshal</a>(curve <b>Curve</b>, x, y *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>) []<a href="../builtin.html#name-byte">byte</a></span><span>
+			func <a href="#name-MarshalCompressed">MarshalCompressed</a>(curve <b>Curve</b>, x, y *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>) []<a href="../builtin.html#name-byte">byte</a></span><span>
+			func <a href="#name-Unmarshal">Unmarshal</a>(curve <b>Curve</b>, data []<a href="../builtin.html#name-byte">byte</a>) (x, y *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>)</span><span>
+			func <a href="#name-UnmarshalCompressed">UnmarshalCompressed</a>(curve <b>Curve</b>, data []<a href="../builtin.html#name-byte">byte</a>) (x, y *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>)</span><span>
+			func crypto/ecdsa.<a href="ecdsa.html#name-GenerateKey">GenerateKey</a>(c <b>Curve</b>, rand <a href="../io.html">io</a>.<a href="../io.html#name-Reader">Reader</a>) (*<a href="ecdsa.html">ecdsa</a>.<a href="ecdsa.html#name-PrivateKey">PrivateKey</a>, <a href="../builtin.html#name-error">error</a>)</span>
+			<input type='checkbox' class="showhide" id="Curve-showhide-outputofs"><i><label for="Curve-showhide-outputofs" class="show-inline">/* 7+ unexporteds ... */</label><label for="Curve-showhide-outputofs" class="hide-inline">/* 7+ unexporteds: */</label></i><span class="hidden"><i>
+			func <a href="#name-panicIfNotOnCurve">panicIfNotOnCurve</a>(curve <b>Curve</b>, x, y *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>)</i></span><span class="hidden"><i>
+			func crypto/ecdsa.<a href="ecdsa.html#name-curveToECDH">curveToECDH</a>(c <b>Curve</b>) <a href="ecdh.html">ecdh</a>.<a href="ecdh.html#name-Curve">Curve</a></i></span><span class="hidden"><i>
+			func crypto/ecdsa.<a href="ecdsa.html#name-generateLegacy">generateLegacy</a>(c <b>Curve</b>, rand <a href="../io.html">io</a>.<a href="../io.html#name-Reader">Reader</a>) (*<a href="ecdsa.html">ecdsa</a>.<a href="ecdsa.html#name-PrivateKey">PrivateKey</a>, <a href="../builtin.html#name-error">error</a>)</i></span><span class="hidden"><i>
+			func crypto/ecdsa.<a href="ecdsa.html#name-hashToInt">hashToInt</a>(hash []<a href="../builtin.html#name-byte">byte</a>, c <b>Curve</b>) *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a></i></span><span class="hidden"><i>
+			func crypto/ecdsa.<a href="ecdsa.html#name-precomputeParams">precomputeParams</a>[Point](c *<a href="ecdsa.html">ecdsa</a>.<a href="ecdsa.html#name-nistCurve">nistCurve</a>[Point], curve <b>Curve</b>)</i></span><span class="hidden"><i>
+			func crypto/ecdsa.<a href="ecdsa.html#name-randFieldElement">randFieldElement</a>(c <b>Curve</b>, rand <a href="../io.html">io</a>.<a href="../io.html#name-Reader">Reader</a>) (k *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>, err <a href="../builtin.html#name-error">error</a>)</i></span><span class="hidden"><i>
+			func crypto/x509.<a href="x509.html#name-oidFromNamedCurve">oidFromNamedCurve</a>(curve <b>Curve</b>) (<a href="../encoding/asn1.html">asn1</a>.<a href="../encoding/asn1.html#name-ObjectIdentifier">ObjectIdentifier</a>, <a href="../builtin.html#name-bool">bool</a>)</i></span></span>
+
+</span></div><div class="anchor type-res" id="name-CurveParams" data-popularity="735">	<input type='checkbox' class="fold" id="CurveParams-fold-content"><label for="CurveParams-fold-content"> <a href="../../use/crypto/elliptic..CurveParams.html">type</a> <a href="../../src/crypto/elliptic/params.go.html#line-15">CurveParams</a> <i>(struct)</i></label><span id='CurveParams-fold-content-docs' class="fold-docs">
+<span class="md-text">		CurveParams contains the parameters of an elliptic curve and also provides
+		a generic, non-constant time implementation of [Curve].
+		
+		The generic Curve implementation is deprecated, and using custom curves
+		(those not returned by [P224], [P256], [P384], and [P521]) is not guaranteed
+		to provide any security property.</span>
+
+		<input type='checkbox' class="fold" id="CurveParams-fold-fields"><label for="CurveParams-fold-fields">Fields (<i>total 7, all are exported</i>)</label><span id='CurveParams-fold-fields-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="CurveParams-fold-field-B"><label for="CurveParams-fold-field-B"><a href="../../src/crypto/elliptic/params.go.html#line-18">B</a> <i>*<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a></i></label><span id='CurveParams-fold-field-B-docs' class="fold-docs">
+<span class="md-text">				// the constant of the curve equation</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="CurveParams-fold-field-BitSize"><label for="CurveParams-fold-field-BitSize"><a href="../../src/crypto/elliptic/params.go.html#line-20">BitSize</a> <i><a href="../builtin.html#name-int">int</a></i></label><span id='CurveParams-fold-field-BitSize-docs' class="fold-docs">
+<span class="md-text">				// the size of the underlying field</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="CurveParams-fold-field-Gx"><label for="CurveParams-fold-field-Gx"><a href="../../src/crypto/elliptic/params.go.html#line-19">Gx</a> <i>*<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a></i></label><span id='CurveParams-fold-field-Gx-docs' class="fold-docs">
+<span class="md-text">				// (x,y) of the base point</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="CurveParams-fold-field-Gy"><label for="CurveParams-fold-field-Gy"><a href="../../src/crypto/elliptic/params.go.html#line-19">Gy</a> <i>*<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a></i></label><span id='CurveParams-fold-field-Gy-docs' class="fold-docs">
+<span class="md-text">				// (x,y) of the base point</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="CurveParams-fold-field-N"><label for="CurveParams-fold-field-N"><a href="../../src/crypto/elliptic/params.go.html#line-17">N</a> <i>*<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a></i></label><span id='CurveParams-fold-field-N-docs' class="fold-docs">
+<span class="md-text">				// the order of the base point</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="CurveParams-fold-field-Name"><label for="CurveParams-fold-field-Name"><a href="../../src/crypto/elliptic/params.go.html#line-21">Name</a> <i><a href="../builtin.html#name-string">string</a></i></label><span id='CurveParams-fold-field-Name-docs' class="fold-docs">
+<span class="md-text">				// the canonical name of the curve</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="CurveParams-fold-field-P"><label for="CurveParams-fold-field-P"><a href="../../src/crypto/elliptic/params.go.html#line-16">P</a> <i>*<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a></i></label><span id='CurveParams-fold-field-P-docs' class="fold-docs">
+<span class="md-text">				// the order of the underlying field</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="CurveParams-fold-methods"><label for="CurveParams-fold-methods">Methods (<i>total 10, in which 6 are exported</i>)</label><span id='CurveParams-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="CurveParams-fold-method-Add"><label for="CurveParams-fold-method-Add">(*CurveParams) <a href="../../src/crypto/elliptic/params.go.html#line-110">Add</a>(x1, y1, x2, y2 *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>) (*<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>, *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>)</label><span id='CurveParams-fold-method-Add-docs' class="fold-docs">
+<span class="md-text">				Add implements [Curve.Add].
+				
+				Deprecated: the [CurveParams] methods are deprecated and are not guaranteed to
+				provide any security property. For ECDH, use the [crypto/ecdh] package.
+				For ECDSA, use the [crypto/ecdsa] package with a [Curve] value returned directly
+				from [P224], [P256], [P384], or [P521].</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="CurveParams-fold-method-Double"><label for="CurveParams-fold-method-Double">(*CurveParams) <a href="../../src/crypto/elliptic/params.go.html#line-208">Double</a>(x1, y1 *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>) (*<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>, *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>)</label><span id='CurveParams-fold-method-Double-docs' class="fold-docs">
+<span class="md-text">				Double implements [Curve.Double].
+				
+				Deprecated: the [CurveParams】 methods are deprecated and are not guaranteed to
+				provide any security property. For ECDH, use the [crypto/ecdh] package.
+				For ECDSA, use the [crypto/ecdsa] package with a [Curve] value returned directly
+				from [P224], [P256], [P384], or [P521].</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="CurveParams-fold-method-IsOnCurve"><label for="CurveParams-fold-method-IsOnCurve">(*CurveParams) <a href="../../src/crypto/elliptic/params.go.html#line-56">IsOnCurve</a>(x, y *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>) <a href="../builtin.html#name-bool">bool</a></label><span id='CurveParams-fold-method-IsOnCurve-docs' class="fold-docs">
+<span class="md-text">				IsOnCurve implements [Curve.IsOnCurve].
+				
+				Deprecated: the [CurveParams] methods are deprecated and are not guaranteed to
+				provide any security property. For ECDH, use the [crypto/ecdh] package.
+				For ECDSA, use the [crypto/ecdsa] package with a [Curve] value returned directly
+				from [P224], [P256], [P384], or [P521].</span>
+</span></span><span>
+			<span class="nodocs">(*CurveParams) <a href="../../src/crypto/elliptic/params.go.html#line-24">Params</a>() *<b>CurveParams</b></span></span><span>
+			<input type='checkbox' class="fold" id="CurveParams-fold-method-ScalarBaseMult"><label for="CurveParams-fold-method-ScalarBaseMult">(*CurveParams) <a href="../../src/crypto/elliptic/params.go.html#line-317">ScalarBaseMult</a>(k []<a href="../builtin.html#name-byte">byte</a>) (*<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>, *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>)</label><span id='CurveParams-fold-method-ScalarBaseMult-docs' class="fold-docs">
+<span class="md-text">				ScalarBaseMult implements [Curve.ScalarBaseMult].
+				
+				Deprecated: the [CurveParams] methods are deprecated and are not guaranteed to
+				provide any security property. For ECDH, use the [crypto/ecdh] package.
+				For ECDSA, use the [crypto/ecdsa] package with a [Curve] value returned directly
+				from [P224], [P256], [P384], or [P521].</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="CurveParams-fold-method-ScalarMult"><label for="CurveParams-fold-method-ScalarMult">(*CurveParams) <a href="../../src/crypto/elliptic/params.go.html#line-287">ScalarMult</a>(Bx, By *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>, k []<a href="../builtin.html#name-byte">byte</a>) (*<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>, *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>)</label><span id='CurveParams-fold-method-ScalarMult-docs' class="fold-docs">
+<span class="md-text">				ScalarMult implements [Curve.ScalarMult].
+				
+				Deprecated: the [CurveParams] methods are deprecated and are not guaranteed to
+				provide any security property. For ECDH, use the [crypto/ecdh] package.
+				For ECDSA, use the [crypto/ecdsa] package with a [Curve] value returned directly
+				from [P224], [P256], [P384], or [P521].</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="CurveParams-showhide-methods"><i><label for="CurveParams-showhide-methods" class="show-inline">/* 4 unexporteds ... */</label><label for="CurveParams-showhide-methods" class="hide-inline">/* 4 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="CurveParams-fold-method-addJacobian"><label for="CurveParams-fold-method-addJacobian">(*CurveParams) <a href="../../src/crypto/elliptic/params.go.html#line-126">addJacobian</a>(x1, y1, z1, x2, y2, z2 *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>) (*<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>, *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>, *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>)</label><span id='CurveParams-fold-method-addJacobian-docs' class="fold-docs">
+<span class="md-text">				addJacobian takes two points in Jacobian coordinates, (x1, y1, z1) and
+				(x2, y2, z2) and returns their sum, also in Jacobian form.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="CurveParams-fold-method-affineFromJacobian"><label for="CurveParams-fold-method-affineFromJacobian">(*CurveParams) <a href="../../src/crypto/elliptic/params.go.html#line-88">affineFromJacobian</a>(x, y, z *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>) (xOut, yOut *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>)</label><span id='CurveParams-fold-method-affineFromJacobian-docs' class="fold-docs">
+<span class="md-text">				affineFromJacobian reverses the Jacobian transform. See the comment at the
+				top of the file. If the point is ∞ it returns 0, 0.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="CurveParams-fold-method-doubleJacobian"><label for="CurveParams-fold-method-doubleJacobian">(*CurveParams) <a href="../../src/crypto/elliptic/params.go.html#line-222">doubleJacobian</a>(x, y, z *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>) (*<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>, *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>, *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>)</label><span id='CurveParams-fold-method-doubleJacobian-docs' class="fold-docs">
+<span class="md-text">				doubleJacobian takes a point in Jacobian coordinates, (x, y, z), and
+				returns its double, also in Jacobian form.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="CurveParams-fold-method-polynomial"><label for="CurveParams-fold-method-polynomial">(*CurveParams) <a href="../../src/crypto/elliptic/params.go.html#line-36">polynomial</a>(x *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>) *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a></label><span id='CurveParams-fold-method-polynomial-docs' class="fold-docs">
+<span class="md-text">				polynomial returns x³ - 3x + b.</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="CurveParams-fold-impls"><label for="CurveParams-fold-impls">Implements (<i>at least one exported</i>)</label><span id='CurveParams-fold-impls-items' class="fold-items"><span>
+			*CurveParams : <a href="#name-Curve">Curve</a></span></span>
+		<input type='checkbox' class="fold" id="CurveParams-fold-results"><label for="CurveParams-fold-results">As Outputs Of (<i>at least 2, both are exported</i>)</label><span id='CurveParams-fold-results-items' class="fold-items"><span>
+			func <a href="#name-Curve">Curve</a>.<a href="../../src/crypto/elliptic/elliptic.go.html#line-33">Params</a>() *<b>CurveParams</b></span><span>
+			func (*CurveParams).<a href="../../src/crypto/elliptic/params.go.html#line-24">Params</a>() *<b>CurveParams</b></span></span>
+		<input type='checkbox' class="fold" id="CurveParams-fold-params"><label for="CurveParams-fold-params">As Inputs Of (<i>at least one unexported</i>)</label><span id='CurveParams-fold-params-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="CurveParams-showhide-outputofs"><i><label for="CurveParams-showhide-outputofs" class="show-inline">/* at least one unexported ... */</label><label for="CurveParams-showhide-outputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func <a href="#name-matchesSpecificCurve">matchesSpecificCurve</a>(params *<b>CurveParams</b>) (<a href="#name-Curve">Curve</a>, <a href="../builtin.html#name-bool">bool</a>)</i></span></span>
+
+</span></div></div><div>	<input type='checkbox' class="showhide" id="unexported-typenames-showhide"><i><label for="unexported-typenames-showhide" class="show-inline">/* 4 unexporteds ... */</label><label for="unexported-typenames-showhide" class="hide-inline">/* 4 unexporteds: */</label></i><div class="anchor type-res hidden" id="name-nistCurve" data-popularity="715">	<input type='checkbox' class="fold" id="nistCurve-fold-content"><label for="nistCurve-fold-content"> <a href="../../use/crypto/elliptic..nistCurve^16417.html">type</a> <a href="../../src/crypto/elliptic/nistec.go.html#line-110">nistCurve</a>[Point] <i>(struct)</i></label><span id='nistCurve-fold-content-docs' class="fold-docs">
+
+		Type Parameters:
+			Point: <a href="#name-nistPoint">nistPoint</a>[Point]
+
+<span class="md-text">		nistCurve is a Curve implementation based on a nistec Point.
+		
+		It's a wrapper that exposes the big.Int-based Curve interface and encodes the
+		legacy idiosyncrasies it requires, such as invalid and infinity point
+		handling.
+		
+		To interact with the nistec package, points are encoded into and decoded from
+		properly formatted byte slices. All big.Int use is limited to this package.
+		Encoding and decoding is 1/1000th of the runtime of a scalar multiplication,
+		so the overhead is acceptable.</span>
+
+		<input type='checkbox' class="fold" id="nistCurve-fold-fields"><label for="nistCurve-fold-fields">Fields (<i>total 2, neither is exported</i>)</label><span id='nistCurve-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="nistCurve-showhide-fields"><i><label for="nistCurve-showhide-fields" class="show-inline">/* 2 unexporteds ... */</label><label for="nistCurve-showhide-fields" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/crypto/elliptic/nistec.go.html#line-111">newPoint</a> <i>func() Point</i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/crypto/elliptic/nistec.go.html#line-112">params</a> <i>*<a href="#name-CurveParams">CurveParams</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="nistCurve-fold-methods"><label for="nistCurve-fold-methods">Methods (<i>total 12, in which 9 are exported</i>)</label><span id='nistCurve-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">(*nistCurve[Point]) <a href="../../src/crypto/elliptic/nistec.go.html#line-174">Add</a>(x1, y1, x2, y2 *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>) (*<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>, *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>)</span></span><span>
+			<input type='checkbox' class="fold" id="nistCurve-fold-method-CombinedMult"><label for="nistCurve-fold-method-CombinedMult">(*nistCurve[Point]) <a href="../../src/crypto/elliptic/nistec.go.html#line-233">CombinedMult</a>(Px, Py *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>, s1, s2 []<a href="../builtin.html#name-byte">byte</a>) (x, y *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>)</label><span id='nistCurve-fold-method-CombinedMult-docs' class="fold-docs">
+<span class="md-text">				CombinedMult returns [s1]G + [s2]P where G is the generator. It's used
+				through an interface upgrade in crypto/ecdsa.</span>
+</span></span><span>
+			<span class="nodocs">(*nistCurve[Point]) <a href="../../src/crypto/elliptic/nistec.go.html#line-186">Double</a>(x1, y1 *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>) (*<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>, *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>)</span></span><span>
+			<span class="nodocs">(*nistCurve[Point]) <a href="../../src/crypto/elliptic/nistec.go.html#line-129">IsOnCurve</a>(x, y *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>) <a href="../builtin.html#name-bool">bool</a></span></span><span>
+			<span class="nodocs">(*nistCurve[Point]) <a href="../../src/crypto/elliptic/nistec.go.html#line-125">Params</a>() *<a href="#name-CurveParams">CurveParams</a></span></span><span>
+			<span class="nodocs">(*nistCurve[Point]) <a href="../../src/crypto/elliptic/nistec.go.html#line-222">ScalarBaseMult</a>(scalar []<a href="../builtin.html#name-byte">byte</a>) (*<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>, *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>)</span></span><span>
+			<span class="nodocs">(*nistCurve[Point]) <a href="../../src/crypto/elliptic/nistec.go.html#line-209">ScalarMult</a>(Bx, By *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>, scalar []<a href="../builtin.html#name-byte">byte</a>) (*<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>, *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>)</span></span><span>
+			<span class="nodocs">(*nistCurve[Point]) <a href="../../src/crypto/elliptic/nistec.go.html#line-251">Unmarshal</a>(data []<a href="../builtin.html#name-byte">byte</a>) (x, y *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>)</span></span><span>
+			<span class="nodocs">(*nistCurve[Point]) <a href="../../src/crypto/elliptic/nistec.go.html#line-269">UnmarshalCompressed</a>(data []<a href="../builtin.html#name-byte">byte</a>) (x, y *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>)</span></span>
+			<input type='checkbox' checked class="showhide" id="nistCurve-showhide-methods"><i><label for="nistCurve-showhide-methods" class="show-inline">/* 3 unexporteds ... */</label><label for="nistCurve-showhide-methods" class="hide-inline">/* 3 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="nistCurve-fold-method-normalizeScalar"><label for="nistCurve-fold-method-normalizeScalar">(*nistCurve[Point]) <a href="../../src/crypto/elliptic/nistec.go.html#line-196">normalizeScalar</a>(scalar []<a href="../builtin.html#name-byte">byte</a>) []<a href="../builtin.html#name-byte">byte</a></label><span id='nistCurve-fold-method-normalizeScalar-docs' class="fold-docs">
+<span class="md-text">				normalizeScalar brings the scalar within the byte size of the order of the
+				curve, as expected by the nistec scalar multiplication functions.</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*nistCurve[Point]) <a href="../../src/crypto/elliptic/nistec.go.html#line-139">pointFromAffine</a>(x, y *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>) (p Point, err <a href="../builtin.html#name-error">error</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*nistCurve[Point]) <a href="../../src/crypto/elliptic/nistec.go.html#line-161">pointToAffine</a>(p Point) (x, y *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>)</span></i></span></span>
+		<input type='checkbox' class="fold" id="nistCurve-fold-impls"><label for="nistCurve-fold-impls">Implements (<i>at least 2, in which 1 is exported</i>)</label><span id='nistCurve-fold-impls-items' class="fold-items"><span>
+			*nistCurve : <a href="#name-Curve">Curve</a></span>
+			<input type='checkbox' checked class="showhide" id="nistCurve-showhide-impls"><i><label for="nistCurve-showhide-impls" class="show-inline">/* at least one unexported ... */</label><label for="nistCurve-showhide-impls" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			*nistCurve : <a href="#name-unmarshaler">unmarshaler</a></i></span></span>
+		<input type='checkbox' class="fold" id="nistCurve-fold-values"><label for="nistCurve-fold-values">As Types Of (<i>total 3, none are exported</i>)</label><span id='nistCurve-fold-values-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="nistCurve-showhide-values"><i><label for="nistCurve-showhide-values" class="show-inline">/* 3 unexporteds ... */</label><label for="nistCurve-showhide-values" class="hide-inline">/* 3 unexporteds: */</label></i><span class="hidden"><i>
+			  var <a href="#name-p224">p224</a> *<a href="#name-nistCurve">nistCurve</a>[...]</i></span><span class="hidden"><i>
+			  var <a href="#name-p384">p384</a> *<a href="#name-nistCurve">nistCurve</a>[...]</i></span><span class="hidden"><i>
+			  var <a href="#name-p521">p521</a> *<a href="#name-nistCurve">nistCurve</a>[...]</i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-nistPoint" data-popularity="300">	<input type='checkbox' class="fold" id="nistPoint-fold-content"><label for="nistPoint-fold-content"> <a href="../../use/crypto/elliptic..nistPoint^d082b.html">type</a> <a href="../../src/crypto/elliptic/nistec.go.html#line-116">nistPoint</a>[T] <b><i>(interface)</i></b></label><span id='nistPoint-fold-content-docs' class="fold-docs">
+
+		Type Parameters:
+			T: <a href="../builtin.html#name-any">any</a>
+
+<span class="md-text">		nistPoint is a generic constraint for the nistec Point types.</span>
+
+		<input type='checkbox' class="fold" id="nistPoint-fold-methods"><label for="nistPoint-fold-methods">Methods (<i>total 6, all are exported</i>)</label><span id='nistPoint-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( nistPoint[T]) <a href="../../src/crypto/elliptic/nistec.go.html#line-119">Add</a>(T, T) T</span></span><span>
+			<span class="nodocs">( nistPoint[T]) <a href="../../src/crypto/elliptic/nistec.go.html#line-117">Bytes</a>() []<a href="../builtin.html#name-byte">byte</a></span></span><span>
+			<span class="nodocs">( nistPoint[T]) <a href="../../src/crypto/elliptic/nistec.go.html#line-120">Double</a>(T) T</span></span><span>
+			<span class="nodocs">( nistPoint[T]) <a href="../../src/crypto/elliptic/nistec.go.html#line-122">ScalarBaseMult</a>([]<a href="../builtin.html#name-byte">byte</a>) (T, <a href="../builtin.html#name-error">error</a>)</span></span><span>
+			<span class="nodocs">( nistPoint[T]) <a href="../../src/crypto/elliptic/nistec.go.html#line-121">ScalarMult</a>(T, []<a href="../builtin.html#name-byte">byte</a>) (T, <a href="../builtin.html#name-error">error</a>)</span></span><span>
+			<span class="nodocs">( nistPoint[T]) <a href="../../src/crypto/elliptic/nistec.go.html#line-118">SetBytes</a>([]<a href="../builtin.html#name-byte">byte</a>) (T, <a href="../builtin.html#name-error">error</a>)</span></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-p256Curve" data-popularity="755">	<input type='checkbox' class="fold" id="p256Curve-fold-content"><label for="p256Curve-fold-content"> <a href="../../use/crypto/elliptic..p256Curve^17e02.html">type</a> <a href="../../src/crypto/elliptic/nistec.go.html#line-30">p256Curve</a> <i>(struct)</i></label><span id='p256Curve-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="p256Curve-fold-fields"><label for="p256Curve-fold-fields">Fields (<i>total 3, none are exported</i>)</label><span id='p256Curve-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="p256Curve-showhide-fields"><i><label for="p256Curve-showhide-fields" class="show-inline">/* 3 unexporteds ... */</label><label for="p256Curve-showhide-fields" class="hide-inline">/* 3 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/crypto/elliptic/nistec.go.html#line-31">nistCurve</a> <i><a href="#name-nistCurve">nistCurve</a>[*<a href="internal/nistec.html">nistec</a>.<a href="internal/nistec.html#name-P256Point">P256Point</a>]</i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/crypto/elliptic/nistec.go.html#line-31" class="path-duplicate">nistCurve</a>.<a href="../../src/crypto/elliptic/nistec.go.html#line-111">newPoint</a> <i>func() *<a href="internal/nistec.html">nistec</a>.<a href="internal/nistec.html#name-P256Point">P256Point</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../src/crypto/elliptic/nistec.go.html#line-31" class="path-duplicate">nistCurve</a>.<a href="../../src/crypto/elliptic/nistec.go.html#line-112">params</a> <i>*<a href="#name-CurveParams">CurveParams</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="p256Curve-fold-methods"><label for="p256Curve-fold-methods">Methods (<i>total 13, in which 10 are exported</i>)</label><span id='p256Curve-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">(*p256Curve) <a href="../../src/crypto/elliptic/nistec.go.html#line-174">Add</a>(x1, y1, x2, y2 *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>) (*<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>, *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>)</span></span><span>
+			<input type='checkbox' class="fold" id="p256Curve-fold-method-CombinedMult"><label for="p256Curve-fold-method-CombinedMult">(*p256Curve) <a href="../../src/crypto/elliptic/nistec.go.html#line-233">CombinedMult</a>(Px, Py *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>, s1, s2 []<a href="../builtin.html#name-byte">byte</a>) (x, y *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>)</label><span id='p256Curve-fold-method-CombinedMult-docs' class="fold-docs">
+<span class="md-text">				CombinedMult returns [s1]G + [s2]P where G is the generator. It's used
+				through an interface upgrade in crypto/ecdsa.</span>
+</span></span><span>
+			<span class="nodocs">(*p256Curve) <a href="../../src/crypto/elliptic/nistec.go.html#line-186">Double</a>(x1, y1 *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>) (*<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>, *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>)</span></span><span>
+			<span class="nodocs">( p256Curve) <a href="../../src/crypto/elliptic/nistec_p256.go.html#line-14">Inverse</a>(k *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>) *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a></span></span><span>
+			<span class="nodocs">(*p256Curve) <a href="../../src/crypto/elliptic/nistec.go.html#line-129">IsOnCurve</a>(x, y *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>) <a href="../builtin.html#name-bool">bool</a></span></span><span>
+			<span class="nodocs">(*p256Curve) <a href="../../src/crypto/elliptic/nistec.go.html#line-125">Params</a>() *<a href="#name-CurveParams">CurveParams</a></span></span><span>
+			<span class="nodocs">(*p256Curve) <a href="../../src/crypto/elliptic/nistec.go.html#line-222">ScalarBaseMult</a>(scalar []<a href="../builtin.html#name-byte">byte</a>) (*<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>, *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>)</span></span><span>
+			<span class="nodocs">(*p256Curve) <a href="../../src/crypto/elliptic/nistec.go.html#line-209">ScalarMult</a>(Bx, By *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>, scalar []<a href="../builtin.html#name-byte">byte</a>) (*<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>, *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>)</span></span><span>
+			<span class="nodocs">(*p256Curve) <a href="../../src/crypto/elliptic/nistec.go.html#line-251">Unmarshal</a>(data []<a href="../builtin.html#name-byte">byte</a>) (x, y *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>)</span></span><span>
+			<span class="nodocs">(*p256Curve) <a href="../../src/crypto/elliptic/nistec.go.html#line-269">UnmarshalCompressed</a>(data []<a href="../builtin.html#name-byte">byte</a>) (x, y *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>)</span></span>
+			<input type='checkbox' checked class="showhide" id="p256Curve-showhide-methods"><i><label for="p256Curve-showhide-methods" class="show-inline">/* 3 unexporteds ... */</label><label for="p256Curve-showhide-methods" class="hide-inline">/* 3 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="p256Curve-fold-method-normalizeScalar"><label for="p256Curve-fold-method-normalizeScalar">(*p256Curve) <a href="../../src/crypto/elliptic/nistec.go.html#line-196">normalizeScalar</a>(scalar []<a href="../builtin.html#name-byte">byte</a>) []<a href="../builtin.html#name-byte">byte</a></label><span id='p256Curve-fold-method-normalizeScalar-docs' class="fold-docs">
+<span class="md-text">				normalizeScalar brings the scalar within the byte size of the order of the
+				curve, as expected by the nistec scalar multiplication functions.</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*p256Curve) <a href="../../src/crypto/elliptic/nistec.go.html#line-139">pointFromAffine</a>(x, y *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>) (p *<a href="internal/nistec.html">nistec</a>.<a href="internal/nistec.html#name-P256Point">P256Point</a>, err <a href="../builtin.html#name-error">error</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*p256Curve) <a href="../../src/crypto/elliptic/nistec.go.html#line-161">pointToAffine</a>(p *<a href="internal/nistec.html">nistec</a>.<a href="internal/nistec.html#name-P256Point">P256Point</a>) (x, y *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>)</span></i></span></span>
+		<input type='checkbox' class="fold" id="p256Curve-fold-impls"><label for="p256Curve-fold-impls">Implements (<i>at least 2, in which 1 is exported</i>)</label><span id='p256Curve-fold-impls-items' class="fold-items"><span>
+			*p256Curve : <a href="#name-Curve">Curve</a></span>
+			<input type='checkbox' checked class="showhide" id="p256Curve-showhide-impls"><i><label for="p256Curve-showhide-impls" class="show-inline">/* at least one unexported ... */</label><label for="p256Curve-showhide-impls" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			*p256Curve : <a href="#name-unmarshaler">unmarshaler</a></i></span></span>
+		<input type='checkbox' class="fold" id="p256Curve-fold-values"><label for="p256Curve-fold-values">As Types Of (<i>only one, which is unexported</i>)</label><span id='p256Curve-fold-values-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="p256Curve-showhide-values"><i><label for="p256Curve-showhide-values" class="show-inline">/* one unexported ... */</label><label for="p256Curve-showhide-values" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			  var <a href="#name-p256">p256</a> *p256Curve</i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-unmarshaler" data-popularity="400">	<input type='checkbox' class="fold" id="unmarshaler-fold-content"><label for="unmarshaler-fold-content"> <a href="../../use/crypto/elliptic..unmarshaler^878d1.html">type</a> <a href="../../src/crypto/elliptic/elliptic.go.html#line-139">unmarshaler</a> <b><i>(interface)</i></b></label><span id='unmarshaler-fold-content-docs' class="fold-docs">
+<span class="md-text">		unmarshaler is implemented by curves with their own constant-time Unmarshal.
+		
+		There isn't an equivalent interface for Marshal/MarshalCompressed because
+		that doesn't involve any mathematical operations, only FillBytes and Bit.</span>
+
+		<input type='checkbox' class="fold" id="unmarshaler-fold-methods"><label for="unmarshaler-fold-methods">Methods (<i>total 2, both are exported</i>)</label><span id='unmarshaler-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( unmarshaler) <a href="../../src/crypto/elliptic/elliptic.go.html#line-140">Unmarshal</a>([]<a href="../builtin.html#name-byte">byte</a>) (x, y *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>)</span></span><span>
+			<span class="nodocs">( unmarshaler) <a href="../../src/crypto/elliptic/elliptic.go.html#line-141">UnmarshalCompressed</a>([]<a href="../builtin.html#name-byte">byte</a>) (x, y *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>)</span></span></span>
+		<input type='checkbox' class="fold" id="unmarshaler-fold-impledby"><label for="unmarshaler-fold-impledby">Implemented By (<i>at least 2, neither is exported</i>)</label><span id='unmarshaler-fold-impledby-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="unmarshaler-showhide-impedBys"><i><label for="unmarshaler-showhide-impedBys" class="show-inline">/* 2+ unexporteds ... */</label><label for="unmarshaler-showhide-impedBys" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			*<a href="#name-nistCurve">nistCurve</a>[...]</i></span><span class="hidden"><i>
+			*<a href="#name-p256Curve">p256Curve</a></i></span></span>
+
+</span></div></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 19, in which 9 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-GenerateKey">	<input type='checkbox' class="fold" id="GenerateKey-fold-content"><label for="GenerateKey-fold-content"> <a href="../../use/crypto/elliptic..GenerateKey.html">func</a> <a href="../../src/crypto/elliptic/elliptic.go.html#line-75">GenerateKey</a>(curve <a href="#name-Curve">Curve</a>, rand <a href="../io.html">io</a>.<a href="../io.html#name-Reader">Reader</a>) (priv []<a href="../builtin.html#name-byte">byte</a>, x, y *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>, err <a href="../builtin.html#name-error">error</a>)</label><span id='GenerateKey-fold-content-docs' class="fold-docs">
+<span class="md-text">		GenerateKey returns a public/private key pair. The private key is
+		generated using the given reader, which must return random data.
+		
+		Deprecated: for ECDH, use the GenerateKey methods of the [crypto/ecdh] package;
+		for ECDSA, use the GenerateKey function of the crypto/ecdsa package.</span>
+
+</span></div><div class="anchor value-res" id="name-Marshal">	<input type='checkbox' class="fold" id="Marshal-fold-content"><label for="Marshal-fold-content"> <a href="../../use/crypto/elliptic..Marshal.html">func</a> <a href="../../src/crypto/elliptic/elliptic.go.html#line-109">Marshal</a>(curve <a href="#name-Curve">Curve</a>, x, y *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>) []<a href="../builtin.html#name-byte">byte</a></label><span id='Marshal-fold-content-docs' class="fold-docs">
+<span class="md-text">		Marshal converts a point on the curve into the uncompressed form specified in
+		SEC 1, Version 2.0, Section 2.3.3. If the point is not on the curve (or is
+		the conventional point at infinity), the behavior is undefined.
+		
+		Deprecated: for ECDH, use the crypto/ecdh package. This function returns an
+		encoding equivalent to that of PublicKey.Bytes in crypto/ecdh.</span>
+
+</span></div><div class="anchor value-res" id="name-MarshalCompressed">	<input type='checkbox' class="fold" id="MarshalCompressed-fold-content"><label for="MarshalCompressed-fold-content"> <a href="../../use/crypto/elliptic..MarshalCompressed.html">func</a> <a href="../../src/crypto/elliptic/elliptic.go.html#line-126">MarshalCompressed</a>(curve <a href="#name-Curve">Curve</a>, x, y *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>) []<a href="../builtin.html#name-byte">byte</a></label><span id='MarshalCompressed-fold-content-docs' class="fold-docs">
+<span class="md-text">		MarshalCompressed converts a point on the curve into the compressed form
+		specified in SEC 1, Version 2.0, Section 2.3.3. If the point is not on the
+		curve (or is the conventional point at infinity), the behavior is undefined.</span>
+
+</span></div><div class="anchor value-res" id="name-P224">	<input type='checkbox' class="fold" id="P224-fold-content"><label for="P224-fold-content"> <a href="../../use/crypto/elliptic..P224.html">func</a> <a href="../../src/crypto/elliptic/elliptic.go.html#line-240">P224</a>() <a href="#name-Curve">Curve</a></label><span id='P224-fold-content-docs' class="fold-docs">
+<span class="md-text">		P224 returns a [Curve] which implements NIST P-224 (FIPS 186-3, section D.2.2),
+		also known as secp224r1. The CurveParams.Name of this [Curve] is "P-224".
+		
+		Multiple invocations of this function will return the same value, so it can
+		be used for equality checks and switch statements.
+		
+		The cryptographic operations are implemented using constant-time algorithms.</span>
+
+</span></div><div class="anchor value-res" id="name-P256">	<input type='checkbox' class="fold" id="P256-fold-content"><label for="P256-fold-content"> <a href="../../use/crypto/elliptic..P256.html">func</a> <a href="../../src/crypto/elliptic/elliptic.go.html#line-253">P256</a>() <a href="#name-Curve">Curve</a></label><span id='P256-fold-content-docs' class="fold-docs">
+<span class="md-text">		P256 returns a [Curve] which implements NIST P-256 (FIPS 186-3, section D.2.3),
+		also known as secp256r1 or prime256v1. The CurveParams.Name of this [Curve] is
+		"P-256".
+		
+		Multiple invocations of this function will return the same value, so it can
+		be used for equality checks and switch statements.
+		
+		The cryptographic operations are implemented using constant-time algorithms.</span>
+
+</span></div><div class="anchor value-res" id="name-P384">	<input type='checkbox' class="fold" id="P384-fold-content"><label for="P384-fold-content"> <a href="../../use/crypto/elliptic..P384.html">func</a> <a href="../../src/crypto/elliptic/elliptic.go.html#line-265">P384</a>() <a href="#name-Curve">Curve</a></label><span id='P384-fold-content-docs' class="fold-docs">
+<span class="md-text">		P384 returns a [Curve] which implements NIST P-384 (FIPS 186-3, section D.2.4),
+		also known as secp384r1. The CurveParams.Name of this [Curve] is "P-384".
+		
+		Multiple invocations of this function will return the same value, so it can
+		be used for equality checks and switch statements.
+		
+		The cryptographic operations are implemented using constant-time algorithms.</span>
+
+</span></div><div class="anchor value-res" id="name-P521">	<input type='checkbox' class="fold" id="P521-fold-content"><label for="P521-fold-content"> <a href="../../use/crypto/elliptic..P521.html">func</a> <a href="../../src/crypto/elliptic/elliptic.go.html#line-277">P521</a>() <a href="#name-Curve">Curve</a></label><span id='P521-fold-content-docs' class="fold-docs">
+<span class="md-text">		P521 returns a [Curve] which implements NIST P-521 (FIPS 186-3, section D.2.5),
+		also known as secp521r1. The CurveParams.Name of this [Curve] is "P-521".
+		
+		Multiple invocations of this function will return the same value, so it can
+		be used for equality checks and switch statements.
+		
+		The cryptographic operations are implemented using constant-time algorithms.</span>
+
+</span></div><div class="anchor value-res" id="name-Unmarshal">	<input type='checkbox' class="fold" id="Unmarshal-fold-content"><label for="Unmarshal-fold-content"> <a href="../../use/crypto/elliptic..Unmarshal.html">func</a> <a href="../../src/crypto/elliptic/elliptic.go.html#line-153">Unmarshal</a>(curve <a href="#name-Curve">Curve</a>, data []<a href="../builtin.html#name-byte">byte</a>) (x, y *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>)</label><span id='Unmarshal-fold-content-docs' class="fold-docs">
+<span class="md-text">		Unmarshal converts a point, serialized by [Marshal], into an x, y pair. It is
+		an error if the point is not in uncompressed form, is not on the curve, or is
+		the point at infinity. On error, x = nil.
+		
+		Deprecated: for ECDH, use the crypto/ecdh package. This function accepts an
+		encoding equivalent to that of the NewPublicKey methods in crypto/ecdh.</span>
+
+</span></div><div class="anchor value-res" id="name-UnmarshalCompressed">	<input type='checkbox' class="fold" id="UnmarshalCompressed-fold-content"><label for="UnmarshalCompressed-fold-content"> <a href="../../use/crypto/elliptic..UnmarshalCompressed.html">func</a> <a href="../../src/crypto/elliptic/elliptic.go.html#line-180">UnmarshalCompressed</a>(curve <a href="#name-Curve">Curve</a>, data []<a href="../builtin.html#name-byte">byte</a>) (x, y *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>)</label><span id='UnmarshalCompressed-fold-content-docs' class="fold-docs">
+<span class="md-text">		UnmarshalCompressed converts a point, serialized by [MarshalCompressed], into
+		an x, y pair. It is an error if the point is not in compressed form, is not
+		on the curve, or is the point at infinity. On error, x = nil.</span>
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-functions-showhide"><i><label for="unexported-functions-showhide" class="show-inline">/* 10 unexporteds ... */</label><label for="unexported-functions-showhide" class="hide-inline">/* 10 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-bigFromDecimal"><i>	<span class="nodocs"> <a href="../../use/crypto/elliptic..bigFromDecimal^1726c.html">func</a> <a href="../../src/crypto/elliptic/nistec.go.html#line-280">bigFromDecimal</a>(s <a href="../builtin.html#name-string">string</a>) *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a></span></i></div><div class="anchor value-res hidden" id="name-bigFromHex"><i>	<span class="nodocs"> <a href="../../use/crypto/elliptic..bigFromHex^ac51b.html">func</a> <a href="../../src/crypto/elliptic/nistec.go.html#line-288">bigFromHex</a>(s <a href="../builtin.html#name-string">string</a>) *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a></span></i></div><div class="anchor value-res hidden" id="name-initAll"><i>	<span class="nodocs"> <a href="../../use/crypto/elliptic..initAll^917d3.html">func</a> <a href="../../src/crypto/elliptic/elliptic.go.html#line-226">initAll</a>()</span></i></div><div class="anchor value-res hidden" id="name-initP224"><i>	<span class="nodocs"> <a href="../../use/crypto/elliptic..initP224^64d84.html">func</a> <a href="../../src/crypto/elliptic/nistec.go.html#line-17">initP224</a>()</span></i></div><div class="anchor value-res hidden" id="name-initP256"><i>	<span class="nodocs"> <a href="../../use/crypto/elliptic..initP256^fe1b7.html">func</a> <a href="../../src/crypto/elliptic/nistec.go.html#line-38">initP256</a>()</span></i></div><div class="anchor value-res hidden" id="name-initP384"><i>	<span class="nodocs"> <a href="../../use/crypto/elliptic..initP384^ea96d.html">func</a> <a href="../../src/crypto/elliptic/nistec.go.html#line-55">initP384</a>()</span></i></div><div class="anchor value-res hidden" id="name-initP521"><i>	<span class="nodocs"> <a href="../../use/crypto/elliptic..initP521^6b8d8.html">func</a> <a href="../../src/crypto/elliptic/nistec.go.html#line-77">initP521</a>()</span></i></div><div class="anchor value-res hidden" id="name-matchesSpecificCurve"><i>	<span class="nodocs"> <a href="../../use/crypto/elliptic..matchesSpecificCurve^7be2c.html">func</a> <a href="../../src/crypto/elliptic/params.go.html#line-327">matchesSpecificCurve</a>(params *<a href="#name-CurveParams">CurveParams</a>) (<a href="#name-Curve">Curve</a>, <a href="../builtin.html#name-bool">bool</a>)</span></i></div><div class="anchor value-res hidden" id="name-panicIfNotOnCurve"><i>	<span class="nodocs"> <a href="../../use/crypto/elliptic..panicIfNotOnCurve^aa8a2.html">func</a> <a href="../../src/crypto/elliptic/elliptic.go.html#line-212">panicIfNotOnCurve</a>(curve <a href="#name-Curve">Curve</a>, x, y *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>)</span></i></div><div class="anchor value-res hidden" id="name-zForAffine"><i>	<input type='checkbox' class="fold" id="zForAffine-fold-content"><label for="zForAffine-fold-content"> <a href="../../use/crypto/elliptic..zForAffine^bdb1a.html">func</a> <a href="../../src/crypto/elliptic/params.go.html#line-78">zForAffine</a>(x, y *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>) *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a></label><span id='zForAffine-fold-content-docs' class="fold-docs">
+<span class="md-text">		zForAffine returns a Jacobian Z value for the affine point (x, y). If x and
+		y are zero, it assumes that they represent the point at infinity because (0,
+		0) is not on the any of the curves handled here.</span>
+
+</span></i></div></div>
+<div id="exported-variables"><span class="title">Package-Level Variables<span class="title-stat"><i> (total 6, none are exported)</i></span></span>
+
+	<input type='checkbox' class="showhide" id="unexported-variables-showhide"><i><label for="unexported-variables-showhide" class="show-inline">/* 6 unexporteds ... */</label><label for="unexported-variables-showhide" class="hide-inline">/* 6 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-initonce"><i>	<span class="nodocs">  <a href="../../use/crypto/elliptic..initonce^f84ec.html">var</a> <a href="../../src/crypto/elliptic/elliptic.go.html#line-224">initonce</a> <a href="../sync.html">sync</a>.<a href="../sync.html#name-Once">Once</a></span></i></div><div class="anchor value-res hidden" id="name-mask"><i>	<span class="nodocs">  <a href="../../use/crypto/elliptic..mask^48bf9.html">var</a> <a href="../../src/crypto/elliptic/elliptic.go.html#line-68">mask</a> []<a href="../builtin.html#name-byte">byte</a></span></i></div><div class="anchor value-res hidden" id="name-p224"><i>	<span class="nodocs">  <a href="../../use/crypto/elliptic..p224^a20f7.html">var</a> <a href="../../src/crypto/elliptic/nistec.go.html#line-13">p224</a> *<a href="#name-nistCurve">nistCurve</a>[...]</span></i></div><div class="anchor value-res hidden" id="name-p256"><i>	<span class="nodocs">  <a href="../../use/crypto/elliptic..p256^7985e.html">var</a> <a href="../../src/crypto/elliptic/nistec.go.html#line-34">p256</a> *<a href="#name-p256Curve">p256Curve</a></span></i></div><div class="anchor value-res hidden" id="name-p384"><i>	<span class="nodocs">  <a href="../../use/crypto/elliptic..p384^d7c2e.html">var</a> <a href="../../src/crypto/elliptic/nistec.go.html#line-51">p384</a> *<a href="#name-nistCurve">nistCurve</a>[...]</span></i></div><div class="anchor value-res hidden" id="name-p521"><i>	<span class="nodocs">  <a href="../../use/crypto/elliptic..p521^f2fd3.html">var</a> <a href="../../src/crypto/elliptic/nistec.go.html#line-73">p521</a> *<a href="#name-nistCurve">nistCurve</a>[...]</span></i></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

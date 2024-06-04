@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: math/bits.Sub</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../../pkg/math/bits.html">math/bits</a>.<a href="../../src/math/bits/bits.go.html#line-402">Sub</a></b></span>
+
+<span class="title">12 uses</span>
+
+	math/bits (current package)
+		<a href="../../src/math/bits/bits.go.html#line-402">bits.go#L402</a>: func <b>Sub</b>(x, y, borrow uint) (diff, borrowOut uint) {
+
+	<a href="../../pkg/math/big.html">math/big</a>
+		<a href="../../src/math/big/arith.go.html#line-78">arith.go#L78</a>: 		zi, cc := bits.<b>Sub</b>(uint(x[i]), uint(y[i]), uint(c))
+		<a href="../../src/math/big/arith.go.html#line-123" class="path-duplicate">arith.go</a><a href="../../src/math/big/arith.go.html#line-123">#L123</a>: 		zi, cc := bits.<b>Sub</b>(uint(x[i]), uint(c), 0)
+		<a href="../../src/math/big/arith.go.html#line-139" class="path-duplicate">arith.go</a><a href="../../src/math/big/arith.go.html#line-139">#L139</a>: 		zi, cc := bits.<b>Sub</b>(uint(x[i]), uint(c), 0)
+		<a href="../../src/math/big/arith.go.html#line-239" class="path-duplicate">arith.go</a><a href="../../src/math/big/arith.go.html#line-239">#L239</a>: 	r0, b := bits.<b>Sub</b>(uint(x0), dq0, 0)
+		<a href="../../src/math/big/arith.go.html#line-240" class="path-duplicate">arith.go</a><a href="../../src/math/big/arith.go.html#line-240">#L240</a>: 	r1, _ := bits.<b>Sub</b>(uint(x1), dq1, b)
+
+	<a href="../../pkg/crypto/internal/bigmod.html">crypto/internal/bigmod</a>
+		<a href="../../src/crypto/internal/bigmod/nat.go.html#line-38">nat.go#L38</a>: 	_, c1 := bits.<b>Sub</b>(x, y, 0)
+		<a href="../../src/crypto/internal/bigmod/nat.go.html#line-39" class="path-duplicate">nat.go</a><a href="../../src/crypto/internal/bigmod/nat.go.html#line-39">#L39</a>: 	_, c2 := bits.<b>Sub</b>(y, x, 0)
+		<a href="../../src/crypto/internal/bigmod/nat.go.html#line-47" class="path-duplicate">nat.go</a><a href="../../src/crypto/internal/bigmod/nat.go.html#line-47">#L47</a>: 	_, carry := bits.<b>Sub</b>(x, y, 0)
+		<a href="../../src/crypto/internal/bigmod/nat.go.html#line-248" class="path-duplicate">nat.go</a><a href="../../src/crypto/internal/bigmod/nat.go.html#line-248">#L248</a>: 		_, c = bits.<b>Sub</b>(xLimbs[i], yLimbs[i], c)
+		<a href="../../src/crypto/internal/bigmod/nat.go.html#line-296" class="path-duplicate">nat.go</a><a href="../../src/crypto/internal/bigmod/nat.go.html#line-296">#L296</a>: 		xLimbs[i], c = bits.<b>Sub</b>(xLimbs[i], yLimbs[i], c)
+		<a href="../../src/crypto/internal/bigmod/nat.go.html#line-458" class="path-duplicate">nat.go</a><a href="../../src/crypto/internal/bigmod/nat.go.html#line-458">#L458</a>: 			dLimbs[i], borrow = bits.<b>Sub</b>(xLimbs[i], mLimbs[i], borrow)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

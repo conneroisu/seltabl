@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: syscall.NetlinkRouteAttr.Value</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/syscall.html">syscall</a>.<a href="../src/syscall/netlink_linux.go.html#line-149">NetlinkRouteAttr</a>.<a href="../src/syscall/netlink_linux.go.html#line-151">Value</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">13 uses</span>
+
+	syscall (current package)
+		<a href="../src/syscall/netlink_linux.go.html#line-151">netlink_linux.go#L151</a>: 	<b>Value</b> []byte
+		<a href="../src/syscall/netlink_linux.go.html#line-175" class="path-duplicate">netlink_linux.go</a><a href="../src/syscall/netlink_linux.go.html#line-175">#L175</a>: 		ra := NetlinkRouteAttr{Attr: *a, <b>Value</b>: vbuf[:int(a.Len)-SizeofRtAttr]}
+
+	<a href="../pkg/net.html">net</a>
+		<a href="../src/net/interface_linux.go.html#line-66">interface_linux.go#L66</a>: 			switch len(a.<b>Value</b>) {
+		<a href="../src/net/interface_linux.go.html#line-79" class="path-duplicate">interface_linux.go</a><a href="../src/net/interface_linux.go.html#line-79">#L79</a>: 			for _, b := range a.<b>Value</b> {
+		<a href="../src/net/interface_linux.go.html#line-86" class="path-duplicate">interface_linux.go</a><a href="../src/net/interface_linux.go.html#line-86">#L86</a>: 				ifi.HardwareAddr = a.<b>Value</b>[:]
+		<a href="../src/net/interface_linux.go.html#line-89" class="path-duplicate">interface_linux.go</a><a href="../src/net/interface_linux.go.html#line-89">#L89</a>: 			ifi.Name = string(a.<b>Value</b>[:len(a.<b>Value</b>)-1])
+		<a href="../src/net/interface_linux.go.html#line-91" class="path-duplicate">interface_linux.go</a><a href="../src/net/interface_linux.go.html#line-91">#L91</a>: 			ifi.MTU = int(*(*uint32)(unsafe.Pointer(&amp;a.<b>Value</b>[:4][0])))
+		<a href="../src/net/interface_linux.go.html#line-195" class="path-duplicate">interface_linux.go</a><a href="../src/net/interface_linux.go.html#line-195">#L195</a>: 			return &amp;IPNet{IP: IPv4(a.<b>Value</b>[0], a.<b>Value</b>[1], a.<b>Value</b>[2], a.<b>Value</b>[3]), Mask: CIDRMask(int(ifam.Prefixlen), 8*IPv4len)}
+		<a href="../src/net/interface_linux.go.html#line-198" class="path-duplicate">interface_linux.go</a><a href="../src/net/interface_linux.go.html#line-198">#L198</a>: 			copy(ifa.IP, a.<b>Value</b>[:])
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/tls.pskIdentity.label</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/crypto/tls.html">crypto/tls</a>.<a href="../../src/crypto/tls/common.go.html#line-161">pskIdentity</a>.<a href="../../src/crypto/tls/common.go.html#line-162">label</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">7 uses</span>
+
+	crypto/tls (current package)
+		<a href="../../src/crypto/tls/common.go.html#line-162">common.go#L162</a>: 	<b>label</b>               []byte
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-394">handshake_client.go#L394</a>: 		<b>label</b>:               cs.ticket,
+		<a href="../../src/crypto/tls/handshake_messages.go.html#line-270">handshake_messages.go#L270</a>: 						exts.AddBytes(psk.<b>label</b>)
+		<a href="../../src/crypto/tls/handshake_messages.go.html#line-596" class="path-duplicate">handshake_messages.go</a><a href="../../src/crypto/tls/handshake_messages.go.html#line-596">#L596</a>: 				if !readUint16LengthPrefixed(&amp;identities, &amp;psk.<b>label</b>) ||
+		<a href="../../src/crypto/tls/handshake_messages.go.html#line-598" class="path-duplicate">handshake_messages.go</a><a href="../../src/crypto/tls/handshake_messages.go.html#line-598">#L598</a>: 					len(psk.<b>label</b>) == 0 {
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-301">handshake_server_tls13.go#L301</a>: 			sessionState, err = c.config.UnwrapSession(identity.<b>label</b>, c.connectionStateLocked())
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-309" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-309">#L309</a>: 			plaintext := c.config.decryptTicket(identity.<b>label</b>, c.ticketKeys)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

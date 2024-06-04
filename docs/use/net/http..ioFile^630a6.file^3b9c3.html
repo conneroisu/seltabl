@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/http.ioFile.file</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/net/http.html">net/http</a>.<a href="../../src/net/http/fs.go.html#line-825">ioFile</a>.<a href="../../src/net/http/fs.go.html#line-826">file</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">7 uses</span>
+
+	net/http (current package)
+		<a href="../../src/net/http/fs.go.html#line-826">fs.go#L826</a>: 	<b>file</b> fs.File
+		<a href="../../src/net/http/fs.go.html#line-844" class="path-duplicate">fs.go</a><a href="../../src/net/http/fs.go.html#line-844">#L844</a>: func (f ioFile) Close() error               { return f.<b>file</b>.Close() }
+		<a href="../../src/net/http/fs.go.html#line-845" class="path-duplicate">fs.go</a><a href="../../src/net/http/fs.go.html#line-845">#L845</a>: func (f ioFile) Read(b []byte) (int, error) { return f.<b>file</b>.Read(b) }
+		<a href="../../src/net/http/fs.go.html#line-846" class="path-duplicate">fs.go</a><a href="../../src/net/http/fs.go.html#line-846">#L846</a>: func (f ioFile) Stat() (fs.FileInfo, error) { return f.<b>file</b>.Stat() }
+		<a href="../../src/net/http/fs.go.html#line-852" class="path-duplicate">fs.go</a><a href="../../src/net/http/fs.go.html#line-852">#L852</a>: 	s, ok := f.<b>file</b>.(io.Seeker)
+		<a href="../../src/net/http/fs.go.html#line-860" class="path-duplicate">fs.go</a><a href="../../src/net/http/fs.go.html#line-860">#L860</a>: 	d, ok := f.<b>file</b>.(fs.ReadDirFile)
+		<a href="../../src/net/http/fs.go.html#line-868" class="path-duplicate">fs.go</a><a href="../../src/net/http/fs.go.html#line-868">#L868</a>: 	d, ok := f.<b>file</b>.(fs.ReadDirFile)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/http.Transport</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../pkg/net/http.html">net/http</a>.<a href="../../src/net/http/transport.go.html#line-95">Transport</a></b></span>
+
+<span class="title">41 uses</span>
+
+	net/http (current package)
+		<a href="../../src/net/http/client.go.html#line-322">client.go#L322</a>: 	case *<b>Transport</b>:
+		<a href="../../src/net/http/h2_bundle.go.html#line-7242">h2_bundle.go#L7242</a>: 	t1 *<b>Transport</b>
+		<a href="../../src/net/http/h2_bundle.go.html#line-7287" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-7287">#L7287</a>: func http2ConfigureTransport(t1 *<b>Transport</b>) error {
+		<a href="../../src/net/http/h2_bundle.go.html#line-7295" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-7295">#L7295</a>: func http2ConfigureTransports(t1 *<b>Transport</b>) (*http2Transport, error) {
+		<a href="../../src/net/http/h2_bundle.go.html#line-7299" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-7299">#L7299</a>: func http2configureTransports(t1 *<b>Transport</b>) (*http2Transport, error) {
+		<a href="../../src/net/http/h2_bundle.go.html#line-10189" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-10189">#L10189</a>: func http2registerHTTPSProtocol(t *<b>Transport</b>, rt http2noDialH2RoundTripper) (err error) {
+		<a href="../../src/net/http/roundtrip.go.html#line-16">roundtrip.go#L16</a>: func (t *<b>Transport</b>) RoundTrip(req *Request) (*Response, error) {
+		<a href="../../src/net/http/transport.go.html#line-43">transport.go#L43</a>: var DefaultTransport RoundTripper = &amp;<b>Transport</b>{
+		<a href="../../src/net/http/transport.go.html#line-95" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-95">#L95</a>: type <b>Transport</b> struct {
+		<a href="../../src/net/http/transport.go.html#line-302" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-302">#L302</a>: func (t *<b>Transport</b>) writeBufferSize() int {
+		<a href="../../src/net/http/transport.go.html#line-309" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-309">#L309</a>: func (t *<b>Transport</b>) readBufferSize() int {
+		<a href="../../src/net/http/transport.go.html#line-317" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-317">#L317</a>: func (t *<b>Transport</b>) Clone() *<b>Transport</b> {
+		<a href="../../src/net/http/transport.go.html#line-319" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-319">#L319</a>: 	t2 := &amp;<b>Transport</b>{
+		<a href="../../src/net/http/transport.go.html#line-365" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-365">#L365</a>: func (t *<b>Transport</b>) hasCustomTLSDialer() bool {
+		<a href="../../src/net/http/transport.go.html#line-373" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-373">#L373</a>: func (t *<b>Transport</b>) onceSetNextProtoDefaults() {
+		<a href="../../src/net/http/transport.go.html#line-494" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-494">#L494</a>: func (t *<b>Transport</b>) useRegisteredProtocol(req *Request) bool {
+		<a href="../../src/net/http/transport.go.html#line-508" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-508">#L508</a>: func (t *<b>Transport</b>) alternateRoundTripper(req *Request) RoundTripper {
+		<a href="../../src/net/http/transport.go.html#line-517" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-517">#L517</a>: func (t *<b>Transport</b>) roundTrip(req *Request) (*Response, error) {
+		<a href="../../src/net/http/transport.go.html#line-764" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-764">#L764</a>: func (t *<b>Transport</b>) RegisterProtocol(scheme string, rt RoundTripper) {
+		<a href="../../src/net/http/transport.go.html#line-783" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-783">#L783</a>: func (t *<b>Transport</b>) CloseIdleConnections() {
+		<a href="../../src/net/http/transport.go.html#line-807" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-807">#L807</a>: func (t *<b>Transport</b>) CancelRequest(req *Request) {
+		<a href="../../src/net/http/transport.go.html#line-813" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-813">#L813</a>: func (t *<b>Transport</b>) cancelRequest(key cancelKey, err error) bool {
+		<a href="../../src/net/http/transport.go.html#line-851" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-851">#L851</a>: func (t *<b>Transport</b>) connectMethodForRequest(treq *transportRequest) (cm connectMethod, err error) {
+		<a href="../../src/net/http/transport.go.html#line-911" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-911">#L911</a>: func (t *<b>Transport</b>) putOrCloseIdleConn(pconn *persistConn) {
+		<a href="../../src/net/http/transport.go.html#line-917" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-917">#L917</a>: func (t *<b>Transport</b>) maxIdleConnsPerHost() int {
+		<a href="../../src/net/http/transport.go.html#line-929" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-929">#L929</a>: func (t *<b>Transport</b>) tryPutIdleConn(pconn *persistConn) error {
+		<a href="../../src/net/http/transport.go.html#line-1025" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-1025">#L1025</a>: func (t *<b>Transport</b>) queueForIdleConn(w *wantConn) (delivered bool) {
+		<a href="../../src/net/http/transport.go.html#line-1112" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-1112">#L1112</a>: func (t *<b>Transport</b>) removeIdleConn(pconn *persistConn) bool {
+		<a href="../../src/net/http/transport.go.html#line-1119" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-1119">#L1119</a>: func (t *<b>Transport</b>) removeIdleConnLocked(pconn *persistConn) bool {
+		<a href="../../src/net/http/transport.go.html#line-1151" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-1151">#L1151</a>: func (t *<b>Transport</b>) setReqCanceler(key cancelKey, fn func(error)) {
+		<a href="../../src/net/http/transport.go.html#line-1168" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-1168">#L1168</a>: func (t *<b>Transport</b>) replaceReqCanceler(key cancelKey, fn func(error)) bool {
+		<a href="../../src/net/http/transport.go.html#line-1185" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-1185">#L1185</a>: func (t *<b>Transport</b>) dial(ctx context.Context, network, addr string) (net.Conn, error) {
+		<a href="../../src/net/http/transport.go.html#line-1264" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-1264">#L1264</a>: func (w *wantConn) cancel(t *<b>Transport</b>, err error) {
+		<a href="../../src/net/http/transport.go.html#line-1346" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-1346">#L1346</a>: func (t *<b>Transport</b>) customDialTLS(ctx context.Context, network, addr string) (conn net.Conn, err error) {
+		<a href="../../src/net/http/transport.go.html#line-1362" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-1362">#L1362</a>: func (t *<b>Transport</b>) getConn(treq *transportRequest, cm connectMethod) (pc *persistConn, err error) {
+		<a href="../../src/net/http/transport.go.html#line-1446" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-1446">#L1446</a>: func (t *<b>Transport</b>) queueForDial(w *wantConn) {
+		<a href="../../src/net/http/transport.go.html#line-1477" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-1477">#L1477</a>: func (t *<b>Transport</b>) dialConnFor(w *wantConn) {
+		<a href="../../src/net/http/transport.go.html#line-1500" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-1500">#L1500</a>: func (t *<b>Transport</b>) decConnsPerHost(key connectMethodKey) {
+		<a href="../../src/net/http/transport.go.html#line-1604" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-1604">#L1604</a>: func (t *<b>Transport</b>) dialConn(ctx context.Context, cm connectMethod) (pconn *persistConn, err error) {
+		<a href="../../src/net/http/transport.go.html#line-1926" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-1926">#L1926</a>: 	t         *<b>Transport</b>
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

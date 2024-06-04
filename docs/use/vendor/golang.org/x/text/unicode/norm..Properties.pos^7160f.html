@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: vendor/golang.org/x/text/unicode/norm.Properties.pos</title>
+<link href="../../../../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../../../../../pkg/vendor/golang.org/x/text/unicode/norm.html">vendor/golang.org/x/text/unicode/norm</a>.<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/forminfo.go.html#line-40">Properties</a>.<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/forminfo.go.html#line-41">pos</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">15 uses</span>
+
+	vendor/golang.org/x/text/unicode/norm (current package)
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/composition.go.html#line-151">composition.go#L151</a>: 		start := rb.rune[i].<b>pos</b>
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/composition.go.html#line-161" class="path-duplicate">composition.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/composition.go.html#line-161">#L161</a>: 		start := rb.rune[i].<b>pos</b>
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/composition.go.html#line-175" class="path-duplicate">composition.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/composition.go.html#line-175">#L175</a>: 		p += copy(buf[p:], rb.byte[runep.<b>pos</b>:runep.<b>pos</b>+runep.size])
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/composition.go.html#line-200" class="path-duplicate">composition.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/composition.go.html#line-200">#L200</a>: 	info.<b>pos</b> = pos
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/composition.go.html#line-282" class="path-duplicate">composition.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/composition.go.html#line-282">#L282</a>: 	rb.rune[rb.nrune] = Properties{<b>pos</b>: bn, size: uint8(sz)}
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/composition.go.html#line-288" class="path-duplicate">composition.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/composition.go.html#line-288">#L288</a>: 	bn := rb.rune[pos].<b>pos</b>
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/composition.go.html#line-290" class="path-duplicate">composition.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/composition.go.html#line-290">#L290</a>: 	rb.rune[pos] = Properties{<b>pos</b>: bn, size: uint8(sz)}
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/composition.go.html#line-296" class="path-duplicate">composition.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/composition.go.html#line-296">#L296</a>: 	r, _ := utf8.DecodeRune(rb.byte[inf.<b>pos</b> : inf.<b>pos</b>+inf.size])
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/composition.go.html#line-304" class="path-duplicate">composition.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/composition.go.html#line-304">#L304</a>: 	return rb.byte[inf.<b>pos</b> : int(inf.<b>pos</b>)+int(inf.size)]
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/forminfo.go.html#line-41">forminfo.go#L41</a>: 	<b>pos</b>   uint8  // start position in reorderBuffer; used in composition.go
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/normalize.go.html#line-99">normalize.go#L99</a>: 		p := info.<b>pos</b>
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/normalize.go.html#line-126" class="path-duplicate">normalize.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/normalize.go.html#line-126">#L126</a>: 			p := info.<b>pos</b>
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

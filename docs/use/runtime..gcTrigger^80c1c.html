@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.gcTrigger</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/mgc.go.html#line-540">gcTrigger</a></b></span>
+
+<span class="title">9 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/arena.go.html#line-634">arena.go#L634</a>: 	if t := (<b>gcTrigger</b>{kind: gcTriggerHeap}); t.test() {
+		<a href="../src/runtime/malloc.go.html#line-1307">malloc.go#L1307</a>: 		if t := (<b>gcTrigger</b>{kind: gcTriggerHeap}); t.test() {
+		<a href="../src/runtime/mgc.go.html#line-466">mgc.go#L466</a>: 	gcStart(<b>gcTrigger</b>{kind: gcTriggerCycle, n: n + 1})
+		<a href="../src/runtime/mgc.go.html#line-540" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-540">#L540</a>: type <b>gcTrigger</b> struct {
+		<a href="../src/runtime/mgc.go.html#line-568" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-568">#L568</a>: func (t <b>gcTrigger</b>) test() bool {
+		<a href="../src/runtime/mgc.go.html#line-595" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-595">#L595</a>: func gcStart(trigger <b>gcTrigger</b>) {
+		<a href="../src/runtime/mgcpacer.go.html#line-384">mgcpacer.go#L384</a>: func (c *gcControllerState) startCycle(markStartTime int64, procs int, trigger <b>gcTrigger</b>) {
+		<a href="../src/runtime/proc.go.html#line-332">proc.go#L332</a>: 		gcStart(<b>gcTrigger</b>{kind: gcTriggerTime, now: nanotime()})
+		<a href="../src/runtime/proc.go.html#line-6077" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6077">#L6077</a>: 		if t := (<b>gcTrigger</b>{kind: gcTriggerTime, now: now}); t.test() &amp;&amp; forcegc.idle.Load() {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

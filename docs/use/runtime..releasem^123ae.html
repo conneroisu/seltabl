@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.releasem</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/runtime1.go.html#line-586">releasem</a></b></span>
+
+<span class="title">74 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/arena.go.html#line-500">arena.go#L500</a>: 		<b>releasem</b>(mp)
+		<a href="../src/runtime/arena.go.html#line-533" class="path-duplicate">arena.go</a><a href="../src/runtime/arena.go.html#line-533">#L533</a>: 	<b>releasem</b>(mp)
+		<a href="../src/runtime/arena.go.html#line-631" class="path-duplicate">arena.go</a><a href="../src/runtime/arena.go.html#line-631">#L631</a>: 	<b>releasem</b>(mp)
+		<a href="../src/runtime/arena.go.html#line-806" class="path-duplicate">arena.go</a><a href="../src/runtime/arena.go.html#line-806">#L806</a>: 	<b>releasem</b>(mp)
+		<a href="../src/runtime/cgocall.go.html#line-441">cgocall.go#L441</a>: 		<b>releasem</b>(mp)
+		<a href="../src/runtime/malloc.go.html#line-1113">malloc.go#L1113</a>: 				<b>releasem</b>(mp)
+		<a href="../src/runtime/malloc.go.html#line-1271" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-1271">#L1271</a>: 	<b>releasem</b>(mp)
+		<a href="../src/runtime/malloc.go.html#line-1591" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-1591">#L1591</a>: 	<b>releasem</b>(mp)
+		<a href="../src/runtime/mgc.go.html#line-502">mgc.go#L502</a>: 	<b>releasem</b>(mp)
+		<a href="../src/runtime/mgc.go.html#line-602" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-602">#L602</a>: 		<b>releasem</b>(mp)
+		<a href="../src/runtime/mgc.go.html#line-605" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-605">#L605</a>: 	<b>releasem</b>(mp)
+		<a href="../src/runtime/mgc.go.html#line-764" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-764">#L764</a>: 	<b>releasem</b>(mp)
+		<a href="../src/runtime/mgc.go.html#line-1213" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1213">#L1213</a>: 	<b>releasem</b>(mp)
+		<a href="../src/runtime/mgc.go.html#line-1329" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1329">#L1329</a>: 				<b>releasem</b>(mp)
+		<a href="../src/runtime/mgc.go.html#line-1443" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1443">#L1443</a>: 			<b>releasem</b>(node.m.ptr())
+		<a href="../src/runtime/mgclimit.go.html#line-226">mgclimit.go#L226</a>: 		<b>releasem</b>(mp)
+		<a href="../src/runtime/mheap.go.html#line-849">mheap.go#L849</a>: 	<b>releasem</b>(mp)
+		<a href="../src/runtime/mheap.go.html#line-1867" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1867">#L1867</a>: 	<b>releasem</b>(mp)
+		<a href="../src/runtime/mheap.go.html#line-1901" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1901">#L1901</a>: 	<b>releasem</b>(mp)
+		<a href="../src/runtime/mheap.go.html#line-1969" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1969">#L1969</a>: 			<b>releasem</b>(mp)
+		<a href="../src/runtime/mprof.go.html#line-742">mprof.go#L742</a>: 	<b>releasem</b>(mp)
+		<a href="../src/runtime/mprof.go.html#line-1292" class="path-duplicate">mprof.go</a><a href="../src/runtime/mprof.go.html#line-1292">#L1292</a>: 		<b>releasem</b>(mp)
+		<a href="../src/runtime/mstats.go.html#line-899">mstats.go#L899</a>: 	<b>releasem</b>(mp)
+		<a href="../src/runtime/os_linux.go.html#line-762">os_linux.go#L762</a>: 		<b>releasem</b>(getg().m)
+		<a href="../src/runtime/os_linux.go.html#line-847" class="path-duplicate">os_linux.go</a><a href="../src/runtime/os_linux.go.html#line-847">#L847</a>: 	<b>releasem</b>(getg().m)
+		<a href="../src/runtime/panic.go.html#line-520">panic.go#L520</a>: 	<b>releasem</b>(mp)
+		<a href="../src/runtime/panic.go.html#line-578" class="path-duplicate">panic.go</a><a href="../src/runtime/panic.go.html#line-578">#L578</a>: 	<b>releasem</b>(mp)
+		<a href="../src/runtime/panic.go.html#line-1376" class="path-duplicate">panic.go</a><a href="../src/runtime/panic.go.html#line-1376">#L1376</a>: 		<b>releasem</b>(mp)
+		<a href="../src/runtime/panic.go.html#line-1381" class="path-duplicate">panic.go</a><a href="../src/runtime/panic.go.html#line-1381">#L1381</a>: 		<b>releasem</b>(mp)
+		<a href="../src/runtime/panic.go.html#line-1386" class="path-duplicate">panic.go</a><a href="../src/runtime/panic.go.html#line-1386">#L1386</a>: 		<b>releasem</b>(mp)
+		<a href="../src/runtime/panic.go.html#line-1390" class="path-duplicate">panic.go</a><a href="../src/runtime/panic.go.html#line-1390">#L1390</a>: 		<b>releasem</b>(mp)
+		<a href="../src/runtime/panic.go.html#line-1393" class="path-duplicate">panic.go</a><a href="../src/runtime/panic.go.html#line-1393">#L1393</a>: 	<b>releasem</b>(mp)
+		<a href="../src/runtime/pinner.go.html#line-37">pinner.go#L37</a>: 		<b>releasem</b>(mp)
+		<a href="../src/runtime/pinner.go.html#line-77" class="path-duplicate">pinner.go</a><a href="../src/runtime/pinner.go.html#line-77">#L77</a>: 	<b>releasem</b>(mp)
+		<a href="../src/runtime/pinner.go.html#line-213" class="path-duplicate">pinner.go</a><a href="../src/runtime/pinner.go.html#line-213">#L213</a>: 	<b>releasem</b>(mp)
+		<a href="../src/runtime/proc.go.html#line-400">proc.go#L400</a>: 	<b>releasem</b>(mp)
+		<a href="../src/runtime/proc.go.html#line-451" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-451">#L451</a>: 	<b>releasem</b>(mp)
+		<a href="../src/runtime/proc.go.html#line-502" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-502">#L502</a>: 	<b>releasem</b>(mp)
+		<a href="../src/runtime/proc.go.html#line-971" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-971">#L971</a>: 	<b>releasem</b>(mp)
+		<a href="../src/runtime/proc.go.html#line-1389" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-1389">#L1389</a>: 	<b>releasem</b>(mp)
+		<a href="../src/runtime/proc.go.html#line-1618" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-1618">#L1618</a>: 	<b>releasem</b>(mp)
+		<a href="../src/runtime/proc.go.html#line-2006" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-2006">#L2006</a>: 	<b>releasem</b>(mp)
+		<a href="../src/runtime/proc.go.html#line-2125" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-2125">#L2125</a>: 	<b>releasem</b>(gp.m)
+		<a href="../src/runtime/proc.go.html#line-2673" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-2673">#L2673</a>: 		<b>releasem</b>(getg().m)
+		<a href="../src/runtime/proc.go.html#line-2677" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-2677">#L2677</a>: 	<b>releasem</b>(getg().m)
+		<a href="../src/runtime/proc.go.html#line-2718" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-2718">#L2718</a>: 		<b>releasem</b>(mp)
+		<a href="../src/runtime/proc.go.html#line-2722" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-2722">#L2722</a>: 	<b>releasem</b>(mp)
+		<a href="../src/runtime/proc.go.html#line-2842" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-2842">#L2842</a>: 			<b>releasem</b>(mp)
+		<a href="../src/runtime/proc.go.html#line-2877" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-2877">#L2877</a>: 		<b>releasem</b>(mp)
+		<a href="../src/runtime/proc.go.html#line-2898" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-2898">#L2898</a>: 	<b>releasem</b>(mp)
+		<a href="../src/runtime/proc.go.html#line-2997" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-2997">#L2997</a>: 		<b>releasem</b>(mp)
+		<a href="../src/runtime/proc.go.html#line-3008" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-3008">#L3008</a>: 	<b>releasem</b>(mp)
+		<a href="../src/runtime/proc.go.html#line-3798" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-3798">#L3798</a>: 				<b>releasem</b>(mp)
+		<a href="../src/runtime/proc.go.html#line-3804" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-3804">#L3804</a>: 			<b>releasem</b>(mp)
+		<a href="../src/runtime/proc.go.html#line-4988" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4988">#L4988</a>: 	<b>releasem</b>(mp)
+		<a href="../src/runtime/runtime1.go.html#line-586">runtime1.go#L586</a>: func <b>releasem</b>(mp *m) {
+		<a href="../src/runtime/rwmutex.go.html#line-120">rwmutex.go#L120</a>: 	<b>releasem</b>(getg().m)
+		<a href="../src/runtime/symtab.go.html#line-884">symtab.go#L884</a>: 						<b>releasem</b>(mp)
+		<a href="../src/runtime/symtab.go.html#line-895" class="path-duplicate">symtab.go</a><a href="../src/runtime/symtab.go.html#line-895">#L895</a>: 		<b>releasem</b>(mp)
+		<a href="../src/runtime/symtab.go.html#line-944" class="path-duplicate">symtab.go</a><a href="../src/runtime/symtab.go.html#line-944">#L944</a>: 				<b>releasem</b>(mp)
+		<a href="../src/runtime/time.go.html#line-285">time.go#L285</a>: 	<b>releasem</b>(mp)
+		<a href="../src/runtime/time.go.html#line-329" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-329">#L329</a>: 				<b>releasem</b>(mp)
+		<a href="../src/runtime/time.go.html#line-334" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-334">#L334</a>: 				<b>releasem</b>(mp)
+		<a href="../src/runtime/time.go.html#line-347" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-347">#L347</a>: 				<b>releasem</b>(mp)
+		<a href="../src/runtime/time.go.html#line-352" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-352">#L352</a>: 				<b>releasem</b>(mp)
+		<a href="../src/runtime/time.go.html#line-462" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-462">#L462</a>: 			<b>releasem</b>(mp)
+		<a href="../src/runtime/time.go.html#line-475" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-475">#L475</a>: 			<b>releasem</b>(mp)
+		<a href="../src/runtime/time.go.html#line-485" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-485">#L485</a>: 			<b>releasem</b>(mp)
+		<a href="../src/runtime/time.go.html#line-513" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-513">#L513</a>: 		<b>releasem</b>(mp)
+		<a href="../src/runtime/time.go.html#line-538" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-538">#L538</a>: 		<b>releasem</b>(mp)
+		<a href="../src/runtime/trace2.go.html#line-410">trace2.go#L410</a>: 	<b>releasem</b>(mp)
+		<a href="../src/runtime/trace2.go.html#line-624" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-624">#L624</a>: 		<b>releasem</b>(mp)
+		<a href="../src/runtime/trace2runtime.go.html#line-217">trace2runtime.go#L217</a>: 		<b>releasem</b>(mp)
+		<a href="../src/runtime/trace2runtime.go.html#line-243" class="path-duplicate">trace2runtime.go</a><a href="../src/runtime/trace2runtime.go.html#line-243">#L243</a>: 	<b>releasem</b>(tl.mp)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

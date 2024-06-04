@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/http.Header</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../pkg/net/http.html">net/http</a>.<a href="../../src/net/http/header.go.html#line-24">Header</a></b></span>
+
+<span class="title">103 uses</span>
+
+	net/http (current package)
+		<a href="../../src/net/http/client.go.html#line-243">client.go#L243</a>: 		req.Header = make(<b>Header</b>)
+		<a href="../../src/net/http/client.go.html#line-665" class="path-duplicate">client.go</a><a href="../../src/net/http/client.go.html#line-665">#L665</a>: 				Header:   make(<b>Header</b>),
+		<a href="../../src/net/http/clone.go.html#line-19">clone.go#L19</a>: 	return url.Values(<b>Header</b>(v).Clone())
+		<a href="../../src/net/http/clone.go.html#line-40" class="path-duplicate">clone.go</a><a href="../../src/net/http/clone.go.html#line-40">#L40</a>: 		Value: (map[string][]string)(<b>Header</b>(f.Value).Clone()),
+		<a href="../../src/net/http/clone.go.html#line-62" class="path-duplicate">clone.go</a><a href="../../src/net/http/clone.go.html#line-62">#L62</a>: 	fh2.Header = textproto.MIMEHeader(<b>Header</b>(fh.Header).Clone())
+		<a href="../../src/net/http/clone.go.html#line-68" class="path-duplicate">clone.go</a><a href="../../src/net/http/clone.go.html#line-68">#L68</a>: func cloneOrMakeHeader(hdr <b>Header</b>) <b>Header</b> {
+		<a href="../../src/net/http/clone.go.html#line-71" class="path-duplicate">clone.go</a><a href="../../src/net/http/clone.go.html#line-71">#L71</a>: 		clone = make(<b>Header</b>)
+		<a href="../../src/net/http/cookie.go.html#line-60">cookie.go#L60</a>: func readSetCookies(h <b>Header</b>) []*Cookie {
+		<a href="../../src/net/http/cookie.go.html#line-277" class="path-duplicate">cookie.go</a><a href="../../src/net/http/cookie.go.html#line-277">#L277</a>: func readCookies(h <b>Header</b>, filter string) []*Cookie {
+		<a href="../../src/net/http/filetransport.go.html#line-76">filetransport.go#L76</a>: 			Header:     make(<b>Header</b>),
+		<a href="../../src/net/http/filetransport.go.html#line-119" class="path-duplicate">filetransport.go</a><a href="../../src/net/http/filetransport.go.html#line-119">#L119</a>: func (pr *populateResponse) Header() <b>Header</b> {
+		<a href="../../src/net/http/h2_bundle.go.html#line-3663">h2_bundle.go#L3663</a>: func (s *http2sorter) Keys(h <b>Header</b>) []string {
+		<a href="../../src/net/http/h2_bundle.go.html#line-4472" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-4472">#L4472</a>: 	trailer    <b>Header</b> // accumulated trailers
+		<a href="../../src/net/http/h2_bundle.go.html#line-4473" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-4473">#L4473</a>: 	reqTrailer <b>Header</b> // handler's Request.Trailer
+		<a href="../../src/net/http/h2_bundle.go.html#line-5824" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5824">#L5824</a>: 		st.trailer = make(<b>Header</b>)
+		<a href="../../src/net/http/h2_bundle.go.html#line-5859" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5859">#L5859</a>: 		st.trailer = make(<b>Header</b>)
+		<a href="../../src/net/http/h2_bundle.go.html#line-5990" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5990">#L5990</a>: 	rp.header = make(<b>Header</b>)
+		<a href="../../src/net/http/h2_bundle.go.html#line-6023" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-6023">#L6023</a>: 	header                  <b>Header</b>
+		<a href="../../src/net/http/h2_bundle.go.html#line-6044" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-6044">#L6044</a>: 	var trailer <b>Header</b>
+		<a href="../../src/net/http/h2_bundle.go.html#line-6054" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-6054">#L6054</a>: 					trailer = make(<b>Header</b>)
+		<a href="../../src/net/http/h2_bundle.go.html#line-6369" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-6369">#L6369</a>: 	handlerHeader <b>Header</b>   // nil until called
+		<a href="../../src/net/http/h2_bundle.go.html#line-6370" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-6370">#L6370</a>: 	snapHeader    <b>Header</b>   // snapshot of handlerHeader at WriteHeader time
+		<a href="../../src/net/http/h2_bundle.go.html#line-6685" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-6685">#L6685</a>: func (w *http2responseWriter) Header() <b>Header</b> {
+		<a href="../../src/net/http/h2_bundle.go.html#line-6691" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-6691">#L6691</a>: 		rws.handlerHeader = make(<b>Header</b>)
+		<a href="../../src/net/http/h2_bundle.go.html#line-6758" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-6758">#L6758</a>: func http2cloneHeader(h <b>Header</b>) <b>Header</b> {
+		<a href="../../src/net/http/h2_bundle.go.html#line-6759" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-6759">#L6759</a>: 	h2 := make(<b>Header</b>, len(h))
+		<a href="../../src/net/http/h2_bundle.go.html#line-6845" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-6845">#L6845</a>: 		opts.Header = <b>Header</b>{}
+		<a href="../../src/net/http/h2_bundle.go.html#line-6930" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-6930">#L6930</a>: 	header <b>Header</b>
+		<a href="../../src/net/http/h2_bundle.go.html#line-7045" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-7045">#L7045</a>: func http2checkValidHTTP2RequestHeaders(h <b>Header</b>) error {
+		<a href="../../src/net/http/h2_bundle.go.html#line-7461" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-7461">#L7461</a>: 	trailer    <b>Header</b>  // accumulated trailers
+		<a href="../../src/net/http/h2_bundle.go.html#line-7462" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-7462">#L7462</a>: 	resTrailer *<b>Header</b> // client's Response.Trailer
+		<a href="../../src/net/http/h2_bundle.go.html#line-9143" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9143">#L9143</a>: func (cc *http2ClientConn) encodeTrailers(trailer <b>Header</b>) ([]byte, error) {
+		<a href="../../src/net/http/h2_bundle.go.html#line-9481" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9481">#L9481</a>: 	header := make(<b>Header</b>, len(regularFields))
+		<a href="../../src/net/http/h2_bundle.go.html#line-9494" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9494">#L9494</a>: 				t = make(<b>Header</b>)
+		<a href="../../src/net/http/h2_bundle.go.html#line-9601" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9601">#L9601</a>: 	trailer := make(<b>Header</b>)
+		<a href="../../src/net/http/h2_bundle.go.html#line-9861" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9861">#L9861</a>: 			*t = make(<b>Header</b>)
+		<a href="../../src/net/http/h2_bundle.go.html#line-10472" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-10472">#L10472</a>: 	h           <b>Header</b>   // may be nil
+		<a href="../../src/net/http/h2_bundle.go.html#line-10545" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-10545">#L10545</a>: 	h        <b>Header</b>
+		<a href="../../src/net/http/h2_bundle.go.html#line-10623" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-10623">#L10623</a>: func http2encodeHeaders(enc *hpack.Encoder, h <b>Header</b>, keys []string) {
+		<a href="../../src/net/http/header.go.html#line-24">header.go#L24</a>: type <b>Header</b> map[string][]string
+		<a href="../../src/net/http/header.go.html#line-30" class="path-duplicate">header.go</a><a href="../../src/net/http/header.go.html#line-30">#L30</a>: func (h <b>Header</b>) Add(key, value string) {
+		<a href="../../src/net/http/header.go.html#line-39" class="path-duplicate">header.go</a><a href="../../src/net/http/header.go.html#line-39">#L39</a>: func (h <b>Header</b>) Set(key, value string) {
+		<a href="../../src/net/http/header.go.html#line-49" class="path-duplicate">header.go</a><a href="../../src/net/http/header.go.html#line-49">#L49</a>: func (h <b>Header</b>) Get(key string) string {
+		<a href="../../src/net/http/header.go.html#line-58" class="path-duplicate">header.go</a><a href="../../src/net/http/header.go.html#line-58">#L58</a>: func (h <b>Header</b>) Values(key string) []string {
+		<a href="../../src/net/http/header.go.html#line-63" class="path-duplicate">header.go</a><a href="../../src/net/http/header.go.html#line-63">#L63</a>: func (h <b>Header</b>) get(key string) string {
+		<a href="../../src/net/http/header.go.html#line-72" class="path-duplicate">header.go</a><a href="../../src/net/http/header.go.html#line-72">#L72</a>: func (h <b>Header</b>) has(key string) bool {
+		<a href="../../src/net/http/header.go.html#line-80" class="path-duplicate">header.go</a><a href="../../src/net/http/header.go.html#line-80">#L80</a>: func (h <b>Header</b>) Del(key string) {
+		<a href="../../src/net/http/header.go.html#line-85" class="path-duplicate">header.go</a><a href="../../src/net/http/header.go.html#line-85">#L85</a>: func (h <b>Header</b>) Write(w io.Writer) error {
+		<a href="../../src/net/http/header.go.html#line-89" class="path-duplicate">header.go</a><a href="../../src/net/http/header.go.html#line-89">#L89</a>: func (h <b>Header</b>) write(w io.Writer, trace *httptrace.ClientTrace) error {
+		<a href="../../src/net/http/header.go.html#line-94" class="path-duplicate">header.go</a><a href="../../src/net/http/header.go.html#line-94">#L94</a>: func (h <b>Header</b>) Clone() <b>Header</b> {
+		<a href="../../src/net/http/header.go.html#line-105" class="path-duplicate">header.go</a><a href="../../src/net/http/header.go.html#line-105">#L105</a>: 	h2 := make(<b>Header</b>, len(h))
+		<a href="../../src/net/http/header.go.html#line-173" class="path-duplicate">header.go</a><a href="../../src/net/http/header.go.html#line-173">#L173</a>: func (h <b>Header</b>) sortedKeyValues(exclude map[string]bool) (kvs []keyValues, hs *headerSorter) {
+		<a href="../../src/net/http/header.go.html#line-192" class="path-duplicate">header.go</a><a href="../../src/net/http/header.go.html#line-192">#L192</a>: func (h <b>Header</b>) WriteSubset(w io.Writer, exclude map[string]bool) error {
+		<a href="../../src/net/http/header.go.html#line-196" class="path-duplicate">header.go</a><a href="../../src/net/http/header.go.html#line-196">#L196</a>: func (h <b>Header</b>) writeSubset(w io.Writer, exclude map[string]bool, trace *httptrace.ClientTrace) error {
+		<a href="../../src/net/http/http.go.html#line-133">http.go#L133</a>: 	Header <b>Header</b>
+		<a href="../../src/net/http/request.go.html#line-170">request.go#L170</a>: 	Header <b>Header</b>
+		<a href="../../src/net/http/request.go.html#line-281" class="path-duplicate">request.go</a><a href="../../src/net/http/request.go.html#line-281">#L281</a>: 	Trailer <b>Header</b>
+		<a href="../../src/net/http/request.go.html#line-575" class="path-duplicate">request.go</a><a href="../../src/net/http/request.go.html#line-575">#L575</a>: func (r *Request) write(w io.Writer, usingProxy bool, extraHeaders <b>Header</b>, waitForContinue func() bool) (err error) {
+		<a href="../../src/net/http/request.go.html#line-912" class="path-duplicate">request.go</a><a href="../../src/net/http/request.go.html#line-912">#L912</a>: 		Header:     make(<b>Header</b>),
+		<a href="../../src/net/http/request.go.html#line-1109" class="path-duplicate">request.go</a><a href="../../src/net/http/request.go.html#line-1109">#L1109</a>: 	req.Header = <b>Header</b>(mimeHeader)
+		<a href="../../src/net/http/response.go.html#line-51">response.go#L51</a>: 	Header <b>Header</b>
+		<a href="../../src/net/http/response.go.html#line-110" class="path-duplicate">response.go</a><a href="../../src/net/http/response.go.html#line-110">#L110</a>: 	Trailer <b>Header</b>
+		<a href="../../src/net/http/response.go.html#line-195" class="path-duplicate">response.go</a><a href="../../src/net/http/response.go.html#line-195">#L195</a>: 	resp.Header = <b>Header</b>(mimeHeader)
+		<a href="../../src/net/http/response.go.html#line-214" class="path-duplicate">response.go</a><a href="../../src/net/http/response.go.html#line-214">#L214</a>: func fixPragmaCacheControl(header <b>Header</b>) {
+		<a href="../../src/net/http/response.go.html#line-362" class="path-duplicate">response.go</a><a href="../../src/net/http/response.go.html#line-362">#L362</a>: func isProtocolSwitchResponse(code int, h <b>Header</b>) bool {
+		<a href="../../src/net/http/response.go.html#line-368" class="path-duplicate">response.go</a><a href="../../src/net/http/response.go.html#line-368">#L368</a>: func isProtocolSwitchHeader(h <b>Header</b>) bool {
+		<a href="../../src/net/http/server.go.html#line-115">server.go#L115</a>: 	Header() <b>Header</b>
+		<a href="../../src/net/http/server.go.html#line-355" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-355">#L355</a>: 	header <b>Header</b>
+		<a href="../../src/net/http/server.go.html#line-449" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-449">#L449</a>: 	handlerHeader <b>Header</b>
+		<a href="../../src/net/http/server.go.html#line-525" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-525">#L525</a>: func (w *response) finalTrailers() <b>Header</b> {
+		<a href="../../src/net/http/server.go.html#line-526" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-526">#L526</a>: 	var t <b>Header</b>
+		<a href="../../src/net/http/server.go.html#line-530" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-530">#L530</a>: 				t = make(<b>Header</b>)
+		<a href="../../src/net/http/server.go.html#line-537" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-537">#L537</a>: 			t = make(<b>Header</b>)
+		<a href="../../src/net/http/server.go.html#line-1057" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1057">#L1057</a>: 		handlerHeader: make(<b>Header</b>),
+		<a href="../../src/net/http/server.go.html#line-1092" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1092">#L1092</a>: func (w *response) Header() <b>Header</b> {
+		<a href="../../src/net/http/server.go.html#line-3586" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-3586">#L3586</a>: 		h:   make(<b>Header</b>),
+		<a href="../../src/net/http/server.go.html#line-3631" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-3631">#L3631</a>: 	h    <b>Header</b>
+		<a href="../../src/net/http/server.go.html#line-3651" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-3651">#L3651</a>: func (tw *timeoutWriter) Header() <b>Header</b> { return tw.h }
+		<a href="../../src/net/http/transfer.go.html#line-68">transfer.go#L68</a>: 	Header           <b>Header</b>
+		<a href="../../src/net/http/transfer.go.html#line-69" class="path-duplicate">transfer.go</a><a href="../../src/net/http/transfer.go.html#line-69">#L69</a>: 	Trailer          <b>Header</b>
+		<a href="../../src/net/http/transfer.go.html#line-441" class="path-duplicate">transfer.go</a><a href="../../src/net/http/transfer.go.html#line-441">#L441</a>: 	Header        <b>Header</b>
+		<a href="../../src/net/http/transfer.go.html#line-451" class="path-duplicate">transfer.go</a><a href="../../src/net/http/transfer.go.html#line-451">#L451</a>: 	Trailer       <b>Header</b>
+		<a href="../../src/net/http/transfer.go.html#line-673" class="path-duplicate">transfer.go</a><a href="../../src/net/http/transfer.go.html#line-673">#L673</a>: func fixLength(isResponse bool, status int, requestMethod string, header <b>Header</b>, chunked bool) (int64, error) {
+		<a href="../../src/net/http/transfer.go.html#line-743" class="path-duplicate">transfer.go</a><a href="../../src/net/http/transfer.go.html#line-743">#L743</a>: func shouldClose(major, minor int, header <b>Header</b>, removeCloseHeader bool) bool {
+		<a href="../../src/net/http/transfer.go.html#line-762" class="path-duplicate">transfer.go</a><a href="../../src/net/http/transfer.go.html#line-762">#L762</a>: func fixTrailer(header <b>Header</b>, chunked bool) (<b>Header</b>, error) {
+		<a href="../../src/net/http/transfer.go.html#line-779" class="path-duplicate">transfer.go</a><a href="../../src/net/http/transfer.go.html#line-779">#L779</a>: 	trailer := make(<b>Header</b>)
+		<a href="../../src/net/http/transfer.go.html#line-941" class="path-duplicate">transfer.go</a><a href="../../src/net/http/transfer.go.html#line-941">#L941</a>: 		mergeSetHeader(&amp;rr.Trailer, <b>Header</b>(hdr))
+		<a href="../../src/net/http/transfer.go.html#line-943" class="path-duplicate">transfer.go</a><a href="../../src/net/http/transfer.go.html#line-943">#L943</a>: 		mergeSetHeader(&amp;rr.Trailer, <b>Header</b>(hdr))
+		<a href="../../src/net/http/transfer.go.html#line-948" class="path-duplicate">transfer.go</a><a href="../../src/net/http/transfer.go.html#line-948">#L948</a>: func mergeSetHeader(dst *<b>Header</b>, src <b>Header</b>) {
+		<a href="../../src/net/http/transport.go.html#line-253">transport.go#L253</a>: 	ProxyConnectHeader <b>Header</b>
+		<a href="../../src/net/http/transport.go.html#line-262" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-262">#L262</a>: 	GetProxyConnectHeader func(ctx context.Context, proxyURL *url.URL, target string) (<b>Header</b>, error)
+		<a href="../../src/net/http/transport.go.html#line-469" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-469">#L469</a>: 	extra     <b>Header</b>                 // extra headers to write, or nil
+		<a href="../../src/net/http/transport.go.html#line-477" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-477">#L477</a>: func (tr *transportRequest) extraHeaders() <b>Header</b> {
+		<a href="../../src/net/http/transport.go.html#line-479" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-479">#L479</a>: 		tr.extra = make(<b>Header</b>)
+		<a href="../../src/net/http/transport.go.html#line-1689" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-1689">#L1689</a>: 			pconn.mutateHeaderFunc = func(h <b>Header</b>) {
+		<a href="../../src/net/http/transport.go.html#line-1695" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-1695">#L1695</a>: 		var hdr <b>Header</b>
+		<a href="../../src/net/http/transport.go.html#line-1707" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-1707">#L1707</a>: 			hdr = make(<b>Header</b>)
+		<a href="../../src/net/http/transport.go.html#line-1960" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-1960">#L1960</a>: 	mutateHeaderFunc func(<b>Header</b>)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

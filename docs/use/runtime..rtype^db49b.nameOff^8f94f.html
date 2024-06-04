@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.rtype.nameOff</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/type.go.html#line-21">rtype</a>.<a href="../src/runtime/type.go.html#line-139">nameOff</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">11 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/heapdump.go.html#line-199">heapdump.go#L199</a>: 	if x := t.Uncommon(); x == nil || rt.<b>nameOff</b>(x.PkgPath).Name() == "" {
+		<a href="../src/runtime/heapdump.go.html#line-202" class="path-duplicate">heapdump.go</a><a href="../src/runtime/heapdump.go.html#line-202">#L202</a>: 		pkgpath := rt.<b>nameOff</b>(x.PkgPath).Name()
+		<a href="../src/runtime/iface.go.html#line-45">iface.go#L45</a>: 		name := toRType(&amp;inter.Type).<b>nameOff</b>(inter.Methods[0].Name)
+		<a href="../src/runtime/iface.go.html#line-212" class="path-duplicate">iface.go</a><a href="../src/runtime/iface.go.html#line-212">#L212</a>: 		name := toRType(&amp;inter.Type).<b>nameOff</b>(i.Name)
+		<a href="../src/runtime/iface.go.html#line-221" class="path-duplicate">iface.go</a><a href="../src/runtime/iface.go.html#line-221">#L221</a>: 			tname := rtyp.<b>nameOff</b>(t.Name)
+		<a href="../src/runtime/iface.go.html#line-225" class="path-duplicate">iface.go</a><a href="../src/runtime/iface.go.html#line-225">#L225</a>: 					pkgPath = rtyp.<b>nameOff</b>(x.PkgPath).Name()
+		<a href="../src/runtime/type.go.html#line-26">type.go#L26</a>: 	s := t.<b>nameOff</b>(t.Str).Name()
+		<a href="../src/runtime/type.go.html#line-62" class="path-duplicate">type.go</a><a href="../src/runtime/type.go.html#line-62">#L62</a>: 		return t.<b>nameOff</b>(u.PkgPath).Name()
+		<a href="../src/runtime/type.go.html#line-139" class="path-duplicate">type.go</a><a href="../src/runtime/type.go.html#line-139">#L139</a>: func (t rtype) <b>nameOff</b>(off nameOff) name {
+		<a href="../src/runtime/type.go.html#line-355" class="path-duplicate">type.go</a><a href="../src/runtime/type.go.html#line-355">#L355</a>: 		pkgpatht := rt.<b>nameOff</b>(ut.PkgPath).Name()
+		<a href="../src/runtime/type.go.html#line-356" class="path-duplicate">type.go</a><a href="../src/runtime/type.go.html#line-356">#L356</a>: 		pkgpathv := rv.<b>nameOff</b>(uv.PkgPath).Name()
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

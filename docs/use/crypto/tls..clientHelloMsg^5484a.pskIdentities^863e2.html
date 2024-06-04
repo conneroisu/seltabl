@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/tls.clientHelloMsg.pskIdentities</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/crypto/tls.html">crypto/tls</a>.<a href="../../src/crypto/tls/handshake_messages.go.html#line-70">clientHelloMsg</a>.<a href="../../src/crypto/tls/handshake_messages.go.html#line-95">pskIdentities</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">15 uses</span>
+
+	crypto/tls (current package)
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-397">handshake_client.go#L397</a>: 	hello.<b>pskIdentities</b> = []pskIdentity{identity}
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-253">handshake_client_tls13.go#L253</a>: 	if len(hs.hello.<b>pskIdentities</b>) &gt; 0 {
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-261" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-261">#L261</a>: 			hs.hello.<b>pskIdentities</b>[0].obfuscatedTicketAge = uint32(ticketAge/time.Millisecond) + hs.session.ageAdd
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-280" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-280">#L280</a>: 			hs.hello.<b>pskIdentities</b> = nil
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-345" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-345">#L345</a>: 	if int(hs.serverHello.selectedIdentity) &gt;= len(hs.hello.<b>pskIdentities</b>) {
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-350" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-350">#L350</a>: 	if len(hs.hello.<b>pskIdentities</b>) != 1 || hs.session == nil {
+		<a href="../../src/crypto/tls/handshake_messages.go.html#line-95">handshake_messages.go#L95</a>: 	<b>pskIdentities</b>                    []pskIdentity
+		<a href="../../src/crypto/tls/handshake_messages.go.html#line-263" class="path-duplicate">handshake_messages.go</a><a href="../../src/crypto/tls/handshake_messages.go.html#line-263">#L263</a>: 	if len(m.<b>pskIdentities</b>) &gt; 0 { // pre_shared_key must be the last extension
+		<a href="../../src/crypto/tls/handshake_messages.go.html#line-268" class="path-duplicate">handshake_messages.go</a><a href="../../src/crypto/tls/handshake_messages.go.html#line-268">#L268</a>: 				for _, psk := range m.<b>pskIdentities</b> {
+		<a href="../../src/crypto/tls/handshake_messages.go.html#line-601" class="path-duplicate">handshake_messages.go</a><a href="../../src/crypto/tls/handshake_messages.go.html#line-601">#L601</a>: 				m.<b>pskIdentities</b> = append(m.<b>pskIdentities</b>, psk)
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-144">handshake_server_tls13.go#L144</a>: 		if len(hs.clientHello.<b>pskIdentities</b>) == 0 {
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-285" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-285">#L285</a>: 	if len(hs.clientHello.<b>pskIdentities</b>) != len(hs.clientHello.pskBinders) {
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-289" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-289">#L289</a>: 	if len(hs.clientHello.<b>pskIdentities</b>) == 0 {
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-293" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-293">#L293</a>: 	for i, identity := range hs.clientHello.<b>pskIdentities</b> {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/netip.Addr.v4</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/net/netip.html">net/netip</a>.<a href="../../src/net/netip/netip.go.html#line-38">Addr</a>.<a href="../../src/net/netip/netip.go.html#line-352">v4</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">21 uses</span>
+
+	net/netip (current package)
+		<a href="../../src/net/netip/netip.go.html#line-272">netip.go#L272</a>: 			ip[i] = ip4.<b>v4</b>(0)
+		<a href="../../src/net/netip/netip.go.html#line-273" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-273">#L273</a>: 			ip[i+1] = ip4.<b>v4</b>(1)
+		<a href="../../src/net/netip/netip.go.html#line-274" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-274">#L274</a>: 			ip[i+2] = ip4.<b>v4</b>(2)
+		<a href="../../src/net/netip/netip.go.html#line-275" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-275">#L275</a>: 			ip[i+3] = ip4.<b>v4</b>(3)
+		<a href="../../src/net/netip/netip.go.html#line-352" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-352">#L352</a>: func (ip Addr) <b>v4</b>(i uint8) uint8 {
+		<a href="../../src/net/netip/netip.go.html#line-514" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-514">#L514</a>: 		return ip.<b>v4</b>(0) == 169 &amp;&amp; ip.<b>v4</b>(1) == 254
+		<a href="../../src/net/netip/netip.go.html#line-529" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-529">#L529</a>: 		return ip.<b>v4</b>(0) == 127
+		<a href="../../src/net/netip/netip.go.html#line-544" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-544">#L544</a>: 		return ip.<b>v4</b>(0)&amp;0xf0 == 0xe0
+		<a href="../../src/net/netip/netip.go.html#line-570" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-570">#L570</a>: 		return ip.<b>v4</b>(0) == 224 &amp;&amp; ip.<b>v4</b>(1) == 0 &amp;&amp; ip.<b>v4</b>(2) == 0
+		<a href="../../src/net/netip/netip.go.html#line-616" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-616">#L616</a>: 		return ip.<b>v4</b>(0) == 10 ||
+		<a href="../../src/net/netip/netip.go.html#line-617" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-617">#L617</a>: 			(ip.<b>v4</b>(0) == 172 &amp;&amp; ip.<b>v4</b>(1)&amp;0xf0 == 16) ||
+		<a href="../../src/net/netip/netip.go.html#line-618" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-618">#L618</a>: 			(ip.<b>v4</b>(0) == 192 &amp;&amp; ip.<b>v4</b>(1) == 168)
+		<a href="../../src/net/netip/netip.go.html#line-840" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-840">#L840</a>: 	ret = appendDecimal(ret, ip.<b>v4</b>(0))
+		<a href="../../src/net/netip/netip.go.html#line-842" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-842">#L842</a>: 	ret = appendDecimal(ret, ip.<b>v4</b>(1))
+		<a href="../../src/net/netip/netip.go.html#line-844" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-844">#L844</a>: 	ret = appendDecimal(ret, ip.<b>v4</b>(2))
+		<a href="../../src/net/netip/netip.go.html#line-846" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-846">#L846</a>: 	ret = appendDecimal(ret, ip.<b>v4</b>(3))
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

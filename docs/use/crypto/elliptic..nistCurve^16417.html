@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/elliptic.nistCurve</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../pkg/crypto/elliptic.html">crypto/elliptic</a>.<a href="../../src/crypto/elliptic/nistec.go.html#line-110">nistCurve</a></b></span>
+
+<span class="title">18 uses</span>
+
+	crypto/elliptic (current package)
+		<a href="../../src/crypto/elliptic/nistec.go.html#line-13">nistec.go#L13</a>: var p224 = &amp;<b>nistCurve</b>[*nistec.P224Point]{
+		<a href="../../src/crypto/elliptic/nistec.go.html#line-31" class="path-duplicate">nistec.go</a><a href="../../src/crypto/elliptic/nistec.go.html#line-31">#L31</a>: 	<b>nistCurve</b>[*nistec.P256Point]
+		<a href="../../src/crypto/elliptic/nistec.go.html#line-34" class="path-duplicate">nistec.go</a><a href="../../src/crypto/elliptic/nistec.go.html#line-34">#L34</a>: var p256 = &amp;p256Curve{<b>nistCurve</b>[*nistec.P256Point]{
+		<a href="../../src/crypto/elliptic/nistec.go.html#line-51" class="path-duplicate">nistec.go</a><a href="../../src/crypto/elliptic/nistec.go.html#line-51">#L51</a>: var p384 = &amp;<b>nistCurve</b>[*nistec.P384Point]{
+		<a href="../../src/crypto/elliptic/nistec.go.html#line-73" class="path-duplicate">nistec.go</a><a href="../../src/crypto/elliptic/nistec.go.html#line-73">#L73</a>: var p521 = &amp;<b>nistCurve</b>[*nistec.P521Point]{
+		<a href="../../src/crypto/elliptic/nistec.go.html#line-110" class="path-duplicate">nistec.go</a><a href="../../src/crypto/elliptic/nistec.go.html#line-110">#L110</a>: type <b>nistCurve</b>[Point nistPoint[Point]] struct {
+		<a href="../../src/crypto/elliptic/nistec.go.html#line-125" class="path-duplicate">nistec.go</a><a href="../../src/crypto/elliptic/nistec.go.html#line-125">#L125</a>: func (curve *<b>nistCurve</b>[Point]) Params() *CurveParams {
+		<a href="../../src/crypto/elliptic/nistec.go.html#line-129" class="path-duplicate">nistec.go</a><a href="../../src/crypto/elliptic/nistec.go.html#line-129">#L129</a>: func (curve *<b>nistCurve</b>[Point]) IsOnCurve(x, y *big.Int) bool {
+		<a href="../../src/crypto/elliptic/nistec.go.html#line-139" class="path-duplicate">nistec.go</a><a href="../../src/crypto/elliptic/nistec.go.html#line-139">#L139</a>: func (curve *<b>nistCurve</b>[Point]) pointFromAffine(x, y *big.Int) (p Point, err error) {
+		<a href="../../src/crypto/elliptic/nistec.go.html#line-161" class="path-duplicate">nistec.go</a><a href="../../src/crypto/elliptic/nistec.go.html#line-161">#L161</a>: func (curve *<b>nistCurve</b>[Point]) pointToAffine(p Point) (x, y *big.Int) {
+		<a href="../../src/crypto/elliptic/nistec.go.html#line-174" class="path-duplicate">nistec.go</a><a href="../../src/crypto/elliptic/nistec.go.html#line-174">#L174</a>: func (curve *<b>nistCurve</b>[Point]) Add(x1, y1, x2, y2 *big.Int) (*big.Int, *big.Int) {
+		<a href="../../src/crypto/elliptic/nistec.go.html#line-186" class="path-duplicate">nistec.go</a><a href="../../src/crypto/elliptic/nistec.go.html#line-186">#L186</a>: func (curve *<b>nistCurve</b>[Point]) Double(x1, y1 *big.Int) (*big.Int, *big.Int) {
+		<a href="../../src/crypto/elliptic/nistec.go.html#line-196" class="path-duplicate">nistec.go</a><a href="../../src/crypto/elliptic/nistec.go.html#line-196">#L196</a>: func (curve *<b>nistCurve</b>[Point]) normalizeScalar(scalar []byte) []byte {
+		<a href="../../src/crypto/elliptic/nistec.go.html#line-209" class="path-duplicate">nistec.go</a><a href="../../src/crypto/elliptic/nistec.go.html#line-209">#L209</a>: func (curve *<b>nistCurve</b>[Point]) ScalarMult(Bx, By *big.Int, scalar []byte) (*big.Int, *big.Int) {
+		<a href="../../src/crypto/elliptic/nistec.go.html#line-222" class="path-duplicate">nistec.go</a><a href="../../src/crypto/elliptic/nistec.go.html#line-222">#L222</a>: func (curve *<b>nistCurve</b>[Point]) ScalarBaseMult(scalar []byte) (*big.Int, *big.Int) {
+		<a href="../../src/crypto/elliptic/nistec.go.html#line-233" class="path-duplicate">nistec.go</a><a href="../../src/crypto/elliptic/nistec.go.html#line-233">#L233</a>: func (curve *<b>nistCurve</b>[Point]) CombinedMult(Px, Py *big.Int, s1, s2 []byte) (x, y *big.Int) {
+		<a href="../../src/crypto/elliptic/nistec.go.html#line-251" class="path-duplicate">nistec.go</a><a href="../../src/crypto/elliptic/nistec.go.html#line-251">#L251</a>: func (curve *<b>nistCurve</b>[Point]) Unmarshal(data []byte) (x, y *big.Int) {
+		<a href="../../src/crypto/elliptic/nistec.go.html#line-269" class="path-duplicate">nistec.go</a><a href="../../src/crypto/elliptic/nistec.go.html#line-269">#L269</a>: func (curve *<b>nistCurve</b>[Point]) UnmarshalCompressed(data []byte) (x, y *big.Int) {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

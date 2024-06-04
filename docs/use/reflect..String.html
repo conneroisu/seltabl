@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: reflect.String</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../pkg/reflect.html">reflect</a>.<a href="../src/reflect/type.go.html#line-275">String</a></b></span>
+
+<span class="title">30 uses</span>
+
+	reflect (current package)
+		<a href="../src/reflect/abi.go.html#line-217">abi.go#L217</a>: 	case <b>String</b>:
+		<a href="../src/reflect/deepequal.go.html#line-164">deepequal.go#L164</a>: 	case <b>String</b>:
+		<a href="../src/reflect/type.go.html#line-275">type.go#L275</a>: 	<b>String</b>
+		<a href="../src/reflect/type.go.html#line-480" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-480">#L480</a>: 	<b>String</b>:        "string",
+		<a href="../src/reflect/type.go.html#line-1422" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1422">#L1422</a>: 	if Bool &lt;= kind &amp;&amp; kind &lt;= Complex128 || kind == <b>String</b> || kind == UnsafePointer {
+		<a href="../src/reflect/type.go.html#line-1888" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1888">#L1888</a>: 	case Bool, Int, Int8, Int16, Int32, Int64, Uint, Uint8, Uint16, Uint32, Uint64, Uintptr, Chan, Pointer, <b>String</b>, UnsafePointer:
+		<a href="../src/reflect/type.go.html#line-1914" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1914">#L1914</a>: 	case Float32, Float64, Complex64, Complex128, Interface, <b>String</b>:
+		<a href="../src/reflect/type.go.html#line-2850" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2850">#L2850</a>: 	case Chan, Func, Map, Pointer, Slice, <b>String</b>, UnsafePointer:
+		<a href="../src/reflect/value.go.html#line-1438">value.go#L1438</a>: 	case <b>String</b>:
+		<a href="../src/reflect/value.go.html#line-1626" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1626">#L1626</a>: 	case <b>String</b>:
+		<a href="../src/reflect/value.go.html#line-1744" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1744">#L1744</a>: 	case <b>String</b>:
+		<a href="../src/reflect/value.go.html#line-1786" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1786">#L1786</a>: 	case <b>String</b>:
+		<a href="../src/reflect/value.go.html#line-1817" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1817">#L1817</a>: 	if (tt.Key == stringType || key.kind() == <b>String</b>) &amp;&amp; tt.Key == key.typ() &amp;&amp; tt.Elem.Size() &lt;= maxValSize {
+		<a href="../src/reflect/value.go.html#line-2453" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2453">#L2453</a>: 	if (tt.Key == stringType || key.kind() == <b>String</b>) &amp;&amp; tt.Key == key.typ() &amp;&amp; tt.Elem.Size() &lt;= maxValSize {
+		<a href="../src/reflect/value.go.html#line-2527" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2527">#L2527</a>: 	v.mustBe(<b>String</b>)
+		<a href="../src/reflect/value.go.html#line-2559" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2559">#L2559</a>: 	case <b>String</b>:
+		<a href="../src/reflect/value.go.html#line-2653" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2653">#L2653</a>: 	if v.kind() == <b>String</b> {
+		<a href="../src/reflect/value.go.html#line-2984" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2984">#L2984</a>: 		stringCopy = sk == <b>String</b> &amp;&amp; dst.typ().Elem().Kind() == abi.Uint8
+		<a href="../src/reflect/value.go.html#line-3473" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3473">#L3473</a>: 	case <b>String</b>:
+		<a href="../src/reflect/value.go.html#line-3518" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3518">#L3518</a>: 		case <b>String</b>:
+		<a href="../src/reflect/value.go.html#line-3528" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3528">#L3528</a>: 		case <b>String</b>:
+		<a href="../src/reflect/value.go.html#line-3548" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3548">#L3548</a>: 	case <b>String</b>:
+
+	<a href="../pkg/encoding/asn1.html">encoding/asn1</a>
+		<a href="../src/encoding/asn1/asn1.go.html#line-960">asn1.go#L960</a>: 	case reflect.<b>String</b>:
+		<a href="../src/encoding/asn1/common.go.html#line-181">common.go#L181</a>: 	case reflect.<b>String</b>:
+		<a href="../src/encoding/asn1/marshal.go.html#line-563">marshal.go#L563</a>: 	case reflect.<b>String</b>:
+
+	<a href="../pkg/fmt.html">fmt</a>
+		<a href="../src/fmt/print.go.html#line-803">print.go#L803</a>: 	case reflect.<b>String</b>:
+		<a href="../src/fmt/print.go.html#line-1204" class="path-duplicate">print.go</a><a href="../src/fmt/print.go.html#line-1204">#L1204</a>: 		isString := arg != nil &amp;&amp; reflect.TypeOf(arg).Kind() == reflect.<b>String</b>
+		<a href="../src/fmt/scan.go.html#line-1031">scan.go#L1031</a>: 		case reflect.<b>String</b>:
+
+	<a href="../pkg/github.com/conneroisu/seltabl.html">github.com/conneroisu/seltabl</a>
+		<a href="../src/github.com/conneroisu/seltabl/reflect.go.html#line-47">reflect.go#L47</a>: 	case reflect.<b>String</b>:
+
+	<a href="../pkg/internal/fmtsort.html">internal/fmtsort</a>
+		<a href="../src/internal/fmtsort/sort.go.html#line-104">sort.go#L104</a>: 	case reflect.<b>String</b>:
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

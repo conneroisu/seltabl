@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: syscall.SOCK_STREAM</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../pkg/syscall.html">syscall</a>.<a href="../src/syscall/zerrors_linux_amd64.go.html#line-988">SOCK_STREAM</a></b></span>
+
+<span class="title">13 uses</span>
+
+	syscall (current package)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-988">zerrors_linux_amd64.go#L988</a>: 	<b>SOCK_STREAM</b>                      = 0x1
+
+	<a href="../pkg/net.html">net</a>
+		<a href="../src/net/fd_unix.go.html#line-30">fd_unix.go#L30</a>: 			IsStream:      sotype == syscall.<b>SOCK_STREAM</b>,
+		<a href="../src/net/ipsock_posix.go.html#line-37">ipsock_posix.go#L37</a>: 	s, err := sysSocket(syscall.AF_INET, syscall.<b>SOCK_STREAM</b>, syscall.IPPROTO_TCP)
+		<a href="../src/net/ipsock_posix.go.html#line-61" class="path-duplicate">ipsock_posix.go</a><a href="../src/net/ipsock_posix.go.html#line-61">#L61</a>: 		s, err := sysSocket(syscall.AF_INET6, syscall.<b>SOCK_STREAM</b>, syscall.IPPROTO_TCP)
+		<a href="../src/net/mptcpsock_linux.go.html#line-37">mptcpsock_linux.go#L37</a>: 	s, err := sysSocket(syscall.AF_INET, syscall.<b>SOCK_STREAM</b>, _IPPROTO_MPTCP)
+		<a href="../src/net/sock_posix.go.html#line-56">sock_posix.go#L56</a>: 		case syscall.<b>SOCK_STREAM</b>, syscall.SOCK_SEQPACKET:
+		<a href="../src/net/sockaddr_posix.go.html#line-40">sockaddr_posix.go#L40</a>: 		case syscall.<b>SOCK_STREAM</b>:
+		<a href="../src/net/sockaddr_posix.go.html#line-49" class="path-duplicate">sockaddr_posix.go</a><a href="../src/net/sockaddr_posix.go.html#line-49">#L49</a>: 		case syscall.<b>SOCK_STREAM</b>:
+		<a href="../src/net/tcpsock_posix.go.html#line-85">tcpsock_posix.go#L85</a>: 	fd, err := internetSocket(ctx, sd.network, laddr, raddr, syscall.<b>SOCK_STREAM</b>, proto, "dial", ctrlCtxFn)
+		<a href="../src/net/tcpsock_posix.go.html#line-115" class="path-duplicate">tcpsock_posix.go</a><a href="../src/net/tcpsock_posix.go.html#line-115">#L115</a>: 		fd, err = internetSocket(ctx, sd.network, laddr, raddr, syscall.<b>SOCK_STREAM</b>, proto, "dial", ctrlCtxFn)
+		<a href="../src/net/tcpsock_posix.go.html#line-189" class="path-duplicate">tcpsock_posix.go</a><a href="../src/net/tcpsock_posix.go.html#line-189">#L189</a>: 	fd, err := internetSocket(ctx, sl.network, laddr, nil, syscall.<b>SOCK_STREAM</b>, proto, "listen", ctrlCtxFn)
+		<a href="../src/net/unixsock_posix.go.html#line-20">unixsock_posix.go#L20</a>: 		sotype = syscall.<b>SOCK_STREAM</b>
+		<a href="../src/net/unixsock_posix.go.html#line-75" class="path-duplicate">unixsock_posix.go</a><a href="../src/net/unixsock_posix.go.html#line-75">#L75</a>: 	case syscall.<b>SOCK_STREAM</b>:
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

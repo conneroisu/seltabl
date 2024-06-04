@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/tls.QUICEncryptionLevel</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../pkg/crypto/tls.html">crypto/tls</a>.<a href="../../src/crypto/tls/quic.go.html#line-15">QUICEncryptionLevel</a></b></span>
+
+<span class="title">10 uses</span>
+
+	crypto/tls (current package)
+		<a href="../../src/crypto/tls/conn.go.html#line-182">conn.go#L182</a>: 	level         <b>QUICEncryptionLevel</b> // current QUIC encryption level
+		<a href="../../src/crypto/tls/conn.go.html#line-228" class="path-duplicate">conn.go</a><a href="../../src/crypto/tls/conn.go.html#line-228">#L228</a>: func (hc *halfConn) setTrafficSecret(suite *cipherSuiteTLS13, level <b>QUICEncryptionLevel</b>, secret []byte) {
+		<a href="../../src/crypto/tls/quic.go.html#line-15">quic.go#L15</a>: type <b>QUICEncryptionLevel</b> int
+		<a href="../../src/crypto/tls/quic.go.html#line-18" class="path-duplicate">quic.go</a><a href="../../src/crypto/tls/quic.go.html#line-18">#L18</a>: 	QUICEncryptionLevelInitial = <b>QUICEncryptionLevel</b>(iota)
+		<a href="../../src/crypto/tls/quic.go.html#line-24" class="path-duplicate">quic.go</a><a href="../../src/crypto/tls/quic.go.html#line-24">#L24</a>: func (l <b>QUICEncryptionLevel</b>) String() string {
+		<a href="../../src/crypto/tls/quic.go.html#line-104" class="path-duplicate">quic.go</a><a href="../../src/crypto/tls/quic.go.html#line-104">#L104</a>: 	Level <b>QUICEncryptionLevel</b>
+		<a href="../../src/crypto/tls/quic.go.html#line-218" class="path-duplicate">quic.go</a><a href="../../src/crypto/tls/quic.go.html#line-218">#L218</a>: func (q *QUICConn) HandleData(level <b>QUICEncryptionLevel</b>, data []byte) error {
+		<a href="../../src/crypto/tls/quic.go.html#line-326" class="path-duplicate">quic.go</a><a href="../../src/crypto/tls/quic.go.html#line-326">#L326</a>: func (c *Conn) quicSetReadSecret(level <b>QUICEncryptionLevel</b>, suite uint16, secret []byte) {
+		<a href="../../src/crypto/tls/quic.go.html#line-335" class="path-duplicate">quic.go</a><a href="../../src/crypto/tls/quic.go.html#line-335">#L335</a>: func (c *Conn) quicSetWriteSecret(level <b>QUICEncryptionLevel</b>, suite uint16, secret []byte) {
+		<a href="../../src/crypto/tls/quic.go.html#line-344" class="path-duplicate">quic.go</a><a href="../../src/crypto/tls/quic.go.html#line-344">#L344</a>: func (c *Conn) quicWriteCryptoData(level <b>QUICEncryptionLevel</b>, data []byte) {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

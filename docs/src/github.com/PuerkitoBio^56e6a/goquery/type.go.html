@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: type.go in package github.com/PuerkitoBio/goquery</title>
+<link href="../../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	type.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../pkg/github.com/PuerkitoBio^56e6a/goquery.html">github.com/PuerkitoBio/goquery</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19],
+input[id=r20]:checked ~pre label[for=r20],
+input[id=r21]:checked ~pre label[for=r21],
+input[id=r22]:checked ~pre label[for=r22],
+input[id=r23]:checked ~pre label[for=r23],
+input[id=r24]:checked ~pre label[for=r24],
+input[id=r25]:checked ~pre label[for=r25],
+input[id=r26]:checked ~pre label[for=r26],
+input[id=r27]:checked ~pre label[for=r27],
+input[id=r28]:checked ~pre label[for=r28],
+input[id=r29]:checked ~pre label[for=r29],
+input[id=r30]:checked ~pre label[for=r30],
+input[id=r31]:checked ~pre label[for=r31],
+input[id=r32]:checked ~pre label[for=r32],
+input[id=r33]:checked ~pre label[for=r33],
+input[id=r34]:checked ~pre label[for=r34],
+input[id=r35]:checked ~pre label[for=r35],
+input[id=r36]:checked ~pre label[for=r36],
+input[id=r37]:checked ~pre label[for=r37],
+input[id=r38]:checked ~pre label[for=r38],
+input[id=r39]:checked ~pre label[for=r39],
+input[id=r40]:checked ~pre label[for=r40],
+input[id=r41]:checked ~pre label[for=r41],
+input[id=r42]:checked ~pre label[for=r42],
+input[id=r43]:checked ~pre label[for=r43],
+input[id=r44]:checked ~pre label[for=r44],
+input[id=r45]:checked ~pre label[for=r45],
+input[id=r46]:checked ~pre label[for=r46],
+input[id=r47]:checked ~pre label[for=r47],
+input[id=r48]:checked ~pre label[for=r48]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1,
+input[id=i2]:checked ~pre .i2,
+input[id=i3]:checked ~pre .i3,
+input[id=i4]:checked ~pre .i4,
+input[id=i5]:checked ~pre .i5
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
+<input id="r20" type="radio" name="g"/>
+<input id="r21" type="radio" name="g"/>
+<input id="r22" type="radio" name="g"/>
+<input id="r23" type="radio" name="g"/>
+<input id="r24" type="radio" name="g"/>
+<input id="r25" type="radio" name="g"/>
+<input id="r26" type="radio" name="g"/>
+<input id="r27" type="radio" name="g"/>
+<input id="r28" type="radio" name="g"/>
+<input id="r29" type="radio" name="g"/>
+<input id="r30" type="radio" name="g"/>
+<input id="r31" type="radio" name="g"/>
+<input id="r32" type="radio" name="g"/>
+<input id="r33" type="radio" name="g"/>
+<input id="r34" type="radio" name="g"/>
+<input id="r35" type="radio" name="g"/>
+<input id="r36" type="radio" name="g"/>
+<input id="r37" type="radio" name="g"/>
+<input id="r38" type="radio" name="g"/>
+<input id="r39" type="radio" name="g"/>
+<input id="r40" type="radio" name="g"/>
+<input id="r41" type="radio" name="g"/>
+<input id="r42" type="radio" name="g"/>
+<input id="r43" type="radio" name="g"/>
+<input id="r44" type="radio" name="g"/>
+<input id="r45" type="radio" name="g"/>
+<input id="r46" type="radio" name="g"/>
+<input id="r47" type="radio" name="g"/>
+<input id="r48" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+<input id="i2" type="radio" name="i"/>
+<input id="i3" type="radio" name="i"/>
+<input id="i4" type="radio" name="i"/>
+<input id="i5" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> goquery</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-4"><code>	<label for="i0"><span class="lit-string i0">"errors"</span></label></code></span>
+<span class="codeline" id="line-5"><code>	<label for="i1"><span class="lit-string i1">"io"</span></label></code></span>
+<span class="codeline" id="line-6"><code>	<label for="i2"><span class="lit-string i2">"net/http"</span></label></code></span>
+<span class="codeline" id="line-7"><code>	<label for="i3"><span class="lit-string i3">"net/url"</span></label></code></span>
+<span class="codeline" id="line-8"><code></code></span>
+<span class="codeline" id="line-9"><code>	<label for="i4"><span class="lit-string i4">"github.com/andybalholm/cascadia"</span></label></code></span>
+<span class="codeline" id="line-10"><code>	<label for="i5"><span class="lit-string i5">"golang.org/x/net/html"</span></label></code></span>
+<span class="codeline" id="line-11"><code>)</code></span>
+<span class="codeline" id="line-12"><code></code></span>
+<span class="codeline" id="line-13"><code><span class="comment">// Document represents an HTML document to be manipulated. Unlike jQuery, which</span></code></span>
+<span class="codeline" id="line-14"><code><span class="comment">// is loaded as part of a DOM document, and thus acts upon its containing</span></code></span>
+<span class="codeline" id="line-15"><code><span class="comment">// document, GoQuery doesn't know which HTML document to act upon. So it needs</span></code></span>
+<span class="codeline" id="line-16"><code><span class="comment">// to be told, and that's what the Document class is for. It holds the root</span></code></span>
+<span class="codeline" id="line-17"><code><span class="comment">// document node to manipulate, and can make selections on this document.</span></code></span>
+<span class="codeline" id="line-18"><code><span class="keyword">type</span> <a href="../../../../pkg/github.com/PuerkitoBio^56e6a/goquery.html#name-Document" class="ident">Document</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-19"><code>	*<a href="#line-99" class="ident">Selection</a></code></span>
+<span class="codeline" id="line-20"><code>	<a href="../../../../use/github.com/PuerkitoBio^56e6a/goquery..Document.Url^157ce.html" class="ident">Url</a>      *<a href="../../../../pkg/net/url.html" class="ident i3">url</a>.<a href="../../../net/url/url.go.html#line-369" class="ident">URL</a></code></span>
+<span class="codeline" id="line-21"><code>	<a href="../../../../use/github.com/PuerkitoBio^56e6a/goquery..Document.rootNode^1980b.html" class="ident">rootNode</a> *<a href="../../../../pkg/golang.org/x/net/html.html" class="ident i5">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-44" class="ident">Node</a></code></span>
+<span class="codeline" id="line-22"><code>}</code></span>
+<span class="codeline" id="line-23"><code></code></span>
+<span class="codeline" id="line-24"><code><span class="comment">// NewDocumentFromNode is a Document constructor that takes a root html Node</span></code></span>
+<span class="codeline" id="line-25"><code><span class="comment">// as argument.</span></code></span>
+<span class="codeline" id="line-26"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../../pkg/github.com/PuerkitoBio^56e6a/goquery.html#name-NewDocumentFromNode" class="ident">NewDocumentFromNode</a></label>(<label for="r1" class="ident">root</label> *<a href="../../../../pkg/golang.org/x/net/html.html" class="ident i5">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-44" class="ident">Node</a>) *<a href="#line-18" class="ident">Document</a> {</code></span>
+<span class="codeline" id="line-27"><code>	<span class="keyword">return</span> <a href="#line-89" class="ident">newDocument</a>(<label for="r1" class="ident">root</label>, <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>)</code></span>
+<span class="codeline" id="line-28"><code>}</code></span>
+<span class="codeline" id="line-29"><code></code></span>
+<span class="codeline" id="line-30"><code><span class="comment">// NewDocument is a Document constructor that takes a string URL as argument.</span></code></span>
+<span class="codeline" id="line-31"><code><span class="comment">// It loads the specified document, parses it, and stores the root Document</span></code></span>
+<span class="codeline" id="line-32"><code><span class="comment">// node, ready to be manipulated.</span></code></span>
+<span class="codeline" id="line-33"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-34"><code><span class="comment">// Deprecated: Use the net/http standard library package to make the request</span></code></span>
+<span class="codeline" id="line-35"><code><span class="comment">// and validate the response before calling goquery.NewDocumentFromReader</span></code></span>
+<span class="codeline" id="line-36"><code><span class="comment">// with the response's body.</span></code></span>
+<span class="codeline" id="line-37"><code><span class="keyword">func</span> <label for="r2" class="ident"><a href="../../../../pkg/github.com/PuerkitoBio^56e6a/goquery.html#name-NewDocument" class="ident">NewDocument</a></label>(<label for="r3" class="ident">url</label> <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>) (*<a href="#line-18" class="ident">Document</a>, <a href="../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-38"><code>	<span class="comment">// Load the URL</span></code></span>
+<span class="codeline" id="line-39"><code>	<label for="r4" class="ident">res</label>, <label for="r5" class="ident">e</label> := <a href="../../../../pkg/net/http.html" class="ident i2">http</a>.<a href="../../../net/http/client.go.html#line-455" class="ident">Get</a>(<label for="r3" class="ident">url</label>)</code></span>
+<span class="codeline" id="line-40"><code>	<span class="keyword">if</span> <label for="r5" class="ident">e</label> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-41"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <label for="r5" class="ident">e</label></code></span>
+<span class="codeline" id="line-42"><code>	}</code></span>
+<span class="codeline" id="line-43"><code>	<span class="keyword">return</span> <a href="#line-64" class="ident">NewDocumentFromResponse</a>(<label for="r4" class="ident">res</label>)</code></span>
+<span class="codeline" id="line-44"><code>}</code></span>
+<span class="codeline" id="line-45"><code></code></span>
+<span class="codeline" id="line-46"><code><span class="comment">// NewDocumentFromReader returns a Document from an io.Reader.</span></code></span>
+<span class="codeline" id="line-47"><code><span class="comment">// It returns an error as second value if the reader's data cannot be parsed</span></code></span>
+<span class="codeline" id="line-48"><code><span class="comment">// as html. It does not check if the reader is also an io.Closer, the</span></code></span>
+<span class="codeline" id="line-49"><code><span class="comment">// provided reader is never closed by this call. It is the responsibility</span></code></span>
+<span class="codeline" id="line-50"><code><span class="comment">// of the caller to close it if required.</span></code></span>
+<span class="codeline" id="line-51"><code><span class="keyword">func</span> <label for="r6" class="ident"><a href="../../../../pkg/github.com/PuerkitoBio^56e6a/goquery.html#name-NewDocumentFromReader" class="ident">NewDocumentFromReader</a></label>(<label for="r7" class="ident">r</label> <a href="../../../../pkg/io.html" class="ident i1">io</a>.<a href="../../../io/io.go.html#line-86" class="ident">Reader</a>) (*<a href="#line-18" class="ident">Document</a>, <a href="../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-52"><code>	<label for="r8" class="ident">root</label>, <label for="r9" class="ident">e</label> := <a href="../../../../pkg/golang.org/x/net/html.html" class="ident i5">html</a>.<a href="../../../golang.org/x/net/html/parse.go.html#line-2343" class="ident">Parse</a>(<label for="r7" class="ident">r</label>)</code></span>
+<span class="codeline" id="line-53"><code>	<span class="keyword">if</span> <label for="r9" class="ident">e</label> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-54"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <label for="r9" class="ident">e</label></code></span>
+<span class="codeline" id="line-55"><code>	}</code></span>
+<span class="codeline" id="line-56"><code>	<span class="keyword">return</span> <a href="#line-89" class="ident">newDocument</a>(<label for="r8" class="ident">root</label>, <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>), <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-57"><code>}</code></span>
+<span class="codeline" id="line-58"><code></code></span>
+<span class="codeline" id="line-59"><code><span class="comment">// NewDocumentFromResponse is another Document constructor that takes an http response as argument.</span></code></span>
+<span class="codeline" id="line-60"><code><span class="comment">// It loads the specified response's document, parses it, and stores the root Document</span></code></span>
+<span class="codeline" id="line-61"><code><span class="comment">// node, ready to be manipulated. The response's body is closed on return.</span></code></span>
+<span class="codeline" id="line-62"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-63"><code><span class="comment">// Deprecated: Use goquery.NewDocumentFromReader with the response's body.</span></code></span>
+<span class="codeline" id="line-64"><code><span class="keyword">func</span> <label for="r10" class="ident"><a href="../../../../pkg/github.com/PuerkitoBio^56e6a/goquery.html#name-NewDocumentFromResponse" class="ident">NewDocumentFromResponse</a></label>(<label for="r11" class="ident">res</label> *<a href="../../../../pkg/net/http.html" class="ident i2">http</a>.<a href="../../../net/http/response.go.html#line-35" class="ident">Response</a>) (*<a href="#line-18" class="ident">Document</a>, <a href="../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-65"><code>	<span class="keyword">if</span> <label for="r11" class="ident">res</label> == <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-66"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="../../../../pkg/errors.html" class="ident i0">errors</a>.<a href="../../../errors/errors.go.html#line-61" class="ident">New</a>(<span class="lit-string">"Response is nil"</span>)</code></span>
+<span class="codeline" id="line-67"><code>	}</code></span>
+<span class="codeline" id="line-68"><code>	<span class="keyword">defer</span> <label for="r11" class="ident">res</label>.<a href="../../../net/http/response.go.html#line-72" class="ident">Body</a>.<a href="../../../io/io.go.html#line-108" class="ident">Close</a>()</code></span>
+<span class="codeline" id="line-69"><code>	<span class="keyword">if</span> <label for="r11" class="ident">res</label>.<a href="../../../net/http/response.go.html#line-115" class="ident">Request</a> == <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-70"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="../../../../pkg/errors.html" class="ident i0">errors</a>.<a href="../../../errors/errors.go.html#line-61" class="ident">New</a>(<span class="lit-string">"Response.Request is nil"</span>)</code></span>
+<span class="codeline" id="line-71"><code>	}</code></span>
+<span class="codeline" id="line-72"><code></code></span>
+<span class="codeline" id="line-73"><code>	<span class="comment">// Parse the HTML into nodes</span></code></span>
+<span class="codeline" id="line-74"><code>	<label for="r12" class="ident">root</label>, <label for="r13" class="ident">e</label> := <a href="../../../../pkg/golang.org/x/net/html.html" class="ident i5">html</a>.<a href="../../../golang.org/x/net/html/parse.go.html#line-2343" class="ident">Parse</a>(<label for="r11" class="ident">res</label>.<a href="../../../net/http/response.go.html#line-72" class="ident">Body</a>)</code></span>
+<span class="codeline" id="line-75"><code>	<span class="keyword">if</span> <label for="r13" class="ident">e</label> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-76"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <label for="r13" class="ident">e</label></code></span>
+<span class="codeline" id="line-77"><code>	}</code></span>
+<span class="codeline" id="line-78"><code></code></span>
+<span class="codeline" id="line-79"><code>	<span class="comment">// Create and fill the document</span></code></span>
+<span class="codeline" id="line-80"><code>	<span class="keyword">return</span> <a href="#line-89" class="ident">newDocument</a>(<label for="r12" class="ident">root</label>, <label for="r11" class="ident">res</label>.<a href="../../../net/http/response.go.html#line-115" class="ident">Request</a>.<a href="../../../net/http/request.go.html#line-128" class="ident">URL</a>), <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-81"><code>}</code></span>
+<span class="codeline" id="line-82"><code></code></span>
+<span class="codeline" id="line-83"><code><span class="comment">// CloneDocument creates a deep-clone of a document.</span></code></span>
+<span class="codeline" id="line-84"><code><span class="keyword">func</span> <label for="r14" class="ident"><a href="../../../../pkg/github.com/PuerkitoBio^56e6a/goquery.html#name-CloneDocument" class="ident">CloneDocument</a></label>(<label for="r15" class="ident">doc</label> *<a href="#line-18" class="ident">Document</a>) *<a href="#line-18" class="ident">Document</a> {</code></span>
+<span class="codeline" id="line-85"><code>	<span class="keyword">return</span> <a href="#line-89" class="ident">newDocument</a>(<a href="manipulation.go.html#line-606" class="ident">cloneNode</a>(<label for="r15" class="ident">doc</label>.<a href="#line-21" class="ident">rootNode</a>), <label for="r15" class="ident">doc</label>.<a href="#line-20" class="ident">Url</a>)</code></span>
+<span class="codeline" id="line-86"><code>}</code></span>
+<span class="codeline" id="line-87"><code></code></span>
+<span class="codeline" id="line-88"><code><span class="comment">// Private constructor, make sure all fields are correctly filled.</span></code></span>
+<span class="codeline" id="line-89"><code><span class="keyword">func</span> <label for="r16" class="ident"><a href="../../../../pkg/github.com/PuerkitoBio^56e6a/goquery.html#name-newDocument" class="ident">newDocument</a></label>(<label for="r17" class="ident">root</label> *<a href="../../../../pkg/golang.org/x/net/html.html" class="ident i5">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-44" class="ident">Node</a>, <label for="r18" class="ident">url</label> *<a href="../../../../pkg/net/url.html" class="ident i3">url</a>.<a href="../../../net/url/url.go.html#line-369" class="ident">URL</a>) *<a href="#line-18" class="ident">Document</a> {</code></span>
+<span class="codeline" id="line-90"><code>	<span class="comment">// Create and fill the document</span></code></span>
+<span class="codeline" id="line-91"><code>	<label for="r19" class="ident">d</label> := &amp;<a href="#line-18" class="ident">Document</a>{<a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <label for="r18" class="ident">url</label>, <label for="r17" class="ident">root</label>}</code></span>
+<span class="codeline" id="line-92"><code>	<label for="r19" class="ident">d</label>.<a href="#line-19" class="ident">Selection</a> = <a href="#line-111" class="ident">newSingleSelection</a>(<label for="r17" class="ident">root</label>, <label for="r19" class="ident">d</label>)</code></span>
+<span class="codeline" id="line-93"><code>	<span class="keyword">return</span> <label for="r19" class="ident">d</label></code></span>
+<span class="codeline" id="line-94"><code>}</code></span>
+<span class="codeline" id="line-95"><code></code></span>
+<span class="codeline" id="line-96"><code><span class="comment">// Selection represents a collection of nodes matching some criteria. The</span></code></span>
+<span class="codeline" id="line-97"><code><span class="comment">// initial Selection can be created by using Document.Find, and then</span></code></span>
+<span class="codeline" id="line-98"><code><span class="comment">// manipulated using the jQuery-like chainable syntax and methods.</span></code></span>
+<span class="codeline" id="line-99"><code><span class="keyword">type</span> <a href="../../../../pkg/github.com/PuerkitoBio^56e6a/goquery.html#name-Selection" class="ident">Selection</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-100"><code>	<a href="../../../../use/github.com/PuerkitoBio^56e6a/goquery..Selection.Nodes.html" class="ident">Nodes</a>    []*<a href="../../../../pkg/golang.org/x/net/html.html" class="ident i5">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-44" class="ident">Node</a></code></span>
+<span class="codeline" id="line-101"><code>	<a href="../../../../use/github.com/PuerkitoBio^56e6a/goquery..Selection.document^43cc2.html" class="ident">document</a> *<a href="#line-18" class="ident">Document</a></code></span>
+<span class="codeline" id="line-102"><code>	<a href="../../../../use/github.com/PuerkitoBio^56e6a/goquery..Selection.prevSel^93163.html" class="ident">prevSel</a>  *<a href="#line-99" class="ident">Selection</a></code></span>
+<span class="codeline" id="line-103"><code>}</code></span>
+<span class="codeline" id="line-104"><code></code></span>
+<span class="codeline" id="line-105"><code><span class="comment">// Helper constructor to create an empty selection</span></code></span>
+<span class="codeline" id="line-106"><code><span class="keyword">func</span> <label for="r20" class="ident"><a href="../../../../pkg/github.com/PuerkitoBio^56e6a/goquery.html#name-newEmptySelection" class="ident">newEmptySelection</a></label>(<label for="r21" class="ident">doc</label> *<a href="#line-18" class="ident">Document</a>) *<a href="#line-99" class="ident">Selection</a> {</code></span>
+<span class="codeline" id="line-107"><code>	<span class="keyword">return</span> &amp;<a href="#line-99" class="ident">Selection</a>{<a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <label for="r21" class="ident">doc</label>, <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>}</code></span>
+<span class="codeline" id="line-108"><code>}</code></span>
+<span class="codeline" id="line-109"><code></code></span>
+<span class="codeline" id="line-110"><code><span class="comment">// Helper constructor to create a selection of only one node</span></code></span>
+<span class="codeline" id="line-111"><code><span class="keyword">func</span> <label for="r22" class="ident"><a href="../../../../pkg/github.com/PuerkitoBio^56e6a/goquery.html#name-newSingleSelection" class="ident">newSingleSelection</a></label>(<label for="r23" class="ident">node</label> *<a href="../../../../pkg/golang.org/x/net/html.html" class="ident i5">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-44" class="ident">Node</a>, <label for="r24" class="ident">doc</label> *<a href="#line-18" class="ident">Document</a>) *<a href="#line-99" class="ident">Selection</a> {</code></span>
+<span class="codeline" id="line-112"><code>	<span class="keyword">return</span> &amp;<a href="#line-99" class="ident">Selection</a>{[]*<a href="../../../../pkg/golang.org/x/net/html.html" class="ident i5">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-44" class="ident">Node</a>{<label for="r23" class="ident">node</label>}, <label for="r24" class="ident">doc</label>, <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>}</code></span>
+<span class="codeline" id="line-113"><code>}</code></span>
+<span class="codeline" id="line-114"><code></code></span>
+<span class="codeline" id="line-115"><code><span class="comment">// Matcher is an interface that defines the methods to match</span></code></span>
+<span class="codeline" id="line-116"><code><span class="comment">// HTML nodes against a compiled selector string. Cascadia's</span></code></span>
+<span class="codeline" id="line-117"><code><span class="comment">// Selector implements this interface.</span></code></span>
+<span class="codeline" id="line-118"><code><span class="keyword">type</span> <a href="../../../../pkg/github.com/PuerkitoBio^56e6a/goquery.html#name-Matcher" class="ident">Matcher</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-119"><code>	<a href="../../../../imp/github.com/PuerkitoBio^56e6a/goquery.Matcher.html#name-Match" class="ident">Match</a>(*<a href="../../../../pkg/golang.org/x/net/html.html" class="ident i5">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-44" class="ident">Node</a>) <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-120"><code>	<a href="../../../../imp/github.com/PuerkitoBio^56e6a/goquery.Matcher.html#name-MatchAll" class="ident">MatchAll</a>(*<a href="../../../../pkg/golang.org/x/net/html.html" class="ident i5">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-44" class="ident">Node</a>) []*<a href="../../../../pkg/golang.org/x/net/html.html" class="ident i5">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-44" class="ident">Node</a></code></span>
+<span class="codeline" id="line-121"><code>	<a href="../../../../imp/github.com/PuerkitoBio^56e6a/goquery.Matcher.html#name-Filter" class="ident">Filter</a>([]*<a href="../../../../pkg/golang.org/x/net/html.html" class="ident i5">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-44" class="ident">Node</a>) []*<a href="../../../../pkg/golang.org/x/net/html.html" class="ident i5">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-44" class="ident">Node</a></code></span>
+<span class="codeline" id="line-122"><code>}</code></span>
+<span class="codeline" id="line-123"><code></code></span>
+<span class="codeline" id="line-124"><code><span class="comment">// Single compiles a selector string to a Matcher that stops after the first</span></code></span>
+<span class="codeline" id="line-125"><code><span class="comment">// match is found.</span></code></span>
+<span class="codeline" id="line-126"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-127"><code><span class="comment">// By default, Selection.Find and other functions that accept a selector string</span></code></span>
+<span class="codeline" id="line-128"><code><span class="comment">// to select nodes will use all matches corresponding to that selector. By</span></code></span>
+<span class="codeline" id="line-129"><code><span class="comment">// using the Matcher returned by Single, at most the first match will be</span></code></span>
+<span class="codeline" id="line-130"><code><span class="comment">// selected.</span></code></span>
+<span class="codeline" id="line-131"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-132"><code><span class="comment">// For example, those two statements are semantically equivalent:</span></code></span>
+<span class="codeline" id="line-133"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-134"><code><span class="comment">//     sel1 := doc.Find("a").First()</span></code></span>
+<span class="codeline" id="line-135"><code><span class="comment">//     sel2 := doc.FindMatcher(goquery.Single("a"))</span></code></span>
+<span class="codeline" id="line-136"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-137"><code><span class="comment">// The one using Single is optimized to be potentially much faster on large</span></code></span>
+<span class="codeline" id="line-138"><code><span class="comment">// documents.</span></code></span>
+<span class="codeline" id="line-139"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-140"><code><span class="comment">// Only the behaviour of the MatchAll method of the Matcher interface is</span></code></span>
+<span class="codeline" id="line-141"><code><span class="comment">// altered compared to standard Matchers. This means that the single-selection</span></code></span>
+<span class="codeline" id="line-142"><code><span class="comment">// property of the Matcher only applies for Selection methods where the Matcher</span></code></span>
+<span class="codeline" id="line-143"><code><span class="comment">// is used to select nodes, not to filter or check if a node matches the</span></code></span>
+<span class="codeline" id="line-144"><code><span class="comment">// Matcher - in those cases, the behaviour of the Matcher is unchanged (e.g.</span></code></span>
+<span class="codeline" id="line-145"><code><span class="comment">// FilterMatcher(Single("div")) will still result in a Selection with multiple</span></code></span>
+<span class="codeline" id="line-146"><code><span class="comment">// "div"s if there were many "div"s in the Selection to begin with).</span></code></span>
+<span class="codeline" id="line-147"><code><span class="keyword">func</span> <label for="r25" class="ident"><a href="../../../../pkg/github.com/PuerkitoBio^56e6a/goquery.html#name-Single" class="ident">Single</a></label>(<label for="r26" class="ident">selector</label> <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="#line-118" class="ident">Matcher</a> {</code></span>
+<span class="codeline" id="line-148"><code>	<span class="keyword">return</span> <a href="#line-174" class="ident">singleMatcher</a>{<a href="#line-166" class="ident">compileMatcher</a>(<label for="r26" class="ident">selector</label>)}</code></span>
+<span class="codeline" id="line-149"><code>}</code></span>
+<span class="codeline" id="line-150"><code></code></span>
+<span class="codeline" id="line-151"><code><span class="comment">// SingleMatcher returns a Matcher matches the same nodes as m, but that stops</span></code></span>
+<span class="codeline" id="line-152"><code><span class="comment">// after the first match is found.</span></code></span>
+<span class="codeline" id="line-153"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-154"><code><span class="comment">// See the documentation of function Single for more details.</span></code></span>
+<span class="codeline" id="line-155"><code><span class="keyword">func</span> <label for="r27" class="ident"><a href="../../../../pkg/github.com/PuerkitoBio^56e6a/goquery.html#name-SingleMatcher" class="ident">SingleMatcher</a></label>(<label for="r28" class="ident">m</label> <a href="#line-118" class="ident">Matcher</a>) <a href="#line-118" class="ident">Matcher</a> {</code></span>
+<span class="codeline" id="line-156"><code>	<span class="keyword">if</span> <label for="r29" class="ident">_</label>, <label for="r30" class="ident">ok</label> := <label for="r28" class="ident">m</label>.(<a href="#line-174" class="ident">singleMatcher</a>); <label for="r30" class="ident">ok</label> {</code></span>
+<span class="codeline" id="line-157"><code>		<span class="comment">// m is already a singleMatcher</span></code></span>
+<span class="codeline" id="line-158"><code>		<span class="keyword">return</span> <label for="r28" class="ident">m</label></code></span>
+<span class="codeline" id="line-159"><code>	}</code></span>
+<span class="codeline" id="line-160"><code>	<span class="keyword">return</span> <a href="#line-174" class="ident">singleMatcher</a>{<label for="r28" class="ident">m</label>}</code></span>
+<span class="codeline" id="line-161"><code>}</code></span>
+<span class="codeline" id="line-162"><code></code></span>
+<span class="codeline" id="line-163"><code><span class="comment">// compileMatcher compiles the selector string s and returns</span></code></span>
+<span class="codeline" id="line-164"><code><span class="comment">// the corresponding Matcher. If s is an invalid selector string,</span></code></span>
+<span class="codeline" id="line-165"><code><span class="comment">// it returns a Matcher that fails all matches.</span></code></span>
+<span class="codeline" id="line-166"><code><span class="keyword">func</span> <label for="r31" class="ident"><a href="../../../../pkg/github.com/PuerkitoBio^56e6a/goquery.html#name-compileMatcher" class="ident">compileMatcher</a></label>(<label for="r32" class="ident">s</label> <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="#line-118" class="ident">Matcher</a> {</code></span>
+<span class="codeline" id="line-167"><code>	<label for="r33" class="ident">cs</label>, <label for="r34" class="ident">err</label> := <a href="../../../../pkg/github.com/andybalholm/cascadia.html" class="ident i4">cascadia</a>.<a href="../../andybalholm/cascadia/selector.go.html#line-102" class="ident">Compile</a>(<label for="r32" class="ident">s</label>)</code></span>
+<span class="codeline" id="line-168"><code>	<span class="keyword">if</span> <label for="r34" class="ident">err</label> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-169"><code>		<span class="keyword">return</span> <a href="#line-199" class="ident">invalidMatcher</a>{}</code></span>
+<span class="codeline" id="line-170"><code>	}</code></span>
+<span class="codeline" id="line-171"><code>	<span class="keyword">return</span> <label for="r33" class="ident">cs</label></code></span>
+<span class="codeline" id="line-172"><code>}</code></span>
+<span class="codeline" id="line-173"><code></code></span>
+<span class="codeline" id="line-174"><code><span class="keyword">type</span> <a href="../../../../pkg/github.com/PuerkitoBio^56e6a/goquery.html#name-singleMatcher" class="ident">singleMatcher</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-175"><code>	<a href="#line-118" class="ident">Matcher</a></code></span>
+<span class="codeline" id="line-176"><code>}</code></span>
+<span class="codeline" id="line-177"><code></code></span>
+<span class="codeline" id="line-178"><code><span class="keyword">func</span> (<label for="r35" class="ident">m</label> <a href="#line-174" class="ident">singleMatcher</a>) <label for="r36" class="ident"><a href="../../../../use/github.com/PuerkitoBio^56e6a/goquery..singleMatcher^bdaf7.MatchAll.html" class="ident">MatchAll</a></label>(<label for="r37" class="ident">n</label> *<a href="../../../../pkg/golang.org/x/net/html.html" class="ident i5">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-44" class="ident">Node</a>) []*<a href="../../../../pkg/golang.org/x/net/html.html" class="ident i5">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-44" class="ident">Node</a> {</code></span>
+<span class="codeline" id="line-179"><code>	<span class="comment">// Optimized version - stops finding at the first match (cascadia-compiled</span></code></span>
+<span class="codeline" id="line-180"><code><span class="comment">	// matchers all use this code path).</span></code></span>
+<span class="codeline" id="line-181"><code>	<span class="keyword">if</span> <label for="r38" class="ident">mm</label>, <label for="r39" class="ident">ok</label> := <label for="r35" class="ident">m</label>.<a href="#line-175" class="ident">Matcher</a>.(<span class="keyword">interface</span>{ <label for="r40" class="ident">MatchFirst</label>(*<a href="../../../../pkg/golang.org/x/net/html.html" class="ident i5">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-44" class="ident">Node</a>) *<a href="../../../../pkg/golang.org/x/net/html.html" class="ident i5">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-44" class="ident">Node</a> }); <label for="r39" class="ident">ok</label> {</code></span>
+<span class="codeline" id="line-182"><code>		<label for="r41" class="ident">node</label> := <label for="r38" class="ident">mm</label>.<label for="r40" class="ident">MatchFirst</label>(<label for="r37" class="ident">n</label>)</code></span>
+<span class="codeline" id="line-183"><code>		<span class="keyword">if</span> <label for="r41" class="ident">node</label> == <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-184"><code>			<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-185"><code>		}</code></span>
+<span class="codeline" id="line-186"><code>		<span class="keyword">return</span> []*<a href="../../../../pkg/golang.org/x/net/html.html" class="ident i5">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-44" class="ident">Node</a>{<label for="r41" class="ident">node</label>}</code></span>
+<span class="codeline" id="line-187"><code>	}</code></span>
+<span class="codeline" id="line-188"><code></code></span>
+<span class="codeline" id="line-189"><code>	<span class="comment">// Fallback version, for e.g. test mocks that don't provide the MatchFirst</span></code></span>
+<span class="codeline" id="line-190"><code><span class="comment">	// method.</span></code></span>
+<span class="codeline" id="line-191"><code>	<label for="r42" class="ident">nodes</label> := <label for="r35" class="ident">m</label>.<a href="#line-175" class="ident">Matcher</a>.<a href="#line-120" class="ident">MatchAll</a>(<label for="r37" class="ident">n</label>)</code></span>
+<span class="codeline" id="line-192"><code>	<span class="keyword">if</span> <a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r42" class="ident">nodes</label>) &gt; <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-193"><code>		<span class="keyword">return</span> <label for="r42" class="ident">nodes</label>[:<span class="lit-number">1</span>:<span class="lit-number">1</span>]</code></span>
+<span class="codeline" id="line-194"><code>	}</code></span>
+<span class="codeline" id="line-195"><code>	<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-196"><code>}</code></span>
+<span class="codeline" id="line-197"><code></code></span>
+<span class="codeline" id="line-198"><code><span class="comment">// invalidMatcher is a Matcher that always fails to match.</span></code></span>
+<span class="codeline" id="line-199"><code><span class="keyword">type</span> <a href="../../../../pkg/github.com/PuerkitoBio^56e6a/goquery.html#name-invalidMatcher" class="ident">invalidMatcher</a> <span class="keyword">struct</span>{}</code></span>
+<span class="codeline" id="line-200"><code></code></span>
+<span class="codeline" id="line-201"><code><span class="keyword">func</span> (<a href="#line-199" class="ident">invalidMatcher</a>) <label for="r43" class="ident"><a href="../../../../use/github.com/PuerkitoBio^56e6a/goquery..invalidMatcher^ff178.Match.html" class="ident">Match</a></label>(<label for="r44" class="ident">n</label> *<a href="../../../../pkg/golang.org/x/net/html.html" class="ident i5">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-44" class="ident">Node</a>) <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a>             { <span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a> }</code></span>
+<span class="codeline" id="line-202"><code><span class="keyword">func</span> (<a href="#line-199" class="ident">invalidMatcher</a>) <label for="r45" class="ident"><a href="../../../../use/github.com/PuerkitoBio^56e6a/goquery..invalidMatcher^ff178.MatchAll.html" class="ident">MatchAll</a></label>(<label for="r46" class="ident">n</label> *<a href="../../../../pkg/golang.org/x/net/html.html" class="ident i5">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-44" class="ident">Node</a>) []*<a href="../../../../pkg/golang.org/x/net/html.html" class="ident i5">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-44" class="ident">Node</a>  { <span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> }</code></span>
+<span class="codeline" id="line-203"><code><span class="keyword">func</span> (<a href="#line-199" class="ident">invalidMatcher</a>) <label for="r47" class="ident"><a href="../../../../use/github.com/PuerkitoBio^56e6a/goquery..invalidMatcher^ff178.Filter.html" class="ident">Filter</a></label>(<label for="r48" class="ident">ns</label> []*<a href="../../../../pkg/golang.org/x/net/html.html" class="ident i5">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-44" class="ident">Node</a>) []*<a href="../../../../pkg/golang.org/x/net/html.html" class="ident i5">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-44" class="ident">Node</a> { <span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> }</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

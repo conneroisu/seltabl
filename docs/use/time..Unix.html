@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: time.Unix</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/time.html">time</a>.<a href="../src/time/time.go.html#line-1417">Unix</a></b></span>
+
+<span class="title">16 uses</span>
+
+	time (current package)
+		<a href="../src/time/time.go.html#line-1417">time.go#L1417</a>: func <b>Unix</b>(sec int64, nsec int64) Time {
+		<a href="../src/time/time.go.html#line-1433" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-1433">#L1433</a>: 	return <b>Unix</b>(msec/1e3, (msec%1e3)*1e6)
+		<a href="../src/time/time.go.html#line-1439" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-1439">#L1439</a>: 	return <b>Unix</b>(usec/1e6, (usec%1e6)*1e3)
+
+	<a href="../pkg/compress/gzip.html">compress/gzip</a>
+		<a href="../src/compress/gzip/gunzip.go.html#line-192">gunzip.go#L192</a>: 		hdr.ModTime = time.<b>Unix</b>(t, 0)
+		<a href="../src/compress/gzip/gzip.go.html#line-157">gzip.go#L157</a>: 		if z.ModTime.After(time.<b>Unix</b>(0, 0)) {
+
+	<a href="../pkg/crypto/tls.html">crypto/tls</a>
+		<a href="../src/crypto/tls/handshake_client.go.html#line-355">handshake_client.go#L355</a>: 	if c.config.time().After(time.<b>Unix</b>(int64(session.useBy), 0)) {
+		<a href="../src/crypto/tls/handshake_client.go.html#line-392" class="path-duplicate">handshake_client.go</a><a href="../src/crypto/tls/handshake_client.go.html#line-392">#L392</a>: 	ticketAge := c.config.time().Sub(time.<b>Unix</b>(int64(session.createdAt), 0))
+		<a href="../src/crypto/tls/handshake_client_tls13.go.html#line-260">handshake_client_tls13.go#L260</a>: 			ticketAge := c.config.time().Sub(time.<b>Unix</b>(int64(hs.session.createdAt), 0))
+		<a href="../src/crypto/tls/handshake_server.go.html#line-445">handshake_server.go#L445</a>: 	createdAt := time.<b>Unix</b>(int64(sessionState.createdAt), 0)
+		<a href="../src/crypto/tls/handshake_server_tls13.go.html#line-324">handshake_server_tls13.go#L324</a>: 		createdAt := time.<b>Unix</b>(int64(sessionState.createdAt), 0)
+
+	<a href="../pkg/net.html">net</a>
+		<a href="../src/net/net.go.html#line-495">net.go#L495</a>: 	aLongTimeAgo = time.<b>Unix</b>(1, 0)
+
+	<a href="../pkg/net/http.html">net/http</a>
+		<a href="../src/net/http/fs.go.html#line-563">fs.go#L563</a>: var unixEpochTime = time.<b>Unix</b>(0, 0)
+		<a href="../src/net/http/http.go.html#line-30">http.go#L30</a>: var aLongTimeAgo = time.<b>Unix</b>(1, 0)
+		<a href="../src/net/http/socks_bundle.go.html#line-24">socks_bundle.go#L24</a>: 	socksaLongTimeAgo = time.<b>Unix</b>(1, 0)
+
+	<a href="../pkg/os.html">os</a>
+		<a href="../src/os/stat_linux.go.html#line-15">stat_linux.go#L15</a>: 	fs.modTime = time.<b>Unix</b>(fs.sys.Mtim.Unix())
+		<a href="../src/os/stat_linux.go.html#line-46" class="path-duplicate">stat_linux.go</a><a href="../src/os/stat_linux.go.html#line-46">#L46</a>: 	return time.<b>Unix</b>(fi.Sys().(*syscall.Stat_t).Atim.Unix())
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

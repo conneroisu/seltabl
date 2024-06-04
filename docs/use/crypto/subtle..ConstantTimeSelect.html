@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/subtle.ConstantTimeSelect</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../../pkg/crypto/subtle.html">crypto/subtle</a>.<a href="../../src/crypto/subtle/constant_time.go.html#line-29">ConstantTimeSelect</a></b></span>
+
+<span class="title">8 uses</span>
+
+	crypto/subtle (current package)
+		<a href="../../src/crypto/subtle/constant_time.go.html#line-29">constant_time.go#L29</a>: func <b>ConstantTimeSelect</b>(v, x, y int) int { return ^(v-1)&amp;x | (v-1)&amp;y }
+
+	<a href="../../pkg/crypto/rsa.html">crypto/rsa</a>
+		<a href="../../src/crypto/rsa/pkcs1v15.go.html#line-219">pkcs1v15.go#L219</a>: 		index = subtle.<b>ConstantTimeSelect</b>(lookingForIndex&amp;equals0, i, index)
+		<a href="../../src/crypto/rsa/pkcs1v15.go.html#line-220" class="path-duplicate">pkcs1v15.go</a><a href="../../src/crypto/rsa/pkcs1v15.go.html#line-220">#L220</a>: 		lookingForIndex = subtle.<b>ConstantTimeSelect</b>(equals0, 0, lookingForIndex)
+		<a href="../../src/crypto/rsa/pkcs1v15.go.html#line-228" class="path-duplicate">pkcs1v15.go</a><a href="../../src/crypto/rsa/pkcs1v15.go.html#line-228">#L228</a>: 	index = subtle.<b>ConstantTimeSelect</b>(valid, index+1, 0)
+		<a href="../../src/crypto/rsa/rsa.go.html#line-771">rsa.go#L771</a>: 		index = subtle.<b>ConstantTimeSelect</b>(lookingForIndex&amp;equals1, i, index)
+		<a href="../../src/crypto/rsa/rsa.go.html#line-772" class="path-duplicate">rsa.go</a><a href="../../src/crypto/rsa/rsa.go.html#line-772">#L772</a>: 		lookingForIndex = subtle.<b>ConstantTimeSelect</b>(equals1, 0, lookingForIndex)
+		<a href="../../src/crypto/rsa/rsa.go.html#line-773" class="path-duplicate">rsa.go</a><a href="../../src/crypto/rsa/rsa.go.html#line-773">#L773</a>: 		invalid = subtle.<b>ConstantTimeSelect</b>(lookingForIndex&amp;^equals0, 1, invalid)
+
+	<a href="../../pkg/crypto/tls.html">crypto/tls</a>
+		<a href="../../src/crypto/tls/conn.go.html#line-438">conn.go#L438</a>: 		n = subtle.<b>ConstantTimeSelect</b>(int(uint32(n)&gt;&gt;31), 0, n) // if n &lt; 0 { n = 0 }
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

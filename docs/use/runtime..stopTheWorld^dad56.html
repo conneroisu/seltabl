@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.stopTheWorld</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/proc.go.html#line-1339">stopTheWorld</a></b></span>
+
+<span class="title">10 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/heapdump.go.html#line-23">heapdump.go#L23</a>: 	stw := <b>stopTheWorld</b>(stwWriteHeapDump)
+		<a href="../src/runtime/mprof.go.html#line-1139">mprof.go#L1139</a>: 	stw := <b>stopTheWorld</b>(stwGoroutineProfile)
+		<a href="../src/runtime/mprof.go.html#line-1207" class="path-duplicate">mprof.go</a><a href="../src/runtime/mprof.go.html#line-1207">#L1207</a>: 	stw = <b>stopTheWorld</b>(stwGoroutineProfileCleanup)
+		<a href="../src/runtime/mprof.go.html#line-1342" class="path-duplicate">mprof.go</a><a href="../src/runtime/mprof.go.html#line-1342">#L1342</a>: 	stw := <b>stopTheWorld</b>(stwGoroutineProfile)
+		<a href="../src/runtime/mprof.go.html#line-1429" class="path-duplicate">mprof.go</a><a href="../src/runtime/mprof.go.html#line-1429">#L1429</a>: 		stw = <b>stopTheWorld</b>(stwAllGoroutinesStack)
+		<a href="../src/runtime/mstats.go.html#line-355">mstats.go#L355</a>: 	stw := <b>stopTheWorld</b>(stwReadMemStats)
+		<a href="../src/runtime/os_linux.go.html#line-720">os_linux.go#L720</a>: 	stw := <b>stopTheWorld</b>(stwAllThreadsSyscall)
+		<a href="../src/runtime/proc.go.html#line-1339">proc.go#L1339</a>: func <b>stopTheWorld</b>(reason stwReason) worldStop {
+		<a href="../src/runtime/proc.go.html#line-1397" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-1397">#L1397</a>: 	return <b>stopTheWorld</b>(reason)
+		<a href="../src/runtime/trace2.go.html#line-202">trace2.go#L202</a>: 	stw := <b>stopTheWorld</b>(stwStartTrace)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

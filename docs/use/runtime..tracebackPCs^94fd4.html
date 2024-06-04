@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.tracebackPCs</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/traceback.go.html#line-619">tracebackPCs</a></b></span>
+
+<span class="title">6 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/mprof.go.html#line-706">mprof.go#L706</a>: 		nstk = <b>tracebackPCs</b>(&amp;u, skip, prof.stack[:])
+		<a href="../src/runtime/mprof.go.html#line-1416" class="path-duplicate">mprof.go</a><a href="../src/runtime/mprof.go.html#line-1416">#L1416</a>: 	n := <b>tracebackPCs</b>(&amp;u, 0, r.Stack0[:])
+		<a href="../src/runtime/proc.go.html#line-5375">proc.go#L5375</a>: 	n += <b>tracebackPCs</b>(&amp;u, 0, stk[n:])
+		<a href="../src/runtime/traceback.go.html#line-619">traceback.go#L619</a>: func <b>tracebackPCs</b>(u *unwinder, skip int, pcBuf []uintptr) int {
+		<a href="../src/runtime/traceback.go.html#line-1104" class="path-duplicate">traceback.go</a><a href="../src/runtime/traceback.go.html#line-1104">#L1104</a>: 		n = <b>tracebackPCs</b>(&amp;u, skip, pcbuf)
+		<a href="../src/runtime/traceback.go.html#line-1112" class="path-duplicate">traceback.go</a><a href="../src/runtime/traceback.go.html#line-1112">#L1112</a>: 	return <b>tracebackPCs</b>(&amp;u, skip, pcbuf)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

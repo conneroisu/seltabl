@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/http.http2ClientConn.closed</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/net/http.html">net/http</a>.<a href="../../src/net/http/h2_bundle.go.html#line-7357">http2ClientConn</a>.<a href="../../src/net/http/h2_bundle.go.html#line-7378">closed</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">11 uses</span>
+
+	net/http (current package)
+		<a href="../../src/net/http/h2_bundle.go.html#line-7378">h2_bundle.go#L7378</a>: 	<b>closed</b>          bool
+		<a href="../../src/net/http/h2_bundle.go.html#line-8005" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-8005">#L8005</a>: 		Closed:               cc.<b>closed</b>,
+		<a href="../../src/net/http/h2_bundle.go.html#line-8042" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-8042">#L8042</a>: 	st.canTakeNewRequest = cc.goAway == nil &amp;&amp; !cc.<b>closed</b> &amp;&amp; !cc.closing &amp;&amp; maxConcurrentOkay &amp;&amp;
+		<a href="../../src/net/http/h2_bundle.go.html#line-8098" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-8098">#L8098</a>: 	cc.<b>closed</b> = true
+		<a href="../../src/net/http/h2_bundle.go.html#line-8129" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-8129">#L8129</a>: 			if len(cc.streams) == 0 || cc.<b>closed</b> {
+		<a href="../../src/net/http/h2_bundle.go.html#line-8130" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-8130">#L8130</a>: 				cc.<b>closed</b> = true
+		<a href="../../src/net/http/h2_bundle.go.html#line-8183" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-8183">#L8183</a>: 	cc.<b>closed</b> = true
+		<a href="../../src/net/http/h2_bundle.go.html#line-8670" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-8670">#L8670</a>: 		if cc.<b>closed</b> || !cc.canTakeNewRequestLocked() {
+		<a href="../../src/net/http/h2_bundle.go.html#line-8914" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-8914">#L8914</a>: 		if cc.<b>closed</b> {
+		<a href="../../src/net/http/h2_bundle.go.html#line-9220" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9220">#L9220</a>: 		cc.<b>closed</b> = true
+		<a href="../../src/net/http/h2_bundle.go.html#line-9290" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9290">#L9290</a>: 	cc.<b>closed</b> = true
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

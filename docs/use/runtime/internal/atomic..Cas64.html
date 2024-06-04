@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime/internal/atomic.Cas64</title>
+<link href="../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../../../pkg/runtime/internal/atomic.html">runtime/internal/atomic</a>.<a href="../../../src/runtime/internal/atomic/atomic_amd64.go.html#line-108">Cas64</a></b></span>
+
+<span class="title">7 uses</span>
+
+	runtime/internal/atomic (current package)
+		<a href="../../../src/runtime/internal/atomic/atomic_amd64.go.html#line-108">atomic_amd64.go#L108</a>: func <b>Cas64</b>(ptr *uint64, old, new uint64) bool
+		<a href="../../../src/runtime/internal/atomic/types.go.html#line-325">types.go#L325</a>: 	return <b>Cas64</b>(&amp;u.value, old, new)
+
+	<a href="../../../pkg/runtime.html">runtime</a>
+		<a href="../../../src/runtime/lfstack.go.html#line-34">lfstack.go#L34</a>: 		if atomic.<b>Cas64</b>((*uint64)(head), old, new) {
+		<a href="../../../src/runtime/lfstack.go.html#line-48" class="path-duplicate">lfstack.go</a><a href="../../../src/runtime/lfstack.go.html#line-48">#L48</a>: 		if atomic.<b>Cas64</b>((*uint64)(head), old, next) {
+		<a href="../../../src/runtime/profbuf.go.html#line-125">profbuf.go#L125</a>: 	return atomic.<b>Cas64</b>((*uint64)(x), uint64(old), uint64(new))
+		<a href="../../../src/runtime/runtime1.go.html#line-108">runtime1.go#L108</a>: 	if atomic.<b>Cas64</b>(&amp;test_z64, test_x64, 1) {
+		<a href="../../../src/runtime/runtime1.go.html#line-115" class="path-duplicate">runtime1.go</a><a href="../../../src/runtime/runtime1.go.html#line-115">#L115</a>: 	if !atomic.<b>Cas64</b>(&amp;test_z64, test_x64, 1) {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

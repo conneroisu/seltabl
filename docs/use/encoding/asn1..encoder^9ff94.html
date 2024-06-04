@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: encoding/asn1.encoder</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../pkg/encoding/asn1.html">encoding/asn1</a>.<a href="../../src/encoding/asn1/marshal.go.html#line-24">encoder</a></b></span>
+
+<span class="title">21 uses</span>
+
+	encoding/asn1 (current package)
+		<a href="../../src/encoding/asn1/marshal.go.html#line-19">marshal.go#L19</a>: 	byte00Encoder <b>encoder</b> = byteEncoder(0x00)
+		<a href="../../src/encoding/asn1/marshal.go.html#line-20" class="path-duplicate">marshal.go</a><a href="../../src/encoding/asn1/marshal.go.html#line-20">#L20</a>: 	byteFFEncoder <b>encoder</b> = byteEncoder(0xff)
+		<a href="../../src/encoding/asn1/marshal.go.html#line-24" class="path-duplicate">marshal.go</a><a href="../../src/encoding/asn1/marshal.go.html#line-24">#L24</a>: type <b>encoder</b> interface {
+		<a href="../../src/encoding/asn1/marshal.go.html#line-65" class="path-duplicate">marshal.go</a><a href="../../src/encoding/asn1/marshal.go.html#line-65">#L65</a>: type multiEncoder []<b>encoder</b>
+		<a href="../../src/encoding/asn1/marshal.go.html#line-83" class="path-duplicate">marshal.go</a><a href="../../src/encoding/asn1/marshal.go.html#line-83">#L83</a>: type setEncoder []<b>encoder</b>
+		<a href="../../src/encoding/asn1/marshal.go.html#line-129" class="path-duplicate">marshal.go</a><a href="../../src/encoding/asn1/marshal.go.html#line-129">#L129</a>: 	tag     <b>encoder</b>
+		<a href="../../src/encoding/asn1/marshal.go.html#line-130" class="path-duplicate">marshal.go</a><a href="../../src/encoding/asn1/marshal.go.html#line-130">#L130</a>: 	body    <b>encoder</b>
+		<a href="../../src/encoding/asn1/marshal.go.html#line-197" class="path-duplicate">marshal.go</a><a href="../../src/encoding/asn1/marshal.go.html#line-197">#L197</a>: func makeBigInt(n *big.Int) (<b>encoder</b>, error) {
+		<a href="../../src/encoding/asn1/marshal.go.html#line-214" class="path-duplicate">marshal.go</a><a href="../../src/encoding/asn1/marshal.go.html#line-214">#L214</a>: 			return multiEncoder([]<b>encoder</b>{byteFFEncoder, bytesEncoder(bytes)}), nil
+		<a href="../../src/encoding/asn1/marshal.go.html#line-225" class="path-duplicate">marshal.go</a><a href="../../src/encoding/asn1/marshal.go.html#line-225">#L225</a>: 			return multiEncoder([]<b>encoder</b>{byte00Encoder, bytesEncoder(bytes)}), nil
+		<a href="../../src/encoding/asn1/marshal.go.html#line-305" class="path-duplicate">marshal.go</a><a href="../../src/encoding/asn1/marshal.go.html#line-305">#L305</a>: func makeObjectIdentifier(oid []int) (e <b>encoder</b>, err error) {
+		<a href="../../src/encoding/asn1/marshal.go.html#line-313" class="path-duplicate">marshal.go</a><a href="../../src/encoding/asn1/marshal.go.html#line-313">#L313</a>: func makePrintableString(s string) (e <b>encoder</b>, err error) {
+		<a href="../../src/encoding/asn1/marshal.go.html#line-329" class="path-duplicate">marshal.go</a><a href="../../src/encoding/asn1/marshal.go.html#line-329">#L329</a>: func makeIA5String(s string) (e <b>encoder</b>, err error) {
+		<a href="../../src/encoding/asn1/marshal.go.html#line-339" class="path-duplicate">marshal.go</a><a href="../../src/encoding/asn1/marshal.go.html#line-339">#L339</a>: func makeNumericString(s string) (e <b>encoder</b>, err error) {
+		<a href="../../src/encoding/asn1/marshal.go.html#line-349" class="path-duplicate">marshal.go</a><a href="../../src/encoding/asn1/marshal.go.html#line-349">#L349</a>: func makeUTF8String(s string) <b>encoder</b> {
+		<a href="../../src/encoding/asn1/marshal.go.html#line-371" class="path-duplicate">marshal.go</a><a href="../../src/encoding/asn1/marshal.go.html#line-371">#L371</a>: func makeUTCTime(t time.Time) (e <b>encoder</b>, err error) {
+		<a href="../../src/encoding/asn1/marshal.go.html#line-382" class="path-duplicate">marshal.go</a><a href="../../src/encoding/asn1/marshal.go.html#line-382">#L382</a>: func makeGeneralizedTime(t time.Time) (e <b>encoder</b>, err error) {
+		<a href="../../src/encoding/asn1/marshal.go.html#line-461" class="path-duplicate">marshal.go</a><a href="../../src/encoding/asn1/marshal.go.html#line-461">#L461</a>: func makeBody(value reflect.Value, params fieldParameters) (e <b>encoder</b>, err error) {
+		<a href="../../src/encoding/asn1/marshal.go.html#line-525" class="path-duplicate">marshal.go</a><a href="../../src/encoding/asn1/marshal.go.html#line-525">#L525</a>: 			m := make([]<b>encoder</b>, n1)
+		<a href="../../src/encoding/asn1/marshal.go.html#line-549" class="path-duplicate">marshal.go</a><a href="../../src/encoding/asn1/marshal.go.html#line-549">#L549</a>: 			m := make([]<b>encoder</b>, l)
+		<a href="../../src/encoding/asn1/marshal.go.html#line-579" class="path-duplicate">marshal.go</a><a href="../../src/encoding/asn1/marshal.go.html#line-579">#L579</a>: func makeField(v reflect.Value, params fieldParameters) (e <b>encoder</b>, err error) {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: errors.Is</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/errors.html">errors</a>.<a href="../src/errors/wrap.go.html#line-44">Is</a></b></span>
+
+<span class="title">23 uses</span>
+
+	errors (current package)
+		<a href="../src/errors/wrap.go.html#line-44">wrap.go#L44</a>: func <b>Is</b>(err, target error) bool {
+
+	<a href="../pkg/crypto/rand.html">crypto/rand</a>
+		<a href="../src/crypto/rand/rand_unix.go.html#line-83">rand_unix.go#L83</a>: 	if errors.<b>Is</b>(err, syscall.EAGAIN) {
+
+	<a href="../pkg/mime/multipart.html">mime/multipart</a>
+		<a href="../src/mime/multipart/formdata.go.html#line-246">formdata.go#L246</a>: 				if e != nil &amp;&amp; !errors.<b>Is</b>(e, os.ErrNotExist) &amp;&amp; err == nil {
+
+	<a href="../pkg/net.html">net</a>
+		<a href="../src/net/conf.go.html#line-276">conf.go#L276</a>: 	if canUseCgo &amp;&amp; dnsConf.err != nil &amp;&amp; !errors.<b>Is</b>(dnsConf.err, fs.ErrNotExist) &amp;&amp; !errors.<b>Is</b>(dnsConf.err, fs.ErrPermission) {
+		<a href="../src/net/conf.go.html#line-293" class="path-duplicate">conf.go</a><a href="../src/net/conf.go.html#line-293">#L293</a>: 		if errors.<b>Is</b>(dnsConf.err, fs.ErrNotExist) {
+		<a href="../src/net/conf.go.html#line-353" class="path-duplicate">conf.go</a><a href="../src/net/conf.go.html#line-353">#L353</a>: 	if errors.<b>Is</b>(nss.err, fs.ErrNotExist) || (nss.err == nil &amp;&amp; len(srcs) == 0) {
+		<a href="../src/net/conf.go.html#line-418" class="path-duplicate">conf.go</a><a href="../src/net/conf.go.html#line-418">#L418</a>: 					if err != nil &amp;&amp; !errors.<b>Is</b>(err, fs.ErrNotExist) {
+		<a href="../src/net/hosts.go.html#line-70">hosts.go#L70</a>: 		if !errors.<b>Is</b>(err, fs.ErrNotExist) &amp;&amp; !errors.<b>Is</b>(err, fs.ErrPermission) {
+		<a href="../src/net/mptcpsock_linux.go.html#line-39">mptcpsock_linux.go#L39</a>: 	case errors.<b>Is</b>(err, syscall.EPROTONOSUPPORT): // Not supported: &gt;= v5.6
+		<a href="../src/net/mptcpsock_linux.go.html#line-40" class="path-duplicate">mptcpsock_linux.go</a><a href="../src/net/mptcpsock_linux.go.html#line-40">#L40</a>: 	case errors.<b>Is</b>(err, syscall.EINVAL): // Not supported: &lt; v5.6
+
+	<a href="../pkg/net/http.html">net/http</a>
+		<a href="../src/net/http/fs.go.html#line-50">fs.go#L50</a>: 	if errors.<b>Is</b>(originalErr, fs.ErrNotExist) || errors.<b>Is</b>(originalErr, fs.ErrPermission) {
+		<a href="../src/net/http/fs.go.html#line-714" class="path-duplicate">fs.go</a><a href="../src/net/http/fs.go.html#line-714">#L714</a>: 	if errors.<b>Is</b>(err, fs.ErrNotExist) {
+		<a href="../src/net/http/fs.go.html#line-717" class="path-duplicate">fs.go</a><a href="../src/net/http/fs.go.html#line-717">#L717</a>: 	if errors.<b>Is</b>(err, fs.ErrPermission) {
+		<a href="../src/net/http/h2_bundle.go.html#line-1024">h2_bundle.go#L1024</a>: 	if !errors.<b>Is</b>(call.err, context.Canceled) &amp;&amp; !errors.<b>Is</b>(call.err, context.DeadlineExceeded) {
+		<a href="../src/net/http/h2_bundle.go.html#line-7535" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-7535">#L7535</a>: 		if n &lt; len(p) &amp;&amp; nn &gt; 0 &amp;&amp; errors.<b>Is</b>(err, os.ErrDeadlineExceeded) {
+		<a href="../src/net/http/h2_bundle.go.html#line-9317" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-9317">#L9317</a>: 	if errors.<b>Is</b>(err, io.EOF) {
+		<a href="../src/net/http/h2_bundle.go.html#line-9321" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-9321">#L9321</a>: 	if errors.<b>Is</b>(err, io.ErrUnexpectedEOF) {
+		<a href="../src/net/http/h2_bundle.go.html#line-9325" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-9325">#L9325</a>: 	if errors.<b>Is</b>(err, http2ErrFrameTooLarge) {
+
+	<a href="../pkg/os.html">os</a>
+		<a href="../src/os/file.go.html#line-426">file.go#L426</a>: 	} else if checkWrapErr &amp;&amp; errors.<b>Is</b>(err, poll.ErrFileClosing) {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

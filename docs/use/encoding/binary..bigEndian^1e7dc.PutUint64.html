@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: encoding/binary.bigEndian.PutUint64</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/encoding/binary.html">encoding/binary</a>.<a href="../../src/encoding/binary/binary.go.html#line-140">bigEndian</a>.<a href="../../src/encoding/binary/binary.go.html#line-188">PutUint64</a></b></span><span style="font-size: large;"><i> (method, <a href="../../imp/encoding/binary.bigEndian^1e7dc.html#name-PutUint64">view implemented interface methods</a>)</i></span>
+
+<span class="title">20 uses</span>
+
+	encoding/binary (current package)
+		<a href="../../src/encoding/binary/binary.go.html#line-188">binary.go#L188</a>: func (bigEndian) <b>PutUint64</b>(b []byte, v uint64) {
+
+	<a href="../../pkg/encoding/base64.html">encoding/base64</a>
+		<a href="../../src/encoding/base64/base64.go.html#line-537">base64.go#L537</a>: 			binary.BigEndian.<b>PutUint64</b>(dst[n:], dn)
+
+	<a href="../../pkg/crypto/cipher.html">crypto/cipher</a>
+		<a href="../../src/crypto/cipher/gcm.go.html#line-406">gcm.go#L406</a>: 		binary.BigEndian.<b>PutUint64</b>(counter[:8], y.low)
+		<a href="../../src/crypto/cipher/gcm.go.html#line-407" class="path-duplicate">gcm.go</a><a href="../../src/crypto/cipher/gcm.go.html#line-407">#L407</a>: 		binary.BigEndian.<b>PutUint64</b>(counter[8:], y.high)
+		<a href="../../src/crypto/cipher/gcm.go.html#line-423" class="path-duplicate">gcm.go</a><a href="../../src/crypto/cipher/gcm.go.html#line-423">#L423</a>: 	binary.BigEndian.<b>PutUint64</b>(out, y.low)
+		<a href="../../src/crypto/cipher/gcm.go.html#line-424" class="path-duplicate">gcm.go</a><a href="../../src/crypto/cipher/gcm.go.html#line-424">#L424</a>: 	binary.BigEndian.<b>PutUint64</b>(out[8:], y.high)
+
+	<a href="../../pkg/crypto/des.html">crypto/des</a>
+		<a href="../../src/crypto/des/block.go.html#line-35">block.go#L35</a>: 	binary.BigEndian.<b>PutUint64</b>(dst, permuteFinalBlock(preOutput))
+		<a href="../../src/crypto/des/cipher.go.html#line-119">cipher.go#L119</a>: 	binary.BigEndian.<b>PutUint64</b>(dst, permuteFinalBlock(preOutput))
+		<a href="../../src/crypto/des/cipher.go.html#line-154" class="path-duplicate">cipher.go</a><a href="../../src/crypto/des/cipher.go.html#line-154">#L154</a>: 	binary.BigEndian.<b>PutUint64</b>(dst, permuteFinalBlock(preOutput))
+
+	<a href="../../pkg/crypto/sha1.html">crypto/sha1</a>
+		<a href="../../src/crypto/sha1/sha1.go.html#line-170">sha1.go#L170</a>: 	binary.BigEndian.<b>PutUint64</b>(padlen[t:], len)
+
+	<a href="../../pkg/crypto/sha256.html">crypto/sha256</a>
+		<a href="../../src/crypto/sha256/sha256.go.html#line-229">sha256.go#L229</a>: 	binary.BigEndian.<b>PutUint64</b>(padlen[t+0:], len)
+
+	<a href="../../pkg/crypto/sha512.html">crypto/sha512</a>
+		<a href="../../src/crypto/sha512/sha512.go.html#line-320">sha512.go#L320</a>: 	binary.BigEndian.<b>PutUint64</b>(padlen[t+8:], len)
+		<a href="../../src/crypto/sha512/sha512.go.html#line-328" class="path-duplicate">sha512.go</a><a href="../../src/crypto/sha512/sha512.go.html#line-328">#L328</a>: 	binary.BigEndian.<b>PutUint64</b>(digest[0:], d.h[0])
+		<a href="../../src/crypto/sha512/sha512.go.html#line-329" class="path-duplicate">sha512.go</a><a href="../../src/crypto/sha512/sha512.go.html#line-329">#L329</a>: 	binary.BigEndian.<b>PutUint64</b>(digest[8:], d.h[1])
+		<a href="../../src/crypto/sha512/sha512.go.html#line-330" class="path-duplicate">sha512.go</a><a href="../../src/crypto/sha512/sha512.go.html#line-330">#L330</a>: 	binary.BigEndian.<b>PutUint64</b>(digest[16:], d.h[2])
+		<a href="../../src/crypto/sha512/sha512.go.html#line-331" class="path-duplicate">sha512.go</a><a href="../../src/crypto/sha512/sha512.go.html#line-331">#L331</a>: 	binary.BigEndian.<b>PutUint64</b>(digest[24:], d.h[3])
+		<a href="../../src/crypto/sha512/sha512.go.html#line-332" class="path-duplicate">sha512.go</a><a href="../../src/crypto/sha512/sha512.go.html#line-332">#L332</a>: 	binary.BigEndian.<b>PutUint64</b>(digest[32:], d.h[4])
+		<a href="../../src/crypto/sha512/sha512.go.html#line-333" class="path-duplicate">sha512.go</a><a href="../../src/crypto/sha512/sha512.go.html#line-333">#L333</a>: 	binary.BigEndian.<b>PutUint64</b>(digest[40:], d.h[5])
+		<a href="../../src/crypto/sha512/sha512.go.html#line-335" class="path-duplicate">sha512.go</a><a href="../../src/crypto/sha512/sha512.go.html#line-335">#L335</a>: 		binary.BigEndian.<b>PutUint64</b>(digest[48:], d.h[6])
+		<a href="../../src/crypto/sha512/sha512.go.html#line-336" class="path-duplicate">sha512.go</a><a href="../../src/crypto/sha512/sha512.go.html#line-336">#L336</a>: 		binary.BigEndian.<b>PutUint64</b>(digest[56:], d.h[7])
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

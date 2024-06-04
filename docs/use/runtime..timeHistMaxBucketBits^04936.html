@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.timeHistMaxBucketBits</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/histogram.go.html#line-66">timeHistMaxBucketBits</a></b></span>
+
+<span class="title">4 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/histogram.go.html#line-66">histogram.go#L66</a>: 	<b>timeHistMaxBucketBits</b> = 48 // Note that this is exclusive; 1 higher than the actual range.
+		<a href="../src/runtime/histogram.go.html#line-69" class="path-duplicate">histogram.go</a><a href="../src/runtime/histogram.go.html#line-69">#L69</a>: 	timeHistNumBuckets    = <b>timeHistMaxBucketBits</b> - timeHistMinBucketBits + 1
+		<a href="../src/runtime/histogram.go.html#line-183" class="path-duplicate">histogram.go</a><a href="../src/runtime/histogram.go.html#line-183">#L183</a>: 	for i := timeHistMinBucketBits; i &lt; <b>timeHistMaxBucketBits</b>; i++ {
+		<a href="../src/runtime/histogram.go.html#line-200" class="path-duplicate">histogram.go</a><a href="../src/runtime/histogram.go.html#line-200">#L200</a>: 	b[len(b)-2] = float64(uint64(1)&lt;&lt;(<b>timeHistMaxBucketBits</b>-1)) / 1e9
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

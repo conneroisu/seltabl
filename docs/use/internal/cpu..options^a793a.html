@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: internal/cpu.options</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">var <b><a href="../../pkg/internal/cpu.html">internal/cpu</a>.<a href="../../src/internal/cpu/cpu.go.html#line-137">options</a></b></span>
+
+<span class="title">16 uses</span>
+
+	internal/cpu (current package)
+		<a href="../../src/internal/cpu/cpu.go.html#line-137">cpu.go#L137</a>: var <b>options</b> []option
+		<a href="../../src/internal/cpu/cpu.go.html#line-185" class="path-duplicate">cpu.go</a><a href="../../src/internal/cpu/cpu.go.html#line-185">#L185</a>: 			for i := range <b>options</b> {
+		<a href="../../src/internal/cpu/cpu.go.html#line-186" class="path-duplicate">cpu.go</a><a href="../../src/internal/cpu/cpu.go.html#line-186">#L186</a>: 				<b>options</b>[i].Specified = true
+		<a href="../../src/internal/cpu/cpu.go.html#line-187" class="path-duplicate">cpu.go</a><a href="../../src/internal/cpu/cpu.go.html#line-187">#L187</a>: 				<b>options</b>[i].Enable = enable
+		<a href="../../src/internal/cpu/cpu.go.html#line-192" class="path-duplicate">cpu.go</a><a href="../../src/internal/cpu/cpu.go.html#line-192">#L192</a>: 		for i := range <b>options</b> {
+		<a href="../../src/internal/cpu/cpu.go.html#line-193" class="path-duplicate">cpu.go</a><a href="../../src/internal/cpu/cpu.go.html#line-193">#L193</a>: 			if <b>options</b>[i].Name == key {
+		<a href="../../src/internal/cpu/cpu.go.html#line-194" class="path-duplicate">cpu.go</a><a href="../../src/internal/cpu/cpu.go.html#line-194">#L194</a>: 				<b>options</b>[i].Specified = true
+		<a href="../../src/internal/cpu/cpu.go.html#line-195" class="path-duplicate">cpu.go</a><a href="../../src/internal/cpu/cpu.go.html#line-195">#L195</a>: 				<b>options</b>[i].Enable = enable
+		<a href="../../src/internal/cpu/cpu.go.html#line-203" class="path-duplicate">cpu.go</a><a href="../../src/internal/cpu/cpu.go.html#line-203">#L203</a>: 	for _, o := range <b>options</b> {
+		<a href="../../src/internal/cpu/cpu_x86.go.html#line-54">cpu_x86.go#L54</a>: 	<b>options</b> = []option{
+		<a href="../../src/internal/cpu/cpu_x86.go.html#line-66" class="path-duplicate">cpu_x86.go</a><a href="../../src/internal/cpu/cpu_x86.go.html#line-66">#L66</a>: 		<b>options</b> = append(<b>options</b>,
+		<a href="../../src/internal/cpu/cpu_x86.go.html#line-76" class="path-duplicate">cpu_x86.go</a><a href="../../src/internal/cpu/cpu_x86.go.html#line-76">#L76</a>: 		<b>options</b> = append(<b>options</b>,
+		<a href="../../src/internal/cpu/cpu_x86.go.html#line-86" class="path-duplicate">cpu_x86.go</a><a href="../../src/internal/cpu/cpu_x86.go.html#line-86">#L86</a>: 		<b>options</b> = append(<b>options</b>,
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

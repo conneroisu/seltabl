@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/tls.clientHelloMsg.supportedSignatureAlgorithmsCert</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/crypto/tls.html">crypto/tls</a>.<a href="../../src/crypto/tls/handshake_messages.go.html#line-70">clientHelloMsg</a>.<a href="../../src/crypto/tls/handshake_messages.go.html#line-84">supportedSignatureAlgorithmsCert</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">10 uses</span>
+
+	crypto/tls (current package)
+		<a href="../../src/crypto/tls/handshake_messages.go.html#line-84">handshake_messages.go#L84</a>: 	<b>supportedSignatureAlgorithmsCert</b> []SignatureScheme
+		<a href="../../src/crypto/tls/handshake_messages.go.html#line-165" class="path-duplicate">handshake_messages.go</a><a href="../../src/crypto/tls/handshake_messages.go.html#line-165">#L165</a>: 	if len(m.<b>supportedSignatureAlgorithmsCert</b>) &gt; 0 {
+		<a href="../../src/crypto/tls/handshake_messages.go.html#line-170" class="path-duplicate">handshake_messages.go</a><a href="../../src/crypto/tls/handshake_messages.go.html#line-170">#L170</a>: 				for _, sigAlgo := range m.<b>supportedSignatureAlgorithmsCert</b> {
+		<a href="../../src/crypto/tls/handshake_messages.go.html#line-510" class="path-duplicate">handshake_messages.go</a><a href="../../src/crypto/tls/handshake_messages.go.html#line-510">#L510</a>: 				m.<b>supportedSignatureAlgorithmsCert</b> = append(
+		<a href="../../src/crypto/tls/handshake_messages.go.html#line-511" class="path-duplicate">handshake_messages.go</a><a href="../../src/crypto/tls/handshake_messages.go.html#line-511">#L511</a>: 					m.<b>supportedSignatureAlgorithmsCert</b>, SignatureScheme(sigAndAlg))
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-547">handshake_server_tls13.go#L547</a>: 		len(ch.<b>supportedSignatureAlgorithmsCert</b>) != len(ch1.<b>supportedSignatureAlgorithmsCert</b>) ||
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-571" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-571">#L571</a>: 	for i := range ch.<b>supportedSignatureAlgorithmsCert</b> {
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-572" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-572">#L572</a>: 		if ch.<b>supportedSignatureAlgorithmsCert</b>[i] != ch1.<b>supportedSignatureAlgorithmsCert</b>[i] {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

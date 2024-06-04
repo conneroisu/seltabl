@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.globalRand</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">var <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/rand.go.html#line-26">globalRand</a></b></span>
+
+<span class="title">16 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/rand.go.html#line-26">rand.go#L26</a>: var <b>globalRand</b> struct {
+		<a href="../src/runtime/rand.go.html#line-38" class="path-duplicate">rand.go</a><a href="../src/runtime/rand.go.html#line-38">#L38</a>: 	lock(&amp;<b>globalRand</b>.lock)
+		<a href="../src/runtime/rand.go.html#line-39" class="path-duplicate">rand.go</a><a href="../src/runtime/rand.go.html#line-39">#L39</a>: 	if <b>globalRand</b>.init {
+		<a href="../src/runtime/rand.go.html#line-43" class="path-duplicate">rand.go</a><a href="../src/runtime/rand.go.html#line-43">#L43</a>: 	seed := &amp;<b>globalRand</b>.seed
+		<a href="../src/runtime/rand.go.html#line-59" class="path-duplicate">rand.go</a><a href="../src/runtime/rand.go.html#line-59">#L59</a>: 	<b>globalRand</b>.state.Init(*seed)
+		<a href="../src/runtime/rand.go.html#line-61" class="path-duplicate">rand.go</a><a href="../src/runtime/rand.go.html#line-61">#L61</a>: 	<b>globalRand</b>.init = true
+		<a href="../src/runtime/rand.go.html#line-62" class="path-duplicate">rand.go</a><a href="../src/runtime/rand.go.html#line-62">#L62</a>: 	unlock(&amp;<b>globalRand</b>.lock)
+		<a href="../src/runtime/rand.go.html#line-93" class="path-duplicate">rand.go</a><a href="../src/runtime/rand.go.html#line-93">#L93</a>: 	lock(&amp;<b>globalRand</b>.lock)
+		<a href="../src/runtime/rand.go.html#line-94" class="path-duplicate">rand.go</a><a href="../src/runtime/rand.go.html#line-94">#L94</a>: 	if !<b>globalRand</b>.init {
+		<a href="../src/runtime/rand.go.html#line-98" class="path-duplicate">rand.go</a><a href="../src/runtime/rand.go.html#line-98">#L98</a>: 		if x, ok := <b>globalRand</b>.state.Next(); ok {
+		<a href="../src/runtime/rand.go.html#line-99" class="path-duplicate">rand.go</a><a href="../src/runtime/rand.go.html#line-99">#L99</a>: 			unlock(&amp;<b>globalRand</b>.lock)
+		<a href="../src/runtime/rand.go.html#line-102" class="path-duplicate">rand.go</a><a href="../src/runtime/rand.go.html#line-102">#L102</a>: 		<b>globalRand</b>.state.Refill()
+		<a href="../src/runtime/rand.go.html#line-109" class="path-duplicate">rand.go</a><a href="../src/runtime/rand.go.html#line-109">#L109</a>: 	lock(&amp;<b>globalRand</b>.lock)
+		<a href="../src/runtime/rand.go.html#line-110" class="path-duplicate">rand.go</a><a href="../src/runtime/rand.go.html#line-110">#L110</a>: 	if !<b>globalRand</b>.init {
+		<a href="../src/runtime/rand.go.html#line-113" class="path-duplicate">rand.go</a><a href="../src/runtime/rand.go.html#line-113">#L113</a>: 	<b>globalRand</b>.state.Reseed()
+		<a href="../src/runtime/rand.go.html#line-114" class="path-duplicate">rand.go</a><a href="../src/runtime/rand.go.html#line-114">#L114</a>: 	unlock(&amp;<b>globalRand</b>.lock)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

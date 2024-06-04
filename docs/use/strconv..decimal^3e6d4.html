@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: strconv.decimal</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../pkg/strconv.html">strconv</a>.<a href="../src/strconv/decimal.go.html#line-14">decimal</a></b></span>
+
+<span class="title">20 uses</span>
+
+	strconv (current package)
+		<a href="../src/strconv/atof.go.html#line-74">atof.go#L74</a>: func (b *<b>decimal</b>) set(s string) (ok bool) {
+		<a href="../src/strconv/atof.go.html#line-314" class="path-duplicate">atof.go</a><a href="../src/strconv/atof.go.html#line-314">#L314</a>: func (d *<b>decimal</b>) floatBits(flt *floatInfo) (b uint64, overflow bool) {
+		<a href="../src/strconv/atof.go.html#line-605" class="path-duplicate">atof.go</a><a href="../src/strconv/atof.go.html#line-605">#L605</a>: 	var d <b>decimal</b>
+		<a href="../src/strconv/atof.go.html#line-656" class="path-duplicate">atof.go</a><a href="../src/strconv/atof.go.html#line-656">#L656</a>: 	var d <b>decimal</b>
+		<a href="../src/strconv/decimal.go.html#line-14">decimal.go#L14</a>: type <b>decimal</b> struct {
+		<a href="../src/strconv/decimal.go.html#line-22" class="path-duplicate">decimal.go</a><a href="../src/strconv/decimal.go.html#line-22">#L22</a>: func (a *<b>decimal</b>) String() string {
+		<a href="../src/strconv/decimal.go.html#line-71" class="path-duplicate">decimal.go</a><a href="../src/strconv/decimal.go.html#line-71">#L71</a>: func trim(a *<b>decimal</b>) {
+		<a href="../src/strconv/decimal.go.html#line-81" class="path-duplicate">decimal.go</a><a href="../src/strconv/decimal.go.html#line-81">#L81</a>: func (a *<b>decimal</b>) Assign(v uint64) {
+		<a href="../src/strconv/decimal.go.html#line-110" class="path-duplicate">decimal.go</a><a href="../src/strconv/decimal.go.html#line-110">#L110</a>: func rightShift(a *<b>decimal</b>, k uint) {
+		<a href="../src/strconv/decimal.go.html#line-269" class="path-duplicate">decimal.go</a><a href="../src/strconv/decimal.go.html#line-269">#L269</a>: func leftShift(a *<b>decimal</b>, k uint) {
+		<a href="../src/strconv/decimal.go.html#line-315" class="path-duplicate">decimal.go</a><a href="../src/strconv/decimal.go.html#line-315">#L315</a>: func (a *<b>decimal</b>) Shift(k int) {
+		<a href="../src/strconv/decimal.go.html#line-335" class="path-duplicate">decimal.go</a><a href="../src/strconv/decimal.go.html#line-335">#L335</a>: func shouldRoundUp(a *<b>decimal</b>, nd int) bool {
+		<a href="../src/strconv/decimal.go.html#line-354" class="path-duplicate">decimal.go</a><a href="../src/strconv/decimal.go.html#line-354">#L354</a>: func (a *<b>decimal</b>) Round(nd int) {
+		<a href="../src/strconv/decimal.go.html#line-366" class="path-duplicate">decimal.go</a><a href="../src/strconv/decimal.go.html#line-366">#L366</a>: func (a *<b>decimal</b>) RoundDown(nd int) {
+		<a href="../src/strconv/decimal.go.html#line-375" class="path-duplicate">decimal.go</a><a href="../src/strconv/decimal.go.html#line-375">#L375</a>: func (a *<b>decimal</b>) RoundUp(nd int) {
+		<a href="../src/strconv/decimal.go.html#line-399" class="path-duplicate">decimal.go</a><a href="../src/strconv/decimal.go.html#line-399">#L399</a>: func (a *<b>decimal</b>) RoundedInteger() uint64 {
+		<a href="../src/strconv/ftoa.go.html#line-164">ftoa.go#L164</a>: 	d := new(<b>decimal</b>)
+		<a href="../src/strconv/ftoa.go.html#line-236" class="path-duplicate">ftoa.go</a><a href="../src/strconv/ftoa.go.html#line-236">#L236</a>: func roundShortest(d *<b>decimal</b>, mant uint64, exp int, flt *floatInfo) {
+		<a href="../src/strconv/ftoa.go.html#line-266" class="path-duplicate">ftoa.go</a><a href="../src/strconv/ftoa.go.html#line-266">#L266</a>: 	upper := new(<b>decimal</b>)
+		<a href="../src/strconv/ftoa.go.html#line-285" class="path-duplicate">ftoa.go</a><a href="../src/strconv/ftoa.go.html#line-285">#L285</a>: 	lower := new(<b>decimal</b>)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

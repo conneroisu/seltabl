@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/dsa.Parameters.Q</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/crypto/dsa.html">crypto/dsa</a>.<a href="../../src/crypto/dsa/dsa.go.html#line-26">Parameters</a>.<a href="../../src/crypto/dsa/dsa.go.html#line-27">Q</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">22 uses</span>
+
+	crypto/dsa (current package)
+		<a href="../../src/crypto/dsa/dsa.go.html#line-27">dsa.go#L27</a>: 	P, <b>Q</b>, G *big.Int
+		<a href="../../src/crypto/dsa/dsa.go.html#line-133" class="path-duplicate">dsa.go</a><a href="../../src/crypto/dsa/dsa.go.html#line-133">#L133</a>: 			params.<b>Q</b> = q
+		<a href="../../src/crypto/dsa/dsa.go.html#line-160" class="path-duplicate">dsa.go</a><a href="../../src/crypto/dsa/dsa.go.html#line-160">#L160</a>: 	if priv.P == nil || priv.<b>Q</b> == nil || priv.G == nil {
+		<a href="../../src/crypto/dsa/dsa.go.html#line-165" class="path-duplicate">dsa.go</a><a href="../../src/crypto/dsa/dsa.go.html#line-165">#L165</a>: 	xBytes := make([]byte, priv.<b>Q</b>.BitLen()/8)
+		<a href="../../src/crypto/dsa/dsa.go.html#line-173" class="path-duplicate">dsa.go</a><a href="../../src/crypto/dsa/dsa.go.html#line-173">#L173</a>: 		if x.Sign() != 0 &amp;&amp; x.Cmp(priv.<b>Q</b>) &lt; 0 {
+		<a href="../../src/crypto/dsa/dsa.go.html#line-210" class="path-duplicate">dsa.go</a><a href="../../src/crypto/dsa/dsa.go.html#line-210">#L210</a>: 	n := priv.<b>Q</b>.BitLen()
+		<a href="../../src/crypto/dsa/dsa.go.html#line-211" class="path-duplicate">dsa.go</a><a href="../../src/crypto/dsa/dsa.go.html#line-211">#L211</a>: 	if priv.<b>Q</b>.Sign() &lt;= 0 || priv.P.Sign() &lt;= 0 || priv.G.Sign() &lt;= 0 || priv.X.Sign() &lt;= 0 || n%8 != 0 {
+		<a href="../../src/crypto/dsa/dsa.go.html#line-231" class="path-duplicate">dsa.go</a><a href="../../src/crypto/dsa/dsa.go.html#line-231">#L231</a>: 			if k.Sign() &gt; 0 &amp;&amp; k.Cmp(priv.<b>Q</b>) &lt; 0 {
+		<a href="../../src/crypto/dsa/dsa.go.html#line-236" class="path-duplicate">dsa.go</a><a href="../../src/crypto/dsa/dsa.go.html#line-236">#L236</a>: 		kInv := fermatInverse(k, priv.<b>Q</b>)
+		<a href="../../src/crypto/dsa/dsa.go.html#line-239" class="path-duplicate">dsa.go</a><a href="../../src/crypto/dsa/dsa.go.html#line-239">#L239</a>: 		r.Mod(r, priv.<b>Q</b>)
+		<a href="../../src/crypto/dsa/dsa.go.html#line-249" class="path-duplicate">dsa.go</a><a href="../../src/crypto/dsa/dsa.go.html#line-249">#L249</a>: 		s.Mod(s, priv.<b>Q</b>)
+		<a href="../../src/crypto/dsa/dsa.go.html#line-251" class="path-duplicate">dsa.go</a><a href="../../src/crypto/dsa/dsa.go.html#line-251">#L251</a>: 		s.Mod(s, priv.<b>Q</b>)
+		<a href="../../src/crypto/dsa/dsa.go.html#line-280" class="path-duplicate">dsa.go</a><a href="../../src/crypto/dsa/dsa.go.html#line-280">#L280</a>: 	if r.Sign() &lt; 1 || r.Cmp(pub.<b>Q</b>) &gt;= 0 {
+		<a href="../../src/crypto/dsa/dsa.go.html#line-283" class="path-duplicate">dsa.go</a><a href="../../src/crypto/dsa/dsa.go.html#line-283">#L283</a>: 	if s.Sign() &lt; 1 || s.Cmp(pub.<b>Q</b>) &gt;= 0 {
+		<a href="../../src/crypto/dsa/dsa.go.html#line-287" class="path-duplicate">dsa.go</a><a href="../../src/crypto/dsa/dsa.go.html#line-287">#L287</a>: 	w := new(big.Int).ModInverse(s, pub.<b>Q</b>)
+		<a href="../../src/crypto/dsa/dsa.go.html#line-292" class="path-duplicate">dsa.go</a><a href="../../src/crypto/dsa/dsa.go.html#line-292">#L292</a>: 	n := pub.<b>Q</b>.BitLen()
+		<a href="../../src/crypto/dsa/dsa.go.html#line-299" class="path-duplicate">dsa.go</a><a href="../../src/crypto/dsa/dsa.go.html#line-299">#L299</a>: 	u1.Mod(u1, pub.<b>Q</b>)
+		<a href="../../src/crypto/dsa/dsa.go.html#line-301" class="path-duplicate">dsa.go</a><a href="../../src/crypto/dsa/dsa.go.html#line-301">#L301</a>: 	u2.Mod(u2, pub.<b>Q</b>)
+		<a href="../../src/crypto/dsa/dsa.go.html#line-306" class="path-duplicate">dsa.go</a><a href="../../src/crypto/dsa/dsa.go.html#line-306">#L306</a>: 	v.Mod(v, pub.<b>Q</b>)
+
+	<a href="../../pkg/crypto/x509.html">crypto/x509</a>
+		<a href="../../src/crypto/x509/parser.go.html#line-298">parser.go#L298</a>: 				<b>Q</b>: new(big.Int),
+		<a href="../../src/crypto/x509/parser.go.html#line-305" class="path-duplicate">parser.go</a><a href="../../src/crypto/x509/parser.go.html#line-305">#L305</a>: 			!paramsDer.ReadASN1Integer(pub.Parameters.<b>Q</b>) ||
+		<a href="../../src/crypto/x509/parser.go.html#line-310" class="path-duplicate">parser.go</a><a href="../../src/crypto/x509/parser.go.html#line-310">#L310</a>: 			pub.Parameters.<b>Q</b>.Sign() &lt;= 0 || pub.Parameters.G.Sign() &lt;= 0 {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

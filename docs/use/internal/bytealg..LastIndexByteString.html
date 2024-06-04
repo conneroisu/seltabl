@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: internal/bytealg.LastIndexByteString</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../../pkg/internal/bytealg.html">internal/bytealg</a>.<a href="../../src/internal/bytealg/lastindexbyte_generic.go.html#line-16">LastIndexByteString</a></b></span>
+
+<span class="title">11 uses</span>
+
+	internal/bytealg (current package)
+		<a href="../../src/internal/bytealg/lastindexbyte_generic.go.html#line-16">lastindexbyte_generic.go#L16</a>: func <b>LastIndexByteString</b>(s string, c byte) int {
+
+	<a href="../../pkg/net.html">net</a>
+		<a href="../../src/net/dial.go.html#line-230">dial.go#L230</a>: 	i := bytealg.<b>LastIndexByteString</b>(network, ':')
+		<a href="../../src/net/ipsock.go.html#line-175">ipsock.go#L175</a>: 	i := bytealg.<b>LastIndexByteString</b>(hostport, ':')
+		<a href="../../src/net/ipsock.go.html#line-222" class="path-duplicate">ipsock.go</a><a href="../../src/net/ipsock.go.html#line-222">#L222</a>: 	if i := bytealg.<b>LastIndexByteString</b>(s, '%'); i &gt; 0 {
+
+	<a href="../../pkg/net/netip.html">net/netip</a>
+		<a href="../../src/net/netip/netip.go.html#line-1042">netip.go#L1042</a>: 	i := bytealg.<b>LastIndexByteString</b>(s, ':')
+		<a href="../../src/net/netip/netip.go.html#line-1290" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-1290">#L1290</a>: 	i := bytealg.<b>LastIndexByteString</b>(s, '/')
+
+	<a href="../../pkg/os.html">os</a>
+		<a href="../../src/os/tempfile.go.html#line-68">tempfile.go#L68</a>: 	if pos := bytealg.<b>LastIndexByteString</b>(pattern, '*'); pos != -1 {
+
+	<a href="../../pkg/path.html">path</a>
+		<a href="../../src/path/path.go.html#line-146">path.go#L146</a>: 	i := bytealg.<b>LastIndexByteString</b>(path, '/')
+		<a href="../../src/path/path.go.html#line-201" class="path-duplicate">path.go</a><a href="../../src/path/path.go.html#line-201">#L201</a>: 	if i := bytealg.<b>LastIndexByteString</b>(path, '/'); i &gt;= 0 {
+
+	<a href="../../pkg/strings.html">strings</a>
+		<a href="../../src/strings/strings.go.html#line-86">strings.go#L86</a>: 		return bytealg.<b>LastIndexByteString</b>(s, substr[0])
+		<a href="../../src/strings/strings.go.html#line-230" class="path-duplicate">strings.go</a><a href="../../src/strings/strings.go.html#line-230">#L230</a>: 	return bytealg.<b>LastIndexByteString</b>(s, c)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

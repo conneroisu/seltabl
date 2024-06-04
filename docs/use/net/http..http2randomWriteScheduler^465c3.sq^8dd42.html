@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/http.http2randomWriteScheduler.sq</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/net/http.html">net/http</a>.<a href="../../src/net/http/h2_bundle.go.html#line-11358">http2randomWriteScheduler</a>.<a href="../../src/net/http/h2_bundle.go.html#line-11365">sq</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">8 uses</span>
+
+	net/http (current package)
+		<a href="../../src/net/http/h2_bundle.go.html#line-11355">h2_bundle.go#L11355</a>: 	return &amp;http2randomWriteScheduler{<b>sq</b>: make(map[uint32]*http2writeQueue)}
+		<a href="../../src/net/http/h2_bundle.go.html#line-11365" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11365">#L11365</a>: 	<b>sq</b> map[uint32]*http2writeQueue
+		<a href="../../src/net/http/h2_bundle.go.html#line-11376" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11376">#L11376</a>: 	q, ok := ws.<b>sq</b>[streamID]
+		<a href="../../src/net/http/h2_bundle.go.html#line-11380" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11380">#L11380</a>: 	delete(ws.<b>sq</b>, streamID)
+		<a href="../../src/net/http/h2_bundle.go.html#line-11394" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11394">#L11394</a>: 	q, ok := ws.<b>sq</b>[id]
+		<a href="../../src/net/http/h2_bundle.go.html#line-11397" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11397">#L11397</a>: 		ws.<b>sq</b>[id] = q
+		<a href="../../src/net/http/h2_bundle.go.html#line-11408" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11408">#L11408</a>: 	for streamID, q := range ws.<b>sq</b> {
+		<a href="../../src/net/http/h2_bundle.go.html#line-11411" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11411">#L11411</a>: 				delete(ws.<b>sq</b>, streamID)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

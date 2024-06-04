@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.gcBitsArena.bits</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/mheap.go.html#line-2108">gcBitsArena</a>.<a href="../src/runtime/mheap.go.html#line-2113">bits</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">6 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/mheap.go.html#line-2113">mheap.go#L2113</a>: 	<b>bits</b> [gcBitsChunkBytes - gcBitsHeaderBytes]gcBits
+		<a href="../src/runtime/mheap.go.html#line-2127" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-2127">#L2127</a>: 	if b == nil || atomic.Loaduintptr(&amp;b.free)+bytes &gt; uintptr(len(b.<b>bits</b>)) {
+		<a href="../src/runtime/mheap.go.html#line-2132" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-2132">#L2132</a>: 	if end &gt; uintptr(len(b.<b>bits</b>)) {
+		<a href="../src/runtime/mheap.go.html#line-2137" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-2137">#L2137</a>: 	return &amp;b.<b>bits</b>[start]
+		<a href="../src/runtime/mheap.go.html#line-2255" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-2255">#L2255</a>: 	if unsafe.Offsetof(gcBitsArena{}.<b>bits</b>)&amp;7 == 0 {
+		<a href="../src/runtime/mheap.go.html#line-2258" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-2258">#L2258</a>: 		result.free = 8 - (uintptr(unsafe.Pointer(&amp;result.<b>bits</b>[0])) &amp; 7)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

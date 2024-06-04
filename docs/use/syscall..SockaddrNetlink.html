@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: syscall.SockaddrNetlink</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../pkg/syscall.html">syscall</a>.<a href="../src/syscall/syscall_linux.go.html#line-599">SockaddrNetlink</a></b></span>
+
+<span class="title">5 uses</span>
+
+	syscall (current package)
+		<a href="../src/syscall/netlink_linux.go.html#line-66">netlink_linux.go#L66</a>: 	sa := &amp;<b>SockaddrNetlink</b>{Family: AF_NETLINK}
+		<a href="../src/syscall/netlink_linux.go.html#line-78" class="path-duplicate">netlink_linux.go</a><a href="../src/syscall/netlink_linux.go.html#line-78">#L78</a>: 	lsanl, ok := lsa.(*<b>SockaddrNetlink</b>)
+		<a href="../src/syscall/syscall_linux.go.html#line-599">syscall_linux.go#L599</a>: type <b>SockaddrNetlink</b> struct {
+		<a href="../src/syscall/syscall_linux.go.html#line-607" class="path-duplicate">syscall_linux.go</a><a href="../src/syscall/syscall_linux.go.html#line-607">#L607</a>: func (sa *<b>SockaddrNetlink</b>) sockaddr() (unsafe.Pointer, _Socklen, error) {
+		<a href="../src/syscall/syscall_linux.go.html#line-619" class="path-duplicate">syscall_linux.go</a><a href="../src/syscall/syscall_linux.go.html#line-619">#L619</a>: 		sa := new(<b>SockaddrNetlink</b>)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

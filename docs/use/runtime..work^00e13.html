@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.work</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">var <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/mgc.go.html#line-304">work</a></b></span>
+
+<span class="title">224 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/metrics.go.html#line-674">metrics.go#L674</a>: 	a.cpuStats = <b>work</b>.cpuStats
+		<a href="../src/runtime/mgc.go.html#line-189">mgc.go#L189</a>: 	<b>work</b>.startSema = 1
+		<a href="../src/runtime/mgc.go.html#line-190" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-190">#L190</a>: 	<b>work</b>.markDoneSema = 1
+		<a href="../src/runtime/mgc.go.html#line-191" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-191">#L191</a>: 	lockInit(&amp;<b>work</b>.sweepWaiters.lock, lockRankSweepWaiters)
+		<a href="../src/runtime/mgc.go.html#line-192" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-192">#L192</a>: 	lockInit(&amp;<b>work</b>.assistQueue.lock, lockRankAssistQueue)
+		<a href="../src/runtime/mgc.go.html#line-193" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-193">#L193</a>: 	lockInit(&amp;<b>work</b>.wbufSpans.lock, lockRankWbufSpans)
+		<a href="../src/runtime/mgc.go.html#line-304" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-304">#L304</a>: var <b>work</b> workType
+		<a href="../src/runtime/mgc.go.html#line-460" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-460">#L460</a>: 	n := <b>work</b>.cycles.Load()
+		<a href="../src/runtime/mgc.go.html#line-475" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-475">#L475</a>: 	for <b>work</b>.cycles.Load() == n+1 &amp;&amp; sweepone() != ^uintptr(0) {
+		<a href="../src/runtime/mgc.go.html#line-490" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-490">#L490</a>: 	for <b>work</b>.cycles.Load() == n+1 &amp;&amp; !isSweepDone() {
+		<a href="../src/runtime/mgc.go.html#line-498" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-498">#L498</a>: 	cycle := <b>work</b>.cycles.Load()
+		<a href="../src/runtime/mgc.go.html#line-510" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-510">#L510</a>: 		lock(&amp;<b>work</b>.sweepWaiters.lock)
+		<a href="../src/runtime/mgc.go.html#line-511" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-511">#L511</a>: 		nMarks := <b>work</b>.cycles.Load()
+		<a href="../src/runtime/mgc.go.html#line-518" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-518">#L518</a>: 			unlock(&amp;<b>work</b>.sweepWaiters.lock)
+		<a href="../src/runtime/mgc.go.html#line-524" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-524">#L524</a>: 		<b>work</b>.sweepWaiters.list.push(getg())
+		<a href="../src/runtime/mgc.go.html#line-525" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-525">#L525</a>: 		goparkunlock(&amp;<b>work</b>.sweepWaiters.lock, waitReasonWaitForGCCycle, traceBlockUntilGCEnds, 1)
+		<a href="../src/runtime/mgc.go.html#line-584" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-584">#L584</a>: 		return int32(t.n-<b>work</b>.cycles.Load()) &gt; 0
+		<a href="../src/runtime/mgc.go.html#line-623" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-623">#L623</a>: 	semacquire(&amp;<b>work</b>.startSema)
+		<a href="../src/runtime/mgc.go.html#line-626" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-626">#L626</a>: 		semrelease(&amp;<b>work</b>.startSema)
+		<a href="../src/runtime/mgc.go.html#line-647" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-647">#L647</a>: 	<b>work</b>.userForced = trigger.kind == gcTriggerCycle
+		<a href="../src/runtime/mgc.go.html#line-667" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-667">#L667</a>: 	<b>work</b>.stwprocs, <b>work</b>.maxprocs = gomaxprocs, gomaxprocs
+		<a href="../src/runtime/mgc.go.html#line-668" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-668">#L668</a>: 	if <b>work</b>.stwprocs &gt; ncpu {
+		<a href="../src/runtime/mgc.go.html#line-671" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-671">#L671</a>: 		<b>work</b>.stwprocs = ncpu
+		<a href="../src/runtime/mgc.go.html#line-673" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-673">#L673</a>: 	<b>work</b>.heap0 = gcController.heapLive.Load()
+		<a href="../src/runtime/mgc.go.html#line-674" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-674">#L674</a>: 	<b>work</b>.pauseNS = 0
+		<a href="../src/runtime/mgc.go.html#line-675" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-675">#L675</a>: 	<b>work</b>.mode = mode
+		<a href="../src/runtime/mgc.go.html#line-678" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-678">#L678</a>: 	<b>work</b>.tSweepTerm = now
+		<a href="../src/runtime/mgc.go.html#line-692" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-692">#L692</a>: 	<b>work</b>.cycles.Add(1)
+		<a href="../src/runtime/mgc.go.html#line-748" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-748">#L748</a>: 		<b>work</b>.pauseNS += now - stw.start
+		<a href="../src/runtime/mgc.go.html#line-749" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-749">#L749</a>: 		<b>work</b>.tMark = now
+		<a href="../src/runtime/mgc.go.html#line-751" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-751">#L751</a>: 		sweepTermCpu := int64(<b>work</b>.stwprocs) * (<b>work</b>.tMark - <b>work</b>.tSweepTerm)
+		<a href="../src/runtime/mgc.go.html#line-752" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-752">#L752</a>: 		<b>work</b>.cpuStats.gcPauseTime += sweepTermCpu
+		<a href="../src/runtime/mgc.go.html#line-753" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-753">#L753</a>: 		<b>work</b>.cpuStats.gcTotalTime += sweepTermCpu
+		<a href="../src/runtime/mgc.go.html#line-772" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-772">#L772</a>: 	semrelease(&amp;<b>work</b>.startSema)
+		<a href="../src/runtime/mgc.go.html#line-807" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-807">#L807</a>: 	semacquire(&amp;<b>work</b>.markDoneSema)
+		<a href="../src/runtime/mgc.go.html#line-816" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-816">#L816</a>: 	if !(gcphase == _GCmark &amp;&amp; <b>work</b>.nwait == <b>work</b>.nproc &amp;&amp; !gcMarkWorkAvailable(nil)) {
+		<a href="../src/runtime/mgc.go.html#line-817" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-817">#L817</a>: 		semrelease(&amp;<b>work</b>.markDoneSema)
+		<a href="../src/runtime/mgc.go.html#line-860" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-860">#L860</a>: 	<b>work</b>.tMarkTerm = now
+		<a href="../src/runtime/mgc.go.html#line-893" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-893">#L893</a>: 			<b>work</b>.pauseNS += now - stw.start
+		<a href="../src/runtime/mgc.go.html#line-915" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-915">#L915</a>: 	semrelease(&amp;<b>work</b>.markDoneSema)
+		<a href="../src/runtime/mgc.go.html#line-924" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-924">#L924</a>: 	gcController.endCycle(now, int(gomaxprocs), <b>work</b>.userForced)
+		<a href="../src/runtime/mgc.go.html#line-936" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-936">#L936</a>: 	<b>work</b>.heap1 = gcController.heapLive.Load()
+		<a href="../src/runtime/mgc.go.html#line-966" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-966">#L966</a>: 		<b>work</b>.heap2 = <b>work</b>.bytesMarked
+		<a href="../src/runtime/mgc.go.html#line-983" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-983">#L983</a>: 		stwSwept = gcSweep(<b>work</b>.mode)
+		<a href="../src/runtime/mgc.go.html#line-1013" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1013">#L1013</a>: 	<b>work</b>.pauseNS += now - stw.start
+		<a href="../src/runtime/mgc.go.html#line-1014" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1014">#L1014</a>: 	<b>work</b>.tEnd = now
+		<a href="../src/runtime/mgc.go.html#line-1017" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1017">#L1017</a>: 	memstats.pause_ns[memstats.numgc%uint32(len(memstats.pause_ns))] = uint64(<b>work</b>.pauseNS)
+		<a href="../src/runtime/mgc.go.html#line-1019" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1019">#L1019</a>: 	memstats.pause_total_ns += uint64(<b>work</b>.pauseNS)
+		<a href="../src/runtime/mgc.go.html#line-1021" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1021">#L1021</a>: 	markTermCpu := int64(<b>work</b>.stwprocs) * (<b>work</b>.tEnd - <b>work</b>.tMarkTerm)
+		<a href="../src/runtime/mgc.go.html#line-1022" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1022">#L1022</a>: 	<b>work</b>.cpuStats.gcPauseTime += markTermCpu
+		<a href="../src/runtime/mgc.go.html#line-1023" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1023">#L1023</a>: 	<b>work</b>.cpuStats.gcTotalTime += markTermCpu
+		<a href="../src/runtime/mgc.go.html#line-1028" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1028">#L1028</a>: 	<b>work</b>.cpuStats.accumulate(now, true)
+		<a href="../src/runtime/mgc.go.html#line-1032" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1032">#L1032</a>: 	memstats.gc_cpu_fraction = float64(<b>work</b>.cpuStats.gcTotalTime-<b>work</b>.cpuStats.gcIdleTime) / float64(<b>work</b>.cpuStats.totalTime)
+		<a href="../src/runtime/mgc.go.html#line-1044" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1044">#L1044</a>: 	if <b>work</b>.userForced {
+		<a href="../src/runtime/mgc.go.html#line-1049" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1049">#L1049</a>: 	lock(&amp;<b>work</b>.sweepWaiters.lock)
+		<a href="../src/runtime/mgc.go.html#line-1051" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1051">#L1051</a>: 	injectglist(&amp;<b>work</b>.sweepWaiters.list)
+		<a href="../src/runtime/mgc.go.html#line-1052" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1052">#L1052</a>: 	unlock(&amp;<b>work</b>.sweepWaiters.lock)
+		<a href="../src/runtime/mgc.go.html#line-1154" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1154">#L1154</a>: 			" @", string(itoaDiv(sbuf[:], uint64(<b>work</b>.tSweepTerm-runtimeInitTime)/1e6, 3)), "s ",
+		<a href="../src/runtime/mgc.go.html#line-1156" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1156">#L1156</a>: 		prev := <b>work</b>.tSweepTerm
+		<a href="../src/runtime/mgc.go.html#line-1157" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1157">#L1157</a>: 		for i, ns := range []int64{<b>work</b>.tMark, <b>work</b>.tMarkTerm, <b>work</b>.tEnd} {
+		<a href="../src/runtime/mgc.go.html#line-1166" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1166">#L1166</a>: 			int64(<b>work</b>.stwprocs) * (<b>work</b>.tMark - <b>work</b>.tSweepTerm),
+		<a href="../src/runtime/mgc.go.html#line-1181" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1181">#L1181</a>: 			<b>work</b>.heap0&gt;&gt;20, "-&gt;", <b>work</b>.heap1&gt;&gt;20, "-&gt;", <b>work</b>.heap2&gt;&gt;20, " MB, ",
+		<a href="../src/runtime/mgc.go.html#line-1185" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1185">#L1185</a>: 			<b>work</b>.maxprocs, " P")
+		<a href="../src/runtime/mgc.go.html#line-1186" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1186">#L1186</a>: 		if <b>work</b>.userForced {
+		<a href="../src/runtime/mgc.go.html#line-1236" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1236">#L1236</a>: 		notetsleepg(&amp;<b>work</b>.bgMarkReady, -1)
+		<a href="../src/runtime/mgc.go.html#line-1237" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1237">#L1237</a>: 		noteclear(&amp;<b>work</b>.bgMarkReady)
+		<a href="../src/runtime/mgc.go.html#line-1257" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1257">#L1257</a>: 	<b>work</b>.nproc = ^uint32(0)
+		<a href="../src/runtime/mgc.go.html#line-1258" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1258">#L1258</a>: 	<b>work</b>.nwait = ^uint32(0)
+		<a href="../src/runtime/mgc.go.html#line-1289" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1289">#L1289</a>: 	notewakeup(&amp;<b>work</b>.bgMarkReady)
+		<a href="../src/runtime/mgc.go.html#line-1364" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1364">#L1364</a>: 		decnwait := atomic.Xadd(&amp;<b>work</b>.nwait, -1)
+		<a href="../src/runtime/mgc.go.html#line-1365" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1365">#L1365</a>: 		if decnwait == <b>work</b>.nproc {
+		<a href="../src/runtime/mgc.go.html#line-1366" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1366">#L1366</a>: 			println("runtime: work.nwait=", decnwait, "work.nproc=", <b>work</b>.nproc)
+		<a href="../src/runtime/mgc.go.html#line-1424" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1424">#L1424</a>: 		incnwait := atomic.Xadd(&amp;<b>work</b>.nwait, +1)
+		<a href="../src/runtime/mgc.go.html#line-1425" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1425">#L1425</a>: 		if incnwait &gt; <b>work</b>.nproc {
+		<a href="../src/runtime/mgc.go.html#line-1427" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1427">#L1427</a>: 				"work.nwait=", incnwait, "work.nproc=", <b>work</b>.nproc)
+		<a href="../src/runtime/mgc.go.html#line-1439" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1439">#L1439</a>: 		if incnwait == <b>work</b>.nproc &amp;&amp; !gcMarkWorkAvailable(nil) {
+		<a href="../src/runtime/mgc.go.html#line-1458" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1458">#L1458</a>: 	if !<b>work</b>.full.empty() {
+		<a href="../src/runtime/mgc.go.html#line-1461" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1461">#L1461</a>: 	if <b>work</b>.markrootNext &lt; <b>work</b>.markrootJobs {
+		<a href="../src/runtime/mgc.go.html#line-1478" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1478">#L1478</a>: 	<b>work</b>.tstart = startTime
+		<a href="../src/runtime/mgc.go.html#line-1481" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1481">#L1481</a>: 	if <b>work</b>.full != 0 || <b>work</b>.markrootNext &lt; <b>work</b>.markrootJobs {
+		<a href="../src/runtime/mgc.go.html#line-1482" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1482">#L1482</a>: 		print("runtime: full=", hex(<b>work</b>.full), " next=", <b>work</b>.markrootNext, " jobs=", <b>work</b>.markrootJobs, " nDataRoots=", <b>work</b>.nDataRoots, " nBSSRoots=", <b>work</b>.nBSSRoots, " nSpanRoots=", <b>work</b>.nSpanRoots, " nStackRoots=", <b>work</b>.nStackRoots, "\n")
+		<a href="../src/runtime/mgc.go.html#line-1495" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1495">#L1495</a>: 	<b>work</b>.stackRoots = nil
+		<a href="../src/runtime/mgc.go.html#line-1556" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1556">#L1556</a>: 	gcController.resetLive(<b>work</b>.bytesMarked)
+		<a href="../src/runtime/mgc.go.html#line-1650" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1650">#L1650</a>: 	<b>work</b>.bytesMarked = 0
+		<a href="../src/runtime/mgc.go.html#line-1651" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1651">#L1651</a>: 	<b>work</b>.initialHeapLive = gcController.heapLive.Load()
+		<a href="../src/runtime/mgcmark.go.html#line-67">mgcmark.go#L67</a>: 	<b>work</b>.nDataRoots = 0
+		<a href="../src/runtime/mgcmark.go.html#line-68" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-68">#L68</a>: 	<b>work</b>.nBSSRoots = 0
+		<a href="../src/runtime/mgcmark.go.html#line-73" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-73">#L73</a>: 		if nDataRoots &gt; <b>work</b>.nDataRoots {
+		<a href="../src/runtime/mgcmark.go.html#line-74" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-74">#L74</a>: 			<b>work</b>.nDataRoots = nDataRoots
+		<a href="../src/runtime/mgcmark.go.html#line-80" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-80">#L80</a>: 		if nBSSRoots &gt; <b>work</b>.nBSSRoots {
+		<a href="../src/runtime/mgcmark.go.html#line-81" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-81">#L81</a>: 			<b>work</b>.nBSSRoots = nBSSRoots
+		<a href="../src/runtime/mgcmark.go.html#line-98" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-98">#L98</a>: 	<b>work</b>.nSpanRoots = len(mheap_.markArenas) * (pagesPerArena / pagesPerSpanRoot)
+		<a href="../src/runtime/mgcmark.go.html#line-106" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-106">#L106</a>: 	<b>work</b>.stackRoots = allGsSnapshot()
+		<a href="../src/runtime/mgcmark.go.html#line-107" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-107">#L107</a>: 	<b>work</b>.nStackRoots = len(<b>work</b>.stackRoots)
+		<a href="../src/runtime/mgcmark.go.html#line-109" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-109">#L109</a>: 	<b>work</b>.markrootNext = 0
+		<a href="../src/runtime/mgcmark.go.html#line-110" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-110">#L110</a>: 	<b>work</b>.markrootJobs = uint32(fixedRootCount + <b>work</b>.nDataRoots + <b>work</b>.nBSSRoots + <b>work</b>.nSpanRoots + <b>work</b>.nStackRoots)
+		<a href="../src/runtime/mgcmark.go.html#line-113" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-113">#L113</a>: 	<b>work</b>.baseData = uint32(fixedRootCount)
+		<a href="../src/runtime/mgcmark.go.html#line-114" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-114">#L114</a>: 	<b>work</b>.baseBSS = <b>work</b>.baseData + uint32(<b>work</b>.nDataRoots)
+		<a href="../src/runtime/mgcmark.go.html#line-115" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-115">#L115</a>: 	<b>work</b>.baseSpans = <b>work</b>.baseBSS + uint32(<b>work</b>.nBSSRoots)
+		<a href="../src/runtime/mgcmark.go.html#line-116" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-116">#L116</a>: 	<b>work</b>.baseStacks = <b>work</b>.baseSpans + uint32(<b>work</b>.nSpanRoots)
+		<a href="../src/runtime/mgcmark.go.html#line-117" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-117">#L117</a>: 	<b>work</b>.baseEnd = <b>work</b>.baseStacks + uint32(<b>work</b>.nStackRoots)
+		<a href="../src/runtime/mgcmark.go.html#line-123" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-123">#L123</a>: 	if <b>work</b>.markrootNext &lt; <b>work</b>.markrootJobs {
+		<a href="../src/runtime/mgcmark.go.html#line-124" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-124">#L124</a>: 		print(<b>work</b>.markrootNext, " of ", <b>work</b>.markrootJobs, " markroot jobs done\n")
+		<a href="../src/runtime/mgcmark.go.html#line-135" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-135">#L135</a>: 		if i &gt;= <b>work</b>.nStackRoots {
+		<a href="../src/runtime/mgcmark.go.html#line-169" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-169">#L169</a>: 	case <b>work</b>.baseData &lt;= i &amp;&amp; i &lt; <b>work</b>.baseBSS:
+		<a href="../src/runtime/mgcmark.go.html#line-172" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-172">#L172</a>: 			workDone += markrootBlock(datap.data, datap.edata-datap.data, datap.gcdatamask.bytedata, gcw, int(i-<b>work</b>.baseData))
+		<a href="../src/runtime/mgcmark.go.html#line-175" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-175">#L175</a>: 	case <b>work</b>.baseBSS &lt;= i &amp;&amp; i &lt; <b>work</b>.baseSpans:
+		<a href="../src/runtime/mgcmark.go.html#line-178" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-178">#L178</a>: 			workDone += markrootBlock(datap.bss, datap.ebss-datap.bss, datap.gcbssmask.bytedata, gcw, int(i-<b>work</b>.baseBSS))
+		<a href="../src/runtime/mgcmark.go.html#line-192" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-192">#L192</a>: 	case <b>work</b>.baseSpans &lt;= i &amp;&amp; i &lt; <b>work</b>.baseStacks:
+		<a href="../src/runtime/mgcmark.go.html#line-194" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-194">#L194</a>: 		markrootSpans(gcw, int(i-<b>work</b>.baseSpans))
+		<a href="../src/runtime/mgcmark.go.html#line-199" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-199">#L199</a>: 		if i &lt; <b>work</b>.baseStacks || <b>work</b>.baseEnd &lt;= i {
+		<a href="../src/runtime/mgcmark.go.html#line-201" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-201">#L201</a>: 			print("runtime: markroot index ", i, " not in stack roots range [", <b>work</b>.baseStacks, ", ", <b>work</b>.baseEnd, ")\n")
+		<a href="../src/runtime/mgcmark.go.html#line-204" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-204">#L204</a>: 		gp := <b>work</b>.stackRoots[i-<b>work</b>.baseStacks]
+		<a href="../src/runtime/mgcmark.go.html#line-210" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-210">#L210</a>: 			gp.waitsince = <b>work</b>.tstart
+		<a href="../src/runtime/mgcmark.go.html#line-653" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-653">#L653</a>: 	decnwait := atomic.Xadd(&amp;<b>work</b>.nwait, -1)
+		<a href="../src/runtime/mgcmark.go.html#line-654" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-654">#L654</a>: 	if decnwait == <b>work</b>.nproc {
+		<a href="../src/runtime/mgcmark.go.html#line-655" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-655">#L655</a>: 		println("runtime: work.nwait =", decnwait, "work.nproc=", <b>work</b>.nproc)
+		<a href="../src/runtime/mgcmark.go.html#line-680" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-680">#L680</a>: 	incnwait := atomic.Xadd(&amp;<b>work</b>.nwait, +1)
+		<a href="../src/runtime/mgcmark.go.html#line-681" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-681">#L681</a>: 	if incnwait &gt; <b>work</b>.nproc {
+		<a href="../src/runtime/mgcmark.go.html#line-683" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-683">#L683</a>: 			"work.nproc=", <b>work</b>.nproc)
+		<a href="../src/runtime/mgcmark.go.html#line-687" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-687">#L687</a>: 	if incnwait == <b>work</b>.nproc &amp;&amp; !gcMarkWorkAvailable(nil) {
+		<a href="../src/runtime/mgcmark.go.html#line-712" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-712">#L712</a>: 	lock(&amp;<b>work</b>.assistQueue.lock)
+		<a href="../src/runtime/mgcmark.go.html#line-713" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-713">#L713</a>: 	list := <b>work</b>.assistQueue.q.popList()
+		<a href="../src/runtime/mgcmark.go.html#line-715" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-715">#L715</a>: 	unlock(&amp;<b>work</b>.assistQueue.lock)
+		<a href="../src/runtime/mgcmark.go.html#line-723" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-723">#L723</a>: 	lock(&amp;<b>work</b>.assistQueue.lock)
+		<a href="../src/runtime/mgcmark.go.html#line-728" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-728">#L728</a>: 		unlock(&amp;<b>work</b>.assistQueue.lock)
+		<a href="../src/runtime/mgcmark.go.html#line-733" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-733">#L733</a>: 	oldList := <b>work</b>.assistQueue.q
+		<a href="../src/runtime/mgcmark.go.html#line-734" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-734">#L734</a>: 	<b>work</b>.assistQueue.q.pushBack(gp)
+		<a href="../src/runtime/mgcmark.go.html#line-741" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-741">#L741</a>: 		<b>work</b>.assistQueue.q = oldList
+		<a href="../src/runtime/mgcmark.go.html#line-745" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-745">#L745</a>: 		unlock(&amp;<b>work</b>.assistQueue.lock)
+		<a href="../src/runtime/mgcmark.go.html#line-749" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-749">#L749</a>: 	goparkunlock(&amp;<b>work</b>.assistQueue.lock, waitReasonGCAssistWait, traceBlockGCMarkAssist, 2)
+		<a href="../src/runtime/mgcmark.go.html#line-764" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-764">#L764</a>: 	if <b>work</b>.assistQueue.q.empty() {
+		<a href="../src/runtime/mgcmark.go.html#line-776" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-776">#L776</a>: 	lock(&amp;<b>work</b>.assistQueue.lock)
+		<a href="../src/runtime/mgcmark.go.html#line-777" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-777">#L777</a>: 	for !<b>work</b>.assistQueue.q.empty() &amp;&amp; scanBytes &gt; 0 {
+		<a href="../src/runtime/mgcmark.go.html#line-778" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-778">#L778</a>: 		gp := <b>work</b>.assistQueue.q.pop()
+		<a href="../src/runtime/mgcmark.go.html#line-800" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-800">#L800</a>: 			<b>work</b>.assistQueue.q.pushBack(gp)
+		<a href="../src/runtime/mgcmark.go.html#line-811" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-811">#L811</a>: 	unlock(&amp;<b>work</b>.assistQueue.lock)
+		<a href="../src/runtime/mgcmark.go.html#line-1192" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-1192">#L1192</a>: 	if <b>work</b>.markrootNext &lt; <b>work</b>.markrootJobs {
+		<a href="../src/runtime/mgcmark.go.html#line-1196" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-1196">#L1196</a>: 			job := atomic.Xadd(&amp;<b>work</b>.markrootNext, +1) - 1
+		<a href="../src/runtime/mgcmark.go.html#line-1197" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-1197">#L1197</a>: 			if job &gt;= <b>work</b>.markrootJobs {
+		<a href="../src/runtime/mgcmark.go.html#line-1223" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-1223">#L1223</a>: 		if <b>work</b>.full == 0 {
+		<a href="../src/runtime/mgcmark.go.html#line-1303" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-1303">#L1303</a>: 		if <b>work</b>.full == 0 {
+		<a href="../src/runtime/mgcmark.go.html#line-1320" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-1320">#L1320</a>: 			if <b>work</b>.markrootNext &lt; <b>work</b>.markrootJobs {
+		<a href="../src/runtime/mgcmark.go.html#line-1321" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-1321">#L1321</a>: 				job := atomic.Xadd(&amp;<b>work</b>.markrootNext, +1) - 1
+		<a href="../src/runtime/mgcmark.go.html#line-1322" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-1322">#L1322</a>: 				if job &lt; <b>work</b>.markrootJobs {
+		<a href="../src/runtime/mgcpacer.go.html#line-461">mgcpacer.go#L461</a>: 			<b>work</b>.initialHeapLive&gt;&gt;20, "-&gt;",
+		<a href="../src/runtime/mgcpacer.go.html#line-1271" class="path-duplicate">mgcpacer.go</a><a href="../src/runtime/mgcpacer.go.html#line-1271">#L1271</a>: 		gcWaitOnMark(<b>work</b>.cycles.Load())
+		<a href="../src/runtime/mgcwork.go.html#line-118">mgcwork.go#L118</a>: 	lockWithRankMayAcquire(&amp;<b>work</b>.wbufSpans.lock, lockRankWbufSpans)
+		<a href="../src/runtime/mgcwork.go.html#line-275" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-275">#L275</a>: 		atomic.Xadd64(&amp;<b>work</b>.bytesMarked, int64(w.bytesMarked))
+		<a href="../src/runtime/mgcwork.go.html#line-354" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-354">#L354</a>: 	if <b>work</b>.empty != 0 {
+		<a href="../src/runtime/mgcwork.go.html#line-355" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-355">#L355</a>: 		b = (*workbuf)(<b>work</b>.empty.pop())
+		<a href="../src/runtime/mgcwork.go.html#line-362" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-362">#L362</a>: 	lockWithRankMayAcquire(&amp;<b>work</b>.wbufSpans.lock, lockRankWbufSpans)
+		<a href="../src/runtime/mgcwork.go.html#line-367" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-367">#L367</a>: 		if <b>work</b>.wbufSpans.free.first != nil {
+		<a href="../src/runtime/mgcwork.go.html#line-368" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-368">#L368</a>: 			lock(&amp;<b>work</b>.wbufSpans.lock)
+		<a href="../src/runtime/mgcwork.go.html#line-369" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-369">#L369</a>: 			s = <b>work</b>.wbufSpans.free.first
+		<a href="../src/runtime/mgcwork.go.html#line-371" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-371">#L371</a>: 				<b>work</b>.wbufSpans.free.remove(s)
+		<a href="../src/runtime/mgcwork.go.html#line-372" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-372">#L372</a>: 				<b>work</b>.wbufSpans.busy.insert(s)
+		<a href="../src/runtime/mgcwork.go.html#line-374" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-374">#L374</a>: 			unlock(&amp;<b>work</b>.wbufSpans.lock)
+		<a href="../src/runtime/mgcwork.go.html#line-384" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-384">#L384</a>: 			lock(&amp;<b>work</b>.wbufSpans.lock)
+		<a href="../src/runtime/mgcwork.go.html#line-385" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-385">#L385</a>: 			<b>work</b>.wbufSpans.busy.insert(s)
+		<a href="../src/runtime/mgcwork.go.html#line-386" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-386">#L386</a>: 			unlock(&amp;<b>work</b>.wbufSpans.lock)
+		<a href="../src/runtime/mgcwork.go.html#line-410" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-410">#L410</a>: 	<b>work</b>.empty.push(&amp;b.node)
+		<a href="../src/runtime/mgcwork.go.html#line-420" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-420">#L420</a>: 	<b>work</b>.full.push(&amp;b.node)
+		<a href="../src/runtime/mgcwork.go.html#line-428" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-428">#L428</a>: 	b := (*workbuf)(<b>work</b>.full.pop())
+		<a href="../src/runtime/mgcwork.go.html#line-454" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-454">#L454</a>: 	lock(&amp;<b>work</b>.wbufSpans.lock)
+		<a href="../src/runtime/mgcwork.go.html#line-455" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-455">#L455</a>: 	if <b>work</b>.full != 0 {
+		<a href="../src/runtime/mgcwork.go.html#line-461" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-461">#L461</a>: 	<b>work</b>.empty = 0
+		<a href="../src/runtime/mgcwork.go.html#line-462" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-462">#L462</a>: 	<b>work</b>.wbufSpans.free.takeAll(&amp;<b>work</b>.wbufSpans.busy)
+		<a href="../src/runtime/mgcwork.go.html#line-463" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-463">#L463</a>: 	unlock(&amp;<b>work</b>.wbufSpans.lock)
+		<a href="../src/runtime/mgcwork.go.html#line-470" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-470">#L470</a>: 	lock(&amp;<b>work</b>.wbufSpans.lock)
+		<a href="../src/runtime/mgcwork.go.html#line-471" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-471">#L471</a>: 	if gcphase != _GCoff || <b>work</b>.wbufSpans.free.isEmpty() {
+		<a href="../src/runtime/mgcwork.go.html#line-472" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-472">#L472</a>: 		unlock(&amp;<b>work</b>.wbufSpans.lock)
+		<a href="../src/runtime/mgcwork.go.html#line-478" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-478">#L478</a>: 			span := <b>work</b>.wbufSpans.free.first
+		<a href="../src/runtime/mgcwork.go.html#line-482" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-482">#L482</a>: 			<b>work</b>.wbufSpans.free.remove(span)
+		<a href="../src/runtime/mgcwork.go.html#line-486" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-486">#L486</a>: 	more := !<b>work</b>.wbufSpans.free.isEmpty()
+		<a href="../src/runtime/mgcwork.go.html#line-487" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-487">#L487</a>: 	unlock(&amp;<b>work</b>.wbufSpans.lock)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

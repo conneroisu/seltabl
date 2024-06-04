@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: vendor/golang.org/x/text/unicode/norm.jamoVBase</title>
+<link href="../../../../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../../../../../../pkg/vendor/golang.org/x/text/unicode/norm.html">vendor/golang.org/x/text/unicode/norm</a>.<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/composition.go.html#line-323">jamoVBase</a></b></span>
+
+<span class="title">5 uses</span>
+
+	vendor/golang.org/x/text/unicode/norm (current package)
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/composition.go.html#line-323">composition.go#L323</a>: 	<b>jamoVBase</b>  = 0x1161
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/composition.go.html#line-400" class="path-duplicate">composition.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/composition.go.html#line-400">#L400</a>: 	utf8.EncodeRune(buf[JamoUTF8Len:], <b>jamoVBase</b>+r%jamoVCount)
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/composition.go.html#line-416" class="path-duplicate">composition.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/composition.go.html#line-416">#L416</a>: 	rb.appendRune(<b>jamoVBase</b> + r%jamoVCount)
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/composition.go.html#line-442" class="path-duplicate">composition.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/composition.go.html#line-442">#L442</a>: 				<b>jamoVBase</b> &lt;= v &amp;&amp; v &lt; jamoVEnd:
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/composition.go.html#line-445" class="path-duplicate">composition.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/composition.go.html#line-445">#L445</a>: 					(l-jamoLBase)*jamoVTCount+(v-<b>jamoVBase</b>)*jamoTCount)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

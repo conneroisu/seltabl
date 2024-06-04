@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.tracebackShift</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/runtime1.go.html#line-22">tracebackShift</a></b></span>
+
+<span class="title">9 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/runtime1.go.html#line-22">runtime1.go#L22</a>: 	<b>tracebackShift</b> = iota
+		<a href="../src/runtime/runtime1.go.html#line-25" class="path-duplicate">runtime1.go</a><a href="../src/runtime/runtime1.go.html#line-25">#L25</a>: var traceback_cache uint32 = 2 &lt;&lt; <b>tracebackShift</b>
+		<a href="../src/runtime/runtime1.go.html#line-49" class="path-duplicate">runtime1.go</a><a href="../src/runtime/runtime1.go.html#line-49">#L49</a>: 		level = int32(t &gt;&gt; <b>tracebackShift</b>)
+		<a href="../src/runtime/runtime1.go.html#line-516" class="path-duplicate">runtime1.go</a><a href="../src/runtime/runtime1.go.html#line-516">#L516</a>: 		t = 1 &lt;&lt; <b>tracebackShift</b>
+		<a href="../src/runtime/runtime1.go.html#line-518" class="path-duplicate">runtime1.go</a><a href="../src/runtime/runtime1.go.html#line-518">#L518</a>: 		t = 1&lt;&lt;<b>tracebackShift</b> | tracebackAll
+		<a href="../src/runtime/runtime1.go.html#line-520" class="path-duplicate">runtime1.go</a><a href="../src/runtime/runtime1.go.html#line-520">#L520</a>: 		t = 2&lt;&lt;<b>tracebackShift</b> | tracebackAll
+		<a href="../src/runtime/runtime1.go.html#line-522" class="path-duplicate">runtime1.go</a><a href="../src/runtime/runtime1.go.html#line-522">#L522</a>: 		t = 2&lt;&lt;<b>tracebackShift</b> | tracebackAll | tracebackCrash
+		<a href="../src/runtime/runtime1.go.html#line-525" class="path-duplicate">runtime1.go</a><a href="../src/runtime/runtime1.go.html#line-525">#L525</a>: 			t = 2&lt;&lt;<b>tracebackShift</b> | tracebackAll | tracebackCrash
+		<a href="../src/runtime/runtime1.go.html#line-533" class="path-duplicate">runtime1.go</a><a href="../src/runtime/runtime1.go.html#line-533">#L533</a>: 			t |= uint32(n) &lt;&lt; <b>tracebackShift</b>
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

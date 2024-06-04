@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.isSystemGoroutine</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/traceback.go.html#line-1319">isSystemGoroutine</a></b></span>
+
+<span class="title">10 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/heapdump.go.html#line-359">heapdump.go#L359</a>: 	dumpbool(<b>isSystemGoroutine</b>(gp, false))
+		<a href="../src/runtime/mprof.go.html#line-1186">mprof.go#L1186</a>: 		if readgstatus(fing) != _Gdead &amp;&amp; !<b>isSystemGoroutine</b>(fing, false) {
+		<a href="../src/runtime/mprof.go.html#line-1262" class="path-duplicate">mprof.go</a><a href="../src/runtime/mprof.go.html#line-1262">#L1262</a>: 	if <b>isSystemGoroutine</b>(gp1, true) {
+		<a href="../src/runtime/mprof.go.html#line-1339" class="path-duplicate">mprof.go</a><a href="../src/runtime/mprof.go.html#line-1339">#L1339</a>: 		return gp1 != gp &amp;&amp; readgstatus(gp1) != _Gdead &amp;&amp; !<b>isSystemGoroutine</b>(gp1, false)
+		<a href="../src/runtime/proc.go.html#line-4190">proc.go#L4190</a>: 	if <b>isSystemGoroutine</b>(gp, false) {
+		<a href="../src/runtime/proc.go.html#line-4936" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4936">#L4936</a>: 	if <b>isSystemGoroutine</b>(newg, false) {
+		<a href="../src/runtime/proc.go.html#line-5869" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-5869">#L5869</a>: 		if <b>isSystemGoroutine</b>(gp, false) {
+		<a href="../src/runtime/proc.go.html#line-6353" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6353">#L6353</a>: 		return <b>isSystemGoroutine</b>(gp, true)
+		<a href="../src/runtime/traceback.go.html#line-1246">traceback.go#L1246</a>: 		if gp == me || gp == curgp || readgstatus(gp) == _Gdead || <b>isSystemGoroutine</b>(gp, false) &amp;&amp; level &lt; 2 {
+		<a href="../src/runtime/traceback.go.html#line-1319" class="path-duplicate">traceback.go</a><a href="../src/runtime/traceback.go.html#line-1319">#L1319</a>: func <b>isSystemGoroutine</b>(gp *g, fixed bool) bool {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

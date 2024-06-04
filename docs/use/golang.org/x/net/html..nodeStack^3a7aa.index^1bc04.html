@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: golang.org/x/net/html.nodeStack.index</title>
+<link href="../../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../../../pkg/golang.org/x/net/html.html">golang.org/x/net/html</a>.<a href="../../../../src/golang.org/x/net/html/node.go.html#line-153">nodeStack</a>.<a href="../../../../src/golang.org/x/net/html/node.go.html#line-173">index</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">16 uses</span>
+
+	golang.org/x/net/html (current package)
+		<a href="../../../../src/golang.org/x/net/html/node.go.html#line-173">node.go#L173</a>: func (s *nodeStack) <b>index</b>(n *Node) int {
+		<a href="../../../../src/golang.org/x/net/html/node.go.html#line-201" class="path-duplicate">node.go</a><a href="../../../../src/golang.org/x/net/html/node.go.html#line-201">#L201</a>: 	i := s.<b>index</b>(n)
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-396">parse.go#L396</a>: 	if n.Type == scopeMarkerNode || p.oe.<b>index</b>(n) != -1 {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-400" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-400">#L400</a>: 	for n.Type != scopeMarkerNode &amp;&amp; p.oe.<b>index</b>(n) == -1 {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-453" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-453">#L453</a>: 					ancestor = p.oe[p.oe.<b>index</b>(ancestor)-1]
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1219" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1219">#L1219</a>: 	if current := p.oe.top(); current.Data == tagName &amp;&amp; p.afe.<b>index</b>(current) == -1 {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1243" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1243">#L1243</a>: 		feIndex := p.oe.<b>index</b>(formattingElement)
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1275" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1275">#L1275</a>: 		bookmark := p.afe.<b>index</b>(formattingElement)
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1280" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1280">#L1280</a>: 		x := p.oe.<b>index</b>(node)
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1296" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1296">#L1296</a>: 			if ni := p.afe.<b>index</b>(node); j &gt; 3 &amp;&amp; ni &gt; -1 {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1309" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1309">#L1309</a>: 			if p.afe.<b>index</b>(node) == -1 {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1315" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1315">#L1315</a>: 			p.afe[p.afe.<b>index</b>(node)] = clone
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1316" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1316">#L1316</a>: 			p.oe[p.oe.<b>index</b>(node)] = clone
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1320" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1320">#L1320</a>: 				bookmark = p.afe.<b>index</b>(node) + 1
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1350" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1350">#L1350</a>: 		if oldLoc := p.afe.<b>index</b>(formattingElement); oldLoc != -1 &amp;&amp; oldLoc &lt; bookmark {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1359" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1359">#L1359</a>: 		p.oe.insert(p.oe.<b>index</b>(furthestBlock)+1, clone)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

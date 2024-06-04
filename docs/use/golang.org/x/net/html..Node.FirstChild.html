@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: golang.org/x/net/html.Node.FirstChild</title>
+<link href="../../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../../../pkg/golang.org/x/net/html.html">golang.org/x/net/html</a>.<a href="../../../../src/golang.org/x/net/html/node.go.html#line-44">Node</a>.<a href="../../../../src/golang.org/x/net/html/node.go.html#line-45">FirstChild</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">39 uses</span>
+
+	golang.org/x/net/html (current package)
+		<a href="../../../../src/golang.org/x/net/html/node.go.html#line-45">node.go#L45</a>: 	Parent, <b>FirstChild</b>, LastChild, PrevSibling, NextSibling *Node
+		<a href="../../../../src/golang.org/x/net/html/node.go.html#line-72" class="path-duplicate">node.go</a><a href="../../../../src/golang.org/x/net/html/node.go.html#line-72">#L72</a>: 		n.<b>FirstChild</b> = newChild
+		<a href="../../../../src/golang.org/x/net/html/node.go.html#line-95" class="path-duplicate">node.go</a><a href="../../../../src/golang.org/x/net/html/node.go.html#line-95">#L95</a>: 		n.<b>FirstChild</b> = c
+		<a href="../../../../src/golang.org/x/net/html/node.go.html#line-110" class="path-duplicate">node.go</a><a href="../../../../src/golang.org/x/net/html/node.go.html#line-110">#L110</a>: 	if n.<b>FirstChild</b> == c {
+		<a href="../../../../src/golang.org/x/net/html/node.go.html#line-111" class="path-duplicate">node.go</a><a href="../../../../src/golang.org/x/net/html/node.go.html#line-111">#L111</a>: 		n.<b>FirstChild</b> = c.NextSibling
+		<a href="../../../../src/golang.org/x/net/html/node.go.html#line-130" class="path-duplicate">node.go</a><a href="../../../../src/golang.org/x/net/html/node.go.html#line-130">#L130</a>: 		child := src.<b>FirstChild</b>
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-870">parse.go#L870</a>: 			if n.<b>FirstChild</b> == nil {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1393" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1393">#L1393</a>: 		if n := p.oe.top(); n.DataAtom == a.Textarea &amp;&amp; n.<b>FirstChild</b> == nil {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2453" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2453">#L2453</a>: 	for c := parent.<b>FirstChild</b>; c != nil; {
+		<a href="../../../../src/golang.org/x/net/html/render.go.html#line-76">render.go#L76</a>: 		for c := n.<b>FirstChild</b>; c != nil; c = c.NextSibling {
+		<a href="../../../../src/golang.org/x/net/html/render.go.html#line-177" class="path-duplicate">render.go</a><a href="../../../../src/golang.org/x/net/html/render.go.html#line-177">#L177</a>: 		if n.<b>FirstChild</b> != nil {
+		<a href="../../../../src/golang.org/x/net/html/render.go.html#line-188" class="path-duplicate">render.go</a><a href="../../../../src/golang.org/x/net/html/render.go.html#line-188">#L188</a>: 	if c := n.<b>FirstChild</b>; c != nil &amp;&amp; c.Type == TextNode &amp;&amp; strings.HasPrefix(c.Data, "\n") {
+		<a href="../../../../src/golang.org/x/net/html/render.go.html#line-199" class="path-duplicate">render.go</a><a href="../../../../src/golang.org/x/net/html/render.go.html#line-199">#L199</a>: 		for c := n.<b>FirstChild</b>; c != nil; c = c.NextSibling {
+		<a href="../../../../src/golang.org/x/net/html/render.go.html#line-216" class="path-duplicate">render.go</a><a href="../../../../src/golang.org/x/net/html/render.go.html#line-216">#L216</a>: 		for c := n.<b>FirstChild</b>; c != nil; c = c.NextSibling {
+
+	<a href="../../../../pkg/github.com/andybalholm/cascadia.html">github.com/andybalholm/cascadia</a>
+		<a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-52">pseudo_classes.go#L52</a>: 	for c := n.<b>FirstChild</b>; c != nil; c = c.NextSibling {
+		<a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-64" class="path-duplicate">pseudo_classes.go</a><a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-64">#L64</a>: 	for c := n.<b>FirstChild</b>; c != nil; c = c.NextSibling {
+		<a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-132" class="path-duplicate">pseudo_classes.go</a><a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-132">#L132</a>: 		for c := n.<b>FirstChild</b>; c != nil; c = c.NextSibling {
+		<a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-149" class="path-duplicate">pseudo_classes.go</a><a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-149">#L149</a>: 	for c := n.<b>FirstChild</b>; c != nil; c = c.NextSibling {
+		<a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-189" class="path-duplicate">pseudo_classes.go</a><a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-189">#L189</a>: 	for c := parent.<b>FirstChild</b>; c != nil; c = c.NextSibling {
+		<a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-232" class="path-duplicate">pseudo_classes.go</a><a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-232">#L232</a>: 	for c := parent.<b>FirstChild</b>; c != nil; c = c.NextSibling {
+		<a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-293" class="path-duplicate">pseudo_classes.go</a><a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-293">#L293</a>: 	for c := parent.<b>FirstChild</b>; c != nil; c = c.NextSibling {
+		<a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-325" class="path-duplicate">pseudo_classes.go</a><a href="../../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-325">#L325</a>: 	for c := n.<b>FirstChild</b>; c != nil; c = c.NextSibling {
+		<a href="../../../../src/github.com/andybalholm/cascadia/selector.go.html#line-131">selector.go#L131</a>: 	for child := n.<b>FirstChild</b>; child != nil; child = child.NextSibling {
+		<a href="../../../../src/github.com/andybalholm/cascadia/selector.go.html#line-139" class="path-duplicate">selector.go</a><a href="../../../../src/github.com/andybalholm/cascadia/selector.go.html#line-139">#L139</a>: 	for child := n.<b>FirstChild</b>; child != nil; child = child.NextSibling {
+		<a href="../../../../src/github.com/andybalholm/cascadia/selector.go.html#line-166" class="path-duplicate">selector.go</a><a href="../../../../src/github.com/andybalholm/cascadia/selector.go.html#line-166">#L166</a>: 	for c := n.<b>FirstChild</b>; c != nil; c = c.NextSibling {
+		<a href="../../../../src/github.com/andybalholm/cascadia/selector.go.html#line-178" class="path-duplicate">selector.go</a><a href="../../../../src/github.com/andybalholm/cascadia/selector.go.html#line-178">#L178</a>: 	for c := n.<b>FirstChild</b>; c != nil; c = c.NextSibling {
+
+	<a href="../../../../pkg/github.com/PuerkitoBio^56e6a/goquery.html">github.com/PuerkitoBio/goquery</a>
+		<a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/manipulation.go.html#line-172">manipulation.go#L172</a>: 		for c := n.<b>FirstChild</b>; c != nil; c = n.<b>FirstChild</b> {
+		<a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/manipulation.go.html#line-206" class="path-duplicate">manipulation.go</a><a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/manipulation.go.html#line-206">#L206</a>: 		firstChild := node.<b>FirstChild</b>
+		<a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/manipulation.go.html#line-221" class="path-duplicate">manipulation.go</a><a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/manipulation.go.html#line-221">#L221</a>: 		sn.InsertBefore(n, sn.<b>FirstChild</b>)
+		<a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/manipulation.go.html#line-312" class="path-duplicate">manipulation.go</a><a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/manipulation.go.html#line-312">#L312</a>: 		for c := context.<b>FirstChild</b>; c != nil; c = context.<b>FirstChild</b> {
+		<a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/manipulation.go.html#line-586" class="path-duplicate">manipulation.go</a><a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/manipulation.go.html#line-586">#L586</a>: 	c := n.<b>FirstChild</b>
+		<a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/manipulation.go.html#line-615" class="path-duplicate">manipulation.go</a><a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/manipulation.go.html#line-615">#L615</a>: 	for c := n.<b>FirstChild</b>; c != nil; c = c.NextSibling {
+		<a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/property.go.html#line-72">property.go#L72</a>: 		if n.<b>FirstChild</b> != nil {
+		<a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/property.go.html#line-73" class="path-duplicate">property.go</a><a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/property.go.html#line-73">#L73</a>: 			for c := n.<b>FirstChild</b>; c != nil; c = c.NextSibling {
+		<a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/property.go.html#line-103" class="path-duplicate">property.go</a><a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/property.go.html#line-103">#L103</a>: 		for c := s.Nodes[0].<b>FirstChild</b>; c != nil; c = c.NextSibling {
+		<a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-551">traversal.go#L551</a>: 		for c := n.<b>FirstChild</b>; c != nil; c = c.NextSibling {
+		<a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-631" class="path-duplicate">traversal.go</a><a href="../../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-631">#L631</a>: 					if ret = parent.<b>FirstChild</b>; ret == skipNode &amp;&amp; skipNode != nil {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

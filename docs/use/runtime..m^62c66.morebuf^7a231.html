@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.m.morebuf</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/runtime2.go.html#line-550">m</a>.<a href="../src/runtime/runtime2.go.html#line-552">morebuf</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">11 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/runtime2.go.html#line-552">runtime2.go#L552</a>: 	<b>morebuf</b> gobuf  // gobuf arg to morestack
+		<a href="../src/runtime/stack.go.html#line-965">stack.go#L965</a>: 	if thisg.m.<b>morebuf</b>.g.ptr().stackguard0 == stackFork {
+		<a href="../src/runtime/stack.go.html#line-968" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-968">#L968</a>: 	if thisg.m.<b>morebuf</b>.g.ptr() != thisg.m.curg {
+		<a href="../src/runtime/stack.go.html#line-969" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-969">#L969</a>: 		print("runtime: newstack called from g=", hex(thisg.m.<b>morebuf</b>.g), "\n"+"\tm=", thisg.m, " m-&gt;curg=", thisg.m.curg, " m-&gt;g0=", thisg.m.g0, " m-&gt;gsignal=", thisg.m.gsignal, "\n")
+		<a href="../src/runtime/stack.go.html#line-970" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-970">#L970</a>: 		morebuf := thisg.m.<b>morebuf</b>
+		<a href="../src/runtime/stack.go.html#line-979" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-979">#L979</a>: 		morebuf := thisg.m.<b>morebuf</b>
+		<a href="../src/runtime/stack.go.html#line-998" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-998">#L998</a>: 	morebuf := thisg.m.<b>morebuf</b>
+		<a href="../src/runtime/stack.go.html#line-999" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-999">#L999</a>: 	thisg.m.<b>morebuf</b>.pc = 0
+		<a href="../src/runtime/stack.go.html#line-1000" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-1000">#L1000</a>: 	thisg.m.<b>morebuf</b>.lr = 0
+		<a href="../src/runtime/stack.go.html#line-1001" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-1001">#L1001</a>: 	thisg.m.<b>morebuf</b>.sp = 0
+		<a href="../src/runtime/stack.go.html#line-1002" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-1002">#L1002</a>: 	thisg.m.<b>morebuf</b>.g = 0
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

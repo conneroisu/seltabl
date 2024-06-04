@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: syscall.Errno</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../pkg/syscall.html">syscall</a>.<a href="../src/syscall/syscall_unix.go.html#line-106">Errno</a></b></span>
+
+<span class="title">188 uses</span>
+
+	syscall (current package)
+		<a href="../src/syscall/exec_linux.go.html#line-133">exec_linux.go#L133</a>: func forkAndExecInChild(argv0 *byte, argv, envv []*byte, chroot, dir *byte, attr *ProcAttr, sys *SysProcAttr, pipe int) (pid int, err <b>Errno</b>) {
+		<a href="../src/syscall/exec_linux.go.html#line-152" class="path-duplicate">exec_linux.go</a><a href="../src/syscall/exec_linux.go.html#line-152">#L152</a>: 		var err2 <b>Errno</b>
+		<a href="../src/syscall/exec_linux.go.html#line-157" class="path-duplicate">exec_linux.go</a><a href="../src/syscall/exec_linux.go.html#line-157">#L157</a>: 				err2 = err.(<b>Errno</b>)
+		<a href="../src/syscall/exec_linux.go.html#line-216" class="path-duplicate">exec_linux.go</a><a href="../src/syscall/exec_linux.go.html#line-216">#L216</a>: func forkAndExecInChild1(argv0 *byte, argv, envv []*byte, chroot, dir *byte, attr *ProcAttr, sys *SysProcAttr, pipe int) (pid uintptr, pidfd int32, err1 <b>Errno</b>, mapPipe [2]int, locked bool) {
+		<a href="../src/syscall/exec_linux.go.html#line-238" class="path-duplicate">exec_linux.go</a><a href="../src/syscall/exec_linux.go.html#line-238">#L238</a>: 		err2                      <b>Errno</b>
+		<a href="../src/syscall/exec_linux.go.html#line-293" class="path-duplicate">exec_linux.go</a><a href="../src/syscall/exec_linux.go.html#line-293">#L293</a>: 			err1 = err.(<b>Errno</b>)
+		<a href="../src/syscall/exec_unix.go.html#line-146">exec_unix.go#L146</a>: 	var err1 <b>Errno</b>
+		<a href="../src/syscall/exec_unix.go.html#line-213" class="path-duplicate">exec_unix.go</a><a href="../src/syscall/exec_unix.go.html#line-213">#L213</a>: 		return 0, <b>Errno</b>(err1)
+		<a href="../src/syscall/exec_unix.go.html#line-228" class="path-duplicate">exec_unix.go</a><a href="../src/syscall/exec_unix.go.html#line-228">#L228</a>: 			err = <b>Errno</b>(err1)
+		<a href="../src/syscall/exec_unix.go.html#line-264" class="path-duplicate">exec_unix.go</a><a href="../src/syscall/exec_unix.go.html#line-264">#L264</a>: var execveLibc func(path uintptr, argv uintptr, envp uintptr) <b>Errno</b>
+		<a href="../src/syscall/lsf_linux.go.html#line-60">lsf_linux.go#L60</a>: 		return <b>Errno</b>(ep)
+		<a href="../src/syscall/lsf_linux.go.html#line-69" class="path-duplicate">lsf_linux.go</a><a href="../src/syscall/lsf_linux.go.html#line-69">#L69</a>: 		return <b>Errno</b>(ep)
+		<a href="../src/syscall/syscall_linux.go.html#line-25">syscall_linux.go#L25</a>: func RawSyscall6(trap, a1, a2, a3, a4, a5, a6 uintptr) (r1, r2 uintptr, err <b>Errno</b>)
+		<a href="../src/syscall/syscall_linux.go.html#line-61" class="path-duplicate">syscall_linux.go</a><a href="../src/syscall/syscall_linux.go.html#line-61">#L61</a>: func RawSyscall(trap, a1, a2, a3 uintptr) (r1, r2 uintptr, err <b>Errno</b>) {
+		<a href="../src/syscall/syscall_linux.go.html#line-68" class="path-duplicate">syscall_linux.go</a><a href="../src/syscall/syscall_linux.go.html#line-68">#L68</a>: func Syscall(trap, a1, a2, a3 uintptr) (r1, r2 uintptr, err <b>Errno</b>) {
+		<a href="../src/syscall/syscall_linux.go.html#line-90" class="path-duplicate">syscall_linux.go</a><a href="../src/syscall/syscall_linux.go.html#line-90">#L90</a>: func Syscall6(trap, a1, a2, a3, a4, a5, a6 uintptr) (r1, r2 uintptr, err <b>Errno</b>) {
+		<a href="../src/syscall/syscall_linux.go.html#line-98" class="path-duplicate">syscall_linux.go</a><a href="../src/syscall/syscall_linux.go.html#line-98">#L98</a>: func rawVforkSyscall(trap, a1, a2, a3 uintptr) (r1 uintptr, err <b>Errno</b>)
+		<a href="../src/syscall/syscall_linux.go.html#line-429" class="path-duplicate">syscall_linux.go</a><a href="../src/syscall/syscall_linux.go.html#line-429">#L429</a>: 			err = errnoErr(<b>Errno</b>(ret))
+		<a href="../src/syscall/syscall_linux.go.html#line-445" class="path-duplicate">syscall_linux.go</a><a href="../src/syscall/syscall_linux.go.html#line-445">#L445</a>: 		err = errnoErr(<b>Errno</b>(ret))
+		<a href="../src/syscall/syscall_linux.go.html#line-1113" class="path-duplicate">syscall_linux.go</a><a href="../src/syscall/syscall_linux.go.html#line-1113">#L1113</a>: func AllThreadsSyscall(trap, a1, a2, a3 uintptr) (r1, r2 uintptr, err <b>Errno</b>) {
+		<a href="../src/syscall/syscall_linux.go.html#line-1118" class="path-duplicate">syscall_linux.go</a><a href="../src/syscall/syscall_linux.go.html#line-1118">#L1118</a>: 	return r1, r2, <b>Errno</b>(errno)
+		<a href="../src/syscall/syscall_linux.go.html#line-1125" class="path-duplicate">syscall_linux.go</a><a href="../src/syscall/syscall_linux.go.html#line-1125">#L1125</a>: func AllThreadsSyscall6(trap, a1, a2, a3, a4, a5, a6 uintptr) (r1, r2 uintptr, err <b>Errno</b>) {
+		<a href="../src/syscall/syscall_linux.go.html#line-1130" class="path-duplicate">syscall_linux.go</a><a href="../src/syscall/syscall_linux.go.html#line-1130">#L1130</a>: 	return r1, r2, <b>Errno</b>(errno)
+		<a href="../src/syscall/syscall_linux.go.html#line-1148" class="path-duplicate">syscall_linux.go</a><a href="../src/syscall/syscall_linux.go.html#line-1148">#L1148</a>: 		err = errnoErr(<b>Errno</b>(ret))
+		<a href="../src/syscall/syscall_linux.go.html#line-1161" class="path-duplicate">syscall_linux.go</a><a href="../src/syscall/syscall_linux.go.html#line-1161">#L1161</a>: 		err = errnoErr(<b>Errno</b>(ret))
+		<a href="../src/syscall/syscall_linux.go.html#line-1174" class="path-duplicate">syscall_linux.go</a><a href="../src/syscall/syscall_linux.go.html#line-1174">#L1174</a>: 		err = errnoErr(<b>Errno</b>(ret))
+		<a href="../src/syscall/syscall_linux.go.html#line-1187" class="path-duplicate">syscall_linux.go</a><a href="../src/syscall/syscall_linux.go.html#line-1187">#L1187</a>: 		err = errnoErr(<b>Errno</b>(ret))
+		<a href="../src/syscall/syscall_linux.go.html#line-1200" class="path-duplicate">syscall_linux.go</a><a href="../src/syscall/syscall_linux.go.html#line-1200">#L1200</a>: 		err = errnoErr(<b>Errno</b>(ret))
+		<a href="../src/syscall/syscall_linux.go.html#line-1213" class="path-duplicate">syscall_linux.go</a><a href="../src/syscall/syscall_linux.go.html#line-1213">#L1213</a>: 		err = errnoErr(<b>Errno</b>(ret))
+		<a href="../src/syscall/syscall_linux.go.html#line-1226" class="path-duplicate">syscall_linux.go</a><a href="../src/syscall/syscall_linux.go.html#line-1226">#L1226</a>: 		err = errnoErr(<b>Errno</b>(ret))
+		<a href="../src/syscall/syscall_linux.go.html#line-1239" class="path-duplicate">syscall_linux.go</a><a href="../src/syscall/syscall_linux.go.html#line-1239">#L1239</a>: 		err = errnoErr(<b>Errno</b>(ret))
+		<a href="../src/syscall/syscall_linux_amd64.go.html#line-81">syscall_linux_amd64.go#L81</a>: func gettimeofday(tv *Timeval) (err <b>Errno</b>)
+		<a href="../src/syscall/syscall_linux_amd64.go.html#line-107" class="path-duplicate">syscall_linux_amd64.go</a><a href="../src/syscall/syscall_linux_amd64.go.html#line-107">#L107</a>: func rawSetrlimit(resource int, rlim *Rlimit) <b>Errno</b> {
+		<a href="../src/syscall/syscall_unix.go.html#line-106">syscall_unix.go#L106</a>: type <b>Errno</b> uintptr
+		<a href="../src/syscall/syscall_unix.go.html#line-108" class="path-duplicate">syscall_unix.go</a><a href="../src/syscall/syscall_unix.go.html#line-108">#L108</a>: func (e <b>Errno</b>) Error() string {
+		<a href="../src/syscall/syscall_unix.go.html#line-118" class="path-duplicate">syscall_unix.go</a><a href="../src/syscall/syscall_unix.go.html#line-118">#L118</a>: func (e <b>Errno</b>) Is(target error) bool {
+		<a href="../src/syscall/syscall_unix.go.html#line-132" class="path-duplicate">syscall_unix.go</a><a href="../src/syscall/syscall_unix.go.html#line-132">#L132</a>: func (e <b>Errno</b>) Temporary() bool {
+		<a href="../src/syscall/syscall_unix.go.html#line-136" class="path-duplicate">syscall_unix.go</a><a href="../src/syscall/syscall_unix.go.html#line-136">#L136</a>: func (e <b>Errno</b>) Timeout() bool {
+		<a href="../src/syscall/syscall_unix.go.html#line-150" class="path-duplicate">syscall_unix.go</a><a href="../src/syscall/syscall_unix.go.html#line-150">#L150</a>: func errnoErr(e <b>Errno</b>) error {
+		<a href="../src/syscall/syscall_unix.go.html#line-206" class="path-duplicate">syscall_unix.go</a><a href="../src/syscall/syscall_unix.go.html#line-206">#L206</a>: 			n, err = 0, errnoErr(<b>Errno</b>(-n))
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1184">zerrors_linux_amd64.go#L1184</a>: 	E2BIG           = <b>Errno</b>(0x7)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1185" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1185">#L1185</a>: 	EACCES          = <b>Errno</b>(0xd)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1186" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1186">#L1186</a>: 	EADDRINUSE      = <b>Errno</b>(0x62)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1187" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1187">#L1187</a>: 	EADDRNOTAVAIL   = <b>Errno</b>(0x63)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1188" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1188">#L1188</a>: 	EADV            = <b>Errno</b>(0x44)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1189" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1189">#L1189</a>: 	EAFNOSUPPORT    = <b>Errno</b>(0x61)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1190" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1190">#L1190</a>: 	EAGAIN          = <b>Errno</b>(0xb)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1191" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1191">#L1191</a>: 	EALREADY        = <b>Errno</b>(0x72)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1192" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1192">#L1192</a>: 	EBADE           = <b>Errno</b>(0x34)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1193" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1193">#L1193</a>: 	EBADF           = <b>Errno</b>(0x9)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1194" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1194">#L1194</a>: 	EBADFD          = <b>Errno</b>(0x4d)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1195" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1195">#L1195</a>: 	EBADMSG         = <b>Errno</b>(0x4a)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1196" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1196">#L1196</a>: 	EBADR           = <b>Errno</b>(0x35)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1197" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1197">#L1197</a>: 	EBADRQC         = <b>Errno</b>(0x38)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1198" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1198">#L1198</a>: 	EBADSLT         = <b>Errno</b>(0x39)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1199" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1199">#L1199</a>: 	EBFONT          = <b>Errno</b>(0x3b)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1200" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1200">#L1200</a>: 	EBUSY           = <b>Errno</b>(0x10)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1201" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1201">#L1201</a>: 	ECANCELED       = <b>Errno</b>(0x7d)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1202" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1202">#L1202</a>: 	ECHILD          = <b>Errno</b>(0xa)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1203" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1203">#L1203</a>: 	ECHRNG          = <b>Errno</b>(0x2c)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1204" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1204">#L1204</a>: 	ECOMM           = <b>Errno</b>(0x46)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1205" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1205">#L1205</a>: 	ECONNABORTED    = <b>Errno</b>(0x67)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1206" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1206">#L1206</a>: 	ECONNREFUSED    = <b>Errno</b>(0x6f)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1207" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1207">#L1207</a>: 	ECONNRESET      = <b>Errno</b>(0x68)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1208" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1208">#L1208</a>: 	EDEADLK         = <b>Errno</b>(0x23)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1209" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1209">#L1209</a>: 	EDEADLOCK       = <b>Errno</b>(0x23)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1210" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1210">#L1210</a>: 	EDESTADDRREQ    = <b>Errno</b>(0x59)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1211" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1211">#L1211</a>: 	EDOM            = <b>Errno</b>(0x21)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1212" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1212">#L1212</a>: 	EDOTDOT         = <b>Errno</b>(0x49)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1213" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1213">#L1213</a>: 	EDQUOT          = <b>Errno</b>(0x7a)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1214" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1214">#L1214</a>: 	EEXIST          = <b>Errno</b>(0x11)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1215" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1215">#L1215</a>: 	EFAULT          = <b>Errno</b>(0xe)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1216" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1216">#L1216</a>: 	EFBIG           = <b>Errno</b>(0x1b)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1217" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1217">#L1217</a>: 	EHOSTDOWN       = <b>Errno</b>(0x70)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1218" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1218">#L1218</a>: 	EHOSTUNREACH    = <b>Errno</b>(0x71)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1219" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1219">#L1219</a>: 	EIDRM           = <b>Errno</b>(0x2b)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1220" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1220">#L1220</a>: 	EILSEQ          = <b>Errno</b>(0x54)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1221" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1221">#L1221</a>: 	EINPROGRESS     = <b>Errno</b>(0x73)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1222" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1222">#L1222</a>: 	EINTR           = <b>Errno</b>(0x4)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1223" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1223">#L1223</a>: 	EINVAL          = <b>Errno</b>(0x16)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1224" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1224">#L1224</a>: 	EIO             = <b>Errno</b>(0x5)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1225" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1225">#L1225</a>: 	EISCONN         = <b>Errno</b>(0x6a)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1226" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1226">#L1226</a>: 	EISDIR          = <b>Errno</b>(0x15)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1227" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1227">#L1227</a>: 	EISNAM          = <b>Errno</b>(0x78)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1228" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1228">#L1228</a>: 	EKEYEXPIRED     = <b>Errno</b>(0x7f)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1229" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1229">#L1229</a>: 	EKEYREJECTED    = <b>Errno</b>(0x81)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1230" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1230">#L1230</a>: 	EKEYREVOKED     = <b>Errno</b>(0x80)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1231" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1231">#L1231</a>: 	EL2HLT          = <b>Errno</b>(0x33)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1232" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1232">#L1232</a>: 	EL2NSYNC        = <b>Errno</b>(0x2d)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1233" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1233">#L1233</a>: 	EL3HLT          = <b>Errno</b>(0x2e)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1234" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1234">#L1234</a>: 	EL3RST          = <b>Errno</b>(0x2f)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1235" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1235">#L1235</a>: 	ELIBACC         = <b>Errno</b>(0x4f)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1236" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1236">#L1236</a>: 	ELIBBAD         = <b>Errno</b>(0x50)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1237" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1237">#L1237</a>: 	ELIBEXEC        = <b>Errno</b>(0x53)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1238" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1238">#L1238</a>: 	ELIBMAX         = <b>Errno</b>(0x52)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1239" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1239">#L1239</a>: 	ELIBSCN         = <b>Errno</b>(0x51)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1240" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1240">#L1240</a>: 	ELNRNG          = <b>Errno</b>(0x30)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1241" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1241">#L1241</a>: 	ELOOP           = <b>Errno</b>(0x28)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1242" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1242">#L1242</a>: 	EMEDIUMTYPE     = <b>Errno</b>(0x7c)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1243" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1243">#L1243</a>: 	EMFILE          = <b>Errno</b>(0x18)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1244" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1244">#L1244</a>: 	EMLINK          = <b>Errno</b>(0x1f)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1245" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1245">#L1245</a>: 	EMSGSIZE        = <b>Errno</b>(0x5a)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1246" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1246">#L1246</a>: 	EMULTIHOP       = <b>Errno</b>(0x48)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1247" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1247">#L1247</a>: 	ENAMETOOLONG    = <b>Errno</b>(0x24)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1248" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1248">#L1248</a>: 	ENAVAIL         = <b>Errno</b>(0x77)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1249" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1249">#L1249</a>: 	ENETDOWN        = <b>Errno</b>(0x64)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1250" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1250">#L1250</a>: 	ENETRESET       = <b>Errno</b>(0x66)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1251" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1251">#L1251</a>: 	ENETUNREACH     = <b>Errno</b>(0x65)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1252" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1252">#L1252</a>: 	ENFILE          = <b>Errno</b>(0x17)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1253" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1253">#L1253</a>: 	ENOANO          = <b>Errno</b>(0x37)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1254" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1254">#L1254</a>: 	ENOBUFS         = <b>Errno</b>(0x69)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1255" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1255">#L1255</a>: 	ENOCSI          = <b>Errno</b>(0x32)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1256" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1256">#L1256</a>: 	ENODATA         = <b>Errno</b>(0x3d)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1257" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1257">#L1257</a>: 	ENODEV          = <b>Errno</b>(0x13)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1258" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1258">#L1258</a>: 	ENOENT          = <b>Errno</b>(0x2)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1259" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1259">#L1259</a>: 	ENOEXEC         = <b>Errno</b>(0x8)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1260" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1260">#L1260</a>: 	ENOKEY          = <b>Errno</b>(0x7e)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1261" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1261">#L1261</a>: 	ENOLCK          = <b>Errno</b>(0x25)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1262" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1262">#L1262</a>: 	ENOLINK         = <b>Errno</b>(0x43)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1263" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1263">#L1263</a>: 	ENOMEDIUM       = <b>Errno</b>(0x7b)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1264" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1264">#L1264</a>: 	ENOMEM          = <b>Errno</b>(0xc)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1265" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1265">#L1265</a>: 	ENOMSG          = <b>Errno</b>(0x2a)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1266" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1266">#L1266</a>: 	ENONET          = <b>Errno</b>(0x40)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1267" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1267">#L1267</a>: 	ENOPKG          = <b>Errno</b>(0x41)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1268" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1268">#L1268</a>: 	ENOPROTOOPT     = <b>Errno</b>(0x5c)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1269" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1269">#L1269</a>: 	ENOSPC          = <b>Errno</b>(0x1c)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1270" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1270">#L1270</a>: 	ENOSR           = <b>Errno</b>(0x3f)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1271" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1271">#L1271</a>: 	ENOSTR          = <b>Errno</b>(0x3c)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1272" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1272">#L1272</a>: 	ENOSYS          = <b>Errno</b>(0x26)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1273" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1273">#L1273</a>: 	ENOTBLK         = <b>Errno</b>(0xf)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1274" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1274">#L1274</a>: 	ENOTCONN        = <b>Errno</b>(0x6b)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1275" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1275">#L1275</a>: 	ENOTDIR         = <b>Errno</b>(0x14)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1276" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1276">#L1276</a>: 	ENOTEMPTY       = <b>Errno</b>(0x27)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1277" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1277">#L1277</a>: 	ENOTNAM         = <b>Errno</b>(0x76)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1278" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1278">#L1278</a>: 	ENOTRECOVERABLE = <b>Errno</b>(0x83)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1279" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1279">#L1279</a>: 	ENOTSOCK        = <b>Errno</b>(0x58)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1280" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1280">#L1280</a>: 	ENOTSUP         = <b>Errno</b>(0x5f)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1281" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1281">#L1281</a>: 	ENOTTY          = <b>Errno</b>(0x19)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1282" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1282">#L1282</a>: 	ENOTUNIQ        = <b>Errno</b>(0x4c)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1283" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1283">#L1283</a>: 	ENXIO           = <b>Errno</b>(0x6)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1284" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1284">#L1284</a>: 	EOPNOTSUPP      = <b>Errno</b>(0x5f)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1285" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1285">#L1285</a>: 	EOVERFLOW       = <b>Errno</b>(0x4b)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1286" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1286">#L1286</a>: 	EOWNERDEAD      = <b>Errno</b>(0x82)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1287" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1287">#L1287</a>: 	EPERM           = <b>Errno</b>(0x1)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1288" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1288">#L1288</a>: 	EPFNOSUPPORT    = <b>Errno</b>(0x60)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1289" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1289">#L1289</a>: 	EPIPE           = <b>Errno</b>(0x20)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1290" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1290">#L1290</a>: 	EPROTO          = <b>Errno</b>(0x47)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1291" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1291">#L1291</a>: 	EPROTONOSUPPORT = <b>Errno</b>(0x5d)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1292" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1292">#L1292</a>: 	EPROTOTYPE      = <b>Errno</b>(0x5b)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1293" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1293">#L1293</a>: 	ERANGE          = <b>Errno</b>(0x22)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1294" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1294">#L1294</a>: 	EREMCHG         = <b>Errno</b>(0x4e)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1295" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1295">#L1295</a>: 	EREMOTE         = <b>Errno</b>(0x42)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1296" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1296">#L1296</a>: 	EREMOTEIO       = <b>Errno</b>(0x79)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1297" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1297">#L1297</a>: 	ERESTART        = <b>Errno</b>(0x55)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1298" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1298">#L1298</a>: 	ERFKILL         = <b>Errno</b>(0x84)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1299" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1299">#L1299</a>: 	EROFS           = <b>Errno</b>(0x1e)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1300" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1300">#L1300</a>: 	ESHUTDOWN       = <b>Errno</b>(0x6c)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1301" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1301">#L1301</a>: 	ESOCKTNOSUPPORT = <b>Errno</b>(0x5e)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1302" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1302">#L1302</a>: 	ESPIPE          = <b>Errno</b>(0x1d)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1303" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1303">#L1303</a>: 	ESRCH           = <b>Errno</b>(0x3)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1304" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1304">#L1304</a>: 	ESRMNT          = <b>Errno</b>(0x45)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1305" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1305">#L1305</a>: 	ESTALE          = <b>Errno</b>(0x74)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1306" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1306">#L1306</a>: 	ESTRPIPE        = <b>Errno</b>(0x56)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1307" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1307">#L1307</a>: 	ETIME           = <b>Errno</b>(0x3e)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1308" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1308">#L1308</a>: 	ETIMEDOUT       = <b>Errno</b>(0x6e)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1309" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1309">#L1309</a>: 	ETOOMANYREFS    = <b>Errno</b>(0x6d)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1310" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1310">#L1310</a>: 	ETXTBSY         = <b>Errno</b>(0x1a)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1311" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1311">#L1311</a>: 	EUCLEAN         = <b>Errno</b>(0x75)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1312" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1312">#L1312</a>: 	EUNATCH         = <b>Errno</b>(0x31)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1313" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1313">#L1313</a>: 	EUSERS          = <b>Errno</b>(0x57)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1314" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1314">#L1314</a>: 	EWOULDBLOCK     = <b>Errno</b>(0xb)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1315" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1315">#L1315</a>: 	EXDEV           = <b>Errno</b>(0x12)
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1316" class="path-duplicate">zerrors_linux_amd64.go</a><a href="../src/syscall/zerrors_linux_amd64.go.html#line-1316">#L1316</a>: 	EXFULL          = <b>Errno</b>(0x36)
+
+	<a href="../pkg/internal/poll.html">internal/poll</a>
+		<a href="../src/internal/poll/errno_unix.go.html#line-21">errno_unix.go#L21</a>: func errnoErr(e syscall.<b>Errno</b>) error {
+		<a href="../src/internal/poll/fd_poll_runtime.go.html#line-42">fd_poll_runtime.go#L42</a>: 		return errnoErr(syscall.<b>Errno</b>(errno))
+		<a href="../src/internal/poll/fd_writev_unix.go.html#line-17">fd_writev_unix.go#L17</a>: 		e syscall.<b>Errno</b>
+
+	<a href="../pkg/internal/syscall/unix.html">internal/syscall/unix</a>
+		<a href="../src/internal/syscall/unix/fcntl_unix.go.html#line-22">fcntl_unix.go#L22</a>: 		return int(val), syscall.<b>Errno</b>(errno)
+
+	<a href="../pkg/net.html">net</a>
+		<a href="../src/net/error_posix.go.html#line-17">error_posix.go#L17</a>: 	if _, ok := err.(syscall.<b>Errno</b>); ok {
+		<a href="../src/net/error_unix.go.html#line-12">error_unix.go#L12</a>: 	if se, ok := err.(syscall.<b>Errno</b>); ok {
+		<a href="../src/net/fd_unix.go.html#line-153">fd_unix.go#L153</a>: 		switch err := syscall.<b>Errno</b>(nerr); err {
+		<a href="../src/net/fd_unix.go.html#line-157" class="path-duplicate">fd_unix.go</a><a href="../src/net/fd_unix.go.html#line-157">#L157</a>: 		case syscall.<b>Errno</b>(0):
+		<a href="../src/net/aeab58238c8b8bf2cc853ee74fd79197584bc6cf572dc17c17c45ef6a091d2e6-d.html#line-15">aeab58238c8b8bf2cc853ee74fd79197584bc6cf572dc17c17c45ef6a091d2e6-d#L15</a>: var _ syscall.<b>Errno</b>
+		<a href="../src/net/aeab58238c8b8bf2cc853ee74fd79197584bc6cf572dc17c17c45ef6a091d2e6-d.html#line-106" class="path-duplicate">aeab58238c8b8bf2cc853ee74fd79197584bc6cf572dc17c17c45ef6a091d2e6-d</a><a href="../src/net/aeab58238c8b8bf2cc853ee74fd79197584bc6cf572dc17c17c45ef6a091d2e6-d.html#line-106">#L106</a>: 	if errno != 0 { r2 = syscall.<b>Errno</b>(errno) }
+		<a href="../src/net/aeab58238c8b8bf2cc853ee74fd79197584bc6cf572dc17c17c45ef6a091d2e6-d.html#line-123" class="path-duplicate">aeab58238c8b8bf2cc853ee74fd79197584bc6cf572dc17c17c45ef6a091d2e6-d</a><a href="../src/net/aeab58238c8b8bf2cc853ee74fd79197584bc6cf572dc17c17c45ef6a091d2e6-d.html#line-123">#L123</a>: 	if errno != 0 { r2 = syscall.<b>Errno</b>(errno) }
+		<a href="../src/net/aeab58238c8b8bf2cc853ee74fd79197584bc6cf572dc17c17c45ef6a091d2e6-d.html#line-143" class="path-duplicate">aeab58238c8b8bf2cc853ee74fd79197584bc6cf572dc17c17c45ef6a091d2e6-d</a><a href="../src/net/aeab58238c8b8bf2cc853ee74fd79197584bc6cf572dc17c17c45ef6a091d2e6-d.html#line-143">#L143</a>: 	if errno != 0 { r2 = syscall.<b>Errno</b>(errno) }
+
+	<a href="../pkg/os.html">os</a>
+		<a href="../src/os/error_errno.go.html#line-11">error_errno.go#L11</a>: type syscallErrorType = syscall.<b>Errno</b>
+		<a href="../src/os/error_posix.go.html#line-14">error_posix.go#L14</a>: 	if _, ok := err.(syscall.<b>Errno</b>); ok {
+		<a href="../src/os/wait_waitid.go.html#line-30">wait_waitid.go#L30</a>: 	var e syscall.<b>Errno</b>
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

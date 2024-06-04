@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: vendor/golang.org/x/crypto/cryptobyte.String.ReadUint16LengthPrefixed</title>
+<link href="../../../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../../../../pkg/vendor/golang.org/x/crypto/cryptobyte.html">vendor/golang.org/x/crypto/cryptobyte</a>.<a href="../../../../../src/vendor/golang.org/x/crypto/cryptobyte/string.go.html#line-22">String</a>.<a href="../../../../../src/vendor/golang.org/x/crypto/cryptobyte/string.go.html#line-147">ReadUint16LengthPrefixed</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">33 uses</span>
+
+	vendor/golang.org/x/crypto/cryptobyte (current package)
+		<a href="../../../../../src/vendor/golang.org/x/crypto/cryptobyte/string.go.html#line-147">string.go#L147</a>: func (s *String) <b>ReadUint16LengthPrefixed</b>(out *String) bool {
+
+	<a href="../../../../../pkg/crypto/tls.html">crypto/tls</a>
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-61">handshake_messages.go#L61</a>: 	return s.<b>ReadUint16LengthPrefixed</b>((*cryptobyte.String)(out))
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-380" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-380">#L380</a>: 	if !s.<b>ReadUint16LengthPrefixed</b>(&amp;cipherSuites) {
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-406" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-406">#L406</a>: 	if !s.<b>ReadUint16LengthPrefixed</b>(&amp;extensions) || !s.Empty() {
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-415" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-415">#L415</a>: 			!extensions.<b>ReadUint16LengthPrefixed</b>(&amp;extData) {
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-428" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-428">#L428</a>: 			if !extData.<b>ReadUint16LengthPrefixed</b>(&amp;nameList) || nameList.Empty() {
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-435" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-435">#L435</a>: 					!nameList.<b>ReadUint16LengthPrefixed</b>(&amp;serverName) ||
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-457" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-457">#L457</a>: 				!extData.<b>ReadUint16LengthPrefixed</b>(&amp;ignored) ||
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-458" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-458">#L458</a>: 				!extData.<b>ReadUint16LengthPrefixed</b>(&amp;ignored) {
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-465" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-465">#L465</a>: 			if !extData.<b>ReadUint16LengthPrefixed</b>(&amp;curves) || curves.Empty() {
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-488" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-488">#L488</a>: 			if !extData.<b>ReadUint16LengthPrefixed</b>(&amp;sigAndAlgs) || sigAndAlgs.Empty() {
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-502" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-502">#L502</a>: 			if !extData.<b>ReadUint16LengthPrefixed</b>(&amp;sigAndAlgs) || sigAndAlgs.Empty() {
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-525" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-525">#L525</a>: 			if !extData.<b>ReadUint16LengthPrefixed</b>(&amp;protoList) || protoList.Empty() {
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-560" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-560">#L560</a>: 			if !extData.<b>ReadUint16LengthPrefixed</b>(&amp;clientShares) {
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-591" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-591">#L591</a>: 			if !extData.<b>ReadUint16LengthPrefixed</b>(&amp;identities) || identities.Empty() {
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-604" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-604">#L604</a>: 			if !extData.<b>ReadUint16LengthPrefixed</b>(&amp;binders) || binders.Empty() {
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-791" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-791">#L791</a>: 	if !s.<b>ReadUint16LengthPrefixed</b>(&amp;extensions) || !s.Empty() {
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-800" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-800">#L800</a>: 			!extensions.<b>ReadUint16LengthPrefixed</b>(&amp;extData) {
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-823" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-823">#L823</a>: 			if !extData.<b>ReadUint16LengthPrefixed</b>(&amp;protoList) || protoList.Empty() {
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-834" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-834">#L834</a>: 			if !extData.<b>ReadUint16LengthPrefixed</b>(&amp;sctList) || sctList.Empty() {
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-943" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-943">#L943</a>: 		!s.<b>ReadUint16LengthPrefixed</b>(&amp;extensions) || !s.Empty() {
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-951" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-951">#L951</a>: 			!extensions.<b>ReadUint16LengthPrefixed</b>(&amp;extData) {
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-958" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-958">#L958</a>: 			if !extData.<b>ReadUint16LengthPrefixed</b>(&amp;protoList) || protoList.Empty() {
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-1096" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-1096">#L1096</a>: 		!s.<b>ReadUint16LengthPrefixed</b>(&amp;extensions) ||
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-1105" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-1105">#L1105</a>: 			!extensions.<b>ReadUint16LengthPrefixed</b>(&amp;extData) {
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-1209" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-1209">#L1209</a>: 		!s.<b>ReadUint16LengthPrefixed</b>(&amp;extensions) ||
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-1218" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-1218">#L1218</a>: 			!extensions.<b>ReadUint16LengthPrefixed</b>(&amp;extData) {
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-1229" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-1229">#L1229</a>: 			if !extData.<b>ReadUint16LengthPrefixed</b>(&amp;sigAndAlgs) || sigAndAlgs.Empty() {
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-1242" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-1242">#L1242</a>: 			if !extData.<b>ReadUint16LengthPrefixed</b>(&amp;sigAndAlgs) || sigAndAlgs.Empty() {
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-1255" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-1255">#L1255</a>: 			if !extData.<b>ReadUint16LengthPrefixed</b>(&amp;auths) || auths.Empty() {
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-1451" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-1451">#L1451</a>: 			!certList.<b>ReadUint16LengthPrefixed</b>(&amp;extensions) {
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-1459" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-1459">#L1459</a>: 				!extensions.<b>ReadUint16LengthPrefixed</b>(&amp;extData) {
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-1477" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-1477">#L1477</a>: 				if !extData.<b>ReadUint16LengthPrefixed</b>(&amp;sctList) || sctList.Empty() {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

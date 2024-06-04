@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: unsafe.Offsetof</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/unsafe.html">unsafe</a>.<a href="../src/unsafe/unsafe.go.html#line-204">Offsetof</a></b></span>
+
+<span class="title">30 uses</span>
+
+	unsafe (current package)
+		<a href="../src/unsafe/unsafe.go.html#line-204">unsafe.go#L204</a>: func <b>Offsetof</b>(x ArbitraryType) uintptr
+
+	<a href="../pkg/internal/bytealg.html">internal/bytealg</a>
+		<a href="../src/internal/bytealg/bytealg.go.html#line-14">bytealg.go#L14</a>: 	offsetX86HasSSE42  = unsafe.<b>Offsetof</b>(cpu.X86.HasSSE42)
+		<a href="../src/internal/bytealg/bytealg.go.html#line-15" class="path-duplicate">bytealg.go</a><a href="../src/internal/bytealg/bytealg.go.html#line-15">#L15</a>: 	offsetX86HasAVX2   = unsafe.<b>Offsetof</b>(cpu.X86.HasAVX2)
+		<a href="../src/internal/bytealg/bytealg.go.html#line-16" class="path-duplicate">bytealg.go</a><a href="../src/internal/bytealg/bytealg.go.html#line-16">#L16</a>: 	offsetX86HasPOPCNT = unsafe.<b>Offsetof</b>(cpu.X86.HasPOPCNT)
+		<a href="../src/internal/bytealg/bytealg.go.html#line-18" class="path-duplicate">bytealg.go</a><a href="../src/internal/bytealg/bytealg.go.html#line-18">#L18</a>: 	offsetS390xHasVX = unsafe.<b>Offsetof</b>(cpu.S390X.HasVX)
+		<a href="../src/internal/bytealg/bytealg.go.html#line-20" class="path-duplicate">bytealg.go</a><a href="../src/internal/bytealg/bytealg.go.html#line-20">#L20</a>: 	offsetPPC64HasPOWER9 = unsafe.<b>Offsetof</b>(cpu.PPC64.IsPOWER9)
+
+	<a href="../pkg/os.html">os</a>
+		<a href="../src/os/dir_unix.go.html#line-99">dir_unix.go#L99</a>: 		const namoff = uint64(unsafe.<b>Offsetof</b>(syscall.Dirent{}.Name))
+		<a href="../src/os/dirent_linux.go.html#line-13">dirent_linux.go#L13</a>: 	return readInt(buf, unsafe.<b>Offsetof</b>(syscall.Dirent{}.Ino), unsafe.Sizeof(syscall.Dirent{}.Ino))
+		<a href="../src/os/dirent_linux.go.html#line-17" class="path-duplicate">dirent_linux.go</a><a href="../src/os/dirent_linux.go.html#line-17">#L17</a>: 	return readInt(buf, unsafe.<b>Offsetof</b>(syscall.Dirent{}.Reclen), unsafe.Sizeof(syscall.Dirent{}.Reclen))
+		<a href="../src/os/dirent_linux.go.html#line-25" class="path-duplicate">dirent_linux.go</a><a href="../src/os/dirent_linux.go.html#line-25">#L25</a>: 	return reclen - uint64(unsafe.<b>Offsetof</b>(syscall.Dirent{}.Name)), true
+		<a href="../src/os/dirent_linux.go.html#line-29" class="path-duplicate">dirent_linux.go</a><a href="../src/os/dirent_linux.go.html#line-29">#L29</a>: 	off := unsafe.<b>Offsetof</b>(syscall.Dirent{}.Type)
+
+	<a href="../pkg/runtime.html">runtime</a>
+		<a href="../src/runtime/cpuflags.go.html#line-14">cpuflags.go#L14</a>: 	offsetX86HasAVX    = unsafe.<b>Offsetof</b>(cpu.X86.HasAVX)
+		<a href="../src/runtime/cpuflags.go.html#line-15" class="path-duplicate">cpuflags.go</a><a href="../src/runtime/cpuflags.go.html#line-15">#L15</a>: 	offsetX86HasAVX2   = unsafe.<b>Offsetof</b>(cpu.X86.HasAVX2)
+		<a href="../src/runtime/cpuflags.go.html#line-16" class="path-duplicate">cpuflags.go</a><a href="../src/runtime/cpuflags.go.html#line-16">#L16</a>: 	offsetX86HasERMS   = unsafe.<b>Offsetof</b>(cpu.X86.HasERMS)
+		<a href="../src/runtime/cpuflags.go.html#line-17" class="path-duplicate">cpuflags.go</a><a href="../src/runtime/cpuflags.go.html#line-17">#L17</a>: 	offsetX86HasRDTSCP = unsafe.<b>Offsetof</b>(cpu.X86.HasRDTSCP)
+		<a href="../src/runtime/cpuflags.go.html#line-19" class="path-duplicate">cpuflags.go</a><a href="../src/runtime/cpuflags.go.html#line-19">#L19</a>: 	offsetARMHasIDIVA = unsafe.<b>Offsetof</b>(cpu.ARM.HasIDIVA)
+		<a href="../src/runtime/cpuflags.go.html#line-21" class="path-duplicate">cpuflags.go</a><a href="../src/runtime/cpuflags.go.html#line-21">#L21</a>: 	offsetMIPS64XHasMSA = unsafe.<b>Offsetof</b>(cpu.MIPS64X.HasMSA)
+		<a href="../src/runtime/map.go.html#line-85">map.go#L85</a>: 	dataOffset = unsafe.<b>Offsetof</b>(struct {
+		<a href="../src/runtime/mfinal.go.html#line-116">mfinal.go#L116</a>: 					unsafe.<b>Offsetof</b>(finalizer{}.fn) != 0 ||
+		<a href="../src/runtime/mfinal.go.html#line-117" class="path-duplicate">mfinal.go</a><a href="../src/runtime/mfinal.go.html#line-117">#L117</a>: 					unsafe.<b>Offsetof</b>(finalizer{}.arg) != goarch.PtrSize ||
+		<a href="../src/runtime/mfinal.go.html#line-118" class="path-duplicate">mfinal.go</a><a href="../src/runtime/mfinal.go.html#line-118">#L118</a>: 					unsafe.<b>Offsetof</b>(finalizer{}.nret) != 2*goarch.PtrSize ||
+		<a href="../src/runtime/mfinal.go.html#line-119" class="path-duplicate">mfinal.go</a><a href="../src/runtime/mfinal.go.html#line-119">#L119</a>: 					unsafe.<b>Offsetof</b>(finalizer{}.fint) != 3*goarch.PtrSize ||
+		<a href="../src/runtime/mfinal.go.html#line-120" class="path-duplicate">mfinal.go</a><a href="../src/runtime/mfinal.go.html#line-120">#L120</a>: 					unsafe.<b>Offsetof</b>(finalizer{}.ot) != 4*goarch.PtrSize) {
+		<a href="../src/runtime/mheap.go.html#line-2255">mheap.go#L2255</a>: 	if unsafe.<b>Offsetof</b>(gcBitsArena{}.bits)&amp;7 == 0 {
+		<a href="../src/runtime/mstats.go.html#line-335">mstats.go#L335</a>: 	if offset := unsafe.<b>Offsetof</b>(memstats.heapStats); offset%8 != 0 {
+		<a href="../src/runtime/runtime1.go.html#line-207">runtime1.go#L207</a>: 	if unsafe.<b>Offsetof</b>(y1.y) != 1 {
+
+	<a href="../pkg/syscall.html">syscall</a>
+		<a href="../src/syscall/dirent.go.html#line-86">dirent.go#L86</a>: 		const namoff = uint64(unsafe.<b>Offsetof</b>(Dirent{}.Name))
+		<a href="../src/syscall/syscall_linux.go.html#line-1002">syscall_linux.go#L1002</a>: 	return readInt(buf, unsafe.<b>Offsetof</b>(Dirent{}.Ino), unsafe.Sizeof(Dirent{}.Ino))
+		<a href="../src/syscall/syscall_linux.go.html#line-1006" class="path-duplicate">syscall_linux.go</a><a href="../src/syscall/syscall_linux.go.html#line-1006">#L1006</a>: 	return readInt(buf, unsafe.<b>Offsetof</b>(Dirent{}.Reclen), unsafe.Sizeof(Dirent{}.Reclen))
+		<a href="../src/syscall/syscall_linux.go.html#line-1014" class="path-duplicate">syscall_linux.go</a><a href="../src/syscall/syscall_linux.go.html#line-1014">#L1014</a>: 	return reclen - uint64(unsafe.<b>Offsetof</b>(Dirent{}.Name)), true
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

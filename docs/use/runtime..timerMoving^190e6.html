@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.timerMoving</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/time.go.html#line-160">timerMoving</a></b></span>
+
+<span class="title">19 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/time.go.html#line-160">time.go#L160</a>: 	<b>timerMoving</b>
+		<a href="../src/runtime/time.go.html#line-357" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-357">#L357</a>: 		case timerRunning, <b>timerMoving</b>:
+		<a href="../src/runtime/time.go.html#line-486" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-486">#L486</a>: 		case timerRunning, timerRemoving, <b>timerMoving</b>:
+		<a href="../src/runtime/time.go.html#line-592" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-592">#L592</a>: 			if !t.status.CompareAndSwap(s, <b>timerMoving</b>) {
+		<a href="../src/runtime/time.go.html#line-600" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-600">#L600</a>: 			if !t.status.CompareAndSwap(<b>timerMoving</b>, timerWaiting) {
+		<a href="../src/runtime/time.go.html#line-620" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-620">#L620</a>: 				if !t.status.CompareAndSwap(s, <b>timerMoving</b>) {
+		<a href="../src/runtime/time.go.html#line-625" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-625">#L625</a>: 				if !t.status.CompareAndSwap(<b>timerMoving</b>, timerWaiting) {
+		<a href="../src/runtime/time.go.html#line-630" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-630">#L630</a>: 				if !t.status.CompareAndSwap(s, <b>timerMoving</b>) {
+		<a href="../src/runtime/time.go.html#line-636" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-636">#L636</a>: 				if !t.status.CompareAndSwap(<b>timerMoving</b>, timerWaiting) {
+		<a href="../src/runtime/time.go.html#line-653" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-653">#L653</a>: 			case timerRunning, timerRemoving, <b>timerMoving</b>:
+		<a href="../src/runtime/time.go.html#line-705" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-705">#L705</a>: 			if t.status.CompareAndSwap(s, <b>timerMoving</b>) {
+		<a href="../src/runtime/time.go.html#line-718" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-718">#L718</a>: 		case timerNoStatus, timerRunning, timerRemoving, timerRemoved, <b>timerMoving</b>:
+		<a href="../src/runtime/time.go.html#line-745" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-745">#L745</a>: 		if !t.status.CompareAndSwap(<b>timerMoving</b>, timerWaiting) {
+		<a href="../src/runtime/time.go.html#line-809" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-809">#L809</a>: 			if !t.status.CompareAndSwap(s, <b>timerMoving</b>) {
+		<a href="../src/runtime/time.go.html#line-815" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-815">#L815</a>: 			if !t.status.CompareAndSwap(<b>timerMoving</b>, timerWaiting) {
+		<a href="../src/runtime/time.go.html#line-826" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-826">#L826</a>: 		case timerRunning, timerRemoving, <b>timerMoving</b>:
+		<a href="../src/runtime/time.go.html#line-925" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-925">#L925</a>: 				if t.status.CompareAndSwap(s, <b>timerMoving</b>) {
+		<a href="../src/runtime/time.go.html#line-931" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-931">#L931</a>: 					if !t.status.CompareAndSwap(<b>timerMoving</b>, timerWaiting) {
+		<a href="../src/runtime/time.go.html#line-952" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-952">#L952</a>: 			case timerRunning, timerRemoving, <b>timerMoving</b>:
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

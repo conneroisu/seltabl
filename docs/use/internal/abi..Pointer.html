@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: internal/abi.Pointer</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../../pkg/internal/abi.html">internal/abi</a>.<a href="../../src/internal/abi/type.go.html#line-66">Pointer</a></b></span>
+
+<span class="title">13 uses</span>
+
+	internal/abi (current package)
+		<a href="../../src/internal/abi/type.go.html#line-66">type.go#L66</a>: 	<b>Pointer</b>
+		<a href="../../src/internal/abi/type.go.html#line-162" class="path-duplicate">type.go</a><a href="../../src/internal/abi/type.go.html#line-162">#L162</a>: 	<b>Pointer</b>:       "ptr",
+		<a href="../../src/internal/abi/type.go.html#line-300" class="path-duplicate">type.go</a><a href="../../src/internal/abi/type.go.html#line-300">#L300</a>: 	case <b>Pointer</b>:
+		<a href="../../src/internal/abi/type.go.html#line-363" class="path-duplicate">type.go</a><a href="../../src/internal/abi/type.go.html#line-363">#L363</a>: 	case <b>Pointer</b>:
+
+	<a href="../../pkg/internal/reflectlite.html">internal/reflectlite</a>
+		<a href="../../src/internal/reflectlite/type.go.html#line-80">type.go#L80</a>: const Ptr = abi.<b>Pointer</b>
+		<a href="../../src/internal/reflectlite/value.go.html#line-253">value.go#L253</a>: 	case abi.<b>Pointer</b>:
+		<a href="../../src/internal/reflectlite/value.go.html#line-302" class="path-duplicate">value.go</a><a href="../../src/internal/reflectlite/value.go.html#line-302">#L302</a>: 	case abi.Chan, abi.Func, abi.Map, abi.<b>Pointer</b>, abi.UnsafePointer:
+
+	<a href="../../pkg/reflect.html">reflect</a>
+		<a href="../../src/reflect/type.go.html#line-1085">type.go#L1085</a>: 					if ntyp.Kind() == abi.<b>Pointer</b> {
+		<a href="../../src/reflect/type.go.html#line-2208" class="path-duplicate">type.go</a><a href="../../src/reflect/type.go.html#line-2208">#L2208</a>: 			if f.Typ.Kind() == abi.<b>Pointer</b> {
+		<a href="../../src/reflect/type.go.html#line-2211" class="path-duplicate">type.go</a><a href="../../src/reflect/type.go.html#line-2211">#L2211</a>: 				if k := elem.Kind(); k == abi.<b>Pointer</b> || k == abi.Interface {
+		<a href="../../src/reflect/value.go.html#line-3569">value.go#L3569</a>: 		if dst.Kind() == abi.<b>Pointer</b> &amp;&amp; dst.Elem().Kind() == abi.Array &amp;&amp; src.Elem() == dst.Elem().Elem() {
+		<a href="../../src/reflect/value.go.html#line-3590" class="path-duplicate">value.go</a><a href="../../src/reflect/value.go.html#line-3590">#L3590</a>: 	if dst.Kind() == abi.<b>Pointer</b> &amp;&amp; nameFor(dst) == "" &amp;&amp;
+		<a href="../../src/reflect/value.go.html#line-3591" class="path-duplicate">value.go</a><a href="../../src/reflect/value.go.html#line-3591">#L3591</a>: 		src.Kind() == abi.<b>Pointer</b> &amp;&amp; nameFor(src) == "" &amp;&amp;
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.mSpanManual</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/mheap.go.html#line-358">mSpanManual</a></b></span>
+
+<span class="title">10 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/cgocheck.go.html#line-165">cgocheck.go#L165</a>: 	if s.state.get() == <b>mSpanManual</b> {
+		<a href="../src/runtime/mbitmap.go.html#line-323">mbitmap.go#L323</a>: 		if state == <b>mSpanManual</b> {
+		<a href="../src/runtime/mgcmark.go.html#line-1685">mgcmark.go#L1685</a>: 	if s.state.get() == <b>mSpanManual</b> &amp;&amp; size == 0 {
+		<a href="../src/runtime/mheap.go.html#line-358">mheap.go#L358</a>: 	<b>mSpanManual</b>            // allocated for manual management (e.g., stack allocator)
+		<a href="../src/runtime/mheap.go.html#line-654" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-654">#L654</a>: 	case mSpanInUse, <b>mSpanManual</b>:
+		<a href="../src/runtime/mheap.go.html#line-1389" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1389">#L1389</a>: 		s.state.set(<b>mSpanManual</b>)
+		<a href="../src/runtime/mheap.go.html#line-1596" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1596">#L1596</a>: 	case <b>mSpanManual</b>:
+		<a href="../src/runtime/signal_unix.go.html#line-410">signal_unix.go#L410</a>: 			if s != nil &amp;&amp; s.state.get() == <b>mSpanManual</b> &amp;&amp; s.base() &lt; sp &amp;&amp; sp &lt; s.limit {
+		<a href="../src/runtime/stack.go.html#line-234">stack.go#L234</a>: 	if s.state.get() != <b>mSpanManual</b> {
+		<a href="../src/runtime/stack.go.html#line-490" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-490">#L490</a>: 		if s.state.get() != <b>mSpanManual</b> {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

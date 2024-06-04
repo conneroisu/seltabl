@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/http.http2serverConn.sendServeMsg</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/net/http.html">net/http</a>.<a href="../../src/net/http/h2_bundle.go.html#line-4365">http2serverConn</a>.<a href="../../src/net/http/h2_bundle.go.html#line-4853">sendServeMsg</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">8 uses</span>
+
+	net/http (current package)
+		<a href="../../src/net/http/h2_bundle.go.html#line-4847">h2_bundle.go#L4847</a>: func (sc *http2serverConn) onSettingsTimer() { sc.<b>sendServeMsg</b>(http2settingsTimerMsg) }
+		<a href="../../src/net/http/h2_bundle.go.html#line-4849" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-4849">#L4849</a>: func (sc *http2serverConn) onIdleTimer() { sc.<b>sendServeMsg</b>(http2idleTimerMsg) }
+		<a href="../../src/net/http/h2_bundle.go.html#line-4851" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-4851">#L4851</a>: func (sc *http2serverConn) onShutdownTimer() { sc.<b>sendServeMsg</b>(http2shutdownTimerMsg) }
+		<a href="../../src/net/http/h2_bundle.go.html#line-4853" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-4853">#L4853</a>: func (sc *http2serverConn) <b>sendServeMsg</b>(msg interface{}) {
+		<a href="../../src/net/http/h2_bundle.go.html#line-5209" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5209">#L5209</a>: 	sc.shutdownOnce.Do(func() { sc.<b>sendServeMsg</b>(http2gracefulShutdownMsg) })
+		<a href="../../src/net/http/h2_bundle.go.html#line-6168" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-6168">#L6168</a>: 	defer sc.<b>sendServeMsg</b>(http2handlerDoneMsg)
+		<a href="../../src/net/http/h2_bundle.go.html#line-6592" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-6592">#L6592</a>: 	w.rws.conn.<b>sendServeMsg</b>(func(sc *http2serverConn) {
+		<a href="../../src/net/http/h2_bundle.go.html#line-6618" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-6618">#L6618</a>: 	w.rws.conn.<b>sendServeMsg</b>(func(sc *http2serverConn) {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

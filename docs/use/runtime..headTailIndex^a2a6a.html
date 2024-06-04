@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.headTailIndex</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/mspanset.go.html#line-327">headTailIndex</a></b></span>
+
+<span class="title">15 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/mspanset.go.html#line-327">mspanset.go#L327</a>: type <b>headTailIndex</b> uint64
+		<a href="../src/runtime/mspanset.go.html#line-331" class="path-duplicate">mspanset.go</a><a href="../src/runtime/mspanset.go.html#line-331">#L331</a>: func makeHeadTailIndex(head, tail uint32) <b>headTailIndex</b> {
+		<a href="../src/runtime/mspanset.go.html#line-332" class="path-duplicate">mspanset.go</a><a href="../src/runtime/mspanset.go.html#line-332">#L332</a>: 	return <b>headTailIndex</b>(uint64(head)&lt;&lt;32 | uint64(tail))
+		<a href="../src/runtime/mspanset.go.html#line-336" class="path-duplicate">mspanset.go</a><a href="../src/runtime/mspanset.go.html#line-336">#L336</a>: func (h <b>headTailIndex</b>) head() uint32 {
+		<a href="../src/runtime/mspanset.go.html#line-341" class="path-duplicate">mspanset.go</a><a href="../src/runtime/mspanset.go.html#line-341">#L341</a>: func (h <b>headTailIndex</b>) tail() uint32 {
+		<a href="../src/runtime/mspanset.go.html#line-346" class="path-duplicate">mspanset.go</a><a href="../src/runtime/mspanset.go.html#line-346">#L346</a>: func (h <b>headTailIndex</b>) split() (head uint32, tail uint32) {
+		<a href="../src/runtime/mspanset.go.html#line-356" class="path-duplicate">mspanset.go</a><a href="../src/runtime/mspanset.go.html#line-356">#L356</a>: func (h *atomicHeadTailIndex) load() <b>headTailIndex</b> {
+		<a href="../src/runtime/mspanset.go.html#line-357" class="path-duplicate">mspanset.go</a><a href="../src/runtime/mspanset.go.html#line-357">#L357</a>: 	return <b>headTailIndex</b>(h.u.Load())
+		<a href="../src/runtime/mspanset.go.html#line-361" class="path-duplicate">mspanset.go</a><a href="../src/runtime/mspanset.go.html#line-361">#L361</a>: func (h *atomicHeadTailIndex) cas(old, new <b>headTailIndex</b>) bool {
+		<a href="../src/runtime/mspanset.go.html#line-366" class="path-duplicate">mspanset.go</a><a href="../src/runtime/mspanset.go.html#line-366">#L366</a>: func (h *atomicHeadTailIndex) incHead() <b>headTailIndex</b> {
+		<a href="../src/runtime/mspanset.go.html#line-367" class="path-duplicate">mspanset.go</a><a href="../src/runtime/mspanset.go.html#line-367">#L367</a>: 	return <b>headTailIndex</b>(h.u.Add(1 &lt;&lt; 32))
+		<a href="../src/runtime/mspanset.go.html#line-371" class="path-duplicate">mspanset.go</a><a href="../src/runtime/mspanset.go.html#line-371">#L371</a>: func (h *atomicHeadTailIndex) decHead() <b>headTailIndex</b> {
+		<a href="../src/runtime/mspanset.go.html#line-372" class="path-duplicate">mspanset.go</a><a href="../src/runtime/mspanset.go.html#line-372">#L372</a>: 	return <b>headTailIndex</b>(h.u.Add(-(1 &lt;&lt; 32)))
+		<a href="../src/runtime/mspanset.go.html#line-376" class="path-duplicate">mspanset.go</a><a href="../src/runtime/mspanset.go.html#line-376">#L376</a>: func (h *atomicHeadTailIndex) incTail() <b>headTailIndex</b> {
+		<a href="../src/runtime/mspanset.go.html#line-377" class="path-duplicate">mspanset.go</a><a href="../src/runtime/mspanset.go.html#line-377">#L377</a>: 	ht := <b>headTailIndex</b>(h.u.Add(1))
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

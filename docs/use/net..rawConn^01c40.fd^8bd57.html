@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net.rawConn.fd</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/net.html">net</a>.<a href="../src/net/rawconn.go.html#line-22">rawConn</a>.<a href="../src/net/net.go.html#line-167">fd</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">197 uses</span>
+
+	net (current package)
+		<a href="../src/net/iprawsock.go.html#line-109">iprawsock.go#L109</a>: 	return newRawConn(c.<b>fd</b>), nil
+		<a href="../src/net/iprawsock.go.html#line-119" class="path-duplicate">iprawsock.go</a><a href="../src/net/iprawsock.go.html#line-119">#L119</a>: 		err = &amp;OpError{Op: "read", Net: c.<b>fd</b>.net, Source: c.<b>fd</b>.laddr, Addr: c.<b>fd</b>.raddr, Err: err}
+		<a href="../src/net/iprawsock.go.html#line-131" class="path-duplicate">iprawsock.go</a><a href="../src/net/iprawsock.go.html#line-131">#L131</a>: 		err = &amp;OpError{Op: "read", Net: c.<b>fd</b>.net, Source: c.<b>fd</b>.laddr, Addr: c.<b>fd</b>.raddr, Err: err}
+		<a href="../src/net/iprawsock.go.html#line-152" class="path-duplicate">iprawsock.go</a><a href="../src/net/iprawsock.go.html#line-152">#L152</a>: 		err = &amp;OpError{Op: "read", Net: c.<b>fd</b>.net, Source: c.<b>fd</b>.laddr, Addr: c.<b>fd</b>.raddr, Err: err}
+		<a href="../src/net/iprawsock.go.html#line-164" class="path-duplicate">iprawsock.go</a><a href="../src/net/iprawsock.go.html#line-164">#L164</a>: 		err = &amp;OpError{Op: "write", Net: c.<b>fd</b>.net, Source: c.<b>fd</b>.laddr, Addr: addr.opAddr(), Err: err}
+		<a href="../src/net/iprawsock.go.html#line-176" class="path-duplicate">iprawsock.go</a><a href="../src/net/iprawsock.go.html#line-176">#L176</a>: 		return 0, &amp;OpError{Op: "write", Net: c.<b>fd</b>.net, Source: c.<b>fd</b>.laddr, Addr: addr, Err: syscall.EINVAL}
+		<a href="../src/net/iprawsock.go.html#line-180" class="path-duplicate">iprawsock.go</a><a href="../src/net/iprawsock.go.html#line-180">#L180</a>: 		err = &amp;OpError{Op: "write", Net: c.<b>fd</b>.net, Source: c.<b>fd</b>.laddr, Addr: a.opAddr(), Err: err}
+		<a href="../src/net/iprawsock.go.html#line-197" class="path-duplicate">iprawsock.go</a><a href="../src/net/iprawsock.go.html#line-197">#L197</a>: 		err = &amp;OpError{Op: "write", Net: c.<b>fd</b>.net, Source: c.<b>fd</b>.laddr, Addr: addr.opAddr(), Err: err}
+		<a href="../src/net/iprawsock_posix.go.html#line-49">iprawsock_posix.go#L49</a>: 	n, sa, err := c.<b>fd</b>.readFrom(b)
+		<a href="../src/net/iprawsock_posix.go.html#line-77" class="path-duplicate">iprawsock_posix.go</a><a href="../src/net/iprawsock_posix.go.html#line-77">#L77</a>: 	n, oobn, flags, sa, err = c.<b>fd</b>.readMsg(b, oob, 0)
+		<a href="../src/net/iprawsock_posix.go.html#line-88" class="path-duplicate">iprawsock_posix.go</a><a href="../src/net/iprawsock_posix.go.html#line-88">#L88</a>: 	if c.<b>fd</b>.isConnected {
+		<a href="../src/net/iprawsock_posix.go.html#line-94" class="path-duplicate">iprawsock_posix.go</a><a href="../src/net/iprawsock_posix.go.html#line-94">#L94</a>: 	sa, err := addr.sockaddr(c.<b>fd</b>.family)
+		<a href="../src/net/iprawsock_posix.go.html#line-98" class="path-duplicate">iprawsock_posix.go</a><a href="../src/net/iprawsock_posix.go.html#line-98">#L98</a>: 	return c.<b>fd</b>.writeTo(b, sa)
+		<a href="../src/net/iprawsock_posix.go.html#line-102" class="path-duplicate">iprawsock_posix.go</a><a href="../src/net/iprawsock_posix.go.html#line-102">#L102</a>: 	if c.<b>fd</b>.isConnected {
+		<a href="../src/net/iprawsock_posix.go.html#line-108" class="path-duplicate">iprawsock_posix.go</a><a href="../src/net/iprawsock_posix.go.html#line-108">#L108</a>: 	sa, err := addr.sockaddr(c.<b>fd</b>.family)
+		<a href="../src/net/iprawsock_posix.go.html#line-112" class="path-duplicate">iprawsock_posix.go</a><a href="../src/net/iprawsock_posix.go.html#line-112">#L112</a>: 	return c.<b>fd</b>.writeMsg(b, oob, sa)
+		<a href="../src/net/net.go.html#line-167">net.go#L167</a>: 	<b>fd</b> *netFD
+		<a href="../src/net/net.go.html#line-170" class="path-duplicate">net.go</a><a href="../src/net/net.go.html#line-170">#L170</a>: func (c *conn) ok() bool { return c != nil &amp;&amp; c.<b>fd</b> != nil }
+		<a href="../src/net/net.go.html#line-179" class="path-duplicate">net.go</a><a href="../src/net/net.go.html#line-179">#L179</a>: 	n, err := c.<b>fd</b>.Read(b)
+		<a href="../src/net/net.go.html#line-181" class="path-duplicate">net.go</a><a href="../src/net/net.go.html#line-181">#L181</a>: 		err = &amp;OpError{Op: "read", Net: c.<b>fd</b>.net, Source: c.<b>fd</b>.laddr, Addr: c.<b>fd</b>.raddr, Err: err}
+		<a href="../src/net/net.go.html#line-191" class="path-duplicate">net.go</a><a href="../src/net/net.go.html#line-191">#L191</a>: 	n, err := c.<b>fd</b>.Write(b)
+		<a href="../src/net/net.go.html#line-193" class="path-duplicate">net.go</a><a href="../src/net/net.go.html#line-193">#L193</a>: 		err = &amp;OpError{Op: "write", Net: c.<b>fd</b>.net, Source: c.<b>fd</b>.laddr, Addr: c.<b>fd</b>.raddr, Err: err}
+		<a href="../src/net/net.go.html#line-203" class="path-duplicate">net.go</a><a href="../src/net/net.go.html#line-203">#L203</a>: 	err := c.<b>fd</b>.Close()
+		<a href="../src/net/net.go.html#line-205" class="path-duplicate">net.go</a><a href="../src/net/net.go.html#line-205">#L205</a>: 		err = &amp;OpError{Op: "close", Net: c.<b>fd</b>.net, Source: c.<b>fd</b>.laddr, Addr: c.<b>fd</b>.raddr, Err: err}
+		<a href="../src/net/net.go.html#line-217" class="path-duplicate">net.go</a><a href="../src/net/net.go.html#line-217">#L217</a>: 	return c.<b>fd</b>.laddr
+		<a href="../src/net/net.go.html#line-227" class="path-duplicate">net.go</a><a href="../src/net/net.go.html#line-227">#L227</a>: 	return c.<b>fd</b>.raddr
+		<a href="../src/net/net.go.html#line-235" class="path-duplicate">net.go</a><a href="../src/net/net.go.html#line-235">#L235</a>: 	if err := c.<b>fd</b>.SetDeadline(t); err != nil {
+		<a href="../src/net/net.go.html#line-236" class="path-duplicate">net.go</a><a href="../src/net/net.go.html#line-236">#L236</a>: 		return &amp;OpError{Op: "set", Net: c.<b>fd</b>.net, Source: nil, Addr: c.<b>fd</b>.laddr, Err: err}
+		<a href="../src/net/net.go.html#line-246" class="path-duplicate">net.go</a><a href="../src/net/net.go.html#line-246">#L246</a>: 	if err := c.<b>fd</b>.SetReadDeadline(t); err != nil {
+		<a href="../src/net/net.go.html#line-247" class="path-duplicate">net.go</a><a href="../src/net/net.go.html#line-247">#L247</a>: 		return &amp;OpError{Op: "set", Net: c.<b>fd</b>.net, Source: nil, Addr: c.<b>fd</b>.laddr, Err: err}
+		<a href="../src/net/net.go.html#line-257" class="path-duplicate">net.go</a><a href="../src/net/net.go.html#line-257">#L257</a>: 	if err := c.<b>fd</b>.SetWriteDeadline(t); err != nil {
+		<a href="../src/net/net.go.html#line-258" class="path-duplicate">net.go</a><a href="../src/net/net.go.html#line-258">#L258</a>: 		return &amp;OpError{Op: "set", Net: c.<b>fd</b>.net, Source: nil, Addr: c.<b>fd</b>.laddr, Err: err}
+		<a href="../src/net/net.go.html#line-269" class="path-duplicate">net.go</a><a href="../src/net/net.go.html#line-269">#L269</a>: 	if err := setReadBuffer(c.<b>fd</b>, bytes); err != nil {
+		<a href="../src/net/net.go.html#line-270" class="path-duplicate">net.go</a><a href="../src/net/net.go.html#line-270">#L270</a>: 		return &amp;OpError{Op: "set", Net: c.<b>fd</b>.net, Source: nil, Addr: c.<b>fd</b>.laddr, Err: err}
+		<a href="../src/net/net.go.html#line-281" class="path-duplicate">net.go</a><a href="../src/net/net.go.html#line-281">#L281</a>: 	if err := setWriteBuffer(c.<b>fd</b>, bytes); err != nil {
+		<a href="../src/net/net.go.html#line-282" class="path-duplicate">net.go</a><a href="../src/net/net.go.html#line-282">#L282</a>: 		return &amp;OpError{Op: "set", Net: c.<b>fd</b>.net, Source: nil, Addr: c.<b>fd</b>.laddr, Err: err}
+		<a href="../src/net/net.go.html#line-295" class="path-duplicate">net.go</a><a href="../src/net/net.go.html#line-295">#L295</a>: 	f, err = c.<b>fd</b>.dup()
+		<a href="../src/net/net.go.html#line-297" class="path-duplicate">net.go</a><a href="../src/net/net.go.html#line-297">#L297</a>: 		err = &amp;OpError{Op: "file", Net: c.<b>fd</b>.net, Source: c.<b>fd</b>.laddr, Addr: c.<b>fd</b>.raddr, Err: err}
+		<a href="../src/net/splice_linux.go.html#line-30">splice_linux.go#L30</a>: 		s = v.<b>fd</b>
+		<a href="../src/net/splice_linux.go.html#line-32" class="path-duplicate">splice_linux.go</a><a href="../src/net/splice_linux.go.html#line-32">#L32</a>: 		s = v.<b>fd</b>
+		<a href="../src/net/splice_linux.go.html#line-34" class="path-duplicate">splice_linux.go</a><a href="../src/net/splice_linux.go.html#line-34">#L34</a>: 		if v.<b>fd</b>.net != "unix" {
+		<a href="../src/net/splice_linux.go.html#line-37" class="path-duplicate">splice_linux.go</a><a href="../src/net/splice_linux.go.html#line-37">#L37</a>: 		s = v.<b>fd</b>
+		<a href="../src/net/splice_linux.go.html#line-56" class="path-duplicate">splice_linux.go</a><a href="../src/net/splice_linux.go.html#line-56">#L56</a>: 	if !ok || uc.<b>fd</b>.net != "unix" {
+		<a href="../src/net/splice_linux.go.html#line-60" class="path-duplicate">splice_linux.go</a><a href="../src/net/splice_linux.go.html#line-60">#L60</a>: 	written, handled, sc, err := poll.Splice(&amp;uc.<b>fd</b>.pfd, &amp;c.pfd, 1&lt;&lt;63-1)
+		<a href="../src/net/tcpsock.go.html#line-122">tcpsock.go#L122</a>: 	return newRawConn(c.<b>fd</b>), nil
+		<a href="../src/net/tcpsock.go.html#line-132" class="path-duplicate">tcpsock.go</a><a href="../src/net/tcpsock.go.html#line-132">#L132</a>: 		err = &amp;OpError{Op: "readfrom", Net: c.<b>fd</b>.net, Source: c.<b>fd</b>.laddr, Addr: c.<b>fd</b>.raddr, Err: err}
+		<a href="../src/net/tcpsock.go.html#line-144" class="path-duplicate">tcpsock.go</a><a href="../src/net/tcpsock.go.html#line-144">#L144</a>: 		err = &amp;OpError{Op: "writeto", Net: c.<b>fd</b>.net, Source: c.<b>fd</b>.laddr, Addr: c.<b>fd</b>.raddr, Err: err}
+		<a href="../src/net/tcpsock.go.html#line-155" class="path-duplicate">tcpsock.go</a><a href="../src/net/tcpsock.go.html#line-155">#L155</a>: 	if err := c.<b>fd</b>.closeRead(); err != nil {
+		<a href="../src/net/tcpsock.go.html#line-156" class="path-duplicate">tcpsock.go</a><a href="../src/net/tcpsock.go.html#line-156">#L156</a>: 		return &amp;OpError{Op: "close", Net: c.<b>fd</b>.net, Source: c.<b>fd</b>.laddr, Addr: c.<b>fd</b>.raddr, Err: err}
+		<a href="../src/net/tcpsock.go.html#line-167" class="path-duplicate">tcpsock.go</a><a href="../src/net/tcpsock.go.html#line-167">#L167</a>: 	if err := c.<b>fd</b>.closeWrite(); err != nil {
+		<a href="../src/net/tcpsock.go.html#line-168" class="path-duplicate">tcpsock.go</a><a href="../src/net/tcpsock.go.html#line-168">#L168</a>: 		return &amp;OpError{Op: "close", Net: c.<b>fd</b>.net, Source: c.<b>fd</b>.laddr, Addr: c.<b>fd</b>.raddr, Err: err}
+		<a href="../src/net/tcpsock.go.html#line-191" class="path-duplicate">tcpsock.go</a><a href="../src/net/tcpsock.go.html#line-191">#L191</a>: 	if err := setLinger(c.<b>fd</b>, sec); err != nil {
+		<a href="../src/net/tcpsock.go.html#line-192" class="path-duplicate">tcpsock.go</a><a href="../src/net/tcpsock.go.html#line-192">#L192</a>: 		return &amp;OpError{Op: "set", Net: c.<b>fd</b>.net, Source: c.<b>fd</b>.laddr, Addr: c.<b>fd</b>.raddr, Err: err}
+		<a href="../src/net/tcpsock.go.html#line-203" class="path-duplicate">tcpsock.go</a><a href="../src/net/tcpsock.go.html#line-203">#L203</a>: 	if err := setKeepAlive(c.<b>fd</b>, keepalive); err != nil {
+		<a href="../src/net/tcpsock.go.html#line-204" class="path-duplicate">tcpsock.go</a><a href="../src/net/tcpsock.go.html#line-204">#L204</a>: 		return &amp;OpError{Op: "set", Net: c.<b>fd</b>.net, Source: c.<b>fd</b>.laddr, Addr: c.<b>fd</b>.raddr, Err: err}
+		<a href="../src/net/tcpsock.go.html#line-214" class="path-duplicate">tcpsock.go</a><a href="../src/net/tcpsock.go.html#line-214">#L214</a>: 	if err := setKeepAlivePeriod(c.<b>fd</b>, d); err != nil {
+		<a href="../src/net/tcpsock.go.html#line-215" class="path-duplicate">tcpsock.go</a><a href="../src/net/tcpsock.go.html#line-215">#L215</a>: 		return &amp;OpError{Op: "set", Net: c.<b>fd</b>.net, Source: c.<b>fd</b>.laddr, Addr: c.<b>fd</b>.raddr, Err: err}
+		<a href="../src/net/tcpsock.go.html#line-228" class="path-duplicate">tcpsock.go</a><a href="../src/net/tcpsock.go.html#line-228">#L228</a>: 	if err := setNoDelay(c.<b>fd</b>, noDelay); err != nil {
+		<a href="../src/net/tcpsock.go.html#line-229" class="path-duplicate">tcpsock.go</a><a href="../src/net/tcpsock.go.html#line-229">#L229</a>: 		return &amp;OpError{Op: "set", Net: c.<b>fd</b>.net, Source: c.<b>fd</b>.laddr, Addr: c.<b>fd</b>.raddr, Err: err}
+		<a href="../src/net/tcpsock.go.html#line-247" class="path-duplicate">tcpsock.go</a><a href="../src/net/tcpsock.go.html#line-247">#L247</a>: 	return isUsingMultipathTCP(c.<b>fd</b>), nil
+		<a href="../src/net/tcpsock_posix.go.html#line-48">tcpsock_posix.go#L48</a>: 	if n, err, handled := spliceFrom(c.<b>fd</b>, r); handled {
+		<a href="../src/net/tcpsock_posix.go.html#line-51" class="path-duplicate">tcpsock_posix.go</a><a href="../src/net/tcpsock_posix.go.html#line-51">#L51</a>: 	if n, err, handled := sendFile(c.<b>fd</b>, r); handled {
+		<a href="../src/net/tcpsock_posix.go.html#line-58" class="path-duplicate">tcpsock_posix.go</a><a href="../src/net/tcpsock_posix.go.html#line-58">#L58</a>: 	if n, err, handled := spliceTo(w, c.<b>fd</b>); handled {
+		<a href="../src/net/udpsock.go.html#line-132">udpsock.go#L132</a>: 	return newRawConn(c.<b>fd</b>), nil
+		<a href="../src/net/udpsock.go.html#line-151" class="path-duplicate">udpsock.go</a><a href="../src/net/udpsock.go.html#line-151">#L151</a>: 		err = &amp;OpError{Op: "read", Net: c.<b>fd</b>.net, Source: c.<b>fd</b>.laddr, Addr: c.<b>fd</b>.raddr, Err: err}
+		<a href="../src/net/udpsock.go.html#line-177" class="path-duplicate">udpsock.go</a><a href="../src/net/udpsock.go.html#line-177">#L177</a>: 		err = &amp;OpError{Op: "read", Net: c.<b>fd</b>.net, Source: c.<b>fd</b>.laddr, Addr: c.<b>fd</b>.raddr, Err: err}
+		<a href="../src/net/udpsock.go.html#line-205" class="path-duplicate">udpsock.go</a><a href="../src/net/udpsock.go.html#line-205">#L205</a>: 		err = &amp;OpError{Op: "read", Net: c.<b>fd</b>.net, Source: c.<b>fd</b>.laddr, Addr: c.<b>fd</b>.raddr, Err: err}
+		<a href="../src/net/udpsock.go.html#line-217" class="path-duplicate">udpsock.go</a><a href="../src/net/udpsock.go.html#line-217">#L217</a>: 		err = &amp;OpError{Op: "write", Net: c.<b>fd</b>.net, Source: c.<b>fd</b>.laddr, Addr: addr.opAddr(), Err: err}
+		<a href="../src/net/udpsock.go.html#line-229" class="path-duplicate">udpsock.go</a><a href="../src/net/udpsock.go.html#line-229">#L229</a>: 		err = &amp;OpError{Op: "write", Net: c.<b>fd</b>.net, Source: c.<b>fd</b>.laddr, Addr: addrPortUDPAddr{addr}, Err: err}
+		<a href="../src/net/udpsock.go.html#line-241" class="path-duplicate">udpsock.go</a><a href="../src/net/udpsock.go.html#line-241">#L241</a>: 		return 0, &amp;OpError{Op: "write", Net: c.<b>fd</b>.net, Source: c.<b>fd</b>.laddr, Addr: addr, Err: syscall.EINVAL}
+		<a href="../src/net/udpsock.go.html#line-245" class="path-duplicate">udpsock.go</a><a href="../src/net/udpsock.go.html#line-245">#L245</a>: 		err = &amp;OpError{Op: "write", Net: c.<b>fd</b>.net, Source: c.<b>fd</b>.laddr, Addr: a.opAddr(), Err: err}
+		<a href="../src/net/udpsock.go.html#line-264" class="path-duplicate">udpsock.go</a><a href="../src/net/udpsock.go.html#line-264">#L264</a>: 		err = &amp;OpError{Op: "write", Net: c.<b>fd</b>.net, Source: c.<b>fd</b>.laddr, Addr: addr.opAddr(), Err: err}
+		<a href="../src/net/udpsock.go.html#line-276" class="path-duplicate">udpsock.go</a><a href="../src/net/udpsock.go.html#line-276">#L276</a>: 		err = &amp;OpError{Op: "write", Net: c.<b>fd</b>.net, Source: c.<b>fd</b>.laddr, Addr: addrPortUDPAddr{addr}, Err: err}
+		<a href="../src/net/udpsock_posix.go.html#line-49">udpsock_posix.go#L49</a>: 	switch c.<b>fd</b>.family {
+		<a href="../src/net/udpsock_posix.go.html#line-52" class="path-duplicate">udpsock_posix.go</a><a href="../src/net/udpsock_posix.go.html#line-52">#L52</a>: 		n, err = c.<b>fd</b>.readFromInet4(b, &amp;from)
+		<a href="../src/net/udpsock_posix.go.html#line-59" class="path-duplicate">udpsock_posix.go</a><a href="../src/net/udpsock_posix.go.html#line-59">#L59</a>: 		n, err = c.<b>fd</b>.readFromInet6(b, &amp;from)
+		<a href="../src/net/udpsock_posix.go.html#line-75" class="path-duplicate">udpsock_posix.go</a><a href="../src/net/udpsock_posix.go.html#line-75">#L75</a>: 	switch c.<b>fd</b>.family {
+		<a href="../src/net/udpsock_posix.go.html#line-78" class="path-duplicate">udpsock_posix.go</a><a href="../src/net/udpsock_posix.go.html#line-78">#L78</a>: 		n, err = c.<b>fd</b>.readFromInet4(b, &amp;from)
+		<a href="../src/net/udpsock_posix.go.html#line-85" class="path-duplicate">udpsock_posix.go</a><a href="../src/net/udpsock_posix.go.html#line-85">#L85</a>: 		n, err = c.<b>fd</b>.readFromInet6(b, &amp;from)
+		<a href="../src/net/udpsock_posix.go.html#line-98" class="path-duplicate">udpsock_posix.go</a><a href="../src/net/udpsock_posix.go.html#line-98">#L98</a>: 	switch c.<b>fd</b>.family {
+		<a href="../src/net/udpsock_posix.go.html#line-101" class="path-duplicate">udpsock_posix.go</a><a href="../src/net/udpsock_posix.go.html#line-101">#L101</a>: 		n, oobn, flags, err = c.<b>fd</b>.readMsgInet4(b, oob, 0, &amp;sa)
+		<a href="../src/net/udpsock_posix.go.html#line-106" class="path-duplicate">udpsock_posix.go</a><a href="../src/net/udpsock_posix.go.html#line-106">#L106</a>: 		n, oobn, flags, err = c.<b>fd</b>.readMsgInet6(b, oob, 0, &amp;sa)
+		<a href="../src/net/udpsock_posix.go.html#line-114" class="path-duplicate">udpsock_posix.go</a><a href="../src/net/udpsock_posix.go.html#line-114">#L114</a>: 	if c.<b>fd</b>.isConnected {
+		<a href="../src/net/udpsock_posix.go.html#line-121" class="path-duplicate">udpsock_posix.go</a><a href="../src/net/udpsock_posix.go.html#line-121">#L121</a>: 	switch c.<b>fd</b>.family {
+		<a href="../src/net/udpsock_posix.go.html#line-127" class="path-duplicate">udpsock_posix.go</a><a href="../src/net/udpsock_posix.go.html#line-127">#L127</a>: 		return c.<b>fd</b>.writeToInet4(b, &amp;sa)
+		<a href="../src/net/udpsock_posix.go.html#line-133" class="path-duplicate">udpsock_posix.go</a><a href="../src/net/udpsock_posix.go.html#line-133">#L133</a>: 		return c.<b>fd</b>.writeToInet6(b, &amp;sa)
+		<a href="../src/net/udpsock_posix.go.html#line-140" class="path-duplicate">udpsock_posix.go</a><a href="../src/net/udpsock_posix.go.html#line-140">#L140</a>: 	if c.<b>fd</b>.isConnected {
+		<a href="../src/net/udpsock_posix.go.html#line-147" class="path-duplicate">udpsock_posix.go</a><a href="../src/net/udpsock_posix.go.html#line-147">#L147</a>: 	switch c.<b>fd</b>.family {
+		<a href="../src/net/udpsock_posix.go.html#line-153" class="path-duplicate">udpsock_posix.go</a><a href="../src/net/udpsock_posix.go.html#line-153">#L153</a>: 		return c.<b>fd</b>.writeToInet4(b, &amp;sa)
+		<a href="../src/net/udpsock_posix.go.html#line-159" class="path-duplicate">udpsock_posix.go</a><a href="../src/net/udpsock_posix.go.html#line-159">#L159</a>: 		return c.<b>fd</b>.writeToInet6(b, &amp;sa)
+		<a href="../src/net/udpsock_posix.go.html#line-166" class="path-duplicate">udpsock_posix.go</a><a href="../src/net/udpsock_posix.go.html#line-166">#L166</a>: 	if c.<b>fd</b>.isConnected &amp;&amp; addr != nil {
+		<a href="../src/net/udpsock_posix.go.html#line-169" class="path-duplicate">udpsock_posix.go</a><a href="../src/net/udpsock_posix.go.html#line-169">#L169</a>: 	if !c.<b>fd</b>.isConnected &amp;&amp; addr == nil {
+		<a href="../src/net/udpsock_posix.go.html#line-172" class="path-duplicate">udpsock_posix.go</a><a href="../src/net/udpsock_posix.go.html#line-172">#L172</a>: 	sa, err := addr.sockaddr(c.<b>fd</b>.family)
+		<a href="../src/net/udpsock_posix.go.html#line-176" class="path-duplicate">udpsock_posix.go</a><a href="../src/net/udpsock_posix.go.html#line-176">#L176</a>: 	return c.<b>fd</b>.writeMsg(b, oob, sa)
+		<a href="../src/net/udpsock_posix.go.html#line-180" class="path-duplicate">udpsock_posix.go</a><a href="../src/net/udpsock_posix.go.html#line-180">#L180</a>: 	if c.<b>fd</b>.isConnected &amp;&amp; addr.IsValid() {
+		<a href="../src/net/udpsock_posix.go.html#line-183" class="path-duplicate">udpsock_posix.go</a><a href="../src/net/udpsock_posix.go.html#line-183">#L183</a>: 	if !c.<b>fd</b>.isConnected &amp;&amp; !addr.IsValid() {
+		<a href="../src/net/udpsock_posix.go.html#line-187" class="path-duplicate">udpsock_posix.go</a><a href="../src/net/udpsock_posix.go.html#line-187">#L187</a>: 	switch c.<b>fd</b>.family {
+		<a href="../src/net/udpsock_posix.go.html#line-193" class="path-duplicate">udpsock_posix.go</a><a href="../src/net/udpsock_posix.go.html#line-193">#L193</a>: 		return c.<b>fd</b>.writeMsgInet4(b, oob, &amp;sa)
+		<a href="../src/net/udpsock_posix.go.html#line-199" class="path-duplicate">udpsock_posix.go</a><a href="../src/net/udpsock_posix.go.html#line-199">#L199</a>: 		return c.<b>fd</b>.writeMsgInet6(b, oob, &amp;sa)
+		<a href="../src/net/udpsock_posix.go.html#line-261" class="path-duplicate">udpsock_posix.go</a><a href="../src/net/udpsock_posix.go.html#line-261">#L261</a>: 		if err := setIPv4MulticastInterface(c.<b>fd</b>, ifi); err != nil {
+		<a href="../src/net/udpsock_posix.go.html#line-265" class="path-duplicate">udpsock_posix.go</a><a href="../src/net/udpsock_posix.go.html#line-265">#L265</a>: 	if err := setIPv4MulticastLoopback(c.<b>fd</b>, false); err != nil {
+		<a href="../src/net/udpsock_posix.go.html#line-268" class="path-duplicate">udpsock_posix.go</a><a href="../src/net/udpsock_posix.go.html#line-268">#L268</a>: 	if err := joinIPv4Group(c.<b>fd</b>, ifi, ip); err != nil {
+		<a href="../src/net/udpsock_posix.go.html#line-276" class="path-duplicate">udpsock_posix.go</a><a href="../src/net/udpsock_posix.go.html#line-276">#L276</a>: 		if err := setIPv6MulticastInterface(c.<b>fd</b>, ifi); err != nil {
+		<a href="../src/net/udpsock_posix.go.html#line-280" class="path-duplicate">udpsock_posix.go</a><a href="../src/net/udpsock_posix.go.html#line-280">#L280</a>: 	if err := setIPv6MulticastLoopback(c.<b>fd</b>, false); err != nil {
+		<a href="../src/net/udpsock_posix.go.html#line-283" class="path-duplicate">udpsock_posix.go</a><a href="../src/net/udpsock_posix.go.html#line-283">#L283</a>: 	if err := joinIPv6Group(c.<b>fd</b>, ifi, ip); err != nil {
+		<a href="../src/net/unixsock.go.html#line-78">unixsock.go#L78</a>: 	return newRawConn(c.<b>fd</b>), nil
+		<a href="../src/net/unixsock.go.html#line-87" class="path-duplicate">unixsock.go</a><a href="../src/net/unixsock.go.html#line-87">#L87</a>: 	if err := c.<b>fd</b>.closeRead(); err != nil {
+		<a href="../src/net/unixsock.go.html#line-88" class="path-duplicate">unixsock.go</a><a href="../src/net/unixsock.go.html#line-88">#L88</a>: 		return &amp;OpError{Op: "close", Net: c.<b>fd</b>.net, Source: c.<b>fd</b>.laddr, Addr: c.<b>fd</b>.raddr, Err: err}
+		<a href="../src/net/unixsock.go.html#line-99" class="path-duplicate">unixsock.go</a><a href="../src/net/unixsock.go.html#line-99">#L99</a>: 	if err := c.<b>fd</b>.closeWrite(); err != nil {
+		<a href="../src/net/unixsock.go.html#line-100" class="path-duplicate">unixsock.go</a><a href="../src/net/unixsock.go.html#line-100">#L100</a>: 		return &amp;OpError{Op: "close", Net: c.<b>fd</b>.net, Source: c.<b>fd</b>.laddr, Addr: c.<b>fd</b>.raddr, Err: err}
+		<a href="../src/net/unixsock.go.html#line-112" class="path-duplicate">unixsock.go</a><a href="../src/net/unixsock.go.html#line-112">#L112</a>: 		err = &amp;OpError{Op: "read", Net: c.<b>fd</b>.net, Source: c.<b>fd</b>.laddr, Addr: c.<b>fd</b>.raddr, Err: err}
+		<a href="../src/net/unixsock.go.html#line-124" class="path-duplicate">unixsock.go</a><a href="../src/net/unixsock.go.html#line-124">#L124</a>: 		err = &amp;OpError{Op: "read", Net: c.<b>fd</b>.net, Source: c.<b>fd</b>.laddr, Addr: c.<b>fd</b>.raddr, Err: err}
+		<a href="../src/net/unixsock.go.html#line-145" class="path-duplicate">unixsock.go</a><a href="../src/net/unixsock.go.html#line-145">#L145</a>: 		err = &amp;OpError{Op: "read", Net: c.<b>fd</b>.net, Source: c.<b>fd</b>.laddr, Addr: c.<b>fd</b>.raddr, Err: err}
+		<a href="../src/net/unixsock.go.html#line-157" class="path-duplicate">unixsock.go</a><a href="../src/net/unixsock.go.html#line-157">#L157</a>: 		err = &amp;OpError{Op: "write", Net: c.<b>fd</b>.net, Source: c.<b>fd</b>.laddr, Addr: addr.opAddr(), Err: err}
+		<a href="../src/net/unixsock.go.html#line-169" class="path-duplicate">unixsock.go</a><a href="../src/net/unixsock.go.html#line-169">#L169</a>: 		return 0, &amp;OpError{Op: "write", Net: c.<b>fd</b>.net, Source: c.<b>fd</b>.laddr, Addr: addr, Err: syscall.EINVAL}
+		<a href="../src/net/unixsock.go.html#line-173" class="path-duplicate">unixsock.go</a><a href="../src/net/unixsock.go.html#line-173">#L173</a>: 		err = &amp;OpError{Op: "write", Net: c.<b>fd</b>.net, Source: c.<b>fd</b>.laddr, Addr: a.opAddr(), Err: err}
+		<a href="../src/net/unixsock.go.html#line-190" class="path-duplicate">unixsock.go</a><a href="../src/net/unixsock.go.html#line-190">#L190</a>: 		err = &amp;OpError{Op: "write", Net: c.<b>fd</b>.net, Source: c.<b>fd</b>.laddr, Addr: addr.opAddr(), Err: err}
+		<a href="../src/net/unixsock_posix.go.html#line-103">unixsock_posix.go#L103</a>: 	n, sa, err := c.<b>fd</b>.readFrom(b)
+		<a href="../src/net/unixsock_posix.go.html#line-107" class="path-duplicate">unixsock_posix.go</a><a href="../src/net/unixsock_posix.go.html#line-107">#L107</a>: 			addr = &amp;UnixAddr{Name: sa.Name, Net: sotypeToNet(c.<b>fd</b>.sotype)}
+		<a href="../src/net/unixsock_posix.go.html#line-115" class="path-duplicate">unixsock_posix.go</a><a href="../src/net/unixsock_posix.go.html#line-115">#L115</a>: 	n, oobn, flags, sa, err = c.<b>fd</b>.readMsg(b, oob, readMsgFlags)
+		<a href="../src/net/unixsock_posix.go.html#line-123" class="path-duplicate">unixsock_posix.go</a><a href="../src/net/unixsock_posix.go.html#line-123">#L123</a>: 			addr = &amp;UnixAddr{Name: sa.Name, Net: sotypeToNet(c.<b>fd</b>.sotype)}
+		<a href="../src/net/unixsock_posix.go.html#line-130" class="path-duplicate">unixsock_posix.go</a><a href="../src/net/unixsock_posix.go.html#line-130">#L130</a>: 	if c.<b>fd</b>.isConnected {
+		<a href="../src/net/unixsock_posix.go.html#line-136" class="path-duplicate">unixsock_posix.go</a><a href="../src/net/unixsock_posix.go.html#line-136">#L136</a>: 	if addr.Net != sotypeToNet(c.<b>fd</b>.sotype) {
+		<a href="../src/net/unixsock_posix.go.html#line-140" class="path-duplicate">unixsock_posix.go</a><a href="../src/net/unixsock_posix.go.html#line-140">#L140</a>: 	return c.<b>fd</b>.writeTo(b, sa)
+		<a href="../src/net/unixsock_posix.go.html#line-144" class="path-duplicate">unixsock_posix.go</a><a href="../src/net/unixsock_posix.go.html#line-144">#L144</a>: 	if c.<b>fd</b>.sotype == syscall.SOCK_DGRAM &amp;&amp; c.<b>fd</b>.isConnected {
+		<a href="../src/net/unixsock_posix.go.html#line-149" class="path-duplicate">unixsock_posix.go</a><a href="../src/net/unixsock_posix.go.html#line-149">#L149</a>: 		if addr.Net != sotypeToNet(c.<b>fd</b>.sotype) {
+		<a href="../src/net/unixsock_posix.go.html#line-154" class="path-duplicate">unixsock_posix.go</a><a href="../src/net/unixsock_posix.go.html#line-154">#L154</a>: 	return c.<b>fd</b>.writeMsg(b, oob, sa)
+		<a href="../src/net/writev_unix.go.html#line-18">writev_unix.go#L18</a>: 	n, err := c.<b>fd</b>.writeBuffers(v)
+		<a href="../src/net/writev_unix.go.html#line-20" class="path-duplicate">writev_unix.go</a><a href="../src/net/writev_unix.go.html#line-20">#L20</a>: 		return n, &amp;OpError{Op: "writev", Net: c.<b>fd</b>.net, Source: c.<b>fd</b>.laddr, Addr: c.<b>fd</b>.raddr, Err: err}
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

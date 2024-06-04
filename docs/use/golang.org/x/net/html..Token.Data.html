@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: golang.org/x/net/html.Token.Data</title>
+<link href="../../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../../../pkg/golang.org/x/net/html.html">golang.org/x/net/html</a>.<a href="../../../../src/golang.org/x/net/html/token.go.html#line-76">Token</a>.<a href="../../../../src/golang.org/x/net/html/token.go.html#line-79">Data</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">78 uses</span>
+
+	golang.org/x/net/html (current package)
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-329">parse.go#L329</a>: 		Data:     p.tok.<b>Data</b>,
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-518" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-518">#L518</a>: 		p.tok.<b>Data</b> = strings.TrimLeft(p.tok.<b>Data</b>, whitespace)
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-519" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-519">#L519</a>: 		if len(p.tok.<b>Data</b>) == 0 {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-526" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-526">#L526</a>: 			Data: p.tok.<b>Data</b>,
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-530" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-530">#L530</a>: 		n, quirks := parseDoctype(p.tok.<b>Data</b>)
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-548" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-548">#L548</a>: 		p.tok.<b>Data</b> = strings.TrimLeft(p.tok.<b>Data</b>, whitespace)
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-549" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-549">#L549</a>: 		if len(p.tok.<b>Data</b>) == 0 {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-571" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-571">#L571</a>: 			Data: p.tok.<b>Data</b>,
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-583" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-583">#L583</a>: 		p.tok.<b>Data</b> = strings.TrimLeft(p.tok.<b>Data</b>, whitespace)
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-584" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-584">#L584</a>: 		if len(p.tok.<b>Data</b>) == 0 {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-610" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-610">#L610</a>: 			Data: p.tok.<b>Data</b>,
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-626" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-626">#L626</a>: 		s := strings.TrimLeft(p.tok.<b>Data</b>, whitespace)
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-627" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-627">#L627</a>: 		if len(s) &lt; len(p.tok.<b>Data</b>) {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-629" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-629">#L629</a>: 			p.addText(p.tok.<b>Data</b>[:len(p.tok.<b>Data</b>)-len(s)])
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-633" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-633">#L633</a>: 			p.tok.<b>Data</b> = s
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-725" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-725">#L725</a>: 			Data: p.tok.<b>Data</b>,
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-767" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-767">#L767</a>: 		s := strings.TrimLeft(p.tok.<b>Data</b>, whitespace)
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-790" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-790">#L790</a>: 		s := strings.TrimLeft(p.tok.<b>Data</b>, whitespace)
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-791" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-791">#L791</a>: 		if len(s) &lt; len(p.tok.<b>Data</b>) {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-793" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-793">#L793</a>: 			p.addText(p.tok.<b>Data</b>[:len(p.tok.<b>Data</b>)-len(s)])
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-797" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-797">#L797</a>: 			p.tok.<b>Data</b> = s
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-833" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-833">#L833</a>: 			Data: p.tok.<b>Data</b>,
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-867" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-867">#L867</a>: 		d := p.tok.<b>Data</b>
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1054" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1054">#L1054</a>: 			p.tok.<b>Data</b> = a.Img.String()
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1111" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1111">#L1111</a>: 			p.top().Namespace = p.tok.<b>Data</b>
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1173" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1173">#L1173</a>: 			p.inBodyEndTagFormatting(p.tok.DataAtom, p.tok.<b>Data</b>)
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1184" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1184">#L1184</a>: 			p.inBodyEndTagOther(p.tok.DataAtom, p.tok.<b>Data</b>)
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1189" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1189">#L1189</a>: 			Data: p.tok.<b>Data</b>,
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1392" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1392">#L1392</a>: 		d := p.tok.<b>Data</b>
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1419" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1419">#L1419</a>: 		p.tok.<b>Data</b> = strings.Replace(p.tok.<b>Data</b>, "\x00", "", -1)
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1422" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1422">#L1422</a>: 			if strings.Trim(p.tok.<b>Data</b>, whitespace) == "" {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1423" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1423">#L1423</a>: 				p.addText(p.tok.<b>Data</b>)
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1506" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1506">#L1506</a>: 			Data: p.tok.<b>Data</b>,
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1570" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1570">#L1570</a>: 		s := strings.TrimLeft(p.tok.<b>Data</b>, whitespace)
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1571" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1571">#L1571</a>: 		if len(s) &lt; len(p.tok.<b>Data</b>) {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1573" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1573">#L1573</a>: 			p.addText(p.tok.<b>Data</b>[:len(p.tok.<b>Data</b>)-len(s)])
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1577" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1577">#L1577</a>: 			p.tok.<b>Data</b> = s
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1582" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1582">#L1582</a>: 			Data: p.tok.<b>Data</b>,
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1669" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1669">#L1669</a>: 			Data: p.tok.<b>Data</b>,
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1782" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1782">#L1782</a>: 		p.addText(strings.Replace(p.tok.<b>Data</b>, "\x00", "", -1))
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1851" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1851">#L1851</a>: 			Data: p.tok.<b>Data</b>,
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1963" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1963">#L1963</a>: 		s := strings.TrimLeft(p.tok.<b>Data</b>, whitespace)
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1986" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1986">#L1986</a>: 			Data: p.tok.<b>Data</b>,
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2000" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2000">#L2000</a>: 			Data: p.tok.<b>Data</b>,
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2010" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2010">#L2010</a>: 		}, p.tok.<b>Data</b>)
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2050" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2050">#L2050</a>: 			Data: p.tok.<b>Data</b>,
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2060" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2060">#L2060</a>: 		}, p.tok.<b>Data</b>)
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2090" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2090">#L2090</a>: 		s := strings.TrimLeft(p.tok.<b>Data</b>, whitespace)
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2102" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2102">#L2102</a>: 			Data: p.tok.<b>Data</b>,
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2118" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2118">#L2118</a>: 			Data: p.tok.<b>Data</b>,
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2128" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2128">#L2128</a>: 		}, p.tok.<b>Data</b>)
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2130" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2130">#L2130</a>: 			p.tok.<b>Data</b> = s
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2159" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2159">#L2159</a>: 			p.framesetOK = strings.TrimLeft(p.tok.<b>Data</b>, whitespaceOrNUL) == ""
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2161" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2161">#L2161</a>: 		p.tok.<b>Data</b> = strings.Replace(p.tok.<b>Data</b>, "\x00", "\ufffd", -1)
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2162" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2162">#L2162</a>: 		p.addText(p.tok.<b>Data</b>)
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2166" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2166">#L2166</a>: 			Data: p.tok.<b>Data</b>,
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2170" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2170">#L2170</a>: 			b := breakout[p.tok.<b>Data</b>]
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2199" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2199">#L2199</a>: 			if x := svgTagNameAdjustments[p.tok.<b>Data</b>]; x != "" {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2201" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2201">#L2201</a>: 				p.tok.<b>Data</b> = x
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2225" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2225">#L2225</a>: 			if strings.EqualFold(p.oe[i].Data, p.tok.<b>Data</b>) {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2281" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2281">#L2281</a>: 		<b>Data</b>:     data,
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-79">token.go#L79</a>: 	<b>Data</b>     string
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-86" class="path-duplicate">token.go</a><a href="../../../../src/golang.org/x/net/html/token.go.html#line-86">#L86</a>: 		return t.<b>Data</b>
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-88" class="path-duplicate">token.go</a><a href="../../../../src/golang.org/x/net/html/token.go.html#line-88">#L88</a>: 	buf := bytes.NewBufferString(t.<b>Data</b>)
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-105" class="path-duplicate">token.go</a><a href="../../../../src/golang.org/x/net/html/token.go.html#line-105">#L105</a>: 		return EscapeString(t.<b>Data</b>)
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-113" class="path-duplicate">token.go</a><a href="../../../../src/golang.org/x/net/html/token.go.html#line-113">#L113</a>: 		return "&lt;!--" + escapeCommentString(t.<b>Data</b>) + "--&gt;"
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-115" class="path-duplicate">token.go</a><a href="../../../../src/golang.org/x/net/html/token.go.html#line-115">#L115</a>: 		return "&lt;!DOCTYPE " + EscapeString(t.<b>Data</b>) + "&gt;"
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-1223" class="path-duplicate">token.go</a><a href="../../../../src/golang.org/x/net/html/token.go.html#line-1223">#L1223</a>: 		t.<b>Data</b> = string(z.Text())
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-1232" class="path-duplicate">token.go</a><a href="../../../../src/golang.org/x/net/html/token.go.html#line-1232">#L1232</a>: 			t.DataAtom, t.<b>Data</b> = a, a.String()
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-1234" class="path-duplicate">token.go</a><a href="../../../../src/golang.org/x/net/html/token.go.html#line-1234">#L1234</a>: 			t.DataAtom, t.<b>Data</b> = 0, string(name)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

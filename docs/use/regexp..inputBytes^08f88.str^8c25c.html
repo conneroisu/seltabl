@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: regexp.inputBytes.str</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/regexp.html">regexp</a>.<a href="../src/regexp/regexp.go.html#line-432">inputBytes</a>.<a href="../src/regexp/regexp.go.html#line-433">str</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">16 uses</span>
+
+	regexp (current package)
+		<a href="../src/regexp/exec.go.html#line-57">exec.go#L57</a>: 	i.bytes.<b>str</b> = b
+		<a href="../src/regexp/exec.go.html#line-76" class="path-duplicate">exec.go</a><a href="../src/regexp/exec.go.html#line-76">#L76</a>: 	if i.bytes.<b>str</b> != nil {
+		<a href="../src/regexp/exec.go.html#line-77" class="path-duplicate">exec.go</a><a href="../src/regexp/exec.go.html#line-77">#L77</a>: 		i.bytes.<b>str</b> = nil
+		<a href="../src/regexp/regexp.go.html#line-433">regexp.go#L433</a>: 	<b>str</b> []byte
+		<a href="../src/regexp/regexp.go.html#line-437" class="path-duplicate">regexp.go</a><a href="../src/regexp/regexp.go.html#line-437">#L437</a>: 	if pos &lt; len(i.<b>str</b>) {
+		<a href="../src/regexp/regexp.go.html#line-438" class="path-duplicate">regexp.go</a><a href="../src/regexp/regexp.go.html#line-438">#L438</a>: 		c := i.<b>str</b>[pos]
+		<a href="../src/regexp/regexp.go.html#line-442" class="path-duplicate">regexp.go</a><a href="../src/regexp/regexp.go.html#line-442">#L442</a>: 		return utf8.DecodeRune(i.<b>str</b>[pos:])
+		<a href="../src/regexp/regexp.go.html#line-452" class="path-duplicate">regexp.go</a><a href="../src/regexp/regexp.go.html#line-452">#L452</a>: 	return bytes.HasPrefix(i.<b>str</b>, re.prefixBytes)
+		<a href="../src/regexp/regexp.go.html#line-456" class="path-duplicate">regexp.go</a><a href="../src/regexp/regexp.go.html#line-456">#L456</a>: 	return bytes.Index(i.<b>str</b>[pos:], re.prefixBytes)
+		<a href="../src/regexp/regexp.go.html#line-462" class="path-duplicate">regexp.go</a><a href="../src/regexp/regexp.go.html#line-462">#L462</a>: 	if uint(pos-1) &lt; uint(len(i.<b>str</b>)) {
+		<a href="../src/regexp/regexp.go.html#line-463" class="path-duplicate">regexp.go</a><a href="../src/regexp/regexp.go.html#line-463">#L463</a>: 		r1 = rune(i.<b>str</b>[pos-1])
+		<a href="../src/regexp/regexp.go.html#line-465" class="path-duplicate">regexp.go</a><a href="../src/regexp/regexp.go.html#line-465">#L465</a>: 			r1, _ = utf8.DecodeLastRune(i.<b>str</b>[:pos])
+		<a href="../src/regexp/regexp.go.html#line-469" class="path-duplicate">regexp.go</a><a href="../src/regexp/regexp.go.html#line-469">#L469</a>: 	if uint(pos) &lt; uint(len(i.<b>str</b>)) {
+		<a href="../src/regexp/regexp.go.html#line-470" class="path-duplicate">regexp.go</a><a href="../src/regexp/regexp.go.html#line-470">#L470</a>: 		r2 = rune(i.<b>str</b>[pos])
+		<a href="../src/regexp/regexp.go.html#line-472" class="path-duplicate">regexp.go</a><a href="../src/regexp/regexp.go.html#line-472">#L472</a>: 			r2, _ = utf8.DecodeRune(i.<b>str</b>[pos:])
+		<a href="../src/regexp/regexp.go.html#line-800" class="path-duplicate">regexp.go</a><a href="../src/regexp/regexp.go.html#line-800">#L800</a>: 				ib := inputBytes{<b>str</b>: b}
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

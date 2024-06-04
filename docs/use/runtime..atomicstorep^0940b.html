@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.atomicstorep</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/atomic_pointer.go.html#line-32">atomicstorep</a></b></span>
+
+<span class="title">10 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/atomic_pointer.go.html#line-32">atomic_pointer.go#L32</a>: func <b>atomicstorep</b>(ptr unsafe.Pointer, new unsafe.Pointer) {
+		<a href="../src/runtime/atomic_pointer.go.html#line-48" class="path-duplicate">atomic_pointer.go</a><a href="../src/runtime/atomic_pointer.go.html#line-48">#L48</a>: 	<b>atomicstorep</b>(unsafe.Pointer(ptr), new)
+		<a href="../src/runtime/cgocall.go.html#line-364">cgocall.go#L364</a>: 		<b>atomicstorep</b>(unsafe.Pointer(&amp;p.array), unsafe.Pointer(&amp;s[0]))
+		<a href="../src/runtime/iface.go.html#line-150">iface.go#L150</a>: 		<b>atomicstorep</b>(unsafe.Pointer(&amp;itabTable), unsafe.Pointer(t2))
+		<a href="../src/runtime/mgc.go.html#line-1677">mgc.go#L1677</a>: 		<b>atomicstorep</b>(p, nil)
+		<a href="../src/runtime/pinner.go.html#line-288">pinner.go#L288</a>: 	<b>atomicstorep</b>(unsafe.Pointer(&amp;s.pinnerBits), unsafe.Pointer(p))
+		<a href="../src/runtime/proc.go.html#line-626">proc.go#L626</a>: 		<b>atomicstorep</b>(unsafe.Pointer(&amp;allgptr), unsafe.Pointer(&amp;allgs[0]))
+		<a href="../src/runtime/proc.go.html#line-918" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-918">#L918</a>: 	<b>atomicstorep</b>(unsafe.Pointer(&amp;allm), unsafe.Pointer(mp))
+		<a href="../src/runtime/proc.go.html#line-5652" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-5652">#L5652</a>: 		<b>atomicstorep</b>(unsafe.Pointer(&amp;allp[i]), unsafe.Pointer(pp))
+		<a href="../src/runtime/symtab.go.html#line-484">symtab.go#L484</a>: 	<b>atomicstorep</b>(unsafe.Pointer(&amp;modulesSlice), unsafe.Pointer(modules))
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

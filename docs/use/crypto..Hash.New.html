@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto.Hash.New</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/crypto.html">crypto</a>.<a href="../src/crypto/crypto.go.html#line-16">Hash</a>.<a href="../src/crypto/crypto.go.html#line-127">New</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">29 uses</span>
+
+	crypto (current package)
+		<a href="../src/crypto/crypto.go.html#line-127">crypto.go#L127</a>: func (h Hash) <b>New</b>() hash.Hash {
+
+	<a href="../pkg/crypto/rsa.html">crypto/rsa</a>
+		<a href="../src/crypto/rsa/pss.go.html#line-212">pss.go#L212</a>: 	em, err := emsaPSSEncode(hashed, emBits, salt, hash.<b>New</b>())
+		<a href="../src/crypto/rsa/pss.go.html#line-381" class="path-duplicate">pss.go</a><a href="../src/crypto/rsa/pss.go.html#line-381">#L381</a>: 	return emsaPSSVerify(digest, em, emBits, opts.saltLength(), hash.<b>New</b>())
+		<a href="../src/crypto/rsa/rsa.go.html#line-183">rsa.go#L183</a>: 			return decryptOAEP(opts.Hash.<b>New</b>(), opts.Hash.<b>New</b>(), rand, priv, ciphertext, opts.Label)
+		<a href="../src/crypto/rsa/rsa.go.html#line-185" class="path-duplicate">rsa.go</a><a href="../src/crypto/rsa/rsa.go.html#line-185">#L185</a>: 			return decryptOAEP(opts.Hash.<b>New</b>(), opts.MGFHash.<b>New</b>(), rand, priv, ciphertext, opts.Label)
+
+	<a href="../pkg/crypto/tls.html">crypto/tls</a>
+		<a href="../src/crypto/tls/auth.go.html#line-89">auth.go#L89</a>: 	h := sigHash.<b>New</b>()
+		<a href="../src/crypto/tls/handshake_client.go.html#line-214">handshake_client.go#L214</a>: 		transcript := suite.hash.<b>New</b>()
+		<a href="../src/crypto/tls/handshake_client.go.html#line-403" class="path-duplicate">handshake_client.go</a><a href="../src/crypto/tls/handshake_client.go.html#line-403">#L403</a>: 	transcript := cipherSuite.hash.<b>New</b>()
+		<a href="../src/crypto/tls/handshake_client_tls13.go.html#line-64">handshake_client_tls13.go#L64</a>: 	hs.transcript = hs.suite.hash.<b>New</b>()
+		<a href="../src/crypto/tls/handshake_client_tls13.go.html#line-263" class="path-duplicate">handshake_client_tls13.go</a><a href="../src/crypto/tls/handshake_client_tls13.go.html#line-263">#L263</a>: 			transcript := hs.suite.hash.<b>New</b>()
+		<a href="../src/crypto/tls/handshake_server_tls13.go.html#line-178">handshake_server_tls13.go#L178</a>: 	hs.transcript = hs.suite.hash.<b>New</b>()
+		<a href="../src/crypto/tls/handshake_server_tls13.go.html#line-378" class="path-duplicate">handshake_server_tls13.go</a><a href="../src/crypto/tls/handshake_server_tls13.go.html#line-378">#L378</a>: 			transcript := hs.suite.hash.<b>New</b>()
+		<a href="../src/crypto/tls/handshake_server_tls13.go.html#line-418" class="path-duplicate">handshake_server_tls13.go</a><a href="../src/crypto/tls/handshake_server_tls13.go.html#line-418">#L418</a>: 	out := h.<b>New</b>()
+		<a href="../src/crypto/tls/key_agreement.go.html#line-141">key_agreement.go#L141</a>: 		h := hashFunc.<b>New</b>()
+		<a href="../src/crypto/tls/key_schedule.go.html#line-62">key_schedule.go#L62</a>: 	n, err := hkdf.Expand(c.hash.<b>New</b>, secret, hkdfLabelBytes).Read(out)
+		<a href="../src/crypto/tls/key_schedule.go.html#line-72" class="path-duplicate">key_schedule.go</a><a href="../src/crypto/tls/key_schedule.go.html#line-72">#L72</a>: 		transcript = c.hash.<b>New</b>()
+		<a href="../src/crypto/tls/key_schedule.go.html#line-82" class="path-duplicate">key_schedule.go</a><a href="../src/crypto/tls/key_schedule.go.html#line-82">#L82</a>: 	return hkdf.Extract(c.hash.<b>New</b>, newSecret, currentSecret)
+		<a href="../src/crypto/tls/key_schedule.go.html#line-103" class="path-duplicate">key_schedule.go</a><a href="../src/crypto/tls/key_schedule.go.html#line-103">#L103</a>: 	verifyData := hmac.New(c.hash.<b>New</b>, finishedKey)
+		<a href="../src/crypto/tls/key_schedule.go.html#line-114" class="path-duplicate">key_schedule.go</a><a href="../src/crypto/tls/key_schedule.go.html#line-114">#L114</a>: 		h := c.hash.<b>New</b>()
+		<a href="../src/crypto/tls/prf.go.html#line-160">prf.go#L160</a>: 		return finishedHash{hash.<b>New</b>(), hash.<b>New</b>(), nil, nil, buffer, version, prf}
+		<a href="../src/crypto/tls/prf.go.html#line-237" class="path-duplicate">prf.go</a><a href="../src/crypto/tls/prf.go.html#line-237">#L237</a>: 		hash := hashAlg.<b>New</b>()
+
+	<a href="../pkg/crypto/x509.html">crypto/x509</a>
+		<a href="../src/crypto/x509/x509.go.html#line-917">x509.go#L917</a>: 		h := hashType.<b>New</b>()
+		<a href="../src/crypto/x509/x509.go.html#line-1676" class="path-duplicate">x509.go</a><a href="../src/crypto/x509/x509.go.html#line-1676">#L1676</a>: 		h := hashFunc.<b>New</b>()
+		<a href="../src/crypto/x509/x509.go.html#line-1798" class="path-duplicate">x509.go</a><a href="../src/crypto/x509/x509.go.html#line-1798">#L1798</a>: 		h := hashFunc.<b>New</b>()
+		<a href="../src/crypto/x509/x509.go.html#line-2109" class="path-duplicate">x509.go</a><a href="../src/crypto/x509/x509.go.html#line-2109">#L2109</a>: 		h := hashFunc.<b>New</b>()
+		<a href="../src/crypto/x509/x509.go.html#line-2472" class="path-duplicate">x509.go</a><a href="../src/crypto/x509/x509.go.html#line-2472">#L2472</a>: 		h := hashFunc.<b>New</b>()
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

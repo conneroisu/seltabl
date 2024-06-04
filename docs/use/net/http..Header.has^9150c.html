@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/http.Header.has</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/net/http.html">net/http</a>.<a href="../../src/net/http/header.go.html#line-24">Header</a>.<a href="../../src/net/http/header.go.html#line-72">has</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">6 uses</span>
+
+	net/http (current package)
+		<a href="../../src/net/http/header.go.html#line-72">header.go#L72</a>: func (h Header) <b>has</b>(key string) bool {
+		<a href="../../src/net/http/request.go.html#line-683">request.go#L683</a>: 	if r.Header.<b>has</b>("User-Agent") {
+		<a href="../../src/net/http/request.go.html#line-1515" class="path-duplicate">request.go</a><a href="../../src/net/http/request.go.html#line-1515">#L1515</a>: 		if r.Header.<b>has</b>("Idempotency-Key") || r.Header.<b>has</b>("X-Idempotency-Key") {
+		<a href="../../src/net/http/server.go.html#line-1328">server.go#L1328</a>: 	if w.handlerDone.Load() &amp;&amp; !trailers &amp;&amp; !hasTE &amp;&amp; bodyAllowedForStatus(w.status) &amp;&amp; !header.<b>has</b>("Content-Length") &amp;&amp; (!isHEAD || len(p) &gt; 0) {
+		<a href="../../src/net/http/server.go.html#line-1454" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1454">#L1454</a>: 	if !header.<b>has</b>("Date") {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

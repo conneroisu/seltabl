@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/http.loggingConn.SetReadDeadline</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/net/http.html">net/http</a>.<a href="../../src/net/http/server.go.html#line-3749">loggingConn</a>.<a href="../../src/net/net.go.html#line-156">SetReadDeadline</a></b></span><span style="font-size: large;"><i> (method, <a href="../../imp/net/http.loggingConn^837e1.html#name-SetReadDeadline">view implemented interface methods</a>)</i></span>
+
+<span class="title">15 uses</span>
+
+	net/http (current package)
+		<a href="../../src/net/http/h2_bundle.go.html#line-5845">h2_bundle.go#L5845</a>: 		sc.conn.<b>SetReadDeadline</b>(time.Time{})
+		<a href="../../src/net/http/h2_bundle.go.html#line-5866" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5866">#L5866</a>: 		sc.conn.<b>SetReadDeadline</b>(time.Time{})
+		<a href="../../src/net/http/server.go.html#line-496">server.go#L496</a>: 	return c.conn.rwc.<b>SetReadDeadline</b>(deadline)
+		<a href="../../src/net/http/server.go.html#line-676" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-676">#L676</a>: 	cr.conn.rwc.<b>SetReadDeadline</b>(time.Time{})
+		<a href="../../src/net/http/server.go.html#line-727" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-727">#L727</a>: 	cr.conn.rwc.<b>SetReadDeadline</b>(aLongTimeAgo)
+		<a href="../../src/net/http/server.go.html#line-731" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-731">#L731</a>: 	cr.conn.rwc.<b>SetReadDeadline</b>(time.Time{})
+		<a href="../../src/net/http/server.go.html#line-991" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-991">#L991</a>: 	c.rwc.<b>SetReadDeadline</b>(hdrDeadline)
+		<a href="../../src/net/http/server.go.html#line-1049" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1049">#L1049</a>: 		c.rwc.<b>SetReadDeadline</b>(wholeReqDeadline)
+		<a href="../../src/net/http/server.go.html#line-1918" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1918">#L1918</a>: 			c.rwc.<b>SetReadDeadline</b>(dl)
+		<a href="../../src/net/http/server.go.html#line-1935" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1935">#L1935</a>: 			c.rwc.<b>SetReadDeadline</b>(time.Time{})
+		<a href="../../src/net/http/server.go.html#line-2065" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-2065">#L2065</a>: 			c.rwc.<b>SetReadDeadline</b>(time.Now().Add(d))
+		<a href="../../src/net/http/server.go.html#line-2067" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-2067">#L2067</a>: 			c.rwc.<b>SetReadDeadline</b>(time.Time{})
+		<a href="../../src/net/http/server.go.html#line-2078" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-2078">#L2078</a>: 		c.rwc.<b>SetReadDeadline</b>(time.Time{})
+
+	<a href="../../pkg/net.html">net</a>
+		<a href="../../src/net/net.go.html#line-156">net.go#L156</a>: 	<b>SetReadDeadline</b>(t time.Time) error
+
+	<a href="../../pkg/crypto/tls.html">crypto/tls</a>
+		<a href="../../src/crypto/tls/conn.go.html#line-149">conn.go#L149</a>: 	return c.conn.<b>SetReadDeadline</b>(t)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

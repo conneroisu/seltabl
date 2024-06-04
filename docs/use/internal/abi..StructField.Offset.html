@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: internal/abi.StructField.Offset</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/internal/abi.html">internal/abi</a>.<a href="../../src/internal/abi/type.go.html#line-553">StructField</a>.<a href="../../src/internal/abi/type.go.html#line-556">Offset</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">22 uses</span>
+
+	internal/abi (current package)
+		<a href="../../src/internal/abi/type.go.html#line-556">type.go#L556</a>: 	<b>Offset</b> uintptr // byte offset of field
+
+	<a href="../../pkg/internal/reflectlite.html">internal/reflectlite</a>
+		<a href="../../src/internal/reflectlite/type.go.html#line-637">type.go#L637</a>: 			if tf.<b>Offset</b> != vf.<b>Offset</b> {
+
+	<a href="../../pkg/reflect.html">reflect</a>
+		<a href="../../src/reflect/abi.go.html#line-240">abi.go#L240</a>: 			if !a.regAssign(f.Typ, offset+f.<b>Offset</b>) {
+		<a href="../../src/reflect/type.go.html#line-992">type.go#L992</a>: 	f.Offset = p.<b>Offset</b>
+		<a href="../../src/reflect/type.go.html#line-1489" class="path-duplicate">type.go</a><a href="../../src/reflect/type.go.html#line-1489">#L1489</a>: 			if tf.<b>Offset</b> != vf.<b>Offset</b> {
+		<a href="../../src/reflect/type.go.html#line-2330" class="path-duplicate">type.go</a><a href="../../src/reflect/type.go.html#line-2330">#L2330</a>: 		f.<b>Offset</b> = offset
+		<a href="../../src/reflect/type.go.html#line-2479" class="path-duplicate">type.go</a><a href="../../src/reflect/type.go.html#line-2479">#L2479</a>: 			if ft.<b>Offset</b> &gt; off {
+		<a href="../../src/reflect/type.go.html#line-2480" class="path-duplicate">type.go</a><a href="../../src/reflect/type.go.html#line-2480">#L2480</a>: 				n := (ft.<b>Offset</b> - off) / goarch.PtrSize
+		<a href="../../src/reflect/type.go.html#line-2486" class="path-duplicate">type.go</a><a href="../../src/reflect/type.go.html#line-2486">#L2486</a>: 				off = ft.<b>Offset</b>
+		<a href="../../src/reflect/type.go.html#line-2508" class="path-duplicate">type.go</a><a href="../../src/reflect/type.go.html#line-2508">#L2508</a>: 				pi := add(p, ft.<b>Offset</b>, "&amp;x.field safe")
+		<a href="../../src/reflect/type.go.html#line-2509" class="path-duplicate">type.go</a><a href="../../src/reflect/type.go.html#line-2509">#L2509</a>: 				qi := add(q, ft.<b>Offset</b>, "&amp;x.field safe")
+		<a href="../../src/reflect/type.go.html#line-2554" class="path-duplicate">type.go</a><a href="../../src/reflect/type.go.html#line-2554">#L2554</a>: 		<b>Offset</b>: 0,
+		<a href="../../src/reflect/type.go.html#line-2578" class="path-duplicate">type.go</a><a href="../../src/reflect/type.go.html#line-2578">#L2578</a>: 		return f.<b>Offset</b> + f.Typ.PtrBytes
+		<a href="../../src/reflect/type.go.html#line-2877" class="path-duplicate">type.go</a><a href="../../src/reflect/type.go.html#line-2877">#L2877</a>: 			addTypeBits(bv, offset+f.<b>Offset</b>, f.Typ)
+		<a href="../../src/reflect/value.go.html#line-1308">value.go#L1308</a>: 	ptr := add(v.ptr, field.<b>Offset</b>, "same as non-reflect &amp;v.field")
+
+	<a href="../../pkg/runtime.html">runtime</a>
+		<a href="../../src/runtime/alg.go.html#line-186">alg.go#L186</a>: 			h = typehash(f.Typ, add(p, f.<b>Offset</b>), h)
+		<a href="../../src/runtime/alg.go.html#line-253" class="path-duplicate">alg.go</a><a href="../../src/runtime/alg.go.html#line-253">#L253</a>: 			if err := mapKeyError2(f.Typ, add(p, f.<b>Offset</b>)); err != nil {
+		<a href="../../src/runtime/cgocall.go.html#line-635">cgocall.go#L635</a>: 			cgoCheckArg(f.Typ, add(p, f.<b>Offset</b>), true, top, msg)
+		<a href="../../src/runtime/type.go.html#line-456">type.go#L456</a>: 			if tf.<b>Offset</b> != vf.<b>Offset</b> {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

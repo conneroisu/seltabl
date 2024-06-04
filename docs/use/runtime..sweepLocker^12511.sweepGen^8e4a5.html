@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.sweepLocker.sweepGen</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/mgcsweep.go.html#line-323">sweepLocker</a>.<a href="../src/runtime/mgcsweep.go.html#line-325">sweepGen</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">10 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/mgcsweep.go.html#line-165">mgcsweep.go#L165</a>: 	if sl.<b>sweepGen</b> != mheap_.sweepgen {
+		<a href="../src/runtime/mgcsweep.go.html#line-325" class="path-duplicate">mgcsweep.go</a><a href="../src/runtime/mgcsweep.go.html#line-325">#L325</a>: 	<b>sweepGen</b> uint32
+		<a href="../src/runtime/mgcsweep.go.html#line-341" class="path-duplicate">mgcsweep.go</a><a href="../src/runtime/mgcsweep.go.html#line-341">#L341</a>: 	if atomic.Load(&amp;s.sweepgen) != l.<b>sweepGen</b>-2 {
+		<a href="../src/runtime/mgcsweep.go.html#line-345" class="path-duplicate">mgcsweep.go</a><a href="../src/runtime/mgcsweep.go.html#line-345">#L345</a>: 	if !atomic.Cas(&amp;s.sweepgen, l.<b>sweepGen</b>-2, l.<b>sweepGen</b>-1) {
+		<a href="../src/runtime/mgcsweep.go.html#line-381" class="path-duplicate">mgcsweep.go</a><a href="../src/runtime/mgcsweep.go.html#line-381">#L381</a>: 			if !(s.sweepgen == sl.<b>sweepGen</b> || s.sweepgen == sl.<b>sweepGen</b>+3) {
+		<a href="../src/runtime/mgcsweep.go.html#line-382" class="path-duplicate">mgcsweep.go</a><a href="../src/runtime/mgcsweep.go.html#line-382">#L382</a>: 				print("runtime: bad span s.state=", state, " s.sweepgen=", s.sweepgen, " sweepgen=", sl.<b>sweepGen</b>, "\n")
+		<a href="../src/runtime/mgcsweep.go.html#line-487" class="path-duplicate">mgcsweep.go</a><a href="../src/runtime/mgcsweep.go.html#line-487">#L487</a>: 		if spangen == sl.<b>sweepGen</b> || spangen == sl.<b>sweepGen</b>+3 {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: math/big.nat.div</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/math/big.html">math/big</a>.<a href="../../src/math/big/nat.go.html#line-34">nat</a>.<a href="../../src/math/big/natdiv.go.html#line-518">div</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">29 uses</span>
+
+	math/big (current package)
+		<a href="../../src/math/big/float.go.html#line-1369">float.go#L1369</a>: 	z.mant, r = z.mant.<b>div</b>(nil, xadj, y.mant)
+		<a href="../../src/math/big/int.go.html#line-268">int.go#L268</a>: 	z.abs, _ = z.abs.<b>div</b>(nil, x.abs, y.abs)
+		<a href="../../src/math/big/int.go.html#line-277" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-277">#L277</a>: 	_, z.abs = nat(nil).<b>div</b>(z.abs, x.abs, y.abs)
+		<a href="../../src/math/big/int.go.html#line-294" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-294">#L294</a>: 	z.abs, r.abs = z.abs.<b>div</b>(r.abs, x.abs, y.abs)
+		<a href="../../src/math/big/nat.go.html#line-1024">nat.go#L1024</a>: 			zz, r = zz.<b>div</b>(r, z, m)
+		<a href="../../src/math/big/nat.go.html#line-1044" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-1044">#L1044</a>: 				zz, r = zz.<b>div</b>(r, z, m)
+		<a href="../../src/math/big/nat.go.html#line-1211" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-1211">#L1211</a>: 		_, x = nat(nil).<b>div</b>(nil, x, m)
+		<a href="../../src/math/big/nat.go.html#line-1234" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-1234">#L1234</a>: 	_, RR = nat(nil).<b>div</b>(RR, zz, m)
+		<a href="../../src/math/big/nat.go.html#line-1289" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-1289">#L1289</a>: 			_, zz = nat(nil).<b>div</b>(nil, zz, m)
+		<a href="../../src/math/big/nat.go.html#line-1376" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-1376">#L1376</a>: 		z2, _ = z2.<b>div</b>(nil, x, z1)
+		<a href="../../src/math/big/natconv.go.html#line-389">natconv.go#L389</a>: 			q, r = q.<b>div</b>(r, q, table[index].bbb)
+		<a href="../../src/math/big/natdiv.go.html#line-510">natdiv.go#L510</a>: 	q, r := qp.<b>div</b>(z, u, v)
+		<a href="../../src/math/big/natdiv.go.html#line-518" class="path-duplicate">natdiv.go</a><a href="../../src/math/big/natdiv.go.html#line-518">#L518</a>: func (z nat) <b>div</b>(z2, u, v nat) (q, r nat) {
+		<a href="../../src/math/big/prime.go.html#line-112">prime.go#L112</a>: 			quotient, y = quotient.<b>div</b>(y, y, n)
+		<a href="../../src/math/big/prime.go.html#line-260" class="path-duplicate">prime.go</a><a href="../../src/math/big/prime.go.html#line-260">#L260</a>: 			t2, vk = t2.<b>div</b>(vk, t1, n)
+		<a href="../../src/math/big/prime.go.html#line-264" class="path-duplicate">prime.go</a><a href="../../src/math/big/prime.go.html#line-264">#L264</a>: 			t2, vk1 = t2.<b>div</b>(vk1, t1, n)
+		<a href="../../src/math/big/prime.go.html#line-271" class="path-duplicate">prime.go</a><a href="../../src/math/big/prime.go.html#line-271">#L271</a>: 			t2, vk1 = t2.<b>div</b>(vk1, t1, n)
+		<a href="../../src/math/big/prime.go.html#line-275" class="path-duplicate">prime.go</a><a href="../../src/math/big/prime.go.html#line-275">#L275</a>: 			t2, vk = t2.<b>div</b>(vk, t1, n)
+		<a href="../../src/math/big/prime.go.html#line-297" class="path-duplicate">prime.go</a><a href="../../src/math/big/prime.go.html#line-297">#L297</a>: 		t2, t3 = t2.<b>div</b>(t3, t1, n)
+		<a href="../../src/math/big/prime.go.html#line-317" class="path-duplicate">prime.go</a><a href="../../src/math/big/prime.go.html#line-317">#L317</a>: 		t2, vk = t2.<b>div</b>(vk, t1, n)
+		<a href="../../src/math/big/rat.go.html#line-124">rat.go#L124</a>: 	q, r := q.<b>div</b>(a2, a2, b2) // (recycle a2)
+		<a href="../../src/math/big/rat.go.html#line-222" class="path-duplicate">rat.go</a><a href="../../src/math/big/rat.go.html#line-222">#L222</a>: 	q, r := q.<b>div</b>(a2, a2, b2) // (recycle a2)
+		<a href="../../src/math/big/rat.go.html#line-445" class="path-duplicate">rat.go</a><a href="../../src/math/big/rat.go.html#line-445">#L445</a>: 			z.a.abs, _ = z.a.abs.<b>div</b>(nil, z.a.abs, f.abs)
+		<a href="../../src/math/big/rat.go.html#line-446" class="path-duplicate">rat.go</a><a href="../../src/math/big/rat.go.html#line-446">#L446</a>: 			z.b.abs, _ = z.b.abs.<b>div</b>(nil, z.b.abs, f.abs)
+		<a href="../../src/math/big/ratconv.go.html#line-345">ratconv.go#L345</a>: 	q, r := nat(nil).<b>div</b>(nat(nil), x.a.abs, x.b.abs)
+		<a href="../../src/math/big/ratconv.go.html#line-353" class="path-duplicate">ratconv.go</a><a href="../../src/math/big/ratconv.go.html#line-353">#L353</a>: 	r, r2 := r.<b>div</b>(nat(nil), r, x.b.abs)
+		<a href="../../src/math/big/ratconv.go.html#line-427" class="path-duplicate">ratconv.go</a><a href="../../src/math/big/ratconv.go.html#line-427">#L427</a>: 		if _, r = t.<b>div</b>(r, q, f); len(r) != 0 {
+		<a href="../../src/math/big/ratconv.go.html#line-443" class="path-duplicate">ratconv.go</a><a href="../../src/math/big/ratconv.go.html#line-443">#L443</a>: 		if t, r = t.<b>div</b>(r, q, tab[i]); len(r) == 0 {
+		<a href="../../src/math/big/ratconv.go.html#line-451" class="path-duplicate">ratconv.go</a><a href="../../src/math/big/ratconv.go.html#line-451">#L451</a>: 		if t, r = t.<b>div</b>(r, q, natFive); len(r) != 0 {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

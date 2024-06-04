@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/http.http2priorityNode.setParent</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/net/http.html">net/http</a>.<a href="../../src/net/http/h2_bundle.go.html#line-10990">http2priorityNode</a>.<a href="../../src/net/http/h2_bundle.go.html#line-11004">setParent</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">11 uses</span>
+
+	net/http (current package)
+		<a href="../../src/net/http/h2_bundle.go.html#line-11004">h2_bundle.go#L11004</a>: func (n *http2priorityNode) <b>setParent</b>(parent *http2priorityNode) {
+		<a href="../../src/net/http/h2_bundle.go.html#line-11091" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11091">#L11091</a>: 		n.kids.<b>setParent</b>(nil)
+		<a href="../../src/net/http/h2_bundle.go.html#line-11095" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11095">#L11095</a>: 		(*tmp)[i].<b>setParent</b>(n) // setParent inserts at the head of n.kids
+		<a href="../../src/net/http/h2_bundle.go.html#line-11178" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11178">#L11178</a>: 	n.<b>setParent</b>(parent)
+		<a href="../../src/net/http/h2_bundle.go.html#line-11230" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11230">#L11230</a>: 		n.<b>setParent</b>(&amp;ws.root)
+		<a href="../../src/net/http/h2_bundle.go.html#line-11239" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11239">#L11239</a>: 		n.<b>setParent</b>(&amp;ws.root)
+		<a href="../../src/net/http/h2_bundle.go.html#line-11258" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11258">#L11258</a>: 			parent.<b>setParent</b>(n.parent)
+		<a href="../../src/net/http/h2_bundle.go.html#line-11271" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11271">#L11271</a>: 				k.<b>setParent</b>(n)
+		<a href="../../src/net/http/h2_bundle.go.html#line-11277" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11277">#L11277</a>: 	n.<b>setParent</b>(parent)
+		<a href="../../src/net/http/h2_bundle.go.html#line-11344" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11344">#L11344</a>: 		k.<b>setParent</b>(n.parent)
+		<a href="../../src/net/http/h2_bundle.go.html#line-11346" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11346">#L11346</a>: 	n.<b>setParent</b>(nil)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

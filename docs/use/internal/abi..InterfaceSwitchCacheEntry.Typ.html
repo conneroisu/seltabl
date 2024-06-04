@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: internal/abi.InterfaceSwitchCacheEntry.Typ</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/internal/abi.html">internal/abi</a>.<a href="../../src/internal/abi/switch.go.html#line-21">InterfaceSwitchCacheEntry</a>.<a href="../../src/internal/abi/switch.go.html#line-23">Typ</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">6 uses</span>
+
+	internal/abi (current package)
+		<a href="../../src/internal/abi/switch.go.html#line-23">switch.go#L23</a>: 	<b>Typ</b> uintptr
+
+	<a href="../../pkg/runtime.html">runtime</a>
+		<a href="../../src/runtime/iface.go.html#line-579">iface.go#L579</a>: 		if e.<b>Typ</b> != 0 {
+		<a href="../../src/runtime/iface.go.html#line-600" class="path-duplicate">iface.go</a><a href="../../src/runtime/iface.go.html#line-600">#L600</a>: 			if newEntries[h].<b>Typ</b> == 0 {
+		<a href="../../src/runtime/iface.go.html#line-601" class="path-duplicate">iface.go</a><a href="../../src/runtime/iface.go.html#line-601">#L601</a>: 				newEntries[h].<b>Typ</b> = uintptr(unsafe.Pointer(typ))
+		<a href="../../src/runtime/iface.go.html#line-610" class="path-duplicate">iface.go</a><a href="../../src/runtime/iface.go.html#line-610">#L610</a>: 		if e.<b>Typ</b> != 0 {
+		<a href="../../src/runtime/iface.go.html#line-611" class="path-duplicate">iface.go</a><a href="../../src/runtime/iface.go.html#line-611">#L611</a>: 			addEntry((*_type)(unsafe.Pointer(e.<b>Typ</b>)), e.Case, (*itab)(unsafe.Pointer(e.Itab)))
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

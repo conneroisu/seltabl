@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/http.ResponseWriter</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../pkg/net/http.html">net/http</a>.<a href="../../src/net/http/server.go.html#line-94">ResponseWriter</a></b></span>
+
+<span class="title">46 uses</span>
+
+	net/http (current package)
+		<a href="../../src/net/http/cookie.go.html#line-169">cookie.go#L169</a>: func SetCookie(w <b>ResponseWriter</b>, cookie *Cookie) {
+		<a href="../../src/net/http/fs.go.html#line-130">fs.go#L130</a>: func dirList(w <b>ResponseWriter</b>, r *Request, f File) {
+		<a href="../../src/net/http/fs.go.html#line-194" class="path-duplicate">fs.go</a><a href="../../src/net/http/fs.go.html#line-194">#L194</a>: func ServeContent(w <b>ResponseWriter</b>, req *Request, name string, modtime time.Time, content io.ReadSeeker) {
+		<a href="../../src/net/http/fs.go.html#line-223" class="path-duplicate">fs.go</a><a href="../../src/net/http/fs.go.html#line-223">#L223</a>: func serveContent(w <b>ResponseWriter</b>, r *Request, name string, modtime time.Time, sizeFunc func() (int64, error), content io.ReadSeeker) {
+		<a href="../../src/net/http/fs.go.html#line-432" class="path-duplicate">fs.go</a><a href="../../src/net/http/fs.go.html#line-432">#L432</a>: func checkIfMatch(w <b>ResponseWriter</b>, r *Request) condResult {
+		<a href="../../src/net/http/fs.go.html#line-481" class="path-duplicate">fs.go</a><a href="../../src/net/http/fs.go.html#line-481">#L481</a>: func checkIfNoneMatch(w <b>ResponseWriter</b>, r *Request) condResult {
+		<a href="../../src/net/http/fs.go.html#line-532" class="path-duplicate">fs.go</a><a href="../../src/net/http/fs.go.html#line-532">#L532</a>: func checkIfRange(w <b>ResponseWriter</b>, r *Request, modtime time.Time) condResult {
+		<a href="../../src/net/http/fs.go.html#line-570" class="path-duplicate">fs.go</a><a href="../../src/net/http/fs.go.html#line-570">#L570</a>: func setLastModified(w <b>ResponseWriter</b>, modtime time.Time) {
+		<a href="../../src/net/http/fs.go.html#line-576" class="path-duplicate">fs.go</a><a href="../../src/net/http/fs.go.html#line-576">#L576</a>: func writeNotModified(w <b>ResponseWriter</b>) {
+		<a href="../../src/net/http/fs.go.html#line-594" class="path-duplicate">fs.go</a><a href="../../src/net/http/fs.go.html#line-594">#L594</a>: func checkPreconditions(w <b>ResponseWriter</b>, r *Request, modtime time.Time) (done bool, rangeHeader string) {
+		<a href="../../src/net/http/fs.go.html#line-628" class="path-duplicate">fs.go</a><a href="../../src/net/http/fs.go.html#line-628">#L628</a>: func serveFile(w <b>ResponseWriter</b>, r *Request, fs FileSystem, name string, redirect bool) {
+		<a href="../../src/net/http/fs.go.html#line-726" class="path-duplicate">fs.go</a><a href="../../src/net/http/fs.go.html#line-726">#L726</a>: func localRedirect(w <b>ResponseWriter</b>, r *Request, newPath string) {
+		<a href="../../src/net/http/fs.go.html#line-755" class="path-duplicate">fs.go</a><a href="../../src/net/http/fs.go.html#line-755">#L755</a>: func ServeFile(w <b>ResponseWriter</b>, r *Request, name string) {
+		<a href="../../src/net/http/fs.go.html#line-790" class="path-duplicate">fs.go</a><a href="../../src/net/http/fs.go.html#line-790">#L790</a>: func ServeFileFS(w <b>ResponseWriter</b>, r *Request, fsys fs.FS, name string) {
+		<a href="../../src/net/http/fs.go.html#line-929" class="path-duplicate">fs.go</a><a href="../../src/net/http/fs.go.html#line-929">#L929</a>: func (f *fileHandler) ServeHTTP(w <b>ResponseWriter</b>, r *Request) {
+		<a href="../../src/net/http/h2_bundle.go.html#line-6117">h2_bundle.go#L6117</a>: 	handler  func(<b>ResponseWriter</b>, *Request)
+		<a href="../../src/net/http/h2_bundle.go.html#line-6122" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-6122">#L6122</a>: func (sc *http2serverConn) scheduleHandler(streamID uint32, rw *http2responseWriter, req *Request, handler func(<b>ResponseWriter</b>, *Request)) error {
+		<a href="../../src/net/http/h2_bundle.go.html#line-6167" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-6167">#L6167</a>: func (sc *http2serverConn) runHandler(rw *http2responseWriter, req *Request, handler func(<b>ResponseWriter</b>, *Request)) {
+		<a href="../../src/net/http/h2_bundle.go.html#line-6196" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-6196">#L6196</a>: func http2handleHeaderListTooLong(w <b>ResponseWriter</b>, r *Request) {
+		<a href="../../src/net/http/h2_bundle.go.html#line-7059" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-7059">#L7059</a>: 	return func(w <b>ResponseWriter</b>, r *Request) {
+		<a href="../../src/net/http/request.go.html#line-1158">request.go#L1158</a>: func MaxBytesReader(w <b>ResponseWriter</b>, r io.ReadCloser, n int64) io.ReadCloser {
+		<a href="../../src/net/http/request.go.html#line-1176" class="path-duplicate">request.go</a><a href="../../src/net/http/request.go.html#line-1176">#L1176</a>: 	w   <b>ResponseWriter</b>
+		<a href="../../src/net/http/responsecontroller.go.html#line-18">responsecontroller.go#L18</a>: 	rw <b>ResponseWriter</b>
+		<a href="../../src/net/http/responsecontroller.go.html#line-38" class="path-duplicate">responsecontroller.go</a><a href="../../src/net/http/responsecontroller.go.html#line-38">#L38</a>: func NewResponseController(rw <b>ResponseWriter</b>) *ResponseController {
+		<a href="../../src/net/http/responsecontroller.go.html#line-43" class="path-duplicate">responsecontroller.go</a><a href="../../src/net/http/responsecontroller.go.html#line-43">#L43</a>: 	Unwrap() <b>ResponseWriter</b>
+		<a href="../../src/net/http/servemux121.go.html#line-92">servemux121.go#L92</a>: func (mux *serveMux121) handleFunc(pattern string, handler func(<b>ResponseWriter</b>, *Request)) {
+		<a href="../../src/net/http/server.go.html#line-87">server.go#L87</a>: 	ServeHTTP(<b>ResponseWriter</b>, *Request)
+		<a href="../../src/net/http/server.go.html#line-94" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-94">#L94</a>: type <b>ResponseWriter</b> interface {
+		<a href="../../src/net/http/server.go.html#line-2162" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-2162">#L2162</a>: type HandlerFunc func(<b>ResponseWriter</b>, *Request)
+		<a href="../../src/net/http/server.go.html#line-2165" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-2165">#L2165</a>: func (f HandlerFunc) ServeHTTP(w <b>ResponseWriter</b>, r *Request) {
+		<a href="../../src/net/http/server.go.html#line-2175" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-2175">#L2175</a>: func Error(w <b>ResponseWriter</b>, error string, code int) {
+		<a href="../../src/net/http/server.go.html#line-2183" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-2183">#L2183</a>: func NotFound(w <b>ResponseWriter</b>, r *Request) { Error(w, "404 page not found", StatusNotFound) }
+		<a href="../../src/net/http/server.go.html#line-2199" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-2199">#L2199</a>: 	return HandlerFunc(func(w <b>ResponseWriter</b>, r *Request) {
+		<a href="../../src/net/http/server.go.html#line-2226" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-2226">#L2226</a>: func Redirect(w <b>ResponseWriter</b>, r *Request, url string, code int) {
+		<a href="../../src/net/http/server.go.html#line-2301" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-2301">#L2301</a>: func (rh *redirectHandler) ServeHTTP(w <b>ResponseWriter</b>, r *Request) {
+		<a href="../../src/net/http/server.go.html#line-2558" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-2558">#L2558</a>: 			return HandlerFunc(func(w <b>ResponseWriter</b>, r *Request) {
+		<a href="../../src/net/http/server.go.html#line-2669" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-2669">#L2669</a>: func (mux *ServeMux) ServeHTTP(w <b>ResponseWriter</b>, r *Request) {
+		<a href="../../src/net/http/server.go.html#line-2703" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-2703">#L2703</a>: func (mux *ServeMux) HandleFunc(pattern string, handler func(<b>ResponseWriter</b>, *Request)) {
+		<a href="../../src/net/http/server.go.html#line-2723" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-2723">#L2723</a>: func HandleFunc(pattern string, handler func(<b>ResponseWriter</b>, *Request)) {
+		<a href="../../src/net/http/server.go.html#line-3128" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-3128">#L3128</a>: func (sh serverHandler) ServeHTTP(rw <b>ResponseWriter</b>, req *Request) {
+		<a href="../../src/net/http/server.go.html#line-3150" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-3150">#L3150</a>: 	return HandlerFunc(func(w <b>ResponseWriter</b>, r *Request) {
+		<a href="../../src/net/http/server.go.html#line-3575" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-3575">#L3575</a>: func (h *timeoutHandler) ServeHTTP(w <b>ResponseWriter</b>, r *Request) {
+		<a href="../../src/net/http/server.go.html#line-3630" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-3630">#L3630</a>: 	w    <b>ResponseWriter</b>
+		<a href="../../src/net/http/server.go.html#line-3706" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-3706">#L3706</a>: func (globalOptionsHandler) ServeHTTP(w <b>ResponseWriter</b>, r *Request) {
+		<a href="../../src/net/http/server.go.html#line-3734" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-3734">#L3734</a>: func (h initALPNRequest) ServeHTTP(rw <b>ResponseWriter</b>, req *Request) {
+		<a href="../../src/net/http/server.go.html#line-3838" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-3838">#L3838</a>: 	return HandlerFunc(func(w <b>ResponseWriter</b>, r *Request) {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

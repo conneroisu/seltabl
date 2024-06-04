@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.profBuf.hdrsize</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/profbuf.go.html#line-87">profBuf</a>.<a href="../src/runtime/profbuf.go.html#line-95">hdrsize</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">17 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/profbuf.go.html#line-95">profbuf.go#L95</a>: 	<b>hdrsize</b> uintptr
+		<a href="../src/runtime/profbuf.go.html#line-228" class="path-duplicate">profbuf.go</a><a href="../src/runtime/profbuf.go.html#line-228">#L228</a>: 	b.<b>hdrsize</b> = uintptr(hdrsize)
+		<a href="../src/runtime/profbuf.go.html#line-231" class="path-duplicate">profbuf.go</a><a href="../src/runtime/profbuf.go.html#line-231">#L231</a>: 	b.overflowBuf = make([]uint64, 2+b.<b>hdrsize</b>+1)
+		<a href="../src/runtime/profbuf.go.html#line-248" class="path-duplicate">profbuf.go</a><a href="../src/runtime/profbuf.go.html#line-248">#L248</a>: 	want := 2 + int(b.<b>hdrsize</b>) + nstk
+		<a href="../src/runtime/profbuf.go.html#line-276" class="path-duplicate">profbuf.go</a><a href="../src/runtime/profbuf.go.html#line-276">#L276</a>: 	want := 2 + int(b.<b>hdrsize</b>) + nstk1
+		<a href="../src/runtime/profbuf.go.html#line-288" class="path-duplicate">profbuf.go</a><a href="../src/runtime/profbuf.go.html#line-288">#L288</a>: 	want = 2 + int(b.<b>hdrsize</b>) + nstk2
+		<a href="../src/runtime/profbuf.go.html#line-307" class="path-duplicate">profbuf.go</a><a href="../src/runtime/profbuf.go.html#line-307">#L307</a>: 	if len(hdr) &gt; int(b.<b>hdrsize</b>) {
+		<a href="../src/runtime/profbuf.go.html#line-360" class="path-duplicate">profbuf.go</a><a href="../src/runtime/profbuf.go.html#line-360">#L360</a>: 	if wd+2+int(b.<b>hdrsize</b>)+len(stk) &gt; len(b.data) {
+		<a href="../src/runtime/profbuf.go.html#line-367" class="path-duplicate">profbuf.go</a><a href="../src/runtime/profbuf.go.html#line-367">#L367</a>: 	data[0] = uint64(2 + b.<b>hdrsize</b> + uintptr(len(stk))) // length
+		<a href="../src/runtime/profbuf.go.html#line-370" class="path-duplicate">profbuf.go</a><a href="../src/runtime/profbuf.go.html#line-370">#L370</a>: 	i := uintptr(copy(data[2:2+b.<b>hdrsize</b>], hdr))
+		<a href="../src/runtime/profbuf.go.html#line-371" class="path-duplicate">profbuf.go</a><a href="../src/runtime/profbuf.go.html#line-371">#L371</a>: 	for ; i &lt; b.<b>hdrsize</b>; i++ {
+		<a href="../src/runtime/profbuf.go.html#line-375" class="path-duplicate">profbuf.go</a><a href="../src/runtime/profbuf.go.html#line-375">#L375</a>: 		data[2+b.<b>hdrsize</b>+uintptr(i)] = uint64(pc)
+		<a href="../src/runtime/profbuf.go.html#line-382" class="path-duplicate">profbuf.go</a><a href="../src/runtime/profbuf.go.html#line-382">#L382</a>: 		new := old.addCountsAndClearFlags(skip+2+len(stk)+int(b.<b>hdrsize</b>), 1)
+		<a href="../src/runtime/profbuf.go.html#line-470" class="path-duplicate">profbuf.go</a><a href="../src/runtime/profbuf.go.html#line-470">#L470</a>: 			dst[0] = uint64(2 + b.<b>hdrsize</b> + 1)
+		<a href="../src/runtime/profbuf.go.html#line-472" class="path-duplicate">profbuf.go</a><a href="../src/runtime/profbuf.go.html#line-472">#L472</a>: 			for i := uintptr(0); i &lt; b.<b>hdrsize</b>; i++ {
+		<a href="../src/runtime/profbuf.go.html#line-475" class="path-duplicate">profbuf.go</a><a href="../src/runtime/profbuf.go.html#line-475">#L475</a>: 			dst[2+b.<b>hdrsize</b>] = uint64(count)
+		<a href="../src/runtime/profbuf.go.html#line-476" class="path-duplicate">profbuf.go</a><a href="../src/runtime/profbuf.go.html#line-476">#L476</a>: 			return dst[:2+b.<b>hdrsize</b>+1], overflowTag[:1], false
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

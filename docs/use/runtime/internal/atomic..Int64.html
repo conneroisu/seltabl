@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime/internal/atomic.Int64</title>
+<link href="../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../../pkg/runtime/internal/atomic.html">runtime/internal/atomic</a>.<a href="../../../src/runtime/internal/atomic/types.go.html#line-64">Int64</a></b></span>
+
+<span class="title">35 uses</span>
+
+	runtime/internal/atomic (current package)
+		<a href="../../../src/runtime/internal/atomic/types.go.html#line-64">types.go#L64</a>: type <b>Int64</b> struct {
+		<a href="../../../src/runtime/internal/atomic/types.go.html#line-73" class="path-duplicate">types.go</a><a href="../../../src/runtime/internal/atomic/types.go.html#line-73">#L73</a>: func (i *<b>Int64</b>) Load() int64 {
+		<a href="../../../src/runtime/internal/atomic/types.go.html#line-80" class="path-duplicate">types.go</a><a href="../../../src/runtime/internal/atomic/types.go.html#line-80">#L80</a>: func (i *<b>Int64</b>) Store(value int64) {
+		<a href="../../../src/runtime/internal/atomic/types.go.html#line-89" class="path-duplicate">types.go</a><a href="../../../src/runtime/internal/atomic/types.go.html#line-89">#L89</a>: func (i *<b>Int64</b>) CompareAndSwap(old, new int64) bool {
+		<a href="../../../src/runtime/internal/atomic/types.go.html#line-97" class="path-duplicate">types.go</a><a href="../../../src/runtime/internal/atomic/types.go.html#line-97">#L97</a>: func (i *<b>Int64</b>) Swap(new int64) int64 {
+		<a href="../../../src/runtime/internal/atomic/types.go.html#line-108" class="path-duplicate">types.go</a><a href="../../../src/runtime/internal/atomic/types.go.html#line-108">#L108</a>: func (i *<b>Int64</b>) Add(delta int64) int64 {
+
+	<a href="../../../pkg/runtime.html">runtime</a>
+		<a href="../../../src/runtime/mgclimit.go.html#line-59">mgclimit.go#L59</a>: 	assistTimePool atomic.<b>Int64</b>
+		<a href="../../../src/runtime/mgclimit.go.html#line-62" class="path-duplicate">mgclimit.go</a><a href="../../../src/runtime/mgclimit.go.html#line-62">#L62</a>: 	idleMarkTimePool atomic.<b>Int64</b>
+		<a href="../../../src/runtime/mgclimit.go.html#line-65" class="path-duplicate">mgclimit.go</a><a href="../../../src/runtime/mgclimit.go.html#line-65">#L65</a>: 	idleTimePool atomic.<b>Int64</b>
+		<a href="../../../src/runtime/mgclimit.go.html#line-70" class="path-duplicate">mgclimit.go</a><a href="../../../src/runtime/mgclimit.go.html#line-70">#L70</a>: 	lastUpdate atomic.<b>Int64</b>
+		<a href="../../../src/runtime/mgcmark.go.html#line-167">mgcmark.go#L167</a>: 	var workCounter *atomic.<b>Int64</b>
+		<a href="../../../src/runtime/mgcpacer.go.html#line-102">mgcpacer.go#L102</a>: 	memoryLimit atomic.<b>Int64</b>
+		<a href="../../../src/runtime/mgcpacer.go.html#line-249" class="path-duplicate">mgcpacer.go</a><a href="../../../src/runtime/mgcpacer.go.html#line-249">#L249</a>: 	heapScanWork    atomic.<b>Int64</b>
+		<a href="../../../src/runtime/mgcpacer.go.html#line-250" class="path-duplicate">mgcpacer.go</a><a href="../../../src/runtime/mgcpacer.go.html#line-250">#L250</a>: 	stackScanWork   atomic.<b>Int64</b>
+		<a href="../../../src/runtime/mgcpacer.go.html#line-251" class="path-duplicate">mgcpacer.go</a><a href="../../../src/runtime/mgcpacer.go.html#line-251">#L251</a>: 	globalsScanWork atomic.<b>Int64</b>
+		<a href="../../../src/runtime/mgcpacer.go.html#line-257" class="path-duplicate">mgcpacer.go</a><a href="../../../src/runtime/mgcpacer.go.html#line-257">#L257</a>: 	bgScanCredit atomic.<b>Int64</b>
+		<a href="../../../src/runtime/mgcpacer.go.html#line-264" class="path-duplicate">mgcpacer.go</a><a href="../../../src/runtime/mgcpacer.go.html#line-264">#L264</a>: 	assistTime atomic.<b>Int64</b>
+		<a href="../../../src/runtime/mgcpacer.go.html#line-269" class="path-duplicate">mgcpacer.go</a><a href="../../../src/runtime/mgcpacer.go.html#line-269">#L269</a>: 	dedicatedMarkTime atomic.<b>Int64</b>
+		<a href="../../../src/runtime/mgcpacer.go.html#line-275" class="path-duplicate">mgcpacer.go</a><a href="../../../src/runtime/mgcpacer.go.html#line-275">#L275</a>: 	fractionalMarkTime atomic.<b>Int64</b>
+		<a href="../../../src/runtime/mgcpacer.go.html#line-279" class="path-duplicate">mgcpacer.go</a><a href="../../../src/runtime/mgcpacer.go.html#line-279">#L279</a>: 	idleMarkTime atomic.<b>Int64</b>
+		<a href="../../../src/runtime/mgcpacer.go.html#line-288" class="path-duplicate">mgcpacer.go</a><a href="../../../src/runtime/mgcpacer.go.html#line-288">#L288</a>: 	dedicatedMarkWorkersNeeded atomic.<b>Int64</b>
+		<a href="../../../src/runtime/mgcpacer.go.html#line-772" class="path-duplicate">mgcpacer.go</a><a href="../../../src/runtime/mgcpacer.go.html#line-772">#L772</a>: 	decIfPositive := func(val *atomic.<b>Int64</b>) bool {
+		<a href="../../../src/runtime/mgcscavenge.go.html#line-254">mgcscavenge.go#L254</a>: 	assistTime atomic.<b>Int64</b>
+		<a href="../../../src/runtime/mgcscavenge.go.html#line-259" class="path-duplicate">mgcscavenge.go</a><a href="../../../src/runtime/mgcscavenge.go.html#line-259">#L259</a>: 	backgroundTime atomic.<b>Int64</b>
+		<a href="../../../src/runtime/mprof.go.html#line-616">mprof.go#L616</a>: 	waitTime   atomic.<b>Int64</b>      // total nanoseconds spent waiting in runtime.lockWithRank
+		<a href="../../../src/runtime/mprof.go.html#line-1094" class="path-duplicate">mprof.go</a><a href="../../../src/runtime/mprof.go.html#line-1094">#L1094</a>: 	offset  atomic.<b>Int64</b>
+		<a href="../../../src/runtime/mranges.go.html#line-174">mranges.go#L174</a>: 	a atomic.<b>Int64</b>
+		<a href="../../../src/runtime/runtime.go.html#line-24">runtime.go#L24</a>: 	val        atomic.<b>Int64</b>
+		<a href="../../../src/runtime/runtime2.go.html#line-713">runtime2.go#L713</a>: 	timer0When atomic.<b>Int64</b>
+		<a href="../../../src/runtime/runtime2.go.html#line-719" class="path-duplicate">runtime2.go</a><a href="../../../src/runtime/runtime2.go.html#line-719">#L719</a>: 	timerModifiedEarliest atomic.<b>Int64</b>
+		<a href="../../../src/runtime/runtime2.go.html#line-801" class="path-duplicate">runtime2.go</a><a href="../../../src/runtime/runtime2.go.html#line-801">#L801</a>: 	lastpoll  atomic.<b>Int64</b> // time of last network poll, 0 if currently polling
+		<a href="../../../src/runtime/runtime2.go.html#line-802" class="path-duplicate">runtime2.go</a><a href="../../../src/runtime/runtime2.go.html#line-802">#L802</a>: 	pollUntil atomic.<b>Int64</b> // time to which current poll is sleeping
+		<a href="../../../src/runtime/runtime2.go.html#line-891" class="path-duplicate">runtime2.go</a><a href="../../../src/runtime/runtime2.go.html#line-891">#L891</a>: 	idleTime atomic.<b>Int64</b>
+		<a href="../../../src/runtime/runtime2.go.html#line-895" class="path-duplicate">runtime2.go</a><a href="../../../src/runtime/runtime2.go.html#line-895">#L895</a>: 	totalMutexWaitTime atomic.<b>Int64</b>
+		<a href="../../../src/runtime/runtime2.go.html#line-916" class="path-duplicate">runtime2.go</a><a href="../../../src/runtime/runtime2.go.html#line-916">#L916</a>: 	totalRuntimeLockWaitTime atomic.<b>Int64</b>
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

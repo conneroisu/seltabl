@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: vendor/golang.org/x/text/unicode/norm.Form</title>
+<link href="../../../../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../../../../../pkg/vendor/golang.org/x/text/unicode/norm.html">vendor/golang.org/x/text/unicode/norm</a>.<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/normalize.go.html#line-35">Form</a></b></span>
+
+<span class="title">32 uses</span>
+
+	vendor/golang.org/x/text/unicode/norm (current package)
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/composition.go.html#line-114">composition.go#L114</a>: func (rb *reorderBuffer) init(f <b>Form</b>, src []byte) {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/composition.go.html#line-121" class="path-duplicate">composition.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/composition.go.html#line-121">#L121</a>: func (rb *reorderBuffer) initString(f <b>Form</b>, src string) {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/forminfo.go.html#line-55">forminfo.go#L55</a>: 	form                     <b>Form</b>
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/forminfo.go.html#line-225" class="path-duplicate">forminfo.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/forminfo.go.html#line-225">#L225</a>: func (f <b>Form</b>) Properties(s []byte) Properties {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/forminfo.go.html#line-233" class="path-duplicate">forminfo.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/forminfo.go.html#line-233">#L233</a>: func (f <b>Form</b>) PropertiesString(s string) Properties {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-32">iter.go#L32</a>: func (i *Iter) Init(f <b>Form</b>, src []byte) {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-48" class="path-duplicate">iter.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-48">#L48</a>: func (i *Iter) InitString(f <b>Form</b>, src string) {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/normalize.go.html#line-35">normalize.go#L35</a>: type <b>Form</b> int
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/normalize.go.html#line-38" class="path-duplicate">normalize.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/normalize.go.html#line-38">#L38</a>: 	NFC <b>Form</b> = iota
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/normalize.go.html#line-45" class="path-duplicate">normalize.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/normalize.go.html#line-45">#L45</a>: func (f <b>Form</b>) Bytes(b []byte) []byte {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/normalize.go.html#line-59" class="path-duplicate">normalize.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/normalize.go.html#line-59">#L59</a>: func (f <b>Form</b>) String(s string) string {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/normalize.go.html#line-73" class="path-duplicate">normalize.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/normalize.go.html#line-73">#L73</a>: func (f <b>Form</b>) IsNormal(b []byte) bool {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/normalize.go.html#line-112" class="path-duplicate">normalize.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/normalize.go.html#line-112">#L112</a>: func (f <b>Form</b>) IsNormalString(s string) bool {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/normalize.go.html#line-193" class="path-duplicate">normalize.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/normalize.go.html#line-193">#L193</a>: func (f <b>Form</b>) Append(out []byte, src ...byte) []byte {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/normalize.go.html#line-197" class="path-duplicate">normalize.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/normalize.go.html#line-197">#L197</a>: func (f <b>Form</b>) doAppend(out []byte, src input, n int) []byte {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/normalize.go.html#line-261" class="path-duplicate">normalize.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/normalize.go.html#line-261">#L261</a>: func (f <b>Form</b>) AppendString(out []byte, src string) []byte {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/normalize.go.html#line-267" class="path-duplicate">normalize.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/normalize.go.html#line-267">#L267</a>: func (f <b>Form</b>) QuickSpan(b []byte) int {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/normalize.go.html#line-274" class="path-duplicate">normalize.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/normalize.go.html#line-274">#L274</a>: func (f <b>Form</b>) Span(b []byte, atEOF bool) (n int, err error) {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/normalize.go.html#line-288" class="path-duplicate">normalize.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/normalize.go.html#line-288">#L288</a>: func (f <b>Form</b>) SpanString(s string, atEOF bool) (n int, err error) {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/normalize.go.html#line-359" class="path-duplicate">normalize.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/normalize.go.html#line-359">#L359</a>: func (f <b>Form</b>) QuickSpanString(s string) int {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/normalize.go.html#line-366" class="path-duplicate">normalize.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/normalize.go.html#line-366">#L366</a>: func (f <b>Form</b>) FirstBoundary(b []byte) int {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/normalize.go.html#line-370" class="path-duplicate">normalize.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/normalize.go.html#line-370">#L370</a>: func (f <b>Form</b>) firstBoundary(src input, nsrc int) int {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/normalize.go.html#line-400" class="path-duplicate">normalize.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/normalize.go.html#line-400">#L400</a>: func (f <b>Form</b>) FirstBoundaryInString(s string) int {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/normalize.go.html#line-407" class="path-duplicate">normalize.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/normalize.go.html#line-407">#L407</a>: func (f <b>Form</b>) NextBoundary(b []byte, atEOF bool) int {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/normalize.go.html#line-414" class="path-duplicate">normalize.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/normalize.go.html#line-414">#L414</a>: func (f <b>Form</b>) NextBoundaryInString(s string, atEOF bool) int {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/normalize.go.html#line-418" class="path-duplicate">normalize.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/normalize.go.html#line-418">#L418</a>: func (f <b>Form</b>) nextBoundary(src input, nsrc int, atEOF bool) int {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/normalize.go.html#line-458" class="path-duplicate">normalize.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/normalize.go.html#line-458">#L458</a>: func (f <b>Form</b>) LastBoundary(b []byte) int {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/readwriter.go.html#line-66">readwriter.go#L66</a>: func (f <b>Form</b>) Writer(w io.Writer) io.WriteCloser {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/readwriter.go.html#line-119" class="path-duplicate">readwriter.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/readwriter.go.html#line-119">#L119</a>: func (f <b>Form</b>) Reader(r io.Reader) io.Reader {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/transform.go.html#line-14">transform.go#L14</a>: func (<b>Form</b>) Reset() {}
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/transform.go.html#line-20" class="path-duplicate">transform.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/transform.go.html#line-20">#L20</a>: func (f <b>Form</b>) Transform(dst, src []byte, atEOF bool) (nDst, nSrc int, err error) {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/transform.go.html#line-55" class="path-duplicate">transform.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/transform.go.html#line-55">#L55</a>: func (f <b>Form</b>) transform(dst, src []byte, atEOF bool) (nDst, nSrc int, err error) {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

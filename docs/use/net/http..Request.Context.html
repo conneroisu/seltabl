@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/http.Request.Context</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/net/http.html">net/http</a>.<a href="../../src/net/http/request.go.html#line-111">Request</a>.<a href="../../src/net/http/request.go.html#line-346">Context</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">26 uses</span>
+
+	net/http (current package)
+		<a href="../../src/net/http/client.go.html#line-356">client.go#L356</a>: 	oldCtx := req.<b>Context</b>()
+		<a href="../../src/net/http/h2_bundle.go.html#line-790">h2_bundle.go#L790</a>: 		cc, err := p.t.dialClientConn(req.<b>Context</b>(), addr, singleUse)
+		<a href="../../src/net/http/h2_bundle.go.html#line-816" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-816">#L816</a>: 		call := p.getStartDialLocked(req.<b>Context</b>(), addr)
+		<a href="../../src/net/http/h2_bundle.go.html#line-1018" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1018">#L1018</a>: 	if call.ctx == req.<b>Context</b>() {
+		<a href="../../src/net/http/h2_bundle.go.html#line-7647" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-7647">#L7647</a>: 				case &lt;-req.<b>Context</b>().Done():
+		<a href="../../src/net/http/h2_bundle.go.html#line-7649" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-7649">#L7649</a>: 					err = req.<b>Context</b>().Err()
+		<a href="../../src/net/http/h2_bundle.go.html#line-8284" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-8284">#L8284</a>: 	ctx := req.<b>Context</b>()
+		<a href="../../src/net/http/h2_bundle.go.html#line-9100" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9100">#L9100</a>: 	trace := httptrace.ContextClientTrace(req.<b>Context</b>())
+		<a href="../../src/net/http/h2_bundle.go.html#line-10221" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-10221">#L10221</a>: 	trace := httptrace.ContextClientTrace(req.<b>Context</b>())
+		<a href="../../src/net/http/h2_bundle.go.html#line-10229" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-10229">#L10229</a>: 	trace := httptrace.ContextClientTrace(req.<b>Context</b>())
+		<a href="../../src/net/http/request.go.html#line-346">request.go#L346</a>: func (r *Request) <b>Context</b>() context.Context {
+		<a href="../../src/net/http/request.go.html#line-576" class="path-duplicate">request.go</a><a href="../../src/net/http/request.go.html#line-576">#L576</a>: 	trace := httptrace.ContextClientTrace(r.<b>Context</b>())
+		<a href="../../src/net/http/server.go.html#line-3421">server.go#L3421</a>: 	s, _ := r.<b>Context</b>().Value(ServerContextKey).(*Server)
+		<a href="../../src/net/http/server.go.html#line-3579" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-3579">#L3579</a>: 		ctx, cancelCtx = context.WithTimeout(r.<b>Context</b>(), h.dt)
+		<a href="../../src/net/http/transport.go.html#line-519">transport.go#L519</a>: 	ctx := req.<b>Context</b>()
+		<a href="../../src/net/http/transport.go.html#line-1365" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-1365">#L1365</a>: 	ctx := req.<b>Context</b>()
+		<a href="../../src/net/http/transport.go.html#line-1420" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-1420">#L1420</a>: 			case &lt;-req.<b>Context</b>().Done():
+		<a href="../../src/net/http/transport.go.html#line-1421" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-1421">#L1421</a>: 				return nil, req.<b>Context</b>().Err()
+		<a href="../../src/net/http/transport.go.html#line-1434" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-1434">#L1434</a>: 	case &lt;-req.<b>Context</b>().Done():
+		<a href="../../src/net/http/transport.go.html#line-1435" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-1435">#L1435</a>: 		return nil, req.<b>Context</b>().Err()
+		<a href="../../src/net/http/transport.go.html#line-2152" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-2152">#L2152</a>: 		trace := httptrace.ContextClientTrace(rc.req.<b>Context</b>())
+		<a href="../../src/net/http/transport.go.html#line-2275" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-2275">#L2275</a>: 		case &lt;-rc.req.<b>Context</b>().Done():
+		<a href="../../src/net/http/transport.go.html#line-2277" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-2277">#L2277</a>: 			pc.t.cancelRequest(rc.cancelKey, rc.req.<b>Context</b>().Err())
+		<a href="../../src/net/http/transport.go.html#line-2670" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-2670">#L2670</a>: 	ctxDoneChan := req.<b>Context</b>().Done()
+		<a href="../../src/net/http/transport.go.html#line-2721" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-2721">#L2721</a>: 			canceled = pc.t.cancelRequest(req.cancelKey, req.<b>Context</b>().Err())
+		<a href="../../src/net/http/transport.go.html#line-2733" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-2733">#L2733</a>: 	if logf, ok := tr.Request.<b>Context</b>().Value(tLogKey{}).(func(string, ...any)); ok {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

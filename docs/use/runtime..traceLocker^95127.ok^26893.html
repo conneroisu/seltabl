@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.traceLocker.ok</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/trace2runtime.go.html#line-155">traceLocker</a>.<a href="../src/runtime/trace2runtime.go.html#line-228">ok</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">73 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/debugcall.go.html#line-171">debugcall.go#L171</a>: 		if trace.<b>ok</b>() {
+		<a href="../src/runtime/debugcall.go.html#line-232" class="path-duplicate">debugcall.go</a><a href="../src/runtime/debugcall.go.html#line-232">#L232</a>: 		if trace.<b>ok</b>() {
+		<a href="../src/runtime/debugcall.go.html#line-243" class="path-duplicate">debugcall.go</a><a href="../src/runtime/debugcall.go.html#line-243">#L243</a>: 		if trace.<b>ok</b>() {
+		<a href="../src/runtime/mcentral.go.html#line-88">mcentral.go#L88</a>: 	if trace.<b>ok</b>() {
+		<a href="../src/runtime/mcentral.go.html#line-163" class="path-duplicate">mcentral.go</a><a href="../src/runtime/mcentral.go.html#line-163">#L163</a>: 	if trace.<b>ok</b>() {
+		<a href="../src/runtime/mcentral.go.html#line-179" class="path-duplicate">mcentral.go</a><a href="../src/runtime/mcentral.go.html#line-179">#L179</a>: 		if trace.<b>ok</b>() {
+		<a href="../src/runtime/mgc.go.html#line-650">mgc.go#L650</a>: 	if trace.<b>ok</b>() {
+		<a href="../src/runtime/mgc.go.html#line-990" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-990">#L990</a>: 	if trace.<b>ok</b>() {
+		<a href="../src/runtime/mgcmark.go.html#line-442">mgcmark.go#L442</a>: 			if trace.<b>ok</b>() {
+		<a href="../src/runtime/mgcmark.go.html#line-500" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-500">#L500</a>: 				if trace.<b>ok</b>() {
+		<a href="../src/runtime/mgcmark.go.html#line-523" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-523">#L523</a>: 		if trace.<b>ok</b>() {
+		<a href="../src/runtime/mgcmark.go.html#line-598" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-598">#L598</a>: 		if trace.<b>ok</b>() {
+		<a href="../src/runtime/mgcpacer.go.html#line-812">mgcpacer.go#L812</a>: 	if trace.<b>ok</b>() {
+		<a href="../src/runtime/mgcpacer.go.html#line-834" class="path-duplicate">mgcpacer.go</a><a href="../src/runtime/mgcpacer.go.html#line-834">#L834</a>: 	if trace.<b>ok</b>() {
+		<a href="../src/runtime/mgcpacer.go.html#line-865" class="path-duplicate">mgcpacer.go</a><a href="../src/runtime/mgcpacer.go.html#line-865">#L865</a>: 		if trace.<b>ok</b>() {
+		<a href="../src/runtime/mgcpacer.go.html#line-1438" class="path-duplicate">mgcpacer.go</a><a href="../src/runtime/mgcpacer.go.html#line-1438">#L1438</a>: 	if trace.<b>ok</b>() {
+		<a href="../src/runtime/mgcsweep.go.html#line-521">mgcsweep.go#L521</a>: 	if trace.<b>ok</b>() {
+		<a href="../src/runtime/mgcsweep.go.html#line-899" class="path-duplicate">mgcsweep.go</a><a href="../src/runtime/mgcsweep.go.html#line-899">#L899</a>: 	if trace.<b>ok</b>() {
+		<a href="../src/runtime/mgcsweep.go.html#line-941" class="path-duplicate">mgcsweep.go</a><a href="../src/runtime/mgcsweep.go.html#line-941">#L941</a>: 	if trace.<b>ok</b>() {
+		<a href="../src/runtime/mheap.go.html#line-795">mheap.go#L795</a>: 	if trace.<b>ok</b>() {
+		<a href="../src/runtime/mheap.go.html#line-845" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-845">#L845</a>: 	if trace.<b>ok</b>() {
+		<a href="../src/runtime/mheap.go.html#line-919" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-919">#L919</a>: 	if trace.<b>ok</b>() {
+		<a href="../src/runtime/proc.go.html#line-965">proc.go#L965</a>: 	if trace.<b>ok</b>() {
+		<a href="../src/runtime/proc.go.html#line-1451" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-1451">#L1451</a>: 	if trace.<b>ok</b>() {
+		<a href="../src/runtime/proc.go.html#line-1476" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-1476">#L1476</a>: 			if trace.<b>ok</b>() {
+		<a href="../src/runtime/proc.go.html#line-1484" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-1484">#L1484</a>: 	if trace.<b>ok</b>() {
+		<a href="../src/runtime/proc.go.html#line-1608" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-1608">#L1608</a>: 	if trace.<b>ok</b>() {
+		<a href="../src/runtime/proc.go.html#line-1967" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-1967">#L1967</a>: 			if trace.<b>ok</b>() {
+		<a href="../src/runtime/proc.go.html#line-1975" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-1975">#L1975</a>: 		} else if trace.<b>ok</b>() {
+		<a href="../src/runtime/proc.go.html#line-2244" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-2244">#L2244</a>: 		if trace.<b>ok</b>() {
+		<a href="../src/runtime/proc.go.html#line-2313" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-2313">#L2313</a>: 	if trace.<b>ok</b>() {
+		<a href="../src/runtime/proc.go.html#line-2385" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-2385">#L2385</a>: 		if trace.<b>ok</b>() {
+		<a href="../src/runtime/proc.go.html#line-3122" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-3122">#L3122</a>: 	if trace.<b>ok</b>() {
+		<a href="../src/runtime/proc.go.html#line-3168" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-3168">#L3168</a>: 			if trace.<b>ok</b>() {
+		<a href="../src/runtime/proc.go.html#line-3236" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-3236">#L3236</a>: 			if trace.<b>ok</b>() {
+		<a href="../src/runtime/proc.go.html#line-3284" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-3284">#L3284</a>: 			if trace.<b>ok</b>() {
+		<a href="../src/runtime/proc.go.html#line-3301" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-3301">#L3301</a>: 		if trace.<b>ok</b>() {
+		<a href="../src/runtime/proc.go.html#line-3431" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-3431">#L3431</a>: 			if trace.<b>ok</b>() {
+		<a href="../src/runtime/proc.go.html#line-3495" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-3495">#L3495</a>: 				if trace.<b>ok</b>() {
+		<a href="../src/runtime/proc.go.html#line-3766" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-3766">#L3766</a>: 	if trace.<b>ok</b>() {
+		<a href="../src/runtime/proc.go.html#line-4015" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4015">#L4015</a>: 	if trace.<b>ok</b>() {
+		<a href="../src/runtime/proc.go.html#line-4029" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4029">#L4029</a>: 			if trace.<b>ok</b>() {
+		<a href="../src/runtime/proc.go.html#line-4047" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4047">#L4047</a>: 	if trace.<b>ok</b>() {
+		<a href="../src/runtime/proc.go.html#line-4134" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4134">#L4134</a>: 	if trace.<b>ok</b>() {
+		<a href="../src/runtime/proc.go.html#line-4138" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4138">#L4138</a>: 	if trace.<b>ok</b>() {
+		<a href="../src/runtime/proc.go.html#line-4156" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4156">#L4156</a>: 	if trace.<b>ok</b>() {
+		<a href="../src/runtime/proc.go.html#line-4171" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4171">#L4171</a>: 	if trace.<b>ok</b>() {
+		<a href="../src/runtime/proc.go.html#line-4347" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4347">#L4347</a>: 	if trace.<b>ok</b>() {
+		<a href="../src/runtime/proc.go.html#line-4409" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4409">#L4409</a>: 		if trace.<b>ok</b>() {
+		<a href="../src/runtime/proc.go.html#line-4431" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4431">#L4431</a>: 	} else if trace.<b>ok</b>() {
+		<a href="../src/runtime/proc.go.html#line-4482" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4482">#L4482</a>: 	if trace.<b>ok</b>() {
+		<a href="../src/runtime/proc.go.html#line-4525" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4525">#L4525</a>: 		if trace.<b>ok</b>() {
+		<a href="../src/runtime/proc.go.html#line-4548" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4548">#L4548</a>: 		if trace.<b>ok</b>() {
+		<a href="../src/runtime/proc.go.html#line-4578" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4578">#L4578</a>: 		if trace.<b>ok</b>() {
+		<a href="../src/runtime/proc.go.html#line-4615" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4615">#L4615</a>: 		if trace.<b>ok</b>() {
+		<a href="../src/runtime/proc.go.html#line-4620" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4620">#L4620</a>: 	if trace.<b>ok</b>() {
+		<a href="../src/runtime/proc.go.html#line-4631" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4631">#L4631</a>: 				if trace.<b>ok</b>() {
+		<a href="../src/runtime/proc.go.html#line-4661" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4661">#L4661</a>: 		if trace.<b>ok</b>() {
+		<a href="../src/runtime/proc.go.html#line-4713" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4713">#L4713</a>: 		if trace.<b>ok</b>() {
+		<a href="../src/runtime/proc.go.html#line-4973" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4973">#L4973</a>: 	if trace.<b>ok</b>() {
+		<a href="../src/runtime/proc.go.html#line-5600" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-5600">#L5600</a>: 	if trace.<b>ok</b>() {
+		<a href="../src/runtime/proc.go.html#line-5668" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-5668">#L5668</a>: 			if trace.<b>ok</b>() {
+		<a href="../src/runtime/proc.go.html#line-5684" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-5684">#L5684</a>: 		if trace.<b>ok</b>() {
+		<a href="../src/runtime/proc.go.html#line-5751" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-5751">#L5751</a>: 	if trace.<b>ok</b>() {
+		<a href="../src/runtime/proc.go.html#line-5793" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-5793">#L5793</a>: 	if trace.<b>ok</b>() {
+		<a href="../src/runtime/proc.go.html#line-6158" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6158">#L6158</a>: 				if trace.<b>ok</b>() {
+		<a href="../src/runtime/proc.go.html#line-6166" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6166">#L6166</a>: 			} else if trace.<b>ok</b>() {
+		<a href="../src/runtime/trace2cpu.go.html#line-59">trace2cpu.go#L59</a>: 			if !tl.<b>ok</b>() {
+		<a href="../src/runtime/trace2runtime.go.html#line-228">trace2runtime.go#L228</a>: func (tl traceLocker) <b>ok</b>() bool {
+		<a href="../src/runtime/trace2runtime.go.html#line-593" class="path-duplicate">trace2runtime.go</a><a href="../src/runtime/trace2runtime.go.html#line-593">#L593</a>: 	if !tl.<b>ok</b>() {
+		<a href="../src/runtime/trace2runtime.go.html#line-606" class="path-duplicate">trace2runtime.go</a><a href="../src/runtime/trace2runtime.go.html#line-606">#L606</a>: 	if !tl.<b>ok</b>() {
+		<a href="../src/runtime/trace2runtime.go.html#line-622" class="path-duplicate">trace2runtime.go</a><a href="../src/runtime/trace2runtime.go.html#line-622">#L622</a>: 	if !tl.<b>ok</b>() {
+		<a href="../src/runtime/trace2runtime.go.html#line-644" class="path-duplicate">trace2runtime.go</a><a href="../src/runtime/trace2runtime.go.html#line-644">#L644</a>: 	if !tl.<b>ok</b>() {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

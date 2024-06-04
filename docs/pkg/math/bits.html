@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: math/bits</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>bits</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../index.html#pkg-math/bits">math/bits</a><i> (on <a href="https://pkg.go.dev/math/bits" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../../dep/math/bits.html">one package</a>, and imported by <a href="../../dep/math/bits.html#imported-by">21 packages</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<input type='checkbox' checked class="fold" id="file-0-fold-content"><label for="file-0-fold-content">  <a href="../../src/math/bits/bits.go.html#doc">d</a> <a href="../../src/math/bits/bits.go.html">bits.go</a></label><span id='file-0-fold-content-items' class="fold-items">
+<span class="md-text">		Package bits implements bit counting and manipulation
+		functions for the predeclared unsigned integer types.
+		
+		Functions in this package may be implemented directly by
+		the compiler, for better performance. For those functions
+		the code in this package will not be used. Which
+		functions are implemented by the compiler depends on the
+		architecture and the Go release.</span>
+</span>
+	<span class="nodocs">    <a href="../../src/math/bits/bits_errors.go.html">bits_errors.go</a></span>
+	<span class="nodocs">    <a href="../../src/math/bits/bits_tables.go.html">bits_tables.go</a></span></div>
+<div id="examples"><span class="title">Code Examples</span>
+
+	<input type='checkbox' class="fold" id="example-0-fold-content"><label for="example-0-fold-content">Add32</label><span id='example-0-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"fmt"
+			"math/bits"
+		)
+		
+		func main() {
+			// First number is 33&lt;&lt;32 + 12
+			n1 := []uint32{33, 12}
+			// Second number is 21&lt;&lt;32 + 23
+			n2 := []uint32{21, 23}
+			// Add them together without producing carry.
+			d1, carry := bits.Add32(n1[1], n2[1], 0)
+			d0, _ := bits.Add32(n1[0], n2[0], carry)
+			nsum := []uint32{d0, d1}
+			fmt.Printf("%v + %v = %v (carry bit was %v)\n", n1, n2, nsum, carry)
+		
+			// First number is 1&lt;&lt;32 + 2147483648
+			n1 = []uint32{1, 0x80000000}
+			// Second number is 1&lt;&lt;32 + 2147483648
+			n2 = []uint32{1, 0x80000000}
+			// Add them together producing carry.
+			d1, carry = bits.Add32(n1[1], n2[1], 0)
+			d0, _ = bits.Add32(n1[0], n2[0], carry)
+			nsum = []uint32{d0, d1}
+			fmt.Printf("%v + %v = %v (carry bit was %v)\n", n1, n2, nsum, carry)
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-1-fold-content"><label for="example-1-fold-content">Add64</label><span id='example-1-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"fmt"
+			"math/bits"
+		)
+		
+		func main() {
+			// First number is 33&lt;&lt;64 + 12
+			n1 := []uint64{33, 12}
+			// Second number is 21&lt;&lt;64 + 23
+			n2 := []uint64{21, 23}
+			// Add them together without producing carry.
+			d1, carry := bits.Add64(n1[1], n2[1], 0)
+			d0, _ := bits.Add64(n1[0], n2[0], carry)
+			nsum := []uint64{d0, d1}
+			fmt.Printf("%v + %v = %v (carry bit was %v)\n", n1, n2, nsum, carry)
+		
+			// First number is 1&lt;&lt;64 + 9223372036854775808
+			n1 = []uint64{1, 0x8000000000000000}
+			// Second number is 1&lt;&lt;64 + 9223372036854775808
+			n2 = []uint64{1, 0x8000000000000000}
+			// Add them together producing carry.
+			d1, carry = bits.Add64(n1[1], n2[1], 0)
+			d0, _ = bits.Add64(n1[0], n2[0], carry)
+			nsum = []uint64{d0, d1}
+			fmt.Printf("%v + %v = %v (carry bit was %v)\n", n1, n2, nsum, carry)
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-2-fold-content"><label for="example-2-fold-content">Div32</label><span id='example-2-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"fmt"
+			"math/bits"
+		)
+		
+		func main() {
+			// First number is 0&lt;&lt;32 + 6
+			n1 := []uint32{0, 6}
+			// Second number is 0&lt;&lt;32 + 3
+			n2 := []uint32{0, 3}
+			// Divide them together.
+			quo, rem := bits.Div32(n1[0], n1[1], n2[1])
+			nsum := []uint32{quo, rem}
+			fmt.Printf("[%v %v] / %v = %v\n", n1[0], n1[1], n2[1], nsum)
+		
+			// First number is 2&lt;&lt;32 + 2147483648
+			n1 = []uint32{2, 0x80000000}
+			// Second number is 0&lt;&lt;32 + 2147483648
+			n2 = []uint32{0, 0x80000000}
+			// Divide them together.
+			quo, rem = bits.Div32(n1[0], n1[1], n2[1])
+			nsum = []uint32{quo, rem}
+			fmt.Printf("[%v %v] / %v = %v\n", n1[0], n1[1], n2[1], nsum)
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-3-fold-content"><label for="example-3-fold-content">Div64</label><span id='example-3-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"fmt"
+			"math/bits"
+		)
+		
+		func main() {
+			// First number is 0&lt;&lt;64 + 6
+			n1 := []uint64{0, 6}
+			// Second number is 0&lt;&lt;64 + 3
+			n2 := []uint64{0, 3}
+			// Divide them together.
+			quo, rem := bits.Div64(n1[0], n1[1], n2[1])
+			nsum := []uint64{quo, rem}
+			fmt.Printf("[%v %v] / %v = %v\n", n1[0], n1[1], n2[1], nsum)
+		
+			// First number is 2&lt;&lt;64 + 9223372036854775808
+			n1 = []uint64{2, 0x8000000000000000}
+			// Second number is 0&lt;&lt;64 + 9223372036854775808
+			n2 = []uint64{0, 0x8000000000000000}
+			// Divide them together.
+			quo, rem = bits.Div64(n1[0], n1[1], n2[1])
+			nsum = []uint64{quo, rem}
+			fmt.Printf("[%v %v] / %v = %v\n", n1[0], n1[1], n2[1], nsum)
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-4-fold-content"><label for="example-4-fold-content">LeadingZeros16</label><span id='example-4-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"fmt"
+			"math/bits"
+		)
+		
+		func main() {
+			fmt.Printf("LeadingZeros16(%016b) = %d\n", 1, bits.LeadingZeros16(1))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-5-fold-content"><label for="example-5-fold-content">LeadingZeros32</label><span id='example-5-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"fmt"
+			"math/bits"
+		)
+		
+		func main() {
+			fmt.Printf("LeadingZeros32(%032b) = %d\n", 1, bits.LeadingZeros32(1))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-6-fold-content"><label for="example-6-fold-content">LeadingZeros64</label><span id='example-6-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"fmt"
+			"math/bits"
+		)
+		
+		func main() {
+			fmt.Printf("LeadingZeros64(%064b) = %d\n", 1, bits.LeadingZeros64(1))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-7-fold-content"><label for="example-7-fold-content">LeadingZeros8</label><span id='example-7-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"fmt"
+			"math/bits"
+		)
+		
+		func main() {
+			fmt.Printf("LeadingZeros8(%08b) = %d\n", 1, bits.LeadingZeros8(1))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-8-fold-content"><label for="example-8-fold-content">Len16</label><span id='example-8-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"fmt"
+			"math/bits"
+		)
+		
+		func main() {
+			fmt.Printf("Len16(%016b) = %d\n", 8, bits.Len16(8))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-9-fold-content"><label for="example-9-fold-content">Len32</label><span id='example-9-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"fmt"
+			"math/bits"
+		)
+		
+		func main() {
+			fmt.Printf("Len32(%032b) = %d\n", 8, bits.Len32(8))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-10-fold-content"><label for="example-10-fold-content">Len64</label><span id='example-10-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"fmt"
+			"math/bits"
+		)
+		
+		func main() {
+			fmt.Printf("Len64(%064b) = %d\n", 8, bits.Len64(8))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-11-fold-content"><label for="example-11-fold-content">Len8</label><span id='example-11-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"fmt"
+			"math/bits"
+		)
+		
+		func main() {
+			fmt.Printf("Len8(%08b) = %d\n", 8, bits.Len8(8))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-12-fold-content"><label for="example-12-fold-content">Mul32</label><span id='example-12-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"fmt"
+			"math/bits"
+		)
+		
+		func main() {
+			// First number is 0&lt;&lt;32 + 12
+			n1 := []uint32{0, 12}
+			// Second number is 0&lt;&lt;32 + 12
+			n2 := []uint32{0, 12}
+			// Multiply them together without producing overflow.
+			hi, lo := bits.Mul32(n1[1], n2[1])
+			nsum := []uint32{hi, lo}
+			fmt.Printf("%v * %v = %v\n", n1[1], n2[1], nsum)
+		
+			// First number is 0&lt;&lt;32 + 2147483648
+			n1 = []uint32{0, 0x80000000}
+			// Second number is 0&lt;&lt;32 + 2
+			n2 = []uint32{0, 2}
+			// Multiply them together producing overflow.
+			hi, lo = bits.Mul32(n1[1], n2[1])
+			nsum = []uint32{hi, lo}
+			fmt.Printf("%v * %v = %v\n", n1[1], n2[1], nsum)
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-13-fold-content"><label for="example-13-fold-content">Mul64</label><span id='example-13-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"fmt"
+			"math/bits"
+		)
+		
+		func main() {
+			// First number is 0&lt;&lt;64 + 12
+			n1 := []uint64{0, 12}
+			// Second number is 0&lt;&lt;64 + 12
+			n2 := []uint64{0, 12}
+			// Multiply them together without producing overflow.
+			hi, lo := bits.Mul64(n1[1], n2[1])
+			nsum := []uint64{hi, lo}
+			fmt.Printf("%v * %v = %v\n", n1[1], n2[1], nsum)
+		
+			// First number is 0&lt;&lt;64 + 9223372036854775808
+			n1 = []uint64{0, 0x8000000000000000}
+			// Second number is 0&lt;&lt;64 + 2
+			n2 = []uint64{0, 2}
+			// Multiply them together producing overflow.
+			hi, lo = bits.Mul64(n1[1], n2[1])
+			nsum = []uint64{hi, lo}
+			fmt.Printf("%v * %v = %v\n", n1[1], n2[1], nsum)
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-14-fold-content"><label for="example-14-fold-content">OnesCount</label><span id='example-14-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"fmt"
+			"math/bits"
+		)
+		
+		func main() {
+			fmt.Printf("OnesCount(%b) = %d\n", 14, bits.OnesCount(14))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-15-fold-content"><label for="example-15-fold-content">OnesCount16</label><span id='example-15-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"fmt"
+			"math/bits"
+		)
+		
+		func main() {
+			fmt.Printf("OnesCount16(%016b) = %d\n", 14, bits.OnesCount16(14))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-16-fold-content"><label for="example-16-fold-content">OnesCount32</label><span id='example-16-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"fmt"
+			"math/bits"
+		)
+		
+		func main() {
+			fmt.Printf("OnesCount32(%032b) = %d\n", 14, bits.OnesCount32(14))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-17-fold-content"><label for="example-17-fold-content">OnesCount64</label><span id='example-17-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"fmt"
+			"math/bits"
+		)
+		
+		func main() {
+			fmt.Printf("OnesCount64(%064b) = %d\n", 14, bits.OnesCount64(14))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-18-fold-content"><label for="example-18-fold-content">OnesCount8</label><span id='example-18-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"fmt"
+			"math/bits"
+		)
+		
+		func main() {
+			fmt.Printf("OnesCount8(%08b) = %d\n", 14, bits.OnesCount8(14))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-19-fold-content"><label for="example-19-fold-content">Reverse16</label><span id='example-19-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"fmt"
+			"math/bits"
+		)
+		
+		func main() {
+			fmt.Printf("%016b\n", 19)
+			fmt.Printf("%016b\n", bits.Reverse16(19))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-20-fold-content"><label for="example-20-fold-content">Reverse32</label><span id='example-20-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"fmt"
+			"math/bits"
+		)
+		
+		func main() {
+			fmt.Printf("%032b\n", 19)
+			fmt.Printf("%032b\n", bits.Reverse32(19))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-21-fold-content"><label for="example-21-fold-content">Reverse64</label><span id='example-21-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"fmt"
+			"math/bits"
+		)
+		
+		func main() {
+			fmt.Printf("%064b\n", 19)
+			fmt.Printf("%064b\n", bits.Reverse64(19))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-22-fold-content"><label for="example-22-fold-content">Reverse8</label><span id='example-22-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"fmt"
+			"math/bits"
+		)
+		
+		func main() {
+			fmt.Printf("%08b\n", 19)
+			fmt.Printf("%08b\n", bits.Reverse8(19))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-23-fold-content"><label for="example-23-fold-content">ReverseBytes16</label><span id='example-23-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"fmt"
+			"math/bits"
+		)
+		
+		func main() {
+			fmt.Printf("%016b\n", 15)
+			fmt.Printf("%016b\n", bits.ReverseBytes16(15))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-24-fold-content"><label for="example-24-fold-content">ReverseBytes32</label><span id='example-24-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"fmt"
+			"math/bits"
+		)
+		
+		func main() {
+			fmt.Printf("%032b\n", 15)
+			fmt.Printf("%032b\n", bits.ReverseBytes32(15))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-25-fold-content"><label for="example-25-fold-content">ReverseBytes64</label><span id='example-25-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"fmt"
+			"math/bits"
+		)
+		
+		func main() {
+			fmt.Printf("%064b\n", 15)
+			fmt.Printf("%064b\n", bits.ReverseBytes64(15))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-26-fold-content"><label for="example-26-fold-content">RotateLeft16</label><span id='example-26-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"fmt"
+			"math/bits"
+		)
+		
+		func main() {
+			fmt.Printf("%016b\n", 15)
+			fmt.Printf("%016b\n", bits.RotateLeft16(15, 2))
+			fmt.Printf("%016b\n", bits.RotateLeft16(15, -2))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-27-fold-content"><label for="example-27-fold-content">RotateLeft32</label><span id='example-27-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"fmt"
+			"math/bits"
+		)
+		
+		func main() {
+			fmt.Printf("%032b\n", 15)
+			fmt.Printf("%032b\n", bits.RotateLeft32(15, 2))
+			fmt.Printf("%032b\n", bits.RotateLeft32(15, -2))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-28-fold-content"><label for="example-28-fold-content">RotateLeft64</label><span id='example-28-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"fmt"
+			"math/bits"
+		)
+		
+		func main() {
+			fmt.Printf("%064b\n", 15)
+			fmt.Printf("%064b\n", bits.RotateLeft64(15, 2))
+			fmt.Printf("%064b\n", bits.RotateLeft64(15, -2))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-29-fold-content"><label for="example-29-fold-content">RotateLeft8</label><span id='example-29-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"fmt"
+			"math/bits"
+		)
+		
+		func main() {
+			fmt.Printf("%08b\n", 15)
+			fmt.Printf("%08b\n", bits.RotateLeft8(15, 2))
+			fmt.Printf("%08b\n", bits.RotateLeft8(15, -2))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-30-fold-content"><label for="example-30-fold-content">Sub32</label><span id='example-30-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"fmt"
+			"math/bits"
+		)
+		
+		func main() {
+			// First number is 33&lt;&lt;32 + 23
+			n1 := []uint32{33, 23}
+			// Second number is 21&lt;&lt;32 + 12
+			n2 := []uint32{21, 12}
+			// Sub them together without producing carry.
+			d1, carry := bits.Sub32(n1[1], n2[1], 0)
+			d0, _ := bits.Sub32(n1[0], n2[0], carry)
+			nsum := []uint32{d0, d1}
+			fmt.Printf("%v - %v = %v (carry bit was %v)\n", n1, n2, nsum, carry)
+		
+			// First number is 3&lt;&lt;32 + 2147483647
+			n1 = []uint32{3, 0x7fffffff}
+			// Second number is 1&lt;&lt;32 + 2147483648
+			n2 = []uint32{1, 0x80000000}
+			// Sub them together producing carry.
+			d1, carry = bits.Sub32(n1[1], n2[1], 0)
+			d0, _ = bits.Sub32(n1[0], n2[0], carry)
+			nsum = []uint32{d0, d1}
+			fmt.Printf("%v - %v = %v (carry bit was %v)\n", n1, n2, nsum, carry)
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-31-fold-content"><label for="example-31-fold-content">Sub64</label><span id='example-31-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"fmt"
+			"math/bits"
+		)
+		
+		func main() {
+			// First number is 33&lt;&lt;64 + 23
+			n1 := []uint64{33, 23}
+			// Second number is 21&lt;&lt;64 + 12
+			n2 := []uint64{21, 12}
+			// Sub them together without producing carry.
+			d1, carry := bits.Sub64(n1[1], n2[1], 0)
+			d0, _ := bits.Sub64(n1[0], n2[0], carry)
+			nsum := []uint64{d0, d1}
+			fmt.Printf("%v - %v = %v (carry bit was %v)\n", n1, n2, nsum, carry)
+		
+			// First number is 3&lt;&lt;64 + 9223372036854775807
+			n1 = []uint64{3, 0x7fffffffffffffff}
+			// Second number is 1&lt;&lt;64 + 9223372036854775808
+			n2 = []uint64{1, 0x8000000000000000}
+			// Sub them together producing carry.
+			d1, carry = bits.Sub64(n1[1], n2[1], 0)
+			d0, _ = bits.Sub64(n1[0], n2[0], carry)
+			nsum = []uint64{d0, d1}
+			fmt.Printf("%v - %v = %v (carry bit was %v)\n", n1, n2, nsum, carry)
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-32-fold-content"><label for="example-32-fold-content">TrailingZeros16</label><span id='example-32-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"fmt"
+			"math/bits"
+		)
+		
+		func main() {
+			fmt.Printf("TrailingZeros16(%016b) = %d\n", 14, bits.TrailingZeros16(14))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-33-fold-content"><label for="example-33-fold-content">TrailingZeros32</label><span id='example-33-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"fmt"
+			"math/bits"
+		)
+		
+		func main() {
+			fmt.Printf("TrailingZeros32(%032b) = %d\n", 14, bits.TrailingZeros32(14))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-34-fold-content"><label for="example-34-fold-content">TrailingZeros64</label><span id='example-34-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"fmt"
+			"math/bits"
+		)
+		
+		func main() {
+			fmt.Printf("TrailingZeros64(%064b) = %d\n", 14, bits.TrailingZeros64(14))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-35-fold-content"><label for="example-35-fold-content">TrailingZeros8</label><span id='example-35-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"fmt"
+			"math/bits"
+		)
+		
+		func main() {
+			fmt.Printf("TrailingZeros8(%08b) = %d\n", 14, bits.TrailingZeros8(14))
+		}
+</span>
+</div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 49, all are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-Add">	<input type='checkbox' class="fold" id="Add-fold-content"><label for="Add-fold-content"> <a href="../../use/math/bits..Add.html">func</a> <a href="../../src/math/bits/bits.go.html#line-360">Add</a>(x, y, carry <a href="../builtin.html#name-uint">uint</a>) (sum, carryOut <a href="../builtin.html#name-uint">uint</a>)</label><span id='Add-fold-content-docs' class="fold-docs">
+<span class="md-text">		Add returns the sum with carry of x, y and carry: sum = x + y + carry.
+		The carry input must be 0 or 1; otherwise the behavior is undefined.
+		The carryOut output is guaranteed to be 0 or 1.
+		
+		This function's execution time does not depend on the inputs.</span>
+
+</span></div><div class="anchor value-res" id="name-Add32">	<input type='checkbox' class="fold" id="Add32-fold-content"><label for="Add32-fold-content"> <a href="../../use/math/bits..Add32.html">func</a> <a href="../../src/math/bits/bits.go.html#line-374">Add32</a>(x, y, carry <a href="../builtin.html#name-uint32">uint32</a>) (sum, carryOut <a href="../builtin.html#name-uint32">uint32</a>)</label><span id='Add32-fold-content-docs' class="fold-docs">
+<span class="md-text">		Add32 returns the sum with carry of x, y and carry: sum = x + y + carry.
+		The carry input must be 0 or 1; otherwise the behavior is undefined.
+		The carryOut output is guaranteed to be 0 or 1.
+		
+		This function's execution time does not depend on the inputs.</span>
+
+</span></div><div class="anchor value-res" id="name-Add64">	<input type='checkbox' class="fold" id="Add64-fold-content"><label for="Add64-fold-content"> <a href="../../use/math/bits..Add64.html">func</a> <a href="../../src/math/bits/bits.go.html#line-386">Add64</a>(x, y, carry <a href="../builtin.html#name-uint64">uint64</a>) (sum, carryOut <a href="../builtin.html#name-uint64">uint64</a>)</label><span id='Add64-fold-content-docs' class="fold-docs">
+<span class="md-text">		Add64 returns the sum with carry of x, y and carry: sum = x + y + carry.
+		The carry input must be 0 or 1; otherwise the behavior is undefined.
+		The carryOut output is guaranteed to be 0 or 1.
+		
+		This function's execution time does not depend on the inputs.</span>
+
+</span></div><div class="anchor value-res" id="name-Div">	<input type='checkbox' class="fold" id="Div-fold-content"><label for="Div-fold-content"> <a href="../../use/math/bits..Div.html">func</a> <a href="../../src/math/bits/bits.go.html#line-492">Div</a>(hi, lo, y <a href="../builtin.html#name-uint">uint</a>) (quo, rem <a href="../builtin.html#name-uint">uint</a>)</label><span id='Div-fold-content-docs' class="fold-docs">
+<span class="md-text">		Div returns the quotient and remainder of (hi, lo) divided by y:
+		quo = (hi, lo)/y, rem = (hi, lo)%y with the dividend bits' upper
+		half in parameter hi and the lower half in parameter lo.
+		Div panics for y == 0 (division by zero) or y &lt;= hi (quotient overflow).</span>
+
+</span></div><div class="anchor value-res" id="name-Div32">	<input type='checkbox' class="fold" id="Div32-fold-content"><label for="Div32-fold-content"> <a href="../../use/math/bits..Div32.html">func</a> <a href="../../src/math/bits/bits.go.html#line-505">Div32</a>(hi, lo, y <a href="../builtin.html#name-uint32">uint32</a>) (quo, rem <a href="../builtin.html#name-uint32">uint32</a>)</label><span id='Div32-fold-content-docs' class="fold-docs">
+<span class="md-text">		Div32 returns the quotient and remainder of (hi, lo) divided by y:
+		quo = (hi, lo)/y, rem = (hi, lo)%y with the dividend bits' upper
+		half in parameter hi and the lower half in parameter lo.
+		Div32 panics for y == 0 (division by zero) or y &lt;= hi (quotient overflow).</span>
+
+</span></div><div class="anchor value-res" id="name-Div64">	<input type='checkbox' class="fold" id="Div64-fold-content"><label for="Div64-fold-content"> <a href="../../use/math/bits..Div64.html">func</a> <a href="../../src/math/bits/bits.go.html#line-518">Div64</a>(hi, lo, y <a href="../builtin.html#name-uint64">uint64</a>) (quo, rem <a href="../builtin.html#name-uint64">uint64</a>)</label><span id='Div64-fold-content-docs' class="fold-docs">
+<span class="md-text">		Div64 returns the quotient and remainder of (hi, lo) divided by y:
+		quo = (hi, lo)/y, rem = (hi, lo)%y with the dividend bits' upper
+		half in parameter hi and the lower half in parameter lo.
+		Div64 panics for y == 0 (division by zero) or y &lt;= hi (quotient overflow).</span>
+
+</span></div><div class="anchor value-res" id="name-LeadingZeros">	<input type='checkbox' class="fold" id="LeadingZeros-fold-content"><label for="LeadingZeros-fold-content"> <a href="../../use/math/bits..LeadingZeros.html">func</a> <a href="../../src/math/bits/bits.go.html#line-25">LeadingZeros</a>(x <a href="../builtin.html#name-uint">uint</a>) <a href="../builtin.html#name-int">int</a></label><span id='LeadingZeros-fold-content-docs' class="fold-docs">
+<span class="md-text">		LeadingZeros returns the number of leading zero bits in x; the result is [UintSize] for x == 0.</span>
+
+</span></div><div class="anchor value-res" id="name-LeadingZeros16">	<input type='checkbox' class="fold" id="LeadingZeros16-fold-content"><label for="LeadingZeros16-fold-content"> <a href="../../use/math/bits..LeadingZeros16.html">func</a> <a href="../../src/math/bits/bits.go.html#line-31">LeadingZeros16</a>(x <a href="../builtin.html#name-uint16">uint16</a>) <a href="../builtin.html#name-int">int</a></label><span id='LeadingZeros16-fold-content-docs' class="fold-docs">
+<span class="md-text">		LeadingZeros16 returns the number of leading zero bits in x; the result is 16 for x == 0.</span>
+
+</span></div><div class="anchor value-res" id="name-LeadingZeros32">	<input type='checkbox' class="fold" id="LeadingZeros32-fold-content"><label for="LeadingZeros32-fold-content"> <a href="../../use/math/bits..LeadingZeros32.html">func</a> <a href="../../src/math/bits/bits.go.html#line-34">LeadingZeros32</a>(x <a href="../builtin.html#name-uint32">uint32</a>) <a href="../builtin.html#name-int">int</a></label><span id='LeadingZeros32-fold-content-docs' class="fold-docs">
+<span class="md-text">		LeadingZeros32 returns the number of leading zero bits in x; the result is 32 for x == 0.</span>
+
+</span></div><div class="anchor value-res" id="name-LeadingZeros64">	<input type='checkbox' class="fold" id="LeadingZeros64-fold-content"><label for="LeadingZeros64-fold-content"> <a href="../../use/math/bits..LeadingZeros64.html">func</a> <a href="../../src/math/bits/bits.go.html#line-37">LeadingZeros64</a>(x <a href="../builtin.html#name-uint64">uint64</a>) <a href="../builtin.html#name-int">int</a></label><span id='LeadingZeros64-fold-content-docs' class="fold-docs">
+<span class="md-text">		LeadingZeros64 returns the number of leading zero bits in x; the result is 64 for x == 0.</span>
+
+</span></div><div class="anchor value-res" id="name-LeadingZeros8">	<input type='checkbox' class="fold" id="LeadingZeros8-fold-content"><label for="LeadingZeros8-fold-content"> <a href="../../use/math/bits..LeadingZeros8.html">func</a> <a href="../../src/math/bits/bits.go.html#line-28">LeadingZeros8</a>(x <a href="../builtin.html#name-uint8">uint8</a>) <a href="../builtin.html#name-int">int</a></label><span id='LeadingZeros8-fold-content-docs' class="fold-docs">
+<span class="md-text">		LeadingZeros8 returns the number of leading zero bits in x; the result is 8 for x == 0.</span>
+
+</span></div><div class="anchor value-res" id="name-Len">	<input type='checkbox' class="fold" id="Len-fold-content"><label for="Len-fold-content"> <a href="../../use/math/bits..Len.html">func</a> <a href="../../src/math/bits/bits.go.html#line-302">Len</a>(x <a href="../builtin.html#name-uint">uint</a>) <a href="../builtin.html#name-int">int</a></label><span id='Len-fold-content-docs' class="fold-docs">
+<span class="md-text">		Len returns the minimum number of bits required to represent x; the result is 0 for x == 0.</span>
+
+</span></div><div class="anchor value-res" id="name-Len16">	<input type='checkbox' class="fold" id="Len16-fold-content"><label for="Len16-fold-content"> <a href="../../use/math/bits..Len16.html">func</a> <a href="../../src/math/bits/bits.go.html#line-315">Len16</a>(x <a href="../builtin.html#name-uint16">uint16</a>) (n <a href="../builtin.html#name-int">int</a>)</label><span id='Len16-fold-content-docs' class="fold-docs">
+<span class="md-text">		Len16 returns the minimum number of bits required to represent x; the result is 0 for x == 0.</span>
+
+</span></div><div class="anchor value-res" id="name-Len32">	<input type='checkbox' class="fold" id="Len32-fold-content"><label for="Len32-fold-content"> <a href="../../use/math/bits..Len32.html">func</a> <a href="../../src/math/bits/bits.go.html#line-324">Len32</a>(x <a href="../builtin.html#name-uint32">uint32</a>) (n <a href="../builtin.html#name-int">int</a>)</label><span id='Len32-fold-content-docs' class="fold-docs">
+<span class="md-text">		Len32 returns the minimum number of bits required to represent x; the result is 0 for x == 0.</span>
+
+</span></div><div class="anchor value-res" id="name-Len64">	<input type='checkbox' class="fold" id="Len64-fold-content"><label for="Len64-fold-content"> <a href="../../use/math/bits..Len64.html">func</a> <a href="../../src/math/bits/bits.go.html#line-337">Len64</a>(x <a href="../builtin.html#name-uint64">uint64</a>) (n <a href="../builtin.html#name-int">int</a>)</label><span id='Len64-fold-content-docs' class="fold-docs">
+<span class="md-text">		Len64 returns the minimum number of bits required to represent x; the result is 0 for x == 0.</span>
+
+</span></div><div class="anchor value-res" id="name-Len8">	<input type='checkbox' class="fold" id="Len8-fold-content"><label for="Len8-fold-content"> <a href="../../use/math/bits..Len8.html">func</a> <a href="../../src/math/bits/bits.go.html#line-310">Len8</a>(x <a href="../builtin.html#name-uint8">uint8</a>) <a href="../builtin.html#name-int">int</a></label><span id='Len8-fold-content-docs' class="fold-docs">
+<span class="md-text">		Len8 returns the minimum number of bits required to represent x; the result is 0 for x == 0.</span>
+
+</span></div><div class="anchor value-res" id="name-Mul">	<input type='checkbox' class="fold" id="Mul-fold-content"><label for="Mul-fold-content"> <a href="../../use/math/bits..Mul.html">func</a> <a href="../../src/math/bits/bits.go.html#line-445">Mul</a>(x, y <a href="../builtin.html#name-uint">uint</a>) (hi, lo <a href="../builtin.html#name-uint">uint</a>)</label><span id='Mul-fold-content-docs' class="fold-docs">
+<span class="md-text">		Mul returns the full-width product of x and y: (hi, lo) = x * y
+		with the product bits' upper half returned in hi and the lower
+		half returned in lo.
+		
+		This function's execution time does not depend on the inputs.</span>
+
+</span></div><div class="anchor value-res" id="name-Mul32">	<input type='checkbox' class="fold" id="Mul32-fold-content"><label for="Mul32-fold-content"> <a href="../../use/math/bits..Mul32.html">func</a> <a href="../../src/math/bits/bits.go.html#line-459">Mul32</a>(x, y <a href="../builtin.html#name-uint32">uint32</a>) (hi, lo <a href="../builtin.html#name-uint32">uint32</a>)</label><span id='Mul32-fold-content-docs' class="fold-docs">
+<span class="md-text">		Mul32 returns the 64-bit product of x and y: (hi, lo) = x * y
+		with the product bits' upper half returned in hi and the lower
+		half returned in lo.
+		
+		This function's execution time does not depend on the inputs.</span>
+
+</span></div><div class="anchor value-res" id="name-Mul64">	<input type='checkbox' class="fold" id="Mul64-fold-content"><label for="Mul64-fold-content"> <a href="../../use/math/bits..Mul64.html">func</a> <a href="../../src/math/bits/bits.go.html#line-470">Mul64</a>(x, y <a href="../builtin.html#name-uint64">uint64</a>) (hi, lo <a href="../builtin.html#name-uint64">uint64</a>)</label><span id='Mul64-fold-content-docs' class="fold-docs">
+<span class="md-text">		Mul64 returns the 128-bit product of x and y: (hi, lo) = x * y
+		with the product bits' upper half returned in hi and the lower
+		half returned in lo.
+		
+		This function's execution time does not depend on the inputs.</span>
+
+</span></div><div class="anchor value-res" id="name-OnesCount">	<input type='checkbox' class="fold" id="OnesCount-fold-content"><label for="OnesCount-fold-content"> <a href="../../use/math/bits..OnesCount.html">func</a> <a href="../../src/math/bits/bits.go.html#line-117">OnesCount</a>(x <a href="../builtin.html#name-uint">uint</a>) <a href="../builtin.html#name-int">int</a></label><span id='OnesCount-fold-content-docs' class="fold-docs">
+<span class="md-text">		OnesCount returns the number of one bits ("population count") in x.</span>
+
+</span></div><div class="anchor value-res" id="name-OnesCount16">	<input type='checkbox' class="fold" id="OnesCount16-fold-content"><label for="OnesCount16-fold-content"> <a href="../../use/math/bits..OnesCount16.html">func</a> <a href="../../src/math/bits/bits.go.html#line-130">OnesCount16</a>(x <a href="../builtin.html#name-uint16">uint16</a>) <a href="../builtin.html#name-int">int</a></label><span id='OnesCount16-fold-content-docs' class="fold-docs">
+<span class="md-text">		OnesCount16 returns the number of one bits ("population count") in x.</span>
+
+</span></div><div class="anchor value-res" id="name-OnesCount32">	<input type='checkbox' class="fold" id="OnesCount32-fold-content"><label for="OnesCount32-fold-content"> <a href="../../use/math/bits..OnesCount32.html">func</a> <a href="../../src/math/bits/bits.go.html#line-135">OnesCount32</a>(x <a href="../builtin.html#name-uint32">uint32</a>) <a href="../builtin.html#name-int">int</a></label><span id='OnesCount32-fold-content-docs' class="fold-docs">
+<span class="md-text">		OnesCount32 returns the number of one bits ("population count") in x.</span>
+
+</span></div><div class="anchor value-res" id="name-OnesCount64">	<input type='checkbox' class="fold" id="OnesCount64-fold-content"><label for="OnesCount64-fold-content"> <a href="../../use/math/bits..OnesCount64.html">func</a> <a href="../../src/math/bits/bits.go.html#line-140">OnesCount64</a>(x <a href="../builtin.html#name-uint64">uint64</a>) <a href="../builtin.html#name-int">int</a></label><span id='OnesCount64-fold-content-docs' class="fold-docs">
+<span class="md-text">		OnesCount64 returns the number of one bits ("population count") in x.</span>
+
+</span></div><div class="anchor value-res" id="name-OnesCount8">	<input type='checkbox' class="fold" id="OnesCount8-fold-content"><label for="OnesCount8-fold-content"> <a href="../../use/math/bits..OnesCount8.html">func</a> <a href="../../src/math/bits/bits.go.html#line-125">OnesCount8</a>(x <a href="../builtin.html#name-uint8">uint8</a>) <a href="../builtin.html#name-int">int</a></label><span id='OnesCount8-fold-content-docs' class="fold-docs">
+<span class="md-text">		OnesCount8 returns the number of one bits ("population count") in x.</span>
+
+</span></div><div class="anchor value-res" id="name-Rem">	<input type='checkbox' class="fold" id="Rem-fold-content"><label for="Rem-fold-content"> <a href="../../use/math/bits..Rem.html">func</a> <a href="../../src/math/bits/bits.go.html#line-573">Rem</a>(hi, lo, y <a href="../builtin.html#name-uint">uint</a>) <a href="../builtin.html#name-uint">uint</a></label><span id='Rem-fold-content-docs' class="fold-docs">
+<span class="md-text">		Rem returns the remainder of (hi, lo) divided by y. Rem panics for
+		y == 0 (division by zero) but, unlike Div, it doesn't panic on a
+		quotient overflow.</span>
+
+</span></div><div class="anchor value-res" id="name-Rem32">	<input type='checkbox' class="fold" id="Rem32-fold-content"><label for="Rem32-fold-content"> <a href="../../use/math/bits..Rem32.html">func</a> <a href="../../src/math/bits/bits.go.html#line-583">Rem32</a>(hi, lo, y <a href="../builtin.html#name-uint32">uint32</a>) <a href="../builtin.html#name-uint32">uint32</a></label><span id='Rem32-fold-content-docs' class="fold-docs">
+<span class="md-text">		Rem32 returns the remainder of (hi, lo) divided by y. Rem32 panics
+		for y == 0 (division by zero) but, unlike [Div32], it doesn't panic
+		on a quotient overflow.</span>
+
+</span></div><div class="anchor value-res" id="name-Rem64">	<input type='checkbox' class="fold" id="Rem64-fold-content"><label for="Rem64-fold-content"> <a href="../../use/math/bits..Rem64.html">func</a> <a href="../../src/math/bits/bits.go.html#line-590">Rem64</a>(hi, lo, y <a href="../builtin.html#name-uint64">uint64</a>) <a href="../builtin.html#name-uint64">uint64</a></label><span id='Rem64-fold-content-docs' class="fold-docs">
+<span class="md-text">		Rem64 returns the remainder of (hi, lo) divided by y. Rem64 panics
+		for y == 0 (division by zero) but, unlike [Div64], it doesn't panic
+		on a quotient overflow.</span>
+
+</span></div><div class="anchor value-res" id="name-Reverse">	<input type='checkbox' class="fold" id="Reverse-fold-content"><label for="Reverse-fold-content"> <a href="../../use/math/bits..Reverse.html">func</a> <a href="../../src/math/bits/bits.go.html#line-226">Reverse</a>(x <a href="../builtin.html#name-uint">uint</a>) <a href="../builtin.html#name-uint">uint</a></label><span id='Reverse-fold-content-docs' class="fold-docs">
+<span class="md-text">		Reverse returns the value of x with its bits in reversed order.</span>
+
+</span></div><div class="anchor value-res" id="name-Reverse16">	<input type='checkbox' class="fold" id="Reverse16-fold-content"><label for="Reverse16-fold-content"> <a href="../../use/math/bits..Reverse16.html">func</a> <a href="../../src/math/bits/bits.go.html#line-239">Reverse16</a>(x <a href="../builtin.html#name-uint16">uint16</a>) <a href="../builtin.html#name-uint16">uint16</a></label><span id='Reverse16-fold-content-docs' class="fold-docs">
+<span class="md-text">		Reverse16 returns the value of x with its bits in reversed order.</span>
+
+</span></div><div class="anchor value-res" id="name-Reverse32">	<input type='checkbox' class="fold" id="Reverse32-fold-content"><label for="Reverse32-fold-content"> <a href="../../use/math/bits..Reverse32.html">func</a> <a href="../../src/math/bits/bits.go.html#line-244">Reverse32</a>(x <a href="../builtin.html#name-uint32">uint32</a>) <a href="../builtin.html#name-uint32">uint32</a></label><span id='Reverse32-fold-content-docs' class="fold-docs">
+<span class="md-text">		Reverse32 returns the value of x with its bits in reversed order.</span>
+
+</span></div><div class="anchor value-res" id="name-Reverse64">	<input type='checkbox' class="fold" id="Reverse64-fold-content"><label for="Reverse64-fold-content"> <a href="../../use/math/bits..Reverse64.html">func</a> <a href="../../src/math/bits/bits.go.html#line-253">Reverse64</a>(x <a href="../builtin.html#name-uint64">uint64</a>) <a href="../builtin.html#name-uint64">uint64</a></label><span id='Reverse64-fold-content-docs' class="fold-docs">
+<span class="md-text">		Reverse64 returns the value of x with its bits in reversed order.</span>
+
+</span></div><div class="anchor value-res" id="name-Reverse8">	<input type='checkbox' class="fold" id="Reverse8-fold-content"><label for="Reverse8-fold-content"> <a href="../../use/math/bits..Reverse8.html">func</a> <a href="../../src/math/bits/bits.go.html#line-234">Reverse8</a>(x <a href="../builtin.html#name-uint8">uint8</a>) <a href="../builtin.html#name-uint8">uint8</a></label><span id='Reverse8-fold-content-docs' class="fold-docs">
+<span class="md-text">		Reverse8 returns the value of x with its bits in reversed order.</span>
+
+</span></div><div class="anchor value-res" id="name-ReverseBytes">	<input type='checkbox' class="fold" id="ReverseBytes-fold-content"><label for="ReverseBytes-fold-content"> <a href="../../use/math/bits..ReverseBytes.html">func</a> <a href="../../src/math/bits/bits.go.html#line-266">ReverseBytes</a>(x <a href="../builtin.html#name-uint">uint</a>) <a href="../builtin.html#name-uint">uint</a></label><span id='ReverseBytes-fold-content-docs' class="fold-docs">
+<span class="md-text">		ReverseBytes returns the value of x with its bytes in reversed order.
+		
+		This function's execution time does not depend on the inputs.</span>
+
+</span></div><div class="anchor value-res" id="name-ReverseBytes16">	<input type='checkbox' class="fold" id="ReverseBytes16-fold-content"><label for="ReverseBytes16-fold-content"> <a href="../../use/math/bits..ReverseBytes16.html">func</a> <a href="../../src/math/bits/bits.go.html#line-276">ReverseBytes16</a>(x <a href="../builtin.html#name-uint16">uint16</a>) <a href="../builtin.html#name-uint16">uint16</a></label><span id='ReverseBytes16-fold-content-docs' class="fold-docs">
+<span class="md-text">		ReverseBytes16 returns the value of x with its bytes in reversed order.
+		
+		This function's execution time does not depend on the inputs.</span>
+
+</span></div><div class="anchor value-res" id="name-ReverseBytes32">	<input type='checkbox' class="fold" id="ReverseBytes32-fold-content"><label for="ReverseBytes32-fold-content"> <a href="../../use/math/bits..ReverseBytes32.html">func</a> <a href="../../src/math/bits/bits.go.html#line-283">ReverseBytes32</a>(x <a href="../builtin.html#name-uint32">uint32</a>) <a href="../builtin.html#name-uint32">uint32</a></label><span id='ReverseBytes32-fold-content-docs' class="fold-docs">
+<span class="md-text">		ReverseBytes32 returns the value of x with its bytes in reversed order.
+		
+		This function's execution time does not depend on the inputs.</span>
+
+</span></div><div class="anchor value-res" id="name-ReverseBytes64">	<input type='checkbox' class="fold" id="ReverseBytes64-fold-content"><label for="ReverseBytes64-fold-content"> <a href="../../use/math/bits..ReverseBytes64.html">func</a> <a href="../../src/math/bits/bits.go.html#line-292">ReverseBytes64</a>(x <a href="../builtin.html#name-uint64">uint64</a>) <a href="../builtin.html#name-uint64">uint64</a></label><span id='ReverseBytes64-fold-content-docs' class="fold-docs">
+<span class="md-text">		ReverseBytes64 returns the value of x with its bytes in reversed order.
+		
+		This function's execution time does not depend on the inputs.</span>
+
+</span></div><div class="anchor value-res" id="name-RotateLeft">	<input type='checkbox' class="fold" id="RotateLeft-fold-content"><label for="RotateLeft-fold-content"> <a href="../../use/math/bits..RotateLeft.html">func</a> <a href="../../src/math/bits/bits.go.html#line-176">RotateLeft</a>(x <a href="../builtin.html#name-uint">uint</a>, k <a href="../builtin.html#name-int">int</a>) <a href="../builtin.html#name-uint">uint</a></label><span id='RotateLeft-fold-content-docs' class="fold-docs">
+<span class="md-text">		RotateLeft returns the value of x rotated left by (k mod [UintSize]) bits.
+		To rotate x right by k bits, call RotateLeft(x, -k).
+		
+		This function's execution time does not depend on the inputs.</span>
+
+</span></div><div class="anchor value-res" id="name-RotateLeft16">	<input type='checkbox' class="fold" id="RotateLeft16-fold-content"><label for="RotateLeft16-fold-content"> <a href="../../use/math/bits..RotateLeft16.html">func</a> <a href="../../src/math/bits/bits.go.html#line-197">RotateLeft16</a>(x <a href="../builtin.html#name-uint16">uint16</a>, k <a href="../builtin.html#name-int">int</a>) <a href="../builtin.html#name-uint16">uint16</a></label><span id='RotateLeft16-fold-content-docs' class="fold-docs">
+<span class="md-text">		RotateLeft16 returns the value of x rotated left by (k mod 16) bits.
+		To rotate x right by k bits, call RotateLeft16(x, -k).
+		
+		This function's execution time does not depend on the inputs.</span>
+
+</span></div><div class="anchor value-res" id="name-RotateLeft32">	<input type='checkbox' class="fold" id="RotateLeft32-fold-content"><label for="RotateLeft32-fold-content"> <a href="../../use/math/bits..RotateLeft32.html">func</a> <a href="../../src/math/bits/bits.go.html#line-207">RotateLeft32</a>(x <a href="../builtin.html#name-uint32">uint32</a>, k <a href="../builtin.html#name-int">int</a>) <a href="../builtin.html#name-uint32">uint32</a></label><span id='RotateLeft32-fold-content-docs' class="fold-docs">
+<span class="md-text">		RotateLeft32 returns the value of x rotated left by (k mod 32) bits.
+		To rotate x right by k bits, call RotateLeft32(x, -k).
+		
+		This function's execution time does not depend on the inputs.</span>
+
+</span></div><div class="anchor value-res" id="name-RotateLeft64">	<input type='checkbox' class="fold" id="RotateLeft64-fold-content"><label for="RotateLeft64-fold-content"> <a href="../../use/math/bits..RotateLeft64.html">func</a> <a href="../../src/math/bits/bits.go.html#line-217">RotateLeft64</a>(x <a href="../builtin.html#name-uint64">uint64</a>, k <a href="../builtin.html#name-int">int</a>) <a href="../builtin.html#name-uint64">uint64</a></label><span id='RotateLeft64-fold-content-docs' class="fold-docs">
+<span class="md-text">		RotateLeft64 returns the value of x rotated left by (k mod 64) bits.
+		To rotate x right by k bits, call RotateLeft64(x, -k).
+		
+		This function's execution time does not depend on the inputs.</span>
+
+</span></div><div class="anchor value-res" id="name-RotateLeft8">	<input type='checkbox' class="fold" id="RotateLeft8-fold-content"><label for="RotateLeft8-fold-content"> <a href="../../use/math/bits..RotateLeft8.html">func</a> <a href="../../src/math/bits/bits.go.html#line-187">RotateLeft8</a>(x <a href="../builtin.html#name-uint8">uint8</a>, k <a href="../builtin.html#name-int">int</a>) <a href="../builtin.html#name-uint8">uint8</a></label><span id='RotateLeft8-fold-content-docs' class="fold-docs">
+<span class="md-text">		RotateLeft8 returns the value of x rotated left by (k mod 8) bits.
+		To rotate x right by k bits, call RotateLeft8(x, -k).
+		
+		This function's execution time does not depend on the inputs.</span>
+
+</span></div><div class="anchor value-res" id="name-Sub">	<input type='checkbox' class="fold" id="Sub-fold-content"><label for="Sub-fold-content"> <a href="../../use/math/bits..Sub.html">func</a> <a href="../../src/math/bits/bits.go.html#line-402">Sub</a>(x, y, borrow <a href="../builtin.html#name-uint">uint</a>) (diff, borrowOut <a href="../builtin.html#name-uint">uint</a>)</label><span id='Sub-fold-content-docs' class="fold-docs">
+<span class="md-text">		Sub returns the difference of x, y and borrow: diff = x - y - borrow.
+		The borrow input must be 0 or 1; otherwise the behavior is undefined.
+		The borrowOut output is guaranteed to be 0 or 1.
+		
+		This function's execution time does not depend on the inputs.</span>
+
+</span></div><div class="anchor value-res" id="name-Sub32">	<input type='checkbox' class="fold" id="Sub32-fold-content"><label for="Sub32-fold-content"> <a href="../../use/math/bits..Sub32.html">func</a> <a href="../../src/math/bits/bits.go.html#line-416">Sub32</a>(x, y, borrow <a href="../builtin.html#name-uint32">uint32</a>) (diff, borrowOut <a href="../builtin.html#name-uint32">uint32</a>)</label><span id='Sub32-fold-content-docs' class="fold-docs">
+<span class="md-text">		Sub32 returns the difference of x, y and borrow, diff = x - y - borrow.
+		The borrow input must be 0 or 1; otherwise the behavior is undefined.
+		The borrowOut output is guaranteed to be 0 or 1.
+		
+		This function's execution time does not depend on the inputs.</span>
+
+</span></div><div class="anchor value-res" id="name-Sub64">	<input type='checkbox' class="fold" id="Sub64-fold-content"><label for="Sub64-fold-content"> <a href="../../use/math/bits..Sub64.html">func</a> <a href="../../src/math/bits/bits.go.html#line-431">Sub64</a>(x, y, borrow <a href="../builtin.html#name-uint64">uint64</a>) (diff, borrowOut <a href="../builtin.html#name-uint64">uint64</a>)</label><span id='Sub64-fold-content-docs' class="fold-docs">
+<span class="md-text">		Sub64 returns the difference of x, y and borrow: diff = x - y - borrow.
+		The borrow input must be 0 or 1; otherwise the behavior is undefined.
+		The borrowOut output is guaranteed to be 0 or 1.
+		
+		This function's execution time does not depend on the inputs.</span>
+
+</span></div><div class="anchor value-res" id="name-TrailingZeros">	<input type='checkbox' class="fold" id="TrailingZeros-fold-content"><label for="TrailingZeros-fold-content"> <a href="../../use/math/bits..TrailingZeros.html">func</a> <a href="../../src/math/bits/bits.go.html#line-59">TrailingZeros</a>(x <a href="../builtin.html#name-uint">uint</a>) <a href="../builtin.html#name-int">int</a></label><span id='TrailingZeros-fold-content-docs' class="fold-docs">
+<span class="md-text">		TrailingZeros returns the number of trailing zero bits in x; the result is [UintSize] for x == 0.</span>
+
+</span></div><div class="anchor value-res" id="name-TrailingZeros16">	<input type='checkbox' class="fold" id="TrailingZeros16-fold-content"><label for="TrailingZeros16-fold-content"> <a href="../../use/math/bits..TrailingZeros16.html">func</a> <a href="../../src/math/bits/bits.go.html#line-72">TrailingZeros16</a>(x <a href="../builtin.html#name-uint16">uint16</a>) <a href="../builtin.html#name-int">int</a></label><span id='TrailingZeros16-fold-content-docs' class="fold-docs">
+<span class="md-text">		TrailingZeros16 returns the number of trailing zero bits in x; the result is 16 for x == 0.</span>
+
+</span></div><div class="anchor value-res" id="name-TrailingZeros32">	<input type='checkbox' class="fold" id="TrailingZeros32-fold-content"><label for="TrailingZeros32-fold-content"> <a href="../../use/math/bits..TrailingZeros32.html">func</a> <a href="../../src/math/bits/bits.go.html#line-81">TrailingZeros32</a>(x <a href="../builtin.html#name-uint32">uint32</a>) <a href="../builtin.html#name-int">int</a></label><span id='TrailingZeros32-fold-content-docs' class="fold-docs">
+<span class="md-text">		TrailingZeros32 returns the number of trailing zero bits in x; the result is 32 for x == 0.</span>
+
+</span></div><div class="anchor value-res" id="name-TrailingZeros64">	<input type='checkbox' class="fold" id="TrailingZeros64-fold-content"><label for="TrailingZeros64-fold-content"> <a href="../../use/math/bits..TrailingZeros64.html">func</a> <a href="../../src/math/bits/bits.go.html#line-90">TrailingZeros64</a>(x <a href="../builtin.html#name-uint64">uint64</a>) <a href="../builtin.html#name-int">int</a></label><span id='TrailingZeros64-fold-content-docs' class="fold-docs">
+<span class="md-text">		TrailingZeros64 returns the number of trailing zero bits in x; the result is 64 for x == 0.</span>
+
+</span></div><div class="anchor value-res" id="name-TrailingZeros8">	<input type='checkbox' class="fold" id="TrailingZeros8-fold-content"><label for="TrailingZeros8-fold-content"> <a href="../../use/math/bits..TrailingZeros8.html">func</a> <a href="../../src/math/bits/bits.go.html#line-67">TrailingZeros8</a>(x <a href="../builtin.html#name-uint8">uint8</a>) <a href="../builtin.html#name-int">int</a></label><span id='TrailingZeros8-fold-content-docs' class="fold-docs">
+<span class="md-text">		TrailingZeros8 returns the number of trailing zero bits in x; the result is 8 for x == 0.</span>
+
+</span></div></div>
+<div id="exported-variables"><span class="title">Package-Level Variables<span class="title-stat"><i> (total 4, none are exported)</i></span></span>
+
+	<input type='checkbox' class="showhide" id="unexported-variables-showhide"><i><label for="unexported-variables-showhide" class="show-inline">/* 4 unexporteds ... */</label><label for="unexported-variables-showhide" class="hide-inline">/* 4 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-deBruijn32tab"><i>	<span class="nodocs">  <a href="../../use/math/bits..deBruijn32tab^680f5.html">var</a> <a href="../../src/math/bits/bits.go.html#line-44">deBruijn32tab</a> [32]<a href="../builtin.html#name-byte">byte</a></span></i></div><div class="anchor value-res hidden" id="name-deBruijn64tab"><i>	<span class="nodocs">  <a href="../../use/math/bits..deBruijn64tab^9c4e1.html">var</a> <a href="../../src/math/bits/bits.go.html#line-51">deBruijn64tab</a> [64]<a href="../builtin.html#name-byte">byte</a></span></i></div><div class="anchor value-res hidden" id="name-divideError"><i>	<span class="nodocs">  <a href="../../use/math/bits..divideError^bebc0.html">var</a> <a href="../../src/math/bits/bits_errors.go.html#line-15">divideError</a> <a href="../builtin.html#name-error">error</a></span></i></div><div class="anchor value-res hidden" id="name-overflowError"><i>	<span class="nodocs">  <a href="../../use/math/bits..overflowError^cbf96.html">var</a> <a href="../../src/math/bits/bits_errors.go.html#line-12">overflowError</a> <a href="../builtin.html#name-error">error</a></span></i></div></div>
+<div id="exported-constants"><span class="title">Package-Level Constants<span class="title-stat"><i> (total 13, in which 1 is exported)</i></span></span>
+
+<div class="anchor value-res" id="name-UintSize">	<input type='checkbox' class="fold" id="UintSize-fold-content"><label for="UintSize-fold-content"><a href="../../use/math/bits..UintSize.html">const</a> <a href="../../src/math/bits/bits.go.html#line-20">UintSize</a> = 64</label><span id='UintSize-fold-content-docs' class="fold-docs">
+<span class="md-text">		UintSize is the size of a uint in bits.</span>
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-constants-showhide"><i><label for="unexported-constants-showhide" class="show-inline">/* 12 unexporteds ... */</label><label for="unexported-constants-showhide" class="hide-inline">/* 12 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-deBruijn32"><i>	<input type='checkbox' class="fold" id="deBruijn32-fold-content"><label for="deBruijn32-fold-content"><a href="../../use/math/bits..deBruijn32^72747.html">const</a> <a href="../../src/math/bits/bits.go.html#line-42">deBruijn32</a> = 125613361</label><span id='deBruijn32-fold-content-docs' class="fold-docs">
+<span class="md-text">		See http://supertech.csail.mit.edu/papers/debruijn.pdf</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-deBruijn64"><i>	<span class="nodocs"><a href="../../use/math/bits..deBruijn64^128a3.html">const</a> <a href="../../src/math/bits/bits.go.html#line-49">deBruijn64</a> = 285870213051353865</span></i></div><div class="anchor value-res hidden" id="name-len8tab"><i>	<span class="nodocs"><a href="../../use/math/bits..len8tab^dacc5.html">const</a> <a href="../../src/math/bits/bits_tables.go.html#line-63">len8tab</a> = "\x00\x01\x02\x02\x03\x03\x03\x03\x04\x04\x04\x04\x04\x04\x04\x04\x05...</span></i></div><div class="anchor value-res hidden" id="name-m0"><i>	<span class="nodocs"><a href="../../use/math/bits..m0^e4223.html">const</a> <a href="../../src/math/bits/bits.go.html#line-110">m0</a> = 6148914691236517205 // <span class="md-text">01010101 ...</span></span></i></div><div class="anchor value-res hidden" id="name-m1"><i>	<span class="nodocs"><a href="../../use/math/bits..m1^ca0df.html">const</a> <a href="../../src/math/bits/bits.go.html#line-111">m1</a> = 3689348814741910323 // <span class="md-text">00110011 ...</span></span></i></div><div class="anchor value-res hidden" id="name-m2"><i>	<span class="nodocs"><a href="../../use/math/bits..m2^29c1b.html">const</a> <a href="../../src/math/bits/bits.go.html#line-112">m2</a> = 1085102592571150095 // <span class="md-text">00001111 ...</span></span></i></div><div class="anchor value-res hidden" id="name-m3"><i>	<span class="nodocs"><a href="../../use/math/bits..m3^15381.html">const</a> <a href="../../src/math/bits/bits.go.html#line-113">m3</a> = 71777214294589695 // <span class="md-text">etc.</span></span></i></div><div class="anchor value-res hidden" id="name-m4"><i>	<span class="nodocs"><a href="../../use/math/bits..m4^2396a.html">const</a> <a href="../../src/math/bits/bits.go.html#line-114">m4</a> = 281470681808895</span></i></div><div class="anchor value-res hidden" id="name-ntz8tab"><i>	<span class="nodocs"><a href="../../use/math/bits..ntz8tab^94ca9.html">const</a> <a href="../../src/math/bits/bits_tables.go.html#line-9">ntz8tab</a> = "\b\x00\x01\x00\x02\x00\x01\x00\x03\x00\x01\x00\x02\x00\x01\x00\x04\x...</span></i></div><div class="anchor value-res hidden" id="name-pop8tab"><i>	<span class="nodocs"><a href="../../use/math/bits..pop8tab^4f272.html">const</a> <a href="../../src/math/bits/bits_tables.go.html#line-27">pop8tab</a> = "\x00\x01\x01\x02\x01\x02\x02\x03\x01\x02\x02\x03\x02\x03\x03\x04\x01...</span></i></div><div class="anchor value-res hidden" id="name-rev8tab"><i>	<span class="nodocs"><a href="../../use/math/bits..rev8tab^05b1a.html">const</a> <a href="../../src/math/bits/bits_tables.go.html#line-45">rev8tab</a> = "\x00\x80@\xc0 \xa0`\xe0\x10\x90P\xd00\xb0p\xf0\b\x88H\xc8(\xa8h\xe8\...</span></i></div><div class="anchor value-res hidden" id="name-uintSize"><i>	<span class="nodocs"><a href="../../use/math/bits..uintSize^cfe5c.html">const</a> <a href="../../src/math/bits/bits.go.html#line-17">uintSize</a> = 64 // <span class="md-text">32 or 64</span></span></i></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

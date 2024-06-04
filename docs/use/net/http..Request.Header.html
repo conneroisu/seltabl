@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/http.Request.Header</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/net/http.html">net/http</a>.<a href="../../src/net/http/request.go.html#line-111">Request</a>.<a href="../../src/net/http/request.go.html#line-170">Header</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">76 uses</span>
+
+	net/http (current package)
+		<a href="../../src/net/http/client.go.html#line-241">client.go#L241</a>: 	if req.<b>Header</b> == nil {
+		<a href="../../src/net/http/client.go.html#line-243" class="path-duplicate">client.go</a><a href="../../src/net/http/client.go.html#line-243">#L243</a>: 		req.<b>Header</b> = make(Header)
+		<a href="../../src/net/http/client.go.html#line-246" class="path-duplicate">client.go</a><a href="../../src/net/http/client.go.html#line-246">#L246</a>: 	if u := req.URL.User; u != nil &amp;&amp; req.<b>Header</b>.Get("Authorization") == "" {
+		<a href="../../src/net/http/client.go.html#line-250" class="path-duplicate">client.go</a><a href="../../src/net/http/client.go.html#line-250">#L250</a>: 		req.<b>Header</b> = cloneOrMakeHeader(ireq.<b>Header</b>)
+		<a href="../../src/net/http/client.go.html#line-251" class="path-duplicate">client.go</a><a href="../../src/net/http/client.go.html#line-251">#L251</a>: 		req.<b>Header</b>.Set("Authorization", "Basic "+basicAuth(username, password))
+		<a href="../../src/net/http/client.go.html#line-665" class="path-duplicate">client.go</a><a href="../../src/net/http/client.go.html#line-665">#L665</a>: 				<b>Header</b>:   make(Header),
+		<a href="../../src/net/http/client.go.html#line-687" class="path-duplicate">client.go</a><a href="../../src/net/http/client.go.html#line-687">#L687</a>: 			if ref := refererForURL(reqs[len(reqs)-1].URL, req.URL, req.<b>Header</b>.Get("Referer")); ref != "" {
+		<a href="../../src/net/http/client.go.html#line-688" class="path-duplicate">client.go</a><a href="../../src/net/http/client.go.html#line-688">#L688</a>: 				req.<b>Header</b>.Set("Referer", ref)
+		<a href="../../src/net/http/client.go.html#line-753" class="path-duplicate">client.go</a><a href="../../src/net/http/client.go.html#line-753">#L753</a>: 		ireqhdr  = cloneOrMakeHeader(ireq.<b>Header</b>)
+		<a href="../../src/net/http/client.go.html#line-756" class="path-duplicate">client.go</a><a href="../../src/net/http/client.go.html#line-756">#L756</a>: 	if c.Jar != nil &amp;&amp; ireq.<b>Header</b>.Get("Cookie") != "" {
+		<a href="../../src/net/http/client.go.html#line-802" class="path-duplicate">client.go</a><a href="../../src/net/http/client.go.html#line-802">#L802</a>: 				req.<b>Header</b>[k] = vv
+		<a href="../../src/net/http/client.go.html#line-856" class="path-duplicate">client.go</a><a href="../../src/net/http/client.go.html#line-856">#L856</a>: 	req.<b>Header</b>.Set("Content-Type", contentType)
+		<a href="../../src/net/http/fs.go.html#line-433">fs.go#L433</a>: 	im := r.<b>Header</b>.Get("If-Match")
+		<a href="../../src/net/http/fs.go.html#line-463" class="path-duplicate">fs.go</a><a href="../../src/net/http/fs.go.html#line-463">#L463</a>: 	ius := r.<b>Header</b>.Get("If-Unmodified-Since")
+		<a href="../../src/net/http/fs.go.html#line-482" class="path-duplicate">fs.go</a><a href="../../src/net/http/fs.go.html#line-482">#L482</a>: 	inm := r.<b>Header</b>.get("If-None-Match")
+		<a href="../../src/net/http/fs.go.html#line-515" class="path-duplicate">fs.go</a><a href="../../src/net/http/fs.go.html#line-515">#L515</a>: 	ims := r.<b>Header</b>.Get("If-Modified-Since")
+		<a href="../../src/net/http/fs.go.html#line-536" class="path-duplicate">fs.go</a><a href="../../src/net/http/fs.go.html#line-536">#L536</a>: 	ir := r.<b>Header</b>.get("If-Range")
+		<a href="../../src/net/http/fs.go.html#line-620" class="path-duplicate">fs.go</a><a href="../../src/net/http/fs.go.html#line-620">#L620</a>: 	rangeHeader = r.<b>Header</b>.get("Range")
+		<a href="../../src/net/http/h2_bundle.go.html#line-5833">h2_bundle.go#L5833</a>: 	} else if err := http2checkValidHTTP2RequestHeaders(req.<b>Header</b>); err != nil {
+		<a href="../../src/net/http/h2_bundle.go.html#line-6085" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-6085">#L6085</a>: 		<b>Header</b>:     rp.header,
+		<a href="../../src/net/http/h2_bundle.go.html#line-8246" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-8246">#L8246</a>: 	if v := req.<b>Header</b>.Get("Upgrade"); v != "" {
+		<a href="../../src/net/http/h2_bundle.go.html#line-8247" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-8247">#L8247</a>: 		return fmt.Errorf("http2: invalid Upgrade request header: %q", req.<b>Header</b>["Upgrade"])
+		<a href="../../src/net/http/h2_bundle.go.html#line-8249" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-8249">#L8249</a>: 	if vv := req.<b>Header</b>["Transfer-Encoding"]; len(vv) &gt; 0 &amp;&amp; (len(vv) &gt; 1 || vv[0] != "" &amp;&amp; vv[0] != "chunked") {
+		<a href="../../src/net/http/h2_bundle.go.html#line-8252" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-8252">#L8252</a>: 	if vv := req.<b>Header</b>["Connection"]; len(vv) &gt; 0 &amp;&amp; (len(vv) &gt; 1 || vv[0] != "" &amp;&amp; !http2asciiEqualFold(vv[0], "close") &amp;&amp; !http2asciiEqualFold(vv[0], "keep-alive")) {
+		<a href="../../src/net/http/h2_bundle.go.html#line-8443" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-8443">#L8443</a>: 		req.<b>Header</b>.Get("Accept-Encoding") == "" &amp;&amp;
+		<a href="../../src/net/http/h2_bundle.go.html#line-8444" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-8444">#L8444</a>: 		req.<b>Header</b>.Get("Range") == "" &amp;&amp;
+		<a href="../../src/net/http/h2_bundle.go.html#line-8463" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-8463">#L8463</a>: 		if !httpguts.HeaderValuesContainsToken(req.<b>Header</b>["Expect"], "100-continue") {
+		<a href="../../src/net/http/h2_bundle.go.html#line-8985" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-8985">#L8985</a>: 	for k, vv := range req.<b>Header</b> {
+		<a href="../../src/net/http/h2_bundle.go.html#line-9018" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9018">#L9018</a>: 		for k, vv := range req.<b>Header</b> {
+		<a href="../../src/net/http/h2_bundle.go.html#line-10184" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-10184">#L10184</a>: 	return req.Close || httpguts.HeaderValuesContainsToken(req.<b>Header</b>["Connection"], "close")
+		<a href="../../src/net/http/request.go.html#line-170">request.go#L170</a>: 	<b>Header</b> Header
+		<a href="../../src/net/http/request.go.html#line-386" class="path-duplicate">request.go</a><a href="../../src/net/http/request.go.html#line-386">#L386</a>: 	if r.<b>Header</b> != nil {
+		<a href="../../src/net/http/request.go.html#line-387" class="path-duplicate">request.go</a><a href="../../src/net/http/request.go.html#line-387">#L387</a>: 		r2.<b>Header</b> = r.<b>Header</b>.Clone()
+		<a href="../../src/net/http/request.go.html#line-426" class="path-duplicate">request.go</a><a href="../../src/net/http/request.go.html#line-426">#L426</a>: 	return r.<b>Header</b>.Get("User-Agent")
+		<a href="../../src/net/http/request.go.html#line-431" class="path-duplicate">request.go</a><a href="../../src/net/http/request.go.html#line-431">#L431</a>: 	return readCookies(r.<b>Header</b>, "")
+		<a href="../../src/net/http/request.go.html#line-445" class="path-duplicate">request.go</a><a href="../../src/net/http/request.go.html#line-445">#L445</a>: 	for _, c := range readCookies(r.<b>Header</b>, name) {
+		<a href="../../src/net/http/request.go.html#line-459" class="path-duplicate">request.go</a><a href="../../src/net/http/request.go.html#line-459">#L459</a>: 	if c := r.<b>Header</b>.Get("Cookie"); c != "" {
+		<a href="../../src/net/http/request.go.html#line-460" class="path-duplicate">request.go</a><a href="../../src/net/http/request.go.html#line-460">#L460</a>: 		r.<b>Header</b>.Set("Cookie", c+"; "+s)
+		<a href="../../src/net/http/request.go.html#line-462" class="path-duplicate">request.go</a><a href="../../src/net/http/request.go.html#line-462">#L462</a>: 		r.<b>Header</b>.Set("Cookie", s)
+		<a href="../../src/net/http/request.go.html#line-475" class="path-duplicate">request.go</a><a href="../../src/net/http/request.go.html#line-475">#L475</a>: 	return r.<b>Header</b>.Get("Referer")
+		<a href="../../src/net/http/request.go.html#line-502" class="path-duplicate">request.go</a><a href="../../src/net/http/request.go.html#line-502">#L502</a>: 	v := r.<b>Header</b>.Get("Content-Type")
+		<a href="../../src/net/http/request.go.html#line-523" class="path-duplicate">request.go</a><a href="../../src/net/http/request.go.html#line-523">#L523</a>: 	return r.Method == "PRI" &amp;&amp; len(r.<b>Header</b>) == 0 &amp;&amp; r.URL.Path == "*" &amp;&amp; r.Proto == "HTTP/2.0"
+		<a href="../../src/net/http/request.go.html#line-683" class="path-duplicate">request.go</a><a href="../../src/net/http/request.go.html#line-683">#L683</a>: 	if r.<b>Header</b>.has("User-Agent") {
+		<a href="../../src/net/http/request.go.html#line-684" class="path-duplicate">request.go</a><a href="../../src/net/http/request.go.html#line-684">#L684</a>: 		userAgent = r.<b>Header</b>.Get("User-Agent")
+		<a href="../../src/net/http/request.go.html#line-708" class="path-duplicate">request.go</a><a href="../../src/net/http/request.go.html#line-708">#L708</a>: 	err = r.<b>Header</b>.writeSubset(w, reqWriteExcludeHeader, trace)
+		<a href="../../src/net/http/request.go.html#line-912" class="path-duplicate">request.go</a><a href="../../src/net/http/request.go.html#line-912">#L912</a>: 		<b>Header</b>:     make(Header),
+		<a href="../../src/net/http/request.go.html#line-967" class="path-duplicate">request.go</a><a href="../../src/net/http/request.go.html#line-967">#L967</a>: 	auth := r.<b>Header</b>.Get("Authorization")
+		<a href="../../src/net/http/request.go.html#line-1006" class="path-duplicate">request.go</a><a href="../../src/net/http/request.go.html#line-1006">#L1006</a>: 	r.<b>Header</b>.Set("Authorization", "Basic "+basicAuth(username, password))
+		<a href="../../src/net/http/request.go.html#line-1047" class="path-duplicate">request.go</a><a href="../../src/net/http/request.go.html#line-1047">#L1047</a>: 	delete(req.<b>Header</b>, "Host")
+		<a href="../../src/net/http/request.go.html#line-1109" class="path-duplicate">request.go</a><a href="../../src/net/http/request.go.html#line-1109">#L1109</a>: 	req.<b>Header</b> = Header(mimeHeader)
+		<a href="../../src/net/http/request.go.html#line-1110" class="path-duplicate">request.go</a><a href="../../src/net/http/request.go.html#line-1110">#L1110</a>: 	if len(req.<b>Header</b>["Host"]) &gt; 1 {
+		<a href="../../src/net/http/request.go.html#line-1123" class="path-duplicate">request.go</a><a href="../../src/net/http/request.go.html#line-1123">#L1123</a>: 		req.Host = req.<b>Header</b>.get("Host")
+		<a href="../../src/net/http/request.go.html#line-1126" class="path-duplicate">request.go</a><a href="../../src/net/http/request.go.html#line-1126">#L1126</a>: 	fixPragmaCacheControl(req.<b>Header</b>)
+		<a href="../../src/net/http/request.go.html#line-1128" class="path-duplicate">request.go</a><a href="../../src/net/http/request.go.html#line-1128">#L1128</a>: 	req.Close = shouldClose(req.ProtoMajor, req.ProtoMinor, req.<b>Header</b>, false)
+		<a href="../../src/net/http/request.go.html#line-1240" class="path-duplicate">request.go</a><a href="../../src/net/http/request.go.html#line-1240">#L1240</a>: 	ct := r.<b>Header</b>.Get("Content-Type")
+		<a href="../../src/net/http/request.go.html#line-1482" class="path-duplicate">request.go</a><a href="../../src/net/http/request.go.html#line-1482">#L1482</a>: 	return hasToken(r.<b>Header</b>.get("Expect"), "100-continue")
+		<a href="../../src/net/http/request.go.html#line-1489" class="path-duplicate">request.go</a><a href="../../src/net/http/request.go.html#line-1489">#L1489</a>: 	return hasToken(r.<b>Header</b>.get("Connection"), "keep-alive")
+		<a href="../../src/net/http/request.go.html#line-1496" class="path-duplicate">request.go</a><a href="../../src/net/http/request.go.html#line-1496">#L1496</a>: 	return hasToken(r.<b>Header</b>.get("Connection"), "close")
+		<a href="../../src/net/http/request.go.html#line-1515" class="path-duplicate">request.go</a><a href="../../src/net/http/request.go.html#line-1515">#L1515</a>: 		if r.<b>Header</b>.has("Idempotency-Key") || r.<b>Header</b>.has("X-Idempotency-Key") {
+		<a href="../../src/net/http/request.go.html#line-1552" class="path-duplicate">request.go</a><a href="../../src/net/http/request.go.html#line-1552">#L1552</a>: 	return hasToken(r.<b>Header</b>.Get("Connection"), "upgrade") &amp;&amp;
+		<a href="../../src/net/http/request.go.html#line-1553" class="path-duplicate">request.go</a><a href="../../src/net/http/request.go.html#line-1553">#L1553</a>: 		ascii.EqualFold(r.<b>Header</b>.Get("Upgrade"), "websocket")
+		<a href="../../src/net/http/server.go.html#line-1019">server.go#L1019</a>: 	hosts, haveHost := req.<b>Header</b>["Host"]
+		<a href="../../src/net/http/server.go.html#line-1027" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1027">#L1027</a>: 	for k, vv := range req.<b>Header</b> {
+		<a href="../../src/net/http/server.go.html#line-1037" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1037">#L1037</a>: 	delete(req.<b>Header</b>, "Host")
+		<a href="../../src/net/http/server.go.html#line-2018" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-2018">#L2018</a>: 		} else if req.<b>Header</b>.get("Expect") != "" {
+		<a href="../../src/net/http/transfer.go.html#line-90">transfer.go#L90</a>: 		t.Header = rr.<b>Header</b>
+		<a href="../../src/net/http/transfer.go.html#line-507" class="path-duplicate">transfer.go</a><a href="../../src/net/http/transfer.go.html#line-507">#L507</a>: 		t.Header = rr.<b>Header</b>
+		<a href="../../src/net/http/transport.go.html#line-526">transport.go#L526</a>: 	if req.<b>Header</b> == nil {
+		<a href="../../src/net/http/transport.go.html#line-533" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-533">#L533</a>: 		for k, vv := range req.<b>Header</b> {
+		<a href="../../src/net/http/transport.go.html#line-1717" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-1717">#L1717</a>: 			<b>Header</b>: hdr,
+		<a href="../../src/net/http/transport.go.html#line-2610" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-2610">#L2610</a>: 		req.<b>Header</b>.Get("Accept-Encoding") == "" &amp;&amp;
+		<a href="../../src/net/http/transport.go.html#line-2611" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-2611">#L2611</a>: 		req.<b>Header</b>.Get("Range") == "" &amp;&amp;
+		<a href="../../src/net/http/transport.go.html#line-2636" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-2636">#L2636</a>: 		!isProtocolSwitchHeader(req.<b>Header</b>) {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

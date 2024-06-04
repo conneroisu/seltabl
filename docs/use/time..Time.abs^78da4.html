@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: time.Time.abs</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/time.html">time</a>.<a href="../src/time/time.go.html#line-135">Time</a>.<a href="../src/time/time.go.html#line-467">abs</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">9 uses</span>
+
+	time (current package)
+		<a href="../src/time/format.go.html#line-559">format.go#L559</a>: 	abs := t.<b>abs</b>()
+		<a href="../src/time/time.go.html#line-467">time.go#L467</a>: func (t Time) <b>abs</b>() uint64 {
+		<a href="../src/time/time.go.html#line-535" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-535">#L535</a>: 	return absWeekday(t.<b>abs</b>())
+		<a href="../src/time/time.go.html#line-560" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-560">#L560</a>: 	abs := t.<b>abs</b>()
+		<a href="../src/time/time.go.html#line-574" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-574">#L574</a>: 	return absClock(t.<b>abs</b>())
+		<a href="../src/time/time.go.html#line-589" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-589">#L589</a>: 	return int(t.<b>abs</b>()%secondsPerDay) / secondsPerHour
+		<a href="../src/time/time.go.html#line-594" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-594">#L594</a>: 	return int(t.<b>abs</b>()%secondsPerHour) / secondsPerMinute
+		<a href="../src/time/time.go.html#line-599" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-599">#L599</a>: 	return int(t.<b>abs</b>() % secondsPerMinute)
+		<a href="../src/time/time.go.html#line-983" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-983">#L983</a>: 	return absDate(t.<b>abs</b>(), full)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

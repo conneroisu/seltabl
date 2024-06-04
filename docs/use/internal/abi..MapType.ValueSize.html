@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: internal/abi.MapType.ValueSize</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/internal/abi.html">internal/abi</a>.<a href="../../src/internal/abi/type.go.html#line-446">MapType</a>.<a href="../../src/internal/abi/type.go.html#line-454">ValueSize</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">44 uses</span>
+
+	internal/abi (current package)
+		<a href="../../src/internal/abi/type.go.html#line-454">type.go#L454</a>: 	<b>ValueSize</b>  uint8  // size of elem slot
+
+	<a href="../../pkg/reflect.html">reflect</a>
+		<a href="../../src/reflect/type.go.html#line-1704">type.go#L1704</a>: 		mt.<b>ValueSize</b> = uint8(goarch.PtrSize)
+		<a href="../../src/reflect/type.go.html#line-1707" class="path-duplicate">type.go</a><a href="../../src/reflect/type.go.html#line-1707">#L1707</a>: 		mt.MapType.<b>ValueSize</b> = uint8(etyp.Size_)
+
+	<a href="../../pkg/runtime.html">runtime</a>
+		<a href="../../src/runtime/map.go.html#line-446">map.go#L446</a>: 				e := add(unsafe.Pointer(b), dataOffset+bucketCnt*uintptr(t.KeySize)+i*uintptr(t.<b>ValueSize</b>))
+		<a href="../../src/runtime/map.go.html#line-507" class="path-duplicate">map.go</a><a href="../../src/runtime/map.go.html#line-507">#L507</a>: 				e := add(unsafe.Pointer(b), dataOffset+bucketCnt*uintptr(t.KeySize)+i*uintptr(t.<b>ValueSize</b>))
+		<a href="../../src/runtime/map.go.html#line-551" class="path-duplicate">map.go</a><a href="../../src/runtime/map.go.html#line-551">#L551</a>: 				e := add(unsafe.Pointer(b), dataOffset+bucketCnt*uintptr(t.KeySize)+i*uintptr(t.<b>ValueSize</b>))
+		<a href="../../src/runtime/map.go.html#line-626" class="path-duplicate">map.go</a><a href="../../src/runtime/map.go.html#line-626">#L626</a>: 					elem = add(unsafe.Pointer(b), dataOffset+bucketCnt*uintptr(t.KeySize)+i*uintptr(t.<b>ValueSize</b>))
+		<a href="../../src/runtime/map.go.html#line-644" class="path-duplicate">map.go</a><a href="../../src/runtime/map.go.html#line-644">#L644</a>: 			elem = add(unsafe.Pointer(b), dataOffset+bucketCnt*uintptr(t.KeySize)+i*uintptr(t.<b>ValueSize</b>))
+		<a href="../../src/runtime/map.go.html#line-755" class="path-duplicate">map.go</a><a href="../../src/runtime/map.go.html#line-755">#L755</a>: 			e := add(unsafe.Pointer(b), dataOffset+bucketCnt*uintptr(t.KeySize)+i*uintptr(t.<b>ValueSize</b>))
+		<a href="../../src/runtime/map.go.html#line-920" class="path-duplicate">map.go</a><a href="../../src/runtime/map.go.html#line-920">#L920</a>: 		e := add(unsafe.Pointer(b), dataOffset+bucketCnt*uintptr(t.KeySize)+uintptr(offi)*uintptr(t.<b>ValueSize</b>))
+		<a href="../../src/runtime/map.go.html#line-1190" class="path-duplicate">map.go</a><a href="../../src/runtime/map.go.html#line-1190">#L1190</a>: 			for i := 0; i &lt; bucketCnt; i, k, e = i+1, add(k, uintptr(t.KeySize)), add(e, uintptr(t.<b>ValueSize</b>)) {
+		<a href="../../src/runtime/map.go.html#line-1259" class="path-duplicate">map.go</a><a href="../../src/runtime/map.go.html#line-1259">#L1259</a>: 				dst.e = add(dst.e, uintptr(t.<b>ValueSize</b>))
+		<a href="../../src/runtime/map.go.html#line-1314" class="path-duplicate">map.go</a><a href="../../src/runtime/map.go.html#line-1314">#L1314</a>: 	if t.Elem.Size_ &gt; maxElemSize &amp;&amp; (!t.IndirectElem() || t.<b>ValueSize</b> != uint8(goarch.PtrSize)) ||
+		<a href="../../src/runtime/map.go.html#line-1315" class="path-duplicate">map.go</a><a href="../../src/runtime/map.go.html#line-1315">#L1315</a>: 		t.Elem.Size_ &lt;= maxElemSize &amp;&amp; (t.IndirectElem() || t.<b>ValueSize</b> != uint8(t.Elem.Size_)) {
+		<a href="../../src/runtime/map.go.html#line-1472" class="path-duplicate">map.go</a><a href="../../src/runtime/map.go.html#line-1472">#L1472</a>: 		srcEle := add(unsafe.Pointer(src), dataOffset+bucketCnt*uintptr(t.KeySize)+uintptr(i)*uintptr(t.<b>ValueSize</b>))
+		<a href="../../src/runtime/map.go.html#line-1474" class="path-duplicate">map.go</a><a href="../../src/runtime/map.go.html#line-1474">#L1474</a>: 		dstEle := add(unsafe.Pointer(dst), dataOffset+bucketCnt*uintptr(t.KeySize)+uintptr(pos)*uintptr(t.<b>ValueSize</b>))
+		<a href="../../src/runtime/map.go.html#line-1592" class="path-duplicate">map.go</a><a href="../../src/runtime/map.go.html#line-1592">#L1592</a>: 				srcEle := add(unsafe.Pointer(srcBmap), dataOffset+bucketCnt*uintptr(t.KeySize)+i*uintptr(t.<b>ValueSize</b>))
+		<a href="../../src/runtime/map.go.html#line-1720" class="path-duplicate">map.go</a><a href="../../src/runtime/map.go.html#line-1720">#L1720</a>: 			ele := add(unsafe.Pointer(b), dataOffset+bucketCnt*uintptr(t.KeySize)+offi*uintptr(t.<b>ValueSize</b>))
+		<a href="../../src/runtime/map_fast32.go.html#line-46">map_fast32.go#L46</a>: 				return add(unsafe.Pointer(b), dataOffset+bucketCnt*4+i*uintptr(t.<b>ValueSize</b>))
+		<a href="../../src/runtime/map_fast32.go.html#line-86" class="path-duplicate">map_fast32.go</a><a href="../../src/runtime/map_fast32.go.html#line-86">#L86</a>: 				return add(unsafe.Pointer(b), dataOffset+bucketCnt*4+i*uintptr(t.<b>ValueSize</b>)), true
+		<a href="../../src/runtime/map_fast32.go.html#line-175" class="path-duplicate">map_fast32.go</a><a href="../../src/runtime/map_fast32.go.html#line-175">#L175</a>: 	elem := add(unsafe.Pointer(insertb), dataOffset+bucketCnt*4+inserti*uintptr(t.<b>ValueSize</b>))
+		<a href="../../src/runtime/map_fast32.go.html#line-265" class="path-duplicate">map_fast32.go</a><a href="../../src/runtime/map_fast32.go.html#line-265">#L265</a>: 	elem := add(unsafe.Pointer(insertb), dataOffset+bucketCnt*4+inserti*uintptr(t.<b>ValueSize</b>))
+		<a href="../../src/runtime/map_fast32.go.html#line-310" class="path-duplicate">map_fast32.go</a><a href="../../src/runtime/map_fast32.go.html#line-310">#L310</a>: 			e := add(unsafe.Pointer(b), dataOffset+bucketCnt*4+i*uintptr(t.<b>ValueSize</b>))
+		<a href="../../src/runtime/map_fast32.go.html#line-400" class="path-duplicate">map_fast32.go</a><a href="../../src/runtime/map_fast32.go.html#line-400">#L400</a>: 			for i := 0; i &lt; bucketCnt; i, k, e = i+1, add(k, 4), add(e, uintptr(t.<b>ValueSize</b>)) {
+		<a href="../../src/runtime/map_fast32.go.html#line-445" class="path-duplicate">map_fast32.go</a><a href="../../src/runtime/map_fast32.go.html#line-445">#L445</a>: 				dst.e = add(dst.e, uintptr(t.<b>ValueSize</b>))
+		<a href="../../src/runtime/map_fast64.go.html#line-46">map_fast64.go#L46</a>: 				return add(unsafe.Pointer(b), dataOffset+bucketCnt*8+i*uintptr(t.<b>ValueSize</b>))
+		<a href="../../src/runtime/map_fast64.go.html#line-86" class="path-duplicate">map_fast64.go</a><a href="../../src/runtime/map_fast64.go.html#line-86">#L86</a>: 				return add(unsafe.Pointer(b), dataOffset+bucketCnt*8+i*uintptr(t.<b>ValueSize</b>)), true
+		<a href="../../src/runtime/map_fast64.go.html#line-175" class="path-duplicate">map_fast64.go</a><a href="../../src/runtime/map_fast64.go.html#line-175">#L175</a>: 	elem := add(unsafe.Pointer(insertb), dataOffset+bucketCnt*8+inserti*uintptr(t.<b>ValueSize</b>))
+		<a href="../../src/runtime/map_fast64.go.html#line-265" class="path-duplicate">map_fast64.go</a><a href="../../src/runtime/map_fast64.go.html#line-265">#L265</a>: 	elem := add(unsafe.Pointer(insertb), dataOffset+bucketCnt*8+inserti*uintptr(t.<b>ValueSize</b>))
+		<a href="../../src/runtime/map_fast64.go.html#line-312" class="path-duplicate">map_fast64.go</a><a href="../../src/runtime/map_fast64.go.html#line-312">#L312</a>: 			e := add(unsafe.Pointer(b), dataOffset+bucketCnt*8+i*uintptr(t.<b>ValueSize</b>))
+		<a href="../../src/runtime/map_fast64.go.html#line-402" class="path-duplicate">map_fast64.go</a><a href="../../src/runtime/map_fast64.go.html#line-402">#L402</a>: 			for i := 0; i &lt; bucketCnt; i, k, e = i+1, add(k, 8), add(e, uintptr(t.<b>ValueSize</b>)) {
+		<a href="../../src/runtime/map_fast64.go.html#line-453" class="path-duplicate">map_fast64.go</a><a href="../../src/runtime/map_fast64.go.html#line-453">#L453</a>: 				dst.e = add(dst.e, uintptr(t.<b>ValueSize</b>))
+		<a href="../../src/runtime/map_faststr.go.html#line-39">map_faststr.go#L39</a>: 					return add(unsafe.Pointer(b), dataOffset+bucketCnt*2*goarch.PtrSize+i*uintptr(t.<b>ValueSize</b>))
+		<a href="../../src/runtime/map_faststr.go.html#line-55" class="path-duplicate">map_faststr.go</a><a href="../../src/runtime/map_faststr.go.html#line-55">#L55</a>: 				return add(unsafe.Pointer(b), dataOffset+bucketCnt*2*goarch.PtrSize+i*uintptr(t.<b>ValueSize</b>))
+		<a href="../../src/runtime/map_faststr.go.html#line-74" class="path-duplicate">map_faststr.go</a><a href="../../src/runtime/map_faststr.go.html#line-74">#L74</a>: 				return add(unsafe.Pointer(b), dataOffset+bucketCnt*2*goarch.PtrSize+keymaybe*uintptr(t.<b>ValueSize</b>))
+		<a href="../../src/runtime/map_faststr.go.html#line-101" class="path-duplicate">map_faststr.go</a><a href="../../src/runtime/map_faststr.go.html#line-101">#L101</a>: 				return add(unsafe.Pointer(b), dataOffset+bucketCnt*2*goarch.PtrSize+i*uintptr(t.<b>ValueSize</b>))
+		<a href="../../src/runtime/map_faststr.go.html#line-134" class="path-duplicate">map_faststr.go</a><a href="../../src/runtime/map_faststr.go.html#line-134">#L134</a>: 					return add(unsafe.Pointer(b), dataOffset+bucketCnt*2*goarch.PtrSize+i*uintptr(t.<b>ValueSize</b>)), true
+		<a href="../../src/runtime/map_faststr.go.html#line-150" class="path-duplicate">map_faststr.go</a><a href="../../src/runtime/map_faststr.go.html#line-150">#L150</a>: 				return add(unsafe.Pointer(b), dataOffset+bucketCnt*2*goarch.PtrSize+i*uintptr(t.<b>ValueSize</b>)), true
+		<a href="../../src/runtime/map_faststr.go.html#line-169" class="path-duplicate">map_faststr.go</a><a href="../../src/runtime/map_faststr.go.html#line-169">#L169</a>: 				return add(unsafe.Pointer(b), dataOffset+bucketCnt*2*goarch.PtrSize+keymaybe*uintptr(t.<b>ValueSize</b>)), true
+		<a href="../../src/runtime/map_faststr.go.html#line-196" class="path-duplicate">map_faststr.go</a><a href="../../src/runtime/map_faststr.go.html#line-196">#L196</a>: 				return add(unsafe.Pointer(b), dataOffset+bucketCnt*2*goarch.PtrSize+i*uintptr(t.<b>ValueSize</b>)), true
+		<a href="../../src/runtime/map_faststr.go.html#line-293" class="path-duplicate">map_faststr.go</a><a href="../../src/runtime/map_faststr.go.html#line-293">#L293</a>: 	elem := add(unsafe.Pointer(insertb), dataOffset+bucketCnt*2*goarch.PtrSize+inserti*uintptr(t.<b>ValueSize</b>))
+		<a href="../../src/runtime/map_faststr.go.html#line-338" class="path-duplicate">map_faststr.go</a><a href="../../src/runtime/map_faststr.go.html#line-338">#L338</a>: 			e := add(unsafe.Pointer(b), dataOffset+bucketCnt*2*goarch.PtrSize+i*uintptr(t.<b>ValueSize</b>))
+		<a href="../../src/runtime/map_faststr.go.html#line-428" class="path-duplicate">map_faststr.go</a><a href="../../src/runtime/map_faststr.go.html#line-428">#L428</a>: 			for i := 0; i &lt; bucketCnt; i, k, e = i+1, add(k, 2*goarch.PtrSize), add(e, uintptr(t.<b>ValueSize</b>)) {
+		<a href="../../src/runtime/map_faststr.go.html#line-468" class="path-duplicate">map_faststr.go</a><a href="../../src/runtime/map_faststr.go.html#line-468">#L468</a>: 				dst.e = add(dst.e, uintptr(t.<b>ValueSize</b>))
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

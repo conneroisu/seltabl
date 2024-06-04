@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/tls.serverHandshakeState.finishedHash</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/crypto/tls.html">crypto/tls</a>.<a href="../../src/crypto/tls/handshake_server.go.html#line-24">serverHandshakeState</a>.<a href="../../src/crypto/tls/handshake_server.go.html#line-35">finishedHash</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">25 uses</span>
+
+	crypto/tls (current package)
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-35">handshake_server.go#L35</a>: 	<b>finishedHash</b> finishedHash
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-523" class="path-duplicate">handshake_server.go</a><a href="../../src/crypto/tls/handshake_server.go.html#line-523">#L523</a>: 	hs.<b>finishedHash</b> = newFinishedHash(c.vers, hs.suite)
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-524" class="path-duplicate">handshake_server.go</a><a href="../../src/crypto/tls/handshake_server.go.html#line-524">#L524</a>: 	hs.<b>finishedHash</b>.discardHandshakeBuffer()
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-525" class="path-duplicate">handshake_server.go</a><a href="../../src/crypto/tls/handshake_server.go.html#line-525">#L525</a>: 	if err := transcriptMsg(hs.clientHello, &amp;hs.<b>finishedHash</b>); err != nil {
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-528" class="path-duplicate">handshake_server.go</a><a href="../../src/crypto/tls/handshake_server.go.html#line-528">#L528</a>: 	if _, err := hs.c.writeHandshakeRecord(hs.hello, &amp;hs.<b>finishedHash</b>); err != nil {
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-554" class="path-duplicate">handshake_server.go</a><a href="../../src/crypto/tls/handshake_server.go.html#line-554">#L554</a>: 	hs.<b>finishedHash</b> = newFinishedHash(hs.c.vers, hs.suite)
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-558" class="path-duplicate">handshake_server.go</a><a href="../../src/crypto/tls/handshake_server.go.html#line-558">#L558</a>: 		hs.<b>finishedHash</b>.discardHandshakeBuffer()
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-560" class="path-duplicate">handshake_server.go</a><a href="../../src/crypto/tls/handshake_server.go.html#line-560">#L560</a>: 	if err := transcriptMsg(hs.clientHello, &amp;hs.<b>finishedHash</b>); err != nil {
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-563" class="path-duplicate">handshake_server.go</a><a href="../../src/crypto/tls/handshake_server.go.html#line-563">#L563</a>: 	if _, err := hs.c.writeHandshakeRecord(hs.hello, &amp;hs.<b>finishedHash</b>); err != nil {
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-569" class="path-duplicate">handshake_server.go</a><a href="../../src/crypto/tls/handshake_server.go.html#line-569">#L569</a>: 	if _, err := hs.c.writeHandshakeRecord(certMsg, &amp;hs.<b>finishedHash</b>); err != nil {
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-576" class="path-duplicate">handshake_server.go</a><a href="../../src/crypto/tls/handshake_server.go.html#line-576">#L576</a>: 		if _, err := hs.c.writeHandshakeRecord(certStatus, &amp;hs.<b>finishedHash</b>); err != nil {
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-588" class="path-duplicate">handshake_server.go</a><a href="../../src/crypto/tls/handshake_server.go.html#line-588">#L588</a>: 		if _, err := hs.c.writeHandshakeRecord(skx, &amp;hs.<b>finishedHash</b>); err != nil {
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-614" class="path-duplicate">handshake_server.go</a><a href="../../src/crypto/tls/handshake_server.go.html#line-614">#L614</a>: 		if _, err := hs.c.writeHandshakeRecord(certReq, &amp;hs.<b>finishedHash</b>); err != nil {
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-620" class="path-duplicate">handshake_server.go</a><a href="../../src/crypto/tls/handshake_server.go.html#line-620">#L620</a>: 	if _, err := hs.c.writeHandshakeRecord(helloDone, &amp;hs.<b>finishedHash</b>); err != nil {
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-630" class="path-duplicate">handshake_server.go</a><a href="../../src/crypto/tls/handshake_server.go.html#line-630">#L630</a>: 	msg, err := c.readHandshake(&amp;hs.<b>finishedHash</b>)
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-653" class="path-duplicate">handshake_server.go</a><a href="../../src/crypto/tls/handshake_server.go.html#line-653">#L653</a>: 		msg, err = c.readHandshake(&amp;hs.<b>finishedHash</b>)
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-680" class="path-duplicate">handshake_server.go</a><a href="../../src/crypto/tls/handshake_server.go.html#line-680">#L680</a>: 			hs.<b>finishedHash</b>.Sum())
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-729" class="path-duplicate">handshake_server.go</a><a href="../../src/crypto/tls/handshake_server.go.html#line-729">#L729</a>: 		signed := hs.<b>finishedHash</b>.hashForClientCertificate(sigType, sigHash)
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-735" class="path-duplicate">handshake_server.go</a><a href="../../src/crypto/tls/handshake_server.go.html#line-735">#L735</a>: 		if err := transcriptMsg(certVerify, &amp;hs.<b>finishedHash</b>); err != nil {
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-740" class="path-duplicate">handshake_server.go</a><a href="../../src/crypto/tls/handshake_server.go.html#line-740">#L740</a>: 	hs.<b>finishedHash</b>.discardHandshakeBuffer()
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-790" class="path-duplicate">handshake_server.go</a><a href="../../src/crypto/tls/handshake_server.go.html#line-790">#L790</a>: 	verify := hs.<b>finishedHash</b>.clientSum(hs.masterSecret)
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-797" class="path-duplicate">handshake_server.go</a><a href="../../src/crypto/tls/handshake_server.go.html#line-797">#L797</a>: 	if err := transcriptMsg(clientFinished, &amp;hs.<b>finishedHash</b>); err != nil {
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-839" class="path-duplicate">handshake_server.go</a><a href="../../src/crypto/tls/handshake_server.go.html#line-839">#L839</a>: 	if _, err := hs.c.writeHandshakeRecord(m, &amp;hs.<b>finishedHash</b>); err != nil {
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-854" class="path-duplicate">handshake_server.go</a><a href="../../src/crypto/tls/handshake_server.go.html#line-854">#L854</a>: 	finished.verifyData = hs.<b>finishedHash</b>.serverSum(hs.masterSecret)
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-855" class="path-duplicate">handshake_server.go</a><a href="../../src/crypto/tls/handshake_server.go.html#line-855">#L855</a>: 	if _, err := hs.c.writeHandshakeRecord(finished, &amp;hs.<b>finishedHash</b>); err != nil {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

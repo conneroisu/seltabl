@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.offAddr.equal</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/mranges.go.html#line-123">offAddr</a>.<a href="../src/runtime/mranges.go.html#line-158">equal</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">3 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/mranges.go.html#line-158">mranges.go#L158</a>: func (l1 offAddr) <b>equal</b>(l2 offAddr) bool {
+		<a href="../src/runtime/mranges.go.html#line-355" class="path-duplicate">mranges.go</a><a href="../src/runtime/mranges.go.html#line-355">#L355</a>: 	coalescesDown := i &gt; 0 &amp;&amp; a.ranges[i-1].limit.<b>equal</b>(r.base)
+		<a href="../src/runtime/mranges.go.html#line-356" class="path-duplicate">mranges.go</a><a href="../src/runtime/mranges.go.html#line-356">#L356</a>: 	coalescesUp := i &lt; len(a.ranges) &amp;&amp; r.limit.<b>equal</b>(a.ranges[i].base)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

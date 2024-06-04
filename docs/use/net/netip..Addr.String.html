@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/netip.Addr.String</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/net/netip.html">net/netip</a>.<a href="../../src/net/netip/netip.go.html#line-38">Addr</a>.<a href="../../src/net/netip/netip.go.html#line-751">String</a></b></span><span style="font-size: large;"><i> (method, <a href="../../imp/net/netip.Addr.html#name-String">view implemented interface methods</a>)</i></span>
+
+<span class="title">12 uses</span>
+
+	net/netip (current package)
+		<a href="../../src/net/netip/netip.go.html#line-751">netip.go#L751</a>: func (ip Addr) <b>String</b>() string {
+		<a href="../../src/net/netip/netip.go.html#line-908" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-908">#L908</a>: 		return ip.<b>String</b>()
+		<a href="../../src/net/netip/netip.go.html#line-1129" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-1129">#L1129</a>: 		return "[" + p.ip.<b>String</b>() + "]:" + itoa.Uitoa(uint(p.port))
+		<a href="../../src/net/netip/netip.go.html#line-1500" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-1500">#L1500</a>: 	return p.ip.<b>String</b>() + "/" + itoa.Itoa(p.Bits())
+
+	<a href="../../pkg/net.html">net</a>
+		<a href="../../src/net/cgo_unix.go.html#line-241">cgo_unix.go#L241</a>: 		return nil, &amp;DNSError{Err: "invalid address " + ip.<b>String</b>(), Name: addr}
+		<a href="../../src/net/hosts.go.html#line-23">hosts.go#L23</a>: 	return ip.<b>String</b>()
+		<a href="../../src/net/ip.go.html#line-305">ip.go#L305</a>: 		return netip.AddrFrom4([4]byte(p4)).<b>String</b>()
+		<a href="../../src/net/ip.go.html#line-307" class="path-duplicate">ip.go</a><a href="../../src/net/ip.go.html#line-307">#L307</a>: 	return netip.AddrFrom16([16]byte(ip)).<b>String</b>()
+		<a href="../../src/net/ipsock_posix.go.html#line-218">ipsock_posix.go#L218</a>: 		return syscall.SockaddrInet4{}, &amp;AddrError{Err: "non-IPv4 address", Addr: addr.<b>String</b>()}
+		<a href="../../src/net/ipsock_posix.go.html#line-236" class="path-duplicate">ipsock_posix.go</a><a href="../../src/net/ipsock_posix.go.html#line-236">#L236</a>: 		return syscall.SockaddrInet6{}, &amp;AddrError{Err: "non-IPv6 address", Addr: addr.<b>String</b>()}
+		<a href="../../src/net/udpsock_posix.go.html#line-161">udpsock_posix.go#L161</a>: 		return 0, &amp;AddrError{Err: "invalid address family", Addr: addr.Addr().<b>String</b>()}
+		<a href="../../src/net/udpsock_posix.go.html#line-201" class="path-duplicate">udpsock_posix.go</a><a href="../../src/net/udpsock_posix.go.html#line-201">#L201</a>: 		return 0, 0, &amp;AddrError{Err: "invalid address family", Addr: addr.Addr().<b>String</b>()}
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

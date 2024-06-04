@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.maxstacksize</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">var <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/stack.go.html#line-513">maxstacksize</a></b></span>
+
+<span class="title">12 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/proc.go.html#line-157">proc.go#L157</a>: 		<b>maxstacksize</b> = 1000000000
+		<a href="../src/runtime/proc.go.html#line-159" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-159">#L159</a>: 		<b>maxstacksize</b> = 250000000
+		<a href="../src/runtime/proc.go.html#line-165" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-165">#L165</a>: 	maxstackceiling = 2 * <b>maxstacksize</b>
+		<a href="../src/runtime/rdebug.go.html#line-11">rdebug.go#L11</a>: 	out = int(<b>maxstacksize</b>)
+		<a href="../src/runtime/rdebug.go.html#line-12" class="path-duplicate">rdebug.go</a><a href="../src/runtime/rdebug.go.html#line-12">#L12</a>: 	<b>maxstacksize</b> = uintptr(in)
+		<a href="../src/runtime/stack.go.html#line-513">stack.go#L513</a>: var <b>maxstacksize</b> uintptr = 1 &lt;&lt; 20 // enough until runtime.main sets it for real
+		<a href="../src/runtime/stack.go.html#line-515" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-515">#L515</a>: var maxstackceiling = <b>maxstacksize</b>
+		<a href="../src/runtime/stack.go.html#line-1096" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-1096">#L1096</a>: 	if newsize &gt; <b>maxstacksize</b> || newsize &gt; maxstackceiling {
+		<a href="../src/runtime/stack.go.html#line-1097" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-1097">#L1097</a>: 		if <b>maxstacksize</b> &lt; maxstackceiling {
+		<a href="../src/runtime/stack.go.html#line-1098" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-1098">#L1098</a>: 			print("runtime: goroutine stack exceeds ", <b>maxstacksize</b>, "-byte limit\n")
+		<a href="../src/runtime/stack.go.html#line-1335" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-1335">#L1335</a>: 	if avg &gt; uint64(<b>maxstacksize</b>) {
+		<a href="../src/runtime/stack.go.html#line-1336" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-1336">#L1336</a>: 		avg = uint64(<b>maxstacksize</b>)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: regexp/syntax.parser.stack</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/regexp/syntax.html">regexp/syntax</a>.<a href="../../src/regexp/syntax/parse.go.html#line-126">parser</a>.<a href="../../src/regexp/syntax/parse.go.html#line-128">stack</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">50 uses</span>
+
+	regexp/syntax (current package)
+		<a href="../../src/regexp/syntax/parse.go.html#line-128">parse.go#L128</a>: 	<b>stack</b>       []*Regexp // stack of parsed expressions
+		<a href="../../src/regexp/syntax/parse.go.html#line-201" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-201">#L201</a>: 		for _, re := range p.<b>stack</b> {
+		<a href="../../src/regexp/syntax/parse.go.html#line-265" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-265">#L265</a>: 		for _, re := range p.<b>stack</b> {
+		<a href="../../src/regexp/syntax/parse.go.html#line-326" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-326">#L326</a>: 	p.<b>stack</b> = append(p.<b>stack</b>, re)
+		<a href="../../src/regexp/syntax/parse.go.html#line-341" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-341">#L341</a>: 	n := len(p.<b>stack</b>)
+		<a href="../../src/regexp/syntax/parse.go.html#line-346" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-346">#L346</a>: 	re1 := p.<b>stack</b>[n-1]
+		<a href="../../src/regexp/syntax/parse.go.html#line-347" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-347">#L347</a>: 	re2 := p.<b>stack</b>[n-2]
+		<a href="../../src/regexp/syntax/parse.go.html#line-363" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-363">#L363</a>: 	p.<b>stack</b> = p.<b>stack</b>[:n-1]
+		<a href="../../src/regexp/syntax/parse.go.html#line-419" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-419">#L419</a>: 	n := len(p.<b>stack</b>)
+		<a href="../../src/regexp/syntax/parse.go.html#line-423" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-423">#L423</a>: 	sub := p.<b>stack</b>[n-1]
+		<a href="../../src/regexp/syntax/parse.go.html#line-434" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-434">#L434</a>: 	p.<b>stack</b>[n-1] = re
+		<a href="../../src/regexp/syntax/parse.go.html#line-482" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-482">#L482</a>: 	i := len(p.<b>stack</b>)
+		<a href="../../src/regexp/syntax/parse.go.html#line-483" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-483">#L483</a>: 	for i &gt; 0 &amp;&amp; p.<b>stack</b>[i-1].Op &lt; opPseudo {
+		<a href="../../src/regexp/syntax/parse.go.html#line-486" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-486">#L486</a>: 	subs := p.<b>stack</b>[i:]
+		<a href="../../src/regexp/syntax/parse.go.html#line-487" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-487">#L487</a>: 	p.<b>stack</b> = p.<b>stack</b>[:i]
+		<a href="../../src/regexp/syntax/parse.go.html#line-501" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-501">#L501</a>: 	i := len(p.<b>stack</b>)
+		<a href="../../src/regexp/syntax/parse.go.html#line-502" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-502">#L502</a>: 	for i &gt; 0 &amp;&amp; p.<b>stack</b>[i-1].Op &lt; opPseudo {
+		<a href="../../src/regexp/syntax/parse.go.html#line-505" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-505">#L505</a>: 	subs := p.<b>stack</b>[i:]
+		<a href="../../src/regexp/syntax/parse.go.html#line-506" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-506">#L506</a>: 	p.<b>stack</b> = p.<b>stack</b>[:i]
+		<a href="../../src/regexp/syntax/parse.go.html#line-1091" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1091">#L1091</a>: 		p.<b>stack</b> = p.<b>stack</b>[:len(p.<b>stack</b>)-1]
+		<a href="../../src/regexp/syntax/parse.go.html#line-1095" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1095">#L1095</a>: 	n := len(p.<b>stack</b>)
+		<a href="../../src/regexp/syntax/parse.go.html#line-1099" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1099">#L1099</a>: 	return p.<b>stack</b>[0], nil
+		<a href="../../src/regexp/syntax/parse.go.html#line-1383" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1383">#L1383</a>: 	n := len(p.<b>stack</b>)
+		<a href="../../src/regexp/syntax/parse.go.html#line-1384" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1384">#L1384</a>: 	if n &gt;= 3 &amp;&amp; p.<b>stack</b>[n-2].Op == opVerticalBar &amp;&amp; isCharClass(p.<b>stack</b>[n-1]) &amp;&amp; isCharClass(p.<b>stack</b>[n-3]) {
+		<a href="../../src/regexp/syntax/parse.go.html#line-1385" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1385">#L1385</a>: 		re1 := p.<b>stack</b>[n-1]
+		<a href="../../src/regexp/syntax/parse.go.html#line-1386" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1386">#L1386</a>: 		re3 := p.<b>stack</b>[n-3]
+		<a href="../../src/regexp/syntax/parse.go.html#line-1390" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1390">#L1390</a>: 			p.<b>stack</b>[n-3] = re3
+		<a href="../../src/regexp/syntax/parse.go.html#line-1394" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1394">#L1394</a>: 		p.<b>stack</b> = p.<b>stack</b>[:n-1]
+		<a href="../../src/regexp/syntax/parse.go.html#line-1399" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1399">#L1399</a>: 		re1 := p.<b>stack</b>[n-1]
+		<a href="../../src/regexp/syntax/parse.go.html#line-1400" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1400">#L1400</a>: 		re2 := p.<b>stack</b>[n-2]
+		<a href="../../src/regexp/syntax/parse.go.html#line-1405" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1405">#L1405</a>: 				cleanAlt(p.<b>stack</b>[n-3])
+		<a href="../../src/regexp/syntax/parse.go.html#line-1407" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1407">#L1407</a>: 			p.<b>stack</b>[n-2] = re1
+		<a href="../../src/regexp/syntax/parse.go.html#line-1408" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1408">#L1408</a>: 			p.<b>stack</b>[n-1] = re2
+		<a href="../../src/regexp/syntax/parse.go.html#line-1420" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1420">#L1420</a>: 		p.<b>stack</b> = p.<b>stack</b>[:len(p.<b>stack</b>)-1]
+		<a href="../../src/regexp/syntax/parse.go.html#line-1424" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1424">#L1424</a>: 	n := len(p.<b>stack</b>)
+		<a href="../../src/regexp/syntax/parse.go.html#line-1428" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1428">#L1428</a>: 	re1 := p.<b>stack</b>[n-1]
+		<a href="../../src/regexp/syntax/parse.go.html#line-1429" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1429">#L1429</a>: 	re2 := p.<b>stack</b>[n-2]
+		<a href="../../src/regexp/syntax/parse.go.html#line-1430" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1430">#L1430</a>: 	p.<b>stack</b> = p.<b>stack</b>[:n-2]
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

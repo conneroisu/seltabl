@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: math.Log</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/math.html">math</a>.<a href="../src/math/log.go.html#line-81">Log</a></b></span>
+
+<span class="title">28 uses</span>
+
+	math (current package)
+		<a href="../src/math/acosh.go.html#line-59">acosh.go#L59</a>: 		return <b>Log</b>(x) + Ln2 // x &gt; 2**28
+		<a href="../src/math/acosh.go.html#line-61" class="path-duplicate">acosh.go</a><a href="../src/math/acosh.go.html#line-61">#L61</a>: 		return <b>Log</b>(2*x - 1/(x+Sqrt(x*x-1))) // 2**28 &gt; x &gt; 2
+		<a href="../src/math/asinh.go.html#line-65">asinh.go#L65</a>: 		temp = <b>Log</b>(x) + Ln2 // |x| &gt; 2**28
+		<a href="../src/math/asinh.go.html#line-67" class="path-duplicate">asinh.go</a><a href="../src/math/asinh.go.html#line-67">#L67</a>: 		temp = <b>Log</b>(2*x + 1/(Sqrt(x*x+1)+x)) // 2**28 &gt; |x| &gt; 2.0
+		<a href="../src/math/erfinv.go.html#line-100">erfinv.go#L100</a>: 		r := Sqrt(Ln2 - <b>Log</b>(1.0-x))
+		<a href="../src/math/j0.go.html#line-222">j0.go#L222</a>: 		return U00 + (2/Pi)*<b>Log</b>(x) // |x| &lt; ~7.4506e-9
+		<a href="../src/math/j0.go.html#line-227" class="path-duplicate">j0.go</a><a href="../src/math/j0.go.html#line-227">#L227</a>: 	return u/v + (2/Pi)*J0(x)*<b>Log</b>(x) // ~7.4506e-9 &lt; |x| &lt; 2.0
+		<a href="../src/math/j1.go.html#line-222">j1.go#L222</a>: 	return x*(u/v) + (2/Pi)*(J1(x)*<b>Log</b>(x)-1/x)
+		<a href="../src/math/jn.go.html#line-199">jn.go#L199</a>: 			tmp = tmp * <b>Log</b>(Abs(v*tmp))
+		<a href="../src/math/lgamma.go.html#line-211">lgamma.go#L211</a>: 		lgamma = -<b>Log</b>(x)
+		<a href="../src/math/lgamma.go.html#line-225" class="path-duplicate">lgamma.go</a><a href="../src/math/lgamma.go.html#line-225">#L225</a>: 		nadj = <b>Log</b>(Pi / Abs(t*x))
+		<a href="../src/math/lgamma.go.html#line-239" class="path-duplicate">lgamma.go</a><a href="../src/math/lgamma.go.html#line-239">#L239</a>: 			lgamma = -<b>Log</b>(x)
+		<a href="../src/math/lgamma.go.html#line-307" class="path-duplicate">lgamma.go</a><a href="../src/math/lgamma.go.html#line-307">#L307</a>: 			lgamma += <b>Log</b>(z)
+		<a href="../src/math/lgamma.go.html#line-310" class="path-duplicate">lgamma.go</a><a href="../src/math/lgamma.go.html#line-310">#L310</a>: 		t := <b>Log</b>(x)
+		<a href="../src/math/lgamma.go.html#line-316" class="path-duplicate">lgamma.go</a><a href="../src/math/lgamma.go.html#line-316">#L316</a>: 		lgamma = x * (<b>Log</b>(x) - 1)
+		<a href="../src/math/log.go.html#line-81">log.go#L81</a>: func <b>Log</b>(x float64) float64 {
+		<a href="../src/math/log10.go.html#line-17">log10.go#L17</a>: 	return <b>Log</b>(x) * (1 / Ln10)
+		<a href="../src/math/log10.go.html#line-36" class="path-duplicate">log10.go</a><a href="../src/math/log10.go.html#line-36">#L36</a>: 	return <b>Log</b>(frac)*(1/Ln2) + float64(exp)
+		<a href="../src/math/pow.go.html#line-128">pow.go#L128</a>: 		a1 = Exp(yf * <b>Log</b>(x))
+
+	<a href="../pkg/math/rand.html">math/rand</a>
+		<a href="../src/math/rand/exp.go.html#line-39">exp.go#L39</a>: 			return re - math.<b>Log</b>(r.Float64())
+		<a href="../src/math/rand/normal.go.html#line-50">normal.go#L50</a>: 				x = -math.<b>Log</b>(r.Float64()) * (1.0 / rn)
+		<a href="../src/math/rand/normal.go.html#line-51" class="path-duplicate">normal.go</a><a href="../src/math/rand/normal.go.html#line-51">#L51</a>: 				y := -math.<b>Log</b>(r.Float64())
+		<a href="../src/math/rand/zipf.go.html#line-28">zipf.go#L28</a>: 	return math.Exp(z.oneminusQ*math.<b>Log</b>(z.v+x)) * z.oneminusQinv
+		<a href="../src/math/rand/zipf.go.html#line-32" class="path-duplicate">zipf.go</a><a href="../src/math/rand/zipf.go.html#line-32">#L32</a>: 	return math.Exp(z.oneminusQinv*math.<b>Log</b>(z.oneminusQ*x)) - z.v
+		<a href="../src/math/rand/zipf.go.html#line-51" class="path-duplicate">zipf.go</a><a href="../src/math/rand/zipf.go.html#line-51">#L51</a>: 	z.hx0minusHxm = z.h(0.5) - math.Exp(math.<b>Log</b>(z.v)*(-z.q)) - z.hxm
+		<a href="../src/math/rand/zipf.go.html#line-52" class="path-duplicate">zipf.go</a><a href="../src/math/rand/zipf.go.html#line-52">#L52</a>: 	z.s = 1 - z.hinv(z.h(1.5)-math.Exp(-z.q*math.<b>Log</b>(z.v+1.0)))
+		<a href="../src/math/rand/zipf.go.html#line-72" class="path-duplicate">zipf.go</a><a href="../src/math/rand/zipf.go.html#line-72">#L72</a>: 		if ur &gt;= z.h(k+0.5)-math.Exp(-math.<b>Log</b>(k+z.v)*z.q) {
+
+	<a href="../pkg/crypto/rsa.html">crypto/rsa</a>
+		<a href="../src/crypto/rsa/rsa.go.html#line-363">rsa.go#L363</a>: 		pi := primeLimit / (math.<b>Log</b>(primeLimit) - 1)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: regexp/syntax.Inst.Rune</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/regexp/syntax.html">regexp/syntax</a>.<a href="../../src/regexp/syntax/prog.go.html#line-115">Inst</a>.<a href="../../src/regexp/syntax/prog.go.html#line-119">Rune</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">25 uses</span>
+
+	regexp/syntax (current package)
+		<a href="../../src/regexp/syntax/compile.go.html#line-276">compile.go#L276</a>: 	i.<b>Rune</b> = r
+		<a href="../../src/regexp/syntax/prog.go.html#line-119">prog.go#L119</a>: 	<b>Rune</b> []rune
+		<a href="../../src/regexp/syntax/prog.go.html#line-154" class="path-duplicate">prog.go</a><a href="../../src/regexp/syntax/prog.go.html#line-154">#L154</a>: 	if i.op() != InstRune || len(i.<b>Rune</b>) != 1 {
+		<a href="../../src/regexp/syntax/prog.go.html#line-160" class="path-duplicate">prog.go</a><a href="../../src/regexp/syntax/prog.go.html#line-160">#L160</a>: 	for i.op() == InstRune &amp;&amp; len(i.<b>Rune</b>) == 1 &amp;&amp; Flags(i.Arg)&amp;FoldCase == 0 &amp;&amp; i.<b>Rune</b>[0] != utf8.RuneError {
+		<a href="../../src/regexp/syntax/prog.go.html#line-161" class="path-duplicate">prog.go</a><a href="../../src/regexp/syntax/prog.go.html#line-161">#L161</a>: 		buf.WriteRune(i.<b>Rune</b>[0])
+		<a href="../../src/regexp/syntax/prog.go.html#line-205" class="path-duplicate">prog.go</a><a href="../../src/regexp/syntax/prog.go.html#line-205">#L205</a>: 	rune := i.<b>Rune</b>
+		<a href="../../src/regexp/syntax/prog.go.html#line-333" class="path-duplicate">prog.go</a><a href="../../src/regexp/syntax/prog.go.html#line-333">#L333</a>: 		if i.<b>Rune</b> == nil {
+		<a href="../../src/regexp/syntax/prog.go.html#line-337" class="path-duplicate">prog.go</a><a href="../../src/regexp/syntax/prog.go.html#line-337">#L337</a>: 		bw(b, "rune ", strconv.QuoteToASCII(string(i.<b>Rune</b>)))
+		<a href="../../src/regexp/syntax/prog.go.html#line-343" class="path-duplicate">prog.go</a><a href="../../src/regexp/syntax/prog.go.html#line-343">#L343</a>: 		bw(b, "rune1 ", strconv.QuoteToASCII(string(i.<b>Rune</b>)), " -&gt; ", u32(i.Out))
+
+	<a href="../../pkg/regexp.html">regexp</a>
+		<a href="../../src/regexp/backtrack.go.html#line-217">backtrack.go#L217</a>: 			if r != inst.<b>Rune</b>[0] {
+		<a href="../../src/regexp/exec.go.html#line-297">exec.go#L297</a>: 			add = c == i.<b>Rune</b>[0]
+		<a href="../../src/regexp/exec.go.html#line-462" class="path-duplicate">exec.go</a><a href="../../src/regexp/exec.go.html#line-462">#L462</a>: 			if r != inst.<b>Rune</b>[0] {
+		<a href="../../src/regexp/onepass.go.html#line-53">onepass.go#L53</a>: 	if iop(i) != syntax.InstRune || len(i.<b>Rune</b>) != 1 {
+		<a href="../../src/regexp/onepass.go.html#line-59" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-59">#L59</a>: 	for iop(i) == syntax.InstRune &amp;&amp; len(i.<b>Rune</b>) == 1 &amp;&amp; syntax.Flags(i.Arg)&amp;syntax.FoldCase == 0 &amp;&amp; i.<b>Rune</b>[0] != utf8.RuneError {
+		<a href="../../src/regexp/onepass.go.html#line-60" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-60">#L60</a>: 		buf.WriteRune(i.<b>Rune</b>[0])
+		<a href="../../src/regexp/onepass.go.html#line-374" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-374">#L374</a>: 			if len(inst.<b>Rune</b>) == 0 {
+		<a href="../../src/regexp/onepass.go.html#line-380" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-380">#L380</a>: 			if len(inst.<b>Rune</b>) == 1 &amp;&amp; syntax.Flags(inst.Arg)&amp;syntax.FoldCase != 0 {
+		<a href="../../src/regexp/onepass.go.html#line-381" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-381">#L381</a>: 				r0 := inst.<b>Rune</b>[0]
+		<a href="../../src/regexp/onepass.go.html#line-388" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-388">#L388</a>: 				runes = append(runes, inst.<b>Rune</b>...)
+		<a href="../../src/regexp/onepass.go.html#line-405" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-405">#L405</a>: 				r0 := inst.<b>Rune</b>[0]
+		<a href="../../src/regexp/onepass.go.html#line-412" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-412">#L412</a>: 				runes = append(runes, inst.<b>Rune</b>[0], inst.<b>Rune</b>[0])
+		<a href="../../src/regexp/onepass.go.html#line-456" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-456">#L456</a>: 			p.Inst[i].<b>Rune</b> = onePassRunes[i]
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

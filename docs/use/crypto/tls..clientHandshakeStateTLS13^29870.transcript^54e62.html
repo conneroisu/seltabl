@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/tls.clientHandshakeStateTLS13.transcript</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/crypto/tls.html">crypto/tls</a>.<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-19">clientHandshakeStateTLS13</a>.<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-34">transcript</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">28 uses</span>
+
+	crypto/tls (current package)
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-34">handshake_client_tls13.go#L34</a>: 	<b>transcript</b>    hash.Hash
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-64" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-64">#L64</a>: 	hs.<b>transcript</b> = hs.suite.hash.New()
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-66" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-66">#L66</a>: 	if err := transcriptMsg(hs.hello, hs.<b>transcript</b>); err != nil {
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-79" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-79">#L79</a>: 	if err := transcriptMsg(hs.serverHello, hs.<b>transcript</b>); err != nil {
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-195" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-195">#L195</a>: 	chHash := hs.<b>transcript</b>.Sum(nil)
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-196" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-196">#L196</a>: 	hs.<b>transcript</b>.Reset()
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-197" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-197">#L197</a>: 	hs.<b>transcript</b>.Write([]byte{typeMessageHash, 0, 0, uint8(len(chHash))})
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-198" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-198">#L198</a>: 	hs.<b>transcript</b>.Write(chHash)
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-199" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-199">#L199</a>: 	if err := transcriptMsg(hs.serverHello, hs.<b>transcript</b>); err != nil {
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-290" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-290">#L290</a>: 	if _, err := hs.c.writeHandshakeRecord(hs.hello, hs.<b>transcript</b>); err != nil {
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-395" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-395">#L395</a>: 		clientHandshakeTrafficLabel, hs.<b>transcript</b>)
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-398" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-398">#L398</a>: 		serverHandshakeTrafficLabel, hs.<b>transcript</b>)
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-429" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-429">#L429</a>: 	msg, err := c.readHandshake(hs.<b>transcript</b>)
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-503" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-503">#L503</a>: 	msg, err := c.readHandshake(hs.<b>transcript</b>)
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-512" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-512">#L512</a>: 		msg, err = c.readHandshake(hs.<b>transcript</b>)
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-562" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-562">#L562</a>: 	signed := signedMessage(sigHash, serverSignatureContext, hs.<b>transcript</b>)
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-569" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-569">#L569</a>: 	if err := transcriptMsg(certVerify, hs.<b>transcript</b>); err != nil {
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-593" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-593">#L593</a>: 	expectedMAC := hs.suite.finishedHash(c.in.trafficSecret, hs.<b>transcript</b>)
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-599" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-599">#L599</a>: 	if err := transcriptMsg(finished, hs.<b>transcript</b>); err != nil {
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-606" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-606">#L606</a>: 		clientApplicationTrafficLabel, hs.<b>transcript</b>)
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-608" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-608">#L608</a>: 		serverApplicationTrafficLabel, hs.<b>transcript</b>)
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-622" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-622">#L622</a>: 	c.ekm = hs.suite.exportKeyingMaterial(hs.masterSecret, hs.<b>transcript</b>)
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-650" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-650">#L650</a>: 	if _, err := hs.c.writeHandshakeRecord(certMsg, hs.<b>transcript</b>); err != nil {
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-675" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-675">#L675</a>: 	signed := signedMessage(sigHash, clientSignatureContext, hs.<b>transcript</b>)
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-687" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-687">#L687</a>: 	if _, err := hs.c.writeHandshakeRecord(certVerifyMsg, hs.<b>transcript</b>); err != nil {
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-698" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-698">#L698</a>: 		verifyData: hs.suite.finishedHash(c.out.trafficSecret, hs.<b>transcript</b>),
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-701" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-701">#L701</a>: 	if _, err := hs.c.writeHandshakeRecord(finished, hs.<b>transcript</b>); err != nil {
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-709" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-709">#L709</a>: 			resumptionLabel, hs.<b>transcript</b>)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

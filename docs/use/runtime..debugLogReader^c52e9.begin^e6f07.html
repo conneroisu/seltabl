@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.debugLogReader.begin</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/debuglog.go.html#line-487">debugLogReader</a>.<a href="../src/runtime/debuglog.go.html#line-492">begin</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">32 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/debuglog.go.html#line-397">debuglog.go#L397</a>: 	for l.write+n &gt;= l.r.<b>begin</b>+uint64(len(l.data.b)) {
+		<a href="../src/runtime/debuglog.go.html#line-492" class="path-duplicate">debuglog.go</a><a href="../src/runtime/debuglog.go.html#line-492">#L492</a>: 	<b>begin</b>, end uint64
+		<a href="../src/runtime/debuglog.go.html#line-501" class="path-duplicate">debuglog.go</a><a href="../src/runtime/debuglog.go.html#line-501">#L501</a>: 	if r.<b>begin</b>+debugLogHeaderSize &gt; r.end {
+		<a href="../src/runtime/debuglog.go.html#line-504" class="path-duplicate">debuglog.go</a><a href="../src/runtime/debuglog.go.html#line-504">#L504</a>: 	size := uint64(r.readUint16LEAt(r.<b>begin</b>))
+		<a href="../src/runtime/debuglog.go.html#line-507" class="path-duplicate">debuglog.go</a><a href="../src/runtime/debuglog.go.html#line-507">#L507</a>: 		r.tick = r.readUint64LEAt(r.<b>begin</b> + debugLogHeaderSize)
+		<a href="../src/runtime/debuglog.go.html#line-508" class="path-duplicate">debuglog.go</a><a href="../src/runtime/debuglog.go.html#line-508">#L508</a>: 		r.nano = r.readUint64LEAt(r.<b>begin</b> + debugLogHeaderSize + 8)
+		<a href="../src/runtime/debuglog.go.html#line-511" class="path-duplicate">debuglog.go</a><a href="../src/runtime/debuglog.go.html#line-511">#L511</a>: 	if r.<b>begin</b>+size &gt; r.end {
+		<a href="../src/runtime/debuglog.go.html#line-514" class="path-duplicate">debuglog.go</a><a href="../src/runtime/debuglog.go.html#line-514">#L514</a>: 	r.<b>begin</b> += size
+		<a href="../src/runtime/debuglog.go.html#line-541" class="path-duplicate">debuglog.go</a><a href="../src/runtime/debuglog.go.html#line-541">#L541</a>: 		if r.<b>begin</b>+debugLogHeaderSize &gt; r.end {
+		<a href="../src/runtime/debuglog.go.html#line-544" class="path-duplicate">debuglog.go</a><a href="../src/runtime/debuglog.go.html#line-544">#L544</a>: 		size = uint64(r.readUint16LEAt(r.<b>begin</b>))
+		<a href="../src/runtime/debuglog.go.html#line-548" class="path-duplicate">debuglog.go</a><a href="../src/runtime/debuglog.go.html#line-548">#L548</a>: 		if r.<b>begin</b>+debugLogSyncSize &gt; r.end {
+		<a href="../src/runtime/debuglog.go.html#line-552" class="path-duplicate">debuglog.go</a><a href="../src/runtime/debuglog.go.html#line-552">#L552</a>: 		r.tick = r.readUint64LEAt(r.<b>begin</b> + debugLogHeaderSize)
+		<a href="../src/runtime/debuglog.go.html#line-553" class="path-duplicate">debuglog.go</a><a href="../src/runtime/debuglog.go.html#line-553">#L553</a>: 		r.nano = r.readUint64LEAt(r.<b>begin</b> + debugLogHeaderSize + 8)
+		<a href="../src/runtime/debuglog.go.html#line-554" class="path-duplicate">debuglog.go</a><a href="../src/runtime/debuglog.go.html#line-554">#L554</a>: 		r.<b>begin</b> += debugLogSyncSize
+		<a href="../src/runtime/debuglog.go.html#line-558" class="path-duplicate">debuglog.go</a><a href="../src/runtime/debuglog.go.html#line-558">#L558</a>: 	if r.<b>begin</b>+size &gt; r.end {
+		<a href="../src/runtime/debuglog.go.html#line-561" class="path-duplicate">debuglog.go</a><a href="../src/runtime/debuglog.go.html#line-561">#L561</a>: 	pos := r.<b>begin</b> + debugLogHeaderSize
+		<a href="../src/runtime/debuglog.go.html#line-571" class="path-duplicate">debuglog.go</a><a href="../src/runtime/debuglog.go.html#line-571">#L571</a>: 	if pos &gt; r.<b>begin</b>+size {
+		<a href="../src/runtime/debuglog.go.html#line-580" class="path-duplicate">debuglog.go</a><a href="../src/runtime/debuglog.go.html#line-580">#L580</a>: 	size := uint64(r.readUint16LEAt(r.<b>begin</b>))
+		<a href="../src/runtime/debuglog.go.html#line-581" class="path-duplicate">debuglog.go</a><a href="../src/runtime/debuglog.go.html#line-581">#L581</a>: 	end = r.<b>begin</b> + size
+		<a href="../src/runtime/debuglog.go.html#line-582" class="path-duplicate">debuglog.go</a><a href="../src/runtime/debuglog.go.html#line-582">#L582</a>: 	r.<b>begin</b> += debugLogHeaderSize
+		<a href="../src/runtime/debuglog.go.html#line-595" class="path-duplicate">debuglog.go</a><a href="../src/runtime/debuglog.go.html#line-595">#L595</a>: 		b := r.data.b[r.<b>begin</b>%uint64(len(r.data.b))]
+		<a href="../src/runtime/debuglog.go.html#line-596" class="path-duplicate">debuglog.go</a><a href="../src/runtime/debuglog.go.html#line-596">#L596</a>: 		r.<b>begin</b>++
+		<a href="../src/runtime/debuglog.go.html#line-617" class="path-duplicate">debuglog.go</a><a href="../src/runtime/debuglog.go.html#line-617">#L617</a>: 	typ := r.data.b[r.<b>begin</b>%uint64(len(r.data.b))]
+		<a href="../src/runtime/debuglog.go.html#line-618" class="path-duplicate">debuglog.go</a><a href="../src/runtime/debuglog.go.html#line-618">#L618</a>: 	r.<b>begin</b>++
+		<a href="../src/runtime/debuglog.go.html#line-622" class="path-duplicate">debuglog.go</a><a href="../src/runtime/debuglog.go.html#line-622">#L622</a>: 		print("&lt;unknown field type ", hex(typ), " pos ", r.<b>begin</b>-1, " end ", r.end, "&gt;\n")
+		<a href="../src/runtime/debuglog.go.html#line-645" class="path-duplicate">debuglog.go</a><a href="../src/runtime/debuglog.go.html#line-645">#L645</a>: 		if r.<b>begin</b>+sl &gt; r.end {
+		<a href="../src/runtime/debuglog.go.html#line-646" class="path-duplicate">debuglog.go</a><a href="../src/runtime/debuglog.go.html#line-646">#L646</a>: 			r.<b>begin</b> = r.end
+		<a href="../src/runtime/debuglog.go.html#line-651" class="path-duplicate">debuglog.go</a><a href="../src/runtime/debuglog.go.html#line-651">#L651</a>: 			b := r.data.b[r.<b>begin</b>%uint64(len(r.data.b)):]
+		<a href="../src/runtime/debuglog.go.html#line-655" class="path-duplicate">debuglog.go</a><a href="../src/runtime/debuglog.go.html#line-655">#L655</a>: 			r.<b>begin</b> += uint64(len(b))
+		<a href="../src/runtime/debuglog.go.html#line-740" class="path-duplicate">debuglog.go</a><a href="../src/runtime/debuglog.go.html#line-740">#L740</a>: 			s.lost = l.w.r.<b>begin</b>
+		<a href="../src/runtime/debuglog.go.html#line-790" class="path-duplicate">debuglog.go</a><a href="../src/runtime/debuglog.go.html#line-790">#L790</a>: 		for i := 0; s.<b>begin</b> &lt; s.end; i++ {
+		<a href="../src/runtime/debuglog.go.html#line-804" class="path-duplicate">debuglog.go</a><a href="../src/runtime/debuglog.go.html#line-804">#L804</a>: 		s.<b>begin</b> = end
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

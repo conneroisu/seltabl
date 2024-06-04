@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/http/internal.chunkedReader.err</title>
+<link href="../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../../pkg/net/http/internal.html">net/http/internal</a>.<a href="../../../src/net/http/internal/chunked.go.html#line-37">chunkedReader</a>.<a href="../../../src/net/http/internal/chunked.go.html#line-40">err</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">20 uses</span>
+
+	net/http/internal (current package)
+		<a href="../../../src/net/http/internal/chunked.go.html#line-40">chunked.go#L40</a>: 	<b>err</b>      error
+		<a href="../../../src/net/http/internal/chunked.go.html#line-49" class="path-duplicate">chunked.go</a><a href="../../../src/net/http/internal/chunked.go.html#line-49">#L49</a>: 	line, cr.<b>err</b> = readChunkLine(cr.r)
+		<a href="../../../src/net/http/internal/chunked.go.html#line-50" class="path-duplicate">chunked.go</a><a href="../../../src/net/http/internal/chunked.go.html#line-50">#L50</a>: 	if cr.<b>err</b> != nil {
+		<a href="../../../src/net/http/internal/chunked.go.html#line-55" class="path-duplicate">chunked.go</a><a href="../../../src/net/http/internal/chunked.go.html#line-55">#L55</a>: 	line, cr.<b>err</b> = removeChunkExtension(line)
+		<a href="../../../src/net/http/internal/chunked.go.html#line-56" class="path-duplicate">chunked.go</a><a href="../../../src/net/http/internal/chunked.go.html#line-56">#L56</a>: 	if cr.<b>err</b> != nil {
+		<a href="../../../src/net/http/internal/chunked.go.html#line-59" class="path-duplicate">chunked.go</a><a href="../../../src/net/http/internal/chunked.go.html#line-59">#L59</a>: 	cr.n, cr.<b>err</b> = parseHexUint(line)
+		<a href="../../../src/net/http/internal/chunked.go.html#line-60" class="path-duplicate">chunked.go</a><a href="../../../src/net/http/internal/chunked.go.html#line-60">#L60</a>: 	if cr.<b>err</b> != nil {
+		<a href="../../../src/net/http/internal/chunked.go.html#line-81" class="path-duplicate">chunked.go</a><a href="../../../src/net/http/internal/chunked.go.html#line-81">#L81</a>: 		cr.<b>err</b> = errors.New("chunked encoding contains too much non-data")
+		<a href="../../../src/net/http/internal/chunked.go.html#line-84" class="path-duplicate">chunked.go</a><a href="../../../src/net/http/internal/chunked.go.html#line-84">#L84</a>: 		cr.<b>err</b> = io.EOF
+		<a href="../../../src/net/http/internal/chunked.go.html#line-98" class="path-duplicate">chunked.go</a><a href="../../../src/net/http/internal/chunked.go.html#line-98">#L98</a>: 	for cr.<b>err</b> == nil {
+		<a href="../../../src/net/http/internal/chunked.go.html#line-106" class="path-duplicate">chunked.go</a><a href="../../../src/net/http/internal/chunked.go.html#line-106">#L106</a>: 			if _, cr.<b>err</b> = io.ReadFull(cr.r, cr.buf[:2]); cr.<b>err</b> == nil {
+		<a href="../../../src/net/http/internal/chunked.go.html#line-108" class="path-duplicate">chunked.go</a><a href="../../../src/net/http/internal/chunked.go.html#line-108">#L108</a>: 					cr.<b>err</b> = errors.New("malformed chunked encoding")
+		<a href="../../../src/net/http/internal/chunked.go.html#line-112" class="path-duplicate">chunked.go</a><a href="../../../src/net/http/internal/chunked.go.html#line-112">#L112</a>: 				if cr.<b>err</b> == io.EOF {
+		<a href="../../../src/net/http/internal/chunked.go.html#line-113" class="path-duplicate">chunked.go</a><a href="../../../src/net/http/internal/chunked.go.html#line-113">#L113</a>: 					cr.<b>err</b> = io.ErrUnexpectedEOF
+		<a href="../../../src/net/http/internal/chunked.go.html#line-136" class="path-duplicate">chunked.go</a><a href="../../../src/net/http/internal/chunked.go.html#line-136">#L136</a>: 		n0, cr.<b>err</b> = cr.r.Read(rbuf)
+		<a href="../../../src/net/http/internal/chunked.go.html#line-142" class="path-duplicate">chunked.go</a><a href="../../../src/net/http/internal/chunked.go.html#line-142">#L142</a>: 		if cr.n == 0 &amp;&amp; cr.<b>err</b> == nil {
+		<a href="../../../src/net/http/internal/chunked.go.html#line-144" class="path-duplicate">chunked.go</a><a href="../../../src/net/http/internal/chunked.go.html#line-144">#L144</a>: 		} else if cr.<b>err</b> == io.EOF {
+		<a href="../../../src/net/http/internal/chunked.go.html#line-145" class="path-duplicate">chunked.go</a><a href="../../../src/net/http/internal/chunked.go.html#line-145">#L145</a>: 			cr.<b>err</b> = io.ErrUnexpectedEOF
+		<a href="../../../src/net/http/internal/chunked.go.html#line-148" class="path-duplicate">chunked.go</a><a href="../../../src/net/http/internal/chunked.go.html#line-148">#L148</a>: 	return n, cr.<b>err</b>
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

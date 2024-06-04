@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: abi_ppc64x.h in package runtime/cgo</title>
+<link href="../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	abi_ppc64x.h
+
+<span class="title">Belonging Package</span>
+	<a href="../../../pkg/runtime/cgo.html">runtime/cgo</a>
+</code></pre>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code>// Copyright 2023 The Go Authors. All rights reserved.</code></span>
+<span class="codeline" id="line-2"><code>// Use of this source code is governed by a BSD-style</code></span>
+<span class="codeline" id="line-3"><code>// license that can be found in the LICENSE file.</code></span>
+<span class="codeline" id="line-4"><code></code></span>
+<span class="codeline" id="line-5"><code>// Macros for transitioning from the host ABI to Go ABI</code></span>
+<span class="codeline" id="line-6"><code>//</code></span>
+<span class="codeline" id="line-7"><code>// On PPC64/ELFv2 targets, the following registers are callee</code></span>
+<span class="codeline" id="line-8"><code>// saved when called from C. They must be preserved before</code></span>
+<span class="codeline" id="line-9"><code>// calling into Go which does not preserve any of them.</code></span>
+<span class="codeline" id="line-10"><code>//</code></span>
+<span class="codeline" id="line-11"><code>//	R14-R31</code></span>
+<span class="codeline" id="line-12"><code>//	CR2-4</code></span>
+<span class="codeline" id="line-13"><code>//	VR20-31</code></span>
+<span class="codeline" id="line-14"><code>//	F14-F31</code></span>
+<span class="codeline" id="line-15"><code>//</code></span>
+<span class="codeline" id="line-16"><code>// xcoff(aix) and ELFv1 are similar, but may only require a</code></span>
+<span class="codeline" id="line-17"><code>// subset of these.</code></span>
+<span class="codeline" id="line-18"><code>//</code></span>
+<span class="codeline" id="line-19"><code>// These macros assume a 16 byte aligned stack pointer. This</code></span>
+<span class="codeline" id="line-20"><code>// is required by ELFv1, ELFv2, and AIX PPC64.</code></span>
+<span class="codeline" id="line-21"><code></code></span>
+<span class="codeline" id="line-22"><code>#define SAVE_GPR_SIZE (18*8)</code></span>
+<span class="codeline" id="line-23"><code>#define SAVE_GPR(offset)               \</code></span>
+<span class="codeline" id="line-24"><code>	MOVD	R14, (offset+8*0)(R1)  \</code></span>
+<span class="codeline" id="line-25"><code>	MOVD	R15, (offset+8*1)(R1)  \</code></span>
+<span class="codeline" id="line-26"><code>	MOVD	R16, (offset+8*2)(R1)  \</code></span>
+<span class="codeline" id="line-27"><code>	MOVD	R17, (offset+8*3)(R1)  \</code></span>
+<span class="codeline" id="line-28"><code>	MOVD	R18, (offset+8*4)(R1)  \</code></span>
+<span class="codeline" id="line-29"><code>	MOVD	R19, (offset+8*5)(R1)  \</code></span>
+<span class="codeline" id="line-30"><code>	MOVD	R20, (offset+8*6)(R1)  \</code></span>
+<span class="codeline" id="line-31"><code>	MOVD	R21, (offset+8*7)(R1)  \</code></span>
+<span class="codeline" id="line-32"><code>	MOVD	R22, (offset+8*8)(R1)  \</code></span>
+<span class="codeline" id="line-33"><code>	MOVD	R23, (offset+8*9)(R1)  \</code></span>
+<span class="codeline" id="line-34"><code>	MOVD	R24, (offset+8*10)(R1) \</code></span>
+<span class="codeline" id="line-35"><code>	MOVD	R25, (offset+8*11)(R1) \</code></span>
+<span class="codeline" id="line-36"><code>	MOVD	R26, (offset+8*12)(R1) \</code></span>
+<span class="codeline" id="line-37"><code>	MOVD	R27, (offset+8*13)(R1) \</code></span>
+<span class="codeline" id="line-38"><code>	MOVD	R28, (offset+8*14)(R1) \</code></span>
+<span class="codeline" id="line-39"><code>	MOVD	R29, (offset+8*15)(R1) \</code></span>
+<span class="codeline" id="line-40"><code>	MOVD	g,   (offset+8*16)(R1) \</code></span>
+<span class="codeline" id="line-41"><code>	MOVD	R31, (offset+8*17)(R1)</code></span>
+<span class="codeline" id="line-42"><code></code></span>
+<span class="codeline" id="line-43"><code>#define RESTORE_GPR(offset)            \</code></span>
+<span class="codeline" id="line-44"><code>	MOVD	(offset+8*0)(R1), R14  \</code></span>
+<span class="codeline" id="line-45"><code>	MOVD	(offset+8*1)(R1), R15  \</code></span>
+<span class="codeline" id="line-46"><code>	MOVD	(offset+8*2)(R1), R16  \</code></span>
+<span class="codeline" id="line-47"><code>	MOVD	(offset+8*3)(R1), R17  \</code></span>
+<span class="codeline" id="line-48"><code>	MOVD	(offset+8*4)(R1), R18  \</code></span>
+<span class="codeline" id="line-49"><code>	MOVD	(offset+8*5)(R1), R19  \</code></span>
+<span class="codeline" id="line-50"><code>	MOVD	(offset+8*6)(R1), R20  \</code></span>
+<span class="codeline" id="line-51"><code>	MOVD	(offset+8*7)(R1), R21  \</code></span>
+<span class="codeline" id="line-52"><code>	MOVD	(offset+8*8)(R1), R22  \</code></span>
+<span class="codeline" id="line-53"><code>	MOVD	(offset+8*9)(R1), R23  \</code></span>
+<span class="codeline" id="line-54"><code>	MOVD	(offset+8*10)(R1), R24 \</code></span>
+<span class="codeline" id="line-55"><code>	MOVD	(offset+8*11)(R1), R25 \</code></span>
+<span class="codeline" id="line-56"><code>	MOVD	(offset+8*12)(R1), R26 \</code></span>
+<span class="codeline" id="line-57"><code>	MOVD	(offset+8*13)(R1), R27 \</code></span>
+<span class="codeline" id="line-58"><code>	MOVD	(offset+8*14)(R1), R28 \</code></span>
+<span class="codeline" id="line-59"><code>	MOVD	(offset+8*15)(R1), R29 \</code></span>
+<span class="codeline" id="line-60"><code>	MOVD	(offset+8*16)(R1), g   \</code></span>
+<span class="codeline" id="line-61"><code>	MOVD	(offset+8*17)(R1), R31</code></span>
+<span class="codeline" id="line-62"><code></code></span>
+<span class="codeline" id="line-63"><code>#define SAVE_FPR_SIZE (18*8)</code></span>
+<span class="codeline" id="line-64"><code>#define SAVE_FPR(offset)               \</code></span>
+<span class="codeline" id="line-65"><code>	FMOVD	F14, (offset+8*0)(R1)  \</code></span>
+<span class="codeline" id="line-66"><code>	FMOVD	F15, (offset+8*1)(R1)  \</code></span>
+<span class="codeline" id="line-67"><code>	FMOVD	F16, (offset+8*2)(R1)  \</code></span>
+<span class="codeline" id="line-68"><code>	FMOVD	F17, (offset+8*3)(R1)  \</code></span>
+<span class="codeline" id="line-69"><code>	FMOVD	F18, (offset+8*4)(R1)  \</code></span>
+<span class="codeline" id="line-70"><code>	FMOVD	F19, (offset+8*5)(R1)  \</code></span>
+<span class="codeline" id="line-71"><code>	FMOVD	F20, (offset+8*6)(R1)  \</code></span>
+<span class="codeline" id="line-72"><code>	FMOVD	F21, (offset+8*7)(R1)  \</code></span>
+<span class="codeline" id="line-73"><code>	FMOVD	F22, (offset+8*8)(R1)  \</code></span>
+<span class="codeline" id="line-74"><code>	FMOVD	F23, (offset+8*9)(R1)  \</code></span>
+<span class="codeline" id="line-75"><code>	FMOVD	F24, (offset+8*10)(R1) \</code></span>
+<span class="codeline" id="line-76"><code>	FMOVD	F25, (offset+8*11)(R1) \</code></span>
+<span class="codeline" id="line-77"><code>	FMOVD	F26, (offset+8*12)(R1) \</code></span>
+<span class="codeline" id="line-78"><code>	FMOVD	F27, (offset+8*13)(R1) \</code></span>
+<span class="codeline" id="line-79"><code>	FMOVD	F28, (offset+8*14)(R1) \</code></span>
+<span class="codeline" id="line-80"><code>	FMOVD	F29, (offset+8*15)(R1) \</code></span>
+<span class="codeline" id="line-81"><code>	FMOVD	F30, (offset+8*16)(R1) \</code></span>
+<span class="codeline" id="line-82"><code>	FMOVD	F31, (offset+8*17)(R1)</code></span>
+<span class="codeline" id="line-83"><code></code></span>
+<span class="codeline" id="line-84"><code>#define RESTORE_FPR(offset)            \</code></span>
+<span class="codeline" id="line-85"><code>	FMOVD	(offset+8*0)(R1), F14  \</code></span>
+<span class="codeline" id="line-86"><code>	FMOVD	(offset+8*1)(R1), F15  \</code></span>
+<span class="codeline" id="line-87"><code>	FMOVD	(offset+8*2)(R1), F16  \</code></span>
+<span class="codeline" id="line-88"><code>	FMOVD	(offset+8*3)(R1), F17  \</code></span>
+<span class="codeline" id="line-89"><code>	FMOVD	(offset+8*4)(R1), F18  \</code></span>
+<span class="codeline" id="line-90"><code>	FMOVD	(offset+8*5)(R1), F19  \</code></span>
+<span class="codeline" id="line-91"><code>	FMOVD	(offset+8*6)(R1), F20  \</code></span>
+<span class="codeline" id="line-92"><code>	FMOVD	(offset+8*7)(R1), F21  \</code></span>
+<span class="codeline" id="line-93"><code>	FMOVD	(offset+8*8)(R1), F22  \</code></span>
+<span class="codeline" id="line-94"><code>	FMOVD	(offset+8*9)(R1), F23  \</code></span>
+<span class="codeline" id="line-95"><code>	FMOVD	(offset+8*10)(R1), F24 \</code></span>
+<span class="codeline" id="line-96"><code>	FMOVD	(offset+8*11)(R1), F25 \</code></span>
+<span class="codeline" id="line-97"><code>	FMOVD	(offset+8*12)(R1), F26 \</code></span>
+<span class="codeline" id="line-98"><code>	FMOVD	(offset+8*13)(R1), F27 \</code></span>
+<span class="codeline" id="line-99"><code>	FMOVD	(offset+8*14)(R1), F28 \</code></span>
+<span class="codeline" id="line-100"><code>	FMOVD	(offset+8*15)(R1), F29 \</code></span>
+<span class="codeline" id="line-101"><code>	FMOVD	(offset+8*16)(R1), F30 \</code></span>
+<span class="codeline" id="line-102"><code>	FMOVD	(offset+8*17)(R1), F31</code></span>
+<span class="codeline" id="line-103"><code></code></span>
+<span class="codeline" id="line-104"><code>// Save and restore VR20-31 (aka VSR56-63). These</code></span>
+<span class="codeline" id="line-105"><code>// macros must point to a 16B aligned offset.</code></span>
+<span class="codeline" id="line-106"><code>#define SAVE_VR_SIZE (12*16)</code></span>
+<span class="codeline" id="line-107"><code>#define SAVE_VR(offset, rtmp)         \</code></span>
+<span class="codeline" id="line-108"><code>	MOVD	$(offset+16*0), rtmp  \</code></span>
+<span class="codeline" id="line-109"><code>	STVX	V20, (rtmp)(R1)       \</code></span>
+<span class="codeline" id="line-110"><code>	MOVD	$(offset+16*1), rtmp  \</code></span>
+<span class="codeline" id="line-111"><code>	STVX	V21, (rtmp)(R1)       \</code></span>
+<span class="codeline" id="line-112"><code>	MOVD	$(offset+16*2), rtmp  \</code></span>
+<span class="codeline" id="line-113"><code>	STVX	V22, (rtmp)(R1)       \</code></span>
+<span class="codeline" id="line-114"><code>	MOVD	$(offset+16*3), rtmp  \</code></span>
+<span class="codeline" id="line-115"><code>	STVX	V23, (rtmp)(R1)       \</code></span>
+<span class="codeline" id="line-116"><code>	MOVD	$(offset+16*4), rtmp  \</code></span>
+<span class="codeline" id="line-117"><code>	STVX	V24, (rtmp)(R1)       \</code></span>
+<span class="codeline" id="line-118"><code>	MOVD	$(offset+16*5), rtmp  \</code></span>
+<span class="codeline" id="line-119"><code>	STVX	V25, (rtmp)(R1)       \</code></span>
+<span class="codeline" id="line-120"><code>	MOVD	$(offset+16*6), rtmp  \</code></span>
+<span class="codeline" id="line-121"><code>	STVX	V26, (rtmp)(R1)       \</code></span>
+<span class="codeline" id="line-122"><code>	MOVD	$(offset+16*7), rtmp  \</code></span>
+<span class="codeline" id="line-123"><code>	STVX	V27, (rtmp)(R1)       \</code></span>
+<span class="codeline" id="line-124"><code>	MOVD	$(offset+16*8), rtmp  \</code></span>
+<span class="codeline" id="line-125"><code>	STVX	V28, (rtmp)(R1)       \</code></span>
+<span class="codeline" id="line-126"><code>	MOVD	$(offset+16*9), rtmp  \</code></span>
+<span class="codeline" id="line-127"><code>	STVX	V29, (rtmp)(R1)       \</code></span>
+<span class="codeline" id="line-128"><code>	MOVD	$(offset+16*10), rtmp \</code></span>
+<span class="codeline" id="line-129"><code>	STVX	V30, (rtmp)(R1)       \</code></span>
+<span class="codeline" id="line-130"><code>	MOVD	$(offset+16*11), rtmp \</code></span>
+<span class="codeline" id="line-131"><code>	STVX	V31, (rtmp)(R1)</code></span>
+<span class="codeline" id="line-132"><code></code></span>
+<span class="codeline" id="line-133"><code>#define RESTORE_VR(offset, rtmp)      \</code></span>
+<span class="codeline" id="line-134"><code>	MOVD	$(offset+16*0), rtmp  \</code></span>
+<span class="codeline" id="line-135"><code>	LVX	(rtmp)(R1), V20       \</code></span>
+<span class="codeline" id="line-136"><code>	MOVD	$(offset+16*1), rtmp  \</code></span>
+<span class="codeline" id="line-137"><code>	LVX	(rtmp)(R1), V21       \</code></span>
+<span class="codeline" id="line-138"><code>	MOVD	$(offset+16*2), rtmp  \</code></span>
+<span class="codeline" id="line-139"><code>	LVX	(rtmp)(R1), V22       \</code></span>
+<span class="codeline" id="line-140"><code>	MOVD	$(offset+16*3), rtmp  \</code></span>
+<span class="codeline" id="line-141"><code>	LVX	(rtmp)(R1), V23       \</code></span>
+<span class="codeline" id="line-142"><code>	MOVD	$(offset+16*4), rtmp  \</code></span>
+<span class="codeline" id="line-143"><code>	LVX	(rtmp)(R1), V24       \</code></span>
+<span class="codeline" id="line-144"><code>	MOVD	$(offset+16*5), rtmp  \</code></span>
+<span class="codeline" id="line-145"><code>	LVX	(rtmp)(R1), V25       \</code></span>
+<span class="codeline" id="line-146"><code>	MOVD	$(offset+16*6), rtmp  \</code></span>
+<span class="codeline" id="line-147"><code>	LVX	(rtmp)(R1), V26       \</code></span>
+<span class="codeline" id="line-148"><code>	MOVD	$(offset+16*7), rtmp  \</code></span>
+<span class="codeline" id="line-149"><code>	LVX	(rtmp)(R1), V27       \</code></span>
+<span class="codeline" id="line-150"><code>	MOVD	$(offset+16*8), rtmp  \</code></span>
+<span class="codeline" id="line-151"><code>	LVX	(rtmp)(R1), V28       \</code></span>
+<span class="codeline" id="line-152"><code>	MOVD	$(offset+16*9), rtmp  \</code></span>
+<span class="codeline" id="line-153"><code>	LVX	(rtmp)(R1), V29       \</code></span>
+<span class="codeline" id="line-154"><code>	MOVD	$(offset+16*10), rtmp \</code></span>
+<span class="codeline" id="line-155"><code>	LVX	(rtmp)(R1), V30       \</code></span>
+<span class="codeline" id="line-156"><code>	MOVD	$(offset+16*11), rtmp \</code></span>
+<span class="codeline" id="line-157"><code>	LVX	(rtmp)(R1), V31</code></span>
+<span class="codeline" id="line-158"><code></code></span>
+<span class="codeline" id="line-159"><code>// LR and CR are saved in the caller's frame. The callee must</code></span>
+<span class="codeline" id="line-160"><code>// make space for all other callee-save registers.</code></span>
+<span class="codeline" id="line-161"><code>#define SAVE_ALL_REG_SIZE (SAVE_GPR_SIZE+SAVE_FPR_SIZE+SAVE_VR_SIZE)</code></span>
+<span class="codeline" id="line-162"><code></code></span>
+<span class="codeline" id="line-163"><code>// Stack a frame and save all callee-save registers following the</code></span>
+<span class="codeline" id="line-164"><code>// host OS's ABI. Fortunately, this is identical for AIX, ELFv1, and</code></span>
+<span class="codeline" id="line-165"><code>// ELFv2. All host ABIs require the stack pointer to maintain 16 byte</code></span>
+<span class="codeline" id="line-166"><code>// alignment, and save the callee-save registers in the same places.</code></span>
+<span class="codeline" id="line-167"><code>//</code></span>
+<span class="codeline" id="line-168"><code>// To restate, R1 is assumed to be aligned when this macro is used.</code></span>
+<span class="codeline" id="line-169"><code>// This assumes the caller's frame is compliant with the host ABI.</code></span>
+<span class="codeline" id="line-170"><code>// CR and LR are saved into the caller's frame per the host ABI.</code></span>
+<span class="codeline" id="line-171"><code>// R0 is initialized to $0 as expected by Go.</code></span>
+<span class="codeline" id="line-172"><code>#define STACK_AND_SAVE_HOST_TO_GO_ABI(extra)                       \</code></span>
+<span class="codeline" id="line-173"><code>	MOVD	LR, R0                                             \</code></span>
+<span class="codeline" id="line-174"><code>	MOVD	R0, 16(R1)                                         \</code></span>
+<span class="codeline" id="line-175"><code>	MOVW	CR, R0                                             \</code></span>
+<span class="codeline" id="line-176"><code>	MOVD	R0, 8(R1)                                          \</code></span>
+<span class="codeline" id="line-177"><code>	MOVDU	R1, -(extra)-FIXED_FRAME-SAVE_ALL_REG_SIZE(R1)     \</code></span>
+<span class="codeline" id="line-178"><code>	SAVE_GPR(extra+FIXED_FRAME)                                \</code></span>
+<span class="codeline" id="line-179"><code>	SAVE_FPR(extra+FIXED_FRAME+SAVE_GPR_SIZE)                  \</code></span>
+<span class="codeline" id="line-180"><code>	SAVE_VR(extra+FIXED_FRAME+SAVE_GPR_SIZE+SAVE_FPR_SIZE, R0) \</code></span>
+<span class="codeline" id="line-181"><code>	MOVD	$0, R0</code></span>
+<span class="codeline" id="line-182"><code></code></span>
+<span class="codeline" id="line-183"><code>// This unstacks the frame, restoring all callee-save registers</code></span>
+<span class="codeline" id="line-184"><code>// as saved by STACK_AND_SAVE_HOST_TO_GO_ABI.</code></span>
+<span class="codeline" id="line-185"><code>//</code></span>
+<span class="codeline" id="line-186"><code>// R0 is not guaranteed to contain $0 after this macro.</code></span>
+<span class="codeline" id="line-187"><code>#define UNSTACK_AND_RESTORE_GO_TO_HOST_ABI(extra)                     \</code></span>
+<span class="codeline" id="line-188"><code>	RESTORE_GPR(extra+FIXED_FRAME)                                \</code></span>
+<span class="codeline" id="line-189"><code>	RESTORE_FPR(extra+FIXED_FRAME+SAVE_GPR_SIZE)                  \</code></span>
+<span class="codeline" id="line-190"><code>	RESTORE_VR(extra+FIXED_FRAME+SAVE_GPR_SIZE+SAVE_FPR_SIZE, R0) \</code></span>
+<span class="codeline" id="line-191"><code>	ADD 	$(extra+FIXED_FRAME+SAVE_ALL_REG_SIZE), R1            \</code></span>
+<span class="codeline" id="line-192"><code>	MOVD	16(R1), R0                                            \</code></span>
+<span class="codeline" id="line-193"><code>	MOVD	R0, LR                                                \</code></span>
+<span class="codeline" id="line-194"><code>	MOVD	8(R1), R0                                             \</code></span>
+<span class="codeline" id="line-195"><code>	MOVW	R0, CR</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.pageAlloc.mheapLock</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/mpagealloc.go.html#line-180">pageAlloc</a>.<a href="../src/runtime/mpagealloc.go.html#line-285">mheapLock</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">16 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/mgcscavenge.go.html#line-754">mgcscavenge.go#L754</a>: 	lock(p.<b>mheapLock</b>)
+		<a href="../src/runtime/mgcscavenge.go.html#line-773" class="path-duplicate">mgcscavenge.go</a><a href="../src/runtime/mgcscavenge.go.html#line-773">#L773</a>: 			unlock(p.<b>mheapLock</b>)
+		<a href="../src/runtime/mgcscavenge.go.html#line-796" class="path-duplicate">mgcscavenge.go</a><a href="../src/runtime/mgcscavenge.go.html#line-796">#L796</a>: 			lock(p.<b>mheapLock</b>)
+		<a href="../src/runtime/mgcscavenge.go.html#line-805" class="path-duplicate">mgcscavenge.go</a><a href="../src/runtime/mgcscavenge.go.html#line-805">#L805</a>: 			unlock(p.<b>mheapLock</b>)
+		<a href="../src/runtime/mgcscavenge.go.html#line-812" class="path-duplicate">mgcscavenge.go</a><a href="../src/runtime/mgcscavenge.go.html#line-812">#L812</a>: 	unlock(p.<b>mheapLock</b>)
+		<a href="../src/runtime/mpagealloc.go.html#line-285">mpagealloc.go#L285</a>: 	<b>mheapLock</b> *mutex
+		<a href="../src/runtime/mpagealloc.go.html#line-326" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-326">#L326</a>: 	p.<b>mheapLock</b> = mheapLock
+		<a href="../src/runtime/mpagealloc.go.html#line-358" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-358">#L358</a>: 	assertLockHeld(p.<b>mheapLock</b>)
+		<a href="../src/runtime/mpagealloc.go.html#line-486" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-486">#L486</a>: 	assertLockHeld(p.<b>mheapLock</b>)
+		<a href="../src/runtime/mpagealloc.go.html#line-574" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-574">#L574</a>: 	assertLockHeld(p.<b>mheapLock</b>)
+		<a href="../src/runtime/mpagealloc.go.html#line-615" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-615">#L615</a>: 	assertLockHeld(p.<b>mheapLock</b>)
+		<a href="../src/runtime/mpagealloc.go.html#line-651" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-651">#L651</a>: 	assertLockHeld(p.<b>mheapLock</b>)
+		<a href="../src/runtime/mpagealloc.go.html#line-876" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-876">#L876</a>: 	assertLockHeld(p.<b>mheapLock</b>)
+		<a href="../src/runtime/mpagealloc.go.html#line-937" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-937">#L937</a>: 	assertLockHeld(p.<b>mheapLock</b>)
+		<a href="../src/runtime/mpagecache.go.html#line-79">mpagecache.go#L79</a>: 	assertLockHeld(p.<b>mheapLock</b>)
+		<a href="../src/runtime/mpagecache.go.html#line-120" class="path-duplicate">mpagecache.go</a><a href="../src/runtime/mpagecache.go.html#line-120">#L120</a>: 	assertLockHeld(p.<b>mheapLock</b>)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

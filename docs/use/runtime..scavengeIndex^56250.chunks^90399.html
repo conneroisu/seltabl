@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.scavengeIndex.chunks</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/mgcscavenge.go.html#line-995">scavengeIndex</a>.<a href="../src/runtime/mgcscavenge.go.html#line-1010">chunks</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">10 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/mgcscavenge.go.html#line-1010">mgcscavenge.go#L1010</a>: 	<b>chunks</b>     []atomicScavChunkData
+		<a href="../src/runtime/mgcscavenge.go.html#line-1098" class="path-duplicate">mgcscavenge.go</a><a href="../src/runtime/mgcscavenge.go.html#line-1098">#L1098</a>: 		if !s.<b>chunks</b>[i].load().shouldScavenge(gen, force) {
+		<a href="../src/runtime/mgcscavenge.go.html#line-1135" class="path-duplicate">mgcscavenge.go</a><a href="../src/runtime/mgcscavenge.go.html#line-1135">#L1135</a>: 	sc := s.<b>chunks</b>[ci].load()
+		<a href="../src/runtime/mgcscavenge.go.html#line-1142" class="path-duplicate">mgcscavenge.go</a><a href="../src/runtime/mgcscavenge.go.html#line-1142">#L1142</a>: 	s.<b>chunks</b>[ci].store(sc)
+		<a href="../src/runtime/mgcscavenge.go.html#line-1150" class="path-duplicate">mgcscavenge.go</a><a href="../src/runtime/mgcscavenge.go.html#line-1150">#L1150</a>: 	sc := s.<b>chunks</b>[ci].load()
+		<a href="../src/runtime/mgcscavenge.go.html#line-1152" class="path-duplicate">mgcscavenge.go</a><a href="../src/runtime/mgcscavenge.go.html#line-1152">#L1152</a>: 	s.<b>chunks</b>[ci].store(sc)
+		<a href="../src/runtime/mgcscavenge.go.html#line-1190" class="path-duplicate">mgcscavenge.go</a><a href="../src/runtime/mgcscavenge.go.html#line-1190">#L1190</a>: 	val := s.<b>chunks</b>[ci].load()
+		<a href="../src/runtime/mgcscavenge.go.html#line-1192" class="path-duplicate">mgcscavenge.go</a><a href="../src/runtime/mgcscavenge.go.html#line-1192">#L1192</a>: 	s.<b>chunks</b>[ci].store(val)
+		<a href="../src/runtime/mpagealloc_64bit.go.html#line-222">mpagealloc_64bit.go#L222</a>: 	chunksBase := uintptr(unsafe.Pointer(&amp;s.<b>chunks</b>[0]))
+		<a href="../src/runtime/mpagealloc_64bit.go.html#line-253" class="path-duplicate">mpagealloc_64bit.go</a><a href="../src/runtime/mpagealloc_64bit.go.html#line-253">#L253</a>: 	s.<b>chunks</b> = *(*[]atomicScavChunkData)(unsafe.Pointer(&amp;sl))
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

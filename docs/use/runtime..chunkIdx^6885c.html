@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.chunkIdx</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/mpagealloc.go.html#line-102">chunkIdx</a></b></span>
+
+<span class="title">16 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/mgcscavenge.go.html#line-732">mgcscavenge.go#L732</a>: func (p *pageAlloc) scavengeOne(ci <b>chunkIdx</b>, searchIdx uint, max uintptr) uintptr {
+		<a href="../src/runtime/mgcscavenge.go.html#line-1080" class="path-duplicate">mgcscavenge.go</a><a href="../src/runtime/mgcscavenge.go.html#line-1080">#L1080</a>: func (s *scavengeIndex) find(force bool) (<b>chunkIdx</b>, uint) {
+		<a href="../src/runtime/mgcscavenge.go.html#line-1093" class="path-duplicate">mgcscavenge.go</a><a href="../src/runtime/mgcscavenge.go.html#line-1093">#L1093</a>: 	min := <b>chunkIdx</b>(s.minHeapIdx.Load())
+		<a href="../src/runtime/mgcscavenge.go.html#line-1134" class="path-duplicate">mgcscavenge.go</a><a href="../src/runtime/mgcscavenge.go.html#line-1134">#L1134</a>: func (s *scavengeIndex) alloc(ci <b>chunkIdx</b>, npages uint) {
+		<a href="../src/runtime/mgcscavenge.go.html#line-1149" class="path-duplicate">mgcscavenge.go</a><a href="../src/runtime/mgcscavenge.go.html#line-1149">#L1149</a>: func (s *scavengeIndex) free(ci <b>chunkIdx</b>, page, npages uint) {
+		<a href="../src/runtime/mgcscavenge.go.html#line-1189" class="path-duplicate">mgcscavenge.go</a><a href="../src/runtime/mgcscavenge.go.html#line-1189">#L1189</a>: func (s *scavengeIndex) setEmpty(ci <b>chunkIdx</b>) {
+		<a href="../src/runtime/mpagealloc.go.html#line-102">mpagealloc.go#L102</a>: type <b>chunkIdx</b> uint
+		<a href="../src/runtime/mpagealloc.go.html#line-106" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-106">#L106</a>: func chunkIndex(p uintptr) <b>chunkIdx</b> {
+		<a href="../src/runtime/mpagealloc.go.html#line-107" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-107">#L107</a>: 	return <b>chunkIdx</b>((p - arenaBaseOffset) / pallocChunkBytes)
+		<a href="../src/runtime/mpagealloc.go.html#line-111" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-111">#L111</a>: func chunkBase(ci <b>chunkIdx</b>) uintptr {
+		<a href="../src/runtime/mpagealloc.go.html#line-122" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-122">#L122</a>: func (i <b>chunkIdx</b>) l1() uint {
+		<a href="../src/runtime/mpagealloc.go.html#line-133" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-133">#L133</a>: func (i <b>chunkIdx</b>) l2() uint {
+		<a href="../src/runtime/mpagealloc.go.html#line-255" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-255">#L255</a>: 	start, end <b>chunkIdx</b>
+		<a href="../src/runtime/mpagealloc.go.html#line-338" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-338">#L338</a>: func (p *pageAlloc) tryChunkOf(ci <b>chunkIdx</b>) *pallocData {
+		<a href="../src/runtime/mpagealloc.go.html#line-349" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-349">#L349</a>: func (p *pageAlloc) chunkOf(ci <b>chunkIdx</b>) *pallocData {
+		<a href="../src/runtime/mpagealloc.go.html#line-842" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-842">#L842</a>: 	ci := <b>chunkIdx</b>(i)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

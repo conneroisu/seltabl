@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: internal/singleflight.Result</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../pkg/internal/singleflight.html">internal/singleflight</a>.<a href="../../src/internal/singleflight/singleflight.go.html#line-36">Result</a></b></span>
+
+<span class="title">7 uses</span>
+
+	internal/singleflight (current package)
+		<a href="../../src/internal/singleflight/singleflight.go.html#line-24">singleflight.go#L24</a>: 	chans []chan&lt;- <b>Result</b>
+		<a href="../../src/internal/singleflight/singleflight.go.html#line-36" class="path-duplicate">singleflight.go</a><a href="../../src/internal/singleflight/singleflight.go.html#line-36">#L36</a>: type <b>Result</b> struct {
+		<a href="../../src/internal/singleflight/singleflight.go.html#line-69" class="path-duplicate">singleflight.go</a><a href="../../src/internal/singleflight/singleflight.go.html#line-69">#L69</a>: func (g *Group) DoChan(key string, fn func() (any, error)) &lt;-chan <b>Result</b> {
+		<a href="../../src/internal/singleflight/singleflight.go.html#line-70" class="path-duplicate">singleflight.go</a><a href="../../src/internal/singleflight/singleflight.go.html#line-70">#L70</a>: 	ch := make(chan <b>Result</b>, 1)
+		<a href="../../src/internal/singleflight/singleflight.go.html#line-81" class="path-duplicate">singleflight.go</a><a href="../../src/internal/singleflight/singleflight.go.html#line-81">#L81</a>: 	c := &amp;call{chans: []chan&lt;- <b>Result</b>{ch}}
+		<a href="../../src/internal/singleflight/singleflight.go.html#line-101" class="path-duplicate">singleflight.go</a><a href="../../src/internal/singleflight/singleflight.go.html#line-101">#L101</a>: 		ch &lt;- <b>Result</b>{c.val, c.err, c.dups &gt; 0}
+
+	<a href="../../pkg/net.html">net</a>
+		<a href="../../src/net/lookup.go.html#line-337">lookup.go#L337</a>: 	dnsWaitGroupDone := func(ch &lt;-chan singleflight.<b>Result</b>, cancelFn context.CancelFunc) {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

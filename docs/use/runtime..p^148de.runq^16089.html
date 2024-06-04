@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.p.runq</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/runtime2.go.html#line-646">p</a>.<a href="../src/runtime/runtime2.go.html#line-668">runq</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">32 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/proc.go.html#line-5508">proc.go#L5508</a>: 		gp := pp.<b>runq</b>[pp.runqtail%uint32(len(pp.<b>runq</b>))].ptr()
+		<a href="../src/runtime/proc.go.html#line-6442" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6442">#L6442</a>: 	if n &gt; int32(len(pp.<b>runq</b>))/2 {
+		<a href="../src/runtime/proc.go.html#line-6443" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6443">#L6443</a>: 		n = int32(len(pp.<b>runq</b>)) / 2
+		<a href="../src/runtime/proc.go.html#line-6656" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6656">#L6656</a>: 	if t-h &lt; uint32(len(pp.<b>runq</b>)) {
+		<a href="../src/runtime/proc.go.html#line-6657" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6657">#L6657</a>: 		pp.<b>runq</b>[t%uint32(len(pp.<b>runq</b>))].set(gp)
+		<a href="../src/runtime/proc.go.html#line-6671" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6671">#L6671</a>: 	var batch [len(pp.<b>runq</b>)/2 + 1]*g
+		<a href="../src/runtime/proc.go.html#line-6676" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6676">#L6676</a>: 	if n != uint32(len(pp.<b>runq</b>)/2) {
+		<a href="../src/runtime/proc.go.html#line-6680" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6680">#L6680</a>: 		batch[i] = pp.<b>runq</b>[(h+i)%uint32(len(pp.<b>runq</b>))].ptr()
+		<a href="../src/runtime/proc.go.html#line-6717" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6717">#L6717</a>: 	for !q.empty() &amp;&amp; t-h &lt; uint32(len(pp.<b>runq</b>)) {
+		<a href="../src/runtime/proc.go.html#line-6719" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6719">#L6719</a>: 		pp.<b>runq</b>[t%uint32(len(pp.<b>runq</b>))].set(gp)
+		<a href="../src/runtime/proc.go.html#line-6727" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6727">#L6727</a>: 			return (pp.runqtail + o) % uint32(len(pp.<b>runq</b>))
+		<a href="../src/runtime/proc.go.html#line-6731" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6731">#L6731</a>: 			pp.<b>runq</b>[off(i)], pp.<b>runq</b>[off(j)] = pp.<b>runq</b>[off(j)], pp.<b>runq</b>[off(i)]
+		<a href="../src/runtime/proc.go.html#line-6763" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6763">#L6763</a>: 		gp := pp.<b>runq</b>[h%uint32(len(pp.<b>runq</b>))].ptr()
+		<a href="../src/runtime/proc.go.html#line-6786" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6786">#L6786</a>: 	if qn &gt; uint32(len(pp.<b>runq</b>)) { // read inconsistent h and t
+		<a href="../src/runtime/proc.go.html#line-6802" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6802">#L6802</a>: 		gp := pp.<b>runq</b>[(h+i)%uint32(len(pp.<b>runq</b>))].ptr()
+		<a href="../src/runtime/proc.go.html#line-6852" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6852">#L6852</a>: 		if n &gt; uint32(len(pp.<b>runq</b>)/2) { // read inconsistent h and t
+		<a href="../src/runtime/proc.go.html#line-6856" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6856">#L6856</a>: 			g := pp.<b>runq</b>[(h+i)%uint32(len(pp.<b>runq</b>))]
+		<a href="../src/runtime/proc.go.html#line-6870" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6870">#L6870</a>: 	n := runqgrab(p2, &amp;pp.<b>runq</b>, t, stealRunNextG)
+		<a href="../src/runtime/proc.go.html#line-6875" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6875">#L6875</a>: 	gp := pp.<b>runq</b>[(t+n)%uint32(len(pp.<b>runq</b>))].ptr()
+		<a href="../src/runtime/proc.go.html#line-6880" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6880">#L6880</a>: 	if t-h+n &gt;= uint32(len(pp.<b>runq</b>)) {
+		<a href="../src/runtime/runtime2.go.html#line-668">runtime2.go#L668</a>: 	<b>runq</b>     [256]guintptr
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: trace2event.go in package runtime</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	trace2event.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../pkg/runtime.html">runtime</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19],
+input[id=r20]:checked ~pre label[for=r20],
+input[id=r21]:checked ~pre label[for=r21],
+input[id=r22]:checked ~pre label[for=r22],
+input[id=r23]:checked ~pre label[for=r23],
+input[id=r24]:checked ~pre label[for=r24],
+input[id=r25]:checked ~pre label[for=r25],
+input[id=r26]:checked ~pre label[for=r26],
+input[id=r27]:checked ~pre label[for=r27],
+input[id=r28]:checked ~pre label[for=r28],
+input[id=r29]:checked ~pre label[for=r29],
+input[id=r30]:checked ~pre label[for=r30],
+input[id=r31]:checked ~pre label[for=r31],
+input[id=r32]:checked ~pre label[for=r32],
+input[id=r33]:checked ~pre label[for=r33],
+input[id=r34]:checked ~pre label[for=r34],
+input[id=r35]:checked ~pre label[for=r35],
+input[id=r36]:checked ~pre label[for=r36]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
+<input id="r20" type="radio" name="g"/>
+<input id="r21" type="radio" name="g"/>
+<input id="r22" type="radio" name="g"/>
+<input id="r23" type="radio" name="g"/>
+<input id="r24" type="radio" name="g"/>
+<input id="r25" type="radio" name="g"/>
+<input id="r26" type="radio" name="g"/>
+<input id="r27" type="radio" name="g"/>
+<input id="r28" type="radio" name="g"/>
+<input id="r29" type="radio" name="g"/>
+<input id="r30" type="radio" name="g"/>
+<input id="r31" type="radio" name="g"/>
+<input id="r32" type="radio" name="g"/>
+<input id="r33" type="radio" name="g"/>
+<input id="r34" type="radio" name="g"/>
+<input id="r35" type="radio" name="g"/>
+<input id="r36" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="comment">// Copyright 2023 The Go Authors. All rights reserved.</span></code></span>
+<span class="codeline" id="line-2"><code><span class="comment">// Use of this source code is governed by a BSD-style</span></code></span>
+<span class="codeline" id="line-3"><code><span class="comment">// license that can be found in the LICENSE file.</span></code></span>
+<span class="codeline" id="line-4"><code></code></span>
+<span class="codeline" id="line-5"><code><span class="comment">//go:build goexperiment.exectracer2</span></code></span>
+<span class="codeline" id="line-6"><code></code></span>
+<span class="codeline" id="line-7"><code><span class="comment">// Trace event writing API for trace2runtime.go.</span></code></span>
+<span class="codeline" id="line-8"><code></code></span>
+<span class="codeline" id="line-9"><code><span class="keyword">package</span> runtime</code></span>
+<span class="codeline" id="line-10"><code></code></span>
+<span class="codeline" id="line-11"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-12"><code>	<label for="i0"><span class="lit-string i0">"runtime/internal/sys"</span></label></code></span>
+<span class="codeline" id="line-13"><code>)</code></span>
+<span class="codeline" id="line-14"><code></code></span>
+<span class="codeline" id="line-15"><code><span class="comment">// Event types in the trace, args are given in square brackets.</span></code></span>
+<span class="codeline" id="line-16"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-17"><code><span class="comment">// Naming scheme:</span></code></span>
+<span class="codeline" id="line-18"><code><span class="comment">//   - Time range event pairs have suffixes "Begin" and "End".</span></code></span>
+<span class="codeline" id="line-19"><code><span class="comment">//   - "Start", "Stop", "Create", "Destroy", "Block", "Unblock"</span></code></span>
+<span class="codeline" id="line-20"><code><span class="comment">//     are suffixes reserved for scheduling resources.</span></code></span>
+<span class="codeline" id="line-21"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-22"><code><span class="comment">// NOTE: If you add an event type, make sure you also update all</span></code></span>
+<span class="codeline" id="line-23"><code><span class="comment">// tables in this file!</span></code></span>
+<span class="codeline" id="line-24"><code><span class="keyword">type</span> <a href="../../pkg/runtime.html#name-traceEv" class="ident">traceEv</a> <a href="../../pkg/builtin.html#name-uint8" class="ident">uint8</a></code></span>
+<span class="codeline" id="line-25"><code></code></span>
+<span class="codeline" id="line-26"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-27"><code>	<a href="../../pkg/runtime.html#name-traceEvNone" class="ident">traceEvNone</a> <a href="#line-24" class="ident">traceEv</a> = <a href="../../pkg/builtin.html#name-iota" class="ident">iota</a> <span class="comment">// unused</span></code></span>
+<span class="codeline" id="line-28"><code></code></span>
+<span class="codeline" id="line-29"><code>	<span class="comment">// Structural events.</span></code></span>
+<span class="codeline" id="line-30"><code>	<a href="../../pkg/runtime.html#name-traceEvEventBatch" class="ident">traceEvEventBatch</a> <span class="comment">// start of per-M batch of events [generation, M ID, timestamp, batch length]</span></code></span>
+<span class="codeline" id="line-31"><code>	<a href="../../pkg/runtime.html#name-traceEvStacks" class="ident">traceEvStacks</a>     <span class="comment">// start of a section of the stack table [...traceEvStack]</span></code></span>
+<span class="codeline" id="line-32"><code>	<a href="../../pkg/runtime.html#name-traceEvStack" class="ident">traceEvStack</a>      <span class="comment">// stack table entry [ID, ...{PC, func string ID, file string ID, line #}]</span></code></span>
+<span class="codeline" id="line-33"><code>	<a href="../../pkg/runtime.html#name-traceEvStrings" class="ident">traceEvStrings</a>    <span class="comment">// start of a section of the string dictionary [...traceEvString]</span></code></span>
+<span class="codeline" id="line-34"><code>	<a href="../../pkg/runtime.html#name-traceEvString" class="ident">traceEvString</a>     <span class="comment">// string dictionary entry [ID, length, string]</span></code></span>
+<span class="codeline" id="line-35"><code>	<a href="../../pkg/runtime.html#name-traceEvCPUSamples" class="ident">traceEvCPUSamples</a> <span class="comment">// start of a section of CPU samples [...traceEvCPUSample]</span></code></span>
+<span class="codeline" id="line-36"><code>	<a href="../../pkg/runtime.html#name-traceEvCPUSample" class="ident">traceEvCPUSample</a>  <span class="comment">// CPU profiling sample [timestamp, M ID, P ID, goroutine ID, stack ID]</span></code></span>
+<span class="codeline" id="line-37"><code>	<a href="../../pkg/runtime.html#name-traceEvFrequency" class="ident">traceEvFrequency</a>  <span class="comment">// timestamp units per sec [freq]</span></code></span>
+<span class="codeline" id="line-38"><code></code></span>
+<span class="codeline" id="line-39"><code>	<span class="comment">// Procs.</span></code></span>
+<span class="codeline" id="line-40"><code>	<a href="../../pkg/runtime.html#name-traceEvProcsChange" class="ident">traceEvProcsChange</a> <span class="comment">// current value of GOMAXPROCS [timestamp, GOMAXPROCS, stack ID]</span></code></span>
+<span class="codeline" id="line-41"><code>	<a href="../../pkg/runtime.html#name-traceEvProcStart" class="ident">traceEvProcStart</a>   <span class="comment">// start of P [timestamp, P ID, P seq]</span></code></span>
+<span class="codeline" id="line-42"><code>	<a href="../../pkg/runtime.html#name-traceEvProcStop" class="ident">traceEvProcStop</a>    <span class="comment">// stop of P [timestamp]</span></code></span>
+<span class="codeline" id="line-43"><code>	<a href="../../pkg/runtime.html#name-traceEvProcSteal" class="ident">traceEvProcSteal</a>   <span class="comment">// P was stolen [timestamp, P ID, P seq, M ID]</span></code></span>
+<span class="codeline" id="line-44"><code>	<a href="../../pkg/runtime.html#name-traceEvProcStatus" class="ident">traceEvProcStatus</a>  <span class="comment">// P status at the start of a generation [timestamp, P ID, status]</span></code></span>
+<span class="codeline" id="line-45"><code></code></span>
+<span class="codeline" id="line-46"><code>	<span class="comment">// Goroutines.</span></code></span>
+<span class="codeline" id="line-47"><code>	<a href="../../pkg/runtime.html#name-traceEvGoCreate" class="ident">traceEvGoCreate</a>            <span class="comment">// goroutine creation [timestamp, new goroutine ID, new stack ID, stack ID]</span></code></span>
+<span class="codeline" id="line-48"><code>	<a href="../../pkg/runtime.html#name-traceEvGoCreateSyscall" class="ident">traceEvGoCreateSyscall</a>     <span class="comment">// goroutine appears in syscall (cgo callback) [timestamp, new goroutine ID]</span></code></span>
+<span class="codeline" id="line-49"><code>	<a href="../../pkg/runtime.html#name-traceEvGoStart" class="ident">traceEvGoStart</a>             <span class="comment">// goroutine starts running [timestamp, goroutine ID, goroutine seq]</span></code></span>
+<span class="codeline" id="line-50"><code>	<a href="../../pkg/runtime.html#name-traceEvGoDestroy" class="ident">traceEvGoDestroy</a>           <span class="comment">// goroutine ends [timestamp]</span></code></span>
+<span class="codeline" id="line-51"><code>	<a href="../../pkg/runtime.html#name-traceEvGoDestroySyscall" class="ident">traceEvGoDestroySyscall</a>    <span class="comment">// goroutine ends in syscall (cgo callback) [timestamp]</span></code></span>
+<span class="codeline" id="line-52"><code>	<a href="../../pkg/runtime.html#name-traceEvGoStop" class="ident">traceEvGoStop</a>              <span class="comment">// goroutine yields its time, but is runnable [timestamp, reason, stack ID]</span></code></span>
+<span class="codeline" id="line-53"><code>	<a href="../../pkg/runtime.html#name-traceEvGoBlock" class="ident">traceEvGoBlock</a>             <span class="comment">// goroutine blocks [timestamp, reason, stack ID]</span></code></span>
+<span class="codeline" id="line-54"><code>	<a href="../../pkg/runtime.html#name-traceEvGoUnblock" class="ident">traceEvGoUnblock</a>           <span class="comment">// goroutine is unblocked [timestamp, goroutine ID, goroutine seq, stack ID]</span></code></span>
+<span class="codeline" id="line-55"><code>	<a href="../../pkg/runtime.html#name-traceEvGoSyscallBegin" class="ident">traceEvGoSyscallBegin</a>      <span class="comment">// syscall enter [timestamp, P seq, stack ID]</span></code></span>
+<span class="codeline" id="line-56"><code>	<a href="../../pkg/runtime.html#name-traceEvGoSyscallEnd" class="ident">traceEvGoSyscallEnd</a>        <span class="comment">// syscall exit [timestamp]</span></code></span>
+<span class="codeline" id="line-57"><code>	<a href="../../pkg/runtime.html#name-traceEvGoSyscallEndBlocked" class="ident">traceEvGoSyscallEndBlocked</a> <span class="comment">// syscall exit and it blocked at some point [timestamp]</span></code></span>
+<span class="codeline" id="line-58"><code>	<a href="../../pkg/runtime.html#name-traceEvGoStatus" class="ident">traceEvGoStatus</a>            <span class="comment">// goroutine status at the start of a generation [timestamp, goroutine ID, M ID, status]</span></code></span>
+<span class="codeline" id="line-59"><code></code></span>
+<span class="codeline" id="line-60"><code>	<span class="comment">// STW.</span></code></span>
+<span class="codeline" id="line-61"><code>	<a href="../../pkg/runtime.html#name-traceEvSTWBegin" class="ident">traceEvSTWBegin</a> <span class="comment">// STW start [timestamp, kind]</span></code></span>
+<span class="codeline" id="line-62"><code>	<a href="../../pkg/runtime.html#name-traceEvSTWEnd" class="ident">traceEvSTWEnd</a>   <span class="comment">// STW done [timestamp]</span></code></span>
+<span class="codeline" id="line-63"><code></code></span>
+<span class="codeline" id="line-64"><code>	<span class="comment">// GC events.</span></code></span>
+<span class="codeline" id="line-65"><code>	<a href="../../pkg/runtime.html#name-traceEvGCActive" class="ident">traceEvGCActive</a>           <span class="comment">// GC active [timestamp, seq]</span></code></span>
+<span class="codeline" id="line-66"><code>	<a href="../../pkg/runtime.html#name-traceEvGCBegin" class="ident">traceEvGCBegin</a>            <span class="comment">// GC start [timestamp, seq, stack ID]</span></code></span>
+<span class="codeline" id="line-67"><code>	<a href="../../pkg/runtime.html#name-traceEvGCEnd" class="ident">traceEvGCEnd</a>              <span class="comment">// GC done [timestamp, seq]</span></code></span>
+<span class="codeline" id="line-68"><code>	<a href="../../pkg/runtime.html#name-traceEvGCSweepActive" class="ident">traceEvGCSweepActive</a>      <span class="comment">// GC sweep active [timestamp, P ID]</span></code></span>
+<span class="codeline" id="line-69"><code>	<a href="../../pkg/runtime.html#name-traceEvGCSweepBegin" class="ident">traceEvGCSweepBegin</a>       <span class="comment">// GC sweep start [timestamp, stack ID]</span></code></span>
+<span class="codeline" id="line-70"><code>	<a href="../../pkg/runtime.html#name-traceEvGCSweepEnd" class="ident">traceEvGCSweepEnd</a>         <span class="comment">// GC sweep done [timestamp, swept bytes, reclaimed bytes]</span></code></span>
+<span class="codeline" id="line-71"><code>	<a href="../../pkg/runtime.html#name-traceEvGCMarkAssistActive" class="ident">traceEvGCMarkAssistActive</a> <span class="comment">// GC mark assist active [timestamp, goroutine ID]</span></code></span>
+<span class="codeline" id="line-72"><code>	<a href="../../pkg/runtime.html#name-traceEvGCMarkAssistBegin" class="ident">traceEvGCMarkAssistBegin</a>  <span class="comment">// GC mark assist start [timestamp, stack ID]</span></code></span>
+<span class="codeline" id="line-73"><code>	<a href="../../pkg/runtime.html#name-traceEvGCMarkAssistEnd" class="ident">traceEvGCMarkAssistEnd</a>    <span class="comment">// GC mark assist done [timestamp]</span></code></span>
+<span class="codeline" id="line-74"><code>	<a href="../../pkg/runtime.html#name-traceEvHeapAlloc" class="ident">traceEvHeapAlloc</a>          <span class="comment">// gcController.heapLive change [timestamp, heap alloc in bytes]</span></code></span>
+<span class="codeline" id="line-75"><code>	<a href="../../pkg/runtime.html#name-traceEvHeapGoal" class="ident">traceEvHeapGoal</a>           <span class="comment">// gcController.heapGoal() change [timestamp, heap goal in bytes]</span></code></span>
+<span class="codeline" id="line-76"><code></code></span>
+<span class="codeline" id="line-77"><code>	<span class="comment">// Annotations.</span></code></span>
+<span class="codeline" id="line-78"><code>	<a href="../../pkg/runtime.html#name-traceEvGoLabel" class="ident">traceEvGoLabel</a>         <span class="comment">// apply string label to current running goroutine [timestamp, label string ID]</span></code></span>
+<span class="codeline" id="line-79"><code>	<a href="../../pkg/runtime.html#name-traceEvUserTaskBegin" class="ident">traceEvUserTaskBegin</a>   <span class="comment">// trace.NewTask [timestamp, internal task ID, internal parent task ID, name string ID, stack ID]</span></code></span>
+<span class="codeline" id="line-80"><code>	<a href="../../pkg/runtime.html#name-traceEvUserTaskEnd" class="ident">traceEvUserTaskEnd</a>     <span class="comment">// end of a task [timestamp, internal task ID, stack ID]</span></code></span>
+<span class="codeline" id="line-81"><code>	<a href="../../pkg/runtime.html#name-traceEvUserRegionBegin" class="ident">traceEvUserRegionBegin</a> <span class="comment">// trace.{Start,With}Region [timestamp, internal task ID, name string ID, stack ID]</span></code></span>
+<span class="codeline" id="line-82"><code>	<a href="../../pkg/runtime.html#name-traceEvUserRegionEnd" class="ident">traceEvUserRegionEnd</a>   <span class="comment">// trace.{End,With}Region [timestamp, internal task ID, name string ID, stack ID]</span></code></span>
+<span class="codeline" id="line-83"><code>	<a href="../../pkg/runtime.html#name-traceEvUserLog" class="ident">traceEvUserLog</a>         <span class="comment">// trace.Log [timestamp, internal task ID, key string ID, stack, value string ID]</span></code></span>
+<span class="codeline" id="line-84"><code>)</code></span>
+<span class="codeline" id="line-85"><code></code></span>
+<span class="codeline" id="line-86"><code><span class="comment">// traceArg is a simple wrapper type to help ensure that arguments passed</span></code></span>
+<span class="codeline" id="line-87"><code><span class="comment">// to traces are well-formed.</span></code></span>
+<span class="codeline" id="line-88"><code><span class="keyword">type</span> <a href="../../pkg/runtime.html#name-traceArg" class="ident">traceArg</a> <a href="../../pkg/builtin.html#name-uint64" class="ident">uint64</a></code></span>
+<span class="codeline" id="line-89"><code></code></span>
+<span class="codeline" id="line-90"><code><span class="comment">// traceEventWriter is the high-level API for writing trace events.</span></code></span>
+<span class="codeline" id="line-91"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-92"><code><span class="comment">// See the comment on traceWriter about style for more details as to why</span></code></span>
+<span class="codeline" id="line-93"><code><span class="comment">// this type and its methods are structured the way they are.</span></code></span>
+<span class="codeline" id="line-94"><code><span class="keyword">type</span> <a href="../../pkg/runtime.html#name-traceEventWriter" class="ident">traceEventWriter</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-95"><code>	<a href="../../use/runtime..traceEventWriter^da7be.w^50e72.html" class="ident">w</a> <a href="trace2buf.go.html#line-27" class="ident">traceWriter</a></code></span>
+<span class="codeline" id="line-96"><code>}</code></span>
+<span class="codeline" id="line-97"><code></code></span>
+<span class="codeline" id="line-98"><code><span class="comment">// eventWriter creates a new traceEventWriter. It is the main entrypoint for writing trace events.</span></code></span>
+<span class="codeline" id="line-99"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-100"><code><span class="comment">// Before creating the event writer, this method will emit a status for the current goroutine</span></code></span>
+<span class="codeline" id="line-101"><code><span class="comment">// or proc if it exists, and if it hasn't had its status emitted yet. goStatus and procStatus indicate</span></code></span>
+<span class="codeline" id="line-102"><code><span class="comment">// what the status of goroutine or P should be immediately *before* the events that are about to</span></code></span>
+<span class="codeline" id="line-103"><code><span class="comment">// be written using the eventWriter (if they exist). No status will be written if there's no active</span></code></span>
+<span class="codeline" id="line-104"><code><span class="comment">// goroutine or P.</span></code></span>
+<span class="codeline" id="line-105"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-106"><code><span class="comment">// Callers can elect to pass a constant value here if the status is clear (e.g. a goroutine must have</span></code></span>
+<span class="codeline" id="line-107"><code><span class="comment">// been Runnable before a GoStart). Otherwise, callers can query the status of either the goroutine</span></code></span>
+<span class="codeline" id="line-108"><code><span class="comment">// or P and pass the appropriate status.</span></code></span>
+<span class="codeline" id="line-109"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-110"><code><span class="comment">// In this case, the default status should be traceGoBad or traceProcBad to help identify bugs sooner.</span></code></span>
+<span class="codeline" id="line-111"><code><span class="keyword">func</span> (<label for="r0" class="ident">tl</label> <a href="trace2runtime.go.html#line-155" class="ident">traceLocker</a>) <label for="r1" class="ident"><a href="../../use/runtime..traceLocker^95127.eventWriter^78521.html" class="ident">eventWriter</a></label>(<label for="r2" class="ident">goStatus</label> <a href="trace2status.go.html#line-17" class="ident">traceGoStatus</a>, <label for="r3" class="ident">procStatus</label> <a href="trace2status.go.html#line-30" class="ident">traceProcStatus</a>) <a href="#line-94" class="ident">traceEventWriter</a> {</code></span>
+<span class="codeline" id="line-112"><code>	<label for="r4" class="ident">w</label> := <label for="r0" class="ident">tl</label>.<a href="trace2buf.go.html#line-33" class="ident">writer</a>()</code></span>
+<span class="codeline" id="line-113"><code>	<span class="keyword">if</span> <label for="r5" class="ident">pp</label> := <label for="r0" class="ident">tl</label>.<a href="trace2runtime.go.html#line-156" class="ident">mp</a>.<a href="runtime2.go.html#line-565" class="ident">p</a>.<a href="runtime2.go.html#line-293" class="ident">ptr</a>(); <label for="r5" class="ident">pp</label> != <a href="../../pkg/builtin.html#name-nil" class="ident">nil</a> &amp;&amp; !<label for="r5" class="ident">pp</label>.<a href="runtime2.go.html#line-707" class="ident">trace</a>.<a href="trace2status.go.html#line-200" class="ident">statusWasTraced</a>(<label for="r0" class="ident">tl</label>.<a href="trace2runtime.go.html#line-157" class="ident">gen</a>) &amp;&amp; <label for="r5" class="ident">pp</label>.<a href="runtime2.go.html#line-707" class="ident">trace</a>.<a href="trace2status.go.html#line-184" class="ident">acquireStatus</a>(<label for="r0" class="ident">tl</label>.<a href="trace2runtime.go.html#line-157" class="ident">gen</a>) {</code></span>
+<span class="codeline" id="line-114"><code>		<label for="r4" class="ident">w</label> = <label for="r4" class="ident">w</label>.<a href="trace2status.go.html#line-107" class="ident">writeProcStatus</a>(<a href="../../pkg/builtin.html#name-uint64" class="ident">uint64</a>(<label for="r5" class="ident">pp</label>.<a href="runtime2.go.html#line-647" class="ident">id</a>), <label for="r3" class="ident">procStatus</label>, <label for="r5" class="ident">pp</label>.<a href="runtime2.go.html#line-707" class="ident">trace</a>.<a href="trace2runtime.go.html#line-47" class="ident">inSweep</a>)</code></span>
+<span class="codeline" id="line-115"><code>	}</code></span>
+<span class="codeline" id="line-116"><code>	<span class="keyword">if</span> <label for="r6" class="ident">gp</label> := <label for="r0" class="ident">tl</label>.<a href="trace2runtime.go.html#line-156" class="ident">mp</a>.<a href="runtime2.go.html#line-563" class="ident">curg</a>; <label for="r6" class="ident">gp</label> != <a href="../../pkg/builtin.html#name-nil" class="ident">nil</a> &amp;&amp; !<label for="r6" class="ident">gp</label>.<a href="runtime2.go.html#line-518" class="ident">trace</a>.<a href="trace2status.go.html#line-200" class="ident">statusWasTraced</a>(<label for="r0" class="ident">tl</label>.<a href="trace2runtime.go.html#line-157" class="ident">gen</a>) &amp;&amp; <label for="r6" class="ident">gp</label>.<a href="runtime2.go.html#line-518" class="ident">trace</a>.<a href="trace2status.go.html#line-184" class="ident">acquireStatus</a>(<label for="r0" class="ident">tl</label>.<a href="trace2runtime.go.html#line-157" class="ident">gen</a>) {</code></span>
+<span class="codeline" id="line-117"><code>		<label for="r4" class="ident">w</label> = <label for="r4" class="ident">w</label>.<a href="trace2status.go.html#line-51" class="ident">writeGoStatus</a>(<a href="../../pkg/builtin.html#name-uint64" class="ident">uint64</a>(<label for="r6" class="ident">gp</label>.<a href="runtime2.go.html#line-457" class="ident">goid</a>), <a href="../../pkg/builtin.html#name-int64" class="ident">int64</a>(<label for="r0" class="ident">tl</label>.<a href="trace2runtime.go.html#line-156" class="ident">mp</a>.<a href="runtime2.go.html#line-557" class="ident">procid</a>), <label for="r2" class="ident">goStatus</label>, <label for="r6" class="ident">gp</label>.<a href="runtime2.go.html#line-485" class="ident">inMarkAssist</a>)</code></span>
+<span class="codeline" id="line-118"><code>	}</code></span>
+<span class="codeline" id="line-119"><code>	<span class="keyword">return</span> <a href="#line-94" class="ident">traceEventWriter</a>{<label for="r4" class="ident">w</label>}</code></span>
+<span class="codeline" id="line-120"><code>}</code></span>
+<span class="codeline" id="line-121"><code></code></span>
+<span class="codeline" id="line-122"><code><span class="comment">// commit writes out a trace event and calls end. It's a helper to make the</span></code></span>
+<span class="codeline" id="line-123"><code><span class="comment">// common case of writing out a single event less error-prone.</span></code></span>
+<span class="codeline" id="line-124"><code><span class="keyword">func</span> (<label for="r7" class="ident">e</label> <a href="#line-94" class="ident">traceEventWriter</a>) <label for="r8" class="ident"><a href="../../use/runtime..traceEventWriter^da7be.commit^9505c.html" class="ident">commit</a></label>(<label for="r9" class="ident">ev</label> <a href="#line-24" class="ident">traceEv</a>, <label for="r10" class="ident">args</label> ...<a href="#line-88" class="ident">traceArg</a>) {</code></span>
+<span class="codeline" id="line-125"><code>	<label for="r7" class="ident">e</label> = <label for="r7" class="ident">e</label>.<a href="#line-130" class="ident">write</a>(<label for="r9" class="ident">ev</label>, <label for="r10" class="ident">args</label>...)</code></span>
+<span class="codeline" id="line-126"><code>	<label for="r7" class="ident">e</label>.<a href="#line-136" class="ident">end</a>()</code></span>
+<span class="codeline" id="line-127"><code>}</code></span>
+<span class="codeline" id="line-128"><code></code></span>
+<span class="codeline" id="line-129"><code><span class="comment">// write writes an event into the trace.</span></code></span>
+<span class="codeline" id="line-130"><code><span class="keyword">func</span> (<label for="r11" class="ident">e</label> <a href="#line-94" class="ident">traceEventWriter</a>) <label for="r12" class="ident"><a href="../../use/runtime..traceEventWriter^da7be.write^10fd8.html" class="ident">write</a></label>(<label for="r13" class="ident">ev</label> <a href="#line-24" class="ident">traceEv</a>, <label for="r14" class="ident">args</label> ...<a href="#line-88" class="ident">traceArg</a>) <a href="#line-94" class="ident">traceEventWriter</a> {</code></span>
+<span class="codeline" id="line-131"><code>	<label for="r11" class="ident">e</label>.<a href="#line-95" class="ident">w</a> = <label for="r11" class="ident">e</label>.<a href="#line-95" class="ident">w</a>.<a href="#line-141" class="ident">event</a>(<label for="r13" class="ident">ev</label>, <label for="r14" class="ident">args</label>...)</code></span>
+<span class="codeline" id="line-132"><code>	<span class="keyword">return</span> <label for="r11" class="ident">e</label></code></span>
+<span class="codeline" id="line-133"><code>}</code></span>
+<span class="codeline" id="line-134"><code></code></span>
+<span class="codeline" id="line-135"><code><span class="comment">// end finishes writing to the trace. The traceEventWriter must not be used after this call.</span></code></span>
+<span class="codeline" id="line-136"><code><span class="keyword">func</span> (<label for="r15" class="ident">e</label> <a href="#line-94" class="ident">traceEventWriter</a>) <label for="r16" class="ident"><a href="../../use/runtime..traceEventWriter^da7be.end^361e4.html" class="ident">end</a></label>() {</code></span>
+<span class="codeline" id="line-137"><code>	<label for="r15" class="ident">e</label>.<a href="#line-95" class="ident">w</a>.<a href="trace2buf.go.html#line-49" class="ident">end</a>()</code></span>
+<span class="codeline" id="line-138"><code>}</code></span>
+<span class="codeline" id="line-139"><code></code></span>
+<span class="codeline" id="line-140"><code><span class="comment">// traceEventWrite is the part of traceEvent that actually writes the event.</span></code></span>
+<span class="codeline" id="line-141"><code><span class="keyword">func</span> (<label for="r17" class="ident">w</label> <a href="trace2buf.go.html#line-27" class="ident">traceWriter</a>) <label for="r18" class="ident"><a href="../../use/runtime..traceWriter^e62df.event^b8e1f.html" class="ident">event</a></label>(<label for="r19" class="ident">ev</label> <a href="#line-24" class="ident">traceEv</a>, <label for="r20" class="ident">args</label> ...<a href="#line-88" class="ident">traceArg</a>) <a href="trace2buf.go.html#line-27" class="ident">traceWriter</a> {</code></span>
+<span class="codeline" id="line-142"><code>	<span class="comment">// Make sure we have room.</span></code></span>
+<span class="codeline" id="line-143"><code>	<label for="r17" class="ident">w</label>, _ = <label for="r17" class="ident">w</label>.<a href="trace2buf.go.html#line-61" class="ident">ensure</a>(<span class="lit-number">1</span> + (<a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r20" class="ident">args</label>)+<span class="lit-number">1</span>)*<a href="trace2buf.go.html#line-17" class="ident">traceBytesPerNumber</a>)</code></span>
+<span class="codeline" id="line-144"><code></code></span>
+<span class="codeline" id="line-145"><code>	<span class="comment">// Compute the timestamp diff that we'll put in the trace.</span></code></span>
+<span class="codeline" id="line-146"><code>	<label for="r21" class="ident">ts</label> := <a href="trace2time.go.html#line-52" class="ident">traceClockNow</a>()</code></span>
+<span class="codeline" id="line-147"><code>	<span class="keyword">if</span> <label for="r21" class="ident">ts</label> &lt;= <label for="r17" class="ident">w</label>.<a href="trace2buf.go.html#line-29" class="ident">traceBuf</a>.<a href="trace2buf.go.html#line-162" class="ident">lastTime</a> {</code></span>
+<span class="codeline" id="line-148"><code>		<label for="r21" class="ident">ts</label> = <label for="r17" class="ident">w</label>.<a href="trace2buf.go.html#line-29" class="ident">traceBuf</a>.<a href="trace2buf.go.html#line-162" class="ident">lastTime</a> + <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-149"><code>	}</code></span>
+<span class="codeline" id="line-150"><code>	<label for="r22" class="ident">tsDiff</label> := <a href="../../pkg/builtin.html#name-uint64" class="ident">uint64</a>(<label for="r21" class="ident">ts</label> - <label for="r17" class="ident">w</label>.<a href="trace2buf.go.html#line-29" class="ident">traceBuf</a>.<a href="trace2buf.go.html#line-162" class="ident">lastTime</a>)</code></span>
+<span class="codeline" id="line-151"><code>	<label for="r17" class="ident">w</label>.<a href="trace2buf.go.html#line-29" class="ident">traceBuf</a>.<a href="trace2buf.go.html#line-162" class="ident">lastTime</a> = <label for="r21" class="ident">ts</label></code></span>
+<span class="codeline" id="line-152"><code></code></span>
+<span class="codeline" id="line-153"><code>	<span class="comment">// Write out event.</span></code></span>
+<span class="codeline" id="line-154"><code>	<label for="r17" class="ident">w</label>.<a href="trace2buf.go.html#line-177" class="ident">byte</a>(<a href="../../pkg/builtin.html#name-byte" class="ident">byte</a>(<label for="r19" class="ident">ev</label>))</code></span>
+<span class="codeline" id="line-155"><code>	<label for="r17" class="ident">w</label>.<a href="trace2buf.go.html#line-183" class="ident">varint</a>(<label for="r22" class="ident">tsDiff</label>)</code></span>
+<span class="codeline" id="line-156"><code>	<span class="keyword">for</span> <label for="r23" class="ident">_</label>, <label for="r24" class="ident">arg</label> := <span class="keyword">range</span> <label for="r20" class="ident">args</label> {</code></span>
+<span class="codeline" id="line-157"><code>		<label for="r17" class="ident">w</label>.<a href="trace2buf.go.html#line-183" class="ident">varint</a>(<a href="../../pkg/builtin.html#name-uint64" class="ident">uint64</a>(<label for="r24" class="ident">arg</label>))</code></span>
+<span class="codeline" id="line-158"><code>	}</code></span>
+<span class="codeline" id="line-159"><code>	<span class="keyword">return</span> <label for="r17" class="ident">w</label></code></span>
+<span class="codeline" id="line-160"><code>}</code></span>
+<span class="codeline" id="line-161"><code></code></span>
+<span class="codeline" id="line-162"><code><span class="comment">// stack takes a stack trace skipping the provided number of frames.</span></code></span>
+<span class="codeline" id="line-163"><code><span class="comment">// It then returns a traceArg representing that stack which may be</span></code></span>
+<span class="codeline" id="line-164"><code><span class="comment">// passed to write.</span></code></span>
+<span class="codeline" id="line-165"><code><span class="keyword">func</span> (<label for="r25" class="ident">tl</label> <a href="trace2runtime.go.html#line-155" class="ident">traceLocker</a>) <label for="r26" class="ident"><a href="../../use/runtime..traceLocker^95127.stack^6ee08.html" class="ident">stack</a></label>(<label for="r27" class="ident">skip</label> <a href="../../pkg/builtin.html#name-int" class="ident">int</a>) <a href="#line-88" class="ident">traceArg</a> {</code></span>
+<span class="codeline" id="line-166"><code>	<span class="keyword">return</span> <a href="#line-88" class="ident">traceArg</a>(<a href="trace2stack.go.html#line-39" class="ident">traceStack</a>(<label for="r27" class="ident">skip</label>, <label for="r25" class="ident">tl</label>.<a href="trace2runtime.go.html#line-156" class="ident">mp</a>, <label for="r25" class="ident">tl</label>.<a href="trace2runtime.go.html#line-157" class="ident">gen</a>))</code></span>
+<span class="codeline" id="line-167"><code>}</code></span>
+<span class="codeline" id="line-168"><code></code></span>
+<span class="codeline" id="line-169"><code><span class="comment">// startPC takes a start PC for a goroutine and produces a unique</span></code></span>
+<span class="codeline" id="line-170"><code><span class="comment">// stack ID for it.</span></code></span>
+<span class="codeline" id="line-171"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-172"><code><span class="comment">// It then returns a traceArg representing that stack which may be</span></code></span>
+<span class="codeline" id="line-173"><code><span class="comment">// passed to write.</span></code></span>
+<span class="codeline" id="line-174"><code><span class="keyword">func</span> (<label for="r28" class="ident">tl</label> <a href="trace2runtime.go.html#line-155" class="ident">traceLocker</a>) <label for="r29" class="ident"><a href="../../use/runtime..traceLocker^95127.startPC^20fb5.html" class="ident">startPC</a></label>(<label for="r30" class="ident">pc</label> <a href="../../pkg/builtin.html#name-uintptr" class="ident">uintptr</a>) <a href="#line-88" class="ident">traceArg</a> {</code></span>
+<span class="codeline" id="line-175"><code>	<span class="comment">// +PCQuantum because makeTraceFrame expects return PCs and subtracts PCQuantum.</span></code></span>
+<span class="codeline" id="line-176"><code>	<span class="keyword">return</span> <a href="#line-88" class="ident">traceArg</a>(<a href="trace2.go.html#line-32" class="ident">trace</a>.<a href="trace2.go.html#line-70" class="ident">stackTab</a>[<label for="r28" class="ident">tl</label>.<a href="trace2runtime.go.html#line-157" class="ident">gen</a>%<span class="lit-number">2</span>].<a href="trace2stack.go.html#line-91" class="ident">put</a>([]<a href="../../pkg/builtin.html#name-uintptr" class="ident">uintptr</a>{</code></span>
+<span class="codeline" id="line-177"><code>		<a href="trace2stack.go.html#line-27" class="ident">logicalStackSentinel</a>,</code></span>
+<span class="codeline" id="line-178"><code>		<a href="trace2stack.go.html#line-284" class="ident">startPCForTrace</a>(<label for="r30" class="ident">pc</label>) + <a href="../../pkg/runtime/internal/sys.html" class="ident i0">sys</a>.<a href="internal/sys/consts.go.html#line-22" class="ident">PCQuantum</a>,</code></span>
+<span class="codeline" id="line-179"><code>	}))</code></span>
+<span class="codeline" id="line-180"><code>}</code></span>
+<span class="codeline" id="line-181"><code></code></span>
+<span class="codeline" id="line-182"><code><span class="comment">// string returns a traceArg representing s which may be passed to write.</span></code></span>
+<span class="codeline" id="line-183"><code><span class="comment">// The string is assumed to be relatively short and popular, so it may be</span></code></span>
+<span class="codeline" id="line-184"><code><span class="comment">// stored for a while in the string dictionary.</span></code></span>
+<span class="codeline" id="line-185"><code><span class="keyword">func</span> (<label for="r31" class="ident">tl</label> <a href="trace2runtime.go.html#line-155" class="ident">traceLocker</a>) <label for="r32" class="ident"><a href="../../use/runtime..traceLocker^95127.string^47328.html" class="ident">string</a></label>(<label for="r33" class="ident">s</label> <a href="../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="#line-88" class="ident">traceArg</a> {</code></span>
+<span class="codeline" id="line-186"><code>	<span class="keyword">return</span> <a href="#line-88" class="ident">traceArg</a>(<a href="trace2.go.html#line-32" class="ident">trace</a>.<a href="trace2.go.html#line-71" class="ident">stringTab</a>[<label for="r31" class="ident">tl</label>.<a href="trace2runtime.go.html#line-157" class="ident">gen</a>%<span class="lit-number">2</span>].<a href="trace2string.go.html#line-27" class="ident">put</a>(<label for="r31" class="ident">tl</label>.<a href="trace2runtime.go.html#line-157" class="ident">gen</a>, <label for="r33" class="ident">s</label>))</code></span>
+<span class="codeline" id="line-187"><code>}</code></span>
+<span class="codeline" id="line-188"><code></code></span>
+<span class="codeline" id="line-189"><code><span class="comment">// uniqueString returns a traceArg representing s which may be passed to write.</span></code></span>
+<span class="codeline" id="line-190"><code><span class="comment">// The string is assumed to be unique or long, so it will be written out to</span></code></span>
+<span class="codeline" id="line-191"><code><span class="comment">// the trace eagerly.</span></code></span>
+<span class="codeline" id="line-192"><code><span class="keyword">func</span> (<label for="r34" class="ident">tl</label> <a href="trace2runtime.go.html#line-155" class="ident">traceLocker</a>) <label for="r35" class="ident"><a href="../../use/runtime..traceLocker^95127.uniqueString^a3435.html" class="ident">uniqueString</a></label>(<label for="r36" class="ident">s</label> <a href="../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="#line-88" class="ident">traceArg</a> {</code></span>
+<span class="codeline" id="line-193"><code>	<span class="keyword">return</span> <a href="#line-88" class="ident">traceArg</a>(<a href="trace2.go.html#line-32" class="ident">trace</a>.<a href="trace2.go.html#line-71" class="ident">stringTab</a>[<label for="r34" class="ident">tl</label>.<a href="trace2runtime.go.html#line-157" class="ident">gen</a>%<span class="lit-number">2</span>].<a href="trace2string.go.html#line-41" class="ident">emit</a>(<label for="r34" class="ident">tl</label>.<a href="trace2runtime.go.html#line-157" class="ident">gen</a>, <label for="r36" class="ident">s</label>))</code></span>
+<span class="codeline" id="line-194"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

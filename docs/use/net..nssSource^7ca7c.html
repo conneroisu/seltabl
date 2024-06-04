@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net.nssSource</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../pkg/net.html">net</a>.<a href="../src/net/nss.go.html#line-102">nssSource</a></b></span>
+
+<span class="title">5 uses</span>
+
+	net (current package)
+		<a href="../src/net/nss.go.html#line-99">nss.go#L99</a>: 	sources map[string][]<b>nssSource</b> // keyed by database (e.g. "hosts")
+		<a href="../src/net/nss.go.html#line-102" class="path-duplicate">nss.go</a><a href="../src/net/nss.go.html#line-102">#L102</a>: type <b>nssSource</b> struct {
+		<a href="../src/net/nss.go.html#line-109" class="path-duplicate">nss.go</a><a href="../src/net/nss.go.html#line-109">#L109</a>: func (s <b>nssSource</b>) standardCriteria() bool {
+		<a href="../src/net/nss.go.html#line-210" class="path-duplicate">nss.go</a><a href="../src/net/nss.go.html#line-210">#L210</a>: 				conf.sources = make(map[string][]<b>nssSource</b>)
+		<a href="../src/net/nss.go.html#line-212" class="path-duplicate">nss.go</a><a href="../src/net/nss.go.html#line-212">#L212</a>: 			conf.sources[db] = append(conf.sources[db], <b>nssSource</b>{
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

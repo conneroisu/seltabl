@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.specialprofile</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/mheap.go.html#line-1993">specialprofile</a></b></span>
+
+<span class="title">5 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/heapdump.go.html#line-661">heapdump.go#L661</a>: 			spp := (*<b>specialprofile</b>)(unsafe.Pointer(sp))
+		<a href="../src/runtime/mheap.go.html#line-749">mheap.go#L749</a>: 	h.specialprofilealloc.init(unsafe.Sizeof(<b>specialprofile</b>{}), nil, nil, &amp;memstats.other_sys)
+		<a href="../src/runtime/mheap.go.html#line-1993" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1993">#L1993</a>: type <b>specialprofile</b> struct {
+		<a href="../src/runtime/mheap.go.html#line-2002" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-2002">#L2002</a>: 	s := (*<b>specialprofile</b>)(mheap_.specialprofilealloc.alloc())
+		<a href="../src/runtime/mheap.go.html#line-2064" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-2064">#L2064</a>: 		sp := (*<b>specialprofile</b>)(unsafe.Pointer(s))
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

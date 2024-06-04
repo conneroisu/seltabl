@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.stringStruct.str</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/string.go.html#line-232">stringStruct</a>.<a href="../src/runtime/string.go.html#line-233">str</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">52 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/alg.go.html#line-55">alg.go#L55</a>: 	return memhashFallback(x.<b>str</b>, h, uintptr(x.len))
+		<a href="../src/runtime/arena.go.html#line-149">arena.go#L149</a>: 		v = stringStructOf((*string)(e.data)).<b>str</b>
+		<a href="../src/runtime/cgocall.go.html#line-616">cgocall.go#L616</a>: 		if !cgoIsGoPointer(ss.<b>str</b>) {
+		<a href="../src/runtime/cgocall.go.html#line-619" class="path-duplicate">cgocall.go</a><a href="../src/runtime/cgocall.go.html#line-619">#L619</a>: 		if !top &amp;&amp; !isPinned(ss.<b>str</b>) {
+		<a href="../src/runtime/debuglog.go.html#line-666">debuglog.go#L666</a>: 			<b>str</b>: unsafe.Pointer(ptr),
+		<a href="../src/runtime/map_faststr.go.html#line-38">map_faststr.go#L38</a>: 				if k.<b>str</b> == key.<b>str</b> || memequal(k.<b>str</b>, key.<b>str</b>, uintptr(key.len)) {
+		<a href="../src/runtime/map_faststr.go.html#line-54" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-54">#L54</a>: 			if k.<b>str</b> == key.<b>str</b> {
+		<a href="../src/runtime/map_faststr.go.html#line-58" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-58">#L58</a>: 			if *((*[4]byte)(key.<b>str</b>)) != *((*[4]byte)(k.<b>str</b>)) {
+		<a href="../src/runtime/map_faststr.go.html#line-62" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-62">#L62</a>: 			if *((*[4]byte)(add(key.<b>str</b>, uintptr(key.len)-4))) != *((*[4]byte)(add(k.<b>str</b>, uintptr(key.len)-4))) {
+		<a href="../src/runtime/map_faststr.go.html#line-73" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-73">#L73</a>: 			if memequal(k.<b>str</b>, key.<b>str</b>, uintptr(key.len)) {
+		<a href="../src/runtime/map_faststr.go.html#line-100" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-100">#L100</a>: 			if k.<b>str</b> == key.<b>str</b> || memequal(k.<b>str</b>, key.<b>str</b>, uintptr(key.len)) {
+		<a href="../src/runtime/map_faststr.go.html#line-133" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-133">#L133</a>: 				if k.<b>str</b> == key.<b>str</b> || memequal(k.<b>str</b>, key.<b>str</b>, uintptr(key.len)) {
+		<a href="../src/runtime/map_faststr.go.html#line-149" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-149">#L149</a>: 			if k.<b>str</b> == key.<b>str</b> {
+		<a href="../src/runtime/map_faststr.go.html#line-153" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-153">#L153</a>: 			if *((*[4]byte)(key.<b>str</b>)) != *((*[4]byte)(k.<b>str</b>)) {
+		<a href="../src/runtime/map_faststr.go.html#line-157" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-157">#L157</a>: 			if *((*[4]byte)(add(key.<b>str</b>, uintptr(key.len)-4))) != *((*[4]byte)(add(k.<b>str</b>, uintptr(key.len)-4))) {
+		<a href="../src/runtime/map_faststr.go.html#line-168" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-168">#L168</a>: 			if memequal(k.<b>str</b>, key.<b>str</b>, uintptr(key.len)) {
+		<a href="../src/runtime/map_faststr.go.html#line-195" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-195">#L195</a>: 			if k.<b>str</b> == key.<b>str</b> || memequal(k.<b>str</b>, key.<b>str</b>, uintptr(key.len)) {
+		<a href="../src/runtime/map_faststr.go.html#line-253" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-253">#L253</a>: 			if k.<b>str</b> != key.<b>str</b> &amp;&amp; !memequal(k.<b>str</b>, key.<b>str</b>, uintptr(key.len)) {
+		<a href="../src/runtime/map_faststr.go.html#line-261" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-261">#L261</a>: 			k.<b>str</b> = key.<b>str</b>
+		<a href="../src/runtime/map_faststr.go.html#line-333" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-333">#L333</a>: 			if k.<b>str</b> != key.<b>str</b> &amp;&amp; !memequal(k.<b>str</b>, key.<b>str</b>, uintptr(key.len)) {
+		<a href="../src/runtime/map_faststr.go.html#line-337" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-337">#L337</a>: 			k.<b>str</b> = nil
+		<a href="../src/runtime/print.go.html#line-19">print.go#L19</a>: 	rp.array = sp.<b>str</b>
+		<a href="../src/runtime/string.go.html#line-233">string.go#L233</a>: 	<b>str</b> unsafe.Pointer
+		<a href="../src/runtime/string.go.html#line-565" class="path-duplicate">string.go</a><a href="../src/runtime/string.go.html#line-565">#L565</a>: 	ss := stringStruct{<b>str</b>: unsafe.Pointer(str), len: findnull(str)}
+		<a href="../src/runtime/trace2string.go.html#line-30">trace2string.go#L30</a>: 	id, added := t.tab.put(ss.<b>str</b>, uintptr(ss.len))
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: reflect.Value.Field</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/reflect.html">reflect</a>.<a href="../src/reflect/value.go.html#line-39">Value</a>.<a href="../src/reflect/value.go.html#line-1282">Field</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">35 uses</span>
+
+	reflect (current package)
+		<a href="../src/reflect/deepequal.go.html#line-130">deepequal.go#L130</a>: 			if !deepValueEqual(v1.<b>Field</b>(i), v2.<b>Field</b>(i), visited) {
+		<a href="../src/reflect/type.go.html#line-1775">type.go#L1775</a>: 	ft := (*funcType)(unsafe.Pointer(o.<b>Field</b>(0).Addr().Pointer()))
+		<a href="../src/reflect/type.go.html#line-1776" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1776">#L1776</a>: 	args := unsafe.Slice((**rtype)(unsafe.Pointer(o.<b>Field</b>(1).Addr().Pointer())), n)[0:0:n]
+		<a href="../src/reflect/type.go.html#line-2370" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2370">#L2370</a>: 		typ = (*structType)(tt.Elem().<b>Field</b>(0).Addr().UnsafePointer())
+		<a href="../src/reflect/type.go.html#line-2371" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2371">#L2371</a>: 		ut = (*uncommonType)(tt.Elem().<b>Field</b>(1).Addr().UnsafePointer())
+		<a href="../src/reflect/type.go.html#line-2373" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2373">#L2373</a>: 		copy(tt.Elem().<b>Field</b>(2).Slice(0, len(methods)).Interface().([]abi.Method), methods)
+		<a href="../src/reflect/value.go.html#line-1282">value.go#L1282</a>: func (v Value) <b>Field</b>(i int) Value {
+		<a href="../src/reflect/value.go.html#line-1317" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1317">#L1317</a>: 		return v.<b>Field</b>(index[0])
+		<a href="../src/reflect/value.go.html#line-1329" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1329">#L1329</a>: 		v = v.<b>Field</b>(x)
+		<a href="../src/reflect/value.go.html#line-1340" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1340">#L1340</a>: 		return v.<b>Field</b>(index[0]), nil
+		<a href="../src/reflect/value.go.html#line-1352" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1352">#L1352</a>: 		v = v.<b>Field</b>(x)
+		<a href="../src/reflect/value.go.html#line-1646" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1646">#L1646</a>: 			if !v.<b>Field</b>(i).IsZero() &amp;&amp; v.Type().Field(i).Name != "_" {
+		<a href="../src/reflect/value.go.html#line-3423" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3423">#L3423</a>: 			if !v.<b>Field</b>(i).Comparable() {
+		<a href="../src/reflect/value.go.html#line-3497" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3497">#L3497</a>: 			if !v.<b>Field</b>(i).Equal(u.<b>Field</b>(i)) {
+
+	<a href="../pkg/encoding/asn1.html">encoding/asn1</a>
+		<a href="../src/encoding/asn1/asn1.go.html#line-929">asn1.go#L929</a>: 			val.<b>Field</b>(0).Set(reflect.ValueOf(RawContent(bytes)))
+		<a href="../src/encoding/asn1/asn1.go.html#line-938" class="path-duplicate">asn1.go</a><a href="../src/encoding/asn1/asn1.go.html#line-938">#L938</a>: 			innerOffset, err = parseField(val.<b>Field</b>(i), innerBytes, innerOffset, parseFieldParameters(field.Tag.Get("asn1")))
+		<a href="../src/encoding/asn1/marshal.go.html#line-506">marshal.go#L506</a>: 			s := v.<b>Field</b>(0)
+		<a href="../src/encoding/asn1/marshal.go.html#line-523" class="path-duplicate">marshal.go</a><a href="../src/encoding/asn1/marshal.go.html#line-523">#L523</a>: 			return makeField(v.<b>Field</b>(startingField), parseFieldParameters(t.Field(startingField).Tag.Get("asn1")))
+		<a href="../src/encoding/asn1/marshal.go.html#line-527" class="path-duplicate">marshal.go</a><a href="../src/encoding/asn1/marshal.go.html#line-527">#L527</a>: 				m[i], err = makeField(v.<b>Field</b>(i+startingField), parseFieldParameters(t.Field(i+startingField).Tag.Get("asn1")))
+
+	<a href="../pkg/encoding/binary.html">encoding/binary</a>
+		<a href="../src/encoding/binary/binary.go.html#line-635">binary.go#L635</a>: 			if v := v.<b>Field</b>(i); v.CanSet() || t.Field(i).Name != "_" {
+		<a href="../src/encoding/binary/binary.go.html#line-700" class="path-duplicate">binary.go</a><a href="../src/encoding/binary/binary.go.html#line-700">#L700</a>: 			if v := v.<b>Field</b>(i); v.CanSet() || t.Field(i).Name != "_" {
+
+	<a href="../pkg/fmt.html">fmt</a>
+		<a href="../src/fmt/print.go.html#line-342">print.go#L342</a>: 	val := v.<b>Field</b>(i)
+
+	<a href="../pkg/github.com/conneroisu/seltabl/internal/errors.html">github.com/conneroisu/seltabl/internal/errors</a>
+		<a href="../src/github.com/conneroisu/seltabl/internal/errors/selection.go.html#line-42">selection.go#L42</a>: 		fieldValue := val.<b>Field</b>(i)
+		<a href="../src/github.com/conneroisu/seltabl/internal/errors/selector.go.html#line-38">selector.go#L38</a>: 		fieldValue := val.<b>Field</b>(i)
+
+	<a href="../pkg/internal/fmtsort.html">internal/fmtsort</a>
+		<a href="../src/internal/fmtsort/sort.go.html#line-157">sort.go#L157</a>: 			if c := compare(aVal.<b>Field</b>(i), bVal.<b>Field</b>(i)); c != 0 {
+
+	<a href="../pkg/net/http.html">net/http</a>
+		<a href="../src/net/http/h2_error.go.html#line-33">h2_error.go#L33</a>: 		df := dst.<b>Field</b>(i)
+		<a href="../src/net/http/h2_error.go.html#line-34" class="path-duplicate">h2_error.go</a><a href="../src/net/http/h2_error.go.html#line-34">#L34</a>: 		df.Set(src.<b>Field</b>(i).Convert(df.Type()))
+		<a href="../src/net/http/transfer.go.html#line-1101">transfer.go#L1101</a>: 		return reflect.ValueOf(r).<b>Field</b>(0).Interface().(io.Reader), true
+		<a href="../src/net/http/transport.go.html#line-387">transport.go#L387</a>: 		if v := rv.<b>Field</b>(0); v.CanInterface() {
+
+	<a href="../pkg/net/http/httptrace.html">net/http/httptrace</a>
+		<a href="../src/net/http/httptrace/trace.go.html#line-183">trace.go#L183</a>: 		tf := tv.<b>Field</b>(i)
+		<a href="../src/net/http/httptrace/trace.go.html#line-188" class="path-duplicate">trace.go</a><a href="../src/net/http/httptrace/trace.go.html#line-188">#L188</a>: 		of := ov.<b>Field</b>(i)
+		<a href="../src/net/http/httptrace/trace.go.html#line-206" class="path-duplicate">trace.go</a><a href="../src/net/http/httptrace/trace.go.html#line-206">#L206</a>: 		tv.<b>Field</b>(i).Set(newFunc)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

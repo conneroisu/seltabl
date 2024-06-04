@@ -48,3 +48,40 @@ Output:
 {A:7 B:8}
 ```
 
+
+## Development
+
+A makefile at the root of the project is provided to help with development.
+
+### Testing
+
+One can run the tests with:
+```bash
+make test
+```
+
+### Linting
+
+One can run the linter with:
+```bash
+make lint
+```
+
+### Formatting
+
+One can run the formatter with:
+```bash
+make fmt
+```
+
+### Generating documentation
+
+One can run the documentation generator with:
+```bash
+make doc
+```
+
+
+## License
+
+MIT

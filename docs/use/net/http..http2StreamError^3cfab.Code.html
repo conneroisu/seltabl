@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/http.http2StreamError.Code</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/net/http.html">net/http</a>.<a href="../../src/net/http/h2_bundle.go.html#line-1233">http2StreamError</a>.<a href="../../src/net/http/h2_bundle.go.html#line-1235">Code</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">15 uses</span>
+
+	net/http (current package)
+		<a href="../../src/net/http/h2_bundle.go.html#line-1235">h2_bundle.go#L1235</a>: 	<b>Code</b>     http2ErrCode
+		<a href="../../src/net/http/h2_bundle.go.html#line-1245" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1245">#L1245</a>: 	return http2StreamError{StreamID: id, <b>Code</b>: code}
+		<a href="../../src/net/http/h2_bundle.go.html#line-1250" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1250">#L1250</a>: 		return fmt.Sprintf("stream error: stream ID %d; %v; %v", e.StreamID, e.<b>Code</b>, e.Cause)
+		<a href="../../src/net/http/h2_bundle.go.html#line-1252" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1252">#L1252</a>: 	return fmt.Sprintf("stream error: stream ID %d; %v", e.StreamID, e.<b>Code</b>)
+		<a href="../../src/net/http/h2_bundle.go.html#line-5736" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5736">#L5736</a>: 		<b>Code</b>:     http2ErrCodeInternal,
+		<a href="../../src/net/http/h2_bundle.go.html#line-7094" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-7094">#L7094</a>: 		code = http2ErrCode(e.<b>Code</b>)
+		<a href="../../src/net/http/h2_bundle.go.html#line-7717" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-7717">#L7717</a>: 		if se.<b>Code</b> == http2ErrCodeProtocol &amp;&amp; se.Cause == http2errFromPeer {
+		<a href="../../src/net/http/h2_bundle.go.html#line-7721" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-7721">#L7721</a>: 		return se.<b>Code</b> == http2ErrCodeRefusedStream
+		<a href="../../src/net/http/h2_bundle.go.html#line-8638" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-8638">#L8638</a>: 					cc.writeStreamReset(cs.ID, se.<b>Code</b>, err)
+		<a href="../../src/net/http/h2_bundle.go.html#line-9412" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9412">#L9412</a>: 			<b>Code</b>:     http2ErrCodeProtocol,
+		<a href="../../src/net/http/h2_bundle.go.html#line-9441" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9441">#L9441</a>: 			<b>Code</b>:     http2ErrCodeProtocol,
+		<a href="../../src/net/http/h2_bundle.go.html#line-9750" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9750">#L9750</a>: 			<b>Code</b>:     http2ErrCodeProtocol,
+		<a href="../../src/net/http/h2_bundle.go.html#line-9758" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9758">#L9758</a>: 			<b>Code</b>:     http2ErrCodeProtocol,
+		<a href="../../src/net/http/h2_bundle.go.html#line-9767" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9767">#L9767</a>: 				<b>Code</b>:     http2ErrCodeProtocol,
+		<a href="../../src/net/http/h2_bundle.go.html#line-10417" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-10417">#L10417</a>: 	return ctx.Framer().WriteRSTStream(se.StreamID, se.<b>Code</b>)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

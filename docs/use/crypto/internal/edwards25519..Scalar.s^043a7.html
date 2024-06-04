@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/internal/edwards25519.Scalar.s</title>
+<link href="../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../../pkg/crypto/internal/edwards25519.html">crypto/internal/edwards25519</a>.<a href="../../../src/crypto/internal/edwards25519/scalar.go.html#line-22">Scalar</a>.<a href="../../../src/crypto/internal/edwards25519/scalar.go.html#line-25">s</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">23 uses</span>
+
+	crypto/internal/edwards25519 (current package)
+		<a href="../../../src/crypto/internal/edwards25519/scalar.go.html#line-25">scalar.go#L25</a>: 	<b>s</b> fiatScalarMontgomeryDomainFieldElement
+		<a href="../../../src/crypto/internal/edwards25519/scalar.go.html#line-72" class="path-duplicate">scalar.go</a><a href="../../../src/crypto/internal/edwards25519/scalar.go.html#line-72">#L72</a>: 	fiatScalarAdd(&amp;s.<b>s</b>, &amp;x.<b>s</b>, &amp;y.<b>s</b>)
+		<a href="../../../src/crypto/internal/edwards25519/scalar.go.html#line-79" class="path-duplicate">scalar.go</a><a href="../../../src/crypto/internal/edwards25519/scalar.go.html#line-79">#L79</a>: 	fiatScalarSub(&amp;s.<b>s</b>, &amp;x.<b>s</b>, &amp;y.<b>s</b>)
+		<a href="../../../src/crypto/internal/edwards25519/scalar.go.html#line-86" class="path-duplicate">scalar.go</a><a href="../../../src/crypto/internal/edwards25519/scalar.go.html#line-86">#L86</a>: 	fiatScalarOpp(&amp;s.<b>s</b>, &amp;x.<b>s</b>)
+		<a href="../../../src/crypto/internal/edwards25519/scalar.go.html#line-93" class="path-duplicate">scalar.go</a><a href="../../../src/crypto/internal/edwards25519/scalar.go.html#line-93">#L93</a>: 	fiatScalarMul(&amp;s.<b>s</b>, &amp;x.<b>s</b>, &amp;y.<b>s</b>)
+		<a href="../../../src/crypto/internal/edwards25519/scalar.go.html#line-137" class="path-duplicate">scalar.go</a><a href="../../../src/crypto/internal/edwards25519/scalar.go.html#line-137">#L137</a>: var scalarTwo168 = &amp;Scalar{<b>s</b>: [4]uint64{0x5b8ab432eac74798, 0x38afddd6de59d5d7,
+		<a href="../../../src/crypto/internal/edwards25519/scalar.go.html#line-139" class="path-duplicate">scalar.go</a><a href="../../../src/crypto/internal/edwards25519/scalar.go.html#line-139">#L139</a>: var scalarTwo336 = &amp;Scalar{<b>s</b>: [4]uint64{0xbd3d108e2b35ecc5, 0x5c3a3718bdf9c90b,
+		<a href="../../../src/crypto/internal/edwards25519/scalar.go.html#line-150" class="path-duplicate">scalar.go</a><a href="../../../src/crypto/internal/edwards25519/scalar.go.html#line-150">#L150</a>: 	fiatScalarFromBytes((*[4]uint64)(&amp;s.<b>s</b>), &amp;buf)
+		<a href="../../../src/crypto/internal/edwards25519/scalar.go.html#line-151" class="path-duplicate">scalar.go</a><a href="../../../src/crypto/internal/edwards25519/scalar.go.html#line-151">#L151</a>: 	fiatScalarToMontgomery(&amp;s.<b>s</b>, (*fiatScalarNonMontgomeryDomainFieldElement)(&amp;s.<b>s</b>))
+		<a href="../../../src/crypto/internal/edwards25519/scalar.go.html#line-166" class="path-duplicate">scalar.go</a><a href="../../../src/crypto/internal/edwards25519/scalar.go.html#line-166">#L166</a>: 	fiatScalarFromBytes((*[4]uint64)(&amp;s.<b>s</b>), (*[32]byte)(x))
+		<a href="../../../src/crypto/internal/edwards25519/scalar.go.html#line-167" class="path-duplicate">scalar.go</a><a href="../../../src/crypto/internal/edwards25519/scalar.go.html#line-167">#L167</a>: 	fiatScalarToMontgomery(&amp;s.<b>s</b>, (*fiatScalarNonMontgomeryDomainFieldElement)(&amp;s.<b>s</b>))
+		<a href="../../../src/crypto/internal/edwards25519/scalar.go.html#line-233" class="path-duplicate">scalar.go</a><a href="../../../src/crypto/internal/edwards25519/scalar.go.html#line-233">#L233</a>: 	fiatScalarFromMontgomery(&amp;ss, &amp;s.<b>s</b>)
+		<a href="../../../src/crypto/internal/edwards25519/scalar.go.html#line-241" class="path-duplicate">scalar.go</a><a href="../../../src/crypto/internal/edwards25519/scalar.go.html#line-241">#L241</a>: 	fiatScalarSub(&amp;diff, &amp;s.<b>s</b>, &amp;t.<b>s</b>)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

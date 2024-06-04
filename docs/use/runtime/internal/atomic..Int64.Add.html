@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime/internal/atomic.Int64.Add</title>
+<link href="../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../../pkg/runtime/internal/atomic.html">runtime/internal/atomic</a>.<a href="../../../src/runtime/internal/atomic/types.go.html#line-64">Int64</a>.<a href="../../../src/runtime/internal/atomic/types.go.html#line-108">Add</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">27 uses</span>
+
+	runtime/internal/atomic (current package)
+		<a href="../../../src/runtime/internal/atomic/types.go.html#line-108">types.go#L108</a>: func (i *Int64) <b>Add</b>(delta int64) int64 {
+
+	<a href="../../../pkg/runtime.html">runtime</a>
+		<a href="../../../src/runtime/mgclimit.go.html#line-150">mgclimit.go#L150</a>: 	l.assistTimePool.<b>Add</b>(t)
+		<a href="../../../src/runtime/mgclimit.go.html#line-156" class="path-duplicate">mgclimit.go</a><a href="../../../src/runtime/mgclimit.go.html#line-156">#L156</a>: 	l.idleTimePool.<b>Add</b>(t)
+		<a href="../../../src/runtime/mgclimit.go.html#line-190" class="path-duplicate">mgclimit.go</a><a href="../../../src/runtime/mgclimit.go.html#line-190">#L190</a>: 		l.assistTimePool.<b>Add</b>(-assistTime)
+		<a href="../../../src/runtime/mgclimit.go.html#line-196" class="path-duplicate">mgclimit.go</a><a href="../../../src/runtime/mgclimit.go.html#line-196">#L196</a>: 		l.idleTimePool.<b>Add</b>(-idleTime)
+		<a href="../../../src/runtime/mgclimit.go.html#line-215" class="path-duplicate">mgclimit.go</a><a href="../../../src/runtime/mgclimit.go.html#line-215">#L215</a>: 				sched.idleTime.<b>Add</b>(duration)
+		<a href="../../../src/runtime/mgclimit.go.html#line-476" class="path-duplicate">mgclimit.go</a><a href="../../../src/runtime/mgclimit.go.html#line-476">#L476</a>: 		sched.idleTime.<b>Add</b>(duration)
+		<a href="../../../src/runtime/mgcmark.go.html#line-251">mgcmark.go#L251</a>: 		workCounter.<b>Add</b>(workDone)
+		<a href="../../../src/runtime/mgcmark.go.html#line-491" class="path-duplicate">mgcmark.go</a><a href="../../../src/runtime/mgcmark.go.html#line-491">#L491</a>: 		gcController.bgScanCredit.<b>Add</b>(-stolen)
+		<a href="../../../src/runtime/mgcmark.go.html#line-702" class="path-duplicate">mgcmark.go</a><a href="../../../src/runtime/mgcmark.go.html#line-702">#L702</a>: 		gcController.assistTime.<b>Add</b>(pp.gcAssistTime)
+		<a href="../../../src/runtime/mgcmark.go.html#line-769" class="path-duplicate">mgcmark.go</a><a href="../../../src/runtime/mgcmark.go.html#line-769">#L769</a>: 		gcController.bgScanCredit.<b>Add</b>(scanWork)
+		<a href="../../../src/runtime/mgcmark.go.html#line-809" class="path-duplicate">mgcmark.go</a><a href="../../../src/runtime/mgcmark.go.html#line-809">#L809</a>: 		gcController.bgScanCredit.<b>Add</b>(scanWork)
+		<a href="../../../src/runtime/mgcmark.go.html#line-1248" class="path-duplicate">mgcmark.go</a><a href="../../../src/runtime/mgcmark.go.html#line-1248">#L1248</a>: 			gcController.heapScanWork.<b>Add</b>(gcw.heapScanWork)
+		<a href="../../../src/runtime/mgcmark.go.html#line-1268" class="path-duplicate">mgcmark.go</a><a href="../../../src/runtime/mgcmark.go.html#line-1268">#L1268</a>: 		gcController.heapScanWork.<b>Add</b>(gcw.heapScanWork)
+		<a href="../../../src/runtime/mgcmark.go.html#line-1335" class="path-duplicate">mgcmark.go</a><a href="../../../src/runtime/mgcmark.go.html#line-1335">#L1335</a>: 			gcController.heapScanWork.<b>Add</b>(gcw.heapScanWork)
+		<a href="../../../src/runtime/mgcpacer.go.html#line-849">mgcpacer.go#L849</a>: 		c.dedicatedMarkTime.<b>Add</b>(duration)
+		<a href="../../../src/runtime/mgcpacer.go.html#line-850" class="path-duplicate">mgcpacer.go</a><a href="../../../src/runtime/mgcpacer.go.html#line-850">#L850</a>: 		c.dedicatedMarkWorkersNeeded.<b>Add</b>(1)
+		<a href="../../../src/runtime/mgcpacer.go.html#line-852" class="path-duplicate">mgcpacer.go</a><a href="../../../src/runtime/mgcpacer.go.html#line-852">#L852</a>: 		c.fractionalMarkTime.<b>Add</b>(duration)
+		<a href="../../../src/runtime/mgcpacer.go.html#line-854" class="path-duplicate">mgcpacer.go</a><a href="../../../src/runtime/mgcpacer.go.html#line-854">#L854</a>: 		c.idleMarkTime.<b>Add</b>(duration)
+		<a href="../../../src/runtime/mgcscavenge.go.html#line-400">mgcscavenge.go#L400</a>: 			scavenge.backgroundTime.<b>Add</b>(end - start)
+		<a href="../../../src/runtime/mgcwork.go.html#line-279">mgcwork.go#L279</a>: 		gcController.heapScanWork.<b>Add</b>(w.heapScanWork)
+		<a href="../../../src/runtime/mheap.go.html#line-1336">mheap.go#L1336</a>: 		scavenge.assistTime.<b>Add</b>(now - start)
+		<a href="../../../src/runtime/mprof.go.html#line-606">mprof.go#L606</a>: 		gp.m.mLockProfile.waitTime.<b>Add</b>((nowTime - lt.timeStart) * lt.timeRate)
+		<a href="../../../src/runtime/mprof.go.html#line-1309" class="path-duplicate">mprof.go</a><a href="../../../src/runtime/mprof.go.html#line-1309">#L1309</a>: 	offset := int(goroutineProfile.offset.<b>Add</b>(1)) - 1
+		<a href="../../../src/runtime/proc.go.html#line-1174">proc.go#L1174</a>: 		sched.totalMutexWaitTime.<b>Add</b>((now - gp.trackingStamp) * gTrackingPeriod)
+		<a href="../../../src/runtime/proc.go.html#line-1842" class="path-duplicate">proc.go</a><a href="../../../src/runtime/proc.go.html#line-1842">#L1842</a>: 	sched.totalRuntimeLockWaitTime.<b>Add</b>(mp.mLockProfile.waitTime.Load())
+		<a href="../../../src/runtime/proc.go.html#line-4213" class="path-duplicate">proc.go</a><a href="../../../src/runtime/proc.go.html#line-4213">#L4213</a>: 		gcController.bgScanCredit.<b>Add</b>(scanCredit)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

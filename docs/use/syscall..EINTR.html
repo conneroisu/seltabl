@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: syscall.EINTR</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../pkg/syscall.html">syscall</a>.<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1222">EINTR</a></b></span>
+
+<span class="title">36 uses</span>
+
+	syscall (current package)
+		<a href="../src/syscall/exec_unix.go.html#line-221">exec_unix.go#L221</a>: 		if err != <b>EINTR</b> {
+		<a href="../src/syscall/exec_unix.go.html#line-237" class="path-duplicate">exec_unix.go</a><a href="../src/syscall/exec_unix.go.html#line-237">#L237</a>: 		for err1 == <b>EINTR</b> {
+		<a href="../src/syscall/syscall_unix.go.html#line-133">syscall_unix.go#L133</a>: 	return e == <b>EINTR</b> || e == EMFILE || e == ENFILE || e.Timeout()
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1222">zerrors_linux_amd64.go#L1222</a>: 	<b>EINTR</b>           = Errno(0x4)
+
+	<a href="../pkg/internal/poll.html">internal/poll</a>
+		<a href="../src/internal/poll/copy_file_range_linux.go.html#line-123">copy_file_range_linux.go#L123</a>: 		if err != syscall.<b>EINTR</b> {
+		<a href="../src/internal/poll/fd_posix.go.html#line-75">fd_posix.go#L75</a>: 		if err != syscall.<b>EINTR</b> {
+		<a href="../src/internal/poll/fd_unix.go.html#line-191">fd_unix.go#L191</a>: 		if err != syscall.<b>EINTR</b> {
+		<a href="../src/internal/poll/fd_unix.go.html#line-215" class="path-duplicate">fd_unix.go</a><a href="../src/internal/poll/fd_unix.go.html#line-215">#L215</a>: 			if err == syscall.<b>EINTR</b> {
+		<a href="../src/internal/poll/fd_unix.go.html#line-242" class="path-duplicate">fd_unix.go</a><a href="../src/internal/poll/fd_unix.go.html#line-242">#L242</a>: 			if err == syscall.<b>EINTR</b> {
+		<a href="../src/internal/poll/fd_unix.go.html#line-269" class="path-duplicate">fd_unix.go</a><a href="../src/internal/poll/fd_unix.go.html#line-269">#L269</a>: 			if err == syscall.<b>EINTR</b> {
+		<a href="../src/internal/poll/fd_unix.go.html#line-296" class="path-duplicate">fd_unix.go</a><a href="../src/internal/poll/fd_unix.go.html#line-296">#L296</a>: 			if err == syscall.<b>EINTR</b> {
+		<a href="../src/internal/poll/fd_unix.go.html#line-323" class="path-duplicate">fd_unix.go</a><a href="../src/internal/poll/fd_unix.go.html#line-323">#L323</a>: 			if err == syscall.<b>EINTR</b> {
+		<a href="../src/internal/poll/fd_unix.go.html#line-350" class="path-duplicate">fd_unix.go</a><a href="../src/internal/poll/fd_unix.go.html#line-350">#L350</a>: 			if err == syscall.<b>EINTR</b> {
+		<a href="../src/internal/poll/fd_unix.go.html#line-417" class="path-duplicate">fd_unix.go</a><a href="../src/internal/poll/fd_unix.go.html#line-417">#L417</a>: 		if err == syscall.<b>EINTR</b> {
+		<a href="../src/internal/poll/fd_unix.go.html#line-446" class="path-duplicate">fd_unix.go</a><a href="../src/internal/poll/fd_unix.go.html#line-446">#L446</a>: 		if err == syscall.<b>EINTR</b> {
+		<a href="../src/internal/poll/fd_unix.go.html#line-472" class="path-duplicate">fd_unix.go</a><a href="../src/internal/poll/fd_unix.go.html#line-472">#L472</a>: 		if err == syscall.<b>EINTR</b> {
+		<a href="../src/internal/poll/fd_unix.go.html#line-498" class="path-duplicate">fd_unix.go</a><a href="../src/internal/poll/fd_unix.go.html#line-498">#L498</a>: 		if err == syscall.<b>EINTR</b> {
+		<a href="../src/internal/poll/fd_unix.go.html#line-524" class="path-duplicate">fd_unix.go</a><a href="../src/internal/poll/fd_unix.go.html#line-524">#L524</a>: 		if err == syscall.<b>EINTR</b> {
+		<a href="../src/internal/poll/fd_unix.go.html#line-550" class="path-duplicate">fd_unix.go</a><a href="../src/internal/poll/fd_unix.go.html#line-550">#L550</a>: 		if err == syscall.<b>EINTR</b> {
+		<a href="../src/internal/poll/fd_unix.go.html#line-576" class="path-duplicate">fd_unix.go</a><a href="../src/internal/poll/fd_unix.go.html#line-576">#L576</a>: 		if err == syscall.<b>EINTR</b> {
+		<a href="../src/internal/poll/fd_unix.go.html#line-607" class="path-duplicate">fd_unix.go</a><a href="../src/internal/poll/fd_unix.go.html#line-607">#L607</a>: 		case syscall.<b>EINTR</b>:
+		<a href="../src/internal/poll/fd_unix.go.html#line-737" class="path-duplicate">fd_unix.go</a><a href="../src/internal/poll/fd_unix.go.html#line-737">#L737</a>: 		if err != syscall.<b>EINTR</b> {
+		<a href="../src/internal/poll/fd_writev_unix.go.html#line-21">fd_writev_unix.go#L21</a>: 		if e != syscall.<b>EINTR</b> {
+		<a href="../src/internal/poll/sendfile_linux.go.html#line-41">sendfile_linux.go#L41</a>: 		if err1 == syscall.<b>EINTR</b> {
+		<a href="../src/internal/poll/splice_linux.go.html#line-103">splice_linux.go#L103</a>: 		if err == syscall.<b>EINTR</b> {
+		<a href="../src/internal/poll/splice_linux.go.html#line-145" class="path-duplicate">splice_linux.go</a><a href="../src/internal/poll/splice_linux.go.html#line-145">#L145</a>: 		if err == syscall.<b>EINTR</b> {
+		<a href="../src/internal/poll/writev.go.html#line-76">writev.go#L76</a>: 			if err == syscall.<b>EINTR</b> {
+
+	<a href="../pkg/net.html">net</a>
+		<a href="../src/net/fd_unix.go.html#line-60">fd_unix.go#L60</a>: 	case syscall.EINPROGRESS, syscall.EALREADY, syscall.<b>EINTR</b>:
+		<a href="../src/net/fd_unix.go.html#line-154" class="path-duplicate">fd_unix.go</a><a href="../src/net/fd_unix.go.html#line-154">#L154</a>: 		case syscall.EINPROGRESS, syscall.EALREADY, syscall.<b>EINTR</b>:
+
+	<a href="../pkg/os.html">os</a>
+		<a href="../src/os/exec_unix.go.html#line-44">exec_unix.go#L44</a>: 		if e != syscall.<b>EINTR</b> {
+		<a href="../src/os/file_posix.go.html#line-252">file_posix.go#L252</a>: 		if err != syscall.<b>EINTR</b> {
+		<a href="../src/os/file_unix.go.html#line-278">file_unix.go#L278</a>: 		if e == syscall.<b>EINTR</b> {
+		<a href="../src/os/file_unix.go.html#line-438" class="path-duplicate">file_unix.go</a><a href="../src/os/file_unix.go.html#line-438">#L438</a>: 			if e != syscall.<b>EINTR</b> {
+		<a href="../src/os/getwd.go.html#line-50">getwd.go#L50</a>: 			if e != syscall.<b>EINTR</b> {
+		<a href="../src/os/removeall_at.go.html#line-186">removeall_at.go#L186</a>: 		if e == syscall.<b>EINTR</b> {
+		<a href="../src/os/wait_waitid.go.html#line-33">wait_waitid.go#L33</a>: 		if e != syscall.<b>EINTR</b> {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

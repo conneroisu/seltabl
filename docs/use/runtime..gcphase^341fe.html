@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.gcphase</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">var <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/mgc.go.html#line-212">gcphase</a></b></span>
+
+<span class="title">30 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/arena.go.html#line-555">arena.go#L555</a>: 	if <b>gcphase</b> == _GCmarktermination {
+		<a href="../src/runtime/arena.go.html#line-591" class="path-duplicate">arena.go</a><a href="../src/runtime/arena.go.html#line-591">#L591</a>: 	if <b>gcphase</b> != _GCoff {
+		<a href="../src/runtime/arena.go.html#line-786" class="path-duplicate">arena.go</a><a href="../src/runtime/arena.go.html#line-786">#L786</a>: 	if <b>gcphase</b> == _GCoff {
+		<a href="../src/runtime/malloc.go.html#line-972">malloc.go#L972</a>: 	if <b>gcphase</b> == _GCmarktermination {
+		<a href="../src/runtime/malloc.go.html#line-1223" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-1223">#L1223</a>: 	if <b>gcphase</b> != _GCoff {
+		<a href="../src/runtime/mfinal.go.html#line-96">mfinal.go#L96</a>: 	if <b>gcphase</b> != _GCoff {
+		<a href="../src/runtime/mgc.go.html#line-212">mgc.go#L212</a>: var <b>gcphase</b> uint32
+		<a href="../src/runtime/mgc.go.html#line-237" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-237">#L237</a>: 	atomic.Store(&amp;<b>gcphase</b>, x)
+		<a href="../src/runtime/mgc.go.html#line-238" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-238">#L238</a>: 	writeBarrier.enabled = <b>gcphase</b> == _GCmark || <b>gcphase</b> == _GCmarktermination
+		<a href="../src/runtime/mgc.go.html#line-499" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-499">#L499</a>: 	if cycle == n+1 || (<b>gcphase</b> == _GCmark &amp;&amp; cycle == n+2) {
+		<a href="../src/runtime/mgc.go.html#line-512" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-512">#L512</a>: 		if <b>gcphase</b> != _GCmark {
+		<a href="../src/runtime/mgc.go.html#line-569" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-569">#L569</a>: 	if !memstats.enablegc || panicking.Load() != 0 || <b>gcphase</b> != _GCoff {
+		<a href="../src/runtime/mgc.go.html#line-816" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-816">#L816</a>: 	if !(<b>gcphase</b> == _GCmark &amp;&amp; work.nwait == work.nproc &amp;&amp; !gcMarkWorkAvailable(nil)) {
+		<a href="../src/runtime/mgc.go.html#line-998" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-998">#L998</a>: 	if <b>gcphase</b> != _GCoff {
+		<a href="../src/runtime/mgc.go.html#line-1475" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1475">#L1475</a>: 	if <b>gcphase</b> != _GCmarktermination {
+		<a href="../src/runtime/mgc.go.html#line-1570" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1570">#L1570</a>: 	if <b>gcphase</b> != _GCoff {
+		<a href="../src/runtime/mgcpacer.go.html#line-1431">mgcpacer.go#L1431</a>: 	if <b>gcphase</b> != _GCoff {
+		<a href="../src/runtime/mgcwork.go.html#line-143">mgcwork.go#L143</a>: 	if flushed &amp;&amp; <b>gcphase</b> == _GCmark {
+		<a href="../src/runtime/mgcwork.go.html#line-192" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-192">#L192</a>: 	if flushed &amp;&amp; <b>gcphase</b> == _GCmark {
+		<a href="../src/runtime/mgcwork.go.html#line-303" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-303">#L303</a>: 	if <b>gcphase</b> == _GCmark {
+		<a href="../src/runtime/mgcwork.go.html#line-471" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-471">#L471</a>: 	if <b>gcphase</b> != _GCoff || work.wbufSpans.free.isEmpty() {
+		<a href="../src/runtime/mheap.go.html#line-1957">mheap.go#L1957</a>: 		if <b>gcphase</b> != _GCoff {
+		<a href="../src/runtime/proc.go.html#line-5533">proc.go#L5533</a>: 	if <b>gcphase</b> != _GCoff {
+		<a href="../src/runtime/stack.go.html#line-244">stack.go#L244</a>: 	if <b>gcphase</b> == _GCoff &amp;&amp; s.allocCount == 0 {
+		<a href="../src/runtime/stack.go.html#line-494" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-494">#L494</a>: 		if <b>gcphase</b> == _GCoff {
+		<a href="../src/runtime/trace2.go.html#line-242">trace2.go#L242</a>: 	if <b>gcphase</b> == _GCmark || <b>gcphase</b> == _GCmarktermination {
+		<a href="../src/runtime/trace2.go.html#line-400" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-400">#L400</a>: 	if !stopTrace &amp;&amp; (<b>gcphase</b> == _GCmark || <b>gcphase</b> == _GCmarktermination) {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

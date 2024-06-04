@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net.rawConn</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../pkg/net.html">net</a>.<a href="../src/net/rawconn.go.html#line-22">rawConn</a></b></span>
+
+<span class="title">12 uses</span>
+
+	net (current package)
+		<a href="../src/net/rawconn.go.html#line-22">rawconn.go#L22</a>: type <b>rawConn</b> struct {
+		<a href="../src/net/rawconn.go.html#line-26" class="path-duplicate">rawconn.go</a><a href="../src/net/rawconn.go.html#line-26">#L26</a>: func (c *<b>rawConn</b>) ok() bool { return c != nil &amp;&amp; c.fd != nil }
+		<a href="../src/net/rawconn.go.html#line-28" class="path-duplicate">rawconn.go</a><a href="../src/net/rawconn.go.html#line-28">#L28</a>: func (c *<b>rawConn</b>) Control(f func(uintptr)) error {
+		<a href="../src/net/rawconn.go.html#line-40" class="path-duplicate">rawconn.go</a><a href="../src/net/rawconn.go.html#line-40">#L40</a>: func (c *<b>rawConn</b>) Read(f func(uintptr) bool) error {
+		<a href="../src/net/rawconn.go.html#line-52" class="path-duplicate">rawconn.go</a><a href="../src/net/rawconn.go.html#line-52">#L52</a>: func (c *<b>rawConn</b>) Write(f func(uintptr) bool) error {
+		<a href="../src/net/rawconn.go.html#line-71" class="path-duplicate">rawconn.go</a><a href="../src/net/rawconn.go.html#line-71">#L71</a>: func (c *<b>rawConn</b>) PollFD() *poll.FD {
+		<a href="../src/net/rawconn.go.html#line-78" class="path-duplicate">rawconn.go</a><a href="../src/net/rawconn.go.html#line-78">#L78</a>: func newRawConn(fd *netFD) *<b>rawConn</b> {
+		<a href="../src/net/rawconn.go.html#line-79" class="path-duplicate">rawconn.go</a><a href="../src/net/rawconn.go.html#line-79">#L79</a>: 	return &amp;<b>rawConn</b>{fd: fd}
+		<a href="../src/net/rawconn.go.html#line-89" class="path-duplicate">rawconn.go</a><a href="../src/net/rawconn.go.html#line-89">#L89</a>: func (c *<b>rawConn</b>) Network() poll.String {
+		<a href="../src/net/rawconn.go.html#line-94" class="path-duplicate">rawconn.go</a><a href="../src/net/rawconn.go.html#line-94">#L94</a>: 	<b>rawConn</b>
+		<a href="../src/net/rawconn.go.html#line-106" class="path-duplicate">rawconn.go</a><a href="../src/net/rawconn.go.html#line-106">#L106</a>: 	return &amp;rawListener{<b>rawConn</b>{fd: fd}}
+		<a href="../src/net/sock_posix.go.html#line-93">sock_posix.go#L93</a>: 	var c *<b>rawConn</b>
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

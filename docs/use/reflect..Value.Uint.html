@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: reflect.Value.Uint</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/reflect.html">reflect</a>.<a href="../src/reflect/value.go.html#line-39">Value</a>.<a href="../src/reflect/value.go.html#line-2740">Uint</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">19 uses</span>
+
+	reflect (current package)
+		<a href="../src/reflect/deepequal.go.html#line-163">deepequal.go#L163</a>: 		return v1.<b>Uint</b>() == v2.<b>Uint</b>()
+		<a href="../src/reflect/value.go.html#line-1595">value.go#L1595</a>: 		return v.<b>Uint</b>() == 0
+		<a href="../src/reflect/value.go.html#line-2740" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2740">#L2740</a>: func (v Value) <b>Uint</b>() uint64 {
+		<a href="../src/reflect/value.go.html#line-3468" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3468">#L3468</a>: 		return v.<b>Uint</b>() == u.<b>Uint</b>()
+		<a href="../src/reflect/value.go.html#line-3693" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3693">#L3693</a>: 	return makeInt(v.flag.ro(), v.<b>Uint</b>(), t)
+		<a href="../src/reflect/value.go.html#line-3713" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3713">#L3713</a>: 	return makeFloat(v.flag.ro(), float64(v.<b>Uint</b>()), t)
+		<a href="../src/reflect/value.go.html#line-3744" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3744">#L3744</a>: 	if x := v.<b>Uint</b>(); uint64(rune(x)) == x {
+
+	<a href="../pkg/encoding/binary.html">encoding/binary</a>
+		<a href="../src/encoding/binary/binary.go.html#line-731">binary.go#L731</a>: 			e.uint8(uint8(v.<b>Uint</b>()))
+		<a href="../src/encoding/binary/binary.go.html#line-733" class="path-duplicate">binary.go</a><a href="../src/encoding/binary/binary.go.html#line-733">#L733</a>: 			e.uint16(uint16(v.<b>Uint</b>()))
+		<a href="../src/encoding/binary/binary.go.html#line-735" class="path-duplicate">binary.go</a><a href="../src/encoding/binary/binary.go.html#line-735">#L735</a>: 			e.uint32(uint32(v.<b>Uint</b>()))
+		<a href="../src/encoding/binary/binary.go.html#line-737" class="path-duplicate">binary.go</a><a href="../src/encoding/binary/binary.go.html#line-737">#L737</a>: 			e.uint64(v.<b>Uint</b>())
+
+	<a href="../pkg/fmt.html">fmt</a>
+		<a href="../src/fmt/print.go.html#line-794">print.go#L794</a>: 		p.fmtInteger(f.<b>Uint</b>(), unsigned, verb)
+		<a href="../src/fmt/print.go.html#line-883" class="path-duplicate">print.go</a><a href="../src/fmt/print.go.html#line-883">#L883</a>: 						bytes[i] = byte(f.Index(i).<b>Uint</b>())
+		<a href="../src/fmt/print.go.html#line-948" class="path-duplicate">print.go</a><a href="../src/fmt/print.go.html#line-948">#L948</a>: 				n := v.<b>Uint</b>()
+
+	<a href="../pkg/internal/fmtsort.html">internal/fmtsort</a>
+		<a href="../src/internal/fmtsort/sort.go.html#line-95">sort.go#L95</a>: 		a, b := aVal.<b>Uint</b>(), bVal.<b>Uint</b>()
+
+	<a href="../pkg/net/http.html">net/http</a>
+		<a href="../src/net/http/h2_bundle.go.html#line-4539">h2_bundle.go#L4539</a>: 		return uintptr(rv.<b>Uint</b>())
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

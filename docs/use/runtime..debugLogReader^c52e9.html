@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.debugLogReader</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/debuglog.go.html#line-487">debugLogReader</a></b></span>
+
+<span class="title">11 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/debuglog.go.html#line-374">debuglog.go#L374</a>: 	r <b>debugLogReader</b>
+		<a href="../src/runtime/debuglog.go.html#line-487" class="path-duplicate">debuglog.go</a><a href="../src/runtime/debuglog.go.html#line-487">#L487</a>: type <b>debugLogReader</b> struct {
+		<a href="../src/runtime/debuglog.go.html#line-499" class="path-duplicate">debuglog.go</a><a href="../src/runtime/debuglog.go.html#line-499">#L499</a>: func (r *<b>debugLogReader</b>) skip() uint64 {
+		<a href="../src/runtime/debuglog.go.html#line-519" class="path-duplicate">debuglog.go</a><a href="../src/runtime/debuglog.go.html#line-519">#L519</a>: func (r *<b>debugLogReader</b>) readUint16LEAt(pos uint64) uint16 {
+		<a href="../src/runtime/debuglog.go.html#line-525" class="path-duplicate">debuglog.go</a><a href="../src/runtime/debuglog.go.html#line-525">#L525</a>: func (r *<b>debugLogReader</b>) readUint64LEAt(pos uint64) uint64 {
+		<a href="../src/runtime/debuglog.go.html#line-537" class="path-duplicate">debuglog.go</a><a href="../src/runtime/debuglog.go.html#line-537">#L537</a>: func (r *<b>debugLogReader</b>) peek() (tick uint64) {
+		<a href="../src/runtime/debuglog.go.html#line-577" class="path-duplicate">debuglog.go</a><a href="../src/runtime/debuglog.go.html#line-577">#L577</a>: func (r *<b>debugLogReader</b>) header() (end, tick, nano uint64, p int) {
+		<a href="../src/runtime/debuglog.go.html#line-592" class="path-duplicate">debuglog.go</a><a href="../src/runtime/debuglog.go.html#line-592">#L592</a>: func (r *<b>debugLogReader</b>) uvarint() uint64 {
+		<a href="../src/runtime/debuglog.go.html#line-605" class="path-duplicate">debuglog.go</a><a href="../src/runtime/debuglog.go.html#line-605">#L605</a>: func (r *<b>debugLogReader</b>) varint() int64 {
+		<a href="../src/runtime/debuglog.go.html#line-616" class="path-duplicate">debuglog.go</a><a href="../src/runtime/debuglog.go.html#line-616">#L616</a>: func (r *<b>debugLogReader</b>) printVal() bool {
+		<a href="../src/runtime/debuglog.go.html#line-720" class="path-duplicate">debuglog.go</a><a href="../src/runtime/debuglog.go.html#line-720">#L720</a>: 		<b>debugLogReader</b>
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

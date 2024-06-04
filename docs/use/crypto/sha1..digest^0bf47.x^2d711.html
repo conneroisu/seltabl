@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/sha1.digest.x</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/crypto/sha1.html">crypto/sha1</a>.<a href="../../src/crypto/sha1/sha1.go.html#line-39">digest</a>.<a href="../../src/crypto/sha1/sha1.go.html#line-41">x</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">14 uses</span>
+
+	crypto/sha1 (current package)
+		<a href="../../src/crypto/sha1/sha1.go.html#line-41">sha1.go#L41</a>: 	<b>x</b>   [chunk]byte
+		<a href="../../src/crypto/sha1/sha1.go.html#line-59" class="path-duplicate">sha1.go</a><a href="../../src/crypto/sha1/sha1.go.html#line-59">#L59</a>: 	b = append(b, d.<b>x</b>[:d.nx]...)
+		<a href="../../src/crypto/sha1/sha1.go.html#line-60" class="path-duplicate">sha1.go</a><a href="../../src/crypto/sha1/sha1.go.html#line-60">#L60</a>: 	b = b[:len(b)+len(d.<b>x</b>)-d.nx] // already zero
+		<a href="../../src/crypto/sha1/sha1.go.html#line-78" class="path-duplicate">sha1.go</a><a href="../../src/crypto/sha1/sha1.go.html#line-78">#L78</a>: 	b = b[copy(d.<b>x</b>[:], b):]
+		<a href="../../src/crypto/sha1/sha1.go.html#line-128" class="path-duplicate">sha1.go</a><a href="../../src/crypto/sha1/sha1.go.html#line-128">#L128</a>: 		n := copy(d.<b>x</b>[d.nx:], p)
+		<a href="../../src/crypto/sha1/sha1.go.html#line-131" class="path-duplicate">sha1.go</a><a href="../../src/crypto/sha1/sha1.go.html#line-131">#L131</a>: 			block(d, d.<b>x</b>[:])
+		<a href="../../src/crypto/sha1/sha1.go.html#line-142" class="path-duplicate">sha1.go</a><a href="../../src/crypto/sha1/sha1.go.html#line-142">#L142</a>: 		d.nx = copy(d.<b>x</b>[:], p)
+		<a href="../../src/crypto/sha1/sha1.go.html#line-211" class="path-duplicate">sha1.go</a><a href="../../src/crypto/sha1/sha1.go.html#line-211">#L211</a>: 		d.<b>x</b>[i] = (^mask &amp; separator) | (mask &amp; d.<b>x</b>[i])
+		<a href="../../src/crypto/sha1/sha1.go.html#line-218" class="path-duplicate">sha1.go</a><a href="../../src/crypto/sha1/sha1.go.html#line-218">#L218</a>: 			d.<b>x</b>[i] |= mask1b &amp; length[i-56]
+		<a href="../../src/crypto/sha1/sha1.go.html#line-223" class="path-duplicate">sha1.go</a><a href="../../src/crypto/sha1/sha1.go.html#line-223">#L223</a>: 	block(d, d.<b>x</b>[:])
+		<a href="../../src/crypto/sha1/sha1.go.html#line-236" class="path-duplicate">sha1.go</a><a href="../../src/crypto/sha1/sha1.go.html#line-236">#L236</a>: 			d.<b>x</b>[i] = separator
+		<a href="../../src/crypto/sha1/sha1.go.html#line-239" class="path-duplicate">sha1.go</a><a href="../../src/crypto/sha1/sha1.go.html#line-239">#L239</a>: 			d.<b>x</b>[i] = length[i-56]
+		<a href="../../src/crypto/sha1/sha1.go.html#line-244" class="path-duplicate">sha1.go</a><a href="../../src/crypto/sha1/sha1.go.html#line-244">#L244</a>: 	block(d, d.<b>x</b>[:])
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

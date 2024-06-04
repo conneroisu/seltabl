@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: sync.Pool.Put</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/sync.html">sync</a>.<a href="../src/sync/pool.go.html#line-49">Pool</a>.<a href="../src/sync/pool.go.html#line-96">Put</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">41 uses</span>
+
+	sync (current package)
+		<a href="../src/sync/pool.go.html#line-96">pool.go#L96</a>: func (p *Pool) <b>Put</b>(x any) {
+
+	<a href="../pkg/crypto/tls.html">crypto/tls</a>
+		<a href="../src/crypto/tls/conn.go.html#line-994">conn.go#L994</a>: 		outBufPool.<b>Put</b>(outBufPtr)
+
+	<a href="../pkg/fmt.html">fmt</a>
+		<a href="../src/fmt/print.go.html#line-181">print.go#L181</a>: 	ppFree.<b>Put</b>(p)
+		<a href="../src/fmt/scan.go.html#line-414">scan.go#L414</a>: 	ssFree.<b>Put</b>(s)
+
+	<a href="../pkg/internal/poll.html">internal/poll</a>
+		<a href="../src/internal/poll/splice_linux.go.html#line-226">splice_linux.go#L226</a>: 	splicePipePool.<b>Put</b>(p)
+
+	<a href="../pkg/io.html">io</a>
+		<a href="../src/io/io.go.html#line-669">io.go#L669</a>: 			blackHolePool.<b>Put</b>(bufp)
+
+	<a href="../pkg/log.html">log</a>
+		<a href="../src/log/log.go.html#line-184">log.go#L184</a>: 	bufferPool.<b>Put</b>(p)
+
+	<a href="../pkg/math/big.html">math/big</a>
+		<a href="../src/math/big/nat.go.html#line-649">nat.go#L649</a>: 	natPool.<b>Put</b>(x)
+
+	<a href="../pkg/net/http.html">net/http</a>
+		<a href="../src/net/http/h2_bundle.go.html#line-1070">h2_bundle.go#L1070</a>: 		http2dataChunkPools[0].<b>Put</b>((*[1 &lt;&lt; 10]byte)(p))
+		<a href="../src/net/http/h2_bundle.go.html#line-1072" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-1072">#L1072</a>: 		http2dataChunkPools[1].<b>Put</b>((*[2 &lt;&lt; 10]byte)(p))
+		<a href="../src/net/http/h2_bundle.go.html#line-1074" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-1074">#L1074</a>: 		http2dataChunkPools[2].<b>Put</b>((*[4 &lt;&lt; 10]byte)(p))
+		<a href="../src/net/http/h2_bundle.go.html#line-1076" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-1076">#L1076</a>: 		http2dataChunkPools[3].<b>Put</b>((*[8 &lt;&lt; 10]byte)(p))
+		<a href="../src/net/http/h2_bundle.go.html#line-1078" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-1078">#L1078</a>: 		http2dataChunkPools[4].<b>Put</b>((*[16 &lt;&lt; 10]byte)(p))
+		<a href="../src/net/http/h2_bundle.go.html#line-1633" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-1633">#L1633</a>: 	defer http2fhBytes.<b>Put</b>(bufp)
+		<a href="../src/net/http/h2_bundle.go.html#line-3131" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-3131">#L3131</a>: 	defer http2littleBuf.<b>Put</b>(bp)
+		<a href="../src/net/http/h2_bundle.go.html#line-3603" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-3603">#L3603</a>: 	http2bufWriterPool.<b>Put</b>(bw)
+		<a href="../src/net/http/h2_bundle.go.html#line-4940" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-4940">#L4940</a>: 	http2errChanPool.<b>Put</b>(ch)
+		<a href="../src/net/http/h2_bundle.go.html#line-4942" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-4942">#L4942</a>: 		http2writeDataPool.<b>Put</b>(writeArg)
+		<a href="../src/net/http/h2_bundle.go.html#line-6228" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-6228">#L6228</a>: 			http2errChanPool.<b>Put</b>(errc)
+		<a href="../src/net/http/h2_bundle.go.html#line-6580" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-6580">#L6580</a>: 		http2sorterPool.<b>Put</b>(sorter)
+		<a href="../src/net/http/h2_bundle.go.html#line-6814" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-6814">#L6814</a>: 	http2responseWriterStatePool.<b>Put</b>(rws)
+		<a href="../src/net/http/h2_bundle.go.html#line-6921" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-6921">#L6921</a>: 		http2errChanPool.<b>Put</b>(msg.done)
+		<a href="../src/net/http/h2_bundle.go.html#line-8790" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-8790">#L8790</a>: 		defer http2bufPools[index].<b>Put</b>(bp)
+		<a href="../src/net/http/h2_bundle.go.html#line-8794" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-8794">#L8794</a>: 		defer http2bufPools[index].<b>Put</b>(&amp;buf)
+		<a href="../src/net/http/h2_bundle.go.html#line-10629" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-10629">#L10629</a>: 		defer http2sorterPool.<b>Put</b>(sorter)
+		<a href="../src/net/http/header.go.html#line-216">header.go#L216</a>: 					headerSorterPool.<b>Put</b>(sorter)
+		<a href="../src/net/http/header.go.html#line-229" class="path-duplicate">header.go</a><a href="../src/net/http/header.go.html#line-229">#L229</a>: 	headerSorterPool.<b>Put</b>(sorter)
+		<a href="../src/net/http/request.go.html#line-1032">request.go#L1032</a>: 	textprotoReaderPool.<b>Put</b>(r)
+		<a href="../src/net/http/server.go.html#line-820">server.go#L820</a>: 	copyBufPool.<b>Put</b>((*[copyBufPoolSize]byte)(b))
+		<a href="../src/net/http/server.go.html#line-846" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-846">#L846</a>: 	bufioReaderPool.<b>Put</b>(br)
+		<a href="../src/net/http/server.go.html#line-864" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-864">#L864</a>: 		pool.<b>Put</b>(bw)
+
+	<a href="../pkg/os.html">os</a>
+		<a href="../src/os/dir_unix.go.html#line-39">dir_unix.go#L39</a>: 		dirBufPool.<b>Put</b>(d.buf)
+
+	<a href="../pkg/reflect.html">reflect</a>
+		<a href="../src/reflect/value.go.html#line-607">value.go#L607</a>: 			framePool.<b>Put</b>(stackArgs)
+		<a href="../src/reflect/value.go.html#line-1142" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1142">#L1142</a>: 	methodFramePool.<b>Put</b>(methodFrame)
+
+	<a href="../pkg/regexp.html">regexp</a>
+		<a href="../src/regexp/backtrack.go.html#line-59">backtrack.go#L59</a>: 	bitStatePool.<b>Put</b>(b)
+		<a href="../src/regexp/exec.go.html#line-393">exec.go#L393</a>: 	onePassPool.<b>Put</b>(m)
+		<a href="../src/regexp/regexp.go.html#line-268">regexp.go#L268</a>: 	matchPool[re.mpool].<b>Put</b>(m)
+
+	<a href="../pkg/syscall.html">syscall</a>
+		<a href="../src/syscall/netlink_linux.go.html#line-85">netlink_linux.go#L85</a>: 	defer pageBufPool.<b>Put</b>(rbNew)
+
+	<a href="../pkg/vendor/golang.org/x/net/http2/hpack.html">vendor/golang.org/x/net/http2/hpack</a>
+		<a href="../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-521">hpack.go#L521</a>: 	bufPool.<b>Put</b>(buf)
+		<a href="../src/vendor/golang.org/x/net/http2/hpack/huffman.go.html#line-24">huffman.go#L24</a>: 	defer bufPool.<b>Put</b>(buf)
+		<a href="../src/vendor/golang.org/x/net/http2/hpack/huffman.go.html#line-35" class="path-duplicate">huffman.go</a><a href="../src/vendor/golang.org/x/net/http2/hpack/huffman.go.html#line-35">#L35</a>: 	defer bufPool.<b>Put</b>(buf)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

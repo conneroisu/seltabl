@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.gcBits</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/mheap.go.html#line-2084">gcBits</a></b></span>
+
+<span class="title">12 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/mheap.go.html#line-466">mheap.go#L466</a>: 	allocBits  *<b>gcBits</b>
+		<a href="../src/runtime/mheap.go.html#line-467" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-467">#L467</a>: 	gcmarkBits *<b>gcBits</b>
+		<a href="../src/runtime/mheap.go.html#line-468" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-468">#L468</a>: 	pinnerBits *<b>gcBits</b> // bitmap for pinned objects; accessed atomically
+		<a href="../src/runtime/mheap.go.html#line-2084" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-2084">#L2084</a>: type <b>gcBits</b> struct {
+		<a href="../src/runtime/mheap.go.html#line-2090" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-2090">#L2090</a>: func (b *<b>gcBits</b>) bytep(n uintptr) *uint8 {
+		<a href="../src/runtime/mheap.go.html#line-2096" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-2096">#L2096</a>: func (b *<b>gcBits</b>) bitp(n uintptr) (bytep *uint8, mask uint8) {
+		<a href="../src/runtime/mheap.go.html#line-2113" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-2113">#L2113</a>: 	bits [gcBitsChunkBytes - gcBitsHeaderBytes]<b>gcBits</b>
+		<a href="../src/runtime/mheap.go.html#line-2126" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-2126">#L2126</a>: func (b *gcBitsArena) tryAlloc(bytes uintptr) *<b>gcBits</b> {
+		<a href="../src/runtime/mheap.go.html#line-2142" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-2142">#L2142</a>: func newMarkBits(nelems uintptr) *<b>gcBits</b> {
+		<a href="../src/runtime/mheap.go.html#line-2198" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-2198">#L2198</a>: func newAllocBits(nelems uintptr) *<b>gcBits</b> {
+		<a href="../src/runtime/pinner.go.html#line-257">pinner.go#L257</a>: type pinnerBits <b>gcBits</b>
+		<a href="../src/runtime/pinner.go.html#line-264" class="path-duplicate">pinner.go</a><a href="../src/runtime/pinner.go.html#line-264">#L264</a>: 	bytep, mask := (*<b>gcBits</b>)(p).bitp(n * 2)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

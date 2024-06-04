@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: vendor/golang.org/x/net/idna.category</title>
+<link href="../../../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../../../../pkg/vendor/golang.org/x/net/idna.html">vendor/golang.org/x/net/idna</a>.<a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-62">category</a></b></span>
+
+<span class="title">16 uses</span>
+
+	vendor/golang.org/x/net/idna (current package)
+		<a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-601">idna10.0.0.go#L601</a>: func (p *Profile) simplify(cat <b>category</b>) <b>category</b> {
+		<a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-62">trieval.go#L62</a>: type <b>category</b> uint16
+		<a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-65" class="path-duplicate">trieval.go</a><a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-65">#L65</a>: 	unknown              <b>category</b> = 0 // not currently defined in unicode.
+		<a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-66" class="path-duplicate">trieval.go</a><a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-66">#L66</a>: 	mapped               <b>category</b> = 1
+		<a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-67" class="path-duplicate">trieval.go</a><a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-67">#L67</a>: 	disallowedSTD3Mapped <b>category</b> = 2
+		<a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-68" class="path-duplicate">trieval.go</a><a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-68">#L68</a>: 	deviation            <b>category</b> = 3
+		<a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-72" class="path-duplicate">trieval.go</a><a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-72">#L72</a>: 	valid               <b>category</b> = 0x08
+		<a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-73" class="path-duplicate">trieval.go</a><a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-73">#L73</a>: 	validNV8            <b>category</b> = 0x18
+		<a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-74" class="path-duplicate">trieval.go</a><a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-74">#L74</a>: 	validXV8            <b>category</b> = 0x28
+		<a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-75" class="path-duplicate">trieval.go</a><a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-75">#L75</a>: 	disallowed          <b>category</b> = 0x40
+		<a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-76" class="path-duplicate">trieval.go</a><a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-76">#L76</a>: 	disallowedSTD3Valid <b>category</b> = 0x80
+		<a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-77" class="path-duplicate">trieval.go</a><a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-77">#L77</a>: 	ignored             <b>category</b> = 0xC0
+		<a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-98" class="path-duplicate">trieval.go</a><a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-98">#L98</a>: func (c info) category() <b>category</b> {
+		<a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-101" class="path-duplicate">trieval.go</a><a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-101">#L101</a>: 		return <b>category</b>(small)
+		<a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-103" class="path-duplicate">trieval.go</a><a href="../../../../../src/vendor/golang.org/x/net/idna/trieval.go.html#line-103">#L103</a>: 	return <b>category</b>(c &amp; catBigMask)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

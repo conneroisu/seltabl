@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/internal/alias.InexactOverlap</title>
+<link href="../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../../../pkg/crypto/internal/alias.html">crypto/internal/alias</a>.<a href="../../../src/crypto/internal/alias/alias.go.html#line-25">InexactOverlap</a></b></span>
+
+<span class="title">19 uses</span>
+
+	crypto/internal/alias (current package)
+		<a href="../../../src/crypto/internal/alias/alias.go.html#line-25">alias.go#L25</a>: func <b>InexactOverlap</b>(x, y []byte) bool {
+
+	<a href="../../../pkg/crypto/aes.html">crypto/aes</a>
+		<a href="../../../src/crypto/aes/aes_gcm.go.html#line-117">aes_gcm.go#L117</a>: 	if alias.<b>InexactOverlap</b>(out[:len(plaintext)], plaintext) {
+		<a href="../../../src/crypto/aes/aes_gcm.go.html#line-170" class="path-duplicate">aes_gcm.go</a><a href="../../../src/crypto/aes/aes_gcm.go.html#line-170">#L170</a>: 	if alias.<b>InexactOverlap</b>(out, ciphertext) {
+		<a href="../../../src/crypto/aes/cipher.go.html#line-65">cipher.go#L65</a>: 	if alias.<b>InexactOverlap</b>(dst[:BlockSize], src[:BlockSize]) {
+		<a href="../../../src/crypto/aes/cipher.go.html#line-78" class="path-duplicate">cipher.go</a><a href="../../../src/crypto/aes/cipher.go.html#line-78">#L78</a>: 	if alias.<b>InexactOverlap</b>(dst[:BlockSize], src[:BlockSize]) {
+		<a href="../../../src/crypto/aes/cipher_asm.go.html#line-78">cipher_asm.go#L78</a>: 	if alias.<b>InexactOverlap</b>(dst[:BlockSize], src[:BlockSize]) {
+		<a href="../../../src/crypto/aes/cipher_asm.go.html#line-92" class="path-duplicate">cipher_asm.go</a><a href="../../../src/crypto/aes/cipher_asm.go.html#line-92">#L92</a>: 	if alias.<b>InexactOverlap</b>(dst[:BlockSize], src[:BlockSize]) {
+
+	<a href="../../../pkg/crypto/cipher.html">crypto/cipher</a>
+		<a href="../../../src/crypto/cipher/cbc.go.html#line-79">cbc.go#L79</a>: 	if alias.<b>InexactOverlap</b>(dst[:len(src)], src) {
+		<a href="../../../src/crypto/cipher/cbc.go.html#line-150" class="path-duplicate">cbc.go</a><a href="../../../src/crypto/cipher/cbc.go.html#line-150">#L150</a>: 	if alias.<b>InexactOverlap</b>(dst[:len(src)], src) {
+		<a href="../../../src/crypto/cipher/cfb.go.html#line-27">cfb.go#L27</a>: 	if alias.<b>InexactOverlap</b>(dst[:len(src)], src) {
+		<a href="../../../src/crypto/cipher/ctr.go.html#line-83">ctr.go#L83</a>: 	if alias.<b>InexactOverlap</b>(dst[:len(src)], src) {
+		<a href="../../../src/crypto/cipher/gcm.go.html#line-177">gcm.go#L177</a>: 	if alias.<b>InexactOverlap</b>(out, plaintext) {
+		<a href="../../../src/crypto/cipher/gcm.go.html#line-228" class="path-duplicate">gcm.go</a><a href="../../../src/crypto/cipher/gcm.go.html#line-228">#L228</a>: 	if alias.<b>InexactOverlap</b>(out, ciphertext) {
+		<a href="../../../src/crypto/cipher/ofb.go.html#line-65">ofb.go#L65</a>: 	if alias.<b>InexactOverlap</b>(dst[:len(src)], src) {
+
+	<a href="../../../pkg/crypto/des.html">crypto/des</a>
+		<a href="../../../src/crypto/des/cipher.go.html#line-48">cipher.go#L48</a>: 	if alias.<b>InexactOverlap</b>(dst[:BlockSize], src[:BlockSize]) {
+		<a href="../../../src/crypto/des/cipher.go.html#line-61" class="path-duplicate">cipher.go</a><a href="../../../src/crypto/des/cipher.go.html#line-61">#L61</a>: 	if alias.<b>InexactOverlap</b>(dst[:BlockSize], src[:BlockSize]) {
+		<a href="../../../src/crypto/des/cipher.go.html#line-94" class="path-duplicate">cipher.go</a><a href="../../../src/crypto/des/cipher.go.html#line-94">#L94</a>: 	if alias.<b>InexactOverlap</b>(dst[:BlockSize], src[:BlockSize]) {
+		<a href="../../../src/crypto/des/cipher.go.html#line-129" class="path-duplicate">cipher.go</a><a href="../../../src/crypto/des/cipher.go.html#line-129">#L129</a>: 	if alias.<b>InexactOverlap</b>(dst[:BlockSize], src[:BlockSize]) {
+
+	<a href="../../../pkg/crypto/rc4.html">crypto/rc4</a>
+		<a href="../../../src/crypto/rc4/rc4.go.html#line-65">rc4.go#L65</a>: 	if alias.<b>InexactOverlap</b>(dst[:len(src)], src) {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

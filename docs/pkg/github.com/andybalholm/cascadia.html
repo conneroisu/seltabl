@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: github.com/andybalholm/cascadia</title>
+<link href="../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>cascadia</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../../index.html#pkg-github.com/andybalholm/cascadia">github.com/andybalholm/cascadia</a><i> (on <a href="https://pkg.go.dev/github.com/andybalholm/cascadia" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../../../dep/github.com/andybalholm/cascadia.html">8 packages</a>, and imported by <a href="../../../dep/github.com/andybalholm/cascadia.html#imported-by">one package</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<input type='checkbox' checked class="fold" id="file-0-fold-content"><label for="file-0-fold-content">  <a href="../../../src/github.com/andybalholm/cascadia/parser.go.html#doc">d</a> <a href="../../../src/github.com/andybalholm/cascadia/parser.go.html">parser.go</a></label><span id='file-0-fold-content-items' class="fold-items">
+<span class="md-text">		Package cascadia is an implementation of CSS selectors.</span>
+</span>
+	<span class="nodocs">    <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html">pseudo_classes.go</a></span>
+	<span class="nodocs">    <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html">selector.go</a></span>
+	<span class="nodocs">    <a href="../../../src/github.com/andybalholm/cascadia/serialize.go.html">serialize.go</a></span>
+	<span class="nodocs">    <a href="../../../src/github.com/andybalholm/cascadia/specificity.go.html">specificity.go</a></span></div>
+<div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (total 27, in which 5 are exported)</i></span></span>
+
+<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-Matcher" data-popularity="4265">	<input type='checkbox' class="fold" id="Matcher-fold-content"><label for="Matcher-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..Matcher.html">type</a> <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-13">Matcher</a> <b><i>(interface)</i></b></label><span id='Matcher-fold-content-docs' class="fold-docs">
+<span class="md-text">		Matcher is the interface for basic selector functionality.
+		Match returns whether a selector matches n.</span>
+
+		<input type='checkbox' class="fold" id="Matcher-fold-methods"><label for="Matcher-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='Matcher-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( Matcher) <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-14">Match</a>(n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>) <a href="../../builtin.html#name-bool">bool</a></span></span></span>
+		<input type='checkbox' class="fold" id="Matcher-fold-impledby"><label for="Matcher-fold-impledby">Implemented By (<i>at least 26, in which 4 are exported</i>)</label><span id='Matcher-fold-impledby-items' class="fold-items"><span>
+			 <a href="#name-Sel">Sel</a> <i>(interface)</i></span><span>
+			 <a href="#name-Selector">Selector</a></span><span>
+			 <a href="#name-SelectorGroup">SelectorGroup</a></span><span>
+			 github.com/PuerkitoBio/goquery.<a href="../PuerkitoBio^56e6a/goquery.html#name-Matcher">Matcher</a> <i>(interface)</i></span>
+			<input type='checkbox' class="showhide" id="Matcher-showhide-impedBys"><i><label for="Matcher-showhide-impedBys" class="show-inline">/* 22+ unexporteds ... */</label><label for="Matcher-showhide-impedBys" class="hide-inline">/* 22+ unexporteds: */</label></i><span class="hidden"><i>
+			 <a href="#name-attrSelector">attrSelector</a></i></span><span class="hidden"><i>
+			 <a href="#name-checkedPseudoClassSelector">checkedPseudoClassSelector</a></i></span><span class="hidden"><i>
+			 <a href="#name-classSelector">classSelector</a></i></span><span class="hidden"><i>
+			 <a href="#name-combinedSelector">combinedSelector</a></i></span><span class="hidden"><i>
+			 <a href="#name-compoundSelector">compoundSelector</a></i></span><span class="hidden"><i>
+			 <a href="#name-containsPseudoClassSelector">containsPseudoClassSelector</a></i></span><span class="hidden"><i>
+			 <a href="#name-disabledPseudoClassSelector">disabledPseudoClassSelector</a></i></span><span class="hidden"><i>
+			 <a href="#name-emptyElementPseudoClassSelector">emptyElementPseudoClassSelector</a></i></span><span class="hidden"><i>
+			 <a href="#name-enabledPseudoClassSelector">enabledPseudoClassSelector</a></i></span><span class="hidden"><i>
+			 <a href="#name-idSelector">idSelector</a></i></span><span class="hidden"><i>
+			 <a href="#name-inputPseudoClassSelector">inputPseudoClassSelector</a></i></span><span class="hidden"><i>
+			 <a href="#name-langPseudoClassSelector">langPseudoClassSelector</a></i></span><span class="hidden"><i>
+			 <a href="#name-linkPseudoClassSelector">linkPseudoClassSelector</a></i></span><span class="hidden"><i>
+			 <a href="#name-neverMatchSelector">neverMatchSelector</a></i></span><span class="hidden"><i>
+			 <a href="#name-nthPseudoClassSelector">nthPseudoClassSelector</a></i></span><span class="hidden"><i>
+			 <a href="#name-onlyChildPseudoClassSelector">onlyChildPseudoClassSelector</a></i></span><span class="hidden"><i>
+			 <a href="#name-regexpPseudoClassSelector">regexpPseudoClassSelector</a></i></span><span class="hidden"><i>
+			 <a href="#name-relativePseudoClassSelector">relativePseudoClassSelector</a></i></span><span class="hidden"><i>
+			 <a href="#name-rootPseudoClassSelector">rootPseudoClassSelector</a></i></span><span class="hidden"><i>
+			 <a href="#name-tagSelector">tagSelector</a></i></span><span class="hidden"><i>
+			 github.com/PuerkitoBio/goquery.<a href="../PuerkitoBio^56e6a/goquery.html#name-invalidMatcher">invalidMatcher</a></i></span><span class="hidden"><i>
+			 github.com/PuerkitoBio/goquery.<a href="../PuerkitoBio^56e6a/goquery.html#name-singleMatcher">singleMatcher</a></i></span></span>
+		<input type='checkbox' class="fold" id="Matcher-fold-params"><label for="Matcher-fold-params">As Inputs Of (<i>at least 9, in which 3 are exported</i>)</label><span id='Matcher-fold-params-items' class="fold-items"><span>
+			func <a href="#name-Filter">Filter</a>(nodes []*<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>, m <b>Matcher</b>) (result []*<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>)</span><span>
+			func <a href="#name-Query">Query</a>(n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>, m <b>Matcher</b>) *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a></span><span>
+			func <a href="#name-QueryAll">QueryAll</a>(n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>, m <b>Matcher</b>) []*<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a></span>
+			<input type='checkbox' class="showhide" id="Matcher-showhide-outputofs"><i><label for="Matcher-showhide-outputofs" class="show-inline">/* 6+ unexporteds ... */</label><label for="Matcher-showhide-outputofs" class="hide-inline">/* 6+ unexporteds: */</label></i><span class="hidden"><i>
+			func <a href="#name-childMatch">childMatch</a>(a, d <b>Matcher</b>, n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>) <a href="../../builtin.html#name-bool">bool</a></i></span><span class="hidden"><i>
+			func <a href="#name-descendantMatch">descendantMatch</a>(a, d <b>Matcher</b>, n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>) <a href="../../builtin.html#name-bool">bool</a></i></span><span class="hidden"><i>
+			func <a href="#name-hasChildMatch">hasChildMatch</a>(n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>, a <b>Matcher</b>) <a href="../../builtin.html#name-bool">bool</a></i></span><span class="hidden"><i>
+			func <a href="#name-hasDescendantMatch">hasDescendantMatch</a>(n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>, a <b>Matcher</b>) <a href="../../builtin.html#name-bool">bool</a></i></span><span class="hidden"><i>
+			func <a href="#name-queryInto">queryInto</a>(n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>, m <b>Matcher</b>, storage []*<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>) []*<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a></i></span><span class="hidden"><i>
+			func <a href="#name-siblingMatch">siblingMatch</a>(s1, s2 <b>Matcher</b>, adjacent <a href="../../builtin.html#name-bool">bool</a>, n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>) <a href="../../builtin.html#name-bool">bool</a></i></span></span>
+
+</span></div><div class="anchor type-res" id="name-Sel" data-popularity="3550">	<input type='checkbox' class="fold" id="Sel-fold-content"><label for="Sel-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..Sel.html">type</a> <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-18">Sel</a> <b><i>(interface)</i></b></label><span id='Sel-fold-content-docs' class="fold-docs">
+<span class="md-text">		Sel is the interface for all the functionality provided by selectors.</span>
+
+		<input type='checkbox' class="fold" id="Sel-fold-methods"><label for="Sel-fold-methods">Methods (<i>total 4, all are exported</i>)</label><span id='Sel-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( Sel) <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-14">Match</a>(n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>) <a href="../../builtin.html#name-bool">bool</a></span></span><span>
+			<input type='checkbox' class="fold" id="Sel-fold-method-PseudoElement"><label for="Sel-fold-method-PseudoElement">( Sel) <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-26">PseudoElement</a>() <a href="../../builtin.html#name-string">string</a></label><span id='Sel-fold-method-PseudoElement-docs' class="fold-docs">
+<span class="md-text">				Returns a pseudo-element, or an empty string.</span>
+</span></span><span>
+			<span class="nodocs">( Sel) <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-20">Specificity</a>() <a href="#name-Specificity">Specificity</a></span></span><span>
+			<input type='checkbox' class="fold" id="Sel-fold-method-String"><label for="Sel-fold-method-String">( Sel) <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-23">String</a>() <a href="../../builtin.html#name-string">string</a></label><span id='Sel-fold-method-String-docs' class="fold-docs">
+<span class="md-text">				Returns a CSS input compiling to this selector.</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="Sel-fold-impledby"><label for="Sel-fold-impledby">Implemented By (<i>at least 20, none are exported</i>)</label><span id='Sel-fold-impledby-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="Sel-showhide-impedBys"><i><label for="Sel-showhide-impedBys" class="show-inline">/* 20+ unexporteds ... */</label><label for="Sel-showhide-impedBys" class="hide-inline">/* 20+ unexporteds: */</label></i><span class="hidden"><i>
+			 <a href="#name-attrSelector">attrSelector</a></i></span><span class="hidden"><i>
+			 <a href="#name-checkedPseudoClassSelector">checkedPseudoClassSelector</a></i></span><span class="hidden"><i>
+			 <a href="#name-classSelector">classSelector</a></i></span><span class="hidden"><i>
+			 <a href="#name-combinedSelector">combinedSelector</a></i></span><span class="hidden"><i>
+			 <a href="#name-compoundSelector">compoundSelector</a></i></span><span class="hidden"><i>
+			 <a href="#name-containsPseudoClassSelector">containsPseudoClassSelector</a></i></span><span class="hidden"><i>
+			 <a href="#name-disabledPseudoClassSelector">disabledPseudoClassSelector</a></i></span><span class="hidden"><i>
+			 <a href="#name-emptyElementPseudoClassSelector">emptyElementPseudoClassSelector</a></i></span><span class="hidden"><i>
+			 <a href="#name-enabledPseudoClassSelector">enabledPseudoClassSelector</a></i></span><span class="hidden"><i>
+			 <a href="#name-idSelector">idSelector</a></i></span><span class="hidden"><i>
+			 <a href="#name-inputPseudoClassSelector">inputPseudoClassSelector</a></i></span><span class="hidden"><i>
+			 <a href="#name-langPseudoClassSelector">langPseudoClassSelector</a></i></span><span class="hidden"><i>
+			 <a href="#name-linkPseudoClassSelector">linkPseudoClassSelector</a></i></span><span class="hidden"><i>
+			 <a href="#name-neverMatchSelector">neverMatchSelector</a></i></span><span class="hidden"><i>
+			 <a href="#name-nthPseudoClassSelector">nthPseudoClassSelector</a></i></span><span class="hidden"><i>
+			 <a href="#name-onlyChildPseudoClassSelector">onlyChildPseudoClassSelector</a></i></span><span class="hidden"><i>
+			 <a href="#name-regexpPseudoClassSelector">regexpPseudoClassSelector</a></i></span><span class="hidden"><i>
+			 <a href="#name-relativePseudoClassSelector">relativePseudoClassSelector</a></i></span><span class="hidden"><i>
+			 <a href="#name-rootPseudoClassSelector">rootPseudoClassSelector</a></i></span><span class="hidden"><i>
+			 <a href="#name-tagSelector">tagSelector</a></i></span></span>
+		<input type='checkbox' class="fold" id="Sel-fold-impls"><label for="Sel-fold-impls">Implements (<i>at least 4, in which 2 are exported</i>)</label><span id='Sel-fold-impls-items' class="fold-items"><span>
+			 Sel : <a href="#name-Matcher">Matcher</a></span><span>
+			 Sel : fmt.<a href="../../fmt.html#name-Stringer">Stringer</a></span>
+			<input type='checkbox' class="showhide" id="Sel-showhide-impls"><i><label for="Sel-showhide-impls" class="show-inline">/* 2+ unexporteds ... */</label><label for="Sel-showhide-impls" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			 Sel : context.<a href="../../context.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			 Sel : runtime.<a href="../../runtime.html#name-stringer">stringer</a></i></span></span>
+		<input type='checkbox' class="fold" id="Sel-fold-results"><label for="Sel-fold-results">As Outputs Of (<i>at least 2, both are exported</i>)</label><span id='Sel-fold-results-items' class="fold-items"><span>
+			func <a href="#name-Parse">Parse</a>(sel <a href="../../builtin.html#name-string">string</a>) (<b>Sel</b>, <a href="../../builtin.html#name-error">error</a>)</span><span>
+			func <a href="#name-ParseWithPseudoElement">ParseWithPseudoElement</a>(sel <a href="../../builtin.html#name-string">string</a>) (<b>Sel</b>, <a href="../../builtin.html#name-error">error</a>)</span></span>
+
+</span></div><div class="anchor type-res" id="name-Selector" data-popularity="500">	<input type='checkbox' class="fold" id="Selector-fold-content"><label for="Selector-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..Selector.html">type</a> <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-98">Selector</a> <i>(func)</i></label><span id='Selector-fold-content-docs' class="fold-docs">
+<span class="md-text">		A Selector is a function which tells whether a node matches or not.
+		
+		This type is maintained for compatibility; I recommend using the newer and
+		more idiomatic interfaces Sel and Matcher.</span>
+
+		<input type='checkbox' class="fold" id="Selector-fold-methods"><label for="Selector-fold-methods">Methods (<i>total 5, in which 4 are exported</i>)</label><span id='Selector-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Selector-fold-method-Filter"><label for="Selector-fold-method-Filter">( Selector) <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-191">Filter</a>(nodes []*<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>) (result []*<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>)</label><span id='Selector-fold-method-Filter-docs' class="fold-docs">
+<span class="md-text">				Filter returns the nodes in nodes that match the selector.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Selector-fold-method-Match"><label for="Selector-fold-method-Match">( Selector) <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-156">Match</a>(n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>) <a href="../../builtin.html#name-bool">bool</a></label><span id='Selector-fold-method-Match-docs' class="fold-docs">
+<span class="md-text">				Match returns true if the node matches the selector.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Selector-fold-method-MatchAll"><label for="Selector-fold-method-MatchAll">( Selector) <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-122">MatchAll</a>(n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>) []*<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a></label><span id='Selector-fold-method-MatchAll-docs' class="fold-docs">
+<span class="md-text">				MatchAll returns a slice of the nodes that match the selector,
+				from n and its children.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Selector-fold-method-MatchFirst"><label for="Selector-fold-method-MatchFirst">( Selector) <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-161">MatchFirst</a>(n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>) *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a></label><span id='Selector-fold-method-MatchFirst-docs' class="fold-docs">
+<span class="md-text">				MatchFirst returns the first node that matches s, from n and its children.</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="Selector-showhide-methods"><i><label for="Selector-showhide-methods" class="show-inline">/* one unexported ... */</label><label for="Selector-showhide-methods" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs">( Selector) <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-126">matchAllInto</a>(n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>, storage []*<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>) []*<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a></span></i></span></span>
+		<input type='checkbox' class="fold" id="Selector-fold-impls"><label for="Selector-fold-impls">Implements (<i>at least 2, both are exported</i>)</label><span id='Selector-fold-impls-items' class="fold-items"><span>
+			 Selector : <a href="#name-Matcher">Matcher</a></span><span>
+			 Selector : github.com/PuerkitoBio/goquery.<a href="../PuerkitoBio^56e6a/goquery.html#name-Matcher">Matcher</a></span></span>
+		<input type='checkbox' class="fold" id="Selector-fold-results"><label for="Selector-fold-results">As Outputs Of (<i>at least 2, both are exported</i>)</label><span id='Selector-fold-results-items' class="fold-items"><span>
+			func <a href="#name-Compile">Compile</a>(sel <a href="../../builtin.html#name-string">string</a>) (<b>Selector</b>, <a href="../../builtin.html#name-error">error</a>)</span><span>
+			func <a href="#name-MustCompile">MustCompile</a>(sel <a href="../../builtin.html#name-string">string</a>) <b>Selector</b></span></span>
+
+</span></div><div class="anchor type-res" id="name-SelectorGroup" data-popularity="450">	<input type='checkbox' class="fold" id="SelectorGroup-fold-content"><label for="SelectorGroup-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..SelectorGroup.html">type</a> <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-576">SelectorGroup</a> <i>([])</i></label><span id='SelectorGroup-fold-content-docs' class="fold-docs">
+<span class="md-text">		A SelectorGroup is a list of selectors, which matches if any of the
+		individual selectors matches.</span>
+
+		<input type='checkbox' class="fold" id="SelectorGroup-fold-methods"><label for="SelectorGroup-fold-methods">Methods (<i>total 2, both are exported</i>)</label><span id='SelectorGroup-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="SelectorGroup-fold-method-Match"><label for="SelectorGroup-fold-method-Match">( SelectorGroup) <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-579">Match</a>(n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>) <a href="../../builtin.html#name-bool">bool</a></label><span id='SelectorGroup-fold-method-Match-docs' class="fold-docs">
+<span class="md-text">				Match returns true if the node matches one of the single selectors.</span>
+</span></span><span>
+			<span class="nodocs">( SelectorGroup) <a href="../../../src/github.com/andybalholm/cascadia/serialize.go.html#line-170">String</a>() <a href="../../builtin.html#name-string">string</a></span></span></span>
+		<input type='checkbox' class="fold" id="SelectorGroup-fold-impls"><label for="SelectorGroup-fold-impls">Implements (<i>at least 4, in which 2 are exported</i>)</label><span id='SelectorGroup-fold-impls-items' class="fold-items"><span>
+			 SelectorGroup : <a href="#name-Matcher">Matcher</a></span><span>
+			 SelectorGroup : fmt.<a href="../../fmt.html#name-Stringer">Stringer</a></span>
+			<input type='checkbox' class="showhide" id="SelectorGroup-showhide-impls"><i><label for="SelectorGroup-showhide-impls" class="show-inline">/* 2+ unexporteds ... */</label><label for="SelectorGroup-showhide-impls" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			 SelectorGroup : context.<a href="../../context.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			 SelectorGroup : runtime.<a href="../../runtime.html#name-stringer">stringer</a></i></span></span>
+		<input type='checkbox' class="fold" id="SelectorGroup-fold-results"><label for="SelectorGroup-fold-results">As Outputs Of (<i>at least 2, both are exported</i>)</label><span id='SelectorGroup-fold-results-items' class="fold-items"><span>
+			func <a href="#name-ParseGroup">ParseGroup</a>(sel <a href="../../builtin.html#name-string">string</a>) (<b>SelectorGroup</b>, <a href="../../builtin.html#name-error">error</a>)</span><span>
+			func <a href="#name-ParseGroupWithPseudoElements">ParseGroupWithPseudoElements</a>(sel <a href="../../builtin.html#name-string">string</a>) (<b>SelectorGroup</b>, <a href="../../builtin.html#name-error">error</a>)</span></span>
+
+</span></div><div class="anchor type-res" id="name-Specificity" data-popularity="320">	<input type='checkbox' class="fold" id="Specificity-fold-content"><label for="Specificity-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..Specificity.html">type</a> <a href="../../../src/github.com/andybalholm/cascadia/specificity.go.html#line-6">Specificity</a> <i>([...])</i></label><span id='Specificity-fold-content-docs' class="fold-docs">
+<span class="md-text">		Specificity is the CSS specificity as defined in
+		https://www.w3.org/TR/selectors/#specificity-rules
+		with the convention Specificity = [A,B,C].</span>
+
+		<input type='checkbox' class="fold" id="Specificity-fold-methods"><label for="Specificity-fold-methods">Methods (<i>total 2, both are exported</i>)</label><span id='Specificity-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( Specificity) <a href="../../../src/github.com/andybalholm/cascadia/specificity.go.html#line-21">Add</a>(other <b>Specificity</b>) <b>Specificity</b></span></span><span>
+			<input type='checkbox' class="fold" id="Specificity-fold-method-Less"><label for="Specificity-fold-method-Less">( Specificity) <a href="../../../src/github.com/andybalholm/cascadia/specificity.go.html#line-9">Less</a>(other <b>Specificity</b>) <a href="../../builtin.html#name-bool">bool</a></label><span id='Specificity-fold-method-Less-docs' class="fold-docs">
+<span class="md-text">				returns `true` if s &lt; other (strictly), false otherwise</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="Specificity-fold-results"><label for="Specificity-fold-results">As Outputs Of (<i>at least 2, both are exported</i>)</label><span id='Specificity-fold-results-items' class="fold-items"><span>
+			func <a href="#name-Sel">Sel</a>.<a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-20">Specificity</a>() <b>Specificity</b></span><span>
+			func Specificity.<a href="../../../src/github.com/andybalholm/cascadia/specificity.go.html#line-21">Add</a>(other <b>Specificity</b>) <b>Specificity</b></span></span>
+		<input type='checkbox' class="fold" id="Specificity-fold-params"><label for="Specificity-fold-params">As Inputs Of (<i>at least 2, both are exported</i>)</label><span id='Specificity-fold-params-items' class="fold-items"><span>
+			func Specificity.<a href="../../../src/github.com/andybalholm/cascadia/specificity.go.html#line-21">Add</a>(other <b>Specificity</b>) <b>Specificity</b></span><span>
+			func Specificity.<a href="../../../src/github.com/andybalholm/cascadia/specificity.go.html#line-9">Less</a>(other <b>Specificity</b>) <a href="../../builtin.html#name-bool">bool</a></span></span>
+
+</span></div></div><div>	<input type='checkbox' class="showhide" id="unexported-typenames-showhide"><i><label for="unexported-typenames-showhide" class="show-inline">/* 22 unexporteds ... */</label><label for="unexported-typenames-showhide" class="hide-inline">/* 22 unexporteds: */</label></i><div class="anchor type-res hidden" id="name-abstractPseudoClass" data-popularity="100">	<input type='checkbox' class="fold" id="abstractPseudoClass-fold-content"><label for="abstractPseudoClass-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..abstractPseudoClass^99bc8.html">type</a> <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-16">abstractPseudoClass</a> <i>(struct)</i></label><span id='abstractPseudoClass-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="abstractPseudoClass-fold-methods"><label for="abstractPseudoClass-fold-methods">Methods (<i>total 2, both are exported</i>)</label><span id='abstractPseudoClass-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( abstractPseudoClass) <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-22">PseudoElement</a>() <a href="../../builtin.html#name-string">string</a></span></span><span>
+			<span class="nodocs">( abstractPseudoClass) <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-18">Specificity</a>() <a href="#name-Specificity">Specificity</a></span></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-attrSelector" data-popularity="450">	<input type='checkbox' class="fold" id="attrSelector-fold-content"><label for="attrSelector-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..attrSelector^56c83.html">type</a> <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-265">attrSelector</a> <i>(struct)</i></label><span id='attrSelector-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="attrSelector-fold-fields"><label for="attrSelector-fold-fields">Fields (<i>total 5, none are exported</i>)</label><span id='attrSelector-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="attrSelector-showhide-fields"><i><label for="attrSelector-showhide-fields" class="show-inline">/* 5 unexporteds ... */</label><label for="attrSelector-showhide-fields" class="hide-inline">/* 5 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-268">insensitive</a> <i><a href="../../builtin.html#name-bool">bool</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-266">key</a> <i><a href="../../builtin.html#name-string">string</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-266">operation</a> <i><a href="../../builtin.html#name-string">string</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-267">regexp</a> <i>*<a href="../../regexp.html">regexp</a>.<a href="../../regexp.html#name-Regexp">Regexp</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-266">val</a> <i><a href="../../builtin.html#name-string">string</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="attrSelector-fold-methods"><label for="attrSelector-fold-methods">Methods (<i>total 4, all are exported</i>)</label><span id='attrSelector-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="attrSelector-fold-method-Match"><label for="attrSelector-fold-method-Match">( attrSelector) <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-272">Match</a>(n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>) <a href="../../builtin.html#name-bool">bool</a></label><span id='attrSelector-fold-method-Match-docs' class="fold-docs">
+<span class="md-text">				Matches elements by attribute value.</span>
+</span></span><span>
+			<span class="nodocs">( attrSelector) <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-426">PseudoElement</a>() <a href="../../builtin.html#name-string">string</a></span></span><span>
+			<span class="nodocs">( attrSelector) <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-422">Specificity</a>() <a href="#name-Specificity">Specificity</a></span></span><span>
+			<span class="nodocs">( attrSelector) <a href="../../../src/github.com/andybalholm/cascadia/serialize.go.html#line-36">String</a>() <a href="../../builtin.html#name-string">string</a></span></span></span>
+		<input type='checkbox' class="fold" id="attrSelector-fold-impls"><label for="attrSelector-fold-impls">Implements (<i>at least 5, in which 3 are exported</i>)</label><span id='attrSelector-fold-impls-items' class="fold-items"><span>
+			 attrSelector : <a href="#name-Matcher">Matcher</a></span><span>
+			 attrSelector : <a href="#name-Sel">Sel</a></span><span>
+			 attrSelector : fmt.<a href="../../fmt.html#name-Stringer">Stringer</a></span>
+			<input type='checkbox' checked class="showhide" id="attrSelector-showhide-impls"><i><label for="attrSelector-showhide-impls" class="show-inline">/* 2+ unexporteds ... */</label><label for="attrSelector-showhide-impls" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			 attrSelector : context.<a href="../../context.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			 attrSelector : runtime.<a href="../../runtime.html#name-stringer">stringer</a></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-checkedPseudoClassSelector" data-popularity="450">	<input type='checkbox' class="fold" id="checkedPseudoClassSelector-fold-content"><label for="checkedPseudoClassSelector-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..checkedPseudoClassSelector^f6b36.html">type</a> <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-440">checkedPseudoClassSelector</a> <i>(struct)</i></label><span id='checkedPseudoClassSelector-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="checkedPseudoClassSelector-fold-fields"><label for="checkedPseudoClassSelector-fold-fields">Fields (<i>only one, which is unexported</i>)</label><span id='checkedPseudoClassSelector-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="checkedPseudoClassSelector-showhide-fields"><i><label for="checkedPseudoClassSelector-showhide-fields" class="show-inline">/* one unexported ... */</label><label for="checkedPseudoClassSelector-showhide-fields" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-307">abstractPseudoClass</a> <i><a href="#name-abstractPseudoClass">abstractPseudoClass</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="checkedPseudoClassSelector-fold-methods"><label for="checkedPseudoClassSelector-fold-methods">Methods (<i>total 4, all are exported</i>)</label><span id='checkedPseudoClassSelector-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( checkedPseudoClassSelector) <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-444">Match</a>(n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>) <a href="../../builtin.html#name-bool">bool</a></span></span><span>
+			<span class="nodocs">( checkedPseudoClassSelector) <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-22">PseudoElement</a>() <a href="../../builtin.html#name-string">string</a></span></span><span>
+			<span class="nodocs">( checkedPseudoClassSelector) <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-18">Specificity</a>() <a href="#name-Specificity">Specificity</a></span></span><span>
+			<span class="nodocs">( checkedPseudoClassSelector) <a href="../../../src/github.com/andybalholm/cascadia/serialize.go.html#line-143">String</a>() <a href="../../builtin.html#name-string">string</a></span></span></span>
+		<input type='checkbox' class="fold" id="checkedPseudoClassSelector-fold-impls"><label for="checkedPseudoClassSelector-fold-impls">Implements (<i>at least 5, in which 3 are exported</i>)</label><span id='checkedPseudoClassSelector-fold-impls-items' class="fold-items"><span>
+			 checkedPseudoClassSelector : <a href="#name-Matcher">Matcher</a></span><span>
+			 checkedPseudoClassSelector : <a href="#name-Sel">Sel</a></span><span>
+			 checkedPseudoClassSelector : fmt.<a href="../../fmt.html#name-Stringer">Stringer</a></span>
+			<input type='checkbox' checked class="showhide" id="checkedPseudoClassSelector-showhide-impls"><i><label for="checkedPseudoClassSelector-showhide-impls" class="show-inline">/* 2+ unexporteds ... */</label><label for="checkedPseudoClassSelector-showhide-impls" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			 checkedPseudoClassSelector : context.<a href="../../context.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			 checkedPseudoClassSelector : runtime.<a href="../../runtime.html#name-stringer">stringer</a></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-classSelector" data-popularity="450">	<input type='checkbox' class="fold" id="classSelector-fold-content"><label for="classSelector-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..classSelector^23040.html">type</a> <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-227">classSelector</a> <i>(struct)</i></label><span id='classSelector-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="classSelector-fold-fields"><label for="classSelector-fold-fields">Fields (<i>only one, which is unexported</i>)</label><span id='classSelector-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="classSelector-showhide-fields"><i><label for="classSelector-showhide-fields" class="show-inline">/* one unexported ... */</label><label for="classSelector-showhide-fields" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-228">class</a> <i><a href="../../builtin.html#name-string">string</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="classSelector-fold-methods"><label for="classSelector-fold-methods">Methods (<i>total 4, all are exported</i>)</label><span id='classSelector-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="classSelector-fold-method-Match"><label for="classSelector-fold-method-Match">( classSelector) <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-232">Match</a>(n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>) <a href="../../builtin.html#name-bool">bool</a></label><span id='classSelector-fold-method-Match-docs' class="fold-docs">
+<span class="md-text">				Matches elements by class attribute.</span>
+</span></span><span>
+			<span class="nodocs">( classSelector) <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-242">PseudoElement</a>() <a href="../../builtin.html#name-string">string</a></span></span><span>
+			<span class="nodocs">( classSelector) <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-238">Specificity</a>() <a href="#name-Specificity">Specificity</a></span></span><span>
+			<span class="nodocs">( classSelector) <a href="../../../src/github.com/andybalholm/cascadia/serialize.go.html#line-32">String</a>() <a href="../../builtin.html#name-string">string</a></span></span></span>
+		<input type='checkbox' class="fold" id="classSelector-fold-impls"><label for="classSelector-fold-impls">Implements (<i>at least 5, in which 3 are exported</i>)</label><span id='classSelector-fold-impls-items' class="fold-items"><span>
+			 classSelector : <a href="#name-Matcher">Matcher</a></span><span>
+			 classSelector : <a href="#name-Sel">Sel</a></span><span>
+			 classSelector : fmt.<a href="../../fmt.html#name-Stringer">Stringer</a></span>
+			<input type='checkbox' checked class="showhide" id="classSelector-showhide-impls"><i><label for="classSelector-showhide-impls" class="show-inline">/* 2+ unexporteds ... */</label><label for="classSelector-showhide-impls" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			 classSelector : context.<a href="../../context.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			 classSelector : runtime.<a href="../../runtime.html#name-stringer">stringer</a></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-combinedSelector" data-popularity="450">	<input type='checkbox' class="fold" id="combinedSelector-fold-content"><label for="combinedSelector-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..combinedSelector^deb4e.html">type</a> <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-484">combinedSelector</a> <i>(struct)</i></label><span id='combinedSelector-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="combinedSelector-fold-fields"><label for="combinedSelector-fold-fields">Fields (<i>total 3, none are exported</i>)</label><span id='combinedSelector-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="combinedSelector-showhide-fields"><i><label for="combinedSelector-showhide-fields" class="show-inline">/* 3 unexporteds ... */</label><label for="combinedSelector-showhide-fields" class="hide-inline">/* 3 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-486">combinator</a> <i><a href="../../builtin.html#name-byte">byte</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-485">first</a> <i><a href="#name-Sel">Sel</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-487">second</a> <i><a href="#name-Sel">Sel</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="combinedSelector-fold-methods"><label for="combinedSelector-fold-methods">Methods (<i>total 4, all are exported</i>)</label><span id='combinedSelector-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( combinedSelector) <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-490">Match</a>(n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>) <a href="../../builtin.html#name-bool">bool</a></span></span><span>
+			<input type='checkbox' class="fold" id="combinedSelector-fold-method-PseudoElement"><label for="combinedSelector-fold-method-PseudoElement">( combinedSelector) <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-567">PseudoElement</a>() <a href="../../builtin.html#name-string">string</a></label><span id='combinedSelector-fold-method-PseudoElement-docs' class="fold-docs">
+<span class="md-text">				on combinedSelector, a pseudo-element only makes sens on the last
+				selector, although others increase specificity.</span>
+</span></span><span>
+			<span class="nodocs">( combinedSelector) <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-557">Specificity</a>() <a href="#name-Specificity">Specificity</a></span></span><span>
+			<span class="nodocs">( combinedSelector) <a href="../../../src/github.com/andybalholm/cascadia/serialize.go.html#line-162">String</a>() <a href="../../builtin.html#name-string">string</a></span></span></span>
+		<input type='checkbox' class="fold" id="combinedSelector-fold-impls"><label for="combinedSelector-fold-impls">Implements (<i>at least 5, in which 3 are exported</i>)</label><span id='combinedSelector-fold-impls-items' class="fold-items"><span>
+			 combinedSelector : <a href="#name-Matcher">Matcher</a></span><span>
+			 combinedSelector : <a href="#name-Sel">Sel</a></span><span>
+			 combinedSelector : fmt.<a href="../../fmt.html#name-Stringer">Stringer</a></span>
+			<input type='checkbox' checked class="showhide" id="combinedSelector-showhide-impls"><i><label for="combinedSelector-showhide-impls" class="show-inline">/* 2+ unexporteds ... */</label><label for="combinedSelector-showhide-impls" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			 combinedSelector : context.<a href="../../context.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			 combinedSelector : runtime.<a href="../../runtime.html#name-stringer">stringer</a></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-compoundSelector" data-popularity="450">	<input type='checkbox' class="fold" id="compoundSelector-fold-content"><label for="compoundSelector-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..compoundSelector^54e6f.html">type</a> <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-449">compoundSelector</a> <i>(struct)</i></label><span id='compoundSelector-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="compoundSelector-fold-fields"><label for="compoundSelector-fold-fields">Fields (<i>total 2, neither is exported</i>)</label><span id='compoundSelector-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="compoundSelector-showhide-fields"><i><label for="compoundSelector-showhide-fields" class="show-inline">/* 2 unexporteds ... */</label><label for="compoundSelector-showhide-fields" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-451">pseudoElement</a> <i><a href="../../builtin.html#name-string">string</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-450">selectors</a> <i>[]<a href="#name-Sel">Sel</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="compoundSelector-fold-methods"><label for="compoundSelector-fold-methods">Methods (<i>total 4, all are exported</i>)</label><span id='compoundSelector-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="compoundSelector-fold-method-Match"><label for="compoundSelector-fold-method-Match">( compoundSelector) <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-455">Match</a>(n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>) <a href="../../builtin.html#name-bool">bool</a></label><span id='compoundSelector-fold-method-Match-docs' class="fold-docs">
+<span class="md-text">				Matches elements if each sub-selectors matches.</span>
+</span></span><span>
+			<span class="nodocs">( compoundSelector) <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-480">PseudoElement</a>() <a href="../../builtin.html#name-string">string</a></span></span><span>
+			<span class="nodocs">( compoundSelector) <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-468">Specificity</a>() <a href="#name-Specificity">Specificity</a></span></span><span>
+			<span class="nodocs">( compoundSelector) <a href="../../../src/github.com/andybalholm/cascadia/serialize.go.html#line-147">String</a>() <a href="../../builtin.html#name-string">string</a></span></span></span>
+		<input type='checkbox' class="fold" id="compoundSelector-fold-impls"><label for="compoundSelector-fold-impls">Implements (<i>at least 5, in which 3 are exported</i>)</label><span id='compoundSelector-fold-impls-items' class="fold-items"><span>
+			 compoundSelector : <a href="#name-Matcher">Matcher</a></span><span>
+			 compoundSelector : <a href="#name-Sel">Sel</a></span><span>
+			 compoundSelector : fmt.<a href="../../fmt.html#name-Stringer">Stringer</a></span>
+			<input type='checkbox' checked class="showhide" id="compoundSelector-showhide-impls"><i><label for="compoundSelector-showhide-impls" class="show-inline">/* 2+ unexporteds ... */</label><label for="compoundSelector-showhide-impls" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			 compoundSelector : context.<a href="../../context.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			 compoundSelector : runtime.<a href="../../runtime.html#name-stringer">stringer</a></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-containsPseudoClassSelector" data-popularity="450">	<input type='checkbox' class="fold" id="containsPseudoClassSelector-fold-content"><label for="containsPseudoClassSelector-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..containsPseudoClassSelector^83246.html">type</a> <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-90">containsPseudoClassSelector</a> <i>(struct)</i></label><span id='containsPseudoClassSelector-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="containsPseudoClassSelector-fold-fields"><label for="containsPseudoClassSelector-fold-fields">Fields (<i>total 3, none are exported</i>)</label><span id='containsPseudoClassSelector-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="containsPseudoClassSelector-showhide-fields"><i><label for="containsPseudoClassSelector-showhide-fields" class="show-inline">/* 3 unexporteds ... */</label><label for="containsPseudoClassSelector-showhide-fields" class="hide-inline">/* 3 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-91">abstractPseudoClass</a> <i><a href="#name-abstractPseudoClass">abstractPseudoClass</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-93">own</a> <i><a href="../../builtin.html#name-bool">bool</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-92">value</a> <i><a href="../../builtin.html#name-string">string</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="containsPseudoClassSelector-fold-methods"><label for="containsPseudoClassSelector-fold-methods">Methods (<i>total 4, all are exported</i>)</label><span id='containsPseudoClassSelector-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( containsPseudoClassSelector) <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-96">Match</a>(n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>) <a href="../../builtin.html#name-bool">bool</a></span></span><span>
+			<span class="nodocs">( containsPseudoClassSelector) <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-22">PseudoElement</a>() <a href="../../builtin.html#name-string">string</a></span></span><span>
+			<span class="nodocs">( containsPseudoClassSelector) <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-18">Specificity</a>() <a href="#name-Specificity">Specificity</a></span></span><span>
+			<span class="nodocs">( containsPseudoClassSelector) <a href="../../../src/github.com/andybalholm/cascadia/serialize.go.html#line-57">String</a>() <a href="../../builtin.html#name-string">string</a></span></span></span>
+		<input type='checkbox' class="fold" id="containsPseudoClassSelector-fold-impls"><label for="containsPseudoClassSelector-fold-impls">Implements (<i>at least 5, in which 3 are exported</i>)</label><span id='containsPseudoClassSelector-fold-impls-items' class="fold-items"><span>
+			 containsPseudoClassSelector : <a href="#name-Matcher">Matcher</a></span><span>
+			 containsPseudoClassSelector : <a href="#name-Sel">Sel</a></span><span>
+			 containsPseudoClassSelector : fmt.<a href="../../fmt.html#name-Stringer">Stringer</a></span>
+			<input type='checkbox' checked class="showhide" id="containsPseudoClassSelector-showhide-impls"><i><label for="containsPseudoClassSelector-showhide-impls" class="show-inline">/* 2+ unexporteds ... */</label><label for="containsPseudoClassSelector-showhide-impls" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			 containsPseudoClassSelector : context.<a href="../../context.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			 containsPseudoClassSelector : runtime.<a href="../../runtime.html#name-stringer">stringer</a></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-disabledPseudoClassSelector" data-popularity="450">	<input type='checkbox' class="fold" id="disabledPseudoClassSelector-fold-content"><label for="disabledPseudoClassSelector-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..disabledPseudoClassSelector^952fe.html">type</a> <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-403">disabledPseudoClassSelector</a> <i>(struct)</i></label><span id='disabledPseudoClassSelector-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="disabledPseudoClassSelector-fold-fields"><label for="disabledPseudoClassSelector-fold-fields">Fields (<i>only one, which is unexported</i>)</label><span id='disabledPseudoClassSelector-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="disabledPseudoClassSelector-showhide-fields"><i><label for="disabledPseudoClassSelector-showhide-fields" class="show-inline">/* one unexported ... */</label><label for="disabledPseudoClassSelector-showhide-fields" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-307">abstractPseudoClass</a> <i><a href="#name-abstractPseudoClass">abstractPseudoClass</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="disabledPseudoClassSelector-fold-methods"><label for="disabledPseudoClassSelector-fold-methods">Methods (<i>total 4, all are exported</i>)</label><span id='disabledPseudoClassSelector-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( disabledPseudoClassSelector) <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-407">Match</a>(n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>) <a href="../../builtin.html#name-bool">bool</a></span></span><span>
+			<span class="nodocs">( disabledPseudoClassSelector) <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-22">PseudoElement</a>() <a href="../../builtin.html#name-string">string</a></span></span><span>
+			<span class="nodocs">( disabledPseudoClassSelector) <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-18">Specificity</a>() <a href="#name-Specificity">Specificity</a></span></span><span>
+			<span class="nodocs">( disabledPseudoClassSelector) <a href="../../../src/github.com/andybalholm/cascadia/serialize.go.html#line-139">String</a>() <a href="../../builtin.html#name-string">string</a></span></span></span>
+		<input type='checkbox' class="fold" id="disabledPseudoClassSelector-fold-impls"><label for="disabledPseudoClassSelector-fold-impls">Implements (<i>at least 5, in which 3 are exported</i>)</label><span id='disabledPseudoClassSelector-fold-impls-items' class="fold-items"><span>
+			 disabledPseudoClassSelector : <a href="#name-Matcher">Matcher</a></span><span>
+			 disabledPseudoClassSelector : <a href="#name-Sel">Sel</a></span><span>
+			 disabledPseudoClassSelector : fmt.<a href="../../fmt.html#name-Stringer">Stringer</a></span>
+			<input type='checkbox' checked class="showhide" id="disabledPseudoClassSelector-showhide-impls"><i><label for="disabledPseudoClassSelector-showhide-impls" class="show-inline">/* 2+ unexporteds ... */</label><label for="disabledPseudoClassSelector-showhide-impls" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			 disabledPseudoClassSelector : context.<a href="../../context.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			 disabledPseudoClassSelector : runtime.<a href="../../runtime.html#name-stringer">stringer</a></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-emptyElementPseudoClassSelector" data-popularity="450">	<input type='checkbox' class="fold" id="emptyElementPseudoClassSelector-fold-content"><label for="emptyElementPseudoClassSelector-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..emptyElementPseudoClassSelector^aa8b3.html">type</a> <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-315">emptyElementPseudoClassSelector</a> <i>(struct)</i></label><span id='emptyElementPseudoClassSelector-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="emptyElementPseudoClassSelector-fold-fields"><label for="emptyElementPseudoClassSelector-fold-fields">Fields (<i>only one, which is unexported</i>)</label><span id='emptyElementPseudoClassSelector-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="emptyElementPseudoClassSelector-showhide-fields"><i><label for="emptyElementPseudoClassSelector-showhide-fields" class="show-inline">/* one unexported ... */</label><label for="emptyElementPseudoClassSelector-showhide-fields" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-307">abstractPseudoClass</a> <i><a href="#name-abstractPseudoClass">abstractPseudoClass</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="emptyElementPseudoClassSelector-fold-methods"><label for="emptyElementPseudoClassSelector-fold-methods">Methods (<i>total 4, all are exported</i>)</label><span id='emptyElementPseudoClassSelector-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="emptyElementPseudoClassSelector-fold-method-Match"><label for="emptyElementPseudoClassSelector-fold-method-Match">( emptyElementPseudoClassSelector) <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-320">Match</a>(n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>) <a href="../../builtin.html#name-bool">bool</a></label><span id='emptyElementPseudoClassSelector-fold-method-Match-docs' class="fold-docs">
+<span class="md-text">				Matches empty elements.</span>
+</span></span><span>
+			<span class="nodocs">( emptyElementPseudoClassSelector) <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-22">PseudoElement</a>() <a href="../../builtin.html#name-string">string</a></span></span><span>
+			<span class="nodocs">( emptyElementPseudoClassSelector) <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-18">Specificity</a>() <a href="#name-Specificity">Specificity</a></span></span><span>
+			<span class="nodocs">( emptyElementPseudoClassSelector) <a href="../../../src/github.com/andybalholm/cascadia/serialize.go.html#line-115">String</a>() <a href="../../builtin.html#name-string">string</a></span></span></span>
+		<input type='checkbox' class="fold" id="emptyElementPseudoClassSelector-fold-impls"><label for="emptyElementPseudoClassSelector-fold-impls">Implements (<i>at least 5, in which 3 are exported</i>)</label><span id='emptyElementPseudoClassSelector-fold-impls-items' class="fold-items"><span>
+			 emptyElementPseudoClassSelector : <a href="#name-Matcher">Matcher</a></span><span>
+			 emptyElementPseudoClassSelector : <a href="#name-Sel">Sel</a></span><span>
+			 emptyElementPseudoClassSelector : fmt.<a href="../../fmt.html#name-Stringer">Stringer</a></span>
+			<input type='checkbox' checked class="showhide" id="emptyElementPseudoClassSelector-showhide-impls"><i><label for="emptyElementPseudoClassSelector-showhide-impls" class="show-inline">/* 2+ unexporteds ... */</label><label for="emptyElementPseudoClassSelector-showhide-impls" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			 emptyElementPseudoClassSelector : context.<a href="../../context.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			 emptyElementPseudoClassSelector : runtime.<a href="../../runtime.html#name-stringer">stringer</a></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-enabledPseudoClassSelector" data-popularity="450">	<input type='checkbox' class="fold" id="enabledPseudoClassSelector-fold-content"><label for="enabledPseudoClassSelector-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..enabledPseudoClassSelector^c8899.html">type</a> <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-384">enabledPseudoClassSelector</a> <i>(struct)</i></label><span id='enabledPseudoClassSelector-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="enabledPseudoClassSelector-fold-fields"><label for="enabledPseudoClassSelector-fold-fields">Fields (<i>only one, which is unexported</i>)</label><span id='enabledPseudoClassSelector-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="enabledPseudoClassSelector-showhide-fields"><i><label for="enabledPseudoClassSelector-showhide-fields" class="show-inline">/* one unexported ... */</label><label for="enabledPseudoClassSelector-showhide-fields" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-307">abstractPseudoClass</a> <i><a href="#name-abstractPseudoClass">abstractPseudoClass</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="enabledPseudoClassSelector-fold-methods"><label for="enabledPseudoClassSelector-fold-methods">Methods (<i>total 4, all are exported</i>)</label><span id='enabledPseudoClassSelector-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( enabledPseudoClassSelector) <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-388">Match</a>(n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>) <a href="../../builtin.html#name-bool">bool</a></span></span><span>
+			<span class="nodocs">( enabledPseudoClassSelector) <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-22">PseudoElement</a>() <a href="../../builtin.html#name-string">string</a></span></span><span>
+			<span class="nodocs">( enabledPseudoClassSelector) <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-18">Specificity</a>() <a href="#name-Specificity">Specificity</a></span></span><span>
+			<span class="nodocs">( enabledPseudoClassSelector) <a href="../../../src/github.com/andybalholm/cascadia/serialize.go.html#line-135">String</a>() <a href="../../builtin.html#name-string">string</a></span></span></span>
+		<input type='checkbox' class="fold" id="enabledPseudoClassSelector-fold-impls"><label for="enabledPseudoClassSelector-fold-impls">Implements (<i>at least 5, in which 3 are exported</i>)</label><span id='enabledPseudoClassSelector-fold-impls-items' class="fold-items"><span>
+			 enabledPseudoClassSelector : <a href="#name-Matcher">Matcher</a></span><span>
+			 enabledPseudoClassSelector : <a href="#name-Sel">Sel</a></span><span>
+			 enabledPseudoClassSelector : fmt.<a href="../../fmt.html#name-Stringer">Stringer</a></span>
+			<input type='checkbox' checked class="showhide" id="enabledPseudoClassSelector-showhide-impls"><i><label for="enabledPseudoClassSelector-showhide-impls" class="show-inline">/* 2+ unexporteds ... */</label><label for="enabledPseudoClassSelector-showhide-impls" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			 enabledPseudoClassSelector : context.<a href="../../context.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			 enabledPseudoClassSelector : runtime.<a href="../../runtime.html#name-stringer">stringer</a></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-idSelector" data-popularity="450">	<input type='checkbox' class="fold" id="idSelector-fold-content"><label for="idSelector-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..idSelector^59340.html">type</a> <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-246">idSelector</a> <i>(struct)</i></label><span id='idSelector-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="idSelector-fold-fields"><label for="idSelector-fold-fields">Fields (<i>only one, which is unexported</i>)</label><span id='idSelector-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="idSelector-showhide-fields"><i><label for="idSelector-showhide-fields" class="show-inline">/* one unexported ... */</label><label for="idSelector-showhide-fields" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-247">id</a> <i><a href="../../builtin.html#name-string">string</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="idSelector-fold-methods"><label for="idSelector-fold-methods">Methods (<i>total 4, all are exported</i>)</label><span id='idSelector-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="idSelector-fold-method-Match"><label for="idSelector-fold-method-Match">( idSelector) <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-251">Match</a>(n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>) <a href="../../builtin.html#name-bool">bool</a></label><span id='idSelector-fold-method-Match-docs' class="fold-docs">
+<span class="md-text">				Matches elements by id attribute.</span>
+</span></span><span>
+			<span class="nodocs">( idSelector) <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-261">PseudoElement</a>() <a href="../../builtin.html#name-string">string</a></span></span><span>
+			<span class="nodocs">( idSelector) <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-257">Specificity</a>() <a href="#name-Specificity">Specificity</a></span></span><span>
+			<span class="nodocs">( idSelector) <a href="../../../src/github.com/andybalholm/cascadia/serialize.go.html#line-28">String</a>() <a href="../../builtin.html#name-string">string</a></span></span></span>
+		<input type='checkbox' class="fold" id="idSelector-fold-impls"><label for="idSelector-fold-impls">Implements (<i>at least 5, in which 3 are exported</i>)</label><span id='idSelector-fold-impls-items' class="fold-items"><span>
+			 idSelector : <a href="#name-Matcher">Matcher</a></span><span>
+			 idSelector : <a href="#name-Sel">Sel</a></span><span>
+			 idSelector : fmt.<a href="../../fmt.html#name-Stringer">Stringer</a></span>
+			<input type='checkbox' checked class="showhide" id="idSelector-showhide-impls"><i><label for="idSelector-showhide-impls" class="show-inline">/* 2+ unexporteds ... */</label><label for="idSelector-showhide-impls" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			 idSelector : context.<a href="../../context.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			 idSelector : runtime.<a href="../../runtime.html#name-stringer">stringer</a></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-inputPseudoClassSelector" data-popularity="450">	<input type='checkbox' class="fold" id="inputPseudoClassSelector-fold-content"><label for="inputPseudoClassSelector-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..inputPseudoClassSelector^89055.html">type</a> <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-306">inputPseudoClassSelector</a> <i>(struct)</i></label><span id='inputPseudoClassSelector-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="inputPseudoClassSelector-fold-fields"><label for="inputPseudoClassSelector-fold-fields">Fields (<i>only one, which is unexported</i>)</label><span id='inputPseudoClassSelector-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="inputPseudoClassSelector-showhide-fields"><i><label for="inputPseudoClassSelector-showhide-fields" class="show-inline">/* one unexported ... */</label><label for="inputPseudoClassSelector-showhide-fields" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-307">abstractPseudoClass</a> <i><a href="#name-abstractPseudoClass">abstractPseudoClass</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="inputPseudoClassSelector-fold-methods"><label for="inputPseudoClassSelector-fold-methods">Methods (<i>total 4, all are exported</i>)</label><span id='inputPseudoClassSelector-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="inputPseudoClassSelector-fold-method-Match"><label for="inputPseudoClassSelector-fold-method-Match">( inputPseudoClassSelector) <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-311">Match</a>(n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>) <a href="../../builtin.html#name-bool">bool</a></label><span id='inputPseudoClassSelector-fold-method-Match-docs' class="fold-docs">
+<span class="md-text">				Matches input, select, textarea and button elements.</span>
+</span></span><span>
+			<span class="nodocs">( inputPseudoClassSelector) <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-22">PseudoElement</a>() <a href="../../builtin.html#name-string">string</a></span></span><span>
+			<span class="nodocs">( inputPseudoClassSelector) <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-18">Specificity</a>() <a href="#name-Specificity">Specificity</a></span></span><span>
+			<span class="nodocs">( inputPseudoClassSelector) <a href="../../../src/github.com/andybalholm/cascadia/serialize.go.html#line-111">String</a>() <a href="../../builtin.html#name-string">string</a></span></span></span>
+		<input type='checkbox' class="fold" id="inputPseudoClassSelector-fold-impls"><label for="inputPseudoClassSelector-fold-impls">Implements (<i>at least 5, in which 3 are exported</i>)</label><span id='inputPseudoClassSelector-fold-impls-items' class="fold-items"><span>
+			 inputPseudoClassSelector : <a href="#name-Matcher">Matcher</a></span><span>
+			 inputPseudoClassSelector : <a href="#name-Sel">Sel</a></span><span>
+			 inputPseudoClassSelector : fmt.<a href="../../fmt.html#name-Stringer">Stringer</a></span>
+			<input type='checkbox' checked class="showhide" id="inputPseudoClassSelector-showhide-impls"><i><label for="inputPseudoClassSelector-showhide-impls" class="show-inline">/* 2+ unexporteds ... */</label><label for="inputPseudoClassSelector-showhide-impls" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			 inputPseudoClassSelector : context.<a href="../../context.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			 inputPseudoClassSelector : runtime.<a href="../../runtime.html#name-stringer">stringer</a></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-langPseudoClassSelector" data-popularity="450">	<input type='checkbox' class="fold" id="langPseudoClassSelector-fold-content"><label for="langPseudoClassSelector-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..langPseudoClassSelector^c8a36.html">type</a> <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-369">langPseudoClassSelector</a> <i>(struct)</i></label><span id='langPseudoClassSelector-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="langPseudoClassSelector-fold-fields"><label for="langPseudoClassSelector-fold-fields">Fields (<i>total 2, neither is exported</i>)</label><span id='langPseudoClassSelector-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="langPseudoClassSelector-showhide-fields"><i><label for="langPseudoClassSelector-showhide-fields" class="show-inline">/* 2 unexporteds ... */</label><label for="langPseudoClassSelector-showhide-fields" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-370">abstractPseudoClass</a> <i><a href="#name-abstractPseudoClass">abstractPseudoClass</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-371">lang</a> <i><a href="../../builtin.html#name-string">string</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="langPseudoClassSelector-fold-methods"><label for="langPseudoClassSelector-fold-methods">Methods (<i>total 4, all are exported</i>)</label><span id='langPseudoClassSelector-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( langPseudoClassSelector) <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-374">Match</a>(n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>) <a href="../../builtin.html#name-bool">bool</a></span></span><span>
+			<span class="nodocs">( langPseudoClassSelector) <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-22">PseudoElement</a>() <a href="../../builtin.html#name-string">string</a></span></span><span>
+			<span class="nodocs">( langPseudoClassSelector) <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-18">Specificity</a>() <a href="#name-Specificity">Specificity</a></span></span><span>
+			<span class="nodocs">( langPseudoClassSelector) <a href="../../../src/github.com/andybalholm/cascadia/serialize.go.html#line-127">String</a>() <a href="../../builtin.html#name-string">string</a></span></span></span>
+		<input type='checkbox' class="fold" id="langPseudoClassSelector-fold-impls"><label for="langPseudoClassSelector-fold-impls">Implements (<i>at least 5, in which 3 are exported</i>)</label><span id='langPseudoClassSelector-fold-impls-items' class="fold-items"><span>
+			 langPseudoClassSelector : <a href="#name-Matcher">Matcher</a></span><span>
+			 langPseudoClassSelector : <a href="#name-Sel">Sel</a></span><span>
+			 langPseudoClassSelector : fmt.<a href="../../fmt.html#name-Stringer">Stringer</a></span>
+			<input type='checkbox' checked class="showhide" id="langPseudoClassSelector-showhide-impls"><i><label for="langPseudoClassSelector-showhide-impls" class="show-inline">/* 2+ unexporteds ... */</label><label for="langPseudoClassSelector-showhide-impls" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			 langPseudoClassSelector : context.<a href="../../context.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			 langPseudoClassSelector : runtime.<a href="../../runtime.html#name-stringer">stringer</a></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-linkPseudoClassSelector" data-popularity="450">	<input type='checkbox' class="fold" id="linkPseudoClassSelector-fold-content"><label for="linkPseudoClassSelector-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..linkPseudoClassSelector^f74fe.html">type</a> <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-360">linkPseudoClassSelector</a> <i>(struct)</i></label><span id='linkPseudoClassSelector-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="linkPseudoClassSelector-fold-fields"><label for="linkPseudoClassSelector-fold-fields">Fields (<i>only one, which is unexported</i>)</label><span id='linkPseudoClassSelector-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="linkPseudoClassSelector-showhide-fields"><i><label for="linkPseudoClassSelector-showhide-fields" class="show-inline">/* one unexported ... */</label><label for="linkPseudoClassSelector-showhide-fields" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-307">abstractPseudoClass</a> <i><a href="#name-abstractPseudoClass">abstractPseudoClass</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="linkPseudoClassSelector-fold-methods"><label for="linkPseudoClassSelector-fold-methods">Methods (<i>total 4, all are exported</i>)</label><span id='linkPseudoClassSelector-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="linkPseudoClassSelector-fold-method-Match"><label for="linkPseudoClassSelector-fold-method-Match">( linkPseudoClassSelector) <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-365">Match</a>(n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>) <a href="../../builtin.html#name-bool">bool</a></label><span id='linkPseudoClassSelector-fold-method-Match-docs' class="fold-docs">
+<span class="md-text">				Match implements :link</span>
+</span></span><span>
+			<span class="nodocs">( linkPseudoClassSelector) <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-22">PseudoElement</a>() <a href="../../builtin.html#name-string">string</a></span></span><span>
+			<span class="nodocs">( linkPseudoClassSelector) <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-18">Specificity</a>() <a href="#name-Specificity">Specificity</a></span></span><span>
+			<span class="nodocs">( linkPseudoClassSelector) <a href="../../../src/github.com/andybalholm/cascadia/serialize.go.html#line-123">String</a>() <a href="../../builtin.html#name-string">string</a></span></span></span>
+		<input type='checkbox' class="fold" id="linkPseudoClassSelector-fold-impls"><label for="linkPseudoClassSelector-fold-impls">Implements (<i>at least 5, in which 3 are exported</i>)</label><span id='linkPseudoClassSelector-fold-impls-items' class="fold-items"><span>
+			 linkPseudoClassSelector : <a href="#name-Matcher">Matcher</a></span><span>
+			 linkPseudoClassSelector : <a href="#name-Sel">Sel</a></span><span>
+			 linkPseudoClassSelector : fmt.<a href="../../fmt.html#name-Stringer">Stringer</a></span>
+			<input type='checkbox' checked class="showhide" id="linkPseudoClassSelector-showhide-impls"><i><label for="linkPseudoClassSelector-showhide-impls" class="show-inline">/* 2+ unexporteds ... */</label><label for="linkPseudoClassSelector-showhide-impls" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			 linkPseudoClassSelector : context.<a href="../../context.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			 linkPseudoClassSelector : runtime.<a href="../../runtime.html#name-stringer">stringer</a></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-neverMatchSelector" data-popularity="450">	<input type='checkbox' class="fold" id="neverMatchSelector-fold-content"><label for="neverMatchSelector-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..neverMatchSelector^84b6c.html">type</a> <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-433">neverMatchSelector</a> <i>(struct)</i></label><span id='neverMatchSelector-fold-content-docs' class="fold-docs">
+<span class="md-text">		on a static context, some selectors can't match anything</span>
+
+		<input type='checkbox' class="fold" id="neverMatchSelector-fold-fields"><label for="neverMatchSelector-fold-fields">Fields (<i>only one, which is unexported</i>)</label><span id='neverMatchSelector-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="neverMatchSelector-showhide-fields"><i><label for="neverMatchSelector-showhide-fields" class="show-inline">/* one unexported ... */</label><label for="neverMatchSelector-showhide-fields" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-434">value</a> <i><a href="../../builtin.html#name-string">string</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="neverMatchSelector-fold-methods"><label for="neverMatchSelector-fold-methods">Methods (<i>total 4, all are exported</i>)</label><span id='neverMatchSelector-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( neverMatchSelector) <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-437">Match</a>(n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>) <a href="../../builtin.html#name-bool">bool</a></span></span><span>
+			<span class="nodocs">( neverMatchSelector) <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-445">PseudoElement</a>() <a href="../../builtin.html#name-string">string</a></span></span><span>
+			<span class="nodocs">( neverMatchSelector) <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-441">Specificity</a>() <a href="#name-Specificity">Specificity</a></span></span><span>
+			<span class="nodocs">( neverMatchSelector) <a href="../../../src/github.com/andybalholm/cascadia/serialize.go.html#line-131">String</a>() <a href="../../builtin.html#name-string">string</a></span></span></span>
+		<input type='checkbox' class="fold" id="neverMatchSelector-fold-impls"><label for="neverMatchSelector-fold-impls">Implements (<i>at least 5, in which 3 are exported</i>)</label><span id='neverMatchSelector-fold-impls-items' class="fold-items"><span>
+			 neverMatchSelector : <a href="#name-Matcher">Matcher</a></span><span>
+			 neverMatchSelector : <a href="#name-Sel">Sel</a></span><span>
+			 neverMatchSelector : fmt.<a href="../../fmt.html#name-Stringer">Stringer</a></span>
+			<input type='checkbox' checked class="showhide" id="neverMatchSelector-showhide-impls"><i><label for="neverMatchSelector-showhide-impls" class="show-inline">/* 2+ unexporteds ... */</label><label for="neverMatchSelector-showhide-impls" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			 neverMatchSelector : context.<a href="../../context.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			 neverMatchSelector : runtime.<a href="../../runtime.html#name-stringer">stringer</a></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-nthPseudoClassSelector" data-popularity="450">	<input type='checkbox' class="fold" id="nthPseudoClassSelector-fold-content"><label for="nthPseudoClassSelector-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..nthPseudoClassSelector^2921c.html">type</a> <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-157">nthPseudoClassSelector</a> <i>(struct)</i></label><span id='nthPseudoClassSelector-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="nthPseudoClassSelector-fold-fields"><label for="nthPseudoClassSelector-fold-fields">Fields (<i>total 5, none are exported</i>)</label><span id='nthPseudoClassSelector-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="nthPseudoClassSelector-showhide-fields"><i><label for="nthPseudoClassSelector-showhide-fields" class="show-inline">/* 5 unexporteds ... */</label><label for="nthPseudoClassSelector-showhide-fields" class="hide-inline">/* 5 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-159">a</a> <i><a href="../../builtin.html#name-int">int</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-158">abstractPseudoClass</a> <i><a href="#name-abstractPseudoClass">abstractPseudoClass</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-159">b</a> <i><a href="../../builtin.html#name-int">int</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-160">last</a> <i><a href="../../builtin.html#name-bool">bool</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-160">ofType</a> <i><a href="../../builtin.html#name-bool">bool</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="nthPseudoClassSelector-fold-methods"><label for="nthPseudoClassSelector-fold-methods">Methods (<i>total 4, all are exported</i>)</label><span id='nthPseudoClassSelector-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( nthPseudoClassSelector) <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-163">Match</a>(n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>) <a href="../../builtin.html#name-bool">bool</a></span></span><span>
+			<span class="nodocs">( nthPseudoClassSelector) <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-22">PseudoElement</a>() <a href="../../builtin.html#name-string">string</a></span></span><span>
+			<span class="nodocs">( nthPseudoClassSelector) <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-18">Specificity</a>() <a href="#name-Specificity">Specificity</a></span></span><span>
+			<span class="nodocs">( nthPseudoClassSelector) <a href="../../../src/github.com/andybalholm/cascadia/serialize.go.html#line-73">String</a>() <a href="../../builtin.html#name-string">string</a></span></span></span>
+		<input type='checkbox' class="fold" id="nthPseudoClassSelector-fold-impls"><label for="nthPseudoClassSelector-fold-impls">Implements (<i>at least 5, in which 3 are exported</i>)</label><span id='nthPseudoClassSelector-fold-impls-items' class="fold-items"><span>
+			 nthPseudoClassSelector : <a href="#name-Matcher">Matcher</a></span><span>
+			 nthPseudoClassSelector : <a href="#name-Sel">Sel</a></span><span>
+			 nthPseudoClassSelector : fmt.<a href="../../fmt.html#name-Stringer">Stringer</a></span>
+			<input type='checkbox' checked class="showhide" id="nthPseudoClassSelector-showhide-impls"><i><label for="nthPseudoClassSelector-showhide-impls" class="show-inline">/* 2+ unexporteds ... */</label><label for="nthPseudoClassSelector-showhide-impls" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			 nthPseudoClassSelector : context.<a href="../../context.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			 nthPseudoClassSelector : runtime.<a href="../../runtime.html#name-stringer">stringer</a></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-onlyChildPseudoClassSelector" data-popularity="450">	<input type='checkbox' class="fold" id="onlyChildPseudoClassSelector-fold-content"><label for="onlyChildPseudoClassSelector-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..onlyChildPseudoClassSelector^19024.html">type</a> <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-275">onlyChildPseudoClassSelector</a> <i>(struct)</i></label><span id='onlyChildPseudoClassSelector-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="onlyChildPseudoClassSelector-fold-fields"><label for="onlyChildPseudoClassSelector-fold-fields">Fields (<i>total 2, neither is exported</i>)</label><span id='onlyChildPseudoClassSelector-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="onlyChildPseudoClassSelector-showhide-fields"><i><label for="onlyChildPseudoClassSelector-showhide-fields" class="show-inline">/* 2 unexporteds ... */</label><label for="onlyChildPseudoClassSelector-showhide-fields" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-276">abstractPseudoClass</a> <i><a href="#name-abstractPseudoClass">abstractPseudoClass</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-277">ofType</a> <i><a href="../../builtin.html#name-bool">bool</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="onlyChildPseudoClassSelector-fold-methods"><label for="onlyChildPseudoClassSelector-fold-methods">Methods (<i>total 4, all are exported</i>)</label><span id='onlyChildPseudoClassSelector-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="onlyChildPseudoClassSelector-fold-method-Match"><label for="onlyChildPseudoClassSelector-fold-method-Match">( onlyChildPseudoClassSelector) <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-282">Match</a>(n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>) <a href="../../builtin.html#name-bool">bool</a></label><span id='onlyChildPseudoClassSelector-fold-method-Match-docs' class="fold-docs">
+<span class="md-text">				Match implements :only-child.
+				If `ofType` is true, it implements :only-of-type instead.</span>
+</span></span><span>
+			<span class="nodocs">( onlyChildPseudoClassSelector) <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-22">PseudoElement</a>() <a href="../../builtin.html#name-string">string</a></span></span><span>
+			<span class="nodocs">( onlyChildPseudoClassSelector) <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-18">Specificity</a>() <a href="#name-Specificity">Specificity</a></span></span><span>
+			<span class="nodocs">( onlyChildPseudoClassSelector) <a href="../../../src/github.com/andybalholm/cascadia/serialize.go.html#line-104">String</a>() <a href="../../builtin.html#name-string">string</a></span></span></span>
+		<input type='checkbox' class="fold" id="onlyChildPseudoClassSelector-fold-impls"><label for="onlyChildPseudoClassSelector-fold-impls">Implements (<i>at least 5, in which 3 are exported</i>)</label><span id='onlyChildPseudoClassSelector-fold-impls-items' class="fold-items"><span>
+			 onlyChildPseudoClassSelector : <a href="#name-Matcher">Matcher</a></span><span>
+			 onlyChildPseudoClassSelector : <a href="#name-Sel">Sel</a></span><span>
+			 onlyChildPseudoClassSelector : fmt.<a href="../../fmt.html#name-Stringer">Stringer</a></span>
+			<input type='checkbox' checked class="showhide" id="onlyChildPseudoClassSelector-showhide-impls"><i><label for="onlyChildPseudoClassSelector-showhide-impls" class="show-inline">/* 2+ unexporteds ... */</label><label for="onlyChildPseudoClassSelector-showhide-impls" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			 onlyChildPseudoClassSelector : context.<a href="../../context.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			 onlyChildPseudoClassSelector : runtime.<a href="../../runtime.html#name-stringer">stringer</a></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-parser" data-popularity="900">	<input type='checkbox' class="fold" id="parser-fold-content"><label for="parser-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..parser^b17d4.html">type</a> <a href="../../../src/github.com/andybalholm/cascadia/parser.go.html#line-13">parser</a> <i>(struct)</i></label><span id='parser-fold-content-docs' class="fold-docs">
+<span class="md-text">		a parser for CSS selectors</span>
+
+		<input type='checkbox' class="fold" id="parser-fold-fields"><label for="parser-fold-fields">Fields (<i>total 3, none are exported</i>)</label><span id='parser-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="parser-showhide-fields"><i><label for="parser-showhide-fields" class="show-inline">/* 3 unexporteds ... */</label><label for="parser-showhide-fields" class="hide-inline">/* 3 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="parser-fold-field-acceptPseudoElements"><label for="parser-fold-field-acceptPseudoElements"><a href="../../../src/github.com/andybalholm/cascadia/parser.go.html#line-19">acceptPseudoElements</a> <i><a href="../../builtin.html#name-bool">bool</a></i></label><span id='parser-fold-field-acceptPseudoElements-docs' class="fold-docs">
+<span class="md-text">				if `false`, parsing a pseudo-element
+				returns an error.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="parser-fold-field-i"><label for="parser-fold-field-i"><a href="../../../src/github.com/andybalholm/cascadia/parser.go.html#line-15">i</a> <i><a href="../../builtin.html#name-int">int</a></i></label><span id='parser-fold-field-i-docs' class="fold-docs">
+<span class="md-text">				// the current position</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="parser-fold-field-s"><label for="parser-fold-field-s"><a href="../../../src/github.com/andybalholm/cascadia/parser.go.html#line-14">s</a> <i><a href="../../builtin.html#name-string">string</a></i></label><span id='parser-fold-field-s-docs' class="fold-docs">
+<span class="md-text">				// the source text</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="parser-fold-methods"><label for="parser-fold-methods">Methods (<i>total 18, none are exported</i>)</label><span id='parser-fold-methods-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="parser-showhide-methods"><i><label for="parser-showhide-methods" class="show-inline">/* 18 unexporteds ... */</label><label for="parser-showhide-methods" class="hide-inline">/* 18 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="parser-fold-method-consumeClosingParenthesis"><label for="parser-fold-method-consumeClosingParenthesis">(*parser) <a href="../../../src/github.com/andybalholm/cascadia/parser.go.html#line-295">consumeClosingParenthesis</a>() <a href="../../builtin.html#name-bool">bool</a></label><span id='parser-fold-method-consumeClosingParenthesis-docs' class="fold-docs">
+<span class="md-text">				consumeClosingParenthesis consumes a closing parenthesis and any preceding
+				whitespace. It returns true if there was actually a parenthesis to skip.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="parser-fold-method-consumeParenthesis"><label for="parser-fold-method-consumeParenthesis">(*parser) <a href="../../../src/github.com/andybalholm/cascadia/parser.go.html#line-284">consumeParenthesis</a>() <a href="../../builtin.html#name-bool">bool</a></label><span id='parser-fold-method-consumeParenthesis-docs' class="fold-docs">
+<span class="md-text">				consumeParenthesis consumes an opening parenthesis and any following
+				whitespace. It returns true if there was actually a parenthesis to skip.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="parser-fold-method-parseAttributeSelector"><label for="parser-fold-method-parseAttributeSelector">(*parser) <a href="../../../src/github.com/andybalholm/cascadia/parser.go.html#line-352">parseAttributeSelector</a>() (<a href="#name-attrSelector">attrSelector</a>, <a href="../../builtin.html#name-error">error</a>)</label><span id='parser-fold-method-parseAttributeSelector-docs' class="fold-docs">
+<span class="md-text">				parseAttributeSelector parses a selector that matches by attribute value.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="parser-fold-method-parseClassSelector"><label for="parser-fold-method-parseClassSelector">(*parser) <a href="../../../src/github.com/andybalholm/cascadia/parser.go.html#line-334">parseClassSelector</a>() (<a href="#name-classSelector">classSelector</a>, <a href="../../builtin.html#name-error">error</a>)</label><span id='parser-fold-method-parseClassSelector-docs' class="fold-docs">
+<span class="md-text">				parseClassSelector parses a selector that matches by class attribute.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="parser-fold-method-parseEscape"><label for="parser-fold-method-parseEscape">(*parser) <a href="../../../src/github.com/andybalholm/cascadia/parser.go.html#line-23">parseEscape</a>() (result <a href="../../builtin.html#name-string">string</a>, err <a href="../../builtin.html#name-error">error</a>)</label><span id='parser-fold-method-parseEscape-docs' class="fold-docs">
+<span class="md-text">				parseEscape parses a backslash escape.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="parser-fold-method-parseIDSelector"><label for="parser-fold-method-parseIDSelector">(*parser) <a href="../../../src/github.com/andybalholm/cascadia/parser.go.html#line-316">parseIDSelector</a>() (<a href="#name-idSelector">idSelector</a>, <a href="../../builtin.html#name-error">error</a>)</label><span id='parser-fold-method-parseIDSelector-docs' class="fold-docs">
+<span class="md-text">				parseIDSelector parses a selector that matches by id attribute.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="parser-fold-method-parseIdentifier"><label for="parser-fold-method-parseIdentifier">(*parser) <a href="../../../src/github.com/andybalholm/cascadia/parser.go.html#line-99">parseIdentifier</a>() (result <a href="../../builtin.html#name-string">string</a>, err <a href="../../builtin.html#name-error">error</a>)</label><span id='parser-fold-method-parseIdentifier-docs' class="fold-docs">
+<span class="md-text">				parseIdentifier parses an identifier.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="parser-fold-method-parseInteger"><label for="parser-fold-method-parseInteger">(*parser) <a href="../../../src/github.com/andybalholm/cascadia/parser.go.html#line-612">parseInteger</a>() (<a href="../../builtin.html#name-int">int</a>, <a href="../../builtin.html#name-error">error</a>)</label><span id='parser-fold-method-parseInteger-docs' class="fold-docs">
+<span class="md-text">				parseInteger parses a  decimal integer.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="parser-fold-method-parseName"><label for="parser-fold-method-parseName">(*parser) <a href="../../../src/github.com/andybalholm/cascadia/parser.go.html#line-125">parseName</a>() (result <a href="../../builtin.html#name-string">string</a>, err <a href="../../builtin.html#name-error">error</a>)</label><span id='parser-fold-method-parseName-docs' class="fold-docs">
+<span class="md-text">				parseName parses a name (which is like an identifier, but doesn't have
+				extra restrictions on the first character).</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="parser-fold-method-parseNth"><label for="parser-fold-method-parseNth">(*parser) <a href="../../../src/github.com/andybalholm/cascadia/parser.go.html#line-632">parseNth</a>() (a, b <a href="../../builtin.html#name-int">int</a>, err <a href="../../builtin.html#name-error">error</a>)</label><span id='parser-fold-method-parseNth-docs' class="fold-docs">
+<span class="md-text">				parseNth parses the argument for :nth-child (normally of the form an+b).</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="parser-fold-method-parsePseudoclassSelector"><label for="parser-fold-method-parsePseudoclassSelector">(*parser) <a href="../../../src/github.com/andybalholm/cascadia/parser.go.html#line-450">parsePseudoclassSelector</a>() (out <a href="#name-Sel">Sel</a>, pseudoElement <a href="../../builtin.html#name-string">string</a>, err <a href="../../builtin.html#name-error">error</a>)</label><span id='parser-fold-method-parsePseudoclassSelector-docs' class="fold-docs">
+<span class="md-text">				parsePseudoclassSelector parses a pseudoclass selector like :not(p) or a pseudo-element
+				For backwards compatibility, both ':' and '::' prefix are allowed for pseudo-elements.
+				https://drafts.csswg.org/selectors-3/#pseudo-elements
+				Returning a nil `Sel` (and a nil `error`) means we found a pseudo-element.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="parser-fold-method-parseRegex"><label for="parser-fold-method-parseRegex">(*parser) <a href="../../../src/github.com/andybalholm/cascadia/parser.go.html#line-221">parseRegex</a>() (rx *<a href="../../regexp.html">regexp</a>.<a href="../../regexp.html#name-Regexp">Regexp</a>, err <a href="../../builtin.html#name-error">error</a>)</label><span id='parser-fold-method-parseRegex-docs' class="fold-docs">
+<span class="md-text">				parseRegex parses a regular expression; the end is defined by encountering an
+				unmatched closing ')' or ']' which is not consumed</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="parser-fold-method-parseSelector"><label for="parser-fold-method-parseSelector">(*parser) <a href="../../../src/github.com/andybalholm/cascadia/parser.go.html#line-828">parseSelector</a>() (<a href="#name-Sel">Sel</a>, <a href="../../builtin.html#name-error">error</a>)</label><span id='parser-fold-method-parseSelector-docs' class="fold-docs">
+<span class="md-text">				parseSelector parses a selector that may include combinators.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="parser-fold-method-parseSelectorGroup"><label for="parser-fold-method-parseSelectorGroup">(*parser) <a href="../../../src/github.com/andybalholm/cascadia/parser.go.html#line-870">parseSelectorGroup</a>() (<a href="#name-SelectorGroup">SelectorGroup</a>, <a href="../../builtin.html#name-error">error</a>)</label><span id='parser-fold-method-parseSelectorGroup-docs' class="fold-docs">
+<span class="md-text">				parseSelectorGroup parses a group of selectors, separated by commas.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="parser-fold-method-parseSimpleSelectorSequence"><label for="parser-fold-method-parseSimpleSelectorSequence">(*parser) <a href="../../../src/github.com/andybalholm/cascadia/parser.go.html#line-754">parseSimpleSelectorSequence</a>() (<a href="#name-Sel">Sel</a>, <a href="../../builtin.html#name-error">error</a>)</label><span id='parser-fold-method-parseSimpleSelectorSequence-docs' class="fold-docs">
+<span class="md-text">				parseSimpleSelectorSequence parses a selector sequence that applies to
+				a single element.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="parser-fold-method-parseString"><label for="parser-fold-method-parseString">(*parser) <a href="../../../src/github.com/andybalholm/cascadia/parser.go.html#line-159">parseString</a>() (result <a href="../../builtin.html#name-string">string</a>, err <a href="../../builtin.html#name-error">error</a>)</label><span id='parser-fold-method-parseString-docs' class="fold-docs">
+<span class="md-text">				parseString parses a single- or double-quoted string.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="parser-fold-method-parseTypeSelector"><label for="parser-fold-method-parseTypeSelector">(*parser) <a href="../../../src/github.com/andybalholm/cascadia/parser.go.html#line-307">parseTypeSelector</a>() (result <a href="#name-tagSelector">tagSelector</a>, err <a href="../../builtin.html#name-error">error</a>)</label><span id='parser-fold-method-parseTypeSelector-docs' class="fold-docs">
+<span class="md-text">				parseTypeSelector parses a type selector (one that matches by tag name).</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="parser-fold-method-skipWhitespace"><label for="parser-fold-method-skipWhitespace">(*parser) <a href="../../../src/github.com/andybalholm/cascadia/parser.go.html#line-255">skipWhitespace</a>() <a href="../../builtin.html#name-bool">bool</a></label><span id='parser-fold-method-skipWhitespace-docs' class="fold-docs">
+<span class="md-text">				skipWhitespace consumes whitespace characters and comments.
+				It returns true if there was actually anything to skip.</span>
+</span></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-regexpPseudoClassSelector" data-popularity="450">	<input type='checkbox' class="fold" id="regexpPseudoClassSelector-fold-content"><label for="regexpPseudoClassSelector-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..regexpPseudoClassSelector^2e9ac.html">type</a> <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-108">regexpPseudoClassSelector</a> <i>(struct)</i></label><span id='regexpPseudoClassSelector-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="regexpPseudoClassSelector-fold-fields"><label for="regexpPseudoClassSelector-fold-fields">Fields (<i>total 3, none are exported</i>)</label><span id='regexpPseudoClassSelector-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="regexpPseudoClassSelector-showhide-fields"><i><label for="regexpPseudoClassSelector-showhide-fields" class="show-inline">/* 3 unexporteds ... */</label><label for="regexpPseudoClassSelector-showhide-fields" class="hide-inline">/* 3 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-109">abstractPseudoClass</a> <i><a href="#name-abstractPseudoClass">abstractPseudoClass</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-111">own</a> <i><a href="../../builtin.html#name-bool">bool</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-110">regexp</a> <i>*<a href="../../regexp.html">regexp</a>.<a href="../../regexp.html#name-Regexp">Regexp</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="regexpPseudoClassSelector-fold-methods"><label for="regexpPseudoClassSelector-fold-methods">Methods (<i>total 4, all are exported</i>)</label><span id='regexpPseudoClassSelector-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( regexpPseudoClassSelector) <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-114">Match</a>(n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>) <a href="../../builtin.html#name-bool">bool</a></span></span><span>
+			<span class="nodocs">( regexpPseudoClassSelector) <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-22">PseudoElement</a>() <a href="../../builtin.html#name-string">string</a></span></span><span>
+			<span class="nodocs">( regexpPseudoClassSelector) <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-18">Specificity</a>() <a href="#name-Specificity">Specificity</a></span></span><span>
+			<span class="nodocs">( regexpPseudoClassSelector) <a href="../../../src/github.com/andybalholm/cascadia/serialize.go.html#line-65">String</a>() <a href="../../builtin.html#name-string">string</a></span></span></span>
+		<input type='checkbox' class="fold" id="regexpPseudoClassSelector-fold-impls"><label for="regexpPseudoClassSelector-fold-impls">Implements (<i>at least 5, in which 3 are exported</i>)</label><span id='regexpPseudoClassSelector-fold-impls-items' class="fold-items"><span>
+			 regexpPseudoClassSelector : <a href="#name-Matcher">Matcher</a></span><span>
+			 regexpPseudoClassSelector : <a href="#name-Sel">Sel</a></span><span>
+			 regexpPseudoClassSelector : fmt.<a href="../../fmt.html#name-Stringer">Stringer</a></span>
+			<input type='checkbox' checked class="showhide" id="regexpPseudoClassSelector-showhide-impls"><i><label for="regexpPseudoClassSelector-showhide-impls" class="show-inline">/* 2+ unexporteds ... */</label><label for="regexpPseudoClassSelector-showhide-impls" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			 regexpPseudoClassSelector : context.<a href="../../context.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			 regexpPseudoClassSelector : runtime.<a href="../../runtime.html#name-stringer">stringer</a></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-relativePseudoClassSelector" data-popularity="450">	<input type='checkbox' class="fold" id="relativePseudoClassSelector-fold-content"><label for="relativePseudoClassSelector-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..relativePseudoClassSelector^e30aa.html">type</a> <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-26">relativePseudoClassSelector</a> <i>(struct)</i></label><span id='relativePseudoClassSelector-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="relativePseudoClassSelector-fold-fields"><label for="relativePseudoClassSelector-fold-fields">Fields (<i>total 2, neither is exported</i>)</label><span id='relativePseudoClassSelector-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="relativePseudoClassSelector-showhide-fields"><i><label for="relativePseudoClassSelector-showhide-fields" class="show-inline">/* 2 unexporteds ... */</label><label for="relativePseudoClassSelector-showhide-fields" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-28">match</a> <i><a href="#name-SelectorGroup">SelectorGroup</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="relativePseudoClassSelector-fold-field-name"><label for="relativePseudoClassSelector-fold-field-name"><a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-27">name</a> <i><a href="../../builtin.html#name-string">string</a></i></label><span id='relativePseudoClassSelector-fold-field-name-docs' class="fold-docs">
+<span class="md-text">				// one of "not", "has", "haschild"</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="relativePseudoClassSelector-fold-methods"><label for="relativePseudoClassSelector-fold-methods">Methods (<i>total 4, all are exported</i>)</label><span id='relativePseudoClassSelector-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( relativePseudoClassSelector) <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-31">Match</a>(n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>) <a href="../../builtin.html#name-bool">bool</a></span></span><span>
+			<span class="nodocs">( relativePseudoClassSelector) <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-86">PseudoElement</a>() <a href="../../builtin.html#name-string">string</a></span></span><span>
+			<input type='checkbox' class="fold" id="relativePseudoClassSelector-fold-method-Specificity"><label for="relativePseudoClassSelector-fold-method-Specificity">( relativePseudoClassSelector) <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-75">Specificity</a>() <a href="#name-Specificity">Specificity</a></label><span id='relativePseudoClassSelector-fold-method-Specificity-docs' class="fold-docs">
+<span class="md-text">				Specificity returns the specificity of the most specific selectors
+				in the pseudo-class arguments.
+				See https://www.w3.org/TR/selectors/#specificity-rules</span>
+</span></span><span>
+			<span class="nodocs">( relativePseudoClassSelector) <a href="../../../src/github.com/andybalholm/cascadia/serialize.go.html#line-53">String</a>() <a href="../../builtin.html#name-string">string</a></span></span></span>
+		<input type='checkbox' class="fold" id="relativePseudoClassSelector-fold-impls"><label for="relativePseudoClassSelector-fold-impls">Implements (<i>at least 5, in which 3 are exported</i>)</label><span id='relativePseudoClassSelector-fold-impls-items' class="fold-items"><span>
+			 relativePseudoClassSelector : <a href="#name-Matcher">Matcher</a></span><span>
+			 relativePseudoClassSelector : <a href="#name-Sel">Sel</a></span><span>
+			 relativePseudoClassSelector : fmt.<a href="../../fmt.html#name-Stringer">Stringer</a></span>
+			<input type='checkbox' checked class="showhide" id="relativePseudoClassSelector-showhide-impls"><i><label for="relativePseudoClassSelector-showhide-impls" class="show-inline">/* 2+ unexporteds ... */</label><label for="relativePseudoClassSelector-showhide-impls" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			 relativePseudoClassSelector : context.<a href="../../context.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			 relativePseudoClassSelector : runtime.<a href="../../runtime.html#name-stringer">stringer</a></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-rootPseudoClassSelector" data-popularity="450">	<input type='checkbox' class="fold" id="rootPseudoClassSelector-fold-content"><label for="rootPseudoClassSelector-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..rootPseudoClassSelector^c97eb.html">type</a> <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-341">rootPseudoClassSelector</a> <i>(struct)</i></label><span id='rootPseudoClassSelector-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="rootPseudoClassSelector-fold-fields"><label for="rootPseudoClassSelector-fold-fields">Fields (<i>only one, which is unexported</i>)</label><span id='rootPseudoClassSelector-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="rootPseudoClassSelector-showhide-fields"><i><label for="rootPseudoClassSelector-showhide-fields" class="show-inline">/* one unexported ... */</label><label for="rootPseudoClassSelector-showhide-fields" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-307">abstractPseudoClass</a> <i><a href="#name-abstractPseudoClass">abstractPseudoClass</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="rootPseudoClassSelector-fold-methods"><label for="rootPseudoClassSelector-fold-methods">Methods (<i>total 4, all are exported</i>)</label><span id='rootPseudoClassSelector-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="rootPseudoClassSelector-fold-method-Match"><label for="rootPseudoClassSelector-fold-method-Match">( rootPseudoClassSelector) <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-346">Match</a>(n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>) <a href="../../builtin.html#name-bool">bool</a></label><span id='rootPseudoClassSelector-fold-method-Match-docs' class="fold-docs">
+<span class="md-text">				Match implements :root</span>
+</span></span><span>
+			<span class="nodocs">( rootPseudoClassSelector) <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-22">PseudoElement</a>() <a href="../../builtin.html#name-string">string</a></span></span><span>
+			<span class="nodocs">( rootPseudoClassSelector) <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-18">Specificity</a>() <a href="#name-Specificity">Specificity</a></span></span><span>
+			<span class="nodocs">( rootPseudoClassSelector) <a href="../../../src/github.com/andybalholm/cascadia/serialize.go.html#line-119">String</a>() <a href="../../builtin.html#name-string">string</a></span></span></span>
+		<input type='checkbox' class="fold" id="rootPseudoClassSelector-fold-impls"><label for="rootPseudoClassSelector-fold-impls">Implements (<i>at least 5, in which 3 are exported</i>)</label><span id='rootPseudoClassSelector-fold-impls-items' class="fold-items"><span>
+			 rootPseudoClassSelector : <a href="#name-Matcher">Matcher</a></span><span>
+			 rootPseudoClassSelector : <a href="#name-Sel">Sel</a></span><span>
+			 rootPseudoClassSelector : fmt.<a href="../../fmt.html#name-Stringer">Stringer</a></span>
+			<input type='checkbox' checked class="showhide" id="rootPseudoClassSelector-showhide-impls"><i><label for="rootPseudoClassSelector-showhide-impls" class="show-inline">/* 2+ unexporteds ... */</label><label for="rootPseudoClassSelector-showhide-impls" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			 rootPseudoClassSelector : context.<a href="../../context.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			 rootPseudoClassSelector : runtime.<a href="../../runtime.html#name-stringer">stringer</a></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-tagSelector" data-popularity="450">	<input type='checkbox' class="fold" id="tagSelector-fold-content"><label for="tagSelector-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..tagSelector^d68d1.html">type</a> <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-210">tagSelector</a> <i>(struct)</i></label><span id='tagSelector-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="tagSelector-fold-fields"><label for="tagSelector-fold-fields">Fields (<i>only one, which is unexported</i>)</label><span id='tagSelector-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="tagSelector-showhide-fields"><i><label for="tagSelector-showhide-fields" class="show-inline">/* one unexported ... */</label><label for="tagSelector-showhide-fields" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-211">tag</a> <i><a href="../../builtin.html#name-string">string</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="tagSelector-fold-methods"><label for="tagSelector-fold-methods">Methods (<i>total 4, all are exported</i>)</label><span id='tagSelector-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="tagSelector-fold-method-Match"><label for="tagSelector-fold-method-Match">( tagSelector) <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-215">Match</a>(n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>) <a href="../../builtin.html#name-bool">bool</a></label><span id='tagSelector-fold-method-Match-docs' class="fold-docs">
+<span class="md-text">				Matches elements with a given tag name.</span>
+</span></span><span>
+			<span class="nodocs">( tagSelector) <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-223">PseudoElement</a>() <a href="../../builtin.html#name-string">string</a></span></span><span>
+			<span class="nodocs">( tagSelector) <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-219">Specificity</a>() <a href="#name-Specificity">Specificity</a></span></span><span>
+			<span class="nodocs">( tagSelector) <a href="../../../src/github.com/andybalholm/cascadia/serialize.go.html#line-24">String</a>() <a href="../../builtin.html#name-string">string</a></span></span></span>
+		<input type='checkbox' class="fold" id="tagSelector-fold-impls"><label for="tagSelector-fold-impls">Implements (<i>at least 5, in which 3 are exported</i>)</label><span id='tagSelector-fold-impls-items' class="fold-items"><span>
+			 tagSelector : <a href="#name-Matcher">Matcher</a></span><span>
+			 tagSelector : <a href="#name-Sel">Sel</a></span><span>
+			 tagSelector : fmt.<a href="../../fmt.html#name-Stringer">Stringer</a></span>
+			<input type='checkbox' checked class="showhide" id="tagSelector-showhide-impls"><i><label for="tagSelector-showhide-impls" class="show-inline">/* 2+ unexporteds ... */</label><label for="tagSelector-showhide-impls" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			 tagSelector : context.<a href="../../context.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			 tagSelector : runtime.<a href="../../runtime.html#name-stringer">stringer</a></i></span></span>
+
+</span></div></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 39, in which 9 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-Compile">	<input type='checkbox' class="fold" id="Compile-fold-content"><label for="Compile-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..Compile.html">func</a> <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-102">Compile</a>(sel <a href="../../builtin.html#name-string">string</a>) (<a href="#name-Selector">Selector</a>, <a href="../../builtin.html#name-error">error</a>)</label><span id='Compile-fold-content-docs' class="fold-docs">
+<span class="md-text">		Compile parses a selector and returns, if successful, a Selector object
+		that can be used to match against html.Node objects.</span>
+
+</span></div><div class="anchor value-res" id="name-Filter">	<input type='checkbox' class="fold" id="Filter-fold-content"><label for="Filter-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..Filter.html">func</a> <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-201">Filter</a>(nodes []*<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>, m <a href="#name-Matcher">Matcher</a>) (result []*<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>)</label><span id='Filter-fold-content-docs' class="fold-docs">
+<span class="md-text">		Filter returns the nodes that match m.</span>
+
+</span></div><div class="anchor value-res" id="name-MustCompile">	<input type='checkbox' class="fold" id="MustCompile-fold-content"><label for="MustCompile-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..MustCompile.html">func</a> <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-112">MustCompile</a>(sel <a href="../../builtin.html#name-string">string</a>) <a href="#name-Selector">Selector</a></label><span id='MustCompile-fold-content-docs' class="fold-docs">
+<span class="md-text">		MustCompile is like Compile, but panics instead of returning an error.</span>
+
+</span></div><div class="anchor value-res" id="name-Parse">	<input type='checkbox' class="fold" id="Parse-fold-content"><label for="Parse-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..Parse.html">func</a> <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-31">Parse</a>(sel <a href="../../builtin.html#name-string">string</a>) (<a href="#name-Sel">Sel</a>, <a href="../../builtin.html#name-error">error</a>)</label><span id='Parse-fold-content-docs' class="fold-docs">
+<span class="md-text">		Parse parses a selector. Use `ParseWithPseudoElement`
+		if you need support for pseudo-elements.</span>
+
+</span></div><div class="anchor value-res" id="name-ParseGroup">	<input type='checkbox' class="fold" id="ParseGroup-fold-content"><label for="ParseGroup-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..ParseGroup.html">func</a> <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-64">ParseGroup</a>(sel <a href="../../builtin.html#name-string">string</a>) (<a href="#name-SelectorGroup">SelectorGroup</a>, <a href="../../builtin.html#name-error">error</a>)</label><span id='ParseGroup-fold-content-docs' class="fold-docs">
+<span class="md-text">		ParseGroup parses a selector, or a group of selectors separated by commas.
+		Use `ParseGroupWithPseudoElements`
+		if you need support for pseudo-elements.</span>
+
+</span></div><div class="anchor value-res" id="name-ParseGroupWithPseudoElements">	<input type='checkbox' class="fold" id="ParseGroupWithPseudoElements-fold-content"><label for="ParseGroupWithPseudoElements-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..ParseGroupWithPseudoElements.html">func</a> <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-80">ParseGroupWithPseudoElements</a>(sel <a href="../../builtin.html#name-string">string</a>) (<a href="#name-SelectorGroup">SelectorGroup</a>, <a href="../../builtin.html#name-error">error</a>)</label><span id='ParseGroupWithPseudoElements-fold-content-docs' class="fold-docs">
+<span class="md-text">		ParseGroupWithPseudoElements parses a selector, or a group of selectors separated by commas.
+		It supports pseudo-elements.</span>
+
+</span></div><div class="anchor value-res" id="name-ParseWithPseudoElement">	<input type='checkbox' class="fold" id="ParseWithPseudoElement-fold-content"><label for="ParseWithPseudoElement-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..ParseWithPseudoElement.html">func</a> <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-47">ParseWithPseudoElement</a>(sel <a href="../../builtin.html#name-string">string</a>) (<a href="#name-Sel">Sel</a>, <a href="../../builtin.html#name-error">error</a>)</label><span id='ParseWithPseudoElement-fold-content-docs' class="fold-docs">
+<span class="md-text">		ParseWithPseudoElement parses a single selector,
+		with support for pseudo-element.</span>
+
+</span></div><div class="anchor value-res" id="name-Query">	<input type='checkbox' class="fold" id="Query-fold-content"><label for="Query-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..Query.html">func</a> <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-177">Query</a>(n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>, m <a href="#name-Matcher">Matcher</a>) *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a></label><span id='Query-fold-content-docs' class="fold-docs">
+<span class="md-text">		Query returns the first node that matches m, from the descendants of n.
+		If none matches, it returns nil.</span>
+
+</span></div><div class="anchor value-res" id="name-QueryAll">	<input type='checkbox' class="fold" id="QueryAll-fold-content"><label for="QueryAll-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..QueryAll.html">func</a> <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-151">QueryAll</a>(n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>, m <a href="#name-Matcher">Matcher</a>) []*<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a></label><span id='QueryAll-fold-content-docs' class="fold-docs">
+<span class="md-text">		QueryAll returns a slice of all the nodes that match m, from the descendants
+		of n.</span>
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-functions-showhide"><i><label for="unexported-functions-showhide" class="show-inline">/* 30 unexporteds ... */</label><label for="unexported-functions-showhide" class="hide-inline">/* 30 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-attributeDashMatch"><i>	<input type='checkbox' class="fold" id="attributeDashMatch-fold-content"><label for="attributeDashMatch-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..attributeDashMatch^636b1.html">func</a> <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-352">attributeDashMatch</a>(key, val <a href="../../builtin.html#name-string">string</a>, n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>, ignoreCase <a href="../../builtin.html#name-bool">bool</a>) <a href="../../builtin.html#name-bool">bool</a></label><span id='attributeDashMatch-fold-content-docs' class="fold-docs">
+<span class="md-text">		matches elements where the attribute named key equals val or starts with val plus a hyphen.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-attributeNotEqualMatch"><i>	<input type='checkbox' class="fold" id="attributeNotEqualMatch-fold-content"><label for="attributeNotEqualMatch-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..attributeNotEqualMatch^233bf.html">func</a> <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-324">attributeNotEqualMatch</a>(key, val <a href="../../builtin.html#name-string">string</a>, n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>, ignoreCase <a href="../../builtin.html#name-bool">bool</a>) <a href="../../builtin.html#name-bool">bool</a></label><span id='attributeNotEqualMatch-fold-content-docs' class="fold-docs">
+<span class="md-text">		attributeNotEqualMatch matches elements where
+		the attribute named key does not have the value val.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-attributePrefixMatch"><i>	<input type='checkbox' class="fold" id="attributePrefixMatch-fold-content"><label for="attributePrefixMatch-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..attributePrefixMatch^df2a0.html">func</a> <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-370">attributePrefixMatch</a>(key, val <a href="../../builtin.html#name-string">string</a>, n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>, ignoreCase <a href="../../builtin.html#name-bool">bool</a>) <a href="../../builtin.html#name-bool">bool</a></label><span id='attributePrefixMatch-fold-content-docs' class="fold-docs">
+<span class="md-text">		attributePrefixMatch returns a Selector that matches elements where
+		the attribute named key starts with val.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-attributeRegexMatch"><i>	<input type='checkbox' class="fold" id="attributeRegexMatch-fold-content"><label for="attributeRegexMatch-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..attributeRegexMatch^bbca5.html">func</a> <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-415">attributeRegexMatch</a>(key <a href="../../builtin.html#name-string">string</a>, rx *<a href="../../regexp.html">regexp</a>.<a href="../../regexp.html#name-Regexp">Regexp</a>, n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>) <a href="../../builtin.html#name-bool">bool</a></label><span id='attributeRegexMatch-fold-content-docs' class="fold-docs">
+<span class="md-text">		attributeRegexMatch  matches nodes where
+		the attribute named key matches the regular expression rx</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-attributeSubstringMatch"><i>	<input type='checkbox' class="fold" id="attributeSubstringMatch-fold-content"><label for="attributeSubstringMatch-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..attributeSubstringMatch^6fbea.html">func</a> <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-400">attributeSubstringMatch</a>(key, val <a href="../../builtin.html#name-string">string</a>, n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>, ignoreCase <a href="../../builtin.html#name-bool">bool</a>) <a href="../../builtin.html#name-bool">bool</a></label><span id='attributeSubstringMatch-fold-content-docs' class="fold-docs">
+<span class="md-text">		attributeSubstringMatch matches nodes where
+		the attribute named key contains val.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-attributeSuffixMatch"><i>	<input type='checkbox' class="fold" id="attributeSuffixMatch-fold-content"><label for="attributeSuffixMatch-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..attributeSuffixMatch^0a59e.html">func</a> <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-385">attributeSuffixMatch</a>(key, val <a href="../../builtin.html#name-string">string</a>, n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>, ignoreCase <a href="../../builtin.html#name-bool">bool</a>) <a href="../../builtin.html#name-bool">bool</a></label><span id='attributeSuffixMatch-fold-content-docs' class="fold-docs">
+<span class="md-text">		attributeSuffixMatch matches elements where
+		the attribute named key ends with val.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-childMatch"><i>	<input type='checkbox' class="fold" id="childMatch-fold-content"><label for="childMatch-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..childMatch^c2f9a.html">func</a> <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-526">childMatch</a>(a, d <a href="#name-Matcher">Matcher</a>, n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>) <a href="../../builtin.html#name-bool">bool</a></label><span id='childMatch-fold-content-docs' class="fold-docs">
+<span class="md-text">		matches an element if it matches d and its parent matches a.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-descendantMatch"><i>	<input type='checkbox' class="fold" id="descendantMatch-fold-content"><label for="descendantMatch-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..descendantMatch^25a04.html">func</a> <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-511">descendantMatch</a>(a, d <a href="#name-Matcher">Matcher</a>, n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>) <a href="../../builtin.html#name-bool">bool</a></label><span id='descendantMatch-fold-content-docs' class="fold-docs">
+<span class="md-text">		matches an element if it matches d and has an ancestor that matches a.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-escape"><i>	<input type='checkbox' class="fold" id="escape-fold-content"><label for="escape-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..escape^b3140.html">func</a> <a href="../../../src/github.com/andybalholm/cascadia/serialize.go.html#line-22">escape</a>(s <a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-string">string</a></label><span id='escape-fold-content-docs' class="fold-docs">
+<span class="md-text">		espace special CSS char</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-hasAttr"><i>	<span class="nodocs"> <a href="../../../use/github.com/andybalholm/cascadia..hasAttr^fe64b.html">func</a> <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-356">hasAttr</a>(n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>, attr <a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-bool">bool</a></span></i></div><div class="anchor value-res hidden" id="name-hasChildMatch"><i>	<input type='checkbox' class="fold" id="hasChildMatch-fold-content"><label for="hasChildMatch-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..hasChildMatch^65a56.html">func</a> <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-51">hasChildMatch</a>(n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>, a <a href="#name-Matcher">Matcher</a>) <a href="../../builtin.html#name-bool">bool</a></label><span id='hasChildMatch-fold-content-docs' class="fold-docs">
+<span class="md-text">		hasChildMatch returns whether n has any child that matches a.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-hasDescendantMatch"><i>	<input type='checkbox' class="fold" id="hasDescendantMatch-fold-content"><label for="hasDescendantMatch-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..hasDescendantMatch^079dc.html">func</a> <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-63">hasDescendantMatch</a>(n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>, a <a href="#name-Matcher">Matcher</a>) <a href="../../builtin.html#name-bool">bool</a></label><span id='hasDescendantMatch-fold-content-docs' class="fold-docs">
+<span class="md-text">		hasDescendantMatch performs a depth-first search of n's descendants,
+		testing whether any of them match a. It returns true as soon as a match is
+		found, or false if no match is found.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-hasLegendInPreviousSiblings"><i>	<span class="nodocs"> <a href="../../../use/github.com/andybalholm/cascadia..hasLegendInPreviousSiblings^ec711.html">func</a> <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-420">hasLegendInPreviousSiblings</a>(n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>) <a href="../../builtin.html#name-bool">bool</a></span></i></div><div class="anchor value-res hidden" id="name-hexDigit"><i>	<span class="nodocs"> <a href="../../../use/github.com/andybalholm/cascadia..hexDigit^32fc8.html">func</a> <a href="../../../src/github.com/andybalholm/cascadia/parser.go.html#line-81">hexDigit</a>(c <a href="../../builtin.html#name-byte">byte</a>) <a href="../../builtin.html#name-bool">bool</a></span></i></div><div class="anchor value-res hidden" id="name-inDisabledFieldset"><i>	<span class="nodocs"> <a href="../../../use/github.com/andybalholm/cascadia..inDisabledFieldset^4f367.html">func</a> <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-429">inDisabledFieldset</a>(n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>) <a href="../../builtin.html#name-bool">bool</a></span></i></div><div class="anchor value-res hidden" id="name-init"><i>	<span class="nodocs"> <a href="../../../use/github.com/andybalholm/cascadia..init^bb540.html">func</a> <a href="../../../src/github.com/andybalholm/cascadia/serialize.go.html#line-13">init</a>()</span></i></div><div class="anchor value-res hidden" id="name-matchAttribute"><i>	<input type='checkbox' class="fold" id="matchAttribute-fold-content"><label for="matchAttribute-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..matchAttribute^bbeaa.html">func</a> <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-310">matchAttribute</a>(n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>, key <a href="../../builtin.html#name-string">string</a>, f func(<a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-bool">bool</a>) <a href="../../builtin.html#name-bool">bool</a></label><span id='matchAttribute-fold-content-docs' class="fold-docs">
+<span class="md-text">		matches elements where the attribute named key satisifes the function f.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-matchInclude"><i>	<input type='checkbox' class="fold" id="matchInclude-fold-content"><label for="matchInclude-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..matchInclude^9f38e.html">func</a> <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-337">matchInclude</a>(val <a href="../../builtin.html#name-string">string</a>, s <a href="../../builtin.html#name-string">string</a>, ignoreCase <a href="../../builtin.html#name-bool">bool</a>) <a href="../../builtin.html#name-bool">bool</a></label><span id='matchInclude-fold-content-docs' class="fold-docs">
+<span class="md-text">		returns true if s is a whitespace-separated list that includes val.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-matchInsensitiveValue"><i>	<input type='checkbox' class="fold" id="matchInsensitiveValue-fold-content"><label for="matchInsensitiveValue-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..matchInsensitiveValue^551f1.html">func</a> <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-301">matchInsensitiveValue</a>(userAttr <a href="../../builtin.html#name-string">string</a>, realAttr <a href="../../builtin.html#name-string">string</a>, ignoreCase <a href="../../builtin.html#name-bool">bool</a>) <a href="../../builtin.html#name-bool">bool</a></label><span id='matchInsensitiveValue-fold-content-docs' class="fold-docs">
+<span class="md-text">		matches elements where we ignore (or not) the case of the attribute value
+		the user attribute is the value set by the user to match elements
+		the real attribute is the attribute value found in the code parsed</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-nameChar"><i>	<input type='checkbox' class="fold" id="nameChar-fold-content"><label for="nameChar-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..nameChar^f2ae5.html">func</a> <a href="../../../src/github.com/andybalholm/cascadia/parser.go.html#line-93">nameChar</a>(c <a href="../../builtin.html#name-byte">byte</a>) <a href="../../builtin.html#name-bool">bool</a></label><span id='nameChar-fold-content-docs' class="fold-docs">
+<span class="md-text">		nameChar returns whether c can be a character within an identifier
+		(not counting an escape sequence).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-nameStart"><i>	<input type='checkbox' class="fold" id="nameStart-fold-content"><label for="nameStart-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..nameStart^1a82e.html">func</a> <a href="../../../src/github.com/andybalholm/cascadia/parser.go.html#line-87">nameStart</a>(c <a href="../../builtin.html#name-byte">byte</a>) <a href="../../builtin.html#name-bool">bool</a></label><span id='nameStart-fold-content-docs' class="fold-docs">
+<span class="md-text">		nameStart returns whether c can be the first character of an identifier
+		(not counting an initial hyphen, or an escape sequence).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-nodeOwnText"><i>	<input type='checkbox' class="fold" id="nodeOwnText-fold-content"><label for="nodeOwnText-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..nodeOwnText^5ba14.html">func</a> <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-147">nodeOwnText</a>(n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>) <a href="../../builtin.html#name-string">string</a></label><span id='nodeOwnText-fold-content-docs' class="fold-docs">
+<span class="md-text">		nodeOwnText returns the contents of the text nodes that are direct
+		children of n.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-nodeText"><i>	<input type='checkbox' class="fold" id="nodeText-fold-content"><label for="nodeText-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..nodeText^b5f64.html">func</a> <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-139">nodeText</a>(n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>) <a href="../../builtin.html#name-string">string</a></label><span id='nodeText-fold-content-docs' class="fold-docs">
+<span class="md-text">		nodeText returns the text contained in n and its descendants.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-nthChildMatch"><i>	<input type='checkbox' class="fold" id="nthChildMatch-fold-content"><label for="nthChildMatch-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..nthChildMatch^6803c.html">func</a> <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-177">nthChildMatch</a>(a, b <a href="../../builtin.html#name-int">int</a>, last, ofType <a href="../../builtin.html#name-bool">bool</a>, n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>) <a href="../../builtin.html#name-bool">bool</a></label><span id='nthChildMatch-fold-content-docs' class="fold-docs">
+<span class="md-text">		nthChildMatch implements :nth-child(an+b).
+		If last is true, implements :nth-last-child instead.
+		If ofType is true, implements :nth-of-type instead.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-queryInto"><i>	<span class="nodocs"> <a href="../../../use/github.com/andybalholm/cascadia..queryInto^56dc7.html">func</a> <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-138">queryInto</a>(n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>, m <a href="#name-Matcher">Matcher</a>, storage []*<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>) []*<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a></span></i></div><div class="anchor value-res hidden" id="name-siblingMatch"><i>	<input type='checkbox' class="fold" id="siblingMatch-fold-content"><label for="siblingMatch-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..siblingMatch^4c3d7.html">func</a> <a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-532">siblingMatch</a>(s1, s2 <a href="#name-Matcher">Matcher</a>, adjacent <a href="../../builtin.html#name-bool">bool</a>, n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>) <a href="../../builtin.html#name-bool">bool</a></label><span id='siblingMatch-fold-content-docs' class="fold-docs">
+<span class="md-text">		matches an element if it matches s2 and is preceded by an element that matches s1.
+		If adjacent is true, the sibling must be immediately before the element.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-simpleNthChildMatch"><i>	<input type='checkbox' class="fold" id="simpleNthChildMatch-fold-content"><label for="simpleNthChildMatch-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..simpleNthChildMatch^998bd.html">func</a> <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-221">simpleNthChildMatch</a>(b <a href="../../builtin.html#name-int">int</a>, ofType <a href="../../builtin.html#name-bool">bool</a>, n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>) <a href="../../builtin.html#name-bool">bool</a></label><span id='simpleNthChildMatch-fold-content-docs' class="fold-docs">
+<span class="md-text">		simpleNthChildMatch implements :nth-child(b).
+		If ofType is true, implements :nth-of-type instead.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-simpleNthLastChildMatch"><i>	<input type='checkbox' class="fold" id="simpleNthLastChildMatch-fold-content"><label for="simpleNthLastChildMatch-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..simpleNthLastChildMatch^648f6.html">func</a> <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-249">simpleNthLastChildMatch</a>(b <a href="../../builtin.html#name-int">int</a>, ofType <a href="../../builtin.html#name-bool">bool</a>, n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>) <a href="../../builtin.html#name-bool">bool</a></label><span id='simpleNthLastChildMatch-fold-content-docs' class="fold-docs">
+<span class="md-text">		simpleNthLastChildMatch implements :nth-last-child(b).
+		If ofType is true, implements :nth-last-of-type instead.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-toLowerASCII"><i>	<input type='checkbox' class="fold" id="toLowerASCII-fold-content"><label for="toLowerASCII-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..toLowerASCII^6d7d7.html">func</a> <a href="../../../src/github.com/andybalholm/cascadia/parser.go.html#line-62">toLowerASCII</a>(s <a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-string">string</a></label><span id='toLowerASCII-fold-content-docs' class="fold-docs">
+<span class="md-text">		toLowerASCII returns s with all ASCII capital letters lowercased.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-writeNodeText"><i>	<input type='checkbox' class="fold" id="writeNodeText-fold-content"><label for="writeNodeText-fold-content"> <a href="../../../use/github.com/andybalholm/cascadia..writeNodeText^a6a22.html">func</a> <a href="../../../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-127">writeNodeText</a>(n *<a href="../../golang.org/x/net/html.html">html</a>.<a href="../../golang.org/x/net/html.html#name-Node">Node</a>, b *<a href="../../bytes.html">bytes</a>.<a href="../../bytes.html#name-Buffer">Buffer</a>)</label><span id='writeNodeText-fold-content-docs' class="fold-docs">
+<span class="md-text">		writeNodeText writes the text contained in n and its descendants to b.</span>
+
+</span></i></div></div>
+<div id="exported-variables"><span class="title">Package-Level Variables<span class="title-stat"><i> (total 4, none are exported)</i></span></span>
+
+	<input type='checkbox' class="showhide" id="unexported-variables-showhide"><i><label for="unexported-variables-showhide" class="show-inline">/* 4 unexporteds ... */</label><label for="unexported-variables-showhide" class="hide-inline">/* 4 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-errExpectedClosingParenthesis"><i>	<span class="nodocs">  <a href="../../../use/github.com/andybalholm/cascadia..errExpectedClosingParenthesis^d2ce2.html">var</a> <a href="../../../src/github.com/andybalholm/cascadia/parser.go.html#line-442">errExpectedClosingParenthesis</a> <a href="../../builtin.html#name-error">error</a></span></i></div><div class="anchor value-res hidden" id="name-errExpectedParenthesis"><i>	<span class="nodocs">  <a href="../../../use/github.com/andybalholm/cascadia..errExpectedParenthesis^8c624.html">var</a> <a href="../../../src/github.com/andybalholm/cascadia/parser.go.html#line-441">errExpectedParenthesis</a> <a href="../../builtin.html#name-error">error</a></span></i></div><div class="anchor value-res hidden" id="name-errUnmatchedParenthesis"><i>	<span class="nodocs">  <a href="../../../use/github.com/andybalholm/cascadia..errUnmatchedParenthesis^e9832.html">var</a> <a href="../../../src/github.com/andybalholm/cascadia/parser.go.html#line-443">errUnmatchedParenthesis</a> <a href="../../builtin.html#name-error">error</a></span></i></div><div class="anchor value-res hidden" id="name-specialCharReplacer"><i>	<span class="nodocs">  <a href="../../../use/github.com/andybalholm/cascadia..specialCharReplacer^27be3.html">var</a> <a href="../../../src/github.com/andybalholm/cascadia/serialize.go.html#line-11">specialCharReplacer</a> *<a href="../../strings.html">strings</a>.<a href="../../strings.html#name-Replacer">Replacer</a></span></i></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

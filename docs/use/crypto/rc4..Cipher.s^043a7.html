@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/rc4.Cipher.s</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/crypto/rc4.html">crypto/rc4</a>.<a href="../../src/crypto/rc4/rc4.go.html#line-18">Cipher</a>.<a href="../../src/crypto/rc4/rc4.go.html#line-19">s</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">14 uses</span>
+
+	crypto/rc4 (current package)
+		<a href="../../src/crypto/rc4/rc4.go.html#line-19">rc4.go#L19</a>: 	<b>s</b>    [256]uint32
+		<a href="../../src/crypto/rc4/rc4.go.html#line-38" class="path-duplicate">rc4.go</a><a href="../../src/crypto/rc4/rc4.go.html#line-38">#L38</a>: 		c.<b>s</b>[i] = uint32(i)
+		<a href="../../src/crypto/rc4/rc4.go.html#line-42" class="path-duplicate">rc4.go</a><a href="../../src/crypto/rc4/rc4.go.html#line-42">#L42</a>: 		j += uint8(c.<b>s</b>[i]) + key[i%k]
+		<a href="../../src/crypto/rc4/rc4.go.html#line-43" class="path-duplicate">rc4.go</a><a href="../../src/crypto/rc4/rc4.go.html#line-43">#L43</a>: 		c.<b>s</b>[i], c.<b>s</b>[j] = c.<b>s</b>[j], c.<b>s</b>[i]
+		<a href="../../src/crypto/rc4/rc4.go.html#line-53" class="path-duplicate">rc4.go</a><a href="../../src/crypto/rc4/rc4.go.html#line-53">#L53</a>: 	for i := range c.<b>s</b> {
+		<a href="../../src/crypto/rc4/rc4.go.html#line-54" class="path-duplicate">rc4.go</a><a href="../../src/crypto/rc4/rc4.go.html#line-54">#L54</a>: 		c.<b>s</b>[i] = 0
+		<a href="../../src/crypto/rc4/rc4.go.html#line-73" class="path-duplicate">rc4.go</a><a href="../../src/crypto/rc4/rc4.go.html#line-73">#L73</a>: 		x := c.<b>s</b>[i]
+		<a href="../../src/crypto/rc4/rc4.go.html#line-75" class="path-duplicate">rc4.go</a><a href="../../src/crypto/rc4/rc4.go.html#line-75">#L75</a>: 		y := c.<b>s</b>[j]
+		<a href="../../src/crypto/rc4/rc4.go.html#line-76" class="path-duplicate">rc4.go</a><a href="../../src/crypto/rc4/rc4.go.html#line-76">#L76</a>: 		c.<b>s</b>[i], c.<b>s</b>[j] = y, x
+		<a href="../../src/crypto/rc4/rc4.go.html#line-77" class="path-duplicate">rc4.go</a><a href="../../src/crypto/rc4/rc4.go.html#line-77">#L77</a>: 		dst[k] = v ^ uint8(c.<b>s</b>[uint8(x+y)])
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

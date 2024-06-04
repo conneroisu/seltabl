@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: vendor/golang.org/x/net/http/httpproxy.config.ipMatchers</title>
+<link href="../../../../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../../../../../pkg/vendor/golang.org/x/net/http/httpproxy.html">vendor/golang.org/x/net/http/httpproxy</a>.<a href="../../../../../../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-63">config</a>.<a href="../../../../../../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-75">ipMatchers</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">7 uses</span>
+
+	vendor/golang.org/x/net/http/httpproxy (current package)
+		<a href="../../../../../../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-75">proxy.go#L75</a>: 	<b>ipMatchers</b> []matcher
+		<a href="../../../../../../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-193" class="path-duplicate">proxy.go</a><a href="../../../../../../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-193">#L193</a>: 		for _, m := range cfg.<b>ipMatchers</b> {
+		<a href="../../../../../../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-222" class="path-duplicate">proxy.go</a><a href="../../../../../../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-222">#L222</a>: 			c.<b>ipMatchers</b> = []matcher{allMatch{}}
+		<a href="../../../../../../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-229" class="path-duplicate">proxy.go</a><a href="../../../../../../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-229">#L229</a>: 			c.<b>ipMatchers</b> = append(c.<b>ipMatchers</b>, cidrMatch{cidr: pnet})
+		<a href="../../../../../../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-248" class="path-duplicate">proxy.go</a><a href="../../../../../../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-248">#L248</a>: 			c.<b>ipMatchers</b> = append(c.<b>ipMatchers</b>, ipMatch{ip: pip, port: pport})
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

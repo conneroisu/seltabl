@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: regexp/syntax.parser.flags</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/regexp/syntax.html">regexp/syntax</a>.<a href="../../src/regexp/syntax/parse.go.html#line-126">parser</a>.<a href="../../src/regexp/syntax/parse.go.html#line-127">flags</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">28 uses</span>
+
+	regexp/syntax (current package)
+		<a href="../../src/regexp/syntax/parse.go.html#line-127">parse.go#L127</a>: 	<b>flags</b>       Flags     // parse mode flags
+		<a href="../../src/regexp/syntax/parse.go.html#line-298" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-298">#L298</a>: 		if p.maybeConcat(re.Rune[0], p.<b>flags</b>&amp;^FoldCase) {
+		<a href="../../src/regexp/syntax/parse.go.html#line-303" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-303">#L303</a>: 		re.Flags = p.<b>flags</b> &amp;^ FoldCase
+		<a href="../../src/regexp/syntax/parse.go.html#line-313" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-313">#L313</a>: 		if p.maybeConcat(re.Rune[0], p.<b>flags</b>|FoldCase) {
+		<a href="../../src/regexp/syntax/parse.go.html#line-320" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-320">#L320</a>: 		re.Flags = p.<b>flags</b> | FoldCase
+		<a href="../../src/regexp/syntax/parse.go.html#line-371" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-371">#L371</a>: 	re.Flags = p.<b>flags</b>
+		<a href="../../src/regexp/syntax/parse.go.html#line-372" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-372">#L372</a>: 	if p.<b>flags</b>&amp;FoldCase != 0 {
+		<a href="../../src/regexp/syntax/parse.go.html#line-397" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-397">#L397</a>: 	re.Flags = p.<b>flags</b>
+		<a href="../../src/regexp/syntax/parse.go.html#line-406" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-406">#L406</a>: 	flags := p.<b>flags</b>
+		<a href="../../src/regexp/syntax/parse.go.html#line-407" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-407">#L407</a>: 	if p.<b>flags</b>&amp;PerlX != 0 {
+		<a href="../../src/regexp/syntax/parse.go.html#line-921" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-921">#L921</a>: 	p.<b>flags</b> = flags
+		<a href="../../src/regexp/syntax/parse.go.html#line-935" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-935">#L935</a>: 			if p.<b>flags</b>&amp;PerlX != 0 &amp;&amp; len(t) &gt;= 2 &amp;&amp; t[1] == '?' {
+		<a href="../../src/regexp/syntax/parse.go.html#line-956" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-956">#L956</a>: 			if p.<b>flags</b>&amp;OneLine != 0 {
+		<a href="../../src/regexp/syntax/parse.go.html#line-963" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-963">#L963</a>: 			if p.<b>flags</b>&amp;OneLine != 0 {
+		<a href="../../src/regexp/syntax/parse.go.html#line-970" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-970">#L970</a>: 			if p.<b>flags</b>&amp;DotNL != 0 {
+		<a href="../../src/regexp/syntax/parse.go.html#line-1016" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1016">#L1016</a>: 			if p.<b>flags</b>&amp;PerlX != 0 &amp;&amp; len(t) &gt;= 2 {
+		<a href="../../src/regexp/syntax/parse.go.html#line-1054" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1054">#L1054</a>: 			re.Flags = p.<b>flags</b>
+		<a href="../../src/regexp/syntax/parse.go.html#line-1201" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1201">#L1201</a>: 	flags := p.<b>flags</b>
+		<a href="../../src/regexp/syntax/parse.go.html#line-1250" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1250">#L1250</a>: 			p.<b>flags</b> = flags
+		<a href="../../src/regexp/syntax/parse.go.html#line-1435" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1435">#L1435</a>: 	p.<b>flags</b> = re2.Flags
+		<a href="../../src/regexp/syntax/parse.go.html#line-1589" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1589">#L1589</a>: 	if p.<b>flags</b>&amp;PerlX == 0 || len(s) &lt; 2 || s[0] != '\\' {
+		<a href="../../src/regexp/syntax/parse.go.html#line-1621" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1621">#L1621</a>: 	if p.<b>flags</b>&amp;FoldCase == 0 {
+		<a href="../../src/regexp/syntax/parse.go.html#line-1666" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1666">#L1666</a>: 	if p.<b>flags</b>&amp;UnicodeGroups == 0 || len(s) &lt; 2 || s[0] != '\\' || s[1] != 'p' &amp;&amp; s[1] != 'P' {
+		<a href="../../src/regexp/syntax/parse.go.html#line-1712" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1712">#L1712</a>: 	if p.<b>flags</b>&amp;FoldCase == 0 || fold == nil {
+		<a href="../../src/regexp/syntax/parse.go.html#line-1741" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1741">#L1741</a>: 	re.Flags = p.<b>flags</b>
+		<a href="../../src/regexp/syntax/parse.go.html#line-1751" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1751">#L1751</a>: 		if p.<b>flags</b>&amp;ClassNL == 0 {
+		<a href="../../src/regexp/syntax/parse.go.html#line-1761" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1761">#L1761</a>: 		if t != "" &amp;&amp; t[0] == '-' &amp;&amp; p.<b>flags</b>&amp;PerlX == 0 &amp;&amp; !first &amp;&amp; (len(t) == 1 || t[1] != ']') {
+		<a href="../../src/regexp/syntax/parse.go.html#line-1813" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1813">#L1813</a>: 		if p.<b>flags</b>&amp;FoldCase == 0 {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

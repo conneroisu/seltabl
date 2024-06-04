@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.mspan.elemsize</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/mheap.go.html#line-398">mspan</a>.<a href="../src/runtime/mheap.go.html#line-486">elemsize</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">91 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/arena.go.html#line-597">arena.go#L597</a>: 		racemalloc(unsafe.Pointer(span.base()), span.<b>elemsize</b>)
+		<a href="../src/runtime/arena.go.html#line-602" class="path-duplicate">arena.go</a><a href="../src/runtime/arena.go.html#line-602">#L602</a>: 		msanmalloc(unsafe.Pointer(span.base()), span.<b>elemsize</b>)
+		<a href="../src/runtime/arena.go.html#line-607" class="path-duplicate">arena.go</a><a href="../src/runtime/arena.go.html#line-607">#L607</a>: 		rzSize := computeRZlog(span.<b>elemsize</b>)
+		<a href="../src/runtime/arena.go.html#line-608" class="path-duplicate">arena.go</a><a href="../src/runtime/arena.go.html#line-608">#L608</a>: 		span.<b>elemsize</b> -= rzSize
+		<a href="../src/runtime/arena.go.html#line-610" class="path-duplicate">arena.go</a><a href="../src/runtime/arena.go.html#line-610">#L610</a>: 			span.largeType.Size_ = span.<b>elemsize</b>
+		<a href="../src/runtime/arena.go.html#line-612" class="path-duplicate">arena.go</a><a href="../src/runtime/arena.go.html#line-612">#L612</a>: 		rzStart := span.base() + span.<b>elemsize</b>
+		<a href="../src/runtime/arena.go.html#line-615" class="path-duplicate">arena.go</a><a href="../src/runtime/arena.go.html#line-615">#L615</a>: 		asanunpoison(unsafe.Pointer(span.base()), span.<b>elemsize</b>)
+		<a href="../src/runtime/arena.go.html#line-715" class="path-duplicate">arena.go</a><a href="../src/runtime/arena.go.html#line-715">#L715</a>: 	gcController.totalFree.Add(int64(s.<b>elemsize</b>))
+		<a href="../src/runtime/arena.go.html#line-725" class="path-duplicate">arena.go</a><a href="../src/runtime/arena.go.html#line-725">#L725</a>: 	atomic.Xadd64(&amp;stats.largeFree, int64(s.<b>elemsize</b>))
+		<a href="../src/runtime/arena.go.html#line-729" class="path-duplicate">arena.go</a><a href="../src/runtime/arena.go.html#line-729">#L729</a>: 	gcController.update(-int64(s.<b>elemsize</b>), 0)
+		<a href="../src/runtime/arena.go.html#line-733" class="path-duplicate">arena.go</a><a href="../src/runtime/arena.go.html#line-733">#L733</a>: 		racefree(unsafe.Pointer(s.base()), s.<b>elemsize</b>)
+		<a href="../src/runtime/arena.go.html#line-771" class="path-duplicate">arena.go</a><a href="../src/runtime/arena.go.html#line-771">#L771</a>: 		racefree(unsafe.Pointer(s.base()), s.<b>elemsize</b>)
+		<a href="../src/runtime/arena.go.html#line-774" class="path-duplicate">arena.go</a><a href="../src/runtime/arena.go.html#line-774">#L774</a>: 		msanfree(unsafe.Pointer(s.base()), s.<b>elemsize</b>)
+		<a href="../src/runtime/arena.go.html#line-777" class="path-duplicate">arena.go</a><a href="../src/runtime/arena.go.html#line-777">#L777</a>: 		asanpoison(unsafe.Pointer(s.base()), s.<b>elemsize</b>)
+		<a href="../src/runtime/arena.go.html#line-877" class="path-duplicate">arena.go</a><a href="../src/runtime/arena.go.html#line-877">#L877</a>: 	s.<b>elemsize</b> -= userArenaChunkReserveBytes()
+		<a href="../src/runtime/arena.go.html#line-878" class="path-duplicate">arena.go</a><a href="../src/runtime/arena.go.html#line-878">#L878</a>: 	s.limit = s.base() + s.<b>elemsize</b>
+		<a href="../src/runtime/arena.go.html#line-891" class="path-duplicate">arena.go</a><a href="../src/runtime/arena.go.html#line-891">#L891</a>: 	atomic.Xadd64(&amp;stats.largeAlloc, int64(s.<b>elemsize</b>))
+		<a href="../src/runtime/arena.go.html#line-896" class="path-duplicate">arena.go</a><a href="../src/runtime/arena.go.html#line-896">#L896</a>: 	gcController.totalAlloc.Add(int64(s.<b>elemsize</b>))
+		<a href="../src/runtime/arena.go.html#line-899" class="path-duplicate">arena.go</a><a href="../src/runtime/arena.go.html#line-899">#L899</a>: 	gcController.update(int64(s.<b>elemsize</b>), 0)
+		<a href="../src/runtime/arena.go.html#line-914" class="path-duplicate">arena.go</a><a href="../src/runtime/arena.go.html#line-914">#L914</a>: 	memclrNoHeapPointers(unsafe.Pointer(s.base()), s.<b>elemsize</b>)
+		<a href="../src/runtime/arena.go.html#line-920" class="path-duplicate">arena.go</a><a href="../src/runtime/arena.go.html#line-920">#L920</a>: 	s.userArenaChunkFree = makeAddrRange(base, base+s.<b>elemsize</b>)
+		<a href="../src/runtime/arena.go.html#line-932" class="path-duplicate">arena.go</a><a href="../src/runtime/arena.go.html#line-932">#L932</a>: 		s.largeType.Size_ = s.<b>elemsize</b>
+		<a href="../src/runtime/cgocall.go.html#line-671">cgocall.go#L671</a>: 				if tp, addr = tp.next(base + span.<b>elemsize</b>); addr == 0 {
+		<a href="../src/runtime/cgocall.go.html#line-680" class="path-duplicate">cgocall.go</a><a href="../src/runtime/cgocall.go.html#line-680">#L680</a>: 			n := span.<b>elemsize</b>
+		<a href="../src/runtime/heapdump.go.html#line-486">heapdump.go#L486</a>: 		size := s.<b>elemsize</b>
+		<a href="../src/runtime/malloc.go.html#line-923">malloc.go#L923</a>: 			return gclinkptr(uintptr(result)*s.<b>elemsize</b> + s.base())
+		<a href="../src/runtime/malloc.go.html#line-959" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-959">#L959</a>: 	v = gclinkptr(uintptr(freeIndex)*s.<b>elemsize</b> + s.base())
+		<a href="../src/runtime/malloc.go.html#line-1168" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-1168">#L1168</a>: 		size = span.<b>elemsize</b>
+		<a href="../src/runtime/malloc.go.html#line-1257" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-1257">#L1257</a>: 		fullSize = span.<b>elemsize</b>
+		<a href="../src/runtime/mbitmap.go.html#line-180">mbitmap.go#L180</a>: 	if doubleCheck &amp;&amp; q != n/s.<b>elemsize</b> {
+		<a href="../src/runtime/mbitmap.go.html#line-181" class="path-duplicate">mbitmap.go</a><a href="../src/runtime/mbitmap.go.html#line-181">#L181</a>: 		println(n, "/", s.<b>elemsize</b>, "should be", n/s.<b>elemsize</b>, "but got", q)
+		<a href="../src/runtime/mbitmap.go.html#line-335" class="path-duplicate">mbitmap.go</a><a href="../src/runtime/mbitmap.go.html#line-335">#L335</a>: 	base = s.base() + objIndex*s.<b>elemsize</b>
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-163">mbitmap_allocheaders.go#L163</a>: 	if base == addr &amp;&amp; size == span.<b>elemsize</b> {
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-188" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-188">#L188</a>: 	if heapBitsInSpan(span.<b>elemsize</b>) {
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-375" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-375">#L375</a>: 	return span.base() + span.objIndex(addr)*span.<b>elemsize</b>
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-545" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-545">#L545</a>: 	if (!s.spanclass.noscan() &amp;&amp; heapBitsInSpan(s.<b>elemsize</b>)) || s.isUserArenaChunk {
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-715" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-715">#L715</a>: 		if span.<b>elemsize</b> &gt; minSizeForMallocHeader {
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-761" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-761">#L761</a>: 	bits := span.<b>elemsize</b> / goarch.PtrSize
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-791" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-791">#L791</a>: 	bits := span.<b>elemsize</b> / goarch.PtrSize
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-859" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-859">#L859</a>: 		if doubleCheck &amp;&amp; (!heapBitsInSpan(dataSize) || !heapBitsInSpan(span.<b>elemsize</b>)) {
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-897" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-897">#L897</a>: 		scanSize = span.<b>elemsize</b>
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-906" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-906">#L906</a>: 		maxIterBytes := span.<b>elemsize</b>
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-934" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-934">#L934</a>: 	maxIterBytes := span.<b>elemsize</b>
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-942" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-942">#L942</a>: 		if i &lt; span.<b>elemsize</b> {
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-951" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-951">#L951</a>: 			tp, addr = tp.next(x + span.<b>elemsize</b>)
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-963" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-963">#L963</a>: 		tp, addr = tp.next(x + span.<b>elemsize</b>)
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-970" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-970">#L970</a>: 	print("runtime: x=", hex(x), " dataSize=", dataSize, " elemsize=", span.<b>elemsize</b>, "\n")
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-972" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-972">#L972</a>: 	print("runtime: limit=", hex(x+span.<b>elemsize</b>), "\n")
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-977" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-977">#L977</a>: 		if tp, addr = tp.next(x + span.<b>elemsize</b>); addr == 0 {
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-999" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-999">#L999</a>: 		if i &lt; span.<b>elemsize</b> {
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-1028" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-1028">#L1028</a>: 	print("runtime: x=", hex(x), " dataSize=", dataSize, " elemsize=", span.<b>elemsize</b>, " interior=", hex(interior), " size=", size, "\n")
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-1172" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-1172">#L1172</a>: 		limit := base + s.<b>elemsize</b>
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-1193" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-1193">#L1193</a>: 		for i := limit; i &lt; s.<b>elemsize</b>; i++ {
+		<a href="../src/runtime/mcache.go.html#line-174">mcache.go#L174</a>: 		bytesAllocated := slotsUsed * int64(s.<b>elemsize</b>)
+		<a href="../src/runtime/mcache.go.html#line-211" class="path-duplicate">mcache.go</a><a href="../src/runtime/mcache.go.html#line-211">#L211</a>: 	usedBytes := uintptr(s.allocCount) * s.<b>elemsize</b>
+		<a href="../src/runtime/mcache.go.html#line-279" class="path-duplicate">mcache.go</a><a href="../src/runtime/mcache.go.html#line-279">#L279</a>: 			gcController.totalAlloc.Add(slotsUsed * int64(s.<b>elemsize</b>))
+		<a href="../src/runtime/mcache.go.html#line-287" class="path-duplicate">mcache.go</a><a href="../src/runtime/mcache.go.html#line-287">#L287</a>: 				dHeapLive -= int64(s.nelems-s.allocCount) * int64(s.<b>elemsize</b>)
+		<a href="../src/runtime/mfinal.go.html#line-445">mfinal.go#L445</a>: 	if goexperiment.AllocHeaders &amp;&amp; !span.spanclass.noscan() &amp;&amp; !heapBitsInSpan(span.<b>elemsize</b>) &amp;&amp; span.spanclass.sizeclass() != 0 {
+		<a href="../src/runtime/mgcmark.go.html#line-386">mgcmark.go#L386</a>: 				p := s.base() + uintptr(spf.special.offset)/s.<b>elemsize</b>*s.<b>elemsize</b>
+		<a href="../src/runtime/mgcmark.go.html#line-1408" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-1408">#L1408</a>: 	n := s.<b>elemsize</b>
+		<a href="../src/runtime/mgcmark.go.html#line-1428" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-1428">#L1428</a>: 			for oblet := b + maxObletBytes; oblet &lt; s.base()+s.<b>elemsize</b>; oblet += maxObletBytes {
+		<a href="../src/runtime/mgcmark.go.html#line-1438" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-1438">#L1438</a>: 		n = s.base() + s.<b>elemsize</b> - b
+		<a href="../src/runtime/mgcmark.go.html#line-1591" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-1591">#L1591</a>: 		obj := span.base() + idx*span.<b>elemsize</b>
+		<a href="../src/runtime/mgcmark.go.html#line-1651" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-1651">#L1651</a>: 			gcw.bytesMarked += uint64(span.<b>elemsize</b>)
+		<a href="../src/runtime/mgcmark.go.html#line-1676" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-1676">#L1676</a>: 	print(" s.base()=", hex(s.base()), " s.limit=", hex(s.limit), " s.spanclass=", s.spanclass, " s.elemsize=", s.<b>elemsize</b>, " s.state=")
+		<a href="../src/runtime/mgcmark.go.html#line-1684" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-1684">#L1684</a>: 	size := s.<b>elemsize</b>
+		<a href="../src/runtime/mgcmark.go.html#line-1737" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-1737">#L1737</a>: 	gcw.bytesMarked += uint64(span.<b>elemsize</b>)
+		<a href="../src/runtime/mgcsweep.go.html#line-529">mgcsweep.go#L529</a>: 	size := s.<b>elemsize</b>
+		<a href="../src/runtime/mgcsweep.go.html#line-606" class="path-duplicate">mgcsweep.go</a><a href="../src/runtime/mgcsweep.go.html#line-606">#L606</a>: 				x := s.base() + i*s.<b>elemsize</b>
+		<a href="../src/runtime/mgcsweep.go.html#line-662" class="path-duplicate">mgcsweep.go</a><a href="../src/runtime/mgcsweep.go.html#line-662">#L662</a>: 		getg().m.p.ptr().trace.reclaimed += uintptr(nfreed) * s.<b>elemsize</b>
+		<a href="../src/runtime/mgcsweep.go.html#line-748" class="path-duplicate">mgcsweep.go</a><a href="../src/runtime/mgcsweep.go.html#line-748">#L748</a>: 			gcController.totalFree.Add(int64(nfreed) * int64(s.<b>elemsize</b>))
+		<a href="../src/runtime/mgcsweep.go.html#line-840" class="path-duplicate">mgcsweep.go</a><a href="../src/runtime/mgcsweep.go.html#line-840">#L840</a>: 	print("runtime: marked free object in span ", s, ", elemsize=", s.<b>elemsize</b>, " freeindex=", s.freeindex, " (bad use of unsafe.Pointer? try -d=checkptr)\n")
+		<a href="../src/runtime/mgcsweep.go.html#line-844" class="path-duplicate">mgcsweep.go</a><a href="../src/runtime/mgcsweep.go.html#line-844">#L844</a>: 		addr := s.base() + i*s.<b>elemsize</b>
+		<a href="../src/runtime/mgcsweep.go.html#line-863" class="path-duplicate">mgcsweep.go</a><a href="../src/runtime/mgcsweep.go.html#line-863">#L863</a>: 			length := s.<b>elemsize</b>
+		<a href="../src/runtime/mheap.go.html#line-486">mheap.go#L486</a>: 	<b>elemsize</b>              uintptr       // computed from sizeclass or from npages
+		<a href="../src/runtime/mheap.go.html#line-500" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-500">#L500</a>: 	size = s.<b>elemsize</b>
+		<a href="../src/runtime/mheap.go.html#line-1395" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1395">#L1395</a>: 			s.<b>elemsize</b> = nbytes
+		<a href="../src/runtime/mheap.go.html#line-1399" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1399">#L1399</a>: 			s.<b>elemsize</b> = uintptr(class_to_size[sizeclass])
+		<a href="../src/runtime/mheap.go.html#line-1400" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1400">#L1400</a>: 			if goexperiment.AllocHeaders &amp;&amp; !s.spanclass.noscan() &amp;&amp; heapBitsInSpan(s.<b>elemsize</b>) {
+		<a href="../src/runtime/mheap.go.html#line-1402" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1402">#L1402</a>: 				s.nelems = uint16((nbytes - (nbytes / goarch.PtrSize / 8)) / s.<b>elemsize</b>)
+		<a href="../src/runtime/mheap.go.html#line-1404" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1404">#L1404</a>: 				s.nelems = uint16(nbytes / s.<b>elemsize</b>)
+		<a href="../src/runtime/mheap.go.html#line-1687" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1687">#L1687</a>: 	span.<b>elemsize</b> = 0
+		<a href="../src/runtime/mwbbuf.go.html#line-259">mwbbuf.go#L259</a>: 			gcw.bytesMarked += uint64(span.<b>elemsize</b>)
+		<a href="../src/runtime/pinner.go.html#line-182">pinner.go#L182</a>: 				offset := objIndex * span.<b>elemsize</b>
+		<a href="../src/runtime/pinner.go.html#line-196" class="path-duplicate">pinner.go</a><a href="../src/runtime/pinner.go.html#line-196">#L196</a>: 					offset := objIndex * span.<b>elemsize</b>
+		<a href="../src/runtime/pinner.go.html#line-369" class="path-duplicate">pinner.go</a><a href="../src/runtime/pinner.go.html#line-369">#L369</a>: 	offset := objIndex * span.<b>elemsize</b>
+		<a href="../src/runtime/stack.go.html#line-210">stack.go#L210</a>: 		s.<b>elemsize</b> = fixedStack &lt;&lt; order
+		<a href="../src/runtime/stack.go.html#line-211" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-211">#L211</a>: 		for i := uintptr(0); i &lt; _StackCacheSize; i += s.<b>elemsize</b> {
+		<a href="../src/runtime/stack.go.html#line-413" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-413">#L413</a>: 			s.<b>elemsize</b> = uintptr(n)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: gcc_stack_unix.c in package runtime/cgo</title>
+<link href="../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	gcc_stack_unix.c
+
+<span class="title">Belonging Package</span>
+	<a href="../../../pkg/runtime/cgo.html">runtime/cgo</a>
+</code></pre>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code>// Copyright 2023 The Go Authors. All rights reserved.</code></span>
+<span class="codeline" id="line-2"><code>// Use of this source code is governed by a BSD-style</code></span>
+<span class="codeline" id="line-3"><code>// license that can be found in the LICENSE file.</code></span>
+<span class="codeline" id="line-4"><code></code></span>
+<span class="codeline" id="line-5"><code>//go:build unix &amp;&amp; !darwin</code></span>
+<span class="codeline" id="line-6"><code></code></span>
+<span class="codeline" id="line-7"><code>#ifndef _GNU_SOURCE // pthread_getattr_np</code></span>
+<span class="codeline" id="line-8"><code>#define _GNU_SOURCE</code></span>
+<span class="codeline" id="line-9"><code>#endif</code></span>
+<span class="codeline" id="line-10"><code></code></span>
+<span class="codeline" id="line-11"><code>#include &lt;pthread.h&gt;</code></span>
+<span class="codeline" id="line-12"><code>#include "libcgo.h"</code></span>
+<span class="codeline" id="line-13"><code></code></span>
+<span class="codeline" id="line-14"><code>void</code></span>
+<span class="codeline" id="line-15"><code>x_cgo_getstackbound(uintptr bounds[2])</code></span>
+<span class="codeline" id="line-16"><code>{</code></span>
+<span class="codeline" id="line-17"><code>	pthread_attr_t attr;</code></span>
+<span class="codeline" id="line-18"><code>	void *addr;</code></span>
+<span class="codeline" id="line-19"><code>	size_t size;</code></span>
+<span class="codeline" id="line-20"><code></code></span>
+<span class="codeline" id="line-21"><code>#if defined(__GLIBC__) || (defined(__sun) &amp;&amp; !defined(__illumos__))</code></span>
+<span class="codeline" id="line-22"><code>	// pthread_getattr_np is a GNU extension supported in glibc.</code></span>
+<span class="codeline" id="line-23"><code>	// Solaris is not glibc but does support pthread_getattr_np</code></span>
+<span class="codeline" id="line-24"><code>	// (and the fallback doesn't work...). Illumos does not.</code></span>
+<span class="codeline" id="line-25"><code>	pthread_getattr_np(pthread_self(), &amp;attr);  // GNU extension</code></span>
+<span class="codeline" id="line-26"><code>	pthread_attr_getstack(&amp;attr, &amp;addr, &amp;size); // low address</code></span>
+<span class="codeline" id="line-27"><code>#elif defined(__illumos__)</code></span>
+<span class="codeline" id="line-28"><code>	pthread_attr_init(&amp;attr);</code></span>
+<span class="codeline" id="line-29"><code>	pthread_attr_get_np(pthread_self(), &amp;attr);</code></span>
+<span class="codeline" id="line-30"><code>	pthread_attr_getstack(&amp;attr, &amp;addr, &amp;size); // low address</code></span>
+<span class="codeline" id="line-31"><code>#else</code></span>
+<span class="codeline" id="line-32"><code>	pthread_attr_init(&amp;attr);</code></span>
+<span class="codeline" id="line-33"><code>	pthread_attr_getstacksize(&amp;attr, &amp;size);</code></span>
+<span class="codeline" id="line-34"><code>	addr = __builtin_frame_address(0) + 4096 - size;</code></span>
+<span class="codeline" id="line-35"><code>#endif</code></span>
+<span class="codeline" id="line-36"><code>	pthread_attr_destroy(&amp;attr);</code></span>
+<span class="codeline" id="line-37"><code></code></span>
+<span class="codeline" id="line-38"><code>	bounds[0] = (uintptr)addr;</code></span>
+<span class="codeline" id="line-39"><code>	bounds[1] = (uintptr)addr + size;</code></span>
+<span class="codeline" id="line-40"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net.IPConn</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../pkg/net.html">net</a>.<a href="../src/net/iprawsock.go.html#line-99">IPConn</a></b></span>
+
+<span class="title">18 uses</span>
+
+	net (current package)
+		<a href="../src/net/iprawsock.go.html#line-99">iprawsock.go#L99</a>: type <b>IPConn</b> struct {
+		<a href="../src/net/iprawsock.go.html#line-105" class="path-duplicate">iprawsock.go</a><a href="../src/net/iprawsock.go.html#line-105">#L105</a>: func (c *<b>IPConn</b>) SyscallConn() (syscall.RawConn, error) {
+		<a href="../src/net/iprawsock.go.html#line-113" class="path-duplicate">iprawsock.go</a><a href="../src/net/iprawsock.go.html#line-113">#L113</a>: func (c *<b>IPConn</b>) ReadFromIP(b []byte) (int, *IPAddr, error) {
+		<a href="../src/net/iprawsock.go.html#line-125" class="path-duplicate">iprawsock.go</a><a href="../src/net/iprawsock.go.html#line-125">#L125</a>: func (c *<b>IPConn</b>) ReadFrom(b []byte) (int, Addr, error) {
+		<a href="../src/net/iprawsock.go.html#line-146" class="path-duplicate">iprawsock.go</a><a href="../src/net/iprawsock.go.html#line-146">#L146</a>: func (c *<b>IPConn</b>) ReadMsgIP(b, oob []byte) (n, oobn, flags int, addr *IPAddr, err error) {
+		<a href="../src/net/iprawsock.go.html#line-158" class="path-duplicate">iprawsock.go</a><a href="../src/net/iprawsock.go.html#line-158">#L158</a>: func (c *<b>IPConn</b>) WriteToIP(b []byte, addr *IPAddr) (int, error) {
+		<a href="../src/net/iprawsock.go.html#line-170" class="path-duplicate">iprawsock.go</a><a href="../src/net/iprawsock.go.html#line-170">#L170</a>: func (c *<b>IPConn</b>) WriteTo(b []byte, addr Addr) (int, error) {
+		<a href="../src/net/iprawsock.go.html#line-191" class="path-duplicate">iprawsock.go</a><a href="../src/net/iprawsock.go.html#line-191">#L191</a>: func (c *<b>IPConn</b>) WriteMsgIP(b, oob []byte, addr *IPAddr) (n, oobn int, err error) {
+		<a href="../src/net/iprawsock.go.html#line-202" class="path-duplicate">iprawsock.go</a><a href="../src/net/iprawsock.go.html#line-202">#L202</a>: func newIPConn(fd *netFD) *<b>IPConn</b> { return &amp;<b>IPConn</b>{conn{fd}} }
+		<a href="../src/net/iprawsock.go.html#line-211" class="path-duplicate">iprawsock.go</a><a href="../src/net/iprawsock.go.html#line-211">#L211</a>: func DialIP(network string, laddr, raddr *IPAddr) (*<b>IPConn</b>, error) {
+		<a href="../src/net/iprawsock.go.html#line-230" class="path-duplicate">iprawsock.go</a><a href="../src/net/iprawsock.go.html#line-230">#L230</a>: func ListenIP(network string, laddr *IPAddr) (*<b>IPConn</b>, error) {
+		<a href="../src/net/iprawsock_posix.go.html#line-45">iprawsock_posix.go#L45</a>: func (c *<b>IPConn</b>) readFrom(b []byte) (int, *IPAddr, error) {
+		<a href="../src/net/iprawsock_posix.go.html#line-75" class="path-duplicate">iprawsock_posix.go</a><a href="../src/net/iprawsock_posix.go.html#line-75">#L75</a>: func (c *<b>IPConn</b>) readMsg(b, oob []byte) (n, oobn, flags int, addr *IPAddr, err error) {
+		<a href="../src/net/iprawsock_posix.go.html#line-87" class="path-duplicate">iprawsock_posix.go</a><a href="../src/net/iprawsock_posix.go.html#line-87">#L87</a>: func (c *<b>IPConn</b>) writeTo(b []byte, addr *IPAddr) (int, error) {
+		<a href="../src/net/iprawsock_posix.go.html#line-101" class="path-duplicate">iprawsock_posix.go</a><a href="../src/net/iprawsock_posix.go.html#line-101">#L101</a>: func (c *<b>IPConn</b>) writeMsg(b, oob []byte, addr *IPAddr) (n, oobn int, err error) {
+		<a href="../src/net/iprawsock_posix.go.html#line-115" class="path-duplicate">iprawsock_posix.go</a><a href="../src/net/iprawsock_posix.go.html#line-115">#L115</a>: func (sd *sysDialer) dialIP(ctx context.Context, laddr, raddr *IPAddr) (*<b>IPConn</b>, error) {
+		<a href="../src/net/iprawsock_posix.go.html#line-138" class="path-duplicate">iprawsock_posix.go</a><a href="../src/net/iprawsock_posix.go.html#line-138">#L138</a>: func (sl *sysListener) listenIP(ctx context.Context, laddr *IPAddr) (*<b>IPConn</b>, error) {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: time.secondsPerHour</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../pkg/time.html">time</a>.<a href="../src/time/time.go.html#line-972">secondsPerHour</a></b></span>
+
+<span class="title">10 uses</span>
+
+	time (current package)
+		<a href="../src/time/time.go.html#line-580">time.go#L580</a>: 	hour = sec / <b>secondsPerHour</b>
+		<a href="../src/time/time.go.html#line-581" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-581">#L581</a>: 	sec -= hour * <b>secondsPerHour</b>
+		<a href="../src/time/time.go.html#line-589" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-589">#L589</a>: 	return int(t.abs()%secondsPerDay) / <b>secondsPerHour</b>
+		<a href="../src/time/time.go.html#line-594" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-594">#L594</a>: 	return int(t.abs()%<b>secondsPerHour</b>) / secondsPerMinute
+		<a href="../src/time/time.go.html#line-972" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-972">#L972</a>: 	<b>secondsPerHour</b>   = 60 * secondsPerMinute
+		<a href="../src/time/time.go.html#line-973" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-973">#L973</a>: 	secondsPerDay    = 24 * <b>secondsPerHour</b>
+		<a href="../src/time/time.go.html#line-1518" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-1518">#L1518</a>: 	abs += uint64(hour*<b>secondsPerHour</b> + min*secondsPerMinute + sec)
+		<a href="../src/time/zoneinfo.go.html#line-303">zoneinfo.go#L303</a>: 			dstOffset = stdOffset + <b>secondsPerHour</b>
+		<a href="../src/time/zoneinfo.go.html#line-421" class="path-duplicate">zoneinfo.go</a><a href="../src/time/zoneinfo.go.html#line-421">#L421</a>: 	off := hours * <b>secondsPerHour</b>
+		<a href="../src/time/zoneinfo.go.html#line-521" class="path-duplicate">zoneinfo.go</a><a href="../src/time/zoneinfo.go.html#line-521">#L521</a>: 		r.time = 2 * <b>secondsPerHour</b> // 2am is the default
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

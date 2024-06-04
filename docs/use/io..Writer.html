@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: io.Writer</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../pkg/io.html">io</a>.<a href="../src/io/io.go.html#line-99">Writer</a></b></span>
+
+<span class="title">128 uses</span>
+
+	io (current package)
+		<a href="../src/io/io.go.html#line-99">io.go#L99</a>: type <b>Writer</b> interface {
+		<a href="../src/io/io.go.html#line-133" class="path-duplicate">io.go</a><a href="../src/io/io.go.html#line-133">#L133</a>: 	<b>Writer</b>
+		<a href="../src/io/io.go.html#line-144" class="path-duplicate">io.go</a><a href="../src/io/io.go.html#line-144">#L144</a>: 	<b>Writer</b>
+		<a href="../src/io/io.go.html#line-151" class="path-duplicate">io.go</a><a href="../src/io/io.go.html#line-151">#L151</a>: 	<b>Writer</b>
+		<a href="../src/io/io.go.html#line-171" class="path-duplicate">io.go</a><a href="../src/io/io.go.html#line-171">#L171</a>: 	<b>Writer</b>
+		<a href="../src/io/io.go.html#line-178" class="path-duplicate">io.go</a><a href="../src/io/io.go.html#line-178">#L178</a>: 	<b>Writer</b>
+		<a href="../src/io/io.go.html#line-201" class="path-duplicate">io.go</a><a href="../src/io/io.go.html#line-201">#L201</a>: 	WriteTo(w <b>Writer</b>) (n int64, err error)
+		<a href="../src/io/io.go.html#line-314" class="path-duplicate">io.go</a><a href="../src/io/io.go.html#line-314">#L314</a>: func WriteString(w <b>Writer</b>, s string) (n int, err error) {
+		<a href="../src/io/io.go.html#line-363" class="path-duplicate">io.go</a><a href="../src/io/io.go.html#line-363">#L363</a>: func CopyN(dst <b>Writer</b>, src Reader, n int64) (written int64, err error) {
+		<a href="../src/io/io.go.html#line-387" class="path-duplicate">io.go</a><a href="../src/io/io.go.html#line-387">#L387</a>: func Copy(dst <b>Writer</b>, src Reader) (written int64, err error) {
+		<a href="../src/io/io.go.html#line-398" class="path-duplicate">io.go</a><a href="../src/io/io.go.html#line-398">#L398</a>: func CopyBuffer(dst <b>Writer</b>, src Reader, buf []byte) (written int64, err error) {
+		<a href="../src/io/io.go.html#line-407" class="path-duplicate">io.go</a><a href="../src/io/io.go.html#line-407">#L407</a>: func copyBuffer(dst <b>Writer</b>, src Reader, buf []byte) (written int64, err error) {
+		<a href="../src/io/io.go.html#line-618" class="path-duplicate">io.go</a><a href="../src/io/io.go.html#line-618">#L618</a>: func TeeReader(r Reader, w <b>Writer</b>) Reader {
+		<a href="../src/io/io.go.html#line-624" class="path-duplicate">io.go</a><a href="../src/io/io.go.html#line-624">#L624</a>: 	w <b>Writer</b>
+		<a href="../src/io/io.go.html#line-639" class="path-duplicate">io.go</a><a href="../src/io/io.go.html#line-639">#L639</a>: var Discard <b>Writer</b> = discard{}
+		<a href="../src/io/io.go.html#line-701" class="path-duplicate">io.go</a><a href="../src/io/io.go.html#line-701">#L701</a>: func (c nopCloserWriterTo) WriteTo(w <b>Writer</b>) (n int64, err error) {
+		<a href="../src/io/multi.go.html#line-44">multi.go#L44</a>: func (mr *multiReader) WriteTo(w <b>Writer</b>) (sum int64, err error) {
+		<a href="../src/io/multi.go.html#line-48" class="path-duplicate">multi.go</a><a href="../src/io/multi.go.html#line-48">#L48</a>: func (mr *multiReader) writeToWithBuffer(w <b>Writer</b>, buf []byte) (sum int64, err error) {
+		<a href="../src/io/multi.go.html#line-80" class="path-duplicate">multi.go</a><a href="../src/io/multi.go.html#line-80">#L80</a>: 	writers []<b>Writer</b>
+		<a href="../src/io/multi.go.html#line-127" class="path-duplicate">multi.go</a><a href="../src/io/multi.go.html#line-127">#L127</a>: func MultiWriter(writers ...<b>Writer</b>) <b>Writer</b> {
+		<a href="../src/io/multi.go.html#line-128" class="path-duplicate">multi.go</a><a href="../src/io/multi.go.html#line-128">#L128</a>: 	allWriters := make([]<b>Writer</b>, 0, len(writers))
+
+	<a href="../pkg/bufio.html">bufio</a>
+		<a href="../src/bufio/bufio.go.html#line-514">bufio.go#L514</a>: func (b *Reader) WriteTo(w io.<b>Writer</b>) (n int64, err error) {
+		<a href="../src/bufio/bufio.go.html#line-559" class="path-duplicate">bufio.go</a><a href="../src/bufio/bufio.go.html#line-559">#L559</a>: func (b *Reader) writeBuf(w io.<b>Writer</b>) (int64, error) {
+		<a href="../src/bufio/bufio.go.html#line-580" class="path-duplicate">bufio.go</a><a href="../src/bufio/bufio.go.html#line-580">#L580</a>: 	wr  io.<b>Writer</b>
+		<a href="../src/bufio/bufio.go.html#line-586" class="path-duplicate">bufio.go</a><a href="../src/bufio/bufio.go.html#line-586">#L586</a>: func NewWriterSize(w io.<b>Writer</b>, size int) *Writer {
+		<a href="../src/bufio/bufio.go.html#line-604" class="path-duplicate">bufio.go</a><a href="../src/bufio/bufio.go.html#line-604">#L604</a>: func NewWriter(w io.<b>Writer</b>) *Writer {
+		<a href="../src/bufio/bufio.go.html#line-616" class="path-duplicate">bufio.go</a><a href="../src/bufio/bufio.go.html#line-616">#L616</a>: func (b *Writer) Reset(w io.<b>Writer</b>) {
+
+	<a href="../pkg/bytes.html">bytes</a>
+		<a href="../src/bytes/buffer.go.html#line-258">buffer.go#L258</a>: func (b *Buffer) WriteTo(w io.<b>Writer</b>) (n int64, err error) {
+		<a href="../src/bytes/reader.go.html#line-137">reader.go#L137</a>: func (r *Reader) WriteTo(w io.<b>Writer</b>) (n int64, err error) {
+
+	<a href="../pkg/compress/flate.html">compress/flate</a>
+		<a href="../src/compress/flate/deflate.go.html#line-568">deflate.go#L568</a>: func (d *compressor) init(w io.<b>Writer</b>, level int) (err error) {
+		<a href="../src/compress/flate/deflate.go.html#line-601" class="path-duplicate">deflate.go</a><a href="../src/compress/flate/deflate.go.html#line-601">#L601</a>: func (d *compressor) reset(w io.<b>Writer</b>) {
+		<a href="../src/compress/flate/deflate.go.html#line-665" class="path-duplicate">deflate.go</a><a href="../src/compress/flate/deflate.go.html#line-665">#L665</a>: func NewWriter(w io.<b>Writer</b>, level int) (*Writer, error) {
+		<a href="../src/compress/flate/deflate.go.html#line-679" class="path-duplicate">deflate.go</a><a href="../src/compress/flate/deflate.go.html#line-679">#L679</a>: func NewWriterDict(w io.<b>Writer</b>, level int, dict []byte) (*Writer, error) {
+		<a href="../src/compress/flate/deflate.go.html#line-691" class="path-duplicate">deflate.go</a><a href="../src/compress/flate/deflate.go.html#line-691">#L691</a>: 	w io.<b>Writer</b>
+		<a href="../src/compress/flate/deflate.go.html#line-736" class="path-duplicate">deflate.go</a><a href="../src/compress/flate/deflate.go.html#line-736">#L736</a>: func (w *Writer) Reset(dst io.<b>Writer</b>) {
+		<a href="../src/compress/flate/huffman_bit_writer.go.html#line-75">huffman_bit_writer.go#L75</a>: 	writer io.<b>Writer</b>
+		<a href="../src/compress/flate/huffman_bit_writer.go.html#line-94" class="path-duplicate">huffman_bit_writer.go</a><a href="../src/compress/flate/huffman_bit_writer.go.html#line-94">#L94</a>: func newHuffmanBitWriter(w io.<b>Writer</b>) *huffmanBitWriter {
+		<a href="../src/compress/flate/huffman_bit_writer.go.html#line-106" class="path-duplicate">huffman_bit_writer.go</a><a href="../src/compress/flate/huffman_bit_writer.go.html#line-106">#L106</a>: func (w *huffmanBitWriter) reset(writer io.<b>Writer</b>) {
+
+	<a href="../pkg/compress/gzip.html">compress/gzip</a>
+		<a href="../src/compress/gzip/gzip.go.html#line-30">gzip.go#L30</a>: 	w           io.<b>Writer</b>
+		<a href="../src/compress/gzip/gzip.go.html#line-49" class="path-duplicate">gzip.go</a><a href="../src/compress/gzip/gzip.go.html#line-49">#L49</a>: func NewWriter(w io.<b>Writer</b>) *Writer {
+		<a href="../src/compress/gzip/gzip.go.html#line-60" class="path-duplicate">gzip.go</a><a href="../src/compress/gzip/gzip.go.html#line-60">#L60</a>: func NewWriterLevel(w io.<b>Writer</b>, level int) (*Writer, error) {
+		<a href="../src/compress/gzip/gzip.go.html#line-69" class="path-duplicate">gzip.go</a><a href="../src/compress/gzip/gzip.go.html#line-69">#L69</a>: func (z *Writer) init(w io.<b>Writer</b>, level int) {
+		<a href="../src/compress/gzip/gzip.go.html#line-88" class="path-duplicate">gzip.go</a><a href="../src/compress/gzip/gzip.go.html#line-88">#L88</a>: func (z *Writer) Reset(w io.<b>Writer</b>) {
+
+	<a href="../pkg/crypto/cipher.html">crypto/cipher</a>
+		<a href="../src/crypto/cipher/io.go.html#line-32">io.go#L32</a>: 	W   io.<b>Writer</b>
+
+	<a href="../pkg/crypto/tls.html">crypto/tls</a>
+		<a href="../src/crypto/tls/common.go.html#line-775">common.go#L775</a>: 	KeyLogWriter io.<b>Writer</b>
+
+	<a href="../pkg/encoding/base64.html">encoding/base64</a>
+		<a href="../src/encoding/base64/base64.go.html#line-215">base64.go#L215</a>: 	w    io.<b>Writer</b>
+		<a href="../src/encoding/base64/base64.go.html#line-284" class="path-duplicate">base64.go</a><a href="../src/encoding/base64/base64.go.html#line-284">#L284</a>: func NewEncoder(enc *Encoding, w io.<b>Writer</b>) io.WriteCloser {
+
+	<a href="../pkg/encoding/binary.html">encoding/binary</a>
+		<a href="../src/encoding/binary/binary.go.html#line-346">binary.go#L346</a>: func Write(w io.<b>Writer</b>, order ByteOrder, data any) error {
+
+	<a href="../pkg/encoding/hex.html">encoding/hex</a>
+		<a href="../src/encoding/hex/hex.go.html#line-169">hex.go#L169</a>: 	w   io.<b>Writer</b>
+		<a href="../src/encoding/hex/hex.go.html#line-175" class="path-duplicate">hex.go</a><a href="../src/encoding/hex/hex.go.html#line-175">#L175</a>: func NewEncoder(w io.<b>Writer</b>) io.<b>Writer</b> {
+		<a href="../src/encoding/hex/hex.go.html#line-244" class="path-duplicate">hex.go</a><a href="../src/encoding/hex/hex.go.html#line-244">#L244</a>: func Dumper(w io.<b>Writer</b>) io.WriteCloser {
+		<a href="../src/encoding/hex/hex.go.html#line-249" class="path-duplicate">hex.go</a><a href="../src/encoding/hex/hex.go.html#line-249">#L249</a>: 	w          io.<b>Writer</b>
+
+	<a href="../pkg/encoding/pem.html">encoding/pem</a>
+		<a href="../src/encoding/pem/pem.go.html#line-190">pem.go#L190</a>: 	out  io.<b>Writer</b>
+		<a href="../src/encoding/pem/pem.go.html#line-234" class="path-duplicate">pem.go</a><a href="../src/encoding/pem/pem.go.html#line-234">#L234</a>: func writeHeader(out io.<b>Writer</b>, k, v string) error {
+		<a href="../src/encoding/pem/pem.go.html#line-240" class="path-duplicate">pem.go</a><a href="../src/encoding/pem/pem.go.html#line-240">#L240</a>: func Encode(out io.<b>Writer</b>, b *Block) error {
+
+	<a href="../pkg/fmt.html">fmt</a>
+		<a href="../src/fmt/print.go.html#line-222">print.go#L222</a>: func Fprintf(w io.<b>Writer</b>, format string, a ...any) (n int, err error) {
+		<a href="../src/fmt/print.go.html#line-260" class="path-duplicate">print.go</a><a href="../src/fmt/print.go.html#line-260">#L260</a>: func Fprint(w io.<b>Writer</b>, a ...any) (n int, err error) {
+		<a href="../src/fmt/print.go.html#line-302" class="path-duplicate">print.go</a><a href="../src/fmt/print.go.html#line-302">#L302</a>: func Fprintln(w io.<b>Writer</b>, a ...any) (n int, err error) {
+
+	<a href="../pkg/github.com/PuerkitoBio^56e6a/goquery.html">github.com/PuerkitoBio/goquery</a>
+		<a href="../src/github.com/PuerkitoBio^56e6a/goquery/utilities.go.html#line-64">utilities.go#L64</a>: func Render(w io.<b>Writer</b>, s *Selection) error {
+
+	<a href="../pkg/golang.org/x/net/html.html">golang.org/x/net/html</a>
+		<a href="../src/golang.org/x/net/html/render.go.html#line-16">render.go#L16</a>: 	io.<b>Writer</b>
+		<a href="../src/golang.org/x/net/html/render.go.html#line-45" class="path-duplicate">render.go</a><a href="../src/golang.org/x/net/html/render.go.html#line-45">#L45</a>: func Render(w io.<b>Writer</b>, n *Node) error {
+
+	<a href="../pkg/hash.html">hash</a>
+		<a href="../src/hash/hash.go.html#line-29">hash.go#L29</a>: 	io.<b>Writer</b>
+
+	<a href="../pkg/log.html">log</a>
+		<a href="../src/log/log.go.html#line-59">log.go#L59</a>: 	out   io.<b>Writer</b> // destination for output
+		<a href="../src/log/log.go.html#line-71" class="path-duplicate">log.go</a><a href="../src/log/log.go.html#line-71">#L71</a>: func New(out io.<b>Writer</b>, prefix string, flag int) *Logger {
+		<a href="../src/log/log.go.html#line-80" class="path-duplicate">log.go</a><a href="../src/log/log.go.html#line-80">#L80</a>: func (l *Logger) SetOutput(w io.<b>Writer</b>) {
+		<a href="../src/log/log.go.html#line-346" class="path-duplicate">log.go</a><a href="../src/log/log.go.html#line-346">#L346</a>: func (l *Logger) Writer() io.<b>Writer</b> {
+		<a href="../src/log/log.go.html#line-353" class="path-duplicate">log.go</a><a href="../src/log/log.go.html#line-353">#L353</a>: func SetOutput(w io.<b>Writer</b>) {
+		<a href="../src/log/log.go.html#line-380" class="path-duplicate">log.go</a><a href="../src/log/log.go.html#line-380">#L380</a>: func Writer() io.<b>Writer</b> {
+
+	<a href="../pkg/mime/multipart.html">mime/multipart</a>
+		<a href="../src/mime/multipart/formdata.go.html#line-190">formdata.go#L190</a>: 			type writerOnly struct{ io.<b>Writer</b> }
+		<a href="../src/mime/multipart/writer.go.html#line-20">writer.go#L20</a>: 	w        io.<b>Writer</b>
+		<a href="../src/mime/multipart/writer.go.html#line-27" class="path-duplicate">writer.go</a><a href="../src/mime/multipart/writer.go.html#line-27">#L27</a>: func NewWriter(w io.<b>Writer</b>) *Writer {
+		<a href="../src/mime/multipart/writer.go.html#line-97" class="path-duplicate">writer.go</a><a href="../src/mime/multipart/writer.go.html#line-97">#L97</a>: func (w *Writer) CreatePart(header textproto.MIMEHeader) (io.<b>Writer</b>, error) {
+		<a href="../src/mime/multipart/writer.go.html#line-140" class="path-duplicate">writer.go</a><a href="../src/mime/multipart/writer.go.html#line-140">#L140</a>: func (w *Writer) CreateFormFile(fieldname, filename string) (io.<b>Writer</b>, error) {
+		<a href="../src/mime/multipart/writer.go.html#line-151" class="path-duplicate">writer.go</a><a href="../src/mime/multipart/writer.go.html#line-151">#L151</a>: func (w *Writer) CreateFormField(fieldname string) (io.<b>Writer</b>, error) {
+
+	<a href="../pkg/mime/quotedprintable.html">mime/quotedprintable</a>
+		<a href="../src/mime/quotedprintable/writer.go.html#line-17">writer.go#L17</a>: 	w    io.<b>Writer</b>
+		<a href="../src/mime/quotedprintable/writer.go.html#line-24" class="path-duplicate">writer.go</a><a href="../src/mime/quotedprintable/writer.go.html#line-24">#L24</a>: func NewWriter(w io.<b>Writer</b>) *Writer {
+
+	<a href="../pkg/net.html">net</a>
+		<a href="../src/net/net.go.html#line-698">net.go#L698</a>: func (noWriteTo) WriteTo(io.<b>Writer</b>) (int64, error) {
+		<a href="../src/net/net.go.html#line-711" class="path-duplicate">net.go</a><a href="../src/net/net.go.html#line-711">#L711</a>: func genericWriteTo(c *TCPConn, w io.<b>Writer</b>) (n int64, err error) {
+		<a href="../src/net/net.go.html#line-763" class="path-duplicate">net.go</a><a href="../src/net/net.go.html#line-763">#L763</a>: func (v *Buffers) WriteTo(w io.<b>Writer</b>) (n int64, err error) {
+		<a href="../src/net/splice_linux.go.html#line-54">splice_linux.go#L54</a>: func spliceTo(w io.<b>Writer</b>, c *netFD) (written int64, err error, handled bool) {
+		<a href="../src/net/tcpsock.go.html#line-138">tcpsock.go#L138</a>: func (c *TCPConn) WriteTo(w io.<b>Writer</b>) (int64, error) {
+		<a href="../src/net/tcpsock_posix.go.html#line-57">tcpsock_posix.go#L57</a>: func (c *TCPConn) writeTo(w io.<b>Writer</b>) (int64, error) {
+
+	<a href="../pkg/net/http.html">net/http</a>
+		<a href="../src/net/http/h2_bundle.go.html#line-1691">h2_bundle.go#L1691</a>: 	w    io.<b>Writer</b>
+		<a href="../src/net/http/h2_bundle.go.html#line-1834" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-1834">#L1834</a>: func http2NewFramer(w io.<b>Writer</b>, r io.Reader) *http2Framer {
+		<a href="../src/net/http/h2_bundle.go.html#line-3558" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-3558">#L3558</a>: 	w  io.<b>Writer</b>     // immutable
+		<a href="../src/net/http/h2_bundle.go.html#line-3562" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-3562">#L3562</a>: func http2newBufferedWriter(w io.<b>Writer</b>) *http2bufferedWriter {
+		<a href="../src/net/http/h2_bundle.go.html#line-3720" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-3720">#L3720</a>: 	io.<b>Writer</b>
+		<a href="../src/net/http/header.go.html#line-85">header.go#L85</a>: func (h Header) Write(w io.<b>Writer</b>) error {
+		<a href="../src/net/http/header.go.html#line-89" class="path-duplicate">header.go</a><a href="../src/net/http/header.go.html#line-89">#L89</a>: func (h Header) write(w io.<b>Writer</b>, trace *httptrace.ClientTrace) error {
+		<a href="../src/net/http/header.go.html#line-143" class="path-duplicate">header.go</a><a href="../src/net/http/header.go.html#line-143">#L143</a>: 	w io.<b>Writer</b>
+		<a href="../src/net/http/header.go.html#line-192" class="path-duplicate">header.go</a><a href="../src/net/http/header.go.html#line-192">#L192</a>: func (h Header) WriteSubset(w io.<b>Writer</b>, exclude map[string]bool) error {
+		<a href="../src/net/http/header.go.html#line-196" class="path-duplicate">header.go</a><a href="../src/net/http/header.go.html#line-196">#L196</a>: func (h Header) writeSubset(w io.<b>Writer</b>, exclude map[string]bool, trace *httptrace.ClientTrace) error {
+		<a href="../src/net/http/http.go.html#line-116">http.go#L116</a>: func (noBody) WriteTo(io.<b>Writer</b>) (int64, error) { return 0, nil }
+		<a href="../src/net/http/request.go.html#line-554">request.go#L554</a>: func (r *Request) Write(w io.<b>Writer</b>) error {
+		<a href="../src/net/http/request.go.html#line-564" class="path-duplicate">request.go</a><a href="../src/net/http/request.go.html#line-564">#L564</a>: func (r *Request) WriteProxy(w io.<b>Writer</b>) error {
+		<a href="../src/net/http/request.go.html#line-575" class="path-duplicate">request.go</a><a href="../src/net/http/request.go.html#line-575">#L575</a>: func (r *Request) write(w io.<b>Writer</b>, usingProxy bool, extraHeaders Header, waitForContinue func() bool) (err error) {
+		<a href="../src/net/http/response.go.html#line-245">response.go#L245</a>: func (r *Response) Write(w io.<b>Writer</b>) error {
+		<a href="../src/net/http/response.go.html#line-350" class="path-duplicate">response.go</a><a href="../src/net/http/response.go.html#line-350">#L350</a>: 	_, ok := r.Body.(io.<b>Writer</b>)
+		<a href="../src/net/http/server.go.html#line-571">server.go#L571</a>: 	io.<b>Writer</b>
+		<a href="../src/net/http/server.go.html#line-849" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-849">#L849</a>: func newBufioWriterSize(w io.<b>Writer</b>, size int) *bufio.Writer {
+		<a href="../src/net/http/transfer.go.html#line-277">transfer.go#L277</a>: func (t *transferWriter) writeHeader(w io.<b>Writer</b>, trace *httptrace.ClientTrace) error {
+		<a href="../src/net/http/transfer.go.html#line-337" class="path-duplicate">transfer.go</a><a href="../src/net/http/transfer.go.html#line-337">#L337</a>: func (t *transferWriter) writeBody(w io.<b>Writer</b>) (err error) {
+		<a href="../src/net/http/transfer.go.html#line-412" class="path-duplicate">transfer.go</a><a href="../src/net/http/transfer.go.html#line-412">#L412</a>: func (t *transferWriter) doBodyCopy(dst io.<b>Writer</b>, src io.Reader) (n int64, err error) {
+		<a href="../src/net/http/transfer.go.html#line-1126" class="path-duplicate">transfer.go</a><a href="../src/net/http/transfer.go.html#line-1126">#L1126</a>: type bufioFlushWriter struct{ w io.<b>Writer</b> }
+
+	<a href="../pkg/net/http/internal.html">net/http/internal</a>
+		<a href="../src/net/http/internal/chunked.go.html#line-212">chunked.go#L212</a>: func NewChunkedWriter(w io.<b>Writer</b>) io.WriteCloser {
+		<a href="../src/net/http/internal/chunked.go.html#line-219" class="path-duplicate">chunked.go</a><a href="../src/net/http/internal/chunked.go.html#line-219">#L219</a>: 	Wire io.<b>Writer</b>
+
+	<a href="../pkg/os.html">os</a>
+		<a href="../src/os/file.go.html#line-239">file.go#L239</a>: func (f *File) WriteTo(w io.<b>Writer</b>) (n int64, err error) {
+		<a href="../src/os/file.go.html#line-256" class="path-duplicate">file.go</a><a href="../src/os/file.go.html#line-256">#L256</a>: func (noWriteTo) WriteTo(io.<b>Writer</b>) (int64, error) {
+		<a href="../src/os/file.go.html#line-268" class="path-duplicate">file.go</a><a href="../src/os/file.go.html#line-268">#L268</a>: func genericWriteTo(f *File, w io.<b>Writer</b>) (int64, error) {
+		<a href="../src/os/zero_copy_linux.go.html#line-19">zero_copy_linux.go#L19</a>: func (f *File) writeTo(w io.<b>Writer</b>) (written int64, handled bool, err error) {
+
+	<a href="../pkg/strings.html">strings</a>
+		<a href="../src/strings/reader.go.html#line-137">reader.go#L137</a>: func (r *Reader) WriteTo(w io.<b>Writer</b>) (n int64, err error) {
+		<a href="../src/strings/replace.go.html#line-23">replace.go#L23</a>: 	WriteString(w io.<b>Writer</b>, s string) (n int, err error)
+		<a href="../src/strings/replace.go.html#line-101" class="path-duplicate">replace.go</a><a href="../src/strings/replace.go.html#line-101">#L101</a>: func (r *Replacer) WriteString(w io.<b>Writer</b>, s string) (n int, err error) {
+		<a href="../src/strings/replace.go.html#line-315" class="path-duplicate">replace.go</a><a href="../src/strings/replace.go.html#line-315">#L315</a>: 	w io.<b>Writer</b>
+		<a href="../src/strings/replace.go.html#line-322" class="path-duplicate">replace.go</a><a href="../src/strings/replace.go.html#line-322">#L322</a>: func getStringWriter(w io.<b>Writer</b>) io.StringWriter {
+		<a href="../src/strings/replace.go.html#line-336" class="path-duplicate">replace.go</a><a href="../src/strings/replace.go.html#line-336">#L336</a>: func (r *genericReplacer) WriteString(w io.<b>Writer</b>, s string) (n int, err error) {
+		<a href="../src/strings/replace.go.html#line-410" class="path-duplicate">replace.go</a><a href="../src/strings/replace.go.html#line-410">#L410</a>: func (r *singleStringReplacer) WriteString(w io.<b>Writer</b>, s string) (n int, err error) {
+		<a href="../src/strings/replace.go.html#line-457" class="path-duplicate">replace.go</a><a href="../src/strings/replace.go.html#line-457">#L457</a>: func (r *byteReplacer) WriteString(w io.<b>Writer</b>, s string) (n int, err error) {
+		<a href="../src/strings/replace.go.html#line-550" class="path-duplicate">replace.go</a><a href="../src/strings/replace.go.html#line-550">#L550</a>: func (r *byteStringReplacer) WriteString(w io.<b>Writer</b>, s string) (n int, err error) {
+
+	<a href="../pkg/vendor/golang.org/x/net/http2/hpack.html">vendor/golang.org/x/net/http2/hpack</a>
+		<a href="../src/vendor/golang.org/x/net/http2/hpack/encode.go.html#line-29">encode.go#L29</a>: 	w               io.<b>Writer</b>
+		<a href="../src/vendor/golang.org/x/net/http2/hpack/encode.go.html#line-35" class="path-duplicate">encode.go</a><a href="../src/vendor/golang.org/x/net/http2/hpack/encode.go.html#line-35">#L35</a>: func NewEncoder(w io.<b>Writer</b>) *Encoder {
+		<a href="../src/vendor/golang.org/x/net/http2/hpack/huffman.go.html#line-21">huffman.go#L21</a>: func HuffmanDecode(w io.<b>Writer</b>, v []byte) (int, error) {
+
+	<a href="../pkg/vendor/golang.org/x/text/transform.html">vendor/golang.org/x/text/transform</a>
+		<a href="../src/vendor/golang.org/x/text/transform/transform.go.html#line-210">transform.go#L210</a>: 	w   io.<b>Writer</b>
+		<a href="../src/vendor/golang.org/x/text/transform/transform.go.html#line-221" class="path-duplicate">transform.go</a><a href="../src/vendor/golang.org/x/text/transform/transform.go.html#line-221">#L221</a>: func NewWriter(w io.<b>Writer</b>, t Transformer) *Writer {
+
+	<a href="../pkg/vendor/golang.org/x/text/unicode/norm.html">vendor/golang.org/x/text/unicode/norm</a>
+		<a href="../src/vendor/golang.org/x/text/unicode/norm/readwriter.go.html#line-11">readwriter.go#L11</a>: 	w   io.<b>Writer</b>
+		<a href="../src/vendor/golang.org/x/text/unicode/norm/readwriter.go.html#line-66" class="path-duplicate">readwriter.go</a><a href="../src/vendor/golang.org/x/text/unicode/norm/readwriter.go.html#line-66">#L66</a>: func (f Form) Writer(w io.<b>Writer</b>) io.WriteCloser {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

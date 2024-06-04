@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/internal/bigmod.Nat.Mul</title>
+<link href="../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../../pkg/crypto/internal/bigmod.html">crypto/internal/bigmod</a>.<a href="../../../src/crypto/internal/bigmod/nat.go.html#line-56">Nat</a>.<a href="../../../src/crypto/internal/bigmod/nat.go.html#line-726">Mul</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">7 uses</span>
+
+	crypto/internal/bigmod (current package)
+		<a href="../../../src/crypto/internal/bigmod/nat.go.html#line-726">nat.go#L726</a>: func (x *Nat) <b>Mul</b>(y *Nat, m *Modulus) *Nat {
+
+	<a href="../../../pkg/crypto/ecdsa.html">crypto/ecdsa</a>
+		<a href="../../../src/crypto/ecdsa/ecdsa.go.html#line-326">ecdsa.go#L326</a>: 	s.<b>Mul</b>(r, c.N)
+		<a href="../../../src/crypto/ecdsa/ecdsa.go.html#line-328" class="path-duplicate">ecdsa.go</a><a href="../../../src/crypto/ecdsa/ecdsa.go.html#line-328">#L328</a>: 	s.<b>Mul</b>(kInv, c.N)
+		<a href="../../../src/crypto/ecdsa/ecdsa.go.html#line-526" class="path-duplicate">ecdsa.go</a><a href="../../../src/crypto/ecdsa/ecdsa.go.html#line-526">#L526</a>: 	p1, err := c.newPoint().ScalarBaseMult(e.<b>Mul</b>(w, c.N).Bytes(c.N))
+		<a href="../../../src/crypto/ecdsa/ecdsa.go.html#line-531" class="path-duplicate">ecdsa.go</a><a href="../../../src/crypto/ecdsa/ecdsa.go.html#line-531">#L531</a>: 	p2, err := Q.ScalarMult(Q, w.<b>Mul</b>(r, c.N).Bytes(c.N))
+
+	<a href="../../../pkg/crypto/rsa.html">crypto/rsa</a>
+		<a href="../../../src/crypto/rsa/rsa.go.html#line-681">rsa.go#L681</a>: 		m.<b>Mul</b>(Qinv, P)
+		<a href="../../../src/crypto/rsa/rsa.go.html#line-683" class="path-duplicate">rsa.go</a><a href="../../../src/crypto/rsa/rsa.go.html#line-683">#L683</a>: 		m.ExpandFor(N).<b>Mul</b>(t0.Mod(Q.Nat(), N), N)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

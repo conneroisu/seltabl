@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.typedmemmove</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/mbarrier.go.html#line-152">typedmemmove</a></b></span>
+
+<span class="title">28 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/arena.go.html#line-181">arena.go#L181</a>: 		<b>typedmemmove</b>(et, e2, e.data)
+		<a href="../src/runtime/chan.go.html#line-222">chan.go#L222</a>: 		<b>typedmemmove</b>(c.elemtype, qp, ep)
+		<a href="../src/runtime/chan.go.html#line-544" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-544">#L544</a>: 			<b>typedmemmove</b>(c.elemtype, ep, qp)
+		<a href="../src/runtime/chan.go.html#line-636" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-636">#L636</a>: 			<b>typedmemmove</b>(c.elemtype, ep, qp)
+		<a href="../src/runtime/chan.go.html#line-639" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-639">#L639</a>: 		<b>typedmemmove</b>(c.elemtype, qp, sg.elem)
+		<a href="../src/runtime/iface.go.html#line-332">iface.go#L332</a>: 	<b>typedmemmove</b>(t, x, v)
+		<a href="../src/runtime/map.go.html#line-642">map.go#L642</a>: 				<b>typedmemmove</b>(t.Key, k, key)
+		<a href="../src/runtime/map.go.html#line-681" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-681">#L681</a>: 	<b>typedmemmove</b>(t.Key, insertk, key)
+		<a href="../src/runtime/map.go.html#line-1246" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1246">#L1246</a>: 					<b>typedmemmove</b>(t.Key, dst.k, k) // copy elem
+		<a href="../src/runtime/map.go.html#line-1251" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1251">#L1251</a>: 					<b>typedmemmove</b>(t.Elem, dst.e, e)
+		<a href="../src/runtime/map.go.html#line-1366" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1366">#L1366</a>: 	<b>typedmemmove</b>(t.Elem, p, elem)
+		<a href="../src/runtime/map.go.html#line-1372" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1372">#L1372</a>: 	<b>typedmemmove</b>(t.Elem, p, elem)
+		<a href="../src/runtime/map.go.html#line-1481" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1481">#L1481</a>: 				<b>typedmemmove</b>(t.Key, kStore, srcK)
+		<a href="../src/runtime/map.go.html#line-1489" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1489">#L1489</a>: 			<b>typedmemmove</b>(t.Key, dstK, srcK)
+		<a href="../src/runtime/map.go.html#line-1494" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1494">#L1494</a>: 			<b>typedmemmove</b>(t.Elem, eStore, srcEle)
+		<a href="../src/runtime/map.go.html#line-1497" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1497">#L1497</a>: 			<b>typedmemmove</b>(t.Elem, dstEle, srcEle)
+		<a href="../src/runtime/map.go.html#line-1523" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1523">#L1523</a>: 		<b>typedmemmove</b>(t.Bucket, dst.buckets, src.buckets)
+		<a href="../src/runtime/map.go.html#line-1597" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1597">#L1597</a>: 				<b>typedmemmove</b>(t.Elem, dstEle, srcEle)
+		<a href="../src/runtime/map.go.html#line-1662" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1662">#L1662</a>: 			<b>typedmemmove</b>(t.Key, add(s.array, uintptr(s.len)*uintptr(t.Key.Size())), k)
+		<a href="../src/runtime/map.go.html#line-1727" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1727">#L1727</a>: 			<b>typedmemmove</b>(t.Elem, add(s.array, uintptr(s.len)*uintptr(t.Elem.Size())), ele)
+		<a href="../src/runtime/map_fast32.go.html#line-438">map_fast32.go#L438</a>: 				<b>typedmemmove</b>(t.Elem, dst.e, e)
+		<a href="../src/runtime/map_fast64.go.html#line-440">map_fast64.go#L440</a>: 						<b>typedmemmove</b>(t.Key, dst.k, k)
+		<a href="../src/runtime/map_fast64.go.html#line-446" class="path-duplicate">map_fast64.go</a><a href="../src/runtime/map_fast64.go.html#line-446">#L446</a>: 				<b>typedmemmove</b>(t.Elem, dst.e, e)
+		<a href="../src/runtime/map_faststr.go.html#line-461">map_faststr.go#L461</a>: 				<b>typedmemmove</b>(t.Elem, dst.e, e)
+		<a href="../src/runtime/mbarrier.go.html#line-152">mbarrier.go#L152</a>: func <b>typedmemmove</b>(typ *abi.Type, dst, src unsafe.Pointer) {
+		<a href="../src/runtime/mbarrier.go.html#line-216" class="path-duplicate">mbarrier.go</a><a href="../src/runtime/mbarrier.go.html#line-216">#L216</a>: 	<b>typedmemmove</b>(typ, dst, src)
+		<a href="../src/runtime/select.go.html#line-436">select.go#L436</a>: 		<b>typedmemmove</b>(c.elemtype, cas.elem, qp)
+		<a href="../src/runtime/select.go.html#line-459" class="path-duplicate">select.go</a><a href="../src/runtime/select.go.html#line-459">#L459</a>: 	<b>typedmemmove</b>(c.elemtype, chanbuf(c, c.sendx), cas.elem)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

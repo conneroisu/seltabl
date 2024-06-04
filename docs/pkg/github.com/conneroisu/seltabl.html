@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: github.com/conneroisu/seltabl</title>
+<link href="../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>seltabl</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../../index.html#pkg-github.com/conneroisu/seltabl">github.com/conneroisu/seltabl</a><i> (on <a href="https://pkg.go.dev/github.com/conneroisu/seltabl" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../../../dep/github.com/conneroisu/seltabl.html">8 packages</a>, and imported by 0 packages
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<span class="nodocs">    <a href="../../../src/github.com/conneroisu/seltabl/parse.go.html">parse.go</a></span>
+	<span class="nodocs">    <a href="../../../src/github.com/conneroisu/seltabl/reflect.go.html">reflect.go</a></span></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 3, all are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-NewFromString">	<input type='checkbox' class="fold" id="NewFromString-fold-content"><label for="NewFromString-fold-content"> <a href="../../../use/github.com/conneroisu/seltabl..NewFromString.html">func</a> <a href="../../../src/github.com/conneroisu/seltabl/parse.go.html#line-80">NewFromString</a>[T](htmlInput <a href="../../builtin.html#name-string">string</a>) ([]T, <a href="../../builtin.html#name-error">error</a>)</label><span id='NewFromString-fold-content-docs' class="fold-docs">
+
+		Type Parameters:
+			T: <a href="../../builtin.html#name-any">any</a>
+
+<span class="md-text">		NewFromString parses a string into a slice of structs.
+		
+		The struct must have a field with the tag seltabl, a header selector with
+		the tag hSel, and a data selector with the tag dSel.
+		
+		The selectors responsibilties:
+		
+		  - header selector (hSel): used to find the header row and column for the
+		    field in the given struct.
+		  - data selector (dSel): used to find the data column for the field in the
+		    given struct.
+		  - cell selector (cSel): used to find the inner text or attribute of the
+		    cell.
+		
+		Example:
+		
+			var fixture = `
+			&lt;table&gt;
+		
+			     &lt;tr&gt;
+			     	&lt;td&gt;a&lt;/td&gt;
+			     	&lt;td&gt;b&lt;/td&gt;
+			     &lt;/tr&gt;
+			     &lt;tr&gt;
+			     	&lt;td&gt; 1 &lt;/td&gt;
+			     	&lt;td&gt;2&lt;/td&gt;
+			     &lt;/tr&gt;
+			     &lt;tr&gt;
+			     	&lt;td&gt;3 &lt;/td&gt;
+			     	&lt;td&gt; 4&lt;/td&gt;
+			     &lt;/tr&gt;
+			     &lt;tr&gt;
+			     	&lt;td&gt; 5 &lt;/td&gt;
+			     	&lt;td&gt; 6&lt;/td&gt;
+			     &lt;/tr&gt;
+			     &lt;tr&gt;
+			     	&lt;td&gt;7 &lt;/td&gt;
+			     	&lt;td&gt; 8&lt;/td&gt;
+			     &lt;/tr&gt;
+		
+			&lt;/table&gt;
+			`
+		
+			type fixtureStruct struct {
+				A string `json:"a" seltabl:"a" hSel:"tr:nth-child(1) td:nth-child(1)" dSel:"tr td:nth-child(1)" cSel:"$text"`
+				B string `json:"b" seltabl:"b" hSel:"tr:nth-child(1) td:nth-child(2)" dSel:"tr td:nth-child(2)" cSel:"$text"`
+			}
+		
+			func main() {
+				p, err := seltabl.NewFromString[fixtureStruct](fixture)
+				if err != nil {
+					panic(err)
+				}
+				for _, pp := range p {
+					fmt.Printf("pp %+v\n", pp)
+				}
+			}</span>
+
+</span></div><div class="anchor value-res" id="name-NewFromURL">	<input type='checkbox' class="fold" id="NewFromURL-fold-content"><label for="NewFromURL-fold-content"> <a href="../../../use/github.com/conneroisu/seltabl..NewFromURL.html">func</a> <a href="../../../src/github.com/conneroisu/seltabl/parse.go.html#line-156">NewFromURL</a>[T](url <a href="../../builtin.html#name-string">string</a>) ([]T, <a href="../../builtin.html#name-error">error</a>)</label><span id='NewFromURL-fold-content-docs' class="fold-docs">
+
+		Type Parameters:
+			T: <a href="../../builtin.html#name-any">any</a>
+
+<span class="md-text">		NewFromURL parses a URL into a slice of structs.</span>
+
+</span></div><div class="anchor value-res" id="name-SetStructField">	<input type='checkbox' class="fold" id="SetStructField-fold-content"><label for="SetStructField-fold-content"> <a href="../../../use/github.com/conneroisu/seltabl..SetStructField.html">func</a> <a href="../../../src/github.com/conneroisu/seltabl/reflect.go.html#line-15">SetStructField</a>[T](structPtr *T, fieldName <a href="../../builtin.html#name-string">string</a>, cellValue *<a href="../PuerkitoBio^56e6a/goquery.html">goquery</a>.<a href="../PuerkitoBio^56e6a/goquery.html#name-Selection">Selection</a>, selector <a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-error">error</a></label><span id='SetStructField-fold-content-docs' class="fold-docs">
+
+		Type Parameters:
+			T: <a href="../../builtin.html#name-any">any</a>
+
+<span class="md-text">		SetStructField sets a struct field to a value
+		It uses generics to specify the type of the struct
+		and the field name</span>
+
+</span></div></div>
+<div id="exported-constants"><span class="title">Package-Level Constants<span class="title-stat"><i> (total 5, none are exported)</i></span></span>
+
+	<input type='checkbox' class="showhide" id="unexported-constants-showhide"><i><label for="unexported-constants-showhide" class="show-inline">/* 5 unexporteds ... */</label><label for="unexported-constants-showhide" class="hide-inline">/* 5 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-attrSelector"><i>	<span class="nodocs"><a href="../../../use/github.com/conneroisu/seltabl..attrSelector^56c83.html">const</a> <a href="../../../src/github.com/conneroisu/seltabl/parse.go.html#line-16">attrSelector</a> = "@"</span></i></div><div class="anchor value-res hidden" id="name-cellSelectorTag"><i>	<span class="nodocs"><a href="../../../use/github.com/conneroisu/seltabl..cellSelectorTag^5b563.html">const</a> <a href="../../../src/github.com/conneroisu/seltabl/parse.go.html#line-20">cellSelectorTag</a> = "cSel"</span></i></div><div class="anchor value-res hidden" id="name-dataSelectorTag"><i>	<span class="nodocs"><a href="../../../use/github.com/conneroisu/seltabl..dataSelectorTag^8cf4a.html">const</a> <a href="../../../src/github.com/conneroisu/seltabl/parse.go.html#line-18">dataSelectorTag</a> = "dSel"</span></i></div><div class="anchor value-res hidden" id="name-headerSelectorTag"><i>	<span class="nodocs"><a href="../../../use/github.com/conneroisu/seltabl..headerSelectorTag^14a77.html">const</a> <a href="../../../src/github.com/conneroisu/seltabl/parse.go.html#line-19">headerSelectorTag</a> = "hSel"</span></i></div><div class="anchor value-res hidden" id="name-innerTextSelector"><i>	<span class="nodocs"><a href="../../../use/github.com/conneroisu/seltabl..innerTextSelector^18fdf.html">const</a> <a href="../../../src/github.com/conneroisu/seltabl/parse.go.html#line-15">innerTextSelector</a> = "$text"</span></i></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

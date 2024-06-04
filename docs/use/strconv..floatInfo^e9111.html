@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: strconv.floatInfo</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../pkg/strconv.html">strconv</a>.<a href="../src/strconv/ftoa.go.html#line-16">floatInfo</a></b></span>
+
+<span class="title">12 uses</span>
+
+	strconv (current package)
+		<a href="../src/strconv/atof.go.html#line-314">atof.go#L314</a>: func (d *decimal) floatBits(flt *<b>floatInfo</b>) (b uint64, overflow bool) {
+		<a href="../src/strconv/atof.go.html#line-499" class="path-duplicate">atof.go</a><a href="../src/strconv/atof.go.html#line-499">#L499</a>: func atofHex(s string, flt *<b>floatInfo</b>, mantissa uint64, exp int, neg, trunc bool) (float64, error) {
+		<a href="../src/strconv/ftoa.go.html#line-16">ftoa.go#L16</a>: type <b>floatInfo</b> struct {
+		<a href="../src/strconv/ftoa.go.html#line-22" class="path-duplicate">ftoa.go</a><a href="../src/strconv/ftoa.go.html#line-22">#L22</a>: var float32info = <b>floatInfo</b>{23, 8, -127}
+		<a href="../src/strconv/ftoa.go.html#line-23" class="path-duplicate">ftoa.go</a><a href="../src/strconv/ftoa.go.html#line-23">#L23</a>: var float64info = <b>floatInfo</b>{52, 11, -1023}
+		<a href="../src/strconv/ftoa.go.html#line-59" class="path-duplicate">ftoa.go</a><a href="../src/strconv/ftoa.go.html#line-59">#L59</a>: 	var flt *<b>floatInfo</b>
+		<a href="../src/strconv/ftoa.go.html#line-163" class="path-duplicate">ftoa.go</a><a href="../src/strconv/ftoa.go.html#line-163">#L163</a>: func bigFtoa(dst []byte, prec int, fmt byte, neg bool, mant uint64, exp int, flt *<b>floatInfo</b>) []byte {
+		<a href="../src/strconv/ftoa.go.html#line-236" class="path-duplicate">ftoa.go</a><a href="../src/strconv/ftoa.go.html#line-236">#L236</a>: func roundShortest(d *decimal, mant uint64, exp int, flt *<b>floatInfo</b>) {
+		<a href="../src/strconv/ftoa.go.html#line-467" class="path-duplicate">ftoa.go</a><a href="../src/strconv/ftoa.go.html#line-467">#L467</a>: func fmtB(dst []byte, neg bool, mant uint64, exp int, flt *<b>floatInfo</b>) []byte {
+		<a href="../src/strconv/ftoa.go.html#line-490" class="path-duplicate">ftoa.go</a><a href="../src/strconv/ftoa.go.html#line-490">#L490</a>: func fmtX(dst []byte, prec int, fmt byte, neg bool, mant uint64, exp int, flt *<b>floatInfo</b>) []byte {
+		<a href="../src/strconv/ftoaryu.go.html#line-227">ftoaryu.go#L227</a>: func ryuFtoaShortest(d *decimalSlice, mant uint64, exp int, flt *<b>floatInfo</b>) {
+		<a href="../src/strconv/ftoaryu.go.html#line-352" class="path-duplicate">ftoaryu.go</a><a href="../src/strconv/ftoaryu.go.html#line-352">#L352</a>: func computeBounds(mant uint64, exp int, flt *<b>floatInfo</b>) (lower, central, upper uint64, e2 int) {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: reflect.Type.common</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/reflect.html">reflect</a>.<a href="../src/reflect/type.go.html#line-39">Type</a>.<a href="../src/reflect/type.go.html#line-228">common</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">28 uses</span>
+
+	reflect (current package)
+		<a href="../src/reflect/makefunc.go.html#line-51">makefunc.go#L51</a>: 	t := typ.<b>common</b>()
+		<a href="../src/reflect/swapper.go.html#line-35">swapper.go#L35</a>: 	typ := v.Type().Elem().<b>common</b>()
+		<a href="../src/reflect/type.go.html#line-228">type.go#L228</a>: 	<b>common</b>() *abi.Type
+		<a href="../src/reflect/type.go.html#line-1254" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1254">#L1254</a>: 	return implements(u.<b>common</b>(), t.common())
+		<a href="../src/reflect/type.go.html#line-1261" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1261">#L1261</a>: 	uu := u.<b>common</b>()
+		<a href="../src/reflect/type.go.html#line-1269" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1269">#L1269</a>: 	return convertOp(u.<b>common</b>(), t.common()) != nil
+		<a href="../src/reflect/type.go.html#line-1596" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1596">#L1596</a>: 	typ := t.<b>common</b>()
+		<a href="../src/reflect/type.go.html#line-1659" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1659">#L1659</a>: 	ktyp := key.<b>common</b>()
+		<a href="../src/reflect/type.go.html#line-1660" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1660">#L1660</a>: 	etyp := elem.<b>common</b>()
+		<a href="../src/reflect/type.go.html#line-2082" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2082">#L2082</a>: 	typ := t.<b>common</b>()
+		<a href="../src/reflect/type.go.html#line-2409" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2409">#L2409</a>: 			t := st.<b>common</b>()
+		<a href="../src/reflect/type.go.html#line-2421" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2421">#L2421</a>: 			t := st.<b>common</b>()
+		<a href="../src/reflect/type.go.html#line-2550" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2550">#L2550</a>: 	resolveReflectType(field.Type.<b>common</b>()) // install in runtime
+		<a href="../src/reflect/type.go.html#line-2553" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2553">#L2553</a>: 		Typ:    field.Type.<b>common</b>(),
+		<a href="../src/reflect/type.go.html#line-2598" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2598">#L2598</a>: 	typ := elem.<b>common</b>()
+		<a href="../src/reflect/value.go.html#line-3227">value.go#L3227</a>: 	t := typ.<b>common</b>()
+		<a href="../src/reflect/value.go.html#line-3243" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3243">#L3243</a>: 	t := typ.<b>common</b>()
+		<a href="../src/reflect/value.go.html#line-3366" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3366">#L3366</a>: 	op := convertOp(t.<b>common</b>(), v.typ())
+		<a href="../src/reflect/value.go.html#line-3609" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3609">#L3609</a>: 	typ := t.<b>common</b>()
+		<a href="../src/reflect/value.go.html#line-3627" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3627">#L3627</a>: 	typ := t.<b>common</b>()
+		<a href="../src/reflect/value.go.html#line-3640" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3640">#L3640</a>: 	typ := t.<b>common</b>()
+		<a href="../src/reflect/value.go.html#line-3649" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3649">#L3649</a>: 	typ := t.<b>common</b>()
+		<a href="../src/reflect/value.go.html#line-3777" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3777">#L3777</a>: 	return Value{t.<b>common</b>(), h.Data, v.flag&amp;^(flagIndir|flagAddr|flagKindMask) | flag(Pointer)}
+		<a href="../src/reflect/value.go.html#line-3787" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3787">#L3787</a>: 	typ := t.<b>common</b>()
+		<a href="../src/reflect/value.go.html#line-3799" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3799">#L3799</a>: 	t := typ.<b>common</b>()
+		<a href="../src/reflect/value.go.html#line-3813" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3813">#L3813</a>: 	target := unsafe_New(typ.<b>common</b>())
+		<a href="../src/reflect/value.go.html#line-3818" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3818">#L3818</a>: 		ifaceE2I(typ.<b>common</b>(), x, target)
+		<a href="../src/reflect/value.go.html#line-3820" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3820">#L3820</a>: 	return Value{typ.<b>common</b>(), target, v.flag.ro() | flagIndir | flag(Interface)}
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

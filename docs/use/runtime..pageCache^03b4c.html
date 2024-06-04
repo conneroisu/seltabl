@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.pageCache</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/mpagecache.go.html#line-18">pageCache</a></b></span>
+
+<span class="title">14 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/mpagecache.go.html#line-12">mpagecache.go#L12</a>: const pageCachePages = 8 * unsafe.Sizeof(<b>pageCache</b>{}.cache)
+		<a href="../src/runtime/mpagecache.go.html#line-18" class="path-duplicate">mpagecache.go</a><a href="../src/runtime/mpagecache.go.html#line-18">#L18</a>: type <b>pageCache</b> struct {
+		<a href="../src/runtime/mpagecache.go.html#line-25" class="path-duplicate">mpagecache.go</a><a href="../src/runtime/mpagecache.go.html#line-25">#L25</a>: func (c *<b>pageCache</b>) empty() bool {
+		<a href="../src/runtime/mpagecache.go.html#line-37" class="path-duplicate">mpagecache.go</a><a href="../src/runtime/mpagecache.go.html#line-37">#L37</a>: func (c *<b>pageCache</b>) alloc(npages uintptr) (uintptr, uintptr) {
+		<a href="../src/runtime/mpagecache.go.html#line-57" class="path-duplicate">mpagecache.go</a><a href="../src/runtime/mpagecache.go.html#line-57">#L57</a>: func (c *<b>pageCache</b>) allocN(npages uintptr) (uintptr, uintptr) {
+		<a href="../src/runtime/mpagecache.go.html#line-78" class="path-duplicate">mpagecache.go</a><a href="../src/runtime/mpagecache.go.html#line-78">#L78</a>: func (c *<b>pageCache</b>) flush(p *pageAlloc) {
+		<a href="../src/runtime/mpagecache.go.html#line-107" class="path-duplicate">mpagecache.go</a><a href="../src/runtime/mpagecache.go.html#line-107">#L107</a>: 	*c = <b>pageCache</b>{}
+		<a href="../src/runtime/mpagecache.go.html#line-119" class="path-duplicate">mpagecache.go</a><a href="../src/runtime/mpagecache.go.html#line-119">#L119</a>: func (p *pageAlloc) allocToCache() <b>pageCache</b> {
+		<a href="../src/runtime/mpagecache.go.html#line-125" class="path-duplicate">mpagecache.go</a><a href="../src/runtime/mpagecache.go.html#line-125">#L125</a>: 		return <b>pageCache</b>{}
+		<a href="../src/runtime/mpagecache.go.html#line-127" class="path-duplicate">mpagecache.go</a><a href="../src/runtime/mpagecache.go.html#line-127">#L127</a>: 	c := <b>pageCache</b>{}
+		<a href="../src/runtime/mpagecache.go.html#line-137" class="path-duplicate">mpagecache.go</a><a href="../src/runtime/mpagecache.go.html#line-137">#L137</a>: 		c = <b>pageCache</b>{
+		<a href="../src/runtime/mpagecache.go.html#line-150" class="path-duplicate">mpagecache.go</a><a href="../src/runtime/mpagecache.go.html#line-150">#L150</a>: 			return <b>pageCache</b>{}
+		<a href="../src/runtime/mpagecache.go.html#line-154" class="path-duplicate">mpagecache.go</a><a href="../src/runtime/mpagecache.go.html#line-154">#L154</a>: 		c = <b>pageCache</b>{
+		<a href="../src/runtime/runtime2.go.html#line-655">runtime2.go#L655</a>: 	pcache      <b>pageCache</b>
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

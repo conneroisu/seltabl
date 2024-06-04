@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.mutex_unlocked</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/lock_futex.go.html#line-26">mutex_unlocked</a></b></span>
+
+<span class="title">9 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/lock_futex.go.html#line-26">lock_futex.go#L26</a>: 	<b>mutex_unlocked</b> = 0
+		<a href="../src/runtime/lock_futex.go.html#line-65" class="path-duplicate">lock_futex.go</a><a href="../src/runtime/lock_futex.go.html#line-65">#L65</a>: 	if v == <b>mutex_unlocked</b> {
+		<a href="../src/runtime/lock_futex.go.html#line-89" class="path-duplicate">lock_futex.go</a><a href="../src/runtime/lock_futex.go.html#line-89">#L89</a>: 			for l.key == <b>mutex_unlocked</b> {
+		<a href="../src/runtime/lock_futex.go.html#line-90" class="path-duplicate">lock_futex.go</a><a href="../src/runtime/lock_futex.go.html#line-90">#L90</a>: 				if atomic.Cas(key32(&amp;l.key), <b>mutex_unlocked</b>, wait) {
+		<a href="../src/runtime/lock_futex.go.html#line-100" class="path-duplicate">lock_futex.go</a><a href="../src/runtime/lock_futex.go.html#line-100">#L100</a>: 			for l.key == <b>mutex_unlocked</b> {
+		<a href="../src/runtime/lock_futex.go.html#line-101" class="path-duplicate">lock_futex.go</a><a href="../src/runtime/lock_futex.go.html#line-101">#L101</a>: 				if atomic.Cas(key32(&amp;l.key), <b>mutex_unlocked</b>, wait) {
+		<a href="../src/runtime/lock_futex.go.html#line-111" class="path-duplicate">lock_futex.go</a><a href="../src/runtime/lock_futex.go.html#line-111">#L111</a>: 		if v == <b>mutex_unlocked</b> {
+		<a href="../src/runtime/lock_futex.go.html#line-125" class="path-duplicate">lock_futex.go</a><a href="../src/runtime/lock_futex.go.html#line-125">#L125</a>: 	v := atomic.Xchg(key32(&amp;l.key), <b>mutex_unlocked</b>)
+		<a href="../src/runtime/lock_futex.go.html#line-126" class="path-duplicate">lock_futex.go</a><a href="../src/runtime/lock_futex.go.html#line-126">#L126</a>: 	if v == <b>mutex_unlocked</b> {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

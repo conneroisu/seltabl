@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: strings.TrimLeftFunc</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/strings.html">strings</a>.<a href="../src/strings/strings.go.html#line-796">TrimLeftFunc</a></b></span>
+
+<span class="title">7 uses</span>
+
+	strings (current package)
+		<a href="../src/strings/strings.go.html#line-796">strings.go#L796</a>: func <b>TrimLeftFunc</b>(s string, f func(rune) bool) string {
+		<a href="../src/strings/strings.go.html#line-820" class="path-duplicate">strings.go</a><a href="../src/strings/strings.go.html#line-820">#L820</a>: 	return TrimRightFunc(<b>TrimLeftFunc</b>(s, f), f)
+
+	<a href="../pkg/mime.html">mime</a>
+		<a href="../src/mime/mediatype.go.html#line-157">mediatype.go#L157</a>: 		v = strings.<b>TrimLeftFunc</b>(v, unicode.IsSpace)
+		<a href="../src/mime/mediatype.go.html#line-322" class="path-duplicate">mediatype.go</a><a href="../src/mime/mediatype.go.html#line-322">#L322</a>: 	rest = strings.<b>TrimLeftFunc</b>(v, unicode.IsSpace)
+		<a href="../src/mime/mediatype.go.html#line-328" class="path-duplicate">mediatype.go</a><a href="../src/mime/mediatype.go.html#line-328">#L328</a>: 	rest = strings.<b>TrimLeftFunc</b>(rest, unicode.IsSpace)
+		<a href="../src/mime/mediatype.go.html#line-335" class="path-duplicate">mediatype.go</a><a href="../src/mime/mediatype.go.html#line-335">#L335</a>: 	rest = strings.<b>TrimLeftFunc</b>(rest, unicode.IsSpace)
+		<a href="../src/mime/mediatype.go.html#line-340" class="path-duplicate">mediatype.go</a><a href="../src/mime/mediatype.go.html#line-340">#L340</a>: 	rest = strings.<b>TrimLeftFunc</b>(rest, unicode.IsSpace)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

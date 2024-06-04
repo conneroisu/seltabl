@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: github.com/conneroisu/seltabl/internal/errors</title>
+<link href="../../../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>errors</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../../../../index.html#pkg-github.com/conneroisu/seltabl/internal/errors">github.com/conneroisu/seltabl/internal/errors</a><i> (on <a href="https://pkg.go.dev/github.com/conneroisu/seltabl/internal/errors" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../../../../../dep/github.com/conneroisu/seltabl/internal/errors.html">4 packages</a>, and imported by <a href="../../../../../dep/github.com/conneroisu/seltabl/internal/errors.html#imported-by">one package</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<span class="nodocs">    <a href="../../../../../src/github.com/conneroisu/seltabl/internal/errors/selection.go.html">selection.go</a></span>
+	<span class="nodocs">    <a href="../../../../../src/github.com/conneroisu/seltabl/internal/errors/selector.go.html">selector.go</a></span></div>
+<div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (total 2, both are exported)</i></span></span>
+
+<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-SelectionNotFound" data-popularity="100">	<input type='checkbox' class="fold" id="SelectionNotFound-fold-content"><label for="SelectionNotFound-fold-content"> <a href="../../../../../use/github.com/conneroisu/seltabl/internal/errors..SelectionNotFound.html">type</a> <a href="../../../../../src/github.com/conneroisu/seltabl/internal/errors/selection.go.html#line-15">SelectionNotFound</a>[T] <i>(struct)</i></label><span id='SelectionNotFound-fold-content-docs' class="fold-docs">
+
+		Type Parameters:
+			T: <a href="../../../../builtin.html#name-any">any</a>
+
+<span class="md-text">		SelectionNotFound is returned when a header selector is not found
+		for a struct field
+		
+		It shows a generated golang stuct and highlights the header selector that was
+		used to find the header row which was not found.</span>
+
+		<input type='checkbox' class="fold" id="SelectionNotFound-fold-fields"><label for="SelectionNotFound-fold-fields">Fields (<i>total 3, all are exported</i>)</label><span id='SelectionNotFound-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../../../src/github.com/conneroisu/seltabl/internal/errors/selection.go.html#line-17">FieldName</a> <i><a href="../../../../builtin.html#name-string">string</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../src/github.com/conneroisu/seltabl/internal/errors/selection.go.html#line-18">SelectionQuery</a> <i><a href="../../../../builtin.html#name-string">string</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../src/github.com/conneroisu/seltabl/internal/errors/selection.go.html#line-16">Struct</a> <i>T</i></span></span></span>
+		<input type='checkbox' class="fold" id="SelectionNotFound-fold-methods"><label for="SelectionNotFound-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='SelectionNotFound-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="SelectionNotFound-fold-method-Error"><label for="SelectionNotFound-fold-method-Error">(*SelectionNotFound[T]) <a href="../../../../../src/github.com/conneroisu/seltabl/internal/errors/selection.go.html#line-98">Error</a>() <a href="../../../../builtin.html#name-string">string</a></label><span id='SelectionNotFound-fold-method-Error-docs' class="fold-docs">
+<span class="md-text">				Error returns a string representation of the error</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="SelectionNotFound-fold-impls"><label for="SelectionNotFound-fold-impls">Implements (<i>at least one exported</i>)</label><span id='SelectionNotFound-fold-impls-items' class="fold-items"><span>
+			*SelectionNotFound : <a href="../../../../builtin.html#name-error">error</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-SelectorNotFound" data-popularity="100">	<input type='checkbox' class="fold" id="SelectorNotFound-fold-content"><label for="SelectorNotFound-fold-content"> <a href="../../../../../use/github.com/conneroisu/seltabl/internal/errors..SelectorNotFound.html">type</a> <a href="../../../../../src/github.com/conneroisu/seltabl/internal/errors/selector.go.html#line-15">SelectorNotFound</a>[T] <i>(struct)</i></label><span id='SelectorNotFound-fold-content-docs' class="fold-docs">
+
+		Type Parameters:
+			T: <a href="../../../../builtin.html#name-any">any</a>
+
+<span class="md-text">		SelectionNotFound is returned when a header selector is not found
+		for a struct field
+		
+		It shows a generated golang stuct and highlights the header selector that was
+		used to find the header row which was not found.</span>
+
+		<input type='checkbox' class="fold" id="SelectorNotFound-fold-fields"><label for="SelectorNotFound-fold-fields">Fields (<i>total 3, all are exported</i>)</label><span id='SelectorNotFound-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../../../src/github.com/conneroisu/seltabl/internal/errors/selector.go.html#line-17">FieldName</a> <i><a href="../../../../builtin.html#name-string">string</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../src/github.com/conneroisu/seltabl/internal/errors/selector.go.html#line-18">Selector</a> <i><a href="../../../../builtin.html#name-string">string</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../../src/github.com/conneroisu/seltabl/internal/errors/selector.go.html#line-16">Struct</a> <i>T</i></span></span></span>
+		<input type='checkbox' class="fold" id="SelectorNotFound-fold-methods"><label for="SelectorNotFound-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='SelectorNotFound-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="SelectorNotFound-fold-method-Error"><label for="SelectorNotFound-fold-method-Error">(*SelectorNotFound[T]) <a href="../../../../../src/github.com/conneroisu/seltabl/internal/errors/selector.go.html#line-89">Error</a>() <a href="../../../../builtin.html#name-string">string</a></label><span id='SelectorNotFound-fold-method-Error-docs' class="fold-docs">
+<span class="md-text">				Error implements the error interface</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="SelectorNotFound-fold-impls"><label for="SelectorNotFound-fold-impls">Implements (<i>at least one exported</i>)</label><span id='SelectorNotFound-fold-impls-items' class="fold-items"><span>
+			*SelectorNotFound : <a href="../../../../builtin.html#name-error">error</a></span></span>
+
+</span></div></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 4, none are exported)</i></span></span>
+
+	<input type='checkbox' class="showhide" id="unexported-functions-showhide"><i><label for="unexported-functions-showhide" class="show-inline">/* 4 unexporteds ... */</label><label for="unexported-functions-showhide" class="hide-inline">/* 4 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-genStructKeyString"><i>	<input type='checkbox' class="fold" id="genStructKeyString-fold-content"><label for="genStructKeyString-fold-content"> <a href="../../../../../use/github.com/conneroisu/seltabl/internal/errors..genStructKeyString^b6216.html">func</a> <a href="../../../../../src/github.com/conneroisu/seltabl/internal/errors/selection.go.html#line-63">genStructKeyString</a>(field <a href="../../../../reflect.html">reflect</a>.<a href="../../../../reflect.html#name-StructField">StructField</a>, highlightSelector <a href="../../../../builtin.html#name-string">string</a>) (*<a href="../../../../builtin.html#name-string">string</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='genStructKeyString-fold-content-docs' class="fold-docs">
+<span class="md-text">		genStructKeyString returns a string representation of the struct tag
+		for a struct field.
+		
+		It is used by the HeaderNotFoundError struct.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-genStructTagString"><i>	<input type='checkbox' class="fold" id="genStructTagString-fold-content"><label for="genStructTagString-fold-content"> <a href="../../../../../use/github.com/conneroisu/seltabl/internal/errors..genStructTagString^62040.html">func</a> <a href="../../../../../src/github.com/conneroisu/seltabl/internal/errors/selector.go.html#line-57">genStructTagString</a>(field <a href="../../../../reflect.html">reflect</a>.<a href="../../../../reflect.html#name-StructField">StructField</a>, highlightSelector <a href="../../../../builtin.html#name-string">string</a>) (*<a href="../../../../builtin.html#name-string">string</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='genStructTagString-fold-content-docs' class="fold-docs">
+<span class="md-text">		genStructTagString returns a string representation of the struct tag
+		for a struct field.
+		
+		It is used by the HeaderNotFoundError struct.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-selectionStructHighlight"><i>	<input type='checkbox' class="fold" id="selectionStructHighlight-fold-content"><label for="selectionStructHighlight-fold-content"> <a href="../../../../../use/github.com/conneroisu/seltabl/internal/errors..selectionStructHighlight^cc2b3.html">func</a> <a href="../../../../../src/github.com/conneroisu/seltabl/internal/errors/selection.go.html#line-30">selectionStructHighlight</a>(structPtr interface{}, selector <a href="../../../../builtin.html#name-string">string</a>) (<a href="../../../../builtin.html#name-string">string</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='selectionStructHighlight-fold-content-docs' class="fold-docs">
+<span class="md-text">		selectionStructHighlight returns a string representation of the golang struct
+		and highlights the selector that was used to find the header row which was
+		not found.
+		
+		It is used by the HeaderNotFoundError struct.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-selectorStructHighlight"><i>	<input type='checkbox' class="fold" id="selectorStructHighlight-fold-content"><label for="selectorStructHighlight-fold-content"> <a href="../../../../../use/github.com/conneroisu/seltabl/internal/errors..selectorStructHighlight^292c5.html">func</a> <a href="../../../../../src/github.com/conneroisu/seltabl/internal/errors/selector.go.html#line-26">selectorStructHighlight</a>(structPtr interface{}, selector <a href="../../../../builtin.html#name-string">string</a>) (<a href="../../../../builtin.html#name-string">string</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='selectorStructHighlight-fold-content-docs' class="fold-docs">
+<span class="md-text">		genStructReprAndHighlight returns a string representation of the golang struct
+		and highlights the selector that was used to find the header row which was
+		not found.
+		
+		It is used by the HeaderNotFoundError struct.</span>
+
+</span></i></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

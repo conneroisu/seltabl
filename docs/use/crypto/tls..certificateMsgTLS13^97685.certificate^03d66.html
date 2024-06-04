@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/tls.certificateMsgTLS13.certificate</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/crypto/tls.html">crypto/tls</a>.<a href="../../src/crypto/tls/handshake_messages.go.html#line-1355">certificateMsgTLS13</a>.<a href="../../src/crypto/tls/handshake_messages.go.html#line-1357">certificate</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">13 uses</span>
+
+	crypto/tls (current package)
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-523">handshake_client_tls13.go#L523</a>: 	if len(certMsg.<b>certificate</b>.Certificate) == 0 {
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-528" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-528">#L528</a>: 	c.scts = certMsg.<b>certificate</b>.SignedCertificateTimestamps
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-529" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-529">#L529</a>: 	c.ocspResponse = certMsg.<b>certificate</b>.OCSPStaple
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-531" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-531">#L531</a>: 	if err := c.verifyServerCertificate(certMsg.<b>certificate</b>.Certificate); err != nil {
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-646" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-646">#L646</a>: 	certMsg.<b>certificate</b> = *cert
+		<a href="../../src/crypto/tls/handshake_messages.go.html#line-1357">handshake_messages.go#L1357</a>: 	<b>certificate</b>  Certificate
+		<a href="../../src/crypto/tls/handshake_messages.go.html#line-1372" class="path-duplicate">handshake_messages.go</a><a href="../../src/crypto/tls/handshake_messages.go.html#line-1372">#L1372</a>: 		certificate := m.<b>certificate</b>
+		<a href="../../src/crypto/tls/handshake_messages.go.html#line-1431" class="path-duplicate">handshake_messages.go</a><a href="../../src/crypto/tls/handshake_messages.go.html#line-1431">#L1431</a>: 		!unmarshalCertificate(&amp;s, &amp;m.<b>certificate</b>) ||
+		<a href="../../src/crypto/tls/handshake_messages.go.html#line-1436" class="path-duplicate">handshake_messages.go</a><a href="../../src/crypto/tls/handshake_messages.go.html#line-1436">#L1436</a>: 	m.scts = m.<b>certificate</b>.SignedCertificateTimestamps != nil
+		<a href="../../src/crypto/tls/handshake_messages.go.html#line-1437" class="path-duplicate">handshake_messages.go</a><a href="../../src/crypto/tls/handshake_messages.go.html#line-1437">#L1437</a>: 	m.ocspStapling = m.<b>certificate</b>.OCSPStaple != nil
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-692">handshake_server_tls13.go#L692</a>: 	certMsg.<b>certificate</b> = *hs.cert
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-915" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-915">#L915</a>: 	if err := c.processCertsFromClient(certMsg.<b>certificate</b>); err != nil {
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-926" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-926">#L926</a>: 	if len(certMsg.<b>certificate</b>.Certificate) != 0 {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

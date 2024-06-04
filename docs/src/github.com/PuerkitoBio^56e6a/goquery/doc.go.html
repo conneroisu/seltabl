@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: doc.go in package github.com/PuerkitoBio/goquery</title>
+<link href="../../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	doc.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../pkg/github.com/PuerkitoBio^56e6a/goquery.html">github.com/PuerkitoBio/goquery</a>
+</code></pre>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="comment">// Copyright (c) 2012-2016, Martin Angers &amp; Contributors</span></code></span>
+<span class="codeline" id="line-2"><code><span class="comment">// All rights reserved.</span></code></span>
+<span class="codeline" id="line-3"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-4"><code><span class="comment">// Redistribution and use in source and binary forms, with or without modification,</span></code></span>
+<span class="codeline" id="line-5"><code><span class="comment">// are permitted provided that the following conditions are met:</span></code></span>
+<span class="codeline" id="line-6"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-7"><code><span class="comment">// * Redistributions of source code must retain the above copyright notice,</span></code></span>
+<span class="codeline" id="line-8"><code><span class="comment">// this list of conditions and the following disclaimer.</span></code></span>
+<span class="codeline" id="line-9"><code><span class="comment">// * Redistributions in binary form must reproduce the above copyright notice,</span></code></span>
+<span class="codeline" id="line-10"><code><span class="comment">// this list of conditions and the following disclaimer in the documentation and/or</span></code></span>
+<span class="codeline" id="line-11"><code><span class="comment">// other materials provided with the distribution.</span></code></span>
+<span class="codeline" id="line-12"><code><span class="comment">// * Neither the name of the author nor the names of its contributors may be used to</span></code></span>
+<span class="codeline" id="line-13"><code><span class="comment">// endorse or promote products derived from this software without specific prior written permission.</span></code></span>
+<span class="codeline" id="line-14"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-15"><code><span class="comment">// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS</span></code></span>
+<span class="codeline" id="line-16"><code><span class="comment">// OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY</span></code></span>
+<span class="codeline" id="line-17"><code><span class="comment">// AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR</span></code></span>
+<span class="codeline" id="line-18"><code><span class="comment">// CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL</span></code></span>
+<span class="codeline" id="line-19"><code><span class="comment">// DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,</span></code></span>
+<span class="codeline" id="line-20"><code><span class="comment">// DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,</span></code></span>
+<span class="codeline" id="line-21"><code><span class="comment">// WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY</span></code></span>
+<span class="codeline" id="line-22"><code><span class="comment">// WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span></code></span>
+<span class="codeline" id="line-23"><code></code></span>
+<div class="anchor" id="doc"><span class="codeline" id="line-24"><code><span class="comment">/*</span></code></span>
+<span class="codeline" id="line-25"><code><span class="comment">Package goquery implements features similar to jQuery, including the chainable</span></code></span>
+<span class="codeline" id="line-26"><code><span class="comment">syntax, to manipulate and query an HTML document.</span></code></span>
+<span class="codeline" id="line-27"><code></code></span>
+<span class="codeline" id="line-28"><code><span class="comment">It brings a syntax and a set of features similar to jQuery to the Go language.</span></code></span>
+<span class="codeline" id="line-29"><code><span class="comment">It is based on Go's net/html package and the CSS Selector library cascadia.</span></code></span>
+<span class="codeline" id="line-30"><code><span class="comment">Since the net/html parser returns nodes, and not a full-featured DOM</span></code></span>
+<span class="codeline" id="line-31"><code><span class="comment">tree, jQuery's stateful manipulation functions (like height(), css(), detach())</span></code></span>
+<span class="codeline" id="line-32"><code><span class="comment">have been left off.</span></code></span>
+<span class="codeline" id="line-33"><code></code></span>
+<span class="codeline" id="line-34"><code><span class="comment">Also, because the net/html parser requires UTF-8 encoding, so does goquery: it is</span></code></span>
+<span class="codeline" id="line-35"><code><span class="comment">the caller's responsibility to ensure that the source document provides UTF-8 encoded HTML.</span></code></span>
+<span class="codeline" id="line-36"><code><span class="comment">See the repository's wiki for various options on how to do this.</span></code></span>
+<span class="codeline" id="line-37"><code></code></span>
+<span class="codeline" id="line-38"><code><span class="comment">Syntax-wise, it is as close as possible to jQuery, with the same method names when</span></code></span>
+<span class="codeline" id="line-39"><code><span class="comment">possible, and that warm and fuzzy chainable interface. jQuery being the</span></code></span>
+<span class="codeline" id="line-40"><code><span class="comment">ultra-popular library that it is, writing a similar HTML-manipulating</span></code></span>
+<span class="codeline" id="line-41"><code><span class="comment">library was better to follow its API than to start anew (in the same spirit as</span></code></span>
+<span class="codeline" id="line-42"><code><span class="comment">Go's fmt package), even though some of its methods are less than intuitive (looking</span></code></span>
+<span class="codeline" id="line-43"><code><span class="comment">at you, index()...).</span></code></span>
+<span class="codeline" id="line-44"><code></code></span>
+<span class="codeline" id="line-45"><code><span class="comment">It is hosted on GitHub, along with additional documentation in the README.md</span></code></span>
+<span class="codeline" id="line-46"><code><span class="comment">file: https://github.com/puerkitobio/goquery</span></code></span>
+<span class="codeline" id="line-47"><code></code></span>
+<span class="codeline" id="line-48"><code><span class="comment">Please note that because of the net/html dependency, goquery requires Go1.1+.</span></code></span>
+<span class="codeline" id="line-49"><code></code></span>
+<span class="codeline" id="line-50"><code><span class="comment">The various methods are split into files based on the category of behavior.</span></code></span>
+<span class="codeline" id="line-51"><code><span class="comment">The three dots (...) indicate that various "overloads" are available.</span></code></span>
+<span class="codeline" id="line-52"><code></code></span>
+<span class="codeline" id="line-53"><code><span class="comment">* array.go : array-like positional manipulation of the selection.</span></code></span>
+<span class="codeline" id="line-54"><code><span class="comment">    - Eq()</span></code></span>
+<span class="codeline" id="line-55"><code><span class="comment">    - First()</span></code></span>
+<span class="codeline" id="line-56"><code><span class="comment">    - Get()</span></code></span>
+<span class="codeline" id="line-57"><code><span class="comment">    - Index...()</span></code></span>
+<span class="codeline" id="line-58"><code><span class="comment">    - Last()</span></code></span>
+<span class="codeline" id="line-59"><code><span class="comment">    - Slice()</span></code></span>
+<span class="codeline" id="line-60"><code></code></span>
+<span class="codeline" id="line-61"><code><span class="comment">* expand.go : methods that expand or augment the selection's set.</span></code></span>
+<span class="codeline" id="line-62"><code><span class="comment">    - Add...()</span></code></span>
+<span class="codeline" id="line-63"><code><span class="comment">    - AndSelf()</span></code></span>
+<span class="codeline" id="line-64"><code><span class="comment">    - Union(), which is an alias for AddSelection()</span></code></span>
+<span class="codeline" id="line-65"><code></code></span>
+<span class="codeline" id="line-66"><code><span class="comment">* filter.go : filtering methods, that reduce the selection's set.</span></code></span>
+<span class="codeline" id="line-67"><code><span class="comment">    - End()</span></code></span>
+<span class="codeline" id="line-68"><code><span class="comment">    - Filter...()</span></code></span>
+<span class="codeline" id="line-69"><code><span class="comment">    - Has...()</span></code></span>
+<span class="codeline" id="line-70"><code><span class="comment">    - Intersection(), which is an alias of FilterSelection()</span></code></span>
+<span class="codeline" id="line-71"><code><span class="comment">    - Not...()</span></code></span>
+<span class="codeline" id="line-72"><code></code></span>
+<span class="codeline" id="line-73"><code><span class="comment">* iteration.go : methods to loop over the selection's nodes.</span></code></span>
+<span class="codeline" id="line-74"><code><span class="comment">    - Each()</span></code></span>
+<span class="codeline" id="line-75"><code><span class="comment">    - EachWithBreak()</span></code></span>
+<span class="codeline" id="line-76"><code><span class="comment">    - Map()</span></code></span>
+<span class="codeline" id="line-77"><code></code></span>
+<span class="codeline" id="line-78"><code><span class="comment">* manipulation.go : methods for modifying the document</span></code></span>
+<span class="codeline" id="line-79"><code><span class="comment">    - After...()</span></code></span>
+<span class="codeline" id="line-80"><code><span class="comment">    - Append...()</span></code></span>
+<span class="codeline" id="line-81"><code><span class="comment">    - Before...()</span></code></span>
+<span class="codeline" id="line-82"><code><span class="comment">    - Clone()</span></code></span>
+<span class="codeline" id="line-83"><code><span class="comment">    - Empty()</span></code></span>
+<span class="codeline" id="line-84"><code><span class="comment">    - Prepend...()</span></code></span>
+<span class="codeline" id="line-85"><code><span class="comment">    - Remove...()</span></code></span>
+<span class="codeline" id="line-86"><code><span class="comment">    - ReplaceWith...()</span></code></span>
+<span class="codeline" id="line-87"><code><span class="comment">    - Unwrap()</span></code></span>
+<span class="codeline" id="line-88"><code><span class="comment">    - Wrap...()</span></code></span>
+<span class="codeline" id="line-89"><code><span class="comment">    - WrapAll...()</span></code></span>
+<span class="codeline" id="line-90"><code><span class="comment">    - WrapInner...()</span></code></span>
+<span class="codeline" id="line-91"><code></code></span>
+<span class="codeline" id="line-92"><code><span class="comment">* property.go : methods that inspect and get the node's properties values.</span></code></span>
+<span class="codeline" id="line-93"><code><span class="comment">    - Attr*(), RemoveAttr(), SetAttr()</span></code></span>
+<span class="codeline" id="line-94"><code><span class="comment">    - AddClass(), HasClass(), RemoveClass(), ToggleClass()</span></code></span>
+<span class="codeline" id="line-95"><code><span class="comment">    - Html()</span></code></span>
+<span class="codeline" id="line-96"><code><span class="comment">    - Length()</span></code></span>
+<span class="codeline" id="line-97"><code><span class="comment">    - Size(), which is an alias for Length()</span></code></span>
+<span class="codeline" id="line-98"><code><span class="comment">    - Text()</span></code></span>
+<span class="codeline" id="line-99"><code></code></span>
+<span class="codeline" id="line-100"><code><span class="comment">* query.go : methods that query, or reflect, a node's identity.</span></code></span>
+<span class="codeline" id="line-101"><code><span class="comment">    - Contains()</span></code></span>
+<span class="codeline" id="line-102"><code><span class="comment">    - Is...()</span></code></span>
+<span class="codeline" id="line-103"><code></code></span>
+<span class="codeline" id="line-104"><code><span class="comment">* traversal.go : methods to traverse the HTML document tree.</span></code></span>
+<span class="codeline" id="line-105"><code><span class="comment">    - Children...()</span></code></span>
+<span class="codeline" id="line-106"><code><span class="comment">    - Contents()</span></code></span>
+<span class="codeline" id="line-107"><code><span class="comment">    - Find...()</span></code></span>
+<span class="codeline" id="line-108"><code><span class="comment">    - Next...()</span></code></span>
+<span class="codeline" id="line-109"><code><span class="comment">    - Parent[s]...()</span></code></span>
+<span class="codeline" id="line-110"><code><span class="comment">    - Prev...()</span></code></span>
+<span class="codeline" id="line-111"><code><span class="comment">    - Siblings...()</span></code></span>
+<span class="codeline" id="line-112"><code></code></span>
+<span class="codeline" id="line-113"><code><span class="comment">* type.go : definition of the types exposed by goquery.</span></code></span>
+<span class="codeline" id="line-114"><code><span class="comment">    - Document</span></code></span>
+<span class="codeline" id="line-115"><code><span class="comment">    - Selection</span></code></span>
+<span class="codeline" id="line-116"><code><span class="comment">    - Matcher</span></code></span>
+<span class="codeline" id="line-117"><code></code></span>
+<span class="codeline" id="line-118"><code><span class="comment">* utilities.go : definition of helper functions (and not methods on a *Selection)</span></code></span>
+<span class="codeline" id="line-119"><code><span class="comment">that are not part of jQuery, but are useful to goquery.</span></code></span>
+<span class="codeline" id="line-120"><code><span class="comment">    - NodeName</span></code></span>
+<span class="codeline" id="line-121"><code><span class="comment">    - OuterHtml</span></code></span>
+<span class="codeline" id="line-122"><code><span class="comment">*/</span></code></span></div><span class="codeline" id="line-123"><code><span class="keyword">package</span> goquery</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

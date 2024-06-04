@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: golang.org/x/net/html.parser</title>
+<link href="../../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../../../pkg/golang.org/x/net/html.html">golang.org/x/net/html</a>.<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-18">parser</a></b></span>
+
+<span class="title">55 uses</span>
+
+	golang.org/x/net/html (current package)
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-18">parse.go#L18</a>: type <b>parser</b> struct {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-54" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-54">#L54</a>: func (p *<b>parser</b>) top() *Node {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-99" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-99">#L99</a>: func (p *<b>parser</b>) popUntil(s scope, matchTags ...a.Atom) bool {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-110" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-110">#L110</a>: func (p *<b>parser</b>) indexOfElementInScope(s scope, matchTags ...a.Atom) int {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-156" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-156">#L156</a>: func (p *<b>parser</b>) elementInScope(s scope, matchTags ...a.Atom) bool {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-162" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-162">#L162</a>: func (p *<b>parser</b>) clearStackToContext(s scope) {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-192" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-192">#L192</a>: func (p *<b>parser</b>) parseGenericRawTextElement() {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-201" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-201">#L201</a>: func (p *<b>parser</b>) generateImpliedEndTags(exceptions ...string) {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-226" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-226">#L226</a>: func (p *<b>parser</b>) addChild(n *Node) {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-240" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-240">#L240</a>: func (p *<b>parser</b>) shouldFosterParent() bool {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-252" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-252">#L252</a>: func (p *<b>parser</b>) fosterParent(n *Node) {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-300" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-300">#L300</a>: func (p *<b>parser</b>) addText(text string) {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-325" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-325">#L325</a>: func (p *<b>parser</b>) addElement() {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-335" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-335">#L335</a>: func (p *<b>parser</b>) addFormattingElement() {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-382" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-382">#L382</a>: func (p *<b>parser</b>) clearActiveFormattingElements() {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-391" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-391">#L391</a>: func (p *<b>parser</b>) reconstructActiveFormattingElements() {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-420" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-420">#L420</a>: func (p *<b>parser</b>) acknowledgeSelfClosingTag() {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-428" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-428">#L428</a>: type insertionMode func(*<b>parser</b>) bool
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-433" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-433">#L433</a>: func (p *<b>parser</b>) setOriginalIM() {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-441" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-441">#L441</a>: func (p *<b>parser</b>) resetInsertionMode() {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-515" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-515">#L515</a>: func initialIM(p *<b>parser</b>) bool {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-542" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-542">#L542</a>: func beforeHTMLIM(p *<b>parser</b>) bool {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-580" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-580">#L580</a>: func beforeHeadIM(p *<b>parser</b>) bool {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-623" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-623">#L623</a>: func inHeadIM(p *<b>parser</b>) bool {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-738" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-738">#L738</a>: func inHeadNoscriptIM(p *<b>parser</b>) bool {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-787" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-787">#L787</a>: func afterHeadIM(p *<b>parser</b>) bool {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-864" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-864">#L864</a>: func inBodyIM(p *<b>parser</b>) bool {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1210" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1210">#L1210</a>: func (p *<b>parser</b>) inBodyEndTagFormatting(tagAtom a.Atom, tagName string) {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1366" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1366">#L1366</a>: func (p *<b>parser</b>) inBodyEndTagOther(tagAtom a.Atom, tagName string) {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1387" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1387">#L1387</a>: func textIM(p *<b>parser</b>) bool {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1416" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1416">#L1416</a>: func inTableIM(p *<b>parser</b>) bool {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1523" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1523">#L1523</a>: func inCaptionIM(p *<b>parser</b>) bool {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1567" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1567">#L1567</a>: func inColumnGroupIM(p *<b>parser</b>) bool {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1626" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1626">#L1626</a>: func inTableBodyIM(p *<b>parser</b>) bool {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1678" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1678">#L1678</a>: func inRowIM(p *<b>parser</b>) bool {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1729" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1729">#L1729</a>: func inCellIM(p *<b>parser</b>) bool {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1779" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1779">#L1779</a>: func inSelectIM(p *<b>parser</b>) bool {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1864" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1864">#L1864</a>: func inSelectInTableIM(p *<b>parser</b>) bool {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1891" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1891">#L1891</a>: func inTemplateIM(p *<b>parser</b>) bool {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1957" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1957">#L1957</a>: func afterBodyIM(p *<b>parser</b>) bool {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1995" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-1995">#L1995</a>: func inFramesetIM(p *<b>parser</b>) bool {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2045" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2045">#L2045</a>: func afterFramesetIM(p *<b>parser</b>) bool {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2084" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2084">#L2084</a>: func afterAfterBodyIM(p *<b>parser</b>) bool {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2113" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2113">#L2113</a>: func afterAfterFramesetIM(p *<b>parser</b>) bool {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2148" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2148">#L2148</a>: func ignoreTheRemainingTokens(p *<b>parser</b>) bool {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2155" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2155">#L2155</a>: func parseForeignContent(p *<b>parser</b>) bool {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2238" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2238">#L2238</a>: func (p *<b>parser</b>) adjustedCurrentNode() *Node {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2246" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2246">#L2246</a>: func (p *<b>parser</b>) inForeignContent() bool {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2276" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2276">#L2276</a>: func (p *<b>parser</b>) parseImpliedToken(t TokenType, dataAtom a.Atom, data string) {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2290" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2290">#L2290</a>: func (p *<b>parser</b>) parseCurrentToken() {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2311" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2311">#L2311</a>: func (p *<b>parser</b>) parse() error {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2357" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2357">#L2357</a>: type ParseOption func(p *<b>parser</b>)
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2364" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2364">#L2364</a>: 	return func(p *<b>parser</b>) {
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2371" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2371">#L2371</a>: 	p := &amp;<b>parser</b>{
+		<a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2406" class="path-duplicate">parse.go</a><a href="../../../../src/golang.org/x/net/html/parse.go.html#line-2406">#L2406</a>: 	p := &amp;<b>parser</b>{
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

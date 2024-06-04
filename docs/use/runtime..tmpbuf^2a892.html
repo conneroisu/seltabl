@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.tmpbuf</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">var <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/heapdump.go.html#line-69">tmpbuf</a></b></span>
+
+<span class="title">14 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/heapdump.go.html#line-69">heapdump.go#L69</a>: var <b>tmpbuf</b> []byte
+		<a href="../src/runtime/heapdump.go.html#line-709" class="path-duplicate">heapdump.go</a><a href="../src/runtime/heapdump.go.html#line-709">#L709</a>: 	if <b>tmpbuf</b> != nil {
+		<a href="../src/runtime/heapdump.go.html#line-710" class="path-duplicate">heapdump.go</a><a href="../src/runtime/heapdump.go.html#line-710">#L710</a>: 		sysFree(unsafe.Pointer(&amp;<b>tmpbuf</b>[0]), uintptr(len(<b>tmpbuf</b>)), &amp;memstats.other_sys)
+		<a href="../src/runtime/heapdump.go.html#line-711" class="path-duplicate">heapdump.go</a><a href="../src/runtime/heapdump.go.html#line-711">#L711</a>: 		<b>tmpbuf</b> = nil
+		<a href="../src/runtime/heapdump.go.html#line-726" class="path-duplicate">heapdump.go</a><a href="../src/runtime/heapdump.go.html#line-726">#L726</a>: 	if uintptr(len(<b>tmpbuf</b>)) &lt; nptr/8+1 {
+		<a href="../src/runtime/heapdump.go.html#line-727" class="path-duplicate">heapdump.go</a><a href="../src/runtime/heapdump.go.html#line-727">#L727</a>: 		if <b>tmpbuf</b> != nil {
+		<a href="../src/runtime/heapdump.go.html#line-728" class="path-duplicate">heapdump.go</a><a href="../src/runtime/heapdump.go.html#line-728">#L728</a>: 			sysFree(unsafe.Pointer(&amp;<b>tmpbuf</b>[0]), uintptr(len(<b>tmpbuf</b>)), &amp;memstats.other_sys)
+		<a href="../src/runtime/heapdump.go.html#line-735" class="path-duplicate">heapdump.go</a><a href="../src/runtime/heapdump.go.html#line-735">#L735</a>: 		<b>tmpbuf</b> = (*[1 &lt;&lt; 30]byte)(p)[:n]
+		<a href="../src/runtime/heapdump.go.html#line-739" class="path-duplicate">heapdump.go</a><a href="../src/runtime/heapdump.go.html#line-739">#L739</a>: 		<b>tmpbuf</b>[i] = 0
+		<a href="../src/runtime/heapdump.go.html#line-750" class="path-duplicate">heapdump.go</a><a href="../src/runtime/heapdump.go.html#line-750">#L750</a>: 			<b>tmpbuf</b>[i/8] |= 1 &lt;&lt; (i % 8)
+		<a href="../src/runtime/heapdump.go.html#line-761" class="path-duplicate">heapdump.go</a><a href="../src/runtime/heapdump.go.html#line-761">#L761</a>: 			<b>tmpbuf</b>[i/8] |= 1 &lt;&lt; (i % 8)
+		<a href="../src/runtime/heapdump.go.html#line-764" class="path-duplicate">heapdump.go</a><a href="../src/runtime/heapdump.go.html#line-764">#L764</a>: 	return bitvector{int32(nptr), &amp;<b>tmpbuf</b>[0]}
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.g.waiting</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/runtime2.go.html#line-422">g</a>.<a href="../src/runtime/runtime2.go.html#line-505">waiting</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">18 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/chan.go.html#line-251">chan.go#L251</a>: 	gp.<b>waiting</b> = mysg
+		<a href="../src/runtime/chan.go.html#line-267" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-267">#L267</a>: 	if mysg != gp.<b>waiting</b> {
+		<a href="../src/runtime/chan.go.html#line-270" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-270">#L270</a>: 	gp.<b>waiting</b> = nil
+		<a href="../src/runtime/chan.go.html#line-572" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-572">#L572</a>: 	gp.<b>waiting</b> = mysg
+		<a href="../src/runtime/chan.go.html#line-586" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-586">#L586</a>: 	if mysg != gp.<b>waiting</b> {
+		<a href="../src/runtime/chan.go.html#line-589" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-589">#L589</a>: 	gp.<b>waiting</b> = nil
+		<a href="../src/runtime/runtime2.go.html#line-505">runtime2.go#L505</a>: 	<b>waiting</b>       *sudog         // sudog structures this g is waiting on (that have a valid elem ptr); in lock order
+		<a href="../src/runtime/select.go.html#line-84">select.go#L84</a>: 	for sg := gp.<b>waiting</b>; sg != nil; sg = sg.waitlink {
+		<a href="../src/runtime/select.go.html#line-290" class="path-duplicate">select.go</a><a href="../src/runtime/select.go.html#line-290">#L290</a>: 	if gp.<b>waiting</b> != nil {
+		<a href="../src/runtime/select.go.html#line-293" class="path-duplicate">select.go</a><a href="../src/runtime/select.go.html#line-293">#L293</a>: 	nextp = &amp;gp.<b>waiting</b>
+		<a href="../src/runtime/select.go.html#line-343" class="path-duplicate">select.go</a><a href="../src/runtime/select.go.html#line-343">#L343</a>: 	sglist = gp.<b>waiting</b>
+		<a href="../src/runtime/select.go.html#line-345" class="path-duplicate">select.go</a><a href="../src/runtime/select.go.html#line-345">#L345</a>: 	for sg1 := gp.<b>waiting</b>; sg1 != nil; sg1 = sg1.waitlink {
+		<a href="../src/runtime/select.go.html#line-350" class="path-duplicate">select.go</a><a href="../src/runtime/select.go.html#line-350">#L350</a>: 	gp.<b>waiting</b> = nil
+		<a href="../src/runtime/stack.go.html#line-778">stack.go#L778</a>: 	for s := gp.<b>waiting</b>; s != nil; s = s.waitlink {
+		<a href="../src/runtime/stack.go.html#line-791" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-791">#L791</a>: 	for sg := gp.<b>waiting</b>; sg != nil; sg = sg.waitlink {
+		<a href="../src/runtime/stack.go.html#line-804" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-804">#L804</a>: 	if gp.<b>waiting</b> == nil {
+		<a href="../src/runtime/stack.go.html#line-810" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-810">#L810</a>: 	for sg := gp.<b>waiting</b>; sg != nil; sg = sg.waitlink {
+		<a href="../src/runtime/stack.go.html#line-842" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-842">#L842</a>: 	for sg := gp.<b>waiting</b>; sg != nil; sg = sg.waitlink {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

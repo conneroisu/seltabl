@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: compress/flate.decompressor.copyLen</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/compress/flate.html">compress/flate</a>.<a href="../../src/compress/flate/inflate.go.html#line-267">decompressor</a>.<a href="../../src/compress/flate/inflate.go.html#line-298">copyLen</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">11 uses</span>
+
+	compress/flate (current package)
+		<a href="../../src/compress/flate/inflate.go.html#line-298">inflate.go#L298</a>: 	<b>copyLen</b>   int
+		<a href="../../src/compress/flate/inflate.go.html#line-599" class="path-duplicate">inflate.go</a><a href="../../src/compress/flate/inflate.go.html#line-599">#L599</a>: 		f.<b>copyLen</b>, f.copyDist = length, dist
+		<a href="../../src/compress/flate/inflate.go.html#line-606" class="path-duplicate">inflate.go</a><a href="../../src/compress/flate/inflate.go.html#line-606">#L606</a>: 		cnt := f.dict.tryWriteCopy(f.copyDist, f.<b>copyLen</b>)
+		<a href="../../src/compress/flate/inflate.go.html#line-608" class="path-duplicate">inflate.go</a><a href="../../src/compress/flate/inflate.go.html#line-608">#L608</a>: 			cnt = f.dict.writeCopy(f.copyDist, f.<b>copyLen</b>)
+		<a href="../../src/compress/flate/inflate.go.html#line-610" class="path-duplicate">inflate.go</a><a href="../../src/compress/flate/inflate.go.html#line-610">#L610</a>: 		f.<b>copyLen</b> -= cnt
+		<a href="../../src/compress/flate/inflate.go.html#line-612" class="path-duplicate">inflate.go</a><a href="../../src/compress/flate/inflate.go.html#line-612">#L612</a>: 		if f.dict.availWrite() == 0 || f.<b>copyLen</b> &gt; 0 {
+		<a href="../../src/compress/flate/inflate.go.html#line-649" class="path-duplicate">inflate.go</a><a href="../../src/compress/flate/inflate.go.html#line-649">#L649</a>: 	f.<b>copyLen</b> = n
+		<a href="../../src/compress/flate/inflate.go.html#line-657" class="path-duplicate">inflate.go</a><a href="../../src/compress/flate/inflate.go.html#line-657">#L657</a>: 	if len(buf) &gt; f.<b>copyLen</b> {
+		<a href="../../src/compress/flate/inflate.go.html#line-658" class="path-duplicate">inflate.go</a><a href="../../src/compress/flate/inflate.go.html#line-658">#L658</a>: 		buf = buf[:f.<b>copyLen</b>]
+		<a href="../../src/compress/flate/inflate.go.html#line-663" class="path-duplicate">inflate.go</a><a href="../../src/compress/flate/inflate.go.html#line-663">#L663</a>: 	f.<b>copyLen</b> -= cnt
+		<a href="../../src/compress/flate/inflate.go.html#line-670" class="path-duplicate">inflate.go</a><a href="../../src/compress/flate/inflate.go.html#line-670">#L670</a>: 	if f.dict.availWrite() == 0 || f.<b>copyLen</b> &gt; 0 {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

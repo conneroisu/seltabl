@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: math/big.Float.exp</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/math/big.html">math/big</a>.<a href="../../src/math/big/float.go.html#line-65">Float</a>.<a href="../../src/math/big/float.go.html#line-72">exp</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">58 uses</span>
+
+	math/big (current package)
+		<a href="../../src/math/big/float.go.html#line-72">float.go#L72</a>: 	<b>exp</b>  int32
+		<a href="../../src/math/big/float.go.html#line-272" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-272">#L272</a>: 		exp = int(x.<b>exp</b>)
+		<a href="../../src/math/big/float.go.html#line-277" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-277">#L277</a>: 			mant.<b>exp</b> = 0
+		<a href="../../src/math/big/float.go.html#line-299" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-299">#L299</a>: 	z.<b>exp</b> = int32(exp)
+		<a href="../../src/math/big/float.go.html#line-329" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-329">#L329</a>: 		z.setExpAndRound(int64(z.<b>exp</b>)+int64(exp), 0)
+		<a href="../../src/math/big/float.go.html#line-355" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-355">#L355</a>: 	if x.<b>exp</b> &lt;= 0 {
+		<a href="../../src/math/big/float.go.html#line-359" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-359">#L359</a>: 	return x.prec &lt;= uint32(x.<b>exp</b>) || x.MinPrec() &lt;= uint(x.<b>exp</b>) // not enough bits for fractional mantissa
+		<a href="../../src/math/big/float.go.html#line-485" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-485">#L485</a>: 				if z.<b>exp</b> &gt;= MaxExp {
+		<a href="../../src/math/big/float.go.html#line-490" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-490">#L490</a>: 				z.<b>exp</b>++
+		<a href="../../src/math/big/float.go.html#line-522" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-522">#L522</a>: 	z.<b>exp</b> = int32(64 - s) // always fits
+		<a href="../../src/math/big/float.go.html#line-573" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-573">#L573</a>: 	z.<b>exp</b> = int32(exp) // always fits
+		<a href="../../src/math/big/float.go.html#line-663" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-663">#L663</a>: 			z.<b>exp</b> = x.<b>exp</b>
+		<a href="../../src/math/big/float.go.html#line-690" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-690">#L690</a>: 			z.<b>exp</b> = x.<b>exp</b>
+		<a href="../../src/math/big/float.go.html#line-752" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-752">#L752</a>: 		if x.<b>exp</b> &lt;= 0 {
+		<a href="../../src/math/big/float.go.html#line-757" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-757">#L757</a>: 		if x.<b>exp</b> &lt;= 64 {
+		<a href="../../src/math/big/float.go.html#line-759" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-759">#L759</a>: 			u := msb64(x.mant) &gt;&gt; (64 - uint32(x.<b>exp</b>))
+		<a href="../../src/math/big/float.go.html#line-795" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-795">#L795</a>: 		if x.<b>exp</b> &lt;= 0 {
+		<a href="../../src/math/big/float.go.html#line-802" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-802">#L802</a>: 		if x.<b>exp</b> &lt;= 63 {
+		<a href="../../src/math/big/float.go.html#line-804" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-804">#L804</a>: 			i := int64(msb64(x.mant) &gt;&gt; (64 - uint32(x.<b>exp</b>)))
+		<a href="../../src/math/big/float.go.html#line-808" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-808">#L808</a>: 			if x.MinPrec() &lt;= uint(x.<b>exp</b>) {
+		<a href="../../src/math/big/float.go.html#line-815" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-815">#L815</a>: 			if x.<b>exp</b> == 64 &amp;&amp; x.MinPrec() == 1 {
+		<a href="../../src/math/big/float.go.html#line-861" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-861">#L861</a>: 		e := x.<b>exp</b> - 1 // exponent for normal mantissa m with 1.0 &lt;= m &lt; 2.0
+		<a href="../../src/math/big/float.go.html#line-902" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-902">#L902</a>: 		e = r.<b>exp</b> - 1
+		<a href="../../src/math/big/float.go.html#line-981" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-981">#L981</a>: 		e := x.<b>exp</b> - 1 // exponent for normal mantissa m with 1.0 &lt;= m &lt; 2.0
+		<a href="../../src/math/big/float.go.html#line-1022" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-1022">#L1022</a>: 		e = r.<b>exp</b> - 1
+		<a href="../../src/math/big/float.go.html#line-1095" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-1095">#L1095</a>: 		if x.<b>exp</b> &lt;= 0 {
+		<a href="../../src/math/big/float.go.html#line-1104" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-1104">#L1104</a>: 		exp := uint(x.<b>exp</b>)
+		<a href="../../src/math/big/float.go.html#line-1154" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-1154">#L1154</a>: 		case x.<b>exp</b> &gt; allBits:
+		<a href="../../src/math/big/float.go.html#line-1155" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-1155">#L1155</a>: 			z.a.abs = z.a.abs.shl(x.mant, uint(x.<b>exp</b>-allBits))
+		<a href="../../src/math/big/float.go.html#line-1162" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-1162">#L1162</a>: 		case x.<b>exp</b> &lt; allBits:
+		<a href="../../src/math/big/float.go.html#line-1165" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-1165">#L1165</a>: 			z.b.abs = t.shl(t, uint(allBits-x.<b>exp</b>))
+		<a href="../../src/math/big/float.go.html#line-1229" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-1229">#L1229</a>: 	ex := int64(x.<b>exp</b>) - int64(len(x.mant))*_W
+		<a href="../../src/math/big/float.go.html#line-1230" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-1230">#L1230</a>: 	ey := int64(y.<b>exp</b>) - int64(len(y.mant))*_W
+		<a href="../../src/math/big/float.go.html#line-1276" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-1276">#L1276</a>: 	ex := int64(x.<b>exp</b>) - int64(len(x.mant))*_W
+		<a href="../../src/math/big/float.go.html#line-1277" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-1277">#L1277</a>: 	ey := int64(y.<b>exp</b>) - int64(len(y.mant))*_W
+		<a href="../../src/math/big/float.go.html#line-1330" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-1330">#L1330</a>: 	e := int64(x.<b>exp</b>) + int64(y.<b>exp</b>)
+		<a href="../../src/math/big/float.go.html#line-1370" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-1370">#L1370</a>: 	e := int64(x.<b>exp</b>) - int64(y.<b>exp</b>) - int64(d-len(z.mant))*_W
+		<a href="../../src/math/big/float.go.html#line-1393" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-1393">#L1393</a>: 	case x.<b>exp</b> &lt; y.<b>exp</b>:
+		<a href="../../src/math/big/float.go.html#line-1395" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-1395">#L1395</a>: 	case x.<b>exp</b> &gt; y.<b>exp</b>:
+		<a href="../../src/math/big/floatconv.go.html#line-126">floatconv.go#L126</a>: 		z.<b>exp</b> = int32(exp2)
+		<a href="../../src/math/big/floatmarsh.go.html#line-54">floatmarsh.go#L54</a>: 		binary.BigEndian.PutUint32(buf[6:], uint32(x.<b>exp</b>))
+		<a href="../../src/math/big/floatmarsh.go.html#line-93" class="path-duplicate">floatmarsh.go</a><a href="../../src/math/big/floatmarsh.go.html#line-93">#L93</a>: 		z.<b>exp</b> = int32(binary.BigEndian.Uint32(buf[6:]))
+		<a href="../../src/math/big/ftoa.go.html#line-96">ftoa.go#L96</a>: 		d.init(x.mant, int(x.<b>exp</b>)-x.mant.bitLen())
+		<a href="../../src/math/big/ftoa.go.html#line-187" class="path-duplicate">ftoa.go</a><a href="../../src/math/big/ftoa.go.html#line-187">#L187</a>: 	exp := int(x.<b>exp</b>) - mant.bitLen()
+		<a href="../../src/math/big/ftoa.go.html#line-339" class="path-duplicate">ftoa.go</a><a href="../../src/math/big/ftoa.go.html#line-339">#L339</a>: 	e := int64(x.<b>exp</b>) - int64(x.prec)
+		<a href="../../src/math/big/ftoa.go.html#line-387" class="path-duplicate">ftoa.go</a><a href="../../src/math/big/ftoa.go.html#line-387">#L387</a>: 	exp64 := int64(x.<b>exp</b>) - 1 // avoid wrap-around
+		<a href="../../src/math/big/ftoa.go.html#line-441" class="path-duplicate">ftoa.go</a><a href="../../src/math/big/ftoa.go.html#line-441">#L441</a>: 	if x.<b>exp</b> &gt;= 0 {
+		<a href="../../src/math/big/ftoa.go.html#line-444" class="path-duplicate">ftoa.go</a><a href="../../src/math/big/ftoa.go.html#line-444">#L444</a>: 	return strconv.AppendInt(buf, int64(x.<b>exp</b>), 10)
+		<a href="../../src/math/big/sqrt.go.html#line-70">sqrt.go#L70</a>: 		z.<b>exp</b>++
+		<a href="../../src/math/big/sqrt.go.html#line-72" class="path-duplicate">sqrt.go</a><a href="../../src/math/big/sqrt.go.html#line-72">#L72</a>: 		z.<b>exp</b>--
+		<a href="../../src/math/big/sqrt.go.html#line-106" class="path-duplicate">sqrt.go</a><a href="../../src/math/big/sqrt.go.html#line-106">#L106</a>: 		u.<b>exp</b>--         //   = ½t(3 - xt²)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: context.valueCtx.Err</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/context.html">context</a>.<a href="../src/context/context.go.html#line-728">valueCtx</a>.<a href="../src/context/context.go.html#line-112">Err</a></b></span><span style="font-size: large;"><i> (method, <a href="../imp/context.valueCtx^a78e9.html#name-Err">view implemented interface methods</a>)</i></span>
+
+<span class="title">32 uses</span>
+
+	context (current package)
+		<a href="../src/context/context.go.html#line-112">context.go#L112</a>: 	<b>Err</b>() error
+		<a href="../src/context/context.go.html#line-294" class="path-duplicate">context.go</a><a href="../src/context/context.go.html#line-294">#L294</a>: 	return c.<b>Err</b>()
+		<a href="../src/context/context.go.html#line-473" class="path-duplicate">context.go</a><a href="../src/context/context.go.html#line-473">#L473</a>: 		child.cancel(false, parent.<b>Err</b>(), Cause(parent))
+		<a href="../src/context/context.go.html#line-498" class="path-duplicate">context.go</a><a href="../src/context/context.go.html#line-498">#L498</a>: 			child.cancel(false, parent.<b>Err</b>(), Cause(parent))
+		<a href="../src/context/context.go.html#line-512" class="path-duplicate">context.go</a><a href="../src/context/context.go.html#line-512">#L512</a>: 			child.cancel(false, parent.<b>Err</b>(), Cause(parent))
+
+	<a href="../pkg/crypto/tls.html">crypto/tls</a>
+		<a href="../src/crypto/tls/conn.go.html#line-1533">conn.go#L1533</a>: 				interruptRes &lt;- handshakeCtx.<b>Err</b>()
+
+	<a href="../pkg/net.html">net</a>
+		<a href="../src/net/cgo_unix.go.html#line-65">cgo_unix.go#L65</a>: 		return zero, mapErr(ctx.<b>Err</b>())
+		<a href="../src/net/dial.go.html#line-595">dial.go#L595</a>: 			return nil, &amp;OpError{Op: "dial", Net: sd.network, Source: sd.LocalAddr, Addr: ra, Err: mapErr(ctx.<b>Err</b>())}
+		<a href="../src/net/fd_unix.go.html#line-64">fd_unix.go#L64</a>: 			return nil, mapErr(ctx.<b>Err</b>())
+		<a href="../src/net/fd_unix.go.html#line-125" class="path-duplicate">fd_unix.go</a><a href="../src/net/fd_unix.go.html#line-125">#L125</a>: 				interruptRes &lt;- ctx.<b>Err</b>()
+		<a href="../src/net/fd_unix.go.html#line-144" class="path-duplicate">fd_unix.go</a><a href="../src/net/fd_unix.go.html#line-144">#L144</a>: 				return nil, mapErr(ctx.<b>Err</b>())
+		<a href="../src/net/lookup.go.html#line-357">lookup.go#L357</a>: 		ctxErr := ctx.<b>Err</b>()
+
+	<a href="../pkg/net/http.html">net/http</a>
+		<a href="../src/net/http/h2_bundle.go.html#line-1031">h2_bundle.go#L1031</a>: 	return call.ctx.<b>Err</b>() != nil
+		<a href="../src/net/http/h2_bundle.go.html#line-7649" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-7649">#L7649</a>: 					err = req.Context().<b>Err</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-8151" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-8151">#L8151</a>: 		return ctx.<b>Err</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-8305" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-8305">#L8305</a>: 			return ctx.<b>Err</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-8378" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-8378">#L8378</a>: 			err := ctx.<b>Err</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-8422" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-8422">#L8422</a>: 		return ctx.<b>Err</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-8495" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-8495">#L8495</a>: 				err = ctx.<b>Err</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-8541" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-8541">#L8541</a>: 			return ctx.<b>Err</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-8560" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-8560">#L8560</a>: 		return ctx.<b>Err</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-8924" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-8924">#L8924</a>: 			return 0, ctx.<b>Err</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-10044" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-10044">#L10044</a>: 		return ctx.<b>Err</b>()
+		<a href="../src/net/http/server.go.html#line-3016">server.go#L3016</a>: 			return ctx.<b>Err</b>()
+		<a href="../src/net/http/server.go.html#line-3617" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-3617">#L3617</a>: 		switch err := ctx.<b>Err</b>(); err {
+		<a href="../src/net/http/socks_bundle.go.html#line-49">socks_bundle.go#L49</a>: 				errCh &lt;- ctx.<b>Err</b>()
+		<a href="../src/net/http/transport.go.html#line-579">transport.go#L579</a>: 			return nil, ctx.<b>Err</b>()
+		<a href="../src/net/http/transport.go.html#line-1421" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-1421">#L1421</a>: 				return nil, req.Context().<b>Err</b>()
+		<a href="../src/net/http/transport.go.html#line-1435" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-1435">#L1435</a>: 		return nil, req.Context().<b>Err</b>()
+		<a href="../src/net/http/transport.go.html#line-1753" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-1753">#L1753</a>: 			return nil, connectCtx.<b>Err</b>()
+		<a href="../src/net/http/transport.go.html#line-2277" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-2277">#L2277</a>: 			pc.t.cancelRequest(rc.cancelKey, rc.req.Context().<b>Err</b>())
+		<a href="../src/net/http/transport.go.html#line-2721" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-2721">#L2721</a>: 			canceled = pc.t.cancelRequest(req.cancelKey, req.Context().<b>Err</b>())
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

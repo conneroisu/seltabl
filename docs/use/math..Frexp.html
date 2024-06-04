@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: math.Frexp</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/math.html">math</a>.<a href="../src/math/frexp.go.html#line-17">Frexp</a></b></span>
+
+<span class="title">7 uses</span>
+
+	math (current package)
+		<a href="../src/math/frexp.go.html#line-17">frexp.go#L17</a>: func <b>Frexp</b>(f float64) (frac float64, exp int) {
+		<a href="../src/math/log.go.html#line-112">log.go#L112</a>: 	f1, ki := <b>Frexp</b>(x)
+		<a href="../src/math/log10.go.html#line-30">log10.go#L30</a>: 	frac, exp := <b>Frexp</b>(x)
+		<a href="../src/math/mod.go.html#line-35">mod.go#L35</a>: 	yfr, yexp := <b>Frexp</b>(y)
+		<a href="../src/math/mod.go.html#line-42" class="path-duplicate">mod.go</a><a href="../src/math/mod.go.html#line-42">#L42</a>: 		rfr, rexp := <b>Frexp</b>(r)
+		<a href="../src/math/pow.go.html#line-135">pow.go#L135</a>: 	x1, xe := <b>Frexp</b>(x)
+
+	<a href="../pkg/math/big.html">math/big</a>
+		<a href="../src/math/big/float.go.html#line-571">float.go#L571</a>: 	fmant, exp := math.<b>Frexp</b>(x) // get normalized mantissa
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

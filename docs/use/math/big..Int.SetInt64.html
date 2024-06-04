@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: math/big.Int.SetInt64</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/math/big.html">math/big</a>.<a href="../../src/math/big/int.go.html#line-33">Int</a>.<a href="../../src/math/big/int.go.html#line-59">SetInt64</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">21 uses</span>
+
+	math/big (current package)
+		<a href="../../src/math/big/float.go.html#line-1097">float.go#L1097</a>: 			return z.<b>SetInt64</b>(0), acc
+		<a href="../../src/math/big/float.go.html#line-1124" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-1124">#L1124</a>: 		return z.<b>SetInt64</b>(0), Exact
+		<a href="../../src/math/big/int.go.html#line-59">int.go#L59</a>: func (z *Int) <b>SetInt64</b>(x int64) *Int {
+		<a href="../../src/math/big/int.go.html#line-205" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-205">#L205</a>: 		return z.<b>SetInt64</b>(1) // empty range
+		<a href="../../src/math/big/int.go.html#line-207" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-207">#L207</a>: 		return z.<b>SetInt64</b>(0) // range includes 0
+		<a href="../../src/math/big/int.go.html#line-225" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-225">#L225</a>: 		return z.<b>SetInt64</b>(0)
+		<a href="../../src/math/big/int.go.html#line-253" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-253">#L253</a>: 	N.<b>SetInt64</b>(n)
+		<a href="../../src/math/big/int.go.html#line-254" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-254">#L254</a>: 	K.<b>SetInt64</b>(k)
+		<a href="../../src/math/big/int.go.html#line-578" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-578">#L578</a>: 			return z.<b>SetInt64</b>(1)
+		<a href="../../src/math/big/int.go.html#line-773" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-773">#L773</a>: 		Ua = new(Int).<b>SetInt64</b>(1)
+		<a href="../../src/math/big/int.go.html#line-1042" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1042">#L1042</a>: 	n.<b>SetInt64</b>(2)
+		<a href="../../src/math/big/int.go.html#line-1071" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1071">#L1071</a>: 		t.<b>SetInt64</b>(0).SetBit(&amp;t, int(r-m-1), 1).Exp(&amp;g, &amp;t, p)
+		<a href="../../src/math/big/int.go.html#line-1089" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1089">#L1089</a>: 		return z.<b>SetInt64</b>(0) // sqrt(0) mod p = 0
+		<a href="../../src/math/big/rat.go.html#line-323">rat.go#L323</a>: 	z.a.<b>SetInt64</b>(a)
+		<a href="../../src/math/big/rat.go.html#line-341" class="path-duplicate">rat.go</a><a href="../../src/math/big/rat.go.html#line-341">#L341</a>: 	z.a.<b>SetInt64</b>(x)
+
+	<a href="../../pkg/crypto/dsa.html">crypto/dsa</a>
+		<a href="../../src/crypto/dsa/dsa.go.html#line-96">dsa.go#L96</a>: 	one.<b>SetInt64</b>(1)
+		<a href="../../src/crypto/dsa/dsa.go.html#line-139" class="path-duplicate">dsa.go</a><a href="../../src/crypto/dsa/dsa.go.html#line-139">#L139</a>: 	h.<b>SetInt64</b>(2)
+
+	<a href="../../pkg/crypto/ecdsa.html">crypto/ecdsa</a>
+		<a href="../../src/crypto/ecdsa/ecdsa_legacy.go.html#line-166">ecdsa_legacy.go#L166</a>: var one = new(big.Int).<b>SetInt64</b>(1)
+
+	<a href="../../pkg/crypto/elliptic.html">crypto/elliptic</a>
+		<a href="../../src/crypto/elliptic/params.go.html#line-81">params.go#L81</a>: 		z.<b>SetInt64</b>(1)
+		<a href="../../src/crypto/elliptic/params.go.html#line-295" class="path-duplicate">params.go</a><a href="../../src/crypto/elliptic/params.go.html#line-295">#L295</a>: 	Bz := new(big.Int).<b>SetInt64</b>(1)
+
+	<a href="../../pkg/crypto/rsa.html">crypto/rsa</a>
+		<a href="../../src/crypto/rsa/rsa.go.html#line-258">rsa.go#L258</a>: 	de := new(big.Int).<b>SetInt64</b>(int64(priv.E))
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

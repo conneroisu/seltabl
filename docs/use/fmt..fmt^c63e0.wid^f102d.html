@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: fmt.fmt.wid</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/fmt.html">fmt</a>.<a href="../src/fmt/format.go.html#line-41">fmt</a>.<a href="../src/fmt/format.go.html#line-46">wid</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">21 uses</span>
+
+	fmt (current package)
+		<a href="../src/fmt/format.go.html#line-46">format.go#L46</a>: 	<b>wid</b>  int // width
+		<a href="../src/fmt/format.go.html#line-91" class="path-duplicate">format.go</a><a href="../src/fmt/format.go.html#line-91">#L91</a>: 	if !f.widPresent || f.<b>wid</b> == 0 {
+		<a href="../src/fmt/format.go.html#line-95" class="path-duplicate">format.go</a><a href="../src/fmt/format.go.html#line-95">#L95</a>: 	width := f.<b>wid</b> - utf8.RuneCount(b)
+		<a href="../src/fmt/format.go.html#line-109" class="path-duplicate">format.go</a><a href="../src/fmt/format.go.html#line-109">#L109</a>: 	if !f.widPresent || f.<b>wid</b> == 0 {
+		<a href="../src/fmt/format.go.html#line-113" class="path-duplicate">format.go</a><a href="../src/fmt/format.go.html#line-113">#L113</a>: 	width := f.<b>wid</b> - utf8.RuneCountInString(s)
+		<a href="../src/fmt/format.go.html#line-205" class="path-duplicate">format.go</a><a href="../src/fmt/format.go.html#line-205">#L205</a>: 		width := 3 + f.<b>wid</b> + f.prec // wid and prec are always positive.
+		<a href="../src/fmt/format.go.html#line-222" class="path-duplicate">format.go</a><a href="../src/fmt/format.go.html#line-222">#L222</a>: 			f.writePadding(f.<b>wid</b>)
+		<a href="../src/fmt/format.go.html#line-227" class="path-duplicate">format.go</a><a href="../src/fmt/format.go.html#line-227">#L227</a>: 		prec = f.<b>wid</b>
+		<a href="../src/fmt/format.go.html#line-395" class="path-duplicate">format.go</a><a href="../src/fmt/format.go.html#line-395">#L395</a>: 			f.writePadding(f.<b>wid</b>)
+		<a href="../src/fmt/format.go.html#line-400" class="path-duplicate">format.go</a><a href="../src/fmt/format.go.html#line-400">#L400</a>: 	if f.widPresent &amp;&amp; f.<b>wid</b> &gt; width &amp;&amp; !f.minus {
+		<a href="../src/fmt/format.go.html#line-401" class="path-duplicate">format.go</a><a href="../src/fmt/format.go.html#line-401">#L401</a>: 		f.writePadding(f.<b>wid</b> - width)
+		<a href="../src/fmt/format.go.html#line-429" class="path-duplicate">format.go</a><a href="../src/fmt/format.go.html#line-429">#L429</a>: 	if f.widPresent &amp;&amp; f.<b>wid</b> &gt; width &amp;&amp; f.minus {
+		<a href="../src/fmt/format.go.html#line-430" class="path-duplicate">format.go</a><a href="../src/fmt/format.go.html#line-430">#L430</a>: 		f.writePadding(f.<b>wid</b> - width)
+		<a href="../src/fmt/format.go.html#line-583" class="path-duplicate">format.go</a><a href="../src/fmt/format.go.html#line-583">#L583</a>: 		if f.zero &amp;&amp; f.widPresent &amp;&amp; f.<b>wid</b> &gt; len(num) {
+		<a href="../src/fmt/format.go.html#line-585" class="path-duplicate">format.go</a><a href="../src/fmt/format.go.html#line-585">#L585</a>: 			f.writePadding(f.<b>wid</b> - len(num))
+		<a href="../src/fmt/print.go.html#line-184">print.go#L184</a>: func (p *pp) Width() (wid int, ok bool) { return p.fmt.<b>wid</b>, p.fmt.widPresent }
+		<a href="../src/fmt/print.go.html#line-1091" class="path-duplicate">print.go</a><a href="../src/fmt/print.go.html#line-1091">#L1091</a>: 			p.fmt.<b>wid</b>, p.fmt.widPresent, argNum = intFromArg(a, argNum)
+		<a href="../src/fmt/print.go.html#line-1099" class="path-duplicate">print.go</a><a href="../src/fmt/print.go.html#line-1099">#L1099</a>: 			if p.fmt.<b>wid</b> &lt; 0 {
+		<a href="../src/fmt/print.go.html#line-1100" class="path-duplicate">print.go</a><a href="../src/fmt/print.go.html#line-1100">#L1100</a>: 				p.fmt.<b>wid</b> = -p.fmt.<b>wid</b>
+		<a href="../src/fmt/print.go.html#line-1106" class="path-duplicate">print.go</a><a href="../src/fmt/print.go.html#line-1106">#L1106</a>: 			p.fmt.<b>wid</b>, p.fmt.widPresent, i = parsenum(format, i, end)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

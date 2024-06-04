@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: syscall.AF_INET6</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../pkg/syscall.html">syscall</a>.<a href="../src/syscall/zerrors_linux_amd64.go.html#line-27">AF_INET6</a></b></span>
+
+<span class="title">25 uses</span>
+
+	syscall (current package)
+		<a href="../src/syscall/syscall_linux.go.html#line-538">syscall_linux.go#L538</a>: 	sa.raw.Family = <b>AF_INET6</b>
+		<a href="../src/syscall/syscall_linux.go.html#line-669" class="path-duplicate">syscall_linux.go</a><a href="../src/syscall/syscall_linux.go.html#line-669">#L669</a>: 	case <b>AF_INET6</b>:
+		<a href="../src/syscall/syscall_unix.go.html#line-498">syscall_unix.go#L498</a>: 	if domain == <b>AF_INET6</b> &amp;&amp; SocketDisableIPv6 {
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-27">zerrors_linux_amd64.go#L27</a>: 	<b>AF_INET6</b>                         = 0xa
+
+	<a href="../pkg/net.html">net</a>
+		<a href="../src/net/file_unix.go.html#line-47">file_unix.go#L47</a>: 		family = syscall.<b>AF_INET6</b>
+		<a href="../src/net/interface_linux.go.html#line-196">interface_linux.go#L196</a>: 		case syscall.<b>AF_INET6</b>:
+		<a href="../src/net/iprawsock_posix.go.html#line-31">iprawsock_posix.go#L31</a>: 	return syscall.<b>AF_INET6</b>
+		<a href="../src/net/ipsock_posix.go.html#line-61">ipsock_posix.go#L61</a>: 		s, err := sysSocket(syscall.<b>AF_INET6</b>, syscall.SOCK_STREAM, syscall.IPPROTO_TCP)
+		<a href="../src/net/ipsock_posix.go.html#line-67" class="path-duplicate">ipsock_posix.go</a><a href="../src/net/ipsock_posix.go.html#line-67">#L67</a>: 		sa, err := probes[i].laddr.sockaddr(syscall.<b>AF_INET6</b>)
+		<a href="../src/net/ipsock_posix.go.html#line-126" class="path-duplicate">ipsock_posix.go</a><a href="../src/net/ipsock_posix.go.html#line-126">#L126</a>: 		return syscall.<b>AF_INET6</b>, true
+		<a href="../src/net/ipsock_posix.go.html#line-131" class="path-duplicate">ipsock_posix.go</a><a href="../src/net/ipsock_posix.go.html#line-131">#L131</a>: 			return syscall.<b>AF_INET6</b>, false
+		<a href="../src/net/ipsock_posix.go.html#line-143" class="path-duplicate">ipsock_posix.go</a><a href="../src/net/ipsock_posix.go.html#line-143">#L143</a>: 	return syscall.<b>AF_INET6</b>, false
+		<a href="../src/net/ipsock_posix.go.html#line-203" class="path-duplicate">ipsock_posix.go</a><a href="../src/net/ipsock_posix.go.html#line-203">#L203</a>: 	case syscall.<b>AF_INET6</b>:
+		<a href="../src/net/sock_posix.go.html#line-199">sock_posix.go#L199</a>: 			case syscall.<b>AF_INET6</b>:
+		<a href="../src/net/sockaddr_posix.go.html#line-38">sockaddr_posix.go#L38</a>: 	case syscall.AF_INET, syscall.<b>AF_INET6</b>:
+		<a href="../src/net/sockopt_linux.go.html#line-13">sockopt_linux.go#L13</a>: 	if family == syscall.<b>AF_INET6</b> &amp;&amp; sotype != syscall.SOCK_RAW {
+		<a href="../src/net/tcpsock_posix.go.html#line-33">tcpsock_posix.go#L33</a>: 	return syscall.<b>AF_INET6</b>
+		<a href="../src/net/udpsock_posix.go.html#line-32">udpsock_posix.go#L32</a>: 	return syscall.<b>AF_INET6</b>
+		<a href="../src/net/udpsock_posix.go.html#line-57" class="path-duplicate">udpsock_posix.go</a><a href="../src/net/udpsock_posix.go.html#line-57">#L57</a>: 	case syscall.<b>AF_INET6</b>:
+		<a href="../src/net/udpsock_posix.go.html#line-83" class="path-duplicate">udpsock_posix.go</a><a href="../src/net/udpsock_posix.go.html#line-83">#L83</a>: 	case syscall.<b>AF_INET6</b>:
+		<a href="../src/net/udpsock_posix.go.html#line-104" class="path-duplicate">udpsock_posix.go</a><a href="../src/net/udpsock_posix.go.html#line-104">#L104</a>: 	case syscall.<b>AF_INET6</b>:
+		<a href="../src/net/udpsock_posix.go.html#line-128" class="path-duplicate">udpsock_posix.go</a><a href="../src/net/udpsock_posix.go.html#line-128">#L128</a>: 	case syscall.<b>AF_INET6</b>:
+		<a href="../src/net/udpsock_posix.go.html#line-154" class="path-duplicate">udpsock_posix.go</a><a href="../src/net/udpsock_posix.go.html#line-154">#L154</a>: 	case syscall.<b>AF_INET6</b>:
+		<a href="../src/net/udpsock_posix.go.html#line-194" class="path-duplicate">udpsock_posix.go</a><a href="../src/net/udpsock_posix.go.html#line-194">#L194</a>: 	case syscall.<b>AF_INET6</b>:
+		<a href="../src/net/cgo_socknew.go.html#line-32">cgo_socknew.go#L32</a>: 	sa := syscall.RawSockaddrInet6{Family: syscall.<b>AF_INET6</b>, Scope_id: uint32(zone)}
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

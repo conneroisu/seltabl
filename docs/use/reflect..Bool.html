@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: reflect.Bool</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../pkg/reflect.html">reflect</a>.<a href="../src/reflect/type.go.html#line-252">Bool</a></b></span>
+
+<span class="title">22 uses</span>
+
+	reflect (current package)
+		<a href="../src/reflect/abi.go.html#line-202">abi.go#L202</a>: 	case <b>Bool</b>, Int, Uint, Int8, Uint8, Int16, Uint16, Int32, Uint32, Uintptr:
+		<a href="../src/reflect/deepequal.go.html#line-166">deepequal.go#L166</a>: 	case <b>Bool</b>:
+		<a href="../src/reflect/type.go.html#line-252">type.go#L252</a>: 	<b>Bool</b>
+		<a href="../src/reflect/type.go.html#line-457" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-457">#L457</a>: 	<b>Bool</b>:          "bool",
+		<a href="../src/reflect/type.go.html#line-1422" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1422">#L1422</a>: 	if <b>Bool</b> &lt;= kind &amp;&amp; kind &lt;= Complex128 || kind == String || kind == UnsafePointer {
+		<a href="../src/reflect/type.go.html#line-1888" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1888">#L1888</a>: 	case <b>Bool</b>, Int, Int8, Int16, Int32, Int64, Uint, Uint8, Uint16, Uint32, Uint64, Uintptr, Chan, Pointer, String, UnsafePointer:
+		<a href="../src/reflect/type.go.html#line-1912" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1912">#L1912</a>: 	case <b>Bool</b>, Int, Int8, Int16, Int32, Int64, Uint, Uint8, Uint16, Uint32, Uint64, Uintptr, Chan, Pointer, UnsafePointer:
+		<a href="../src/reflect/value.go.html#line-295">value.go#L295</a>: 	if v.kind() != <b>Bool</b> {
+		<a href="../src/reflect/value.go.html#line-302" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-302">#L302</a>: 	v.mustBe(<b>Bool</b>)
+		<a href="../src/reflect/value.go.html#line-1590" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1590">#L1590</a>: 	case <b>Bool</b>:
+		<a href="../src/reflect/value.go.html#line-1712" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1712">#L1712</a>: 	case <b>Bool</b>:
+		<a href="../src/reflect/value.go.html#line-2341" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2341">#L2341</a>: 	v.mustBe(<b>Bool</b>)
+		<a href="../src/reflect/value.go.html#line-3463" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3463">#L3463</a>: 	case <b>Bool</b>:
+
+	<a href="../pkg/encoding/asn1.html">encoding/asn1</a>
+		<a href="../src/encoding/asn1/asn1.go.html#line-893">asn1.go#L893</a>: 	case reflect.<b>Bool</b>:
+		<a href="../src/encoding/asn1/common.go.html#line-167">common.go#L167</a>: 	case reflect.<b>Bool</b>:
+		<a href="../src/encoding/asn1/marshal.go.html#line-480">marshal.go#L480</a>: 	case reflect.<b>Bool</b>:
+
+	<a href="../pkg/encoding/binary.html">encoding/binary</a>
+		<a href="../src/encoding/binary/binary.go.html#line-524">binary.go#L524</a>: 	case reflect.<b>Bool</b>,
+		<a href="../src/encoding/binary/binary.go.html#line-648" class="path-duplicate">binary.go</a><a href="../src/encoding/binary/binary.go.html#line-648">#L648</a>: 	case reflect.<b>Bool</b>:
+		<a href="../src/encoding/binary/binary.go.html#line-713" class="path-duplicate">binary.go</a><a href="../src/encoding/binary/binary.go.html#line-713">#L713</a>: 	case reflect.<b>Bool</b>:
+
+	<a href="../pkg/fmt.html">fmt</a>
+		<a href="../src/fmt/print.go.html#line-789">print.go#L789</a>: 	case reflect.<b>Bool</b>:
+		<a href="../src/fmt/scan.go.html#line-1025">scan.go#L1025</a>: 		case reflect.<b>Bool</b>:
+
+	<a href="../pkg/internal/fmtsort.html">internal/fmtsort</a>
+		<a href="../src/internal/fmtsort/sort.go.html#line-122">sort.go#L122</a>: 	case reflect.<b>Bool</b>:
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: reflect.toRType</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/reflect.html">reflect</a>.<a href="../src/reflect/type.go.html#line-703">toRType</a></b></span>
+
+<span class="title">41 uses</span>
+
+	reflect (current package)
+		<a href="../src/reflect/type.go.html#line-346">type.go#L346</a>: 	return <b>toRType</b>(&amp;t.Type).nameOff(off)
+		<a href="../src/reflect/type.go.html#line-350" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-350">#L350</a>: 	return <b>toRType</b>(t).nameOff(off)
+		<a href="../src/reflect/type.go.html#line-354" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-354">#L354</a>: 	return <b>toRType</b>(t).typeOff(off)
+		<a href="../src/reflect/type.go.html#line-358" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-358">#L358</a>: 	return <b>toRType</b>(&amp;t.Type).typeOff(off)
+		<a href="../src/reflect/type.go.html#line-545" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-545">#L545</a>: 	return <b>toRType</b>(t).textOff(off)
+		<a href="../src/reflect/type.go.html#line-609" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-609">#L609</a>: 		in = append(in, <b>toRType</b>(arg))
+		<a href="../src/reflect/type.go.html#line-613" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-613">#L613</a>: 		out = append(out, <b>toRType</b>(ret))
+		<a href="../src/reflect/type.go.html#line-669" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-669">#L669</a>: 	return <b>toRType</b>(t).PkgPath()
+		<a href="../src/reflect/type.go.html#line-692" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-692">#L692</a>: 	return <b>toRType</b>(t).Name()
+		<a href="../src/reflect/type.go.html#line-703" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-703">#L703</a>: func <b>toRType</b>(t *abi.Type) *rtype {
+		<a href="../src/reflect/type.go.html#line-1188" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1188">#L1188</a>: 	return <b>toRType</b>(t.(*rtype).ptrTo())
+		<a href="../src/reflect/type.go.html#line-1236" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1236">#L1236</a>: 	return <b>toRType</b>(t).ptrTo()
+		<a href="../src/reflect/type.go.html#line-1633" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1633">#L1633</a>: 			ti, _ := lookupCache.LoadOrStore(ckey, <b>toRType</b>(tt))
+		<a href="../src/reflect/type.go.html#line-1648" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1648">#L1648</a>: 	ti, _ := lookupCache.LoadOrStore(ckey, <b>toRType</b>(&amp;ch.Type))
+		<a href="../src/reflect/type.go.html#line-1677" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1677">#L1677</a>: 			ti, _ := lookupCache.LoadOrStore(ckey, <b>toRType</b>(tt))
+		<a href="../src/reflect/type.go.html#line-1721" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1721">#L1721</a>: 	ti, _ := lookupCache.LoadOrStore(ckey, <b>toRType</b>(&amp;mt.Type))
+		<a href="../src/reflect/type.go.html#line-1808" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1808">#L1808</a>: 				return <b>toRType</b>(t)
+		<a href="../src/reflect/type.go.html#line-1819" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1819">#L1819</a>: 				return <b>toRType</b>(t)
+		<a href="../src/reflect/type.go.html#line-1847" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1847">#L1847</a>: 	return <b>toRType</b>(t).String()
+		<a href="../src/reflect/type.go.html#line-2095" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2095">#L2095</a>: 			ti, _ := lookupCache.LoadOrStore(ckey, <b>toRType</b>(tt))
+		<a href="../src/reflect/type.go.html#line-2110" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2110">#L2110</a>: 	ti, _ := lookupCache.LoadOrStore(ckey, <b>toRType</b>(&amp;slice.Type))
+		<a href="../src/reflect/type.go.html#line-2611" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2611">#L2611</a>: 			ti, _ := lookupCache.LoadOrStore(ckey, <b>toRType</b>(tt))
+		<a href="../src/reflect/type.go.html#line-2724" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2724">#L2724</a>: 	ti, _ := lookupCache.LoadOrStore(ckey, <b>toRType</b>(&amp;array.Type))
+		<a href="../src/reflect/type.go.html#line-2745" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2745">#L2745</a>: 	return <b>toRType</b>(t)
+		<a href="../src/reflect/value.go.html#line-451">value.go#L451</a>: 		if xt, targ := in[i].Type(), t.In(i); !xt.AssignableTo(<b>toRType</b>(targ)) {
+		<a href="../src/reflect/value.go.html#line-458" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-458">#L458</a>: 		slice := MakeSlice(<b>toRType</b>(t.In(n)), m, m)
+		<a href="../src/reflect/value.go.html#line-459" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-459">#L459</a>: 		elem := <b>toRType</b>(t.In(n)).Elem() // FIXME cast to slice type and Elem()
+		<a href="../src/reflect/value.go.html#line-530" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-530">#L530</a>: 		targ := <b>toRType</b>(t.In(i))
+		<a href="../src/reflect/value.go.html#line-624" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-624">#L624</a>: 				ret[i] = Zero(<b>toRType</b>(tv))
+		<a href="../src/reflect/value.go.html#line-726" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-726">#L726</a>: 			in = append(in, Zero(<b>toRType</b>(typ)))
+		<a href="../src/reflect/value.go.html#line-1362" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1362">#L1362</a>: 	if f, ok := <b>toRType</b>(v.typ()).FieldByName(name); ok {
+		<a href="../src/reflect/value.go.html#line-1373" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1373">#L1373</a>: 	if f, ok := <b>toRType</b>(v.typ()).FieldByNameFunc(match); ok {
+		<a href="../src/reflect/value.go.html#line-2078" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2078">#L2078</a>: 	if v.flag&amp;flagMethod != 0 || uint(i) &gt;= uint(<b>toRType</b>(v.typ()).NumMethod()) {
+		<a href="../src/reflect/value.go.html#line-2102" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2102">#L2102</a>: 	return <b>toRType</b>(v.typ()).NumMethod()
+		<a href="../src/reflect/value.go.html#line-2117" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2117">#L2117</a>: 	m, ok := <b>toRType</b>(v.typ()).MethodByName(name)
+		<a href="../src/reflect/value.go.html#line-2350" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2350">#L2350</a>: 	if <b>toRType</b>(v.typ()).Elem().Kind() != Uint8 { // TODO add Elem method, fix mustBe(Slice) to return slice.
+		<a href="../src/reflect/value.go.html#line-2704" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2704">#L2704</a>: 		return <b>toRType</b>(v.typ())
+		<a href="../src/reflect/value.go.html#line-2717" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2717">#L2717</a>: 		return <b>toRType</b>(typeOffFor(typ, m.Typ))
+		<a href="../src/reflect/value.go.html#line-2725" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2725">#L2725</a>: 	return <b>toRType</b>(typeOffFor(typ, m.Mtyp))
+		<a href="../src/reflect/value.go.html#line-3133" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3133">#L3133</a>: 			rc.typ = <b>toRType</b>(&amp;tt.Type)
+		<a href="../src/reflect/value.go.html#line-3164" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3164">#L3164</a>: 			rc.typ = <b>toRType</b>(&amp;tt.Type)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

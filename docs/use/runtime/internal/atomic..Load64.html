@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime/internal/atomic.Load64</title>
+<link href="../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../../../pkg/runtime/internal/atomic.html">runtime/internal/atomic</a>.<a href="../../../src/runtime/internal/atomic/atomic_amd64.go.html#line-29">Load64</a></b></span>
+
+<span class="title">20 uses</span>
+
+	runtime/internal/atomic (current package)
+		<a href="../../../src/runtime/internal/atomic/atomic_amd64.go.html#line-29">atomic_amd64.go#L29</a>: func <b>Load64</b>(ptr *uint64) uint64 {
+		<a href="../../../src/runtime/internal/atomic/types.go.html#line-309">types.go#L309</a>: 	return <b>Load64</b>(&amp;u.value)
+
+	<a href="../../../pkg/runtime.html">runtime</a>
+		<a href="../../../src/runtime/debug.go.html#line-48">debug.go#L48</a>: 	var n = int64(atomic.<b>Load64</b>(&amp;ncgocall))
+		<a href="../../../src/runtime/lfstack.go.html#line-32">lfstack.go#L32</a>: 		old := atomic.<b>Load64</b>((*uint64)(head))
+		<a href="../../../src/runtime/lfstack.go.html#line-42" class="path-duplicate">lfstack.go</a><a href="../../../src/runtime/lfstack.go.html#line-42">#L42</a>: 		old := atomic.<b>Load64</b>((*uint64)(head))
+		<a href="../../../src/runtime/lfstack.go.html#line-47" class="path-duplicate">lfstack.go</a><a href="../../../src/runtime/lfstack.go.html#line-47">#L47</a>: 		next := atomic.<b>Load64</b>(&amp;node.next)
+		<a href="../../../src/runtime/lfstack.go.html#line-55" class="path-duplicate">lfstack.go</a><a href="../../../src/runtime/lfstack.go.html#line-55">#L55</a>: 	return atomic.<b>Load64</b>((*uint64)(head)) == 0
+		<a href="../../../src/runtime/mgc.go.html#line-580">mgc.go#L580</a>: 		lastgc := int64(atomic.<b>Load64</b>(&amp;memstats.last_gc_nanotime))
+		<a href="../../../src/runtime/mprof.go.html#line-492">mprof.go#L492</a>: 	rate := int64(atomic.<b>Load64</b>(&amp;blockprofilerate))
+		<a href="../../../src/runtime/mprof.go.html#line-586" class="path-duplicate">mprof.go</a><a href="../../../src/runtime/mprof.go.html#line-586">#L586</a>: 	rate := int64(atomic.<b>Load64</b>(&amp;mutexprofilerate))
+		<a href="../../../src/runtime/mprof.go.html#line-732" class="path-duplicate">mprof.go</a><a href="../../../src/runtime/mprof.go.html#line-732">#L732</a>: 	rate := int64(atomic.<b>Load64</b>(&amp;mutexprofilerate))
+		<a href="../../../src/runtime/mprof.go.html#line-792" class="path-duplicate">mprof.go</a><a href="../../../src/runtime/mprof.go.html#line-792">#L792</a>: 	rate := int64(atomic.<b>Load64</b>(&amp;mutexprofilerate))
+		<a href="../../../src/runtime/mstats.go.html#line-649">mstats.go#L649</a>: 	return atomic.<b>Load64</b>((*uint64)(s))
+		<a href="../../../src/runtime/os_linux.go.html#line-816">os_linux.go#L816</a>: 		for atomic.<b>Load64</b>(&amp;mp.procid) == 0 {
+		<a href="../../../src/runtime/os_linux.go.html#line-827" class="path-duplicate">os_linux.go</a><a href="../../../src/runtime/os_linux.go.html#line-827">#L827</a>: 		if atomic.<b>Load64</b>(&amp;mp.procid) == tid {
+		<a href="../../../src/runtime/profbuf.go.html#line-117">profbuf.go#L117</a>: 	return profIndex(atomic.<b>Load64</b>((*uint64)(x)))
+		<a href="../../../src/runtime/runtime1.go.html#line-121">runtime1.go#L121</a>: 	if atomic.<b>Load64</b>(&amp;test_z64) != 1 {
+		<a href="../../../src/runtime/runtime1.go.html#line-125" class="path-duplicate">runtime1.go</a><a href="../../../src/runtime/runtime1.go.html#line-125">#L125</a>: 	if atomic.<b>Load64</b>(&amp;test_z64) != (1&lt;&lt;40)+1 {
+		<a href="../../../src/runtime/runtime1.go.html#line-131" class="path-duplicate">runtime1.go</a><a href="../../../src/runtime/runtime1.go.html#line-131">#L131</a>: 	if atomic.<b>Load64</b>(&amp;test_z64) != (2&lt;&lt;40)+2 {
+		<a href="../../../src/runtime/runtime1.go.html#line-137" class="path-duplicate">runtime1.go</a><a href="../../../src/runtime/runtime1.go.html#line-137">#L137</a>: 	if atomic.<b>Load64</b>(&amp;test_z64) != (3&lt;&lt;40)+3 {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

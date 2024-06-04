@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: io/fs.PathError.Path</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/io/fs.html">io/fs</a>.<a href="../../src/io/fs/fs.go.html#line-250">PathError</a>.<a href="../../src/io/fs/fs.go.html#line-252">Path</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">57 uses</span>
+
+	io/fs (current package)
+		<a href="../../src/io/fs/fs.go.html#line-252">fs.go#L252</a>: 	<b>Path</b> string
+		<a href="../../src/io/fs/fs.go.html#line-256" class="path-duplicate">fs.go</a><a href="../../src/io/fs/fs.go.html#line-256">#L256</a>: func (e *PathError) Error() string { return e.Op + " " + e.<b>Path</b> + ": " + e.Err.Error() }
+		<a href="../../src/io/fs/readdir.go.html#line-41">readdir.go#L41</a>: 		return nil, &amp;PathError{Op: "readdir", <b>Path</b>: name, Err: errors.New("not implemented")}
+		<a href="../../src/io/fs/sub.go.html#line-36">sub.go#L36</a>: 		return nil, &amp;PathError{Op: "sub", <b>Path</b>: dir, Err: errors.New("invalid name")}
+		<a href="../../src/io/fs/sub.go.html#line-55" class="path-duplicate">sub.go</a><a href="../../src/io/fs/sub.go.html#line-55">#L55</a>: 		return "", &amp;PathError{Op: op, <b>Path</b>: name, Err: errors.New("invalid name")}
+		<a href="../../src/io/fs/sub.go.html#line-74" class="path-duplicate">sub.go</a><a href="../../src/io/fs/sub.go.html#line-74">#L74</a>: 		if short, ok := f.shorten(e.<b>Path</b>); ok {
+		<a href="../../src/io/fs/sub.go.html#line-75" class="path-duplicate">sub.go</a><a href="../../src/io/fs/sub.go.html#line-75">#L75</a>: 			e.<b>Path</b> = short
+
+	<a href="../../pkg/embed.html">embed</a>
+		<a href="../../src/embed/embed.go.html#line-308">embed.go#L308</a>: 		return nil, &amp;fs.PathError{Op: "open", <b>Path</b>: name, Err: fs.ErrNotExist}
+		<a href="../../src/embed/embed.go.html#line-324" class="path-duplicate">embed.go</a><a href="../../src/embed/embed.go.html#line-324">#L324</a>: 		return nil, &amp;fs.PathError{Op: "read", <b>Path</b>: name, Err: errors.New("not a directory")}
+		<a href="../../src/embed/embed.go.html#line-341" class="path-duplicate">embed.go</a><a href="../../src/embed/embed.go.html#line-341">#L341</a>: 		return nil, &amp;fs.PathError{Op: "read", <b>Path</b>: name, Err: errors.New("is a directory")}
+		<a href="../../src/embed/embed.go.html#line-365" class="path-duplicate">embed.go</a><a href="../../src/embed/embed.go.html#line-365">#L365</a>: 		return 0, &amp;fs.PathError{Op: "read", <b>Path</b>: f.f.name, Err: fs.ErrInvalid}
+		<a href="../../src/embed/embed.go.html#line-382" class="path-duplicate">embed.go</a><a href="../../src/embed/embed.go.html#line-382">#L382</a>: 		return 0, &amp;fs.PathError{Op: "seek", <b>Path</b>: f.f.name, Err: fs.ErrInvalid}
+		<a href="../../src/embed/embed.go.html#line-390" class="path-duplicate">embed.go</a><a href="../../src/embed/embed.go.html#line-390">#L390</a>: 		return 0, &amp;fs.PathError{Op: "read", <b>Path</b>: f.f.name, Err: fs.ErrInvalid}
+		<a href="../../src/embed/embed.go.html#line-410" class="path-duplicate">embed.go</a><a href="../../src/embed/embed.go.html#line-410">#L410</a>: 	return 0, &amp;fs.PathError{Op: "read", <b>Path</b>: d.f.name, Err: errors.New("is a directory")}
+
+	<a href="../../pkg/os.html">os</a>
+		<a href="../../src/os/dir_unix.go.html#line-73">dir_unix.go#L73</a>: 				return names, dirents, infos, &amp;PathError{Op: "readdirent", <b>Path</b>: f.name, Err: errno}
+		<a href="../../src/os/exec_posix.go.html#line-60">exec_posix.go#L60</a>: 		return nil, &amp;PathError{Op: "fork/exec", <b>Path</b>: name, Err: e}
+		<a href="../../src/os/file.go.html#line-132">file.go#L132</a>: 		return 0, &amp;PathError{Op: "readat", <b>Path</b>: f.name, Err: errors.New("negative offset")}
+		<a href="../../src/os/file.go.html#line-222" class="path-duplicate">file.go</a><a href="../../src/os/file.go.html#line-222">#L222</a>: 		return 0, &amp;PathError{Op: "writeat", <b>Path</b>: f.name, Err: errors.New("negative offset")}
+		<a href="../../src/os/file.go.html#line-308" class="path-duplicate">file.go</a><a href="../../src/os/file.go.html#line-308">#L308</a>: 		return &amp;PathError{Op: "mkdir", <b>Path</b>: name, Err: e}
+		<a href="../../src/os/file.go.html#line-338" class="path-duplicate">file.go</a><a href="../../src/os/file.go.html#line-338">#L338</a>: 		return &amp;PathError{Op: "chdir", <b>Path</b>: dir, Err: e}
+		<a href="../../src/os/file.go.html#line-429" class="path-duplicate">file.go</a><a href="../../src/os/file.go.html#line-429">#L429</a>: 	return &amp;PathError{Op: op, <b>Path</b>: f.name, Err: err}
+		<a href="../../src/os/file.go.html#line-679" class="path-duplicate">file.go</a><a href="../../src/os/file.go.html#line-679">#L679</a>: 		return nil, &amp;PathError{Op: "open", <b>Path</b>: name, Err: err}
+		<a href="../../src/os/file.go.html#line-687" class="path-duplicate">file.go</a><a href="../../src/os/file.go.html#line-687">#L687</a>: 		err.(*PathError).<b>Path</b> = name
+		<a href="../../src/os/file.go.html#line-700" class="path-duplicate">file.go</a><a href="../../src/os/file.go.html#line-700">#L700</a>: 		return nil, &amp;PathError{Op: "readfile", <b>Path</b>: name, Err: err}
+		<a href="../../src/os/file.go.html#line-706" class="path-duplicate">file.go</a><a href="../../src/os/file.go.html#line-706">#L706</a>: 			e.<b>Path</b> = name
+		<a href="../../src/os/file.go.html#line-718" class="path-duplicate">file.go</a><a href="../../src/os/file.go.html#line-718">#L718</a>: 		return nil, &amp;PathError{Op: "readdir", <b>Path</b>: name, Err: err}
+		<a href="../../src/os/file.go.html#line-724" class="path-duplicate">file.go</a><a href="../../src/os/file.go.html#line-724">#L724</a>: 			e.<b>Path</b> = name
+		<a href="../../src/os/file.go.html#line-734" class="path-duplicate">file.go</a><a href="../../src/os/file.go.html#line-734">#L734</a>: 		return nil, &amp;PathError{Op: "stat", <b>Path</b>: name, Err: err}
+		<a href="../../src/os/file.go.html#line-739" class="path-duplicate">file.go</a><a href="../../src/os/file.go.html#line-739">#L739</a>: 		err.(*PathError).<b>Path</b> = name
+		<a href="../../src/os/file_posix.go.html#line-82">file_posix.go#L82</a>: 		return &amp;PathError{Op: "chmod", <b>Path</b>: name, Err: e}
+		<a href="../../src/os/file_posix.go.html#line-110" class="path-duplicate">file_posix.go</a><a href="../../src/os/file_posix.go.html#line-110">#L110</a>: 		return &amp;PathError{Op: "chown", <b>Path</b>: name, Err: e}
+		<a href="../../src/os/file_posix.go.html#line-126" class="path-duplicate">file_posix.go</a><a href="../../src/os/file_posix.go.html#line-126">#L126</a>: 		return &amp;PathError{Op: "lchown", <b>Path</b>: name, Err: e}
+		<a href="../../src/os/file_posix.go.html#line-191" class="path-duplicate">file_posix.go</a><a href="../../src/os/file_posix.go.html#line-191">#L191</a>: 		return &amp;PathError{Op: "chtimes", <b>Path</b>: name, Err: e}
+		<a href="../../src/os/file_unix.go.html#line-282">file_unix.go#L282</a>: 		return nil, &amp;PathError{Op: "open", <b>Path</b>: name, Err: e}
+		<a href="../../src/os/file_unix.go.html#line-319" class="path-duplicate">file_unix.go</a><a href="../../src/os/file_unix.go.html#line-319">#L319</a>: 		err = &amp;PathError{Op: "close", <b>Path</b>: file.name, Err: e}
+		<a href="../../src/os/file_unix.go.html#line-351" class="path-duplicate">file_unix.go</a><a href="../../src/os/file_unix.go.html#line-351">#L351</a>: 		return &amp;PathError{Op: "truncate", <b>Path</b>: name, Err: e}
+		<a href="../../src/os/file_unix.go.html#line-388" class="path-duplicate">file_unix.go</a><a href="../../src/os/file_unix.go.html#line-388">#L388</a>: 	return &amp;PathError{Op: "remove", <b>Path</b>: name, Err: e}
+		<a href="../../src/os/file_unix.go.html#line-447" class="path-duplicate">file_unix.go</a><a href="../../src/os/file_unix.go.html#line-447">#L447</a>: 			return "", &amp;PathError{Op: "readlink", <b>Path</b>: name, Err: e}
+		<a href="../../src/os/path.go.html#line-25">path.go#L25</a>: 		return &amp;PathError{Op: "mkdir", <b>Path</b>: path, Err: syscall.ENOTDIR}
+		<a href="../../src/os/removeall_at.go.html#line-25">removeall_at.go#L25</a>: 		return &amp;PathError{Op: "RemoveAll", <b>Path</b>: path, Err: syscall.EINVAL}
+		<a href="../../src/os/removeall_at.go.html#line-50" class="path-duplicate">removeall_at.go</a><a href="../../src/os/removeall_at.go.html#line-50">#L50</a>: 			pathErr.<b>Path</b> = parentDir + string(PathSeparator) + pathErr.<b>Path</b>
+		<a href="../../src/os/removeall_at.go.html#line-75" class="path-duplicate">removeall_at.go</a><a href="../../src/os/removeall_at.go.html#line-75">#L75</a>: 		return &amp;PathError{Op: "unlinkat", <b>Path</b>: base, Err: err}
+		<a href="../../src/os/removeall_at.go.html#line-87" class="path-duplicate">removeall_at.go</a><a href="../../src/os/removeall_at.go.html#line-87">#L87</a>: 		return &amp;PathError{Op: "fstatat", <b>Path</b>: base, Err: statErr}
+		<a href="../../src/os/removeall_at.go.html#line-91" class="path-duplicate">removeall_at.go</a><a href="../../src/os/removeall_at.go.html#line-91">#L91</a>: 		return &amp;PathError{Op: "unlinkat", <b>Path</b>: base, Err: err}
+		<a href="../../src/os/removeall_at.go.html#line-106" class="path-duplicate">removeall_at.go</a><a href="../../src/os/removeall_at.go.html#line-106">#L106</a>: 			recurseErr = &amp;PathError{Op: "openfdat", <b>Path</b>: base, Err: err}
+		<a href="../../src/os/removeall_at.go.html#line-120" class="path-duplicate">removeall_at.go</a><a href="../../src/os/removeall_at.go.html#line-120">#L120</a>: 				return &amp;PathError{Op: "readdirnames", <b>Path</b>: base, Err: readErr}
+		<a href="../../src/os/removeall_at.go.html#line-128" class="path-duplicate">removeall_at.go</a><a href="../../src/os/removeall_at.go.html#line-128">#L128</a>: 						pathErr.<b>Path</b> = base + string(PathSeparator) + pathErr.<b>Path</b>
+		<a href="../../src/os/removeall_at.go.html#line-168" class="path-duplicate">removeall_at.go</a><a href="../../src/os/removeall_at.go.html#line-168">#L168</a>: 	return &amp;PathError{Op: "unlinkat", <b>Path</b>: base, Err: unlinkError}
+		<a href="../../src/os/stat_unix.go.html#line-22">stat_unix.go#L22</a>: 		return nil, &amp;PathError{Op: "stat", <b>Path</b>: f.name, Err: err}
+		<a href="../../src/os/stat_unix.go.html#line-35" class="path-duplicate">stat_unix.go</a><a href="../../src/os/stat_unix.go.html#line-35">#L35</a>: 		return nil, &amp;PathError{Op: "stat", <b>Path</b>: name, Err: err}
+		<a href="../../src/os/stat_unix.go.html#line-48" class="path-duplicate">stat_unix.go</a><a href="../../src/os/stat_unix.go.html#line-48">#L48</a>: 		return nil, &amp;PathError{Op: "lstat", <b>Path</b>: name, Err: err}
+		<a href="../../src/os/tempfile.go.html#line-40">tempfile.go#L40</a>: 		return nil, &amp;PathError{Op: "createtemp", <b>Path</b>: pattern, Err: err}
+		<a href="../../src/os/tempfile.go.html#line-52" class="path-duplicate">tempfile.go</a><a href="../../src/os/tempfile.go.html#line-52">#L52</a>: 			return nil, &amp;PathError{Op: "createtemp", <b>Path</b>: prefix + "*" + suffix, Err: ErrExist}
+		<a href="../../src/os/tempfile.go.html#line-90" class="path-duplicate">tempfile.go</a><a href="../../src/os/tempfile.go.html#line-90">#L90</a>: 		return "", &amp;PathError{Op: "mkdirtemp", <b>Path</b>: pattern, Err: err}
+		<a href="../../src/os/tempfile.go.html#line-105" class="path-duplicate">tempfile.go</a><a href="../../src/os/tempfile.go.html#line-105">#L105</a>: 			return "", &amp;PathError{Op: "mkdirtemp", <b>Path</b>: dir + string(PathSeparator) + prefix + "*" + suffix, Err: ErrExist}
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

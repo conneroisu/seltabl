@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/aes.gcmAsm.tagSize</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/crypto/aes.html">crypto/aes</a>.<a href="../../src/crypto/aes/aes_gcm.go.html#line-53">gcmAsm</a>.<a href="../../src/crypto/aes/aes_gcm.go.html#line-63">tagSize</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">10 uses</span>
+
+	crypto/aes (current package)
+		<a href="../../src/crypto/aes/aes_gcm.go.html#line-48">aes_gcm.go#L48</a>: 	g := &amp;gcmAsm{ks: c.enc, nonceSize: nonceSize, <b>tagSize</b>: tagSize}
+		<a href="../../src/crypto/aes/aes_gcm.go.html#line-63" class="path-duplicate">aes_gcm.go</a><a href="../../src/crypto/aes/aes_gcm.go.html#line-63">#L63</a>: 	<b>tagSize</b> int
+		<a href="../../src/crypto/aes/aes_gcm.go.html#line-71" class="path-duplicate">aes_gcm.go</a><a href="../../src/crypto/aes/aes_gcm.go.html#line-71">#L71</a>: 	return g.<b>tagSize</b>
+		<a href="../../src/crypto/aes/aes_gcm.go.html#line-116" class="path-duplicate">aes_gcm.go</a><a href="../../src/crypto/aes/aes_gcm.go.html#line-116">#L116</a>: 	ret, out := sliceForAppend(dst, len(plaintext)+g.<b>tagSize</b>)
+		<a href="../../src/crypto/aes/aes_gcm.go.html#line-137" class="path-duplicate">aes_gcm.go</a><a href="../../src/crypto/aes/aes_gcm.go.html#line-137">#L137</a>: 	if g.<b>tagSize</b> &lt; gcmMinimumTagSize {
+		<a href="../../src/crypto/aes/aes_gcm.go.html#line-141" class="path-duplicate">aes_gcm.go</a><a href="../../src/crypto/aes/aes_gcm.go.html#line-141">#L141</a>: 	if len(ciphertext) &lt; g.<b>tagSize</b> {
+		<a href="../../src/crypto/aes/aes_gcm.go.html#line-144" class="path-duplicate">aes_gcm.go</a><a href="../../src/crypto/aes/aes_gcm.go.html#line-144">#L144</a>: 	if uint64(len(ciphertext)) &gt; ((1&lt;&lt;32)-2)*uint64(BlockSize)+uint64(g.<b>tagSize</b>) {
+		<a href="../../src/crypto/aes/aes_gcm.go.html#line-148" class="path-duplicate">aes_gcm.go</a><a href="../../src/crypto/aes/aes_gcm.go.html#line-148">#L148</a>: 	tag := ciphertext[len(ciphertext)-g.<b>tagSize</b>:]
+		<a href="../../src/crypto/aes/aes_gcm.go.html#line-149" class="path-duplicate">aes_gcm.go</a><a href="../../src/crypto/aes/aes_gcm.go.html#line-149">#L149</a>: 	ciphertext = ciphertext[:len(ciphertext)-g.<b>tagSize</b>]
+		<a href="../../src/crypto/aes/aes_gcm.go.html#line-178" class="path-duplicate">aes_gcm.go</a><a href="../../src/crypto/aes/aes_gcm.go.html#line-178">#L178</a>: 	if subtle.ConstantTimeCompare(expectedTag[:g.<b>tagSize</b>], tag) != 1 {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

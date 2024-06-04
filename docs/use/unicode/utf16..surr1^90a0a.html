@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: unicode/utf16.surr1</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../../pkg/unicode/utf16.html">unicode/utf16</a>.<a href="../../src/unicode/utf16/utf16.go.html#line-21">surr1</a></b></span>
+
+<span class="title">9 uses</span>
+
+	unicode/utf16 (current package)
+		<a href="../../src/unicode/utf16/utf16.go.html#line-21">utf16.go#L21</a>: 	<b>surr1</b> = 0xd800
+		<a href="../../src/unicode/utf16/utf16.go.html#line-31" class="path-duplicate">utf16.go</a><a href="../../src/unicode/utf16/utf16.go.html#line-31">#L31</a>: 	return <b>surr1</b> &lt;= r &amp;&amp; r &lt; surr3
+		<a href="../../src/unicode/utf16/utf16.go.html#line-38" class="path-duplicate">utf16.go</a><a href="../../src/unicode/utf16/utf16.go.html#line-38">#L38</a>: 	if <b>surr1</b> &lt;= r1 &amp;&amp; r1 &lt; surr2 &amp;&amp; surr2 &lt;= r2 &amp;&amp; r2 &lt; surr3 {
+		<a href="../../src/unicode/utf16/utf16.go.html#line-39" class="path-duplicate">utf16.go</a><a href="../../src/unicode/utf16/utf16.go.html#line-39">#L39</a>: 		return (r1-<b>surr1</b>)&lt;&lt;10 | (r2 - surr2) + surrSelf
+		<a href="../../src/unicode/utf16/utf16.go.html#line-52" class="path-duplicate">utf16.go</a><a href="../../src/unicode/utf16/utf16.go.html#line-52">#L52</a>: 	return <b>surr1</b> + (r&gt;&gt;10)&amp;0x3ff, surr2 + r&amp;0x3ff
+		<a href="../../src/unicode/utf16/utf16.go.html#line-68" class="path-duplicate">utf16.go</a><a href="../../src/unicode/utf16/utf16.go.html#line-68">#L68</a>: 		case 0 &lt;= v &amp;&amp; v &lt; <b>surr1</b>, surr3 &lt;= v &amp;&amp; v &lt; surrSelf:
+		<a href="../../src/unicode/utf16/utf16.go.html#line-92" class="path-duplicate">utf16.go</a><a href="../../src/unicode/utf16/utf16.go.html#line-92">#L92</a>: 	case 0 &lt;= r &amp;&amp; r &lt; <b>surr1</b>, surr3 &lt;= r &amp;&amp; r &lt; surrSelf:
+		<a href="../../src/unicode/utf16/utf16.go.html#line-118" class="path-duplicate">utf16.go</a><a href="../../src/unicode/utf16/utf16.go.html#line-118">#L118</a>: 		case r &lt; <b>surr1</b>, surr3 &lt;= r:
+		<a href="../../src/unicode/utf16/utf16.go.html#line-121" class="path-duplicate">utf16.go</a><a href="../../src/unicode/utf16/utf16.go.html#line-121">#L121</a>: 		case <b>surr1</b> &lt;= r &amp;&amp; r &lt; surr2 &amp;&amp; i+1 &lt; len(s) &amp;&amp;
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

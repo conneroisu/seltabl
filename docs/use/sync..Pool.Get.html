@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: sync.Pool.Get</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/sync.html">sync</a>.<a href="../src/sync/pool.go.html#line-49">Pool</a>.<a href="../src/sync/pool.go.html#line-128">Get</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">39 uses</span>
+
+	sync (current package)
+		<a href="../src/sync/pool.go.html#line-128">pool.go#L128</a>: func (p *Pool) <b>Get</b>() any {
+
+	<a href="../pkg/crypto/tls.html">crypto/tls</a>
+		<a href="../src/crypto/tls/conn.go.html#line-985">conn.go#L985</a>: 	outBufPtr := outBufPool.<b>Get</b>().(*[]byte)
+
+	<a href="../pkg/fmt.html">fmt</a>
+		<a href="../src/fmt/print.go.html#line-152">print.go#L152</a>: 	p := ppFree.<b>Get</b>().(*pp)
+		<a href="../src/fmt/scan.go.html#line-384">scan.go#L384</a>: 	s = ssFree.<b>Get</b>().(*ss)
+
+	<a href="../pkg/internal/poll.html">internal/poll</a>
+		<a href="../src/internal/poll/splice_linux.go.html#line-211">splice_linux.go#L211</a>: 	v := splicePipePool.<b>Get</b>()
+
+	<a href="../pkg/io.html">io</a>
+		<a href="../src/io/io.go.html#line-663">io.go#L663</a>: 	bufp := blackHolePool.<b>Get</b>().(*[]byte)
+
+	<a href="../pkg/log.html">log</a>
+		<a href="../src/log/log.go.html#line-169">log.go#L169</a>: 	p := bufferPool.<b>Get</b>().(*[]byte)
+
+	<a href="../pkg/math/big.html">math/big</a>
+		<a href="../src/math/big/nat.go.html#line-635">nat.go#L635</a>: 	if v := natPool.<b>Get</b>(); v != nil {
+
+	<a href="../pkg/net/http.html">net/http</a>
+		<a href="../src/net/http/h2_bundle.go.html#line-1055">h2_bundle.go#L1055</a>: 		return http2dataChunkPools[0].<b>Get</b>().(*[1 &lt;&lt; 10]byte)[:]
+		<a href="../src/net/http/h2_bundle.go.html#line-1057" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-1057">#L1057</a>: 		return http2dataChunkPools[1].<b>Get</b>().(*[2 &lt;&lt; 10]byte)[:]
+		<a href="../src/net/http/h2_bundle.go.html#line-1059" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-1059">#L1059</a>: 		return http2dataChunkPools[2].<b>Get</b>().(*[4 &lt;&lt; 10]byte)[:]
+		<a href="../src/net/http/h2_bundle.go.html#line-1061" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-1061">#L1061</a>: 		return http2dataChunkPools[3].<b>Get</b>().(*[8 &lt;&lt; 10]byte)[:]
+		<a href="../src/net/http/h2_bundle.go.html#line-1063" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-1063">#L1063</a>: 		return http2dataChunkPools[4].<b>Get</b>().(*[16 &lt;&lt; 10]byte)[:]
+		<a href="../src/net/http/h2_bundle.go.html#line-1632" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-1632">#L1632</a>: 	bufp := http2fhBytes.<b>Get</b>().(*[]byte)
+		<a href="../src/net/http/h2_bundle.go.html#line-3130" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-3130">#L3130</a>: 	bp := http2littleBuf.<b>Get</b>().(*[]byte)
+		<a href="../src/net/http/h2_bundle.go.html#line-3589" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-3589">#L3589</a>: 		bw := http2bufWriterPool.<b>Get</b>().(*bufio.Writer)
+		<a href="../src/net/http/h2_bundle.go.html#line-4908" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-4908">#L4908</a>: 	ch := http2errChanPool.<b>Get</b>().(chan error)
+		<a href="../src/net/http/h2_bundle.go.html#line-4909" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-4909">#L4909</a>: 	writeArg := http2writeDataPool.<b>Get</b>().(*http2writeData)
+		<a href="../src/net/http/h2_bundle.go.html#line-6102" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-6102">#L6102</a>: 	rws := http2responseWriterStatePool.<b>Get</b>().(*http2responseWriterState)
+		<a href="../src/net/http/h2_bundle.go.html#line-6216" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-6216">#L6216</a>: 		errc = http2errChanPool.<b>Get</b>().(chan error)
+		<a href="../src/net/http/h2_bundle.go.html#line-6578" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-6578">#L6578</a>: 		sorter := http2sorterPool.<b>Get</b>().(*http2sorter)
+		<a href="../src/net/http/h2_bundle.go.html#line-6904" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-6904">#L6904</a>: 		done:   http2errChanPool.<b>Get</b>().(chan error),
+		<a href="../src/net/http/h2_bundle.go.html#line-8789" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-8789">#L8789</a>: 	if bp, ok := http2bufPools[index].<b>Get</b>().(*[]byte); ok &amp;&amp; len(*bp) &gt;= scratchLen {
+		<a href="../src/net/http/h2_bundle.go.html#line-10625" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-10625">#L10625</a>: 		sorter := http2sorterPool.<b>Get</b>().(*http2sorter)
+		<a href="../src/net/http/header.go.html#line-174">header.go#L174</a>: 	hs = headerSorterPool.<b>Get</b>().(*headerSorter)
+		<a href="../src/net/http/request.go.html#line-1022">request.go#L1022</a>: 	if v := textprotoReaderPool.<b>Get</b>(); v != nil {
+		<a href="../src/net/http/server.go.html#line-814">server.go#L814</a>: 	return copyBufPool.<b>Get</b>().(*[copyBufPoolSize]byte)[:]
+		<a href="../src/net/http/server.go.html#line-834" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-834">#L834</a>: 	if v := bufioReaderPool.<b>Get</b>(); v != nil {
+		<a href="../src/net/http/server.go.html#line-852" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-852">#L852</a>: 		if v := pool.<b>Get</b>(); v != nil {
+
+	<a href="../pkg/os.html">os</a>
+		<a href="../src/os/dir_unix.go.html#line-48">dir_unix.go#L48</a>: 		f.dirinfo.buf = dirBufPool.<b>Get</b>().(*[]byte)
+
+	<a href="../pkg/reflect.html">reflect</a>
+		<a href="../src/reflect/value.go.html#line-489">value.go#L489</a>: 			stackArgs = framePool.<b>Get</b>().(unsafe.Pointer)
+		<a href="../src/reflect/value.go.html#line-982" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-982">#L982</a>: 	methodFrame := methodFramePool.<b>Get</b>().(unsafe.Pointer)
+
+	<a href="../pkg/regexp.html">regexp</a>
+		<a href="../src/regexp/backtrack.go.html#line-50">backtrack.go#L50</a>: 	b, ok := bitStatePool.<b>Get</b>().(*bitState)
+		<a href="../src/regexp/exec.go.html#line-384">exec.go#L384</a>: 	m, ok := onePassPool.<b>Get</b>().(*onePassMachine)
+		<a href="../src/regexp/regexp.go.html#line-237">regexp.go#L237</a>: 	m, ok := matchPool[re.mpool].<b>Get</b>().(*machine)
+
+	<a href="../pkg/syscall.html">syscall</a>
+		<a href="../src/syscall/netlink_linux.go.html#line-84">netlink_linux.go#L84</a>: 	rbNew := pageBufPool.<b>Get</b>().(*[]byte)
+
+	<a href="../pkg/vendor/golang.org/x/net/http2/hpack.html">vendor/golang.org/x/net/http2/hpack</a>
+		<a href="../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-513">hpack.go#L513</a>: 	buf := bufPool.<b>Get</b>().(*bytes.Buffer)
+		<a href="../src/vendor/golang.org/x/net/http2/hpack/huffman.go.html#line-22">huffman.go#L22</a>: 	buf := bufPool.<b>Get</b>().(*bytes.Buffer)
+		<a href="../src/vendor/golang.org/x/net/http2/hpack/huffman.go.html#line-33" class="path-duplicate">huffman.go</a><a href="../src/vendor/golang.org/x/net/http2/hpack/huffman.go.html#line-33">#L33</a>: 	buf := bufPool.<b>Get</b>().(*bytes.Buffer)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

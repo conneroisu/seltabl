@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: compress/flate.decompressor.codebits</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/compress/flate.html">compress/flate</a>.<a href="../../src/compress/flate/inflate.go.html#line-267">decompressor</a>.<a href="../../src/compress/flate/inflate.go.html#line-282">codebits</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">8 uses</span>
+
+	compress/flate (current package)
+		<a href="../../src/compress/flate/inflate.go.html#line-282">inflate.go#L282</a>: 	<b>codebits</b> *[numCodes]int
+		<a href="../../src/compress/flate/inflate.go.html#line-396" class="path-duplicate">inflate.go</a><a href="../../src/compress/flate/inflate.go.html#line-396">#L396</a>: 		f.<b>codebits</b>[codeOrder[i]] = int(f.b &amp; 0x7)
+		<a href="../../src/compress/flate/inflate.go.html#line-401" class="path-duplicate">inflate.go</a><a href="../../src/compress/flate/inflate.go.html#line-401">#L401</a>: 		f.<b>codebits</b>[codeOrder[i]] = 0
+		<a href="../../src/compress/flate/inflate.go.html#line-403" class="path-duplicate">inflate.go</a><a href="../../src/compress/flate/inflate.go.html#line-403">#L403</a>: 	if !f.h1.init(f.<b>codebits</b>[0:]) {
+		<a href="../../src/compress/flate/inflate.go.html#line-790" class="path-duplicate">inflate.go</a><a href="../../src/compress/flate/inflate.go.html#line-790">#L790</a>: 		<b>codebits</b>: f.<b>codebits</b>,
+		<a href="../../src/compress/flate/inflate.go.html#line-813" class="path-duplicate">inflate.go</a><a href="../../src/compress/flate/inflate.go.html#line-813">#L813</a>: 	f.<b>codebits</b> = new([numCodes]int)
+		<a href="../../src/compress/flate/inflate.go.html#line-832" class="path-duplicate">inflate.go</a><a href="../../src/compress/flate/inflate.go.html#line-832">#L832</a>: 	f.<b>codebits</b> = new([numCodes]int)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

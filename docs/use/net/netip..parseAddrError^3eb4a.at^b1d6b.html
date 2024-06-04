@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/netip.parseAddrError.at</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/net/netip.html">net/netip</a>.<a href="../../src/net/netip/netip.go.html#line-141">parseAddrError</a>.<a href="../../src/net/netip/netip.go.html#line-144">at</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">14 uses</span>
+
+	net/netip (current package)
+		<a href="../../src/net/netip/netip.go.html#line-144">netip.go#L144</a>: 	<b>at</b>  string // optionally, the unparsed portion of in at which the error occurred.
+		<a href="../../src/net/netip/netip.go.html#line-149" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-149">#L149</a>: 	if err.<b>at</b> != "" {
+		<a href="../../src/net/netip/netip.go.html#line-150" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-150">#L150</a>: 		return "ParseAddr(" + q(err.in) + "): " + err.msg + " (at " + q(err.<b>at</b>) + ")"
+		<a href="../../src/net/netip/netip.go.html#line-175" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-175">#L175</a>: 				return Addr{}, parseAddrError{in: s, msg: "IPv4 field must have at least one digit", <b>at</b>: s[i:]}
+		<a href="../../src/net/netip/netip.go.html#line-186" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-186">#L186</a>: 			return Addr{}, parseAddrError{in: s, msg: "unexpected character", <b>at</b>: s[i:]}
+		<a href="../../src/net/netip/netip.go.html#line-247" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-247">#L247</a>: 				return Addr{}, parseAddrError{in: in, msg: "IPv6 field has value &gt;=2^16", <b>at</b>: s}
+		<a href="../../src/net/netip/netip.go.html#line-252" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-252">#L252</a>: 			return Addr{}, parseAddrError{in: in, msg: "each colon-separated field must have at least one digit", <b>at</b>: s}
+		<a href="../../src/net/netip/netip.go.html#line-259" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-259">#L259</a>: 				return Addr{}, parseAddrError{in: in, msg: "embedded IPv4 address must replace the final 2 fields of the address", <b>at</b>: s}
+		<a href="../../src/net/netip/netip.go.html#line-263" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-263">#L263</a>: 				return Addr{}, parseAddrError{in: in, msg: "too many hex fields to fit an embedded IPv4 at the end of the address", <b>at</b>: s}
+		<a href="../../src/net/netip/netip.go.html#line-270" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-270">#L270</a>: 				return Addr{}, parseAddrError{in: in, msg: err.Error(), <b>at</b>: s}
+		<a href="../../src/net/netip/netip.go.html#line-294" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-294">#L294</a>: 			return Addr{}, parseAddrError{in: in, msg: "unexpected character, want colon", <b>at</b>: s}
+		<a href="../../src/net/netip/netip.go.html#line-296" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-296">#L296</a>: 			return Addr{}, parseAddrError{in: in, msg: "colon must be followed by more characters", <b>at</b>: s}
+		<a href="../../src/net/netip/netip.go.html#line-303" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-303">#L303</a>: 				return Addr{}, parseAddrError{in: in, msg: "multiple :: in address", <b>at</b>: s}
+		<a href="../../src/net/netip/netip.go.html#line-315" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-315">#L315</a>: 		return Addr{}, parseAddrError{in: in, msg: "trailing garbage after address", <b>at</b>: s}
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

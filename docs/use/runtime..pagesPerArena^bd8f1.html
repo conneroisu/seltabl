@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.pagesPerArena</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/malloc.go.html#line-259">pagesPerArena</a></b></span>
+
+<span class="title">20 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/malloc.go.html#line-259">malloc.go#L259</a>: 	<b>pagesPerArena</b> = heapArenaBytes / pageSize
+		<a href="../src/runtime/malloc.go.html#line-420" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-420">#L420</a>: 	if <b>pagesPerArena</b>%pagesPerSpanRoot != 0 {
+		<a href="../src/runtime/malloc.go.html#line-421" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-421">#L421</a>: 		print("pagesPerArena (", <b>pagesPerArena</b>, ") is not divisible by pagesPerSpanRoot (", pagesPerSpanRoot, ")\n")
+		<a href="../src/runtime/malloc.go.html#line-424" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-424">#L424</a>: 	if <b>pagesPerArena</b>%pagesPerReclaimerChunk != 0 {
+		<a href="../src/runtime/malloc.go.html#line-425" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-425">#L425</a>: 		print("pagesPerArena (", <b>pagesPerArena</b>, ") is not divisible by pagesPerReclaimerChunk (", pagesPerReclaimerChunk, ")\n")
+		<a href="../src/runtime/mgcmark.go.html#line-98">mgcmark.go#L98</a>: 	work.nSpanRoots = len(mheap_.markArenas) * (<b>pagesPerArena</b> / pagesPerSpanRoot)
+		<a href="../src/runtime/mgcmark.go.html#line-337" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-337">#L337</a>: 	ai := mheap_.markArenas[shard/(<b>pagesPerArena</b>/pagesPerSpanRoot)]
+		<a href="../src/runtime/mgcmark.go.html#line-339" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-339">#L339</a>: 	arenaPage := uint(uintptr(shard) * pagesPerSpanRoot % <b>pagesPerArena</b>)
+		<a href="../src/runtime/mheap.go.html#line-257">mheap.go#L257</a>: 	spans [<b>pagesPerArena</b>]*mspan
+		<a href="../src/runtime/mheap.go.html#line-265" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-265">#L265</a>: 	pageInUse [<b>pagesPerArena</b> / 8]uint8
+		<a href="../src/runtime/mheap.go.html#line-280" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-280">#L280</a>: 	pageMarks [<b>pagesPerArena</b> / 8]uint8
+		<a href="../src/runtime/mheap.go.html#line-290" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-290">#L290</a>: 	pageSpecials [<b>pagesPerArena</b> / 8]uint8
+		<a href="../src/runtime/mheap.go.html#line-698" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-698">#L698</a>: 	return ha.spans[(p/pageSize)%<b>pagesPerArena</b>]
+		<a href="../src/runtime/mheap.go.html#line-709" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-709">#L709</a>: 	return mheap_.arenas[ai.l1()][ai.l2()].spans[(p/pageSize)%<b>pagesPerArena</b>]
+		<a href="../src/runtime/mheap.go.html#line-818" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-818">#L818</a>: 		if idx/<b>pagesPerArena</b> &gt;= uintptr(len(arenas)) {
+		<a href="../src/runtime/mheap.go.html#line-873" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-873">#L873</a>: 		ai := arenas[pageIdx/<b>pagesPerArena</b>]
+		<a href="../src/runtime/mheap.go.html#line-877" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-877">#L877</a>: 		arenaPage := uint(pageIdx % <b>pagesPerArena</b>)
+		<a href="../src/runtime/mheap.go.html#line-1000" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1000">#L1000</a>: 		i := (p + n) % <b>pagesPerArena</b>
+		<a href="../src/runtime/mheap.go.html#line-1819" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1819">#L1819</a>: 	arenaPage := (s.base() / pageSize) % <b>pagesPerArena</b>
+		<a href="../src/runtime/mheap.go.html#line-1827" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1827">#L1827</a>: 	arenaPage := (s.base() / pageSize) % <b>pagesPerArena</b>
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

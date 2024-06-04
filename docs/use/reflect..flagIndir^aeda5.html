@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: reflect.flagIndir</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../pkg/reflect.html">reflect</a>.<a href="../src/reflect/value.go.html#line-78">flagIndir</a></b></span>
+
+<span class="title">53 uses</span>
+
+	reflect (current package)
+		<a href="../src/reflect/makefunc.go.html#line-102">makefunc.go#L102</a>: 	fl := v.flag &amp; (flagRO | flagAddr | <b>flagIndir</b>)
+		<a href="../src/reflect/value.go.html#line-78">value.go#L78</a>: 	<b>flagIndir</b>       flag = 1 &lt;&lt; 7
+		<a href="../src/reflect/value.go.html#line-112" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-112">#L112</a>: 	if v.flag&amp;<b>flagIndir</b> != 0 {
+		<a href="../src/reflect/value.go.html#line-126" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-126">#L126</a>: 		if v.flag&amp;<b>flagIndir</b> == 0 {
+		<a href="../src/reflect/value.go.html#line-139" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-139">#L139</a>: 	case v.flag&amp;<b>flagIndir</b> != 0:
+		<a href="../src/reflect/value.go.html#line-165" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-165">#L165</a>: 		f |= <b>flagIndir</b>
+		<a href="../src/reflect/value.go.html#line-411" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-411">#L411</a>: 	} else if v.flag&amp;<b>flagIndir</b> != 0 {
+		<a href="../src/reflect/value.go.html#line-541" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-541">#L541</a>: 				if v.flag&amp;<b>flagIndir</b> != 0 {
+		<a href="../src/reflect/value.go.html#line-550" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-550">#L550</a>: 				if v.flag&amp;<b>flagIndir</b> != 0 {
+		<a href="../src/reflect/value.go.html#line-568" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-568">#L568</a>: 				if v.flag&amp;<b>flagIndir</b> == 0 {
+		<a href="../src/reflect/value.go.html#line-632" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-632">#L632</a>: 				fl := <b>flagIndir</b> | flag(tv.Kind())
+		<a href="../src/reflect/value.go.html#line-680" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-680">#L680</a>: 			ret[i] = Value{tv, s, <b>flagIndir</b> | flag(tv.Kind())}
+		<a href="../src/reflect/value.go.html#line-741" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-741">#L741</a>: 				v.flag |= <b>flagIndir</b>
+		<a href="../src/reflect/value.go.html#line-749" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-749">#L749</a>: 				v.flag |= <b>flagIndir</b>
+		<a href="../src/reflect/value.go.html#line-829" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-829">#L829</a>: 					if v.flag&amp;<b>flagIndir</b> != 0 {
+		<a href="../src/reflect/value.go.html#line-839" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-839">#L839</a>: 					if v.flag&amp;<b>flagIndir</b> != 0 {
+		<a href="../src/reflect/value.go.html#line-852" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-852">#L852</a>: 					if v.flag&amp;<b>flagIndir</b> == 0 {
+		<a href="../src/reflect/value.go.html#line-932" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-932">#L932</a>: 	} else if v.flag&amp;<b>flagIndir</b> != 0 &amp;&amp; !ifaceIndir(t) {
+		<a href="../src/reflect/value.go.html#line-1249" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1249">#L1249</a>: 		if v.flag&amp;<b>flagIndir</b> != 0 {
+		<a href="../src/reflect/value.go.html#line-1273" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1273">#L1273</a>: 		fl := v.flag&amp;flagRO | <b>flagIndir</b> | flagAddr
+		<a href="../src/reflect/value.go.html#line-1294" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1294">#L1294</a>: 	fl := v.flag&amp;(flagStickyRO|<b>flagIndir</b>|flagAddr) | flag(typ.Kind())
+		<a href="../src/reflect/value.go.html#line-1422" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1422">#L1422</a>: 		fl := v.flag&amp;(<b>flagIndir</b>|flagAddr) | v.flag.ro() | flag(typ.Kind()) // bits same as overall array
+		<a href="../src/reflect/value.go.html#line-1435" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1435">#L1435</a>: 		fl := flagAddr | <b>flagIndir</b> | v.flag.ro() | flag(typ.Kind())
+		<a href="../src/reflect/value.go.html#line-1444" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1444">#L1444</a>: 		fl := v.flag.ro() | flag(Uint8) | <b>flagIndir</b>
+		<a href="../src/reflect/value.go.html#line-1565" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1565">#L1565</a>: 		if v.flag&amp;<b>flagIndir</b> != 0 {
+		<a href="../src/reflect/value.go.html#line-1601" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1601">#L1601</a>: 		if v.flag&amp;<b>flagIndir</b> == 0 {
+		<a href="../src/reflect/value.go.html#line-1629" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1629">#L1629</a>: 		if v.flag&amp;<b>flagIndir</b> == 0 {
+		<a href="../src/reflect/value.go.html#line-1823" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1823">#L1823</a>: 		if key.flag&amp;<b>flagIndir</b> != 0 {
+		<a href="../src/reflect/value.go.html#line-1944" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1944">#L1944</a>: 	key := Value{ktype, iterkey, iter.m.flag | flag(ktype.Kind()) | <b>flagIndir</b>}
+		<a href="../src/reflect/value.go.html#line-1987" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1987">#L1987</a>: 	elem := Value{vtype, iterelem, iter.m.flag | flag(vtype.Kind()) | <b>flagIndir</b>}
+		<a href="../src/reflect/value.go.html#line-2065" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2065">#L2065</a>: 		return Value{typ, c, fl | <b>flagIndir</b>}
+		<a href="../src/reflect/value.go.html#line-2084" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2084">#L2084</a>: 	fl := v.flag.ro() | (v.flag &amp; <b>flagIndir</b>)
+		<a href="../src/reflect/value.go.html#line-2276" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2276">#L2276</a>: 		val.flag |= <b>flagIndir</b>
+		<a href="../src/reflect/value.go.html#line-2306" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2306">#L2306</a>: 	if x.flag&amp;<b>flagIndir</b> != 0 {
+		<a href="../src/reflect/value.go.html#line-2326" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2326">#L2326</a>: 	if x.flag&amp;<b>flagIndir</b> != 0 {
+		<a href="../src/reflect/value.go.html#line-2462" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2462">#L2462</a>: 		if elem.flag&amp;<b>flagIndir</b> != 0 {
+		<a href="../src/reflect/value.go.html#line-2473" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2473">#L2473</a>: 	if key.flag&amp;<b>flagIndir</b> != 0 {
+		<a href="../src/reflect/value.go.html#line-2485" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2485">#L2485</a>: 	if elem.flag&amp;<b>flagIndir</b> != 0 {
+		<a href="../src/reflect/value.go.html#line-2589" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2589">#L2589</a>: 	fl := v.flag.ro() | <b>flagIndir</b> | flag(Slice)
+		<a href="../src/reflect/value.go.html#line-2641" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2641">#L2641</a>: 	fl := v.flag.ro() | <b>flagIndir</b> | flag(Slice)
+		<a href="../src/reflect/value.go.html#line-2916" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2916">#L2916</a>: 	v.flag = <b>flagIndir</b> | flag(Slice) // equivalent flag to MakeSlice
+		<a href="../src/reflect/value.go.html#line-3140" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3140">#L3140</a>: 			if v.flag&amp;<b>flagIndir</b> != 0 {
+		<a href="../src/reflect/value.go.html#line-3176" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3176">#L3176</a>: 			recv = Value{t, p, fl | <b>flagIndir</b>}
+		<a href="../src/reflect/value.go.html#line-3213" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3213">#L3213</a>: 	return Value{&amp;typ.(*rtype).t, unsafe.Pointer(&amp;s), <b>flagIndir</b> | flag(Slice)}
+		<a href="../src/reflect/value.go.html#line-3285" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3285">#L3285</a>: 		return Value{t, p, fl | <b>flagIndir</b>}
+		<a href="../src/reflect/value.go.html#line-3332" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3332">#L3332</a>: 		fl := v.flag&amp;(flagAddr|<b>flagIndir</b>) | v.flag.ro()
+		<a href="../src/reflect/value.go.html#line-3352" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3352">#L3352</a>: 		return Value{dst, target, <b>flagIndir</b> | flag(Interface)}
+		<a href="../src/reflect/value.go.html#line-3621" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3621">#L3621</a>: 	return Value{typ, ptr, f | <b>flagIndir</b> | flag(typ.Kind())}
+		<a href="../src/reflect/value.go.html#line-3635" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3635">#L3635</a>: 	return Value{typ, ptr, f | <b>flagIndir</b> | flag(typ.Kind())}
+		<a href="../src/reflect/value.go.html#line-3643" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3643">#L3643</a>: 	return Value{typ, ptr, f | <b>flagIndir</b> | flag(typ.Kind())}
+		<a href="../src/reflect/value.go.html#line-3657" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3657">#L3657</a>: 	return Value{typ, ptr, f | <b>flagIndir</b> | flag(typ.Kind())}
+		<a href="../src/reflect/value.go.html#line-3777" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3777">#L3777</a>: 	return Value{t.common(), h.Data, v.flag&amp;^(<b>flagIndir</b>|flagAddr|flagKindMask) | flag(Pointer)}
+		<a href="../src/reflect/value.go.html#line-3820" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3820">#L3820</a>: 	return Value{typ.common(), target, v.flag.ro() | <b>flagIndir</b> | flag(Interface)}
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/tls.clientHandshakeState.finishedHash</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/crypto/tls.html">crypto/tls</a>.<a href="../../src/crypto/tls/handshake_client.go.html#line-28">clientHandshakeState</a>.<a href="../../src/crypto/tls/handshake_client.go.html#line-34">finishedHash</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">21 uses</span>
+
+	crypto/tls (current package)
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-34">handshake_client.go#L34</a>: 	<b>finishedHash</b> finishedHash
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-447" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-447">#L447</a>: 	hs.<b>finishedHash</b> = newFinishedHash(c.vers, hs.suite)
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-454" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-454">#L454</a>: 		hs.<b>finishedHash</b>.discardHandshakeBuffer()
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-457" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-457">#L457</a>: 	if err := transcriptMsg(hs.hello, &amp;hs.<b>finishedHash</b>); err != nil {
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-460" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-460">#L460</a>: 	if err := transcriptMsg(hs.serverHello, &amp;hs.<b>finishedHash</b>); err != nil {
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-540" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-540">#L540</a>: 	msg, err := c.readHandshake(&amp;hs.<b>finishedHash</b>)
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-550" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-550">#L550</a>: 	msg, err = c.readHandshake(&amp;hs.<b>finishedHash</b>)
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-571" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-571">#L571</a>: 		msg, err = c.readHandshake(&amp;hs.<b>finishedHash</b>)
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-606" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-606">#L606</a>: 		msg, err = c.readHandshake(&amp;hs.<b>finishedHash</b>)
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-624" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-624">#L624</a>: 		msg, err = c.readHandshake(&amp;hs.<b>finishedHash</b>)
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-642" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-642">#L642</a>: 		if _, err := hs.c.writeHandshakeRecord(certMsg, &amp;hs.<b>finishedHash</b>); err != nil {
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-653" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-653">#L653</a>: 		if _, err := hs.c.writeHandshakeRecord(ckx, &amp;hs.<b>finishedHash</b>); err != nil {
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-661" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-661">#L661</a>: 			hs.<b>finishedHash</b>.Sum())
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-702" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-702">#L702</a>: 		signed := hs.<b>finishedHash</b>.hashForClientCertificate(sigType, sigHash)
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-713" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-713">#L713</a>: 		if _, err := hs.c.writeHandshakeRecord(certVerify, &amp;hs.<b>finishedHash</b>); err != nil {
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-718" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-718">#L718</a>: 	hs.<b>finishedHash</b>.discardHandshakeBuffer()
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-867" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-867">#L867</a>: 	verify := hs.<b>finishedHash</b>.serverSum(hs.masterSecret)
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-874" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-874">#L874</a>: 	if err := transcriptMsg(serverFinished, &amp;hs.<b>finishedHash</b>); err != nil {
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-893" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-893">#L893</a>: 	msg, err := c.readHandshake(&amp;hs.<b>finishedHash</b>)
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-937" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-937">#L937</a>: 	finished.verifyData = hs.<b>finishedHash</b>.clientSum(hs.masterSecret)
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-938" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-938">#L938</a>: 	if _, err := hs.c.writeHandshakeRecord(finished, &amp;hs.<b>finishedHash</b>); err != nil {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: reflect.Func</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../pkg/reflect.html">reflect</a>.<a href="../src/reflect/type.go.html#line-270">Func</a></b></span>
+
+<span class="title">27 uses</span>
+
+	reflect (current package)
+		<a href="../src/reflect/abi.go.html#line-200">abi.go#L200</a>: 	case UnsafePointer, Pointer, Chan, Map, <b>Func</b>:
+		<a href="../src/reflect/deepequal.go.html#line-154">deepequal.go#L154</a>: 	case <b>Func</b>:
+		<a href="../src/reflect/makefunc.go.html#line-47">makefunc.go#L47</a>: 	if typ.Kind() != <b>Func</b> {
+		<a href="../src/reflect/makefunc.go.html#line-70" class="path-duplicate">makefunc.go</a><a href="../src/reflect/makefunc.go.html#line-70">#L70</a>: 	return Value{t, unsafe.Pointer(impl), flag(<b>Func</b>)}
+		<a href="../src/reflect/makefunc.go.html#line-129" class="path-duplicate">makefunc.go</a><a href="../src/reflect/makefunc.go.html#line-129">#L129</a>: 	return Value{ftyp.Common(), unsafe.Pointer(fv), v.flag&amp;flagRO | flag(<b>Func</b>)}
+		<a href="../src/reflect/type.go.html#line-270">type.go#L270</a>: 	<b>Func</b>
+		<a href="../src/reflect/type.go.html#line-475" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-475">#L475</a>: 	<b>Func</b>:          "func",
+		<a href="../src/reflect/type.go.html#line-603" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-603">#L603</a>: 	fl := flag(<b>Func</b>)
+		<a href="../src/reflect/type.go.html#line-776" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-776">#L776</a>: 	if t.Kind() != <b>Func</b> {
+		<a href="../src/reflect/type.go.html#line-784" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-784">#L784</a>: 	if t.Kind() != <b>Func</b> {
+		<a href="../src/reflect/type.go.html#line-792" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-792">#L792</a>: 	if t.Kind() != <b>Func</b> {
+		<a href="../src/reflect/type.go.html#line-800" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-800">#L800</a>: 	if t.Kind() != <b>Func</b> {
+		<a href="../src/reflect/type.go.html#line-808" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-808">#L808</a>: 	if t.Kind() != <b>Func</b> {
+		<a href="../src/reflect/type.go.html#line-1434" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1434">#L1434</a>: 	case <b>Func</b>:
+		<a href="../src/reflect/type.go.html#line-2850" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2850">#L2850</a>: 	case Chan, <b>Func</b>, Map, Pointer, Slice, String, UnsafePointer:
+		<a href="../src/reflect/value.go.html#line-378">value.go#L378</a>: 	v.mustBe(<b>Func</b>)
+		<a href="../src/reflect/value.go.html#line-391" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-391">#L391</a>: 	v.mustBe(<b>Func</b>)
+		<a href="../src/reflect/value.go.html#line-1560" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1560">#L1560</a>: 	case Chan, <b>Func</b>, Map, Pointer, UnsafePointer:
+		<a href="../src/reflect/value.go.html#line-1624" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1624">#L1624</a>: 	case Chan, <b>Func</b>, Interface, Map, Pointer, Slice, UnsafePointer:
+		<a href="../src/reflect/value.go.html#line-1750" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1750">#L1750</a>: 	case Chan, <b>Func</b>, Map, Pointer, UnsafePointer:
+		<a href="../src/reflect/value.go.html#line-2085" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2085">#L2085</a>: 	fl |= flag(<b>Func</b>)
+		<a href="../src/reflect/value.go.html#line-2228" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2228">#L2228</a>: 	case <b>Func</b>:
+		<a href="../src/reflect/value.go.html#line-2807" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2807">#L2807</a>: 	case <b>Func</b>:
+		<a href="../src/reflect/value.go.html#line-3502" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3502">#L3502</a>: 	case <b>Func</b>, Map, Slice:
+
+	<a href="../pkg/fmt.html">fmt</a>
+		<a href="../src/fmt/print.go.html#line-552">print.go#L552</a>: 	case reflect.Chan, reflect.<b>Func</b>, reflect.Map, reflect.Pointer, reflect.Slice, reflect.UnsafePointer:
+		<a href="../src/fmt/print.go.html#line-926" class="path-duplicate">print.go</a><a href="../src/fmt/print.go.html#line-926">#L926</a>: 	case reflect.Chan, reflect.<b>Func</b>, reflect.UnsafePointer:
+
+	<a href="../pkg/net/http/httptrace.html">net/http/httptrace</a>
+		<a href="../src/net/http/httptrace/trace.go.html#line-185">trace.go#L185</a>: 		if hookType.Kind() != reflect.<b>Func</b> {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

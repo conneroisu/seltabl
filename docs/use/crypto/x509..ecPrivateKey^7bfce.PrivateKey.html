@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/x509.ecPrivateKey.PrivateKey</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/crypto/x509.html">crypto/x509</a>.<a href="../../src/crypto/x509/sec1.go.html#line-27">ecPrivateKey</a>.<a href="../../src/crypto/x509/sec1.go.html#line-29">PrivateKey</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">10 uses</span>
+
+	crypto/x509 (current package)
+		<a href="../../src/crypto/x509/sec1.go.html#line-29">sec1.go#L29</a>: 	<b>PrivateKey</b>    []byte
+		<a href="../../src/crypto/x509/sec1.go.html#line-64" class="path-duplicate">sec1.go</a><a href="../../src/crypto/x509/sec1.go.html#line-64">#L64</a>: 		<b>PrivateKey</b>:    key.D.FillBytes(privateKey),
+		<a href="../../src/crypto/x509/sec1.go.html#line-75" class="path-duplicate">sec1.go</a><a href="../../src/crypto/x509/sec1.go.html#line-75">#L75</a>: 		<b>PrivateKey</b>: key.Bytes(),
+		<a href="../../src/crypto/x509/sec1.go.html#line-109" class="path-duplicate">sec1.go</a><a href="../../src/crypto/x509/sec1.go.html#line-109">#L109</a>: 	k := new(big.Int).SetBytes(privKey.<b>PrivateKey</b>)
+		<a href="../../src/crypto/x509/sec1.go.html#line-122" class="path-duplicate">sec1.go</a><a href="../../src/crypto/x509/sec1.go.html#line-122">#L122</a>: 	for len(privKey.<b>PrivateKey</b>) &gt; len(privateKey) {
+		<a href="../../src/crypto/x509/sec1.go.html#line-123" class="path-duplicate">sec1.go</a><a href="../../src/crypto/x509/sec1.go.html#line-123">#L123</a>: 		if privKey.<b>PrivateKey</b>[0] != 0 {
+		<a href="../../src/crypto/x509/sec1.go.html#line-126" class="path-duplicate">sec1.go</a><a href="../../src/crypto/x509/sec1.go.html#line-126">#L126</a>: 		privKey.<b>PrivateKey</b> = privKey.<b>PrivateKey</b>[1:]
+		<a href="../../src/crypto/x509/sec1.go.html#line-132" class="path-duplicate">sec1.go</a><a href="../../src/crypto/x509/sec1.go.html#line-132">#L132</a>: 	copy(privateKey[len(privateKey)-len(privKey.<b>PrivateKey</b>):], privKey.<b>PrivateKey</b>)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/http.Cookie.Name</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/net/http.html">net/http</a>.<a href="../../src/net/http/cookie.go.html#line-23">Cookie</a>.<a href="../../src/net/http/cookie.go.html#line-24">Name</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">13 uses</span>
+
+	net/http (current package)
+		<a href="../../src/net/http/client.go.html#line-759">client.go#L759</a>: 			icookies[c.<b>Name</b>] = append(icookies[c.<b>Name</b>], c)
+		<a href="../../src/net/http/client.go.html#line-780" class="path-duplicate">client.go</a><a href="../../src/net/http/client.go.html#line-780">#L780</a>: 				if _, ok := icookies[c.<b>Name</b>]; ok {
+		<a href="../../src/net/http/client.go.html#line-781" class="path-duplicate">client.go</a><a href="../../src/net/http/client.go.html#line-781">#L781</a>: 					delete(icookies, c.<b>Name</b>)
+		<a href="../../src/net/http/client.go.html#line-790" class="path-duplicate">client.go</a><a href="../../src/net/http/client.go.html#line-790">#L790</a>: 						ss = append(ss, c.<b>Name</b>+"="+c.Value)
+		<a href="../../src/net/http/cookie.go.html#line-24">cookie.go#L24</a>: 	<b>Name</b>  string
+		<a href="../../src/net/http/cookie.go.html#line-85" class="path-duplicate">cookie.go</a><a href="../../src/net/http/cookie.go.html#line-85">#L85</a>: 			<b>Name</b>:  name,
+		<a href="../../src/net/http/cookie.go.html#line-180" class="path-duplicate">cookie.go</a><a href="../../src/net/http/cookie.go.html#line-180">#L180</a>: 	if c == nil || !isCookieNameValid(c.<b>Name</b>) {
+		<a href="../../src/net/http/cookie.go.html#line-187" class="path-duplicate">cookie.go</a><a href="../../src/net/http/cookie.go.html#line-187">#L187</a>: 	b.Grow(len(c.<b>Name</b>) + len(c.Value) + len(c.Domain) + len(c.Path) + extraCookieLength)
+		<a href="../../src/net/http/cookie.go.html#line-188" class="path-duplicate">cookie.go</a><a href="../../src/net/http/cookie.go.html#line-188">#L188</a>: 	b.WriteString(c.<b>Name</b>)
+		<a href="../../src/net/http/cookie.go.html#line-247" class="path-duplicate">cookie.go</a><a href="../../src/net/http/cookie.go.html#line-247">#L247</a>: 	if !isCookieNameValid(c.<b>Name</b>) {
+		<a href="../../src/net/http/cookie.go.html#line-306" class="path-duplicate">cookie.go</a><a href="../../src/net/http/cookie.go.html#line-306">#L306</a>: 			cookies = append(cookies, &amp;Cookie{<b>Name</b>: name, Value: val})
+		<a href="../../src/net/http/request.go.html#line-458">request.go#L458</a>: 	s := fmt.Sprintf("%s=%s", sanitizeCookieName(c.<b>Name</b>), sanitizeCookieValue(c.Value))
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

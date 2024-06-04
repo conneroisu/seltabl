@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: internal/abi.Imethod.Typ</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/internal/abi.html">internal/abi</a>.<a href="../../src/internal/abi/type.go.html#line-237">Imethod</a>.<a href="../../src/internal/abi/type.go.html#line-239">Typ</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">14 uses</span>
+
+	internal/abi (current package)
+		<a href="../../src/internal/abi/type.go.html#line-239">type.go#L239</a>: 	<b>Typ</b>  TypeOff // .(*FuncType) underneath
+
+	<a href="../../pkg/internal/reflectlite.html">internal/reflectlite</a>
+		<a href="../../src/internal/reflectlite/type.go.html#line-462">type.go#L462</a>: 			if vmName.Name() == tmName.Name() &amp;&amp; rV.typeOff(vm.<b>Typ</b>) == rT.typeOff(tm.<b>Typ</b>) {
+		<a href="../../src/internal/reflectlite/type.go.html#line-495" class="path-duplicate">type.go</a><a href="../../src/internal/reflectlite/type.go.html#line-495">#L495</a>: 		if vmName.Name() == tmName.Name() &amp;&amp; rV.typeOff(vm.Mtyp) == rT.typeOff(tm.<b>Typ</b>) {
+
+	<a href="../../pkg/reflect.html">reflect</a>
+		<a href="../../src/reflect/type.go.html#line-852">type.go#L852</a>: 	m.Type = toType(t.typeOff(p.<b>Typ</b>))
+		<a href="../../src/reflect/type.go.html#line-1306" class="path-duplicate">type.go</a><a href="../../src/reflect/type.go.html#line-1306">#L1306</a>: 			if vmName.Name() == tmName.Name() &amp;&amp; typeOffFor(V, vm.<b>Typ</b>) == t.typeOff(tm.<b>Typ</b>) {
+		<a href="../../src/reflect/type.go.html#line-1339" class="path-duplicate">type.go</a><a href="../../src/reflect/type.go.html#line-1339">#L1339</a>: 		if vmName.Name() == tmName.Name() &amp;&amp; typeOffFor(V, vm.Mtyp) == t.typeOff(tm.<b>Typ</b>) {
+		<a href="../../src/reflect/type.go.html#line-2228" class="path-duplicate">type.go</a><a href="../../src/reflect/type.go.html#line-2228">#L2228</a>: 						Mtyp: resolveReflectType(ift.typeOff(m.<b>Typ</b>)),
+		<a href="../../src/reflect/value.go.html#line-904">value.go#L904</a>: 		t = (*funcType)(unsafe.Pointer(tt.typeOff(m.<b>Typ</b>)))
+		<a href="../../src/reflect/value.go.html#line-2717" class="path-duplicate">value.go</a><a href="../../src/reflect/value.go.html#line-2717">#L2717</a>: 		return toRType(typeOffFor(typ, m.<b>Typ</b>))
+
+	<a href="../../pkg/runtime.html">runtime</a>
+		<a href="../../src/runtime/iface.go.html#line-211">iface.go#L211</a>: 		itype := toRType(&amp;inter.Type).typeOff(i.<b>Typ</b>)
+		<a href="../../src/runtime/type.go.html#line-416">type.go#L416</a>: 			tityp := resolveTypeOff(unsafe.Pointer(tm), tm.<b>Typ</b>)
+		<a href="../../src/runtime/type.go.html#line-417" class="path-duplicate">type.go</a><a href="../../src/runtime/type.go.html#line-417">#L417</a>: 			vityp := resolveTypeOff(unsafe.Pointer(vm), vm.<b>Typ</b>)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,1677 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: bytes</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>bytes</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../index.html#pkg-bytes">bytes</a><i> (on <a href="https://pkg.go.dev/bytes" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../dep/bytes.html">5 packages</a>, and imported by <a href="../dep/bytes.html#imported-by">23 packages</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<span class="nodocs">    <a href="../src/bytes/buffer.go.html">buffer.go</a></span>
+	<input type='checkbox' checked class="fold" id="file-1-fold-content"><label for="file-1-fold-content">  <a href="../src/bytes/bytes.go.html#doc">d</a> <a href="../src/bytes/bytes.go.html">bytes.go</a></label><span id='file-1-fold-content-items' class="fold-items">
+<span class="md-text">		Package bytes implements functions for the manipulation of byte slices.
+		It is analogous to the facilities of the [strings] package.</span>
+</span>
+	<span class="nodocs">    <a href="../src/bytes/reader.go.html">reader.go</a></span></div>
+<div id="examples"><span class="title">Code Examples</span>
+
+	<input type='checkbox' class="fold" id="example-0-fold-content"><label for="example-0-fold-content">Buffer</label><span id='example-0-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+			"os"
+		)
+		
+		func main() {
+			var b bytes.Buffer // A Buffer needs no initialization.
+			b.Write([]byte("Hello "))
+			fmt.Fprintf(&amp;b, "world!")
+			b.WriteTo(os.Stdout)
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-1-fold-content"><label for="example-1-fold-content">Buffer_AvailableBuffer</label><span id='example-1-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"os"
+			"strconv"
+		)
+		
+		func main() {
+			var buf bytes.Buffer
+			for i := 0; i &lt; 4; i++ {
+				b := buf.AvailableBuffer()
+				b = strconv.AppendInt(b, int64(i), 10)
+				b = append(b, ' ')
+				buf.Write(b)
+			}
+			os.Stdout.Write(buf.Bytes())
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-2-fold-content"><label for="example-2-fold-content">Buffer_Bytes</label><span id='example-2-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"os"
+		)
+		
+		func main() {
+			buf := bytes.Buffer{}
+			buf.Write([]byte{'h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd'})
+			os.Stdout.Write(buf.Bytes())
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-3-fold-content"><label for="example-3-fold-content">Buffer_Cap</label><span id='example-3-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+		)
+		
+		func main() {
+			buf1 := bytes.NewBuffer(make([]byte, 10))
+			buf2 := bytes.NewBuffer(make([]byte, 0, 10))
+			fmt.Println(buf1.Cap())
+			fmt.Println(buf2.Cap())
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-4-fold-content"><label for="example-4-fold-content">Buffer_Grow</label><span id='example-4-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+		)
+		
+		func main() {
+			var b bytes.Buffer
+			b.Grow(64)
+			bb := b.Bytes()
+			b.Write([]byte("64 bytes or fewer"))
+			fmt.Printf("%q", bb[:b.Len()])
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-5-fold-content"><label for="example-5-fold-content">Buffer_Len</label><span id='example-5-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+		)
+		
+		func main() {
+			var b bytes.Buffer
+			b.Grow(64)
+			b.Write([]byte("abcde"))
+			fmt.Printf("%d", b.Len())
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-6-fold-content"><label for="example-6-fold-content">Buffer_Next</label><span id='example-6-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+		)
+		
+		func main() {
+			var b bytes.Buffer
+			b.Grow(64)
+			b.Write([]byte("abcde"))
+			fmt.Printf("%s\n", b.Next(2))
+			fmt.Printf("%s\n", b.Next(2))
+			fmt.Printf("%s", b.Next(2))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-7-fold-content"><label for="example-7-fold-content">Buffer_Read</label><span id='example-7-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+		)
+		
+		func main() {
+			var b bytes.Buffer
+			b.Grow(64)
+			b.Write([]byte("abcde"))
+			rdbuf := make([]byte, 1)
+			n, err := b.Read(rdbuf)
+			if err != nil {
+				panic(err)
+			}
+			fmt.Println(n)
+			fmt.Println(b.String())
+			fmt.Println(string(rdbuf))
+			// Output
+			// 1
+			// bcde
+			// a
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-8-fold-content"><label for="example-8-fold-content">Buffer_ReadByte</label><span id='example-8-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+		)
+		
+		func main() {
+			var b bytes.Buffer
+			b.Grow(64)
+			b.Write([]byte("abcde"))
+			c, err := b.ReadByte()
+			if err != nil {
+				panic(err)
+			}
+			fmt.Println(c)
+			fmt.Println(b.String())
+			// Output
+			// 97
+			// bcde
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-9-fold-content"><label for="example-9-fold-content">Buffer_reader</label><span id='example-9-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"encoding/base64"
+			"io"
+			"os"
+		)
+		
+		func main() {
+			// A Buffer can turn a string or a []byte into an io.Reader.
+			buf := bytes.NewBufferString("R29waGVycyBydWxlIQ==")
+			dec := base64.NewDecoder(base64.StdEncoding, buf)
+			io.Copy(os.Stdout, dec)
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-10-fold-content"><label for="example-10-fold-content">Clone</label><span id='example-10-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+		)
+		
+		func main() {
+			b := []byte("abc")
+			clone := bytes.Clone(b)
+			fmt.Printf("%s\n", clone)
+			clone[0] = 'd'
+			fmt.Printf("%s\n", b)
+			fmt.Printf("%s\n", clone)
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-11-fold-content"><label for="example-11-fold-content">Compare</label><span id='example-11-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+		)
+		
+		func main() {
+			// Interpret Compare's result by comparing it to zero.
+			var a, b []byte
+			if bytes.Compare(a, b) &lt; 0 {
+				// a less b
+			}
+			if bytes.Compare(a, b) &lt;= 0 {
+				// a less or equal b
+			}
+			if bytes.Compare(a, b) &gt; 0 {
+				// a greater b
+			}
+			if bytes.Compare(a, b) &gt;= 0 {
+				// a greater or equal b
+			}
+		
+			// Prefer Equal to Compare for equality comparisons.
+			if bytes.Equal(a, b) {
+				// a equal b
+			}
+			if !bytes.Equal(a, b) {
+				// a not equal b
+			}
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-12-fold-content"><label for="example-12-fold-content">Compare_search</label><span id='example-12-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"sort"
+		)
+		
+		func main() {
+			// Binary search to find a matching byte slice.
+			var needle []byte
+			var haystack [][]byte // Assume sorted
+			i := sort.Search(len(haystack), func(i int) bool {
+				// Return haystack[i] &gt;= needle.
+				return bytes.Compare(haystack[i], needle) &gt;= 0
+			})
+			if i &lt; len(haystack) &amp;&amp; bytes.Equal(haystack[i], needle) {
+				// Found it!
+			}
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-13-fold-content"><label for="example-13-fold-content">Contains</label><span id='example-13-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+		)
+		
+		func main() {
+			fmt.Println(bytes.Contains([]byte("seafood"), []byte("foo")))
+			fmt.Println(bytes.Contains([]byte("seafood"), []byte("bar")))
+			fmt.Println(bytes.Contains([]byte("seafood"), []byte("")))
+			fmt.Println(bytes.Contains([]byte(""), []byte("")))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-14-fold-content"><label for="example-14-fold-content">ContainsAny</label><span id='example-14-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+		)
+		
+		func main() {
+			fmt.Println(bytes.ContainsAny([]byte("I like seafood."), "fÄo!"))
+			fmt.Println(bytes.ContainsAny([]byte("I like seafood."), "去是伟大的."))
+			fmt.Println(bytes.ContainsAny([]byte("I like seafood."), ""))
+			fmt.Println(bytes.ContainsAny([]byte(""), ""))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-15-fold-content"><label for="example-15-fold-content">ContainsFunc</label><span id='example-15-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+		)
+		
+		func main() {
+			f := func(r rune) bool {
+				return r &gt;= 'a' &amp;&amp; r &lt;= 'z'
+			}
+			fmt.Println(bytes.ContainsFunc([]byte("HELLO"), f))
+			fmt.Println(bytes.ContainsFunc([]byte("World"), f))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-16-fold-content"><label for="example-16-fold-content">ContainsRune</label><span id='example-16-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+		)
+		
+		func main() {
+			fmt.Println(bytes.ContainsRune([]byte("I like seafood."), 'f'))
+			fmt.Println(bytes.ContainsRune([]byte("I like seafood."), 'ö'))
+			fmt.Println(bytes.ContainsRune([]byte("去是伟大的!"), '大'))
+			fmt.Println(bytes.ContainsRune([]byte("去是伟大的!"), '!'))
+			fmt.Println(bytes.ContainsRune([]byte(""), '@'))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-17-fold-content"><label for="example-17-fold-content">Count</label><span id='example-17-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+		)
+		
+		func main() {
+			fmt.Println(bytes.Count([]byte("cheese"), []byte("e")))
+			fmt.Println(bytes.Count([]byte("five"), []byte(""))) // before &amp; after each rune
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-18-fold-content"><label for="example-18-fold-content">Cut</label><span id='example-18-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+		)
+		
+		func main() {
+			show := func(s, sep string) {
+				before, after, found := bytes.Cut([]byte(s), []byte(sep))
+				fmt.Printf("Cut(%q, %q) = %q, %q, %v\n", s, sep, before, after, found)
+			}
+			show("Gopher", "Go")
+			show("Gopher", "ph")
+			show("Gopher", "er")
+			show("Gopher", "Badger")
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-19-fold-content"><label for="example-19-fold-content">CutPrefix</label><span id='example-19-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+		)
+		
+		func main() {
+			show := func(s, sep string) {
+				after, found := bytes.CutPrefix([]byte(s), []byte(sep))
+				fmt.Printf("CutPrefix(%q, %q) = %q, %v\n", s, sep, after, found)
+			}
+			show("Gopher", "Go")
+			show("Gopher", "ph")
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-20-fold-content"><label for="example-20-fold-content">CutSuffix</label><span id='example-20-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+		)
+		
+		func main() {
+			show := func(s, sep string) {
+				before, found := bytes.CutSuffix([]byte(s), []byte(sep))
+				fmt.Printf("CutSuffix(%q, %q) = %q, %v\n", s, sep, before, found)
+			}
+			show("Gopher", "Go")
+			show("Gopher", "er")
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-21-fold-content"><label for="example-21-fold-content">Equal</label><span id='example-21-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+		)
+		
+		func main() {
+			fmt.Println(bytes.Equal([]byte("Go"), []byte("Go")))
+			fmt.Println(bytes.Equal([]byte("Go"), []byte("C++")))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-22-fold-content"><label for="example-22-fold-content">EqualFold</label><span id='example-22-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+		)
+		
+		func main() {
+			fmt.Println(bytes.EqualFold([]byte("Go"), []byte("go")))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-23-fold-content"><label for="example-23-fold-content">Fields</label><span id='example-23-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+		)
+		
+		func main() {
+			fmt.Printf("Fields are: %q", bytes.Fields([]byte("  foo bar  baz   ")))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-24-fold-content"><label for="example-24-fold-content">FieldsFunc</label><span id='example-24-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+			"unicode"
+		)
+		
+		func main() {
+			f := func(c rune) bool {
+				return !unicode.IsLetter(c) &amp;&amp; !unicode.IsNumber(c)
+			}
+			fmt.Printf("Fields are: %q", bytes.FieldsFunc([]byte("  foo1;bar2,baz3..."), f))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-25-fold-content"><label for="example-25-fold-content">HasPrefix</label><span id='example-25-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+		)
+		
+		func main() {
+			fmt.Println(bytes.HasPrefix([]byte("Gopher"), []byte("Go")))
+			fmt.Println(bytes.HasPrefix([]byte("Gopher"), []byte("C")))
+			fmt.Println(bytes.HasPrefix([]byte("Gopher"), []byte("")))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-26-fold-content"><label for="example-26-fold-content">HasSuffix</label><span id='example-26-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+		)
+		
+		func main() {
+			fmt.Println(bytes.HasSuffix([]byte("Amigo"), []byte("go")))
+			fmt.Println(bytes.HasSuffix([]byte("Amigo"), []byte("O")))
+			fmt.Println(bytes.HasSuffix([]byte("Amigo"), []byte("Ami")))
+			fmt.Println(bytes.HasSuffix([]byte("Amigo"), []byte("")))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-27-fold-content"><label for="example-27-fold-content">Index</label><span id='example-27-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+		)
+		
+		func main() {
+			fmt.Println(bytes.Index([]byte("chicken"), []byte("ken")))
+			fmt.Println(bytes.Index([]byte("chicken"), []byte("dmr")))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-28-fold-content"><label for="example-28-fold-content">IndexAny</label><span id='example-28-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+		)
+		
+		func main() {
+			fmt.Println(bytes.IndexAny([]byte("chicken"), "aeiouy"))
+			fmt.Println(bytes.IndexAny([]byte("crwth"), "aeiouy"))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-29-fold-content"><label for="example-29-fold-content">IndexByte</label><span id='example-29-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+		)
+		
+		func main() {
+			fmt.Println(bytes.IndexByte([]byte("chicken"), byte('k')))
+			fmt.Println(bytes.IndexByte([]byte("chicken"), byte('g')))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-30-fold-content"><label for="example-30-fold-content">IndexFunc</label><span id='example-30-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+			"unicode"
+		)
+		
+		func main() {
+			f := func(c rune) bool {
+				return unicode.Is(unicode.Han, c)
+			}
+			fmt.Println(bytes.IndexFunc([]byte("Hello, 世界"), f))
+			fmt.Println(bytes.IndexFunc([]byte("Hello, world"), f))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-31-fold-content"><label for="example-31-fold-content">IndexRune</label><span id='example-31-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+		)
+		
+		func main() {
+			fmt.Println(bytes.IndexRune([]byte("chicken"), 'k'))
+			fmt.Println(bytes.IndexRune([]byte("chicken"), 'd'))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-32-fold-content"><label for="example-32-fold-content">Join</label><span id='example-32-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+		)
+		
+		func main() {
+			s := [][]byte{[]byte("foo"), []byte("bar"), []byte("baz")}
+			fmt.Printf("%s", bytes.Join(s, []byte(", ")))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-33-fold-content"><label for="example-33-fold-content">LastIndex</label><span id='example-33-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+		)
+		
+		func main() {
+			fmt.Println(bytes.Index([]byte("go gopher"), []byte("go")))
+			fmt.Println(bytes.LastIndex([]byte("go gopher"), []byte("go")))
+			fmt.Println(bytes.LastIndex([]byte("go gopher"), []byte("rodent")))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-34-fold-content"><label for="example-34-fold-content">LastIndexAny</label><span id='example-34-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+		)
+		
+		func main() {
+			fmt.Println(bytes.LastIndexAny([]byte("go gopher"), "MüQp"))
+			fmt.Println(bytes.LastIndexAny([]byte("go 地鼠"), "地大"))
+			fmt.Println(bytes.LastIndexAny([]byte("go gopher"), "z,!."))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-35-fold-content"><label for="example-35-fold-content">LastIndexByte</label><span id='example-35-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+		)
+		
+		func main() {
+			fmt.Println(bytes.LastIndexByte([]byte("go gopher"), byte('g')))
+			fmt.Println(bytes.LastIndexByte([]byte("go gopher"), byte('r')))
+			fmt.Println(bytes.LastIndexByte([]byte("go gopher"), byte('z')))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-36-fold-content"><label for="example-36-fold-content">LastIndexFunc</label><span id='example-36-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+			"unicode"
+		)
+		
+		func main() {
+			fmt.Println(bytes.LastIndexFunc([]byte("go gopher!"), unicode.IsLetter))
+			fmt.Println(bytes.LastIndexFunc([]byte("go gopher!"), unicode.IsPunct))
+			fmt.Println(bytes.LastIndexFunc([]byte("go gopher!"), unicode.IsNumber))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-37-fold-content"><label for="example-37-fold-content">Map</label><span id='example-37-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+		)
+		
+		func main() {
+			rot13 := func(r rune) rune {
+				switch {
+				case r &gt;= 'A' &amp;&amp; r &lt;= 'Z':
+					return 'A' + (r-'A'+13)%26
+				case r &gt;= 'a' &amp;&amp; r &lt;= 'z':
+					return 'a' + (r-'a'+13)%26
+				}
+				return r
+			}
+			fmt.Printf("%s\n", bytes.Map(rot13, []byte("'Twas brillig and the slithy gopher...")))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-38-fold-content"><label for="example-38-fold-content">Reader_Len</label><span id='example-38-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+		)
+		
+		func main() {
+			fmt.Println(bytes.NewReader([]byte("Hi!")).Len())
+			fmt.Println(bytes.NewReader([]byte("こんにちは!")).Len())
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-39-fold-content"><label for="example-39-fold-content">Repeat</label><span id='example-39-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+		)
+		
+		func main() {
+			fmt.Printf("ba%s", bytes.Repeat([]byte("na"), 2))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-40-fold-content"><label for="example-40-fold-content">Replace</label><span id='example-40-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+		)
+		
+		func main() {
+			fmt.Printf("%s\n", bytes.Replace([]byte("oink oink oink"), []byte("k"), []byte("ky"), 2))
+			fmt.Printf("%s\n", bytes.Replace([]byte("oink oink oink"), []byte("oink"), []byte("moo"), -1))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-41-fold-content"><label for="example-41-fold-content">ReplaceAll</label><span id='example-41-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+		)
+		
+		func main() {
+			fmt.Printf("%s\n", bytes.ReplaceAll([]byte("oink oink oink"), []byte("oink"), []byte("moo")))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-42-fold-content"><label for="example-42-fold-content">Runes</label><span id='example-42-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+		)
+		
+		func main() {
+			rs := bytes.Runes([]byte("go gopher"))
+			for _, r := range rs {
+				fmt.Printf("%#U\n", r)
+			}
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-43-fold-content"><label for="example-43-fold-content">Split</label><span id='example-43-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+		)
+		
+		func main() {
+			fmt.Printf("%q\n", bytes.Split([]byte("a,b,c"), []byte(",")))
+			fmt.Printf("%q\n", bytes.Split([]byte("a man a plan a canal panama"), []byte("a ")))
+			fmt.Printf("%q\n", bytes.Split([]byte(" xyz "), []byte("")))
+			fmt.Printf("%q\n", bytes.Split([]byte(""), []byte("Bernardo O'Higgins")))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-44-fold-content"><label for="example-44-fold-content">SplitAfter</label><span id='example-44-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+		)
+		
+		func main() {
+			fmt.Printf("%q\n", bytes.SplitAfter([]byte("a,b,c"), []byte(",")))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-45-fold-content"><label for="example-45-fold-content">SplitAfterN</label><span id='example-45-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+		)
+		
+		func main() {
+			fmt.Printf("%q\n", bytes.SplitAfterN([]byte("a,b,c"), []byte(","), 2))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-46-fold-content"><label for="example-46-fold-content">SplitN</label><span id='example-46-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+		)
+		
+		func main() {
+			fmt.Printf("%q\n", bytes.SplitN([]byte("a,b,c"), []byte(","), 2))
+			z := bytes.SplitN([]byte("a,b,c"), []byte(","), 0)
+			fmt.Printf("%q (nil = %v)\n", z, z == nil)
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-47-fold-content"><label for="example-47-fold-content">Title</label><span id='example-47-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+		)
+		
+		func main() {
+			fmt.Printf("%s", bytes.Title([]byte("her royal highness")))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-48-fold-content"><label for="example-48-fold-content">ToLower</label><span id='example-48-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+		)
+		
+		func main() {
+			fmt.Printf("%s", bytes.ToLower([]byte("Gopher")))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-49-fold-content"><label for="example-49-fold-content">ToLowerSpecial</label><span id='example-49-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+			"unicode"
+		)
+		
+		func main() {
+			str := []byte("AHOJ VÝVOJÁRİ GOLANG")
+			totitle := bytes.ToLowerSpecial(unicode.AzeriCase, str)
+			fmt.Println("Original : " + string(str))
+			fmt.Println("ToLower : " + string(totitle))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-50-fold-content"><label for="example-50-fold-content">ToTitle</label><span id='example-50-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+		)
+		
+		func main() {
+			fmt.Printf("%s\n", bytes.ToTitle([]byte("loud noises")))
+			fmt.Printf("%s\n", bytes.ToTitle([]byte("хлеб")))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-51-fold-content"><label for="example-51-fold-content">ToTitleSpecial</label><span id='example-51-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+			"unicode"
+		)
+		
+		func main() {
+			str := []byte("ahoj vývojári golang")
+			totitle := bytes.ToTitleSpecial(unicode.AzeriCase, str)
+			fmt.Println("Original : " + string(str))
+			fmt.Println("ToTitle : " + string(totitle))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-52-fold-content"><label for="example-52-fold-content">ToUpper</label><span id='example-52-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+		)
+		
+		func main() {
+			fmt.Printf("%s", bytes.ToUpper([]byte("Gopher")))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-53-fold-content"><label for="example-53-fold-content">ToUpperSpecial</label><span id='example-53-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+			"unicode"
+		)
+		
+		func main() {
+			str := []byte("ahoj vývojári golang")
+			totitle := bytes.ToUpperSpecial(unicode.AzeriCase, str)
+			fmt.Println("Original : " + string(str))
+			fmt.Println("ToUpper : " + string(totitle))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-54-fold-content"><label for="example-54-fold-content">ToValidUTF8</label><span id='example-54-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+		)
+		
+		func main() {
+			fmt.Printf("%s\n", bytes.ToValidUTF8([]byte("abc"), []byte("\uFFFD")))
+			fmt.Printf("%s\n", bytes.ToValidUTF8([]byte("a\xffb\xC0\xAFc\xff"), []byte("")))
+			fmt.Printf("%s\n", bytes.ToValidUTF8([]byte("\xed\xa0\x80"), []byte("abc")))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-55-fold-content"><label for="example-55-fold-content">Trim</label><span id='example-55-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+		)
+		
+		func main() {
+			fmt.Printf("[%q]", bytes.Trim([]byte(" !!! Achtung! Achtung! !!! "), "! "))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-56-fold-content"><label for="example-56-fold-content">TrimFunc</label><span id='example-56-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+			"unicode"
+		)
+		
+		func main() {
+			fmt.Println(string(bytes.TrimFunc([]byte("go-gopher!"), unicode.IsLetter)))
+			fmt.Println(string(bytes.TrimFunc([]byte("\"go-gopher!\""), unicode.IsLetter)))
+			fmt.Println(string(bytes.TrimFunc([]byte("go-gopher!"), unicode.IsPunct)))
+			fmt.Println(string(bytes.TrimFunc([]byte("1234go-gopher!567"), unicode.IsNumber)))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-57-fold-content"><label for="example-57-fold-content">TrimLeft</label><span id='example-57-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+		)
+		
+		func main() {
+			fmt.Print(string(bytes.TrimLeft([]byte("453gopher8257"), "0123456789")))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-58-fold-content"><label for="example-58-fold-content">TrimLeftFunc</label><span id='example-58-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+			"unicode"
+		)
+		
+		func main() {
+			fmt.Println(string(bytes.TrimLeftFunc([]byte("go-gopher"), unicode.IsLetter)))
+			fmt.Println(string(bytes.TrimLeftFunc([]byte("go-gopher!"), unicode.IsPunct)))
+			fmt.Println(string(bytes.TrimLeftFunc([]byte("1234go-gopher!567"), unicode.IsNumber)))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-59-fold-content"><label for="example-59-fold-content">TrimPrefix</label><span id='example-59-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+		)
+		
+		func main() {
+			var b = []byte("Goodbye,, world!")
+			b = bytes.TrimPrefix(b, []byte("Goodbye,"))
+			b = bytes.TrimPrefix(b, []byte("See ya,"))
+			fmt.Printf("Hello%s", b)
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-60-fold-content"><label for="example-60-fold-content">TrimRight</label><span id='example-60-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+		)
+		
+		func main() {
+			fmt.Print(string(bytes.TrimRight([]byte("453gopher8257"), "0123456789")))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-61-fold-content"><label for="example-61-fold-content">TrimRightFunc</label><span id='example-61-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+			"unicode"
+		)
+		
+		func main() {
+			fmt.Println(string(bytes.TrimRightFunc([]byte("go-gopher"), unicode.IsLetter)))
+			fmt.Println(string(bytes.TrimRightFunc([]byte("go-gopher!"), unicode.IsPunct)))
+			fmt.Println(string(bytes.TrimRightFunc([]byte("1234go-gopher!567"), unicode.IsNumber)))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-62-fold-content"><label for="example-62-fold-content">TrimSpace</label><span id='example-62-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"fmt"
+		)
+		
+		func main() {
+			fmt.Printf("%s", bytes.TrimSpace([]byte(" \t\n a lone gopher \n\t\r\n")))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-63-fold-content"><label for="example-63-fold-content">TrimSuffix</label><span id='example-63-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"bytes"
+			"os"
+		)
+		
+		func main() {
+			var b = []byte("Hello, goodbye, etc!")
+			b = bytes.TrimSuffix(b, []byte("goodbye, etc!"))
+			b = bytes.TrimSuffix(b, []byte("gopher"))
+			b = append(b, bytes.TrimSuffix([]byte("world!"), []byte("x!"))...)
+			os.Stdout.Write(b)
+		}
+</span>
+</div>
+<div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (total 4, in which 2 are exported)</i></span></span>
+
+<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-Buffer" data-popularity="2570">	<input type='checkbox' class="fold" id="Buffer-fold-content"><label for="Buffer-fold-content"> <a href="../use/bytes..Buffer.html">type</a> <a href="../src/bytes/buffer.go.html#line-20">Buffer</a> <i>(struct)</i></label><span id='Buffer-fold-content-docs' class="fold-docs">
+<span class="md-text">		A Buffer is a variable-sized buffer of bytes with [Buffer.Read] and [Buffer.Write] methods.
+		The zero value for Buffer is an empty buffer ready to use.</span>
+
+		<input type='checkbox' class="fold" id="Buffer-fold-fields"><label for="Buffer-fold-fields">Fields (<i>total 3, none are exported</i>)</label><span id='Buffer-fold-fields-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="Buffer-showhide-fields"><i><label for="Buffer-showhide-fields" class="show-inline">/* 3 unexporteds ... */</label><label for="Buffer-showhide-fields" class="hide-inline">/* 3 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Buffer-fold-field-buf"><label for="Buffer-fold-field-buf"><a href="../src/bytes/buffer.go.html#line-21">buf</a> <i>[]<a href="builtin.html#name-byte">byte</a></i></label><span id='Buffer-fold-field-buf-docs' class="fold-docs">
+<span class="md-text">				// contents are the bytes buf[off : len(buf)]</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Buffer-fold-field-lastRead"><label for="Buffer-fold-field-lastRead"><a href="../src/bytes/buffer.go.html#line-23">lastRead</a> <i><a href="#name-readOp">readOp</a></i></label><span id='Buffer-fold-field-lastRead-docs' class="fold-docs">
+<span class="md-text">				// last read operation, so that Unread* can work correctly.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Buffer-fold-field-off"><label for="Buffer-fold-field-off"><a href="../src/bytes/buffer.go.html#line-22">off</a> <i><a href="builtin.html#name-int">int</a></i></label><span id='Buffer-fold-field-off-docs' class="fold-docs">
+<span class="md-text">				// read at &amp;buf[off], write at &amp;buf[len(buf)]</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="Buffer-fold-methods"><label for="Buffer-fold-methods">Methods (<i>total 27, in which 23 are exported</i>)</label><span id='Buffer-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Buffer-fold-method-Available"><label for="Buffer-fold-method-Available">(*Buffer) <a href="../src/bytes/buffer.go.html#line-86">Available</a>() <a href="builtin.html#name-int">int</a></label><span id='Buffer-fold-method-Available-docs' class="fold-docs">
+<span class="md-text">				Available returns how many bytes are unused in the buffer.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Buffer-fold-method-AvailableBuffer"><label for="Buffer-fold-method-AvailableBuffer">(*Buffer) <a href="../src/bytes/buffer.go.html#line-60">AvailableBuffer</a>() []<a href="builtin.html#name-byte">byte</a></label><span id='Buffer-fold-method-AvailableBuffer-docs' class="fold-docs">
+<span class="md-text">				AvailableBuffer returns an empty buffer with b.Available() capacity.
+				This buffer is intended to be appended to and
+				passed to an immediately succeeding [Buffer.Write] call.
+				The buffer is only valid until the next write operation on b.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Buffer-fold-method-Bytes"><label for="Buffer-fold-method-Bytes">(*Buffer) <a href="../src/bytes/buffer.go.html#line-54">Bytes</a>() []<a href="builtin.html#name-byte">byte</a></label><span id='Buffer-fold-method-Bytes-docs' class="fold-docs">
+<span class="md-text">				Bytes returns a slice of length b.Len() holding the unread portion of the buffer.
+				The slice is valid for use only until the next buffer modification (that is,
+				only until the next call to a method like [Buffer.Read], [Buffer.Write], [Buffer.Reset], or [Buffer.Truncate]).
+				The slice aliases the buffer content at least until the next buffer modification,
+				so immediate changes to the slice will affect the result of future reads.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Buffer-fold-method-Cap"><label for="Buffer-fold-method-Cap">(*Buffer) <a href="../src/bytes/buffer.go.html#line-83">Cap</a>() <a href="builtin.html#name-int">int</a></label><span id='Buffer-fold-method-Cap-docs' class="fold-docs">
+<span class="md-text">				Cap returns the capacity of the buffer's underlying byte slice, that is, the
+				total space allocated for the buffer's data.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Buffer-fold-method-Grow"><label for="Buffer-fold-method-Grow">(*Buffer) <a href="../src/bytes/buffer.go.html#line-164">Grow</a>(n <a href="builtin.html#name-int">int</a>)</label><span id='Buffer-fold-method-Grow-docs' class="fold-docs">
+<span class="md-text">				Grow grows the buffer's capacity, if necessary, to guarantee space for
+				another n bytes. After Grow(n), at least n bytes can be written to the
+				buffer without another allocation.
+				If n is negative, Grow will panic.
+				If the buffer can't grow it will panic with [ErrTooLarge].</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Buffer-fold-method-Len"><label for="Buffer-fold-method-Len">(*Buffer) <a href="../src/bytes/buffer.go.html#line-79">Len</a>() <a href="builtin.html#name-int">int</a></label><span id='Buffer-fold-method-Len-docs' class="fold-docs">
+<span class="md-text">				Len returns the number of bytes of the unread portion of the buffer;
+				b.Len() == len(b.Bytes()).</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Buffer-fold-method-Next"><label for="Buffer-fold-method-Next">(*Buffer) <a href="../src/bytes/buffer.go.html#line-340">Next</a>(n <a href="builtin.html#name-int">int</a>) []<a href="builtin.html#name-byte">byte</a></label><span id='Buffer-fold-method-Next-docs' class="fold-docs">
+<span class="md-text">				Next returns a slice containing the next n bytes from the buffer,
+				advancing the buffer as if the bytes had been returned by [Buffer.Read].
+				If there are fewer than n bytes in the buffer, Next returns the entire buffer.
+				The slice is only valid until the next call to a read or write method.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Buffer-fold-method-Read"><label for="Buffer-fold-method-Read">(*Buffer) <a href="../src/bytes/buffer.go.html#line-318">Read</a>(p []<a href="builtin.html#name-byte">byte</a>) (n <a href="builtin.html#name-int">int</a>, err <a href="builtin.html#name-error">error</a>)</label><span id='Buffer-fold-method-Read-docs' class="fold-docs">
+<span class="md-text">				Read reads the next len(p) bytes from the buffer or until the buffer
+				is drained. The return value n is the number of bytes read. If the
+				buffer has no data to return, err is io.EOF (unless len(p) is zero);
+				otherwise it is nil.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Buffer-fold-method-ReadByte"><label for="Buffer-fold-method-ReadByte">(*Buffer) <a href="../src/bytes/buffer.go.html#line-356">ReadByte</a>() (<a href="builtin.html#name-byte">byte</a>, <a href="builtin.html#name-error">error</a>)</label><span id='Buffer-fold-method-ReadByte-docs' class="fold-docs">
+<span class="md-text">				ReadByte reads and returns the next byte from the buffer.
+				If no byte is available, it returns error io.EOF.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Buffer-fold-method-ReadBytes"><label for="Buffer-fold-method-ReadBytes">(*Buffer) <a href="../src/bytes/buffer.go.html#line-430">ReadBytes</a>(delim <a href="builtin.html#name-byte">byte</a>) (line []<a href="builtin.html#name-byte">byte</a>, err <a href="builtin.html#name-error">error</a>)</label><span id='Buffer-fold-method-ReadBytes-docs' class="fold-docs">
+<span class="md-text">				ReadBytes reads until the first occurrence of delim in the input,
+				returning a slice containing the data up to and including the delimiter.
+				If ReadBytes encounters an error before finding a delimiter,
+				it returns the data read before the error and the error itself (often io.EOF).
+				ReadBytes returns err != nil if and only if the returned data does not end in
+				delim.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Buffer-fold-method-ReadFrom"><label for="Buffer-fold-method-ReadFrom">(*Buffer) <a href="../src/bytes/buffer.go.html#line-206">ReadFrom</a>(r <a href="io.html">io</a>.<a href="io.html#name-Reader">Reader</a>) (n <a href="builtin.html#name-int64">int64</a>, err <a href="builtin.html#name-error">error</a>)</label><span id='Buffer-fold-method-ReadFrom-docs' class="fold-docs">
+<span class="md-text">				ReadFrom reads data from r until EOF and appends it to the buffer, growing
+				the buffer as needed. The return value n is the number of bytes read. Any
+				error except io.EOF encountered during the read is also returned. If the
+				buffer becomes too large, ReadFrom will panic with [ErrTooLarge].</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Buffer-fold-method-ReadRune"><label for="Buffer-fold-method-ReadRune">(*Buffer) <a href="../src/bytes/buffer.go.html#line-373">ReadRune</a>() (r <a href="builtin.html#name-rune">rune</a>, size <a href="builtin.html#name-int">int</a>, err <a href="builtin.html#name-error">error</a>)</label><span id='Buffer-fold-method-ReadRune-docs' class="fold-docs">
+<span class="md-text">				ReadRune reads and returns the next UTF-8-encoded
+				Unicode code point from the buffer.
+				If no bytes are available, the error returned is io.EOF.
+				If the bytes are an erroneous UTF-8 encoding, it
+				consumes one byte and returns U+FFFD, 1.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Buffer-fold-method-ReadString"><label for="Buffer-fold-method-ReadString">(*Buffer) <a href="../src/bytes/buffer.go.html#line-458">ReadString</a>(delim <a href="builtin.html#name-byte">byte</a>) (line <a href="builtin.html#name-string">string</a>, err <a href="builtin.html#name-error">error</a>)</label><span id='Buffer-fold-method-ReadString-docs' class="fold-docs">
+<span class="md-text">				ReadString reads until the first occurrence of delim in the input,
+				returning a string containing the data up to and including the delimiter.
+				If ReadString encounters an error before finding a delimiter,
+				it returns the data read before the error and the error itself (often io.EOF).
+				ReadString returns err != nil if and only if the returned data does not end
+				in delim.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Buffer-fold-method-Reset"><label for="Buffer-fold-method-Reset">(*Buffer) <a href="../src/bytes/buffer.go.html#line-106">Reset</a>()</label><span id='Buffer-fold-method-Reset-docs' class="fold-docs">
+<span class="md-text">				Reset resets the buffer to be empty,
+				but it retains the underlying storage for use by future writes.
+				Reset is the same as [Buffer.Truncate](0).</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Buffer-fold-method-String"><label for="Buffer-fold-method-String">(*Buffer) <a href="../src/bytes/buffer.go.html#line-66">String</a>() <a href="builtin.html#name-string">string</a></label><span id='Buffer-fold-method-String-docs' class="fold-docs">
+<span class="md-text">				String returns the contents of the unread portion of the buffer
+				as a string. If the [Buffer] is a nil pointer, it returns "&lt;nil&gt;".
+				
+				To build strings more efficiently, see the strings.Builder type.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Buffer-fold-method-Truncate"><label for="Buffer-fold-method-Truncate">(*Buffer) <a href="../src/bytes/buffer.go.html#line-91">Truncate</a>(n <a href="builtin.html#name-int">int</a>)</label><span id='Buffer-fold-method-Truncate-docs' class="fold-docs">
+<span class="md-text">				Truncate discards all but the first n unread bytes from the buffer
+				but continues to use the same allocated storage.
+				It panics if n is negative or greater than the length of the buffer.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Buffer-fold-method-UnreadByte"><label for="Buffer-fold-method-UnreadByte">(*Buffer) <a href="../src/bytes/buffer.go.html#line-413">UnreadByte</a>() <a href="builtin.html#name-error">error</a></label><span id='Buffer-fold-method-UnreadByte-docs' class="fold-docs">
+<span class="md-text">				UnreadByte unreads the last byte returned by the most recent successful
+				read operation that read at least one byte. If a write has happened since
+				the last read, if the last read returned an error, or if the read read zero
+				bytes, UnreadByte returns an error.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Buffer-fold-method-UnreadRune"><label for="Buffer-fold-method-UnreadRune">(*Buffer) <a href="../src/bytes/buffer.go.html#line-396">UnreadRune</a>() <a href="builtin.html#name-error">error</a></label><span id='Buffer-fold-method-UnreadRune-docs' class="fold-docs">
+<span class="md-text">				UnreadRune unreads the last rune returned by [Buffer.ReadRune].
+				If the most recent read or write operation on the buffer was
+				not a successful [Buffer.ReadRune], UnreadRune returns an error.  (In this regard
+				it is stricter than [Buffer.UnreadByte], which will unread the last byte
+				from any read operation.)</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Buffer-fold-method-Write"><label for="Buffer-fold-method-Write">(*Buffer) <a href="../src/bytes/buffer.go.html#line-175">Write</a>(p []<a href="builtin.html#name-byte">byte</a>) (n <a href="builtin.html#name-int">int</a>, err <a href="builtin.html#name-error">error</a>)</label><span id='Buffer-fold-method-Write-docs' class="fold-docs">
+<span class="md-text">				Write appends the contents of p to the buffer, growing the buffer as
+				needed. The return value n is the length of p; err is always nil. If the
+				buffer becomes too large, Write will panic with [ErrTooLarge].</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Buffer-fold-method-WriteByte"><label for="Buffer-fold-method-WriteByte">(*Buffer) <a href="../src/bytes/buffer.go.html#line-285">WriteByte</a>(c <a href="builtin.html#name-byte">byte</a>) <a href="builtin.html#name-error">error</a></label><span id='Buffer-fold-method-WriteByte-docs' class="fold-docs">
+<span class="md-text">				WriteByte appends the byte c to the buffer, growing the buffer as needed.
+				The returned error is always nil, but is included to match [bufio.Writer]'s
+				WriteByte. If the buffer becomes too large, WriteByte will panic with
+				[ErrTooLarge].</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Buffer-fold-method-WriteRune"><label for="Buffer-fold-method-WriteRune">(*Buffer) <a href="../src/bytes/buffer.go.html#line-299">WriteRune</a>(r <a href="builtin.html#name-rune">rune</a>) (n <a href="builtin.html#name-int">int</a>, err <a href="builtin.html#name-error">error</a>)</label><span id='Buffer-fold-method-WriteRune-docs' class="fold-docs">
+<span class="md-text">				WriteRune appends the UTF-8 encoding of Unicode code point r to the
+				buffer, returning its length and an error, which is always nil but is
+				included to match [bufio.Writer]'s WriteRune. The buffer is grown as needed;
+				if it becomes too large, WriteRune will panic with [ErrTooLarge].</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Buffer-fold-method-WriteString"><label for="Buffer-fold-method-WriteString">(*Buffer) <a href="../src/bytes/buffer.go.html#line-187">WriteString</a>(s <a href="builtin.html#name-string">string</a>) (n <a href="builtin.html#name-int">int</a>, err <a href="builtin.html#name-error">error</a>)</label><span id='Buffer-fold-method-WriteString-docs' class="fold-docs">
+<span class="md-text">				WriteString appends the contents of s to the buffer, growing the buffer as
+				needed. The return value n is the length of s; err is always nil. If the
+				buffer becomes too large, WriteString will panic with [ErrTooLarge].</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Buffer-fold-method-WriteTo"><label for="Buffer-fold-method-WriteTo">(*Buffer) <a href="../src/bytes/buffer.go.html#line-258">WriteTo</a>(w <a href="io.html">io</a>.<a href="io.html#name-Writer">Writer</a>) (n <a href="builtin.html#name-int64">int64</a>, err <a href="builtin.html#name-error">error</a>)</label><span id='Buffer-fold-method-WriteTo-docs' class="fold-docs">
+<span class="md-text">				WriteTo writes data to w until the buffer is drained or an error occurs.
+				The return value n is the number of bytes written; it always fits into an
+				int, but it is int64 to match the io.WriterTo interface. Any error
+				encountered during the write is also returned.</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="Buffer-showhide-methods"><i><label for="Buffer-showhide-methods" class="show-inline">/* 4 unexporteds ... */</label><label for="Buffer-showhide-methods" class="hide-inline">/* 4 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Buffer-fold-method-empty"><label for="Buffer-fold-method-empty">(*Buffer) <a href="../src/bytes/buffer.go.html#line-75">empty</a>() <a href="builtin.html#name-bool">bool</a></label><span id='Buffer-fold-method-empty-docs' class="fold-docs">
+<span class="md-text">				empty reports whether the unread portion of the buffer is empty.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Buffer-fold-method-grow"><label for="Buffer-fold-method-grow">(*Buffer) <a href="../src/bytes/buffer.go.html#line-126">grow</a>(n <a href="builtin.html#name-int">int</a>) <a href="builtin.html#name-int">int</a></label><span id='Buffer-fold-method-grow-docs' class="fold-docs">
+<span class="md-text">				grow grows the buffer to guarantee space for n more bytes.
+				It returns the index where bytes should be written.
+				If the buffer can't grow it will panic with ErrTooLarge.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Buffer-fold-method-readSlice"><label for="Buffer-fold-method-readSlice">(*Buffer) <a href="../src/bytes/buffer.go.html#line-439">readSlice</a>(delim <a href="builtin.html#name-byte">byte</a>) (line []<a href="builtin.html#name-byte">byte</a>, err <a href="builtin.html#name-error">error</a>)</label><span id='Buffer-fold-method-readSlice-docs' class="fold-docs">
+<span class="md-text">				readSlice is like ReadBytes but returns a reference to internal buffer data.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Buffer-fold-method-tryGrowByReslice"><label for="Buffer-fold-method-tryGrowByReslice">(*Buffer) <a href="../src/bytes/buffer.go.html#line-115">tryGrowByReslice</a>(n <a href="builtin.html#name-int">int</a>) (<a href="builtin.html#name-int">int</a>, <a href="builtin.html#name-bool">bool</a>)</label><span id='Buffer-fold-method-tryGrowByReslice-docs' class="fold-docs">
+<span class="md-text">				tryGrowByReslice is an inlineable version of grow for the fast-case where the
+				internal buffer only needs to be resliced.
+				It returns the index where bytes should be written and whether it succeeded.</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="Buffer-fold-impls"><label for="Buffer-fold-impls">Implements (<i>at least 20, in which 14 are exported</i>)</label><span id='Buffer-fold-impls-items' class="fold-items"><span>
+			*Buffer : compress/flate.<a href="compress/flate.html#name-Reader">Reader</a></span><span>
+			*Buffer : fmt.<a href="fmt.html#name-Stringer">Stringer</a></span><span>
+			*Buffer : internal/bisect.<a href="internal/bisect.html#name-Writer">Writer</a></span><span>
+			*Buffer : io.<a href="io.html#name-ByteReader">ByteReader</a></span><span>
+			*Buffer : io.<a href="io.html#name-ByteScanner">ByteScanner</a></span><span>
+			*Buffer : io.<a href="io.html#name-ByteWriter">ByteWriter</a></span><span>
+			*Buffer : io.<a href="io.html#name-Reader">Reader</a></span><span>
+			*Buffer : io.<a href="io.html#name-ReaderFrom">ReaderFrom</a></span><span>
+			*Buffer : io.<a href="io.html#name-ReadWriter">ReadWriter</a></span><span>
+			*Buffer : io.<a href="io.html#name-RuneReader">RuneReader</a></span><span>
+			*Buffer : io.<a href="io.html#name-RuneScanner">RuneScanner</a></span><span>
+			*Buffer : io.<a href="io.html#name-StringWriter">StringWriter</a></span><span>
+			*Buffer : io.<a href="io.html#name-Writer">Writer</a></span><span>
+			*Buffer : io.<a href="io.html#name-WriterTo">WriterTo</a></span>
+			<input type='checkbox' class="showhide" id="Buffer-showhide-impls"><i><label for="Buffer-showhide-impls" class="show-inline">/* 6+ unexporteds ... */</label><label for="Buffer-showhide-impls" class="hide-inline">/* 6+ unexporteds: */</label></i><span class="hidden"><i>
+			*Buffer : context.<a href="context.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			*Buffer : crypto/tls.<a href="crypto/tls.html#name-transcriptHash">transcriptHash</a></i></span><span class="hidden"><i>
+			*Buffer : golang.org/x/net/html.<a href="golang.org/x/net/html.html#name-writer">writer</a></i></span><span class="hidden"><i>
+			*Buffer : net/http.<a href="net/http.html#name-http2pipeBuffer">http2pipeBuffer</a></i></span><span class="hidden"><i>
+			*Buffer : net/http.<a href="net/http.html#name-http2stringWriter">http2stringWriter</a></i></span><span class="hidden"><i>
+			*Buffer : runtime.<a href="runtime.html#name-stringer">stringer</a></i></span></span>
+		<input type='checkbox' class="fold" id="Buffer-fold-results"><label for="Buffer-fold-results">As Outputs Of (<i>at least 2, both are exported</i>)</label><span id='Buffer-fold-results-items' class="fold-items"><span>
+			func <a href="#name-NewBuffer">NewBuffer</a>(buf []<a href="builtin.html#name-byte">byte</a>) *<b>Buffer</b></span><span>
+			func <a href="#name-NewBufferString">NewBufferString</a>(s <a href="builtin.html#name-string">string</a>) *<b>Buffer</b></span></span>
+		<input type='checkbox' class="fold" id="Buffer-fold-params"><label for="Buffer-fold-params">As Inputs Of (<i>at least 2, neither is exported</i>)</label><span id='Buffer-fold-params-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="Buffer-showhide-outputofs"><i><label for="Buffer-showhide-outputofs" class="show-inline">/* 2+ unexporteds ... */</label><label for="Buffer-showhide-outputofs" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			func github.com/andybalholm/cascadia.<a href="github.com/andybalholm/cascadia.html#name-writeNodeText">writeNodeText</a>(n *<a href="golang.org/x/net/html.html">html</a>.<a href="golang.org/x/net/html.html#name-Node">Node</a>, b *<b>Buffer</b>)</i></span><span class="hidden"><i>
+			func vendor/golang.org/x/net/http2/hpack.<a href="vendor/golang.org/x/net/http2/hpack.html#name-huffmanDecode">huffmanDecode</a>(buf *<b>Buffer</b>, maxLen <a href="builtin.html#name-int">int</a>, v []<a href="builtin.html#name-byte">byte</a>) <a href="builtin.html#name-error">error</a></i></span></span>
+
+</span></div><div class="anchor type-res" id="name-Reader" data-popularity="1125">	<input type='checkbox' class="fold" id="Reader-fold-content"><label for="Reader-fold-content"> <a href="../use/bytes..Reader.html">type</a> <a href="../src/bytes/reader.go.html#line-18">Reader</a> <i>(struct)</i></label><span id='Reader-fold-content-docs' class="fold-docs">
+<span class="md-text">		A Reader implements the io.Reader, io.ReaderAt, io.WriterTo, io.Seeker,
+		io.ByteScanner, and io.RuneScanner interfaces by reading from
+		a byte slice.
+		Unlike a [Buffer], a Reader is read-only and supports seeking.
+		The zero value for Reader operates like a Reader of an empty slice.</span>
+
+		<input type='checkbox' class="fold" id="Reader-fold-fields"><label for="Reader-fold-fields">Fields (<i>total 3, none are exported</i>)</label><span id='Reader-fold-fields-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="Reader-showhide-fields"><i><label for="Reader-showhide-fields" class="show-inline">/* 3 unexporteds ... */</label><label for="Reader-showhide-fields" class="hide-inline">/* 3 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Reader-fold-field-i"><label for="Reader-fold-field-i"><a href="../src/bytes/reader.go.html#line-20">i</a> <i><a href="builtin.html#name-int64">int64</a></i></label><span id='Reader-fold-field-i-docs' class="fold-docs">
+<span class="md-text">				// current reading index</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Reader-fold-field-prevRune"><label for="Reader-fold-field-prevRune"><a href="../src/bytes/reader.go.html#line-21">prevRune</a> <i><a href="builtin.html#name-int">int</a></i></label><span id='Reader-fold-field-prevRune-docs' class="fold-docs">
+<span class="md-text">				// index of previous rune; or &lt; 0</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../src/bytes/reader.go.html#line-19">s</a> <i>[]<a href="builtin.html#name-byte">byte</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="Reader-fold-methods"><label for="Reader-fold-methods">Methods (<i>total 11, all are exported</i>)</label><span id='Reader-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Reader-fold-method-Len"><label for="Reader-fold-method-Len">(*Reader) <a href="../src/bytes/reader.go.html#line-26">Len</a>() <a href="builtin.html#name-int">int</a></label><span id='Reader-fold-method-Len-docs' class="fold-docs">
+<span class="md-text">				Len returns the number of bytes of the unread portion of the
+				slice.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Reader-fold-method-Read"><label for="Reader-fold-method-Read">(*Reader) <a href="../src/bytes/reader.go.html#line-39">Read</a>(b []<a href="builtin.html#name-byte">byte</a>) (n <a href="builtin.html#name-int">int</a>, err <a href="builtin.html#name-error">error</a>)</label><span id='Reader-fold-method-Read-docs' class="fold-docs">
+<span class="md-text">				Read implements the [io.Reader] interface.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Reader-fold-method-ReadAt"><label for="Reader-fold-method-ReadAt">(*Reader) <a href="../src/bytes/reader.go.html#line-50">ReadAt</a>(b []<a href="builtin.html#name-byte">byte</a>, off <a href="builtin.html#name-int64">int64</a>) (n <a href="builtin.html#name-int">int</a>, err <a href="builtin.html#name-error">error</a>)</label><span id='Reader-fold-method-ReadAt-docs' class="fold-docs">
+<span class="md-text">				ReadAt implements the [io.ReaderAt] interface.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Reader-fold-method-ReadByte"><label for="Reader-fold-method-ReadByte">(*Reader) <a href="../src/bytes/reader.go.html#line-66">ReadByte</a>() (<a href="builtin.html#name-byte">byte</a>, <a href="builtin.html#name-error">error</a>)</label><span id='Reader-fold-method-ReadByte-docs' class="fold-docs">
+<span class="md-text">				ReadByte implements the [io.ByteReader] interface.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Reader-fold-method-ReadRune"><label for="Reader-fold-method-ReadRune">(*Reader) <a href="../src/bytes/reader.go.html#line-87">ReadRune</a>() (ch <a href="builtin.html#name-rune">rune</a>, size <a href="builtin.html#name-int">int</a>, err <a href="builtin.html#name-error">error</a>)</label><span id='Reader-fold-method-ReadRune-docs' class="fold-docs">
+<span class="md-text">				ReadRune implements the [io.RuneReader] interface.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Reader-fold-method-Reset"><label for="Reader-fold-method-Reset">(*Reader) <a href="../src/bytes/reader.go.html#line-156">Reset</a>(b []<a href="builtin.html#name-byte">byte</a>)</label><span id='Reader-fold-method-Reset-docs' class="fold-docs">
+<span class="md-text">				Reset resets the [Reader.Reader] to be reading from b.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Reader-fold-method-Seek"><label for="Reader-fold-method-Seek">(*Reader) <a href="../src/bytes/reader.go.html#line-116">Seek</a>(offset <a href="builtin.html#name-int64">int64</a>, whence <a href="builtin.html#name-int">int</a>) (<a href="builtin.html#name-int64">int64</a>, <a href="builtin.html#name-error">error</a>)</label><span id='Reader-fold-method-Seek-docs' class="fold-docs">
+<span class="md-text">				Seek implements the [io.Seeker] interface.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Reader-fold-method-Size"><label for="Reader-fold-method-Size">(*Reader) <a href="../src/bytes/reader.go.html#line-36">Size</a>() <a href="builtin.html#name-int64">int64</a></label><span id='Reader-fold-method-Size-docs' class="fold-docs">
+<span class="md-text">				Size returns the original length of the underlying byte slice.
+				Size is the number of bytes available for reading via [Reader.ReadAt].
+				The result is unaffected by any method calls except [Reader.Reset].</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Reader-fold-method-UnreadByte"><label for="Reader-fold-method-UnreadByte">(*Reader) <a href="../src/bytes/reader.go.html#line-77">UnreadByte</a>() <a href="builtin.html#name-error">error</a></label><span id='Reader-fold-method-UnreadByte-docs' class="fold-docs">
+<span class="md-text">				UnreadByte complements [Reader.ReadByte] in implementing the [io.ByteScanner] interface.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Reader-fold-method-UnreadRune"><label for="Reader-fold-method-UnreadRune">(*Reader) <a href="../src/bytes/reader.go.html#line-103">UnreadRune</a>() <a href="builtin.html#name-error">error</a></label><span id='Reader-fold-method-UnreadRune-docs' class="fold-docs">
+<span class="md-text">				UnreadRune complements [Reader.ReadRune] in implementing the [io.RuneScanner] interface.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Reader-fold-method-WriteTo"><label for="Reader-fold-method-WriteTo">(*Reader) <a href="../src/bytes/reader.go.html#line-137">WriteTo</a>(w <a href="io.html">io</a>.<a href="io.html#name-Writer">Writer</a>) (n <a href="builtin.html#name-int64">int64</a>, err <a href="builtin.html#name-error">error</a>)</label><span id='Reader-fold-method-WriteTo-docs' class="fold-docs">
+<span class="md-text">				WriteTo implements the [io.WriterTo] interface.</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="Reader-fold-impls"><label for="Reader-fold-impls">Implements (<i>at least 10, all are exported</i>)</label><span id='Reader-fold-impls-items' class="fold-items"><span>
+			*Reader : compress/flate.<a href="compress/flate.html#name-Reader">Reader</a></span><span>
+			*Reader : io.<a href="io.html#name-ByteReader">ByteReader</a></span><span>
+			*Reader : io.<a href="io.html#name-ByteScanner">ByteScanner</a></span><span>
+			*Reader : io.<a href="io.html#name-Reader">Reader</a></span><span>
+			*Reader : io.<a href="io.html#name-ReaderAt">ReaderAt</a></span><span>
+			*Reader : io.<a href="io.html#name-ReadSeeker">ReadSeeker</a></span><span>
+			*Reader : io.<a href="io.html#name-RuneReader">RuneReader</a></span><span>
+			*Reader : io.<a href="io.html#name-RuneScanner">RuneScanner</a></span><span>
+			*Reader : io.<a href="io.html#name-Seeker">Seeker</a></span><span>
+			*Reader : io.<a href="io.html#name-WriterTo">WriterTo</a></span></span>
+		<input type='checkbox' class="fold" id="Reader-fold-results"><label for="Reader-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='Reader-fold-results-items' class="fold-items"><span>
+			func <a href="#name-NewReader">NewReader</a>(b []<a href="builtin.html#name-byte">byte</a>) *<b>Reader</b></span></span>
+
+</span></div></div><div>	<input type='checkbox' class="showhide" id="unexported-typenames-showhide"><i><label for="unexported-typenames-showhide" class="show-inline">/* 2 unexporteds ... */</label><label for="unexported-typenames-showhide" class="hide-inline">/* 2 unexporteds: */</label></i><div class="anchor type-res hidden" id="name-asciiSet" data-popularity="195">	<input type='checkbox' class="fold" id="asciiSet-fold-content"><label for="asciiSet-fold-content"> <a href="../use/bytes..asciiSet^0d30b.html">type</a> <a href="../src/bytes/bytes.go.html#line-888">asciiSet</a> <i>([...])</i></label><span id='asciiSet-fold-content-docs' class="fold-docs">
+<span class="md-text">		asciiSet is a 32-byte value, where each bit represents the presence of a
+		given ASCII character in the set. The 128-bits of the lower 16 bytes,
+		starting with the least-significant bit of the lowest word to the
+		most-significant bit of the highest word, map to the full range of all
+		128 ASCII characters. The 128-bits of the upper 16 bytes will be zeroed,
+		ensuring that any non-ASCII character will be reported as not in the set.
+		This allocates a total of 32 bytes even though the upper half
+		is unused to avoid bounds checks in asciiSet.contains.</span>
+
+		<input type='checkbox' class="fold" id="asciiSet-fold-methods"><label for="asciiSet-fold-methods">Methods (<i>only one, which is unexported</i>)</label><span id='asciiSet-fold-methods-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="asciiSet-showhide-methods"><i><label for="asciiSet-showhide-methods" class="show-inline">/* one unexported ... */</label><label for="asciiSet-showhide-methods" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="asciiSet-fold-method-contains"><label for="asciiSet-fold-method-contains">(*asciiSet) <a href="../src/bytes/bytes.go.html#line-904">contains</a>(c <a href="builtin.html#name-byte">byte</a>) <a href="builtin.html#name-bool">bool</a></label><span id='asciiSet-fold-method-contains-docs' class="fold-docs">
+<span class="md-text">				contains reports whether c is inside the set.</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="asciiSet-fold-results"><label for="asciiSet-fold-results">As Outputs Of (<i>at least one unexported</i>)</label><span id='asciiSet-fold-results-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="asciiSet-showhide-inputofs"><i><label for="asciiSet-showhide-inputofs" class="show-inline">/* at least one unexported ... */</label><label for="asciiSet-showhide-inputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func <a href="#name-makeASCIISet">makeASCIISet</a>(chars <a href="builtin.html#name-string">string</a>) (as <b>asciiSet</b>, ok <a href="builtin.html#name-bool">bool</a>)</i></span></span>
+		<input type='checkbox' class="fold" id="asciiSet-fold-params"><label for="asciiSet-fold-params">As Inputs Of (<i>at least 2, neither is exported</i>)</label><span id='asciiSet-fold-params-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="asciiSet-showhide-outputofs"><i><label for="asciiSet-showhide-outputofs" class="show-inline">/* 2+ unexporteds ... */</label><label for="asciiSet-showhide-outputofs" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			func <a href="#name-trimLeftASCII">trimLeftASCII</a>(s []<a href="builtin.html#name-byte">byte</a>, as *<b>asciiSet</b>) []<a href="builtin.html#name-byte">byte</a></i></span><span class="hidden"><i>
+			func <a href="#name-trimRightASCII">trimRightASCII</a>(s []<a href="builtin.html#name-byte">byte</a>, as *<b>asciiSet</b>) []<a href="builtin.html#name-byte">byte</a></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-readOp" data-popularity="15">	<input type='checkbox' class="fold" id="readOp-fold-content"><label for="readOp-fold-content"> <a href="../use/bytes..readOp^306d5.html">type</a> <a href="../src/bytes/buffer.go.html#line-30">readOp</a> <a href="builtin.html#name-int8">int8</a> <i>(basic type)</i></label><span id='readOp-fold-content-docs' class="fold-docs">
+<span class="md-text">		The readOp constants describe the last action performed on
+		the buffer, so that UnreadRune and UnreadByte can check for
+		invalid usage. opReadRuneX constants are chosen such that
+		converted to int they correspond to the rune size that was read.</span>
+
+		<input type='checkbox' class="fold" id="readOp-fold-values"><label for="readOp-fold-values">As Types Of (<i>total 6, none are exported</i>)</label><span id='readOp-fold-values-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="readOp-showhide-values"><i><label for="readOp-showhide-values" class="show-inline">/* 6 unexporteds ... */</label><label for="readOp-showhide-values" class="hide-inline">/* 6 unexporteds: */</label></i><span class="hidden"><i>
+			const <a href="#name-opInvalid">opInvalid</a></i></span><span class="hidden"><i>
+			const <a href="#name-opRead">opRead</a></i></span><span class="hidden"><i>
+			const <a href="#name-opReadRune1">opReadRune1</a></i></span><span class="hidden"><i>
+			const <a href="#name-opReadRune2">opReadRune2</a></i></span><span class="hidden"><i>
+			const <a href="#name-opReadRune3">opReadRune3</a></i></span><span class="hidden"><i>
+			const <a href="#name-opReadRune4">opReadRune4</a></i></span></span>
+
+</span></div></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 70, in which 55 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-Clone">	<input type='checkbox' class="fold" id="Clone-fold-content"><label for="Clone-fold-content"> <a href="../use/bytes..Clone.html">func</a> <a href="../src/bytes/bytes.go.html#line-1342">Clone</a>(b []<a href="builtin.html#name-byte">byte</a>) []<a href="builtin.html#name-byte">byte</a></label><span id='Clone-fold-content-docs' class="fold-docs">
+<span class="md-text">		Clone returns a copy of b[:len(b)].
+		The result may have additional unused capacity.
+		Clone(nil) returns nil.</span>
+
+</span></div><div class="anchor value-res" id="name-Compare">	<input type='checkbox' class="fold" id="Compare-fold-content"><label for="Compare-fold-content"> <a href="../use/bytes..Compare.html">func</a> <a href="../src/bytes/bytes.go.html#line-26">Compare</a>(a, b []<a href="builtin.html#name-byte">byte</a>) <a href="builtin.html#name-int">int</a></label><span id='Compare-fold-content-docs' class="fold-docs">
+<span class="md-text">		Compare returns an integer comparing two byte slices lexicographically.
+		The result will be 0 if a == b, -1 if a &lt; b, and +1 if a &gt; b.
+		A nil argument is equivalent to an empty slice.</span>
+
+</span></div><div class="anchor value-res" id="name-Contains">	<input type='checkbox' class="fold" id="Contains-fold-content"><label for="Contains-fold-content"> <a href="../use/bytes..Contains.html">func</a> <a href="../src/bytes/bytes.go.html#line-75">Contains</a>(b, subslice []<a href="builtin.html#name-byte">byte</a>) <a href="builtin.html#name-bool">bool</a></label><span id='Contains-fold-content-docs' class="fold-docs">
+<span class="md-text">		Contains reports whether subslice is within b.</span>
+
+</span></div><div class="anchor value-res" id="name-ContainsAny">	<input type='checkbox' class="fold" id="ContainsAny-fold-content"><label for="ContainsAny-fold-content"> <a href="../use/bytes..ContainsAny.html">func</a> <a href="../src/bytes/bytes.go.html#line-80">ContainsAny</a>(b []<a href="builtin.html#name-byte">byte</a>, chars <a href="builtin.html#name-string">string</a>) <a href="builtin.html#name-bool">bool</a></label><span id='ContainsAny-fold-content-docs' class="fold-docs">
+<span class="md-text">		ContainsAny reports whether any of the UTF-8-encoded code points in chars are within b.</span>
+
+</span></div><div class="anchor value-res" id="name-ContainsFunc">	<input type='checkbox' class="fold" id="ContainsFunc-fold-content"><label for="ContainsFunc-fold-content"> <a href="../use/bytes..ContainsFunc.html">func</a> <a href="../src/bytes/bytes.go.html#line-90">ContainsFunc</a>(b []<a href="builtin.html#name-byte">byte</a>, f func(<a href="builtin.html#name-rune">rune</a>) <a href="builtin.html#name-bool">bool</a>) <a href="builtin.html#name-bool">bool</a></label><span id='ContainsFunc-fold-content-docs' class="fold-docs">
+<span class="md-text">		ContainsFunc reports whether any of the UTF-8-encoded code points r within b satisfy f(r).</span>
+
+</span></div><div class="anchor value-res" id="name-ContainsRune">	<input type='checkbox' class="fold" id="ContainsRune-fold-content"><label for="ContainsRune-fold-content"> <a href="../use/bytes..ContainsRune.html">func</a> <a href="../src/bytes/bytes.go.html#line-85">ContainsRune</a>(b []<a href="builtin.html#name-byte">byte</a>, r <a href="builtin.html#name-rune">rune</a>) <a href="builtin.html#name-bool">bool</a></label><span id='ContainsRune-fold-content-docs' class="fold-docs">
+<span class="md-text">		ContainsRune reports whether the rune is contained in the UTF-8-encoded byte slice b.</span>
+
+</span></div><div class="anchor value-res" id="name-Count">	<input type='checkbox' class="fold" id="Count-fold-content"><label for="Count-fold-content"> <a href="../use/bytes..Count.html">func</a> <a href="../src/bytes/bytes.go.html#line-55">Count</a>(s, sep []<a href="builtin.html#name-byte">byte</a>) <a href="builtin.html#name-int">int</a></label><span id='Count-fold-content-docs' class="fold-docs">
+<span class="md-text">		Count counts the number of non-overlapping instances of sep in s.
+		If sep is an empty slice, Count returns 1 + the number of UTF-8-encoded code points in s.</span>
+
+</span></div><div class="anchor value-res" id="name-Cut">	<input type='checkbox' class="fold" id="Cut-fold-content"><label for="Cut-fold-content"> <a href="../use/bytes..Cut.html">func</a> <a href="../src/bytes/bytes.go.html#line-1332">Cut</a>(s, sep []<a href="builtin.html#name-byte">byte</a>) (before, after []<a href="builtin.html#name-byte">byte</a>, found <a href="builtin.html#name-bool">bool</a>)</label><span id='Cut-fold-content-docs' class="fold-docs">
+<span class="md-text">		Cut slices s around the first instance of sep,
+		returning the text before and after sep.
+		The found result reports whether sep appears in s.
+		If sep does not appear in s, cut returns s, nil, false.
+		
+		Cut returns slices of the original slice s, not copies.</span>
+
+</span></div><div class="anchor value-res" id="name-CutPrefix">	<input type='checkbox' class="fold" id="CutPrefix-fold-content"><label for="CutPrefix-fold-content"> <a href="../use/bytes..CutPrefix.html">func</a> <a href="../src/bytes/bytes.go.html#line-1355">CutPrefix</a>(s, prefix []<a href="builtin.html#name-byte">byte</a>) (after []<a href="builtin.html#name-byte">byte</a>, found <a href="builtin.html#name-bool">bool</a>)</label><span id='CutPrefix-fold-content-docs' class="fold-docs">
+<span class="md-text">		CutPrefix returns s without the provided leading prefix byte slice
+		and reports whether it found the prefix.
+		If s doesn't start with prefix, CutPrefix returns s, false.
+		If prefix is the empty byte slice, CutPrefix returns s, true.
+		
+		CutPrefix returns slices of the original slice s, not copies.</span>
+
+</span></div><div class="anchor value-res" id="name-CutSuffix">	<input type='checkbox' class="fold" id="CutSuffix-fold-content"><label for="CutSuffix-fold-content"> <a href="../use/bytes..CutSuffix.html">func</a> <a href="../src/bytes/bytes.go.html#line-1368">CutSuffix</a>(s, suffix []<a href="builtin.html#name-byte">byte</a>) (before []<a href="builtin.html#name-byte">byte</a>, found <a href="builtin.html#name-bool">bool</a>)</label><span id='CutSuffix-fold-content-docs' class="fold-docs">
+<span class="md-text">		CutSuffix returns s without the provided ending suffix byte slice
+		and reports whether it found the suffix.
+		If s doesn't end with suffix, CutSuffix returns s, false.
+		If suffix is the empty byte slice, CutSuffix returns s, true.
+		
+		CutSuffix returns slices of the original slice s, not copies.</span>
+
+</span></div><div class="anchor value-res" id="name-Equal">	<input type='checkbox' class="fold" id="Equal-fold-content"><label for="Equal-fold-content"> <a href="../use/bytes..Equal.html">func</a> <a href="../src/bytes/bytes.go.html#line-18">Equal</a>(a, b []<a href="builtin.html#name-byte">byte</a>) <a href="builtin.html#name-bool">bool</a></label><span id='Equal-fold-content-docs' class="fold-docs">
+<span class="md-text">		Equal reports whether a and b
+		are the same length and contain the same bytes.
+		A nil argument is equivalent to an empty slice.</span>
+
+</span></div><div class="anchor value-res" id="name-EqualFold">	<input type='checkbox' class="fold" id="EqualFold-fold-content"><label for="EqualFold-fold-content"> <a href="../use/bytes..EqualFold.html">func</a> <a href="../src/bytes/bytes.go.html#line-1155">EqualFold</a>(s, t []<a href="builtin.html#name-byte">byte</a>) <a href="builtin.html#name-bool">bool</a></label><span id='EqualFold-fold-content-docs' class="fold-docs">
+<span class="md-text">		EqualFold reports whether s and t, interpreted as UTF-8 strings,
+		are equal under simple Unicode case-folding, which is a more general
+		form of case-insensitivity.</span>
+
+</span></div><div class="anchor value-res" id="name-Fields">	<input type='checkbox' class="fold" id="Fields-fold-content"><label for="Fields-fold-content"> <a href="../use/bytes..Fields.html">func</a> <a href="../src/bytes/bytes.go.html#line-399">Fields</a>(s []<a href="builtin.html#name-byte">byte</a>) [][]<a href="builtin.html#name-byte">byte</a></label><span id='Fields-fold-content-docs' class="fold-docs">
+<span class="md-text">		Fields interprets s as a sequence of UTF-8-encoded code points.
+		It splits the slice s around each instance of one or more consecutive white space
+		characters, as defined by unicode.IsSpace, returning a slice of subslices of s or an
+		empty slice if s contains only white space.</span>
+
+</span></div><div class="anchor value-res" id="name-FieldsFunc">	<input type='checkbox' class="fold" id="FieldsFunc-fold-content"><label for="FieldsFunc-fold-content"> <a href="../use/bytes..FieldsFunc.html">func</a> <a href="../src/bytes/bytes.go.html#line-456">FieldsFunc</a>(s []<a href="builtin.html#name-byte">byte</a>, f func(<a href="builtin.html#name-rune">rune</a>) <a href="builtin.html#name-bool">bool</a>) [][]<a href="builtin.html#name-byte">byte</a></label><span id='FieldsFunc-fold-content-docs' class="fold-docs">
+<span class="md-text">		FieldsFunc interprets s as a sequence of UTF-8-encoded code points.
+		It splits the slice s at each run of code points c satisfying f(c) and
+		returns a slice of subslices of s. If all code points in s satisfy f(c), or
+		len(s) == 0, an empty slice is returned.
+		
+		FieldsFunc makes no guarantees about the order in which it calls f(c)
+		and assumes that f always returns the same value for a given c.</span>
+
+</span></div><div class="anchor value-res" id="name-HasPrefix">	<input type='checkbox' class="fold" id="HasPrefix-fold-content"><label for="HasPrefix-fold-content"> <a href="../use/bytes..HasPrefix.html">func</a> <a href="../src/bytes/bytes.go.html#line-538">HasPrefix</a>(s, prefix []<a href="builtin.html#name-byte">byte</a>) <a href="builtin.html#name-bool">bool</a></label><span id='HasPrefix-fold-content-docs' class="fold-docs">
+<span class="md-text">		HasPrefix reports whether the byte slice s begins with prefix.</span>
+
+</span></div><div class="anchor value-res" id="name-HasSuffix">	<input type='checkbox' class="fold" id="HasSuffix-fold-content"><label for="HasSuffix-fold-content"> <a href="../use/bytes..HasSuffix.html">func</a> <a href="../src/bytes/bytes.go.html#line-543">HasSuffix</a>(s, suffix []<a href="builtin.html#name-byte">byte</a>) <a href="builtin.html#name-bool">bool</a></label><span id='HasSuffix-fold-content-docs' class="fold-docs">
+<span class="md-text">		HasSuffix reports whether the byte slice s ends with suffix.</span>
+
+</span></div><div class="anchor value-res" id="name-Index">	<input type='checkbox' class="fold" id="Index-fold-content"><label for="Index-fold-content"> <a href="../use/bytes..Index.html">func</a> <a href="../src/bytes/bytes.go.html#line-1239">Index</a>(s, sep []<a href="builtin.html#name-byte">byte</a>) <a href="builtin.html#name-int">int</a></label><span id='Index-fold-content-docs' class="fold-docs">
+<span class="md-text">		Index returns the index of the first instance of sep in s, or -1 if sep is not present in s.</span>
+
+</span></div><div class="anchor value-res" id="name-IndexAny">	<input type='checkbox' class="fold" id="IndexAny-fold-content"><label for="IndexAny-fold-content"> <a href="../use/bytes..IndexAny.html">func</a> <a href="../src/bytes/bytes.go.html#line-163">IndexAny</a>(s []<a href="builtin.html#name-byte">byte</a>, chars <a href="builtin.html#name-string">string</a>) <a href="builtin.html#name-int">int</a></label><span id='IndexAny-fold-content-docs' class="fold-docs">
+<span class="md-text">		IndexAny interprets s as a sequence of UTF-8-encoded Unicode code points.
+		It returns the byte index of the first occurrence in s of any of the Unicode
+		code points in chars. It returns -1 if chars is empty or if there is no code
+		point in common.</span>
+
+</span></div><div class="anchor value-res" id="name-IndexByte">	<input type='checkbox' class="fold" id="IndexByte-fold-content"><label for="IndexByte-fold-content"> <a href="../use/bytes..IndexByte.html">func</a> <a href="../src/bytes/bytes.go.html#line-95">IndexByte</a>(b []<a href="builtin.html#name-byte">byte</a>, c <a href="builtin.html#name-byte">byte</a>) <a href="builtin.html#name-int">int</a></label><span id='IndexByte-fold-content-docs' class="fold-docs">
+<span class="md-text">		IndexByte returns the index of the first instance of c in b, or -1 if c is not present in b.</span>
+
+</span></div><div class="anchor value-res" id="name-IndexFunc">	<input type='checkbox' class="fold" id="IndexFunc-fold-content"><label for="IndexFunc-fold-content"> <a href="../use/bytes..IndexFunc.html">func</a> <a href="../src/bytes/bytes.go.html#line-833">IndexFunc</a>(s []<a href="builtin.html#name-byte">byte</a>, f func(r <a href="builtin.html#name-rune">rune</a>) <a href="builtin.html#name-bool">bool</a>) <a href="builtin.html#name-int">int</a></label><span id='IndexFunc-fold-content-docs' class="fold-docs">
+<span class="md-text">		IndexFunc interprets s as a sequence of UTF-8-encoded code points.
+		It returns the byte index in s of the first Unicode
+		code point satisfying f(c), or -1 if none do.</span>
+
+</span></div><div class="anchor value-res" id="name-IndexRune">	<input type='checkbox' class="fold" id="IndexRune-fold-content"><label for="IndexRune-fold-content"> <a href="../use/bytes..IndexRune.html">func</a> <a href="../src/bytes/bytes.go.html#line-137">IndexRune</a>(s []<a href="builtin.html#name-byte">byte</a>, r <a href="builtin.html#name-rune">rune</a>) <a href="builtin.html#name-int">int</a></label><span id='IndexRune-fold-content-docs' class="fold-docs">
+<span class="md-text">		IndexRune interprets s as a sequence of UTF-8-encoded code points.
+		It returns the byte index of the first occurrence in s of the given rune.
+		It returns -1 if rune is not present in s.
+		If r is utf8.RuneError, it returns the first instance of any
+		invalid UTF-8 byte sequence.</span>
+
+</span></div><div class="anchor value-res" id="name-Join">	<input type='checkbox' class="fold" id="Join-fold-content"><label for="Join-fold-content"> <a href="../use/bytes..Join.html">func</a> <a href="../src/bytes/bytes.go.html#line-505">Join</a>(s [][]<a href="builtin.html#name-byte">byte</a>, sep []<a href="builtin.html#name-byte">byte</a>) []<a href="builtin.html#name-byte">byte</a></label><span id='Join-fold-content-docs' class="fold-docs">
+<span class="md-text">		Join concatenates the elements of s to create a new byte slice. The separator
+		sep is placed between elements in the resulting slice.</span>
+
+</span></div><div class="anchor value-res" id="name-LastIndex">	<input type='checkbox' class="fold" id="LastIndex-fold-content"><label for="LastIndex-fold-content"> <a href="../use/bytes..LastIndex.html">func</a> <a href="../src/bytes/bytes.go.html#line-109">LastIndex</a>(s, sep []<a href="builtin.html#name-byte">byte</a>) <a href="builtin.html#name-int">int</a></label><span id='LastIndex-fold-content-docs' class="fold-docs">
+<span class="md-text">		LastIndex returns the index of the last instance of sep in s, or -1 if sep is not present in s.</span>
+
+</span></div><div class="anchor value-res" id="name-LastIndexAny">	<input type='checkbox' class="fold" id="LastIndexAny-fold-content"><label for="LastIndexAny-fold-content"> <a href="../use/bytes..LastIndexAny.html">func</a> <a href="../src/bytes/bytes.go.html#line-241">LastIndexAny</a>(s []<a href="builtin.html#name-byte">byte</a>, chars <a href="builtin.html#name-string">string</a>) <a href="builtin.html#name-int">int</a></label><span id='LastIndexAny-fold-content-docs' class="fold-docs">
+<span class="md-text">		LastIndexAny interprets s as a sequence of UTF-8-encoded Unicode code
+		points. It returns the byte index of the last occurrence in s of any of
+		the Unicode code points in chars. It returns -1 if chars is empty or if
+		there is no code point in common.</span>
+
+</span></div><div class="anchor value-res" id="name-LastIndexByte">	<input type='checkbox' class="fold" id="LastIndexByte-fold-content"><label for="LastIndexByte-fold-content"> <a href="../use/bytes..LastIndexByte.html">func</a> <a href="../src/bytes/bytes.go.html#line-128">LastIndexByte</a>(s []<a href="builtin.html#name-byte">byte</a>, c <a href="builtin.html#name-byte">byte</a>) <a href="builtin.html#name-int">int</a></label><span id='LastIndexByte-fold-content-docs' class="fold-docs">
+<span class="md-text">		LastIndexByte returns the index of the last instance of c in s, or -1 if c is not present in s.</span>
+
+</span></div><div class="anchor value-res" id="name-LastIndexFunc">	<input type='checkbox' class="fold" id="LastIndexFunc-fold-content"><label for="LastIndexFunc-fold-content"> <a href="../use/bytes..LastIndexFunc.html">func</a> <a href="../src/bytes/bytes.go.html#line-840">LastIndexFunc</a>(s []<a href="builtin.html#name-byte">byte</a>, f func(r <a href="builtin.html#name-rune">rune</a>) <a href="builtin.html#name-bool">bool</a>) <a href="builtin.html#name-int">int</a></label><span id='LastIndexFunc-fold-content-docs' class="fold-docs">
+<span class="md-text">		LastIndexFunc interprets s as a sequence of UTF-8-encoded code points.
+		It returns the byte index in s of the last Unicode
+		code point satisfying f(c), or -1 if none do.</span>
+
+</span></div><div class="anchor value-res" id="name-Map">	<input type='checkbox' class="fold" id="Map-fold-content"><label for="Map-fold-content"> <a href="../use/bytes..Map.html">func</a> <a href="../src/bytes/bytes.go.html#line-551">Map</a>(mapping func(r <a href="builtin.html#name-rune">rune</a>) <a href="builtin.html#name-rune">rune</a>, s []<a href="builtin.html#name-byte">byte</a>) []<a href="builtin.html#name-byte">byte</a></label><span id='Map-fold-content-docs' class="fold-docs">
+<span class="md-text">		Map returns a copy of the byte slice s with all its characters modified
+		according to the mapping function. If mapping returns a negative value, the character is
+		dropped from the byte slice with no replacement. The characters in s and the
+		output are interpreted as UTF-8-encoded code points.</span>
+
+</span></div><div class="anchor value-res" id="name-NewBuffer">	<input type='checkbox' class="fold" id="NewBuffer-fold-content"><label for="NewBuffer-fold-content"> <a href="../use/bytes..NewBuffer.html">func</a> <a href="../src/bytes/buffer.go.html#line-472">NewBuffer</a>(buf []<a href="builtin.html#name-byte">byte</a>) *<a href="#name-Buffer">Buffer</a></label><span id='NewBuffer-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewBuffer creates and initializes a new [Buffer] using buf as its
+		initial contents. The new [Buffer] takes ownership of buf, and the
+		caller should not use buf after this call. NewBuffer is intended to
+		prepare a [Buffer] to read existing data. It can also be used to set
+		the initial size of the internal buffer for writing. To do that,
+		buf should have the desired capacity but a length of zero.
+		
+		In most cases, new([Buffer]) (or just declaring a [Buffer] variable) is
+		sufficient to initialize a [Buffer].</span>
+
+</span></div><div class="anchor value-res" id="name-NewBufferString">	<input type='checkbox' class="fold" id="NewBufferString-fold-content"><label for="NewBufferString-fold-content"> <a href="../use/bytes..NewBufferString.html">func</a> <a href="../src/bytes/buffer.go.html#line-480">NewBufferString</a>(s <a href="builtin.html#name-string">string</a>) *<a href="#name-Buffer">Buffer</a></label><span id='NewBufferString-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewBufferString creates and initializes a new [Buffer] using string s as its
+		initial contents. It is intended to prepare a buffer to read an existing
+		string.
+		
+		In most cases, new([Buffer]) (or just declaring a [Buffer] variable) is
+		sufficient to initialize a [Buffer].</span>
+
+</span></div><div class="anchor value-res" id="name-NewReader">	<input type='checkbox' class="fold" id="NewReader-fold-content"><label for="NewReader-fold-content"> <a href="../use/bytes..NewReader.html">func</a> <a href="../src/bytes/reader.go.html#line-159">NewReader</a>(b []<a href="builtin.html#name-byte">byte</a>) *<a href="#name-Reader">Reader</a></label><span id='NewReader-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewReader returns a new [Reader.Reader] reading from b.</span>
+
+</span></div><div class="anchor value-res" id="name-Repeat">	<input type='checkbox' class="fold" id="Repeat-fold-content"><label for="Repeat-fold-content"> <a href="../use/bytes..Repeat.html">func</a> <a href="../src/bytes/bytes.go.html#line-575">Repeat</a>(b []<a href="builtin.html#name-byte">byte</a>, count <a href="builtin.html#name-int">int</a>) []<a href="builtin.html#name-byte">byte</a></label><span id='Repeat-fold-content-docs' class="fold-docs">
+<span class="md-text">		Repeat returns a new byte slice consisting of count copies of b.
+		
+		It panics if count is negative or if the result of (len(b) * count)
+		overflows.</span>
+
+</span></div><div class="anchor value-res" id="name-Replace">	<input type='checkbox' class="fold" id="Replace-fold-content"><label for="Replace-fold-content"> <a href="../use/bytes..Replace.html">func</a> <a href="../src/bytes/bytes.go.html#line-1107">Replace</a>(s, old, new []<a href="builtin.html#name-byte">byte</a>, n <a href="builtin.html#name-int">int</a>) []<a href="builtin.html#name-byte">byte</a></label><span id='Replace-fold-content-docs' class="fold-docs">
+<span class="md-text">		Replace returns a copy of the slice s with the first n
+		non-overlapping instances of old replaced by new.
+		If old is empty, it matches at the beginning of the slice
+		and after each UTF-8 sequence, yielding up to k+1 replacements
+		for a k-rune slice.
+		If n &lt; 0, there is no limit on the number of replacements.</span>
+
+</span></div><div class="anchor value-res" id="name-ReplaceAll">	<input type='checkbox' class="fold" id="ReplaceAll-fold-content"><label for="ReplaceAll-fold-content"> <a href="../use/bytes..ReplaceAll.html">func</a> <a href="../src/bytes/bytes.go.html#line-1148">ReplaceAll</a>(s, old, new []<a href="builtin.html#name-byte">byte</a>) []<a href="builtin.html#name-byte">byte</a></label><span id='ReplaceAll-fold-content-docs' class="fold-docs">
+<span class="md-text">		ReplaceAll returns a copy of the slice s with all
+		non-overlapping instances of old replaced by new.
+		If old is empty, it matches at the beginning of the slice
+		and after each UTF-8 sequence, yielding up to k+1 replacements
+		for a k-rune slice.</span>
+
+</span></div><div class="anchor value-res" id="name-Runes">	<input type='checkbox' class="fold" id="Runes-fold-content"><label for="Runes-fold-content"> <a href="../use/bytes..Runes.html">func</a> <a href="../src/bytes/bytes.go.html#line-1089">Runes</a>(s []<a href="builtin.html#name-byte">byte</a>) []<a href="builtin.html#name-rune">rune</a></label><span id='Runes-fold-content-docs' class="fold-docs">
+<span class="md-text">		Runes interprets s as a sequence of UTF-8-encoded code points.
+		It returns a slice of runes (Unicode code points) equivalent to s.</span>
+
+</span></div><div class="anchor value-res" id="name-Split">	<input type='checkbox' class="fold" id="Split-fold-content"><label for="Split-fold-content"> <a href="../use/bytes..Split.html">func</a> <a href="../src/bytes/bytes.go.html#line-383">Split</a>(s, sep []<a href="builtin.html#name-byte">byte</a>) [][]<a href="builtin.html#name-byte">byte</a></label><span id='Split-fold-content-docs' class="fold-docs">
+<span class="md-text">		Split slices s into all subslices separated by sep and returns a slice of
+		the subslices between those separators.
+		If sep is empty, Split splits after each UTF-8 sequence.
+		It is equivalent to SplitN with a count of -1.
+		
+		To split around the first instance of a separator, see Cut.</span>
+
+</span></div><div class="anchor value-res" id="name-SplitAfter">	<input type='checkbox' class="fold" id="SplitAfter-fold-content"><label for="SplitAfter-fold-content"> <a href="../use/bytes..SplitAfter.html">func</a> <a href="../src/bytes/bytes.go.html#line-389">SplitAfter</a>(s, sep []<a href="builtin.html#name-byte">byte</a>) [][]<a href="builtin.html#name-byte">byte</a></label><span id='SplitAfter-fold-content-docs' class="fold-docs">
+<span class="md-text">		SplitAfter slices s into all subslices after each instance of sep and
+		returns a slice of those subslices.
+		If sep is empty, SplitAfter splits after each UTF-8 sequence.
+		It is equivalent to SplitAfterN with a count of -1.</span>
+
+</span></div><div class="anchor value-res" id="name-SplitAfterN">	<input type='checkbox' class="fold" id="SplitAfterN-fold-content"><label for="SplitAfterN-fold-content"> <a href="../use/bytes..SplitAfterN.html">func</a> <a href="../src/bytes/bytes.go.html#line-373">SplitAfterN</a>(s, sep []<a href="builtin.html#name-byte">byte</a>, n <a href="builtin.html#name-int">int</a>) [][]<a href="builtin.html#name-byte">byte</a></label><span id='SplitAfterN-fold-content-docs' class="fold-docs">
+<span class="md-text">		SplitAfterN slices s into subslices after each instance of sep and
+		returns a slice of those subslices.
+		If sep is empty, SplitAfterN splits after each UTF-8 sequence.
+		The count determines the number of subslices to return:
+		
+			n &gt; 0: at most n subslices; the last subslice will be the unsplit remainder.
+			n == 0: the result is nil (zero subslices)
+			n &lt; 0: all subslices</span>
+
+</span></div><div class="anchor value-res" id="name-SplitN">	<input type='checkbox' class="fold" id="SplitN-fold-content"><label for="SplitN-fold-content"> <a href="../use/bytes..SplitN.html">func</a> <a href="../src/bytes/bytes.go.html#line-363">SplitN</a>(s, sep []<a href="builtin.html#name-byte">byte</a>, n <a href="builtin.html#name-int">int</a>) [][]<a href="builtin.html#name-byte">byte</a></label><span id='SplitN-fold-content-docs' class="fold-docs">
+<span class="md-text">		SplitN slices s into subslices separated by sep and returns a slice of
+		the subslices between those separators.
+		If sep is empty, SplitN splits after each UTF-8 sequence.
+		The count determines the number of subslices to return:
+		
+			n &gt; 0: at most n subslices; the last subslice will be the unsplit remainder.
+			n == 0: the result is nil (zero subslices)
+			n &lt; 0: all subslices
+		
+		To split around the first instance of a separator, see Cut.</span>
+
+</span></div><div class="anchor value-res" id="name-Title">	<input type='checkbox' class="fold" id="Title-fold-content"><label for="Title-fold-content"> <a href="../use/bytes..Title.html">func</a> <a href="../src/bytes/bytes.go.html#line-766">Title</a>(s []<a href="builtin.html#name-byte">byte</a>) []<a href="builtin.html#name-byte">byte</a></label><span id='Title-fold-content-docs' class="fold-docs">
+<span class="md-text">		Title treats s as UTF-8-encoded bytes and returns a copy with all Unicode letters that begin
+		words mapped to their title case.
+		
+		Deprecated: The rule Title uses for word boundaries does not handle Unicode
+		punctuation properly. Use golang.org/x/text/cases instead.</span>
+
+</span></div><div class="anchor value-res" id="name-ToLower">	<input type='checkbox' class="fold" id="ToLower-fold-content"><label for="ToLower-fold-content"> <a href="../use/bytes..ToLower.html">func</a> <a href="../src/bytes/bytes.go.html#line-658">ToLower</a>(s []<a href="builtin.html#name-byte">byte</a>) []<a href="builtin.html#name-byte">byte</a></label><span id='ToLower-fold-content-docs' class="fold-docs">
+<span class="md-text">		ToLower returns a copy of the byte slice s with all Unicode letters mapped to
+		their lower case.</span>
+
+</span></div><div class="anchor value-res" id="name-ToLowerSpecial">	<input type='checkbox' class="fold" id="ToLowerSpecial-fold-content"><label for="ToLowerSpecial-fold-content"> <a href="../use/bytes..ToLowerSpecial.html">func</a> <a href="../src/bytes/bytes.go.html#line-697">ToLowerSpecial</a>(c <a href="unicode.html">unicode</a>.<a href="unicode.html#name-SpecialCase">SpecialCase</a>, s []<a href="builtin.html#name-byte">byte</a>) []<a href="builtin.html#name-byte">byte</a></label><span id='ToLowerSpecial-fold-content-docs' class="fold-docs">
+<span class="md-text">		ToLowerSpecial treats s as UTF-8-encoded bytes and returns a copy with all the Unicode letters mapped to their
+		lower case, giving priority to the special casing rules.</span>
+
+</span></div><div class="anchor value-res" id="name-ToTitle">	<input type='checkbox' class="fold" id="ToTitle-fold-content"><label for="ToTitle-fold-content"> <a href="../use/bytes..ToTitle.html">func</a> <a href="../src/bytes/bytes.go.html#line-687">ToTitle</a>(s []<a href="builtin.html#name-byte">byte</a>) []<a href="builtin.html#name-byte">byte</a></label><span id='ToTitle-fold-content-docs' class="fold-docs">
+<span class="md-text">		ToTitle treats s as UTF-8-encoded bytes and returns a copy with all the Unicode letters mapped to their title case.</span>
+
+</span></div><div class="anchor value-res" id="name-ToTitleSpecial">	<input type='checkbox' class="fold" id="ToTitleSpecial-fold-content"><label for="ToTitleSpecial-fold-content"> <a href="../use/bytes..ToTitleSpecial.html">func</a> <a href="../src/bytes/bytes.go.html#line-703">ToTitleSpecial</a>(c <a href="unicode.html">unicode</a>.<a href="unicode.html#name-SpecialCase">SpecialCase</a>, s []<a href="builtin.html#name-byte">byte</a>) []<a href="builtin.html#name-byte">byte</a></label><span id='ToTitleSpecial-fold-content-docs' class="fold-docs">
+<span class="md-text">		ToTitleSpecial treats s as UTF-8-encoded bytes and returns a copy with all the Unicode letters mapped to their
+		title case, giving priority to the special casing rules.</span>
+
+</span></div><div class="anchor value-res" id="name-ToUpper">	<input type='checkbox' class="fold" id="ToUpper-fold-content"><label for="ToUpper-fold-content"> <a href="../use/bytes..ToUpper.html">func</a> <a href="../src/bytes/bytes.go.html#line-627">ToUpper</a>(s []<a href="builtin.html#name-byte">byte</a>) []<a href="builtin.html#name-byte">byte</a></label><span id='ToUpper-fold-content-docs' class="fold-docs">
+<span class="md-text">		ToUpper returns a copy of the byte slice s with all Unicode letters mapped to
+		their upper case.</span>
+
+</span></div><div class="anchor value-res" id="name-ToUpperSpecial">	<input type='checkbox' class="fold" id="ToUpperSpecial-fold-content"><label for="ToUpperSpecial-fold-content"> <a href="../use/bytes..ToUpperSpecial.html">func</a> <a href="../src/bytes/bytes.go.html#line-691">ToUpperSpecial</a>(c <a href="unicode.html">unicode</a>.<a href="unicode.html#name-SpecialCase">SpecialCase</a>, s []<a href="builtin.html#name-byte">byte</a>) []<a href="builtin.html#name-byte">byte</a></label><span id='ToUpperSpecial-fold-content-docs' class="fold-docs">
+<span class="md-text">		ToUpperSpecial treats s as UTF-8-encoded bytes and returns a copy with all the Unicode letters mapped to their
+		upper case, giving priority to the special casing rules.</span>
+
+</span></div><div class="anchor value-res" id="name-ToValidUTF8">	<input type='checkbox' class="fold" id="ToValidUTF8-fold-content"><label for="ToValidUTF8-fold-content"> <a href="../use/bytes..ToValidUTF8.html">func</a> <a href="../src/bytes/bytes.go.html#line-709">ToValidUTF8</a>(s, replacement []<a href="builtin.html#name-byte">byte</a>) []<a href="builtin.html#name-byte">byte</a></label><span id='ToValidUTF8-fold-content-docs' class="fold-docs">
+<span class="md-text">		ToValidUTF8 treats s as UTF-8-encoded bytes and returns a copy with each run of bytes
+		representing invalid UTF-8 replaced with the bytes in replacement, which may be empty.</span>
+
+</span></div><div class="anchor value-res" id="name-Trim">	<input type='checkbox' class="fold" id="Trim-fold-content"><label for="Trim-fold-content"> <a href="../use/bytes..Trim.html">func</a> <a href="../src/bytes/bytes.go.html#line-922">Trim</a>(s []<a href="builtin.html#name-byte">byte</a>, cutset <a href="builtin.html#name-string">string</a>) []<a href="builtin.html#name-byte">byte</a></label><span id='Trim-fold-content-docs' class="fold-docs">
+<span class="md-text">		Trim returns a subslice of s by slicing off all leading and
+		trailing UTF-8-encoded code points contained in cutset.</span>
+
+</span></div><div class="anchor value-res" id="name-TrimFunc">	<input type='checkbox' class="fold" id="TrimFunc-fold-content"><label for="TrimFunc-fold-content"> <a href="../use/bytes..TrimFunc.html">func</a> <a href="../src/bytes/bytes.go.html#line-808">TrimFunc</a>(s []<a href="builtin.html#name-byte">byte</a>, f func(r <a href="builtin.html#name-rune">rune</a>) <a href="builtin.html#name-bool">bool</a>) []<a href="builtin.html#name-byte">byte</a></label><span id='TrimFunc-fold-content-docs' class="fold-docs">
+<span class="md-text">		TrimFunc returns a subslice of s by slicing off all leading and trailing
+		UTF-8-encoded code points c that satisfy f(c).</span>
+
+</span></div><div class="anchor value-res" id="name-TrimLeft">	<input type='checkbox' class="fold" id="TrimLeft-fold-content"><label for="TrimLeft-fold-content"> <a href="../use/bytes..TrimLeft.html">func</a> <a href="../src/bytes/bytes.go.html#line-941">TrimLeft</a>(s []<a href="builtin.html#name-byte">byte</a>, cutset <a href="builtin.html#name-string">string</a>) []<a href="builtin.html#name-byte">byte</a></label><span id='TrimLeft-fold-content-docs' class="fold-docs">
+<span class="md-text">		TrimLeft returns a subslice of s by slicing off all leading
+		UTF-8-encoded code points contained in cutset.</span>
+
+</span></div><div class="anchor value-res" id="name-TrimLeftFunc">	<input type='checkbox' class="fold" id="TrimLeftFunc-fold-content"><label for="TrimLeftFunc-fold-content"> <a href="../use/bytes..TrimLeftFunc.html">func</a> <a href="../src/bytes/bytes.go.html#line-785">TrimLeftFunc</a>(s []<a href="builtin.html#name-byte">byte</a>, f func(r <a href="builtin.html#name-rune">rune</a>) <a href="builtin.html#name-bool">bool</a>) []<a href="builtin.html#name-byte">byte</a></label><span id='TrimLeftFunc-fold-content-docs' class="fold-docs">
+<span class="md-text">		TrimLeftFunc treats s as UTF-8-encoded bytes and returns a subslice of s by slicing off
+		all leading UTF-8-encoded code points c that satisfy f(c).</span>
+
+</span></div><div class="anchor value-res" id="name-TrimPrefix">	<input type='checkbox' class="fold" id="TrimPrefix-fold-content"><label for="TrimPrefix-fold-content"> <a href="../use/bytes..TrimPrefix.html">func</a> <a href="../src/bytes/bytes.go.html#line-814">TrimPrefix</a>(s, prefix []<a href="builtin.html#name-byte">byte</a>) []<a href="builtin.html#name-byte">byte</a></label><span id='TrimPrefix-fold-content-docs' class="fold-docs">
+<span class="md-text">		TrimPrefix returns s without the provided leading prefix string.
+		If s doesn't start with prefix, s is returned unchanged.</span>
+
+</span></div><div class="anchor value-res" id="name-TrimRight">	<input type='checkbox' class="fold" id="TrimRight-fold-content"><label for="TrimRight-fold-content"> <a href="../use/bytes..TrimRight.html">func</a> <a href="../src/bytes/bytes.go.html#line-1003">TrimRight</a>(s []<a href="builtin.html#name-byte">byte</a>, cutset <a href="builtin.html#name-string">string</a>) []<a href="builtin.html#name-byte">byte</a></label><span id='TrimRight-fold-content-docs' class="fold-docs">
+<span class="md-text">		TrimRight returns a subslice of s by slicing off all trailing
+		UTF-8-encoded code points that are contained in cutset.</span>
+
+</span></div><div class="anchor value-res" id="name-TrimRightFunc">	<input type='checkbox' class="fold" id="TrimRightFunc-fold-content"><label for="TrimRightFunc-fold-content"> <a href="../use/bytes..TrimRightFunc.html">func</a> <a href="../src/bytes/bytes.go.html#line-795">TrimRightFunc</a>(s []<a href="builtin.html#name-byte">byte</a>, f func(r <a href="builtin.html#name-rune">rune</a>) <a href="builtin.html#name-bool">bool</a>) []<a href="builtin.html#name-byte">byte</a></label><span id='TrimRightFunc-fold-content-docs' class="fold-docs">
+<span class="md-text">		TrimRightFunc returns a subslice of s by slicing off all trailing
+		UTF-8-encoded code points c that satisfy f(c).</span>
+
+</span></div><div class="anchor value-res" id="name-TrimSpace">	<input type='checkbox' class="fold" id="TrimSpace-fold-content"><label for="TrimSpace-fold-content"> <a href="../use/bytes..TrimSpace.html">func</a> <a href="../src/bytes/bytes.go.html#line-1049">TrimSpace</a>(s []<a href="builtin.html#name-byte">byte</a>) []<a href="builtin.html#name-byte">byte</a></label><span id='TrimSpace-fold-content-docs' class="fold-docs">
+<span class="md-text">		TrimSpace returns a subslice of s by slicing off all leading and
+		trailing white space, as defined by Unicode.</span>
+
+</span></div><div class="anchor value-res" id="name-TrimSuffix">	<input type='checkbox' class="fold" id="TrimSuffix-fold-content"><label for="TrimSuffix-fold-content"> <a href="../use/bytes..TrimSuffix.html">func</a> <a href="../src/bytes/bytes.go.html#line-823">TrimSuffix</a>(s, suffix []<a href="builtin.html#name-byte">byte</a>) []<a href="builtin.html#name-byte">byte</a></label><span id='TrimSuffix-fold-content-docs' class="fold-docs">
+<span class="md-text">		TrimSuffix returns s without the provided trailing suffix string.
+		If s doesn't end with suffix, s is returned unchanged.</span>
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-functions-showhide"><i><label for="unexported-functions-showhide" class="show-inline">/* 15 unexporteds ... */</label><label for="unexported-functions-showhide" class="hide-inline">/* 15 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-containsRune"><i>	<input type='checkbox' class="fold" id="containsRune-fold-content"><label for="containsRune-fold-content"> <a href="../use/bytes..containsRune^ab6e1.html">func</a> <a href="../src/bytes/bytes.go.html#line-911">containsRune</a>(s <a href="builtin.html#name-string">string</a>, r <a href="builtin.html#name-rune">rune</a>) <a href="builtin.html#name-bool">bool</a></label><span id='containsRune-fold-content-docs' class="fold-docs">
+<span class="md-text">		containsRune is a simplified version of strings.ContainsRune
+		to avoid importing the strings package.
+		We avoid bytes.ContainsRune to avoid allocating a temporary copy of s.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-explode"><i>	<input type='checkbox' class="fold" id="explode-fold-content"><label for="explode-fold-content"> <a href="../use/bytes..explode^fecb0.html">func</a> <a href="../src/bytes/bytes.go.html#line-32">explode</a>(s []<a href="builtin.html#name-byte">byte</a>, n <a href="builtin.html#name-int">int</a>) [][]<a href="builtin.html#name-byte">byte</a></label><span id='explode-fold-content-docs' class="fold-docs">
+<span class="md-text">		explode splits s into a slice of UTF-8 sequences, one per Unicode code point (still slices of bytes),
+		up to a maximum of n byte slices. Invalid UTF-8 sequences are chopped into individual bytes.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-genSplit"><i>	<input type='checkbox' class="fold" id="genSplit-fold-content"><label for="genSplit-fold-content"> <a href="../use/bytes..genSplit^40ecf.html">func</a> <a href="../src/bytes/bytes.go.html#line-323">genSplit</a>(s, sep []<a href="builtin.html#name-byte">byte</a>, sepSave, n <a href="builtin.html#name-int">int</a>) [][]<a href="builtin.html#name-byte">byte</a></label><span id='genSplit-fold-content-docs' class="fold-docs">
+<span class="md-text">		Generic split: splits after each instance of sep,
+		including sepSave bytes of sep in the subslices.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-growSlice"><i>	<input type='checkbox' class="fold" id="growSlice-fold-content"><label for="growSlice-fold-content"> <a href="../use/bytes..growSlice^c89fe.html">func</a> <a href="../src/bytes/buffer.go.html#line-229">growSlice</a>(b []<a href="builtin.html#name-byte">byte</a>, n <a href="builtin.html#name-int">int</a>) []<a href="builtin.html#name-byte">byte</a></label><span id='growSlice-fold-content-docs' class="fold-docs">
+<span class="md-text">		growSlice grows b by n, preserving the original content of b.
+		If the allocation fails, it panics with ErrTooLarge.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-indexBytePortable"><i>	<span class="nodocs"> <a href="../use/bytes..indexBytePortable^b3333.html">func</a> <a href="../src/bytes/bytes.go.html#line-99">indexBytePortable</a>(s []<a href="builtin.html#name-byte">byte</a>, c <a href="builtin.html#name-byte">byte</a>) <a href="builtin.html#name-int">int</a></span></i></div><div class="anchor value-res hidden" id="name-indexFunc"><i>	<input type='checkbox' class="fold" id="indexFunc-fold-content"><label for="indexFunc-fold-content"> <a href="../use/bytes..indexFunc^c8ef1.html">func</a> <a href="../src/bytes/bytes.go.html#line-847">indexFunc</a>(s []<a href="builtin.html#name-byte">byte</a>, f func(r <a href="builtin.html#name-rune">rune</a>) <a href="builtin.html#name-bool">bool</a>, truth <a href="builtin.html#name-bool">bool</a>) <a href="builtin.html#name-int">int</a></label><span id='indexFunc-fold-content-docs' class="fold-docs">
+<span class="md-text">		indexFunc is the same as IndexFunc except that if
+		truth==false, the sense of the predicate function is
+		inverted.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-isSeparator"><i>	<input type='checkbox' class="fold" id="isSeparator-fold-content"><label for="isSeparator-fold-content"> <a href="../use/bytes..isSeparator^9eab5.html">func</a> <a href="../src/bytes/bytes.go.html#line-738">isSeparator</a>(r <a href="builtin.html#name-rune">rune</a>) <a href="builtin.html#name-bool">bool</a></label><span id='isSeparator-fold-content-docs' class="fold-docs">
+<span class="md-text">		isSeparator reports whether the rune could mark a word boundary.
+		TODO: update when package unicode captures more of the properties.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-lastIndexFunc"><i>	<input type='checkbox' class="fold" id="lastIndexFunc-fold-content"><label for="lastIndexFunc-fold-content"> <a href="../use/bytes..lastIndexFunc^65c30.html">func</a> <a href="../src/bytes/bytes.go.html#line-866">lastIndexFunc</a>(s []<a href="builtin.html#name-byte">byte</a>, f func(r <a href="builtin.html#name-rune">rune</a>) <a href="builtin.html#name-bool">bool</a>, truth <a href="builtin.html#name-bool">bool</a>) <a href="builtin.html#name-int">int</a></label><span id='lastIndexFunc-fold-content-docs' class="fold-docs">
+<span class="md-text">		lastIndexFunc is the same as LastIndexFunc except that if
+		truth==false, the sense of the predicate function is
+		inverted.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-makeASCIISet"><i>	<input type='checkbox' class="fold" id="makeASCIISet-fold-content"><label for="makeASCIISet-fold-content"> <a href="../use/bytes..makeASCIISet^63f48.html">func</a> <a href="../src/bytes/bytes.go.html#line-892">makeASCIISet</a>(chars <a href="builtin.html#name-string">string</a>) (as <a href="#name-asciiSet">asciiSet</a>, ok <a href="builtin.html#name-bool">bool</a>)</label><span id='makeASCIISet-fold-content-docs' class="fold-docs">
+<span class="md-text">		makeASCIISet creates a set of ASCII characters and reports whether all
+		characters in chars are ASCII.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-trimLeftASCII"><i>	<span class="nodocs"> <a href="../use/bytes..trimLeftASCII^2c378.html">func</a> <a href="../src/bytes/bytes.go.html#line-969">trimLeftASCII</a>(s []<a href="builtin.html#name-byte">byte</a>, as *<a href="#name-asciiSet">asciiSet</a>) []<a href="builtin.html#name-byte">byte</a></span></i></div><div class="anchor value-res hidden" id="name-trimLeftByte"><i>	<span class="nodocs"> <a href="../use/bytes..trimLeftByte^33583.html">func</a> <a href="../src/bytes/bytes.go.html#line-958">trimLeftByte</a>(s []<a href="builtin.html#name-byte">byte</a>, c <a href="builtin.html#name-byte">byte</a>) []<a href="builtin.html#name-byte">byte</a></span></i></div><div class="anchor value-res hidden" id="name-trimLeftUnicode"><i>	<span class="nodocs"> <a href="../use/bytes..trimLeftUnicode^b7a41.html">func</a> <a href="../src/bytes/bytes.go.html#line-983">trimLeftUnicode</a>(s []<a href="builtin.html#name-byte">byte</a>, cutset <a href="builtin.html#name-string">string</a>) []<a href="builtin.html#name-byte">byte</a></span></i></div><div class="anchor value-res hidden" id="name-trimRightASCII"><i>	<span class="nodocs"> <a href="../use/bytes..trimRightASCII^36148.html">func</a> <a href="../src/bytes/bytes.go.html#line-1023">trimRightASCII</a>(s []<a href="builtin.html#name-byte">byte</a>, as *<a href="#name-asciiSet">asciiSet</a>) []<a href="builtin.html#name-byte">byte</a></span></i></div><div class="anchor value-res hidden" id="name-trimRightByte"><i>	<span class="nodocs"> <a href="../use/bytes..trimRightByte^862cf.html">func</a> <a href="../src/bytes/bytes.go.html#line-1016">trimRightByte</a>(s []<a href="builtin.html#name-byte">byte</a>, c <a href="builtin.html#name-byte">byte</a>) []<a href="builtin.html#name-byte">byte</a></span></i></div><div class="anchor value-res hidden" id="name-trimRightUnicode"><i>	<span class="nodocs"> <a href="../use/bytes..trimRightUnicode^a3319.html">func</a> <a href="../src/bytes/bytes.go.html#line-1033">trimRightUnicode</a>(s []<a href="builtin.html#name-byte">byte</a>, cutset <a href="builtin.html#name-string">string</a>) []<a href="builtin.html#name-byte">byte</a></span></i></div></div>
+<div id="exported-variables"><span class="title">Package-Level Variables<span class="title-stat"><i> (total 4, in which 1 is exported)</i></span></span>
+
+<div class="anchor value-res" id="name-ErrTooLarge">	<input type='checkbox' class="fold" id="ErrTooLarge-fold-content"><label for="ErrTooLarge-fold-content">  <a href="../use/bytes..ErrTooLarge.html">var</a> <a href="../src/bytes/buffer.go.html#line-44">ErrTooLarge</a> <a href="builtin.html#name-error">error</a></label><span id='ErrTooLarge-fold-content-docs' class="fold-docs">
+<span class="md-text">		ErrTooLarge is passed to panic if memory cannot be allocated to store data in a buffer.</span>
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-variables-showhide"><i><label for="unexported-variables-showhide" class="show-inline">/* 3 unexporteds ... */</label><label for="unexported-variables-showhide" class="hide-inline">/* 3 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-asciiSpace"><i>	<span class="nodocs">  <a href="../use/bytes..asciiSpace^d5ebb.html">var</a> <a href="../src/bytes/bytes.go.html#line-393">asciiSpace</a> [256]<a href="builtin.html#name-uint8">uint8</a></span></i></div><div class="anchor value-res hidden" id="name-errNegativeRead"><i>	<span class="nodocs">  <a href="../use/bytes..errNegativeRead^4df5d.html">var</a> <a href="../src/bytes/buffer.go.html#line-45">errNegativeRead</a> <a href="builtin.html#name-error">error</a></span></i></div><div class="anchor value-res hidden" id="name-errUnreadByte"><i>	<span class="nodocs">  <a href="../use/bytes..errUnreadByte^6232c.html">var</a> <a href="../src/bytes/buffer.go.html#line-407">errUnreadByte</a> <a href="builtin.html#name-error">error</a></span></i></div></div>
+<div id="exported-constants"><span class="title">Package-Level Constants<span class="title-stat"><i> (total 9, in which 1 is exported)</i></span></span>
+
+<div class="anchor value-res" id="name-MinRead">	<input type='checkbox' class="fold" id="MinRead-fold-content"><label for="MinRead-fold-content"><a href="../use/bytes..MinRead.html">const</a> <a href="../src/bytes/buffer.go.html#line-200">MinRead</a> = 512</label><span id='MinRead-fold-content-docs' class="fold-docs">
+<span class="md-text">		MinRead is the minimum slice size passed to a Read call by
+		[Buffer.ReadFrom]. As long as the [Buffer] has at least MinRead bytes beyond
+		what is required to hold the contents of r, ReadFrom will not grow the
+		underlying buffer.</span>
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-constants-showhide"><i><label for="unexported-constants-showhide" class="show-inline">/* 8 unexporteds ... */</label><label for="unexported-constants-showhide" class="hide-inline">/* 8 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-maxInt"><i>	<span class="nodocs"><a href="../use/bytes..maxInt^6c775.html">const</a> <a href="../src/bytes/buffer.go.html#line-47">maxInt</a> <a href="builtin.html#name-int">int</a> = 9223372036854775807</span></i></div><div class="anchor value-res hidden" id="name-opInvalid"><i>	<input type='checkbox' class="fold" id="opInvalid-fold-content"><label for="opInvalid-fold-content"><a href="../use/bytes..opInvalid^e335f.html">const</a> <a href="../src/bytes/buffer.go.html#line-36">opInvalid</a> <a href="#name-readOp">readOp</a> = 0 // <span class="md-text">Non-read operation.</span></label><span id='opInvalid-fold-content-docs' class="fold-docs">
+<span class="md-text">		Don't use iota for these, as the values need to correspond with the
+		names and comments, which is easier to see when being explicit.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-opRead"><i>	<input type='checkbox' class="fold" id="opRead-fold-content"><label for="opRead-fold-content"><a href="../use/bytes..opRead^49939.html">const</a> <a href="../src/bytes/buffer.go.html#line-35">opRead</a> <a href="#name-readOp">readOp</a> = -1 // <span class="md-text">Any other read operation.</span></label><span id='opRead-fold-content-docs' class="fold-docs">
+<span class="md-text">		Don't use iota for these, as the values need to correspond with the
+		names and comments, which is easier to see when being explicit.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-opReadRune1"><i>	<input type='checkbox' class="fold" id="opReadRune1-fold-content"><label for="opReadRune1-fold-content"><a href="../use/bytes..opReadRune1^80ef4.html">const</a> <a href="../src/bytes/buffer.go.html#line-37">opReadRune1</a> <a href="#name-readOp">readOp</a> = 1 // <span class="md-text">Read rune of size 1.</span></label><span id='opReadRune1-fold-content-docs' class="fold-docs">
+<span class="md-text">		Don't use iota for these, as the values need to correspond with the
+		names and comments, which is easier to see when being explicit.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-opReadRune2"><i>	<input type='checkbox' class="fold" id="opReadRune2-fold-content"><label for="opReadRune2-fold-content"><a href="../use/bytes..opReadRune2^29709.html">const</a> <a href="../src/bytes/buffer.go.html#line-38">opReadRune2</a> <a href="#name-readOp">readOp</a> = 2 // <span class="md-text">Read rune of size 2.</span></label><span id='opReadRune2-fold-content-docs' class="fold-docs">
+<span class="md-text">		Don't use iota for these, as the values need to correspond with the
+		names and comments, which is easier to see when being explicit.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-opReadRune3"><i>	<input type='checkbox' class="fold" id="opReadRune3-fold-content"><label for="opReadRune3-fold-content"><a href="../use/bytes..opReadRune3^0ea65.html">const</a> <a href="../src/bytes/buffer.go.html#line-39">opReadRune3</a> <a href="#name-readOp">readOp</a> = 3 // <span class="md-text">Read rune of size 3.</span></label><span id='opReadRune3-fold-content-docs' class="fold-docs">
+<span class="md-text">		Don't use iota for these, as the values need to correspond with the
+		names and comments, which is easier to see when being explicit.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-opReadRune4"><i>	<input type='checkbox' class="fold" id="opReadRune4-fold-content"><label for="opReadRune4-fold-content"><a href="../use/bytes..opReadRune4^804ba.html">const</a> <a href="../src/bytes/buffer.go.html#line-40">opReadRune4</a> <a href="#name-readOp">readOp</a> = 4 // <span class="md-text">Read rune of size 4.</span></label><span id='opReadRune4-fold-content-docs' class="fold-docs">
+<span class="md-text">		Don't use iota for these, as the values need to correspond with the
+		names and comments, which is easier to see when being explicit.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-smallBufferSize"><i>	<input type='checkbox' class="fold" id="smallBufferSize-fold-content"><label for="smallBufferSize-fold-content"><a href="../use/bytes..smallBufferSize^c8dd3.html">const</a> <a href="../src/bytes/buffer.go.html#line-16">smallBufferSize</a> = 64</label><span id='smallBufferSize-fold-content-docs' class="fold-docs">
+<span class="md-text">		smallBufferSize is an initial allocation minimal capacity.</span>
+
+</span></i></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

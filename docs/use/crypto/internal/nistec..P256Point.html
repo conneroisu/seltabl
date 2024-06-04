@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/internal/nistec.P256Point</title>
+<link href="../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../../pkg/crypto/internal/nistec.html">crypto/internal/nistec</a>.<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-42">P256Point</a></b></span>
+
+<span class="title">52 uses</span>
+
+	crypto/internal/nistec (current package)
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-42">p256_asm.go#L42</a>: type <b>P256Point</b> struct {
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-49" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-49">#L49</a>: func NewP256Point() *<b>P256Point</b> {
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-50" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-50">#L50</a>: 	return &amp;<b>P256Point</b>{
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-56" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-56">#L56</a>: func (p *<b>P256Point</b>) SetGenerator() *<b>P256Point</b> {
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-66" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-66">#L66</a>: func (p *<b>P256Point</b>) Set(q *<b>P256Point</b>) *<b>P256Point</b> {
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-79" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-79">#L79</a>: func (p *<b>P256Point</b>) SetBytes(b []byte) (*<b>P256Point</b>, error) {
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-93" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-93">#L93</a>: 		var r <b>P256Point</b>
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-109" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-109">#L109</a>: 		var r <b>P256Point</b>
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-278" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-278">#L278</a>: func p256MovCond(res, a, b *<b>P256Point</b>, cond int)
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-295" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-295">#L295</a>: type p256Table [16]<b>P256Point</b>
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-301" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-301">#L301</a>: func p256Select(res *<b>P256Point</b>, table *p256Table, idx int)
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-349" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-349">#L349</a>: func p256PointAddAffineAsm(res, in1 *<b>P256Point</b>, in2 *p256AffinePoint, sign, sel, zero int)
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-356" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-356">#L356</a>: func p256PointAddAsm(res, in1, in2 *<b>P256Point</b>) int
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-361" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-361">#L361</a>: func p256PointDoubleAsm(res, in *<b>P256Point</b>)
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-383" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-383">#L383</a>: func (q *<b>P256Point</b>) Add(r1, r2 *<b>P256Point</b>) *<b>P256Point</b> {
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-384" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-384">#L384</a>: 	var sum, double <b>P256Point</b>
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-396" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-396">#L396</a>: func (q *<b>P256Point</b>) Double(p *<b>P256Point</b>) *<b>P256Point</b> {
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-397" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-397">#L397</a>: 	var double <b>P256Point</b>
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-405" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-405">#L405</a>: func (r *<b>P256Point</b>) ScalarBaseMult(scalar []byte) (*<b>P256Point</b>, error) {
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-420" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-420">#L420</a>: func (r *<b>P256Point</b>) ScalarMult(q *<b>P256Point</b>, scalar []byte) (*<b>P256Point</b>, error) {
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-454" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-454">#L454</a>: func (p *<b>P256Point</b>) isInfinity() int {
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-461" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-461">#L461</a>: func (p *<b>P256Point</b>) Bytes() []byte {
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-468" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-468">#L468</a>: func (p *<b>P256Point</b>) bytes(out *[p256UncompressedLength]byte) []byte {
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-486" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-486">#L486</a>: func (p *<b>P256Point</b>) affineFromMont(x, y *p256Element) {
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-500" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-500">#L500</a>: func (p *<b>P256Point</b>) BytesX() ([]byte, error) {
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-507" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-507">#L507</a>: func (p *<b>P256Point</b>) bytesX(out *[p256ElementLength]byte) ([]byte, error) {
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-525" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-525">#L525</a>: func (p *<b>P256Point</b>) BytesCompressed() []byte {
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-532" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-532">#L532</a>: func (p *<b>P256Point</b>) bytesCompressed(out *[p256CompressedLength]byte) []byte {
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-547" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-547">#L547</a>: func (q *<b>P256Point</b>) Select(p1, p2 *<b>P256Point</b>, cond int) *<b>P256Point</b> {
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-622" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-622">#L622</a>: func (p *<b>P256Point</b>) p256BaseMult(scalar *p256OrdElement) {
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-651" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-651">#L651</a>: func (p *<b>P256Point</b>) p256ScalarMult(scalar *p256OrdElement) {
+		<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-655" class="path-duplicate">p256_asm.go</a><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-655">#L655</a>: 	var t0, t1, t2, t3 <b>P256Point</b>
+
+	<a href="../../../pkg/crypto/ecdh.html">crypto/ecdh</a>
+		<a href="../../../src/crypto/ecdh/nist.go.html#line-221">nist.go#L221</a>: var p256 = &amp;nistCurve[*nistec.<b>P256Point</b>]{
+
+	<a href="../../../pkg/crypto/ecdsa.html">crypto/ecdsa</a>
+		<a href="../../../src/crypto/ecdsa/ecdsa.go.html#line-625">ecdsa.go#L625</a>: var _p256 *nistCurve[*nistec.<b>P256Point</b>]
+		<a href="../../../src/crypto/ecdsa/ecdsa.go.html#line-627" class="path-duplicate">ecdsa.go</a><a href="../../../src/crypto/ecdsa/ecdsa.go.html#line-627">#L627</a>: func p256() *nistCurve[*nistec.<b>P256Point</b>] {
+		<a href="../../../src/crypto/ecdsa/ecdsa.go.html#line-629" class="path-duplicate">ecdsa.go</a><a href="../../../src/crypto/ecdsa/ecdsa.go.html#line-629">#L629</a>: 		_p256 = &amp;nistCurve[*nistec.<b>P256Point</b>]{
+		<a href="../../../src/crypto/ecdsa/ecdsa.go.html#line-630" class="path-duplicate">ecdsa.go</a><a href="../../../src/crypto/ecdsa/ecdsa.go.html#line-630">#L630</a>: 			newPoint: func() *nistec.<b>P256Point</b> { return nistec.NewP256Point() },
+
+	<a href="../../../pkg/crypto/elliptic.html">crypto/elliptic</a>
+		<a href="../../../src/crypto/elliptic/nistec.go.html#line-31">nistec.go#L31</a>: 	nistCurve[*nistec.<b>P256Point</b>]
+		<a href="../../../src/crypto/elliptic/nistec.go.html#line-34" class="path-duplicate">nistec.go</a><a href="../../../src/crypto/elliptic/nistec.go.html#line-34">#L34</a>: var p256 = &amp;p256Curve{nistCurve[*nistec.<b>P256Point</b>]{
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

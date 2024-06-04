@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.gQueue.empty</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/proc.go.html#line-6889">gQueue</a>.<a href="../src/runtime/proc.go.html#line-6895">empty</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">8 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/mgcmark.go.html#line-764">mgcmark.go#L764</a>: 	if work.assistQueue.q.<b>empty</b>() {
+		<a href="../src/runtime/mgcmark.go.html#line-777" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-777">#L777</a>: 	for !work.assistQueue.q.<b>empty</b>() &amp;&amp; scanBytes &gt; 0 {
+		<a href="../src/runtime/proc.go.html#line-3820">proc.go#L3820</a>: 	for n = 0; n &lt; npidle &amp;&amp; !q.<b>empty</b>(); n++ {
+		<a href="../src/runtime/proc.go.html#line-3832" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-3832">#L3832</a>: 	if !q.<b>empty</b>() {
+		<a href="../src/runtime/proc.go.html#line-6717" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6717">#L6717</a>: 	for !q.<b>empty</b>() &amp;&amp; t-h &lt; uint32(len(pp.runq)) {
+		<a href="../src/runtime/proc.go.html#line-6736" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6736">#L6736</a>: 	if !q.<b>empty</b>() {
+		<a href="../src/runtime/proc.go.html#line-6895" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6895">#L6895</a>: func (q *gQueue) <b>empty</b>() bool {
+		<a href="../src/runtime/proc.go.html#line-6973" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6973">#L6973</a>: 	if !q.<b>empty</b>() {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

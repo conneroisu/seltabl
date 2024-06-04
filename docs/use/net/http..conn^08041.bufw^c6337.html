@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/http.conn.bufw</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/net/http.html">net/http</a>.<a href="../../src/net/http/server.go.html#line-252">conn</a>.<a href="../../src/net/http/server.go.html#line-289">bufw</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">22 uses</span>
+
+	net/http (current package)
+		<a href="../../src/net/http/server.go.html#line-289">server.go#L289</a>: 	<b>bufw</b> *bufio.Writer
+		<a href="../../src/net/http/server.go.html#line-381" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-381">#L381</a>: 		_, err = fmt.Fprintf(cw.res.conn.<b>bufw</b>, "%x\r\n", len(p))
+		<a href="../../src/net/http/server.go.html#line-387" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-387">#L387</a>: 	n, err = cw.res.conn.<b>bufw</b>.Write(p)
+		<a href="../../src/net/http/server.go.html#line-389" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-389">#L389</a>: 		_, err = cw.res.conn.<b>bufw</b>.Write(crlf)
+		<a href="../../src/net/http/server.go.html#line-401" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-401">#L401</a>: 	return cw.res.conn.<b>bufw</b>.Flush()
+		<a href="../../src/net/http/server.go.html#line-409" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-409">#L409</a>: 		bw := cw.res.conn.<b>bufw</b> // conn's bufio writer
+		<a href="../../src/net/http/server.go.html#line-924" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-924">#L924</a>: 			w.conn.<b>bufw</b>.WriteString("HTTP/1.1 100 Continue\r\n\r\n")
+		<a href="../../src/net/http/server.go.html#line-925" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-925">#L925</a>: 			w.conn.<b>bufw</b>.Flush()
+		<a href="../../src/net/http/server.go.html#line-1174" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1174">#L1174</a>: 		writeStatusLine(w.conn.<b>bufw</b>, w.req.ProtoAtLeast(1, 1), code, w.statusBuf[:])
+		<a href="../../src/net/http/server.go.html#line-1177" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1177">#L1177</a>: 		w.handlerHeader.WriteSubset(w.conn.<b>bufw</b>, excludedHeadersNoBody)
+		<a href="../../src/net/http/server.go.html#line-1178" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1178">#L1178</a>: 		w.conn.<b>bufw</b>.Write(crlf)
+		<a href="../../src/net/http/server.go.html#line-1179" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1179">#L1179</a>: 		w.conn.<b>bufw</b>.Flush()
+		<a href="../../src/net/http/server.go.html#line-1522" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1522">#L1522</a>: 	writeStatusLine(w.conn.<b>bufw</b>, w.req.ProtoAtLeast(1, 1), code, w.statusBuf[:])
+		<a href="../../src/net/http/server.go.html#line-1523" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1523">#L1523</a>: 	cw.header.WriteSubset(w.conn.<b>bufw</b>, excludeHeader)
+		<a href="../../src/net/http/server.go.html#line-1524" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1524">#L1524</a>: 	setHeader.Write(w.conn.<b>bufw</b>)
+		<a href="../../src/net/http/server.go.html#line-1525" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1525">#L1525</a>: 	w.conn.<b>bufw</b>.Write(crlf)
+		<a href="../../src/net/http/server.go.html#line-1669" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1669">#L1669</a>: 	w.conn.<b>bufw</b>.Flush()
+		<a href="../../src/net/http/server.go.html#line-1739" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1739">#L1739</a>: 	if c.<b>bufw</b> != nil {
+		<a href="../../src/net/http/server.go.html#line-1740" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1740">#L1740</a>: 		c.<b>bufw</b>.Flush()
+		<a href="../../src/net/http/server.go.html#line-1743" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1743">#L1743</a>: 		putBufioWriter(c.<b>bufw</b>)
+		<a href="../../src/net/http/server.go.html#line-1744" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1744">#L1744</a>: 		c.<b>bufw</b> = nil
+		<a href="../../src/net/http/server.go.html#line-1961" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1961">#L1961</a>: 	c.<b>bufw</b> = newBufioWriterSize(checkConnErrorWriter{c}, 4&lt;&lt;10)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

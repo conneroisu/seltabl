@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.pidleget</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/proc.go.html#line-6559">pidleget</a></b></span>
+
+<span class="title">8 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/proc.go.html#line-1491">proc.go#L1491</a>: 		pp, _ := <b>pidleget</b>(now)
+		<a href="../src/runtime/proc.go.html#line-2837" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-2837">#L2837</a>: 		pp, _ = <b>pidleget</b>(0)
+		<a href="../src/runtime/proc.go.html#line-3482" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-3482">#L3482</a>: 		pp, _ := <b>pidleget</b>(now)
+		<a href="../src/runtime/proc.go.html#line-4685" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4685">#L4685</a>: 	pp, _ := <b>pidleget</b>(0)
+		<a href="../src/runtime/proc.go.html#line-4726" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4726">#L4726</a>: 		pp, _ = <b>pidleget</b>(0)
+		<a href="../src/runtime/proc.go.html#line-5896" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-5896">#L5896</a>: 			pp, _ := <b>pidleget</b>(faketime)
+		<a href="../src/runtime/proc.go.html#line-6559" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6559">#L6559</a>: func <b>pidleget</b>(now int64) (*p, int64) {
+		<a href="../src/runtime/proc.go.html#line-6590" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6590">#L6590</a>: 	pp, now := <b>pidleget</b>(now)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

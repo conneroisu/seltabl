@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: encoding/binary.BigEndian</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">var <b><a href="../../pkg/encoding/binary.html">encoding/binary</a>.<a href="../../src/encoding/binary/binary.go.html#line-61">BigEndian</a></b></span>
+
+<span class="title">114 uses</span>
+
+	encoding/binary (current package)
+		<a href="../../src/encoding/binary/binary.go.html#line-61">binary.go#L61</a>: var <b>BigEndian</b> bigEndian
+
+	<a href="../../pkg/encoding/base64.html">encoding/base64</a>
+		<a href="../../src/encoding/base64/base64.go.html#line-537">base64.go#L537</a>: 			binary.<b>BigEndian</b>.PutUint64(dst[n:], dn)
+		<a href="../../src/encoding/base64/base64.go.html#line-558" class="path-duplicate">base64.go</a><a href="../../src/encoding/base64/base64.go.html#line-558">#L558</a>: 			binary.<b>BigEndian</b>.PutUint32(dst[n:], dn)
+
+	<a href="../../pkg/crypto/aes.html">crypto/aes</a>
+		<a href="../../src/crypto/aes/block.go.html#line-46">block.go#L46</a>: 	s0 := binary.<b>BigEndian</b>.Uint32(src[0:4])
+		<a href="../../src/crypto/aes/block.go.html#line-47" class="path-duplicate">block.go</a><a href="../../src/crypto/aes/block.go.html#line-47">#L47</a>: 	s1 := binary.<b>BigEndian</b>.Uint32(src[4:8])
+		<a href="../../src/crypto/aes/block.go.html#line-48" class="path-duplicate">block.go</a><a href="../../src/crypto/aes/block.go.html#line-48">#L48</a>: 	s2 := binary.<b>BigEndian</b>.Uint32(src[8:12])
+		<a href="../../src/crypto/aes/block.go.html#line-49" class="path-duplicate">block.go</a><a href="../../src/crypto/aes/block.go.html#line-49">#L49</a>: 	s3 := binary.<b>BigEndian</b>.Uint32(src[12:16])
+		<a href="../../src/crypto/aes/block.go.html#line-83" class="path-duplicate">block.go</a><a href="../../src/crypto/aes/block.go.html#line-83">#L83</a>: 	binary.<b>BigEndian</b>.PutUint32(dst[0:4], s0)
+		<a href="../../src/crypto/aes/block.go.html#line-84" class="path-duplicate">block.go</a><a href="../../src/crypto/aes/block.go.html#line-84">#L84</a>: 	binary.<b>BigEndian</b>.PutUint32(dst[4:8], s1)
+		<a href="../../src/crypto/aes/block.go.html#line-85" class="path-duplicate">block.go</a><a href="../../src/crypto/aes/block.go.html#line-85">#L85</a>: 	binary.<b>BigEndian</b>.PutUint32(dst[8:12], s2)
+		<a href="../../src/crypto/aes/block.go.html#line-86" class="path-duplicate">block.go</a><a href="../../src/crypto/aes/block.go.html#line-86">#L86</a>: 	binary.<b>BigEndian</b>.PutUint32(dst[12:16], s3)
+		<a href="../../src/crypto/aes/block.go.html#line-92" class="path-duplicate">block.go</a><a href="../../src/crypto/aes/block.go.html#line-92">#L92</a>: 	s0 := binary.<b>BigEndian</b>.Uint32(src[0:4])
+		<a href="../../src/crypto/aes/block.go.html#line-93" class="path-duplicate">block.go</a><a href="../../src/crypto/aes/block.go.html#line-93">#L93</a>: 	s1 := binary.<b>BigEndian</b>.Uint32(src[4:8])
+		<a href="../../src/crypto/aes/block.go.html#line-94" class="path-duplicate">block.go</a><a href="../../src/crypto/aes/block.go.html#line-94">#L94</a>: 	s2 := binary.<b>BigEndian</b>.Uint32(src[8:12])
+		<a href="../../src/crypto/aes/block.go.html#line-95" class="path-duplicate">block.go</a><a href="../../src/crypto/aes/block.go.html#line-95">#L95</a>: 	s3 := binary.<b>BigEndian</b>.Uint32(src[12:16])
+		<a href="../../src/crypto/aes/block.go.html#line-129" class="path-duplicate">block.go</a><a href="../../src/crypto/aes/block.go.html#line-129">#L129</a>: 	binary.<b>BigEndian</b>.PutUint32(dst[0:4], s0)
+		<a href="../../src/crypto/aes/block.go.html#line-130" class="path-duplicate">block.go</a><a href="../../src/crypto/aes/block.go.html#line-130">#L130</a>: 	binary.<b>BigEndian</b>.PutUint32(dst[4:8], s1)
+		<a href="../../src/crypto/aes/block.go.html#line-131" class="path-duplicate">block.go</a><a href="../../src/crypto/aes/block.go.html#line-131">#L131</a>: 	binary.<b>BigEndian</b>.PutUint32(dst[8:12], s2)
+		<a href="../../src/crypto/aes/block.go.html#line-132" class="path-duplicate">block.go</a><a href="../../src/crypto/aes/block.go.html#line-132">#L132</a>: 	binary.<b>BigEndian</b>.PutUint32(dst[12:16], s3)
+		<a href="../../src/crypto/aes/block.go.html#line-153" class="path-duplicate">block.go</a><a href="../../src/crypto/aes/block.go.html#line-153">#L153</a>: 		enc[i] = binary.<b>BigEndian</b>.Uint32(key[4*i:])
+
+	<a href="../../pkg/crypto/cipher.html">crypto/cipher</a>
+		<a href="../../src/crypto/cipher/gcm.go.html#line-140">gcm.go#L140</a>: 		binary.<b>BigEndian</b>.Uint64(key[:8]),
+		<a href="../../src/crypto/cipher/gcm.go.html#line-141" class="path-duplicate">gcm.go</a><a href="../../src/crypto/cipher/gcm.go.html#line-141">#L141</a>: 		binary.<b>BigEndian</b>.Uint64(key[8:]),
+		<a href="../../src/crypto/cipher/gcm.go.html#line-326" class="path-duplicate">gcm.go</a><a href="../../src/crypto/cipher/gcm.go.html#line-326">#L326</a>: 		y.low ^= binary.<b>BigEndian</b>.Uint64(blocks)
+		<a href="../../src/crypto/cipher/gcm.go.html#line-327" class="path-duplicate">gcm.go</a><a href="../../src/crypto/cipher/gcm.go.html#line-327">#L327</a>: 		y.high ^= binary.<b>BigEndian</b>.Uint64(blocks[8:])
+		<a href="../../src/crypto/cipher/gcm.go.html#line-350" class="path-duplicate">gcm.go</a><a href="../../src/crypto/cipher/gcm.go.html#line-350">#L350</a>: 	binary.<b>BigEndian</b>.PutUint32(ctr, binary.<b>BigEndian</b>.Uint32(ctr)+1)
+		<a href="../../src/crypto/cipher/gcm.go.html#line-406" class="path-duplicate">gcm.go</a><a href="../../src/crypto/cipher/gcm.go.html#line-406">#L406</a>: 		binary.<b>BigEndian</b>.PutUint64(counter[:8], y.low)
+		<a href="../../src/crypto/cipher/gcm.go.html#line-407" class="path-duplicate">gcm.go</a><a href="../../src/crypto/cipher/gcm.go.html#line-407">#L407</a>: 		binary.<b>BigEndian</b>.PutUint64(counter[8:], y.high)
+		<a href="../../src/crypto/cipher/gcm.go.html#line-423" class="path-duplicate">gcm.go</a><a href="../../src/crypto/cipher/gcm.go.html#line-423">#L423</a>: 	binary.<b>BigEndian</b>.PutUint64(out, y.low)
+		<a href="../../src/crypto/cipher/gcm.go.html#line-424" class="path-duplicate">gcm.go</a><a href="../../src/crypto/cipher/gcm.go.html#line-424">#L424</a>: 	binary.<b>BigEndian</b>.PutUint64(out[8:], y.high)
+
+	<a href="../../pkg/crypto/des.html">crypto/des</a>
+		<a href="../../src/crypto/des/block.go.html#line-13">block.go#L13</a>: 	b := binary.<b>BigEndian</b>.Uint64(src)
+		<a href="../../src/crypto/des/block.go.html#line-35" class="path-duplicate">block.go</a><a href="../../src/crypto/des/block.go.html#line-35">#L35</a>: 	binary.<b>BigEndian</b>.PutUint64(dst, permuteFinalBlock(preOutput))
+		<a href="../../src/crypto/des/block.go.html#line-221" class="path-duplicate">block.go</a><a href="../../src/crypto/des/block.go.html#line-221">#L221</a>: 	key := binary.<b>BigEndian</b>.Uint64(keyBytes)
+		<a href="../../src/crypto/des/cipher.go.html#line-98">cipher.go#L98</a>: 	b := binary.<b>BigEndian</b>.Uint64(src)
+		<a href="../../src/crypto/des/cipher.go.html#line-119" class="path-duplicate">cipher.go</a><a href="../../src/crypto/des/cipher.go.html#line-119">#L119</a>: 	binary.<b>BigEndian</b>.PutUint64(dst, permuteFinalBlock(preOutput))
+		<a href="../../src/crypto/des/cipher.go.html#line-133" class="path-duplicate">cipher.go</a><a href="../../src/crypto/des/cipher.go.html#line-133">#L133</a>: 	b := binary.<b>BigEndian</b>.Uint64(src)
+		<a href="../../src/crypto/des/cipher.go.html#line-154" class="path-duplicate">cipher.go</a><a href="../../src/crypto/des/cipher.go.html#line-154">#L154</a>: 	binary.<b>BigEndian</b>.PutUint64(dst, permuteFinalBlock(preOutput))
+
+	<a href="../../pkg/crypto/internal/bigmod.html">crypto/internal/bigmod</a>
+		<a href="../../src/crypto/internal/bigmod/nat.go.html#line-185">nat.go#L185</a>: 		return uint(binary.<b>BigEndian</b>.Uint64(buf))
+		<a href="../../src/crypto/internal/bigmod/nat.go.html#line-187" class="path-duplicate">nat.go</a><a href="../../src/crypto/internal/bigmod/nat.go.html#line-187">#L187</a>: 	return uint(binary.<b>BigEndian</b>.Uint32(buf))
+
+	<a href="../../pkg/crypto/md5.html">crypto/md5</a>
+		<a href="../../src/crypto/md5/md5.go.html#line-62">md5.go#L62</a>: 	b = binary.<b>BigEndian</b>.AppendUint32(b, d.s[0])
+		<a href="../../src/crypto/md5/md5.go.html#line-63" class="path-duplicate">md5.go</a><a href="../../src/crypto/md5/md5.go.html#line-63">#L63</a>: 	b = binary.<b>BigEndian</b>.AppendUint32(b, d.s[1])
+		<a href="../../src/crypto/md5/md5.go.html#line-64" class="path-duplicate">md5.go</a><a href="../../src/crypto/md5/md5.go.html#line-64">#L64</a>: 	b = binary.<b>BigEndian</b>.AppendUint32(b, d.s[2])
+		<a href="../../src/crypto/md5/md5.go.html#line-65" class="path-duplicate">md5.go</a><a href="../../src/crypto/md5/md5.go.html#line-65">#L65</a>: 	b = binary.<b>BigEndian</b>.AppendUint32(b, d.s[3])
+		<a href="../../src/crypto/md5/md5.go.html#line-68" class="path-duplicate">md5.go</a><a href="../../src/crypto/md5/md5.go.html#line-68">#L68</a>: 	b = binary.<b>BigEndian</b>.AppendUint64(b, d.len)
+		<a href="../../src/crypto/md5/md5.go.html#line-91" class="path-duplicate">md5.go</a><a href="../../src/crypto/md5/md5.go.html#line-91">#L91</a>: 	return b[8:], binary.<b>BigEndian</b>.Uint64(b[0:8])
+		<a href="../../src/crypto/md5/md5.go.html#line-95" class="path-duplicate">md5.go</a><a href="../../src/crypto/md5/md5.go.html#line-95">#L95</a>: 	return b[4:], binary.<b>BigEndian</b>.Uint32(b[0:4])
+
+	<a href="../../pkg/crypto/sha1.html">crypto/sha1</a>
+		<a href="../../src/crypto/sha1/sha1.go.html#line-54">sha1.go#L54</a>: 	b = binary.<b>BigEndian</b>.AppendUint32(b, d.h[0])
+		<a href="../../src/crypto/sha1/sha1.go.html#line-55" class="path-duplicate">sha1.go</a><a href="../../src/crypto/sha1/sha1.go.html#line-55">#L55</a>: 	b = binary.<b>BigEndian</b>.AppendUint32(b, d.h[1])
+		<a href="../../src/crypto/sha1/sha1.go.html#line-56" class="path-duplicate">sha1.go</a><a href="../../src/crypto/sha1/sha1.go.html#line-56">#L56</a>: 	b = binary.<b>BigEndian</b>.AppendUint32(b, d.h[2])
+		<a href="../../src/crypto/sha1/sha1.go.html#line-57" class="path-duplicate">sha1.go</a><a href="../../src/crypto/sha1/sha1.go.html#line-57">#L57</a>: 	b = binary.<b>BigEndian</b>.AppendUint32(b, d.h[3])
+		<a href="../../src/crypto/sha1/sha1.go.html#line-58" class="path-duplicate">sha1.go</a><a href="../../src/crypto/sha1/sha1.go.html#line-58">#L58</a>: 	b = binary.<b>BigEndian</b>.AppendUint32(b, d.h[4])
+		<a href="../../src/crypto/sha1/sha1.go.html#line-61" class="path-duplicate">sha1.go</a><a href="../../src/crypto/sha1/sha1.go.html#line-61">#L61</a>: 	b = binary.<b>BigEndian</b>.AppendUint64(b, d.len)
+		<a href="../../src/crypto/sha1/sha1.go.html#line-170" class="path-duplicate">sha1.go</a><a href="../../src/crypto/sha1/sha1.go.html#line-170">#L170</a>: 	binary.<b>BigEndian</b>.PutUint64(padlen[t:], len)
+		<a href="../../src/crypto/sha1/sha1.go.html#line-179" class="path-duplicate">sha1.go</a><a href="../../src/crypto/sha1/sha1.go.html#line-179">#L179</a>: 	binary.<b>BigEndian</b>.PutUint32(digest[0:], d.h[0])
+		<a href="../../src/crypto/sha1/sha1.go.html#line-180" class="path-duplicate">sha1.go</a><a href="../../src/crypto/sha1/sha1.go.html#line-180">#L180</a>: 	binary.<b>BigEndian</b>.PutUint32(digest[4:], d.h[1])
+		<a href="../../src/crypto/sha1/sha1.go.html#line-181" class="path-duplicate">sha1.go</a><a href="../../src/crypto/sha1/sha1.go.html#line-181">#L181</a>: 	binary.<b>BigEndian</b>.PutUint32(digest[8:], d.h[2])
+		<a href="../../src/crypto/sha1/sha1.go.html#line-182" class="path-duplicate">sha1.go</a><a href="../../src/crypto/sha1/sha1.go.html#line-182">#L182</a>: 	binary.<b>BigEndian</b>.PutUint32(digest[12:], d.h[3])
+		<a href="../../src/crypto/sha1/sha1.go.html#line-183" class="path-duplicate">sha1.go</a><a href="../../src/crypto/sha1/sha1.go.html#line-183">#L183</a>: 	binary.<b>BigEndian</b>.PutUint32(digest[16:], d.h[4])
+
+	<a href="../../pkg/crypto/sha256.html">crypto/sha256</a>
+		<a href="../../src/crypto/sha256/sha256.go.html#line-73">sha256.go#L73</a>: 	b = binary.<b>BigEndian</b>.AppendUint32(b, d.h[0])
+		<a href="../../src/crypto/sha256/sha256.go.html#line-74" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-74">#L74</a>: 	b = binary.<b>BigEndian</b>.AppendUint32(b, d.h[1])
+		<a href="../../src/crypto/sha256/sha256.go.html#line-75" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-75">#L75</a>: 	b = binary.<b>BigEndian</b>.AppendUint32(b, d.h[2])
+		<a href="../../src/crypto/sha256/sha256.go.html#line-76" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-76">#L76</a>: 	b = binary.<b>BigEndian</b>.AppendUint32(b, d.h[3])
+		<a href="../../src/crypto/sha256/sha256.go.html#line-77" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-77">#L77</a>: 	b = binary.<b>BigEndian</b>.AppendUint32(b, d.h[4])
+		<a href="../../src/crypto/sha256/sha256.go.html#line-78" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-78">#L78</a>: 	b = binary.<b>BigEndian</b>.AppendUint32(b, d.h[5])
+		<a href="../../src/crypto/sha256/sha256.go.html#line-79" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-79">#L79</a>: 	b = binary.<b>BigEndian</b>.AppendUint32(b, d.h[6])
+		<a href="../../src/crypto/sha256/sha256.go.html#line-80" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-80">#L80</a>: 	b = binary.<b>BigEndian</b>.AppendUint32(b, d.h[7])
+		<a href="../../src/crypto/sha256/sha256.go.html#line-83" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-83">#L83</a>: 	b = binary.<b>BigEndian</b>.AppendUint64(b, d.len)
+		<a href="../../src/crypto/sha256/sha256.go.html#line-229" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-229">#L229</a>: 	binary.<b>BigEndian</b>.PutUint64(padlen[t+0:], len)
+		<a href="../../src/crypto/sha256/sha256.go.html#line-238" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-238">#L238</a>: 	binary.<b>BigEndian</b>.PutUint32(digest[0:], d.h[0])
+		<a href="../../src/crypto/sha256/sha256.go.html#line-239" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-239">#L239</a>: 	binary.<b>BigEndian</b>.PutUint32(digest[4:], d.h[1])
+		<a href="../../src/crypto/sha256/sha256.go.html#line-240" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-240">#L240</a>: 	binary.<b>BigEndian</b>.PutUint32(digest[8:], d.h[2])
+		<a href="../../src/crypto/sha256/sha256.go.html#line-241" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-241">#L241</a>: 	binary.<b>BigEndian</b>.PutUint32(digest[12:], d.h[3])
+		<a href="../../src/crypto/sha256/sha256.go.html#line-242" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-242">#L242</a>: 	binary.<b>BigEndian</b>.PutUint32(digest[16:], d.h[4])
+		<a href="../../src/crypto/sha256/sha256.go.html#line-243" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-243">#L243</a>: 	binary.<b>BigEndian</b>.PutUint32(digest[20:], d.h[5])
+		<a href="../../src/crypto/sha256/sha256.go.html#line-244" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-244">#L244</a>: 	binary.<b>BigEndian</b>.PutUint32(digest[24:], d.h[6])
+		<a href="../../src/crypto/sha256/sha256.go.html#line-246" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-246">#L246</a>: 		binary.<b>BigEndian</b>.PutUint32(digest[28:], d.h[7])
+
+	<a href="../../pkg/crypto/sha512.html">crypto/sha512</a>
+		<a href="../../src/crypto/sha512/sha512.go.html#line-156">sha512.go#L156</a>: 	b = binary.<b>BigEndian</b>.AppendUint64(b, d.h[0])
+		<a href="../../src/crypto/sha512/sha512.go.html#line-157" class="path-duplicate">sha512.go</a><a href="../../src/crypto/sha512/sha512.go.html#line-157">#L157</a>: 	b = binary.<b>BigEndian</b>.AppendUint64(b, d.h[1])
+		<a href="../../src/crypto/sha512/sha512.go.html#line-158" class="path-duplicate">sha512.go</a><a href="../../src/crypto/sha512/sha512.go.html#line-158">#L158</a>: 	b = binary.<b>BigEndian</b>.AppendUint64(b, d.h[2])
+		<a href="../../src/crypto/sha512/sha512.go.html#line-159" class="path-duplicate">sha512.go</a><a href="../../src/crypto/sha512/sha512.go.html#line-159">#L159</a>: 	b = binary.<b>BigEndian</b>.AppendUint64(b, d.h[3])
+		<a href="../../src/crypto/sha512/sha512.go.html#line-160" class="path-duplicate">sha512.go</a><a href="../../src/crypto/sha512/sha512.go.html#line-160">#L160</a>: 	b = binary.<b>BigEndian</b>.AppendUint64(b, d.h[4])
+		<a href="../../src/crypto/sha512/sha512.go.html#line-161" class="path-duplicate">sha512.go</a><a href="../../src/crypto/sha512/sha512.go.html#line-161">#L161</a>: 	b = binary.<b>BigEndian</b>.AppendUint64(b, d.h[5])
+		<a href="../../src/crypto/sha512/sha512.go.html#line-162" class="path-duplicate">sha512.go</a><a href="../../src/crypto/sha512/sha512.go.html#line-162">#L162</a>: 	b = binary.<b>BigEndian</b>.AppendUint64(b, d.h[6])
+		<a href="../../src/crypto/sha512/sha512.go.html#line-163" class="path-duplicate">sha512.go</a><a href="../../src/crypto/sha512/sha512.go.html#line-163">#L163</a>: 	b = binary.<b>BigEndian</b>.AppendUint64(b, d.h[7])
+		<a href="../../src/crypto/sha512/sha512.go.html#line-166" class="path-duplicate">sha512.go</a><a href="../../src/crypto/sha512/sha512.go.html#line-166">#L166</a>: 	b = binary.<b>BigEndian</b>.AppendUint64(b, d.len)
+		<a href="../../src/crypto/sha512/sha512.go.html#line-320" class="path-duplicate">sha512.go</a><a href="../../src/crypto/sha512/sha512.go.html#line-320">#L320</a>: 	binary.<b>BigEndian</b>.PutUint64(padlen[t+8:], len)
+		<a href="../../src/crypto/sha512/sha512.go.html#line-328" class="path-duplicate">sha512.go</a><a href="../../src/crypto/sha512/sha512.go.html#line-328">#L328</a>: 	binary.<b>BigEndian</b>.PutUint64(digest[0:], d.h[0])
+		<a href="../../src/crypto/sha512/sha512.go.html#line-329" class="path-duplicate">sha512.go</a><a href="../../src/crypto/sha512/sha512.go.html#line-329">#L329</a>: 	binary.<b>BigEndian</b>.PutUint64(digest[8:], d.h[1])
+		<a href="../../src/crypto/sha512/sha512.go.html#line-330" class="path-duplicate">sha512.go</a><a href="../../src/crypto/sha512/sha512.go.html#line-330">#L330</a>: 	binary.<b>BigEndian</b>.PutUint64(digest[16:], d.h[2])
+		<a href="../../src/crypto/sha512/sha512.go.html#line-331" class="path-duplicate">sha512.go</a><a href="../../src/crypto/sha512/sha512.go.html#line-331">#L331</a>: 	binary.<b>BigEndian</b>.PutUint64(digest[24:], d.h[3])
+		<a href="../../src/crypto/sha512/sha512.go.html#line-332" class="path-duplicate">sha512.go</a><a href="../../src/crypto/sha512/sha512.go.html#line-332">#L332</a>: 	binary.<b>BigEndian</b>.PutUint64(digest[32:], d.h[4])
+		<a href="../../src/crypto/sha512/sha512.go.html#line-333" class="path-duplicate">sha512.go</a><a href="../../src/crypto/sha512/sha512.go.html#line-333">#L333</a>: 	binary.<b>BigEndian</b>.PutUint64(digest[40:], d.h[5])
+		<a href="../../src/crypto/sha512/sha512.go.html#line-335" class="path-duplicate">sha512.go</a><a href="../../src/crypto/sha512/sha512.go.html#line-335">#L335</a>: 		binary.<b>BigEndian</b>.PutUint64(digest[48:], d.h[6])
+		<a href="../../src/crypto/sha512/sha512.go.html#line-336" class="path-duplicate">sha512.go</a><a href="../../src/crypto/sha512/sha512.go.html#line-336">#L336</a>: 		binary.<b>BigEndian</b>.PutUint64(digest[56:], d.h[7])
+
+	<a href="../../pkg/math/big.html">math/big</a>
+		<a href="../../src/math/big/floatmarsh.go.html#line-51">floatmarsh.go#L51</a>: 	binary.<b>BigEndian</b>.PutUint32(buf[2:], x.prec)
+		<a href="../../src/math/big/floatmarsh.go.html#line-54" class="path-duplicate">floatmarsh.go</a><a href="../../src/math/big/floatmarsh.go.html#line-54">#L54</a>: 		binary.<b>BigEndian</b>.PutUint32(buf[6:], uint32(x.exp))
+		<a href="../../src/math/big/floatmarsh.go.html#line-87" class="path-duplicate">floatmarsh.go</a><a href="../../src/math/big/floatmarsh.go.html#line-87">#L87</a>: 	z.prec = binary.<b>BigEndian</b>.Uint32(buf[2:])
+		<a href="../../src/math/big/floatmarsh.go.html#line-93" class="path-duplicate">floatmarsh.go</a><a href="../../src/math/big/floatmarsh.go.html#line-93">#L93</a>: 		z.exp = int32(binary.<b>BigEndian</b>.Uint32(buf[6:]))
+		<a href="../../src/math/big/nat.go.html#line-1330">nat.go#L1330</a>: 		return Word(binary.<b>BigEndian</b>.Uint64(buf))
+		<a href="../../src/math/big/nat.go.html#line-1332" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-1332">#L1332</a>: 	return Word(binary.<b>BigEndian</b>.Uint32(buf))
+		<a href="../../src/math/big/ratmarsh.go.html#line-32">ratmarsh.go#L32</a>: 	binary.<b>BigEndian</b>.PutUint32(buf[j-4:j], uint32(n))
+		<a href="../../src/math/big/ratmarsh.go.html#line-57" class="path-duplicate">ratmarsh.go</a><a href="../../src/math/big/ratmarsh.go.html#line-57">#L57</a>: 	ln := binary.<b>BigEndian</b>.Uint32(buf[j-4 : j])
+
+	<a href="../../pkg/net/http.html">net/http</a>
+		<a href="../../src/net/http/h2_bundle.go.html#line-1646">h2_bundle.go#L1646</a>: 		StreamID: binary.<b>BigEndian</b>.Uint32(buf[5:]) &amp; (1&lt;&lt;31 - 1),
+		<a href="../../src/net/http/h2_bundle.go.html#line-2180" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2180">#L2180</a>: 		ID:  http2SettingID(binary.<b>BigEndian</b>.Uint16(buf[i*6 : i*6+2])),
+		<a href="../../src/net/http/h2_bundle.go.html#line-2181" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2181">#L2181</a>: 		Val: binary.<b>BigEndian</b>.Uint32(buf[i*6+2 : i*6+6]),
+		<a href="../../src/net/http/h2_bundle.go.html#line-2317" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2317">#L2317</a>: 		LastStreamID:     binary.<b>BigEndian</b>.Uint32(p[:4]) &amp; (1&lt;&lt;31 - 1),
+		<a href="../../src/net/http/h2_bundle.go.html#line-2318" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2318">#L2318</a>: 		ErrCode:          http2ErrCode(binary.<b>BigEndian</b>.Uint32(p[4:8])),
+		<a href="../../src/net/http/h2_bundle.go.html#line-2364" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2364">#L2364</a>: 	inc := binary.<b>BigEndian</b>.Uint32(p[:4]) &amp; 0x7fffffff // mask off high reserved bit
+		<a href="../../src/net/http/h2_bundle.go.html#line-2578" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2578">#L2578</a>: 	v := binary.<b>BigEndian</b>.Uint32(payload[:4])
+		<a href="../../src/net/http/h2_bundle.go.html#line-2627" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2627">#L2627</a>: 	return &amp;http2RSTStreamFrame{fh, http2ErrCode(binary.<b>BigEndian</b>.Uint32(p[:4]))}, nil
+		<a href="../../src/net/http/h2_bundle.go.html#line-2813" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2813">#L2813</a>: 	return p[4:], binary.<b>BigEndian</b>.Uint32(p[:4]), nil
+		<a href="../../src/net/http/sniff.go.html#line-271">sniff.go#L271</a>: 	boxSize := int(binary.<b>BigEndian</b>.Uint32(data[:4]))
+
+	<a href="../../pkg/vendor/golang.org/x/text/unicode/norm.html">vendor/golang.org/x/text/unicode/norm</a>
+		<a href="../../src/vendor/golang.org/x/text/unicode/norm/forminfo.go.html#line-189">forminfo.go#L189</a>: 		key := binary.<b>BigEndian</b>.Uint32(buf[:4])
+		<a href="../../src/vendor/golang.org/x/text/unicode/norm/forminfo.go.html#line-190" class="path-duplicate">forminfo.go</a><a href="../../src/vendor/golang.org/x/text/unicode/norm/forminfo.go.html#line-190">#L190</a>: 		val := binary.<b>BigEndian</b>.Uint32(buf[4:])
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: time.Location.cacheZone</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/time.html">time</a>.<a href="../src/time/zoneinfo.go.html#line-23">Location</a>.<a href="../src/time/zoneinfo.go.html#line-46">cacheZone</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">11 uses</span>
+
+	time (current package)
+		<a href="../src/time/time.go.html#line-475">time.go#L475</a>: 		if l.<b>cacheZone</b> != nil &amp;&amp; l.cacheStart &lt;= sec &amp;&amp; sec &lt; l.cacheEnd {
+		<a href="../src/time/time.go.html#line-476" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-476">#L476</a>: 			sec += int64(l.<b>cacheZone</b>.offset)
+		<a href="../src/time/time.go.html#line-495" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-495">#L495</a>: 		if l.<b>cacheZone</b> != nil &amp;&amp; l.cacheStart &lt;= sec &amp;&amp; sec &lt; l.cacheEnd {
+		<a href="../src/time/time.go.html#line-496" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-496">#L496</a>: 			name = l.<b>cacheZone</b>.name
+		<a href="../src/time/time.go.html#line-497" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-497">#L497</a>: 			offset = l.<b>cacheZone</b>.offset
+		<a href="../src/time/zoneinfo.go.html#line-46">zoneinfo.go#L46</a>: 	<b>cacheZone</b>  *zone
+		<a href="../src/time/zoneinfo.go.html#line-138" class="path-duplicate">zoneinfo.go</a><a href="../src/time/zoneinfo.go.html#line-138">#L138</a>: 	l.<b>cacheZone</b> = &amp;l.zone[0]
+		<a href="../src/time/zoneinfo.go.html#line-161" class="path-duplicate">zoneinfo.go</a><a href="../src/time/zoneinfo.go.html#line-161">#L161</a>: 	if zone := l.<b>cacheZone</b>; zone != nil &amp;&amp; l.cacheStart &lt;= sec &amp;&amp; sec &lt; l.cacheEnd {
+		<a href="../src/time/zoneinfo_read.go.html#line-326">zoneinfo_read.go#L326</a>: 			l.<b>cacheZone</b> = &amp;l.zone[tx[i].index]
+		<a href="../src/time/zoneinfo_read.go.html#line-337" class="path-duplicate">zoneinfo_read.go</a><a href="../src/time/zoneinfo_read.go.html#line-337">#L337</a>: 						l.<b>cacheZone</b> = &amp;l.zone[zoneIdx]
+		<a href="../src/time/zoneinfo_read.go.html#line-339" class="path-duplicate">zoneinfo_read.go</a><a href="../src/time/zoneinfo_read.go.html#line-339">#L339</a>: 						l.<b>cacheZone</b> = &amp;zone{
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

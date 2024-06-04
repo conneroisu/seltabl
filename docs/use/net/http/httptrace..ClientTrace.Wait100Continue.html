@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/http/httptrace.ClientTrace.Wait100Continue</title>
+<link href="../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../../pkg/net/http/httptrace.html">net/http/httptrace</a>.<a href="../../../src/net/http/httptrace/trace.go.html#line-80">ClientTrace</a>.<a href="../../../src/net/http/httptrace/trace.go.html#line-158">Wait100Continue</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">5 uses</span>
+
+	net/http/httptrace (current package)
+		<a href="../../../src/net/http/httptrace/trace.go.html#line-158">trace.go#L158</a>: 	<b>Wait100Continue</b> func()
+
+	<a href="../../../pkg/net/http.html">net/http</a>
+		<a href="../../../src/net/http/h2_bundle.go.html#line-10258">h2_bundle.go#L10258</a>: 	if trace != nil &amp;&amp; trace.<b>Wait100Continue</b> != nil {
+		<a href="../../../src/net/http/h2_bundle.go.html#line-10259" class="path-duplicate">h2_bundle.go</a><a href="../../../src/net/http/h2_bundle.go.html#line-10259">#L10259</a>: 		trace.<b>Wait100Continue</b>()
+		<a href="../../../src/net/http/request.go.html#line-737">request.go#L737</a>: 		if trace != nil &amp;&amp; trace.<b>Wait100Continue</b> != nil {
+		<a href="../../../src/net/http/request.go.html#line-738" class="path-duplicate">request.go</a><a href="../../../src/net/http/request.go.html#line-738">#L738</a>: 			trace.<b>Wait100Continue</b>()
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

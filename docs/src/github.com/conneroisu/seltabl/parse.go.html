@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: parse.go in package github.com/conneroisu/seltabl</title>
+<link href="../../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	parse.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../pkg/github.com/conneroisu/seltabl.html">github.com/conneroisu/seltabl</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19],
+input[id=r20]:checked ~pre label[for=r20],
+input[id=r21]:checked ~pre label[for=r21],
+input[id=r22]:checked ~pre label[for=r22],
+input[id=r23]:checked ~pre label[for=r23]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1,
+input[id=i2]:checked ~pre .i2,
+input[id=i3]:checked ~pre .i3,
+input[id=i4]:checked ~pre .i4,
+input[id=i5]:checked ~pre .i5,
+input[id=i6]:checked ~pre .i6
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
+<input id="r20" type="radio" name="g"/>
+<input id="r21" type="radio" name="g"/>
+<input id="r22" type="radio" name="g"/>
+<input id="r23" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+<input id="i2" type="radio" name="i"/>
+<input id="i3" type="radio" name="i"/>
+<input id="i4" type="radio" name="i"/>
+<input id="i5" type="radio" name="i"/>
+<input id="i6" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> seltabl</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-4"><code>	<label for="i0"><span class="lit-string i0">"fmt"</span></label></code></span>
+<span class="codeline" id="line-5"><code>	<label for="i1"><span class="lit-string i1">"io"</span></label></code></span>
+<span class="codeline" id="line-6"><code>	<label for="i2"><span class="lit-string i2">"net/http"</span></label></code></span>
+<span class="codeline" id="line-7"><code>	<label for="i3"><span class="lit-string i3">"reflect"</span></label></code></span>
+<span class="codeline" id="line-8"><code>	<label for="i4"><span class="lit-string i4">"strings"</span></label></code></span>
+<span class="codeline" id="line-9"><code></code></span>
+<span class="codeline" id="line-10"><code>	<label for="i5"><span class="lit-string i5">"github.com/PuerkitoBio/goquery"</span></label></code></span>
+<span class="codeline" id="line-11"><code>	<label for="i6"><span class="lit-string i6">"github.com/conneroisu/seltabl/internal/errors"</span></label></code></span>
+<span class="codeline" id="line-12"><code>)</code></span>
+<span class="codeline" id="line-13"><code></code></span>
+<span class="codeline" id="line-14"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-15"><code>	<a href="../../../../pkg/github.com/conneroisu/seltabl.html#name-innerTextSelector" class="ident">innerTextSelector</a> = <span class="lit-string">"$text"</span></code></span>
+<span class="codeline" id="line-16"><code>	<a href="../../../../pkg/github.com/conneroisu/seltabl.html#name-attrSelector" class="ident">attrSelector</a>      = <span class="lit-string">"@"</span></code></span>
+<span class="codeline" id="line-17"><code></code></span>
+<span class="codeline" id="line-18"><code>	<a href="../../../../pkg/github.com/conneroisu/seltabl.html#name-dataSelectorTag" class="ident">dataSelectorTag</a>   = <span class="lit-string">"dSel"</span></code></span>
+<span class="codeline" id="line-19"><code>	<a href="../../../../pkg/github.com/conneroisu/seltabl.html#name-headerSelectorTag" class="ident">headerSelectorTag</a> = <span class="lit-string">"hSel"</span></code></span>
+<span class="codeline" id="line-20"><code>	<a href="../../../../pkg/github.com/conneroisu/seltabl.html#name-cellSelectorTag" class="ident">cellSelectorTag</a>   = <span class="lit-string">"cSel"</span></code></span>
+<span class="codeline" id="line-21"><code>)</code></span>
+<span class="codeline" id="line-22"><code></code></span>
+<span class="codeline" id="line-23"><code><span class="comment">// NewFromString parses a string into a slice of structs.</span></code></span>
+<span class="codeline" id="line-24"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-25"><code><span class="comment">// The struct must have a field with the tag seltabl, a header selector with</span></code></span>
+<span class="codeline" id="line-26"><code><span class="comment">// the tag hSel, and a data selector with the tag dSel.</span></code></span>
+<span class="codeline" id="line-27"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-28"><code><span class="comment">// The selectors responsibilties:</span></code></span>
+<span class="codeline" id="line-29"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-30"><code><span class="comment">//   - header selector (hSel): used to find the header row and column for the</span></code></span>
+<span class="codeline" id="line-31"><code><span class="comment">//     field in the given struct.</span></code></span>
+<span class="codeline" id="line-32"><code><span class="comment">//   - data selector (dSel): used to find the data column for the field in the</span></code></span>
+<span class="codeline" id="line-33"><code><span class="comment">//     given struct.</span></code></span>
+<span class="codeline" id="line-34"><code><span class="comment">//   - cell selector (cSel): used to find the inner text or attribute of the</span></code></span>
+<span class="codeline" id="line-35"><code><span class="comment">//     cell.</span></code></span>
+<span class="codeline" id="line-36"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-37"><code><span class="comment">// Example:</span></code></span>
+<span class="codeline" id="line-38"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-39"><code><span class="comment">//	var fixture = `</span></code></span>
+<span class="codeline" id="line-40"><code><span class="comment">//	&lt;table&gt;</span></code></span>
+<span class="codeline" id="line-41"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-42"><code><span class="comment">//	     &lt;tr&gt;</span></code></span>
+<span class="codeline" id="line-43"><code><span class="comment">//	     	&lt;td&gt;a&lt;/td&gt;</span></code></span>
+<span class="codeline" id="line-44"><code><span class="comment">//	     	&lt;td&gt;b&lt;/td&gt;</span></code></span>
+<span class="codeline" id="line-45"><code><span class="comment">//	     &lt;/tr&gt;</span></code></span>
+<span class="codeline" id="line-46"><code><span class="comment">//	     &lt;tr&gt;</span></code></span>
+<span class="codeline" id="line-47"><code><span class="comment">//	     	&lt;td&gt; 1 &lt;/td&gt;</span></code></span>
+<span class="codeline" id="line-48"><code><span class="comment">//	     	&lt;td&gt;2&lt;/td&gt;</span></code></span>
+<span class="codeline" id="line-49"><code><span class="comment">//	     &lt;/tr&gt;</span></code></span>
+<span class="codeline" id="line-50"><code><span class="comment">//	     &lt;tr&gt;</span></code></span>
+<span class="codeline" id="line-51"><code><span class="comment">//	     	&lt;td&gt;3 &lt;/td&gt;</span></code></span>
+<span class="codeline" id="line-52"><code><span class="comment">//	     	&lt;td&gt; 4&lt;/td&gt;</span></code></span>
+<span class="codeline" id="line-53"><code><span class="comment">//	     &lt;/tr&gt;</span></code></span>
+<span class="codeline" id="line-54"><code><span class="comment">//	     &lt;tr&gt;</span></code></span>
+<span class="codeline" id="line-55"><code><span class="comment">//	     	&lt;td&gt; 5 &lt;/td&gt;</span></code></span>
+<span class="codeline" id="line-56"><code><span class="comment">//	     	&lt;td&gt; 6&lt;/td&gt;</span></code></span>
+<span class="codeline" id="line-57"><code><span class="comment">//	     &lt;/tr&gt;</span></code></span>
+<span class="codeline" id="line-58"><code><span class="comment">//	     &lt;tr&gt;</span></code></span>
+<span class="codeline" id="line-59"><code><span class="comment">//	     	&lt;td&gt;7 &lt;/td&gt;</span></code></span>
+<span class="codeline" id="line-60"><code><span class="comment">//	     	&lt;td&gt; 8&lt;/td&gt;</span></code></span>
+<span class="codeline" id="line-61"><code><span class="comment">//	     &lt;/tr&gt;</span></code></span>
+<span class="codeline" id="line-62"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-63"><code><span class="comment">//	&lt;/table&gt;</span></code></span>
+<span class="codeline" id="line-64"><code><span class="comment">//	`</span></code></span>
+<span class="codeline" id="line-65"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-66"><code><span class="comment">//	type fixtureStruct struct {</span></code></span>
+<span class="codeline" id="line-67"><code><span class="comment">//		A string `json:"a" seltabl:"a" hSel:"tr:nth-child(1) td:nth-child(1)" dSel:"tr td:nth-child(1)" cSel:"$text"`</span></code></span>
+<span class="codeline" id="line-68"><code><span class="comment">//		B string `json:"b" seltabl:"b" hSel:"tr:nth-child(1) td:nth-child(2)" dSel:"tr td:nth-child(2)" cSel:"$text"`</span></code></span>
+<span class="codeline" id="line-69"><code><span class="comment">//	}</span></code></span>
+<span class="codeline" id="line-70"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-71"><code><span class="comment">//	func main() {</span></code></span>
+<span class="codeline" id="line-72"><code><span class="comment">//		p, err := seltabl.NewFromString[fixtureStruct](fixture)</span></code></span>
+<span class="codeline" id="line-73"><code><span class="comment">//		if err != nil {</span></code></span>
+<span class="codeline" id="line-74"><code><span class="comment">//			panic(err)</span></code></span>
+<span class="codeline" id="line-75"><code><span class="comment">//		}</span></code></span>
+<span class="codeline" id="line-76"><code><span class="comment">//		for _, pp := range p {</span></code></span>
+<span class="codeline" id="line-77"><code><span class="comment">//			fmt.Printf("pp %+v\n", pp)</span></code></span>
+<span class="codeline" id="line-78"><code><span class="comment">//		}</span></code></span>
+<span class="codeline" id="line-79"><code><span class="comment">//	}</span></code></span>
+<span class="codeline" id="line-80"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../../pkg/github.com/conneroisu/seltabl.html#name-NewFromString" class="ident">NewFromString</a></label>[<label for="r1" class="ident">T</label> <a href="../../../../pkg/builtin.html#name-any" class="ident">any</a>](<label for="r2" class="ident">htmlInput</label> <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>) ([]<label for="r1" class="ident">T</label>, <a href="../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-81"><code>	<label for="r3" class="ident">doc</label>, <label for="r4" class="ident">err</label> := <a href="../../../../pkg/github.com/PuerkitoBio^56e6a/goquery.html" class="ident i5">goquery</a>.<a href="../../PuerkitoBio^56e6a/goquery/type.go.html#line-51" class="ident">NewDocumentFromReader</a>(<a href="../../../../pkg/strings.html" class="ident i4">strings</a>.<a href="../../../strings/reader.go.html#line-160" class="ident">NewReader</a>(<label for="r2" class="ident">htmlInput</label>))</code></span>
+<span class="codeline" id="line-82"><code>	<span class="keyword">if</span> <label for="r4" class="ident">err</label> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-83"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="../../../../pkg/fmt.html" class="ident i0">fmt</a>.<a href="../../../fmt/errors.go.html#line-22" class="ident">Errorf</a>(<span class="lit-string">"failed to parse html: %w"</span>, <label for="r4" class="ident">err</label>)</code></span>
+<span class="codeline" id="line-84"><code>	}</code></span>
+<span class="codeline" id="line-85"><code>	<label for="r5" class="ident">dType</label> := <a href="../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../reflect/type.go.html#line-1160" class="ident">TypeOf</a>((*<label for="r1" class="ident">T</label>)(<a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>)).<a href="../../../reflect/type.go.html#line-160" class="ident">Elem</a>()</code></span>
+<span class="codeline" id="line-86"><code>	<span class="keyword">if</span> <label for="r5" class="ident">dType</label>.<a href="../../../reflect/type.go.html#line-103" class="ident">Kind</a>() != <a href="../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../reflect/type.go.html#line-276" class="ident">Struct</a> {</code></span>
+<span class="codeline" id="line-87"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="../../../../pkg/fmt.html" class="ident i0">fmt</a>.<a href="../../../fmt/errors.go.html#line-22" class="ident">Errorf</a>(<span class="lit-string">"expected struct, got %s"</span>, <label for="r5" class="ident">dType</label>.<a href="../../../reflect/type.go.html#line-103" class="ident">Kind</a>())</code></span>
+<span class="codeline" id="line-88"><code>	}</code></span>
+<span class="codeline" id="line-89"><code>	<label for="r6" class="ident">results</label> := <a href="../../../../pkg/builtin.html#name-make" class="ident">make</a>([]<label for="r1" class="ident">T</label>, <span class="lit-number">0</span>)</code></span>
+<span class="codeline" id="line-90"><code>	<span class="keyword">for</span> <label for="r7" class="ident">i</label> := <span class="lit-number">0</span>; <label for="r7" class="ident">i</label> &lt; <label for="r5" class="ident">dType</label>.<a href="../../../reflect/type.go.html#line-213" class="ident">NumField</a>(); <label for="r7" class="ident">i</label>++ {</code></span>
+<span class="codeline" id="line-91"><code>		<label for="r8" class="ident">field</label> := <label for="r5" class="ident">dType</label>.<a href="../../../reflect/type.go.html#line-165" class="ident">Field</a>(<label for="r7" class="ident">i</label>)</code></span>
+<span class="codeline" id="line-92"><code>		<label for="r9" class="ident">headName</label> := <label for="r8" class="ident">field</label>.<a href="../../../reflect/type.go.html#line-886" class="ident">Tag</a>.<a href="../../../reflect/type.go.html#line-912" class="ident">Get</a>(<span class="lit-string">"seltabl"</span>)</code></span>
+<span class="codeline" id="line-93"><code>		<span class="keyword">if</span> <label for="r9" class="ident">headName</label> == <span class="lit-string">""</span> {</code></span>
+<span class="codeline" id="line-94"><code>			<span class="keyword">continue</span></code></span>
+<span class="codeline" id="line-95"><code>		}</code></span>
+<span class="codeline" id="line-96"><code>		<label for="r10" class="ident">headSelector</label> := <label for="r8" class="ident">field</label>.<a href="../../../reflect/type.go.html#line-886" class="ident">Tag</a>.<a href="../../../reflect/type.go.html#line-912" class="ident">Get</a>(<a href="#line-19" class="ident">headerSelectorTag</a>)</code></span>
+<span class="codeline" id="line-97"><code>		<span class="keyword">if</span> <label for="r10" class="ident">headSelector</label> == <span class="lit-string">""</span> {</code></span>
+<span class="codeline" id="line-98"><code>			<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, &amp;<a href="../../../../pkg/github.com/conneroisu/seltabl/internal/errors.html" class="ident i6">errors</a>.<a href="internal/errors/selector.go.html#line-15" class="ident">SelectorNotFound</a>[<label for="r1" class="ident">T</label>]{</code></span>
+<span class="codeline" id="line-99"><code>				<a href="internal/errors/selector.go.html#line-16" class="ident">Struct</a>:    *<a href="../../../../pkg/builtin.html#name-new" class="ident">new</a>(<label for="r1" class="ident">T</label>),</code></span>
+<span class="codeline" id="line-100"><code>				<a href="internal/errors/selector.go.html#line-17" class="ident">FieldName</a>: <label for="r9" class="ident">headName</label>,</code></span>
+<span class="codeline" id="line-101"><code>				<a href="internal/errors/selector.go.html#line-18" class="ident">Selector</a>:  <a href="#line-19" class="ident">headerSelectorTag</a>,</code></span>
+<span class="codeline" id="line-102"><code>			}</code></span>
+<span class="codeline" id="line-103"><code>		}</code></span>
+<span class="codeline" id="line-104"><code>		<label for="r11" class="ident">headerRow</label> := <label for="r3" class="ident">doc</label>.<a href="../../PuerkitoBio^56e6a/goquery/traversal.go.html#line-29" class="ident">Find</a>(<label for="r10" class="ident">headSelector</label>)</code></span>
+<span class="codeline" id="line-105"><code>		<span class="keyword">if</span> <label for="r11" class="ident">headerRow</label>.<a href="../../PuerkitoBio^56e6a/goquery/property.go.html#line-91" class="ident">Length</a>() == <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-106"><code>			<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, &amp;<a href="../../../../pkg/github.com/conneroisu/seltabl/internal/errors.html" class="ident i6">errors</a>.<a href="internal/errors/selection.go.html#line-15" class="ident">SelectionNotFound</a>[<label for="r1" class="ident">T</label>]{</code></span>
+<span class="codeline" id="line-107"><code>				<a href="internal/errors/selection.go.html#line-16" class="ident">Struct</a>:         *<a href="../../../../pkg/builtin.html#name-new" class="ident">new</a>(<label for="r1" class="ident">T</label>),</code></span>
+<span class="codeline" id="line-108"><code>				<a href="internal/errors/selection.go.html#line-17" class="ident">FieldName</a>:      <label for="r9" class="ident">headName</label>,</code></span>
+<span class="codeline" id="line-109"><code>				<a href="internal/errors/selection.go.html#line-18" class="ident">SelectionQuery</a>: <label for="r10" class="ident">headSelector</label>,</code></span>
+<span class="codeline" id="line-110"><code>			}</code></span>
+<span class="codeline" id="line-111"><code>		}</code></span>
+<span class="codeline" id="line-112"><code>		<label for="r12" class="ident">dataSelector</label> := <label for="r8" class="ident">field</label>.<a href="../../../reflect/type.go.html#line-886" class="ident">Tag</a>.<a href="../../../reflect/type.go.html#line-912" class="ident">Get</a>(<a href="#line-18" class="ident">dataSelectorTag</a>)</code></span>
+<span class="codeline" id="line-113"><code>		<span class="keyword">if</span> <label for="r12" class="ident">dataSelector</label> == <span class="lit-string">""</span> {</code></span>
+<span class="codeline" id="line-114"><code>			<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, &amp;<a href="../../../../pkg/github.com/conneroisu/seltabl/internal/errors.html" class="ident i6">errors</a>.<a href="internal/errors/selector.go.html#line-15" class="ident">SelectorNotFound</a>[<label for="r1" class="ident">T</label>]{</code></span>
+<span class="codeline" id="line-115"><code>				<a href="internal/errors/selector.go.html#line-16" class="ident">Struct</a>:    *<a href="../../../../pkg/builtin.html#name-new" class="ident">new</a>(<label for="r1" class="ident">T</label>),</code></span>
+<span class="codeline" id="line-116"><code>				<a href="internal/errors/selector.go.html#line-17" class="ident">FieldName</a>: <label for="r9" class="ident">headName</label>,</code></span>
+<span class="codeline" id="line-117"><code>				<a href="internal/errors/selector.go.html#line-18" class="ident">Selector</a>:  <a href="#line-18" class="ident">dataSelectorTag</a>,</code></span>
+<span class="codeline" id="line-118"><code>			}</code></span>
+<span class="codeline" id="line-119"><code>		}</code></span>
+<span class="codeline" id="line-120"><code>		<label for="r13" class="ident">dataRows</label> := <label for="r3" class="ident">doc</label>.<a href="../../PuerkitoBio^56e6a/goquery/traversal.go.html#line-29" class="ident">Find</a>(</code></span>
+<span class="codeline" id="line-121"><code>			<a href="../../../../pkg/fmt.html" class="ident i0">fmt</a>.<a href="../../../fmt/print.go.html#line-237" class="ident">Sprintf</a>(<span class="lit-string">"%s:not(%s)"</span>, <label for="r12" class="ident">dataSelector</label>, <label for="r10" class="ident">headSelector</label>),</code></span>
+<span class="codeline" id="line-122"><code>		)</code></span>
+<span class="codeline" id="line-123"><code>		<span class="keyword">if</span> <label for="r13" class="ident">dataRows</label>.<a href="../../PuerkitoBio^56e6a/goquery/property.go.html#line-91" class="ident">Length</a>() == <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-124"><code>			<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, &amp;<a href="../../../../pkg/github.com/conneroisu/seltabl/internal/errors.html" class="ident i6">errors</a>.<a href="internal/errors/selection.go.html#line-15" class="ident">SelectionNotFound</a>[<label for="r1" class="ident">T</label>]{</code></span>
+<span class="codeline" id="line-125"><code>				<a href="internal/errors/selection.go.html#line-16" class="ident">Struct</a>:         *<a href="../../../../pkg/builtin.html#name-new" class="ident">new</a>(<label for="r1" class="ident">T</label>),</code></span>
+<span class="codeline" id="line-126"><code>				<a href="internal/errors/selection.go.html#line-17" class="ident">FieldName</a>:      <label for="r9" class="ident">headName</label>,</code></span>
+<span class="codeline" id="line-127"><code>				<a href="internal/errors/selection.go.html#line-18" class="ident">SelectionQuery</a>: <label for="r12" class="ident">dataSelector</label>,</code></span>
+<span class="codeline" id="line-128"><code>			}</code></span>
+<span class="codeline" id="line-129"><code>		}</code></span>
+<span class="codeline" id="line-130"><code>		<label for="r14" class="ident">cellSelector</label> := <label for="r8" class="ident">field</label>.<a href="../../../reflect/type.go.html#line-886" class="ident">Tag</a>.<a href="../../../reflect/type.go.html#line-912" class="ident">Get</a>(<a href="#line-20" class="ident">cellSelectorTag</a>)</code></span>
+<span class="codeline" id="line-131"><code>		<span class="keyword">if</span> <label for="r14" class="ident">cellSelector</label> == <span class="lit-string">""</span> {</code></span>
+<span class="codeline" id="line-132"><code>			<label for="r14" class="ident">cellSelector</label> = <a href="#line-15" class="ident">innerTextSelector</a></code></span>
+<span class="codeline" id="line-133"><code>		}</code></span>
+<span class="codeline" id="line-134"><code>		<span class="keyword">if</span> <a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r6" class="ident">results</label>) == <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-135"><code>			<label for="r6" class="ident">results</label> = <a href="../../../../pkg/builtin.html#name-make" class="ident">make</a>([]<label for="r1" class="ident">T</label>, <label for="r13" class="ident">dataRows</label>.<a href="../../PuerkitoBio^56e6a/goquery/property.go.html#line-91" class="ident">Length</a>())</code></span>
+<span class="codeline" id="line-136"><code>		}</code></span>
+<span class="codeline" id="line-137"><code>		<span class="keyword">for</span> <label for="r15" class="ident">j</label> := <span class="lit-number">0</span>; <label for="r15" class="ident">j</label> &lt; <label for="r13" class="ident">dataRows</label>.<a href="../../PuerkitoBio^56e6a/goquery/property.go.html#line-91" class="ident">Length</a>(); <label for="r15" class="ident">j</label>++ {</code></span>
+<span class="codeline" id="line-138"><code>			<span class="keyword">if</span> <label for="r16" class="ident">err</label> := <a href="reflect.go.html#line-15" class="ident">SetStructField</a>(</code></span>
+<span class="codeline" id="line-139"><code>				&amp;<label for="r6" class="ident">results</label>[<label for="r15" class="ident">j</label>],    <span class="comment">// result row for this data row</span></code></span>
+<span class="codeline" id="line-140"><code>				<label for="r8" class="ident">field</label>.<a href="../../../reflect/type.go.html#line-878" class="ident">Name</a>,     <span class="comment">// name of the field to set</span></code></span>
+<span class="codeline" id="line-141"><code>				<label for="r13" class="ident">dataRows</label>.<a href="../../PuerkitoBio^56e6a/goquery/array.go.html#line-35" class="ident">Eq</a>(<label for="r15" class="ident">j</label>), <span class="comment">// goquery selection for cell</span></code></span>
+<span class="codeline" id="line-142"><code>				<label for="r14" class="ident">cellSelector</label>,   <span class="comment">// selector for the inner cell</span></code></span>
+<span class="codeline" id="line-143"><code>			); <label for="r16" class="ident">err</label> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-144"><code>				<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="../../../../pkg/fmt.html" class="ident i0">fmt</a>.<a href="../../../fmt/errors.go.html#line-22" class="ident">Errorf</a>(</code></span>
+<span class="codeline" id="line-145"><code>					<span class="lit-string">"failed to set field %s: %s"</span>,</code></span>
+<span class="codeline" id="line-146"><code>					<label for="r8" class="ident">field</label>.<a href="../../../reflect/type.go.html#line-878" class="ident">Name</a>,</code></span>
+<span class="codeline" id="line-147"><code>					<label for="r16" class="ident">err</label>,</code></span>
+<span class="codeline" id="line-148"><code>				)</code></span>
+<span class="codeline" id="line-149"><code>			}</code></span>
+<span class="codeline" id="line-150"><code>		}</code></span>
+<span class="codeline" id="line-151"><code>	}</code></span>
+<span class="codeline" id="line-152"><code>	<span class="keyword">return</span> <label for="r6" class="ident">results</label>, <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-153"><code>}</code></span>
+<span class="codeline" id="line-154"><code></code></span>
+<span class="codeline" id="line-155"><code><span class="comment">// NewFromURL parses a URL into a slice of structs.</span></code></span>
+<span class="codeline" id="line-156"><code><span class="keyword">func</span> <label for="r17" class="ident"><a href="../../../../pkg/github.com/conneroisu/seltabl.html#name-NewFromURL" class="ident">NewFromURL</a></label>[<label for="r18" class="ident">T</label> <a href="../../../../pkg/builtin.html#name-any" class="ident">any</a>](<label for="r19" class="ident">url</label> <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>) ([]<label for="r18" class="ident">T</label>, <a href="../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-157"><code>	<label for="r20" class="ident">client</label> := &amp;<a href="../../../../pkg/net/http.html" class="ident i2">http</a>.<a href="../../../net/http/client.go.html#line-57" class="ident">Client</a>{}</code></span>
+<span class="codeline" id="line-158"><code>	<label for="r21" class="ident">resp</label>, <label for="r22" class="ident">err</label> := <label for="r20" class="ident">client</label>.<a href="../../../net/http/client.go.html#line-482" class="ident">Get</a>(<label for="r19" class="ident">url</label>)</code></span>
+<span class="codeline" id="line-159"><code>	<span class="keyword">if</span> <label for="r22" class="ident">err</label> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-160"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="../../../../pkg/fmt.html" class="ident i0">fmt</a>.<a href="../../../fmt/errors.go.html#line-22" class="ident">Errorf</a>(<span class="lit-string">"failed to get url: %w"</span>, <label for="r22" class="ident">err</label>)</code></span>
+<span class="codeline" id="line-161"><code>	}</code></span>
+<span class="codeline" id="line-162"><code>	<span class="keyword">defer</span> <label for="r21" class="ident">resp</label>.<a href="../../../net/http/response.go.html#line-72" class="ident">Body</a>.<a href="../../../io/io.go.html#line-108" class="ident">Close</a>()</code></span>
+<span class="codeline" id="line-163"><code>	<label for="r23" class="ident">body</label>, <label for="r22" class="ident">err</label> := <a href="../../../../pkg/io.html" class="ident i1">io</a>.<a href="../../../io/io.go.html#line-709" class="ident">ReadAll</a>(<label for="r21" class="ident">resp</label>.<a href="../../../net/http/response.go.html#line-72" class="ident">Body</a>)</code></span>
+<span class="codeline" id="line-164"><code>	<span class="keyword">if</span> <label for="r22" class="ident">err</label> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-165"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="../../../../pkg/fmt.html" class="ident i0">fmt</a>.<a href="../../../fmt/errors.go.html#line-22" class="ident">Errorf</a>(<span class="lit-string">"failed to read body: %w"</span>, <label for="r22" class="ident">err</label>)</code></span>
+<span class="codeline" id="line-166"><code>	}</code></span>
+<span class="codeline" id="line-167"><code>	<span class="keyword">return</span> <a href="#line-80" class="ident">NewFromString</a>[<label for="r18" class="ident">T</label>](<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>(<label for="r23" class="ident">body</label>))</code></span>
+<span class="codeline" id="line-168"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: encoding/asn1.Unmarshal</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../../pkg/encoding/asn1.html">encoding/asn1</a>.<a href="../../src/encoding/asn1/asn1.go.html#line-1091">Unmarshal</a></b></span>
+
+<span class="title">27 uses</span>
+
+	encoding/asn1 (current package)
+		<a href="../../src/encoding/asn1/asn1.go.html#line-1091">asn1.go#L1091</a>: func <b>Unmarshal</b>(b []byte, val any) (rest []byte, err error) {
+
+	<a href="../../pkg/crypto/x509.html">crypto/x509</a>
+		<a href="../../src/crypto/x509/pkcs1.go.html#line-49">pkcs1.go#L49</a>: 	rest, err := asn1.<b>Unmarshal</b>(der, &amp;priv)
+		<a href="../../src/crypto/x509/pkcs1.go.html#line-54" class="path-duplicate">pkcs1.go</a><a href="../../src/crypto/x509/pkcs1.go.html#line-54">#L54</a>: 		if _, err := asn1.<b>Unmarshal</b>(der, &amp;ecPrivateKey{}); err == nil {
+		<a href="../../src/crypto/x509/pkcs1.go.html#line-57" class="path-duplicate">pkcs1.go</a><a href="../../src/crypto/x509/pkcs1.go.html#line-57">#L57</a>: 		if _, err := asn1.<b>Unmarshal</b>(der, &amp;pkcs8{}); err == nil {
+		<a href="../../src/crypto/x509/pkcs1.go.html#line-140" class="path-duplicate">pkcs1.go</a><a href="../../src/crypto/x509/pkcs1.go.html#line-140">#L140</a>: 	rest, err := asn1.<b>Unmarshal</b>(der, &amp;pub)
+		<a href="../../src/crypto/x509/pkcs1.go.html#line-142" class="path-duplicate">pkcs1.go</a><a href="../../src/crypto/x509/pkcs1.go.html#line-142">#L142</a>: 		if _, err := asn1.<b>Unmarshal</b>(der, &amp;publicKeyInfo{}); err == nil {
+		<a href="../../src/crypto/x509/pkcs8.go.html#line-37">pkcs8.go#L37</a>: 	if _, err := asn1.<b>Unmarshal</b>(der, &amp;privKey); err != nil {
+		<a href="../../src/crypto/x509/pkcs8.go.html#line-38" class="path-duplicate">pkcs8.go</a><a href="../../src/crypto/x509/pkcs8.go.html#line-38">#L38</a>: 		if _, err := asn1.<b>Unmarshal</b>(der, &amp;ecPrivateKey{}); err == nil {
+		<a href="../../src/crypto/x509/pkcs8.go.html#line-41" class="path-duplicate">pkcs8.go</a><a href="../../src/crypto/x509/pkcs8.go.html#line-41">#L41</a>: 		if _, err := asn1.<b>Unmarshal</b>(der, &amp;pkcs1PrivateKey{}); err == nil {
+		<a href="../../src/crypto/x509/pkcs8.go.html#line-57" class="path-duplicate">pkcs8.go</a><a href="../../src/crypto/x509/pkcs8.go.html#line-57">#L57</a>: 		if _, err := asn1.<b>Unmarshal</b>(bytes, namedCurveOID); err != nil {
+		<a href="../../src/crypto/x509/pkcs8.go.html#line-71" class="path-duplicate">pkcs8.go</a><a href="../../src/crypto/x509/pkcs8.go.html#line-71">#L71</a>: 		if _, err := asn1.<b>Unmarshal</b>(privKey.PrivateKey, &amp;curvePrivateKey); err != nil {
+		<a href="../../src/crypto/x509/pkcs8.go.html#line-84" class="path-duplicate">pkcs8.go</a><a href="../../src/crypto/x509/pkcs8.go.html#line-84">#L84</a>: 		if _, err := asn1.<b>Unmarshal</b>(privKey.PrivateKey, &amp;curvePrivateKey); err != nil {
+		<a href="../../src/crypto/x509/sec1.go.html#line-86">sec1.go#L86</a>: 	if _, err := asn1.<b>Unmarshal</b>(der, &amp;privKey); err != nil {
+		<a href="../../src/crypto/x509/sec1.go.html#line-87" class="path-duplicate">sec1.go</a><a href="../../src/crypto/x509/sec1.go.html#line-87">#L87</a>: 		if _, err := asn1.<b>Unmarshal</b>(der, &amp;pkcs8{}); err == nil {
+		<a href="../../src/crypto/x509/sec1.go.html#line-90" class="path-duplicate">sec1.go</a><a href="../../src/crypto/x509/sec1.go.html#line-90">#L90</a>: 		if _, err := asn1.<b>Unmarshal</b>(der, &amp;pkcs1PrivateKey{}); err == nil {
+		<a href="../../src/crypto/x509/x509.go.html#line-73">x509.go#L73</a>: 	if rest, err := asn1.<b>Unmarshal</b>(derBytes, &amp;pki); err != nil {
+		<a href="../../src/crypto/x509/x509.go.html#line-74" class="path-duplicate">x509.go</a><a href="../../src/crypto/x509/x509.go.html#line-74">#L74</a>: 		if _, err := asn1.<b>Unmarshal</b>(derBytes, &amp;pkcs1PublicKey{}); err == nil {
+		<a href="../../src/crypto/x509/x509.go.html#line-428" class="path-duplicate">x509.go</a><a href="../../src/crypto/x509/x509.go.html#line-428">#L428</a>: 	if _, err := asn1.<b>Unmarshal</b>(ai.Parameters.FullBytes, &amp;params); err != nil {
+		<a href="../../src/crypto/x509/x509.go.html#line-433" class="path-duplicate">x509.go</a><a href="../../src/crypto/x509/x509.go.html#line-433">#L433</a>: 	if _, err := asn1.<b>Unmarshal</b>(params.MGF.Parameters.FullBytes, &amp;mgf1HashFunc); err != nil {
+		<a href="../../src/crypto/x509/x509.go.html#line-1740" class="path-duplicate">x509.go</a><a href="../../src/crypto/x509/x509.go.html#line-1740">#L1740</a>: 	if rest, err := asn1.<b>Unmarshal</b>(derBytes, certList); err != nil {
+		<a href="../../src/crypto/x509/x509.go.html#line-1890" class="path-duplicate">x509.go</a><a href="../../src/crypto/x509/x509.go.html#line-1890">#L1890</a>: 	rest, err := asn1.<b>Unmarshal</b>(b, &amp;rawAttributes)
+		<a href="../../src/crypto/x509/x509.go.html#line-1905" class="path-duplicate">x509.go</a><a href="../../src/crypto/x509/x509.go.html#line-1905">#L1905</a>: 		rest, err := asn1.<b>Unmarshal</b>(rawAttr.FullBytes, &amp;attr)
+		<a href="../../src/crypto/x509/x509.go.html#line-1928" class="path-duplicate">x509.go</a><a href="../../src/crypto/x509/x509.go.html#line-1928">#L1928</a>: 		if rest, err := asn1.<b>Unmarshal</b>(rawAttr.FullBytes, &amp;attr); err != nil || len(rest) != 0 || len(attr.Values) == 0 {
+		<a href="../../src/crypto/x509/x509.go.html#line-1938" class="path-duplicate">x509.go</a><a href="../../src/crypto/x509/x509.go.html#line-1938">#L1938</a>: 		if _, err := asn1.<b>Unmarshal</b>(attr.Values[0].FullBytes, &amp;extensions); err != nil {
+		<a href="../../src/crypto/x509/x509.go.html#line-2073" class="path-duplicate">x509.go</a><a href="../../src/crypto/x509/x509.go.html#line-2073">#L2073</a>: 		if _, err := asn1.<b>Unmarshal</b>(b, &amp;rawValue); err != nil {
+		<a href="../../src/crypto/x509/x509.go.html#line-2135" class="path-duplicate">x509.go</a><a href="../../src/crypto/x509/x509.go.html#line-2135">#L2135</a>: 	rest, err := asn1.<b>Unmarshal</b>(asn1Data, &amp;csr)
+		<a href="../../src/crypto/x509/x509.go.html#line-2170" class="path-duplicate">x509.go</a><a href="../../src/crypto/x509/x509.go.html#line-2170">#L2170</a>: 	if rest, err := asn1.<b>Unmarshal</b>(in.TBSCSR.Subject.FullBytes, &amp;subject); err != nil {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

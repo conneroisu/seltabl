@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: reflect.abiStep.stkOff</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/reflect.html">reflect</a>.<a href="../src/reflect/abi.go.html#line-40">abiStep</a>.<a href="../src/reflect/abi.go.html#line-49">stkOff</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">14 uses</span>
+
+	reflect (current package)
+		<a href="../src/reflect/abi.go.html#line-49">abi.go#L49</a>: 	<b>stkOff</b> uintptr // stack offset, used if kind == abiStepStack
+		<a href="../src/reflect/abi.go.html#line-94" class="path-duplicate">abi.go</a><a href="../src/reflect/abi.go.html#line-94">#L94</a>: 		println("part", i, p.kind, p.offset, p.size, p.<b>stkOff</b>, p.ireg, p.freg)
+		<a href="../src/reflect/abi.go.html#line-322" class="path-duplicate">abi.go</a><a href="../src/reflect/abi.go.html#line-322">#L322</a>: 		<b>stkOff</b>: a.stackBytes,
+		<a href="../src/reflect/abi.go.html#line-422" class="path-duplicate">abi.go</a><a href="../src/reflect/abi.go.html#line-422">#L422</a>: 			addTypeBits(stackPtrs, stkStep.<b>stkOff</b>, arg)
+		<a href="../src/reflect/abi.go.html#line-455" class="path-duplicate">abi.go</a><a href="../src/reflect/abi.go.html#line-455">#L455</a>: 			addTypeBits(stackPtrs, stkStep.<b>stkOff</b>, res)
+		<a href="../src/reflect/value.go.html#line-540">value.go#L540</a>: 				addr := add(stackArgs, st.<b>stkOff</b>, "precomputed stack arg offset")
+		<a href="../src/reflect/value.go.html#line-633" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-633">#L633</a>: 				ret[i] = Value{tv, add(stackArgs, st.<b>stkOff</b>, "tv.Size() != 0"), fl}
+		<a href="../src/reflect/value.go.html#line-739" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-739">#L739</a>: 					typedmemmove(typ, v.ptr, add(ptr, st.<b>stkOff</b>, "typ.size &gt; 0"))
+		<a href="../src/reflect/value.go.html#line-743" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-743">#L743</a>: 				v.ptr = *(*unsafe.Pointer)(add(ptr, st.<b>stkOff</b>, "1-ptr"))
+		<a href="../src/reflect/value.go.html#line-824" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-824">#L824</a>: 					addr := add(ptr, st.<b>stkOff</b>, "precomputed stack arg offset")
+		<a href="../src/reflect/value.go.html#line-1034" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1034">#L1034</a>: 					add(methodFrame, mStep.<b>stkOff</b>, "precomputed stack offset"),
+		<a href="../src/reflect/value.go.html#line-1035" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1035">#L1035</a>: 					add(valueFrame, vStep.<b>stkOff</b>, "precomputed stack offset"))
+		<a href="../src/reflect/value.go.html#line-1040" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1040">#L1040</a>: 				from := add(valueFrame, vStep.<b>stkOff</b>+mStep.offset, "precomputed stack offset")
+		<a href="../src/reflect/value.go.html#line-1059" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1059">#L1059</a>: 				to := add(methodFrame, mStep.<b>stkOff</b>+vStep.offset, "precomputed stack offset")
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

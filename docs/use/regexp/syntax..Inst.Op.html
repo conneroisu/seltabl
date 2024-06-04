@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: regexp/syntax.Inst.Op</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/regexp/syntax.html">regexp/syntax</a>.<a href="../../src/regexp/syntax/prog.go.html#line-115">Inst</a>.<a href="../../src/regexp/syntax/prog.go.html#line-116">Op</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">43 uses</span>
+
+	regexp/syntax (current package)
+		<a href="../../src/regexp/syntax/compile.go.html#line-164">compile.go#L164</a>: 	c.p.Inst = append(c.p.Inst, Inst{<b>Op</b>: op})
+		<a href="../../src/regexp/syntax/compile.go.html#line-288" class="path-duplicate">compile.go</a><a href="../../src/regexp/syntax/compile.go.html#line-288">#L288</a>: 		i.<b>Op</b> = InstRune1
+		<a href="../../src/regexp/syntax/compile.go.html#line-290" class="path-duplicate">compile.go</a><a href="../../src/regexp/syntax/compile.go.html#line-290">#L290</a>: 		i.<b>Op</b> = InstRuneAny
+		<a href="../../src/regexp/syntax/compile.go.html#line-292" class="path-duplicate">compile.go</a><a href="../../src/regexp/syntax/compile.go.html#line-292">#L292</a>: 		i.<b>Op</b> = InstRuneAnyNotNL
+		<a href="../../src/regexp/syntax/prog.go.html#line-116">prog.go#L116</a>: 	<b>Op</b>   InstOp
+		<a href="../../src/regexp/syntax/prog.go.html#line-131" class="path-duplicate">prog.go</a><a href="../../src/regexp/syntax/prog.go.html#line-131">#L131</a>: 	for i.<b>Op</b> == InstNop || i.<b>Op</b> == InstCapture {
+		<a href="../../src/regexp/syntax/prog.go.html#line-139" class="path-duplicate">prog.go</a><a href="../../src/regexp/syntax/prog.go.html#line-139">#L139</a>: 	op := i.<b>Op</b>
+		<a href="../../src/regexp/syntax/prog.go.html#line-155" class="path-duplicate">prog.go</a><a href="../../src/regexp/syntax/prog.go.html#line-155">#L155</a>: 		return "", i.<b>Op</b> == InstMatch
+		<a href="../../src/regexp/syntax/prog.go.html#line-164" class="path-duplicate">prog.go</a><a href="../../src/regexp/syntax/prog.go.html#line-164">#L164</a>: 	return buf.String(), i.<b>Op</b> == InstMatch
+		<a href="../../src/regexp/syntax/prog.go.html#line-175" class="path-duplicate">prog.go</a><a href="../../src/regexp/syntax/prog.go.html#line-175">#L175</a>: 		switch i.<b>Op</b> {
+		<a href="../../src/regexp/syntax/prog.go.html#line-317" class="path-duplicate">prog.go</a><a href="../../src/regexp/syntax/prog.go.html#line-317">#L317</a>: 	switch i.<b>Op</b> {
+
+	<a href="../../pkg/regexp.html">regexp</a>
+		<a href="../../src/regexp/backtrack.go.html#line-132">backtrack.go#L132</a>: 	if re.prog.Inst[pc].<b>Op</b> != syntax.InstFail &amp;&amp; (arg || b.shouldVisit(pc, pos)) {
+		<a href="../../src/regexp/backtrack.go.html#line-166" class="path-duplicate">backtrack.go</a><a href="../../src/regexp/backtrack.go.html#line-166">#L166</a>: 		switch inst.<b>Op</b> {
+		<a href="../../src/regexp/backtrack.go.html#line-193" class="path-duplicate">backtrack.go</a><a href="../../src/regexp/backtrack.go.html#line-193">#L193</a>: 			switch re.prog.Inst[inst.Out].<b>Op</b> {
+		<a href="../../src/regexp/exec.go.html#line-274">exec.go#L274</a>: 		switch i.<b>Op</b> {
+		<a href="../../src/regexp/exec.go.html#line-334" class="path-duplicate">exec.go</a><a href="../../src/regexp/exec.go.html#line-334">#L334</a>: 	switch i.<b>Op</b> {
+		<a href="../../src/regexp/exec.go.html#line-447" class="path-duplicate">exec.go</a><a href="../../src/regexp/exec.go.html#line-447">#L447</a>: 		switch inst.<b>Op</b> {
+		<a href="../../src/regexp/onepass.go.html#line-43">onepass.go#L43</a>: 	if i.<b>Op</b> != syntax.InstEmptyWidth || (syntax.EmptyOp(i.Arg))&amp;syntax.EmptyBeginText == 0 {
+		<a href="../../src/regexp/onepass.go.html#line-44" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-44">#L44</a>: 		return "", i.<b>Op</b> == syntax.InstMatch, uint32(p.Start)
+		<a href="../../src/regexp/onepass.go.html#line-48" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-48">#L48</a>: 	for i.<b>Op</b> == syntax.InstNop {
+		<a href="../../src/regexp/onepass.go.html#line-54" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-54">#L54</a>: 		return "", i.<b>Op</b> == syntax.InstMatch, uint32(p.Start)
+		<a href="../../src/regexp/onepass.go.html#line-63" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-63">#L63</a>: 	if i.<b>Op</b> == syntax.InstEmptyWidth &amp;&amp;
+		<a href="../../src/regexp/onepass.go.html#line-65" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-65">#L65</a>: 		p.Inst[i.Out].<b>Op</b> == syntax.InstMatch {
+		<a href="../../src/regexp/onepass.go.html#line-80" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-80">#L80</a>: 	if i.<b>Op</b> == syntax.InstAltMatch {
+		<a href="../../src/regexp/onepass.go.html#line-87" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-87">#L87</a>: 	op := i.<b>Op</b>
+		<a href="../../src/regexp/onepass.go.html#line-210" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-210">#L210</a>: 		switch instOriginal.<b>Op</b> {
+		<a href="../../src/regexp/onepass.go.html#line-238" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-238">#L238</a>: 		switch p.Inst[pc].<b>Op</b> {
+		<a href="../../src/regexp/onepass.go.html#line-247" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-247">#L247</a>: 			if !(instAlt.<b>Op</b> == syntax.InstAlt || instAlt.<b>Op</b> == syntax.InstAltMatch) {
+		<a href="../../src/regexp/onepass.go.html#line-250" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-250">#L250</a>: 				if !(instAlt.<b>Op</b> == syntax.InstAlt || instAlt.<b>Op</b> == syntax.InstAltMatch) {
+		<a href="../../src/regexp/onepass.go.html#line-256" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-256">#L256</a>: 			if instOther.<b>Op</b> == syntax.InstAlt || instOther.<b>Op</b> == syntax.InstAltMatch {
+		<a href="../../src/regexp/onepass.go.html#line-322" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-322">#L322</a>: 		switch inst.<b>Op</b> {
+		<a href="../../src/regexp/onepass.go.html#line-339" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-339">#L339</a>: 				inst.<b>Op</b> = syntax.InstAltMatch
+		<a href="../../src/regexp/onepass.go.html#line-367" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-367">#L367</a>: 			m[pc] = inst.<b>Op</b> == syntax.InstMatch
+		<a href="../../src/regexp/onepass.go.html#line-395" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-395">#L395</a>: 			inst.<b>Op</b> = syntax.InstRune
+		<a href="../../src/regexp/onepass.go.html#line-419" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-419">#L419</a>: 			inst.<b>Op</b> = syntax.InstRune
+		<a href="../../src/regexp/onepass.go.html#line-471" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-471">#L471</a>: 	if prog.Inst[prog.Start].<b>Op</b> != syntax.InstEmptyWidth ||
+		<a href="../../src/regexp/onepass.go.html#line-477" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-477">#L477</a>: 		opOut := prog.Inst[inst.Out].<b>Op</b>
+		<a href="../../src/regexp/onepass.go.html#line-478" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-478">#L478</a>: 		switch inst.<b>Op</b> {
+		<a href="../../src/regexp/onepass.go.html#line-484" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-484">#L484</a>: 			if opOut == syntax.InstMatch || prog.Inst[inst.Arg].<b>Op</b> == syntax.InstMatch {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

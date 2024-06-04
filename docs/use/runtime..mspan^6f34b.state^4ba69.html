@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.mspan.state</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/mheap.go.html#line-398">mspan</a>.<a href="../src/runtime/mheap.go.html#line-482">state</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">26 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/cgocheck.go.html#line-165">cgocheck.go#L165</a>: 	if s.<b>state</b>.get() == mSpanManual {
+		<a href="../src/runtime/heapdump.go.html#line-456">heapdump.go#L456</a>: 		if s.<b>state</b>.get() == mSpanInUse {
+		<a href="../src/runtime/heapdump.go.html#line-482" class="path-duplicate">heapdump.go</a><a href="../src/runtime/heapdump.go.html#line-482">#L482</a>: 		if s.<b>state</b>.get() != mSpanInUse {
+		<a href="../src/runtime/heapdump.go.html#line-654" class="path-duplicate">heapdump.go</a><a href="../src/runtime/heapdump.go.html#line-654">#L654</a>: 		if s.<b>state</b>.get() != mSpanInUse {
+		<a href="../src/runtime/heapdump.go.html#line-677" class="path-duplicate">heapdump.go</a><a href="../src/runtime/heapdump.go.html#line-677">#L677</a>: 		if s.<b>state</b>.get() == mSpanInUse {
+		<a href="../src/runtime/mbitmap.go.html#line-272">mbitmap.go#L272</a>: 		state := s.<b>state</b>.get()
+		<a href="../src/runtime/mbitmap.go.html#line-321" class="path-duplicate">mbitmap.go</a><a href="../src/runtime/mbitmap.go.html#line-321">#L321</a>: 	if state := s.<b>state</b>.get(); state != mSpanInUse || p &lt; s.base() || p &gt;= s.limit {
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-444">mbitmap_allocheaders.go#L444</a>: 	} else if s.<b>state</b>.get() != mSpanInUse || dst &lt; s.base() || s.limit &lt;= dst {
+		<a href="../src/runtime/mgcmark.go.html#line-364">mgcmark.go#L364</a>: 			if state := s.<b>state</b>.get(); state != mSpanInUse {
+		<a href="../src/runtime/mgcmark.go.html#line-1677" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-1677">#L1677</a>: 	if state := s.<b>state</b>.get(); 0 &lt;= state &amp;&amp; int(state) &lt; len(mSpanStateNames) {
+		<a href="../src/runtime/mgcmark.go.html#line-1685" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-1685">#L1685</a>: 	if s.<b>state</b>.get() == mSpanManual &amp;&amp; size == 0 {
+		<a href="../src/runtime/mgcsweep.go.html#line-377">mgcsweep.go#L377</a>: 		if state := s.<b>state</b>.get(); state != mSpanInUse {
+		<a href="../src/runtime/mgcsweep.go.html#line-515" class="path-duplicate">mgcsweep.go</a><a href="../src/runtime/mgcsweep.go.html#line-515">#L515</a>: 	if state := s.<b>state</b>.get(); state != mSpanInUse || s.sweepgen != sweepgen-1 {
+		<a href="../src/runtime/mgcsweep.go.html#line-680" class="path-duplicate">mgcsweep.go</a><a href="../src/runtime/mgcsweep.go.html#line-680">#L680</a>: 	if state := s.<b>state</b>.get(); state != mSpanInUse || s.sweepgen != sweepgen-1 {
+		<a href="../src/runtime/mgcsweep.go.html#line-717" class="path-duplicate">mgcsweep.go</a><a href="../src/runtime/mgcsweep.go.html#line-717">#L717</a>: 		s.<b>state</b>.set(mSpanDead)
+		<a href="../src/runtime/mheap.go.html#line-482">mheap.go#L482</a>: 	<b>state</b>                 mSpanStateBox // mSpanInUse etc; accessed atomically (get/set methods)
+		<a href="../src/runtime/mheap.go.html#line-653" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-653">#L653</a>: 	switch s.<b>state</b>.get() {
+		<a href="../src/runtime/mheap.go.html#line-725" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-725">#L725</a>: 	if s == nil || s.<b>state</b>.get() != mSpanInUse || p &lt; s.base() || p &gt;= s.limit {
+		<a href="../src/runtime/mheap.go.html#line-1389" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1389">#L1389</a>: 		s.<b>state</b>.set(mSpanManual)
+		<a href="../src/runtime/mheap.go.html#line-1431" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1431">#L1431</a>: 		s.<b>state</b>.set(mSpanInUse)
+		<a href="../src/runtime/mheap.go.html#line-1595" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1595">#L1595</a>: 	switch s.<b>state</b>.get() {
+		<a href="../src/runtime/mheap.go.html#line-1643" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1643">#L1643</a>: 	s.<b>state</b>.set(mSpanDead)
+		<a href="../src/runtime/mheap.go.html#line-1696" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1696">#L1696</a>: 	span.<b>state</b>.set(mSpanDead)
+		<a href="../src/runtime/signal_unix.go.html#line-410">signal_unix.go#L410</a>: 			if s != nil &amp;&amp; s.<b>state</b>.get() == mSpanManual &amp;&amp; s.base() &lt; sp &amp;&amp; sp &lt; s.limit {
+		<a href="../src/runtime/stack.go.html#line-234">stack.go#L234</a>: 	if s.<b>state</b>.get() != mSpanManual {
+		<a href="../src/runtime/stack.go.html#line-490" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-490">#L490</a>: 		if s.<b>state</b>.get() != mSpanManual {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

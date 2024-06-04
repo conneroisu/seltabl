@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: math.MaxInt32</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../pkg/math.html">math</a>.<a href="../src/math/const.go.html#line-48">MaxInt32</a></b></span>
+
+<span class="title">22 uses</span>
+
+	math (current package)
+		<a href="../src/math/const.go.html#line-48">const.go#L48</a>: 	<b>MaxInt32</b>  = 1&lt;&lt;31 - 1           // 2147483647
+		<a href="../src/math/logb.go.html#line-40">logb.go#L40</a>: 		return <b>MaxInt32</b>
+		<a href="../src/math/logb.go.html#line-42" class="path-duplicate">logb.go</a><a href="../src/math/logb.go.html#line-42">#L42</a>: 		return <b>MaxInt32</b>
+
+	<a href="../pkg/math/big.html">math/big</a>
+		<a href="../src/math/big/float.go.html#line-97">float.go#L97</a>: 	MaxExp  = math.<b>MaxInt32</b>  // largest supported exponent
+
+	<a href="../pkg/compress/flate.html">compress/flate</a>
+		<a href="../src/compress/flate/deflate.go.html#line-58">deflate.go#L58</a>: 	skipNever = math.<b>MaxInt32</b>
+		<a href="../src/compress/flate/deflate.go.html#line-132" class="path-duplicate">deflate.go</a><a href="../src/compress/flate/deflate.go.html#line-132">#L132</a>: 			d.blockStart = math.<b>MaxInt32</b>
+		<a href="../src/compress/flate/deflatefast.go.html#line-23">deflatefast.go#L23</a>: 	bufferReset = math.<b>MaxInt32</b> - maxStoreBlockSize*2
+		<a href="../src/compress/flate/huffman_code.go.html#line-57">huffman_code.go#L57</a>: func maxNode() literalNode { return literalNode{math.MaxUint16, math.<b>MaxInt32</b>} }
+		<a href="../src/compress/flate/huffman_code.go.html#line-168" class="path-duplicate">huffman_code.go</a><a href="../src/compress/flate/huffman_code.go.html#line-168">#L168</a>: 			levels[level].nextPairFreq = math.<b>MaxInt32</b>
+		<a href="../src/compress/flate/huffman_code.go.html#line-178" class="path-duplicate">huffman_code.go</a><a href="../src/compress/flate/huffman_code.go.html#line-178">#L178</a>: 		if l.nextPairFreq == math.<b>MaxInt32</b> &amp;&amp; l.nextCharFreq == math.<b>MaxInt32</b> {
+		<a href="../src/compress/flate/huffman_code.go.html#line-184" class="path-duplicate">huffman_code.go</a><a href="../src/compress/flate/huffman_code.go.html#line-184">#L184</a>: 			levels[level+1].nextPairFreq = math.<b>MaxInt32</b>
+
+	<a href="../pkg/crypto/x509.html">crypto/x509</a>
+		<a href="../src/crypto/x509/oid.go.html#line-116">oid.go#L116</a>: 			if ret64 &gt; math.<b>MaxInt32</b> {
+
+	<a href="../pkg/encoding/asn1.html">encoding/asn1</a>
+		<a href="../src/encoding/asn1/asn1.go.html#line-330">asn1.go#L330</a>: 			if ret64 &gt; math.<b>MaxInt32</b> {
+
+	<a href="../pkg/net/http.html">net/http</a>
+		<a href="../src/net/http/h2_bundle.go.html#line-8044">h2_bundle.go#L8044</a>: 		int64(cc.nextStreamID)+2*int64(cc.pendingRequests) &lt; math.<b>MaxInt32</b> &amp;&amp;
+		<a href="../src/net/http/h2_bundle.go.html#line-9926" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-9926">#L9926</a>: 			if s.Val &gt; math.<b>MaxInt32</b> {
+		<a href="../src/net/http/h2_bundle.go.html#line-10974" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-10974">#L10974</a>: 		ws.writeThrottleLimit = math.<b>MaxInt32</b>
+		<a href="../src/net/http/h2_bundle.go.html#line-11303" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-11303">#L11303</a>: 		limit := int32(math.<b>MaxInt32</b>)
+		<a href="../src/net/http/h2_bundle.go.html#line-11318" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-11318">#L11318</a>: 				ws.writeThrottleLimit = math.<b>MaxInt32</b>
+		<a href="../src/net/http/h2_bundle.go.html#line-11409" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-11409">#L11409</a>: 		if wr, ok := q.consume(math.<b>MaxInt32</b>); ok {
+		<a href="../src/net/http/h2_bundle.go.html#line-11517" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-11517">#L11517</a>: 		if wr, ok := q.consume(math.<b>MaxInt32</b>); ok {
+
+	<a href="../pkg/vendor/golang.org/x/net/idna.html">vendor/golang.org/x/net/idna</a>
+		<a href="../src/vendor/golang.org/x/net/idna/punycode.go.html#line-175">punycode.go#L175</a>: 	if p &gt; math.<b>MaxInt32</b>-int64(a) {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

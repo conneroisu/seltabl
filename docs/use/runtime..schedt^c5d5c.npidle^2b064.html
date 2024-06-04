@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.schedt.npidle</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/runtime2.go.html#line-799">schedt</a>.<a href="../src/runtime/runtime2.go.html#line-820">npidle</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">14 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/proc.go.html#line-362">proc.go#L362</a>: 	if !gp.preempt &amp;&amp; sched.<b>npidle</b>.Load() &gt; 0 {
+		<a href="../src/runtime/proc.go.html#line-2926" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-2926">#L2926</a>: 	if sched.nmspinning.Load()+sched.<b>npidle</b>.Load() == 0 &amp;&amp; sched.nmspinning.CompareAndSwap(0, 1) { // TODO: fast atomic
+		<a href="../src/runtime/proc.go.html#line-2955" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-2955">#L2955</a>: 	if sched.<b>npidle</b>.Load() == gomaxprocs-1 &amp;&amp; sched.lastpoll.Load() != 0 {
+		<a href="../src/runtime/proc.go.html#line-3249" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-3249">#L3249</a>: 	if mp.spinning || 2*sched.nmspinning.Load() &lt; gomaxprocs-sched.<b>npidle</b>.Load() {
+		<a href="../src/runtime/proc.go.html#line-3817" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-3817">#L3817</a>: 	npidle := int(sched.<b>npidle</b>.Load())
+		<a href="../src/runtime/proc.go.html#line-5983" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-5983">#L5983</a>: 		if debug.schedtrace &lt;= 0 &amp;&amp; (sched.gcwaiting.Load() || sched.<b>npidle</b>.Load() == gomaxprocs) {
+		<a href="../src/runtime/proc.go.html#line-5985" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-5985">#L5985</a>: 			if sched.gcwaiting.Load() || sched.<b>npidle</b>.Load() == gomaxprocs {
+		<a href="../src/runtime/proc.go.html#line-6146" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6146">#L6146</a>: 			if runqempty(pp) &amp;&amp; sched.nmspinning.Load()+sched.<b>npidle</b>.Load() &gt; 0 &amp;&amp; pd.syscallwhen+10*1000*1000 &gt; now {
+		<a href="../src/runtime/proc.go.html#line-6241" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6241">#L6241</a>: 	print("SCHED ", (now-starttime)/1e6, "ms: gomaxprocs=", gomaxprocs, " idleprocs=", sched.<b>npidle</b>.Load(), " threads=", mcount(), " spinningthreads=", sched.nmspinning.Load(), " needspinning=", sched.needspinning.Load(), " idlethreads=", sched.nmidle, " runqueue=", sched.runqsize)
+		<a href="../src/runtime/proc.go.html#line-6337" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6337">#L6337</a>: 		for ; n != 0 &amp;&amp; sched.<b>npidle</b>.Load() != 0; n-- {
+		<a href="../src/runtime/proc.go.html#line-6545" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6545">#L6545</a>: 	sched.<b>npidle</b>.Add(1)
+		<a href="../src/runtime/proc.go.html#line-6571" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6571">#L6571</a>: 		sched.<b>npidle</b>.Add(-1)
+		<a href="../src/runtime/proc.go.html#line-7051" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-7051">#L7051</a>: 	if i &gt;= active_spin || ncpu &lt;= 1 || gomaxprocs &lt;= sched.<b>npidle</b>.Load()+sched.nmspinning.Load()+1 {
+		<a href="../src/runtime/runtime2.go.html#line-820">runtime2.go#L820</a>: 	<b>npidle</b>       atomic.Int32
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

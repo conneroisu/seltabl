@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: compress/flate.compressor.bestSpeed</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/compress/flate.html">compress/flate</a>.<a href="../../src/compress/flate/deflate.go.html#line-81">compressor</a>.<a href="../../src/compress/flate/deflate.go.html#line-91">bestSpeed</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">5 uses</span>
+
+	compress/flate (current package)
+		<a href="../../src/compress/flate/deflate.go.html#line-91">deflate.go#L91</a>: 	<b>bestSpeed</b> *deflateFast                  // Encoder for BestSpeed
+		<a href="../../src/compress/flate/deflate.go.html#line-350" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-350">#L350</a>: 			d.<b>bestSpeed</b>.reset()
+		<a href="../../src/compress/flate/deflate.go.html#line-356" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-356">#L356</a>: 	d.tokens = d.<b>bestSpeed</b>.encode(d.tokens[:0], d.window[:d.windowEnd])
+		<a href="../../src/compress/flate/deflate.go.html#line-585" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-585">#L585</a>: 		d.<b>bestSpeed</b> = newDeflateFast()
+		<a href="../../src/compress/flate/deflate.go.html#line-611" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-611">#L611</a>: 		d.<b>bestSpeed</b>.reset()
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

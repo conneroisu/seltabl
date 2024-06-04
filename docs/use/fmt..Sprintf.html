@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: fmt.Sprintf</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/fmt.html">fmt</a>.<a href="../src/fmt/print.go.html#line-237">Sprintf</a></b></span>
+
+<span class="title">127 uses</span>
+
+	fmt (current package)
+		<a href="../src/fmt/print.go.html#line-237">print.go#L237</a>: func <b>Sprintf</b>(format string, a ...any) string {
+
+	<a href="../pkg/crypto/tls.html">crypto/tls</a>
+		<a href="../src/crypto/tls/cipher_suites.go.html#line-110">cipher_suites.go#L110</a>: 	return fmt.<b>Sprintf</b>("0x%04X", id)
+		<a href="../src/crypto/tls/common.go.html#line-56">common.go#L56</a>: 		return fmt.<b>Sprintf</b>("0x%04X", version)
+		<a href="../src/crypto/tls/common.go.html#line-890" class="path-duplicate">common.go</a><a href="../src/crypto/tls/common.go.html#line-890">#L890</a>: 			panic(fmt.<b>Sprintf</b>("tls: unable to generate random session ticket key: %v", err))
+		<a href="../src/crypto/tls/common.go.html#line-952" class="path-duplicate">common.go</a><a href="../src/crypto/tls/common.go.html#line-952">#L952</a>: 			panic(fmt.<b>Sprintf</b>("unable to generate random session ticket key: %v", err))
+		<a href="../src/crypto/tls/common.go.html#line-1552" class="path-duplicate">common.go</a><a href="../src/crypto/tls/common.go.html#line-1552">#L1552</a>: 	return fmt.<b>Sprintf</b>("tls: failed to verify certificate: %s", e.Err)
+		<a href="../src/crypto/tls/conn.go.html#line-660">conn.go#L660</a>: 		msg := fmt.<b>Sprintf</b>("received record with version %x when expecting version %x", vers, expectedVers)
+		<a href="../src/crypto/tls/conn.go.html#line-674" class="path-duplicate">conn.go</a><a href="../src/crypto/tls/conn.go.html#line-674">#L674</a>: 		msg := fmt.<b>Sprintf</b>("oversized record received with length %d", n)
+		<a href="../src/crypto/tls/quic.go.html#line-35">quic.go#L35</a>: 		return fmt.<b>Sprintf</b>("QUICEncryptionLevel(%v)", int(l))
+
+	<a href="../pkg/crypto/x509.html">crypto/x509</a>
+		<a href="../src/crypto/x509/verify.go.html#line-151">verify.go#L151</a>: 		s += fmt.<b>Sprintf</b>(" (possibly because of %q while trying to verify candidate authority certificate %q)", e.hintErr, certName)
+		<a href="../src/crypto/x509/verify.go.html#line-524" class="path-duplicate">verify.go</a><a href="../src/crypto/x509/verify.go.html#line-524">#L524</a>: 			return CertificateInvalidError{c, CANotAuthorizedForThisName, fmt.<b>Sprintf</b>("%s %q is excluded by constraint %q", nameType, name, constraint)}
+		<a href="../src/crypto/x509/verify.go.html#line-550" class="path-duplicate">verify.go</a><a href="../src/crypto/x509/verify.go.html#line-550">#L550</a>: 		return CertificateInvalidError{c, CANotAuthorizedForThisName, fmt.<b>Sprintf</b>("%s %q is not permitted by any constraint", nameType, name)}
+		<a href="../src/crypto/x509/verify.go.html#line-578" class="path-duplicate">verify.go</a><a href="../src/crypto/x509/verify.go.html#line-578">#L578</a>: 			Detail: fmt.<b>Sprintf</b>("current time %s is before %s", now.Format(time.RFC3339), c.NotBefore.Format(time.RFC3339)),
+		<a href="../src/crypto/x509/verify.go.html#line-584" class="path-duplicate">verify.go</a><a href="../src/crypto/x509/verify.go.html#line-584">#L584</a>: 			Detail: fmt.<b>Sprintf</b>("current time %s is after %s", now.Format(time.RFC3339), c.NotAfter.Format(time.RFC3339)),
+		<a href="../src/crypto/x509/x509.go.html#line-804">x509.go#L804</a>: 	return fmt.<b>Sprintf</b>("x509: cannot verify signature: insecure algorithm %v", SignatureAlgorithm(e)) + override
+
+	<a href="../pkg/encoding/asn1.html">encoding/asn1</a>
+		<a href="../src/encoding/asn1/asn1.go.html#line-786">asn1.go#L786</a>: 		err = StructuralError{fmt.<b>Sprintf</b>("unknown Go type: %v", fieldType)}
+		<a href="../src/encoding/asn1/asn1.go.html#line-845" class="path-duplicate">asn1.go</a><a href="../src/encoding/asn1/asn1.go.html#line-845">#L845</a>: 			err = StructuralError{fmt.<b>Sprintf</b>("tags don't match (%d vs %+v) %+v %s @%d", expectedTag, t, params, fieldType.Name(), offset)}
+		<a href="../src/encoding/asn1/asn1.go.html#line-983" class="path-duplicate">asn1.go</a><a href="../src/encoding/asn1/asn1.go.html#line-983">#L983</a>: 			err = SyntaxError{fmt.<b>Sprintf</b>("internal error: unknown string type %d", universalTag)}
+		<a href="../src/encoding/asn1/marshal.go.html#line-626">marshal.go#L626</a>: 		return nil, StructuralError{fmt.<b>Sprintf</b>("unknown Go type: %v", v.Type())}
+
+	<a href="../pkg/encoding/hex.html">encoding/hex</a>
+		<a href="../src/encoding/hex/hex.go.html#line-73">hex.go#L73</a>: 	return fmt.<b>Sprintf</b>("encoding/hex: invalid byte: %#U", rune(e))
+
+	<a href="../pkg/github.com/andybalholm/cascadia.html">github.com/andybalholm/cascadia</a>
+		<a href="../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-46">pseudo_classes.go#L46</a>: 		panic(fmt.<b>Sprintf</b>("unsupported relative pseudo class selector : %s", s.name))
+		<a href="../src/github.com/andybalholm/cascadia/selector.go.html#line-294">selector.go#L294</a>: 		panic(fmt.<b>Sprintf</b>("unsuported operation : %s", t.operation))
+		<a href="../src/github.com/andybalholm/cascadia/serialize.go.html#line-41">serialize.go#L41</a>: 		val = fmt.<b>Sprintf</b>(`"%s"`, val)
+		<a href="../src/github.com/andybalholm/cascadia/serialize.go.html#line-50" class="path-duplicate">serialize.go</a><a href="../src/github.com/andybalholm/cascadia/serialize.go.html#line-50">#L50</a>: 	return fmt.<b>Sprintf</b>(`[%s%s%s%s]`, c.key, c.operation, val, ignoreCase)
+		<a href="../src/github.com/andybalholm/cascadia/serialize.go.html#line-54" class="path-duplicate">serialize.go</a><a href="../src/github.com/andybalholm/cascadia/serialize.go.html#line-54">#L54</a>: 	return fmt.<b>Sprintf</b>(":%s(%s)", c.name, c.match.String())
+		<a href="../src/github.com/andybalholm/cascadia/serialize.go.html#line-62" class="path-duplicate">serialize.go</a><a href="../src/github.com/andybalholm/cascadia/serialize.go.html#line-62">#L62</a>: 	return fmt.<b>Sprintf</b>(`:%s("%s")`, s, c.value)
+		<a href="../src/github.com/andybalholm/cascadia/serialize.go.html#line-70" class="path-duplicate">serialize.go</a><a href="../src/github.com/andybalholm/cascadia/serialize.go.html#line-70">#L70</a>: 	return fmt.<b>Sprintf</b>(":%s(%s)", s, c.regexp.String())
+		<a href="../src/github.com/andybalholm/cascadia/serialize.go.html#line-97" class="path-duplicate">serialize.go</a><a href="../src/github.com/andybalholm/cascadia/serialize.go.html#line-97">#L97</a>: 	s := fmt.<b>Sprintf</b>("+%d", c.b)
+		<a href="../src/github.com/andybalholm/cascadia/serialize.go.html#line-101" class="path-duplicate">serialize.go</a><a href="../src/github.com/andybalholm/cascadia/serialize.go.html#line-101">#L101</a>: 	return fmt.<b>Sprintf</b>(":%s(%dn%s)", name, c.a, s)
+		<a href="../src/github.com/andybalholm/cascadia/serialize.go.html#line-128" class="path-duplicate">serialize.go</a><a href="../src/github.com/andybalholm/cascadia/serialize.go.html#line-128">#L128</a>: 	return fmt.<b>Sprintf</b>(":lang(%s)", c.lang)
+		<a href="../src/github.com/andybalholm/cascadia/serialize.go.html#line-165" class="path-duplicate">serialize.go</a><a href="../src/github.com/andybalholm/cascadia/serialize.go.html#line-165">#L165</a>: 		start += fmt.<b>Sprintf</b>(" %s %s", string(c.combinator), c.second.String())
+
+	<a href="../pkg/github.com/conneroisu/seltabl.html">github.com/conneroisu/seltabl</a>
+		<a href="../src/github.com/conneroisu/seltabl/parse.go.html#line-121">parse.go#L121</a>: 			fmt.<b>Sprintf</b>("%s:not(%s)", dataSelector, headSelector),
+
+	<a href="../pkg/github.com/conneroisu/seltabl/internal/errors.html">github.com/conneroisu/seltabl/internal/errors</a>
+		<a href="../src/github.com/conneroisu/seltabl/internal/errors/selection.go.html#line-38">selection.go#L38</a>: 	result.WriteString(fmt.<b>Sprintf</b>("Selector: %s\n", selector))
+		<a href="../src/github.com/conneroisu/seltabl/internal/errors/selection.go.html#line-39" class="path-duplicate">selection.go</a><a href="../src/github.com/conneroisu/seltabl/internal/errors/selection.go.html#line-39">#L39</a>: 	result.WriteString(fmt.<b>Sprintf</b>("type struct %s {\n", structType.Name()))
+		<a href="../src/github.com/conneroisu/seltabl/internal/errors/selection.go.html#line-47" class="path-duplicate">selection.go</a><a href="../src/github.com/conneroisu/seltabl/internal/errors/selection.go.html#line-47">#L47</a>: 		_, err = result.WriteString(fmt.<b>Sprintf</b>("\t%s %v %s\n", field.Name, fieldValue.Type(), *skv))
+		<a href="../src/github.com/conneroisu/seltabl/internal/errors/selection.go.html#line-78" class="path-duplicate">selection.go</a><a href="../src/github.com/conneroisu/seltabl/internal/errors/selection.go.html#line-78">#L78</a>: 			_, err = result.WriteString(fmt.<b>Sprintf</b>(" %s:%s", key, "==\""+value+"\"=="))
+		<a href="../src/github.com/conneroisu/seltabl/internal/errors/selection.go.html#line-83" class="path-duplicate">selection.go</a><a href="../src/github.com/conneroisu/seltabl/internal/errors/selection.go.html#line-83">#L83</a>: 			_, err = result.WriteString(fmt.<b>Sprintf</b>(" %v:\"%v\"", match[1], match[2]))
+		<a href="../src/github.com/conneroisu/seltabl/internal/errors/selection.go.html#line-101" class="path-duplicate">selection.go</a><a href="../src/github.com/conneroisu/seltabl/internal/errors/selection.go.html#line-101">#L101</a>: 		return fmt.<b>Sprintf</b>("failed to generate struct: %s", err)
+		<a href="../src/github.com/conneroisu/seltabl/internal/errors/selection.go.html#line-103" class="path-duplicate">selection.go</a><a href="../src/github.com/conneroisu/seltabl/internal/errors/selection.go.html#line-103">#L103</a>: 	return fmt.<b>Sprintf</b>(
+		<a href="../src/github.com/conneroisu/seltabl/internal/errors/selector.go.html#line-34">selector.go#L34</a>: 	result.WriteString(fmt.<b>Sprintf</b>("Selector: %s\n", selector))
+		<a href="../src/github.com/conneroisu/seltabl/internal/errors/selector.go.html#line-35" class="path-duplicate">selector.go</a><a href="../src/github.com/conneroisu/seltabl/internal/errors/selector.go.html#line-35">#L35</a>: 	result.WriteString(fmt.<b>Sprintf</b>("type struct %s {\n", structType.Name()))
+		<a href="../src/github.com/conneroisu/seltabl/internal/errors/selector.go.html#line-43" class="path-duplicate">selector.go</a><a href="../src/github.com/conneroisu/seltabl/internal/errors/selector.go.html#line-43">#L43</a>: 		result.WriteString(fmt.<b>Sprintf</b>("\t%s %v %s\n", field.Name, fieldValue.Type(), *skv))
+		<a href="../src/github.com/conneroisu/seltabl/internal/errors/selector.go.html#line-69" class="path-duplicate">selector.go</a><a href="../src/github.com/conneroisu/seltabl/internal/errors/selector.go.html#line-69">#L69</a>: 			_, err = result.WriteString(fmt.<b>Sprintf</b>(" %s:%s", key, "==\""+value+"\"=="))
+		<a href="../src/github.com/conneroisu/seltabl/internal/errors/selector.go.html#line-74" class="path-duplicate">selector.go</a><a href="../src/github.com/conneroisu/seltabl/internal/errors/selector.go.html#line-74">#L74</a>: 			_, err = result.WriteString(fmt.<b>Sprintf</b>(" %v:\"%v\"", match[1], match[2]))
+		<a href="../src/github.com/conneroisu/seltabl/internal/errors/selector.go.html#line-94" class="path-duplicate">selector.go</a><a href="../src/github.com/conneroisu/seltabl/internal/errors/selector.go.html#line-94">#L94</a>: 	return fmt.<b>Sprintf</b>(
+
+	<a href="../pkg/log.html">log</a>
+		<a href="../src/log/log.go.html#line-289">log.go#L289</a>: 	l.Output(2, fmt.<b>Sprintf</b>(format, v...))
+		<a href="../src/log/log.go.html#line-308" class="path-duplicate">log.go</a><a href="../src/log/log.go.html#line-308">#L308</a>: 	s := fmt.<b>Sprintf</b>(format, v...)
+		<a href="../src/log/log.go.html#line-418" class="path-duplicate">log.go</a><a href="../src/log/log.go.html#line-418">#L418</a>: 	std.Output(2, fmt.<b>Sprintf</b>(format, v...))
+		<a href="../src/log/log.go.html#line-437" class="path-duplicate">log.go</a><a href="../src/log/log.go.html#line-437">#L437</a>: 	s := fmt.<b>Sprintf</b>(format, v...)
+
+	<a href="../pkg/math/big.html">math/big</a>
+		<a href="../src/math/big/float.go.html#line-383">float.go#L383</a>: 		return fmt.<b>Sprintf</b>("msb not set in last word %#x of %s", x.mant[m-1], x.Text('p', 0))
+		<a href="../src/math/big/int.go.html#line-939">int.go#L939</a>: 		panic(fmt.<b>Sprintf</b>("big: invalid 2nd argument to Int.Jacobi: need odd integer but got %s", y.String()))
+		<a href="../src/math/big/natconv.go.html#line-114">natconv.go#L114</a>: 		panic(fmt.<b>Sprintf</b>("invalid number base %d", base))
+		<a href="../src/math/big/rat.go.html#line-138">rat.go#L138</a>: 		panic(fmt.<b>Sprintf</b>("expected exactly %d bits of result", Msize2))
+		<a href="../src/math/big/rat.go.html#line-236" class="path-duplicate">rat.go</a><a href="../src/math/big/rat.go.html#line-236">#L236</a>: 		panic(fmt.<b>Sprintf</b>("expected exactly %d bits of result", Msize2))
+
+	<a href="../pkg/mime.html">mime</a>
+		<a href="../src/mime/mediatype.go.html#line-206">mediatype.go#L206</a>: 			simplePart := fmt.<b>Sprintf</b>("%s*%d", key, n)
+
+	<a href="../pkg/mime/multipart.html">mime/multipart</a>
+		<a href="../src/mime/multipart/writer.go.html#line-90">writer.go#L90</a>: 	return fmt.<b>Sprintf</b>("%x", buf[:])
+		<a href="../src/mime/multipart/writer.go.html#line-143" class="path-duplicate">writer.go</a><a href="../src/mime/multipart/writer.go.html#line-143">#L143</a>: 		fmt.<b>Sprintf</b>(`form-data; name="%s"; filename="%s"`,
+		<a href="../src/mime/multipart/writer.go.html#line-154" class="path-duplicate">writer.go</a><a href="../src/mime/multipart/writer.go.html#line-154">#L154</a>: 		fmt.<b>Sprintf</b>(`form-data; name="%s"`, escapeQuotes(fieldname)))
+
+	<a href="../pkg/net/http.html">net/http</a>
+		<a href="../src/net/http/filetransport.go.html#line-130">filetransport.go#L130</a>: 	pr.res.Status = fmt.<b>Sprintf</b>("%d %s", code, StatusText(code))
+		<a href="../src/net/http/fs.go.html#line-280">fs.go#L280</a>: 		w.Header().Set("Content-Range", fmt.<b>Sprintf</b>("bytes */%d", size))
+		<a href="../src/net/http/fs.go.html#line-944" class="path-duplicate">fs.go</a><a href="../src/net/http/fs.go.html#line-944">#L944</a>: 	return fmt.<b>Sprintf</b>("bytes %d-%d/%d", r.start, r.start+r.length-1, size)
+		<a href="../src/net/http/h2_bundle.go.html#line-1080">h2_bundle.go#L1080</a>: 		panic(fmt.<b>Sprintf</b>("unexpected buffer len=%v", len(p)))
+		<a href="../src/net/http/h2_bundle.go.html#line-1213" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-1213">#L1213</a>: 	return fmt.<b>Sprintf</b>("unknown error code 0x%x", uint32(e))
+		<a href="../src/net/http/h2_bundle.go.html#line-1220" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-1220">#L1220</a>: 	return fmt.<b>Sprintf</b>("ERR_UNKNOWN_%d", uint32(e))
+		<a href="../src/net/http/h2_bundle.go.html#line-1228" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-1228">#L1228</a>: 	return fmt.<b>Sprintf</b>("connection error: %s", http2ErrCode(e))
+		<a href="../src/net/http/h2_bundle.go.html#line-1250" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-1250">#L1250</a>: 		return fmt.<b>Sprintf</b>("stream error: stream ID %d; %v; %v", e.StreamID, e.Code, e.Cause)
+		<a href="../src/net/http/h2_bundle.go.html#line-1252" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-1252">#L1252</a>: 	return fmt.<b>Sprintf</b>("stream error: stream ID %d; %v", e.StreamID, e.Code)
+		<a href="../src/net/http/h2_bundle.go.html#line-1277" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-1277">#L1277</a>: 	return fmt.<b>Sprintf</b>("http2: connection error: %v: %v", e.Code, e.Reason)
+		<a href="../src/net/http/h2_bundle.go.html#line-1283" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-1283">#L1283</a>: 	return fmt.<b>Sprintf</b>("invalid pseudo-header %q", string(e))
+		<a href="../src/net/http/h2_bundle.go.html#line-1289" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-1289">#L1289</a>: 	return fmt.<b>Sprintf</b>("duplicate pseudo-header %q", string(e))
+		<a href="../src/net/http/h2_bundle.go.html#line-1295" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-1295">#L1295</a>: 	return fmt.<b>Sprintf</b>("invalid header field name %q", string(e))
+		<a href="../src/net/http/h2_bundle.go.html#line-1301" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-1301">#L1301</a>: 	return fmt.<b>Sprintf</b>("invalid header field value for %q", string(e))
+		<a href="../src/net/http/h2_bundle.go.html#line-1460" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-1460">#L1460</a>: 	return fmt.<b>Sprintf</b>("UNKNOWN_FRAME_TYPE_%d", uint8(t))
+		<a href="../src/net/http/h2_bundle.go.html#line-1958" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-1958">#L1958</a>: 				fmt.<b>Sprintf</b>("got %s for stream %d; expected CONTINUATION following %s for stream %d",
+		<a href="../src/net/http/h2_bundle.go.html#line-1964" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-1964">#L1964</a>: 				fmt.<b>Sprintf</b>("got CONTINUATION for stream %d; expected stream %d",
+		<a href="../src/net/http/h2_bundle.go.html#line-1968" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-1968">#L1968</a>: 		return fr.connError(http2ErrCodeProtocol, fmt.<b>Sprintf</b>("unexpected CONTINUATION for stream %d", fh.StreamID))
+		<a href="../src/net/http/h2_bundle.go.html#line-2576" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-2576">#L2576</a>: 		return nil, http2connError{http2ErrCodeFrameSize, fmt.<b>Sprintf</b>("PRIORITY frame payload size was %d; want 5", len(payload))}
+		<a href="../src/net/http/h2_bundle.go.html#line-3138" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-3138">#L3138</a>: 		panic(fmt.<b>Sprintf</b>("No space found in %q", b))
+		<a href="../src/net/http/h2_bundle.go.html#line-3143" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-3143">#L3143</a>: 		panic(fmt.<b>Sprintf</b>("Failed to parse goroutine ID out of %q: %v", b, err))
+		<a href="../src/net/http/h2_bundle.go.html#line-3434" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-3434">#L3434</a>: 	return fmt.<b>Sprintf</b>("[%v = %d]", s.ID, s.Val)
+		<a href="../src/net/http/h2_bundle.go.html#line-3483" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-3483">#L3483</a>: 	return fmt.<b>Sprintf</b>("UNKNOWN_SETTING_%d", uint16(s))
+		<a href="../src/net/http/h2_bundle.go.html#line-4319" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-4319">#L4319</a>: 			sc.rejectConn(http2ErrCodeInadequateSecurity, fmt.<b>Sprintf</b>("Prohibited TLS 1.2 Cipher Suite: %x", sc.tlsState.CipherSuite))
+		<a href="../src/net/http/h2_bundle.go.html#line-4813" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-4813">#L4813</a>: 				panic(fmt.<b>Sprintf</b>("unexpected type %T", v))
+		<a href="../src/net/http/h2_bundle.go.html#line-5053" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-5053">#L5053</a>: 				panic(fmt.<b>Sprintf</b>("internal error: attempt to send frame on a half-closed-local stream: %v", wr))
+		<a href="../src/net/http/h2_bundle.go.html#line-5056" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-5056">#L5056</a>: 			panic(fmt.<b>Sprintf</b>("internal error: attempt to send frame on a closed stream: %v", wr))
+		<a href="../src/net/http/h2_bundle.go.html#line-5447" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-5447">#L5447</a>: 		panic(fmt.<b>Sprintf</b>("invariant; can't close stream in state %v", st.state))
+		<a href="../src/net/http/h2_bundle.go.html#line-6709" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-6709">#L6709</a>: 		panic(fmt.<b>Sprintf</b>("invalid WriteHeader code %v", code))
+		<a href="../src/net/http/h2_bundle.go.html#line-6994" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-6994">#L6994</a>: 			panic(fmt.<b>Sprintf</b>("newWriterAndRequestNoBody(%+v): %v", msg.url, err))
+		<a href="../src/net/http/h2_bundle.go.html#line-7102" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-7102">#L7102</a>: 	f(fmt.<b>Sprintf</b>("%s_%s_%s", typ, codeStr, name))
+		<a href="../src/net/http/h2_bundle.go.html#line-9254" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-9254">#L9254</a>: 	return fmt.<b>Sprintf</b>("http2: server sent GOAWAY and closed the connection; LastStreamID=%v, ErrCode=%v, debug=%q",
+		<a href="../src/net/http/h2_bundle.go.html#line-9314" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-9314">#L9314</a>: 		f(fmt.<b>Sprintf</b>("read_frame_conn_error_%s", errCode.stringToken()))
+		<a href="../src/net/http/h2_bundle.go.html#line-10393" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-10393">#L10393</a>: 	return fmt.<b>Sprintf</b>("writeData(stream=%d, p=%d, endStream=%v)", w.streamID, len(w.p), w.endStream)
+		<a href="../src/net/http/h2_bundle.go.html#line-10819" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-10819">#L10819</a>: 		des = fmt.<b>Sprintf</b>("%T", wr.write)
+		<a href="../src/net/http/h2_bundle.go.html#line-10821" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-10821">#L10821</a>: 	return fmt.<b>Sprintf</b>("[FrameWriteRequest stream=%d, ch=%v, writer=%v]", wr.StreamID(), wr.done != nil, des)
+		<a href="../src/net/http/h2_bundle.go.html#line-10833" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-10833">#L10833</a>: 		panic(fmt.<b>Sprintf</b>("unbuffered done channel passed in for type %T", wr.write))
+		<a href="../src/net/http/h2_bundle.go.html#line-11158" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-11158">#L11158</a>: 			panic(fmt.<b>Sprintf</b>("stream %d already opened", streamID))
+		<a href="../src/net/http/h2_bundle.go.html#line-11190" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-11190">#L11190</a>: 		panic(fmt.<b>Sprintf</b>("violation of WriteScheduler interface: unknown stream %d", streamID))
+		<a href="../src/net/http/h2_bundle.go.html#line-11193" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-11193">#L11193</a>: 		panic(fmt.<b>Sprintf</b>("violation of WriteScheduler interface: stream %d already closed", streamID))
+		<a href="../src/net/http/pattern.go.html#line-377">pattern.go#L377</a>: 		panic(fmt.<b>Sprintf</b>("unknown relationship %q", r1))
+		<a href="../src/net/http/pattern.go.html#line-408" class="path-duplicate">pattern.go</a><a href="../src/net/http/pattern.go.html#line-408">#L408</a>: 		return fmt.<b>Sprintf</b>("%s matches the same requests as %s", p1, p2)
+		<a href="../src/net/http/pattern.go.html#line-414" class="path-duplicate">pattern.go</a><a href="../src/net/http/pattern.go.html#line-414">#L414</a>: 		return fmt.<b>Sprintf</b>(`%[1]s and %[2]s both match some paths, like %[3]q.
+		<a href="../src/net/http/pattern.go.html#line-421" class="path-duplicate">pattern.go</a><a href="../src/net/http/pattern.go.html#line-421">#L421</a>: 		return fmt.<b>Sprintf</b>("%s matches more methods than %s, but has a more specific path pattern", p1, p2)
+		<a href="../src/net/http/pattern.go.html#line-424" class="path-duplicate">pattern.go</a><a href="../src/net/http/pattern.go.html#line-424">#L424</a>: 		return fmt.<b>Sprintf</b>("%s matches fewer methods than %s, but has a more general path pattern", p1, p2)
+		<a href="../src/net/http/pattern.go.html#line-426" class="path-duplicate">pattern.go</a><a href="../src/net/http/pattern.go.html#line-426">#L426</a>: 	return fmt.<b>Sprintf</b>("bug: unexpected way for two patterns %s and %s to conflict: methods %s, paths %s", p1, p2, mrel, prel)
+		<a href="../src/net/http/pattern.go.html#line-516" class="path-duplicate">pattern.go</a><a href="../src/net/http/pattern.go.html#line-516">#L516</a>: 				panic(fmt.<b>Sprintf</b>("literals differ: %q and %q", s1.s, s2.s))
+		<a href="../src/net/http/request.go.html#line-458">request.go#L458</a>: 	s := fmt.<b>Sprintf</b>("%s=%s", sanitizeCookieName(c.Name), sanitizeCookieValue(c.Value))
+		<a href="../src/net/http/server.go.html#line-1126">server.go#L1126</a>: 		panic(fmt.<b>Sprintf</b>("invalid WriteHeader code %v", code))
+		<a href="../src/net/http/server.go.html#line-2138" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-2138">#L2138</a>: 		panic("unexpected type " + fmt.<b>Sprintf</b>("%T", rc))
+		<a href="../src/net/http/server.go.html#line-2154" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-2154">#L2154</a>: 		panic("unexpected type " + fmt.<b>Sprintf</b>("%T", rc))
+		<a href="../src/net/http/server.go.html#line-2759" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-2759">#L2759</a>: 		pat.loc = fmt.<b>Sprintf</b>("%s:%d", file, line)
+		<a href="../src/net/http/server.go.html#line-3764" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-3764">#L3764</a>: 		name: fmt.<b>Sprintf</b>("%s-%d", baseName, uniqNameNext[baseName]),
+		<a href="../src/net/http/transfer.go.html#line-647">transfer.go#L647</a>: 		return &amp;unsupportedTEError{fmt.<b>Sprintf</b>("too many transfer encodings: %q", raw)}
+		<a href="../src/net/http/transfer.go.html#line-650" class="path-duplicate">transfer.go</a><a href="../src/net/http/transfer.go.html#line-650">#L650</a>: 		return &amp;unsupportedTEError{fmt.<b>Sprintf</b>("unsupported transfer encoding: %q", raw[0])}
+		<a href="../src/net/http/transport.go.html#line-908">transport.go#L908</a>: 	return fmt.<b>Sprintf</b>("net/http: Transport failed to read from server: %v", e.err)
+		<a href="../src/net/http/transport.go.html#line-1915" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-1915">#L1915</a>: 	return fmt.<b>Sprintf</b>("%s|%s%s|%s", k.proxy, k.scheme, h1, k.addr)
+		<a href="../src/net/http/transport.go.html#line-2708" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-2708">#L2708</a>: 				panic(fmt.<b>Sprintf</b>("internal error: exactly one of res or err should be set; nil=%v", re.res == nil))
+
+	<a href="../pkg/net/textproto.html">net/textproto</a>
+		<a href="../src/net/textproto/reader.go.html#line-609">reader.go#L609</a>: 		return ProtocolError(fmt.<b>Sprintf</b>("malformed MIME header: missing colon: %q", line))
+		<a href="../src/net/textproto/textproto.go.html#line-41">textproto.go#L41</a>: 	return fmt.<b>Sprintf</b>("%03d %s", e.Code, e.Msg)
+
+	<a href="../pkg/net/url.html">net/url</a>
+		<a href="../src/net/url/url.go.html#line-30">url.go#L30</a>: func (e *Error) Error() string { return fmt.<b>Sprintf</b>("%s %q: %s", e.Op, e.URL, e.Err) }
+
+	<a href="../pkg/vendor/golang.org/x/net/http2/hpack.html">vendor/golang.org/x/net/http2/hpack</a>
+		<a href="../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-23">hpack.go#L23</a>: 	return fmt.<b>Sprintf</b>("decoding error: %v", de.Err)
+		<a href="../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-31" class="path-duplicate">hpack.go</a><a href="../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-31">#L31</a>: 	return fmt.<b>Sprintf</b>("invalid indexed representation index %d", int(e))
+		<a href="../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-57" class="path-duplicate">hpack.go</a><a href="../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-57">#L57</a>: 	return fmt.<b>Sprintf</b>("header field %q = %q%s", hf.Name, hf.Value, suffix)
+		<a href="../src/vendor/golang.org/x/net/http2/hpack/tables.go.html#line-66">tables.go#L66</a>: 		panic(fmt.<b>Sprintf</b>("evictOldest(%v) on table with %v entries", n, t.len()))
+		<a href="../src/vendor/golang.org/x/net/http2/hpack/tables.go.html#line-118" class="path-duplicate">tables.go</a><a href="../src/vendor/golang.org/x/net/http2/hpack/tables.go.html#line-118">#L118</a>: 		panic(fmt.<b>Sprintf</b>("id (%v) &lt;= evictCount (%v)", id, t.evictCount))
+
+	<a href="../pkg/vendor/golang.org/x/net/idna.html">vendor/golang.org/x/net/idna</a>
+		<a href="../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-324">idna10.0.0.go#L324</a>: 	return fmt.<b>Sprintf</b>("idna: invalid label %q", e.label)
+		<a href="../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-331" class="path-duplicate">idna10.0.0.go</a><a href="../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-331">#L331</a>: 	return fmt.<b>Sprintf</b>("idna: disallowed rune %U", e)
+
+	<a href="../pkg/vendor/golang.org/x/text/unicode/bidi.html">vendor/golang.org/x/text/unicode/bidi</a>
+		<a href="../src/vendor/golang.org/x/text/unicode/bidi/bracket.go.html#line-57">bracket.go#L57</a>: 	return fmt.<b>Sprintf</b>("(%v, %v)", b.opener, b.closer)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: regexp/syntax.InstEmptyWidth</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../../pkg/regexp/syntax.html">regexp/syntax</a>.<a href="../../src/regexp/syntax/prog.go.html#line-31">InstEmptyWidth</a></b></span>
+
+<span class="title">13 uses</span>
+
+	regexp/syntax (current package)
+		<a href="../../src/regexp/syntax/compile.go.html#line-266">compile.go#L266</a>: 	f := c.inst(<b>InstEmptyWidth</b>)
+		<a href="../../src/regexp/syntax/prog.go.html#line-31">prog.go#L31</a>: 	<b>InstEmptyWidth</b>
+		<a href="../../src/regexp/syntax/prog.go.html#line-176" class="path-duplicate">prog.go</a><a href="../../src/regexp/syntax/prog.go.html#line-176">#L176</a>: 		case <b>InstEmptyWidth</b>:
+		<a href="../../src/regexp/syntax/prog.go.html#line-324" class="path-duplicate">prog.go</a><a href="../../src/regexp/syntax/prog.go.html#line-324">#L324</a>: 	case <b>InstEmptyWidth</b>:
+
+	<a href="../../pkg/regexp.html">regexp</a>
+		<a href="../../src/regexp/backtrack.go.html#line-257">backtrack.go#L257</a>: 		case syntax.<b>InstEmptyWidth</b>:
+		<a href="../../src/regexp/exec.go.html#line-343">exec.go#L343</a>: 	case syntax.<b>InstEmptyWidth</b>:
+		<a href="../../src/regexp/exec.go.html#line-479" class="path-duplicate">exec.go</a><a href="../../src/regexp/exec.go.html#line-479">#L479</a>: 		case syntax.<b>InstEmptyWidth</b>:
+		<a href="../../src/regexp/onepass.go.html#line-43">onepass.go#L43</a>: 	if i.Op != syntax.<b>InstEmptyWidth</b> || (syntax.EmptyOp(i.Arg))&amp;syntax.EmptyBeginText == 0 {
+		<a href="../../src/regexp/onepass.go.html#line-63" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-63">#L63</a>: 	if i.Op == syntax.<b>InstEmptyWidth</b> &amp;&amp;
+		<a href="../../src/regexp/onepass.go.html#line-212" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-212">#L212</a>: 		case syntax.InstCapture, syntax.<b>InstEmptyWidth</b>, syntax.InstNop, syntax.InstMatch, syntax.InstFail:
+		<a href="../../src/regexp/onepass.go.html#line-358" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-358">#L358</a>: 		case syntax.<b>InstEmptyWidth</b>:
+		<a href="../../src/regexp/onepass.go.html#line-471" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-471">#L471</a>: 	if prog.Inst[prog.Start].Op != syntax.<b>InstEmptyWidth</b> ||
+		<a href="../../src/regexp/onepass.go.html#line-487" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-487">#L487</a>: 		case syntax.<b>InstEmptyWidth</b>:
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

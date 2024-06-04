@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime/internal/atomic.Uint64.Store</title>
+<link href="../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../../pkg/runtime/internal/atomic.html">runtime/internal/atomic</a>.<a href="../../../src/runtime/internal/atomic/types.go.html#line-299">Uint64</a>.<a href="../../../src/runtime/internal/atomic/types.go.html#line-315">Store</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">24 uses</span>
+
+	runtime/internal/atomic (current package)
+		<a href="../../../src/runtime/internal/atomic/types.go.html#line-315">types.go#L315</a>: func (u *Uint64) <b>Store</b>(value uint64) {
+		<a href="../../../src/runtime/internal/atomic/types.go.html#line-445" class="path-duplicate">types.go</a><a href="../../../src/runtime/internal/atomic/types.go.html#line-445">#L445</a>: 	f.u.<b>Store</b>(*(*uint64)(unsafe.Pointer(&amp;value)))
+
+	<a href="../../../pkg/runtime.html">runtime</a>
+		<a href="../../../src/runtime/mgc.go.html#line-1577">mgc.go#L1577</a>: 	mheap_.pagesSwept.<b>Store</b>(0)
+		<a href="../../../src/runtime/mgc.go.html#line-1579" class="path-duplicate">mgc.go</a><a href="../../../src/runtime/mgc.go.html#line-1579">#L1579</a>: 	mheap_.reclaimIndex.<b>Store</b>(0)
+		<a href="../../../src/runtime/mgclimit.go.html#line-412">mgclimit.go#L412</a>: 	e.stamp.<b>Store</b>(uint64(makeLimiterEventStamp(typ, now)))
+		<a href="../../../src/runtime/mgcpacer.go.html#line-826">mgcpacer.go#L826</a>: 	c.heapLive.<b>Store</b>(bytesMarked)
+		<a href="../../../src/runtime/mgcpacer.go.html#line-827" class="path-duplicate">mgcpacer.go</a><a href="../../../src/runtime/mgcpacer.go.html#line-827">#L827</a>: 	c.heapScan.<b>Store</b>(uint64(c.heapScanWork.Load()))
+		<a href="../../../src/runtime/mgcpacer.go.html#line-829" class="path-duplicate">mgcpacer.go</a><a href="../../../src/runtime/mgcpacer.go.html#line-829">#L829</a>: 	c.lastStackScan.<b>Store</b>(uint64(c.stackScanWork.Load()))
+		<a href="../../../src/runtime/mgcpacer.go.html#line-1191" class="path-duplicate">mgcpacer.go</a><a href="../../../src/runtime/mgcpacer.go.html#line-1191">#L1191</a>: 		c.sweepDistMinTrigger.<b>Store</b>(0)
+		<a href="../../../src/runtime/mgcpacer.go.html#line-1196" class="path-duplicate">mgcpacer.go</a><a href="../../../src/runtime/mgcpacer.go.html#line-1196">#L1196</a>: 		c.sweepDistMinTrigger.<b>Store</b>(c.heapLive.Load() + sweepMinHeapDistance)
+		<a href="../../../src/runtime/mgcpacer.go.html#line-1211" class="path-duplicate">mgcpacer.go</a><a href="../../../src/runtime/mgcpacer.go.html#line-1211">#L1211</a>: 	c.gcPercentHeapGoal.<b>Store</b>(gcPercentHeapGoal)
+		<a href="../../../src/runtime/mgcpacer.go.html#line-1236" class="path-duplicate">mgcpacer.go</a><a href="../../../src/runtime/mgcpacer.go.html#line-1236">#L1236</a>: 	c.runway.<b>Store</b>(uint64((c.consMark * (1 - gcGoalUtilization) / (gcGoalUtilization)) * float64(c.lastHeapScan+c.lastStackScan.Load()+c.globalsScan.Load())))
+		<a href="../../../src/runtime/mgcscavenge.go.html#line-186">mgcscavenge.go#L186</a>: 		scavenge.memoryLimitGoal.<b>Store</b>(^uint64(0))
+		<a href="../../../src/runtime/mgcscavenge.go.html#line-188" class="path-duplicate">mgcscavenge.go</a><a href="../../../src/runtime/mgcscavenge.go.html#line-188">#L188</a>: 		scavenge.memoryLimitGoal.<b>Store</b>(memoryLimitGoal)
+		<a href="../../../src/runtime/mgcscavenge.go.html#line-198" class="path-duplicate">mgcscavenge.go</a><a href="../../../src/runtime/mgcscavenge.go.html#line-198">#L198</a>: 		scavenge.gcPercentGoal.<b>Store</b>(^uint64(0))
+		<a href="../../../src/runtime/mgcscavenge.go.html#line-230" class="path-duplicate">mgcscavenge.go</a><a href="../../../src/runtime/mgcscavenge.go.html#line-230">#L230</a>: 		scavenge.gcPercentGoal.<b>Store</b>(^uint64(0))
+		<a href="../../../src/runtime/mgcscavenge.go.html#line-232" class="path-duplicate">mgcscavenge.go</a><a href="../../../src/runtime/mgcscavenge.go.html#line-232">#L232</a>: 		scavenge.gcPercentGoal.<b>Store</b>(gcPercentGoal)
+		<a href="../../../src/runtime/mgcscavenge.go.html#line-1209" class="path-duplicate">mgcscavenge.go</a><a href="../../../src/runtime/mgcscavenge.go.html#line-1209">#L1209</a>: 	sc.value.<b>Store</b>(ssc.pack())
+		<a href="../../../src/runtime/mgcsweep.go.html#line-994">mgcsweep.go#L994</a>: 			mheap_.pagesSweptBasis.<b>Store</b>(pagesSwept)
+		<a href="../../../src/runtime/mheap.go.html#line-820">mheap.go#L820</a>: 			h.reclaimIndex.<b>Store</b>(1 &lt;&lt; 63)
+		<a href="../../../src/runtime/mspanset.go.html#line-388">mspanset.go#L388</a>: 	h.u.<b>Store</b>(0)
+		<a href="../../../src/runtime/profbuf.go.html#line-188">profbuf.go#L188</a>: 			b.overflowTime.<b>Store</b>(uint64(now))
+		<a href="../../../src/runtime/profbuf.go.html#line-189" class="path-duplicate">profbuf.go</a><a href="../../../src/runtime/profbuf.go.html#line-189">#L189</a>: 			b.overflow.<b>Store</b>((((overflow &gt;&gt; 32) + 1) &lt;&lt; 32) + 1)
+		<a href="../../../src/runtime/trace2map.go.html#line-143">trace2map.go#L143</a>: 	tab.seq.<b>Store</b>(0)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

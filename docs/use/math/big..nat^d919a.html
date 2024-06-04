@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: math/big.nat</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../pkg/math/big.html">math/big</a>.<a href="../../src/math/big/nat.go.html#line-34">nat</a></b></span>
+
+<span class="title">251 uses</span>
+
+	math/big (current package)
+		<a href="../../src/math/big/decimal.go.html#line-55">decimal.go#L55</a>: func (x *decimal) init(m <b>nat</b>, shift int) {
+		<a href="../../src/math/big/decimal.go.html#line-72" class="path-duplicate">decimal.go</a><a href="../../src/math/big/decimal.go.html#line-72">#L72</a>: 		m = <b>nat</b>(nil).shr(m, s)
+		<a href="../../src/math/big/decimal.go.html#line-78" class="path-duplicate">decimal.go</a><a href="../../src/math/big/decimal.go.html#line-78">#L78</a>: 		m = <b>nat</b>(nil).shl(m, uint(shift))
+		<a href="../../src/math/big/float.go.html#line-71">float.go#L71</a>: 	mant <b>nat</b>
+		<a href="../../src/math/big/float.go.html#line-583" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-583">#L583</a>: func fnorm(m <b>nat</b>) int64 {
+		<a href="../../src/math/big/float.go.html#line-697" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-697">#L697</a>: func msb32(x <b>nat</b>) uint32 {
+		<a href="../../src/math/big/float.go.html#line-715" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-715">#L715</a>: func msb64(x <b>nat</b>) uint64 {
+		<a href="../../src/math/big/float.go.html#line-1239" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-1239">#L1239</a>: 			t := <b>nat</b>(nil).shl(y.mant, uint(ey-ex))
+		<a href="../../src/math/big/float.go.html#line-1250" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-1250">#L1250</a>: 			t := <b>nat</b>(nil).shl(x.mant, uint(ex-ey))
+		<a href="../../src/math/big/float.go.html#line-1284" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-1284">#L1284</a>: 			t := <b>nat</b>(nil).shl(y.mant, uint(ey-ex))
+		<a href="../../src/math/big/float.go.html#line-1295" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-1295">#L1295</a>: 			t := <b>nat</b>(nil).shl(x.mant, uint(ex-ey))
+		<a href="../../src/math/big/float.go.html#line-1356" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-1356">#L1356</a>: 		xadj = make(<b>nat</b>, len(x.mant)+d)
+		<a href="../../src/math/big/float.go.html#line-1368" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-1368">#L1368</a>: 	var r <b>nat</b>
+		<a href="../../src/math/big/ftoa.go.html#line-186">ftoa.go#L186</a>: 	mant := <b>nat</b>(nil).set(x.mant)
+		<a href="../../src/math/big/ftoa.go.html#line-200" class="path-duplicate">ftoa.go</a><a href="../../src/math/big/ftoa.go.html#line-200">#L200</a>: 	var tmp <b>nat</b>
+		<a href="../../src/math/big/ftoa.go.html#line-332" class="path-duplicate">ftoa.go</a><a href="../../src/math/big/ftoa.go.html#line-332">#L332</a>: 		m = <b>nat</b>(nil).shl(m, uint(x.prec-w))
+		<a href="../../src/math/big/ftoa.go.html#line-334" class="path-duplicate">ftoa.go</a><a href="../../src/math/big/ftoa.go.html#line-334">#L334</a>: 		m = <b>nat</b>(nil).shr(m, uint(w-x.prec))
+		<a href="../../src/math/big/ftoa.go.html#line-383" class="path-duplicate">ftoa.go</a><a href="../../src/math/big/ftoa.go.html#line-383">#L383</a>: 		m = <b>nat</b>(nil).shl(m, n-w)
+		<a href="../../src/math/big/ftoa.go.html#line-385" class="path-duplicate">ftoa.go</a><a href="../../src/math/big/ftoa.go.html#line-385">#L385</a>: 		m = <b>nat</b>(nil).shr(m, w-n)
+		<a href="../../src/math/big/int.go.html#line-35">int.go#L35</a>: 	abs <b>nat</b>  // absolute value of the integer
+		<a href="../../src/math/big/int.go.html#line-122" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-122">#L122</a>: 	z.abs = <b>nat</b>(abs).norm()
+		<a href="../../src/math/big/int.go.html#line-277" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-277">#L277</a>: 	_, z.abs = <b>nat</b>(nil).div(z.abs, x.abs, y.abs)
+		<a href="../../src/math/big/int.go.html#line-404" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-404">#L404</a>: func low32(x <b>nat</b>) uint32 {
+		<a href="../../src/math/big/int.go.html#line-412" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-412">#L412</a>: func low64(x <b>nat</b>) uint64 {
+		<a href="../../src/math/big/int.go.html#line-589" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-589">#L589</a>: 	var mWords <b>nat</b>
+		<a href="../../src/math/big/int.go.html#line-930" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-930">#L930</a>: func (z <b>nat</b>) modInverse(g, n <b>nat</b>) <b>nat</b> {
+		<a href="../../src/math/big/int.go.html#line-1147" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1147">#L1147</a>: 		t := <b>nat</b>(nil).sub(x.abs, natOne)
+		<a href="../../src/math/big/int.go.html#line-1179" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1179">#L1179</a>: 			x1 := <b>nat</b>(nil).sub(x.abs, natOne)
+		<a href="../../src/math/big/int.go.html#line-1180" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1180">#L1180</a>: 			y1 := <b>nat</b>(nil).sub(y.abs, natOne)
+		<a href="../../src/math/big/int.go.html#line-1198" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1198">#L1198</a>: 	y1 := <b>nat</b>(nil).sub(y.abs, natOne)
+		<a href="../../src/math/big/int.go.html#line-1209" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1209">#L1209</a>: 			x1 := <b>nat</b>(nil).sub(x.abs, natOne)
+		<a href="../../src/math/big/int.go.html#line-1210" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1210">#L1210</a>: 			y1 := <b>nat</b>(nil).sub(y.abs, natOne)
+		<a href="../../src/math/big/int.go.html#line-1224" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1224">#L1224</a>: 		x1 := <b>nat</b>(nil).sub(x.abs, natOne)
+		<a href="../../src/math/big/int.go.html#line-1231" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1231">#L1231</a>: 	y1 := <b>nat</b>(nil).sub(y.abs, natOne)
+		<a href="../../src/math/big/int.go.html#line-1242" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1242">#L1242</a>: 			x1 := <b>nat</b>(nil).sub(x.abs, natOne)
+		<a href="../../src/math/big/int.go.html#line-1243" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1243">#L1243</a>: 			y1 := <b>nat</b>(nil).sub(y.abs, natOne)
+		<a href="../../src/math/big/int.go.html#line-1261" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1261">#L1261</a>: 	y1 := <b>nat</b>(nil).sub(y.abs, natOne)
+		<a href="../../src/math/big/int.go.html#line-1272" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1272">#L1272</a>: 			x1 := <b>nat</b>(nil).sub(x.abs, natOne)
+		<a href="../../src/math/big/int.go.html#line-1273" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1273">#L1273</a>: 			y1 := <b>nat</b>(nil).sub(y.abs, natOne)
+		<a href="../../src/math/big/int.go.html#line-1291" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1291">#L1291</a>: 	y1 := <b>nat</b>(nil).sub(y.abs, natOne)
+		<a href="../../src/math/big/nat.go.html#line-34">nat.go#L34</a>: type <b>nat</b> []Word
+		<a href="../../src/math/big/nat.go.html#line-37" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-37">#L37</a>: 	natOne  = <b>nat</b>{1}
+		<a href="../../src/math/big/nat.go.html#line-38" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-38">#L38</a>: 	natTwo  = <b>nat</b>{2}
+		<a href="../../src/math/big/nat.go.html#line-39" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-39">#L39</a>: 	natFive = <b>nat</b>{5}
+		<a href="../../src/math/big/nat.go.html#line-40" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-40">#L40</a>: 	natTen  = <b>nat</b>{10}
+		<a href="../../src/math/big/nat.go.html#line-43" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-43">#L43</a>: func (z <b>nat</b>) String() string {
+		<a href="../../src/math/big/nat.go.html#line-47" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-47">#L47</a>: func (z <b>nat</b>) clear() {
+		<a href="../../src/math/big/nat.go.html#line-53" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-53">#L53</a>: func (z <b>nat</b>) norm() <b>nat</b> {
+		<a href="../../src/math/big/nat.go.html#line-61" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-61">#L61</a>: func (z <b>nat</b>) make(n int) <b>nat</b> {
+		<a href="../../src/math/big/nat.go.html#line-67" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-67">#L67</a>: 		return make(<b>nat</b>, 1)
+		<a href="../../src/math/big/nat.go.html#line-72" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-72">#L72</a>: 	return make(<b>nat</b>, n, n+e)
+		<a href="../../src/math/big/nat.go.html#line-75" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-75">#L75</a>: func (z <b>nat</b>) setWord(x Word) <b>nat</b> {
+		<a href="../../src/math/big/nat.go.html#line-84" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-84">#L84</a>: func (z <b>nat</b>) setUint64(x uint64) <b>nat</b> {
+		<a href="../../src/math/big/nat.go.html#line-96" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-96">#L96</a>: func (z <b>nat</b>) set(x <b>nat</b>) <b>nat</b> {
+		<a href="../../src/math/big/nat.go.html#line-102" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-102">#L102</a>: func (z <b>nat</b>) add(x, y <b>nat</b>) <b>nat</b> {
+		<a href="../../src/math/big/nat.go.html#line-128" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-128">#L128</a>: func (z <b>nat</b>) sub(x, y <b>nat</b>) <b>nat</b> {
+		<a href="../../src/math/big/nat.go.html#line-156" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-156">#L156</a>: func (x <b>nat</b>) cmp(y <b>nat</b>) (r int) {
+		<a href="../../src/math/big/nat.go.html#line-183" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-183">#L183</a>: func (z <b>nat</b>) mulAddWW(x <b>nat</b>, y, r Word) <b>nat</b> {
+		<a href="../../src/math/big/nat.go.html#line-198" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-198">#L198</a>: func basicMul(z, x, y <b>nat</b>) {
+		<a href="../../src/math/big/nat.go.html#line-216" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-216">#L216</a>: func (z <b>nat</b>) montgomery(x, y, m <b>nat</b>, k Word, n int) <b>nat</b> {
+		<a href="../../src/math/big/nat.go.html#line-251" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-251">#L251</a>: func karatsubaAdd(z, x <b>nat</b>, n int) {
+		<a href="../../src/math/big/nat.go.html#line-258" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-258">#L258</a>: func karatsubaSub(z, x <b>nat</b>, n int) {
+		<a href="../../src/math/big/nat.go.html#line-273" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-273">#L273</a>: func karatsuba(z, x, y <b>nat</b>) {
+		<a href="../../src/math/big/nat.go.html#line-374" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-374">#L374</a>: func alias(x, y <b>nat</b>) bool {
+		<a href="../../src/math/big/nat.go.html#line-381" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-381">#L381</a>: func addAt(z, x <b>nat</b>, i int) {
+		<a href="../../src/math/big/nat.go.html#line-405" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-405">#L405</a>: func (z <b>nat</b>) mul(x, y <b>nat</b>) <b>nat</b> {
+		<a href="../../src/math/big/nat.go.html#line-496" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-496">#L496</a>: func basicSqr(z, x <b>nat</b>) {
+		<a href="../../src/math/big/nat.go.html#line-519" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-519">#L519</a>: func karatsubaSqr(z, x <b>nat</b>) {
+		<a href="../../src/math/big/nat.go.html#line-557" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-557">#L557</a>: func (z <b>nat</b>) sqr(x <b>nat</b>) <b>nat</b> {
+		<a href="../../src/math/big/nat.go.html#line-615" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-615">#L615</a>: func (z <b>nat</b>) mulRange(a, b uint64) <b>nat</b> {
+		<a href="../../src/math/big/nat.go.html#line-625" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-625">#L625</a>: 		return z.mul(<b>nat</b>(nil).setUint64(a), <b>nat</b>(nil).setUint64(b))
+		<a href="../../src/math/big/nat.go.html#line-628" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-628">#L628</a>: 	return z.mul(<b>nat</b>(nil).mulRange(a, m), <b>nat</b>(nil).mulRange(m+1, b))
+		<a href="../../src/math/big/nat.go.html#line-633" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-633">#L633</a>: func getNat(n int) *<b>nat</b> {
+		<a href="../../src/math/big/nat.go.html#line-634" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-634">#L634</a>: 	var z *<b>nat</b>
+		<a href="../../src/math/big/nat.go.html#line-636" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-636">#L636</a>: 		z = v.(*<b>nat</b>)
+		<a href="../../src/math/big/nat.go.html#line-639" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-639">#L639</a>: 		z = new(<b>nat</b>)
+		<a href="../../src/math/big/nat.go.html#line-648" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-648">#L648</a>: func putNat(x *<b>nat</b>) {
+		<a href="../../src/math/big/nat.go.html#line-656" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-656">#L656</a>: func (x <b>nat</b>) bitLen() int {
+		<a href="../../src/math/big/nat.go.html#line-678" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-678">#L678</a>: func (x <b>nat</b>) trailingZeroBits() uint {
+		<a href="../../src/math/big/nat.go.html#line-691" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-691">#L691</a>: func (x <b>nat</b>) isPow2() (uint, bool) {
+		<a href="../../src/math/big/nat.go.html#line-702" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-702">#L702</a>: func same(x, y <b>nat</b>) bool {
+		<a href="../../src/math/big/nat.go.html#line-707" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-707">#L707</a>: func (z <b>nat</b>) shl(x <b>nat</b>, s uint) <b>nat</b> {
+		<a href="../../src/math/big/nat.go.html#line-732" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-732">#L732</a>: func (z <b>nat</b>) shr(x <b>nat</b>, s uint) <b>nat</b> {
+		<a href="../../src/math/big/nat.go.html#line-755" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-755">#L755</a>: func (z <b>nat</b>) setBit(x <b>nat</b>, i uint, b uint) <b>nat</b> {
+		<a href="../../src/math/big/nat.go.html#line-785" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-785">#L785</a>: func (x <b>nat</b>) bit(i uint) uint {
+		<a href="../../src/math/big/nat.go.html#line-796" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-796">#L796</a>: func (x <b>nat</b>) sticky(i uint) uint {
+		<a href="../../src/math/big/nat.go.html#line-816" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-816">#L816</a>: func (z <b>nat</b>) and(x, y <b>nat</b>) <b>nat</b> {
+		<a href="../../src/math/big/nat.go.html#line-833" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-833">#L833</a>: func (z <b>nat</b>) trunc(x <b>nat</b>, n uint) <b>nat</b> {
+		<a href="../../src/math/big/nat.go.html#line-846" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-846">#L846</a>: func (z <b>nat</b>) andNot(x, y <b>nat</b>) <b>nat</b> {
+		<a href="../../src/math/big/nat.go.html#line-863" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-863">#L863</a>: func (z <b>nat</b>) or(x, y <b>nat</b>) <b>nat</b> {
+		<a href="../../src/math/big/nat.go.html#line-882" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-882">#L882</a>: func (z <b>nat</b>) xor(x, y <b>nat</b>) <b>nat</b> {
+		<a href="../../src/math/big/nat.go.html#line-903" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-903">#L903</a>: func (z <b>nat</b>) random(rand *rand.Rand, limit <b>nat</b>, n int) <b>nat</b> {
+		<a href="../../src/math/big/nat.go.html#line-939" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-939">#L939</a>: func (z <b>nat</b>) expNN(x, y, m <b>nat</b>, slow bool) <b>nat</b> {
+		<a href="../../src/math/big/nat.go.html#line-1002" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-1002">#L1002</a>: 	var q <b>nat</b>
+		<a href="../../src/math/big/nat.go.html#line-1013" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-1013">#L1013</a>: 	var zz, r <b>nat</b>
+		<a href="../../src/math/big/nat.go.html#line-1063" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-1063">#L1063</a>: func (z <b>nat</b>) expNNMontgomeryEven(x, y, m <b>nat</b>) <b>nat</b> {
+		<a href="../../src/math/big/nat.go.html#line-1066" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-1066">#L1066</a>: 	m1 := <b>nat</b>(nil).shl(natOne, n)
+		<a href="../../src/math/big/nat.go.html#line-1067" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-1067">#L1067</a>: 	m2 := <b>nat</b>(nil).shr(m, n)
+		<a href="../../src/math/big/nat.go.html#line-1075" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-1075">#L1075</a>: 	z1 := <b>nat</b>(nil).expNN(x, y, m1, false)
+		<a href="../../src/math/big/nat.go.html#line-1076" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-1076">#L1076</a>: 	z2 := <b>nat</b>(nil).expNN(x, y, m2, false)
+		<a href="../../src/math/big/nat.go.html#line-1094" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-1094">#L1094</a>: 	m2inv := <b>nat</b>(nil).modInverse(m2, m1)
+		<a href="../../src/math/big/nat.go.html#line-1106" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-1106">#L1106</a>: func (z <b>nat</b>) expNNWindowed(x, y <b>nat</b>, logM uint) <b>nat</b> {
+		<a href="../../src/math/big/nat.go.html#line-1127" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-1127">#L1127</a>: 	var powers [1 &lt;&lt; n]*<b>nat</b>
+		<a href="../../src/math/big/nat.go.html#line-1205" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-1205">#L1205</a>: func (z <b>nat</b>) expNNMontgomery(x, y, m <b>nat</b>) <b>nat</b> {
+		<a href="../../src/math/big/nat.go.html#line-1211" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-1211">#L1211</a>: 		_, x = <b>nat</b>(nil).div(nil, x, m)
+		<a href="../../src/math/big/nat.go.html#line-1215" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-1215">#L1215</a>: 		rr := make(<b>nat</b>, numWords)
+		<a href="../../src/math/big/nat.go.html#line-1232" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-1232">#L1232</a>: 	RR := <b>nat</b>(nil).setWord(1)
+		<a href="../../src/math/big/nat.go.html#line-1233" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-1233">#L1233</a>: 	zz := <b>nat</b>(nil).shl(RR, uint(2*numWords*_W))
+		<a href="../../src/math/big/nat.go.html#line-1234" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-1234">#L1234</a>: 	_, RR = <b>nat</b>(nil).div(RR, zz, m)
+		<a href="../../src/math/big/nat.go.html#line-1241" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-1241">#L1241</a>: 	one := make(<b>nat</b>, numWords)
+		<a href="../../src/math/big/nat.go.html#line-1246" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-1246">#L1246</a>: 	var powers [1 &lt;&lt; n]<b>nat</b>
+		<a href="../../src/math/big/nat.go.html#line-1289" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-1289">#L1289</a>: 			_, zz = <b>nat</b>(nil).div(nil, zz, m)
+		<a href="../../src/math/big/nat.go.html#line-1300" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-1300">#L1300</a>: func (z <b>nat</b>) bytes(buf []byte) (i int) {
+		<a href="../../src/math/big/nat.go.html#line-1337" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-1337">#L1337</a>: func (z <b>nat</b>) setBytes(buf []byte) <b>nat</b> {
+		<a href="../../src/math/big/nat.go.html#line-1358" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-1358">#L1358</a>: func (z <b>nat</b>) sqrt(x <b>nat</b>) <b>nat</b> {
+		<a href="../../src/math/big/nat.go.html#line-1371" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-1371">#L1371</a>: 	var z1, z2 <b>nat</b>
+		<a href="../../src/math/big/nat.go.html#line-1392" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-1392">#L1392</a>: func (z <b>nat</b>) subMod2N(x, y <b>nat</b>, n uint) <b>nat</b> {
+		<a href="../../src/math/big/nat.go.html#line-1398" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-1398">#L1398</a>: 			x = <b>nat</b>(nil).trunc(x, n)
+		<a href="../../src/math/big/nat.go.html#line-1406" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-1406">#L1406</a>: 			y = <b>nat</b>(nil).trunc(y, n)
+		<a href="../../src/math/big/natconv.go.html#line-108">natconv.go#L108</a>: func (z <b>nat</b>) scan(r io.ByteScanner, base int, fracOk bool) (res <b>nat</b>, b, count int, err error) {
+		<a href="../../src/math/big/natconv.go.html#line-258" class="path-duplicate">natconv.go</a><a href="../../src/math/big/natconv.go.html#line-258">#L258</a>: func (x <b>nat</b>) utoa(base int) []byte {
+		<a href="../../src/math/big/natconv.go.html#line-263" class="path-duplicate">natconv.go</a><a href="../../src/math/big/natconv.go.html#line-263">#L263</a>: func (x <b>nat</b>) itoa(neg bool, base int) []byte {
+		<a href="../../src/math/big/natconv.go.html#line-331" class="path-duplicate">natconv.go</a><a href="../../src/math/big/natconv.go.html#line-331">#L331</a>: 		q := <b>nat</b>(nil).set(x)
+		<a href="../../src/math/big/natconv.go.html#line-368" class="path-duplicate">natconv.go</a><a href="../../src/math/big/natconv.go.html#line-368">#L368</a>: func (q <b>nat</b>) convertWords(s []byte, b Word, ndigits int, bb Word, table []divisor) {
+		<a href="../../src/math/big/natconv.go.html#line-372" class="path-duplicate">natconv.go</a><a href="../../src/math/big/natconv.go.html#line-372">#L372</a>: 		var r <b>nat</b>
+		<a href="../../src/math/big/natconv.go.html#line-443" class="path-duplicate">natconv.go</a><a href="../../src/math/big/natconv.go.html#line-443">#L443</a>: 	bbb     <b>nat</b> // divisor
+		<a href="../../src/math/big/natconv.go.html#line-454" class="path-duplicate">natconv.go</a><a href="../../src/math/big/natconv.go.html#line-454">#L454</a>: func (z <b>nat</b>) expWW(x, y Word) <b>nat</b> {
+		<a href="../../src/math/big/natconv.go.html#line-455" class="path-duplicate">natconv.go</a><a href="../../src/math/big/natconv.go.html#line-455">#L455</a>: 	return z.expNN(<b>nat</b>(nil).setWord(x), <b>nat</b>(nil).setWord(y), nil, false)
+		<a href="../../src/math/big/natconv.go.html#line-483" class="path-duplicate">natconv.go</a><a href="../../src/math/big/natconv.go.html#line-483">#L483</a>: 		var larger <b>nat</b>
+		<a href="../../src/math/big/natconv.go.html#line-487" class="path-duplicate">natconv.go</a><a href="../../src/math/big/natconv.go.html#line-487">#L487</a>: 					table[0].bbb = <b>nat</b>(nil).expWW(bb, Word(leafSize))
+		<a href="../../src/math/big/natconv.go.html#line-490" class="path-duplicate">natconv.go</a><a href="../../src/math/big/natconv.go.html#line-490">#L490</a>: 					table[i].bbb = <b>nat</b>(nil).sqr(table[i-1].bbb)
+		<a href="../../src/math/big/natconv.go.html#line-495" class="path-duplicate">natconv.go</a><a href="../../src/math/big/natconv.go.html#line-495">#L495</a>: 				larger = <b>nat</b>(nil).set(table[i].bbb)
+		<a href="../../src/math/big/natdiv.go.html#line-505">natdiv.go#L505</a>: func (z <b>nat</b>) rem(u, v <b>nat</b>) (r <b>nat</b>) {
+		<a href="../../src/math/big/natdiv.go.html#line-518" class="path-duplicate">natdiv.go</a><a href="../../src/math/big/natdiv.go.html#line-518">#L518</a>: func (z <b>nat</b>) div(z2, u, v <b>nat</b>) (q, r <b>nat</b>) {
+		<a href="../../src/math/big/natdiv.go.html#line-545" class="path-duplicate">natdiv.go</a><a href="../../src/math/big/natdiv.go.html#line-545">#L545</a>: func (z <b>nat</b>) divW(x <b>nat</b>, y Word) (q <b>nat</b>, r Word) {
+		<a href="../../src/math/big/natdiv.go.html#line-565" class="path-duplicate">natdiv.go</a><a href="../../src/math/big/natdiv.go.html#line-565">#L565</a>: func (x <b>nat</b>) modW(d Word) (r Word) {
+		<a href="../../src/math/big/natdiv.go.html#line-567" class="path-duplicate">natdiv.go</a><a href="../../src/math/big/natdiv.go.html#line-567">#L567</a>: 	var q <b>nat</b>
+		<a href="../../src/math/big/natdiv.go.html#line-592" class="path-duplicate">natdiv.go</a><a href="../../src/math/big/natdiv.go.html#line-592">#L592</a>: func (z <b>nat</b>) divLarge(u, uIn, vIn <b>nat</b>) (q, r <b>nat</b>) {
+		<a href="../../src/math/big/natdiv.go.html#line-634" class="path-duplicate">natdiv.go</a><a href="../../src/math/big/natdiv.go.html#line-634">#L634</a>: func (q <b>nat</b>) divBasic(u, v <b>nat</b>) {
+		<a href="../../src/math/big/natdiv.go.html#line-729" class="path-duplicate">natdiv.go</a><a href="../../src/math/big/natdiv.go.html#line-729">#L729</a>: func (z <b>nat</b>) divRecursive(u, v <b>nat</b>) {
+		<a href="../../src/math/big/natdiv.go.html#line-735" class="path-duplicate">natdiv.go</a><a href="../../src/math/big/natdiv.go.html#line-735">#L735</a>: 	temps := make([]*<b>nat</b>, recDepth)
+		<a href="../../src/math/big/natdiv.go.html#line-754" class="path-duplicate">natdiv.go</a><a href="../../src/math/big/natdiv.go.html#line-754">#L754</a>: func (z <b>nat</b>) divRecursiveStep(u, v <b>nat</b>, depth int, tmp *<b>nat</b>, temps []*<b>nat</b>) {
+		<a href="../../src/math/big/prime.go.html#line-86">prime.go#L86</a>: func (n <b>nat</b>) probablyPrimeMillerRabin(reps int, force2 bool) bool {
+		<a href="../../src/math/big/prime.go.html#line-87" class="path-duplicate">prime.go</a><a href="../../src/math/big/prime.go.html#line-87">#L87</a>: 	nm1 := <b>nat</b>(nil).sub(n, natOne)
+		<a href="../../src/math/big/prime.go.html#line-90" class="path-duplicate">prime.go</a><a href="../../src/math/big/prime.go.html#line-90">#L90</a>: 	q := <b>nat</b>(nil).shr(nm1, k)
+		<a href="../../src/math/big/prime.go.html#line-92" class="path-duplicate">prime.go</a><a href="../../src/math/big/prime.go.html#line-92">#L92</a>: 	nm3 := <b>nat</b>(nil).sub(nm1, natTwo)
+		<a href="../../src/math/big/prime.go.html#line-95" class="path-duplicate">prime.go</a><a href="../../src/math/big/prime.go.html#line-95">#L95</a>: 	var x, y, quotient <b>nat</b>
+		<a href="../../src/math/big/prime.go.html#line-150" class="path-duplicate">prime.go</a><a href="../../src/math/big/prime.go.html#line-150">#L150</a>: func (n <b>nat</b>) probablyPrimeLucas() bool {
+		<a href="../../src/math/big/prime.go.html#line-169" class="path-duplicate">prime.go</a><a href="../../src/math/big/prime.go.html#line-169">#L169</a>: 	d := <b>nat</b>{1}
+		<a href="../../src/math/big/prime.go.html#line-170" class="path-duplicate">prime.go</a><a href="../../src/math/big/prime.go.html#line-170">#L170</a>: 	t1 := <b>nat</b>(nil) // temp
+		<a href="../../src/math/big/prime.go.html#line-216" class="path-duplicate">prime.go</a><a href="../../src/math/big/prime.go.html#line-216">#L216</a>: 	s := <b>nat</b>(nil).add(n, natOne)
+		<a href="../../src/math/big/prime.go.html#line-219" class="path-duplicate">prime.go</a><a href="../../src/math/big/prime.go.html#line-219">#L219</a>: 	nm2 := <b>nat</b>(nil).sub(n, natTwo) // n-2
+		<a href="../../src/math/big/prime.go.html#line-249" class="path-duplicate">prime.go</a><a href="../../src/math/big/prime.go.html#line-249">#L249</a>: 	natP := <b>nat</b>(nil).setWord(p)
+		<a href="../../src/math/big/prime.go.html#line-250" class="path-duplicate">prime.go</a><a href="../../src/math/big/prime.go.html#line-250">#L250</a>: 	vk := <b>nat</b>(nil).setWord(2)
+		<a href="../../src/math/big/prime.go.html#line-251" class="path-duplicate">prime.go</a><a href="../../src/math/big/prime.go.html#line-251">#L251</a>: 	vk1 := <b>nat</b>(nil).setWord(p)
+		<a href="../../src/math/big/prime.go.html#line-252" class="path-duplicate">prime.go</a><a href="../../src/math/big/prime.go.html#line-252">#L252</a>: 	t2 := <b>nat</b>(nil) // temp
+		<a href="../../src/math/big/rat.go.html#line-77">rat.go#L77</a>: func quotToFloat32(a, b <b>nat</b>) (f float32, exact bool) {
+		<a href="../../src/math/big/rat.go.html#line-111" class="path-duplicate">rat.go</a><a href="../../src/math/big/rat.go.html#line-111">#L111</a>: 	var a2, b2 <b>nat</b>
+		<a href="../../src/math/big/rat.go.html#line-123" class="path-duplicate">rat.go</a><a href="../../src/math/big/rat.go.html#line-123">#L123</a>: 	var q <b>nat</b>
+		<a href="../../src/math/big/rat.go.html#line-175" class="path-duplicate">rat.go</a><a href="../../src/math/big/rat.go.html#line-175">#L175</a>: func quotToFloat64(a, b <b>nat</b>) (f float64, exact bool) {
+		<a href="../../src/math/big/rat.go.html#line-209" class="path-duplicate">rat.go</a><a href="../../src/math/big/rat.go.html#line-209">#L209</a>: 	var a2, b2 <b>nat</b>
+		<a href="../../src/math/big/rat.go.html#line-221" class="path-duplicate">rat.go</a><a href="../../src/math/big/rat.go.html#line-221">#L221</a>: 	var q <b>nat</b>
+		<a href="../../src/math/big/rat.go.html#line-310" class="path-duplicate">rat.go</a><a href="../../src/math/big/rat.go.html#line-310">#L310</a>: 		babs = <b>nat</b>(nil).set(babs) // make a copy
+		<a href="../../src/math/big/rat.go.html#line-425" class="path-duplicate">rat.go</a><a href="../../src/math/big/rat.go.html#line-425">#L425</a>: 		return &amp;Int{abs: <b>nat</b>{1}}
+		<a href="../../src/math/big/rat.go.html#line-456" class="path-duplicate">rat.go</a><a href="../../src/math/big/rat.go.html#line-456">#L456</a>: func mulDenom(z, x, y <b>nat</b>) <b>nat</b> {
+		<a href="../../src/math/big/rat.go.html#line-470" class="path-duplicate">rat.go</a><a href="../../src/math/big/rat.go.html#line-470">#L470</a>: func (z *Int) scaleDenom(x *Int, f <b>nat</b>) {
+		<a href="../../src/math/big/ratconv.go.html#line-181">ratconv.go#L181</a>: 		pow5 := z.b.abs.expNN(natFive, <b>nat</b>(nil).setWord(Word(n)), nil, false) // use underlying array of z.b.abs
+		<a href="../../src/math/big/ratconv.go.html#line-345" class="path-duplicate">ratconv.go</a><a href="../../src/math/big/ratconv.go.html#line-345">#L345</a>: 	q, r := <b>nat</b>(nil).div(<b>nat</b>(nil), x.a.abs, x.b.abs)
+		<a href="../../src/math/big/ratconv.go.html#line-349" class="path-duplicate">ratconv.go</a><a href="../../src/math/big/ratconv.go.html#line-349">#L349</a>: 		p = <b>nat</b>(nil).expNN(natTen, <b>nat</b>(nil).setUint64(uint64(prec)), nil, false)
+		<a href="../../src/math/big/ratconv.go.html#line-353" class="path-duplicate">ratconv.go</a><a href="../../src/math/big/ratconv.go.html#line-353">#L353</a>: 	r, r2 := r.div(<b>nat</b>(nil), r, x.b.abs)
+		<a href="../../src/math/big/ratconv.go.html#line-360" class="path-duplicate">ratconv.go</a><a href="../../src/math/big/ratconv.go.html#line-360">#L360</a>: 			q = <b>nat</b>(nil).add(q, natOne)
+		<a href="../../src/math/big/ratconv.go.html#line-361" class="path-duplicate">ratconv.go</a><a href="../../src/math/big/ratconv.go.html#line-361">#L361</a>: 			r = <b>nat</b>(nil).sub(r, p)
+		<a href="../../src/math/big/ratconv.go.html#line-413" class="path-duplicate">ratconv.go</a><a href="../../src/math/big/ratconv.go.html#line-413">#L413</a>: 	var q <b>nat</b>
+		<a href="../../src/math/big/ratconv.go.html#line-423" class="path-duplicate">ratconv.go</a><a href="../../src/math/big/ratconv.go.html#line-423">#L423</a>: 	var tab []<b>nat</b>        // tab[i] == (5^fp)^(2^i) == 5^(fp·2^i)
+		<a href="../../src/math/big/ratconv.go.html#line-424" class="path-duplicate">ratconv.go</a><a href="../../src/math/big/ratconv.go.html#line-424">#L424</a>: 	f := <b>nat</b>{1220703125} // == 5^fp (must fit into a uint32 Word)
+		<a href="../../src/math/big/ratconv.go.html#line-425" class="path-duplicate">ratconv.go</a><a href="../../src/math/big/ratconv.go.html#line-425">#L425</a>: 	var t, r <b>nat</b>         // temporaries
+		<a href="../../src/math/big/ratconv.go.html#line-431" class="path-duplicate">ratconv.go</a><a href="../../src/math/big/ratconv.go.html#line-431">#L431</a>: 		f = <b>nat</b>(nil).sqr(f) // nat(nil) to ensure a new f for each table entry
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

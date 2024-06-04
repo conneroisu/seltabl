@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: regexp/syntax.OpCapture</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../../pkg/regexp/syntax.html">regexp/syntax</a>.<a href="../../src/regexp/syntax/regexp.go.html#line-51">OpCapture</a></b></span>
+
+<span class="title">13 uses</span>
+
+	regexp/syntax (current package)
+		<a href="../../src/regexp/syntax/compile.go.html#line-127">compile.go#L127</a>: 	case <b>OpCapture</b>:
+		<a href="../../src/regexp/syntax/op_string.go.html#line-23">op_string.go#L23</a>: 	_ = x[<b>OpCapture</b>-13]
+		<a href="../../src/regexp/syntax/parse.go.html#line-222">parse.go#L222</a>: 	case <b>OpCapture</b>, OpStar:
+		<a href="../../src/regexp/syntax/parse.go.html#line-1440" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1440">#L1440</a>: 		re2.Op = <b>OpCapture</b>
+		<a href="../../src/regexp/syntax/regexp.go.html#line-51">regexp.go#L51</a>: 	<b>OpCapture</b>                      // capturing subexpression with index Cap, optional name Name
+		<a href="../../src/regexp/syntax/regexp.go.html#line-107" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-107">#L107</a>: 	case <b>OpCapture</b>:
+		<a href="../../src/regexp/syntax/regexp.go.html#line-193" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-193">#L193</a>: 	case <b>OpCapture</b>, OpStar, OpPlus, OpQuest, OpRepeat:
+		<a href="../../src/regexp/syntax/regexp.go.html#line-338" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-338">#L338</a>: 	case <b>OpCapture</b>:
+		<a href="../../src/regexp/syntax/regexp.go.html#line-353" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-353">#L353</a>: 		if sub.Op &gt; <b>OpCapture</b> || sub.Op == OpLiteral &amp;&amp; len(sub.Rune) &gt; 1 {
+		<a href="../../src/regexp/syntax/regexp.go.html#line-452" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-452">#L452</a>: 	if re.Op == <b>OpCapture</b> {
+		<a href="../../src/regexp/syntax/regexp.go.html#line-471" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-471">#L471</a>: 	if re.Op == <b>OpCapture</b> {
+		<a href="../../src/regexp/syntax/simplify.go.html#line-19">simplify.go#L19</a>: 	case <b>OpCapture</b>, OpConcat, OpAlternate:
+
+	<a href="../../pkg/regexp.html">regexp</a>
+		<a href="../../src/regexp/regexp.go.html#line-288">regexp.go#L288</a>: 	case syntax.<b>OpCapture</b>, syntax.OpPlus:
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

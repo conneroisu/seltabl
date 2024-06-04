@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: internal/abi.Method</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../pkg/internal/abi.html">internal/abi</a>.<a href="../../src/internal/abi/type.go.html#line-192">Method</a></b></span>
+
+<span class="title">15 uses</span>
+
+	internal/abi (current package)
+		<a href="../../src/internal/abi/type.go.html#line-192">type.go#L192</a>: type <b>Method</b> struct {
+		<a href="../../src/internal/abi/type.go.html#line-211" class="path-duplicate">type.go</a><a href="../../src/internal/abi/type.go.html#line-211">#L211</a>: func (t *UncommonType) Methods() []<b>Method</b> {
+		<a href="../../src/internal/abi/type.go.html#line-215" class="path-duplicate">type.go</a><a href="../../src/internal/abi/type.go.html#line-215">#L215</a>: 	return (*[1 &lt;&lt; 16]<b>Method</b>)(addChecked(unsafe.Pointer(t), uintptr(t.Moff), "t.mcount &gt; 0"))[:t.Mcount:t.Mcount]
+		<a href="../../src/internal/abi/type.go.html#line-218" class="path-duplicate">type.go</a><a href="../../src/internal/abi/type.go.html#line-218">#L218</a>: func (t *UncommonType) ExportedMethods() []<b>Method</b> {
+		<a href="../../src/internal/abi/type.go.html#line-222" class="path-duplicate">type.go</a><a href="../../src/internal/abi/type.go.html#line-222">#L222</a>: 	return (*[1 &lt;&lt; 16]<b>Method</b>)(addChecked(unsafe.Pointer(t), uintptr(t.Moff), "t.xcount &gt; 0"))[:t.Xcount:t.Xcount]
+		<a href="../../src/internal/abi/type.go.html#line-427" class="path-duplicate">type.go</a><a href="../../src/internal/abi/type.go.html#line-427">#L427</a>: func (t *Type) ExportedMethods() []<b>Method</b> {
+
+	<a href="../../pkg/internal/reflectlite.html">internal/reflectlite</a>
+		<a href="../../src/internal/reflectlite/type.go.html#line-269">type.go#L269</a>: func (t rtype) exportedMethods() []abi.<b>Method</b> {
+
+	<a href="../../pkg/reflect.html">reflect</a>
+		<a href="../../src/reflect/type.go.html#line-575">type.go#L575</a>: func (t *rtype) exportedMethods() []abi.<b>Method</b> {
+		<a href="../../src/reflect/type.go.html#line-2167" class="path-duplicate">type.go</a><a href="../../src/reflect/type.go.html#line-2167">#L2167</a>: 		methods    []abi.<b>Method</b>
+		<a href="../../src/reflect/type.go.html#line-2226" class="path-duplicate">type.go</a><a href="../../src/reflect/type.go.html#line-2226">#L2226</a>: 					methods = append(methods, abi.<b>Method</b>{
+		<a href="../../src/reflect/type.go.html#line-2250" class="path-duplicate">type.go</a><a href="../../src/reflect/type.go.html#line-2250">#L2250</a>: 						methods = append(methods, abi.<b>Method</b>{
+		<a href="../../src/reflect/type.go.html#line-2266" class="path-duplicate">type.go</a><a href="../../src/reflect/type.go.html#line-2266">#L2266</a>: 						methods = append(methods, abi.<b>Method</b>{
+		<a href="../../src/reflect/type.go.html#line-2290" class="path-duplicate">type.go</a><a href="../../src/reflect/type.go.html#line-2290">#L2290</a>: 						methods = append(methods, abi.<b>Method</b>{
+		<a href="../../src/reflect/type.go.html#line-2373" class="path-duplicate">type.go</a><a href="../../src/reflect/type.go.html#line-2373">#L2373</a>: 		copy(tt.Elem().Field(2).Slice(0, len(methods)).Interface().([]abi.<b>Method</b>), methods)
+
+	<a href="../../pkg/runtime.html">runtime</a>
+		<a href="../../src/runtime/iface.go.html#line-204">iface.go#L204</a>: 	xmhdr := (*[1 &lt;&lt; 16]abi.<b>Method</b>)(add(unsafe.Pointer(x), uintptr(x.Moff)))[:nt:nt]
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

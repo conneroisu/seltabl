@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: strings.Split</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/strings.html">strings</a>.<a href="../src/strings/strings.go.html#line-307">Split</a></b></span>
+
+<span class="title">17 uses</span>
+
+	strings (current package)
+		<a href="../src/strings/strings.go.html#line-307">strings.go#L307</a>: func <b>Split</b>(s, sep string) []string { return genSplit(s, sep, 0, -1) }
+
+	<a href="../pkg/crypto/tls.html">crypto/tls</a>
+		<a href="../src/crypto/tls/common.go.html#line-1147">common.go#L1147</a>: 			labels := strings.<b>Split</b>(name, ".")
+
+	<a href="../pkg/crypto/x509.html">crypto/x509</a>
+		<a href="../src/crypto/x509/root_unix.go.html#line-58">root_unix.go#L58</a>: 		dirs = strings.<b>Split</b>(d, ":")
+		<a href="../src/crypto/x509/verify.go.html#line-983">verify.go#L983</a>: 	for i, part := range strings.<b>Split</b>(host, ".") {
+		<a href="../src/crypto/x509/verify.go.html#line-1034" class="path-duplicate">verify.go</a><a href="../src/crypto/x509/verify.go.html#line-1034">#L1034</a>: 	patternParts := strings.<b>Split</b>(pattern, ".")
+		<a href="../src/crypto/x509/verify.go.html#line-1035" class="path-duplicate">verify.go</a><a href="../src/crypto/x509/verify.go.html#line-1035">#L1035</a>: 	hostParts := strings.<b>Split</b>(host, ".")
+
+	<a href="../pkg/github.com/PuerkitoBio^56e6a/goquery.html">github.com/PuerkitoBio/goquery</a>
+		<a href="../src/github.com/PuerkitoBio^56e6a/goquery/property.go.html#line-254">property.go#L254</a>: 	return strings.<b>Split</b>(rxClassTrim.ReplaceAllString(" "+classes+" ", " "), " ")
+
+	<a href="../pkg/mime.html">mime</a>
+		<a href="../src/mime/type_unix.go.html#line-44">type_unix.go#L44</a>: 		fields := strings.<b>Split</b>(scanner.Text(), ":")
+
+	<a href="../pkg/net/http.html">net/http</a>
+		<a href="../src/net/http/cookie.go.html#line-67">cookie.go#L67</a>: 		parts := strings.<b>Split</b>(textproto.TrimString(line), ";")
+		<a href="../src/net/http/fs.go.html#line-54">fs.go#L54</a>: 	parts := strings.<b>Split</b>(name, string(sep))
+		<a href="../src/net/http/fs.go.html#line-966" class="path-duplicate">fs.go</a><a href="../src/net/http/fs.go.html#line-966">#L966</a>: 	for _, ra := range strings.<b>Split</b>(s[len(b):], ",") {
+		<a href="../src/net/http/h2_bundle.go.html#line-6046">h2_bundle.go#L6046</a>: 		for _, key := range strings.<b>Split</b>(v, ",") {
+		<a href="../src/net/http/h2_bundle.go.html#line-7026" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-7026">#L7026</a>: 	for _, f := range strings.<b>Split</b>(v, ",") {
+		<a href="../src/net/http/server.go.html#line-1539">server.go#L1539</a>: 	for _, f := range strings.<b>Split</b>(v, ",") {
+
+	<a href="../pkg/path/filepath.html">path/filepath</a>
+		<a href="../src/path/filepath/path_unix.go.html#line-38">path_unix.go#L38</a>: 	return strings.<b>Split</b>(path, string(ListSeparator))
+
+	<a href="../pkg/vendor/golang.org/x/net/http/httpproxy.html">vendor/golang.org/x/net/http/httpproxy</a>
+		<a href="../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-215">proxy.go#L215</a>: 	for _, p := range strings.<b>Split</b>(c.NoProxy, ",") {
+
+	<a href="../pkg/vendor/golang.org/x/net/idna.html">vendor/golang.org/x/net/idna</a>
+		<a href="../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-593">idna10.0.0.go#L593</a>: 		l.slice = strings.<b>Split</b>(l.orig, ".")
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

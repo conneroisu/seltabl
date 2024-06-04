@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/x509.Certificate.RawSubject</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/crypto/x509.html">crypto/x509</a>.<a href="../../src/crypto/x509/x509.go.html#line-677">Certificate</a>.<a href="../../src/crypto/x509/x509.go.html#line-681">RawSubject</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">10 uses</span>
+
+	crypto/x509 (current package)
+		<a href="../../src/crypto/x509/cert_pool.go.html#line-184">cert_pool.go#L184</a>: 	s.addCertFunc(sha256.Sum224(cert.Raw), string(cert.<b>RawSubject</b>), func() (*Certificate, error) {
+		<a href="../../src/crypto/x509/cert_pool.go.html#line-239" class="path-duplicate">cert_pool.go</a><a href="../../src/crypto/x509/cert_pool.go.html#line-239">#L239</a>: 		s.addCertFunc(sha256.Sum224(cert.Raw), string(cert.<b>RawSubject</b>), func() (*Certificate, error) {
+		<a href="../../src/crypto/x509/cert_pool.go.html#line-291" class="path-duplicate">cert_pool.go</a><a href="../../src/crypto/x509/cert_pool.go.html#line-291">#L291</a>: 	s.addCertFunc(sha256.Sum224(cert.Raw), string(cert.<b>RawSubject</b>), func() (*Certificate, error) {
+		<a href="../../src/crypto/x509/parser.go.html#line-900">parser.go#L900</a>: 	cert.<b>RawSubject</b> = subjectSeq
+		<a href="../../src/crypto/x509/verify.go.html#line-565">verify.go#L565</a>: 		if !bytes.Equal(child.RawIssuer, c.<b>RawSubject</b>) {
+		<a href="../../src/crypto/x509/verify.go.html#line-864" class="path-duplicate">verify.go</a><a href="../../src/crypto/x509/verify.go.html#line-864">#L864</a>: 		if !bytes.Equal(candidate.<b>RawSubject</b>, cert.<b>RawSubject</b>) {
+		<a href="../../src/crypto/x509/x509.go.html#line-681">x509.go#L681</a>: 	<b>RawSubject</b>              []byte // DER encoded Subject
+		<a href="../../src/crypto/x509/x509.go.html#line-1432" class="path-duplicate">x509.go</a><a href="../../src/crypto/x509/x509.go.html#line-1432">#L1432</a>: 	if len(cert.<b>RawSubject</b>) &gt; 0 {
+		<a href="../../src/crypto/x509/x509.go.html#line-1433" class="path-duplicate">x509.go</a><a href="../../src/crypto/x509/x509.go.html#line-1433">#L1433</a>: 		return cert.<b>RawSubject</b>, nil
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

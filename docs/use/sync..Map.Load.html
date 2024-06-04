@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: sync.Map.Load</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/sync.html">sync</a>.<a href="../src/sync/map.go.html#line-35">Map</a>.<a href="../src/sync/map.go.html#line-120">Load</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">24 uses</span>
+
+	sync (current package)
+		<a href="../src/sync/map.go.html#line-120">map.go#L120</a>: func (m *Map) <b>Load</b>(key any) (value any, ok bool) {
+
+	<a href="../pkg/crypto/tls.html">crypto/tls</a>
+		<a href="../src/crypto/tls/cache.go.html#line-81">cache.go#L81</a>: 	if entry, ok := cc.<b>Load</b>(string(der)); ok {
+
+	<a href="../pkg/encoding/binary.html">encoding/binary</a>
+		<a href="../src/encoding/binary/binary.go.html#line-489">binary.go#L489</a>: 		if size, ok := structSize.<b>Load</b>(t); ok {
+
+	<a href="../pkg/internal/godebug.html">internal/godebug</a>
+		<a href="../src/internal/godebug/godebug.go.html#line-153">godebug.go#L153</a>: 	if v, ok := cache.<b>Load</b>(name); ok {
+
+	<a href="../pkg/mime.html">mime</a>
+		<a href="../src/mime/type.go.html#line-53">type.go#L53</a>: 		if ei, ok := extensions.<b>Load</b>(justType); ok {
+		<a href="../src/mime/type.go.html#line-115" class="path-duplicate">type.go</a><a href="../src/mime/type.go.html#line-115">#L115</a>: 	if v, ok := mimeTypes.<b>Load</b>(ext); ok {
+		<a href="../src/mime/type.go.html#line-129" class="path-duplicate">type.go</a><a href="../src/mime/type.go.html#line-129">#L129</a>: 			si, _ := mimeTypesLower.<b>Load</b>(strings.ToLower(ext))
+		<a href="../src/mime/type.go.html#line-139" class="path-duplicate">type.go</a><a href="../src/mime/type.go.html#line-139">#L139</a>: 	si, _ := mimeTypesLower.<b>Load</b>(string(lower))
+		<a href="../src/mime/type.go.html#line-155" class="path-duplicate">type.go</a><a href="../src/mime/type.go.html#line-155">#L155</a>: 	s, ok := extensions.<b>Load</b>(justType)
+		<a href="../src/mime/type.go.html#line-192" class="path-duplicate">type.go</a><a href="../src/mime/type.go.html#line-192">#L192</a>: 	if ei, ok := extensions.<b>Load</b>(justType); ok {
+		<a href="../src/mime/type_unix.go.html#line-64">type_unix.go#L64</a>: 		if _, ok := mimeTypes.<b>Load</b>(extension); ok {
+
+	<a href="../pkg/reflect.html">reflect</a>
+		<a href="../src/reflect/type.go.html#line-1198">type.go#L1198</a>: 	if pi, ok := ptrMap.<b>Load</b>(t); ok {
+		<a href="../src/reflect/type.go.html#line-1600" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1600">#L1600</a>: 	if ch, ok := lookupCache.<b>Load</b>(ckey); ok {
+		<a href="../src/reflect/type.go.html#line-1668" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1668">#L1668</a>: 	if mt, ok := lookupCache.<b>Load</b>(ckey); ok {
+		<a href="../src/reflect/type.go.html#line-1805" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1805">#L1805</a>: 	if ts, ok := funcLookupCache.m.<b>Load</b>(hash); ok {
+		<a href="../src/reflect/type.go.html#line-1816" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1816">#L1816</a>: 	if ts, ok := funcLookupCache.m.<b>Load</b>(hash); ok {
+		<a href="../src/reflect/type.go.html#line-1826" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1826">#L1826</a>: 		if rti, ok := funcLookupCache.m.<b>Load</b>(hash); ok {
+		<a href="../src/reflect/type.go.html#line-2086" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2086">#L2086</a>: 	if slice, ok := lookupCache.<b>Load</b>(ckey); ok {
+		<a href="../src/reflect/type.go.html#line-2407" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2407">#L2407</a>: 	if ts, ok := structLookupCache.m.<b>Load</b>(hash); ok {
+		<a href="../src/reflect/type.go.html#line-2419" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2419">#L2419</a>: 	if ts, ok := structLookupCache.m.<b>Load</b>(hash); ok {
+		<a href="../src/reflect/type.go.html#line-2430" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2430">#L2430</a>: 		if ti, ok := structLookupCache.m.<b>Load</b>(hash); ok {
+		<a href="../src/reflect/type.go.html#line-2602" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2602">#L2602</a>: 	if array, ok := lookupCache.<b>Load</b>(ckey); ok {
+		<a href="../src/reflect/type.go.html#line-2776" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2776">#L2776</a>: 	if lti, ok := layoutCache.<b>Load</b>(k); ok {
+
+	<a href="../pkg/runtime/cgo.html">runtime/cgo</a>
+		<a href="../src/runtime/cgo/handle.go.html#line-122">handle.go#L122</a>: 	v, ok := handles.<b>Load</b>(uintptr(h))
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

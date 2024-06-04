@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: regexp.bitState.cap</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/regexp.html">regexp</a>.<a href="../src/regexp/backtrack.go.html#line-37">bitState</a>.<a href="../src/regexp/backtrack.go.html#line-39">cap</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">19 uses</span>
+
+	regexp (current package)
+		<a href="../src/regexp/backtrack.go.html#line-39">backtrack.go#L39</a>: 	<b>cap</b>      []int
+		<a href="../src/regexp/backtrack.go.html#line-97" class="path-duplicate">backtrack.go</a><a href="../src/regexp/backtrack.go.html#line-97">#L97</a>: 	if cap(b.<b>cap</b>) &lt; ncap {
+		<a href="../src/regexp/backtrack.go.html#line-98" class="path-duplicate">backtrack.go</a><a href="../src/regexp/backtrack.go.html#line-98">#L98</a>: 		b.<b>cap</b> = make([]int, ncap)
+		<a href="../src/regexp/backtrack.go.html#line-100" class="path-duplicate">backtrack.go</a><a href="../src/regexp/backtrack.go.html#line-100">#L100</a>: 		b.<b>cap</b> = b.<b>cap</b>[:ncap]
+		<a href="../src/regexp/backtrack.go.html#line-102" class="path-duplicate">backtrack.go</a><a href="../src/regexp/backtrack.go.html#line-102">#L102</a>: 	for i := range b.<b>cap</b> {
+		<a href="../src/regexp/backtrack.go.html#line-103" class="path-duplicate">backtrack.go</a><a href="../src/regexp/backtrack.go.html#line-103">#L103</a>: 		b.<b>cap</b>[i] = -1
+		<a href="../src/regexp/backtrack.go.html#line-245" class="path-duplicate">backtrack.go</a><a href="../src/regexp/backtrack.go.html#line-245">#L245</a>: 				b.<b>cap</b>[inst.Arg] = pos
+		<a href="../src/regexp/backtrack.go.html#line-248" class="path-duplicate">backtrack.go</a><a href="../src/regexp/backtrack.go.html#line-248">#L248</a>: 				if inst.Arg &lt; uint32(len(b.<b>cap</b>)) {
+		<a href="../src/regexp/backtrack.go.html#line-250" class="path-duplicate">backtrack.go</a><a href="../src/regexp/backtrack.go.html#line-250">#L250</a>: 					b.push(re, pc, b.<b>cap</b>[inst.Arg], true) // come back when we're done.
+		<a href="../src/regexp/backtrack.go.html#line-251" class="path-duplicate">backtrack.go</a><a href="../src/regexp/backtrack.go.html#line-251">#L251</a>: 					b.<b>cap</b>[inst.Arg] = pos
+		<a href="../src/regexp/backtrack.go.html#line-272" class="path-duplicate">backtrack.go</a><a href="../src/regexp/backtrack.go.html#line-272">#L272</a>: 			if len(b.<b>cap</b>) == 0 {
+		<a href="../src/regexp/backtrack.go.html#line-279" class="path-duplicate">backtrack.go</a><a href="../src/regexp/backtrack.go.html#line-279">#L279</a>: 			if len(b.<b>cap</b>) &gt; 1 {
+		<a href="../src/regexp/backtrack.go.html#line-280" class="path-duplicate">backtrack.go</a><a href="../src/regexp/backtrack.go.html#line-280">#L280</a>: 				b.<b>cap</b>[1] = pos
+		<a href="../src/regexp/backtrack.go.html#line-283" class="path-duplicate">backtrack.go</a><a href="../src/regexp/backtrack.go.html#line-283">#L283</a>: 				copy(b.matchcap, b.<b>cap</b>)
+		<a href="../src/regexp/backtrack.go.html#line-321" class="path-duplicate">backtrack.go</a><a href="../src/regexp/backtrack.go.html#line-321">#L321</a>: 		if len(b.<b>cap</b>) &gt; 0 {
+		<a href="../src/regexp/backtrack.go.html#line-322" class="path-duplicate">backtrack.go</a><a href="../src/regexp/backtrack.go.html#line-322">#L322</a>: 			b.<b>cap</b>[0] = pos
+		<a href="../src/regexp/backtrack.go.html#line-348" class="path-duplicate">backtrack.go</a><a href="../src/regexp/backtrack.go.html#line-348">#L348</a>: 			if len(b.<b>cap</b>) &gt; 0 {
+		<a href="../src/regexp/backtrack.go.html#line-349" class="path-duplicate">backtrack.go</a><a href="../src/regexp/backtrack.go.html#line-349">#L349</a>: 				b.<b>cap</b>[0] = pos
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

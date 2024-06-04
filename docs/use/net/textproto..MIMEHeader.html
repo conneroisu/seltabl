@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/textproto.MIMEHeader</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../pkg/net/textproto.html">net/textproto</a>.<a href="../../src/net/textproto/header.go.html#line-9">MIMEHeader</a></b></span>
+
+<span class="title">30 uses</span>
+
+	net/textproto (current package)
+		<a href="../../src/net/textproto/header.go.html#line-9">header.go#L9</a>: type <b>MIMEHeader</b> map[string][]string
+		<a href="../../src/net/textproto/header.go.html#line-13" class="path-duplicate">header.go</a><a href="../../src/net/textproto/header.go.html#line-13">#L13</a>: func (h <b>MIMEHeader</b>) Add(key, value string) {
+		<a href="../../src/net/textproto/header.go.html#line-21" class="path-duplicate">header.go</a><a href="../../src/net/textproto/header.go.html#line-21">#L21</a>: func (h <b>MIMEHeader</b>) Set(key, value string) {
+		<a href="../../src/net/textproto/header.go.html#line-30" class="path-duplicate">header.go</a><a href="../../src/net/textproto/header.go.html#line-30">#L30</a>: func (h <b>MIMEHeader</b>) Get(key string) string {
+		<a href="../../src/net/textproto/header.go.html#line-46" class="path-duplicate">header.go</a><a href="../../src/net/textproto/header.go.html#line-46">#L46</a>: func (h <b>MIMEHeader</b>) Values(key string) []string {
+		<a href="../../src/net/textproto/header.go.html#line-54" class="path-duplicate">header.go</a><a href="../../src/net/textproto/header.go.html#line-54">#L54</a>: func (h <b>MIMEHeader</b>) Del(key string) {
+		<a href="../../src/net/textproto/reader.go.html#line-500">reader.go#L500</a>: func (r *Reader) ReadMIMEHeader() (<b>MIMEHeader</b>, error) {
+		<a href="../../src/net/textproto/reader.go.html#line-506" class="path-duplicate">reader.go</a><a href="../../src/net/textproto/reader.go.html#line-506">#L506</a>: func readMIMEHeader(r *Reader, maxMemory, maxHeaders int64) (<b>MIMEHeader</b>, error) {
+		<a href="../../src/net/textproto/reader.go.html#line-519" class="path-duplicate">reader.go</a><a href="../../src/net/textproto/reader.go.html#line-519">#L519</a>: 	m := make(<b>MIMEHeader</b>, hint)
+
+	<a href="../../pkg/net/http.html">net/http</a>
+		<a href="../../src/net/http/clone.go.html#line-62">clone.go#L62</a>: 	fh2.Header = textproto.<b>MIMEHeader</b>(Header(fh.Header).Clone())
+		<a href="../../src/net/http/fs.go.html#line-947">fs.go#L947</a>: func (r httpRange) mimeHeader(contentType string, size int64) textproto.<b>MIMEHeader</b> {
+		<a href="../../src/net/http/fs.go.html#line-948" class="path-duplicate">fs.go</a><a href="../../src/net/http/fs.go.html#line-948">#L948</a>: 	return textproto.<b>MIMEHeader</b>{
+		<a href="../../src/net/http/h2_bundle.go.html#line-7465">h2_bundle.go#L7465</a>: var http2got1xxFuncForTests func(int, textproto.<b>MIMEHeader</b>) error
+		<a href="../../src/net/http/h2_bundle.go.html#line-7469" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-7469">#L7469</a>: func (cs *http2clientStream) get1xxTraceFunc() func(int, textproto.<b>MIMEHeader</b>) error {
+		<a href="../../src/net/http/h2_bundle.go.html#line-9526" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9526">#L9526</a>: 			if err := fn(statusCode, textproto.<b>MIMEHeader</b>(header)); err != nil {
+		<a href="../../src/net/http/h2_bundle.go.html#line-10285" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-10285">#L10285</a>: func http2traceGot1xxResponseFunc(trace *httptrace.ClientTrace) func(int, textproto.<b>MIMEHeader</b>) error {
+		<a href="../../src/net/http/header.go.html#line-31">header.go#L31</a>: 	textproto.<b>MIMEHeader</b>(h).Add(key, value)
+		<a href="../../src/net/http/header.go.html#line-40" class="path-duplicate">header.go</a><a href="../../src/net/http/header.go.html#line-40">#L40</a>: 	textproto.<b>MIMEHeader</b>(h).Set(key, value)
+		<a href="../../src/net/http/header.go.html#line-50" class="path-duplicate">header.go</a><a href="../../src/net/http/header.go.html#line-50">#L50</a>: 	return textproto.<b>MIMEHeader</b>(h).Get(key)
+		<a href="../../src/net/http/header.go.html#line-59" class="path-duplicate">header.go</a><a href="../../src/net/http/header.go.html#line-59">#L59</a>: 	return textproto.<b>MIMEHeader</b>(h).Values(key)
+		<a href="../../src/net/http/header.go.html#line-81" class="path-duplicate">header.go</a><a href="../../src/net/http/header.go.html#line-81">#L81</a>: 	textproto.<b>MIMEHeader</b>(h).Del(key)
+		<a href="../../src/net/http/transport.go.html#line-2361">transport.go#L2361</a>: 				if err := trace.Got1xxResponse(resCode, textproto.<b>MIMEHeader</b>(resp.Header)); err != nil {
+
+	<a href="../../pkg/net/http/httptrace.html">net/http/httptrace</a>
+		<a href="../../src/net/http/httptrace/trace.go.html#line-115">trace.go#L115</a>: 	Got1xxResponse func(code int, header textproto.<b>MIMEHeader</b>) error
+
+	<a href="../../pkg/mime/multipart.html">mime/multipart</a>
+		<a href="../../src/mime/multipart/formdata.go.html#line-217">formdata.go#L217</a>: func mimeHeaderSize(h textproto.<b>MIMEHeader</b>) (size int64) {
+		<a href="../../src/mime/multipart/formdata.go.html#line-258" class="path-duplicate">formdata.go</a><a href="../../src/mime/multipart/formdata.go.html#line-258">#L258</a>: 	Header   textproto.<b>MIMEHeader</b>
+		<a href="../../src/mime/multipart/multipart.go.html#line-56">multipart.go#L56</a>: 	Header textproto.<b>MIMEHeader</b>
+		<a href="../../src/mime/multipart/readmimeheader.go.html#line-14">readmimeheader.go#L14</a>: func readMIMEHeader(r *textproto.Reader, maxMemory, maxHeaders int64) (textproto.<b>MIMEHeader</b>, error)
+		<a href="../../src/mime/multipart/writer.go.html#line-97">writer.go#L97</a>: func (w *Writer) CreatePart(header textproto.<b>MIMEHeader</b>) (io.Writer, error) {
+		<a href="../../src/mime/multipart/writer.go.html#line-141" class="path-duplicate">writer.go</a><a href="../../src/mime/multipart/writer.go.html#line-141">#L141</a>: 	h := make(textproto.<b>MIMEHeader</b>)
+		<a href="../../src/mime/multipart/writer.go.html#line-152" class="path-duplicate">writer.go</a><a href="../../src/mime/multipart/writer.go.html#line-152">#L152</a>: 	h := make(textproto.<b>MIMEHeader</b>)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

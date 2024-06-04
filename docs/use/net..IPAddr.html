@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net.IPAddr</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../pkg/net.html">net</a>.<a href="../src/net/iprawsock.go.html#line-31">IPAddr</a></b></span>
+
+<span class="title">86 uses</span>
+
+	net (current package)
+		<a href="../src/net/addrselect.go.html#line-14">addrselect.go#L14</a>: func sortByRFC6724(addrs []<b>IPAddr</b>) {
+		<a href="../src/net/addrselect.go.html#line-21" class="path-duplicate">addrselect.go</a><a href="../src/net/addrselect.go.html#line-21">#L21</a>: func sortByRFC6724withSrcs(addrs []<b>IPAddr</b>, srcs []netip.Addr) {
+		<a href="../src/net/addrselect.go.html#line-43" class="path-duplicate">addrselect.go</a><a href="../src/net/addrselect.go.html#line-43">#L43</a>: func srcAddrs(addrs []<b>IPAddr</b>) []netip.Addr {
+		<a href="../src/net/addrselect.go.html#line-79" class="path-duplicate">addrselect.go</a><a href="../src/net/addrselect.go.html#line-79">#L79</a>: 	addrs    []<b>IPAddr</b> // addrs to sort
+		<a href="../src/net/cgo_unix.go.html#line-148">cgo_unix.go#L148</a>: func cgoLookupHostIP(network, name string) (addrs []<b>IPAddr</b>, err error) {
+		<a href="../src/net/cgo_unix.go.html#line-204" class="path-duplicate">cgo_unix.go</a><a href="../src/net/cgo_unix.go.html#line-204">#L204</a>: 			addr := <b>IPAddr</b>{IP: copyIP(sa.Addr[:])}
+		<a href="../src/net/cgo_unix.go.html#line-208" class="path-duplicate">cgo_unix.go</a><a href="../src/net/cgo_unix.go.html#line-208">#L208</a>: 			addr := <b>IPAddr</b>{IP: copyIP(sa.Addr[:]), Zone: zoneCache.name(int(sa.Scope_id))}
+		<a href="../src/net/cgo_unix.go.html#line-215" class="path-duplicate">cgo_unix.go</a><a href="../src/net/cgo_unix.go.html#line-215">#L215</a>: func cgoLookupIP(ctx context.Context, network, name string) (addrs []<b>IPAddr</b>, err error) {
+		<a href="../src/net/cgo_unix.go.html#line-216" class="path-duplicate">cgo_unix.go</a><a href="../src/net/cgo_unix.go.html#line-216">#L216</a>: 	return doBlockingWithCtx(ctx, func() ([]<b>IPAddr</b>, error) {
+		<a href="../src/net/dial.go.html#line-290">dial.go#L290</a>: 		ip       *<b>IPAddr</b>
+		<a href="../src/net/dial.go.html#line-300" class="path-duplicate">dial.go</a><a href="../src/net/dial.go.html#line-300">#L300</a>: 	case *<b>IPAddr</b>:
+		<a href="../src/net/dial.go.html#line-320" class="path-duplicate">dial.go</a><a href="../src/net/dial.go.html#line-320">#L320</a>: 		case *<b>IPAddr</b>:
+		<a href="../src/net/dial.go.html#line-656" class="path-duplicate">dial.go</a><a href="../src/net/dial.go.html#line-656">#L656</a>: 	case *<b>IPAddr</b>:
+		<a href="../src/net/dial.go.html#line-657" class="path-duplicate">dial.go</a><a href="../src/net/dial.go.html#line-657">#L657</a>: 		la, _ := la.(*<b>IPAddr</b>)
+		<a href="../src/net/dial.go.html#line-766" class="path-duplicate">dial.go</a><a href="../src/net/dial.go.html#line-766">#L766</a>: 	case *<b>IPAddr</b>:
+		<a href="../src/net/dnsclient_unix.go.html#line-594">dnsclient_unix.go#L594</a>: func goLookupIPFiles(name string) (addrs []<b>IPAddr</b>, canonical string) {
+		<a href="../src/net/dnsclient_unix.go.html#line-599" class="path-duplicate">dnsclient_unix.go</a><a href="../src/net/dnsclient_unix.go.html#line-599">#L599</a>: 			addr := <b>IPAddr</b>{IP: ip, Zone: zone}
+		<a href="../src/net/dnsclient_unix.go.html#line-609" class="path-duplicate">dnsclient_unix.go</a><a href="../src/net/dnsclient_unix.go.html#line-609">#L609</a>: func (r *Resolver) goLookupIP(ctx context.Context, network, host string, order hostLookupOrder, conf *dnsConfig) (addrs []<b>IPAddr</b>, err error) {
+		<a href="../src/net/dnsclient_unix.go.html#line-614" class="path-duplicate">dnsclient_unix.go</a><a href="../src/net/dnsclient_unix.go.html#line-614">#L614</a>: func (r *Resolver) goLookupIPCNAMEOrder(ctx context.Context, network, name string, order hostLookupOrder, conf *dnsConfig) (addrs []<b>IPAddr</b>, cname dnsmessage.Name, err error) {
+		<a href="../src/net/dnsclient_unix.go.html#line-740" class="path-duplicate">dnsclient_unix.go</a><a href="../src/net/dnsclient_unix.go.html#line-740">#L740</a>: 					addrs = append(addrs, <b>IPAddr</b>{IP: IP(a.A[:])})
+		<a href="../src/net/dnsclient_unix.go.html#line-755" class="path-duplicate">dnsclient_unix.go</a><a href="../src/net/dnsclient_unix.go.html#line-755">#L755</a>: 					addrs = append(addrs, <b>IPAddr</b>{IP: IP(aaaa.AAAA[:])})
+		<a href="../src/net/file_unix.go.html#line-80">file_unix.go#L80</a>: 	case *<b>IPAddr</b>:
+		<a href="../src/net/file_unix.go.html#line-112" class="path-duplicate">file_unix.go</a><a href="../src/net/file_unix.go.html#line-112">#L112</a>: 	case *<b>IPAddr</b>:
+		<a href="../src/net/hook.go.html#line-18">hook.go#L18</a>: 		fn func(context.Context, string, string) ([]<b>IPAddr</b>, error),
+		<a href="../src/net/hook.go.html#line-21" class="path-duplicate">hook.go</a><a href="../src/net/hook.go.html#line-21">#L21</a>: 	) ([]<b>IPAddr</b>, error) {
+		<a href="../src/net/interface_linux.go.html#line-242">interface_linux.go#L242</a>: 				ifma := &amp;<b>IPAddr</b>{IP: IPv4(byte(i&gt;&gt;24), byte(i&gt;&gt;16), byte(i&gt;&gt;8), byte(i))}
+		<a href="../src/net/interface_linux.go.html#line-267" class="path-duplicate">interface_linux.go</a><a href="../src/net/interface_linux.go.html#line-267">#L267</a>: 			ifma := &amp;<b>IPAddr</b>{IP: IP{b[0], b[1], b[2], b[3], b[4], b[5], b[6], b[7], b[8], b[9], b[10], b[11], b[12], b[13], b[14], b[15]}}
+		<a href="../src/net/iprawsock.go.html#line-31">iprawsock.go#L31</a>: type <b>IPAddr</b> struct {
+		<a href="../src/net/iprawsock.go.html#line-37" class="path-duplicate">iprawsock.go</a><a href="../src/net/iprawsock.go.html#line-37">#L37</a>: func (a *<b>IPAddr</b>) Network() string { return "ip" }
+		<a href="../src/net/iprawsock.go.html#line-39" class="path-duplicate">iprawsock.go</a><a href="../src/net/iprawsock.go.html#line-39">#L39</a>: func (a *<b>IPAddr</b>) String() string {
+		<a href="../src/net/iprawsock.go.html#line-50" class="path-duplicate">iprawsock.go</a><a href="../src/net/iprawsock.go.html#line-50">#L50</a>: func (a *<b>IPAddr</b>) isWildcard() bool {
+		<a href="../src/net/iprawsock.go.html#line-57" class="path-duplicate">iprawsock.go</a><a href="../src/net/iprawsock.go.html#line-57">#L57</a>: func (a *<b>IPAddr</b>) opAddr() Addr {
+		<a href="../src/net/iprawsock.go.html#line-77" class="path-duplicate">iprawsock.go</a><a href="../src/net/iprawsock.go.html#line-77">#L77</a>: func ResolveIPAddr(network, address string) (*<b>IPAddr</b>, error) {
+		<a href="../src/net/iprawsock.go.html#line-94" class="path-duplicate">iprawsock.go</a><a href="../src/net/iprawsock.go.html#line-94">#L94</a>: 	return addrs.forResolve(network, address).(*<b>IPAddr</b>), nil
+		<a href="../src/net/iprawsock.go.html#line-113" class="path-duplicate">iprawsock.go</a><a href="../src/net/iprawsock.go.html#line-113">#L113</a>: func (c *IPConn) ReadFromIP(b []byte) (int, *<b>IPAddr</b>, error) {
+		<a href="../src/net/iprawsock.go.html#line-146" class="path-duplicate">iprawsock.go</a><a href="../src/net/iprawsock.go.html#line-146">#L146</a>: func (c *IPConn) ReadMsgIP(b, oob []byte) (n, oobn, flags int, addr *<b>IPAddr</b>, err error) {
+		<a href="../src/net/iprawsock.go.html#line-158" class="path-duplicate">iprawsock.go</a><a href="../src/net/iprawsock.go.html#line-158">#L158</a>: func (c *IPConn) WriteToIP(b []byte, addr *<b>IPAddr</b>) (int, error) {
+		<a href="../src/net/iprawsock.go.html#line-174" class="path-duplicate">iprawsock.go</a><a href="../src/net/iprawsock.go.html#line-174">#L174</a>: 	a, ok := addr.(*<b>IPAddr</b>)
+		<a href="../src/net/iprawsock.go.html#line-191" class="path-duplicate">iprawsock.go</a><a href="../src/net/iprawsock.go.html#line-191">#L191</a>: func (c *IPConn) WriteMsgIP(b, oob []byte, addr *<b>IPAddr</b>) (n, oobn int, err error) {
+		<a href="../src/net/iprawsock.go.html#line-211" class="path-duplicate">iprawsock.go</a><a href="../src/net/iprawsock.go.html#line-211">#L211</a>: func DialIP(network string, laddr, raddr *<b>IPAddr</b>) (*IPConn, error) {
+		<a href="../src/net/iprawsock.go.html#line-230" class="path-duplicate">iprawsock.go</a><a href="../src/net/iprawsock.go.html#line-230">#L230</a>: func ListenIP(network string, laddr *<b>IPAddr</b>) (*IPConn, error) {
+		<a href="../src/net/iprawsock.go.html#line-232" class="path-duplicate">iprawsock.go</a><a href="../src/net/iprawsock.go.html#line-232">#L232</a>: 		laddr = &amp;<b>IPAddr</b>{}
+		<a href="../src/net/iprawsock_posix.go.html#line-17">iprawsock_posix.go#L17</a>: 		return &amp;<b>IPAddr</b>{IP: sa.Addr[0:]}
+		<a href="../src/net/iprawsock_posix.go.html#line-19" class="path-duplicate">iprawsock_posix.go</a><a href="../src/net/iprawsock_posix.go.html#line-19">#L19</a>: 		return &amp;<b>IPAddr</b>{IP: sa.Addr[0:], Zone: zoneCache.name(int(sa.ZoneId))}
+		<a href="../src/net/iprawsock_posix.go.html#line-24" class="path-duplicate">iprawsock_posix.go</a><a href="../src/net/iprawsock_posix.go.html#line-24">#L24</a>: func (a *<b>IPAddr</b>) family() int {
+		<a href="../src/net/iprawsock_posix.go.html#line-34" class="path-duplicate">iprawsock_posix.go</a><a href="../src/net/iprawsock_posix.go.html#line-34">#L34</a>: func (a *<b>IPAddr</b>) sockaddr(family int) (syscall.Sockaddr, error) {
+		<a href="../src/net/iprawsock_posix.go.html#line-41" class="path-duplicate">iprawsock_posix.go</a><a href="../src/net/iprawsock_posix.go.html#line-41">#L41</a>: func (a *<b>IPAddr</b>) toLocal(net string) sockaddr {
+		<a href="../src/net/iprawsock_posix.go.html#line-42" class="path-duplicate">iprawsock_posix.go</a><a href="../src/net/iprawsock_posix.go.html#line-42">#L42</a>: 	return &amp;<b>IPAddr</b>{loopbackIP(net), a.Zone}
+		<a href="../src/net/iprawsock_posix.go.html#line-45" class="path-duplicate">iprawsock_posix.go</a><a href="../src/net/iprawsock_posix.go.html#line-45">#L45</a>: func (c *IPConn) readFrom(b []byte) (int, *<b>IPAddr</b>, error) {
+		<a href="../src/net/iprawsock_posix.go.html#line-48" class="path-duplicate">iprawsock_posix.go</a><a href="../src/net/iprawsock_posix.go.html#line-48">#L48</a>: 	var addr *<b>IPAddr</b>
+		<a href="../src/net/iprawsock_posix.go.html#line-52" class="path-duplicate">iprawsock_posix.go</a><a href="../src/net/iprawsock_posix.go.html#line-52">#L52</a>: 		addr = &amp;<b>IPAddr</b>{IP: sa.Addr[0:]}
+		<a href="../src/net/iprawsock_posix.go.html#line-55" class="path-duplicate">iprawsock_posix.go</a><a href="../src/net/iprawsock_posix.go.html#line-55">#L55</a>: 		addr = &amp;<b>IPAddr</b>{IP: sa.Addr[0:], Zone: zoneCache.name(int(sa.ZoneId))}
+		<a href="../src/net/iprawsock_posix.go.html#line-75" class="path-duplicate">iprawsock_posix.go</a><a href="../src/net/iprawsock_posix.go.html#line-75">#L75</a>: func (c *IPConn) readMsg(b, oob []byte) (n, oobn, flags int, addr *<b>IPAddr</b>, err error) {
+		<a href="../src/net/iprawsock_posix.go.html#line-80" class="path-duplicate">iprawsock_posix.go</a><a href="../src/net/iprawsock_posix.go.html#line-80">#L80</a>: 		addr = &amp;<b>IPAddr</b>{IP: sa.Addr[0:]}
+		<a href="../src/net/iprawsock_posix.go.html#line-82" class="path-duplicate">iprawsock_posix.go</a><a href="../src/net/iprawsock_posix.go.html#line-82">#L82</a>: 		addr = &amp;<b>IPAddr</b>{IP: sa.Addr[0:], Zone: zoneCache.name(int(sa.ZoneId))}
+		<a href="../src/net/iprawsock_posix.go.html#line-87" class="path-duplicate">iprawsock_posix.go</a><a href="../src/net/iprawsock_posix.go.html#line-87">#L87</a>: func (c *IPConn) writeTo(b []byte, addr *<b>IPAddr</b>) (int, error) {
+		<a href="../src/net/iprawsock_posix.go.html#line-101" class="path-duplicate">iprawsock_posix.go</a><a href="../src/net/iprawsock_posix.go.html#line-101">#L101</a>: func (c *IPConn) writeMsg(b, oob []byte, addr *<b>IPAddr</b>) (n, oobn int, err error) {
+		<a href="../src/net/iprawsock_posix.go.html#line-115" class="path-duplicate">iprawsock_posix.go</a><a href="../src/net/iprawsock_posix.go.html#line-115">#L115</a>: func (sd *sysDialer) dialIP(ctx context.Context, laddr, raddr *<b>IPAddr</b>) (*IPConn, error) {
+		<a href="../src/net/iprawsock_posix.go.html#line-138" class="path-duplicate">iprawsock_posix.go</a><a href="../src/net/iprawsock_posix.go.html#line-138">#L138</a>: func (sl *sysListener) listenIP(ctx context.Context, laddr *<b>IPAddr</b>) (*IPConn, error) {
+		<a href="../src/net/ipsock.go.html#line-69">ipsock.go#L69</a>: 	case *<b>IPAddr</b>:
+		<a href="../src/net/ipsock.go.html#line-132" class="path-duplicate">ipsock.go</a><a href="../src/net/ipsock.go.html#line-132">#L132</a>: func filterAddrList(filter func(<b>IPAddr</b>) bool, ips []<b>IPAddr</b>, inetaddr func(<b>IPAddr</b>) Addr, originalAddr string) (addrList, error) {
+		<a href="../src/net/ipsock.go.html#line-146" class="path-duplicate">ipsock.go</a><a href="../src/net/ipsock.go.html#line-146">#L146</a>: func ipv4only(addr <b>IPAddr</b>) bool {
+		<a href="../src/net/ipsock.go.html#line-151" class="path-duplicate">ipsock.go</a><a href="../src/net/ipsock.go.html#line-151">#L151</a>: func ipv6only(addr <b>IPAddr</b>) bool {
+		<a href="../src/net/ipsock.go.html#line-271" class="path-duplicate">ipsock.go</a><a href="../src/net/ipsock.go.html#line-271">#L271</a>: 	inetaddr := func(ip <b>IPAddr</b>) Addr {
+		<a href="../src/net/ipsock.go.html#line-278" class="path-duplicate">ipsock.go</a><a href="../src/net/ipsock.go.html#line-278">#L278</a>: 			return &amp;<b>IPAddr</b>{IP: ip.IP, Zone: ip.Zone}
+		<a href="../src/net/ipsock.go.html#line-284" class="path-duplicate">ipsock.go</a><a href="../src/net/ipsock.go.html#line-284">#L284</a>: 		return addrList{inetaddr(<b>IPAddr</b>{})}, nil
+		<a href="../src/net/ipsock.go.html#line-297" class="path-duplicate">ipsock.go</a><a href="../src/net/ipsock.go.html#line-297">#L297</a>: 		ips = append(ips, <b>IPAddr</b>{IP: IPv4zero})
+		<a href="../src/net/ipsock.go.html#line-300" class="path-duplicate">ipsock.go</a><a href="../src/net/ipsock.go.html#line-300">#L300</a>: 	var filter func(<b>IPAddr</b>) bool
+		<a href="../src/net/lookup.go.html#line-219">lookup.go#L219</a>: func (r *Resolver) LookupIPAddr(ctx context.Context, host string) ([]<b>IPAddr</b>, error) {
+		<a href="../src/net/lookup.go.html#line-248" class="path-duplicate">lookup.go</a><a href="../src/net/lookup.go.html#line-248">#L248</a>: 		ips = append(ips, addr.(*<b>IPAddr</b>).IP)
+		<a href="../src/net/lookup.go.html#line-304" class="path-duplicate">lookup.go</a><a href="../src/net/lookup.go.html#line-304">#L304</a>: func (r *Resolver) lookupIPAddr(ctx context.Context, network, host string) ([]<b>IPAddr</b>, error) {
+		<a href="../src/net/lookup.go.html#line-310" class="path-duplicate">lookup.go</a><a href="../src/net/lookup.go.html#line-310">#L310</a>: 		return []<b>IPAddr</b>{{IP: IP(ip.AsSlice()).To16(), Zone: ip.Zone()}}, nil
+		<a href="../src/net/lookup.go.html#line-320" class="path-duplicate">lookup.go</a><a href="../src/net/lookup.go.html#line-320">#L320</a>: 	if alt, _ := ctx.Value(nettrace.LookupIPAltResolverKey{}).(func(context.Context, string, string) ([]<b>IPAddr</b>, error)); alt != nil {
+		<a href="../src/net/lookup.go.html#line-387" class="path-duplicate">lookup.go</a><a href="../src/net/lookup.go.html#line-387">#L387</a>: 			addrs, _ := r.Val.([]<b>IPAddr</b>)
+		<a href="../src/net/lookup.go.html#line-396" class="path-duplicate">lookup.go</a><a href="../src/net/lookup.go.html#line-396">#L396</a>: func lookupIPReturn(addrsi any, err error, shared bool) ([]<b>IPAddr</b>, error) {
+		<a href="../src/net/lookup.go.html#line-400" class="path-duplicate">lookup.go</a><a href="../src/net/lookup.go.html#line-400">#L400</a>: 	addrs := addrsi.([]<b>IPAddr</b>)
+		<a href="../src/net/lookup.go.html#line-402" class="path-duplicate">lookup.go</a><a href="../src/net/lookup.go.html#line-402">#L402</a>: 		clone := make([]<b>IPAddr</b>, len(addrs))
+		<a href="../src/net/lookup.go.html#line-410" class="path-duplicate">lookup.go</a><a href="../src/net/lookup.go.html#line-410">#L410</a>: func ipAddrsEface(addrs []<b>IPAddr</b>) []any {
+		<a href="../src/net/lookup_unix.go.html#line-63">lookup_unix.go#L63</a>: func (r *Resolver) lookupIP(ctx context.Context, network, host string) (addrs []<b>IPAddr</b>, err error) {
+		<a href="../src/net/sockopt_posix.go.html#line-33">sockopt_posix.go#L33</a>: 		case *<b>IPAddr</b>:
+		<a href="../src/net/sockopt_posix.go.html#line-56" class="path-duplicate">sockopt_posix.go</a><a href="../src/net/sockopt_posix.go.html#line-56">#L56</a>: 		case *<b>IPAddr</b>:
+
+	<a href="../pkg/net/http/httptrace.html">net/http/httptrace</a>
+		<a href="../src/net/http/httptrace/trace.go.html#line-54">trace.go#L54</a>: 				addrs := make([]net.<b>IPAddr</b>, len(netIPs))
+		<a href="../src/net/http/httptrace/trace.go.html#line-56" class="path-duplicate">trace.go</a><a href="../src/net/http/httptrace/trace.go.html#line-56">#L56</a>: 					addrs[i] = ip.(net.<b>IPAddr</b>)
+		<a href="../src/net/http/httptrace/trace.go.html#line-219" class="path-duplicate">trace.go</a><a href="../src/net/http/httptrace/trace.go.html#line-219">#L219</a>: 	Addrs []net.<b>IPAddr</b>
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

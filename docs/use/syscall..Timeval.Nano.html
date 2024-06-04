@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: syscall.Timeval.Nano</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/syscall.html">syscall</a>.<a href="../src/syscall/ztypes_linux_amd64.go.html#line-29">Timeval</a>.<a href="../src/syscall/syscall.go.html#line-95">Nano</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">4 uses</span>
+
+	syscall (current package)
+		<a href="../src/syscall/syscall.go.html#line-95">syscall.go#L95</a>: func (tv *Timeval) <b>Nano</b>() int64 {
+		<a href="../src/syscall/timestruct.go.html#line-24">timestruct.go#L24</a>: func TimevalToNsec(tv Timeval) int64 { return tv.<b>Nano</b>() }
+
+	<a href="../pkg/os.html">os</a>
+		<a href="../src/os/exec_unix.go.html#line-99">exec_unix.go#L99</a>: 	return time.Duration(p.rusage.Utime.<b>Nano</b>()) * time.Nanosecond
+		<a href="../src/os/exec_unix.go.html#line-103" class="path-duplicate">exec_unix.go</a><a href="../src/os/exec_unix.go.html#line-103">#L103</a>: 	return time.Duration(p.rusage.Stime.<b>Nano</b>()) * time.Nanosecond
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

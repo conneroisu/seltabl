@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.workType.sweepWaiters</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/mgc.go.html#line-306">workType</a>.<a href="../src/runtime/mgc.go.html#line-406">sweepWaiters</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">9 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/mgc.go.html#line-191">mgc.go#L191</a>: 	lockInit(&amp;work.<b>sweepWaiters</b>.lock, lockRankSweepWaiters)
+		<a href="../src/runtime/mgc.go.html#line-406" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-406">#L406</a>: 	<b>sweepWaiters</b> struct {
+		<a href="../src/runtime/mgc.go.html#line-510" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-510">#L510</a>: 		lock(&amp;work.<b>sweepWaiters</b>.lock)
+		<a href="../src/runtime/mgc.go.html#line-518" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-518">#L518</a>: 			unlock(&amp;work.<b>sweepWaiters</b>.lock)
+		<a href="../src/runtime/mgc.go.html#line-524" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-524">#L524</a>: 		work.<b>sweepWaiters</b>.list.push(getg())
+		<a href="../src/runtime/mgc.go.html#line-525" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-525">#L525</a>: 		goparkunlock(&amp;work.<b>sweepWaiters</b>.lock, waitReasonWaitForGCCycle, traceBlockUntilGCEnds, 1)
+		<a href="../src/runtime/mgc.go.html#line-1049" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1049">#L1049</a>: 	lock(&amp;work.<b>sweepWaiters</b>.lock)
+		<a href="../src/runtime/mgc.go.html#line-1051" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1051">#L1051</a>: 	injectglist(&amp;work.<b>sweepWaiters</b>.list)
+		<a href="../src/runtime/mgc.go.html#line-1052" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1052">#L1052</a>: 	unlock(&amp;work.<b>sweepWaiters</b>.lock)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

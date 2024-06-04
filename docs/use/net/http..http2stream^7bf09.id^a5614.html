@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/http.http2stream.id</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/net/http.html">net/http</a>.<a href="../../src/net/http/h2_bundle.go.html#line-4450">http2stream</a>.<a href="../../src/net/http/h2_bundle.go.html#line-4453">id</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">23 uses</span>
+
+	net/http (current package)
+		<a href="../../src/net/http/h2_bundle.go.html#line-4453">h2_bundle.go#L4453</a>: 	<b>id</b>        uint32
+		<a href="../../src/net/http/h2_bundle.go.html#line-4910" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-4910">#L4910</a>: 	*writeArg = http2writeData{stream.<b>id</b>, data, endStream}
+		<a href="../../src/net/http/h2_bundle.go.html#line-5127" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5127">#L5127</a>: 			sc.resetStream(http2streamError(st.<b>id</b>, http2ErrCodeNo))
+		<a href="../../src/net/http/h2_bundle.go.html#line-5461" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5461">#L5461</a>: 	delete(sc.streams, st.<b>id</b>)
+		<a href="../../src/net/http/h2_bundle.go.html#line-5487" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5487">#L5487</a>: 	sc.writeSched.CloseStream(st.<b>id</b>)
+		<a href="../../src/net/http/h2_bundle.go.html#line-5691" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5691">#L5691</a>: 	return st.<b>id</b>%2 == 0
+		<a href="../../src/net/http/h2_bundle.go.html#line-5735" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5735">#L5735</a>: 		StreamID: st.<b>id</b>,
+		<a href="../../src/net/http/h2_bundle.go.html#line-5815" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5815">#L5815</a>: 		sc.writeSched.AdjustStream(st.<b>id</b>, f.Priority)
+		<a href="../../src/net/http/h2_bundle.go.html#line-5884" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5884">#L5884</a>: 		return sc.countError("trailers_not_ended", http2streamError(st.<b>id</b>, http2ErrCodeProtocol))
+		<a href="../../src/net/http/h2_bundle.go.html#line-5888" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5888">#L5888</a>: 		return sc.countError("trailers_pseudo", http2streamError(st.<b>id</b>, http2ErrCodeProtocol))
+		<a href="../../src/net/http/h2_bundle.go.html#line-5897" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5897">#L5897</a>: 				return sc.countError("trailers_bogus", http2streamError(st.<b>id</b>, http2ErrCodeProtocol))
+		<a href="../../src/net/http/h2_bundle.go.html#line-5934" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5934">#L5934</a>: 		<b>id</b>:        id,
+		<a href="../../src/net/http/h2_bundle.go.html#line-5948" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5948">#L5948</a>: 	sc.writeSched.OpenStream(st.<b>id</b>, http2OpenStreamOptions{PusherID: pusherID})
+		<a href="../../src/net/http/h2_bundle.go.html#line-6071" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-6071">#L6071</a>: 			return nil, nil, sc.countError("bad_path", http2streamError(st.<b>id</b>, http2ErrCodeProtocol))
+		<a href="../../src/net/http/h2_bundle.go.html#line-6178" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-6178">#L6178</a>: 				write:  http2handlerPanicRST{rw.rws.stream.<b>id</b>},
+		<a href="../../src/net/http/h2_bundle.go.html#line-6242" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-6242">#L6242</a>: 		write:  http2write100ContinueHeadersFrame{st.<b>id</b>},
+		<a href="../../src/net/http/h2_bundle.go.html#line-6290" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-6290">#L6290</a>: 		streamID = st.<b>id</b>
+		<a href="../../src/net/http/h2_bundle.go.html#line-6486" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-6486">#L6486</a>: 			streamID:      rws.stream.<b>id</b>,
+		<a href="../../src/net/http/h2_bundle.go.html#line-6521" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-6521">#L6521</a>: 			streamID:  rws.stream.<b>id</b>,
+		<a href="../../src/net/http/h2_bundle.go.html#line-6742" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-6742">#L6742</a>: 			streamID:    rws.stream.<b>id</b>,
+		<a href="../../src/net/http/h2_bundle.go.html#line-6984" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-6984">#L6984</a>: 		promised := sc.newStream(promisedID, msg.parent.<b>id</b>, http2stateHalfClosedRemote)
+		<a href="../../src/net/http/h2_bundle.go.html#line-7004" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-7004">#L7004</a>: 			streamID:           msg.parent.<b>id</b>,
+		<a href="../../src/net/http/h2_bundle.go.html#line-10731" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-10731">#L10731</a>: 	return wr.stream.<b>id</b>
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

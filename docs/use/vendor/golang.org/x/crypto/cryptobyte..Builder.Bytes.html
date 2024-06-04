@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: vendor/golang.org/x/crypto/cryptobyte.Builder.Bytes</title>
+<link href="../../../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../../../../pkg/vendor/golang.org/x/crypto/cryptobyte.html">vendor/golang.org/x/crypto/cryptobyte</a>.<a href="../../../../../src/vendor/golang.org/x/crypto/cryptobyte/builder.go.html#line-23">Builder</a>.<a href="../../../../../src/vendor/golang.org/x/crypto/cryptobyte/builder.go.html#line-61">Bytes</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">20 uses</span>
+
+	vendor/golang.org/x/crypto/cryptobyte (current package)
+		<a href="../../../../../src/vendor/golang.org/x/crypto/cryptobyte/builder.go.html#line-61">builder.go#L61</a>: func (b *Builder) <b>Bytes</b>() ([]byte, error) {
+
+	<a href="../../../../../pkg/crypto/ecdsa.html">crypto/ecdsa</a>
+		<a href="../../../../../src/crypto/ecdsa/ecdsa.go.html#line-344">ecdsa.go#L344</a>: 	return b.<b>Bytes</b>()
+
+	<a href="../../../../../pkg/crypto/tls.html">crypto/tls</a>
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-284">handshake_messages.go#L284</a>: 	extBytes, err := exts.<b>Bytes</b>()
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-313" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-313">#L313</a>: 	m.raw, err = b.<b>Bytes</b>()
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-361" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-361">#L361</a>: 		if out, err := b.<b>Bytes</b>(); err != nil || len(out) != len(m.raw) {
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-746" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-746">#L746</a>: 	extBytes, err := exts.<b>Bytes</b>()
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-769" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-769">#L769</a>: 	m.raw, err = b.<b>Bytes</b>()
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-933" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-933">#L933</a>: 	m.raw, err = b.<b>Bytes</b>()
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-1021" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-1021">#L1021</a>: 	m.raw, err = b.<b>Bytes</b>()
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-1082" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-1082">#L1082</a>: 	m.raw, err = b.<b>Bytes</b>()
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-1198" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-1198">#L1198</a>: 	m.raw, err = b.<b>Bytes</b>()
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-1383" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-1383">#L1383</a>: 	m.raw, err = b.<b>Bytes</b>()
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-1552" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-1552">#L1552</a>: 	m.raw, err = b.<b>Bytes</b>()
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-1633" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-1633">#L1633</a>: 	m.raw, err = b.<b>Bytes</b>()
+		<a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-1811" class="path-duplicate">handshake_messages.go</a><a href="../../../../../src/crypto/tls/handshake_messages.go.html#line-1811">#L1811</a>: 	m.raw, err = b.<b>Bytes</b>()
+		<a href="../../../../../src/crypto/tls/key_schedule.go.html#line-45">key_schedule.go#L45</a>: 	hkdfLabelBytes, err := hkdfLabel.<b>Bytes</b>()
+		<a href="../../../../../src/crypto/tls/ticket.go.html#line-169">ticket.go#L169</a>: 	return b.<b>Bytes</b>()
+
+	<a href="../../../../../pkg/crypto/x509.html">crypto/x509</a>
+		<a href="../../../../../src/crypto/x509/x509.go.html#line-1265">x509.go#L1265</a>: 			return b.<b>Bytes</b>()
+		<a href="../../../../../src/crypto/x509/x509.go.html#line-1293" class="path-duplicate">x509.go</a><a href="../../../../../src/crypto/x509/x509.go.html#line-1293">#L1293</a>: 		ret[n].Value, err = b.<b>Bytes</b>()
+		<a href="../../../../../src/crypto/x509/x509.go.html#line-1408" class="path-duplicate">x509.go</a><a href="../../../../../src/crypto/x509/x509.go.html#line-1408">#L1408</a>: 	ext.Value, err = b.<b>Bytes</b>()
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

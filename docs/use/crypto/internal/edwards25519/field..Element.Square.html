@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/internal/edwards25519/field.Element.Square</title>
+<link href="../../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../../../pkg/crypto/internal/edwards25519/field.html">crypto/internal/edwards25519/field</a>.<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-23">Element</a>.<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-308">Square</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">57 uses</span>
+
+	crypto/internal/edwards25519/field (current package)
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-125">fe.go#L125</a>: 	z2.<b>Square</b>(z)             // 2
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-126" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-126">#L126</a>: 	t.<b>Square</b>(&amp;z2)            // 4
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-127" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-127">#L127</a>: 	t.<b>Square</b>(&amp;t)             // 8
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-130" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-130">#L130</a>: 	t.<b>Square</b>(&amp;z11)           // 22
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-133" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-133">#L133</a>: 	t.<b>Square</b>(&amp;z2_5_0) // 2^6 - 2^1
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-135" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-135">#L135</a>: 		t.<b>Square</b>(&amp;t) // 2^10 - 2^5
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-139" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-139">#L139</a>: 	t.<b>Square</b>(&amp;z2_10_0) // 2^11 - 2^1
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-141" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-141">#L141</a>: 		t.<b>Square</b>(&amp;t) // 2^20 - 2^10
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-145" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-145">#L145</a>: 	t.<b>Square</b>(&amp;z2_20_0) // 2^21 - 2^1
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-147" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-147">#L147</a>: 		t.<b>Square</b>(&amp;t) // 2^40 - 2^20
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-151" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-151">#L151</a>: 	t.<b>Square</b>(&amp;t) // 2^41 - 2^1
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-153" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-153">#L153</a>: 		t.<b>Square</b>(&amp;t) // 2^50 - 2^10
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-157" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-157">#L157</a>: 	t.<b>Square</b>(&amp;z2_50_0) // 2^51 - 2^1
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-159" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-159">#L159</a>: 		t.<b>Square</b>(&amp;t) // 2^100 - 2^50
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-163" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-163">#L163</a>: 	t.<b>Square</b>(&amp;z2_100_0) // 2^101 - 2^1
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-165" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-165">#L165</a>: 		t.<b>Square</b>(&amp;t) // 2^200 - 2^100
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-169" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-169">#L169</a>: 	t.<b>Square</b>(&amp;t) // 2^201 - 2^1
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-171" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-171">#L171</a>: 		t.<b>Square</b>(&amp;t) // 2^250 - 2^50
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-175" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-175">#L175</a>: 	t.<b>Square</b>(&amp;t) // 2^251 - 2^1
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-176" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-176">#L176</a>: 	t.<b>Square</b>(&amp;t) // 2^252 - 2^2
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-177" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-177">#L177</a>: 	t.<b>Square</b>(&amp;t) // 2^253 - 2^3
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-178" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-178">#L178</a>: 	t.<b>Square</b>(&amp;t) // 2^254 - 2^4
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-179" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-179">#L179</a>: 	t.<b>Square</b>(&amp;t) // 2^255 - 2^5
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-308" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-308">#L308</a>: func (v *Element) <b>Square</b>(x *Element) *Element {
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-342" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-342">#L342</a>: 	t0.<b>Square</b>(x)             // x^2
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-343" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-343">#L343</a>: 	t1.<b>Square</b>(&amp;t0)           // x^4
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-344" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-344">#L344</a>: 	t1.<b>Square</b>(&amp;t1)           // x^8
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-347" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-347">#L347</a>: 	t0.<b>Square</b>(&amp;t0)           // x^22
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-349" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-349">#L349</a>: 	t1.<b>Square</b>(&amp;t0)           // x^62
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-351" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-351">#L351</a>: 		t1.<b>Square</b>(&amp;t1)
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-354" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-354">#L354</a>: 	t1.<b>Square</b>(&amp;t0)            // 2^11 - 2
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-356" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-356">#L356</a>: 		t1.<b>Square</b>(&amp;t1)
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-359" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-359">#L359</a>: 	t2.<b>Square</b>(&amp;t1)            // 2^21 - 2
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-361" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-361">#L361</a>: 		t2.<b>Square</b>(&amp;t2)
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-364" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-364">#L364</a>: 	t1.<b>Square</b>(&amp;t1)            // 2^41 - 2
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-366" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-366">#L366</a>: 		t1.<b>Square</b>(&amp;t1)
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-369" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-369">#L369</a>: 	t1.<b>Square</b>(&amp;t0)            // 2^51 - 2
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-371" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-371">#L371</a>: 		t1.<b>Square</b>(&amp;t1)
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-374" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-374">#L374</a>: 	t2.<b>Square</b>(&amp;t1)             // 2^101 - 2
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-376" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-376">#L376</a>: 		t2.<b>Square</b>(&amp;t2)
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-379" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-379">#L379</a>: 	t1.<b>Square</b>(&amp;t1)            // 2^201 - 2
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-381" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-381">#L381</a>: 		t1.<b>Square</b>(&amp;t1)
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-384" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-384">#L384</a>: 	t0.<b>Square</b>(&amp;t0)            // 2^251 - 2
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-385" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-385">#L385</a>: 	t0.<b>Square</b>(&amp;t0)            // 2^252 - 4
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-402" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-402">#L402</a>: 	v2 := new(Element).<b>Square</b>(v)
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-404" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-404">#L404</a>: 	uv7 := new(Element).Multiply(uv3, t0.<b>Square</b>(v2))
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-407" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-407">#L407</a>: 	check := new(Element).Multiply(v, t0.<b>Square</b>(rr)) // check = v * r^2
+
+	<a href="../../../../pkg/crypto/internal/edwards25519.html">crypto/internal/edwards25519</a>
+		<a href="../../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-163">edwards25519.go#L163</a>: 	y2 := new(field.Element).<b>Square</b>(y)
+		<a href="../../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-220" class="path-duplicate">edwards25519.go</a><a href="../../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-220">#L220</a>: 	v.z.<b>Square</b>(&amp;p.Z)
+		<a href="../../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-355" class="path-duplicate">edwards25519.go</a><a href="../../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-355">#L355</a>: 	XX.<b>Square</b>(&amp;p.X)
+		<a href="../../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-356" class="path-duplicate">edwards25519.go</a><a href="../../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-356">#L356</a>: 	YY.<b>Square</b>(&amp;p.Y)
+		<a href="../../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-357" class="path-duplicate">edwards25519.go</a><a href="../../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-357">#L357</a>: 	ZZ2.<b>Square</b>(&amp;p.Z)
+		<a href="../../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-360" class="path-duplicate">edwards25519.go</a><a href="../../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-360">#L360</a>: 	XplusYsq.<b>Square</b>(&amp;XplusYsq)
+
+	<a href="../../../../pkg/crypto/ecdh.html">crypto/ecdh</a>
+		<a href="../../../../src/crypto/ecdh/x25519.go.html#line-115">x25519.go#L115</a>: 		tmp0.<b>Square</b>(&amp;tmp1)
+		<a href="../../../../src/crypto/ecdh/x25519.go.html#line-116" class="path-duplicate">x25519.go</a><a href="../../../../src/crypto/ecdh/x25519.go.html#line-116">#L116</a>: 		tmp1.<b>Square</b>(&amp;x2)
+		<a href="../../../../src/crypto/ecdh/x25519.go.html#line-121" class="path-duplicate">x25519.go</a><a href="../../../../src/crypto/ecdh/x25519.go.html#line-121">#L121</a>: 		z2.<b>Square</b>(&amp;z2)
+		<a href="../../../../src/crypto/ecdh/x25519.go.html#line-124" class="path-duplicate">x25519.go</a><a href="../../../../src/crypto/ecdh/x25519.go.html#line-124">#L124</a>: 		x3.<b>Square</b>(&amp;x3)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

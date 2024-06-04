@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.memmove</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/stubs.go.html#line-107">memmove</a></b></span>
+
+<span class="title">22 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/chan.go.html#line-345">chan.go#L345</a>: 	<b>memmove</b>(dst, src, t.Size_)
+		<a href="../src/runtime/chan.go.html#line-354" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-354">#L354</a>: 	<b>memmove</b>(dst, src, t.Size_)
+		<a href="../src/runtime/iface.go.html#line-348">iface.go#L348</a>: 	<b>memmove</b>(x, v, t.Size_)
+		<a href="../src/runtime/mbarrier.go.html#line-169">mbarrier.go#L169</a>: 	<b>memmove</b>(dst, src, typ.Size_)
+		<a href="../src/runtime/mbarrier.go.html#line-241" class="path-duplicate">mbarrier.go</a><a href="../src/runtime/mbarrier.go.html#line-241">#L241</a>: 	<b>memmove</b>(dst, src, size)
+		<a href="../src/runtime/mbarrier.go.html#line-302" class="path-duplicate">mbarrier.go</a><a href="../src/runtime/mbarrier.go.html#line-302">#L302</a>: 	<b>memmove</b>(dstPtr, srcPtr, size)
+		<a href="../src/runtime/mgcwork.go.html#line-443">mgcwork.go#L443</a>: 	<b>memmove</b>(unsafe.Pointer(&amp;b1.obj[0]), unsafe.Pointer(&amp;b.obj[b.nobj]), uintptr(n)*unsafe.Sizeof(b1.obj[0]))
+		<a href="../src/runtime/mspanset.go.html#line-108">mspanset.go#L108</a>: 				<b>memmove</b>(newSpine, spine.p, b.spineCap*goarch.PtrSize)
+		<a href="../src/runtime/pinner.go.html#line-316">pinner.go#L316</a>: 		<b>memmove</b>(unsafe.Pointer(&amp;newPinnerBits.x), unsafe.Pointer(&amp;p.x), bytes)
+		<a href="../src/runtime/slice.go.html#line-87">slice.go#L87</a>: 	<b>memmove</b>(to, from, copymem)
+		<a href="../src/runtime/slice.go.html#line-261" class="path-duplicate">slice.go</a><a href="../src/runtime/slice.go.html#line-261">#L261</a>: 	<b>memmove</b>(p, oldPtr, lenmem)
+		<a href="../src/runtime/slice.go.html#line-359" class="path-duplicate">slice.go</a><a href="../src/runtime/slice.go.html#line-359">#L359</a>: 		<b>memmove</b>(toPtr, fromPtr, size)
+		<a href="../src/runtime/stack.go.html#line-751">stack.go#L751</a>: 			<b>memmove</b>(unsafe.Pointer(gp.sched.bp), unsafe.Pointer(oldfp), goarch.PtrSize)
+		<a href="../src/runtime/stack.go.html#line-837" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-837">#L837</a>: 		<b>memmove</b>(unsafe.Pointer(newBot), unsafe.Pointer(oldBot), sgsize)
+		<a href="../src/runtime/stack.go.html#line-910" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-910">#L910</a>: 	<b>memmove</b>(unsafe.Pointer(new.hi-ncopy), unsafe.Pointer(old.hi-ncopy), ncopy)
+		<a href="../src/runtime/string.go.html#line-114">string.go#L114</a>: 	<b>memmove</b>(p, unsafe.Pointer(ptr), uintptr(n))
+		<a href="../src/runtime/string.go.html#line-309" class="path-duplicate">string.go</a><a href="../src/runtime/string.go.html#line-309">#L309</a>: 	<b>memmove</b>(bp, unsafe.Pointer(p), uintptr(n))
+		<a href="../src/runtime/string.go.html#line-324" class="path-duplicate">string.go</a><a href="../src/runtime/string.go.html#line-324">#L324</a>: 	<b>memmove</b>(unsafe.Pointer(&amp;b[0]), unsafe.Pointer(p), uintptr(l))
+		<a href="../src/runtime/string.go.html#line-340" class="path-duplicate">string.go</a><a href="../src/runtime/string.go.html#line-340">#L340</a>: 	<b>memmove</b>(unsafe.Pointer(&amp;b[0]), unsafe.Pointer(p), uintptr(l))
+		<a href="../src/runtime/stubs.go.html#line-107">stubs.go#L107</a>: func <b>memmove</b>(to, from unsafe.Pointer, n uintptr)
+		<a href="../src/runtime/stubs.go.html#line-115" class="path-duplicate">stubs.go</a><a href="../src/runtime/stubs.go.html#line-115">#L115</a>: 	<b>memmove</b>(to, from, n)
+		<a href="../src/runtime/trace2map.go.html#line-125">trace2map.go#L125</a>: 	<b>memmove</b>(unsafe.Pointer(sl.array), data, size)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

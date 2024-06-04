@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/http.socksAuthMethod</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../pkg/net/http.html">net/http</a>.<a href="../../src/net/http/socks_bundle.go.html#line-191">socksAuthMethod</a></b></span>
+
+<span class="title">9 uses</span>
+
+	net/http (current package)
+		<a href="../../src/net/http/socks_bundle.go.html#line-80">socks_bundle.go#L80</a>: 	am := <b>socksAuthMethod</b>(b[1])
+		<a href="../../src/net/http/socks_bundle.go.html#line-191" class="path-duplicate">socks_bundle.go</a><a href="../../src/net/http/socks_bundle.go.html#line-191">#L191</a>: type <b>socksAuthMethod</b> int
+		<a href="../../src/net/http/socks_bundle.go.html#line-232" class="path-duplicate">socks_bundle.go</a><a href="../../src/net/http/socks_bundle.go.html#line-232">#L232</a>: 	socksAuthMethodNotRequired         <b>socksAuthMethod</b> = 0x00 // no authentication required
+		<a href="../../src/net/http/socks_bundle.go.html#line-233" class="path-duplicate">socks_bundle.go</a><a href="../../src/net/http/socks_bundle.go.html#line-233">#L233</a>: 	socksAuthMethodUsernamePassword    <b>socksAuthMethod</b> = 0x02 // use username/password
+		<a href="../../src/net/http/socks_bundle.go.html#line-234" class="path-duplicate">socks_bundle.go</a><a href="../../src/net/http/socks_bundle.go.html#line-234">#L234</a>: 	socksAuthMethodNoAcceptableMethods <b>socksAuthMethod</b> = 0xff // no acceptable authentication methods
+		<a href="../../src/net/http/socks_bundle.go.html#line-289" class="path-duplicate">socks_bundle.go</a><a href="../../src/net/http/socks_bundle.go.html#line-289">#L289</a>: 	AuthMethods []<b>socksAuthMethod</b>
+		<a href="../../src/net/http/socks_bundle.go.html#line-294" class="path-duplicate">socks_bundle.go</a><a href="../../src/net/http/socks_bundle.go.html#line-294">#L294</a>: 	Authenticate func(context.Context, io.ReadWriter, <b>socksAuthMethod</b>) error
+		<a href="../../src/net/http/socks_bundle.go.html#line-443" class="path-duplicate">socks_bundle.go</a><a href="../../src/net/http/socks_bundle.go.html#line-443">#L443</a>: func (up *socksUsernamePassword) Authenticate(ctx context.Context, rw io.ReadWriter, auth <b>socksAuthMethod</b>) error {
+		<a href="../../src/net/http/transport.go.html#line-1676">transport.go#L1676</a>: 			d.AuthMethods = []<b>socksAuthMethod</b>{
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

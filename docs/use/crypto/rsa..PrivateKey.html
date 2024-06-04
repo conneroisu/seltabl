@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/rsa.PrivateKey</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../pkg/crypto/rsa.html">crypto/rsa</a>.<a href="../../src/crypto/rsa/rsa.go.html#line-113">PrivateKey</a></b></span>
+
+<span class="title">29 uses</span>
+
+	crypto/rsa (current package)
+		<a href="../../src/crypto/rsa/notboring.go.html#line-14">notboring.go#L14</a>: func boringPrivateKey(*<b>PrivateKey</b>) (*boring.PrivateKeyRSA, error) {
+		<a href="../../src/crypto/rsa/pkcs1v15.go.html#line-92">pkcs1v15.go#L92</a>: func DecryptPKCS1v15(random io.Reader, priv *<b>PrivateKey</b>, ciphertext []byte) ([]byte, error) {
+		<a href="../../src/crypto/rsa/pkcs1v15.go.html#line-153" class="path-duplicate">pkcs1v15.go</a><a href="../../src/crypto/rsa/pkcs1v15.go.html#line-153">#L153</a>: func DecryptPKCS1v15SessionKey(random io.Reader, priv *<b>PrivateKey</b>, ciphertext []byte, key []byte) error {
+		<a href="../../src/crypto/rsa/pkcs1v15.go.html#line-184" class="path-duplicate">pkcs1v15.go</a><a href="../../src/crypto/rsa/pkcs1v15.go.html#line-184">#L184</a>: func decryptPKCS1v15(priv *<b>PrivateKey</b>, ciphertext []byte) (valid int, em []byte, index int, err error) {
+		<a href="../../src/crypto/rsa/pkcs1v15.go.html#line-287" class="path-duplicate">pkcs1v15.go</a><a href="../../src/crypto/rsa/pkcs1v15.go.html#line-287">#L287</a>: func SignPKCS1v15(random io.Reader, priv *<b>PrivateKey</b>, hash crypto.Hash, hashed []byte) ([]byte, error) {
+		<a href="../../src/crypto/rsa/pss.go.html#line-210">pss.go#L210</a>: func signPSSWithSalt(priv *<b>PrivateKey</b>, hash crypto.Hash, hashed, salt []byte) ([]byte, error) {
+		<a href="../../src/crypto/rsa/pss.go.html#line-292" class="path-duplicate">pss.go</a><a href="../../src/crypto/rsa/pss.go.html#line-292">#L292</a>: func SignPSS(rand io.Reader, priv *<b>PrivateKey</b>, hash crypto.Hash, digest []byte, opts *PSSOptions) ([]byte, error) {
+		<a href="../../src/crypto/rsa/rsa.go.html#line-113">rsa.go#L113</a>: type <b>PrivateKey</b> struct {
+		<a href="../../src/crypto/rsa/rsa.go.html#line-125" class="path-duplicate">rsa.go</a><a href="../../src/crypto/rsa/rsa.go.html#line-125">#L125</a>: func (priv *<b>PrivateKey</b>) Public() crypto.PublicKey {
+		<a href="../../src/crypto/rsa/rsa.go.html#line-131" class="path-duplicate">rsa.go</a><a href="../../src/crypto/rsa/rsa.go.html#line-131">#L131</a>: func (priv *<b>PrivateKey</b>) Equal(x crypto.PrivateKey) bool {
+		<a href="../../src/crypto/rsa/rsa.go.html#line-132" class="path-duplicate">rsa.go</a><a href="../../src/crypto/rsa/rsa.go.html#line-132">#L132</a>: 	xx, ok := x.(*<b>PrivateKey</b>)
+		<a href="../../src/crypto/rsa/rsa.go.html#line-164" class="path-duplicate">rsa.go</a><a href="../../src/crypto/rsa/rsa.go.html#line-164">#L164</a>: func (priv *<b>PrivateKey</b>) Sign(rand io.Reader, digest []byte, opts crypto.SignerOpts) ([]byte, error) {
+		<a href="../../src/crypto/rsa/rsa.go.html#line-175" class="path-duplicate">rsa.go</a><a href="../../src/crypto/rsa/rsa.go.html#line-175">#L175</a>: func (priv *<b>PrivateKey</b>) Decrypt(rand io.Reader, ciphertext []byte, opts crypto.DecrypterOpts) (plaintext []byte, err error) {
+		<a href="../../src/crypto/rsa/rsa.go.html#line-234" class="path-duplicate">rsa.go</a><a href="../../src/crypto/rsa/rsa.go.html#line-234">#L234</a>: func (priv *<b>PrivateKey</b>) Validate() error {
+		<a href="../../src/crypto/rsa/rsa.go.html#line-275" class="path-duplicate">rsa.go</a><a href="../../src/crypto/rsa/rsa.go.html#line-275">#L275</a>: func GenerateKey(random io.Reader, bits int) (*<b>PrivateKey</b>, error) {
+		<a href="../../src/crypto/rsa/rsa.go.html#line-298" class="path-duplicate">rsa.go</a><a href="../../src/crypto/rsa/rsa.go.html#line-298">#L298</a>: func GenerateMultiPrimeKey(random io.Reader, nprimes int, bits int) (*<b>PrivateKey</b>, error) {
+		<a href="../../src/crypto/rsa/rsa.go.html#line-333" class="path-duplicate">rsa.go</a><a href="../../src/crypto/rsa/rsa.go.html#line-333">#L333</a>: 		key := &amp;<b>PrivateKey</b>{
+		<a href="../../src/crypto/rsa/rsa.go.html#line-353" class="path-duplicate">rsa.go</a><a href="../../src/crypto/rsa/rsa.go.html#line-353">#L353</a>: 	priv := new(<b>PrivateKey</b>)
+		<a href="../../src/crypto/rsa/rsa.go.html#line-583" class="path-duplicate">rsa.go</a><a href="../../src/crypto/rsa/rsa.go.html#line-583">#L583</a>: func (priv *<b>PrivateKey</b>) Precompute() {
+		<a href="../../src/crypto/rsa/rsa.go.html#line-641" class="path-duplicate">rsa.go</a><a href="../../src/crypto/rsa/rsa.go.html#line-641">#L641</a>: func decrypt(priv *<b>PrivateKey</b>, ciphertext []byte, check bool) ([]byte, error) {
+		<a href="../../src/crypto/rsa/rsa.go.html#line-708" class="path-duplicate">rsa.go</a><a href="../../src/crypto/rsa/rsa.go.html#line-708">#L708</a>: func DecryptOAEP(hash hash.Hash, random io.Reader, priv *<b>PrivateKey</b>, ciphertext []byte, label []byte) ([]byte, error) {
+		<a href="../../src/crypto/rsa/rsa.go.html#line-712" class="path-duplicate">rsa.go</a><a href="../../src/crypto/rsa/rsa.go.html#line-712">#L712</a>: func decryptOAEP(hash, mgfHash hash.Hash, random io.Reader, priv *<b>PrivateKey</b>, ciphertext []byte, label []byte) ([]byte, error) {
+
+	<a href="../../pkg/crypto/tls.html">crypto/tls</a>
+		<a href="../../src/crypto/tls/auth.go.html#line-259">auth.go#L259</a>: 	case rsa.<b>PrivateKey</b>, ecdsa.PrivateKey:
+		<a href="../../src/crypto/tls/tls.go.html#line-306">tls.go#L306</a>: 		priv, ok := cert.PrivateKey.(*rsa.<b>PrivateKey</b>)
+		<a href="../../src/crypto/tls/tls.go.html#line-345" class="path-duplicate">tls.go</a><a href="../../src/crypto/tls/tls.go.html#line-345">#L345</a>: 		case *rsa.<b>PrivateKey</b>, *ecdsa.PrivateKey, ed25519.PrivateKey:
+
+	<a href="../../pkg/crypto/x509.html">crypto/x509</a>
+		<a href="../../src/crypto/x509/pkcs1.go.html#line-47">pkcs1.go#L47</a>: func ParsePKCS1PrivateKey(der []byte) (*rsa.<b>PrivateKey</b>, error) {
+		<a href="../../src/crypto/x509/pkcs1.go.html#line-71" class="path-duplicate">pkcs1.go</a><a href="../../src/crypto/x509/pkcs1.go.html#line-71">#L71</a>: 	key := new(rsa.<b>PrivateKey</b>)
+		<a href="../../src/crypto/x509/pkcs1.go.html#line-104" class="path-duplicate">pkcs1.go</a><a href="../../src/crypto/x509/pkcs1.go.html#line-104">#L104</a>: func MarshalPKCS1PrivateKey(key *rsa.<b>PrivateKey</b>) []byte {
+		<a href="../../src/crypto/x509/pkcs8.go.html#line-105">pkcs8.go#L105</a>: 	case *rsa.<b>PrivateKey</b>:
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

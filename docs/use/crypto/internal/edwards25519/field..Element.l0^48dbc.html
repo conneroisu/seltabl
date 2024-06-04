@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/internal/edwards25519/field.Element.l0</title>
+<link href="../../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../../../pkg/crypto/internal/edwards25519/field.html">crypto/internal/edwards25519/field</a>.<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-23">Element</a>.<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-28">l0</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">30 uses</span>
+
+	crypto/internal/edwards25519/field (current package)
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-28">fe.go#L28</a>: 	<b>l0</b> uint64
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-62" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-62">#L62</a>: 	c := (v.<b>l0</b> + 19) &gt;&gt; 51
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-70" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-70">#L70</a>: 	v.<b>l0</b> += 19 * c
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-72" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-72">#L72</a>: 	v.l1 += v.<b>l0</b> &gt;&gt; 51
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-73" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-73">#L73</a>: 	v.<b>l0</b> = v.<b>l0</b> &amp; maskLow51Bits
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-88" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-88">#L88</a>: 	v.<b>l0</b> = a.<b>l0</b> + b.<b>l0</b>
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-104" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-104">#L104</a>: 	v.<b>l0</b> = (a.<b>l0</b> + 0xFFFFFFFFFFFDA) - b.<b>l0</b>
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-204" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-204">#L204</a>: 	v.<b>l0</b> = binary.LittleEndian.Uint64(x[0:8])
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-205" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-205">#L205</a>: 	v.<b>l0</b> &amp;= maskLow51Bits
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-236" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-236">#L236</a>: 	for i, l := range [5]uint64{t.<b>l0</b>, t.l1, t.l2, t.l3, t.l4} {
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-263" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-263">#L263</a>: 	v.<b>l0</b> = (m &amp; a.<b>l0</b>) | (^m &amp; b.<b>l0</b>)
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-274" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-274">#L274</a>: 	t := m &amp; (v.<b>l0</b> ^ u.<b>l0</b>)
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-275" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-275">#L275</a>: 	v.<b>l0</b> ^= t
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-276" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-276">#L276</a>: 	u.<b>l0</b> ^= t
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-315" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-315">#L315</a>: 	x0lo, x0hi := mul51(x.<b>l0</b>, y)
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-320" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-320">#L320</a>: 	v.<b>l0</b> = x0lo + 19*x4hi // carried over per the reduction identity
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe_generic.go.html#line-35">fe_generic.go#L35</a>: 	a0 := a.<b>l0</b>
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe_generic.go.html#line-41" class="path-duplicate">fe_generic.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe_generic.go.html#line-41">#L41</a>: 	b0 := b.<b>l0</b>
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe_generic.go.html#line-166" class="path-duplicate">fe_generic.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe_generic.go.html#line-166">#L166</a>: 	l0 := a.<b>l0</b>
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe_generic.go.html#line-251" class="path-duplicate">fe_generic.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe_generic.go.html#line-251">#L251</a>: 	c0 := v.<b>l0</b> &gt;&gt; 51
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe_generic.go.html#line-259" class="path-duplicate">fe_generic.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe_generic.go.html#line-259">#L259</a>: 	v.<b>l0</b> = v.<b>l0</b>&amp;maskLow51Bits + c4*19
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

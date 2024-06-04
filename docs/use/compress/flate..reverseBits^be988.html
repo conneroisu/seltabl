@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: compress/flate.reverseBits</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../../pkg/compress/flate.html">compress/flate</a>.<a href="../../src/compress/flate/huffman_code.go.html#line-343">reverseBits</a></b></span>
+
+<span class="title">4 uses</span>
+
+	compress/flate (current package)
+		<a href="../../src/compress/flate/huffman_code.go.html#line-89">huffman_code.go#L89</a>: 		codes[ch] = hcode{code: <b>reverseBits</b>(bits, byte(size)), len: size}
+		<a href="../../src/compress/flate/huffman_code.go.html#line-98" class="path-duplicate">huffman_code.go</a><a href="../../src/compress/flate/huffman_code.go.html#line-98">#L98</a>: 		codes[ch] = hcode{code: <b>reverseBits</b>(uint16(ch), 5), len: 5}
+		<a href="../../src/compress/flate/huffman_code.go.html#line-261" class="path-duplicate">huffman_code.go</a><a href="../../src/compress/flate/huffman_code.go.html#line-261">#L261</a>: 			h.codes[node.literal] = hcode{code: <b>reverseBits</b>(code, uint8(n)), len: uint16(n)}
+		<a href="../../src/compress/flate/huffman_code.go.html#line-343" class="path-duplicate">huffman_code.go</a><a href="../../src/compress/flate/huffman_code.go.html#line-343">#L343</a>: func <b>reverseBits</b>(number uint16, bitLength byte) uint16 {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

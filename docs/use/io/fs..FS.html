@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: io/fs.FS</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../pkg/io/fs.html">io/fs</a>.<a href="../../src/io/fs/fs.go.html#line-27">FS</a></b></span>
+
+<span class="title">25 uses</span>
+
+	io/fs (current package)
+		<a href="../../src/io/fs/fs.go.html#line-27">fs.go#L27</a>: type <b>FS</b> interface {
+		<a href="../../src/io/fs/glob.go.html#line-13">glob.go#L13</a>: 	<b>FS</b>
+		<a href="../../src/io/fs/glob.go.html#line-33" class="path-duplicate">glob.go</a><a href="../../src/io/fs/glob.go.html#line-33">#L33</a>: func Glob(fsys <b>FS</b>, pattern string) (matches []string, err error) {
+		<a href="../../src/io/fs/glob.go.html#line-37" class="path-duplicate">glob.go</a><a href="../../src/io/fs/glob.go.html#line-37">#L37</a>: func globWithLimit(fsys <b>FS</b>, pattern string, depth int) (matches []string, err error) {
+		<a href="../../src/io/fs/glob.go.html#line-99" class="path-duplicate">glob.go</a><a href="../../src/io/fs/glob.go.html#line-99">#L99</a>: func glob(fs <b>FS</b>, dir, pattern string, matches []string) (m []string, e error) {
+		<a href="../../src/io/fs/readdir.go.html#line-15">readdir.go#L15</a>: 	<b>FS</b>
+		<a href="../../src/io/fs/readdir.go.html#line-28" class="path-duplicate">readdir.go</a><a href="../../src/io/fs/readdir.go.html#line-28">#L28</a>: func ReadDir(fsys <b>FS</b>, name string) ([]DirEntry, error) {
+		<a href="../../src/io/fs/readfile.go.html#line-12">readfile.go#L12</a>: 	<b>FS</b>
+		<a href="../../src/io/fs/readfile.go.html#line-32" class="path-duplicate">readfile.go</a><a href="../../src/io/fs/readfile.go.html#line-32">#L32</a>: func ReadFile(fsys <b>FS</b>, name string) ([]byte, error) {
+		<a href="../../src/io/fs/stat.go.html#line-9">stat.go#L9</a>: 	<b>FS</b>
+		<a href="../../src/io/fs/stat.go.html#line-20" class="path-duplicate">stat.go</a><a href="../../src/io/fs/stat.go.html#line-20">#L20</a>: func Stat(fsys <b>FS</b>, name string) (FileInfo, error) {
+		<a href="../../src/io/fs/sub.go.html#line-14">sub.go#L14</a>: 	<b>FS</b>
+		<a href="../../src/io/fs/sub.go.html#line-17" class="path-duplicate">sub.go</a><a href="../../src/io/fs/sub.go.html#line-17">#L17</a>: 	Sub(dir string) (<b>FS</b>, error)
+		<a href="../../src/io/fs/sub.go.html#line-34" class="path-duplicate">sub.go</a><a href="../../src/io/fs/sub.go.html#line-34">#L34</a>: func Sub(fsys <b>FS</b>, dir string) (<b>FS</b>, error) {
+		<a href="../../src/io/fs/sub.go.html#line-48" class="path-duplicate">sub.go</a><a href="../../src/io/fs/sub.go.html#line-48">#L48</a>: 	fsys <b>FS</b>
+		<a href="../../src/io/fs/sub.go.html#line-129" class="path-duplicate">sub.go</a><a href="../../src/io/fs/sub.go.html#line-129">#L129</a>: func (f *subFS) Sub(dir string) (<b>FS</b>, error) {
+		<a href="../../src/io/fs/walk.go.html#line-72">walk.go#L72</a>: func walkDir(fsys <b>FS</b>, name string, d DirEntry, walkDirFn WalkDirFunc) error {
+		<a href="../../src/io/fs/walk.go.html#line-117" class="path-duplicate">walk.go</a><a href="../../src/io/fs/walk.go.html#line-117">#L117</a>: func WalkDir(fsys <b>FS</b>, root string, fn WalkDirFunc) error {
+
+	<a href="../../pkg/net/http.html">net/http</a>
+		<a href="../../src/net/http/filetransport.go.html#line-49">filetransport.go#L49</a>: func NewFileTransportFS(fsys fs.<b>FS</b>) RoundTripper {
+		<a href="../../src/net/http/fs.go.html#line-790">fs.go#L790</a>: func ServeFileFS(w ResponseWriter, r *Request, fsys fs.<b>FS</b>, name string) {
+		<a href="../../src/net/http/fs.go.html#line-822" class="path-duplicate">fs.go</a><a href="../../src/net/http/fs.go.html#line-822">#L822</a>: 	fsys fs.<b>FS</b>
+		<a href="../../src/net/http/fs.go.html#line-896" class="path-duplicate">fs.go</a><a href="../../src/net/http/fs.go.html#line-896">#L896</a>: func FS(fsys fs.<b>FS</b>) FileSystem {
+		<a href="../../src/net/http/fs.go.html#line-925" class="path-duplicate">fs.go</a><a href="../../src/net/http/fs.go.html#line-925">#L925</a>: func FileServerFS(root fs.<b>FS</b>) Handler {
+
+	<a href="../../pkg/os.html">os</a>
+		<a href="../../src/os/file.go.html#line-670">file.go#L670</a>: func DirFS(dir string) fs.<b>FS</b> {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

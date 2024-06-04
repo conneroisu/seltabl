@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: reflect.addTypeBits</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/reflect.html">reflect</a>.<a href="../src/reflect/type.go.html#line-2844">addTypeBits</a></b></span>
+
+<span class="title">6 uses</span>
+
+	reflect (current package)
+		<a href="../src/reflect/abi.go.html#line-422">abi.go#L422</a>: 			<b>addTypeBits</b>(stackPtrs, stkStep.stkOff, arg)
+		<a href="../src/reflect/abi.go.html#line-455" class="path-duplicate">abi.go</a><a href="../src/reflect/abi.go.html#line-455">#L455</a>: 			<b>addTypeBits</b>(stackPtrs, stkStep.stkOff, res)
+		<a href="../src/reflect/type.go.html#line-2499">type.go#L2499</a>: 		<b>addTypeBits</b>(bv, 0, &amp;typ.Type)
+		<a href="../src/reflect/type.go.html#line-2844" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2844">#L2844</a>: func <b>addTypeBits</b>(bv *bitVector, offset uintptr, t *abi.Type) {
+		<a href="../src/reflect/type.go.html#line-2869" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2869">#L2869</a>: 			<b>addTypeBits</b>(bv, offset+uintptr(i)*tt.Elem.Size_, tt.Elem)
+		<a href="../src/reflect/type.go.html#line-2877" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2877">#L2877</a>: 			<b>addTypeBits</b>(bv, offset+f.Offset, f.Typ)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

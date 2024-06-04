@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: reflect.fnv1</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/reflect.html">reflect</a>.<a href="../src/reflect/type.go.html#line-1240">fnv1</a></b></span>
+
+<span class="title">17 uses</span>
+
+	reflect (current package)
+		<a href="../src/reflect/type.go.html#line-1227">type.go#L1227</a>: 	pp.Hash = <b>fnv1</b>(t.t.Hash, '*')
+		<a href="../src/reflect/type.go.html#line-1240" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1240">#L1240</a>: func <b>fnv1</b>(x uint32, list ...byte) uint32 {
+		<a href="../src/reflect/type.go.html#line-1645" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1645">#L1645</a>: 	ch.Hash = <b>fnv1</b>(typ.Hash, 'c', byte(dir))
+		<a href="../src/reflect/type.go.html#line-1689" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1689">#L1689</a>: 	mt.Hash = <b>fnv1</b>(etyp.Hash, 'm', byte(ktyp.Hash&gt;&gt;24), byte(ktyp.Hash&gt;&gt;16), byte(ktyp.Hash&gt;&gt;8), byte(ktyp.Hash))
+		<a href="../src/reflect/type.go.html#line-1784" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1784">#L1784</a>: 		hash = <b>fnv1</b>(hash, byte(t.t.Hash&gt;&gt;24), byte(t.t.Hash&gt;&gt;16), byte(t.t.Hash&gt;&gt;8), byte(t.t.Hash))
+		<a href="../src/reflect/type.go.html#line-1787" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1787">#L1787</a>: 		hash = <b>fnv1</b>(hash, 'v')
+		<a href="../src/reflect/type.go.html#line-1789" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1789">#L1789</a>: 	hash = <b>fnv1</b>(hash, '.')
+		<a href="../src/reflect/type.go.html#line-1793" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1793">#L1793</a>: 		hash = <b>fnv1</b>(hash, byte(t.t.Hash&gt;&gt;24), byte(t.t.Hash&gt;&gt;16), byte(t.t.Hash&gt;&gt;8), byte(t.t.Hash))
+		<a href="../src/reflect/type.go.html#line-2106" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2106">#L2106</a>: 	slice.Hash = <b>fnv1</b>(typ.Hash, '[')
+		<a href="../src/reflect/type.go.html#line-2163" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2163">#L2163</a>: 		hash       = <b>fnv1</b>(0, []byte("struct {")...)
+		<a href="../src/reflect/type.go.html#line-2204" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2204">#L2204</a>: 		hash = <b>fnv1</b>(hash, []byte(name)...)
+		<a href="../src/reflect/type.go.html#line-2306" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2306">#L2306</a>: 		hash = <b>fnv1</b>(hash, byte(ft.Hash&gt;&gt;24), byte(ft.Hash&gt;&gt;16), byte(ft.Hash&gt;&gt;8), byte(ft.Hash))
+		<a href="../src/reflect/type.go.html#line-2310" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2310">#L2310</a>: 			hash = <b>fnv1</b>(hash, []byte(f.Name.Tag())...)
+		<a href="../src/reflect/type.go.html#line-2387" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2387">#L2387</a>: 	hash = <b>fnv1</b>(hash, '}')
+		<a href="../src/reflect/type.go.html#line-2622" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2622">#L2622</a>: 	array.Hash = <b>fnv1</b>(typ.Hash, '[')
+		<a href="../src/reflect/type.go.html#line-2624" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2624">#L2624</a>: 		array.Hash = <b>fnv1</b>(array.Hash, byte(n))
+		<a href="../src/reflect/type.go.html#line-2626" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2626">#L2626</a>: 	array.Hash = <b>fnv1</b>(array.Hash, ']')
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/http.ResponseWriter.Header</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/net/http.html">net/http</a>.<a href="../../src/net/http/server.go.html#line-94">ResponseWriter</a>.<a href="../../src/net/http/server.go.html#line-115">Header</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">24 uses</span>
+
+	net/http (current package)
+		<a href="../../src/net/http/cookie.go.html#line-171">cookie.go#L171</a>: 		w.<b>Header</b>().Add("Set-Cookie", v)
+		<a href="../../src/net/http/fs.go.html#line-153">fs.go#L153</a>: 	w.<b>Header</b>().Set("Content-Type", "text/html; charset=utf-8")
+		<a href="../../src/net/http/fs.go.html#line-234" class="path-duplicate">fs.go</a><a href="../../src/net/http/fs.go.html#line-234">#L234</a>: 	ctypes, haveType := w.<b>Header</b>()["Content-Type"]
+		<a href="../../src/net/http/fs.go.html#line-249" class="path-duplicate">fs.go</a><a href="../../src/net/http/fs.go.html#line-249">#L249</a>: 		w.<b>Header</b>().Set("Content-Type", ctype)
+		<a href="../../src/net/http/fs.go.html#line-280" class="path-duplicate">fs.go</a><a href="../../src/net/http/fs.go.html#line-280">#L280</a>: 		w.<b>Header</b>().Set("Content-Range", fmt.Sprintf("bytes */%d", size))
+		<a href="../../src/net/http/fs.go.html#line-314" class="path-duplicate">fs.go</a><a href="../../src/net/http/fs.go.html#line-314">#L314</a>: 		w.<b>Header</b>().Set("Content-Range", ra.contentRange(size))
+		<a href="../../src/net/http/fs.go.html#line-321" class="path-duplicate">fs.go</a><a href="../../src/net/http/fs.go.html#line-321">#L321</a>: 		w.<b>Header</b>().Set("Content-Type", "multipart/byteranges; boundary="+mw.Boundary())
+		<a href="../../src/net/http/fs.go.html#line-345" class="path-duplicate">fs.go</a><a href="../../src/net/http/fs.go.html#line-345">#L345</a>: 	w.<b>Header</b>().Set("Accept-Ranges", "bytes")
+		<a href="../../src/net/http/fs.go.html#line-372" class="path-duplicate">fs.go</a><a href="../../src/net/http/fs.go.html#line-372">#L372</a>: 	if len(ranges) &gt; 0 || w.<b>Header</b>().Get("Content-Encoding") == "" {
+		<a href="../../src/net/http/fs.go.html#line-373" class="path-duplicate">fs.go</a><a href="../../src/net/http/fs.go.html#line-373">#L373</a>: 		w.<b>Header</b>().Set("Content-Length", strconv.FormatInt(sendSize, 10))
+		<a href="../../src/net/http/fs.go.html#line-453" class="path-duplicate">fs.go</a><a href="../../src/net/http/fs.go.html#line-453">#L453</a>: 		if etagStrongMatch(etag, w.<b>Header</b>().get("Etag")) {
+		<a href="../../src/net/http/fs.go.html#line-503" class="path-duplicate">fs.go</a><a href="../../src/net/http/fs.go.html#line-503">#L503</a>: 		if etagWeakMatch(etag, w.<b>Header</b>().get("Etag")) {
+		<a href="../../src/net/http/fs.go.html#line-542" class="path-duplicate">fs.go</a><a href="../../src/net/http/fs.go.html#line-542">#L542</a>: 		if etagStrongMatch(etag, w.<b>Header</b>().Get("Etag")) {
+		<a href="../../src/net/http/fs.go.html#line-572" class="path-duplicate">fs.go</a><a href="../../src/net/http/fs.go.html#line-572">#L572</a>: 		w.<b>Header</b>().Set("Last-Modified", modtime.UTC().Format(TimeFormat))
+		<a href="../../src/net/http/fs.go.html#line-582" class="path-duplicate">fs.go</a><a href="../../src/net/http/fs.go.html#line-582">#L582</a>: 	h := w.<b>Header</b>()
+		<a href="../../src/net/http/fs.go.html#line-730" class="path-duplicate">fs.go</a><a href="../../src/net/http/fs.go.html#line-730">#L730</a>: 	w.<b>Header</b>().Set("Location", newPath)
+		<a href="../../src/net/http/server.go.html#line-115">server.go#L115</a>: 	<b>Header</b>() Header
+		<a href="../../src/net/http/server.go.html#line-2176" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-2176">#L2176</a>: 	w.<b>Header</b>().Set("Content-Type", "text/plain; charset=utf-8")
+		<a href="../../src/net/http/server.go.html#line-2177" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-2177">#L2177</a>: 	w.<b>Header</b>().Set("X-Content-Type-Options", "nosniff")
+		<a href="../../src/net/http/server.go.html#line-2261" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-2261">#L2261</a>: 	h := w.<b>Header</b>()
+		<a href="../../src/net/http/server.go.html#line-2559" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-2559">#L2559</a>: 				w.<b>Header</b>().Set("Allow", strings.Join(allowedMethods, ", "))
+		<a href="../../src/net/http/server.go.html#line-2672" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-2672">#L2672</a>: 			w.<b>Header</b>().Set("Connection", "close")
+		<a href="../../src/net/http/server.go.html#line-3605" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-3605">#L3605</a>: 		dst := w.<b>Header</b>()
+		<a href="../../src/net/http/server.go.html#line-3707" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-3707">#L3707</a>: 	w.<b>Header</b>().Set("Content-Length", "0")
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

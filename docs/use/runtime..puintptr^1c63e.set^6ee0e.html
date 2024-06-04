@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.puintptr.set</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/runtime2.go.html#line-290">puintptr</a>.<a href="../src/runtime/runtime2.go.html#line-296">set</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">13 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/proc.go.html#line-1589">proc.go#L1589</a>: 			mp.nextp.<b>set</b>(p)
+		<a href="../src/runtime/proc.go.html#line-2645" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-2645">#L2645</a>: 	mp.nextp.<b>set</b>(pp)
+		<a href="../src/runtime/proc.go.html#line-2894" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-2894">#L2894</a>: 	nmp.nextp.<b>set</b>(pp)
+		<a href="../src/runtime/proc.go.html#line-3052" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-3052">#L3052</a>: 	mp.nextp.<b>set</b>(pp)
+		<a href="../src/runtime/proc.go.html#line-4372" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4372">#L4372</a>: 	gp.m.oldp.<b>set</b>(pp)
+		<a href="../src/runtime/proc.go.html#line-5569" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-5569">#L5569</a>: 			mp.p.<b>set</b>(pp)
+		<a href="../src/runtime/proc.go.html#line-5574" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-5574">#L5574</a>: 			mp.p.<b>set</b>(phold)
+		<a href="../src/runtime/proc.go.html#line-5720" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-5720">#L5720</a>: 			pp.link.<b>set</b>(runnablePs)
+		<a href="../src/runtime/proc.go.html#line-5785" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-5785">#L5785</a>: 	gp.m.p.<b>set</b>(pp)
+		<a href="../src/runtime/proc.go.html#line-5915" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-5915">#L5915</a>: 			mp.nextp.<b>set</b>(pp)
+		<a href="../src/runtime/proc.go.html#line-6544" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6544">#L6544</a>: 	sched.pidle.<b>set</b>(pp)
+		<a href="../src/runtime/runtime2.go.html#line-296">runtime2.go#L296</a>: func (pp *puintptr) <b>set</b>(p *p) { *pp = puintptr(unsafe.Pointer(p)) }
+		<a href="../src/runtime/time.go.html#line-300">time.go#L300</a>: 	t.pp.<b>set</b>(pp)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

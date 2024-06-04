@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: regexp/syntax.FoldCase</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../../pkg/regexp/syntax.html">regexp/syntax</a>.<a href="../../src/regexp/syntax/parse.go.html#line-58">FoldCase</a></b></span>
+
+<span class="title">24 uses</span>
+
+	regexp/syntax (current package)
+		<a href="../../src/regexp/syntax/compile.go.html#line-277">compile.go#L277</a>: 	flags &amp;= <b>FoldCase</b> // only relevant flag is FoldCase
+		<a href="../../src/regexp/syntax/compile.go.html#line-280" class="path-duplicate">compile.go</a><a href="../../src/regexp/syntax/compile.go.html#line-280">#L280</a>: 		flags &amp;^= <b>FoldCase</b>
+		<a href="../../src/regexp/syntax/compile.go.html#line-287" class="path-duplicate">compile.go</a><a href="../../src/regexp/syntax/compile.go.html#line-287">#L287</a>: 	case flags&amp;<b>FoldCase</b> == 0 &amp;&amp; (len(r) == 1 || len(r) == 2 &amp;&amp; r[0] == r[1]):
+		<a href="../../src/regexp/syntax/parse.go.html#line-58">parse.go#L58</a>: 	<b>FoldCase</b>      Flags = 1 &lt;&lt; iota // case-insensitive match
+		<a href="../../src/regexp/syntax/parse.go.html#line-298" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-298">#L298</a>: 		if p.maybeConcat(re.Rune[0], p.flags&amp;^<b>FoldCase</b>) {
+		<a href="../../src/regexp/syntax/parse.go.html#line-303" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-303">#L303</a>: 		re.Flags = p.flags &amp;^ <b>FoldCase</b>
+		<a href="../../src/regexp/syntax/parse.go.html#line-313" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-313">#L313</a>: 		if p.maybeConcat(re.Rune[0], p.flags|<b>FoldCase</b>) {
+		<a href="../../src/regexp/syntax/parse.go.html#line-320" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-320">#L320</a>: 		re.Flags = p.flags | <b>FoldCase</b>
+		<a href="../../src/regexp/syntax/parse.go.html#line-348" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-348">#L348</a>: 	if re1.Op != OpLiteral || re2.Op != OpLiteral || re1.Flags&amp;<b>FoldCase</b> != re2.Flags&amp;<b>FoldCase</b> {
+		<a href="../../src/regexp/syntax/parse.go.html#line-372" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-372">#L372</a>: 	if p.flags&amp;<b>FoldCase</b> != 0 {
+		<a href="../../src/regexp/syntax/parse.go.html#line-786" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-786">#L786</a>: 	return re.Rune, re.Flags &amp; <b>FoldCase</b>
+		<a href="../../src/regexp/syntax/parse.go.html#line-1215" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1215">#L1215</a>: 			flags |= <b>FoldCase</b>
+		<a href="../../src/regexp/syntax/parse.go.html#line-1621" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1621">#L1621</a>: 	if p.flags&amp;<b>FoldCase</b> == 0 {
+		<a href="../../src/regexp/syntax/parse.go.html#line-1712" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1712">#L1712</a>: 	if p.flags&amp;<b>FoldCase</b> == 0 || fold == nil {
+		<a href="../../src/regexp/syntax/parse.go.html#line-1813" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1813">#L1813</a>: 		if p.flags&amp;<b>FoldCase</b> == 0 {
+		<a href="../../src/regexp/syntax/parse.go.html#line-1882" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1882">#L1882</a>: 	if flags&amp;<b>FoldCase</b> != 0 {
+		<a href="../../src/regexp/syntax/prog.go.html#line-160">prog.go#L160</a>: 	for i.op() == InstRune &amp;&amp; len(i.Rune) == 1 &amp;&amp; Flags(i.Arg)&amp;<b>FoldCase</b> == 0 &amp;&amp; i.Rune[0] != utf8.RuneError {
+		<a href="../../src/regexp/syntax/prog.go.html#line-217" class="path-duplicate">prog.go</a><a href="../../src/regexp/syntax/prog.go.html#line-217">#L217</a>: 		if Flags(i.Arg)&amp;<b>FoldCase</b> != 0 {
+		<a href="../../src/regexp/syntax/prog.go.html#line-338" class="path-duplicate">prog.go</a><a href="../../src/regexp/syntax/prog.go.html#line-338">#L338</a>: 		if Flags(i.Arg)&amp;<b>FoldCase</b> != 0 {
+		<a href="../../src/regexp/syntax/regexp.go.html#line-153">regexp.go#L153</a>: 				if re.Flags&amp;<b>FoldCase</b> != 0 {
+
+	<a href="../../pkg/regexp.html">regexp</a>
+		<a href="../../src/regexp/onepass.go.html#line-59">onepass.go#L59</a>: 	for iop(i) == syntax.InstRune &amp;&amp; len(i.Rune) == 1 &amp;&amp; syntax.Flags(i.Arg)&amp;syntax.<b>FoldCase</b> == 0 &amp;&amp; i.Rune[0] != utf8.RuneError {
+		<a href="../../src/regexp/onepass.go.html#line-380" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-380">#L380</a>: 			if len(inst.Rune) == 1 &amp;&amp; syntax.Flags(inst.Arg)&amp;syntax.<b>FoldCase</b> != 0 {
+		<a href="../../src/regexp/onepass.go.html#line-404" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-404">#L404</a>: 			if syntax.Flags(inst.Arg)&amp;syntax.<b>FoldCase</b> != 0 {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

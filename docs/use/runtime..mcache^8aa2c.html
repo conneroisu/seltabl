@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.mcache</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/mcache.go.html#line-19">mcache</a></b></span>
+
+<span class="title">18 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/malloc.go.html#line-938">malloc.go#L938</a>: func (c *<b>mcache</b>) nextFree(spc spanClass) (v gclinkptr, s *mspan, shouldhelpgc bool) {
+		<a href="../src/runtime/mcache.go.html#line-19">mcache.go#L19</a>: type <b>mcache</b> struct {
+		<a href="../src/runtime/mcache.go.html#line-85" class="path-duplicate">mcache.go</a><a href="../src/runtime/mcache.go.html#line-85">#L85</a>: func allocmcache() *<b>mcache</b> {
+		<a href="../src/runtime/mcache.go.html#line-86" class="path-duplicate">mcache.go</a><a href="../src/runtime/mcache.go.html#line-86">#L86</a>: 	var c *<b>mcache</b>
+		<a href="../src/runtime/mcache.go.html#line-89" class="path-duplicate">mcache.go</a><a href="../src/runtime/mcache.go.html#line-89">#L89</a>: 		c = (*<b>mcache</b>)(mheap_.cachealloc.alloc())
+		<a href="../src/runtime/mcache.go.html#line-106" class="path-duplicate">mcache.go</a><a href="../src/runtime/mcache.go.html#line-106">#L106</a>: func freemcache(c *<b>mcache</b>) {
+		<a href="../src/runtime/mcache.go.html#line-126" class="path-duplicate">mcache.go</a><a href="../src/runtime/mcache.go.html#line-126">#L126</a>: func getMCache(mp *m) *<b>mcache</b> {
+		<a href="../src/runtime/mcache.go.html#line-129" class="path-duplicate">mcache.go</a><a href="../src/runtime/mcache.go.html#line-129">#L129</a>: 	var c *<b>mcache</b>
+		<a href="../src/runtime/mcache.go.html#line-147" class="path-duplicate">mcache.go</a><a href="../src/runtime/mcache.go.html#line-147">#L147</a>: func (c *<b>mcache</b>) refill(spc spanClass) {
+		<a href="../src/runtime/mcache.go.html#line-219" class="path-duplicate">mcache.go</a><a href="../src/runtime/mcache.go.html#line-219">#L219</a>: func (c *<b>mcache</b>) allocLarge(size uintptr, noscan bool) *mspan {
+		<a href="../src/runtime/mcache.go.html#line-259" class="path-duplicate">mcache.go</a><a href="../src/runtime/mcache.go.html#line-259">#L259</a>: func (c *<b>mcache</b>) releaseAll() {
+		<a href="../src/runtime/mcache.go.html#line-312" class="path-duplicate">mcache.go</a><a href="../src/runtime/mcache.go.html#line-312">#L312</a>: func (c *<b>mcache</b>) prepareForSweep() {
+		<a href="../src/runtime/mheap.go.html#line-747">mheap.go#L747</a>: 	h.cachealloc.init(unsafe.Sizeof(<b>mcache</b>{}), nil, nil, &amp;memstats.mcache_sys)
+		<a href="../src/runtime/proc.go.html#line-118">proc.go#L118</a>: 	mcache0      *<b>mcache</b>
+		<a href="../src/runtime/runtime2.go.html#line-654">runtime2.go#L654</a>: 	mcache      *<b>mcache</b>
+		<a href="../src/runtime/stack.go.html#line-271">stack.go#L271</a>: func stackcacherefill(c *<b>mcache</b>, order uint8) {
+		<a href="../src/runtime/stack.go.html#line-293" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-293">#L293</a>: func stackcacherelease(c *<b>mcache</b>, order uint8) {
+		<a href="../src/runtime/stack.go.html#line-312" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-312">#L312</a>: func stackcache_clear(c *<b>mcache</b>) {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

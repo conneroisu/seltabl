@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: encoding/binary.ByteOrder.PutUint64</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/encoding/binary.html">encoding/binary</a>.<a href="../../src/encoding/binary/binary.go.html#line-36">ByteOrder</a>.<a href="../../src/encoding/binary/binary.go.html#line-42">PutUint64</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">11 uses</span>
+
+	encoding/binary (current package)
+		<a href="../../src/encoding/binary/binary.go.html#line-42">binary.go#L42</a>: 	<b>PutUint64</b>([]byte, uint64)
+		<a href="../../src/encoding/binary/binary.go.html#line-418" class="path-duplicate">binary.go</a><a href="../../src/encoding/binary/binary.go.html#line-418">#L418</a>: 			order.<b>PutUint64</b>(bs, uint64(*v))
+		<a href="../../src/encoding/binary/binary.go.html#line-420" class="path-duplicate">binary.go</a><a href="../../src/encoding/binary/binary.go.html#line-420">#L420</a>: 			order.<b>PutUint64</b>(bs, uint64(v))
+		<a href="../../src/encoding/binary/binary.go.html#line-423" class="path-duplicate">binary.go</a><a href="../../src/encoding/binary/binary.go.html#line-423">#L423</a>: 				order.<b>PutUint64</b>(bs[8*i:], uint64(x))
+		<a href="../../src/encoding/binary/binary.go.html#line-426" class="path-duplicate">binary.go</a><a href="../../src/encoding/binary/binary.go.html#line-426">#L426</a>: 			order.<b>PutUint64</b>(bs, *v)
+		<a href="../../src/encoding/binary/binary.go.html#line-428" class="path-duplicate">binary.go</a><a href="../../src/encoding/binary/binary.go.html#line-428">#L428</a>: 			order.<b>PutUint64</b>(bs, v)
+		<a href="../../src/encoding/binary/binary.go.html#line-431" class="path-duplicate">binary.go</a><a href="../../src/encoding/binary/binary.go.html#line-431">#L431</a>: 				order.<b>PutUint64</b>(bs[8*i:], x)
+		<a href="../../src/encoding/binary/binary.go.html#line-442" class="path-duplicate">binary.go</a><a href="../../src/encoding/binary/binary.go.html#line-442">#L442</a>: 			order.<b>PutUint64</b>(bs, math.Float64bits(*v))
+		<a href="../../src/encoding/binary/binary.go.html#line-444" class="path-duplicate">binary.go</a><a href="../../src/encoding/binary/binary.go.html#line-444">#L444</a>: 			order.<b>PutUint64</b>(bs, math.Float64bits(v))
+		<a href="../../src/encoding/binary/binary.go.html#line-447" class="path-duplicate">binary.go</a><a href="../../src/encoding/binary/binary.go.html#line-447">#L447</a>: 				order.<b>PutUint64</b>(bs[8*i:], math.Float64bits(x))
+		<a href="../../src/encoding/binary/binary.go.html#line-598" class="path-duplicate">binary.go</a><a href="../../src/encoding/binary/binary.go.html#line-598">#L598</a>: 	e.order.<b>PutUint64</b>(e.buf[e.offset:e.offset+8], x)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

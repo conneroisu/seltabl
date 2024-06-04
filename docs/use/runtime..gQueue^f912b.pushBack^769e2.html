@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.gQueue.pushBack</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/proc.go.html#line-6889">gQueue</a>.<a href="../src/runtime/proc.go.html#line-6909">pushBack</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">8 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/mgcmark.go.html#line-734">mgcmark.go#L734</a>: 	work.assistQueue.q.<b>pushBack</b>(gp)
+		<a href="../src/runtime/mgcmark.go.html#line-800" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-800">#L800</a>: 			work.assistQueue.q.<b>pushBack</b>(gp)
+		<a href="../src/runtime/proc.go.html#line-3822">proc.go#L3822</a>: 		globq.<b>pushBack</b>(g)
+		<a href="../src/runtime/proc.go.html#line-3899" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-3899">#L3899</a>: 			sched.disable.runnable.<b>pushBack</b>(gp)
+		<a href="../src/runtime/proc.go.html#line-6396" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6396">#L6396</a>: 	sched.runq.<b>pushBack</b>(gp)
+		<a href="../src/runtime/proc.go.html#line-6775" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6775">#L6775</a>: 		drainQ.<b>pushBack</b>(oldNext.ptr())
+		<a href="../src/runtime/proc.go.html#line-6803" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6803">#L6803</a>: 		drainQ.<b>pushBack</b>(gp)
+		<a href="../src/runtime/proc.go.html#line-6909" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6909">#L6909</a>: func (q *gQueue) <b>pushBack</b>(gp *g) {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

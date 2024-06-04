@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.sigset</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/os_linux_generic.go.html#line-20">sigset</a></b></span>
+
+<span class="title">14 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/os_linux.go.html#line-177">os_linux.go#L177</a>: 	var oset <b>sigset</b>
+		<a href="../src/runtime/os_linux.go.html#line-429" class="path-duplicate">os_linux.go</a><a href="../src/runtime/os_linux.go.html#line-429">#L429</a>: func rtsigprocmask(how int32, new, old *<b>sigset</b>, size int32)
+		<a href="../src/runtime/os_linux.go.html#line-433" class="path-duplicate">os_linux.go</a><a href="../src/runtime/os_linux.go.html#line-433">#L433</a>: func sigprocmask(how int32, new, old *<b>sigset</b>) {
+		<a href="../src/runtime/os_linux_generic.go.html#line-20">os_linux_generic.go#L20</a>: type <b>sigset</b> [2]uint32
+		<a href="../src/runtime/os_linux_generic.go.html#line-22" class="path-duplicate">os_linux_generic.go</a><a href="../src/runtime/os_linux_generic.go.html#line-22">#L22</a>: var sigset_all = <b>sigset</b>{^uint32(0), ^uint32(0)}
+		<a href="../src/runtime/os_linux_generic.go.html#line-26" class="path-duplicate">os_linux_generic.go</a><a href="../src/runtime/os_linux_generic.go.html#line-26">#L26</a>: func sigaddset(mask *<b>sigset</b>, i int) {
+		<a href="../src/runtime/os_linux_generic.go.html#line-30" class="path-duplicate">os_linux_generic.go</a><a href="../src/runtime/os_linux_generic.go.html#line-30">#L30</a>: func sigdelset(mask *<b>sigset</b>, i int) {
+		<a href="../src/runtime/proc.go.html#line-143">proc.go#L143</a>: var initSigmask <b>sigset</b>
+		<a href="../src/runtime/proc.go.html#line-2189" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-2189">#L2189</a>: 	var sigmask <b>sigset</b>
+		<a href="../src/runtime/runtime2.go.html#line-560">runtime2.go#L560</a>: 	sigmask       <b>sigset</b>            // storage for saved signal mask
+		<a href="../src/runtime/signal_unix.go.html#line-1182">signal_unix.go#L1182</a>: func sigsave(p *<b>sigset</b>) {
+		<a href="../src/runtime/signal_unix.go.html#line-1194" class="path-duplicate">signal_unix.go</a><a href="../src/runtime/signal_unix.go.html#line-1194">#L1194</a>: func msigrestore(sigmask <b>sigset</b>) {
+		<a href="../src/runtime/signal_unix.go.html#line-1200" class="path-duplicate">signal_unix.go</a><a href="../src/runtime/signal_unix.go.html#line-1200">#L1200</a>: var sigsetAllExiting = func() <b>sigset</b> {
+		<a href="../src/runtime/signal_unix.go.html#line-1254" class="path-duplicate">signal_unix.go</a><a href="../src/runtime/signal_unix.go.html#line-1254">#L1254</a>: 	var set <b>sigset</b>
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

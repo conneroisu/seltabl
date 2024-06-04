@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime/internal/atomic.UnsafePointer</title>
+<link href="../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../../pkg/runtime/internal/atomic.html">runtime/internal/atomic</a>.<a href="../../../src/runtime/internal/atomic/types.go.html#line-457">UnsafePointer</a></b></span>
+
+<span class="title">17 uses</span>
+
+	runtime/internal/atomic (current package)
+		<a href="../../../src/runtime/internal/atomic/types.go.html#line-457">types.go#L457</a>: type <b>UnsafePointer</b> struct {
+		<a href="../../../src/runtime/internal/atomic/types.go.html#line-465" class="path-duplicate">types.go</a><a href="../../../src/runtime/internal/atomic/types.go.html#line-465">#L465</a>: func (u *<b>UnsafePointer</b>) Load() unsafe.Pointer {
+		<a href="../../../src/runtime/internal/atomic/types.go.html#line-478" class="path-duplicate">types.go</a><a href="../../../src/runtime/internal/atomic/types.go.html#line-478">#L478</a>: func (u *<b>UnsafePointer</b>) StoreNoWB(value unsafe.Pointer) {
+		<a href="../../../src/runtime/internal/atomic/types.go.html#line-483" class="path-duplicate">types.go</a><a href="../../../src/runtime/internal/atomic/types.go.html#line-483">#L483</a>: func (u *<b>UnsafePointer</b>) Store(value unsafe.Pointer) {
+		<a href="../../../src/runtime/internal/atomic/types.go.html#line-504" class="path-duplicate">types.go</a><a href="../../../src/runtime/internal/atomic/types.go.html#line-504">#L504</a>: func (u *<b>UnsafePointer</b>) CompareAndSwapNoWB(old, new unsafe.Pointer) bool {
+		<a href="../../../src/runtime/internal/atomic/types.go.html#line-511" class="path-duplicate">types.go</a><a href="../../../src/runtime/internal/atomic/types.go.html#line-511">#L511</a>: func (u *<b>UnsafePointer</b>) CompareAndSwap(old, new unsafe.Pointer) bool {
+		<a href="../../../src/runtime/internal/atomic/types.go.html#line-519" class="path-duplicate">types.go</a><a href="../../../src/runtime/internal/atomic/types.go.html#line-519">#L519</a>: 	u <b>UnsafePointer</b>
+
+	<a href="../../../pkg/runtime.html">runtime</a>
+		<a href="../../../src/runtime/mprof.go.html#line-158">mprof.go#L158</a>: 	mbuckets atomic.<b>UnsafePointer</b> // *bucket, memory profile buckets
+		<a href="../../../src/runtime/mprof.go.html#line-159" class="path-duplicate">mprof.go</a><a href="../../../src/runtime/mprof.go.html#line-159">#L159</a>: 	bbuckets atomic.<b>UnsafePointer</b> // *bucket, blocking profile buckets
+		<a href="../../../src/runtime/mprof.go.html#line-160" class="path-duplicate">mprof.go</a><a href="../../../src/runtime/mprof.go.html#line-160">#L160</a>: 	xbuckets atomic.<b>UnsafePointer</b> // *bucket, mutex profile buckets
+		<a href="../../../src/runtime/mprof.go.html#line-161" class="path-duplicate">mprof.go</a><a href="../../../src/runtime/mprof.go.html#line-161">#L161</a>: 	buckhash atomic.<b>UnsafePointer</b> // *buckhashArray
+		<a href="../../../src/runtime/mprof.go.html#line-166" class="path-duplicate">mprof.go</a><a href="../../../src/runtime/mprof.go.html#line-166">#L166</a>: type buckhashArray [buckHashSize]atomic.<b>UnsafePointer</b> // *bucket
+		<a href="../../../src/runtime/mprof.go.html#line-321" class="path-duplicate">mprof.go</a><a href="../../../src/runtime/mprof.go.html#line-321">#L321</a>: 	var allnext *atomic.<b>UnsafePointer</b>
+		<a href="../../../src/runtime/mspanset.go.html#line-275">mspanset.go#L275</a>: 	a atomic.<b>UnsafePointer</b>
+		<a href="../../../src/runtime/mspanset.go.html#line-393" class="path-duplicate">mspanset.go</a><a href="../../../src/runtime/mspanset.go.html#line-393">#L393</a>: 	p atomic.<b>UnsafePointer</b>
+		<a href="../../../src/runtime/trace2map.go.html#line-30">trace2map.go#L30</a>: 	tab  [1 &lt;&lt; 13]atomic.<b>UnsafePointer</b> // *traceMapNode (can't use generics because it's notinheap)
+		<a href="../../../src/runtime/trace2map.go.html#line-35" class="path-duplicate">trace2map.go</a><a href="../../../src/runtime/trace2map.go.html#line-35">#L35</a>: 	link atomic.<b>UnsafePointer</b> // *traceMapNode (can't use generics because it's notinheap)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

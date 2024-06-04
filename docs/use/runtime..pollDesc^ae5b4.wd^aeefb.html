@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.pollDesc.wd</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/netpoll.go.html#line-75">pollDesc</a>.<a href="../src/runtime/netpoll.go.html#line-111">wd</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">14 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/netpoll.go.html#line-111">netpoll.go#L111</a>: 	<b>wd</b>      int64     // write deadline (a nanotime in the future, -1 when expired)
+		<a href="../src/runtime/netpoll.go.html#line-159" class="path-duplicate">netpoll.go</a><a href="../src/runtime/netpoll.go.html#line-159">#L159</a>: 	if pd.<b>wd</b> &lt; 0 {
+		<a href="../src/runtime/netpoll.go.html#line-261" class="path-duplicate">netpoll.go</a><a href="../src/runtime/netpoll.go.html#line-261">#L261</a>: 	pd.<b>wd</b> = 0
+		<a href="../src/runtime/netpoll.go.html#line-372" class="path-duplicate">netpoll.go</a><a href="../src/runtime/netpoll.go.html#line-372">#L372</a>: 	rd0, wd0 := pd.rd, pd.<b>wd</b>
+		<a href="../src/runtime/netpoll.go.html#line-386" class="path-duplicate">netpoll.go</a><a href="../src/runtime/netpoll.go.html#line-386">#L386</a>: 		pd.<b>wd</b> = d
+		<a href="../src/runtime/netpoll.go.html#line-389" class="path-duplicate">netpoll.go</a><a href="../src/runtime/netpoll.go.html#line-389">#L389</a>: 	combo := pd.rd &gt; 0 &amp;&amp; pd.rd == pd.<b>wd</b>
+		<a href="../src/runtime/netpoll.go.html#line-414" class="path-duplicate">netpoll.go</a><a href="../src/runtime/netpoll.go.html#line-414">#L414</a>: 		if pd.<b>wd</b> &gt; 0 &amp;&amp; !combo {
+		<a href="../src/runtime/netpoll.go.html#line-418" class="path-duplicate">netpoll.go</a><a href="../src/runtime/netpoll.go.html#line-418">#L418</a>: 			resettimer(&amp;pd.wt, pd.<b>wd</b>)
+		<a href="../src/runtime/netpoll.go.html#line-420" class="path-duplicate">netpoll.go</a><a href="../src/runtime/netpoll.go.html#line-420">#L420</a>: 	} else if pd.<b>wd</b> != wd0 || combo != combo0 {
+		<a href="../src/runtime/netpoll.go.html#line-422" class="path-duplicate">netpoll.go</a><a href="../src/runtime/netpoll.go.html#line-422">#L422</a>: 		if pd.<b>wd</b> &gt; 0 &amp;&amp; !combo {
+		<a href="../src/runtime/netpoll.go.html#line-423" class="path-duplicate">netpoll.go</a><a href="../src/runtime/netpoll.go.html#line-423">#L423</a>: 			modtimer(&amp;pd.wt, pd.<b>wd</b>, 0, netpollWriteDeadline, pd.makeArg(), pd.wseq)
+		<a href="../src/runtime/netpoll.go.html#line-436" class="path-duplicate">netpoll.go</a><a href="../src/runtime/netpoll.go.html#line-436">#L436</a>: 	if pd.<b>wd</b> &lt; 0 {
+		<a href="../src/runtime/netpoll.go.html#line-645" class="path-duplicate">netpoll.go</a><a href="../src/runtime/netpoll.go.html#line-645">#L645</a>: 		if pd.<b>wd</b> &lt;= 0 || pd.wt.f == nil &amp;&amp; !read {
+		<a href="../src/runtime/netpoll.go.html#line-648" class="path-duplicate">netpoll.go</a><a href="../src/runtime/netpoll.go.html#line-648">#L648</a>: 		pd.<b>wd</b> = -1
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

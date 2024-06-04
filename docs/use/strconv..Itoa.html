@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: strconv.Itoa</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/strconv.html">strconv</a>.<a href="../src/strconv/itoa.go.html#line-34">Itoa</a></b></span>
+
+<span class="title">47 uses</span>
+
+	strconv (current package)
+		<a href="../src/strconv/atoi.go.html#line-61">atoi.go#L61</a>: 	return &amp;NumError{fn, cloneString(str), errors.New("invalid base " + <b>Itoa</b>(base))}
+		<a href="../src/strconv/atoi.go.html#line-65" class="path-duplicate">atoi.go</a><a href="../src/strconv/atoi.go.html#line-65">#L65</a>: 	return &amp;NumError{fn, cloneString(str), errors.New("invalid bit size " + <b>Itoa</b>(bitSize))}
+		<a href="../src/strconv/itoa.go.html#line-34">itoa.go#L34</a>: func <b>Itoa</b>(i int) string {
+
+	<a href="../pkg/crypto.html">crypto</a>
+		<a href="../src/crypto/crypto.go.html#line-64">crypto.go#L64</a>: 		return "unknown hash value " + strconv.<b>Itoa</b>(int(h))
+		<a href="../src/crypto/crypto.go.html#line-134" class="path-duplicate">crypto.go</a><a href="../src/crypto/crypto.go.html#line-134">#L134</a>: 	panic("crypto: requested hash function #" + strconv.<b>Itoa</b>(int(h)) + " is unavailable")
+
+	<a href="../pkg/crypto/aes.html">crypto/aes</a>
+		<a href="../src/crypto/aes/cipher.go.html#line-26">cipher.go#L26</a>: 	return "crypto/aes: invalid key size " + strconv.<b>Itoa</b>(int(k))
+
+	<a href="../pkg/crypto/des.html">crypto/des</a>
+		<a href="../src/crypto/des/cipher.go.html#line-20">cipher.go#L20</a>: 	return "crypto/des: invalid key size " + strconv.<b>Itoa</b>(int(k))
+
+	<a href="../pkg/crypto/ed25519.html">crypto/ed25519</a>
+		<a href="../src/crypto/ed25519/ed25519.go.html#line-97">ed25519.go#L97</a>: 			return nil, errors.New("ed25519: bad Ed25519ph message hash length: " + strconv.<b>Itoa</b>(l))
+		<a href="../src/crypto/ed25519/ed25519.go.html#line-100" class="path-duplicate">ed25519.go</a><a href="../src/crypto/ed25519/ed25519.go.html#line-100">#L100</a>: 			return nil, errors.New("ed25519: bad Ed25519ph context length: " + strconv.<b>Itoa</b>(l))
+		<a href="../src/crypto/ed25519/ed25519.go.html#line-107" class="path-duplicate">ed25519.go</a><a href="../src/crypto/ed25519/ed25519.go.html#line-107">#L107</a>: 			return nil, errors.New("ed25519: bad Ed25519ctx context length: " + strconv.<b>Itoa</b>(l))
+		<a href="../src/crypto/ed25519/ed25519.go.html#line-168" class="path-duplicate">ed25519.go</a><a href="../src/crypto/ed25519/ed25519.go.html#line-168">#L168</a>: 		panic("ed25519: bad seed length: " + strconv.<b>Itoa</b>(l))
+		<a href="../src/crypto/ed25519/ed25519.go.html#line-209" class="path-duplicate">ed25519.go</a><a href="../src/crypto/ed25519/ed25519.go.html#line-209">#L209</a>: 		panic("ed25519: bad private key length: " + strconv.<b>Itoa</b>(l))
+		<a href="../src/crypto/ed25519/ed25519.go.html#line-277" class="path-duplicate">ed25519.go</a><a href="../src/crypto/ed25519/ed25519.go.html#line-277">#L277</a>: 			return errors.New("ed25519: bad Ed25519ph message hash length: " + strconv.<b>Itoa</b>(l))
+		<a href="../src/crypto/ed25519/ed25519.go.html#line-280" class="path-duplicate">ed25519.go</a><a href="../src/crypto/ed25519/ed25519.go.html#line-280">#L280</a>: 			return errors.New("ed25519: bad Ed25519ph context length: " + strconv.<b>Itoa</b>(l))
+		<a href="../src/crypto/ed25519/ed25519.go.html#line-288" class="path-duplicate">ed25519.go</a><a href="../src/crypto/ed25519/ed25519.go.html#line-288">#L288</a>: 			return errors.New("ed25519: bad Ed25519ctx context length: " + strconv.<b>Itoa</b>(l))
+		<a href="../src/crypto/ed25519/ed25519.go.html#line-306" class="path-duplicate">ed25519.go</a><a href="../src/crypto/ed25519/ed25519.go.html#line-306">#L306</a>: 		panic("ed25519: bad public key length: " + strconv.<b>Itoa</b>(l))
+
+	<a href="../pkg/crypto/rc4.html">crypto/rc4</a>
+		<a href="../src/crypto/rc4/rc4.go.html#line-26">rc4.go#L26</a>: 	return "crypto/rc4: invalid key size " + strconv.<b>Itoa</b>(int(k))
+
+	<a href="../pkg/crypto/tls.html">crypto/tls</a>
+		<a href="../src/crypto/tls/alert.go.html#line-104">alert.go#L104</a>: 	return "tls: alert(" + strconv.<b>Itoa</b>(int(e)) + ")"
+
+	<a href="../pkg/crypto/x509.html">crypto/x509</a>
+		<a href="../src/crypto/x509/parser.go.html#line-408">parser.go#L408</a>: 				return errors.New("x509: cannot parse IP address of length " + strconv.<b>Itoa</b>(len(data)))
+		<a href="../src/crypto/x509/x509.go.html#line-250">x509.go#L250</a>: 	return strconv.<b>Itoa</b>(int(algo))
+		<a href="../src/crypto/x509/x509.go.html#line-274" class="path-duplicate">x509.go</a><a href="../src/crypto/x509/x509.go.html#line-274">#L274</a>: 	return strconv.<b>Itoa</b>(int(algo))
+
+	<a href="../pkg/github.com/andybalholm/cascadia.html">github.com/andybalholm/cascadia</a>
+		<a href="../src/github.com/andybalholm/cascadia/serialize.go.html#line-99">serialize.go#L99</a>: 		s = strconv.<b>Itoa</b>(c.b)
+
+	<a href="../pkg/golang.org/x/net/html.html">golang.org/x/net/html</a>
+		<a href="../src/golang.org/x/net/html/token.go.html#line-58">token.go#L58</a>: 	return "Invalid(" + strconv.<b>Itoa</b>(int(t)) + ")"
+		<a href="../src/golang.org/x/net/html/token.go.html#line-117" class="path-duplicate">token.go</a><a href="../src/golang.org/x/net/html/token.go.html#line-117">#L117</a>: 	return "Invalid(" + strconv.<b>Itoa</b>(int(t.Type)) + ")"
+
+	<a href="../pkg/net/http.html">net/http</a>
+		<a href="../src/net/http/h2_bundle.go.html#line-3189">h2_bundle.go#L3189</a>: 		err = errors.New("invalid base " + strconv.<b>Itoa</b>(base))
+		<a href="../src/net/http/h2_bundle.go.html#line-3517" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-3517">#L3517</a>: 	return strconv.<b>Itoa</b>(code)
+		<a href="../src/net/http/h2_bundle.go.html#line-6451" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-6451">#L6451</a>: 			clen = strconv.<b>Itoa</b>(len(p))
+		<a href="../src/net/http/h2_bundle.go.html#line-7100" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-7100">#L7100</a>: 		codeStr = strconv.<b>Itoa</b>(int(code))
+		<a href="../src/net/http/response.go.html#line-251">response.go#L251</a>: 			text = "status code " + strconv.<b>Itoa</b>(r.StatusCode)
+		<a href="../src/net/http/response.go.html#line-256" class="path-duplicate">response.go</a><a href="../src/net/http/response.go.html#line-256">#L256</a>: 		text = strings.TrimPrefix(text, strconv.<b>Itoa</b>(r.StatusCode)+" ")
+		<a href="../src/net/http/socks_bundle.go.html#line-78">socks_bundle.go#L78</a>: 		return nil, errors.New("unexpected protocol version " + strconv.<b>Itoa</b>(int(b[0])))
+		<a href="../src/net/http/socks_bundle.go.html#line-119" class="path-duplicate">socks_bundle.go</a><a href="../src/net/http/socks_bundle.go.html#line-119">#L119</a>: 		return nil, errors.New("unexpected protocol version " + strconv.<b>Itoa</b>(int(b[0])))
+		<a href="../src/net/http/socks_bundle.go.html#line-142" class="path-duplicate">socks_bundle.go</a><a href="../src/net/http/socks_bundle.go.html#line-142">#L142</a>: 		return nil, errors.New("unknown address type " + strconv.<b>Itoa</b>(int(b[3])))
+		<a href="../src/net/http/socks_bundle.go.html#line-186" class="path-duplicate">socks_bundle.go</a><a href="../src/net/http/socks_bundle.go.html#line-186">#L186</a>: 		return "socks " + strconv.<b>Itoa</b>(int(cmd))
+		<a href="../src/net/http/socks_bundle.go.html#line-217" class="path-duplicate">socks_bundle.go</a><a href="../src/net/http/socks_bundle.go.html#line-217">#L217</a>: 		return "unknown code: " + strconv.<b>Itoa</b>(int(code))
+		<a href="../src/net/http/socks_bundle.go.html#line-253" class="path-duplicate">socks_bundle.go</a><a href="../src/net/http/socks_bundle.go.html#line-253">#L253</a>: 	port := strconv.<b>Itoa</b>(a.Port)
+		<a href="../src/net/http/socks_bundle.go.html#line-472" class="path-duplicate">socks_bundle.go</a><a href="../src/net/http/socks_bundle.go.html#line-472">#L472</a>: 	return errors.New("unsupported authentication method " + strconv.<b>Itoa</b>(int(auth)))
+
+	<a href="../pkg/reflect.html">reflect</a>
+		<a href="../src/reflect/type.go.html#line-452">type.go#L452</a>: 	return "kind" + strconv.<b>Itoa</b>(int(k))
+		<a href="../src/reflect/type.go.html#line-835" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-835">#L835</a>: 	return "ChanDir" + strconv.<b>Itoa</b>(int(d))
+		<a href="../src/reflect/type.go.html#line-2181" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2181">#L2181</a>: 			panic("reflect.StructOf: field " + strconv.<b>Itoa</b>(i) + " has no name")
+		<a href="../src/reflect/type.go.html#line-2184" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2184">#L2184</a>: 			panic("reflect.StructOf: field " + strconv.<b>Itoa</b>(i) + " has invalid name")
+		<a href="../src/reflect/type.go.html#line-2187" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2187">#L2187</a>: 			panic("reflect.StructOf: field " + strconv.<b>Itoa</b>(i) + " has no type")
+		<a href="../src/reflect/type.go.html#line-2607" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2607">#L2607</a>: 	s := "[" + strconv.<b>Itoa</b>(length) + "]" + stringFor(typ)
+
+	<a href="../pkg/regexp/syntax.html">regexp/syntax</a>
+		<a href="../src/regexp/syntax/prog.go.html#line-299">prog.go#L299</a>: 		pc := strconv.<b>Itoa</b>(j)
+		<a href="../src/regexp/syntax/regexp.go.html#line-276">regexp.go#L276</a>: 		b.WriteString("&lt;invalid op" + strconv.<b>Itoa</b>(int(re.Op)) + "&gt;")
+		<a href="../src/regexp/syntax/regexp.go.html#line-367" class="path-duplicate">regexp.go</a><a href="../src/regexp/syntax/regexp.go.html#line-367">#L367</a>: 			b.WriteString(strconv.<b>Itoa</b>(re.Min))
+		<a href="../src/regexp/syntax/regexp.go.html#line-371" class="path-duplicate">regexp.go</a><a href="../src/regexp/syntax/regexp.go.html#line-371">#L371</a>: 					b.WriteString(strconv.<b>Itoa</b>(re.Max))
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

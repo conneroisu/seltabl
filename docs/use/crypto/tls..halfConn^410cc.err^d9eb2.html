@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/tls.halfConn.err</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/crypto/tls.html">crypto/tls</a>.<a href="../../src/crypto/tls/conn.go.html#line-168">halfConn</a>.<a href="../../src/crypto/tls/conn.go.html#line-171">err</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">8 uses</span>
+
+	crypto/tls (current package)
+		<a href="../../src/crypto/tls/conn.go.html#line-171">conn.go#L171</a>: 	<b>err</b>     error  // first permanent error
+		<a href="../../src/crypto/tls/conn.go.html#line-197" class="path-duplicate">conn.go</a><a href="../../src/crypto/tls/conn.go.html#line-197">#L197</a>: 		hc.<b>err</b> = &amp;permanentError{err: e}
+		<a href="../../src/crypto/tls/conn.go.html#line-199" class="path-duplicate">conn.go</a><a href="../../src/crypto/tls/conn.go.html#line-199">#L199</a>: 		hc.<b>err</b> = err
+		<a href="../../src/crypto/tls/conn.go.html#line-201" class="path-duplicate">conn.go</a><a href="../../src/crypto/tls/conn.go.html#line-201">#L201</a>: 	return hc.<b>err</b>
+		<a href="../../src/crypto/tls/conn.go.html#line-610" class="path-duplicate">conn.go</a><a href="../../src/crypto/tls/conn.go.html#line-610">#L610</a>: 	if c.in.<b>err</b> != nil {
+		<a href="../../src/crypto/tls/conn.go.html#line-611" class="path-duplicate">conn.go</a><a href="../../src/crypto/tls/conn.go.html#line-611">#L611</a>: 		return c.in.<b>err</b>
+		<a href="../../src/crypto/tls/conn.go.html#line-1201" class="path-duplicate">conn.go</a><a href="../../src/crypto/tls/conn.go.html#line-1201">#L1201</a>: 	if err := c.out.<b>err</b>; err != nil {
+		<a href="../../src/crypto/tls/conn.go.html#line-1579" class="path-duplicate">conn.go</a><a href="../../src/crypto/tls/conn.go.html#line-1579">#L1579</a>: 			if !errors.As(c.out.<b>err</b>, &amp;a) {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

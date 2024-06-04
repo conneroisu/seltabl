@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: io/fs.File.Close</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/io/fs.html">io/fs</a>.<a href="../../src/io/fs/fs.go.html#line-84">File</a>.<a href="../../src/io/fs/fs.go.html#line-87">Close</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">5 uses</span>
+
+	io/fs (current package)
+		<a href="../../src/io/fs/fs.go.html#line-87">fs.go#L87</a>: 	<b>Close</b>() error
+		<a href="../../src/io/fs/readdir.go.html#line-37">readdir.go#L37</a>: 	defer file.<b>Close</b>()
+		<a href="../../src/io/fs/readfile.go.html#line-41">readfile.go#L41</a>: 	defer file.<b>Close</b>()
+		<a href="../../src/io/fs/stat.go.html#line-29">stat.go#L29</a>: 	defer file.<b>Close</b>()
+
+	<a href="../../pkg/net/http.html">net/http</a>
+		<a href="../../src/net/http/fs.go.html#line-844">fs.go#L844</a>: func (f ioFile) Close() error               { return f.file.<b>Close</b>() }
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

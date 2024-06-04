@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.finalizer.fint</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/mfinal.go.html#line-53">finalizer</a>.<a href="../src/runtime/mfinal.go.html#line-57">fint</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">7 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/mfinal.go.html#line-57">mfinal.go#L57</a>: 	<b>fint</b> *_type         // type of first argument of fn
+		<a href="../src/runtime/mfinal.go.html#line-119" class="path-duplicate">mfinal.go</a><a href="../src/runtime/mfinal.go.html#line-119">#L119</a>: 					unsafe.Offsetof(finalizer{}.<b>fint</b>) != 3*goarch.PtrSize ||
+		<a href="../src/runtime/mfinal.go.html#line-137" class="path-duplicate">mfinal.go</a><a href="../src/runtime/mfinal.go.html#line-137">#L137</a>: 	f.<b>fint</b> = fint
+		<a href="../src/runtime/mfinal.go.html#line-149" class="path-duplicate">mfinal.go</a><a href="../src/runtime/mfinal.go.html#line-149">#L149</a>: 			callback(f.fn, f.arg, f.nret, f.<b>fint</b>, f.ot)
+		<a href="../src/runtime/mfinal.go.html#line-225" class="path-duplicate">mfinal.go</a><a href="../src/runtime/mfinal.go.html#line-225">#L225</a>: 				if f.<b>fint</b> == nil {
+		<a href="../src/runtime/mfinal.go.html#line-238" class="path-duplicate">mfinal.go</a><a href="../src/runtime/mfinal.go.html#line-238">#L238</a>: 				switch f.<b>fint</b>.Kind_ &amp; kindMask {
+		<a href="../src/runtime/mfinal.go.html#line-243" class="path-duplicate">mfinal.go</a><a href="../src/runtime/mfinal.go.html#line-243">#L243</a>: 					ityp := (*interfacetype)(unsafe.Pointer(f.<b>fint</b>))
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

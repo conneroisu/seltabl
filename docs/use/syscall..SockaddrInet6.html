@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: syscall.SockaddrInet6</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../pkg/syscall.html">syscall</a>.<a href="../src/syscall/syscall_unix.go.html#line-273">SockaddrInet6</a></b></span>
+
+<span class="title">34 uses</span>
+
+	syscall (current package)
+		<a href="../src/syscall/syscall_linux.go.html#line-534">syscall_linux.go#L534</a>: func (sa *<b>SockaddrInet6</b>) sockaddr() (unsafe.Pointer, _Socklen, error) {
+		<a href="../src/syscall/syscall_linux.go.html#line-671" class="path-duplicate">syscall_linux.go</a><a href="../src/syscall/syscall_linux.go.html#line-671">#L671</a>: 		sa := new(<b>SockaddrInet6</b>)
+		<a href="../src/syscall/syscall_unix.go.html#line-273">syscall_unix.go#L273</a>: type <b>SockaddrInet6</b> struct {
+		<a href="../src/syscall/syscall_unix.go.html#line-342" class="path-duplicate">syscall_unix.go</a><a href="../src/syscall/syscall_unix.go.html#line-342">#L342</a>: func recvfromInet6(fd int, p []byte, flags int, from *<b>SockaddrInet6</b>) (n int, err error) {
+		<a href="../src/syscall/syscall_unix.go.html#line-369" class="path-duplicate">syscall_unix.go</a><a href="../src/syscall/syscall_unix.go.html#line-369">#L369</a>: func recvmsgInet6(fd int, p, oob []byte, flags int, from *<b>SockaddrInet6</b>) (n, oobn int, recvflags int, err error) {
+		<a href="../src/syscall/syscall_unix.go.html#line-418" class="path-duplicate">syscall_unix.go</a><a href="../src/syscall/syscall_unix.go.html#line-418">#L418</a>: func sendmsgNInet6(fd int, p, oob []byte, to *<b>SockaddrInet6</b>, flags int) (n int, err error) {
+		<a href="../src/syscall/syscall_unix.go.html#line-434" class="path-duplicate">syscall_unix.go</a><a href="../src/syscall/syscall_unix.go.html#line-434">#L434</a>: func sendtoInet6(fd int, p []byte, flags int, to *<b>SockaddrInet6</b>) (err error) {
+
+	<a href="../pkg/internal/poll.html">internal/poll</a>
+		<a href="../src/internal/poll/fd_unix.go.html#line-258">fd_unix.go#L258</a>: func (fd *FD) ReadFromInet6(p []byte, from *syscall.<b>SockaddrInet6</b>) (int, error) {
+		<a href="../src/internal/poll/fd_unix.go.html#line-339" class="path-duplicate">fd_unix.go</a><a href="../src/internal/poll/fd_unix.go.html#line-339">#L339</a>: func (fd *FD) ReadMsgInet6(p []byte, oob []byte, flags int, sa6 *syscall.<b>SockaddrInet6</b>) (int, int, int, error) {
+		<a href="../src/internal/poll/fd_unix.go.html#line-462" class="path-duplicate">fd_unix.go</a><a href="../src/internal/poll/fd_unix.go.html#line-462">#L462</a>: func (fd *FD) WriteToInet6(p []byte, sa *syscall.<b>SockaddrInet6</b>) (int, error) {
+		<a href="../src/internal/poll/fd_unix.go.html#line-566" class="path-duplicate">fd_unix.go</a><a href="../src/internal/poll/fd_unix.go.html#line-566">#L566</a>: func (fd *FD) WriteMsgInet6(p []byte, oob []byte, sa *syscall.<b>SockaddrInet6</b>) (int, int, error) {
+
+	<a href="../pkg/internal/syscall/unix.html">internal/syscall/unix</a>
+		<a href="../src/internal/syscall/unix/net.go.html#line-20">net.go#L20</a>: func RecvfromInet6(fd int, p []byte, flags int, from *syscall.<b>SockaddrInet6</b>) (n int, err error)
+		<a href="../src/internal/syscall/unix/net.go.html#line-28" class="path-duplicate">net.go</a><a href="../src/internal/syscall/unix/net.go.html#line-28">#L28</a>: func SendtoInet6(fd int, p []byte, flags int, to *syscall.<b>SockaddrInet6</b>) (err error)
+		<a href="../src/internal/syscall/unix/net.go.html#line-36" class="path-duplicate">net.go</a><a href="../src/internal/syscall/unix/net.go.html#line-36">#L36</a>: func SendmsgNInet6(fd int, p, oob []byte, to *syscall.<b>SockaddrInet6</b>, flags int) (n int, err error)
+		<a href="../src/internal/syscall/unix/net.go.html#line-44" class="path-duplicate">net.go</a><a href="../src/internal/syscall/unix/net.go.html#line-44">#L44</a>: func RecvmsgInet6(fd int, p, oob []byte, flags int, from *syscall.<b>SockaddrInet6</b>) (n, oobn int, recvflags int, err error)
+
+	<a href="../pkg/net.html">net</a>
+		<a href="../src/net/fd_posix.go.html#line-71">fd_posix.go#L71</a>: func (fd *netFD) readFromInet6(p []byte, from *syscall.<b>SockaddrInet6</b>) (n int, err error) {
+		<a href="../src/net/fd_posix.go.html#line-89" class="path-duplicate">fd_posix.go</a><a href="../src/net/fd_posix.go.html#line-89">#L89</a>: func (fd *netFD) readMsgInet6(p []byte, oob []byte, flags int, sa *syscall.<b>SockaddrInet6</b>) (n, oobn, retflags int, err error) {
+		<a href="../src/net/fd_posix.go.html#line-113" class="path-duplicate">fd_posix.go</a><a href="../src/net/fd_posix.go.html#line-113">#L113</a>: func (fd *netFD) writeToInet6(p []byte, sa *syscall.<b>SockaddrInet6</b>) (n int, err error) {
+		<a href="../src/net/fd_posix.go.html#line-131" class="path-duplicate">fd_posix.go</a><a href="../src/net/fd_posix.go.html#line-131">#L131</a>: func (fd *netFD) writeMsgInet6(p []byte, oob []byte, sa *syscall.<b>SockaddrInet6</b>) (n int, oobn int, err error) {
+		<a href="../src/net/file_unix.go.html#line-46">file_unix.go#L46</a>: 	case *syscall.<b>SockaddrInet6</b>:
+		<a href="../src/net/iprawsock_posix.go.html#line-18">iprawsock_posix.go#L18</a>: 	case *syscall.<b>SockaddrInet6</b>:
+		<a href="../src/net/iprawsock_posix.go.html#line-54" class="path-duplicate">iprawsock_posix.go</a><a href="../src/net/iprawsock_posix.go.html#line-54">#L54</a>: 	case *syscall.<b>SockaddrInet6</b>:
+		<a href="../src/net/iprawsock_posix.go.html#line-81" class="path-duplicate">iprawsock_posix.go</a><a href="../src/net/iprawsock_posix.go.html#line-81">#L81</a>: 	case *syscall.<b>SockaddrInet6</b>:
+		<a href="../src/net/ipsock_posix.go.html#line-170">ipsock_posix.go#L170</a>: func ipToSockaddrInet6(ip IP, port int, zone string) (syscall.<b>SockaddrInet6</b>, error) {
+		<a href="../src/net/ipsock_posix.go.html#line-188" class="path-duplicate">ipsock_posix.go</a><a href="../src/net/ipsock_posix.go.html#line-188">#L188</a>: 		return syscall.<b>SockaddrInet6</b>{}, &amp;AddrError{Err: "non-IPv6 address", Addr: ip.String()}
+		<a href="../src/net/ipsock_posix.go.html#line-190" class="path-duplicate">ipsock_posix.go</a><a href="../src/net/ipsock_posix.go.html#line-190">#L190</a>: 	sa := syscall.<b>SockaddrInet6</b>{Port: port, ZoneId: uint32(zoneCache.index(zone))}
+		<a href="../src/net/ipsock_posix.go.html#line-227" class="path-duplicate">ipsock_posix.go</a><a href="../src/net/ipsock_posix.go.html#line-227">#L227</a>: func addrPortToSockaddrInet6(ap netip.AddrPort) (syscall.<b>SockaddrInet6</b>, error) {
+		<a href="../src/net/ipsock_posix.go.html#line-236" class="path-duplicate">ipsock_posix.go</a><a href="../src/net/ipsock_posix.go.html#line-236">#L236</a>: 		return syscall.<b>SockaddrInet6</b>{}, &amp;AddrError{Err: "non-IPv6 address", Addr: addr.String()}
+		<a href="../src/net/ipsock_posix.go.html#line-238" class="path-duplicate">ipsock_posix.go</a><a href="../src/net/ipsock_posix.go.html#line-238">#L238</a>: 	sa := syscall.<b>SockaddrInet6</b>{
+		<a href="../src/net/tcpsock_posix.go.html#line-20">tcpsock_posix.go#L20</a>: 	case *syscall.<b>SockaddrInet6</b>:
+		<a href="../src/net/udpsock_posix.go.html#line-19">udpsock_posix.go#L19</a>: 	case *syscall.<b>SockaddrInet6</b>:
+		<a href="../src/net/udpsock_posix.go.html#line-58" class="path-duplicate">udpsock_posix.go</a><a href="../src/net/udpsock_posix.go.html#line-58">#L58</a>: 		var from syscall.<b>SockaddrInet6</b>
+		<a href="../src/net/udpsock_posix.go.html#line-84" class="path-duplicate">udpsock_posix.go</a><a href="../src/net/udpsock_posix.go.html#line-84">#L84</a>: 		var from syscall.<b>SockaddrInet6</b>
+		<a href="../src/net/udpsock_posix.go.html#line-105" class="path-duplicate">udpsock_posix.go</a><a href="../src/net/udpsock_posix.go.html#line-105">#L105</a>: 		var sa syscall.<b>SockaddrInet6</b>
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

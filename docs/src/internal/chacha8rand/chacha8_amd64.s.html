@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: chacha8_amd64.s in package internal/chacha8rand</title>
+<link href="../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	chacha8_amd64.s
+
+<span class="title">Belonging Package</span>
+	<a href="../../../pkg/internal/chacha8rand.html">internal/chacha8rand</a>
+</code></pre>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code>// Copyright 2023 The Go Authors. All rights reserved.</code></span>
+<span class="codeline" id="line-2"><code>// Use of this source code is governed by a BSD-style</code></span>
+<span class="codeline" id="line-3"><code>// license that can be found in the LICENSE file.</code></span>
+<span class="codeline" id="line-4"><code></code></span>
+<span class="codeline" id="line-5"><code>#include "textflag.h"</code></span>
+<span class="codeline" id="line-6"><code></code></span>
+<span class="codeline" id="line-7"><code>// ChaCha8 is ChaCha with 8 rounds.</code></span>
+<span class="codeline" id="line-8"><code>// See https://cr.yp.to/chacha/chacha-20080128.pdf.</code></span>
+<span class="codeline" id="line-9"><code>// See chacha8_generic.go for additional details.</code></span>
+<span class="codeline" id="line-10"><code></code></span>
+<span class="codeline" id="line-11"><code>// ROL rotates the uint32s in register R left by N bits, using temporary T.</code></span>
+<span class="codeline" id="line-12"><code>#define ROL(N, R, T) \</code></span>
+<span class="codeline" id="line-13"><code>	MOVO R, T; PSLLL $(N), T; PSRLL $(32-(N)), R; PXOR T, R</code></span>
+<span class="codeline" id="line-14"><code></code></span>
+<span class="codeline" id="line-15"><code>// ROL16 rotates the uint32s in register R left by 16, using temporary T if needed.</code></span>
+<span class="codeline" id="line-16"><code>#ifdef GOAMD64_v2</code></span>
+<span class="codeline" id="line-17"><code>#define ROL16(R, T) PSHUFB ·rol16&lt;&gt;(SB), R</code></span>
+<span class="codeline" id="line-18"><code>#else</code></span>
+<span class="codeline" id="line-19"><code>#define ROL16(R, T) ROL(16, R, T)</code></span>
+<span class="codeline" id="line-20"><code>#endif</code></span>
+<span class="codeline" id="line-21"><code></code></span>
+<span class="codeline" id="line-22"><code>// ROL8 rotates the uint32s in register R left by 8, using temporary T if needed.</code></span>
+<span class="codeline" id="line-23"><code>#ifdef GOAMD64_v2</code></span>
+<span class="codeline" id="line-24"><code>#define ROL8(R, T) PSHUFB ·rol8&lt;&gt;(SB), R</code></span>
+<span class="codeline" id="line-25"><code>#else</code></span>
+<span class="codeline" id="line-26"><code>#define ROL8(R, T) ROL(8, R, T)</code></span>
+<span class="codeline" id="line-27"><code>#endif</code></span>
+<span class="codeline" id="line-28"><code></code></span>
+<span class="codeline" id="line-29"><code>// QR is the ChaCha quarter-round on A, B, C, and D. T is an available temporary.</code></span>
+<span class="codeline" id="line-30"><code>#define QR(A, B, C, D, T) \</code></span>
+<span class="codeline" id="line-31"><code>	PADDD B, A; PXOR A, D; ROL16(D, T); \</code></span>
+<span class="codeline" id="line-32"><code>	PADDD D, C; PXOR C, B; MOVO B, T; PSLLL $12, T; PSRLL $20, B; PXOR T, B; \</code></span>
+<span class="codeline" id="line-33"><code>	PADDD B, A; PXOR A, D; ROL8(D, T); \</code></span>
+<span class="codeline" id="line-34"><code>	PADDD D, C; PXOR C, B; MOVO B, T; PSLLL $7, T; PSRLL $25, B; PXOR T, B</code></span>
+<span class="codeline" id="line-35"><code></code></span>
+<span class="codeline" id="line-36"><code>// REPLREG replicates the register R into 4 uint32s in XR.</code></span>
+<span class="codeline" id="line-37"><code>#define REPLREG(R, XR) \</code></span>
+<span class="codeline" id="line-38"><code>	MOVQ R, XR; \</code></span>
+<span class="codeline" id="line-39"><code>	PSHUFD $0, XR, XR</code></span>
+<span class="codeline" id="line-40"><code></code></span>
+<span class="codeline" id="line-41"><code>// REPL replicates the uint32 constant val into 4 uint32s in XR. It smashes DX.</code></span>
+<span class="codeline" id="line-42"><code>#define REPL(val, XR) \</code></span>
+<span class="codeline" id="line-43"><code>	MOVL $val, DX; \</code></span>
+<span class="codeline" id="line-44"><code>	REPLREG(DX, XR)</code></span>
+<span class="codeline" id="line-45"><code></code></span>
+<span class="codeline" id="line-46"><code>// SEED copies the off'th uint32 of the seed into the register XR,</code></span>
+<span class="codeline" id="line-47"><code>// replicating it into all four stripes of the register.</code></span>
+<span class="codeline" id="line-48"><code>#define SEED(off, reg, XR) \</code></span>
+<span class="codeline" id="line-49"><code>	MOVL (4*off)(AX), reg; \</code></span>
+<span class="codeline" id="line-50"><code>	REPLREG(reg, XR) \</code></span>
+<span class="codeline" id="line-51"><code></code></span>
+<span class="codeline" id="line-52"><code>// block runs 4 ChaCha8 block transformations in the four stripes of the X registers.</code></span>
+<span class="codeline" id="line-53"><code></code></span>
+<span class="codeline" id="line-54"><code>// func block(seed *[8]uint32, blocks *[16][4]uint32, counter uint32)</code></span>
+<span class="codeline" id="line-55"><code>TEXT ·block&lt;ABIInternal&gt;(SB), NOSPLIT, $16</code></span>
+<span class="codeline" id="line-56"><code>	// seed in AX</code></span>
+<span class="codeline" id="line-57"><code>	// blocks in BX</code></span>
+<span class="codeline" id="line-58"><code>	// counter in CX</code></span>
+<span class="codeline" id="line-59"><code></code></span>
+<span class="codeline" id="line-60"><code>	// Load initial constants into top row.</code></span>
+<span class="codeline" id="line-61"><code>	REPL(0x61707865, X0)</code></span>
+<span class="codeline" id="line-62"><code>	REPL(0x3320646e, X1)</code></span>
+<span class="codeline" id="line-63"><code>	REPL(0x79622d32, X2)</code></span>
+<span class="codeline" id="line-64"><code>	REPL(0x6b206574, X3)</code></span>
+<span class="codeline" id="line-65"><code></code></span>
+<span class="codeline" id="line-66"><code>	// Load counter into bottom left cell.</code></span>
+<span class="codeline" id="line-67"><code>	// Each stripe gets a different counter: 0, 1, 2, 3.</code></span>
+<span class="codeline" id="line-68"><code>	// (PINSRD is not available in GOAMD64_v1,</code></span>
+<span class="codeline" id="line-69"><code>	// so just do it in memory on all systems.</code></span>
+<span class="codeline" id="line-70"><code>	// This is not on the critical path.)</code></span>
+<span class="codeline" id="line-71"><code>	MOVL CX, 0(SP)</code></span>
+<span class="codeline" id="line-72"><code>	INCL CX</code></span>
+<span class="codeline" id="line-73"><code>	MOVL CX, 4(SP)</code></span>
+<span class="codeline" id="line-74"><code>	INCL CX</code></span>
+<span class="codeline" id="line-75"><code>	MOVL CX, 8(SP)</code></span>
+<span class="codeline" id="line-76"><code>	INCL CX</code></span>
+<span class="codeline" id="line-77"><code>	MOVL CX, 12(SP)</code></span>
+<span class="codeline" id="line-78"><code>	MOVOU 0(SP), X12</code></span>
+<span class="codeline" id="line-79"><code></code></span>
+<span class="codeline" id="line-80"><code>	// Load seed words into next two rows and into DI, SI, R8..R13</code></span>
+<span class="codeline" id="line-81"><code>	SEED(0, DI, X4)</code></span>
+<span class="codeline" id="line-82"><code>	SEED(1, SI, X5)</code></span>
+<span class="codeline" id="line-83"><code>	SEED(2, R8, X6)</code></span>
+<span class="codeline" id="line-84"><code>	SEED(3, R9, X7)</code></span>
+<span class="codeline" id="line-85"><code>	SEED(4, R10, X8)</code></span>
+<span class="codeline" id="line-86"><code>	SEED(5, R11, X9)</code></span>
+<span class="codeline" id="line-87"><code>	SEED(6, R12, X10)</code></span>
+<span class="codeline" id="line-88"><code>	SEED(7, R13, X11)</code></span>
+<span class="codeline" id="line-89"><code></code></span>
+<span class="codeline" id="line-90"><code>	// Zeros for remaining two matrix entries.</code></span>
+<span class="codeline" id="line-91"><code>	// We have just enough XMM registers to hold the state,</code></span>
+<span class="codeline" id="line-92"><code>	// without one for the temporary, so we flush and restore</code></span>
+<span class="codeline" id="line-93"><code>	// some values to and from memory to provide a temporary.</code></span>
+<span class="codeline" id="line-94"><code>	// The initial temporary is X15, so zero its memory instead</code></span>
+<span class="codeline" id="line-95"><code>	// of X15 itself.</code></span>
+<span class="codeline" id="line-96"><code>	MOVL $0, DX</code></span>
+<span class="codeline" id="line-97"><code>	MOVQ DX, X13</code></span>
+<span class="codeline" id="line-98"><code>	MOVQ DX, X14</code></span>
+<span class="codeline" id="line-99"><code>	MOVOU X14, (15*16)(BX)</code></span>
+<span class="codeline" id="line-100"><code></code></span>
+<span class="codeline" id="line-101"><code>	// 4 iterations. Each iteration is 8 quarter-rounds.</code></span>
+<span class="codeline" id="line-102"><code>	MOVL $4, DX</code></span>
+<span class="codeline" id="line-103"><code>loop:</code></span>
+<span class="codeline" id="line-104"><code>	QR(X0, X4, X8, X12, X15)</code></span>
+<span class="codeline" id="line-105"><code>	MOVOU X4, (4*16)(BX) // save X4</code></span>
+<span class="codeline" id="line-106"><code>	QR(X1, X5, X9, X13, X15)</code></span>
+<span class="codeline" id="line-107"><code>	MOVOU (15*16)(BX), X15 // reload X15; temp now X4</code></span>
+<span class="codeline" id="line-108"><code>	QR(X2, X6, X10, X14, X4)</code></span>
+<span class="codeline" id="line-109"><code>	QR(X3, X7, X11, X15, X4)</code></span>
+<span class="codeline" id="line-110"><code></code></span>
+<span class="codeline" id="line-111"><code>	QR(X0, X5, X10, X15, X4)</code></span>
+<span class="codeline" id="line-112"><code>	MOVOU X15, (15*16)(BX) // save X15</code></span>
+<span class="codeline" id="line-113"><code>	QR(X1, X6, X11, X12, X4)</code></span>
+<span class="codeline" id="line-114"><code>	MOVOU (4*16)(BX), X4  // reload X4; temp now X15</code></span>
+<span class="codeline" id="line-115"><code>	QR(X2, X7, X8, X13, X15)</code></span>
+<span class="codeline" id="line-116"><code>	QR(X3, X4, X9, X14, X15)</code></span>
+<span class="codeline" id="line-117"><code></code></span>
+<span class="codeline" id="line-118"><code>	DECL DX</code></span>
+<span class="codeline" id="line-119"><code>	JNZ loop</code></span>
+<span class="codeline" id="line-120"><code></code></span>
+<span class="codeline" id="line-121"><code>	// Store interlaced blocks back to output buffer,</code></span>
+<span class="codeline" id="line-122"><code>	// adding original seed along the way.</code></span>
+<span class="codeline" id="line-123"><code></code></span>
+<span class="codeline" id="line-124"><code>	// First the top and bottom rows.</code></span>
+<span class="codeline" id="line-125"><code>	MOVOU X0, (0*16)(BX)</code></span>
+<span class="codeline" id="line-126"><code>	MOVOU X1, (1*16)(BX)</code></span>
+<span class="codeline" id="line-127"><code>	MOVOU X2, (2*16)(BX)</code></span>
+<span class="codeline" id="line-128"><code>	MOVOU X3, (3*16)(BX)</code></span>
+<span class="codeline" id="line-129"><code>	MOVOU X12, (12*16)(BX)</code></span>
+<span class="codeline" id="line-130"><code>	MOVOU X13, (13*16)(BX)</code></span>
+<span class="codeline" id="line-131"><code>	MOVOU X14, (14*16)(BX)</code></span>
+<span class="codeline" id="line-132"><code>	// X15 has already been stored.</code></span>
+<span class="codeline" id="line-133"><code></code></span>
+<span class="codeline" id="line-134"><code>	// Now we have X0-X3, X12-X15 available for temporaries.</code></span>
+<span class="codeline" id="line-135"><code>	// Add seed rows back to output. We left seed in DI, SI, R8..R13 above.</code></span>
+<span class="codeline" id="line-136"><code>	REPLREG(DI, X0)</code></span>
+<span class="codeline" id="line-137"><code>	REPLREG(SI, X1)</code></span>
+<span class="codeline" id="line-138"><code>	REPLREG(R8, X2)</code></span>
+<span class="codeline" id="line-139"><code>	REPLREG(R9, X3)</code></span>
+<span class="codeline" id="line-140"><code>	REPLREG(R10, X12)</code></span>
+<span class="codeline" id="line-141"><code>	REPLREG(R11, X13)</code></span>
+<span class="codeline" id="line-142"><code>	REPLREG(R12, X14)</code></span>
+<span class="codeline" id="line-143"><code>	REPLREG(R13, X15)</code></span>
+<span class="codeline" id="line-144"><code>	PADDD X0, X4</code></span>
+<span class="codeline" id="line-145"><code>	PADDD X1, X5</code></span>
+<span class="codeline" id="line-146"><code>	PADDD X2, X6</code></span>
+<span class="codeline" id="line-147"><code>	PADDD X3, X7</code></span>
+<span class="codeline" id="line-148"><code>	PADDD X12, X8</code></span>
+<span class="codeline" id="line-149"><code>	PADDD X13, X9</code></span>
+<span class="codeline" id="line-150"><code>	PADDD X14, X10</code></span>
+<span class="codeline" id="line-151"><code>	PADDD X15, X11</code></span>
+<span class="codeline" id="line-152"><code>	MOVOU X4, (4*16)(BX)</code></span>
+<span class="codeline" id="line-153"><code>	MOVOU X5, (5*16)(BX)</code></span>
+<span class="codeline" id="line-154"><code>	MOVOU X6, (6*16)(BX)</code></span>
+<span class="codeline" id="line-155"><code>	MOVOU X7, (7*16)(BX)</code></span>
+<span class="codeline" id="line-156"><code>	MOVOU X8, (8*16)(BX)</code></span>
+<span class="codeline" id="line-157"><code>	MOVOU X9, (9*16)(BX)</code></span>
+<span class="codeline" id="line-158"><code>	MOVOU X10, (10*16)(BX)</code></span>
+<span class="codeline" id="line-159"><code>	MOVOU X11, (11*16)(BX)</code></span>
+<span class="codeline" id="line-160"><code></code></span>
+<span class="codeline" id="line-161"><code>	MOVL $0, AX</code></span>
+<span class="codeline" id="line-162"><code>	MOVQ AX, X15 // must be 0 on return</code></span>
+<span class="codeline" id="line-163"><code></code></span>
+<span class="codeline" id="line-164"><code>	RET</code></span>
+<span class="codeline" id="line-165"><code></code></span>
+<span class="codeline" id="line-166"><code>// rotate left 16 indexes for PSHUFB</code></span>
+<span class="codeline" id="line-167"><code>GLOBL ·rol16&lt;&gt;(SB), NOPTR|RODATA, $16</code></span>
+<span class="codeline" id="line-168"><code>DATA ·rol16&lt;&gt;+0(SB)/8, $0x0504070601000302</code></span>
+<span class="codeline" id="line-169"><code>DATA ·rol16&lt;&gt;+8(SB)/8, $0x0D0C0F0E09080B0A</code></span>
+<span class="codeline" id="line-170"><code></code></span>
+<span class="codeline" id="line-171"><code>// rotate left 8 indexes for PSHUFB</code></span>
+<span class="codeline" id="line-172"><code>GLOBL ·rol8&lt;&gt;(SB), NOPTR|RODATA, $16</code></span>
+<span class="codeline" id="line-173"><code>DATA ·rol8&lt;&gt;+0(SB)/8, $0x0605040702010003</code></span>
+<span class="codeline" id="line-174"><code>DATA ·rol8&lt;&gt;+8(SB)/8, $0x0E0D0C0F0A09080B</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/x509/pkix.AttributeTypeAndValueSET</title>
+<link href="../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../../pkg/crypto/x509/pkix.html">crypto/x509/pkix</a>.<a href="../../../src/crypto/x509/pkix/pkix.go.html#line-106">AttributeTypeAndValueSET</a></b></span>
+
+<span class="title">8 uses</span>
+
+	crypto/x509/pkix (current package)
+		<a href="../../../src/crypto/x509/pkix/pkix.go.html#line-106">pkix.go#L106</a>: type <b>AttributeTypeAndValueSET</b> struct {
+
+	<a href="../../../pkg/crypto/x509.html">crypto/x509</a>
+		<a href="../../../src/crypto/x509/x509.go.html#line-1837">x509.go#L1837</a>: 	Attributes []pkix.<b>AttributeTypeAndValueSET</b>
+		<a href="../../../src/crypto/x509/x509.go.html#line-1884" class="path-duplicate">x509.go</a><a href="../../../src/crypto/x509/x509.go.html#line-1884">#L1884</a>: func newRawAttributes(attributes []pkix.<b>AttributeTypeAndValueSET</b>) ([]asn1.RawValue, error) {
+		<a href="../../../src/crypto/x509/x509.go.html#line-1901" class="path-duplicate">x509.go</a><a href="../../../src/crypto/x509/x509.go.html#line-1901">#L1901</a>: func parseRawAttributes(rawAttributes []asn1.RawValue) []pkix.<b>AttributeTypeAndValueSET</b> {
+		<a href="../../../src/crypto/x509/x509.go.html#line-1902" class="path-duplicate">x509.go</a><a href="../../../src/crypto/x509/x509.go.html#line-1902">#L1902</a>: 	var attributes []pkix.<b>AttributeTypeAndValueSET</b>
+		<a href="../../../src/crypto/x509/x509.go.html#line-1904" class="path-duplicate">x509.go</a><a href="../../../src/crypto/x509/x509.go.html#line-1904">#L1904</a>: 		var attr pkix.<b>AttributeTypeAndValueSET</b>
+		<a href="../../../src/crypto/x509/x509.go.html#line-1999" class="path-duplicate">x509.go</a><a href="../../../src/crypto/x509/x509.go.html#line-1999">#L1999</a>: 	attributes := make([]pkix.<b>AttributeTypeAndValueSET</b>, 0, len(template.Attributes))
+		<a href="../../../src/crypto/x509/x509.go.html#line-2003" class="path-duplicate">x509.go</a><a href="../../../src/crypto/x509/x509.go.html#line-2003">#L2003</a>: 		attributes = append(attributes, pkix.<b>AttributeTypeAndValueSET</b>{
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

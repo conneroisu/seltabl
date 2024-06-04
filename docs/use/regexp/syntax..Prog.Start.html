@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: regexp/syntax.Prog.Start</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/regexp/syntax.html">regexp/syntax</a>.<a href="../../src/regexp/syntax/prog.go.html#line-18">Prog</a>.<a href="../../src/regexp/syntax/prog.go.html#line-20">Start</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">15 uses</span>
+
+	regexp/syntax (current package)
+		<a href="../../src/regexp/syntax/compile.go.html#line-76">compile.go#L76</a>: 	c.p.<b>Start</b> = int(f.i)
+		<a href="../../src/regexp/syntax/prog.go.html#line-20">prog.go#L20</a>: 	<b>Start</b>  int // index of start instruction
+		<a href="../../src/regexp/syntax/prog.go.html#line-151" class="path-duplicate">prog.go</a><a href="../../src/regexp/syntax/prog.go.html#line-151">#L151</a>: 	i := p.skipNop(uint32(p.<b>Start</b>))
+		<a href="../../src/regexp/syntax/prog.go.html#line-171" class="path-duplicate">prog.go</a><a href="../../src/regexp/syntax/prog.go.html#line-171">#L171</a>: 	pc := uint32(p.<b>Start</b>)
+		<a href="../../src/regexp/syntax/prog.go.html#line-303" class="path-duplicate">prog.go</a><a href="../../src/regexp/syntax/prog.go.html#line-303">#L303</a>: 		if j == p.<b>Start</b> {
+
+	<a href="../../pkg/regexp.html">regexp</a>
+		<a href="../../src/regexp/backtrack.go.html#line-324">backtrack.go#L324</a>: 		if !re.tryBacktrack(b, i, uint32(re.prog.<b>Start</b>), pos) {
+		<a href="../../src/regexp/backtrack.go.html#line-351" class="path-duplicate">backtrack.go</a><a href="../../src/regexp/backtrack.go.html#line-351">#L351</a>: 			if re.tryBacktrack(b, i, uint32(re.prog.<b>Start</b>), pos) {
+		<a href="../../src/regexp/exec.go.html#line-222">exec.go#L222</a>: 			m.add(runq, uint32(m.p.<b>Start</b>), pos, m.matchcap, &amp;flag, nil)
+		<a href="../../src/regexp/onepass.go.html#line-42">onepass.go#L42</a>: 	i := &amp;p.Inst[p.<b>Start</b>]
+		<a href="../../src/regexp/onepass.go.html#line-44" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-44">#L44</a>: 		return "", i.Op == syntax.InstMatch, uint32(p.<b>Start</b>)
+		<a href="../../src/regexp/onepass.go.html#line-54" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-54">#L54</a>: 		return "", i.Op == syntax.InstMatch, uint32(p.<b>Start</b>)
+		<a href="../../src/regexp/onepass.go.html#line-224" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-224">#L224</a>: 		Start:  prog.<b>Start</b>,
+		<a href="../../src/regexp/onepass.go.html#line-467" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-467">#L467</a>: 	if prog.<b>Start</b> == 0 {
+		<a href="../../src/regexp/onepass.go.html#line-471" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-471">#L471</a>: 	if prog.Inst[prog.<b>Start</b>].Op != syntax.InstEmptyWidth ||
+		<a href="../../src/regexp/onepass.go.html#line-472" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-472">#L472</a>: 		syntax.EmptyOp(prog.Inst[prog.<b>Start</b>].Arg)&amp;syntax.EmptyBeginText != syntax.EmptyBeginText {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

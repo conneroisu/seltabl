@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.Callers</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/extern.go.html#line-318">Callers</a></b></span>
+
+<span class="title">4 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/extern.go.html#line-318">extern.go#L318</a>: func <b>Callers</b>(skip int, pc []uintptr) int {
+
+	<a href="../pkg/internal/bisect.html">internal/bisect</a>
+		<a href="../src/internal/bisect/bisect.go.html#line-444">bisect.go#L444</a>: 	n := runtime.<b>Callers</b>(2, stk[:])
+
+	<a href="../pkg/net/http.html">net/http</a>
+		<a href="../src/net/http/server.go.html#line-1134">server.go#L1134</a>: 	n := runtime.<b>Callers</b>(1, pc)
+
+	<a href="../pkg/reflect.html">reflect</a>
+		<a href="../src/reflect/value.go.html#line-188">value.go#L188</a>: 	n := runtime.<b>Callers</b>(1, pc[:])
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

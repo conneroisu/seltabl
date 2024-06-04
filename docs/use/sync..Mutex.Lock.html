@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: sync.Mutex.Lock</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/sync.html">sync</a>.<a href="../src/sync/mutex.go.html#line-34">Mutex</a>.<a href="../src/sync/mutex.go.html#line-81">Lock</a></b></span><span style="font-size: large;"><i> (method, <a href="../imp/sync.Mutex.html#name-Lock">view implemented interface methods</a>)</i></span>
+
+<span class="title">208 uses</span>
+
+	sync (current package)
+		<a href="../src/sync/map.go.html#line-124">map.go#L124</a>: 		m.mu.<b>Lock</b>()
+		<a href="../src/sync/map.go.html#line-213" class="path-duplicate">map.go</a><a href="../src/sync/map.go.html#line-213">#L213</a>: 	m.mu.<b>Lock</b>()
+		<a href="../src/sync/map.go.html#line-276" class="path-duplicate">map.go</a><a href="../src/sync/map.go.html#line-276">#L276</a>: 		m.mu.<b>Lock</b>()
+		<a href="../src/sync/map.go.html#line-341" class="path-duplicate">map.go</a><a href="../src/sync/map.go.html#line-341">#L341</a>: 	m.mu.<b>Lock</b>()
+		<a href="../src/sync/map.go.html#line-382" class="path-duplicate">map.go</a><a href="../src/sync/map.go.html#line-382">#L382</a>: 	m.mu.<b>Lock</b>()
+		<a href="../src/sync/map.go.html#line-410" class="path-duplicate">map.go</a><a href="../src/sync/map.go.html#line-410">#L410</a>: 		m.mu.<b>Lock</b>()
+		<a href="../src/sync/map.go.html#line-460" class="path-duplicate">map.go</a><a href="../src/sync/map.go.html#line-460">#L460</a>: 		m.mu.<b>Lock</b>()
+		<a href="../src/sync/mutex.go.html#line-81">mutex.go#L81</a>: func (m *Mutex) <b>Lock</b>() {
+		<a href="../src/sync/once.go.html#line-70">once.go#L70</a>: 	o.m.<b>Lock</b>()
+		<a href="../src/sync/pool.go.html#line-224">pool.go#L224</a>: 	allPoolsMu.<b>Lock</b>()
+		<a href="../src/sync/rwmutex.go.html#line-146">rwmutex.go#L146</a>: 	rw.w.<b>Lock</b>()
+
+	<a href="../pkg/context.html">context</a>
+		<a href="../src/context/context.go.html#line-285">context.go#L285</a>: 		cc.mu.<b>Lock</b>()
+		<a href="../src/context/context.go.html#line-398" class="path-duplicate">context.go</a><a href="../src/context/context.go.html#line-398">#L398</a>: 	p.mu.<b>Lock</b>()
+		<a href="../src/context/context.go.html#line-443" class="path-duplicate">context.go</a><a href="../src/context/context.go.html#line-443">#L443</a>: 	c.mu.<b>Lock</b>()
+		<a href="../src/context/context.go.html#line-454" class="path-duplicate">context.go</a><a href="../src/context/context.go.html#line-454">#L454</a>: 	c.mu.<b>Lock</b>()
+		<a href="../src/context/context.go.html#line-480" class="path-duplicate">context.go</a><a href="../src/context/context.go.html#line-480">#L480</a>: 		p.mu.<b>Lock</b>()
+		<a href="../src/context/context.go.html#line-496" class="path-duplicate">context.go</a><a href="../src/context/context.go.html#line-496">#L496</a>: 		c.mu.<b>Lock</b>()
+		<a href="../src/context/context.go.html#line-543" class="path-duplicate">context.go</a><a href="../src/context/context.go.html#line-543">#L543</a>: 	c.mu.<b>Lock</b>()
+		<a href="../src/context/context.go.html#line-635" class="path-duplicate">context.go</a><a href="../src/context/context.go.html#line-635">#L635</a>: 	c.mu.<b>Lock</b>()
+		<a href="../src/context/context.go.html#line-671" class="path-duplicate">context.go</a><a href="../src/context/context.go.html#line-671">#L671</a>: 	c.mu.<b>Lock</b>()
+
+	<a href="../pkg/crypto/rand.html">crypto/rand</a>
+		<a href="../src/crypto/rand/rand_unix.go.html#line-60">rand_unix.go#L60</a>: 		r.mu.<b>Lock</b>()
+
+	<a href="../pkg/crypto/tls.html">crypto/tls</a>
+		<a href="../src/crypto/tls/common.go.html#line-1400">common.go#L1400</a>: 	writerMutex.<b>Lock</b>()
+		<a href="../src/crypto/tls/common.go.html#line-1482" class="path-duplicate">common.go</a><a href="../src/crypto/tls/common.go.html#line-1482">#L1482</a>: 	c.<b>Lock</b>()
+		<a href="../src/crypto/tls/common.go.html#line-1515" class="path-duplicate">common.go</a><a href="../src/crypto/tls/common.go.html#line-1515">#L1515</a>: 	c.<b>Lock</b>()
+		<a href="../src/crypto/tls/conn.go.html#line-857">conn.go#L857</a>: 	c.out.<b>Lock</b>()
+		<a href="../src/crypto/tls/conn.go.html#line-1046" class="path-duplicate">conn.go</a><a href="../src/crypto/tls/conn.go.html#line-1046">#L1046</a>: 	c.out.<b>Lock</b>()
+		<a href="../src/crypto/tls/conn.go.html#line-1063" class="path-duplicate">conn.go</a><a href="../src/crypto/tls/conn.go.html#line-1063">#L1063</a>: 	c.out.<b>Lock</b>()
+		<a href="../src/crypto/tls/conn.go.html#line-1198" class="path-duplicate">conn.go</a><a href="../src/crypto/tls/conn.go.html#line-1198">#L1198</a>: 	c.out.<b>Lock</b>()
+		<a href="../src/crypto/tls/conn.go.html#line-1272" class="path-duplicate">conn.go</a><a href="../src/crypto/tls/conn.go.html#line-1272">#L1272</a>: 	c.handshakeMutex.<b>Lock</b>()
+		<a href="../src/crypto/tls/conn.go.html#line-1328" class="path-duplicate">conn.go</a><a href="../src/crypto/tls/conn.go.html#line-1328">#L1328</a>: 		c.out.<b>Lock</b>()
+		<a href="../src/crypto/tls/conn.go.html#line-1366" class="path-duplicate">conn.go</a><a href="../src/crypto/tls/conn.go.html#line-1366">#L1366</a>: 	c.in.<b>Lock</b>()
+		<a href="../src/crypto/tls/conn.go.html#line-1449" class="path-duplicate">conn.go</a><a href="../src/crypto/tls/conn.go.html#line-1449">#L1449</a>: 	c.out.<b>Lock</b>()
+		<a href="../src/crypto/tls/conn.go.html#line-1540" class="path-duplicate">conn.go</a><a href="../src/crypto/tls/conn.go.html#line-1540">#L1540</a>: 	c.handshakeMutex.<b>Lock</b>()
+		<a href="../src/crypto/tls/conn.go.html#line-1550" class="path-duplicate">conn.go</a><a href="../src/crypto/tls/conn.go.html#line-1550">#L1550</a>: 	c.in.<b>Lock</b>()
+		<a href="../src/crypto/tls/conn.go.html#line-1578" class="path-duplicate">conn.go</a><a href="../src/crypto/tls/conn.go.html#line-1578">#L1578</a>: 			c.out.<b>Lock</b>()
+		<a href="../src/crypto/tls/conn.go.html#line-1598" class="path-duplicate">conn.go</a><a href="../src/crypto/tls/conn.go.html#line-1598">#L1598</a>: 	c.handshakeMutex.<b>Lock</b>()
+		<a href="../src/crypto/tls/conn.go.html#line-1644" class="path-duplicate">conn.go</a><a href="../src/crypto/tls/conn.go.html#line-1644">#L1644</a>: 	c.handshakeMutex.<b>Lock</b>()
+		<a href="../src/crypto/tls/conn.go.html#line-1654" class="path-duplicate">conn.go</a><a href="../src/crypto/tls/conn.go.html#line-1654">#L1654</a>: 	c.handshakeMutex.<b>Lock</b>()
+		<a href="../src/crypto/tls/quic.go.html#line-231">quic.go#L231</a>: 	c.handshakeMutex.<b>Lock</b>()
+		<a href="../src/crypto/tls/quic.go.html#line-401" class="path-duplicate">quic.go</a><a href="../src/crypto/tls/quic.go.html#line-401">#L401</a>: 	defer c.handshakeMutex.<b>Lock</b>()
+
+	<a href="../pkg/internal/bisect.html">internal/bisect</a>
+		<a href="../src/internal/bisect/bisect.go.html#line-765">bisect.go#L765</a>: 	d.mu.<b>Lock</b>()
+
+	<a href="../pkg/internal/godebug.html">internal/godebug</a>
+		<a href="../src/internal/godebug/godebug.go.html#line-214">godebug.go#L214</a>: 	updateMu.<b>Lock</b>()
+
+	<a href="../pkg/internal/intern.html">internal/intern</a>
+		<a href="../src/internal/intern/intern.go.html#line-101">intern.go#L101</a>: 	mu.<b>Lock</b>()
+		<a href="../src/internal/intern/intern.go.html#line-127" class="path-duplicate">intern.go</a><a href="../src/internal/intern/intern.go.html#line-127">#L127</a>: 	mu.<b>Lock</b>()
+
+	<a href="../pkg/internal/singleflight.html">internal/singleflight</a>
+		<a href="../src/internal/singleflight/singleflight.go.html#line-48">singleflight.go#L48</a>: 	g.mu.<b>Lock</b>()
+		<a href="../src/internal/singleflight/singleflight.go.html#line-71" class="path-duplicate">singleflight.go</a><a href="../src/internal/singleflight/singleflight.go.html#line-71">#L71</a>: 	g.mu.<b>Lock</b>()
+		<a href="../src/internal/singleflight/singleflight.go.html#line-95" class="path-duplicate">singleflight.go</a><a href="../src/internal/singleflight/singleflight.go.html#line-95">#L95</a>: 	g.mu.<b>Lock</b>()
+		<a href="../src/internal/singleflight/singleflight.go.html#line-112" class="path-duplicate">singleflight.go</a><a href="../src/internal/singleflight/singleflight.go.html#line-112">#L112</a>: 	g.mu.<b>Lock</b>()
+
+	<a href="../pkg/internal/testlog.html">internal/testlog</a>
+		<a href="../src/internal/testlog/exit.go.html#line-15">exit.go#L15</a>: 	panicOnExit0.mu.<b>Lock</b>()
+		<a href="../src/internal/testlog/exit.go.html#line-30" class="path-duplicate">exit.go</a><a href="../src/internal/testlog/exit.go.html#line-30">#L30</a>: 	panicOnExit0.mu.<b>Lock</b>()
+
+	<a href="../pkg/io.html">io</a>
+		<a href="../src/io/pipe.go.html#line-22">pipe.go#L22</a>: 	a.<b>Lock</b>()
+		<a href="../src/io/pipe.go.html#line-30" class="path-duplicate">pipe.go</a><a href="../src/io/pipe.go.html#line-30">#L30</a>: 	a.<b>Lock</b>()
+		<a href="../src/io/pipe.go.html#line-81" class="path-duplicate">pipe.go</a><a href="../src/io/pipe.go.html#line-81">#L81</a>: 		p.wrMu.<b>Lock</b>()
+
+	<a href="../pkg/log.html">log</a>
+		<a href="../src/log/log.go.html#line-81">log.go#L81</a>: 	l.outMu.<b>Lock</b>()
+		<a href="../src/log/log.go.html#line-243" class="path-duplicate">log.go</a><a href="../src/log/log.go.html#line-243">#L243</a>: 	l.outMu.<b>Lock</b>()
+		<a href="../src/log/log.go.html#line-347" class="path-duplicate">log.go</a><a href="../src/log/log.go.html#line-347">#L347</a>: 	l.outMu.<b>Lock</b>()
+
+	<a href="../pkg/math/big.html">math/big</a>
+		<a href="../src/math/big/natconv.go.html#line-474">natconv.go#L474</a>: 		cacheBase10.<b>Lock</b>()
+
+	<a href="../pkg/math/rand.html">math/rand</a>
+		<a href="../src/math/rand/rand.go.html#line-372">rand.go#L372</a>: 	fs.mu.<b>Lock</b>()
+		<a href="../src/math/rand/rand.go.html#line-504" class="path-duplicate">rand.go</a><a href="../src/math/rand/rand.go.html#line-504">#L504</a>: 	r.lk.<b>Lock</b>()
+		<a href="../src/math/rand/rand.go.html#line-511" class="path-duplicate">rand.go</a><a href="../src/math/rand/rand.go.html#line-511">#L511</a>: 	r.lk.<b>Lock</b>()
+		<a href="../src/math/rand/rand.go.html#line-518" class="path-duplicate">rand.go</a><a href="../src/math/rand/rand.go.html#line-518">#L518</a>: 	r.lk.<b>Lock</b>()
+		<a href="../src/math/rand/rand.go.html#line-525" class="path-duplicate">rand.go</a><a href="../src/math/rand/rand.go.html#line-525">#L525</a>: 	r.lk.<b>Lock</b>()
+		<a href="../src/math/rand/rand.go.html#line-543" class="path-duplicate">rand.go</a><a href="../src/math/rand/rand.go.html#line-543">#L543</a>: 	r.lk.<b>Lock</b>()
+
+	<a href="../pkg/mime.html">mime</a>
+		<a href="../src/mime/type.go.html#line-45">type.go#L45</a>: 	extensionsMu.<b>Lock</b>()
+		<a href="../src/mime/type.go.html#line-189" class="path-duplicate">type.go</a><a href="../src/mime/type.go.html#line-189">#L189</a>: 	extensionsMu.<b>Lock</b>()
+
+	<a href="../pkg/net.html">net</a>
+		<a href="../src/net/hosts.go.html#line-130">hosts.go#L130</a>: 	hosts.<b>Lock</b>()
+		<a href="../src/net/hosts.go.html#line-150" class="path-duplicate">hosts.go</a><a href="../src/net/hosts.go.html#line-150">#L150</a>: 	hosts.<b>Lock</b>()
+		<a href="../src/net/nss.go.html#line-35">nss.go#L35</a>: 	nssConfig.mu.<b>Lock</b>()
+		<a href="../src/net/nss.go.html#line-73" class="path-duplicate">nss.go</a><a href="../src/net/nss.go.html#line-73">#L73</a>: 	conf.mu.<b>Lock</b>()
+		<a href="../src/net/pipe.go.html#line-32">pipe.go#L32</a>: 	d.mu.<b>Lock</b>()
+		<a href="../src/net/pipe.go.html#line-68" class="path-duplicate">pipe.go</a><a href="../src/net/pipe.go.html#line-68">#L68</a>: 	d.mu.<b>Lock</b>()
+		<a href="../src/net/pipe.go.html#line-191" class="path-duplicate">pipe.go</a><a href="../src/net/pipe.go.html#line-191">#L191</a>: 	p.wrMu.<b>Lock</b>() // Ensure entirety of b is written together
+
+	<a href="../pkg/net/http.html">net/http</a>
+		<a href="../src/net/http/h2_bundle.go.html#line-797">h2_bundle.go#L797</a>: 		p.mu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-864" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-864">#L864</a>: 	c.p.mu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-883" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-883">#L883</a>: 	p.mu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-922" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-922">#L922</a>: 	p.mu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-952" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-952">#L952</a>: 	p.mu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-970" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-970">#L970</a>: 	p.mu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-3727" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-3727">#L3727</a>: 	p.mu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-3736" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-3736">#L3736</a>: 	p.mu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-3747" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-3747">#L3747</a>: 	p.mu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-3776" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-3776">#L3776</a>: 	p.mu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-3808" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-3808">#L3808</a>: 	p.mu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-3845" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-3845">#L3845</a>: 	p.mu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-3856" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-3856">#L3856</a>: 	p.mu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-4032" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-4032">#L4032</a>: 	s.mu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-4041" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-4041">#L4041</a>: 	s.mu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-4050" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-4050">#L4050</a>: 	s.mu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-4692" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-4692">#L4692</a>: 		http2testHookOnPanicMu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-6670" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-6670">#L6670</a>: 	rws.closeNotifierMu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-7477" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-7477">#L7477</a>: 	cs.cc.mu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-7499" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-7499">#L7499</a>: 	cc.mu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-7909" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-7909">#L7909</a>: 	cc.mu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-7915" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-7915">#L7915</a>: 	cc.mu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-7942" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-7942">#L7942</a>: 	cc.mu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-7951" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-7951">#L7951</a>: 	cc.mu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-7995" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-7995">#L7995</a>: 	cc.wmu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-8002" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-8002">#L8002</a>: 	cc.mu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-8022" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-8022">#L8022</a>: 	cc.mu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-8093" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-8093">#L8093</a>: 	cc.mu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-8110" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-8110">#L8110</a>: 	cc.mu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-8126" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-8126">#L8126</a>: 		cc.mu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-8146" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-8146">#L8146</a>: 		cc.mu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-8156" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-8156">#L8156</a>: 	cc.mu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-8166" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-8166">#L8166</a>: 	cc.wmu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-8182" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-8182">#L8182</a>: 	cc.mu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-8272" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-8272">#L8272</a>: 	cc.mu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-8339" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-8339">#L8339</a>: 		cs.cc.mu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-8425" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-8425">#L8425</a>: 	cc.mu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-8552" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-8552">#L8552</a>: 	cc.wmu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-8607" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-8607">#L8607</a>: 	cc.mu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-8655" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-8655">#L8655</a>: 	cc.wmu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-8781" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-8781">#L8781</a>: 	cc.mu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-8821" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-8821">#L8821</a>: 			cc.mu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-8842" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-8842">#L8842</a>: 			cc.wmu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-8873" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-8873">#L8873</a>: 	cc.mu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-8881" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-8881">#L8881</a>: 	cc.wmu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-8911" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-8911">#L8911</a>: 	cc.mu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-9200" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-9200">#L9200</a>: 	cc.mu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-9239" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-9239">#L9239</a>: 		cc.wmu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-9280" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-9280">#L9280</a>: 	cc.mu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-9648" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-9648">#L9648</a>: 	cc.mu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-9657" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-9657">#L9657</a>: 		cc.wmu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-9681" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-9681">#L9681</a>: 		cc.mu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-9688" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-9688">#L9688</a>: 		cc.wmu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-9715" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-9715">#L9715</a>: 		cc.mu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-9730" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-9730">#L9730</a>: 			cc.mu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-9738" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-9738">#L9738</a>: 				cc.wmu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-9772" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-9772">#L9772</a>: 		cc.mu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-9803" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-9803">#L9803</a>: 			cc.wmu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-9835" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-9835">#L9835</a>: 		rl.cc.mu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-9848" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-9848">#L9848</a>: 	rl.cc.mu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-9885" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-9885">#L9885</a>: 	cc.wmu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-9900" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-9900">#L9900</a>: 	cc.mu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-9973" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-9973">#L9973</a>: 	cc.mu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-10016" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-10016">#L10016</a>: 		cc.mu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-10027" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-10027">#L10027</a>: 		cc.wmu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-10054" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-10054">#L10054</a>: 		cc.mu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-10064" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-10064">#L10064</a>: 	cc.wmu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-10088" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-10088">#L10088</a>: 	cc.wmu.<b>Lock</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-10235" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-10235">#L10235</a>: 	cc.mu.<b>Lock</b>()
+		<a href="../src/net/http/server.go.html#line-309">server.go#L309</a>: 	c.mu.<b>Lock</b>()
+		<a href="../src/net/http/server.go.html#line-658" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-658">#L658</a>: 	cr.mu.<b>Lock</b>()
+		<a href="../src/net/http/server.go.html#line-922" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-922">#L922</a>: 		w.writeContinueMu.<b>Lock</b>()
+		<a href="../src/net/http/server.go.html#line-1169" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-1169">#L1169</a>: 			w.writeContinueMu.<b>Lock</b>()
+		<a href="../src/net/http/server.go.html#line-1390" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-1390">#L1390</a>: 			bdy.mu.<b>Lock</b>()
+		<a href="../src/net/http/server.go.html#line-1633" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-1633">#L1633</a>: 		w.writeContinueMu.<b>Lock</b>()
+		<a href="../src/net/http/server.go.html#line-2111" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-2111">#L2111</a>: 	c.mu.<b>Lock</b>()
+		<a href="../src/net/http/server.go.html#line-2937" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-2937">#L2937</a>: 	srv.mu.<b>Lock</b>()
+		<a href="../src/net/http/server.go.html#line-2947" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-2947">#L2947</a>: 	srv.mu.<b>Lock</b>()
+		<a href="../src/net/http/server.go.html#line-2988" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-2988">#L2988</a>: 	srv.mu.<b>Lock</b>()
+		<a href="../src/net/http/server.go.html#line-3029" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-3029">#L3029</a>: 	srv.mu.<b>Lock</b>()
+		<a href="../src/net/http/server.go.html#line-3037" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-3037">#L3037</a>: 	s.mu.<b>Lock</b>()
+		<a href="../src/net/http/server.go.html#line-3339" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-3339">#L3339</a>: 	s.mu.<b>Lock</b>()
+		<a href="../src/net/http/server.go.html#line-3358" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-3358">#L3358</a>: 	s.mu.<b>Lock</b>()
+		<a href="../src/net/http/server.go.html#line-3603" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-3603">#L3603</a>: 		tw.mu.<b>Lock</b>()
+		<a href="../src/net/http/server.go.html#line-3615" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-3615">#L3615</a>: 		tw.mu.<b>Lock</b>()
+		<a href="../src/net/http/server.go.html#line-3654" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-3654">#L3654</a>: 	tw.mu.<b>Lock</b>()
+		<a href="../src/net/http/server.go.html#line-3683" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-3683">#L3683</a>: 	tw.mu.<b>Lock</b>()
+		<a href="../src/net/http/server.go.html#line-3760" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-3760">#L3760</a>: 	uniqNameMu.<b>Lock</b>()
+		<a href="../src/net/http/transfer.go.html#line-827">transfer.go#L827</a>: 	b.mu.<b>Lock</b>()
+		<a href="../src/net/http/transfer.go.html#line-969" class="path-duplicate">transfer.go</a><a href="../src/net/http/transfer.go.html#line-969">#L969</a>: 	b.mu.<b>Lock</b>()
+		<a href="../src/net/http/transfer.go.html#line-1010" class="path-duplicate">transfer.go</a><a href="../src/net/http/transfer.go.html#line-1010">#L1010</a>: 	b.mu.<b>Lock</b>()
+		<a href="../src/net/http/transfer.go.html#line-1018" class="path-duplicate">transfer.go</a><a href="../src/net/http/transfer.go.html#line-1018">#L1018</a>: 	b.mu.<b>Lock</b>()
+		<a href="../src/net/http/transfer.go.html#line-1024" class="path-duplicate">transfer.go</a><a href="../src/net/http/transfer.go.html#line-1024">#L1024</a>: 	b.mu.<b>Lock</b>()
+		<a href="../src/net/http/transport.go.html#line-485">transport.go#L485</a>: 	tr.mu.<b>Lock</b>()
+		<a href="../src/net/http/transport.go.html#line-765" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-765">#L765</a>: 	t.altMu.<b>Lock</b>()
+		<a href="../src/net/http/transport.go.html#line-785" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-785">#L785</a>: 	t.idleMu.<b>Lock</b>()
+		<a href="../src/net/http/transport.go.html#line-816" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-816">#L816</a>: 	t.reqMu.<b>Lock</b>()
+		<a href="../src/net/http/transport.go.html#line-938" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-938">#L938</a>: 	t.idleMu.<b>Lock</b>()
+		<a href="../src/net/http/transport.go.html#line-1030" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-1030">#L1030</a>: 	t.idleMu.<b>Lock</b>()
+		<a href="../src/net/http/transport.go.html#line-1113" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-1113">#L1113</a>: 	t.idleMu.<b>Lock</b>()
+		<a href="../src/net/http/transport.go.html#line-1152" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-1152">#L1152</a>: 	t.reqMu.<b>Lock</b>()
+		<a href="../src/net/http/transport.go.html#line-1169" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-1169">#L1169</a>: 	t.reqMu.<b>Lock</b>()
+		<a href="../src/net/http/transport.go.html#line-1238" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-1238">#L1238</a>: 	w.mu.<b>Lock</b>()
+		<a href="../src/net/http/transport.go.html#line-1245" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-1245">#L1245</a>: 	w.mu.<b>Lock</b>()
+		<a href="../src/net/http/transport.go.html#line-1265" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-1265">#L1265</a>: 	w.mu.<b>Lock</b>()
+		<a href="../src/net/http/transport.go.html#line-1453" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-1453">#L1453</a>: 	t.connsPerHostMu.<b>Lock</b>()
+		<a href="../src/net/http/transport.go.html#line-1505" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-1505">#L1505</a>: 	t.connsPerHostMu.<b>Lock</b>()
+		<a href="../src/net/http/transport.go.html#line-1987" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-1987">#L1987</a>: 	pc.mu.<b>Lock</b>()
+		<a href="../src/net/http/transport.go.html#line-1996" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-1996">#L1996</a>: 	pc.mu.<b>Lock</b>()
+		<a href="../src/net/http/transport.go.html#line-2003" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-2003">#L2003</a>: 	pc.mu.<b>Lock</b>()
+		<a href="../src/net/http/transport.go.html#line-2010" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-2010">#L2010</a>: 	pc.mu.<b>Lock</b>()
+		<a href="../src/net/http/transport.go.html#line-2022" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-2022">#L2022</a>: 	pc.mu.<b>Lock</b>()
+		<a href="../src/net/http/transport.go.html#line-2033" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-2033">#L2033</a>: 	t.idleMu.<b>Lock</b>()
+		<a href="../src/net/http/transport.go.html#line-2073" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-2073">#L2073</a>: 	req.mu.<b>Lock</b>()
+		<a href="../src/net/http/transport.go.html#line-2143" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-2143">#L2143</a>: 		pc.mu.<b>Lock</b>()
+		<a href="../src/net/http/transport.go.html#line-2176" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-2176">#L2176</a>: 		pc.mu.<b>Lock</b>()
+		<a href="../src/net/http/transport.go.html#line-2595" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-2595">#L2595</a>: 	pc.mu.<b>Lock</b>()
+		<a href="../src/net/http/transport.go.html#line-2741" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-2741">#L2741</a>: 	pc.mu.<b>Lock</b>()
+		<a href="../src/net/http/transport.go.html#line-2752" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-2752">#L2752</a>: 	pc.mu.<b>Lock</b>()
+		<a href="../src/net/http/transport.go.html#line-2823" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-2823">#L2823</a>: 	es.mu.<b>Lock</b>()
+		<a href="../src/net/http/transport.go.html#line-2835" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-2835">#L2835</a>: 		es.mu.<b>Lock</b>()
+		<a href="../src/net/http/transport.go.html#line-2846" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-2846">#L2846</a>: 	es.mu.<b>Lock</b>()
+		<a href="../src/net/http/transport.go.html#line-2888" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-2888">#L2888</a>: 	gz.body.mu.<b>Lock</b>()
+
+	<a href="../pkg/net/textproto.html">net/textproto</a>
+		<a href="../src/net/textproto/pipeline.go.html#line-37">pipeline.go#L37</a>: 	p.mu.<b>Lock</b>()
+		<a href="../src/net/textproto/pipeline.go.html#line-82" class="path-duplicate">pipeline.go</a><a href="../src/net/textproto/pipeline.go.html#line-82">#L82</a>: 	s.mu.<b>Lock</b>()
+		<a href="../src/net/textproto/pipeline.go.html#line-100" class="path-duplicate">pipeline.go</a><a href="../src/net/textproto/pipeline.go.html#line-100">#L100</a>: 	s.mu.<b>Lock</b>()
+
+	<a href="../pkg/os.html">os</a>
+		<a href="../src/os/getwd.go.html#line-58">getwd.go#L58</a>: 	getwdCache.<b>Lock</b>()
+		<a href="../src/os/getwd.go.html#line-121" class="path-duplicate">getwd.go</a><a href="../src/os/getwd.go.html#line-121">#L121</a>: 	getwdCache.<b>Lock</b>()
+
+	<a href="../pkg/reflect.html">reflect</a>
+		<a href="../src/reflect/type.go.html#line-1729">type.go#L1729</a>: 	funcTypesMutex.<b>Lock</b>()
+		<a href="../src/reflect/type.go.html#line-1814" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1814">#L1814</a>: 	funcLookupCache.<b>Lock</b>()
+		<a href="../src/reflect/type.go.html#line-2417" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2417">#L2417</a>: 	structLookupCache.<b>Lock</b>()
+
+	<a href="../pkg/syscall.html">syscall</a>
+		<a href="../src/syscall/forkpipe2.go.html#line-40">forkpipe2.go#L40</a>: 	forkingLock.<b>Lock</b>()
+		<a href="../src/syscall/forkpipe2.go.html#line-70" class="path-duplicate">forkpipe2.go</a><a href="../src/syscall/forkpipe2.go.html#line-70">#L70</a>: 		forkingLock.<b>Lock</b>()
+		<a href="../src/syscall/forkpipe2.go.html#line-85" class="path-duplicate">forkpipe2.go</a><a href="../src/syscall/forkpipe2.go.html#line-85">#L85</a>: 	forkingLock.<b>Lock</b>()
+		<a href="../src/syscall/syscall_unix.go.html#line-64">syscall_unix.go#L64</a>: 	m.<b>Lock</b>()
+		<a href="../src/syscall/syscall_unix.go.html#line-77" class="path-duplicate">syscall_unix.go</a><a href="../src/syscall/syscall_unix.go.html#line-77">#L77</a>: 	m.<b>Lock</b>()
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.puintptr</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/runtime2.go.html#line-290">puintptr</a></b></span>
+
+<span class="title">10 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/runtime2.go.html#line-290">runtime2.go#L290</a>: type <b>puintptr</b> uintptr
+		<a href="../src/runtime/runtime2.go.html#line-293" class="path-duplicate">runtime2.go</a><a href="../src/runtime/runtime2.go.html#line-293">#L293</a>: func (pp <b>puintptr</b>) ptr() *p { return (*p)(unsafe.Pointer(pp)) }
+		<a href="../src/runtime/runtime2.go.html#line-296" class="path-duplicate">runtime2.go</a><a href="../src/runtime/runtime2.go.html#line-296">#L296</a>: func (pp *<b>puintptr</b>) set(p *p) { *pp = <b>puintptr</b>(unsafe.Pointer(p)) }
+		<a href="../src/runtime/runtime2.go.html#line-565" class="path-duplicate">runtime2.go</a><a href="../src/runtime/runtime2.go.html#line-565">#L565</a>: 	p             <b>puintptr</b> // attached p for executing go code (nil if not executing go code)
+		<a href="../src/runtime/runtime2.go.html#line-566" class="path-duplicate">runtime2.go</a><a href="../src/runtime/runtime2.go.html#line-566">#L566</a>: 	nextp         <b>puintptr</b>
+		<a href="../src/runtime/runtime2.go.html#line-567" class="path-duplicate">runtime2.go</a><a href="../src/runtime/runtime2.go.html#line-567">#L567</a>: 	oldp          <b>puintptr</b> // the p that was attached before executing a syscall
+		<a href="../src/runtime/runtime2.go.html#line-649" class="path-duplicate">runtime2.go</a><a href="../src/runtime/runtime2.go.html#line-649">#L649</a>: 	link        <b>puintptr</b>
+		<a href="../src/runtime/runtime2.go.html#line-819" class="path-duplicate">runtime2.go</a><a href="../src/runtime/runtime2.go.html#line-819">#L819</a>: 	pidle        <b>puintptr</b> // idle p's
+		<a href="../src/runtime/time.go.html#line-22">time.go#L22</a>: 	pp <b>puintptr</b>
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

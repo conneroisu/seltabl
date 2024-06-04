@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/http.http2FrameHeader</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../pkg/net/http.html">net/http</a>.<a href="../../src/net/http/h2_bundle.go.html#line-1551">http2FrameHeader</a></b></span>
+
+<span class="title">36 uses</span>
+
+	net/http (current package)
+		<a href="../../src/net/http/h2_bundle.go.html#line-1526">h2_bundle.go#L1526</a>: type http2frameParser func(fc *http2frameCache, fh <b>http2FrameHeader</b>, countError func(string), payload []byte) (http2Frame, error)
+		<a href="../../src/net/http/h2_bundle.go.html#line-1551" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1551">#L1551</a>: type <b>http2FrameHeader</b> struct {
+		<a href="../../src/net/http/h2_bundle.go.html#line-1575" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1575">#L1575</a>: func (h <b>http2FrameHeader</b>) Header() <b>http2FrameHeader</b> { return h }
+		<a href="../../src/net/http/h2_bundle.go.html#line-1577" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1577">#L1577</a>: func (h <b>http2FrameHeader</b>) String() string {
+		<a href="../../src/net/http/h2_bundle.go.html#line-1585" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1585">#L1585</a>: func (h <b>http2FrameHeader</b>) writeDebug(buf *bytes.Buffer) {
+		<a href="../../src/net/http/h2_bundle.go.html#line-1612" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1612">#L1612</a>: func (h *<b>http2FrameHeader</b>) checkValid() {
+		<a href="../../src/net/http/h2_bundle.go.html#line-1618" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1618">#L1618</a>: func (h *<b>http2FrameHeader</b>) invalidate() { h.valid = false }
+		<a href="../../src/net/http/h2_bundle.go.html#line-1631" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1631">#L1631</a>: func http2ReadFrameHeader(r io.Reader) (<b>http2FrameHeader</b>, error) {
+		<a href="../../src/net/http/h2_bundle.go.html#line-1637" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1637">#L1637</a>: func http2readFrameHeader(buf []byte, r io.Reader) (<b>http2FrameHeader</b>, error) {
+		<a href="../../src/net/http/h2_bundle.go.html#line-1640" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1640">#L1640</a>: 		return <b>http2FrameHeader</b>{}, err
+		<a href="../../src/net/http/h2_bundle.go.html#line-1642" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1642">#L1642</a>: 	return <b>http2FrameHeader</b>{
+		<a href="../../src/net/http/h2_bundle.go.html#line-1657" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1657">#L1657</a>: 	Header() <b>http2FrameHeader</b>
+		<a href="../../src/net/http/h2_bundle.go.html#line-1987" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1987">#L1987</a>: 	<b>http2FrameHeader</b>
+		<a href="../../src/net/http/h2_bundle.go.html#line-2004" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2004">#L2004</a>: func http2parseDataFrame(fc *http2frameCache, fh <b>http2FrameHeader</b>, countError func(string), payload []byte) (http2Frame, error) {
+		<a href="../../src/net/http/h2_bundle.go.html#line-2119" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2119">#L2119</a>: 	<b>http2FrameHeader</b>
+		<a href="../../src/net/http/h2_bundle.go.html#line-2123" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2123">#L2123</a>: func http2parseSettingsFrame(_ *http2frameCache, fh <b>http2FrameHeader</b>, countError func(string), p []byte) (http2Frame, error) {
+		<a href="../../src/net/http/h2_bundle.go.html#line-2258" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2258">#L2258</a>: 	<b>http2FrameHeader</b>
+		<a href="../../src/net/http/h2_bundle.go.html#line-2264" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2264">#L2264</a>: func http2parsePingFrame(_ *http2frameCache, fh <b>http2FrameHeader</b>, countError func(string), payload []byte) (http2Frame, error) {
+		<a href="../../src/net/http/h2_bundle.go.html#line-2291" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2291">#L2291</a>: 	<b>http2FrameHeader</b>
+		<a href="../../src/net/http/h2_bundle.go.html#line-2306" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2306">#L2306</a>: func http2parseGoAwayFrame(_ *http2frameCache, fh <b>http2FrameHeader</b>, countError func(string), p []byte) (http2Frame, error) {
+		<a href="../../src/net/http/h2_bundle.go.html#line-2334" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2334">#L2334</a>: 	<b>http2FrameHeader</b>
+		<a href="../../src/net/http/h2_bundle.go.html#line-2348" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2348">#L2348</a>: func http2parseUnknownFrame(_ *http2frameCache, fh <b>http2FrameHeader</b>, countError func(string), p []byte) (http2Frame, error) {
+		<a href="../../src/net/http/h2_bundle.go.html#line-2355" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2355">#L2355</a>: 	<b>http2FrameHeader</b>
+		<a href="../../src/net/http/h2_bundle.go.html#line-2359" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2359">#L2359</a>: func http2parseWindowUpdateFrame(_ *http2frameCache, fh <b>http2FrameHeader</b>, countError func(string), p []byte) (http2Frame, error) {
+		<a href="../../src/net/http/h2_bundle.go.html#line-2402" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2402">#L2402</a>: 	<b>http2FrameHeader</b>
+		<a href="../../src/net/http/h2_bundle.go.html#line-2427" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2427">#L2427</a>: func http2parseHeadersFrame(_ *http2frameCache, fh <b>http2FrameHeader</b>, countError func(string), p []byte) (_ http2Frame, err error) {
+		<a href="../../src/net/http/h2_bundle.go.html#line-2544" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2544">#L2544</a>: 	<b>http2FrameHeader</b>
+		<a href="../../src/net/http/h2_bundle.go.html#line-2569" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2569">#L2569</a>: func http2parsePriorityFrame(_ *http2frameCache, fh <b>http2FrameHeader</b>, countError func(string), payload []byte) (http2Frame, error) {
+		<a href="../../src/net/http/h2_bundle.go.html#line-2614" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2614">#L2614</a>: 	<b>http2FrameHeader</b>
+		<a href="../../src/net/http/h2_bundle.go.html#line-2618" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2618">#L2618</a>: func http2parseRSTStreamFrame(_ *http2frameCache, fh <b>http2FrameHeader</b>, countError func(string), p []byte) (http2Frame, error) {
+		<a href="../../src/net/http/h2_bundle.go.html#line-2646" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2646">#L2646</a>: 	<b>http2FrameHeader</b>
+		<a href="../../src/net/http/h2_bundle.go.html#line-2650" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2650">#L2650</a>: func http2parseContinuationFrame(_ *http2frameCache, fh <b>http2FrameHeader</b>, countError func(string), p []byte) (http2Frame, error) {
+		<a href="../../src/net/http/h2_bundle.go.html#line-2687" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2687">#L2687</a>: 	<b>http2FrameHeader</b>
+		<a href="../../src/net/http/h2_bundle.go.html#line-2701" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2701">#L2701</a>: func http2parsePushPromise(_ *http2frameCache, fh <b>http2FrameHeader</b>, countError func(string), p []byte) (_ http2Frame, err error) {
+		<a href="../../src/net/http/h2_bundle.go.html#line-4326" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-4326">#L4326</a>: 			http2FrameHeader: <b>http2FrameHeader</b>{valid: true},
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

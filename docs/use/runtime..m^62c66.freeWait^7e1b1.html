@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.m.freeWait</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/runtime2.go.html#line-550">m</a>.<a href="../src/runtime/runtime2.go.html#line-583">freeWait</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">5 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/proc.go.html#line-1836">proc.go#L1836</a>: 	mp.<b>freeWait</b>.Store(freeMWait)
+		<a href="../src/runtime/proc.go.html#line-1870" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-1870">#L1870</a>: 		mp.<b>freeWait</b>.Store(freeMRef)
+		<a href="../src/runtime/proc.go.html#line-1881" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-1881">#L1881</a>: 	exitThread(&amp;mp.<b>freeWait</b>)
+		<a href="../src/runtime/proc.go.html#line-2077" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-2077">#L2077</a>: 			wait := freem.<b>freeWait</b>.Load()
+		<a href="../src/runtime/runtime2.go.html#line-583">runtime2.go#L583</a>: 	<b>freeWait</b>      atomic.Uint32 // Whether it is safe to free g0 and delete m (one of freeMRef, freeMStack, freeMWait)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

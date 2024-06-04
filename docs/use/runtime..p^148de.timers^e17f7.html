@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.p.timers</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/runtime2.go.html#line-646">p</a>.<a href="../src/runtime/runtime2.go.html#line-761">timers</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">47 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/proc.go.html#line-3974">proc.go#L3974</a>: 	if len(pp.<b>timers</b>) &gt; 0 {
+		<a href="../src/runtime/proc.go.html#line-3976" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-3976">#L3976</a>: 		for len(pp.<b>timers</b>) &gt; 0 {
+		<a href="../src/runtime/proc.go.html#line-3992" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-3992">#L3992</a>: 	if pp == getg().m.p.ptr() &amp;&amp; int(pp.deletedTimers.Load()) &gt; len(pp.<b>timers</b>)/4 {
+		<a href="../src/runtime/proc.go.html#line-5516" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-5516">#L5516</a>: 	if len(pp.<b>timers</b>) &gt; 0 {
+		<a href="../src/runtime/proc.go.html#line-5524" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-5524">#L5524</a>: 		moveTimers(plocal, pp.<b>timers</b>)
+		<a href="../src/runtime/proc.go.html#line-5525" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-5525">#L5525</a>: 		pp.<b>timers</b> = nil
+		<a href="../src/runtime/proc.go.html#line-5923" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-5923">#L5923</a>: 		if len(pp.<b>timers</b>) &gt; 0 {
+		<a href="../src/runtime/proc.go.html#line-6259" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6259">#L6259</a>: 			print(" runqsize=", t-h, " gfreecnt=", pp.gFree.n, " timerslen=", len(pp.<b>timers</b>), "\n")
+		<a href="../src/runtime/runtime2.go.html#line-761">runtime2.go#L761</a>: 	<b>timers</b> []*timer
+		<a href="../src/runtime/time.go.html#line-301">time.go#L301</a>: 	i := len(pp.<b>timers</b>)
+		<a href="../src/runtime/time.go.html#line-302" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-302">#L302</a>: 	pp.<b>timers</b> = append(pp.<b>timers</b>, t)
+		<a href="../src/runtime/time.go.html#line-303" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-303">#L303</a>: 	siftupTimer(pp.<b>timers</b>, i)
+		<a href="../src/runtime/time.go.html#line-304" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-304">#L304</a>: 	if t == pp.<b>timers</b>[0] {
+		<a href="../src/runtime/time.go.html#line-380" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-380">#L380</a>: 	if t := pp.<b>timers</b>[i]; t.pp.ptr() != pp {
+		<a href="../src/runtime/time.go.html#line-385" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-385">#L385</a>: 	last := len(pp.<b>timers</b>) - 1
+		<a href="../src/runtime/time.go.html#line-387" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-387">#L387</a>: 		pp.<b>timers</b>[i] = pp.<b>timers</b>[last]
+		<a href="../src/runtime/time.go.html#line-389" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-389">#L389</a>: 	pp.<b>timers</b>[last] = nil
+		<a href="../src/runtime/time.go.html#line-390" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-390">#L390</a>: 	pp.<b>timers</b> = pp.<b>timers</b>[:last]
+		<a href="../src/runtime/time.go.html#line-395" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-395">#L395</a>: 		smallestChanged = siftupTimer(pp.<b>timers</b>, i)
+		<a href="../src/runtime/time.go.html#line-396" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-396">#L396</a>: 		siftdownTimer(pp.<b>timers</b>, i)
+		<a href="../src/runtime/time.go.html#line-414" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-414">#L414</a>: 	if t := pp.<b>timers</b>[0]; t.pp.ptr() != pp {
+		<a href="../src/runtime/time.go.html#line-419" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-419">#L419</a>: 	last := len(pp.<b>timers</b>) - 1
+		<a href="../src/runtime/time.go.html#line-421" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-421">#L421</a>: 		pp.<b>timers</b>[0] = pp.<b>timers</b>[last]
+		<a href="../src/runtime/time.go.html#line-423" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-423">#L423</a>: 	pp.<b>timers</b>[last] = nil
+		<a href="../src/runtime/time.go.html#line-424" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-424">#L424</a>: 	pp.<b>timers</b> = pp.<b>timers</b>[:last]
+		<a href="../src/runtime/time.go.html#line-426" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-426">#L426</a>: 		siftdownTimer(pp.<b>timers</b>, 0)
+		<a href="../src/runtime/time.go.html#line-565" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-565">#L565</a>: 		if len(pp.<b>timers</b>) == 0 {
+		<a href="../src/runtime/time.go.html#line-577" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-577">#L577</a>: 		t := pp.<b>timers</b>[0]
+		<a href="../src/runtime/time.go.html#line-687" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-687">#L687</a>: 	for i := 0; i &lt; len(pp.<b>timers</b>); i++ {
+		<a href="../src/runtime/time.go.html#line-688" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-688">#L688</a>: 		t := pp.<b>timers</b>[i]
+		<a href="../src/runtime/time.go.html#line-776" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-776">#L776</a>: 		t := pp.<b>timers</b>[0]
+		<a href="../src/runtime/time.go.html#line-804" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-804">#L804</a>: 			if len(pp.<b>timers</b>) == 0 {
+		<a href="../src/runtime/time.go.html#line-861" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-861">#L861</a>: 		siftdownTimer(pp.<b>timers</b>, 0)
+		<a href="../src/runtime/time.go.html#line-912" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-912">#L912</a>: 	timers := pp.<b>timers</b>
+		<a href="../src/runtime/time.go.html#line-972" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-972">#L972</a>: 	pp.<b>timers</b> = timers
+		<a href="../src/runtime/time.go.html#line-984" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-984">#L984</a>: 	for i, t := range pp.<b>timers</b> {
+		<a href="../src/runtime/time.go.html#line-992" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-992">#L992</a>: 		if t.when &lt; pp.<b>timers</b>[p].when {
+		<a href="../src/runtime/time.go.html#line-993" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-993">#L993</a>: 			print("bad timer heap at ", i, ": ", p, ": ", pp.<b>timers</b>[p].when, ", ", i, ": ", t.when, "\n")
+		<a href="../src/runtime/time.go.html#line-997" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-997">#L997</a>: 	if numTimers := int(pp.numTimers.Load()); len(pp.<b>timers</b>) != numTimers {
+		<a href="../src/runtime/time.go.html#line-998" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-998">#L998</a>: 		println("timer heap len", len(pp.<b>timers</b>), "!= numTimers", numTimers)
+		<a href="../src/runtime/time.go.html#line-1006" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-1006">#L1006</a>: 	if len(pp.<b>timers</b>) == 0 {
+		<a href="../src/runtime/time.go.html#line-1009" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-1009">#L1009</a>: 		pp.timer0When.Store(pp.<b>timers</b>[0].when)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

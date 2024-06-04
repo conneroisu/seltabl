@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: crypto/internal/nistec</title>
+<link href="../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>nistec</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../../index.html#pkg-crypto/internal/nistec">crypto/internal/nistec</a><i> (on <a href="https://pkg.go.dev/crypto/internal/nistec" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../../../dep/crypto/internal/nistec.html">9 packages</a>, and imported by <a href="../../../dep/crypto/internal/nistec.html#imported-by">3 packages</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<input type='checkbox' checked class="fold" id="file-0-fold-content"><label for="file-0-fold-content">  <a href="../../../src/crypto/internal/nistec/nistec.go.html#doc">d</a> <a href="../../../src/crypto/internal/nistec/nistec.go.html">nistec.go</a></label><span id='file-0-fold-content-items' class="fold-items">
+<span class="md-text">		Package nistec implements the NIST P elliptic curves from FIPS 186-4.
+		
+		This package uses fiat-crypto or specialized assembly and Go code for its
+		backend field arithmetic (not math/big) and exposes constant-time, heap
+		allocation-free, byte slice-based safe APIs. Group operations use modern and
+		safe complete addition formulas where possible. The point at infinity is
+		handled and encoded according to SEC 1, Version 2.0, and invalid curve points
+		can't be represented.</span>
+</span>
+	<span class="nodocs">    <a href="../../../src/crypto/internal/nistec/p224.go.html">p224.go</a></span>
+	<span class="nodocs">    <a href="../../../src/crypto/internal/nistec/p224_sqrt.go.html">p224_sqrt.go</a></span>
+	<span class="nodocs">    <a href="../../../src/crypto/internal/nistec/p256_asm.go.html">p256_asm.go</a></span>
+	<span class="nodocs">    <a href="../../../src/crypto/internal/nistec/p256_ordinv.go.html">p256_ordinv.go</a></span>
+	<span class="nodocs">    <a href="../../../src/crypto/internal/nistec/p384.go.html">p384.go</a></span>
+	<span class="nodocs">    <a href="../../../src/crypto/internal/nistec/p521.go.html">p521.go</a></span>
+	<span class="nodocs">    <a href="../../../src/crypto/internal/nistec/p256_asm_amd64.s.html">p256_asm_amd64.s</a></span></div>
+<div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (total 12, in which 4 are exported)</i></span></span>
+
+<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-P224Point" data-popularity="1600">	<input type='checkbox' class="fold" id="P224Point-fold-content"><label for="P224Point-fold-content"> <a href="../../../use/crypto/internal/nistec..P224Point.html">type</a> <a href="../../../src/crypto/internal/nistec/p224.go.html#line-21">P224Point</a> <i>(struct)</i></label><span id='P224Point-fold-content-docs' class="fold-docs">
+<span class="md-text">		P224Point is a P224 point. The zero value is NOT valid.</span>
+
+		<input type='checkbox' class="fold" id="P224Point-fold-fields"><label for="P224Point-fold-fields">Fields (<i>total 3, none are exported</i>)</label><span id='P224Point-fold-fields-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="P224Point-showhide-fields"><i><label for="P224Point-showhide-fields" class="show-inline">/* 3 unexporteds ... */</label><label for="P224Point-showhide-fields" class="hide-inline">/* 3 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="P224Point-fold-field-x"><label for="P224Point-fold-field-x"><a href="../../../src/crypto/internal/nistec/p224.go.html#line-24">x</a> <i>*<a href="nistec/fiat.html">fiat</a>.<a href="nistec/fiat.html#name-P224Element">P224Element</a></i></label><span id='P224Point-fold-field-x-docs' class="fold-docs">
+<span class="md-text">				The point is represented in projective coordinates (X:Y:Z),
+				where x = X/Z and y = Y/Z.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="P224Point-fold-field-y"><label for="P224Point-fold-field-y"><a href="../../../src/crypto/internal/nistec/p224.go.html#line-24">y</a> <i>*<a href="nistec/fiat.html">fiat</a>.<a href="nistec/fiat.html#name-P224Element">P224Element</a></i></label><span id='P224Point-fold-field-y-docs' class="fold-docs">
+<span class="md-text">				The point is represented in projective coordinates (X:Y:Z),
+				where x = X/Z and y = Y/Z.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="P224Point-fold-field-z"><label for="P224Point-fold-field-z"><a href="../../../src/crypto/internal/nistec/p224.go.html#line-24">z</a> <i>*<a href="nistec/fiat.html">fiat</a>.<a href="nistec/fiat.html#name-P224Element">P224Element</a></i></label><span id='P224Point-fold-field-z-docs' class="fold-docs">
+<span class="md-text">				The point is represented in projective coordinates (X:Y:Z),
+				where x = X/Z and y = Y/Z.</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="P224Point-fold-methods"><label for="P224Point-fold-methods">Methods (<i>total 15, in which 11 are exported</i>)</label><span id='P224Point-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="P224Point-fold-method-Add"><label for="P224Point-fold-method-Add">(*P224Point) <a href="../../../src/crypto/internal/nistec/p224.go.html#line-215">Add</a>(p1, p2 *<b>P224Point</b>) *<b>P224Point</b></label><span id='P224Point-fold-method-Add-docs' class="fold-docs">
+<span class="md-text">				Add sets q = p1 + p2, and returns q. The points may overlap.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="P224Point-fold-method-Bytes"><label for="P224Point-fold-method-Bytes">(*P224Point) <a href="../../../src/crypto/internal/nistec/p224.go.html#line-145">Bytes</a>() []<a href="../../builtin.html#name-byte">byte</a></label><span id='P224Point-fold-method-Bytes-docs' class="fold-docs">
+<span class="md-text">				Bytes returns the uncompressed or infinity encoding of p, as specified in
+				SEC 1, Version 2.0, Section 2.3.3. Note that the encoding of the point at
+				infinity is shorter than all other encodings.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="P224Point-fold-method-BytesCompressed"><label for="P224Point-fold-method-BytesCompressed">(*P224Point) <a href="../../../src/crypto/internal/nistec/p224.go.html#line-190">BytesCompressed</a>() []<a href="../../builtin.html#name-byte">byte</a></label><span id='P224Point-fold-method-BytesCompressed-docs' class="fold-docs">
+<span class="md-text">				BytesCompressed returns the compressed or infinity encoding of p, as
+				specified in SEC 1, Version 2.0, Section 2.3.3. Note that the encoding of the
+				point at infinity is shorter than all other encodings.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="P224Point-fold-method-BytesX"><label for="P224Point-fold-method-BytesX">(*P224Point) <a href="../../../src/crypto/internal/nistec/p224.go.html#line-169">BytesX</a>() ([]<a href="../../builtin.html#name-byte">byte</a>, <a href="../../builtin.html#name-error">error</a>)</label><span id='P224Point-fold-method-BytesX-docs' class="fold-docs">
+<span class="md-text">				BytesX returns the encoding of the x-coordinate of p, as specified in SEC 1,
+				Version 2.0, Section 2.3.5, or an error if p is the point at infinity.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="P224Point-fold-method-Double"><label for="P224Point-fold-method-Double">(*P224Point) <a href="../../../src/crypto/internal/nistec/p224.go.html#line-270">Double</a>(p *<b>P224Point</b>) *<b>P224Point</b></label><span id='P224Point-fold-method-Double-docs' class="fold-docs">
+<span class="md-text">				Double sets q = p + p, and returns q. The points may overlap.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="P224Point-fold-method-ScalarBaseMult"><label for="P224Point-fold-method-ScalarBaseMult">(*P224Point) <a href="../../../src/crypto/internal/nistec/p224.go.html#line-412">ScalarBaseMult</a>(scalar []<a href="../../builtin.html#name-byte">byte</a>) (*<b>P224Point</b>, <a href="../../builtin.html#name-error">error</a>)</label><span id='P224Point-fold-method-ScalarBaseMult-docs' class="fold-docs">
+<span class="md-text">				ScalarBaseMult sets p = scalar * B, where B is the canonical generator, and
+				returns p.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="P224Point-fold-method-ScalarMult"><label for="P224Point-fold-method-ScalarMult">(*P224Point) <a href="../../../src/crypto/internal/nistec/p224.go.html#line-342">ScalarMult</a>(q *<b>P224Point</b>, scalar []<a href="../../builtin.html#name-byte">byte</a>) (*<b>P224Point</b>, <a href="../../builtin.html#name-error">error</a>)</label><span id='P224Point-fold-method-ScalarMult-docs' class="fold-docs">
+<span class="md-text">				ScalarMult sets p = scalar * q, and returns p.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="P224Point-fold-method-Select"><label for="P224Point-fold-method-Select">(*P224Point) <a href="../../../src/crypto/internal/nistec/p224.go.html#line-316">Select</a>(p1, p2 *<b>P224Point</b>, cond <a href="../../builtin.html#name-int">int</a>) *<b>P224Point</b></label><span id='P224Point-fold-method-Select-docs' class="fold-docs">
+<span class="md-text">				Select sets q to p1 if cond == 1, and to p2 if cond == 0.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="P224Point-fold-method-Set"><label for="P224Point-fold-method-Set">(*P224Point) <a href="../../../src/crypto/internal/nistec/p224.go.html#line-45">Set</a>(q *<b>P224Point</b>) *<b>P224Point</b></label><span id='P224Point-fold-method-Set-docs' class="fold-docs">
+<span class="md-text">				Set sets p = q and returns p.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="P224Point-fold-method-SetBytes"><label for="P224Point-fold-method-SetBytes">(*P224Point) <a href="../../../src/crypto/internal/nistec/p224.go.html#line-56">SetBytes</a>(b []<a href="../../builtin.html#name-byte">byte</a>) (*<b>P224Point</b>, <a href="../../builtin.html#name-error">error</a>)</label><span id='P224Point-fold-method-SetBytes-docs' class="fold-docs">
+<span class="md-text">				SetBytes sets p to the compressed, uncompressed, or infinity value encoded in
+				b, as specified in SEC 1, Version 2.0, Section 2.3.4. If the point is not on
+				the curve, it returns nil and an error, and the receiver is unchanged.
+				Otherwise, it returns p.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="P224Point-fold-method-SetGenerator"><label for="P224Point-fold-method-SetGenerator">(*P224Point) <a href="../../../src/crypto/internal/nistec/p224.go.html#line-37">SetGenerator</a>() *<b>P224Point</b></label><span id='P224Point-fold-method-SetGenerator-docs' class="fold-docs">
+<span class="md-text">				SetGenerator sets p to the canonical generator and returns p.</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="P224Point-showhide-methods"><i><label for="P224Point-showhide-methods" class="show-inline">/* 4 unexporteds ... */</label><label for="P224Point-showhide-methods" class="hide-inline">/* 4 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs">(*P224Point) <a href="../../../src/crypto/internal/nistec/p224.go.html#line-152">bytes</a>(out *[57]<a href="../../builtin.html#name-byte">byte</a>) []<a href="../../builtin.html#name-byte">byte</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*P224Point) <a href="../../../src/crypto/internal/nistec/p224.go.html#line-197">bytesCompressed</a>(out *[29]<a href="../../builtin.html#name-byte">byte</a>) []<a href="../../builtin.html#name-byte">byte</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*P224Point) <a href="../../../src/crypto/internal/nistec/p224.go.html#line-176">bytesX</a>(out *[28]<a href="../../builtin.html#name-byte">byte</a>) ([]<a href="../../builtin.html#name-byte">byte</a>, <a href="../../builtin.html#name-error">error</a>)</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="P224Point-fold-method-generatorTable"><label for="P224Point-fold-method-generatorTable">(*P224Point) <a href="../../../src/crypto/internal/nistec/p224.go.html#line-392">generatorTable</a>() *[56]<a href="#name-p224Table">p224Table</a></label><span id='P224Point-fold-method-generatorTable-docs' class="fold-docs">
+<span class="md-text">				generatorTable returns a sequence of p224Tables. The first table contains
+				multiples of G. Each successive table is the previous table doubled four
+				times.</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="P224Point-fold-results"><label for="P224Point-fold-results">As Outputs Of (<i>at least 9, all are exported</i>)</label><span id='P224Point-fold-results-items' class="fold-items"><span>
+			func <a href="#name-NewP224Point">NewP224Point</a>() *<b>P224Point</b></span><span>
+			func (*P224Point).<a href="../../../src/crypto/internal/nistec/p224.go.html#line-215">Add</a>(p1, p2 *<b>P224Point</b>) *<b>P224Point</b></span><span>
+			func (*P224Point).<a href="../../../src/crypto/internal/nistec/p224.go.html#line-270">Double</a>(p *<b>P224Point</b>) *<b>P224Point</b></span><span>
+			func (*P224Point).<a href="../../../src/crypto/internal/nistec/p224.go.html#line-412">ScalarBaseMult</a>(scalar []<a href="../../builtin.html#name-byte">byte</a>) (*<b>P224Point</b>, <a href="../../builtin.html#name-error">error</a>)</span><span>
+			func (*P224Point).<a href="../../../src/crypto/internal/nistec/p224.go.html#line-342">ScalarMult</a>(q *<b>P224Point</b>, scalar []<a href="../../builtin.html#name-byte">byte</a>) (*<b>P224Point</b>, <a href="../../builtin.html#name-error">error</a>)</span><span>
+			func (*P224Point).<a href="../../../src/crypto/internal/nistec/p224.go.html#line-316">Select</a>(p1, p2 *<b>P224Point</b>, cond <a href="../../builtin.html#name-int">int</a>) *<b>P224Point</b></span><span>
+			func (*P224Point).<a href="../../../src/crypto/internal/nistec/p224.go.html#line-45">Set</a>(q *<b>P224Point</b>) *<b>P224Point</b></span><span>
+			func (*P224Point).<a href="../../../src/crypto/internal/nistec/p224.go.html#line-56">SetBytes</a>(b []<a href="../../builtin.html#name-byte">byte</a>) (*<b>P224Point</b>, <a href="../../builtin.html#name-error">error</a>)</span><span>
+			func (*P224Point).<a href="../../../src/crypto/internal/nistec/p224.go.html#line-37">SetGenerator</a>() *<b>P224Point</b></span></span>
+		<input type='checkbox' class="fold" id="P224Point-fold-params"><label for="P224Point-fold-params">As Inputs Of (<i>at least 5, all are exported</i>)</label><span id='P224Point-fold-params-items' class="fold-items"><span>
+			func (*P224Point).<a href="../../../src/crypto/internal/nistec/p224.go.html#line-215">Add</a>(p1, p2 *<b>P224Point</b>) *<b>P224Point</b></span><span>
+			func (*P224Point).<a href="../../../src/crypto/internal/nistec/p224.go.html#line-270">Double</a>(p *<b>P224Point</b>) *<b>P224Point</b></span><span>
+			func (*P224Point).<a href="../../../src/crypto/internal/nistec/p224.go.html#line-342">ScalarMult</a>(q *<b>P224Point</b>, scalar []<a href="../../builtin.html#name-byte">byte</a>) (*<b>P224Point</b>, <a href="../../builtin.html#name-error">error</a>)</span><span>
+			func (*P224Point).<a href="../../../src/crypto/internal/nistec/p224.go.html#line-316">Select</a>(p1, p2 *<b>P224Point</b>, cond <a href="../../builtin.html#name-int">int</a>) *<b>P224Point</b></span><span>
+			func (*P224Point).<a href="../../../src/crypto/internal/nistec/p224.go.html#line-45">Set</a>(q *<b>P224Point</b>) *<b>P224Point</b></span></span>
+
+</span></div><div class="anchor type-res" id="name-P256Point" data-popularity="1925">	<input type='checkbox' class="fold" id="P256Point-fold-content"><label for="P256Point-fold-content"> <a href="../../../use/crypto/internal/nistec..P256Point.html">type</a> <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-42">P256Point</a> <i>(struct)</i></label><span id='P256Point-fold-content-docs' class="fold-docs">
+<span class="md-text">		P256Point is a P-256 point. The zero value should not be assumed to be valid
+		(although it is in this implementation).</span>
+
+		<input type='checkbox' class="fold" id="P256Point-fold-fields"><label for="P256Point-fold-fields">Fields (<i>total 3, none are exported</i>)</label><span id='P256Point-fold-fields-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="P256Point-showhide-fields"><i><label for="P256Point-showhide-fields" class="show-inline">/* 3 unexporteds ... */</label><label for="P256Point-showhide-fields" class="hide-inline">/* 3 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="P256Point-fold-field-x"><label for="P256Point-fold-field-x"><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-45">x</a> <i><a href="#name-p256Element">p256Element</a></i></label><span id='P256Point-fold-field-x-docs' class="fold-docs">
+<span class="md-text">				(X:Y:Z) are Jacobian coordinates where x = X/Z² and y = Y/Z³. The point
+				at infinity can be represented by any set of coordinates with Z = 0.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="P256Point-fold-field-y"><label for="P256Point-fold-field-y"><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-45">y</a> <i><a href="#name-p256Element">p256Element</a></i></label><span id='P256Point-fold-field-y-docs' class="fold-docs">
+<span class="md-text">				(X:Y:Z) are Jacobian coordinates where x = X/Z² and y = Y/Z³. The point
+				at infinity can be represented by any set of coordinates with Z = 0.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="P256Point-fold-field-z"><label for="P256Point-fold-field-z"><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-45">z</a> <i><a href="#name-p256Element">p256Element</a></i></label><span id='P256Point-fold-field-z-docs' class="fold-docs">
+<span class="md-text">				(X:Y:Z) are Jacobian coordinates where x = X/Z² and y = Y/Z³. The point
+				at infinity can be represented by any set of coordinates with Z = 0.</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="P256Point-fold-methods"><label for="P256Point-fold-methods">Methods (<i>total 18, in which 11 are exported</i>)</label><span id='P256Point-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="P256Point-fold-method-Add"><label for="P256Point-fold-method-Add">(*P256Point) <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-383">Add</a>(r1, r2 *<b>P256Point</b>) *<b>P256Point</b></label><span id='P256Point-fold-method-Add-docs' class="fold-docs">
+<span class="md-text">				Add sets q = p1 + p2, and returns q. The points may overlap.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="P256Point-fold-method-Bytes"><label for="P256Point-fold-method-Bytes">(*P256Point) <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-461">Bytes</a>() []<a href="../../builtin.html#name-byte">byte</a></label><span id='P256Point-fold-method-Bytes-docs' class="fold-docs">
+<span class="md-text">				Bytes returns the uncompressed or infinity encoding of p, as specified in
+				SEC 1, Version 2.0, Section 2.3.3. Note that the encoding of the point at
+				infinity is shorter than all other encodings.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="P256Point-fold-method-BytesCompressed"><label for="P256Point-fold-method-BytesCompressed">(*P256Point) <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-525">BytesCompressed</a>() []<a href="../../builtin.html#name-byte">byte</a></label><span id='P256Point-fold-method-BytesCompressed-docs' class="fold-docs">
+<span class="md-text">				BytesCompressed returns the compressed or infinity encoding of p, as
+				specified in SEC 1, Version 2.0, Section 2.3.3. Note that the encoding of the
+				point at infinity is shorter than all other encodings.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="P256Point-fold-method-BytesX"><label for="P256Point-fold-method-BytesX">(*P256Point) <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-500">BytesX</a>() ([]<a href="../../builtin.html#name-byte">byte</a>, <a href="../../builtin.html#name-error">error</a>)</label><span id='P256Point-fold-method-BytesX-docs' class="fold-docs">
+<span class="md-text">				BytesX returns the encoding of the x-coordinate of p, as specified in SEC 1,
+				Version 2.0, Section 2.3.5, or an error if p is the point at infinity.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="P256Point-fold-method-Double"><label for="P256Point-fold-method-Double">(*P256Point) <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-396">Double</a>(p *<b>P256Point</b>) *<b>P256Point</b></label><span id='P256Point-fold-method-Double-docs' class="fold-docs">
+<span class="md-text">				Double sets q = p + p, and returns q. The points may overlap.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="P256Point-fold-method-ScalarBaseMult"><label for="P256Point-fold-method-ScalarBaseMult">(*P256Point) <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-405">ScalarBaseMult</a>(scalar []<a href="../../builtin.html#name-byte">byte</a>) (*<b>P256Point</b>, <a href="../../builtin.html#name-error">error</a>)</label><span id='P256Point-fold-method-ScalarBaseMult-docs' class="fold-docs">
+<span class="md-text">				ScalarBaseMult sets r = scalar * generator, where scalar is a 32-byte big
+				endian value, and returns r. If scalar is not 32 bytes long, ScalarBaseMult
+				returns an error and the receiver is unchanged.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="P256Point-fold-method-ScalarMult"><label for="P256Point-fold-method-ScalarMult">(*P256Point) <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-420">ScalarMult</a>(q *<b>P256Point</b>, scalar []<a href="../../builtin.html#name-byte">byte</a>) (*<b>P256Point</b>, <a href="../../builtin.html#name-error">error</a>)</label><span id='P256Point-fold-method-ScalarMult-docs' class="fold-docs">
+<span class="md-text">				ScalarMult sets r = scalar * q, where scalar is a 32-byte big endian value,
+				and returns r. If scalar is not 32 bytes long, ScalarBaseMult returns an
+				error and the receiver is unchanged.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="P256Point-fold-method-Select"><label for="P256Point-fold-method-Select">(*P256Point) <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-547">Select</a>(p1, p2 *<b>P256Point</b>, cond <a href="../../builtin.html#name-int">int</a>) *<b>P256Point</b></label><span id='P256Point-fold-method-Select-docs' class="fold-docs">
+<span class="md-text">				Select sets q to p1 if cond == 1, and to p2 if cond == 0.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="P256Point-fold-method-Set"><label for="P256Point-fold-method-Set">(*P256Point) <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-66">Set</a>(q *<b>P256Point</b>) *<b>P256Point</b></label><span id='P256Point-fold-method-Set-docs' class="fold-docs">
+<span class="md-text">				Set sets p = q and returns p.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="P256Point-fold-method-SetBytes"><label for="P256Point-fold-method-SetBytes">(*P256Point) <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-79">SetBytes</a>(b []<a href="../../builtin.html#name-byte">byte</a>) (*<b>P256Point</b>, <a href="../../builtin.html#name-error">error</a>)</label><span id='P256Point-fold-method-SetBytes-docs' class="fold-docs">
+<span class="md-text">				SetBytes sets p to the compressed, uncompressed, or infinity value encoded in
+				b, as specified in SEC 1, Version 2.0, Section 2.3.4. If the point is not on
+				the curve, it returns nil and an error, and the receiver is unchanged.
+				Otherwise, it returns p.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="P256Point-fold-method-SetGenerator"><label for="P256Point-fold-method-SetGenerator">(*P256Point) <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-56">SetGenerator</a>() *<b>P256Point</b></label><span id='P256Point-fold-method-SetGenerator-docs' class="fold-docs">
+<span class="md-text">				SetGenerator sets p to the canonical generator and returns p.</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="P256Point-showhide-methods"><i><label for="P256Point-showhide-methods" class="show-inline">/* 7 unexporteds ... */</label><label for="P256Point-showhide-methods" class="hide-inline">/* 7 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="P256Point-fold-method-affineFromMont"><label for="P256Point-fold-method-affineFromMont">(*P256Point) <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-486">affineFromMont</a>(x, y *<a href="#name-p256Element">p256Element</a>)</label><span id='P256Point-fold-method-affineFromMont-docs' class="fold-docs">
+<span class="md-text">				affineFromMont sets (x, y) to the affine coordinates of p, converted out of the
+				Montgomery domain.</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*P256Point) <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-468">bytes</a>(out *[65]<a href="../../builtin.html#name-byte">byte</a>) []<a href="../../builtin.html#name-byte">byte</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*P256Point) <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-532">bytesCompressed</a>(out *[33]<a href="../../builtin.html#name-byte">byte</a>) []<a href="../../builtin.html#name-byte">byte</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*P256Point) <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-507">bytesX</a>(out *[32]<a href="../../builtin.html#name-byte">byte</a>) ([]<a href="../../builtin.html#name-byte">byte</a>, <a href="../../builtin.html#name-error">error</a>)</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="P256Point-fold-method-isInfinity"><label for="P256Point-fold-method-isInfinity">(*P256Point) <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-454">isInfinity</a>() <a href="../../builtin.html#name-int">int</a></label><span id='P256Point-fold-method-isInfinity-docs' class="fold-docs">
+<span class="md-text">				isInfinity returns 1 if p is the point at infinity and 0 otherwise.</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*P256Point) <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-622">p256BaseMult</a>(scalar *<a href="#name-p256OrdElement">p256OrdElement</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*P256Point) <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-651">p256ScalarMult</a>(scalar *<a href="#name-p256OrdElement">p256OrdElement</a>)</span></i></span></span>
+		<input type='checkbox' class="fold" id="P256Point-fold-results"><label for="P256Point-fold-results">As Outputs Of (<i>at least 9, all are exported</i>)</label><span id='P256Point-fold-results-items' class="fold-items"><span>
+			func <a href="#name-NewP256Point">NewP256Point</a>() *<b>P256Point</b></span><span>
+			func (*P256Point).<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-383">Add</a>(r1, r2 *<b>P256Point</b>) *<b>P256Point</b></span><span>
+			func (*P256Point).<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-396">Double</a>(p *<b>P256Point</b>) *<b>P256Point</b></span><span>
+			func (*P256Point).<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-405">ScalarBaseMult</a>(scalar []<a href="../../builtin.html#name-byte">byte</a>) (*<b>P256Point</b>, <a href="../../builtin.html#name-error">error</a>)</span><span>
+			func (*P256Point).<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-420">ScalarMult</a>(q *<b>P256Point</b>, scalar []<a href="../../builtin.html#name-byte">byte</a>) (*<b>P256Point</b>, <a href="../../builtin.html#name-error">error</a>)</span><span>
+			func (*P256Point).<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-547">Select</a>(p1, p2 *<b>P256Point</b>, cond <a href="../../builtin.html#name-int">int</a>) *<b>P256Point</b></span><span>
+			func (*P256Point).<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-66">Set</a>(q *<b>P256Point</b>) *<b>P256Point</b></span><span>
+			func (*P256Point).<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-79">SetBytes</a>(b []<a href="../../builtin.html#name-byte">byte</a>) (*<b>P256Point</b>, <a href="../../builtin.html#name-error">error</a>)</span><span>
+			func (*P256Point).<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-56">SetGenerator</a>() *<b>P256Point</b></span></span>
+		<input type='checkbox' class="fold" id="P256Point-fold-params"><label for="P256Point-fold-params">As Inputs Of (<i>at least 10, in which 5 are exported</i>)</label><span id='P256Point-fold-params-items' class="fold-items"><span>
+			func (*P256Point).<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-383">Add</a>(r1, r2 *<b>P256Point</b>) *<b>P256Point</b></span><span>
+			func (*P256Point).<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-396">Double</a>(p *<b>P256Point</b>) *<b>P256Point</b></span><span>
+			func (*P256Point).<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-420">ScalarMult</a>(q *<b>P256Point</b>, scalar []<a href="../../builtin.html#name-byte">byte</a>) (*<b>P256Point</b>, <a href="../../builtin.html#name-error">error</a>)</span><span>
+			func (*P256Point).<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-547">Select</a>(p1, p2 *<b>P256Point</b>, cond <a href="../../builtin.html#name-int">int</a>) *<b>P256Point</b></span><span>
+			func (*P256Point).<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-66">Set</a>(q *<b>P256Point</b>) *<b>P256Point</b></span>
+			<input type='checkbox' class="showhide" id="P256Point-showhide-outputofs"><i><label for="P256Point-showhide-outputofs" class="show-inline">/* 5+ unexporteds ... */</label><label for="P256Point-showhide-outputofs" class="hide-inline">/* 5+ unexporteds: */</label></i><span class="hidden"><i>
+			func <a href="#name-p256MovCond">p256MovCond</a>(res, a, b *<b>P256Point</b>, cond <a href="../../builtin.html#name-int">int</a>)</i></span><span class="hidden"><i>
+			func <a href="#name-p256PointAddAffineAsm">p256PointAddAffineAsm</a>(res, in1 *<b>P256Point</b>, in2 *<a href="#name-p256AffinePoint">p256AffinePoint</a>, sign, sel, zero <a href="../../builtin.html#name-int">int</a>)</i></span><span class="hidden"><i>
+			func <a href="#name-p256PointAddAsm">p256PointAddAsm</a>(res, in1, in2 *<b>P256Point</b>) <a href="../../builtin.html#name-int">int</a></i></span><span class="hidden"><i>
+			func <a href="#name-p256PointDoubleAsm">p256PointDoubleAsm</a>(res, in *<b>P256Point</b>)</i></span><span class="hidden"><i>
+			func <a href="#name-p256Select">p256Select</a>(res *<b>P256Point</b>, table *<a href="#name-p256Table">p256Table</a>, idx <a href="../../builtin.html#name-int">int</a>)</i></span></span>
+
+</span></div><div class="anchor type-res" id="name-P384Point" data-popularity="1600">	<input type='checkbox' class="fold" id="P384Point-fold-content"><label for="P384Point-fold-content"> <a href="../../../use/crypto/internal/nistec..P384Point.html">type</a> <a href="../../../src/crypto/internal/nistec/p384.go.html#line-21">P384Point</a> <i>(struct)</i></label><span id='P384Point-fold-content-docs' class="fold-docs">
+<span class="md-text">		P384Point is a P384 point. The zero value is NOT valid.</span>
+
+		<input type='checkbox' class="fold" id="P384Point-fold-fields"><label for="P384Point-fold-fields">Fields (<i>total 3, none are exported</i>)</label><span id='P384Point-fold-fields-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="P384Point-showhide-fields"><i><label for="P384Point-showhide-fields" class="show-inline">/* 3 unexporteds ... */</label><label for="P384Point-showhide-fields" class="hide-inline">/* 3 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="P384Point-fold-field-x"><label for="P384Point-fold-field-x"><a href="../../../src/crypto/internal/nistec/p384.go.html#line-24">x</a> <i>*<a href="nistec/fiat.html">fiat</a>.<a href="nistec/fiat.html#name-P384Element">P384Element</a></i></label><span id='P384Point-fold-field-x-docs' class="fold-docs">
+<span class="md-text">				The point is represented in projective coordinates (X:Y:Z),
+				where x = X/Z and y = Y/Z.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="P384Point-fold-field-y"><label for="P384Point-fold-field-y"><a href="../../../src/crypto/internal/nistec/p384.go.html#line-24">y</a> <i>*<a href="nistec/fiat.html">fiat</a>.<a href="nistec/fiat.html#name-P384Element">P384Element</a></i></label><span id='P384Point-fold-field-y-docs' class="fold-docs">
+<span class="md-text">				The point is represented in projective coordinates (X:Y:Z),
+				where x = X/Z and y = Y/Z.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="P384Point-fold-field-z"><label for="P384Point-fold-field-z"><a href="../../../src/crypto/internal/nistec/p384.go.html#line-24">z</a> <i>*<a href="nistec/fiat.html">fiat</a>.<a href="nistec/fiat.html#name-P384Element">P384Element</a></i></label><span id='P384Point-fold-field-z-docs' class="fold-docs">
+<span class="md-text">				The point is represented in projective coordinates (X:Y:Z),
+				where x = X/Z and y = Y/Z.</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="P384Point-fold-methods"><label for="P384Point-fold-methods">Methods (<i>total 15, in which 11 are exported</i>)</label><span id='P384Point-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="P384Point-fold-method-Add"><label for="P384Point-fold-method-Add">(*P384Point) <a href="../../../src/crypto/internal/nistec/p384.go.html#line-215">Add</a>(p1, p2 *<b>P384Point</b>) *<b>P384Point</b></label><span id='P384Point-fold-method-Add-docs' class="fold-docs">
+<span class="md-text">				Add sets q = p1 + p2, and returns q. The points may overlap.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="P384Point-fold-method-Bytes"><label for="P384Point-fold-method-Bytes">(*P384Point) <a href="../../../src/crypto/internal/nistec/p384.go.html#line-145">Bytes</a>() []<a href="../../builtin.html#name-byte">byte</a></label><span id='P384Point-fold-method-Bytes-docs' class="fold-docs">
+<span class="md-text">				Bytes returns the uncompressed or infinity encoding of p, as specified in
+				SEC 1, Version 2.0, Section 2.3.3. Note that the encoding of the point at
+				infinity is shorter than all other encodings.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="P384Point-fold-method-BytesCompressed"><label for="P384Point-fold-method-BytesCompressed">(*P384Point) <a href="../../../src/crypto/internal/nistec/p384.go.html#line-190">BytesCompressed</a>() []<a href="../../builtin.html#name-byte">byte</a></label><span id='P384Point-fold-method-BytesCompressed-docs' class="fold-docs">
+<span class="md-text">				BytesCompressed returns the compressed or infinity encoding of p, as
+				specified in SEC 1, Version 2.0, Section 2.3.3. Note that the encoding of the
+				point at infinity is shorter than all other encodings.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="P384Point-fold-method-BytesX"><label for="P384Point-fold-method-BytesX">(*P384Point) <a href="../../../src/crypto/internal/nistec/p384.go.html#line-169">BytesX</a>() ([]<a href="../../builtin.html#name-byte">byte</a>, <a href="../../builtin.html#name-error">error</a>)</label><span id='P384Point-fold-method-BytesX-docs' class="fold-docs">
+<span class="md-text">				BytesX returns the encoding of the x-coordinate of p, as specified in SEC 1,
+				Version 2.0, Section 2.3.5, or an error if p is the point at infinity.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="P384Point-fold-method-Double"><label for="P384Point-fold-method-Double">(*P384Point) <a href="../../../src/crypto/internal/nistec/p384.go.html#line-270">Double</a>(p *<b>P384Point</b>) *<b>P384Point</b></label><span id='P384Point-fold-method-Double-docs' class="fold-docs">
+<span class="md-text">				Double sets q = p + p, and returns q. The points may overlap.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="P384Point-fold-method-ScalarBaseMult"><label for="P384Point-fold-method-ScalarBaseMult">(*P384Point) <a href="../../../src/crypto/internal/nistec/p384.go.html#line-412">ScalarBaseMult</a>(scalar []<a href="../../builtin.html#name-byte">byte</a>) (*<b>P384Point</b>, <a href="../../builtin.html#name-error">error</a>)</label><span id='P384Point-fold-method-ScalarBaseMult-docs' class="fold-docs">
+<span class="md-text">				ScalarBaseMult sets p = scalar * B, where B is the canonical generator, and
+				returns p.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="P384Point-fold-method-ScalarMult"><label for="P384Point-fold-method-ScalarMult">(*P384Point) <a href="../../../src/crypto/internal/nistec/p384.go.html#line-342">ScalarMult</a>(q *<b>P384Point</b>, scalar []<a href="../../builtin.html#name-byte">byte</a>) (*<b>P384Point</b>, <a href="../../builtin.html#name-error">error</a>)</label><span id='P384Point-fold-method-ScalarMult-docs' class="fold-docs">
+<span class="md-text">				ScalarMult sets p = scalar * q, and returns p.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="P384Point-fold-method-Select"><label for="P384Point-fold-method-Select">(*P384Point) <a href="../../../src/crypto/internal/nistec/p384.go.html#line-316">Select</a>(p1, p2 *<b>P384Point</b>, cond <a href="../../builtin.html#name-int">int</a>) *<b>P384Point</b></label><span id='P384Point-fold-method-Select-docs' class="fold-docs">
+<span class="md-text">				Select sets q to p1 if cond == 1, and to p2 if cond == 0.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="P384Point-fold-method-Set"><label for="P384Point-fold-method-Set">(*P384Point) <a href="../../../src/crypto/internal/nistec/p384.go.html#line-45">Set</a>(q *<b>P384Point</b>) *<b>P384Point</b></label><span id='P384Point-fold-method-Set-docs' class="fold-docs">
+<span class="md-text">				Set sets p = q and returns p.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="P384Point-fold-method-SetBytes"><label for="P384Point-fold-method-SetBytes">(*P384Point) <a href="../../../src/crypto/internal/nistec/p384.go.html#line-56">SetBytes</a>(b []<a href="../../builtin.html#name-byte">byte</a>) (*<b>P384Point</b>, <a href="../../builtin.html#name-error">error</a>)</label><span id='P384Point-fold-method-SetBytes-docs' class="fold-docs">
+<span class="md-text">				SetBytes sets p to the compressed, uncompressed, or infinity value encoded in
+				b, as specified in SEC 1, Version 2.0, Section 2.3.4. If the point is not on
+				the curve, it returns nil and an error, and the receiver is unchanged.
+				Otherwise, it returns p.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="P384Point-fold-method-SetGenerator"><label for="P384Point-fold-method-SetGenerator">(*P384Point) <a href="../../../src/crypto/internal/nistec/p384.go.html#line-37">SetGenerator</a>() *<b>P384Point</b></label><span id='P384Point-fold-method-SetGenerator-docs' class="fold-docs">
+<span class="md-text">				SetGenerator sets p to the canonical generator and returns p.</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="P384Point-showhide-methods"><i><label for="P384Point-showhide-methods" class="show-inline">/* 4 unexporteds ... */</label><label for="P384Point-showhide-methods" class="hide-inline">/* 4 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs">(*P384Point) <a href="../../../src/crypto/internal/nistec/p384.go.html#line-152">bytes</a>(out *[97]<a href="../../builtin.html#name-byte">byte</a>) []<a href="../../builtin.html#name-byte">byte</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*P384Point) <a href="../../../src/crypto/internal/nistec/p384.go.html#line-197">bytesCompressed</a>(out *[49]<a href="../../builtin.html#name-byte">byte</a>) []<a href="../../builtin.html#name-byte">byte</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*P384Point) <a href="../../../src/crypto/internal/nistec/p384.go.html#line-176">bytesX</a>(out *[48]<a href="../../builtin.html#name-byte">byte</a>) ([]<a href="../../builtin.html#name-byte">byte</a>, <a href="../../builtin.html#name-error">error</a>)</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="P384Point-fold-method-generatorTable"><label for="P384Point-fold-method-generatorTable">(*P384Point) <a href="../../../src/crypto/internal/nistec/p384.go.html#line-392">generatorTable</a>() *[96]<a href="#name-p384Table">p384Table</a></label><span id='P384Point-fold-method-generatorTable-docs' class="fold-docs">
+<span class="md-text">				generatorTable returns a sequence of p384Tables. The first table contains
+				multiples of G. Each successive table is the previous table doubled four
+				times.</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="P384Point-fold-results"><label for="P384Point-fold-results">As Outputs Of (<i>at least 9, all are exported</i>)</label><span id='P384Point-fold-results-items' class="fold-items"><span>
+			func <a href="#name-NewP384Point">NewP384Point</a>() *<b>P384Point</b></span><span>
+			func (*P384Point).<a href="../../../src/crypto/internal/nistec/p384.go.html#line-215">Add</a>(p1, p2 *<b>P384Point</b>) *<b>P384Point</b></span><span>
+			func (*P384Point).<a href="../../../src/crypto/internal/nistec/p384.go.html#line-270">Double</a>(p *<b>P384Point</b>) *<b>P384Point</b></span><span>
+			func (*P384Point).<a href="../../../src/crypto/internal/nistec/p384.go.html#line-412">ScalarBaseMult</a>(scalar []<a href="../../builtin.html#name-byte">byte</a>) (*<b>P384Point</b>, <a href="../../builtin.html#name-error">error</a>)</span><span>
+			func (*P384Point).<a href="../../../src/crypto/internal/nistec/p384.go.html#line-342">ScalarMult</a>(q *<b>P384Point</b>, scalar []<a href="../../builtin.html#name-byte">byte</a>) (*<b>P384Point</b>, <a href="../../builtin.html#name-error">error</a>)</span><span>
+			func (*P384Point).<a href="../../../src/crypto/internal/nistec/p384.go.html#line-316">Select</a>(p1, p2 *<b>P384Point</b>, cond <a href="../../builtin.html#name-int">int</a>) *<b>P384Point</b></span><span>
+			func (*P384Point).<a href="../../../src/crypto/internal/nistec/p384.go.html#line-45">Set</a>(q *<b>P384Point</b>) *<b>P384Point</b></span><span>
+			func (*P384Point).<a href="../../../src/crypto/internal/nistec/p384.go.html#line-56">SetBytes</a>(b []<a href="../../builtin.html#name-byte">byte</a>) (*<b>P384Point</b>, <a href="../../builtin.html#name-error">error</a>)</span><span>
+			func (*P384Point).<a href="../../../src/crypto/internal/nistec/p384.go.html#line-37">SetGenerator</a>() *<b>P384Point</b></span></span>
+		<input type='checkbox' class="fold" id="P384Point-fold-params"><label for="P384Point-fold-params">As Inputs Of (<i>at least 5, all are exported</i>)</label><span id='P384Point-fold-params-items' class="fold-items"><span>
+			func (*P384Point).<a href="../../../src/crypto/internal/nistec/p384.go.html#line-215">Add</a>(p1, p2 *<b>P384Point</b>) *<b>P384Point</b></span><span>
+			func (*P384Point).<a href="../../../src/crypto/internal/nistec/p384.go.html#line-270">Double</a>(p *<b>P384Point</b>) *<b>P384Point</b></span><span>
+			func (*P384Point).<a href="../../../src/crypto/internal/nistec/p384.go.html#line-342">ScalarMult</a>(q *<b>P384Point</b>, scalar []<a href="../../builtin.html#name-byte">byte</a>) (*<b>P384Point</b>, <a href="../../builtin.html#name-error">error</a>)</span><span>
+			func (*P384Point).<a href="../../../src/crypto/internal/nistec/p384.go.html#line-316">Select</a>(p1, p2 *<b>P384Point</b>, cond <a href="../../builtin.html#name-int">int</a>) *<b>P384Point</b></span><span>
+			func (*P384Point).<a href="../../../src/crypto/internal/nistec/p384.go.html#line-45">Set</a>(q *<b>P384Point</b>) *<b>P384Point</b></span></span>
+
+</span></div><div class="anchor type-res" id="name-P521Point" data-popularity="1600">	<input type='checkbox' class="fold" id="P521Point-fold-content"><label for="P521Point-fold-content"> <a href="../../../use/crypto/internal/nistec..P521Point.html">type</a> <a href="../../../src/crypto/internal/nistec/p521.go.html#line-21">P521Point</a> <i>(struct)</i></label><span id='P521Point-fold-content-docs' class="fold-docs">
+<span class="md-text">		P521Point is a P521 point. The zero value is NOT valid.</span>
+
+		<input type='checkbox' class="fold" id="P521Point-fold-fields"><label for="P521Point-fold-fields">Fields (<i>total 3, none are exported</i>)</label><span id='P521Point-fold-fields-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="P521Point-showhide-fields"><i><label for="P521Point-showhide-fields" class="show-inline">/* 3 unexporteds ... */</label><label for="P521Point-showhide-fields" class="hide-inline">/* 3 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="P521Point-fold-field-x"><label for="P521Point-fold-field-x"><a href="../../../src/crypto/internal/nistec/p521.go.html#line-24">x</a> <i>*<a href="nistec/fiat.html">fiat</a>.<a href="nistec/fiat.html#name-P521Element">P521Element</a></i></label><span id='P521Point-fold-field-x-docs' class="fold-docs">
+<span class="md-text">				The point is represented in projective coordinates (X:Y:Z),
+				where x = X/Z and y = Y/Z.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="P521Point-fold-field-y"><label for="P521Point-fold-field-y"><a href="../../../src/crypto/internal/nistec/p521.go.html#line-24">y</a> <i>*<a href="nistec/fiat.html">fiat</a>.<a href="nistec/fiat.html#name-P521Element">P521Element</a></i></label><span id='P521Point-fold-field-y-docs' class="fold-docs">
+<span class="md-text">				The point is represented in projective coordinates (X:Y:Z),
+				where x = X/Z and y = Y/Z.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="P521Point-fold-field-z"><label for="P521Point-fold-field-z"><a href="../../../src/crypto/internal/nistec/p521.go.html#line-24">z</a> <i>*<a href="nistec/fiat.html">fiat</a>.<a href="nistec/fiat.html#name-P521Element">P521Element</a></i></label><span id='P521Point-fold-field-z-docs' class="fold-docs">
+<span class="md-text">				The point is represented in projective coordinates (X:Y:Z),
+				where x = X/Z and y = Y/Z.</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="P521Point-fold-methods"><label for="P521Point-fold-methods">Methods (<i>total 15, in which 11 are exported</i>)</label><span id='P521Point-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="P521Point-fold-method-Add"><label for="P521Point-fold-method-Add">(*P521Point) <a href="../../../src/crypto/internal/nistec/p521.go.html#line-215">Add</a>(p1, p2 *<b>P521Point</b>) *<b>P521Point</b></label><span id='P521Point-fold-method-Add-docs' class="fold-docs">
+<span class="md-text">				Add sets q = p1 + p2, and returns q. The points may overlap.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="P521Point-fold-method-Bytes"><label for="P521Point-fold-method-Bytes">(*P521Point) <a href="../../../src/crypto/internal/nistec/p521.go.html#line-145">Bytes</a>() []<a href="../../builtin.html#name-byte">byte</a></label><span id='P521Point-fold-method-Bytes-docs' class="fold-docs">
+<span class="md-text">				Bytes returns the uncompressed or infinity encoding of p, as specified in
+				SEC 1, Version 2.0, Section 2.3.3. Note that the encoding of the point at
+				infinity is shorter than all other encodings.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="P521Point-fold-method-BytesCompressed"><label for="P521Point-fold-method-BytesCompressed">(*P521Point) <a href="../../../src/crypto/internal/nistec/p521.go.html#line-190">BytesCompressed</a>() []<a href="../../builtin.html#name-byte">byte</a></label><span id='P521Point-fold-method-BytesCompressed-docs' class="fold-docs">
+<span class="md-text">				BytesCompressed returns the compressed or infinity encoding of p, as
+				specified in SEC 1, Version 2.0, Section 2.3.3. Note that the encoding of the
+				point at infinity is shorter than all other encodings.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="P521Point-fold-method-BytesX"><label for="P521Point-fold-method-BytesX">(*P521Point) <a href="../../../src/crypto/internal/nistec/p521.go.html#line-169">BytesX</a>() ([]<a href="../../builtin.html#name-byte">byte</a>, <a href="../../builtin.html#name-error">error</a>)</label><span id='P521Point-fold-method-BytesX-docs' class="fold-docs">
+<span class="md-text">				BytesX returns the encoding of the x-coordinate of p, as specified in SEC 1,
+				Version 2.0, Section 2.3.5, or an error if p is the point at infinity.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="P521Point-fold-method-Double"><label for="P521Point-fold-method-Double">(*P521Point) <a href="../../../src/crypto/internal/nistec/p521.go.html#line-270">Double</a>(p *<b>P521Point</b>) *<b>P521Point</b></label><span id='P521Point-fold-method-Double-docs' class="fold-docs">
+<span class="md-text">				Double sets q = p + p, and returns q. The points may overlap.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="P521Point-fold-method-ScalarBaseMult"><label for="P521Point-fold-method-ScalarBaseMult">(*P521Point) <a href="../../../src/crypto/internal/nistec/p521.go.html#line-412">ScalarBaseMult</a>(scalar []<a href="../../builtin.html#name-byte">byte</a>) (*<b>P521Point</b>, <a href="../../builtin.html#name-error">error</a>)</label><span id='P521Point-fold-method-ScalarBaseMult-docs' class="fold-docs">
+<span class="md-text">				ScalarBaseMult sets p = scalar * B, where B is the canonical generator, and
+				returns p.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="P521Point-fold-method-ScalarMult"><label for="P521Point-fold-method-ScalarMult">(*P521Point) <a href="../../../src/crypto/internal/nistec/p521.go.html#line-342">ScalarMult</a>(q *<b>P521Point</b>, scalar []<a href="../../builtin.html#name-byte">byte</a>) (*<b>P521Point</b>, <a href="../../builtin.html#name-error">error</a>)</label><span id='P521Point-fold-method-ScalarMult-docs' class="fold-docs">
+<span class="md-text">				ScalarMult sets p = scalar * q, and returns p.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="P521Point-fold-method-Select"><label for="P521Point-fold-method-Select">(*P521Point) <a href="../../../src/crypto/internal/nistec/p521.go.html#line-316">Select</a>(p1, p2 *<b>P521Point</b>, cond <a href="../../builtin.html#name-int">int</a>) *<b>P521Point</b></label><span id='P521Point-fold-method-Select-docs' class="fold-docs">
+<span class="md-text">				Select sets q to p1 if cond == 1, and to p2 if cond == 0.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="P521Point-fold-method-Set"><label for="P521Point-fold-method-Set">(*P521Point) <a href="../../../src/crypto/internal/nistec/p521.go.html#line-45">Set</a>(q *<b>P521Point</b>) *<b>P521Point</b></label><span id='P521Point-fold-method-Set-docs' class="fold-docs">
+<span class="md-text">				Set sets p = q and returns p.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="P521Point-fold-method-SetBytes"><label for="P521Point-fold-method-SetBytes">(*P521Point) <a href="../../../src/crypto/internal/nistec/p521.go.html#line-56">SetBytes</a>(b []<a href="../../builtin.html#name-byte">byte</a>) (*<b>P521Point</b>, <a href="../../builtin.html#name-error">error</a>)</label><span id='P521Point-fold-method-SetBytes-docs' class="fold-docs">
+<span class="md-text">				SetBytes sets p to the compressed, uncompressed, or infinity value encoded in
+				b, as specified in SEC 1, Version 2.0, Section 2.3.4. If the point is not on
+				the curve, it returns nil and an error, and the receiver is unchanged.
+				Otherwise, it returns p.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="P521Point-fold-method-SetGenerator"><label for="P521Point-fold-method-SetGenerator">(*P521Point) <a href="../../../src/crypto/internal/nistec/p521.go.html#line-37">SetGenerator</a>() *<b>P521Point</b></label><span id='P521Point-fold-method-SetGenerator-docs' class="fold-docs">
+<span class="md-text">				SetGenerator sets p to the canonical generator and returns p.</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="P521Point-showhide-methods"><i><label for="P521Point-showhide-methods" class="show-inline">/* 4 unexporteds ... */</label><label for="P521Point-showhide-methods" class="hide-inline">/* 4 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs">(*P521Point) <a href="../../../src/crypto/internal/nistec/p521.go.html#line-152">bytes</a>(out *[133]<a href="../../builtin.html#name-byte">byte</a>) []<a href="../../builtin.html#name-byte">byte</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*P521Point) <a href="../../../src/crypto/internal/nistec/p521.go.html#line-197">bytesCompressed</a>(out *[67]<a href="../../builtin.html#name-byte">byte</a>) []<a href="../../builtin.html#name-byte">byte</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*P521Point) <a href="../../../src/crypto/internal/nistec/p521.go.html#line-176">bytesX</a>(out *[66]<a href="../../builtin.html#name-byte">byte</a>) ([]<a href="../../builtin.html#name-byte">byte</a>, <a href="../../builtin.html#name-error">error</a>)</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="P521Point-fold-method-generatorTable"><label for="P521Point-fold-method-generatorTable">(*P521Point) <a href="../../../src/crypto/internal/nistec/p521.go.html#line-392">generatorTable</a>() *[132]<a href="#name-p521Table">p521Table</a></label><span id='P521Point-fold-method-generatorTable-docs' class="fold-docs">
+<span class="md-text">				generatorTable returns a sequence of p521Tables. The first table contains
+				multiples of G. Each successive table is the previous table doubled four
+				times.</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="P521Point-fold-results"><label for="P521Point-fold-results">As Outputs Of (<i>at least 9, all are exported</i>)</label><span id='P521Point-fold-results-items' class="fold-items"><span>
+			func <a href="#name-NewP521Point">NewP521Point</a>() *<b>P521Point</b></span><span>
+			func (*P521Point).<a href="../../../src/crypto/internal/nistec/p521.go.html#line-215">Add</a>(p1, p2 *<b>P521Point</b>) *<b>P521Point</b></span><span>
+			func (*P521Point).<a href="../../../src/crypto/internal/nistec/p521.go.html#line-270">Double</a>(p *<b>P521Point</b>) *<b>P521Point</b></span><span>
+			func (*P521Point).<a href="../../../src/crypto/internal/nistec/p521.go.html#line-412">ScalarBaseMult</a>(scalar []<a href="../../builtin.html#name-byte">byte</a>) (*<b>P521Point</b>, <a href="../../builtin.html#name-error">error</a>)</span><span>
+			func (*P521Point).<a href="../../../src/crypto/internal/nistec/p521.go.html#line-342">ScalarMult</a>(q *<b>P521Point</b>, scalar []<a href="../../builtin.html#name-byte">byte</a>) (*<b>P521Point</b>, <a href="../../builtin.html#name-error">error</a>)</span><span>
+			func (*P521Point).<a href="../../../src/crypto/internal/nistec/p521.go.html#line-316">Select</a>(p1, p2 *<b>P521Point</b>, cond <a href="../../builtin.html#name-int">int</a>) *<b>P521Point</b></span><span>
+			func (*P521Point).<a href="../../../src/crypto/internal/nistec/p521.go.html#line-45">Set</a>(q *<b>P521Point</b>) *<b>P521Point</b></span><span>
+			func (*P521Point).<a href="../../../src/crypto/internal/nistec/p521.go.html#line-56">SetBytes</a>(b []<a href="../../builtin.html#name-byte">byte</a>) (*<b>P521Point</b>, <a href="../../builtin.html#name-error">error</a>)</span><span>
+			func (*P521Point).<a href="../../../src/crypto/internal/nistec/p521.go.html#line-37">SetGenerator</a>() *<b>P521Point</b></span></span>
+		<input type='checkbox' class="fold" id="P521Point-fold-params"><label for="P521Point-fold-params">As Inputs Of (<i>at least 5, all are exported</i>)</label><span id='P521Point-fold-params-items' class="fold-items"><span>
+			func (*P521Point).<a href="../../../src/crypto/internal/nistec/p521.go.html#line-215">Add</a>(p1, p2 *<b>P521Point</b>) *<b>P521Point</b></span><span>
+			func (*P521Point).<a href="../../../src/crypto/internal/nistec/p521.go.html#line-270">Double</a>(p *<b>P521Point</b>) *<b>P521Point</b></span><span>
+			func (*P521Point).<a href="../../../src/crypto/internal/nistec/p521.go.html#line-342">ScalarMult</a>(q *<b>P521Point</b>, scalar []<a href="../../builtin.html#name-byte">byte</a>) (*<b>P521Point</b>, <a href="../../builtin.html#name-error">error</a>)</span><span>
+			func (*P521Point).<a href="../../../src/crypto/internal/nistec/p521.go.html#line-316">Select</a>(p1, p2 *<b>P521Point</b>, cond <a href="../../builtin.html#name-int">int</a>) *<b>P521Point</b></span><span>
+			func (*P521Point).<a href="../../../src/crypto/internal/nistec/p521.go.html#line-45">Set</a>(q *<b>P521Point</b>) *<b>P521Point</b></span></span>
+
+</span></div></div><div>	<input type='checkbox' class="showhide" id="unexported-typenames-showhide"><i><label for="unexported-typenames-showhide" class="show-inline">/* 8 unexporteds ... */</label><label for="unexported-typenames-showhide" class="hide-inline">/* 8 unexporteds: */</label></i><div class="anchor type-res hidden" id="name-p224Table" data-popularity="125">	<input type='checkbox' class="fold" id="p224Table-fold-content"><label for="p224Table-fold-content"> <a href="../../../use/crypto/internal/nistec..p224Table^eab51.html">type</a> <a href="../../../src/crypto/internal/nistec/p224.go.html#line-326">p224Table</a> <i>([...])</i></label><span id='p224Table-fold-content-docs' class="fold-docs">
+<span class="md-text">		A p224Table holds the first 15 multiples of a point at offset -1, so [1]P
+		is at table[0], [15]P is at table[14], and [0]P is implicitly the identity
+		point.</span>
+
+		<input type='checkbox' class="fold" id="p224Table-fold-methods"><label for="p224Table-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='p224Table-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="p224Table-fold-method-Select"><label for="p224Table-fold-method-Select">(*p224Table) <a href="../../../src/crypto/internal/nistec/p224.go.html#line-330">Select</a>(p *<a href="#name-P224Point">P224Point</a>, n <a href="../../builtin.html#name-uint8">uint8</a>)</label><span id='p224Table-fold-method-Select-docs' class="fold-docs">
+<span class="md-text">				Select selects the n-th multiple of the table base point into p. It works in
+				constant time by iterating over every entry of the table. n must be in [0, 15].</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="p224Table-fold-results"><label for="p224Table-fold-results">As Outputs Of (<i>at least one unexported</i>)</label><span id='p224Table-fold-results-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="p224Table-showhide-inputofs"><i><label for="p224Table-showhide-inputofs" class="show-inline">/* at least one unexported ... */</label><label for="p224Table-showhide-inputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func (*<a href="#name-P224Point">P224Point</a>).<a href="../../../src/crypto/internal/nistec/p224.go.html#line-392">generatorTable</a>() *[56]<b>p224Table</b></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-p256AffinePoint" data-popularity="70">	<input type='checkbox' class="fold" id="p256AffinePoint-fold-content"><label for="p256AffinePoint-fold-content"> <a href="../../../use/crypto/internal/nistec..p256AffinePoint^853e3.html">type</a> <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-305">p256AffinePoint</a> <i>(struct)</i></label><span id='p256AffinePoint-fold-content-docs' class="fold-docs">
+<span class="md-text">		p256AffinePoint is a point in affine coordinates (x, y). x and y are still
+		Montgomery domain elements. The point can't be the point at infinity.</span>
+
+		<input type='checkbox' class="fold" id="p256AffinePoint-fold-fields"><label for="p256AffinePoint-fold-fields">Fields (<i>total 2, neither is exported</i>)</label><span id='p256AffinePoint-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="p256AffinePoint-showhide-fields"><i><label for="p256AffinePoint-showhide-fields" class="show-inline">/* 2 unexporteds ... */</label><label for="p256AffinePoint-showhide-fields" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-306">x</a> <i><a href="#name-p256Element">p256Element</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-306">y</a> <i><a href="#name-p256Element">p256Element</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="p256AffinePoint-fold-params"><label for="p256AffinePoint-fold-params">As Inputs Of (<i>at least 2, neither is exported</i>)</label><span id='p256AffinePoint-fold-params-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="p256AffinePoint-showhide-outputofs"><i><label for="p256AffinePoint-showhide-outputofs" class="show-inline">/* 2+ unexporteds ... */</label><label for="p256AffinePoint-showhide-outputofs" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			func <a href="#name-p256PointAddAffineAsm">p256PointAddAffineAsm</a>(res, in1 *<a href="#name-P256Point">P256Point</a>, in2 *<b>p256AffinePoint</b>, sign, sel, zero <a href="../../builtin.html#name-int">int</a>)</i></span><span class="hidden"><i>
+			func <a href="#name-p256SelectAffine">p256SelectAffine</a>(res *<b>p256AffinePoint</b>, table *<a href="#name-p256AffineTable">p256AffineTable</a>, idx <a href="../../builtin.html#name-int">int</a>)</i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-p256AffineTable" data-popularity="35">	<input type='checkbox' class="fold" id="p256AffineTable-fold-content"><label for="p256AffineTable-fold-content"> <a href="../../../use/crypto/internal/nistec..p256AffineTable^a053b.html">type</a> <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-311">p256AffineTable</a> <i>([...])</i></label><span id='p256AffineTable-fold-content-docs' class="fold-docs">
+<span class="md-text">		p256AffineTable is a table of the first 32 multiples of a point. Points are
+		stored at an index offset of -1 like in p256Table, and [0]P is not stored.</span>
+
+		<input type='checkbox' class="fold" id="p256AffineTable-fold-params"><label for="p256AffineTable-fold-params">As Inputs Of (<i>at least one unexported</i>)</label><span id='p256AffineTable-fold-params-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="p256AffineTable-showhide-outputofs"><i><label for="p256AffineTable-showhide-outputofs" class="show-inline">/* at least one unexported ... */</label><label for="p256AffineTable-showhide-outputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func <a href="#name-p256SelectAffine">p256SelectAffine</a>(res *<a href="#name-p256AffinePoint">p256AffinePoint</a>, table *<b>p256AffineTable</b>, idx <a href="../../builtin.html#name-int">int</a>)</i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-p256Element" data-popularity="580">	<input type='checkbox' class="fold" id="p256Element-fold-content"><label for="p256Element-fold-content"> <a href="../../../use/crypto/internal/nistec..p256Element^510ae.html">type</a> <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-28">p256Element</a> <i>([...])</i></label><span id='p256Element-fold-content-docs' class="fold-docs">
+<span class="md-text">		p256Element is a P-256 base field element in [0, P-1] in the Montgomery
+		domain (with R 2²⁵⁶) as four limbs in little-endian order value.</span>
+
+		<input type='checkbox' class="fold" id="p256Element-fold-results"><label for="p256Element-fold-results">As Outputs Of (<i>at least one unexported</i>)</label><span id='p256Element-fold-results-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="p256Element-showhide-inputofs"><i><label for="p256Element-showhide-inputofs" class="show-inline">/* at least one unexported ... */</label><label for="p256Element-showhide-inputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func <a href="#name-p256Polynomial">p256Polynomial</a>(y2, x *<b>p256Element</b>) *<b>p256Element</b></i></span></span>
+		<input type='checkbox' class="fold" id="p256Element-fold-params"><label for="p256Element-fold-params">As Inputs Of (<i>at least 14, none are exported</i>)</label><span id='p256Element-fold-params-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="p256Element-showhide-outputofs"><i><label for="p256Element-showhide-outputofs" class="show-inline">/* 14+ unexporteds ... */</label><label for="p256Element-showhide-outputofs" class="hide-inline">/* 14+ unexporteds: */</label></i><span class="hidden"><i>
+			func <a href="#name-p256Add">p256Add</a>(res, x, y *<b>p256Element</b>)</i></span><span class="hidden"><i>
+			func <a href="#name-p256BigToLittle">p256BigToLittle</a>(res *<b>p256Element</b>, in *[32]<a href="../../builtin.html#name-byte">byte</a>)</i></span><span class="hidden"><i>
+			func <a href="#name-p256CheckOnCurve">p256CheckOnCurve</a>(x, y *<b>p256Element</b>) <a href="../../builtin.html#name-error">error</a></i></span><span class="hidden"><i>
+			func <a href="#name-p256Equal">p256Equal</a>(a, b *<b>p256Element</b>) <a href="../../builtin.html#name-int">int</a></i></span><span class="hidden"><i>
+			func <a href="#name-p256FromMont">p256FromMont</a>(res, in *<b>p256Element</b>)</i></span><span class="hidden"><i>
+			func <a href="#name-p256Inverse">p256Inverse</a>(out, in *<b>p256Element</b>)</i></span><span class="hidden"><i>
+			func <a href="#name-p256LessThanP">p256LessThanP</a>(x *<b>p256Element</b>) <a href="../../builtin.html#name-int">int</a></i></span><span class="hidden"><i>
+			func <a href="#name-p256LittleToBig">p256LittleToBig</a>(res *[32]<a href="../../builtin.html#name-byte">byte</a>, in *<b>p256Element</b>)</i></span><span class="hidden"><i>
+			func <a href="#name-p256Mul">p256Mul</a>(res, in1, in2 *<b>p256Element</b>)</i></span><span class="hidden"><i>
+			func <a href="#name-p256NegCond">p256NegCond</a>(val *<b>p256Element</b>, cond <a href="../../builtin.html#name-int">int</a>)</i></span><span class="hidden"><i>
+			func <a href="#name-p256Polynomial">p256Polynomial</a>(y2, x *<b>p256Element</b>) *<b>p256Element</b></i></span><span class="hidden"><i>
+			func <a href="#name-p256Sqr">p256Sqr</a>(res, in *<b>p256Element</b>, n <a href="../../builtin.html#name-int">int</a>)</i></span><span class="hidden"><i>
+			func <a href="#name-p256Sqrt">p256Sqrt</a>(e, x *<b>p256Element</b>) (isSquare <a href="../../builtin.html#name-bool">bool</a>)</i></span><span class="hidden"><i>
+			func (*<a href="#name-P256Point">P256Point</a>).<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-486">affineFromMont</a>(x, y *<b>p256Element</b>)</i></span></span>
+		<input type='checkbox' class="fold" id="p256Element-fold-values"><label for="p256Element-fold-values">As Types Of (<i>total 3, none are exported</i>)</label><span id='p256Element-fold-values-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="p256Element-showhide-values"><i><label for="p256Element-showhide-values" class="show-inline">/* 3 unexporteds ... */</label><label for="p256Element-showhide-values" class="hide-inline">/* 3 unexporteds: */</label></i><span class="hidden"><i>
+			  var <a href="#name-p256One">p256One</a></i></span><span class="hidden"><i>
+			  var <a href="#name-p256P">p256P</a></i></span><span class="hidden"><i>
+			  var <a href="#name-p256Zero">p256Zero</a></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-p256OrdElement" data-popularity="245">	<input type='checkbox' class="fold" id="p256OrdElement-fold-content"><label for="p256OrdElement-fold-content"> <a href="../../../use/crypto/internal/nistec..p256OrdElement^63fb1.html">type</a> <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-365">p256OrdElement</a> <i>([...])</i></label><span id='p256OrdElement-fold-content-docs' class="fold-docs">
+<span class="md-text">		p256OrdElement is a P-256 scalar field element in [0, ord(G)-1] in the
+		Montgomery domain (with R 2²⁵⁶) as four uint64 limbs in little-endian order.</span>
+
+		<input type='checkbox' class="fold" id="p256OrdElement-fold-params"><label for="p256OrdElement-fold-params">As Inputs Of (<i>at least 7, none are exported</i>)</label><span id='p256OrdElement-fold-params-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="p256OrdElement-showhide-outputofs"><i><label for="p256OrdElement-showhide-outputofs" class="show-inline">/* 7+ unexporteds ... */</label><label for="p256OrdElement-showhide-outputofs" class="hide-inline">/* 7+ unexporteds: */</label></i><span class="hidden"><i>
+			func <a href="#name-p256OrdBigToLittle">p256OrdBigToLittle</a>(res *<b>p256OrdElement</b>, in *[32]<a href="../../builtin.html#name-byte">byte</a>)</i></span><span class="hidden"><i>
+			func <a href="#name-p256OrdLittleToBig">p256OrdLittleToBig</a>(res *[32]<a href="../../builtin.html#name-byte">byte</a>, in *<b>p256OrdElement</b>)</i></span><span class="hidden"><i>
+			func <a href="#name-p256OrdMul">p256OrdMul</a>(res, in1, in2 *<b>p256OrdElement</b>)</i></span><span class="hidden"><i>
+			func <a href="#name-p256OrdReduce">p256OrdReduce</a>(s *<b>p256OrdElement</b>)</i></span><span class="hidden"><i>
+			func <a href="#name-p256OrdSqr">p256OrdSqr</a>(res, in *<b>p256OrdElement</b>, n <a href="../../builtin.html#name-int">int</a>)</i></span><span class="hidden"><i>
+			func (*<a href="#name-P256Point">P256Point</a>).<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-622">p256BaseMult</a>(scalar *<b>p256OrdElement</b>)</i></span><span class="hidden"><i>
+			func (*<a href="#name-P256Point">P256Point</a>).<a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-651">p256ScalarMult</a>(scalar *<b>p256OrdElement</b>)</i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-p256Table" data-popularity="35">	<input type='checkbox' class="fold" id="p256Table-fold-content"><label for="p256Table-fold-content"> <a href="../../../use/crypto/internal/nistec..p256Table^9a4cf.html">type</a> <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-295">p256Table</a> <i>([...])</i></label><span id='p256Table-fold-content-docs' class="fold-docs">
+<span class="md-text">		p256Table is a table of the first 16 multiples of a point. Points are stored
+		at an index offset of -1 so [8]P is at index 7, P is at 0, and [16]P is at 15.
+		[0]P is the point at infinity and it's not stored.</span>
+
+		<input type='checkbox' class="fold" id="p256Table-fold-params"><label for="p256Table-fold-params">As Inputs Of (<i>at least one unexported</i>)</label><span id='p256Table-fold-params-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="p256Table-showhide-outputofs"><i><label for="p256Table-showhide-outputofs" class="show-inline">/* at least one unexported ... */</label><label for="p256Table-showhide-outputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func <a href="#name-p256Select">p256Select</a>(res *<a href="#name-P256Point">P256Point</a>, table *<b>p256Table</b>, idx <a href="../../builtin.html#name-int">int</a>)</i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-p384Table" data-popularity="125">	<input type='checkbox' class="fold" id="p384Table-fold-content"><label for="p384Table-fold-content"> <a href="../../../use/crypto/internal/nistec..p384Table^1a2a7.html">type</a> <a href="../../../src/crypto/internal/nistec/p384.go.html#line-326">p384Table</a> <i>([...])</i></label><span id='p384Table-fold-content-docs' class="fold-docs">
+<span class="md-text">		A p384Table holds the first 15 multiples of a point at offset -1, so [1]P
+		is at table[0], [15]P is at table[14], and [0]P is implicitly the identity
+		point.</span>
+
+		<input type='checkbox' class="fold" id="p384Table-fold-methods"><label for="p384Table-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='p384Table-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="p384Table-fold-method-Select"><label for="p384Table-fold-method-Select">(*p384Table) <a href="../../../src/crypto/internal/nistec/p384.go.html#line-330">Select</a>(p *<a href="#name-P384Point">P384Point</a>, n <a href="../../builtin.html#name-uint8">uint8</a>)</label><span id='p384Table-fold-method-Select-docs' class="fold-docs">
+<span class="md-text">				Select selects the n-th multiple of the table base point into p. It works in
+				constant time by iterating over every entry of the table. n must be in [0, 15].</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="p384Table-fold-results"><label for="p384Table-fold-results">As Outputs Of (<i>at least one unexported</i>)</label><span id='p384Table-fold-results-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="p384Table-showhide-inputofs"><i><label for="p384Table-showhide-inputofs" class="show-inline">/* at least one unexported ... */</label><label for="p384Table-showhide-inputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func (*<a href="#name-P384Point">P384Point</a>).<a href="../../../src/crypto/internal/nistec/p384.go.html#line-392">generatorTable</a>() *[96]<b>p384Table</b></i></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-p521Table" data-popularity="125">	<input type='checkbox' class="fold" id="p521Table-fold-content"><label for="p521Table-fold-content"> <a href="../../../use/crypto/internal/nistec..p521Table^a32bb.html">type</a> <a href="../../../src/crypto/internal/nistec/p521.go.html#line-326">p521Table</a> <i>([...])</i></label><span id='p521Table-fold-content-docs' class="fold-docs">
+<span class="md-text">		A p521Table holds the first 15 multiples of a point at offset -1, so [1]P
+		is at table[0], [15]P is at table[14], and [0]P is implicitly the identity
+		point.</span>
+
+		<input type='checkbox' class="fold" id="p521Table-fold-methods"><label for="p521Table-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='p521Table-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="p521Table-fold-method-Select"><label for="p521Table-fold-method-Select">(*p521Table) <a href="../../../src/crypto/internal/nistec/p521.go.html#line-330">Select</a>(p *<a href="#name-P521Point">P521Point</a>, n <a href="../../builtin.html#name-uint8">uint8</a>)</label><span id='p521Table-fold-method-Select-docs' class="fold-docs">
+<span class="md-text">				Select selects the n-th multiple of the table base point into p. It works in
+				constant time by iterating over every entry of the table. n must be in [0, 15].</span>
+</span></span></span>
+		<input type='checkbox' class="fold" id="p521Table-fold-results"><label for="p521Table-fold-results">As Outputs Of (<i>at least one unexported</i>)</label><span id='p521Table-fold-results-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="p521Table-showhide-inputofs"><i><label for="p521Table-showhide-inputofs" class="show-inline">/* at least one unexported ... */</label><label for="p521Table-showhide-inputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func (*<a href="#name-P521Point">P521Point</a>).<a href="../../../src/crypto/internal/nistec/p521.go.html#line-392">generatorTable</a>() *[132]<b>p521Table</b></i></span></span>
+
+</span></div></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 48, in which 5 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-NewP224Point">	<input type='checkbox' class="fold" id="NewP224Point-fold-content"><label for="NewP224Point-fold-content"> <a href="../../../use/crypto/internal/nistec..NewP224Point.html">func</a> <a href="../../../src/crypto/internal/nistec/p224.go.html#line-28">NewP224Point</a>() *<a href="#name-P224Point">P224Point</a></label><span id='NewP224Point-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewP224Point returns a new P224Point representing the point at infinity point.</span>
+
+</span></div><div class="anchor value-res" id="name-NewP256Point">	<input type='checkbox' class="fold" id="NewP256Point-fold-content"><label for="NewP256Point-fold-content"> <a href="../../../use/crypto/internal/nistec..NewP256Point.html">func</a> <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-49">NewP256Point</a>() *<a href="#name-P256Point">P256Point</a></label><span id='NewP256Point-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewP256Point returns a new P256Point representing the point at infinity.</span>
+
+</span></div><div class="anchor value-res" id="name-NewP384Point">	<input type='checkbox' class="fold" id="NewP384Point-fold-content"><label for="NewP384Point-fold-content"> <a href="../../../use/crypto/internal/nistec..NewP384Point.html">func</a> <a href="../../../src/crypto/internal/nistec/p384.go.html#line-28">NewP384Point</a>() *<a href="#name-P384Point">P384Point</a></label><span id='NewP384Point-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewP384Point returns a new P384Point representing the point at infinity point.</span>
+
+</span></div><div class="anchor value-res" id="name-NewP521Point">	<input type='checkbox' class="fold" id="NewP521Point-fold-content"><label for="NewP521Point-fold-content"> <a href="../../../use/crypto/internal/nistec..NewP521Point.html">func</a> <a href="../../../src/crypto/internal/nistec/p521.go.html#line-28">NewP521Point</a>() *<a href="#name-P521Point">P521Point</a></label><span id='NewP521Point-fold-content-docs' class="fold-docs">
+<span class="md-text">		NewP521Point returns a new P521Point representing the point at infinity point.</span>
+
+</span></div><div class="anchor value-res" id="name-P256OrdInverse">	<span class="nodocs"> <a href="../../../use/crypto/internal/nistec..P256OrdInverse.html">func</a> <a href="../../../src/crypto/internal/nistec/p256_ordinv.go.html#line-21">P256OrdInverse</a>(k []<a href="../../builtin.html#name-byte">byte</a>) ([]<a href="../../builtin.html#name-byte">byte</a>, <a href="../../builtin.html#name-error">error</a>)</span></div>	<input type='checkbox' class="showhide" id="unexported-functions-showhide"><i><label for="unexported-functions-showhide" class="show-inline">/* 43 unexporteds ... */</label><label for="unexported-functions-showhide" class="hide-inline">/* 43 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-boothW5"><i>	<span class="nodocs"> <a href="../../../use/crypto/internal/nistec..boothW5^4d00a.html">func</a> <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-606">boothW5</a>(in <a href="../../builtin.html#name-uint">uint</a>) (<a href="../../builtin.html#name-int">int</a>, <a href="../../builtin.html#name-int">int</a>)</span></i></div><div class="anchor value-res hidden" id="name-boothW6"><i>	<span class="nodocs"> <a href="../../../use/crypto/internal/nistec..boothW6^c8c4b.html">func</a> <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-614">boothW6</a>(in <a href="../../builtin.html#name-uint">uint</a>) (<a href="../../builtin.html#name-int">int</a>, <a href="../../builtin.html#name-int">int</a>)</span></i></div><div class="anchor value-res hidden" id="name-init"><i>	<span class="nodocs"> <a href="../../../use/crypto/internal/nistec..init^bb540.html">func</a> <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-325">init</a>()</span></i></div><div class="anchor value-res hidden" id="name-p224B"><i>	<span class="nodocs"> <a href="../../../use/crypto/internal/nistec..p224B^56f10.html">func</a> <a href="../../../src/crypto/internal/nistec/p224.go.html#line-113">p224B</a>() *<a href="nistec/fiat.html">fiat</a>.<a href="nistec/fiat.html#name-P224Element">P224Element</a></span></i></div><div class="anchor value-res hidden" id="name-p224CheckOnCurve"><i>	<span class="nodocs"> <a href="../../../use/crypto/internal/nistec..p224CheckOnCurve^e642f.html">func</a> <a href="../../../src/crypto/internal/nistec/p224.go.html#line-132">p224CheckOnCurve</a>(x, y *<a href="nistec/fiat.html">fiat</a>.<a href="nistec/fiat.html#name-P224Element">P224Element</a>) <a href="../../builtin.html#name-error">error</a></span></i></div><div class="anchor value-res hidden" id="name-p224Polynomial"><i>	<input type='checkbox' class="fold" id="p224Polynomial-fold-content"><label for="p224Polynomial-fold-content"> <a href="../../../use/crypto/internal/nistec..p224Polynomial^52b25.html">func</a> <a href="../../../src/crypto/internal/nistec/p224.go.html#line-121">p224Polynomial</a>(y2, x *<a href="nistec/fiat.html">fiat</a>.<a href="nistec/fiat.html#name-P224Element">P224Element</a>) *<a href="nistec/fiat.html">fiat</a>.<a href="nistec/fiat.html#name-P224Element">P224Element</a></label><span id='p224Polynomial-fold-content-docs' class="fold-docs">
+<span class="md-text">		p224Polynomial sets y2 to x³ - 3x + b, and returns y2.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-p224Sqrt"><i>	<input type='checkbox' class="fold" id="p224Sqrt-fold-content"><label for="p224Sqrt-fold-content"> <a href="../../../use/crypto/internal/nistec..p224Sqrt^cc2cb.html">func</a> <a href="../../../src/crypto/internal/nistec/p224.go.html#line-444">p224Sqrt</a>(e, x *<a href="nistec/fiat.html">fiat</a>.<a href="nistec/fiat.html#name-P224Element">P224Element</a>) (isSquare <a href="../../builtin.html#name-bool">bool</a>)</label><span id='p224Sqrt-fold-content-docs' class="fold-docs">
+<span class="md-text">		p224Sqrt sets e to a square root of x. If x is not a square, p224Sqrt returns
+		false and e is unchanged. e and x can overlap.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-p224SqrtCandidate"><i>	<input type='checkbox' class="fold" id="p224SqrtCandidate-fold-content"><label for="p224SqrtCandidate-fold-content"> <a href="../../../use/crypto/internal/nistec..p224SqrtCandidate^8e36f.html">func</a> <a href="../../../src/crypto/internal/nistec/p224_sqrt.go.html#line-16">p224SqrtCandidate</a>(r, x *<a href="nistec/fiat.html">fiat</a>.<a href="nistec/fiat.html#name-P224Element">P224Element</a>)</label><span id='p224SqrtCandidate-fold-content-docs' class="fold-docs">
+<span class="md-text">		p224SqrtCandidate sets r to a square root candidate for x. r and x must not overlap.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-p256Add"><i>	<input type='checkbox' class="fold" id="p256Add-fold-content"><label for="p256Add-fold-content"> <a href="../../../use/crypto/internal/nistec..p256Add^a8bc3.html">func</a> <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-182">p256Add</a>(res, x, y *<a href="#name-p256Element">p256Element</a>)</label><span id='p256Add-fold-content-docs' class="fold-docs">
+<span class="md-text">		p256Add sets res = x + y.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-p256BigToLittle"><i>	<span class="nodocs"> <a href="../../../use/crypto/internal/nistec..p256BigToLittle^e255b.html">func</a> <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-281">p256BigToLittle</a>(res *<a href="#name-p256Element">p256Element</a>, in *[32]<a href="../../builtin.html#name-byte">byte</a>)</span></i></div><div class="anchor value-res hidden" id="name-p256CheckOnCurve"><i>	<span class="nodocs"> <a href="../../../use/crypto/internal/nistec..p256CheckOnCurve^fc0ca.html">func</a> <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-158">p256CheckOnCurve</a>(x, y *<a href="#name-p256Element">p256Element</a>) <a href="../../builtin.html#name-error">error</a></span></i></div><div class="anchor value-res hidden" id="name-p256Equal"><i>	<input type='checkbox' class="fold" id="p256Equal-fold-content"><label for="p256Equal-fold-content"> <a href="../../../use/crypto/internal/nistec..p256Equal^3ce69.html">func</a> <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-445">p256Equal</a>(a, b *<a href="#name-p256Element">p256Element</a>) <a href="../../builtin.html#name-int">int</a></label><span id='p256Equal-fold-content-docs' class="fold-docs">
+<span class="md-text">		p256Equal returns 1 if a and b are equal and 0 otherwise.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-p256FromMont"><i>	<input type='checkbox' class="fold" id="p256FromMont-fold-content"><label for="p256FromMont-fold-content"> <a href="../../../use/crypto/internal/nistec..p256FromMont^32c8f.html">func</a> <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-268">p256FromMont</a>(res, in *<a href="#name-p256Element">p256Element</a>)</label><span id='p256FromMont-fold-content-docs' class="fold-docs">
+<span class="md-text">		Montgomery multiplication by R⁻¹, or 1 outside the domain.
+		Sets res = in * R⁻¹, bringing res out of the Montgomery domain.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-p256Inverse"><i>	<input type='checkbox' class="fold" id="p256Inverse-fold-content"><label for="p256Inverse-fold-content"> <a href="../../../use/crypto/internal/nistec..p256Inverse^6c29d.html">func</a> <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-553">p256Inverse</a>(out, in *<a href="#name-p256Element">p256Element</a>)</label><span id='p256Inverse-fold-content-docs' class="fold-docs">
+<span class="md-text">		p256Inverse sets out to in⁻¹ mod p. If in is zero, out will be zero.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-p256LessThanP"><i>	<input type='checkbox' class="fold" id="p256LessThanP-fold-content"><label for="p256LessThanP-fold-content"> <a href="../../../use/crypto/internal/nistec..p256LessThanP^51428.html">func</a> <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-172">p256LessThanP</a>(x *<a href="#name-p256Element">p256Element</a>) <a href="../../builtin.html#name-int">int</a></label><span id='p256LessThanP-fold-content-docs' class="fold-docs">
+<span class="md-text">		p256LessThanP returns 1 if x &lt; p, and 0 otherwise. Note that a p256Element is
+		not allowed to be equal to or greater than p, so if this function returns 0
+		then x is invalid.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-p256LittleToBig"><i>	<span class="nodocs"> <a href="../../../use/crypto/internal/nistec..p256LittleToBig^5675d.html">func</a> <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-284">p256LittleToBig</a>(res *[32]<a href="../../builtin.html#name-byte">byte</a>, in *<a href="#name-p256Element">p256Element</a>)</span></i></div><div class="anchor value-res hidden" id="name-p256MovCond"><i>	<input type='checkbox' class="fold" id="p256MovCond-fold-content"><label for="p256MovCond-fold-content"> <a href="../../../use/crypto/internal/nistec..p256MovCond^d46a4.html">func</a> <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-278">p256MovCond</a>(res, a, b *<a href="#name-P256Point">P256Point</a>, cond <a href="../../builtin.html#name-int">int</a>)</label><span id='p256MovCond-fold-content-docs' class="fold-docs">
+<span class="md-text">		If cond is 0, sets res = b, otherwise sets res = a.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-p256Mul"><i>	<input type='checkbox' class="fold" id="p256Mul-fold-content"><label for="p256Mul-fold-content"> <a href="../../../use/crypto/internal/nistec..p256Mul^01294.html">func</a> <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-257">p256Mul</a>(res, in1, in2 *<a href="#name-p256Element">p256Element</a>)</label><span id='p256Mul-fold-content-docs' class="fold-docs">
+<span class="md-text">		Montgomery multiplication. Sets res = in1 * in2 * R⁻¹ mod p.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-p256NegCond"><i>	<input type='checkbox' class="fold" id="p256NegCond-fold-content"><label for="p256NegCond-fold-content"> <a href="../../../use/crypto/internal/nistec..p256NegCond^49b6a.html">func</a> <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-273">p256NegCond</a>(val *<a href="#name-p256Element">p256Element</a>, cond <a href="../../builtin.html#name-int">int</a>)</label><span id='p256NegCond-fold-content-docs' class="fold-docs">
+<span class="md-text">		If cond is not 0, sets val = -val mod p.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-p256OrdBigToLittle"><i>	<span class="nodocs"> <a href="../../../use/crypto/internal/nistec..p256OrdBigToLittle^63b86.html">func</a> <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-287">p256OrdBigToLittle</a>(res *<a href="#name-p256OrdElement">p256OrdElement</a>, in *[32]<a href="../../builtin.html#name-byte">byte</a>)</span></i></div><div class="anchor value-res hidden" id="name-p256OrdLittleToBig"><i>	<span class="nodocs"> <a href="../../../use/crypto/internal/nistec..p256OrdLittleToBig^86326.html">func</a> <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-290">p256OrdLittleToBig</a>(res *[32]<a href="../../builtin.html#name-byte">byte</a>, in *<a href="#name-p256OrdElement">p256OrdElement</a>)</span></i></div><div class="anchor value-res hidden" id="name-p256OrdMul"><i>	<input type='checkbox' class="fold" id="p256OrdMul-fold-content"><label for="p256OrdMul-fold-content"> <a href="../../../use/crypto/internal/nistec..p256OrdMul^d128d.html">func</a> <a href="../../../src/crypto/internal/nistec/p256_ordinv.go.html#line-14">p256OrdMul</a>(res, in1, in2 *<a href="#name-p256OrdElement">p256OrdElement</a>)</label><span id='p256OrdMul-fold-content-docs' class="fold-docs">
+<span class="md-text">		Montgomery multiplication modulo org(G). Sets res = in1 * in2 * R⁻¹.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-p256OrdReduce"><i>	<input type='checkbox' class="fold" id="p256OrdReduce-fold-content"><label for="p256OrdReduce-fold-content"> <a href="../../../use/crypto/internal/nistec..p256OrdReduce^1cb15.html">func</a> <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-368">p256OrdReduce</a>(s *<a href="#name-p256OrdElement">p256OrdElement</a>)</label><span id='p256OrdReduce-fold-content-docs' class="fold-docs">
+<span class="md-text">		p256OrdReduce ensures s is in the range [0, ord(G)-1].</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-p256OrdSqr"><i>	<input type='checkbox' class="fold" id="p256OrdSqr-fold-content"><label for="p256OrdSqr-fold-content"> <a href="../../../use/crypto/internal/nistec..p256OrdSqr^ef285.html">func</a> <a href="../../../src/crypto/internal/nistec/p256_ordinv.go.html#line-19">p256OrdSqr</a>(res, in *<a href="#name-p256OrdElement">p256OrdElement</a>, n <a href="../../builtin.html#name-int">int</a>)</label><span id='p256OrdSqr-fold-content-docs' class="fold-docs">
+<span class="md-text">		Montgomery square modulo org(G), repeated n times (n &gt;= 1).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-p256PointAddAffineAsm"><i>	<input type='checkbox' class="fold" id="p256PointAddAffineAsm-fold-content"><label for="p256PointAddAffineAsm-fold-content"> <a href="../../../use/crypto/internal/nistec..p256PointAddAffineAsm^2c1a4.html">func</a> <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-349">p256PointAddAffineAsm</a>(res, in1 *<a href="#name-P256Point">P256Point</a>, in2 *<a href="#name-p256AffinePoint">p256AffinePoint</a>, sign, sel, zero <a href="../../builtin.html#name-int">int</a>)</label><span id='p256PointAddAffineAsm-fold-content-docs' class="fold-docs">
+<span class="md-text">		Point addition with an affine point and constant time conditions.
+		If zero is 0, sets res = in2. If sel is 0, sets res = in1.
+		If sign is not 0, sets res = in1 + -in2. Otherwise, sets res = in1 + in2</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-p256PointAddAsm"><i>	<input type='checkbox' class="fold" id="p256PointAddAsm-fold-content"><label for="p256PointAddAsm-fold-content"> <a href="../../../use/crypto/internal/nistec..p256PointAddAsm^e3291.html">func</a> <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-356">p256PointAddAsm</a>(res, in1, in2 *<a href="#name-P256Point">P256Point</a>) <a href="../../builtin.html#name-int">int</a></label><span id='p256PointAddAsm-fold-content-docs' class="fold-docs">
+<span class="md-text">		Point addition. Sets res = in1 + in2. Returns one if the two input points
+		were equal and zero otherwise. If in1 or in2 are the point at infinity, res
+		and the return value are undefined.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-p256PointDoubleAsm"><i>	<input type='checkbox' class="fold" id="p256PointDoubleAsm-fold-content"><label for="p256PointDoubleAsm-fold-content"> <a href="../../../use/crypto/internal/nistec..p256PointDoubleAsm^20fef.html">func</a> <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-361">p256PointDoubleAsm</a>(res, in *<a href="#name-P256Point">P256Point</a>)</label><span id='p256PointDoubleAsm-fold-content-docs' class="fold-docs">
+<span class="md-text">		Point doubling. Sets res = in + in. in can be the point at infinity.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-p256Polynomial"><i>	<input type='checkbox' class="fold" id="p256Polynomial-fold-content"><label for="p256Polynomial-fold-content"> <a href="../../../use/crypto/internal/nistec..p256Polynomial^c28cc.html">func</a> <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-138">p256Polynomial</a>(y2, x *<a href="#name-p256Element">p256Element</a>) *<a href="#name-p256Element">p256Element</a></label><span id='p256Polynomial-fold-content-docs' class="fold-docs">
+<span class="md-text">		p256Polynomial sets y2 to x³ - 3x + b, and returns y2.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-p256Select"><i>	<input type='checkbox' class="fold" id="p256Select-fold-content"><label for="p256Select-fold-content"> <a href="../../../use/crypto/internal/nistec..p256Select^430d0.html">func</a> <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-301">p256Select</a>(res *<a href="#name-P256Point">P256Point</a>, table *<a href="#name-p256Table">p256Table</a>, idx <a href="../../builtin.html#name-int">int</a>)</label><span id='p256Select-fold-content-docs' class="fold-docs">
+<span class="md-text">		p256Select sets res to the point at index idx in the table.
+		idx must be in [0, 15]. It executes in constant time.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-p256SelectAffine"><i>	<input type='checkbox' class="fold" id="p256SelectAffine-fold-content"><label for="p256SelectAffine-fold-content"> <a href="../../../use/crypto/internal/nistec..p256SelectAffine^82c93.html">func</a> <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-342">p256SelectAffine</a>(res *<a href="#name-p256AffinePoint">p256AffinePoint</a>, table *<a href="#name-p256AffineTable">p256AffineTable</a>, idx <a href="../../builtin.html#name-int">int</a>)</label><span id='p256SelectAffine-fold-content-docs' class="fold-docs">
+<span class="md-text">		p256SelectAffine sets res to the point at index idx in the table.
+		idx must be in [0, 31]. It executes in constant time.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-p256Sqr"><i>	<input type='checkbox' class="fold" id="p256Sqr-fold-content"><label for="p256Sqr-fold-content"> <a href="../../../use/crypto/internal/nistec..p256Sqr^e71ee.html">func</a> <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-262">p256Sqr</a>(res, in *<a href="#name-p256Element">p256Element</a>, n <a href="../../builtin.html#name-int">int</a>)</label><span id='p256Sqr-fold-content-docs' class="fold-docs">
+<span class="md-text">		Montgomery square, repeated n times (n &gt;= 1).</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-p256Sqrt"><i>	<input type='checkbox' class="fold" id="p256Sqrt-fold-content"><label for="p256Sqrt-fold-content"> <a href="../../../use/crypto/internal/nistec..p256Sqrt^2a2e1.html">func</a> <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-210">p256Sqrt</a>(e, x *<a href="#name-p256Element">p256Element</a>) (isSquare <a href="../../builtin.html#name-bool">bool</a>)</label><span id='p256Sqrt-fold-content-docs' class="fold-docs">
+<span class="md-text">		p256Sqrt sets e to a square root of x. If x is not a square, p256Sqrt returns
+		false and e is unchanged. e and x can overlap.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-p384B"><i>	<span class="nodocs"> <a href="../../../use/crypto/internal/nistec..p384B^48e97.html">func</a> <a href="../../../src/crypto/internal/nistec/p384.go.html#line-113">p384B</a>() *<a href="nistec/fiat.html">fiat</a>.<a href="nistec/fiat.html#name-P384Element">P384Element</a></span></i></div><div class="anchor value-res hidden" id="name-p384CheckOnCurve"><i>	<span class="nodocs"> <a href="../../../use/crypto/internal/nistec..p384CheckOnCurve^00392.html">func</a> <a href="../../../src/crypto/internal/nistec/p384.go.html#line-132">p384CheckOnCurve</a>(x, y *<a href="nistec/fiat.html">fiat</a>.<a href="nistec/fiat.html#name-P384Element">P384Element</a>) <a href="../../builtin.html#name-error">error</a></span></i></div><div class="anchor value-res hidden" id="name-p384Polynomial"><i>	<input type='checkbox' class="fold" id="p384Polynomial-fold-content"><label for="p384Polynomial-fold-content"> <a href="../../../use/crypto/internal/nistec..p384Polynomial^51ab5.html">func</a> <a href="../../../src/crypto/internal/nistec/p384.go.html#line-121">p384Polynomial</a>(y2, x *<a href="nistec/fiat.html">fiat</a>.<a href="nistec/fiat.html#name-P384Element">P384Element</a>) *<a href="nistec/fiat.html">fiat</a>.<a href="nistec/fiat.html#name-P384Element">P384Element</a></label><span id='p384Polynomial-fold-content-docs' class="fold-docs">
+<span class="md-text">		p384Polynomial sets y2 to x³ - 3x + b, and returns y2.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-p384Sqrt"><i>	<input type='checkbox' class="fold" id="p384Sqrt-fold-content"><label for="p384Sqrt-fold-content"> <a href="../../../use/crypto/internal/nistec..p384Sqrt^3b2a3.html">func</a> <a href="../../../src/crypto/internal/nistec/p384.go.html#line-444">p384Sqrt</a>(e, x *<a href="nistec/fiat.html">fiat</a>.<a href="nistec/fiat.html#name-P384Element">P384Element</a>) (isSquare <a href="../../builtin.html#name-bool">bool</a>)</label><span id='p384Sqrt-fold-content-docs' class="fold-docs">
+<span class="md-text">		p384Sqrt sets e to a square root of x. If x is not a square, p384Sqrt returns
+		false and e is unchanged. e and x can overlap.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-p384SqrtCandidate"><i>	<input type='checkbox' class="fold" id="p384SqrtCandidate-fold-content"><label for="p384SqrtCandidate-fold-content"> <a href="../../../use/crypto/internal/nistec..p384SqrtCandidate^98d7e.html">func</a> <a href="../../../src/crypto/internal/nistec/p384.go.html#line-456">p384SqrtCandidate</a>(z, x *<a href="nistec/fiat.html">fiat</a>.<a href="nistec/fiat.html#name-P384Element">P384Element</a>)</label><span id='p384SqrtCandidate-fold-content-docs' class="fold-docs">
+<span class="md-text">		p384SqrtCandidate sets z to a square root candidate for x. z and x must not overlap.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-p521B"><i>	<span class="nodocs"> <a href="../../../use/crypto/internal/nistec..p521B^f4648.html">func</a> <a href="../../../src/crypto/internal/nistec/p521.go.html#line-113">p521B</a>() *<a href="nistec/fiat.html">fiat</a>.<a href="nistec/fiat.html#name-P521Element">P521Element</a></span></i></div><div class="anchor value-res hidden" id="name-p521CheckOnCurve"><i>	<span class="nodocs"> <a href="../../../use/crypto/internal/nistec..p521CheckOnCurve^8fdee.html">func</a> <a href="../../../src/crypto/internal/nistec/p521.go.html#line-132">p521CheckOnCurve</a>(x, y *<a href="nistec/fiat.html">fiat</a>.<a href="nistec/fiat.html#name-P521Element">P521Element</a>) <a href="../../builtin.html#name-error">error</a></span></i></div><div class="anchor value-res hidden" id="name-p521Polynomial"><i>	<input type='checkbox' class="fold" id="p521Polynomial-fold-content"><label for="p521Polynomial-fold-content"> <a href="../../../use/crypto/internal/nistec..p521Polynomial^a0688.html">func</a> <a href="../../../src/crypto/internal/nistec/p521.go.html#line-121">p521Polynomial</a>(y2, x *<a href="nistec/fiat.html">fiat</a>.<a href="nistec/fiat.html#name-P521Element">P521Element</a>) *<a href="nistec/fiat.html">fiat</a>.<a href="nistec/fiat.html#name-P521Element">P521Element</a></label><span id='p521Polynomial-fold-content-docs' class="fold-docs">
+<span class="md-text">		p521Polynomial sets y2 to x³ - 3x + b, and returns y2.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-p521Sqrt"><i>	<input type='checkbox' class="fold" id="p521Sqrt-fold-content"><label for="p521Sqrt-fold-content"> <a href="../../../use/crypto/internal/nistec..p521Sqrt^97edb.html">func</a> <a href="../../../src/crypto/internal/nistec/p521.go.html#line-444">p521Sqrt</a>(e, x *<a href="nistec/fiat.html">fiat</a>.<a href="nistec/fiat.html#name-P521Element">P521Element</a>) (isSquare <a href="../../builtin.html#name-bool">bool</a>)</label><span id='p521Sqrt-fold-content-docs' class="fold-docs">
+<span class="md-text">		p521Sqrt sets e to a square root of x. If x is not a square, p521Sqrt returns
+		false and e is unchanged. e and x can overlap.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-p521SqrtCandidate"><i>	<input type='checkbox' class="fold" id="p521SqrtCandidate-fold-content"><label for="p521SqrtCandidate-fold-content"> <a href="../../../use/crypto/internal/nistec..p521SqrtCandidate^e47ea.html">func</a> <a href="../../../src/crypto/internal/nistec/p521.go.html#line-456">p521SqrtCandidate</a>(z, x *<a href="nistec/fiat.html">fiat</a>.<a href="nistec/fiat.html#name-P521Element">P521Element</a>)</label><span id='p521SqrtCandidate-fold-content-docs' class="fold-docs">
+<span class="md-text">		p521SqrtCandidate sets z to a square root candidate for x. z and x must not overlap.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-uint64IsZero"><i>	<input type='checkbox' class="fold" id="uint64IsZero-fold-content"><label for="uint64IsZero-fold-content"> <a href="../../../use/crypto/internal/nistec..uint64IsZero^9fc07.html">func</a> <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-433">uint64IsZero</a>(x <a href="../../builtin.html#name-uint64">uint64</a>) <a href="../../builtin.html#name-int">int</a></label><span id='uint64IsZero-fold-content-docs' class="fold-docs">
+<span class="md-text">		uint64IsZero returns 1 if x is zero and zero otherwise.</span>
+
+</span></i></div></div>
+<div id="exported-variables"><span class="title">Package-Level Variables<span class="title-stat"><i> (total 19, none are exported)</i></span></span>
+
+	<input type='checkbox' class="showhide" id="unexported-variables-showhide"><i><label for="unexported-variables-showhide" class="show-inline">/* 19 unexporteds ... */</label><label for="unexported-variables-showhide" class="hide-inline">/* 19 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-_p224B"><i>	<span class="nodocs">  <a href="../../../use/crypto/internal/nistec.._p224B^52c86.html">var</a> <a href="../../../src/crypto/internal/nistec/p224.go.html#line-110">_p224B</a> *<a href="nistec/fiat.html">fiat</a>.<a href="nistec/fiat.html#name-P224Element">P224Element</a></span></i></div><div class="anchor value-res hidden" id="name-_p224BOnce"><i>	<span class="nodocs">  <a href="../../../use/crypto/internal/nistec.._p224BOnce^454b9.html">var</a> <a href="../../../src/crypto/internal/nistec/p224.go.html#line-111">_p224BOnce</a> <a href="../../sync.html">sync</a>.<a href="../../sync.html#name-Once">Once</a></span></i></div><div class="anchor value-res hidden" id="name-_p384B"><i>	<span class="nodocs">  <a href="../../../use/crypto/internal/nistec.._p384B^93931.html">var</a> <a href="../../../src/crypto/internal/nistec/p384.go.html#line-110">_p384B</a> *<a href="nistec/fiat.html">fiat</a>.<a href="nistec/fiat.html#name-P384Element">P384Element</a></span></i></div><div class="anchor value-res hidden" id="name-_p384BOnce"><i>	<span class="nodocs">  <a href="../../../use/crypto/internal/nistec.._p384BOnce^ed3e8.html">var</a> <a href="../../../src/crypto/internal/nistec/p384.go.html#line-111">_p384BOnce</a> <a href="../../sync.html">sync</a>.<a href="../../sync.html#name-Once">Once</a></span></i></div><div class="anchor value-res hidden" id="name-_p521B"><i>	<span class="nodocs">  <a href="../../../use/crypto/internal/nistec.._p521B^8d64e.html">var</a> <a href="../../../src/crypto/internal/nistec/p521.go.html#line-110">_p521B</a> *<a href="nistec/fiat.html">fiat</a>.<a href="nistec/fiat.html#name-P521Element">P521Element</a></span></i></div><div class="anchor value-res hidden" id="name-_p521BOnce"><i>	<span class="nodocs">  <a href="../../../use/crypto/internal/nistec.._p521BOnce^27a05.html">var</a> <a href="../../../src/crypto/internal/nistec/p521.go.html#line-111">_p521BOnce</a> <a href="../../sync.html">sync</a>.<a href="../../sync.html#name-Once">Once</a></span></i></div><div class="anchor value-res hidden" id="name-p224GeneratorTable"><i>	<span class="nodocs">  <a href="../../../use/crypto/internal/nistec..p224GeneratorTable^094db.html">var</a> <a href="../../../src/crypto/internal/nistec/p224.go.html#line-386">p224GeneratorTable</a> *[56]<a href="#name-p224Table">p224Table</a></span></i></div><div class="anchor value-res hidden" id="name-p224GeneratorTableOnce"><i>	<span class="nodocs">  <a href="../../../use/crypto/internal/nistec..p224GeneratorTableOnce^8cdc6.html">var</a> <a href="../../../src/crypto/internal/nistec/p224.go.html#line-387">p224GeneratorTableOnce</a> <a href="../../sync.html">sync</a>.<a href="../../sync.html#name-Once">Once</a></span></i></div><div class="anchor value-res hidden" id="name-p224GG"><i>	<span class="nodocs">  <a href="../../../use/crypto/internal/nistec..p224GG^83d9f.html">var</a> <a href="../../../src/crypto/internal/nistec/p224_sqrt.go.html#line-12">p224GG</a> *[96]<a href="nistec/fiat.html">fiat</a>.<a href="nistec/fiat.html#name-P224Element">P224Element</a></span></i></div><div class="anchor value-res hidden" id="name-p224GGOnce"><i>	<span class="nodocs">  <a href="../../../use/crypto/internal/nistec..p224GGOnce^f6d5a.html">var</a> <a href="../../../src/crypto/internal/nistec/p224_sqrt.go.html#line-13">p224GGOnce</a> <a href="../../sync.html">sync</a>.<a href="../../sync.html#name-Once">Once</a></span></i></div><div class="anchor value-res hidden" id="name-p256One"><i>	<input type='checkbox' class="fold" id="p256One-fold-content"><label for="p256One-fold-content">  <a href="../../../use/crypto/internal/nistec..p256One^474f4.html">var</a> <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-31">p256One</a> <a href="#name-p256Element">p256Element</a></label><span id='p256One-fold-content-docs' class="fold-docs">
+<span class="md-text">		p256One is one in the Montgomery domain.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-p256P"><i>	<input type='checkbox' class="fold" id="p256P-fold-content"><label for="p256P-fold-content">  <a href="../../../use/crypto/internal/nistec..p256P^42ae0.html">var</a> <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-37">p256P</a> <a href="#name-p256Element">p256Element</a></label><span id='p256P-fold-content-docs' class="fold-docs">
+<span class="md-text">		p256P is 2²⁵⁶ - 2²²⁴ + 2¹⁹² + 2⁹⁶ - 1 in the Montgomery domain.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-p256Precomputed"><i>	<input type='checkbox' class="fold" id="p256Precomputed-fold-content"><label for="p256Precomputed-fold-content">  <a href="../../../use/crypto/internal/nistec..p256Precomputed^97fb4.html">var</a> <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-320">p256Precomputed</a> *[43]<a href="#name-p256AffineTable">p256AffineTable</a></label><span id='p256Precomputed-fold-content-docs' class="fold-docs">
+<span class="md-text">		p256Precomputed is a series of precomputed multiples of G, the canonical
+		generator. The first p256AffineTable contains multiples of G. The second one
+		multiples of [2⁶]G, the third one of [2¹²]G, and so on, where each successive
+		table is the previous table doubled six times. Six is the width of the
+		sliding window used in p256ScalarMult, and having each table already
+		pre-doubled lets us avoid the doublings between windows entirely. This table
+		MUST NOT be modified, as it aliases into p256PrecomputedEmbed below.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-p256PrecomputedEmbed"><i>	<span class="nodocs">  <a href="../../../use/crypto/internal/nistec..p256PrecomputedEmbed^8ae64.html">var</a> <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-323">p256PrecomputedEmbed</a> <a href="../../builtin.html#name-string">string</a></span></i></div><div class="anchor value-res hidden" id="name-p256Zero"><i>	<span class="nodocs">  <a href="../../../use/crypto/internal/nistec..p256Zero^3020d.html">var</a> <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-34">p256Zero</a> <a href="#name-p256Element">p256Element</a></span></i></div><div class="anchor value-res hidden" id="name-p384GeneratorTable"><i>	<span class="nodocs">  <a href="../../../use/crypto/internal/nistec..p384GeneratorTable^bf46a.html">var</a> <a href="../../../src/crypto/internal/nistec/p384.go.html#line-386">p384GeneratorTable</a> *[96]<a href="#name-p384Table">p384Table</a></span></i></div><div class="anchor value-res hidden" id="name-p384GeneratorTableOnce"><i>	<span class="nodocs">  <a href="../../../use/crypto/internal/nistec..p384GeneratorTableOnce^69096.html">var</a> <a href="../../../src/crypto/internal/nistec/p384.go.html#line-387">p384GeneratorTableOnce</a> <a href="../../sync.html">sync</a>.<a href="../../sync.html#name-Once">Once</a></span></i></div><div class="anchor value-res hidden" id="name-p521GeneratorTable"><i>	<span class="nodocs">  <a href="../../../use/crypto/internal/nistec..p521GeneratorTable^36da4.html">var</a> <a href="../../../src/crypto/internal/nistec/p521.go.html#line-386">p521GeneratorTable</a> *[132]<a href="#name-p521Table">p521Table</a></span></i></div><div class="anchor value-res hidden" id="name-p521GeneratorTableOnce"><i>	<span class="nodocs">  <a href="../../../use/crypto/internal/nistec..p521GeneratorTableOnce^51399.html">var</a> <a href="../../../src/crypto/internal/nistec/p521.go.html#line-387">p521GeneratorTableOnce</a> <a href="../../sync.html">sync</a>.<a href="../../sync.html#name-Once">Once</a></span></i></div></div>
+<div id="exported-constants"><span class="title">Package-Level Constants<span class="title-stat"><i> (total 6, none are exported)</i></span></span>
+
+	<input type='checkbox' class="showhide" id="unexported-constants-showhide"><i><label for="unexported-constants-showhide" class="show-inline">/* 6 unexporteds ... */</label><label for="unexported-constants-showhide" class="hide-inline">/* 6 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-p224ElementLength"><i>	<input type='checkbox' class="fold" id="p224ElementLength-fold-content"><label for="p224ElementLength-fold-content"><a href="../../../use/crypto/internal/nistec..p224ElementLength^739c5.html">const</a> <a href="../../../src/crypto/internal/nistec/p224.go.html#line-18">p224ElementLength</a> = 28</label><span id='p224ElementLength-fold-content-docs' class="fold-docs">
+<span class="md-text">		p224ElementLength is the length of an element of the base or scalar field,
+		which have the same bytes length for all NIST P curves.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-p256CompressedLength"><i>	<span class="nodocs"><a href="../../../use/crypto/internal/nistec..p256CompressedLength^114dd.html">const</a> <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-73">p256CompressedLength</a> = 33</span></i></div><div class="anchor value-res hidden" id="name-p256ElementLength"><i>	<span class="nodocs"><a href="../../../use/crypto/internal/nistec..p256ElementLength^e891e.html">const</a> <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-71">p256ElementLength</a> = 32</span></i></div><div class="anchor value-res hidden" id="name-p256UncompressedLength"><i>	<span class="nodocs"><a href="../../../use/crypto/internal/nistec..p256UncompressedLength^4057c.html">const</a> <a href="../../../src/crypto/internal/nistec/p256_asm.go.html#line-72">p256UncompressedLength</a> = 65</span></i></div><div class="anchor value-res hidden" id="name-p384ElementLength"><i>	<input type='checkbox' class="fold" id="p384ElementLength-fold-content"><label for="p384ElementLength-fold-content"><a href="../../../use/crypto/internal/nistec..p384ElementLength^285a3.html">const</a> <a href="../../../src/crypto/internal/nistec/p384.go.html#line-18">p384ElementLength</a> = 48</label><span id='p384ElementLength-fold-content-docs' class="fold-docs">
+<span class="md-text">		p384ElementLength is the length of an element of the base or scalar field,
+		which have the same bytes length for all NIST P curves.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-p521ElementLength"><i>	<input type='checkbox' class="fold" id="p521ElementLength-fold-content"><label for="p521ElementLength-fold-content"><a href="../../../use/crypto/internal/nistec..p521ElementLength^47800.html">const</a> <a href="../../../src/crypto/internal/nistec/p521.go.html#line-18">p521ElementLength</a> = 66</label><span id='p521ElementLength-fold-content-docs' class="fold-docs">
+<span class="md-text">		p521ElementLength is the length of an element of the base or scalar field,
+		which have the same bytes length for all NIST P curves.</span>
+
+</span></i></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

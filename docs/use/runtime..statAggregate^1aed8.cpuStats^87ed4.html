@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.statAggregate.cpuStats</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/metrics.go.html#line-710">statAggregate</a>.<a href="../src/runtime/metrics.go.html#line-714">cpuStats</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">13 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/metrics.go.html#line-98">metrics.go#L98</a>: 				out.scalar = float64bits(nsToSec(in.<b>cpuStats</b>.gcAssistTime))
+		<a href="../src/runtime/metrics.go.html#line-105" class="path-duplicate">metrics.go</a><a href="../src/runtime/metrics.go.html#line-105">#L105</a>: 				out.scalar = float64bits(nsToSec(in.<b>cpuStats</b>.gcDedicatedTime))
+		<a href="../src/runtime/metrics.go.html#line-112" class="path-duplicate">metrics.go</a><a href="../src/runtime/metrics.go.html#line-112">#L112</a>: 				out.scalar = float64bits(nsToSec(in.<b>cpuStats</b>.gcIdleTime))
+		<a href="../src/runtime/metrics.go.html#line-119" class="path-duplicate">metrics.go</a><a href="../src/runtime/metrics.go.html#line-119">#L119</a>: 				out.scalar = float64bits(nsToSec(in.<b>cpuStats</b>.gcPauseTime))
+		<a href="../src/runtime/metrics.go.html#line-126" class="path-duplicate">metrics.go</a><a href="../src/runtime/metrics.go.html#line-126">#L126</a>: 				out.scalar = float64bits(nsToSec(in.<b>cpuStats</b>.gcTotalTime))
+		<a href="../src/runtime/metrics.go.html#line-133" class="path-duplicate">metrics.go</a><a href="../src/runtime/metrics.go.html#line-133">#L133</a>: 				out.scalar = float64bits(nsToSec(in.<b>cpuStats</b>.idleTime))
+		<a href="../src/runtime/metrics.go.html#line-140" class="path-duplicate">metrics.go</a><a href="../src/runtime/metrics.go.html#line-140">#L140</a>: 				out.scalar = float64bits(nsToSec(in.<b>cpuStats</b>.scavengeAssistTime))
+		<a href="../src/runtime/metrics.go.html#line-147" class="path-duplicate">metrics.go</a><a href="../src/runtime/metrics.go.html#line-147">#L147</a>: 				out.scalar = float64bits(nsToSec(in.<b>cpuStats</b>.scavengeBgTime))
+		<a href="../src/runtime/metrics.go.html#line-154" class="path-duplicate">metrics.go</a><a href="../src/runtime/metrics.go.html#line-154">#L154</a>: 				out.scalar = float64bits(nsToSec(in.<b>cpuStats</b>.scavengeTotalTime))
+		<a href="../src/runtime/metrics.go.html#line-161" class="path-duplicate">metrics.go</a><a href="../src/runtime/metrics.go.html#line-161">#L161</a>: 				out.scalar = float64bits(nsToSec(in.<b>cpuStats</b>.totalTime))
+		<a href="../src/runtime/metrics.go.html#line-168" class="path-duplicate">metrics.go</a><a href="../src/runtime/metrics.go.html#line-168">#L168</a>: 				out.scalar = float64bits(nsToSec(in.<b>cpuStats</b>.userTime))
+		<a href="../src/runtime/metrics.go.html#line-714" class="path-duplicate">metrics.go</a><a href="../src/runtime/metrics.go.html#line-714">#L714</a>: 	<b>cpuStats</b>  cpuStatsAggregate
+		<a href="../src/runtime/metrics.go.html#line-735" class="path-duplicate">metrics.go</a><a href="../src/runtime/metrics.go.html#line-735">#L735</a>: 			a.<b>cpuStats</b>.compute()
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

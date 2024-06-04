@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: regexp/syntax.Regexp.Min</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/regexp/syntax.html">regexp/syntax</a>.<a href="../../src/regexp/syntax/regexp.go.html#line-17">Regexp</a>.<a href="../../src/regexp/syntax/regexp.go.html#line-24">Min</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">22 uses</span>
+
+	regexp/syntax (current package)
+		<a href="../../src/regexp/syntax/parse.go.html#line-182">parse.go#L182</a>: 				n = re.<b>Min</b>
+		<a href="../../src/regexp/syntax/parse.go.html#line-241" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-241">#L241</a>: 			if re.<b>Min</b> == 0 {
+		<a href="../../src/regexp/syntax/parse.go.html#line-244" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-244">#L244</a>: 				size = 1 + int64(re.<b>Min</b>)*sub // xxx+
+		<a href="../../src/regexp/syntax/parse.go.html#line-249" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-249">#L249</a>: 		size = int64(re.Max)*sub + int64(re.Max-re.<b>Min</b>)
+		<a href="../../src/regexp/syntax/parse.go.html#line-429" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-429">#L429</a>: 	re.<b>Min</b> = min
+		<a href="../../src/regexp/syntax/parse.go.html#line-460" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-460">#L460</a>: 			m = re.<b>Min</b>
+		<a href="../../src/regexp/syntax/parse.go.html#line-681" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-681">#L681</a>: 				(isCharClass(first) || (first.Op == OpRepeat &amp;&amp; first.<b>Min</b> == first.Max &amp;&amp; isCharClass(first.Sub[0]))) {
+		<a href="../../src/regexp/syntax/regexp.go.html#line-24">regexp.go#L24</a>: 	<b>Min</b>, Max int        // min, max for OpRepeat
+		<a href="../../src/regexp/syntax/regexp.go.html#line-103" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-103">#L103</a>: 		if x.Flags&amp;NonGreedy != y.Flags&amp;NonGreedy || x.<b>Min</b> != y.<b>Min</b> || x.Max != y.Max || !x.Sub[0].Equal(y.Sub[0]) {
+		<a href="../../src/regexp/syntax/regexp.go.html#line-367" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-367">#L367</a>: 			b.WriteString(strconv.Itoa(re.<b>Min</b>))
+		<a href="../../src/regexp/syntax/regexp.go.html#line-368" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-368">#L368</a>: 			if re.Max != re.<b>Min</b> {
+		<a href="../../src/regexp/syntax/simplify.go.html#line-44">simplify.go#L44</a>: 		if re.<b>Min</b> == 0 &amp;&amp; re.Max == 0 {
+		<a href="../../src/regexp/syntax/simplify.go.html#line-54" class="path-duplicate">simplify.go</a><a href="../../src/regexp/syntax/simplify.go.html#line-54">#L54</a>: 			if re.<b>Min</b> == 0 {
+		<a href="../../src/regexp/syntax/simplify.go.html#line-59" class="path-duplicate">simplify.go</a><a href="../../src/regexp/syntax/simplify.go.html#line-59">#L59</a>: 			if re.<b>Min</b> == 1 {
+		<a href="../../src/regexp/syntax/simplify.go.html#line-66" class="path-duplicate">simplify.go</a><a href="../../src/regexp/syntax/simplify.go.html#line-66">#L66</a>: 			for i := 0; i &lt; re.<b>Min</b>-1; i++ {
+		<a href="../../src/regexp/syntax/simplify.go.html#line-76" class="path-duplicate">simplify.go</a><a href="../../src/regexp/syntax/simplify.go.html#line-76">#L76</a>: 		if re.<b>Min</b> == 1 &amp;&amp; re.Max == 1 {
+		<a href="../../src/regexp/syntax/simplify.go.html#line-86" class="path-duplicate">simplify.go</a><a href="../../src/regexp/syntax/simplify.go.html#line-86">#L86</a>: 		if re.<b>Min</b> &gt; 0 {
+		<a href="../../src/regexp/syntax/simplify.go.html#line-89" class="path-duplicate">simplify.go</a><a href="../../src/regexp/syntax/simplify.go.html#line-89">#L89</a>: 			for i := 0; i &lt; re.<b>Min</b>; i++ {
+		<a href="../../src/regexp/syntax/simplify.go.html#line-95" class="path-duplicate">simplify.go</a><a href="../../src/regexp/syntax/simplify.go.html#line-95">#L95</a>: 		if re.Max &gt; re.<b>Min</b> {
+		<a href="../../src/regexp/syntax/simplify.go.html#line-97" class="path-duplicate">simplify.go</a><a href="../../src/regexp/syntax/simplify.go.html#line-97">#L97</a>: 			for i := re.<b>Min</b> + 1; i &lt; re.Max; i++ {
+
+	<a href="../../pkg/regexp.html">regexp</a>
+		<a href="../../src/regexp/regexp.go.html#line-291">regexp.go#L291</a>: 		return re.<b>Min</b> * minInputLen(re.Sub[0])
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

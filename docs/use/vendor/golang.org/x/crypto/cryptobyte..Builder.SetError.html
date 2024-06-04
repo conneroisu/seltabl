@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: vendor/golang.org/x/crypto/cryptobyte.Builder.SetError</title>
+<link href="../../../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../../../../pkg/vendor/golang.org/x/crypto/cryptobyte.html">vendor/golang.org/x/crypto/cryptobyte</a>.<a href="../../../../../src/vendor/golang.org/x/crypto/cryptobyte/builder.go.html#line-23">Builder</a>.<a href="../../../../../src/vendor/golang.org/x/crypto/cryptobyte/builder.go.html#line-55">SetError</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">4 uses</span>
+
+	vendor/golang.org/x/crypto/cryptobyte (current package)
+		<a href="../../../../../src/vendor/golang.org/x/crypto/cryptobyte/builder.go.html#line-55">builder.go#L55</a>: func (b *Builder) <b>SetError</b>(err error) {
+
+	<a href="../../../../../pkg/crypto/ecdsa.html">crypto/ecdsa</a>
+		<a href="../../../../../src/crypto/ecdsa/ecdsa.go.html#line-354">ecdsa.go#L354</a>: 		b.<b>SetError</b>(errors.New("invalid integer"))
+
+	<a href="../../../../../pkg/crypto/tls.html">crypto/tls</a>
+		<a href="../../../../../src/crypto/tls/ticket.go.html#line-147">ticket.go#L147</a>: 					b.<b>SetError</b>(errors.New("tls: internal error: empty verified chain"))
+
+	<a href="../../../../../pkg/crypto/x509.html">crypto/x509</a>
+		<a href="../../../../../src/crypto/x509/x509.go.html#line-1391">x509.go#L1391</a>: 							child.<b>SetError</b>(errors.New("invalid policy object identifier"))
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

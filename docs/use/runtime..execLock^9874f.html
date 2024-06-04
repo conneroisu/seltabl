@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.execLock</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">var <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/proc.go.html#line-2593">execLock</a></b></span>
+
+<span class="title">10 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/proc.go.html#line-763">proc.go#L763</a>: 	<b>execLock</b>.init(lockRankExecR, lockRankExecRInternal, lockRankExecW)
+		<a href="../src/runtime/proc.go.html#line-2593" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-2593">#L2593</a>: 	<b>execLock</b> rwmutex
+		<a href="../src/runtime/proc.go.html#line-2695" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-2695">#L2695</a>: 		<b>execLock</b>.rlock() // Prevent process clone.
+		<a href="../src/runtime/proc.go.html#line-2697" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-2697">#L2697</a>: 		<b>execLock</b>.runlock()
+		<a href="../src/runtime/proc.go.html#line-2700" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-2700">#L2700</a>: 	<b>execLock</b>.rlock() // Prevent process clone.
+		<a href="../src/runtime/proc.go.html#line-2702" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-2702">#L2702</a>: 	<b>execLock</b>.runlock()
+		<a href="../src/runtime/proc.go.html#line-4836" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4836">#L4836</a>: 	<b>execLock</b>.lock()
+		<a href="../src/runtime/proc.go.html#line-4851" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4851">#L4851</a>: 	<b>execLock</b>.unlock()
+		<a href="../src/runtime/signal_unix.go.html#line-372">signal_unix.go#L372</a>: 		<b>execLock</b>.rlock()
+		<a href="../src/runtime/signal_unix.go.html#line-389" class="path-duplicate">signal_unix.go</a><a href="../src/runtime/signal_unix.go.html#line-389">#L389</a>: 		<b>execLock</b>.runlock()
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

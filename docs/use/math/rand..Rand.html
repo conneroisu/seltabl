@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: math/rand.Rand</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../pkg/math/rand.html">math/rand</a>.<a href="../../src/math/rand/rand.go.html#line-62">Rand</a></b></span>
+
+<span class="title">28 uses</span>
+
+	math/rand (current package)
+		<a href="../../src/math/rand/exp.go.html#line-30">exp.go#L30</a>: func (r *<b>Rand</b>) ExpFloat64() float64 {
+		<a href="../../src/math/rand/normal.go.html#line-37">normal.go#L37</a>: func (r *<b>Rand</b>) NormFloat64() float64 {
+		<a href="../../src/math/rand/rand.go.html#line-62">rand.go#L62</a>: type <b>Rand</b> struct {
+		<a href="../../src/math/rand/rand.go.html#line-78" class="path-duplicate">rand.go</a><a href="../../src/math/rand/rand.go.html#line-78">#L78</a>: func New(src Source) *<b>Rand</b> {
+		<a href="../../src/math/rand/rand.go.html#line-80" class="path-duplicate">rand.go</a><a href="../../src/math/rand/rand.go.html#line-80">#L80</a>: 	return &amp;<b>Rand</b>{src: src, s64: s64}
+		<a href="../../src/math/rand/rand.go.html#line-85" class="path-duplicate">rand.go</a><a href="../../src/math/rand/rand.go.html#line-85">#L85</a>: func (r *<b>Rand</b>) Seed(seed int64) {
+		<a href="../../src/math/rand/rand.go.html#line-96" class="path-duplicate">rand.go</a><a href="../../src/math/rand/rand.go.html#line-96">#L96</a>: func (r *<b>Rand</b>) Int63() int64 { return r.src.Int63() }
+		<a href="../../src/math/rand/rand.go.html#line-99" class="path-duplicate">rand.go</a><a href="../../src/math/rand/rand.go.html#line-99">#L99</a>: func (r *<b>Rand</b>) Uint32() uint32 { return uint32(r.Int63() &gt;&gt; 31) }
+		<a href="../../src/math/rand/rand.go.html#line-102" class="path-duplicate">rand.go</a><a href="../../src/math/rand/rand.go.html#line-102">#L102</a>: func (r *<b>Rand</b>) Uint64() uint64 {
+		<a href="../../src/math/rand/rand.go.html#line-110" class="path-duplicate">rand.go</a><a href="../../src/math/rand/rand.go.html#line-110">#L110</a>: func (r *<b>Rand</b>) Int31() int32 { return int32(r.Int63() &gt;&gt; 32) }
+		<a href="../../src/math/rand/rand.go.html#line-113" class="path-duplicate">rand.go</a><a href="../../src/math/rand/rand.go.html#line-113">#L113</a>: func (r *<b>Rand</b>) Int() int {
+		<a href="../../src/math/rand/rand.go.html#line-120" class="path-duplicate">rand.go</a><a href="../../src/math/rand/rand.go.html#line-120">#L120</a>: func (r *<b>Rand</b>) Int63n(n int64) int64 {
+		<a href="../../src/math/rand/rand.go.html#line-137" class="path-duplicate">rand.go</a><a href="../../src/math/rand/rand.go.html#line-137">#L137</a>: func (r *<b>Rand</b>) Int31n(n int32) int32 {
+		<a href="../../src/math/rand/rand.go.html#line-161" class="path-duplicate">rand.go</a><a href="../../src/math/rand/rand.go.html#line-161">#L161</a>: func (r *<b>Rand</b>) int31n(n int32) int32 {
+		<a href="../../src/math/rand/rand.go.html#line-178" class="path-duplicate">rand.go</a><a href="../../src/math/rand/rand.go.html#line-178">#L178</a>: func (r *<b>Rand</b>) Intn(n int) int {
+		<a href="../../src/math/rand/rand.go.html#line-189" class="path-duplicate">rand.go</a><a href="../../src/math/rand/rand.go.html#line-189">#L189</a>: func (r *<b>Rand</b>) Float64() float64 {
+		<a href="../../src/math/rand/rand.go.html#line-215" class="path-duplicate">rand.go</a><a href="../../src/math/rand/rand.go.html#line-215">#L215</a>: func (r *<b>Rand</b>) Float32() float32 {
+		<a href="../../src/math/rand/rand.go.html#line-229" class="path-duplicate">rand.go</a><a href="../../src/math/rand/rand.go.html#line-229">#L229</a>: func (r *<b>Rand</b>) Perm(n int) []int {
+		<a href="../../src/math/rand/rand.go.html#line-247" class="path-duplicate">rand.go</a><a href="../../src/math/rand/rand.go.html#line-247">#L247</a>: func (r *<b>Rand</b>) Shuffle(n int, swap func(i, j int)) {
+		<a href="../../src/math/rand/rand.go.html#line-272" class="path-duplicate">rand.go</a><a href="../../src/math/rand/rand.go.html#line-272">#L272</a>: func (r *<b>Rand</b>) Read(p []byte) (n int, err error) {
+		<a href="../../src/math/rand/rand.go.html#line-312" class="path-duplicate">rand.go</a><a href="../../src/math/rand/rand.go.html#line-312">#L312</a>: var globalRandGenerator atomic.Pointer[<b>Rand</b>]
+		<a href="../../src/math/rand/rand.go.html#line-318" class="path-duplicate">rand.go</a><a href="../../src/math/rand/rand.go.html#line-318">#L318</a>: func globalRand() *<b>Rand</b> {
+		<a href="../../src/math/rand/rand.go.html#line-324" class="path-duplicate">rand.go</a><a href="../../src/math/rand/rand.go.html#line-324">#L324</a>: 	var r *<b>Rand</b>
+		<a href="../../src/math/rand/rand.go.html#line-330" class="path-duplicate">rand.go</a><a href="../../src/math/rand/rand.go.html#line-330">#L330</a>: 		r = &amp;<b>Rand</b>{
+		<a href="../../src/math/rand/zipf.go.html#line-16">zipf.go#L16</a>: 	r            *<b>Rand</b>
+		<a href="../../src/math/rand/zipf.go.html#line-39" class="path-duplicate">zipf.go</a><a href="../../src/math/rand/zipf.go.html#line-39">#L39</a>: func NewZipf(r *<b>Rand</b>, s float64, v float64, imax uint64) *Zipf {
+
+	<a href="../../pkg/math/big.html">math/big</a>
+		<a href="../../src/math/big/int.go.html#line-886">int.go#L886</a>: func (z *Int) Rand(rnd *rand.<b>Rand</b>, n *Int) *Int {
+		<a href="../../src/math/big/nat.go.html#line-903">nat.go#L903</a>: func (z nat) random(rand *rand.<b>Rand</b>, limit nat, n int) nat {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

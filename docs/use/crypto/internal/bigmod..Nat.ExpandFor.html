@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/internal/bigmod.Nat.ExpandFor</title>
+<link href="../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../../pkg/crypto/internal/bigmod.html">crypto/internal/bigmod</a>.<a href="../../../src/crypto/internal/bigmod/nat.go.html#line-56">Nat</a>.<a href="../../../src/crypto/internal/bigmod/nat.go.html#line-502">ExpandFor</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">6 uses</span>
+
+	crypto/internal/bigmod (current package)
+		<a href="../../../src/crypto/internal/bigmod/nat.go.html#line-320">nat.go#L320</a>: 	rr := NewNat().<b>ExpandFor</b>(m)
+		<a href="../../../src/crypto/internal/bigmod/nat.go.html#line-502" class="path-duplicate">nat.go</a><a href="../../../src/crypto/internal/bigmod/nat.go.html#line-502">#L502</a>: func (x *Nat) <b>ExpandFor</b>(m *Modulus) *Nat {
+		<a href="../../../src/crypto/internal/bigmod/nat.go.html#line-575" class="path-duplicate">nat.go</a><a href="../../../src/crypto/internal/bigmod/nat.go.html#line-575">#L575</a>: 	one := NewNat().<b>ExpandFor</b>(m)
+		<a href="../../../src/crypto/internal/bigmod/nat.go.html#line-757" class="path-duplicate">nat.go</a><a href="../../../src/crypto/internal/bigmod/nat.go.html#line-757">#L757</a>: 	tmp := NewNat().<b>ExpandFor</b>(m)
+
+	<a href="../../../pkg/crypto/rsa.html">crypto/rsa</a>
+		<a href="../../../src/crypto/rsa/rsa.go.html#line-683">rsa.go#L683</a>: 		m.<b>ExpandFor</b>(N).Mul(t0.Mod(Q.Nat(), N), N)
+		<a href="../../../src/crypto/rsa/rsa.go.html#line-685" class="path-duplicate">rsa.go</a><a href="../../../src/crypto/rsa/rsa.go.html#line-685">#L685</a>: 		m.Add(m2.<b>ExpandFor</b>(N), N)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

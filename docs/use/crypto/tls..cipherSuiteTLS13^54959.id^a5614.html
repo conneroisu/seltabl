@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/tls.cipherSuiteTLS13.id</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/crypto/tls.html">crypto/tls</a>.<a href="../../src/crypto/tls/cipher_suites.go.html#line-193">cipherSuiteTLS13</a>.<a href="../../src/crypto/tls/cipher_suites.go.html#line-194">id</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">14 uses</span>
+
+	crypto/tls (current package)
+		<a href="../../src/crypto/tls/cipher_suites.go.html#line-194">cipher_suites.go#L194</a>: 	<b>id</b>     uint16
+		<a href="../../src/crypto/tls/cipher_suites.go.html#line-669" class="path-duplicate">cipher_suites.go</a><a href="../../src/crypto/tls/cipher_suites.go.html#line-669">#L669</a>: 		if cipherSuite.<b>id</b> == id {
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-219">handshake_client.go#L219</a>: 		c.quicSetWriteSecret(QUICEncryptionLevelEarly, suite.<b>id</b>, earlyTrafficSecret)
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-168">handshake_client_tls13.go#L168</a>: 	c.cipherSuite = hs.suite.<b>id</b>
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-405" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-405">#L405</a>: 		c.quicSetWriteSecret(QUICEncryptionLevelHandshake, hs.suite.<b>id</b>, clientSecret)
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-406" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-406">#L406</a>: 		c.quicSetReadSecret(QUICEncryptionLevelHandshake, hs.suite.<b>id</b>, serverSecret)
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-716" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-716">#L716</a>: 		c.quicSetWriteSecret(QUICEncryptionLevelApplication, hs.suite.<b>id</b>, hs.trafficSecret)
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-176">handshake_server_tls13.go#L176</a>: 	c.cipherSuite = hs.suite.<b>id</b>
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-177" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-177">#L177</a>: 	hs.hello.cipherSuite = hs.suite.<b>id</b>
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-374" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-374">#L374</a>: 			sessionState.EarlyData &amp;&amp; sessionState.cipherSuite == hs.suite.<b>id</b> &amp;&amp;
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-383" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-383">#L383</a>: 			c.quicSetReadSecret(QUICEncryptionLevelEarly, hs.suite.<b>id</b>, earlyTrafficSecret)
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-629" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-629">#L629</a>: 		c.quicSetWriteSecret(QUICEncryptionLevelHandshake, hs.suite.<b>id</b>, serverSecret)
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-630" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-630">#L630</a>: 		c.quicSetReadSecret(QUICEncryptionLevelHandshake, hs.suite.<b>id</b>, clientSecret)
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-761" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-761">#L761</a>: 		c.quicSetWriteSecret(QUICEncryptionLevelApplication, hs.suite.<b>id</b>, serverSecret)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/http.http2Framer.wbuf</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/net/http.html">net/http</a>.<a href="../../src/net/http/h2_bundle.go.html#line-1666">http2Framer</a>.<a href="../../src/net/http/h2_bundle.go.html#line-1692">wbuf</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">32 uses</span>
+
+	net/http (current package)
+		<a href="../../src/net/http/h2_bundle.go.html#line-1692">h2_bundle.go#L1692</a>: 	<b>wbuf</b> []byte
+		<a href="../../src/net/http/h2_bundle.go.html#line-1745" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1745">#L1745</a>: 	f.<b>wbuf</b> = append(f.<b>wbuf</b>[:0],
+		<a href="../../src/net/http/h2_bundle.go.html#line-1760" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1760">#L1760</a>: 	length := len(f.<b>wbuf</b>) - http2frameHeaderLen
+		<a href="../../src/net/http/h2_bundle.go.html#line-1764" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1764">#L1764</a>: 	_ = append(f.<b>wbuf</b>[:0],
+		<a href="../../src/net/http/h2_bundle.go.html#line-1772" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1772">#L1772</a>: 	n, err := f.w.Write(f.<b>wbuf</b>)
+		<a href="../../src/net/http/h2_bundle.go.html#line-1773" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1773">#L1773</a>: 	if err == nil &amp;&amp; n != len(f.<b>wbuf</b>) {
+		<a href="../../src/net/http/h2_bundle.go.html#line-1788" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1788">#L1788</a>: 	f.debugFramerBuf.Write(f.<b>wbuf</b>)
+		<a href="../../src/net/http/h2_bundle.go.html#line-1797" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1797">#L1797</a>: func (f *http2Framer) writeByte(v byte) { f.<b>wbuf</b> = append(f.<b>wbuf</b>, v) }
+		<a href="../../src/net/http/h2_bundle.go.html#line-1799" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1799">#L1799</a>: func (f *http2Framer) writeBytes(v []byte) { f.<b>wbuf</b> = append(f.<b>wbuf</b>, v...) }
+		<a href="../../src/net/http/h2_bundle.go.html#line-1801" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1801">#L1801</a>: func (f *http2Framer) writeUint16(v uint16) { f.<b>wbuf</b> = append(f.<b>wbuf</b>, byte(v&gt;&gt;8), byte(v)) }
+		<a href="../../src/net/http/h2_bundle.go.html#line-1804" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1804">#L1804</a>: 	f.<b>wbuf</b> = append(f.<b>wbuf</b>, byte(v&gt;&gt;24), byte(v&gt;&gt;16), byte(v&gt;&gt;8), byte(v))
+		<a href="../../src/net/http/h2_bundle.go.html#line-2106" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2106">#L2106</a>: 		f.<b>wbuf</b> = append(f.<b>wbuf</b>, byte(len(pad)))
+		<a href="../../src/net/http/h2_bundle.go.html#line-2108" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2108">#L2108</a>: 	f.<b>wbuf</b> = append(f.<b>wbuf</b>, data...)
+		<a href="../../src/net/http/h2_bundle.go.html#line-2109" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2109">#L2109</a>: 	f.<b>wbuf</b> = append(f.<b>wbuf</b>, pad...)
+		<a href="../../src/net/http/h2_bundle.go.html#line-2536" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2536">#L2536</a>: 	f.<b>wbuf</b> = append(f.<b>wbuf</b>, p.BlockFragment...)
+		<a href="../../src/net/http/h2_bundle.go.html#line-2537" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2537">#L2537</a>: 	f.<b>wbuf</b> = append(f.<b>wbuf</b>, http2padZeros[:p.PadLength]...)
+		<a href="../../src/net/http/h2_bundle.go.html#line-2680" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2680">#L2680</a>: 	f.<b>wbuf</b> = append(f.<b>wbuf</b>, headerBlockFragment...)
+		<a href="../../src/net/http/h2_bundle.go.html#line-2789" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2789">#L2789</a>: 	f.<b>wbuf</b> = append(f.<b>wbuf</b>, p.BlockFragment...)
+		<a href="../../src/net/http/h2_bundle.go.html#line-2790" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2790">#L2790</a>: 	f.<b>wbuf</b> = append(f.<b>wbuf</b>, http2padZeros[:p.PadLength]...)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

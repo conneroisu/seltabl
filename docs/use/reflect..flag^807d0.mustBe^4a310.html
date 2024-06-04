@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: reflect.flag.mustBe</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/reflect.html">reflect</a>.<a href="../src/reflect/value.go.html#line-71">flag</a>.<a href="../src/reflect/value.go.html#line-230">mustBe</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">34 uses</span>
+
+	reflect (current package)
+		<a href="../src/reflect/value.go.html#line-230">value.go#L230</a>: func (f flag) <b>mustBe</b>(expected Kind) {
+		<a href="../src/reflect/value.go.html#line-302" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-302">#L302</a>: 	v.<b>mustBe</b>(Bool)
+		<a href="../src/reflect/value.go.html#line-343" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-343">#L343</a>: 	v.<b>mustBe</b>(Slice)
+		<a href="../src/reflect/value.go.html#line-378" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-378">#L378</a>: 	v.<b>mustBe</b>(Func)
+		<a href="../src/reflect/value.go.html#line-391" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-391">#L391</a>: 	v.<b>mustBe</b>(Func)
+		<a href="../src/reflect/value.go.html#line-1193" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1193">#L1193</a>: 	v.<b>mustBe</b>(Chan)
+		<a href="../src/reflect/value.go.html#line-1319" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1319">#L1319</a>: 	v.<b>mustBe</b>(Struct)
+		<a href="../src/reflect/value.go.html#line-1342" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1342">#L1342</a>: 	v.<b>mustBe</b>(Struct)
+		<a href="../src/reflect/value.go.html#line-1361" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1361">#L1361</a>: 	v.<b>mustBe</b>(Struct)
+		<a href="../src/reflect/value.go.html#line-1539" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1539">#L1539</a>: 	v.<b>mustBe</b>(Interface)
+		<a href="../src/reflect/value.go.html#line-1805" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1805">#L1805</a>: 	v.<b>mustBe</b>(Map)
+		<a href="../src/reflect/value.go.html#line-1844" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1844">#L1844</a>: 	v.<b>mustBe</b>(Map)
+		<a href="../src/reflect/value.go.html#line-2016" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2016">#L2016</a>: 		v.<b>mustBe</b>(Map)
+		<a href="../src/reflect/value.go.html#line-2054" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2054">#L2054</a>: 	f.<b>mustBe</b>(Map)
+		<a href="../src/reflect/value.go.html#line-2127" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2127">#L2127</a>: 	v.<b>mustBe</b>(Struct)
+		<a href="../src/reflect/value.go.html#line-2258" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2258">#L2258</a>: 	v.<b>mustBe</b>(Chan)
+		<a href="../src/reflect/value.go.html#line-2291" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2291">#L2291</a>: 	v.<b>mustBe</b>(Chan)
+		<a href="../src/reflect/value.go.html#line-2341" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2341">#L2341</a>: 	v.<b>mustBe</b>(Bool)
+		<a href="../src/reflect/value.go.html#line-2349" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2349">#L2349</a>: 	v.<b>mustBe</b>(Slice)
+		<a href="../src/reflect/value.go.html#line-2360" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2360">#L2360</a>: 	v.<b>mustBe</b>(Slice)
+		<a href="../src/reflect/value.go.html#line-2420" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2420">#L2420</a>: 	v.<b>mustBe</b>(Slice)
+		<a href="../src/reflect/value.go.html#line-2433" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2433">#L2433</a>: 	v.<b>mustBe</b>(Slice)
+		<a href="../src/reflect/value.go.html#line-2448" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2448">#L2448</a>: 	v.<b>mustBe</b>(Map)
+		<a href="../src/reflect/value.go.html#line-2519" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2519">#L2519</a>: 	v.<b>mustBe</b>(UnsafePointer)
+		<a href="../src/reflect/value.go.html#line-2527" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2527">#L2527</a>: 	v.<b>mustBe</b>(String)
+		<a href="../src/reflect/value.go.html#line-2674" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2674">#L2674</a>: 	v.<b>mustBe</b>(Chan)
+		<a href="../src/reflect/value.go.html#line-2684" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2684">#L2684</a>: 	v.<b>mustBe</b>(Chan)
+		<a href="../src/reflect/value.go.html#line-2884" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2884">#L2884</a>: 	v.<b>mustBe</b>(Slice)
+		<a href="../src/reflect/value.go.html#line-2910" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2910">#L2910</a>: 	v.<b>mustBe</b>(Slice)
+		<a href="../src/reflect/value.go.html#line-2942" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2942">#L2942</a>: 	s.<b>mustBe</b>(Slice)
+		<a href="../src/reflect/value.go.html#line-2954" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2954">#L2954</a>: 	s.<b>mustBe</b>(Slice)
+		<a href="../src/reflect/value.go.html#line-2955" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2955">#L2955</a>: 	t.<b>mustBe</b>(Slice)
+		<a href="../src/reflect/value.go.html#line-3126" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3126">#L3126</a>: 			ch.<b>mustBe</b>(Chan)
+		<a href="../src/reflect/value.go.html#line-3157" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3157">#L3157</a>: 			ch.<b>mustBe</b>(Chan)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

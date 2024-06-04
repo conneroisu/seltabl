@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/http.ServeMux</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../pkg/net/http.html">net/http</a>.<a href="../../src/net/http/server.go.html#line-2432">ServeMux</a></b></span>
+
+<span class="title">13 uses</span>
+
+	net/http (current package)
+		<a href="../../src/net/http/server.go.html#line-2432">server.go#L2432</a>: type <b>ServeMux</b> struct {
+		<a href="../../src/net/http/server.go.html#line-2441" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-2441">#L2441</a>: func NewServeMux() *<b>ServeMux</b> {
+		<a href="../../src/net/http/server.go.html#line-2442" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-2442">#L2442</a>: 	return &amp;<b>ServeMux</b>{}
+		<a href="../../src/net/http/server.go.html#line-2448" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-2448">#L2448</a>: var defaultServeMux <b>ServeMux</b>
+		<a href="../../src/net/http/server.go.html#line-2500" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-2500">#L2500</a>: func (mux *<b>ServeMux</b>) Handler(r *Request) (h Handler, pattern string) {
+		<a href="../../src/net/http/server.go.html#line-2512" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-2512">#L2512</a>: func (mux *<b>ServeMux</b>) findHandler(r *Request) (h Handler, patStr string, _ *pattern, matches []string) {
+		<a href="../../src/net/http/server.go.html#line-2574" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-2574">#L2574</a>: func (mux *<b>ServeMux</b>) matchOrRedirect(host, method, path string, u *url.URL) (_ *routingNode, matches []string, redirectTo *url.URL) {
+		<a href="../../src/net/http/server.go.html#line-2644" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-2644">#L2644</a>: func (mux *<b>ServeMux</b>) matchingMethods(host, path string) []string {
+		<a href="../../src/net/http/server.go.html#line-2669" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-2669">#L2669</a>: func (mux *<b>ServeMux</b>) ServeHTTP(w ResponseWriter, r *Request) {
+		<a href="../../src/net/http/server.go.html#line-2692" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-2692">#L2692</a>: func (mux *<b>ServeMux</b>) Handle(pattern string, handler Handler) {
+		<a href="../../src/net/http/server.go.html#line-2703" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-2703">#L2703</a>: func (mux *<b>ServeMux</b>) HandleFunc(pattern string, handler func(ResponseWriter, *Request)) {
+		<a href="../../src/net/http/server.go.html#line-2731" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-2731">#L2731</a>: func (mux *<b>ServeMux</b>) register(pattern string, handler Handler) {
+		<a href="../../src/net/http/server.go.html#line-2737" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-2737">#L2737</a>: func (mux *<b>ServeMux</b>) registerErr(patstr string, handler Handler) error {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.cpuStats.gcTotalTime</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/mstats.go.html#line-902">cpuStats</a>.<a href="../src/runtime/mstats.go.html#line-912">gcTotalTime</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">7 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/metrics.go.html#line-126">metrics.go#L126</a>: 				out.scalar = float64bits(nsToSec(in.cpuStats.<b>gcTotalTime</b>))
+		<a href="../src/runtime/mgc.go.html#line-753">mgc.go#L753</a>: 		work.cpuStats.<b>gcTotalTime</b> += sweepTermCpu
+		<a href="../src/runtime/mgc.go.html#line-1023" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1023">#L1023</a>: 	work.cpuStats.<b>gcTotalTime</b> += markTermCpu
+		<a href="../src/runtime/mgc.go.html#line-1032" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1032">#L1032</a>: 	memstats.gc_cpu_fraction = float64(work.cpuStats.<b>gcTotalTime</b>-work.cpuStats.gcIdleTime) / float64(work.cpuStats.totalTime)
+		<a href="../src/runtime/mstats.go.html#line-912">mstats.go#L912</a>: 	<b>gcTotalTime</b>     int64
+		<a href="../src/runtime/mstats.go.html#line-957" class="path-duplicate">mstats.go</a><a href="../src/runtime/mstats.go.html#line-957">#L957</a>: 	s.<b>gcTotalTime</b> += markAssistCpu + markDedicatedCpu + markFractionalCpu + markIdleCpu
+		<a href="../src/runtime/mstats.go.html#line-976" class="path-duplicate">mstats.go</a><a href="../src/runtime/mstats.go.html#line-976">#L976</a>: 	s.userTime = s.totalTime - (s.<b>gcTotalTime</b> + s.scavengeTotalTime + s.idleTime)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

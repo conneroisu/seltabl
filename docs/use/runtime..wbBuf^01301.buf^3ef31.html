@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.wbBuf.buf</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/mwbbuf.go.html#line-42">wbBuf</a>.<a href="../src/runtime/mwbbuf.go.html#line-57">buf</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">11 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/mwbbuf.go.html#line-57">mwbbuf.go#L57</a>: 	<b>buf</b> [wbBufEntries]uintptr
+		<a href="../src/runtime/mwbbuf.go.html#line-79" class="path-duplicate">mwbbuf.go</a><a href="../src/runtime/mwbbuf.go.html#line-79">#L79</a>: 	start := uintptr(unsafe.Pointer(&amp;b.<b>buf</b>[0]))
+		<a href="../src/runtime/mwbbuf.go.html#line-85" class="path-duplicate">mwbbuf.go</a><a href="../src/runtime/mwbbuf.go.html#line-85">#L85</a>: 		b.end = uintptr(unsafe.Pointer(&amp;b.<b>buf</b>[wbMaxEntriesPerCall+1]))
+		<a href="../src/runtime/mwbbuf.go.html#line-87" class="path-duplicate">mwbbuf.go</a><a href="../src/runtime/mwbbuf.go.html#line-87">#L87</a>: 		b.end = start + uintptr(len(b.<b>buf</b>))*unsafe.Sizeof(b.<b>buf</b>[0])
+		<a href="../src/runtime/mwbbuf.go.html#line-90" class="path-duplicate">mwbbuf.go</a><a href="../src/runtime/mwbbuf.go.html#line-90">#L90</a>: 	if (b.end-b.next)%unsafe.Sizeof(b.<b>buf</b>[0]) != 0 {
+		<a href="../src/runtime/mwbbuf.go.html#line-101" class="path-duplicate">mwbbuf.go</a><a href="../src/runtime/mwbbuf.go.html#line-101">#L101</a>: 	b.next = uintptr(unsafe.Pointer(&amp;b.<b>buf</b>[0]))
+		<a href="../src/runtime/mwbbuf.go.html#line-106" class="path-duplicate">mwbbuf.go</a><a href="../src/runtime/mwbbuf.go.html#line-106">#L106</a>: 	return b.next == uintptr(unsafe.Pointer(&amp;b.<b>buf</b>[0]))
+		<a href="../src/runtime/mwbbuf.go.html#line-197" class="path-duplicate">mwbbuf.go</a><a href="../src/runtime/mwbbuf.go.html#line-197">#L197</a>: 	start := uintptr(unsafe.Pointer(&amp;pp.wbBuf.<b>buf</b>[0]))
+		<a href="../src/runtime/mwbbuf.go.html#line-198" class="path-duplicate">mwbbuf.go</a><a href="../src/runtime/mwbbuf.go.html#line-198">#L198</a>: 	n := (pp.wbBuf.next - start) / unsafe.Sizeof(pp.wbBuf.<b>buf</b>[0])
+		<a href="../src/runtime/mwbbuf.go.html#line-199" class="path-duplicate">mwbbuf.go</a><a href="../src/runtime/mwbbuf.go.html#line-199">#L199</a>: 	ptrs := pp.wbBuf.<b>buf</b>[:n]
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

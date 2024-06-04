@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/internal/nistec/fiat.P384Element.Square</title>
+<link href="../../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../../../pkg/crypto/internal/nistec/fiat.html">crypto/internal/nistec/fiat</a>.<a href="../../../../src/crypto/internal/nistec/fiat/p384.go.html#line-17">P384Element</a>.<a href="../../../../src/crypto/internal/nistec/fiat/p384.go.html#line-118">Square</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">48 uses</span>
+
+	crypto/internal/nistec/fiat (current package)
+		<a href="../../../../src/crypto/internal/nistec/fiat/p384.go.html#line-118">p384.go#L118</a>: func (e *P384Element) <b>Square</b>(t *P384Element) *P384Element {
+		<a href="../../../../src/crypto/internal/nistec/fiat/p384_invert.go.html#line-42">p384_invert.go#L42</a>: 	z.<b>Square</b>(x)
+		<a href="../../../../src/crypto/internal/nistec/fiat/p384_invert.go.html#line-44" class="path-duplicate">p384_invert.go</a><a href="../../../../src/crypto/internal/nistec/fiat/p384_invert.go.html#line-44">#L44</a>: 	z.<b>Square</b>(z)
+		<a href="../../../../src/crypto/internal/nistec/fiat/p384_invert.go.html#line-46" class="path-duplicate">p384_invert.go</a><a href="../../../../src/crypto/internal/nistec/fiat/p384_invert.go.html#line-46">#L46</a>: 	z.<b>Square</b>(t1)
+		<a href="../../../../src/crypto/internal/nistec/fiat/p384_invert.go.html#line-48" class="path-duplicate">p384_invert.go</a><a href="../../../../src/crypto/internal/nistec/fiat/p384_invert.go.html#line-48">#L48</a>: 		z.<b>Square</b>(z)
+		<a href="../../../../src/crypto/internal/nistec/fiat/p384_invert.go.html#line-51" class="path-duplicate">p384_invert.go</a><a href="../../../../src/crypto/internal/nistec/fiat/p384_invert.go.html#line-51">#L51</a>: 	t0.<b>Square</b>(z)
+		<a href="../../../../src/crypto/internal/nistec/fiat/p384_invert.go.html#line-53" class="path-duplicate">p384_invert.go</a><a href="../../../../src/crypto/internal/nistec/fiat/p384_invert.go.html#line-53">#L53</a>: 		t0.<b>Square</b>(t0)
+		<a href="../../../../src/crypto/internal/nistec/fiat/p384_invert.go.html#line-56" class="path-duplicate">p384_invert.go</a><a href="../../../../src/crypto/internal/nistec/fiat/p384_invert.go.html#line-56">#L56</a>: 	t2.<b>Square</b>(t0)
+		<a href="../../../../src/crypto/internal/nistec/fiat/p384_invert.go.html#line-58" class="path-duplicate">p384_invert.go</a><a href="../../../../src/crypto/internal/nistec/fiat/p384_invert.go.html#line-58">#L58</a>: 		t2.<b>Square</b>(t2)
+		<a href="../../../../src/crypto/internal/nistec/fiat/p384_invert.go.html#line-62" class="path-duplicate">p384_invert.go</a><a href="../../../../src/crypto/internal/nistec/fiat/p384_invert.go.html#line-62">#L62</a>: 		t0.<b>Square</b>(t0)
+		<a href="../../../../src/crypto/internal/nistec/fiat/p384_invert.go.html#line-65" class="path-duplicate">p384_invert.go</a><a href="../../../../src/crypto/internal/nistec/fiat/p384_invert.go.html#line-65">#L65</a>: 	t0.<b>Square</b>(z)
+		<a href="../../../../src/crypto/internal/nistec/fiat/p384_invert.go.html#line-67" class="path-duplicate">p384_invert.go</a><a href="../../../../src/crypto/internal/nistec/fiat/p384_invert.go.html#line-67">#L67</a>: 	t0.<b>Square</b>(t2)
+		<a href="../../../../src/crypto/internal/nistec/fiat/p384_invert.go.html#line-69" class="path-duplicate">p384_invert.go</a><a href="../../../../src/crypto/internal/nistec/fiat/p384_invert.go.html#line-69">#L69</a>: 	t3.<b>Square</b>(t0)
+		<a href="../../../../src/crypto/internal/nistec/fiat/p384_invert.go.html#line-71" class="path-duplicate">p384_invert.go</a><a href="../../../../src/crypto/internal/nistec/fiat/p384_invert.go.html#line-71">#L71</a>: 		t3.<b>Square</b>(t3)
+		<a href="../../../../src/crypto/internal/nistec/fiat/p384_invert.go.html#line-74" class="path-duplicate">p384_invert.go</a><a href="../../../../src/crypto/internal/nistec/fiat/p384_invert.go.html#line-74">#L74</a>: 	t3.<b>Square</b>(t2)
+		<a href="../../../../src/crypto/internal/nistec/fiat/p384_invert.go.html#line-76" class="path-duplicate">p384_invert.go</a><a href="../../../../src/crypto/internal/nistec/fiat/p384_invert.go.html#line-76">#L76</a>: 		t3.<b>Square</b>(t3)
+		<a href="../../../../src/crypto/internal/nistec/fiat/p384_invert.go.html#line-79" class="path-duplicate">p384_invert.go</a><a href="../../../../src/crypto/internal/nistec/fiat/p384_invert.go.html#line-79">#L79</a>: 	t3.<b>Square</b>(t2)
+		<a href="../../../../src/crypto/internal/nistec/fiat/p384_invert.go.html#line-81" class="path-duplicate">p384_invert.go</a><a href="../../../../src/crypto/internal/nistec/fiat/p384_invert.go.html#line-81">#L81</a>: 		t3.<b>Square</b>(t3)
+		<a href="../../../../src/crypto/internal/nistec/fiat/p384_invert.go.html#line-85" class="path-duplicate">p384_invert.go</a><a href="../../../../src/crypto/internal/nistec/fiat/p384_invert.go.html#line-85">#L85</a>: 		t2.<b>Square</b>(t2)
+		<a href="../../../../src/crypto/internal/nistec/fiat/p384_invert.go.html#line-89" class="path-duplicate">p384_invert.go</a><a href="../../../../src/crypto/internal/nistec/fiat/p384_invert.go.html#line-89">#L89</a>: 		t1.<b>Square</b>(t1)
+		<a href="../../../../src/crypto/internal/nistec/fiat/p384_invert.go.html#line-93" class="path-duplicate">p384_invert.go</a><a href="../../../../src/crypto/internal/nistec/fiat/p384_invert.go.html#line-93">#L93</a>: 		t0.<b>Square</b>(t0)
+		<a href="../../../../src/crypto/internal/nistec/fiat/p384_invert.go.html#line-97" class="path-duplicate">p384_invert.go</a><a href="../../../../src/crypto/internal/nistec/fiat/p384_invert.go.html#line-97">#L97</a>: 		z.<b>Square</b>(z)
+
+	<a href="../../../../pkg/crypto/internal/nistec.html">crypto/internal/nistec</a>
+		<a href="../../../../src/crypto/internal/nistec/p384.go.html#line-122">p384.go#L122</a>: 	y2.<b>Square</b>(x)
+		<a href="../../../../src/crypto/internal/nistec/p384.go.html#line-135" class="path-duplicate">p384.go</a><a href="../../../../src/crypto/internal/nistec/p384.go.html#line-135">#L135</a>: 	lhs := new(fiat.P384Element).<b>Square</b>(y)
+		<a href="../../../../src/crypto/internal/nistec/p384.go.html#line-274" class="path-duplicate">p384.go</a><a href="../../../../src/crypto/internal/nistec/p384.go.html#line-274">#L274</a>: 	t0 := new(fiat.P384Element).<b>Square</b>(p.x)      // t0 := X ^ 2
+		<a href="../../../../src/crypto/internal/nistec/p384.go.html#line-275" class="path-duplicate">p384.go</a><a href="../../../../src/crypto/internal/nistec/p384.go.html#line-275">#L275</a>: 	t1 := new(fiat.P384Element).<b>Square</b>(p.y)      // t1 := Y ^ 2
+		<a href="../../../../src/crypto/internal/nistec/p384.go.html#line-276" class="path-duplicate">p384.go</a><a href="../../../../src/crypto/internal/nistec/p384.go.html#line-276">#L276</a>: 	t2 := new(fiat.P384Element).<b>Square</b>(p.z)      // t2 := Z ^ 2
+		<a href="../../../../src/crypto/internal/nistec/p384.go.html#line-447" class="path-duplicate">p384.go</a><a href="../../../../src/crypto/internal/nistec/p384.go.html#line-447">#L447</a>: 	square := new(fiat.P384Element).<b>Square</b>(candidate)
+		<a href="../../../../src/crypto/internal/nistec/p384.go.html#line-484" class="path-duplicate">p384.go</a><a href="../../../../src/crypto/internal/nistec/p384.go.html#line-484">#L484</a>: 	z.<b>Square</b>(x)
+		<a href="../../../../src/crypto/internal/nistec/p384.go.html#line-486" class="path-duplicate">p384.go</a><a href="../../../../src/crypto/internal/nistec/p384.go.html#line-486">#L486</a>: 	z.<b>Square</b>(z)
+		<a href="../../../../src/crypto/internal/nistec/p384.go.html#line-488" class="path-duplicate">p384.go</a><a href="../../../../src/crypto/internal/nistec/p384.go.html#line-488">#L488</a>: 	z.<b>Square</b>(t0)
+		<a href="../../../../src/crypto/internal/nistec/p384.go.html#line-490" class="path-duplicate">p384.go</a><a href="../../../../src/crypto/internal/nistec/p384.go.html#line-490">#L490</a>: 		z.<b>Square</b>(z)
+		<a href="../../../../src/crypto/internal/nistec/p384.go.html#line-493" class="path-duplicate">p384.go</a><a href="../../../../src/crypto/internal/nistec/p384.go.html#line-493">#L493</a>: 	t2.<b>Square</b>(t1)
+		<a href="../../../../src/crypto/internal/nistec/p384.go.html#line-496" class="path-duplicate">p384.go</a><a href="../../../../src/crypto/internal/nistec/p384.go.html#line-496">#L496</a>: 		t2.<b>Square</b>(t2)
+		<a href="../../../../src/crypto/internal/nistec/p384.go.html#line-499" class="path-duplicate">p384.go</a><a href="../../../../src/crypto/internal/nistec/p384.go.html#line-499">#L499</a>: 	t2.<b>Square</b>(t1)
+		<a href="../../../../src/crypto/internal/nistec/p384.go.html#line-501" class="path-duplicate">p384.go</a><a href="../../../../src/crypto/internal/nistec/p384.go.html#line-501">#L501</a>: 		t2.<b>Square</b>(t2)
+		<a href="../../../../src/crypto/internal/nistec/p384.go.html#line-505" class="path-duplicate">p384.go</a><a href="../../../../src/crypto/internal/nistec/p384.go.html#line-505">#L505</a>: 		t1.<b>Square</b>(t1)
+		<a href="../../../../src/crypto/internal/nistec/p384.go.html#line-508" class="path-duplicate">p384.go</a><a href="../../../../src/crypto/internal/nistec/p384.go.html#line-508">#L508</a>: 	z.<b>Square</b>(t1)
+		<a href="../../../../src/crypto/internal/nistec/p384.go.html#line-510" class="path-duplicate">p384.go</a><a href="../../../../src/crypto/internal/nistec/p384.go.html#line-510">#L510</a>: 	t2.<b>Square</b>(z)
+		<a href="../../../../src/crypto/internal/nistec/p384.go.html#line-512" class="path-duplicate">p384.go</a><a href="../../../../src/crypto/internal/nistec/p384.go.html#line-512">#L512</a>: 		t2.<b>Square</b>(t2)
+		<a href="../../../../src/crypto/internal/nistec/p384.go.html#line-515" class="path-duplicate">p384.go</a><a href="../../../../src/crypto/internal/nistec/p384.go.html#line-515">#L515</a>: 	t2.<b>Square</b>(t1)
+		<a href="../../../../src/crypto/internal/nistec/p384.go.html#line-517" class="path-duplicate">p384.go</a><a href="../../../../src/crypto/internal/nistec/p384.go.html#line-517">#L517</a>: 		t2.<b>Square</b>(t2)
+		<a href="../../../../src/crypto/internal/nistec/p384.go.html#line-520" class="path-duplicate">p384.go</a><a href="../../../../src/crypto/internal/nistec/p384.go.html#line-520">#L520</a>: 	t2.<b>Square</b>(t1)
+		<a href="../../../../src/crypto/internal/nistec/p384.go.html#line-522" class="path-duplicate">p384.go</a><a href="../../../../src/crypto/internal/nistec/p384.go.html#line-522">#L522</a>: 		t2.<b>Square</b>(t2)
+		<a href="../../../../src/crypto/internal/nistec/p384.go.html#line-526" class="path-duplicate">p384.go</a><a href="../../../../src/crypto/internal/nistec/p384.go.html#line-526">#L526</a>: 		t1.<b>Square</b>(t1)
+		<a href="../../../../src/crypto/internal/nistec/p384.go.html#line-530" class="path-duplicate">p384.go</a><a href="../../../../src/crypto/internal/nistec/p384.go.html#line-530">#L530</a>: 		t0.<b>Square</b>(t0)
+		<a href="../../../../src/crypto/internal/nistec/p384.go.html#line-534" class="path-duplicate">p384.go</a><a href="../../../../src/crypto/internal/nistec/p384.go.html#line-534">#L534</a>: 		z.<b>Square</b>(z)
+		<a href="../../../../src/crypto/internal/nistec/p384.go.html#line-538" class="path-duplicate">p384.go</a><a href="../../../../src/crypto/internal/nistec/p384.go.html#line-538">#L538</a>: 		z.<b>Square</b>(z)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

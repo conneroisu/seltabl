@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net.SRV</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../pkg/net.html">net</a>.<a href="../src/net/dnsclient.go.html#line-152">SRV</a></b></span>
+
+<span class="title">8 uses</span>
+
+	net (current package)
+		<a href="../src/net/dnsclient.go.html#line-152">dnsclient.go#L152</a>: type <b>SRV</b> struct {
+		<a href="../src/net/dnsclient.go.html#line-160" class="path-duplicate">dnsclient.go</a><a href="../src/net/dnsclient.go.html#line-160">#L160</a>: type byPriorityWeight []*<b>SRV</b>
+		<a href="../src/net/lookup.go.html#line-508">lookup.go#L508</a>: func LookupSRV(service, proto, name string) (cname string, addrs []*<b>SRV</b>, err error) {
+		<a href="../src/net/lookup.go.html#line-526" class="path-duplicate">lookup.go</a><a href="../src/net/lookup.go.html#line-526">#L526</a>: func (r *Resolver) LookupSRV(ctx context.Context, service, proto, name string) (string, []*<b>SRV</b>, error) {
+		<a href="../src/net/lookup.go.html#line-534" class="path-duplicate">lookup.go</a><a href="../src/net/lookup.go.html#line-534">#L534</a>: 	filteredAddrs := make([]*<b>SRV</b>, 0, len(addrs))
+		<a href="../src/net/lookup.go.html#line-719" class="path-duplicate">lookup.go</a><a href="../src/net/lookup.go.html#line-719">#L719</a>: func (r *Resolver) goLookupSRV(ctx context.Context, service, proto, name string) (target string, srvs []*<b>SRV</b>, err error) {
+		<a href="../src/net/lookup.go.html#line-763" class="path-duplicate">lookup.go</a><a href="../src/net/lookup.go.html#line-763">#L763</a>: 		srvs = append(srvs, &amp;<b>SRV</b>{Target: srv.Target.String(), Port: srv.Port, Priority: srv.Priority, Weight: srv.Weight})
+		<a href="../src/net/lookup_unix.go.html#line-99">lookup_unix.go#L99</a>: func (r *Resolver) lookupSRV(ctx context.Context, service, proto, name string) (string, []*<b>SRV</b>, error) {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/tls.Conn.readHandshake</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/crypto/tls.html">crypto/tls</a>.<a href="../../src/crypto/tls/conn.go.html#line-28">Conn</a>.<a href="../../src/crypto/tls/conn.go.html#line-1085">readHandshake</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">26 uses</span>
+
+	crypto/tls (current package)
+		<a href="../../src/crypto/tls/conn.go.html#line-1085">conn.go#L1085</a>: func (c *Conn) <b>readHandshake</b>(transcript transcriptHash) (any, error) {
+		<a href="../../src/crypto/tls/conn.go.html#line-1243" class="path-duplicate">conn.go</a><a href="../../src/crypto/tls/conn.go.html#line-1243">#L1243</a>: 	msg, err := c.<b>readHandshake</b>(nil)
+		<a href="../../src/crypto/tls/conn.go.html#line-1289" class="path-duplicate">conn.go</a><a href="../../src/crypto/tls/conn.go.html#line-1289">#L1289</a>: 	msg, err := c.<b>readHandshake</b>(nil)
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-223">handshake_client.go#L223</a>: 	msg, err := c.<b>readHandshake</b>(nil)
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-540" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-540">#L540</a>: 	msg, err := c.<b>readHandshake</b>(&amp;hs.finishedHash)
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-550" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-550">#L550</a>: 	msg, err = c.<b>readHandshake</b>(&amp;hs.finishedHash)
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-571" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-571">#L571</a>: 		msg, err = c.<b>readHandshake</b>(&amp;hs.finishedHash)
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-606" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-606">#L606</a>: 		msg, err = c.<b>readHandshake</b>(&amp;hs.finishedHash)
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-624" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-624">#L624</a>: 		msg, err = c.<b>readHandshake</b>(&amp;hs.finishedHash)
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-857" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-857">#L857</a>: 	msg, err := c.<b>readHandshake</b>(nil)
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-893" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-893">#L893</a>: 	msg, err := c.<b>readHandshake</b>(&amp;hs.finishedHash)
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-295">handshake_client_tls13.go#L295</a>: 	msg, err := c.<b>readHandshake</b>(nil)
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-429" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-429">#L429</a>: 	msg, err := c.<b>readHandshake</b>(hs.transcript)
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-503" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-503">#L503</a>: 	msg, err := c.<b>readHandshake</b>(hs.transcript)
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-512" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-512">#L512</a>: 		msg, err = c.<b>readHandshake</b>(hs.transcript)
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-538" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-538">#L538</a>: 	msg, err = c.<b>readHandshake</b>(nil)
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-582" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-582">#L582</a>: 	msg, err := c.<b>readHandshake</b>(nil)
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-135">handshake_server.go#L135</a>: 	msg, err := c.<b>readHandshake</b>(nil)
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-630" class="path-duplicate">handshake_server.go</a><a href="../../src/crypto/tls/handshake_server.go.html#line-630">#L630</a>: 	msg, err := c.<b>readHandshake</b>(&amp;hs.finishedHash)
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-653" class="path-duplicate">handshake_server.go</a><a href="../../src/crypto/tls/handshake_server.go.html#line-653">#L653</a>: 		msg, err = c.<b>readHandshake</b>(&amp;hs.finishedHash)
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-700" class="path-duplicate">handshake_server.go</a><a href="../../src/crypto/tls/handshake_server.go.html#line-700">#L700</a>: 		msg, err = c.<b>readHandshake</b>(nil)
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-780" class="path-duplicate">handshake_server.go</a><a href="../../src/crypto/tls/handshake_server.go.html#line-780">#L780</a>: 	msg, err := c.<b>readHandshake</b>(nil)
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-509">handshake_server_tls13.go#L509</a>: 	msg, err := c.<b>readHandshake</b>(nil)
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-904" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-904">#L904</a>: 	msg, err := c.<b>readHandshake</b>(hs.transcript)
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-930" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-930">#L930</a>: 		msg, err = c.<b>readHandshake</b>(nil)
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-979" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-979">#L979</a>: 	msg, err := c.<b>readHandshake</b>(nil)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

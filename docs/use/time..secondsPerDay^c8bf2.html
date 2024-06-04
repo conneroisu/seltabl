@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: time.secondsPerDay</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../pkg/time.html">time</a>.<a href="../src/time/time.go.html#line-973">secondsPerDay</a></b></span>
+
+<span class="title">20 uses</span>
+
+	time (current package)
+		<a href="../src/time/time.go.html#line-450">time.go#L450</a>: 	absoluteToInternal int64 = (absoluteZeroYear - internalYear) * 365.2425 * <b>secondsPerDay</b>
+		<a href="../src/time/time.go.html#line-453" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-453">#L453</a>: 	unixToInternal int64 = (1969*365 + 1969/4 - 1969/100 + 1969/400) * <b>secondsPerDay</b>
+		<a href="../src/time/time.go.html#line-456" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-456">#L456</a>: 	wallToInternal int64 = (1884*365 + 1884/4 - 1884/100 + 1884/400) * <b>secondsPerDay</b>
+		<a href="../src/time/time.go.html#line-541" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-541">#L541</a>: 	sec := (abs + uint64(Monday)*<b>secondsPerDay</b>) % secondsPerWeek
+		<a href="../src/time/time.go.html#line-542" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-542">#L542</a>: 	return Weekday(int(sec) / <b>secondsPerDay</b>)
+		<a href="../src/time/time.go.html#line-567" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-567">#L567</a>: 	abs += uint64(d) * <b>secondsPerDay</b>
+		<a href="../src/time/time.go.html#line-579" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-579">#L579</a>: 	sec = int(abs % <b>secondsPerDay</b>)
+		<a href="../src/time/time.go.html#line-589" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-589">#L589</a>: 	return int(t.abs()%<b>secondsPerDay</b>) / secondsPerHour
+		<a href="../src/time/time.go.html#line-973" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-973">#L973</a>: 	<b>secondsPerDay</b>    = 24 * secondsPerHour
+		<a href="../src/time/time.go.html#line-974" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-974">#L974</a>: 	secondsPerWeek   = 7 * <b>secondsPerDay</b>
+		<a href="../src/time/time.go.html#line-989" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-989">#L989</a>: 	d := abs / <b>secondsPerDay</b>
+		<a href="../src/time/time.go.html#line-1517" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-1517">#L1517</a>: 	abs := d * <b>secondsPerDay</b>
+		<a href="../src/time/zoneinfo.go.html#line-336">zoneinfo.go#L336</a>: 	ysec := int64(yday*<b>secondsPerDay</b>) + sec%<b>secondsPerDay</b>
+		<a href="../src/time/zoneinfo.go.html#line-340" class="path-duplicate">zoneinfo.go</a><a href="../src/time/zoneinfo.go.html#line-340">#L340</a>: 	abs := int64(d * <b>secondsPerDay</b>)
+		<a href="../src/time/zoneinfo.go.html#line-363" class="path-duplicate">zoneinfo.go</a><a href="../src/time/zoneinfo.go.html#line-363">#L363</a>: 		return stdName, stdOffset, endSec + abs, abs + 365*<b>secondsPerDay</b>, stdIsDST, true
+		<a href="../src/time/zoneinfo.go.html#line-568" class="path-duplicate">zoneinfo.go</a><a href="../src/time/zoneinfo.go.html#line-568">#L568</a>: 		s = (r.day - 1) * <b>secondsPerDay</b>
+		<a href="../src/time/zoneinfo.go.html#line-570" class="path-duplicate">zoneinfo.go</a><a href="../src/time/zoneinfo.go.html#line-570">#L570</a>: 			s += <b>secondsPerDay</b>
+		<a href="../src/time/zoneinfo.go.html#line-573" class="path-duplicate">zoneinfo.go</a><a href="../src/time/zoneinfo.go.html#line-573">#L573</a>: 		s = r.day * <b>secondsPerDay</b>
+		<a href="../src/time/zoneinfo.go.html#line-603" class="path-duplicate">zoneinfo.go</a><a href="../src/time/zoneinfo.go.html#line-603">#L603</a>: 		s = d * <b>secondsPerDay</b>
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

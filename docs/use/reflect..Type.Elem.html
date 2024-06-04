@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: reflect.Type.Elem</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/reflect.html">reflect</a>.<a href="../src/reflect/type.go.html#line-39">Type</a>.<a href="../src/reflect/type.go.html#line-160">Elem</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">24 uses</span>
+
+	reflect (current package)
+		<a href="../src/reflect/deepequal.go.html#line-109">deepequal.go#L109</a>: 		if v1.Type().<b>Elem</b>().Kind() == Uint8 {
+		<a href="../src/reflect/swapper.go.html#line-35">swapper.go#L35</a>: 	typ := v.Type().<b>Elem</b>().common()
+		<a href="../src/reflect/type.go.html#line-160">type.go#L160</a>: 	<b>Elem</b>() Type
+		<a href="../src/reflect/type.go.html#line-1014" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1014">#L1014</a>: 			if ft.Kind() == Pointer &amp;&amp; ft.<b>Elem</b>().Kind() == Struct {
+		<a href="../src/reflect/type.go.html#line-1015" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1015">#L1015</a>: 				ft = ft.<b>Elem</b>()
+		<a href="../src/reflect/type.go.html#line-2884" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2884">#L2884</a>: 	return TypeOf((*T)(nil)).<b>Elem</b>()
+		<a href="../src/reflect/value.go.html#line-2956">value.go#L2956</a>: 	typesMustMatch("reflect.AppendSlice", s.Type().<b>Elem</b>(), t.Type().<b>Elem</b>())
+		<a href="../src/reflect/value.go.html#line-3212" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3212">#L3212</a>: 	s := unsafeheader.Slice{Data: unsafe_NewArray(&amp;(typ.<b>Elem</b>().(*rtype).t), cap), Len: len, Cap: cap}
+		<a href="../src/reflect/value.go.html#line-3387" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3387">#L3387</a>: 	case vt.Kind() == Slice &amp;&amp; t.Kind() == Pointer &amp;&amp; t.<b>Elem</b>().Kind() == Array:
+		<a href="../src/reflect/value.go.html#line-3388" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3388">#L3388</a>: 		n := t.<b>Elem</b>().Len()
+		<a href="../src/reflect/value.go.html#line-3407" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3407">#L3407</a>: 		switch v.Type().<b>Elem</b>().Kind() {
+		<a href="../src/reflect/value.go.html#line-3482" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3482">#L3482</a>: 			if !v.Type().<b>Elem</b>().Comparable() {
+		<a href="../src/reflect/value.go.html#line-3772" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3772">#L3772</a>: 	n := t.<b>Elem</b>().Len()
+		<a href="../src/reflect/visiblefields.go.html#line-96">visiblefields.go#L96</a>: 				f.Type = f.Type.<b>Elem</b>()
+
+	<a href="../pkg/encoding/asn1.html">encoding/asn1</a>
+		<a href="../src/encoding/asn1/asn1.go.html#line-949">asn1.go#L949</a>: 		if sliceType.<b>Elem</b>().Kind() == reflect.Uint8 {
+		<a href="../src/encoding/asn1/asn1.go.html#line-954" class="path-duplicate">asn1.go</a><a href="../src/encoding/asn1/asn1.go.html#line-954">#L954</a>: 		newSlice, err1 := parseSequenceOf(innerBytes, sliceType, sliceType.<b>Elem</b>())
+		<a href="../src/encoding/asn1/common.go.html#line-174">common.go#L174</a>: 		if t.<b>Elem</b>().Kind() == reflect.Uint8 {
+		<a href="../src/encoding/asn1/marshal.go.html#line-537">marshal.go#L537</a>: 		if sliceType.<b>Elem</b>().Kind() == reflect.Uint8 {
+
+	<a href="../pkg/encoding/binary.html">encoding/binary</a>
+		<a href="../src/encoding/binary/binary.go.html#line-483">binary.go#L483</a>: 		if s := sizeof(v.Type().<b>Elem</b>()); s &gt;= 0 {
+		<a href="../src/encoding/binary/binary.go.html#line-509" class="path-duplicate">binary.go</a><a href="../src/encoding/binary/binary.go.html#line-509">#L509</a>: 		if s := sizeof(t.<b>Elem</b>()); s &gt;= 0 {
+
+	<a href="../pkg/fmt.html">fmt</a>
+		<a href="../src/fmt/print.go.html#line-873">print.go#L873</a>: 			if t.<b>Elem</b>().Kind() == reflect.Uint8 {
+		<a href="../src/fmt/scan.go.html#line-1036">scan.go#L1036</a>: 			if typ.<b>Elem</b>().Kind() != reflect.Uint8 {
+
+	<a href="../pkg/github.com/conneroisu/seltabl.html">github.com/conneroisu/seltabl</a>
+		<a href="../src/github.com/conneroisu/seltabl/parse.go.html#line-85">parse.go#L85</a>: 	dType := reflect.TypeOf((*T)(nil)).<b>Elem</b>()
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

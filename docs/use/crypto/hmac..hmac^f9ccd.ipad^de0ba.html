@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/hmac.hmac.ipad</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/crypto/hmac.html">crypto/hmac</a>.<a href="../../src/crypto/hmac/hmac.go.html#line-46">hmac</a>.<a href="../../src/crypto/hmac/hmac.go.html#line-47">ipad</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">9 uses</span>
+
+	crypto/hmac (current package)
+		<a href="../../src/crypto/hmac/hmac.go.html#line-47">hmac.go#L47</a>: 	opad, <b>ipad</b>   []byte
+		<a href="../../src/crypto/hmac/hmac.go.html#line-81" class="path-duplicate">hmac.go</a><a href="../../src/crypto/hmac/hmac.go.html#line-81">#L81</a>: 		if err := h.inner.(marshalable).UnmarshalBinary(h.<b>ipad</b>); err != nil {
+		<a href="../../src/crypto/hmac/hmac.go.html#line-88" class="path-duplicate">hmac.go</a><a href="../../src/crypto/hmac/hmac.go.html#line-88">#L88</a>: 	h.inner.Write(h.<b>ipad</b>)
+		<a href="../../src/crypto/hmac/hmac.go.html#line-118" class="path-duplicate">hmac.go</a><a href="../../src/crypto/hmac/hmac.go.html#line-118">#L118</a>: 	h.<b>ipad</b> = imarshal
+		<a href="../../src/crypto/hmac/hmac.go.html#line-154" class="path-duplicate">hmac.go</a><a href="../../src/crypto/hmac/hmac.go.html#line-154">#L154</a>: 	hm.<b>ipad</b> = make([]byte, blocksize)
+		<a href="../../src/crypto/hmac/hmac.go.html#line-161" class="path-duplicate">hmac.go</a><a href="../../src/crypto/hmac/hmac.go.html#line-161">#L161</a>: 	copy(hm.<b>ipad</b>, key)
+		<a href="../../src/crypto/hmac/hmac.go.html#line-163" class="path-duplicate">hmac.go</a><a href="../../src/crypto/hmac/hmac.go.html#line-163">#L163</a>: 	for i := range hm.<b>ipad</b> {
+		<a href="../../src/crypto/hmac/hmac.go.html#line-164" class="path-duplicate">hmac.go</a><a href="../../src/crypto/hmac/hmac.go.html#line-164">#L164</a>: 		hm.<b>ipad</b>[i] ^= 0x36
+		<a href="../../src/crypto/hmac/hmac.go.html#line-169" class="path-duplicate">hmac.go</a><a href="../../src/crypto/hmac/hmac.go.html#line-169">#L169</a>: 	hm.inner.Write(hm.<b>ipad</b>)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

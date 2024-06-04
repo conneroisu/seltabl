@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/http.http2Setting</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../pkg/net/http.html">net/http</a>.<a href="../../src/net/http/h2_bundle.go.html#line-3424">http2Setting</a></b></span>
+
+<span class="title">16 uses</span>
+
+	net/http (current package)
+		<a href="../../src/net/http/h2_bundle.go.html#line-2177">h2_bundle.go#L2177</a>: func (f *http2SettingsFrame) Setting(i int) <b>http2Setting</b> {
+		<a href="../../src/net/http/h2_bundle.go.html#line-2179" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2179">#L2179</a>: 	return <b>http2Setting</b>{
+		<a href="../../src/net/http/h2_bundle.go.html#line-2220" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2220">#L2220</a>: func (f *http2SettingsFrame) ForeachSetting(fn func(<b>http2Setting</b>) error) error {
+		<a href="../../src/net/http/h2_bundle.go.html#line-2235" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2235">#L2235</a>: func (f *http2Framer) WriteSettings(settings ...<b>http2Setting</b>) error {
+		<a href="../../src/net/http/h2_bundle.go.html#line-3061" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-3061">#L3061</a>: 		f.ForeachSetting(func(s <b>http2Setting</b>) error {
+		<a href="../../src/net/http/h2_bundle.go.html#line-3424" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-3424">#L3424</a>: type <b>http2Setting</b> struct {
+		<a href="../../src/net/http/h2_bundle.go.html#line-3433" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-3433">#L3433</a>: func (s <b>http2Setting</b>) String() string {
+		<a href="../../src/net/http/h2_bundle.go.html#line-3438" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-3438">#L3438</a>: func (s <b>http2Setting</b>) Valid() error {
+		<a href="../../src/net/http/h2_bundle.go.html#line-5518" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5518">#L5518</a>: func (sc *http2serverConn) processSetting(s <b>http2Setting</b>) error {
+		<a href="../../src/net/http/h2_bundle.go.html#line-7863" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-7863">#L7863</a>: 	initialSettings := []<b>http2Setting</b>{
+		<a href="../../src/net/http/h2_bundle.go.html#line-7868" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-7868">#L7868</a>: 		initialSettings = append(initialSettings, <b>http2Setting</b>{ID: http2SettingMaxFrameSize, Val: max})
+		<a href="../../src/net/http/h2_bundle.go.html#line-7871" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-7871">#L7871</a>: 		initialSettings = append(initialSettings, <b>http2Setting</b>{ID: http2SettingMaxHeaderListSize, Val: max})
+		<a href="../../src/net/http/h2_bundle.go.html#line-7874" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-7874">#L7874</a>: 		initialSettings = append(initialSettings, <b>http2Setting</b>{ID: http2SettingHeaderTableSize, Val: maxHeaderTableSize})
+		<a href="../../src/net/http/h2_bundle.go.html#line-9912" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9912">#L9912</a>: 	err := f.ForeachSetting(func(s <b>http2Setting</b>) error {
+		<a href="../../src/net/http/h2_bundle.go.html#line-10361" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-10361">#L10361</a>: type http2writeSettings []<b>http2Setting</b>
+		<a href="../../src/net/http/h2_bundle.go.html#line-10370" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-10370">#L10370</a>: 	return ctx.Framer().WriteSettings([]<b>http2Setting</b>(s)...)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

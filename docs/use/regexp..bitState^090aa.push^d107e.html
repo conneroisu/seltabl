@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: regexp.bitState.push</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/regexp.html">regexp</a>.<a href="../src/regexp/backtrack.go.html#line-37">bitState</a>.<a href="../src/regexp/backtrack.go.html#line-129">push</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">6 uses</span>
+
+	regexp (current package)
+		<a href="../src/regexp/backtrack.go.html#line-129">backtrack.go#L129</a>: func (b *bitState) <b>push</b>(re *Regexp, pc uint32, pos int, arg bool) {
+		<a href="../src/regexp/backtrack.go.html#line-141" class="path-duplicate">backtrack.go</a><a href="../src/regexp/backtrack.go.html#line-141">#L141</a>: 	b.<b>push</b>(re, pc, pos, false)
+		<a href="../src/regexp/backtrack.go.html#line-186" class="path-duplicate">backtrack.go</a><a href="../src/regexp/backtrack.go.html#line-186">#L186</a>: 				b.<b>push</b>(re, pc, pos, true)
+		<a href="../src/regexp/backtrack.go.html#line-196" class="path-duplicate">backtrack.go</a><a href="../src/regexp/backtrack.go.html#line-196">#L196</a>: 				b.<b>push</b>(re, inst.Arg, pos, false)
+		<a href="../src/regexp/backtrack.go.html#line-202" class="path-duplicate">backtrack.go</a><a href="../src/regexp/backtrack.go.html#line-202">#L202</a>: 			b.<b>push</b>(re, inst.Out, b.end, false)
+		<a href="../src/regexp/backtrack.go.html#line-250" class="path-duplicate">backtrack.go</a><a href="../src/regexp/backtrack.go.html#line-250">#L250</a>: 					b.<b>push</b>(re, pc, b.cap[inst.Arg], true) // come back when we're done.
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

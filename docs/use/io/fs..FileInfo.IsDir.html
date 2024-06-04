@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: io/fs.FileInfo.IsDir</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/io/fs.html">io/fs</a>.<a href="../../src/io/fs/fs.go.html#line-157">FileInfo</a>.<a href="../../src/io/fs/fs.go.html#line-162">IsDir</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">14 uses</span>
+
+	io/fs (current package)
+		<a href="../../src/io/fs/format.go.html#line-47">format.go#L47</a>: 	if info.<b>IsDir</b>() {
+		<a href="../../src/io/fs/fs.go.html#line-162">fs.go#L162</a>: 	<b>IsDir</b>() bool        // abbreviation for Mode().IsDir()
+		<a href="../../src/io/fs/readdir.go.html#line-55">readdir.go#L55</a>: 	return di.fileInfo.<b>IsDir</b>()
+
+	<a href="../../pkg/net/http.html">net/http</a>
+		<a href="../../src/net/http/fs.go.html#line-63">fs.go#L63</a>: 		if !fi.<b>IsDir</b>() {
+		<a href="../../src/net/http/fs.go.html#line-121" class="path-duplicate">fs.go</a><a href="../../src/net/http/fs.go.html#line-121">#L121</a>: func (d fileInfoDirs) isDir(i int) bool  { return d[i].<b>IsDir</b>() }
+		<a href="../../src/net/http/fs.go.html#line-658" class="path-duplicate">fs.go</a><a href="../../src/net/http/fs.go.html#line-658">#L658</a>: 		if d.<b>IsDir</b>() {
+		<a href="../../src/net/http/fs.go.html#line-671" class="path-duplicate">fs.go</a><a href="../../src/net/http/fs.go.html#line-671">#L671</a>: 	if d.<b>IsDir</b>() {
+		<a href="../../src/net/http/fs.go.html#line-693" class="path-duplicate">fs.go</a><a href="../../src/net/http/fs.go.html#line-693">#L693</a>: 	if d.<b>IsDir</b>() {
+
+	<a href="../../pkg/os.html">os</a>
+		<a href="../../src/os/file_unix.go.html#line-27">file_unix.go#L27</a>: 	if err == nil &amp;&amp; fi.<b>IsDir</b>() {
+		<a href="../../src/os/path.go.html#line-22">path.go#L22</a>: 		if dir.<b>IsDir</b>() {
+		<a href="../../src/os/path.go.html#line-59" class="path-duplicate">path.go</a><a href="../../src/os/path.go.html#line-59">#L59</a>: 		if err1 == nil &amp;&amp; dir.<b>IsDir</b>() {
+
+	<a href="../../pkg/path/filepath.html">path/filepath</a>
+		<a href="../../src/path/filepath/match.go.html#line-337">match.go#L337</a>: 	if !fi.<b>IsDir</b>() {
+		<a href="../../src/path/filepath/path.go.html#line-477">path.go#L477</a>: 	if !info.<b>IsDir</b>() {
+		<a href="../../src/path/filepath/path.go.html#line-504" class="path-duplicate">path.go</a><a href="../../src/path/filepath/path.go.html#line-504">#L504</a>: 				if !fileInfo.<b>IsDir</b>() || err != SkipDir {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: os.File.Close</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/os.html">os</a>.<a href="../src/os/types.go.html#line-16">File</a>.<a href="../src/os/file_posix.go.html#line-19">Close</a></b></span><span style="font-size: large;"><i> (method, <a href="../imp/os.File.html#name-Close">view implemented interface methods</a>)</i></span>
+
+<span class="title">17 uses</span>
+
+	os (current package)
+		<a href="../src/os/dir.go.html#line-120">dir.go#L120</a>: 	defer f.<b>Close</b>()
+		<a href="../src/os/file.go.html#line-772">file.go#L772</a>: 	defer f.<b>Close</b>()
+		<a href="../src/os/file.go.html#line-820" class="path-duplicate">file.go</a><a href="../src/os/file.go.html#line-820">#L820</a>: 	if err1 := f.<b>Close</b>(); err1 != nil &amp;&amp; err == nil {
+		<a href="../src/os/file_posix.go.html#line-19">file_posix.go#L19</a>: func (f *File) <b>Close</b>() error {
+		<a href="../src/os/getwd.go.html#line-95">getwd.go#L95</a>: 				fd.<b>Close</b>()
+		<a href="../src/os/getwd.go.html#line-109" class="path-duplicate">getwd.go</a><a href="../src/os/getwd.go.html#line-109">#L109</a>: 		fd.<b>Close</b>()
+		<a href="../src/os/removeall_at.go.html#line-46">removeall_at.go#L46</a>: 	defer parent.<b>Close</b>()
+		<a href="../src/os/removeall_at.go.html#line-116" class="path-duplicate">removeall_at.go</a><a href="../src/os/removeall_at.go.html#line-116">#L116</a>: 				file.<b>Close</b>()
+		<a href="../src/os/removeall_at.go.html#line-149" class="path-duplicate">removeall_at.go</a><a href="../src/os/removeall_at.go.html#line-149">#L149</a>: 		file.<b>Close</b>()
+		<a href="../src/os/sys_linux.go.html#line-42">sys_linux.go#L42</a>: 	defer f.<b>Close</b>()
+
+	<a href="../pkg/mime.html">mime</a>
+		<a href="../src/mime/type_unix.go.html#line-39">type_unix.go#L39</a>: 	defer f.<b>Close</b>()
+		<a href="../src/mime/type_unix.go.html#line-84" class="path-duplicate">type_unix.go</a><a href="../src/mime/type_unix.go.html#line-84">#L84</a>: 	defer f.<b>Close</b>()
+
+	<a href="../pkg/mime/multipart.html">mime/multipart</a>
+		<a href="../src/mime/multipart/formdata.go.html#line-64">formdata.go#L64</a>: 			if cerr := file.<b>Close</b>(); err == nil {
+		<a href="../src/mime/multipart/formdata.go.html#line-200" class="path-duplicate">formdata.go</a><a href="../src/mime/multipart/formdata.go.html#line-200">#L200</a>: 				if err := file.<b>Close</b>(); err != nil {
+
+	<a href="../pkg/net.html">net</a>
+		<a href="../src/net/parse.go.html#line-23">parse.go#L23</a>: func (f *file) close() { f.file.<b>Close</b>() }
+
+	<a href="../pkg/path/filepath.html">path/filepath</a>
+		<a href="../src/path/filepath/match.go.html#line-344">match.go#L344</a>: 	defer d.<b>Close</b>()
+		<a href="../src/path/filepath/path.go.html#line-576">path.go#L576</a>: 	f.<b>Close</b>()
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

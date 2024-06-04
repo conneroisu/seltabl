@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.float64bits</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/float.go.html#line-46">float64bits</a></b></span>
+
+<span class="title">17 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/fastlog2.go.html#line-18">fastlog2.go#L18</a>: 	xBits := <b>float64bits</b>(x)
+		<a href="../src/runtime/float.go.html#line-35">float.go#L35</a>: 	return float64frombits(<b>float64bits</b>(x) &amp;^ sign)
+		<a href="../src/runtime/float.go.html#line-42" class="path-duplicate">float.go</a><a href="../src/runtime/float.go.html#line-42">#L42</a>: 	return float64frombits(<b>float64bits</b>(x)&amp;^sign | <b>float64bits</b>(y)&amp;sign)
+		<a href="../src/runtime/float.go.html#line-46" class="path-duplicate">float.go</a><a href="../src/runtime/float.go.html#line-46">#L46</a>: func <b>float64bits</b>(f float64) uint64 {
+		<a href="../src/runtime/metrics.go.html#line-98">metrics.go#L98</a>: 				out.scalar = <b>float64bits</b>(nsToSec(in.cpuStats.gcAssistTime))
+		<a href="../src/runtime/metrics.go.html#line-105" class="path-duplicate">metrics.go</a><a href="../src/runtime/metrics.go.html#line-105">#L105</a>: 				out.scalar = <b>float64bits</b>(nsToSec(in.cpuStats.gcDedicatedTime))
+		<a href="../src/runtime/metrics.go.html#line-112" class="path-duplicate">metrics.go</a><a href="../src/runtime/metrics.go.html#line-112">#L112</a>: 				out.scalar = <b>float64bits</b>(nsToSec(in.cpuStats.gcIdleTime))
+		<a href="../src/runtime/metrics.go.html#line-119" class="path-duplicate">metrics.go</a><a href="../src/runtime/metrics.go.html#line-119">#L119</a>: 				out.scalar = <b>float64bits</b>(nsToSec(in.cpuStats.gcPauseTime))
+		<a href="../src/runtime/metrics.go.html#line-126" class="path-duplicate">metrics.go</a><a href="../src/runtime/metrics.go.html#line-126">#L126</a>: 				out.scalar = <b>float64bits</b>(nsToSec(in.cpuStats.gcTotalTime))
+		<a href="../src/runtime/metrics.go.html#line-133" class="path-duplicate">metrics.go</a><a href="../src/runtime/metrics.go.html#line-133">#L133</a>: 				out.scalar = <b>float64bits</b>(nsToSec(in.cpuStats.idleTime))
+		<a href="../src/runtime/metrics.go.html#line-140" class="path-duplicate">metrics.go</a><a href="../src/runtime/metrics.go.html#line-140">#L140</a>: 				out.scalar = <b>float64bits</b>(nsToSec(in.cpuStats.scavengeAssistTime))
+		<a href="../src/runtime/metrics.go.html#line-147" class="path-duplicate">metrics.go</a><a href="../src/runtime/metrics.go.html#line-147">#L147</a>: 				out.scalar = <b>float64bits</b>(nsToSec(in.cpuStats.scavengeBgTime))
+		<a href="../src/runtime/metrics.go.html#line-154" class="path-duplicate">metrics.go</a><a href="../src/runtime/metrics.go.html#line-154">#L154</a>: 				out.scalar = <b>float64bits</b>(nsToSec(in.cpuStats.scavengeTotalTime))
+		<a href="../src/runtime/metrics.go.html#line-161" class="path-duplicate">metrics.go</a><a href="../src/runtime/metrics.go.html#line-161">#L161</a>: 				out.scalar = <b>float64bits</b>(nsToSec(in.cpuStats.totalTime))
+		<a href="../src/runtime/metrics.go.html#line-168" class="path-duplicate">metrics.go</a><a href="../src/runtime/metrics.go.html#line-168">#L168</a>: 				out.scalar = <b>float64bits</b>(nsToSec(in.cpuStats.userTime))
+		<a href="../src/runtime/metrics.go.html#line-473" class="path-duplicate">metrics.go</a><a href="../src/runtime/metrics.go.html#line-473">#L473</a>: 				out.scalar = <b>float64bits</b>(nsToSec(totalMutexWaitTimeNanos()))
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

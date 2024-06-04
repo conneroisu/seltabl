@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: hash/crc32.Table</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../pkg/hash/crc32.html">hash/crc32</a>.<a href="../../src/hash/crc32/crc32.go.html#line-43">Table</a></b></span>
+
+<span class="title">15 uses</span>
+
+	hash/crc32 (current package)
+		<a href="../../src/hash/crc32/crc32.go.html#line-43">crc32.go#L43</a>: type <b>Table</b> [256]uint32
+		<a href="../../src/hash/crc32/crc32.go.html#line-77" class="path-duplicate">crc32.go</a><a href="../../src/hash/crc32/crc32.go.html#line-77">#L77</a>: var castagnoliTable *<b>Table</b>
+		<a href="../../src/hash/crc32/crc32.go.html#line-123" class="path-duplicate">crc32.go</a><a href="../../src/hash/crc32/crc32.go.html#line-123">#L123</a>: func MakeTable(poly uint32) *<b>Table</b> {
+		<a href="../../src/hash/crc32/crc32.go.html#line-139" class="path-duplicate">crc32.go</a><a href="../../src/hash/crc32/crc32.go.html#line-139">#L139</a>: 	tab *<b>Table</b>
+		<a href="../../src/hash/crc32/crc32.go.html#line-147" class="path-duplicate">crc32.go</a><a href="../../src/hash/crc32/crc32.go.html#line-147">#L147</a>: func New(tab *<b>Table</b>) hash.Hash32 {
+		<a href="../../src/hash/crc32/crc32.go.html#line-212" class="path-duplicate">crc32.go</a><a href="../../src/hash/crc32/crc32.go.html#line-212">#L212</a>: func update(crc uint32, tab *<b>Table</b>, p []byte, checkInitIEEE bool) uint32 {
+		<a href="../../src/hash/crc32/crc32.go.html#line-227" class="path-duplicate">crc32.go</a><a href="../../src/hash/crc32/crc32.go.html#line-227">#L227</a>: func Update(crc uint32, tab *<b>Table</b>, p []byte) uint32 {
+		<a href="../../src/hash/crc32/crc32.go.html#line-249" class="path-duplicate">crc32.go</a><a href="../../src/hash/crc32/crc32.go.html#line-249">#L249</a>: func Checksum(data []byte, tab *<b>Table</b>) uint32 { return Update(0, tab, data) }
+		<a href="../../src/hash/crc32/crc32.go.html#line-259" class="path-duplicate">crc32.go</a><a href="../../src/hash/crc32/crc32.go.html#line-259">#L259</a>: func tableSum(t *<b>Table</b>) uint32 {
+		<a href="../../src/hash/crc32/crc32_amd64.go.html#line-44">crc32_amd64.go#L44</a>: type sse42Table [4]<b>Table</b>
+		<a href="../../src/hash/crc32/crc32_generic.go.html#line-18">crc32_generic.go#L18</a>: func simpleMakeTable(poly uint32) *<b>Table</b> {
+		<a href="../../src/hash/crc32/crc32_generic.go.html#line-19" class="path-duplicate">crc32_generic.go</a><a href="../../src/hash/crc32/crc32_generic.go.html#line-19">#L19</a>: 	t := new(<b>Table</b>)
+		<a href="../../src/hash/crc32/crc32_generic.go.html#line-26" class="path-duplicate">crc32_generic.go</a><a href="../../src/hash/crc32/crc32_generic.go.html#line-26">#L26</a>: func simplePopulateTable(poly uint32, t *<b>Table</b>) {
+		<a href="../../src/hash/crc32/crc32_generic.go.html#line-42" class="path-duplicate">crc32_generic.go</a><a href="../../src/hash/crc32/crc32_generic.go.html#line-42">#L42</a>: func simpleUpdate(crc uint32, tab *<b>Table</b>, p []byte) uint32 {
+		<a href="../../src/hash/crc32/crc32_generic.go.html#line-54" class="path-duplicate">crc32_generic.go</a><a href="../../src/hash/crc32/crc32_generic.go.html#line-54">#L54</a>: type slicing8Table [8]<b>Table</b>
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

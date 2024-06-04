@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.addb</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/mbitmap.go.html#line-18">addb</a></b></span>
+
+<span class="title">28 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/cgocheck.go.html#line-216">cgocheck.go#L216</a>: 	ptrmask := <b>addb</b>(gcbits, skipMask)
+		<a href="../src/runtime/cgocheck.go.html#line-224" class="path-duplicate">cgocheck.go</a><a href="../src/runtime/cgocheck.go.html#line-224">#L224</a>: 			ptrmask = <b>addb</b>(ptrmask, 1)
+		<a href="../src/runtime/mbitmap.go.html#line-18">mbitmap.go#L18</a>: func <b>addb</b>(p *byte, n uintptr) *byte {
+		<a href="../src/runtime/mbitmap.go.html#line-361" class="path-duplicate">mbitmap.go</a><a href="../src/runtime/mbitmap.go.html#line-361">#L361</a>: 	bits = <b>addb</b>(bits, word/8)
+		<a href="../src/runtime/mbitmap.go.html#line-367" class="path-duplicate">mbitmap.go</a><a href="../src/runtime/mbitmap.go.html#line-367">#L367</a>: 			bits = <b>addb</b>(bits, 1)
+		<a href="../src/runtime/mbitmap.go.html#line-429" class="path-duplicate">mbitmap.go</a><a href="../src/runtime/mbitmap.go.html#line-429">#L429</a>: 			ptrmask = <b>addb</b>(ptrmask, 1)
+		<a href="../src/runtime/mbitmap.go.html#line-715" class="path-duplicate">mbitmap.go</a><a href="../src/runtime/mbitmap.go.html#line-715">#L715</a>: 	runGCProg(<b>addb</b>(prog, 4), (*byte)(unsafe.Pointer(s.startAddr)))
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-300">mbitmap_allocheaders.go#L300</a>: 		tp.mask = readUintptr(<b>addb</b>(tp.typ.GCData, (tp.addr-tp.elem)/goarch.PtrSize/8))
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-359" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-359">#L359</a>: 		tp.mask = readUintptr(<b>addb</b>(tp.typ.GCData, (tp.addr-tp.elem)/goarch.PtrSize/8))
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-762" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-762">#L762</a>: 	word0 := (*uintptr)(unsafe.Pointer(<b>addb</b>(hbits, goarch.PtrSize*(i+0))))
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-763" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-763">#L763</a>: 	word1 := (*uintptr)(unsafe.Pointer(<b>addb</b>(hbits, goarch.PtrSize*(i+1))))
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-892" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-892">#L892</a>: 			runGCProg(<b>addb</b>(typ.GCData, 4), gctyp.GCData)
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-946" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-946">#L946</a>: 				want = *<b>addb</b>(typ.GCData, j/8)&gt;&gt;(j%8)&amp;1 != 0
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-1003" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-1003">#L1003</a>: 				want = *<b>addb</b>(typ.GCData, j/8)&gt;&gt;(j%8)&amp;1 != 0
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-1051" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-1051">#L1051</a>: 				want = *<b>addb</b>(typ.GCData, j/8)&gt;&gt;(j%8)&amp;1 != 0
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-1149" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-1149">#L1149</a>: 				mask[i/goarch.PtrSize] = (*<b>addb</b>(bitmap, off/8) &gt;&gt; (off % 8)) &amp; 1
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-1161" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-1161">#L1161</a>: 				mask[i/goarch.PtrSize] = (*<b>addb</b>(bitmap, off/8) &gt;&gt; (off % 8)) &amp; 1
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-1305" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-1305">#L1305</a>: 		gcProgBits = runGCProg(<b>addb</b>(p, 4), (*byte)(ptr))
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-1321" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-1321">#L1321</a>: 		h = h.write(s, readUintptr(<b>addb</b>(p, i/8)), k)
+		<a href="../src/runtime/mgcmark.go.html#line-1366">mgcmark.go#L1366</a>: 		bits := uint32(*<b>addb</b>(ptrmask, i/(goarch.PtrSize*8)))
+		<a href="../src/runtime/mgcmark.go.html#line-1516" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-1516">#L1516</a>: 				bits := *<b>addb</b>(ptrmask, word/8)
+		<a href="../src/runtime/mgcmark.go.html#line-1543" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-1543">#L1543</a>: 			bits := *<b>addb</b>(ptrmask, word/8)
+		<a href="../src/runtime/mheap.go.html#line-2091">mheap.go#L2091</a>: 	return <b>addb</b>(&amp;b.x, n)
+		<a href="../src/runtime/stack.go.html#line-591">stack.go#L591</a>: 	b := *(<b>addb</b>(bv.bytedata, i/8))
+		<a href="../src/runtime/stack.go.html#line-611" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-611">#L611</a>: 				print("        ", add(scanp, (i+j)*goarch.PtrSize), ":", ptrnames[bv.ptrbit(i+j)], ":", hex(*(*uintptr)(add(scanp, (i+j)*goarch.PtrSize))), " # ", i, " ", *<b>addb</b>(bv.bytedata, i/8), "\n")
+		<a href="../src/runtime/stack.go.html#line-614" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-614">#L614</a>: 		b := *(<b>addb</b>(bv.bytedata, i/8))
+		<a href="../src/runtime/stack.go.html#line-720" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-720">#L720</a>: 				if *<b>addb</b>(gcdata, i/(8*goarch.PtrSize))&gt;&gt;(i/goarch.PtrSize&amp;7)&amp;1 != 0 {
+		<a href="../src/runtime/symtab.go.html#line-1159">symtab.go#L1159</a>: 	return bitvector{stkmap.nbit, <b>addb</b>(&amp;stkmap.bytedata[0], uintptr(n*((stkmap.nbit+7)&gt;&gt;3)))}
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

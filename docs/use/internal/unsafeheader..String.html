@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: internal/unsafeheader.String</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../pkg/internal/unsafeheader.html">internal/unsafeheader</a>.<a href="../../src/internal/unsafeheader/unsafeheader.go.html#line-34">String</a></b></span>
+
+<span class="title">9 uses</span>
+
+	internal/unsafeheader (current package)
+		<a href="../../src/internal/unsafeheader/unsafeheader.go.html#line-34">unsafeheader.go#L34</a>: type <b>String</b> struct {
+
+	<a href="../../pkg/internal/reflectlite.html">internal/reflectlite</a>
+		<a href="../../src/internal/reflectlite/value.go.html#line-359">value.go#L359</a>: 		return (*unsafeheader.<b>String</b>)(v.ptr).Len
+
+	<a href="../../pkg/reflect.html">reflect</a>
+		<a href="../../src/reflect/value.go.html#line-1439">value.go#L1439</a>: 		s := (*unsafeheader.<b>String</b>)(v.ptr)
+		<a href="../../src/reflect/value.go.html#line-1788" class="path-duplicate">value.go</a><a href="../../src/reflect/value.go.html#line-1788">#L1788</a>: 		return (*unsafeheader.<b>String</b>)(v.ptr).Len
+		<a href="../../src/reflect/value.go.html#line-2560" class="path-duplicate">value.go</a><a href="../../src/reflect/value.go.html#line-2560">#L2560</a>: 		s := (*unsafeheader.<b>String</b>)(v.ptr)
+		<a href="../../src/reflect/value.go.html#line-2564" class="path-duplicate">value.go</a><a href="../../src/reflect/value.go.html#line-2564">#L2564</a>: 		var t unsafeheader.<b>String</b>
+		<a href="../../src/reflect/value.go.html#line-2566" class="path-duplicate">value.go</a><a href="../../src/reflect/value.go.html#line-2566">#L2566</a>: 			t = unsafeheader.<b>String</b>{Data: arrayAt(s.Data, i, 1, "i &lt; s.Len"), Len: j - i}
+		<a href="../../src/reflect/value.go.html#line-3012" class="path-duplicate">value.go</a><a href="../../src/reflect/value.go.html#line-3012">#L3012</a>: 		sh := *(*unsafeheader.<b>String</b>)(src.ptr)
+		<a href="../../src/reflect/value.go.html#line-3884" class="path-duplicate">value.go</a><a href="../../src/reflect/value.go.html#line-3884">#L3884</a>: 	contentEscapes((*unsafeheader.<b>String</b>)(unsafe.Pointer(&amp;key)).Data)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

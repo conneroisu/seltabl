@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: strconv.decimal.nd</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/strconv.html">strconv</a>.<a href="../src/strconv/decimal.go.html#line-14">decimal</a>.<a href="../src/strconv/decimal.go.html#line-16">nd</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">52 uses</span>
+
+	strconv (current package)
+		<a href="../src/strconv/atof.go.html#line-104">atof.go#L104</a>: 			b.dp = b.<b>nd</b>
+		<a href="../src/strconv/atof.go.html#line-109" class="path-duplicate">atof.go</a><a href="../src/strconv/atof.go.html#line-109">#L109</a>: 			if s[i] == '0' &amp;&amp; b.<b>nd</b> == 0 { // ignore leading zeros
+		<a href="../src/strconv/atof.go.html#line-113" class="path-duplicate">atof.go</a><a href="../src/strconv/atof.go.html#line-113">#L113</a>: 			if b.<b>nd</b> &lt; len(b.d) {
+		<a href="../src/strconv/atof.go.html#line-114" class="path-duplicate">atof.go</a><a href="../src/strconv/atof.go.html#line-114">#L114</a>: 				b.d[b.<b>nd</b>] = s[i]
+		<a href="../src/strconv/atof.go.html#line-115" class="path-duplicate">atof.go</a><a href="../src/strconv/atof.go.html#line-115">#L115</a>: 				b.<b>nd</b>++
+		<a href="../src/strconv/atof.go.html#line-127" class="path-duplicate">atof.go</a><a href="../src/strconv/atof.go.html#line-127">#L127</a>: 		b.dp = b.<b>nd</b>
+		<a href="../src/strconv/atof.go.html#line-319" class="path-duplicate">atof.go</a><a href="../src/strconv/atof.go.html#line-319">#L319</a>: 	if d.<b>nd</b> == 0 {
+		<a href="../src/strconv/decimal.go.html#line-16">decimal.go#L16</a>: 	<b>nd</b>    int       // number of digits used
+		<a href="../src/strconv/decimal.go.html#line-23" class="path-duplicate">decimal.go</a><a href="../src/strconv/decimal.go.html#line-23">#L23</a>: 	n := 10 + a.<b>nd</b>
+		<a href="../src/strconv/decimal.go.html#line-34" class="path-duplicate">decimal.go</a><a href="../src/strconv/decimal.go.html#line-34">#L34</a>: 	case a.<b>nd</b> == 0:
+		<a href="../src/strconv/decimal.go.html#line-44" class="path-duplicate">decimal.go</a><a href="../src/strconv/decimal.go.html#line-44">#L44</a>: 		w += copy(buf[w:], a.d[0:a.<b>nd</b>])
+		<a href="../src/strconv/decimal.go.html#line-46" class="path-duplicate">decimal.go</a><a href="../src/strconv/decimal.go.html#line-46">#L46</a>: 	case a.dp &lt; a.<b>nd</b>:
+		<a href="../src/strconv/decimal.go.html#line-51" class="path-duplicate">decimal.go</a><a href="../src/strconv/decimal.go.html#line-51">#L51</a>: 		w += copy(buf[w:], a.d[a.dp:a.<b>nd</b>])
+		<a href="../src/strconv/decimal.go.html#line-55" class="path-duplicate">decimal.go</a><a href="../src/strconv/decimal.go.html#line-55">#L55</a>: 		w += copy(buf[w:], a.d[0:a.<b>nd</b>])
+		<a href="../src/strconv/decimal.go.html#line-56" class="path-duplicate">decimal.go</a><a href="../src/strconv/decimal.go.html#line-56">#L56</a>: 		w += digitZero(buf[w : w+a.dp-a.<b>nd</b>])
+		<a href="../src/strconv/decimal.go.html#line-72" class="path-duplicate">decimal.go</a><a href="../src/strconv/decimal.go.html#line-72">#L72</a>: 	for a.<b>nd</b> &gt; 0 &amp;&amp; a.d[a.<b>nd</b>-1] == '0' {
+		<a href="../src/strconv/decimal.go.html#line-73" class="path-duplicate">decimal.go</a><a href="../src/strconv/decimal.go.html#line-73">#L73</a>: 		a.<b>nd</b>--
+		<a href="../src/strconv/decimal.go.html#line-75" class="path-duplicate">decimal.go</a><a href="../src/strconv/decimal.go.html#line-75">#L75</a>: 	if a.<b>nd</b> == 0 {
+		<a href="../src/strconv/decimal.go.html#line-95" class="path-duplicate">decimal.go</a><a href="../src/strconv/decimal.go.html#line-95">#L95</a>: 	a.<b>nd</b> = 0
+		<a href="../src/strconv/decimal.go.html#line-97" class="path-duplicate">decimal.go</a><a href="../src/strconv/decimal.go.html#line-97">#L97</a>: 		a.d[a.<b>nd</b>] = buf[n]
+		<a href="../src/strconv/decimal.go.html#line-98" class="path-duplicate">decimal.go</a><a href="../src/strconv/decimal.go.html#line-98">#L98</a>: 		a.<b>nd</b>++
+		<a href="../src/strconv/decimal.go.html#line-100" class="path-duplicate">decimal.go</a><a href="../src/strconv/decimal.go.html#line-100">#L100</a>: 	a.dp = a.<b>nd</b>
+		<a href="../src/strconv/decimal.go.html#line-117" class="path-duplicate">decimal.go</a><a href="../src/strconv/decimal.go.html#line-117">#L117</a>: 		if r &gt;= a.<b>nd</b> {
+		<a href="../src/strconv/decimal.go.html#line-120" class="path-duplicate">decimal.go</a><a href="../src/strconv/decimal.go.html#line-120">#L120</a>: 				a.<b>nd</b> = 0
+		<a href="../src/strconv/decimal.go.html#line-137" class="path-duplicate">decimal.go</a><a href="../src/strconv/decimal.go.html#line-137">#L137</a>: 	for ; r &lt; a.<b>nd</b>; r++ {
+		<a href="../src/strconv/decimal.go.html#line-159" class="path-duplicate">decimal.go</a><a href="../src/strconv/decimal.go.html#line-159">#L159</a>: 	a.<b>nd</b> = w
+		<a href="../src/strconv/decimal.go.html#line-271" class="path-duplicate">decimal.go</a><a href="../src/strconv/decimal.go.html#line-271">#L271</a>: 	if prefixIsLessThan(a.d[0:a.<b>nd</b>], leftcheats[k].cutoff) {
+		<a href="../src/strconv/decimal.go.html#line-275" class="path-duplicate">decimal.go</a><a href="../src/strconv/decimal.go.html#line-275">#L275</a>: 	r := a.<b>nd</b>         // read index
+		<a href="../src/strconv/decimal.go.html#line-276" class="path-duplicate">decimal.go</a><a href="../src/strconv/decimal.go.html#line-276">#L276</a>: 	w := a.<b>nd</b> + delta // write index
+		<a href="../src/strconv/decimal.go.html#line-306" class="path-duplicate">decimal.go</a><a href="../src/strconv/decimal.go.html#line-306">#L306</a>: 	a.<b>nd</b> += delta
+		<a href="../src/strconv/decimal.go.html#line-307" class="path-duplicate">decimal.go</a><a href="../src/strconv/decimal.go.html#line-307">#L307</a>: 	if a.<b>nd</b> &gt;= len(a.d) {
+		<a href="../src/strconv/decimal.go.html#line-308" class="path-duplicate">decimal.go</a><a href="../src/strconv/decimal.go.html#line-308">#L308</a>: 		a.<b>nd</b> = len(a.d)
+		<a href="../src/strconv/decimal.go.html#line-317" class="path-duplicate">decimal.go</a><a href="../src/strconv/decimal.go.html#line-317">#L317</a>: 	case a.<b>nd</b> == 0:
+		<a href="../src/strconv/decimal.go.html#line-336" class="path-duplicate">decimal.go</a><a href="../src/strconv/decimal.go.html#line-336">#L336</a>: 	if nd &lt; 0 || nd &gt;= a.<b>nd</b> {
+		<a href="../src/strconv/decimal.go.html#line-339" class="path-duplicate">decimal.go</a><a href="../src/strconv/decimal.go.html#line-339">#L339</a>: 	if a.d[nd] == '5' &amp;&amp; nd+1 == a.<b>nd</b> { // exactly halfway - round to even
+		<a href="../src/strconv/decimal.go.html#line-355" class="path-duplicate">decimal.go</a><a href="../src/strconv/decimal.go.html#line-355">#L355</a>: 	if nd &lt; 0 || nd &gt;= a.<b>nd</b> {
+		<a href="../src/strconv/decimal.go.html#line-367" class="path-duplicate">decimal.go</a><a href="../src/strconv/decimal.go.html#line-367">#L367</a>: 	if nd &lt; 0 || nd &gt;= a.<b>nd</b> {
+		<a href="../src/strconv/decimal.go.html#line-370" class="path-duplicate">decimal.go</a><a href="../src/strconv/decimal.go.html#line-370">#L370</a>: 	a.<b>nd</b> = nd
+		<a href="../src/strconv/decimal.go.html#line-376" class="path-duplicate">decimal.go</a><a href="../src/strconv/decimal.go.html#line-376">#L376</a>: 	if nd &lt; 0 || nd &gt;= a.<b>nd</b> {
+		<a href="../src/strconv/decimal.go.html#line-385" class="path-duplicate">decimal.go</a><a href="../src/strconv/decimal.go.html#line-385">#L385</a>: 			a.<b>nd</b> = i + 1
+		<a href="../src/strconv/decimal.go.html#line-393" class="path-duplicate">decimal.go</a><a href="../src/strconv/decimal.go.html#line-393">#L393</a>: 	a.<b>nd</b> = 1
+		<a href="../src/strconv/decimal.go.html#line-405" class="path-duplicate">decimal.go</a><a href="../src/strconv/decimal.go.html#line-405">#L405</a>: 	for i = 0; i &lt; a.dp &amp;&amp; i &lt; a.<b>nd</b>; i++ {
+		<a href="../src/strconv/ftoa.go.html#line-171">ftoa.go#L171</a>: 		digs = decimalSlice{d: d.d[:], nd: d.<b>nd</b>, dp: d.dp}
+		<a href="../src/strconv/ftoa.go.html#line-194" class="path-duplicate">ftoa.go</a><a href="../src/strconv/ftoa.go.html#line-194">#L194</a>: 		digs = decimalSlice{d: d.d[:], nd: d.<b>nd</b>, dp: d.dp}
+		<a href="../src/strconv/ftoa.go.html#line-239" class="path-duplicate">ftoa.go</a><a href="../src/strconv/ftoa.go.html#line-239">#L239</a>: 		d.<b>nd</b> = 0
+		<a href="../src/strconv/ftoa.go.html#line-258" class="path-duplicate">ftoa.go</a><a href="../src/strconv/ftoa.go.html#line-258">#L258</a>: 	if exp &gt; minexp &amp;&amp; 332*(d.dp-d.<b>nd</b>) &gt;= 100*(exp-int(flt.mantbits)) {
+		<a href="../src/strconv/ftoa.go.html#line-314" class="path-duplicate">ftoa.go</a><a href="../src/strconv/ftoa.go.html#line-314">#L314</a>: 		if mi &gt;= d.<b>nd</b> {
+		<a href="../src/strconv/ftoa.go.html#line-319" class="path-duplicate">ftoa.go</a><a href="../src/strconv/ftoa.go.html#line-319">#L319</a>: 		if li &gt;= 0 &amp;&amp; li &lt; lower.<b>nd</b> {
+		<a href="../src/strconv/ftoa.go.html#line-327" class="path-duplicate">ftoa.go</a><a href="../src/strconv/ftoa.go.html#line-327">#L327</a>: 		if ui &lt; upper.<b>nd</b> {
+		<a href="../src/strconv/ftoa.go.html#line-334" class="path-duplicate">ftoa.go</a><a href="../src/strconv/ftoa.go.html#line-334">#L334</a>: 		okdown := l != m || inclusive &amp;&amp; li+1 == lower.<b>nd</b>
+		<a href="../src/strconv/ftoa.go.html#line-355" class="path-duplicate">ftoa.go</a><a href="../src/strconv/ftoa.go.html#line-355">#L355</a>: 		okup := upperdelta &gt; 0 &amp;&amp; (inclusive || upperdelta &gt; 1 || ui+1 &lt; upper.<b>nd</b>)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.itabTableType.size</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/iface.go.html#line-24">itabTableType</a>.<a href="../src/runtime/iface.go.html#line-25">size</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">9 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/iface.go.html#line-20">iface.go#L20</a>: 	itabTableInit = itabTableType{<b>size</b>: itabInitSize} // starter table
+		<a href="../src/runtime/iface.go.html#line-25" class="path-duplicate">iface.go</a><a href="../src/runtime/iface.go.html#line-25">#L25</a>: 	<b>size</b>    uintptr             // length of entries array. Always a power of 2.
+		<a href="../src/runtime/iface.go.html#line-102" class="path-duplicate">iface.go</a><a href="../src/runtime/iface.go.html#line-102">#L102</a>: 	mask := t.<b>size</b> - 1
+		<a href="../src/runtime/iface.go.html#line-133" class="path-duplicate">iface.go</a><a href="../src/runtime/iface.go.html#line-133">#L133</a>: 	if t.count &gt;= 3*(t.<b>size</b>/4) { // 75% load factor
+		<a href="../src/runtime/iface.go.html#line-138" class="path-duplicate">iface.go</a><a href="../src/runtime/iface.go.html#line-138">#L138</a>: 		t2 := (*itabTableType)(mallocgc((2+2*t.<b>size</b>)*goarch.PtrSize, nil, true))
+		<a href="../src/runtime/iface.go.html#line-139" class="path-duplicate">iface.go</a><a href="../src/runtime/iface.go.html#line-139">#L139</a>: 		t2.<b>size</b> = t.<b>size</b> * 2
+		<a href="../src/runtime/iface.go.html#line-163" class="path-duplicate">iface.go</a><a href="../src/runtime/iface.go.html#line-163">#L163</a>: 	mask := t.<b>size</b> - 1
+		<a href="../src/runtime/iface.go.html#line-637" class="path-duplicate">iface.go</a><a href="../src/runtime/iface.go.html#line-637">#L637</a>: 	for i := uintptr(0); i &lt; t.<b>size</b>; i++ {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

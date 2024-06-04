@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: reflect.Value.Type</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/reflect.html">reflect</a>.<a href="../src/reflect/value.go.html#line-39">Value</a>.<a href="../src/reflect/value.go.html#line-2690">Type</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">80 uses</span>
+
+	reflect (current package)
+		<a href="../src/reflect/deepequal.go.html#line-31">deepequal.go#L31</a>: 	if v1.<b>Type</b>() != v2.<b>Type</b>() {
+		<a href="../src/reflect/deepequal.go.html#line-80" class="path-duplicate">deepequal.go</a><a href="../src/reflect/deepequal.go.html#line-80">#L80</a>: 		typ := v1.<b>Type</b>()
+		<a href="../src/reflect/deepequal.go.html#line-109" class="path-duplicate">deepequal.go</a><a href="../src/reflect/deepequal.go.html#line-109">#L109</a>: 		if v1.<b>Type</b>().Elem().Kind() == Uint8 {
+		<a href="../src/reflect/deepequal.go.html#line-235" class="path-duplicate">deepequal.go</a><a href="../src/reflect/deepequal.go.html#line-235">#L235</a>: 	if v1.<b>Type</b>() != v2.<b>Type</b>() {
+		<a href="../src/reflect/makefunc.go.html#line-107">makefunc.go#L107</a>: 	ftyp := (*funcType)(unsafe.Pointer(v.<b>Type</b>().(*rtype)))
+		<a href="../src/reflect/swapper.go.html#line-35">swapper.go#L35</a>: 	typ := v.<b>Type</b>().Elem().common()
+		<a href="../src/reflect/value.go.html#line-451">value.go#L451</a>: 		if xt, targ := in[i].<b>Type</b>(), t.In(i); !xt.AssignableTo(toRType(targ)) {
+		<a href="../src/reflect/value.go.html#line-462" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-462">#L462</a>: 			if xt := x.<b>Type</b>(); !xt.AssignableTo(elem) {
+		<a href="../src/reflect/value.go.html#line-1646" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1646">#L1646</a>: 			if !v.Field(i).IsZero() &amp;&amp; v.<b>Type</b>().Field(i).Name != "_" {
+		<a href="../src/reflect/value.go.html#line-2665" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2665">#L2665</a>: 	return "&lt;" + v.<b>Type</b>().String() + " Value&gt;"
+		<a href="../src/reflect/value.go.html#line-2690" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2690">#L2690</a>: func (v Value) <b>Type</b>() Type {
+		<a href="../src/reflect/value.go.html#line-2956" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2956">#L2956</a>: 	typesMustMatch("reflect.AppendSlice", s.<b>Type</b>().Elem(), t.<b>Type</b>().Elem())
+		<a href="../src/reflect/value.go.html#line-3376" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3376">#L3376</a>: 	vt := v.<b>Type</b>()
+		<a href="../src/reflect/value.go.html#line-3407" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3407">#L3407</a>: 		switch v.<b>Type</b>().Elem().Kind() {
+		<a href="../src/reflect/value.go.html#line-3409" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3409">#L3409</a>: 			for i := 0; i &lt; v.<b>Type</b>().Len(); i++ {
+		<a href="../src/reflect/value.go.html#line-3416" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3416">#L3416</a>: 		return v.<b>Type</b>().Comparable()
+		<a href="../src/reflect/value.go.html#line-3430" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3430">#L3430</a>: 		return v.<b>Type</b>().Comparable()
+		<a href="../src/reflect/value.go.html#line-3454" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3454">#L3454</a>: 	if v.Kind() != u.Kind() || v.<b>Type</b>() != u.<b>Type</b>() {
+		<a href="../src/reflect/value.go.html#line-3482" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3482">#L3482</a>: 			if !v.<b>Type</b>().Elem().Comparable() {
+		<a href="../src/reflect/value.go.html#line-3505" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3505">#L3505</a>: 	panic("reflect.Value.Equal: values of type " + v.<b>Type</b>().String() + " are not comparable")
+		<a href="../src/reflect/value.go.html#line-3718" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3718">#L3718</a>: 	if v.<b>Type</b>().Kind() == Float32 &amp;&amp; t.Kind() == Float32 {
+
+	<a href="../pkg/encoding/asn1.html">encoding/asn1</a>
+		<a href="../src/encoding/asn1/asn1.go.html#line-680">asn1.go#L680</a>: 	fieldType := v.<b>Type</b>()
+		<a href="../src/encoding/asn1/asn1.go.html#line-901" class="path-duplicate">asn1.go</a><a href="../src/encoding/asn1/asn1.go.html#line-901">#L901</a>: 		if val.<b>Type</b>().Size() == 4 {
+		<a href="../src/encoding/asn1/asn1.go.html#line-990" class="path-duplicate">asn1.go</a><a href="../src/encoding/asn1/asn1.go.html#line-990">#L990</a>: 	err = StructuralError{"unsupported: " + v.<b>Type</b>().String()}
+		<a href="../src/encoding/asn1/marshal.go.html#line-462">marshal.go#L462</a>: 	switch value.<b>Type</b>() {
+		<a href="../src/encoding/asn1/marshal.go.html#line-488" class="path-duplicate">marshal.go</a><a href="../src/encoding/asn1/marshal.go.html#line-488">#L488</a>: 		t := v.<b>Type</b>()
+		<a href="../src/encoding/asn1/marshal.go.html#line-536" class="path-duplicate">marshal.go</a><a href="../src/encoding/asn1/marshal.go.html#line-536">#L536</a>: 		sliceType := v.<b>Type</b>()
+		<a href="../src/encoding/asn1/marshal.go.html#line-584" class="path-duplicate">marshal.go</a><a href="../src/encoding/asn1/marshal.go.html#line-584">#L584</a>: 	if v.Kind() == reflect.Interface &amp;&amp; v.<b>Type</b>().NumMethod() == 0 {
+		<a href="../src/encoding/asn1/marshal.go.html#line-593" class="path-duplicate">marshal.go</a><a href="../src/encoding/asn1/marshal.go.html#line-593">#L593</a>: 		defaultValue := reflect.New(v.<b>Type</b>()).Elem()
+		<a href="../src/encoding/asn1/marshal.go.html#line-605" class="path-duplicate">marshal.go</a><a href="../src/encoding/asn1/marshal.go.html#line-605">#L605</a>: 		if reflect.DeepEqual(v.Interface(), reflect.Zero(v.<b>Type</b>()).Interface()) {
+		<a href="../src/encoding/asn1/marshal.go.html#line-610" class="path-duplicate">marshal.go</a><a href="../src/encoding/asn1/marshal.go.html#line-610">#L610</a>: 	if v.<b>Type</b>() == rawValueType {
+		<a href="../src/encoding/asn1/marshal.go.html#line-624" class="path-duplicate">marshal.go</a><a href="../src/encoding/asn1/marshal.go.html#line-624">#L624</a>: 	matchAny, tag, isCompound, ok := getUniversalType(v.<b>Type</b>())
+		<a href="../src/encoding/asn1/marshal.go.html#line-626" class="path-duplicate">marshal.go</a><a href="../src/encoding/asn1/marshal.go.html#line-626">#L626</a>: 		return nil, StructuralError{fmt.Sprintf("unknown Go type: %v", v.<b>Type</b>())}
+
+	<a href="../pkg/encoding/binary.html">encoding/binary</a>
+		<a href="../src/encoding/binary/binary.go.html#line-483">binary.go#L483</a>: 		if s := sizeof(v.<b>Type</b>().Elem()); s &gt;= 0 {
+		<a href="../src/encoding/binary/binary.go.html#line-488" class="path-duplicate">binary.go</a><a href="../src/encoding/binary/binary.go.html#line-488">#L488</a>: 		t := v.<b>Type</b>()
+		<a href="../src/encoding/binary/binary.go.html#line-498" class="path-duplicate">binary.go</a><a href="../src/encoding/binary/binary.go.html#line-498">#L498</a>: 			return sizeof(v.<b>Type</b>())
+		<a href="../src/encoding/binary/binary.go.html#line-627" class="path-duplicate">binary.go</a><a href="../src/encoding/binary/binary.go.html#line-627">#L627</a>: 		t := v.<b>Type</b>()
+		<a href="../src/encoding/binary/binary.go.html#line-696" class="path-duplicate">binary.go</a><a href="../src/encoding/binary/binary.go.html#line-696">#L696</a>: 		t := v.<b>Type</b>()
+		<a href="../src/encoding/binary/binary.go.html#line-717" class="path-duplicate">binary.go</a><a href="../src/encoding/binary/binary.go.html#line-717">#L717</a>: 		switch v.<b>Type</b>().Kind() {
+		<a href="../src/encoding/binary/binary.go.html#line-729" class="path-duplicate">binary.go</a><a href="../src/encoding/binary/binary.go.html#line-729">#L729</a>: 		switch v.<b>Type</b>().Kind() {
+		<a href="../src/encoding/binary/binary.go.html#line-741" class="path-duplicate">binary.go</a><a href="../src/encoding/binary/binary.go.html#line-741">#L741</a>: 		switch v.<b>Type</b>().Kind() {
+		<a href="../src/encoding/binary/binary.go.html#line-749" class="path-duplicate">binary.go</a><a href="../src/encoding/binary/binary.go.html#line-749">#L749</a>: 		switch v.<b>Type</b>().Kind() {
+
+	<a href="../pkg/fmt.html">fmt</a>
+		<a href="../src/fmt/print.go.html#line-377">print.go#L377</a>: 	p.buf.writeString(v.<b>Type</b>().String())
+		<a href="../src/fmt/print.go.html#line-392" class="path-duplicate">print.go</a><a href="../src/fmt/print.go.html#line-392">#L392</a>: 		p.buf.writeString(p.value.<b>Type</b>().String())
+		<a href="../src/fmt/print.go.html#line-563" class="path-duplicate">print.go</a><a href="../src/fmt/print.go.html#line-563">#L563</a>: 			p.buf.writeString(value.<b>Type</b>().String())
+		<a href="../src/fmt/print.go.html#line-807" class="path-duplicate">print.go</a><a href="../src/fmt/print.go.html#line-807">#L807</a>: 			p.buf.writeString(f.<b>Type</b>().String())
+		<a href="../src/fmt/print.go.html#line-836" class="path-duplicate">print.go</a><a href="../src/fmt/print.go.html#line-836">#L836</a>: 			p.buf.writeString(f.<b>Type</b>().String())
+		<a href="../src/fmt/print.go.html#line-848" class="path-duplicate">print.go</a><a href="../src/fmt/print.go.html#line-848">#L848</a>: 				if name := f.<b>Type</b>().Field(i).Name; name != "" {
+		<a href="../src/fmt/print.go.html#line-860" class="path-duplicate">print.go</a><a href="../src/fmt/print.go.html#line-860">#L860</a>: 				p.buf.writeString(f.<b>Type</b>().String())
+		<a href="../src/fmt/print.go.html#line-872" class="path-duplicate">print.go</a><a href="../src/fmt/print.go.html#line-872">#L872</a>: 			t := f.<b>Type</b>()
+		<a href="../src/fmt/print.go.html#line-891" class="path-duplicate">print.go</a><a href="../src/fmt/print.go.html#line-891">#L891</a>: 			p.buf.writeString(f.<b>Type</b>().String())
+		<a href="../src/fmt/scan.go.html#line-1021">scan.go#L1021</a>: 			s.errorString("type not a pointer: " + val.<b>Type</b>().String())
+		<a href="../src/fmt/scan.go.html#line-1028" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-1028">#L1028</a>: 			v.SetInt(s.scanInt(verb, v.<b>Type</b>().Bits()))
+		<a href="../src/fmt/scan.go.html#line-1030" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-1030">#L1030</a>: 			v.SetUint(s.scanUint(verb, v.<b>Type</b>().Bits()))
+		<a href="../src/fmt/scan.go.html#line-1035" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-1035">#L1035</a>: 			typ := v.<b>Type</b>()
+		<a href="../src/fmt/scan.go.html#line-1037" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-1037">#L1037</a>: 				s.errorString("can't scan type: " + val.<b>Type</b>().String())
+		<a href="../src/fmt/scan.go.html#line-1047" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-1047">#L1047</a>: 			v.SetFloat(s.convertFloat(s.floatToken(), v.<b>Type</b>().Bits()))
+		<a href="../src/fmt/scan.go.html#line-1049" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-1049">#L1049</a>: 			v.SetComplex(s.scanComplex(verb, v.<b>Type</b>().Bits()))
+		<a href="../src/fmt/scan.go.html#line-1051" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-1051">#L1051</a>: 			s.errorString("can't scan type: " + val.<b>Type</b>().String())
+
+	<a href="../pkg/github.com/conneroisu/seltabl.html">github.com/conneroisu/seltabl</a>
+		<a href="../src/github.com/conneroisu/seltabl/reflect.go.html#line-29">reflect.go#L29</a>: 	fieldType := field.<b>Type</b>().Kind()
+
+	<a href="../pkg/github.com/conneroisu/seltabl/internal/errors.html">github.com/conneroisu/seltabl/internal/errors</a>
+		<a href="../src/github.com/conneroisu/seltabl/internal/errors/selection.go.html#line-36">selection.go#L36</a>: 	structType := val.<b>Type</b>()
+		<a href="../src/github.com/conneroisu/seltabl/internal/errors/selection.go.html#line-47" class="path-duplicate">selection.go</a><a href="../src/github.com/conneroisu/seltabl/internal/errors/selection.go.html#line-47">#L47</a>: 		_, err = result.WriteString(fmt.Sprintf("\t%s %v %s\n", field.Name, fieldValue.<b>Type</b>(), *skv))
+		<a href="../src/github.com/conneroisu/seltabl/internal/errors/selector.go.html#line-32">selector.go#L32</a>: 	structType := val.<b>Type</b>()
+		<a href="../src/github.com/conneroisu/seltabl/internal/errors/selector.go.html#line-43" class="path-duplicate">selector.go</a><a href="../src/github.com/conneroisu/seltabl/internal/errors/selector.go.html#line-43">#L43</a>: 		result.WriteString(fmt.Sprintf("\t%s %v %s\n", field.Name, fieldValue.<b>Type</b>(), *skv))
+
+	<a href="../pkg/internal/fmtsort.html">internal/fmtsort</a>
+		<a href="../src/internal/fmtsort/sort.go.html#line-52">sort.go#L52</a>: 	if mapValue.<b>Type</b>().Kind() != reflect.Map {
+		<a href="../src/internal/fmtsort/sort.go.html#line-79" class="path-duplicate">sort.go</a><a href="../src/internal/fmtsort/sort.go.html#line-79">#L79</a>: 	aType, bType := aVal.<b>Type</b>(), bVal.<b>Type</b>()
+		<a href="../src/internal/fmtsort/sort.go.html#line-173" class="path-duplicate">sort.go</a><a href="../src/internal/fmtsort/sort.go.html#line-173">#L173</a>: 		c := compare(reflect.ValueOf(aVal.Elem().<b>Type</b>()), reflect.ValueOf(bVal.Elem().<b>Type</b>()))
+
+	<a href="../pkg/net/http.html">net/http</a>
+		<a href="../src/net/http/h2_error.go.html#line-15">h2_error.go#L15</a>: 	dstType := dst.<b>Type</b>()
+		<a href="../src/net/http/h2_error.go.html#line-20" class="path-duplicate">h2_error.go</a><a href="../src/net/http/h2_error.go.html#line-20">#L20</a>: 	srcType := src.<b>Type</b>()
+		<a href="../src/net/http/h2_error.go.html#line-34" class="path-duplicate">h2_error.go</a><a href="../src/net/http/h2_error.go.html#line-34">#L34</a>: 		df.Set(src.Field(i).Convert(df.<b>Type</b>()))
+		<a href="../src/net/http/transport.go.html#line-386">transport.go#L386</a>: 	if rv := reflect.ValueOf(altProto["https"]); rv.IsValid() &amp;&amp; rv.<b>Type</b>().Kind() == reflect.Struct &amp;&amp; rv.<b>Type</b>().NumField() == 1 {
+
+	<a href="../pkg/net/http/httptrace.html">net/http/httptrace</a>
+		<a href="../src/net/http/httptrace/trace.go.html#line-181">trace.go#L181</a>: 	structType := tv.<b>Type</b>()
+		<a href="../src/net/http/httptrace/trace.go.html#line-184" class="path-duplicate">trace.go</a><a href="../src/net/http/httptrace/trace.go.html#line-184">#L184</a>: 		hookType := tf.<b>Type</b>()
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

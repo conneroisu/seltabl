@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: internal/cpu.isSet</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../../pkg/internal/cpu.html">internal/cpu</a>.<a href="../../src/internal/cpu/cpu_x86.go.html#line-168">isSet</a></b></span>
+
+<span class="title">26 uses</span>
+
+	internal/cpu (current package)
+		<a href="../../src/internal/cpu/cpu_x86.go.html#line-103">cpu_x86.go#L103</a>: 	X86.HasSSE3 = <b>isSet</b>(ecx1, cpuid_SSE3)
+		<a href="../../src/internal/cpu/cpu_x86.go.html#line-104" class="path-duplicate">cpu_x86.go</a><a href="../../src/internal/cpu/cpu_x86.go.html#line-104">#L104</a>: 	X86.HasPCLMULQDQ = <b>isSet</b>(ecx1, cpuid_PCLMULQDQ)
+		<a href="../../src/internal/cpu/cpu_x86.go.html#line-105" class="path-duplicate">cpu_x86.go</a><a href="../../src/internal/cpu/cpu_x86.go.html#line-105">#L105</a>: 	X86.HasSSSE3 = <b>isSet</b>(ecx1, cpuid_SSSE3)
+		<a href="../../src/internal/cpu/cpu_x86.go.html#line-106" class="path-duplicate">cpu_x86.go</a><a href="../../src/internal/cpu/cpu_x86.go.html#line-106">#L106</a>: 	X86.HasSSE41 = <b>isSet</b>(ecx1, cpuid_SSE41)
+		<a href="../../src/internal/cpu/cpu_x86.go.html#line-107" class="path-duplicate">cpu_x86.go</a><a href="../../src/internal/cpu/cpu_x86.go.html#line-107">#L107</a>: 	X86.HasSSE42 = <b>isSet</b>(ecx1, cpuid_SSE42)
+		<a href="../../src/internal/cpu/cpu_x86.go.html#line-108" class="path-duplicate">cpu_x86.go</a><a href="../../src/internal/cpu/cpu_x86.go.html#line-108">#L108</a>: 	X86.HasPOPCNT = <b>isSet</b>(ecx1, cpuid_POPCNT)
+		<a href="../../src/internal/cpu/cpu_x86.go.html#line-109" class="path-duplicate">cpu_x86.go</a><a href="../../src/internal/cpu/cpu_x86.go.html#line-109">#L109</a>: 	X86.HasAES = <b>isSet</b>(ecx1, cpuid_AES)
+		<a href="../../src/internal/cpu/cpu_x86.go.html#line-114" class="path-duplicate">cpu_x86.go</a><a href="../../src/internal/cpu/cpu_x86.go.html#line-114">#L114</a>: 	X86.HasOSXSAVE = <b>isSet</b>(ecx1, cpuid_OSXSAVE)
+		<a href="../../src/internal/cpu/cpu_x86.go.html#line-120" class="path-duplicate">cpu_x86.go</a><a href="../../src/internal/cpu/cpu_x86.go.html#line-120">#L120</a>: 	X86.HasFMA = <b>isSet</b>(ecx1, cpuid_FMA) &amp;&amp; X86.HasOSXSAVE
+		<a href="../../src/internal/cpu/cpu_x86.go.html#line-128" class="path-duplicate">cpu_x86.go</a><a href="../../src/internal/cpu/cpu_x86.go.html#line-128">#L128</a>: 		osSupportsAVX = <b>isSet</b>(eax, 1&lt;&lt;1) &amp;&amp; <b>isSet</b>(eax, 1&lt;&lt;2)
+		<a href="../../src/internal/cpu/cpu_x86.go.html#line-134" class="path-duplicate">cpu_x86.go</a><a href="../../src/internal/cpu/cpu_x86.go.html#line-134">#L134</a>: 		osSupportsAVX512 = osSupportsAVX &amp;&amp; <b>isSet</b>(eax, 1&lt;&lt;5) &amp;&amp; <b>isSet</b>(eax, 1&lt;&lt;6) &amp;&amp; <b>isSet</b>(eax, 1&lt;&lt;7)
+		<a href="../../src/internal/cpu/cpu_x86.go.html#line-137" class="path-duplicate">cpu_x86.go</a><a href="../../src/internal/cpu/cpu_x86.go.html#line-137">#L137</a>: 	X86.HasAVX = <b>isSet</b>(ecx1, cpuid_AVX) &amp;&amp; osSupportsAVX
+		<a href="../../src/internal/cpu/cpu_x86.go.html#line-144" class="path-duplicate">cpu_x86.go</a><a href="../../src/internal/cpu/cpu_x86.go.html#line-144">#L144</a>: 	X86.HasBMI1 = <b>isSet</b>(ebx7, cpuid_BMI1)
+		<a href="../../src/internal/cpu/cpu_x86.go.html#line-145" class="path-duplicate">cpu_x86.go</a><a href="../../src/internal/cpu/cpu_x86.go.html#line-145">#L145</a>: 	X86.HasAVX2 = <b>isSet</b>(ebx7, cpuid_AVX2) &amp;&amp; osSupportsAVX
+		<a href="../../src/internal/cpu/cpu_x86.go.html#line-146" class="path-duplicate">cpu_x86.go</a><a href="../../src/internal/cpu/cpu_x86.go.html#line-146">#L146</a>: 	X86.HasBMI2 = <b>isSet</b>(ebx7, cpuid_BMI2)
+		<a href="../../src/internal/cpu/cpu_x86.go.html#line-147" class="path-duplicate">cpu_x86.go</a><a href="../../src/internal/cpu/cpu_x86.go.html#line-147">#L147</a>: 	X86.HasERMS = <b>isSet</b>(ebx7, cpuid_ERMS)
+		<a href="../../src/internal/cpu/cpu_x86.go.html#line-148" class="path-duplicate">cpu_x86.go</a><a href="../../src/internal/cpu/cpu_x86.go.html#line-148">#L148</a>: 	X86.HasADX = <b>isSet</b>(ebx7, cpuid_ADX)
+		<a href="../../src/internal/cpu/cpu_x86.go.html#line-149" class="path-duplicate">cpu_x86.go</a><a href="../../src/internal/cpu/cpu_x86.go.html#line-149">#L149</a>: 	X86.HasSHA = <b>isSet</b>(ebx7, cpuid_SHA)
+		<a href="../../src/internal/cpu/cpu_x86.go.html#line-151" class="path-duplicate">cpu_x86.go</a><a href="../../src/internal/cpu/cpu_x86.go.html#line-151">#L151</a>: 	X86.HasAVX512F = <b>isSet</b>(ebx7, cpuid_AVX512F) &amp;&amp; osSupportsAVX512
+		<a href="../../src/internal/cpu/cpu_x86.go.html#line-153" class="path-duplicate">cpu_x86.go</a><a href="../../src/internal/cpu/cpu_x86.go.html#line-153">#L153</a>: 		X86.HasAVX512BW = <b>isSet</b>(ebx7, cpuid_AVX512BW)
+		<a href="../../src/internal/cpu/cpu_x86.go.html#line-154" class="path-duplicate">cpu_x86.go</a><a href="../../src/internal/cpu/cpu_x86.go.html#line-154">#L154</a>: 		X86.HasAVX512VL = <b>isSet</b>(ebx7, cpuid_AVX512VL)
+		<a href="../../src/internal/cpu/cpu_x86.go.html#line-165" class="path-duplicate">cpu_x86.go</a><a href="../../src/internal/cpu/cpu_x86.go.html#line-165">#L165</a>: 	X86.HasRDTSCP = <b>isSet</b>(edxExt1, cpuid_RDTSCP)
+		<a href="../../src/internal/cpu/cpu_x86.go.html#line-168" class="path-duplicate">cpu_x86.go</a><a href="../../src/internal/cpu/cpu_x86.go.html#line-168">#L168</a>: func <b>isSet</b>(hwc uint32, value uint32) bool {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

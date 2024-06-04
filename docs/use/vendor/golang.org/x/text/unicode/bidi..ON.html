@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: vendor/golang.org/x/text/unicode/bidi.ON</title>
+<link href="../../../../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../../../../../../pkg/vendor/golang.org/x/text/unicode/bidi.html">vendor/golang.org/x/text/unicode/bidi</a>.<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/trieval.go.html#line-19">ON</a></b></span>
+
+<span class="title">21 uses</span>
+
+	vendor/golang.org/x/text/unicode/bidi (current package)
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/bracket.go.html#line-141">bracket.go#L141</a>: 		if pairTypes[index] == bpNone || p.codesIsolatedRun[i] != <b>ON</b> {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/bracket.go.html#line-241" class="path-duplicate">bracket.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/bracket.go.html#line-241">#L241</a>: 		return <b>ON</b>
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/bracket.go.html#line-253" class="path-duplicate">bracket.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/bracket.go.html#line-253">#L253</a>: 	dirOpposite := <b>ON</b>
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/bracket.go.html#line-256" class="path-duplicate">bracket.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/bracket.go.html#line-256">#L256</a>: 		if dir == <b>ON</b> {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/bracket.go.html#line-272" class="path-duplicate">bracket.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/bracket.go.html#line-272">#L272</a>: 		if dir := p.getStrongTypeN0(i); dir != <b>ON</b> {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/bracket.go.html#line-289" class="path-duplicate">bracket.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/bracket.go.html#line-289">#L289</a>: 	if dirPair == <b>ON</b> {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/bracket.go.html#line-296" class="path-duplicate">bracket.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/bracket.go.html#line-296">#L296</a>: 		if dirPair == dirEmbed || dirPair == <b>ON</b> {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-307">core.go#L307</a>: 	stack.push(p.embeddingLevel, <b>ON</b>, false)
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-322" class="path-duplicate">core.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-322">#L322</a>: 				if stack.lastDirectionalOverrideStatus() != <b>ON</b> {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-350" class="path-duplicate">core.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-350">#L350</a>: 					stack.push(newLevel, <b>ON</b>, isIsolate)
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-410" class="path-duplicate">core.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-410">#L410</a>: 			if stack.lastDirectionalOverrideStatus() != <b>ON</b> {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-489" class="path-duplicate">core.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-489">#L489</a>: 	s.assertOnly(L, R, AL, EN, ES, ET, AN, CS, B, S, WS, <b>ON</b>, NSM, LRI, RLI, FSI, PDI)
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-582" class="path-duplicate">core.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-582">#L582</a>: 			s.types[i] = <b>ON</b>
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-609" class="path-duplicate">core.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-609">#L609</a>: 	s.assertOnly(L, R, EN, AN, B, S, WS, <b>ON</b>, RLI, LRI, FSI, PDI)
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-613" class="path-duplicate">core.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-613">#L613</a>: 		case WS, <b>ON</b>, B, S, RLI, LRI, FSI, PDI:
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-616" class="path-duplicate">core.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-616">#L616</a>: 			runEnd := s.findRunLimit(runStart, B, S, WS, <b>ON</b>, RLI, LRI, FSI, PDI)
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/trieval.go.html#line-19">trieval.go#L19</a>: 	<b>ON</b>                   // OtherNeutral
+
+	<a href="../../../../../../pkg/vendor/golang.org/x/text/secure/bidirule.html">vendor/golang.org/x/text/secure/bidirule</a>
+		<a href="../../../../../../src/vendor/golang.org/x/text/secure/bidirule/bidirule.go.html#line-81">bidirule.go#L81</a>: 		{ruleRTL, 1&lt;&lt;bidi.ES | 1&lt;&lt;bidi.CS | 1&lt;&lt;bidi.ET | 1&lt;&lt;bidi.<b>ON</b> | 1&lt;&lt;bidi.BN | 1&lt;&lt;bidi.NSM},
+		<a href="../../../../../../src/vendor/golang.org/x/text/secure/bidirule/bidirule.go.html#line-92" class="path-duplicate">bidirule.go</a><a href="../../../../../../src/vendor/golang.org/x/text/secure/bidirule/bidirule.go.html#line-92">#L92</a>: 		{ruleRTL, 1&lt;&lt;bidi.ES | 1&lt;&lt;bidi.CS | 1&lt;&lt;bidi.ET | 1&lt;&lt;bidi.<b>ON</b> | 1&lt;&lt;bidi.BN},
+		<a href="../../../../../../src/vendor/golang.org/x/text/secure/bidirule/bidirule.go.html#line-103" class="path-duplicate">bidirule.go</a><a href="../../../../../../src/vendor/golang.org/x/text/secure/bidirule/bidirule.go.html#line-103">#L103</a>: 		{ruleLTR, 1&lt;&lt;bidi.ES | 1&lt;&lt;bidi.CS | 1&lt;&lt;bidi.ET | 1&lt;&lt;bidi.<b>ON</b> | 1&lt;&lt;bidi.BN | 1&lt;&lt;bidi.NSM},
+		<a href="../../../../../../src/vendor/golang.org/x/text/secure/bidirule/bidirule.go.html#line-114" class="path-duplicate">bidirule.go</a><a href="../../../../../../src/vendor/golang.org/x/text/secure/bidirule/bidirule.go.html#line-114">#L114</a>: 		{ruleLTR, 1&lt;&lt;bidi.ES | 1&lt;&lt;bidi.CS | 1&lt;&lt;bidi.ET | 1&lt;&lt;bidi.<b>ON</b> | 1&lt;&lt;bidi.BN},
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

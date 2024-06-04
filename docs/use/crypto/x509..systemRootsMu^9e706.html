@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/x509.systemRootsMu</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">var <b><a href="../../pkg/crypto/x509.html">crypto/x509</a>.<a href="../../src/crypto/x509/root.go.html#line-14">systemRootsMu</a></b></span>
+
+<span class="title">7 uses</span>
+
+	crypto/x509 (current package)
+		<a href="../../src/crypto/x509/root.go.html#line-14">root.go#L14</a>: 	<b>systemRootsMu</b>  sync.RWMutex
+		<a href="../../src/crypto/x509/root.go.html#line-22" class="path-duplicate">root.go</a><a href="../../src/crypto/x509/root.go.html#line-22">#L22</a>: 	<b>systemRootsMu</b>.RLock()
+		<a href="../../src/crypto/x509/root.go.html#line-23" class="path-duplicate">root.go</a><a href="../../src/crypto/x509/root.go.html#line-23">#L23</a>: 	defer <b>systemRootsMu</b>.RUnlock()
+		<a href="../../src/crypto/x509/root.go.html#line-28" class="path-duplicate">root.go</a><a href="../../src/crypto/x509/root.go.html#line-28">#L28</a>: 	<b>systemRootsMu</b>.Lock()
+		<a href="../../src/crypto/x509/root.go.html#line-29" class="path-duplicate">root.go</a><a href="../../src/crypto/x509/root.go.html#line-29">#L29</a>: 	defer <b>systemRootsMu</b>.Unlock()
+		<a href="../../src/crypto/x509/root.go.html#line-60" class="path-duplicate">root.go</a><a href="../../src/crypto/x509/root.go.html#line-60">#L60</a>: 	<b>systemRootsMu</b>.Lock()
+		<a href="../../src/crypto/x509/root.go.html#line-61" class="path-duplicate">root.go</a><a href="../../src/crypto/x509/root.go.html#line-61">#L61</a>: 	defer <b>systemRootsMu</b>.Unlock()
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

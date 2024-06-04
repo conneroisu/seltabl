@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: os.PathSeparator</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../pkg/os.html">os</a>.<a href="../src/os/path_unix.go.html#line-10">PathSeparator</a></b></span>
+
+<span class="title">9 uses</span>
+
+	os (current package)
+		<a href="../src/os/file.go.html#line-760">file.go#L760</a>: 	return string(dir) + string(<b>PathSeparator</b>) + name, nil
+		<a href="../src/os/path_unix.go.html#line-10">path_unix.go#L10</a>: 	<b>PathSeparator</b>     = '/' // OS-specific path separator
+		<a href="../src/os/path_unix.go.html#line-16" class="path-duplicate">path_unix.go</a><a href="../src/os/path_unix.go.html#line-16">#L16</a>: 	return <b>PathSeparator</b> == c
+		<a href="../src/os/removeall_at.go.html#line-50">removeall_at.go#L50</a>: 			pathErr.Path = parentDir + string(<b>PathSeparator</b>) + pathErr.Path
+		<a href="../src/os/removeall_at.go.html#line-128" class="path-duplicate">removeall_at.go</a><a href="../src/os/removeall_at.go.html#line-128">#L128</a>: 						pathErr.Path = base + string(<b>PathSeparator</b>) + pathErr.Path
+		<a href="../src/os/tempfile.go.html#line-105">tempfile.go#L105</a>: 			return "", &amp;PathError{Op: "mkdirtemp", Path: dir + string(<b>PathSeparator</b>) + prefix + "*" + suffix, Err: ErrExist}
+		<a href="../src/os/tempfile.go.html#line-120" class="path-duplicate">tempfile.go</a><a href="../src/os/tempfile.go.html#line-120">#L120</a>: 	return dir + string(<b>PathSeparator</b>) + name
+
+	<a href="../pkg/path/filepath.html">path/filepath</a>
+		<a href="../src/path/filepath/path.go.html#line-68">path.go#L68</a>: 	Separator     = os.<b>PathSeparator</b>
+		<a href="../src/path/filepath/symlink.go.html#line-17">symlink.go#L17</a>: 	pathSeparator := string(os.<b>PathSeparator</b>)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

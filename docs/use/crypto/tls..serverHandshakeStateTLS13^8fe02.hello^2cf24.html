@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/tls.serverHandshakeStateTLS13.hello</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/crypto/tls.html">crypto/tls</a>.<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-25">serverHandshakeStateTLS13</a>.<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-29">hello</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">18 uses</span>
+
+	crypto/tls (current package)
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-29">handshake_server_tls13.go#L29</a>: 	<b>hello</b>           *serverHelloMsg
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-93" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-93">#L93</a>: 	hs.<b>hello</b> = new(serverHelloMsg)
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-97" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-97">#L97</a>: 	hs.<b>hello</b>.vers = VersionTLS12
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-98" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-98">#L98</a>: 	hs.<b>hello</b>.supportedVersion = c.vers
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-132" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-132">#L132</a>: 	hs.<b>hello</b>.random = make([]byte, 32)
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-133" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-133">#L133</a>: 	if _, err := io.ReadFull(c.config.rand(), hs.<b>hello</b>.random); err != nil {
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-159" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-159">#L159</a>: 	hs.<b>hello</b>.sessionId = hs.clientHello.sessionId
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-160" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-160">#L160</a>: 	hs.<b>hello</b>.compressionMethod = compressionNone
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-177" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-177">#L177</a>: 	hs.<b>hello</b>.cipherSuite = hs.suite.id
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-223" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-223">#L223</a>: 	hs.<b>hello</b>.serverShare = keyShare{group: selectedGroup, data: key.PublicKey().Bytes()}
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-392" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-392">#L392</a>: 		hs.<b>hello</b>.selectedIdentityPresent = true
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-393" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-393">#L393</a>: 		hs.<b>hello</b>.selectedIdentity = uint16(i)
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-491" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-491">#L491</a>: 		vers:              hs.<b>hello</b>.vers,
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-493" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-493">#L493</a>: 		sessionId:         hs.<b>hello</b>.sessionId,
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-494" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-494">#L494</a>: 		cipherSuite:       hs.<b>hello</b>.cipherSuite,
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-495" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-495">#L495</a>: 		compressionMethod: hs.<b>hello</b>.compressionMethod,
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-496" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-496">#L496</a>: 		supportedVersion:  hs.<b>hello</b>.supportedVersion,
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-603" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-603">#L603</a>: 	if _, err := hs.c.writeHandshakeRecord(hs.<b>hello</b>, hs.transcript); err != nil {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

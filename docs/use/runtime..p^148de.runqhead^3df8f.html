@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.p.runqhead</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/runtime2.go.html#line-646">p</a>.<a href="../src/runtime/runtime2.go.html#line-666">runqhead</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">15 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/proc.go.html#line-3864">proc.go#L3864</a>: 	if mp.spinning &amp;&amp; (pp.runnext != 0 || pp.<b>runqhead</b> != pp.runqtail) {
+		<a href="../src/runtime/proc.go.html#line-5505" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-5505">#L5505</a>: 	for pp.<b>runqhead</b> != pp.runqtail {
+		<a href="../src/runtime/proc.go.html#line-6250" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6250">#L6250</a>: 		h := atomic.Load(&amp;pp.<b>runqhead</b>)
+		<a href="../src/runtime/proc.go.html#line-6610" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6610">#L6610</a>: 		head := atomic.Load(&amp;pp.<b>runqhead</b>)
+		<a href="../src/runtime/proc.go.html#line-6654" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6654">#L6654</a>: 	h := atomic.LoadAcq(&amp;pp.<b>runqhead</b>) // load-acquire, synchronize with consumers
+		<a href="../src/runtime/proc.go.html#line-6682" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6682">#L6682</a>: 	if !atomic.CasRel(&amp;pp.<b>runqhead</b>, h, h+n) { // cas-release, commits consume
+		<a href="../src/runtime/proc.go.html#line-6714" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6714">#L6714</a>: 	h := atomic.LoadAcq(&amp;pp.<b>runqhead</b>)
+		<a href="../src/runtime/proc.go.html#line-6758" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6758">#L6758</a>: 		h := atomic.LoadAcq(&amp;pp.<b>runqhead</b>) // load-acquire, synchronize with other consumers
+		<a href="../src/runtime/proc.go.html#line-6764" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6764">#L6764</a>: 		if atomic.CasRel(&amp;pp.<b>runqhead</b>, h, h+1) { // cas-release, commits consume
+		<a href="../src/runtime/proc.go.html#line-6780" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6780">#L6780</a>: 	h := atomic.LoadAcq(&amp;pp.<b>runqhead</b>) // load-acquire, synchronize with other consumers
+		<a href="../src/runtime/proc.go.html#line-6790" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6790">#L6790</a>: 	if !atomic.CasRel(&amp;pp.<b>runqhead</b>, h, h+qn) { // cas-release, commits consume
+		<a href="../src/runtime/proc.go.html#line-6815" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6815">#L6815</a>: 		h := atomic.LoadAcq(&amp;pp.<b>runqhead</b>) // load-acquire, synchronize with other consumers
+		<a href="../src/runtime/proc.go.html#line-6859" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6859">#L6859</a>: 		if atomic.CasRel(&amp;pp.<b>runqhead</b>, h, h+n) { // cas-release, commits consume
+		<a href="../src/runtime/proc.go.html#line-6879" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6879">#L6879</a>: 	h := atomic.LoadAcq(&amp;pp.<b>runqhead</b>) // load-acquire, synchronize with consumers
+		<a href="../src/runtime/runtime2.go.html#line-666">runtime2.go#L666</a>: 	<b>runqhead</b> uint32
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

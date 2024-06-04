@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net.sysListener</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../pkg/net.html">net</a>.<a href="../src/net/dial.go.html#line-780">sysListener</a></b></span>
+
+<span class="title">17 uses</span>
+
+	net (current package)
+		<a href="../src/net/dial.go.html#line-722">dial.go#L722</a>: 	sl := &amp;<b>sysListener</b>{
+		<a href="../src/net/dial.go.html#line-756" class="path-duplicate">dial.go</a><a href="../src/net/dial.go.html#line-756">#L756</a>: 	sl := &amp;<b>sysListener</b>{
+		<a href="../src/net/dial.go.html#line-780" class="path-duplicate">dial.go</a><a href="../src/net/dial.go.html#line-780">#L780</a>: type <b>sysListener</b> struct {
+		<a href="../src/net/iprawsock.go.html#line-234">iprawsock.go#L234</a>: 	sl := &amp;<b>sysListener</b>{network: network, address: laddr.String()}
+		<a href="../src/net/iprawsock_posix.go.html#line-138">iprawsock_posix.go#L138</a>: func (sl *<b>sysListener</b>) listenIP(ctx context.Context, laddr *IPAddr) (*IPConn, error) {
+		<a href="../src/net/mptcpsock_linux.go.html#line-70">mptcpsock_linux.go#L70</a>: func (sl *<b>sysListener</b>) listenMPTCP(ctx context.Context, laddr *TCPAddr) (*TCPListener, error) {
+		<a href="../src/net/tcpsock.go.html#line-396">tcpsock.go#L396</a>: 	sl := &amp;<b>sysListener</b>{network: network, address: laddr.String()}
+		<a href="../src/net/tcpsock_posix.go.html#line-178">tcpsock_posix.go#L178</a>: func (sl *<b>sysListener</b>) listenTCP(ctx context.Context, laddr *TCPAddr) (*TCPListener, error) {
+		<a href="../src/net/tcpsock_posix.go.html#line-182" class="path-duplicate">tcpsock_posix.go</a><a href="../src/net/tcpsock_posix.go.html#line-182">#L182</a>: func (sl *<b>sysListener</b>) listenTCPProto(ctx context.Context, laddr *TCPAddr, proto int) (*TCPListener, error) {
+		<a href="../src/net/udpsock.go.html#line-325">udpsock.go#L325</a>: 	sl := &amp;<b>sysListener</b>{network: network, address: laddr.String()}
+		<a href="../src/net/udpsock.go.html#line-362" class="path-duplicate">udpsock.go</a><a href="../src/net/udpsock.go.html#line-362">#L362</a>: 	sl := &amp;<b>sysListener</b>{network: network, address: gaddr.String()}
+		<a href="../src/net/udpsock_posix.go.html#line-219">udpsock_posix.go#L219</a>: func (sl *<b>sysListener</b>) listenUDP(ctx context.Context, laddr *UDPAddr) (*UDPConn, error) {
+		<a href="../src/net/udpsock_posix.go.html#line-233" class="path-duplicate">udpsock_posix.go</a><a href="../src/net/udpsock_posix.go.html#line-233">#L233</a>: func (sl *<b>sysListener</b>) listenMulticastUDP(ctx context.Context, ifi *Interface, gaddr *UDPAddr) (*UDPConn, error) {
+		<a href="../src/net/unixsock.go.html#line-323">unixsock.go#L323</a>: 	sl := &amp;<b>sysListener</b>{network: network, address: laddr.String()}
+		<a href="../src/net/unixsock.go.html#line-343" class="path-duplicate">unixsock.go</a><a href="../src/net/unixsock.go.html#line-343">#L343</a>: 	sl := &amp;<b>sysListener</b>{network: network, address: laddr.String()}
+		<a href="../src/net/unixsock_posix.go.html#line-219">unixsock_posix.go#L219</a>: func (sl *<b>sysListener</b>) listenUnix(ctx context.Context, laddr *UnixAddr) (*UnixListener, error) {
+		<a href="../src/net/unixsock_posix.go.html#line-233" class="path-duplicate">unixsock_posix.go</a><a href="../src/net/unixsock_posix.go.html#line-233">#L233</a>: func (sl *<b>sysListener</b>) listenUnixgram(ctx context.Context, laddr *UnixAddr) (*UnixConn, error) {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

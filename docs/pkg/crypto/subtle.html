@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: crypto/subtle</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>subtle</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../index.html#pkg-crypto/subtle">crypto/subtle</a><i> (on <a href="https://pkg.go.dev/crypto/subtle" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports 0 packages, and imported by <a href="../../dep/crypto/subtle.html#imported-by">13 packages</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<input type='checkbox' checked class="fold" id="file-0-fold-content"><label for="file-0-fold-content">  <a href="../../src/crypto/subtle/constant_time.go.html#doc">d</a> <a href="../../src/crypto/subtle/constant_time.go.html">constant_time.go</a></label><span id='file-0-fold-content-items' class="fold-items">
+<span class="md-text">		Package subtle implements functions that are often useful in cryptographic
+		code but require careful thought to use correctly.</span>
+</span>
+	<span class="nodocs">    <a href="../../src/crypto/subtle/xor.go.html">xor.go</a></span>
+	<span class="nodocs">    <a href="../../src/crypto/subtle/xor_amd64.go.html">xor_amd64.go</a></span>
+	<span class="nodocs">    <a href="../../src/crypto/subtle/xor_amd64.s.html">xor_amd64.s</a></span></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 8, in which 7 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-ConstantTimeByteEq">	<input type='checkbox' class="fold" id="ConstantTimeByteEq-fold-content"><label for="ConstantTimeByteEq-fold-content"> <a href="../../use/crypto/subtle..ConstantTimeByteEq.html">func</a> <a href="../../src/crypto/subtle/constant_time.go.html#line-32">ConstantTimeByteEq</a>(x, y <a href="../builtin.html#name-uint8">uint8</a>) <a href="../builtin.html#name-int">int</a></label><span id='ConstantTimeByteEq-fold-content-docs' class="fold-docs">
+<span class="md-text">		ConstantTimeByteEq returns 1 if x == y and 0 otherwise.</span>
+
+</span></div><div class="anchor value-res" id="name-ConstantTimeCompare">	<input type='checkbox' class="fold" id="ConstantTimeCompare-fold-content"><label for="ConstantTimeCompare-fold-content"> <a href="../../use/crypto/subtle..ConstantTimeCompare.html">func</a> <a href="../../src/crypto/subtle/constant_time.go.html#line-13">ConstantTimeCompare</a>(x, y []<a href="../builtin.html#name-byte">byte</a>) <a href="../builtin.html#name-int">int</a></label><span id='ConstantTimeCompare-fold-content-docs' class="fold-docs">
+<span class="md-text">		ConstantTimeCompare returns 1 if the two slices, x and y, have equal contents
+		and 0 otherwise. The time taken is a function of the length of the slices and
+		is independent of the contents. If the lengths of x and y do not match it
+		returns 0 immediately.</span>
+
+</span></div><div class="anchor value-res" id="name-ConstantTimeCopy">	<input type='checkbox' class="fold" id="ConstantTimeCopy-fold-content"><label for="ConstantTimeCopy-fold-content"> <a href="../../use/crypto/subtle..ConstantTimeCopy.html">func</a> <a href="../../src/crypto/subtle/constant_time.go.html#line-44">ConstantTimeCopy</a>(v <a href="../builtin.html#name-int">int</a>, x, y []<a href="../builtin.html#name-byte">byte</a>)</label><span id='ConstantTimeCopy-fold-content-docs' class="fold-docs">
+<span class="md-text">		ConstantTimeCopy copies the contents of y into x (a slice of equal length)
+		if v == 1. If v == 0, x is left unchanged. Its behavior is undefined if v
+		takes any other value.</span>
+
+</span></div><div class="anchor value-res" id="name-ConstantTimeEq">	<input type='checkbox' class="fold" id="ConstantTimeEq-fold-content"><label for="ConstantTimeEq-fold-content"> <a href="../../use/crypto/subtle..ConstantTimeEq.html">func</a> <a href="../../src/crypto/subtle/constant_time.go.html#line-37">ConstantTimeEq</a>(x, y <a href="../builtin.html#name-int32">int32</a>) <a href="../builtin.html#name-int">int</a></label><span id='ConstantTimeEq-fold-content-docs' class="fold-docs">
+<span class="md-text">		ConstantTimeEq returns 1 if x == y and 0 otherwise.</span>
+
+</span></div><div class="anchor value-res" id="name-ConstantTimeLessOrEq">	<input type='checkbox' class="fold" id="ConstantTimeLessOrEq-fold-content"><label for="ConstantTimeLessOrEq-fold-content"> <a href="../../use/crypto/subtle..ConstantTimeLessOrEq.html">func</a> <a href="../../src/crypto/subtle/constant_time.go.html#line-58">ConstantTimeLessOrEq</a>(x, y <a href="../builtin.html#name-int">int</a>) <a href="../builtin.html#name-int">int</a></label><span id='ConstantTimeLessOrEq-fold-content-docs' class="fold-docs">
+<span class="md-text">		ConstantTimeLessOrEq returns 1 if x &lt;= y and 0 otherwise.
+		Its behavior is undefined if x or y are negative or &gt; 2**31 - 1.</span>
+
+</span></div><div class="anchor value-res" id="name-ConstantTimeSelect">	<input type='checkbox' class="fold" id="ConstantTimeSelect-fold-content"><label for="ConstantTimeSelect-fold-content"> <a href="../../use/crypto/subtle..ConstantTimeSelect.html">func</a> <a href="../../src/crypto/subtle/constant_time.go.html#line-29">ConstantTimeSelect</a>(v, x, y <a href="../builtin.html#name-int">int</a>) <a href="../builtin.html#name-int">int</a></label><span id='ConstantTimeSelect-fold-content-docs' class="fold-docs">
+<span class="md-text">		ConstantTimeSelect returns x if v == 1 and y if v == 0.
+		Its behavior is undefined if v takes any other value.</span>
+
+</span></div><div class="anchor value-res" id="name-XORBytes">	<input type='checkbox' class="fold" id="XORBytes-fold-content"><label for="XORBytes-fold-content"> <a href="../../use/crypto/subtle..XORBytes.html">func</a> <a href="../../src/crypto/subtle/xor.go.html#line-11">XORBytes</a>(dst, x, y []<a href="../builtin.html#name-byte">byte</a>) <a href="../builtin.html#name-int">int</a></label><span id='XORBytes-fold-content-docs' class="fold-docs">
+<span class="md-text">		XORBytes sets dst[i] = x[i] ^ y[i] for all i &lt; n = min(len(x), len(y)),
+		returning n, the number of bytes written to dst.
+		If dst does not have length at least n,
+		XORBytes panics without writing anything to dst.</span>
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-functions-showhide"><i><label for="unexported-functions-showhide" class="show-inline">/* one unexported ... */</label><label for="unexported-functions-showhide" class="hide-inline">/* one unexported: */</label></i><div class="anchor value-res hidden" id="name-xorBytes"><i>	<span class="nodocs"> <a href="../../use/crypto/subtle..xorBytes^b4f9c.html">func</a> <a href="../../src/crypto/subtle/xor_amd64.go.html#line-10">xorBytes</a>(dst, a, b *<a href="../builtin.html#name-byte">byte</a>, n <a href="../builtin.html#name-int">int</a>)</span></i></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

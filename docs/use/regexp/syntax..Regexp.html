@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: regexp/syntax.Regexp</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../pkg/regexp/syntax.html">regexp/syntax</a>.<a href="../../src/regexp/syntax/regexp.go.html#line-17">Regexp</a></b></span>
+
+<span class="title">74 uses</span>
+
+	regexp/syntax (current package)
+		<a href="../../src/regexp/syntax/compile.go.html#line-71">compile.go#L71</a>: func Compile(re *<b>Regexp</b>) (*Prog, error) {
+		<a href="../../src/regexp/syntax/compile.go.html#line-89" class="path-duplicate">compile.go</a><a href="../../src/regexp/syntax/compile.go.html#line-89">#L89</a>: func (c *compiler) compile(re *<b>Regexp</b>) frag {
+		<a href="../../src/regexp/syntax/parse.go.html#line-128">parse.go#L128</a>: 	stack       []*<b>Regexp</b> // stack of parsed expressions
+		<a href="../../src/regexp/syntax/parse.go.html#line-129" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-129">#L129</a>: 	free        *<b>Regexp</b>
+		<a href="../../src/regexp/syntax/parse.go.html#line-136" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-136">#L136</a>: 	height      map[*<b>Regexp</b>]int   // regexp height, for height limit check
+		<a href="../../src/regexp/syntax/parse.go.html#line-137" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-137">#L137</a>: 	size        map[*<b>Regexp</b>]int64 // regexp compiled size, for size limit check
+		<a href="../../src/regexp/syntax/parse.go.html#line-140" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-140">#L140</a>: func (p *parser) newRegexp(op Op) *<b>Regexp</b> {
+		<a href="../../src/regexp/syntax/parse.go.html#line-144" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-144">#L144</a>: 		*re = <b>Regexp</b>{}
+		<a href="../../src/regexp/syntax/parse.go.html#line-146" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-146">#L146</a>: 		re = new(<b>Regexp</b>)
+		<a href="../../src/regexp/syntax/parse.go.html#line-153" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-153">#L153</a>: func (p *parser) reuse(re *<b>Regexp</b>) {
+		<a href="../../src/regexp/syntax/parse.go.html#line-161" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-161">#L161</a>: func (p *parser) checkLimits(re *<b>Regexp</b>) {
+		<a href="../../src/regexp/syntax/parse.go.html#line-169" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-169">#L169</a>: func (p *parser) checkSize(re *<b>Regexp</b>) {
+		<a href="../../src/regexp/syntax/parse.go.html#line-200" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-200">#L200</a>: 		p.size = make(map[*<b>Regexp</b>]int64)
+		<a href="../../src/regexp/syntax/parse.go.html#line-211" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-211">#L211</a>: func (p *parser) calcSize(re *<b>Regexp</b>, force bool) int64 {
+		<a href="../../src/regexp/syntax/parse.go.html#line-259" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-259">#L259</a>: func (p *parser) checkHeight(re *<b>Regexp</b>) {
+		<a href="../../src/regexp/syntax/parse.go.html#line-264" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-264">#L264</a>: 		p.height = make(map[*<b>Regexp</b>]int)
+		<a href="../../src/regexp/syntax/parse.go.html#line-274" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-274">#L274</a>: func (p *parser) calcHeight(re *<b>Regexp</b>, force bool) int {
+		<a href="../../src/regexp/syntax/parse.go.html#line-294" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-294">#L294</a>: func (p *parser) push(re *<b>Regexp</b>) *<b>Regexp</b> {
+		<a href="../../src/regexp/syntax/parse.go.html#line-395" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-395">#L395</a>: func (p *parser) op(op Op) *<b>Regexp</b> {
+		<a href="../../src/regexp/syntax/parse.go.html#line-453" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-453">#L453</a>: func repeatIsValid(re *<b>Regexp</b>, n int) bool {
+		<a href="../../src/regexp/syntax/parse.go.html#line-478" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-478">#L478</a>: func (p *parser) concat() *<b>Regexp</b> {
+		<a href="../../src/regexp/syntax/parse.go.html#line-498" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-498">#L498</a>: func (p *parser) alternate() *<b>Regexp</b> {
+		<a href="../../src/regexp/syntax/parse.go.html#line-524" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-524">#L524</a>: func cleanAlt(re *<b>Regexp</b>) {
+		<a href="../../src/regexp/syntax/parse.go.html#line-550" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-550">#L550</a>: func (p *parser) collapse(subs []*<b>Regexp</b>, op Op) *<b>Regexp</b> {
+		<a href="../../src/regexp/syntax/parse.go.html#line-590" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-590">#L590</a>: func (p *parser) factor(sub []*<b>Regexp</b>) []*<b>Regexp</b> {
+		<a href="../../src/regexp/syntax/parse.go.html#line-669" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-669">#L669</a>: 	var first *<b>Regexp</b>
+		<a href="../../src/regexp/syntax/parse.go.html#line-676" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-676">#L676</a>: 		var ifirst *<b>Regexp</b>
+		<a href="../../src/regexp/syntax/parse.go.html#line-779" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-779">#L779</a>: func (p *parser) leadingString(re *<b>Regexp</b>) ([]rune, Flags) {
+		<a href="../../src/regexp/syntax/parse.go.html#line-791" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-791">#L791</a>: func (p *parser) removeLeadingString(re *<b>Regexp</b>, n int) *<b>Regexp</b> {
+		<a href="../../src/regexp/syntax/parse.go.html#line-828" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-828">#L828</a>: func (p *parser) leadingRegexp(re *<b>Regexp</b>) *<b>Regexp</b> {
+		<a href="../../src/regexp/syntax/parse.go.html#line-845" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-845">#L845</a>: func (p *parser) removeLeadingRegexp(re *<b>Regexp</b>, reuse bool) *<b>Regexp</b> {
+		<a href="../../src/regexp/syntax/parse.go.html#line-868" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-868">#L868</a>: func literalRegexp(s string, flags Flags) *<b>Regexp</b> {
+		<a href="../../src/regexp/syntax/parse.go.html#line-869" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-869">#L869</a>: 	re := &amp;<b>Regexp</b>{Op: OpLiteral}
+		<a href="../../src/regexp/syntax/parse.go.html#line-888" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-888">#L888</a>: func Parse(s string, flags Flags) (*<b>Regexp</b>, error) {
+		<a href="../../src/regexp/syntax/parse.go.html#line-892" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-892">#L892</a>: func parse(s string, flags Flags) (_ *<b>Regexp</b>, err error) {
+		<a href="../../src/regexp/syntax/parse.go.html#line-1305" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1305">#L1305</a>: func isCharClass(re *<b>Regexp</b>) bool {
+		<a href="../../src/regexp/syntax/parse.go.html#line-1313" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1313">#L1313</a>: func matchRune(re *<b>Regexp</b>, r rune) bool {
+		<a href="../../src/regexp/syntax/parse.go.html#line-1350" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1350">#L1350</a>: func mergeCharClass(dst, src *<b>Regexp</b>) {
+		<a href="../../src/regexp/syntax/regexp.go.html#line-17">regexp.go#L17</a>: type <b>Regexp</b> struct {
+		<a href="../../src/regexp/syntax/regexp.go.html#line-20" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-20">#L20</a>: 	Sub      []*<b>Regexp</b>  // subexpressions, if any
+		<a href="../../src/regexp/syntax/regexp.go.html#line-21" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-21">#L21</a>: 	Sub0     [1]*<b>Regexp</b> // storage for short Sub
+		<a href="../../src/regexp/syntax/regexp.go.html#line-63" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-63">#L63</a>: func (x *<b>Regexp</b>) Equal(y *<b>Regexp</b>) bool {
+		<a href="../../src/regexp/syntax/regexp.go.html#line-129" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-129">#L129</a>: func addSpan(start, last *<b>Regexp</b>, f printFlags, flags *map[*<b>Regexp</b>]printFlags) {
+		<a href="../../src/regexp/syntax/regexp.go.html#line-131" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-131">#L131</a>: 		*flags = make(map[*<b>Regexp</b>]printFlags)
+		<a href="../../src/regexp/syntax/regexp.go.html#line-142" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-142">#L142</a>: func calcFlags(re *<b>Regexp</b>, flags *map[*<b>Regexp</b>]printFlags) (must, cant printFlags) {
+		<a href="../../src/regexp/syntax/regexp.go.html#line-238" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-238">#L238</a>: func writeRegexp(b *strings.Builder, re *<b>Regexp</b>, f printFlags, flags map[*<b>Regexp</b>]printFlags) {
+		<a href="../../src/regexp/syntax/regexp.go.html#line-397" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-397">#L397</a>: func (re *<b>Regexp</b>) String() string {
+		<a href="../../src/regexp/syntax/regexp.go.html#line-399" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-399">#L399</a>: 	var flags map[*<b>Regexp</b>]printFlags
+		<a href="../../src/regexp/syntax/regexp.go.html#line-450" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-450">#L450</a>: func (re *<b>Regexp</b>) MaxCap() int {
+		<a href="../../src/regexp/syntax/regexp.go.html#line-464" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-464">#L464</a>: func (re *<b>Regexp</b>) CapNames() []string {
+		<a href="../../src/regexp/syntax/regexp.go.html#line-470" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-470">#L470</a>: func (re *<b>Regexp</b>) capNames(names []string) {
+		<a href="../../src/regexp/syntax/simplify.go.html#line-14">simplify.go#L14</a>: func (re *<b>Regexp</b>) Simplify() *<b>Regexp</b> {
+		<a href="../../src/regexp/syntax/simplify.go.html#line-26" class="path-duplicate">simplify.go</a><a href="../../src/regexp/syntax/simplify.go.html#line-26">#L26</a>: 				nre = new(<b>Regexp</b>)
+		<a href="../../src/regexp/syntax/simplify.go.html#line-45" class="path-duplicate">simplify.go</a><a href="../../src/regexp/syntax/simplify.go.html#line-45">#L45</a>: 			return &amp;<b>Regexp</b>{Op: OpEmptyMatch}
+		<a href="../../src/regexp/syntax/simplify.go.html#line-64" class="path-duplicate">simplify.go</a><a href="../../src/regexp/syntax/simplify.go.html#line-64">#L64</a>: 			nre := &amp;<b>Regexp</b>{Op: OpConcat}
+		<a href="../../src/regexp/syntax/simplify.go.html#line-85" class="path-duplicate">simplify.go</a><a href="../../src/regexp/syntax/simplify.go.html#line-85">#L85</a>: 		var prefix *<b>Regexp</b>
+		<a href="../../src/regexp/syntax/simplify.go.html#line-87" class="path-duplicate">simplify.go</a><a href="../../src/regexp/syntax/simplify.go.html#line-87">#L87</a>: 			prefix = &amp;<b>Regexp</b>{Op: OpConcat}
+		<a href="../../src/regexp/syntax/simplify.go.html#line-98" class="path-duplicate">simplify.go</a><a href="../../src/regexp/syntax/simplify.go.html#line-98">#L98</a>: 				nre2 := &amp;<b>Regexp</b>{Op: OpConcat}
+		<a href="../../src/regexp/syntax/simplify.go.html#line-113" class="path-duplicate">simplify.go</a><a href="../../src/regexp/syntax/simplify.go.html#line-113">#L113</a>: 		return &amp;<b>Regexp</b>{Op: OpNoMatch}
+		<a href="../../src/regexp/syntax/simplify.go.html#line-134" class="path-duplicate">simplify.go</a><a href="../../src/regexp/syntax/simplify.go.html#line-134">#L134</a>: func simplify1(op Op, flags Flags, sub, re *<b>Regexp</b>) *<b>Regexp</b> {
+		<a href="../../src/regexp/syntax/simplify.go.html#line-148" class="path-duplicate">simplify.go</a><a href="../../src/regexp/syntax/simplify.go.html#line-148">#L148</a>: 	re = &amp;<b>Regexp</b>{Op: op, Flags: flags}
+
+	<a href="../../pkg/regexp.html">regexp</a>
+		<a href="../../src/regexp/regexp.go.html#line-272">regexp.go#L272</a>: func minInputLen(re *syntax.<b>Regexp</b>) int {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

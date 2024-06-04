@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/dsa.PrivateKey.X</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/crypto/dsa.html">crypto/dsa</a>.<a href="../../src/crypto/dsa/dsa.go.html#line-37">PrivateKey</a>.<a href="../../src/crypto/dsa/dsa.go.html#line-39">X</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">4 uses</span>
+
+	crypto/dsa (current package)
+		<a href="../../src/crypto/dsa/dsa.go.html#line-39">dsa.go#L39</a>: 	<b>X</b> *big.Int
+		<a href="../../src/crypto/dsa/dsa.go.html#line-178" class="path-duplicate">dsa.go</a><a href="../../src/crypto/dsa/dsa.go.html#line-178">#L178</a>: 	priv.<b>X</b> = x
+		<a href="../../src/crypto/dsa/dsa.go.html#line-211" class="path-duplicate">dsa.go</a><a href="../../src/crypto/dsa/dsa.go.html#line-211">#L211</a>: 	if priv.Q.Sign() &lt;= 0 || priv.P.Sign() &lt;= 0 || priv.G.Sign() &lt;= 0 || priv.<b>X</b>.Sign() &lt;= 0 || n%8 != 0 {
+		<a href="../../src/crypto/dsa/dsa.go.html#line-247" class="path-duplicate">dsa.go</a><a href="../../src/crypto/dsa/dsa.go.html#line-247">#L247</a>: 		s = new(big.Int).Mul(priv.<b>X</b>, r)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

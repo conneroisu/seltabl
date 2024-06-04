@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/tls.clientHelloMsg.supportedSignatureAlgorithms</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/crypto/tls.html">crypto/tls</a>.<a href="../../src/crypto/tls/handshake_messages.go.html#line-70">clientHelloMsg</a>.<a href="../../src/crypto/tls/handshake_messages.go.html#line-83">supportedSignatureAlgorithms</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">17 uses</span>
+
+	crypto/tls (current package)
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-130">handshake_client.go#L130</a>: 		hello.<b>supportedSignatureAlgorithms</b> = supportedSignatureAlgorithms()
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-133" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-133">#L133</a>: 		hello.<b>supportedSignatureAlgorithms</b> = testingOnlyForceClientHelloSignatureAlgorithms
+		<a href="../../src/crypto/tls/handshake_messages.go.html#line-83">handshake_messages.go#L83</a>: 	<b>supportedSignatureAlgorithms</b>     []SignatureScheme
+		<a href="../../src/crypto/tls/handshake_messages.go.html#line-154" class="path-duplicate">handshake_messages.go</a><a href="../../src/crypto/tls/handshake_messages.go.html#line-154">#L154</a>: 	if len(m.<b>supportedSignatureAlgorithms</b>) &gt; 0 {
+		<a href="../../src/crypto/tls/handshake_messages.go.html#line-159" class="path-duplicate">handshake_messages.go</a><a href="../../src/crypto/tls/handshake_messages.go.html#line-159">#L159</a>: 				for _, sigAlgo := range m.<b>supportedSignatureAlgorithms</b> {
+		<a href="../../src/crypto/tls/handshake_messages.go.html#line-496" class="path-duplicate">handshake_messages.go</a><a href="../../src/crypto/tls/handshake_messages.go.html#line-496">#L496</a>: 				m.<b>supportedSignatureAlgorithms</b> = append(
+		<a href="../../src/crypto/tls/handshake_messages.go.html#line-497" class="path-duplicate">handshake_messages.go</a><a href="../../src/crypto/tls/handshake_messages.go.html#line-497">#L497</a>: 					m.<b>supportedSignatureAlgorithms</b>, SignatureScheme(sigAndAlg))
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-955">handshake_server.go#L955</a>: 		SignatureSchemes:  clientHello.<b>supportedSignatureAlgorithms</b>,
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-438">handshake_server_tls13.go#L438</a>: 	if len(hs.clientHello.<b>supportedSignatureAlgorithms</b>) == 0 {
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-451" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-451">#L451</a>: 	hs.sigAlg, err = selectSignatureScheme(c.vers, certificate, hs.clientHello.<b>supportedSignatureAlgorithms</b>)
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-546" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-546">#L546</a>: 		len(ch.<b>supportedSignatureAlgorithms</b>) != len(ch1.<b>supportedSignatureAlgorithms</b>) ||
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-566" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-566">#L566</a>: 	for i := range ch.<b>supportedSignatureAlgorithms</b> {
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-567" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-567">#L567</a>: 		if ch.<b>supportedSignatureAlgorithms</b>[i] != ch1.<b>supportedSignatureAlgorithms</b>[i] {
+		<a href="../../src/crypto/tls/key_agreement.go.html#line-209">key_agreement.go#L209</a>: 		signatureAlgorithm, err = selectSignatureScheme(ka.version, cert, clientHello.<b>supportedSignatureAlgorithms</b>)
+		<a href="../../src/crypto/tls/key_agreement.go.html#line-330" class="path-duplicate">key_agreement.go</a><a href="../../src/crypto/tls/key_agreement.go.html#line-330">#L330</a>: 		if !isSupportedSignatureAlgorithm(signatureAlgorithm, clientHello.<b>supportedSignatureAlgorithms</b>) {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.adjustpointer</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/stack.go.html#line-565">adjustpointer</a></b></span>
+
+<span class="title">12 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/stack.go.html#line-565">stack.go#L565</a>: func <b>adjustpointer</b>(adjinfo *adjustinfo, vpp unsafe.Pointer) {
+		<a href="../src/runtime/stack.go.html#line-675" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-675">#L675</a>: 		<b>adjustpointer</b>(adjinfo, unsafe.Pointer(frame.varp))
+		<a href="../src/runtime/stack.go.html#line-721" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-721">#L721</a>: 					<b>adjustpointer</b>(adjinfo, unsafe.Pointer(p+i))
+		<a href="../src/runtime/stack.go.html#line-732" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-732">#L732</a>: 	<b>adjustpointer</b>(adjinfo, unsafe.Pointer(&amp;gp.sched.ctxt))
+		<a href="../src/runtime/stack.go.html#line-745" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-745">#L745</a>: 	<b>adjustpointer</b>(adjinfo, unsafe.Pointer(&amp;gp.sched.bp))
+		<a href="../src/runtime/stack.go.html#line-752" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-752">#L752</a>: 			<b>adjustpointer</b>(adjinfo, unsafe.Pointer(gp.sched.bp))
+		<a href="../src/runtime/stack.go.html#line-761" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-761">#L761</a>: 	<b>adjustpointer</b>(adjinfo, unsafe.Pointer(&amp;gp._defer))
+		<a href="../src/runtime/stack.go.html#line-763" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-763">#L763</a>: 		<b>adjustpointer</b>(adjinfo, unsafe.Pointer(&amp;d.fn))
+		<a href="../src/runtime/stack.go.html#line-764" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-764">#L764</a>: 		<b>adjustpointer</b>(adjinfo, unsafe.Pointer(&amp;d.sp))
+		<a href="../src/runtime/stack.go.html#line-765" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-765">#L765</a>: 		<b>adjustpointer</b>(adjinfo, unsafe.Pointer(&amp;d.link))
+		<a href="../src/runtime/stack.go.html#line-772" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-772">#L772</a>: 	<b>adjustpointer</b>(adjinfo, unsafe.Pointer(&amp;gp._panic))
+		<a href="../src/runtime/stack.go.html#line-779" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-779">#L779</a>: 		<b>adjustpointer</b>(adjinfo, unsafe.Pointer(&amp;s.elem))
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

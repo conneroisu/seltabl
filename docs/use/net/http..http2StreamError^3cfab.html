@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/http.http2StreamError</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../pkg/net/http.html">net/http</a>.<a href="../../src/net/http/h2_bundle.go.html#line-1233">http2StreamError</a></b></span>
+
+<span class="title">28 uses</span>
+
+	net/http (current package)
+		<a href="../../src/net/http/h2_bundle.go.html#line-1233">h2_bundle.go#L1233</a>: type <b>http2StreamError</b> struct {
+		<a href="../../src/net/http/h2_bundle.go.html#line-1244" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1244">#L1244</a>: func http2streamError(id uint32, code http2ErrCode) <b>http2StreamError</b> {
+		<a href="../../src/net/http/h2_bundle.go.html#line-1245" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1245">#L1245</a>: 	return <b>http2StreamError</b>{StreamID: id, Code: code}
+		<a href="../../src/net/http/h2_bundle.go.html#line-1248" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1248">#L1248</a>: func (e <b>http2StreamError</b>) Error() string {
+		<a href="../../src/net/http/h2_bundle.go.html#line-1884" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1884">#L1884</a>: 	if _, ok := err.(<b>http2StreamError</b>); ok {
+		<a href="../../src/net/http/h2_bundle.go.html#line-3043" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-3043">#L3043</a>: 		return nil, <b>http2StreamError</b>{mh.StreamID, http2ErrCodeProtocol, invalid}
+		<a href="../../src/net/http/h2_bundle.go.html#line-3050" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-3050">#L3050</a>: 		return nil, <b>http2StreamError</b>{mh.StreamID, http2ErrCodeProtocol, err}
+		<a href="../../src/net/http/h2_bundle.go.html#line-4759" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-4759">#L4759</a>: 			if se, ok := wr.write.(<b>http2StreamError</b>); ok {
+		<a href="../../src/net/http/h2_bundle.go.html#line-4999" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-4999">#L4999</a>: 		_, isReset := wr.write.(<b>http2StreamError</b>)
+		<a href="../../src/net/http/h2_bundle.go.html#line-5049" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5049">#L5049</a>: 			case <b>http2StreamError</b>, http2handlerPanicRST, http2writeWindowUpdate:
+		<a href="../../src/net/http/h2_bundle.go.html#line-5133" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5133">#L5133</a>: 		case <b>http2StreamError</b>:
+		<a href="../../src/net/http/h2_bundle.go.html#line-5253" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5253">#L5253</a>: func (sc *http2serverConn) resetStream(se <b>http2StreamError</b>) {
+		<a href="../../src/net/http/h2_bundle.go.html#line-5296" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5296">#L5296</a>: 	case <b>http2StreamError</b>:
+		<a href="../../src/net/http/h2_bundle.go.html#line-5478" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5478">#L5478</a>: 	if e, ok := err.(<b>http2StreamError</b>); ok {
+		<a href="../../src/net/http/h2_bundle.go.html#line-5734" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5734">#L5734</a>: 	st.sc.writeFrameFromHandler(http2FrameWriteRequest{write: <b>http2StreamError</b>{
+		<a href="../../src/net/http/h2_bundle.go.html#line-7092" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-7092">#L7092</a>: 	case <b>http2StreamError</b>:
+		<a href="../../src/net/http/h2_bundle.go.html#line-7716" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-7716">#L7716</a>: 	if se, ok := err.(<b>http2StreamError</b>); ok {
+		<a href="../../src/net/http/h2_bundle.go.html#line-8636" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-8636">#L8636</a>: 			if se, ok := err.(<b>http2StreamError</b>); ok {
+		<a href="../../src/net/http/h2_bundle.go.html#line-9349" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9349">#L9349</a>: 		if se, ok := err.(<b>http2StreamError</b>); ok {
+		<a href="../../src/net/http/h2_bundle.go.html#line-9410" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9410">#L9410</a>: 		rl.endStreamError(cs, <b>http2StreamError</b>{
+		<a href="../../src/net/http/h2_bundle.go.html#line-9439" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9439">#L9439</a>: 		rl.endStreamError(cs, <b>http2StreamError</b>{
+		<a href="../../src/net/http/h2_bundle.go.html#line-9748" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9748">#L9748</a>: 		rl.endStreamError(cs, <b>http2StreamError</b>{
+		<a href="../../src/net/http/h2_bundle.go.html#line-9756" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9756">#L9756</a>: 		rl.endStreamError(cs, <b>http2StreamError</b>{
+		<a href="../../src/net/http/h2_bundle.go.html#line-9765" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9765">#L9765</a>: 			rl.endStreamError(cs, <b>http2StreamError</b>{
+		<a href="../../src/net/http/h2_bundle.go.html#line-10416" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-10416">#L10416</a>: func (se <b>http2StreamError</b>) writeFrame(ctx http2writeContext) error {
+		<a href="../../src/net/http/h2_bundle.go.html#line-10420" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-10420">#L10420</a>: func (se <b>http2StreamError</b>) staysWithinBuffer(max int) bool { return http2frameHeaderLen+4 &lt;= max }
+		<a href="../../src/net/http/h2_bundle.go.html#line-10722" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-10722">#L10722</a>: 		if se, ok := wr.write.(<b>http2StreamError</b>); ok {
+		<a href="../../src/net/http/h2_error.go.html#line-13">h2_error.go#L13</a>: func (e <b>http2StreamError</b>) As(target any) bool {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.runqempty</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/proc.go.html#line-6604">runqempty</a></b></span>
+
+<span class="title">9 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/proc.go.html#line-2889">proc.go#L2889</a>: 	if spinning &amp;&amp; !<b>runqempty</b>(pp) {
+		<a href="../src/runtime/proc.go.html#line-2910" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-2910">#L2910</a>: 	if !<b>runqempty</b>(pp) || sched.runqsize != 0 {
+		<a href="../src/runtime/proc.go.html#line-3525" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-3525">#L3525</a>: 	if !<b>runqempty</b>(p) {
+		<a href="../src/runtime/proc.go.html#line-3620" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-3620">#L3620</a>: 		if !idlepMaskSnapshot.read(uint32(id)) &amp;&amp; !<b>runqempty</b>(p2) {
+		<a href="../src/runtime/proc.go.html#line-5716" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-5716">#L5716</a>: 		if <b>runqempty</b>(pp) {
+		<a href="../src/runtime/proc.go.html#line-6146" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6146">#L6146</a>: 			if <b>runqempty</b>(pp) &amp;&amp; sched.nmspinning.Load()+sched.npidle.Load() &gt; 0 &amp;&amp; pd.syscallwhen+10*1000*1000 &gt; now {
+		<a href="../src/runtime/proc.go.html#line-6535" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6535">#L6535</a>: 	if !<b>runqempty</b>(pp) {
+		<a href="../src/runtime/proc.go.html#line-6604" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6604">#L6604</a>: func <b>runqempty</b>(pp *p) bool {
+		<a href="../src/runtime/proc.go.html#line-7054" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-7054">#L7054</a>: 	if p := getg().m.p.ptr(); !<b>runqempty</b>(p) {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

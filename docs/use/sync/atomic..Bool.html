@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: sync/atomic.Bool</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../pkg/sync/atomic.html">sync/atomic</a>.<a href="../../src/sync/atomic/type.go.html#line-11">Bool</a></b></span>
+
+<span class="title">19 uses</span>
+
+	sync/atomic (current package)
+		<a href="../../src/sync/atomic/type.go.html#line-11">type.go#L11</a>: type <b>Bool</b> struct {
+		<a href="../../src/sync/atomic/type.go.html#line-17" class="path-duplicate">type.go</a><a href="../../src/sync/atomic/type.go.html#line-17">#L17</a>: func (x *<b>Bool</b>) Load() bool { return LoadUint32(&amp;x.v) != 0 }
+		<a href="../../src/sync/atomic/type.go.html#line-20" class="path-duplicate">type.go</a><a href="../../src/sync/atomic/type.go.html#line-20">#L20</a>: func (x *<b>Bool</b>) Store(val bool) { StoreUint32(&amp;x.v, b32(val)) }
+		<a href="../../src/sync/atomic/type.go.html#line-23" class="path-duplicate">type.go</a><a href="../../src/sync/atomic/type.go.html#line-23">#L23</a>: func (x *<b>Bool</b>) Swap(new bool) (old bool) { return SwapUint32(&amp;x.v, b32(new)) != 0 }
+		<a href="../../src/sync/atomic/type.go.html#line-26" class="path-duplicate">type.go</a><a href="../../src/sync/atomic/type.go.html#line-26">#L26</a>: func (x *<b>Bool</b>) CompareAndSwap(old, new bool) (swapped bool) {
+
+	<a href="../../pkg/crypto/tls.html">crypto/tls</a>
+		<a href="../../src/crypto/tls/conn.go.html#line-38">conn.go#L38</a>: 	isHandshakeComplete atomic.<b>Bool</b>
+
+	<a href="../../pkg/hash/crc32.html">hash/crc32</a>
+		<a href="../../src/hash/crc32/crc32.go.html#line-81">crc32.go#L81</a>: var haveCastagnoli atomic.<b>Bool</b>
+
+	<a href="../../pkg/internal/poll.html">internal/poll</a>
+		<a href="../../src/internal/poll/fd_unix.go.html#line-648">fd_unix.go#L648</a>: var dupCloexecUnsupported atomic.<b>Bool</b>
+
+	<a href="../../pkg/internal/syscall/unix.html">internal/syscall/unix</a>
+		<a href="../../src/internal/syscall/unix/getrandom.go.html#line-15">getrandom.go#L15</a>: var getrandomUnsupported atomic.<b>Bool</b>
+
+	<a href="../../pkg/log.html">log</a>
+		<a href="../../src/log/log.go.html#line-63">log.go#L63</a>: 	isDiscard atomic.<b>Bool</b>
+
+	<a href="../../pkg/net/http.html">net/http</a>
+		<a href="../../src/net/http/client.go.html#line-402">client.go#L402</a>: 	var timedOut atomic.<b>Bool</b>
+		<a href="../../src/net/http/server.go.html#line-439">server.go#L439</a>: 	canWriteContinue atomic.<b>Bool</b>
+		<a href="../../src/net/http/server.go.html#line-481" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-481">#L481</a>: 	handlerDone atomic.<b>Bool</b> // set true when the handler exits
+		<a href="../../src/net/http/server.go.html#line-492" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-492">#L492</a>: 	didCloseNotify atomic.<b>Bool</b> // atomic (only false-&gt;true winner should send)
+		<a href="../../src/net/http/server.go.html#line-911" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-911">#L911</a>: 	closed     atomic.<b>Bool</b>
+		<a href="../../src/net/http/server.go.html#line-912" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-912">#L912</a>: 	sawEOF     atomic.<b>Bool</b>
+		<a href="../../src/net/http/server.go.html#line-2912" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-2912">#L2912</a>: 	inShutdown atomic.<b>Bool</b> // true when server is in shutdown
+		<a href="../../src/net/http/server.go.html#line-2914" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-2914">#L2914</a>: 	disableKeepAlives atomic.<b>Bool</b>
+
+	<a href="../../pkg/os.html">os</a>
+		<a href="../../src/os/exec.go.html#line-24">exec.go#L24</a>: 	isdone atomic.<b>Bool</b>  // process has been successfully waited on
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

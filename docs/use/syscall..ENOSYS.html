@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: syscall.ENOSYS</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../pkg/syscall.html">syscall</a>.<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1272">ENOSYS</a></b></span>
+
+<span class="title">10 uses</span>
+
+	syscall (current package)
+		<a href="../src/syscall/syscall_linux.go.html#line-167">syscall_linux.go#L167</a>: 		if err := faccessat2(dirfd, path, mode, flags); err != <b>ENOSYS</b> &amp;&amp; err != EPERM {
+		<a href="../src/syscall/syscall_linux.go.html#line-251" class="path-duplicate">syscall_linux.go</a><a href="../src/syscall/syscall_linux.go.html#line-251">#L251</a>: 		if err == <b>ENOSYS</b> {
+		<a href="../src/syscall/syscall_unix.go.html#line-127">syscall_unix.go#L127</a>: 		return e == <b>ENOSYS</b> || e == ENOTSUP || e == EOPNOTSUPP
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-1272">zerrors_linux_amd64.go#L1272</a>: 	<b>ENOSYS</b>          = Errno(0x26)
+
+	<a href="../pkg/internal/poll.html">internal/poll</a>
+		<a href="../src/internal/poll/copy_file_range_linux.go.html#line-44">copy_file_range_linux.go#L44</a>: 		case syscall.<b>ENOSYS</b>:
+		<a href="../src/internal/poll/fd_unix.go.html#line-658">fd_unix.go#L658</a>: 		case syscall.EINVAL, syscall.<b>ENOSYS</b>:
+		<a href="../src/internal/poll/sock_cloexec.go.html#line-26">sock_cloexec.go#L26</a>: 	case syscall.<b>ENOSYS</b>: // syscall missing
+
+	<a href="../pkg/internal/syscall/unix.html">internal/syscall/unix</a>
+		<a href="../src/internal/syscall/unix/getrandom.go.html#line-26">getrandom.go#L26</a>: 		return 0, syscall.<b>ENOSYS</b>
+		<a href="../src/internal/syscall/unix/getrandom.go.html#line-33" class="path-duplicate">getrandom.go</a><a href="../src/internal/syscall/unix/getrandom.go.html#line-33">#L33</a>: 		if errno == syscall.<b>ENOSYS</b> {
+
+	<a href="../pkg/os.html">os</a>
+		<a href="../src/os/wait_waitid.go.html#line-42">wait_waitid.go#L42</a>: 		if e == syscall.<b>ENOSYS</b> {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

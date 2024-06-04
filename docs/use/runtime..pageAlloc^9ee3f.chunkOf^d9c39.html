@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.pageAlloc.chunkOf</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/mpagealloc.go.html#line-180">pageAlloc</a>.<a href="../src/runtime/mpagealloc.go.html#line-349">chunkOf</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">25 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/mgcscavenge.go.html#line-758">mgcscavenge.go#L758</a>: 		base, npages := p.<b>chunkOf</b>(ci).findScavengeCandidate(searchIdx, minPages, maxPages)
+		<a href="../src/runtime/mgcscavenge.go.html#line-769" class="path-duplicate">mgcscavenge.go</a><a href="../src/runtime/mgcscavenge.go.html#line-769">#L769</a>: 			p.<b>chunkOf</b>(ci).allocRange(base, npages)
+		<a href="../src/runtime/mgcscavenge.go.html#line-800" class="path-duplicate">mgcscavenge.go</a><a href="../src/runtime/mgcscavenge.go.html#line-800">#L800</a>: 			p.<b>chunkOf</b>(ci).free(base, npages)
+		<a href="../src/runtime/mgcscavenge.go.html#line-804" class="path-duplicate">mgcscavenge.go</a><a href="../src/runtime/mgcscavenge.go.html#line-804">#L804</a>: 			p.<b>chunkOf</b>(ci).scavenged.setRange(base, npages)
+		<a href="../src/runtime/mpagealloc.go.html#line-349">mpagealloc.go#L349</a>: func (p *pageAlloc) <b>chunkOf</b>(ci chunkIdx) *pallocData {
+		<a href="../src/runtime/mpagealloc.go.html#line-422" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-422">#L422</a>: 		p.<b>chunkOf</b>(c).scavenged.setRange(0, pallocChunkPages)
+		<a href="../src/runtime/mpagealloc.go.html#line-497" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-497">#L497</a>: 		y := p.<b>chunkOf</b>(sc).summarize()
+		<a href="../src/runtime/mpagealloc.go.html#line-508" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-508">#L508</a>: 		summary[sc] = p.<b>chunkOf</b>(sc).summarize()
+		<a href="../src/runtime/mpagealloc.go.html#line-525" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-525">#L525</a>: 		summary[ec] = p.<b>chunkOf</b>(ec).summarize()
+		<a href="../src/runtime/mpagealloc.go.html#line-534" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-534">#L534</a>: 			summary[c] = p.<b>chunkOf</b>(c).summarize()
+		<a href="../src/runtime/mpagealloc.go.html#line-583" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-583">#L583</a>: 		chunk := p.<b>chunkOf</b>(sc)
+		<a href="../src/runtime/mpagealloc.go.html#line-589" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-589">#L589</a>: 		chunk := p.<b>chunkOf</b>(sc)
+		<a href="../src/runtime/mpagealloc.go.html#line-594" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-594">#L594</a>: 			chunk := p.<b>chunkOf</b>(c)
+		<a href="../src/runtime/mpagealloc.go.html#line-599" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-599">#L599</a>: 		chunk = p.<b>chunkOf</b>(ec)
+		<a href="../src/runtime/mpagealloc.go.html#line-843" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-843">#L843</a>: 	j, searchIdx := p.<b>chunkOf</b>(ci).find(npages, 0)
+		<a href="../src/runtime/mpagealloc.go.html#line-891" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-891">#L891</a>: 			j, searchIdx := p.<b>chunkOf</b>(i).find(npages, chunkPageIndex(p.searchAddr.addr()))
+		<a href="../src/runtime/mpagealloc.go.html#line-949" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-949">#L949</a>: 		p.<b>chunkOf</b>(i).free1(pi)
+		<a href="../src/runtime/mpagealloc.go.html#line-958" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-958">#L958</a>: 			p.<b>chunkOf</b>(sc).free(si, ei+1-si)
+		<a href="../src/runtime/mpagealloc.go.html#line-962" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-962">#L962</a>: 			p.<b>chunkOf</b>(sc).free(si, pallocChunkPages-si)
+		<a href="../src/runtime/mpagealloc.go.html#line-965" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-965">#L965</a>: 				p.<b>chunkOf</b>(c).freeAll()
+		<a href="../src/runtime/mpagealloc.go.html#line-968" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-968">#L968</a>: 			p.<b>chunkOf</b>(ec).free(0, ei+1)
+		<a href="../src/runtime/mpagecache.go.html#line-91">mpagecache.go#L91</a>: 			p.<b>chunkOf</b>(ci).free1(pi + i)
+		<a href="../src/runtime/mpagecache.go.html#line-97" class="path-duplicate">mpagecache.go</a><a href="../src/runtime/mpagecache.go.html#line-97">#L97</a>: 			p.<b>chunkOf</b>(ci).scavenged.setRange(pi+i, 1)
+		<a href="../src/runtime/mpagecache.go.html#line-132" class="path-duplicate">mpagecache.go</a><a href="../src/runtime/mpagecache.go.html#line-132">#L132</a>: 		chunk = p.<b>chunkOf</b>(ci)
+		<a href="../src/runtime/mpagecache.go.html#line-153" class="path-duplicate">mpagecache.go</a><a href="../src/runtime/mpagecache.go.html#line-153">#L153</a>: 		chunk = p.<b>chunkOf</b>(ci)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

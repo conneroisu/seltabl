@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.bucketCnt</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/map.go.html#line-67">bucketCnt</a></b></span>
+
+<span class="title">123 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/map.go.html#line-67">map.go#L67</a>: 	<b>bucketCnt</b>     = abi.MapBucketCount
+		<a href="../src/runtime/map.go.html#line-73" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-73">#L73</a>: 	loadFactorNum = loadFactorDen * <b>bucketCnt</b> * 13 / 16
+		<a href="../src/runtime/map.go.html#line-155" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-155">#L155</a>: 	tophash [<b>bucketCnt</b>]uint8
+		<a href="../src/runtime/map.go.html#line-434" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-434">#L434</a>: 		for i := uintptr(0); i &lt; <b>bucketCnt</b>; i++ {
+		<a href="../src/runtime/map.go.html#line-446" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-446">#L446</a>: 				e := add(unsafe.Pointer(b), dataOffset+<b>bucketCnt</b>*uintptr(t.KeySize)+i*uintptr(t.ValueSize))
+		<a href="../src/runtime/map.go.html#line-495" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-495">#L495</a>: 		for i := uintptr(0); i &lt; <b>bucketCnt</b>; i++ {
+		<a href="../src/runtime/map.go.html#line-507" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-507">#L507</a>: 				e := add(unsafe.Pointer(b), dataOffset+<b>bucketCnt</b>*uintptr(t.KeySize)+i*uintptr(t.ValueSize))
+		<a href="../src/runtime/map.go.html#line-539" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-539">#L539</a>: 		for i := uintptr(0); i &lt; <b>bucketCnt</b>; i++ {
+		<a href="../src/runtime/map.go.html#line-551" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-551">#L551</a>: 				e := add(unsafe.Pointer(b), dataOffset+<b>bucketCnt</b>*uintptr(t.KeySize)+i*uintptr(t.ValueSize))
+		<a href="../src/runtime/map.go.html#line-621" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-621">#L621</a>: 		for i := uintptr(0); i &lt; <b>bucketCnt</b>; i++ {
+		<a href="../src/runtime/map.go.html#line-626" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-626">#L626</a>: 					elem = add(unsafe.Pointer(b), dataOffset+<b>bucketCnt</b>*uintptr(t.KeySize)+i*uintptr(t.ValueSize))
+		<a href="../src/runtime/map.go.html#line-644" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-644">#L644</a>: 			elem = add(unsafe.Pointer(b), dataOffset+<b>bucketCnt</b>*uintptr(t.KeySize)+i*uintptr(t.ValueSize))
+		<a href="../src/runtime/map.go.html#line-668" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-668">#L668</a>: 		elem = add(insertk, <b>bucketCnt</b>*uintptr(t.KeySize))
+		<a href="../src/runtime/map.go.html#line-734" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-734">#L734</a>: 		for i := uintptr(0); i &lt; <b>bucketCnt</b>; i++ {
+		<a href="../src/runtime/map.go.html#line-755" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-755">#L755</a>: 			e := add(unsafe.Pointer(b), dataOffset+<b>bucketCnt</b>*uintptr(t.KeySize)+i*uintptr(t.ValueSize))
+		<a href="../src/runtime/map.go.html#line-768" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-768">#L768</a>: 			if i == <b>bucketCnt</b>-1 {
+		<a href="../src/runtime/map.go.html#line-787" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-787">#L787</a>: 					i = <b>bucketCnt</b> - 1
+		<a href="../src/runtime/map.go.html#line-848" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-848">#L848</a>: 	it.offset = uint8(r &gt;&gt; h.B &amp; (<b>bucketCnt</b> - 1))
+		<a href="../src/runtime/map.go.html#line-909" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-909">#L909</a>: 	for ; i &lt; <b>bucketCnt</b>; i++ {
+		<a href="../src/runtime/map.go.html#line-910" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-910">#L910</a>: 		offi := (i + it.offset) &amp; (<b>bucketCnt</b> - 1)
+		<a href="../src/runtime/map.go.html#line-920" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-920">#L920</a>: 		e := add(unsafe.Pointer(b), dataOffset+<b>bucketCnt</b>*uintptr(t.KeySize)+uintptr(offi)*uintptr(t.ValueSize))
+		<a href="../src/runtime/map.go.html#line-1011" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1011">#L1011</a>: 				for i := uintptr(0); i &lt; <b>bucketCnt</b>; i++ {
+		<a href="../src/runtime/map.go.html#line-1098" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1098">#L1098</a>: 	return count &gt; <b>bucketCnt</b> &amp;&amp; uintptr(count) &gt; loadFactorNum*(bucketShift(B)/loadFactorDen)
+		<a href="../src/runtime/map.go.html#line-1176" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1176">#L1176</a>: 		x.e = add(x.k, <b>bucketCnt</b>*uintptr(t.KeySize))
+		<a href="../src/runtime/map.go.html#line-1184" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1184">#L1184</a>: 			y.e = add(y.k, <b>bucketCnt</b>*uintptr(t.KeySize))
+		<a href="../src/runtime/map.go.html#line-1189" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1189">#L1189</a>: 			e := add(k, <b>bucketCnt</b>*uintptr(t.KeySize))
+		<a href="../src/runtime/map.go.html#line-1190" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1190">#L1190</a>: 			for i := 0; i &lt; <b>bucketCnt</b>; i, k, e = i+1, add(k, uintptr(t.KeySize)), add(e, uintptr(t.ValueSize)) {
+		<a href="../src/runtime/map.go.html#line-1236" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1236">#L1236</a>: 				if dst.i == <b>bucketCnt</b> {
+		<a href="../src/runtime/map.go.html#line-1240" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1240">#L1240</a>: 					dst.e = add(dst.k, <b>bucketCnt</b>*uintptr(t.KeySize))
+		<a href="../src/runtime/map.go.html#line-1242" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1242">#L1242</a>: 				dst.b.tophash[dst.i&amp;(<b>bucketCnt</b>-1)] = top // mask dst.i as an optimization, to avoid a bounds check
+		<a href="../src/runtime/map.go.html#line-1318" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1318">#L1318</a>: 	if t.Key.Align_ &gt; <b>bucketCnt</b> {
+		<a href="../src/runtime/map.go.html#line-1321" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1321">#L1321</a>: 	if t.Elem.Align_ &gt; <b>bucketCnt</b> {
+		<a href="../src/runtime/map.go.html#line-1330" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1330">#L1330</a>: 	if <b>bucketCnt</b> &lt; 8 {
+		<a href="../src/runtime/map.go.html#line-1455" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1455">#L1455</a>: 	for i := 0; i &lt; <b>bucketCnt</b>; i++ {
+		<a href="../src/runtime/map.go.html#line-1460" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1460">#L1460</a>: 		for ; pos &lt; <b>bucketCnt</b>; pos++ {
+		<a href="../src/runtime/map.go.html#line-1466" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1466">#L1466</a>: 		if pos == <b>bucketCnt</b> {
+		<a href="../src/runtime/map.go.html#line-1472" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1472">#L1472</a>: 		srcEle := add(unsafe.Pointer(src), dataOffset+<b>bucketCnt</b>*uintptr(t.KeySize)+uintptr(i)*uintptr(t.ValueSize))
+		<a href="../src/runtime/map.go.html#line-1474" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1474">#L1474</a>: 		dstEle := add(unsafe.Pointer(dst), dataOffset+<b>bucketCnt</b>*uintptr(t.KeySize)+uintptr(pos)*uintptr(t.ValueSize))
+		<a href="../src/runtime/map.go.html#line-1578" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1578">#L1578</a>: 			for i := uintptr(0); i &lt; <b>bucketCnt</b>; i++ {
+		<a href="../src/runtime/map.go.html#line-1592" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1592">#L1592</a>: 				srcEle := add(unsafe.Pointer(srcBmap), dataOffset+<b>bucketCnt</b>*uintptr(t.KeySize)+i*uintptr(t.ValueSize))
+		<a href="../src/runtime/map.go.html#line-1618" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1618">#L1618</a>: 	offset := uint8(r &gt;&gt; h.B &amp; (<b>bucketCnt</b> - 1))
+		<a href="../src/runtime/map.go.html#line-1647" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1647">#L1647</a>: 		for i := uintptr(0); i &lt; <b>bucketCnt</b>; i++ {
+		<a href="../src/runtime/map.go.html#line-1648" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1648">#L1648</a>: 			offi := (i + uintptr(offset)) &amp; (<b>bucketCnt</b> - 1)
+		<a href="../src/runtime/map.go.html#line-1681" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1681">#L1681</a>: 	offset := uint8(r &gt;&gt; h.B &amp; (<b>bucketCnt</b> - 1))
+		<a href="../src/runtime/map.go.html#line-1710" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1710">#L1710</a>: 		for i := uintptr(0); i &lt; <b>bucketCnt</b>; i++ {
+		<a href="../src/runtime/map.go.html#line-1711" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1711">#L1711</a>: 			offi := (i + uintptr(offset)) &amp; (<b>bucketCnt</b> - 1)
+		<a href="../src/runtime/map.go.html#line-1720" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1720">#L1720</a>: 			ele := add(unsafe.Pointer(b), dataOffset+<b>bucketCnt</b>*uintptr(t.KeySize)+offi*uintptr(t.ValueSize))
+		<a href="../src/runtime/map_fast32.go.html#line-44">map_fast32.go#L44</a>: 		for i, k := uintptr(0), b.keys(); i &lt; <b>bucketCnt</b>; i, k = i+1, add(k, 4) {
+		<a href="../src/runtime/map_fast32.go.html#line-46" class="path-duplicate">map_fast32.go</a><a href="../src/runtime/map_fast32.go.html#line-46">#L46</a>: 				return add(unsafe.Pointer(b), dataOffset+<b>bucketCnt</b>*4+i*uintptr(t.ValueSize))
+		<a href="../src/runtime/map_fast32.go.html#line-84" class="path-duplicate">map_fast32.go</a><a href="../src/runtime/map_fast32.go.html#line-84">#L84</a>: 		for i, k := uintptr(0), b.keys(); i &lt; <b>bucketCnt</b>; i, k = i+1, add(k, 4) {
+		<a href="../src/runtime/map_fast32.go.html#line-86" class="path-duplicate">map_fast32.go</a><a href="../src/runtime/map_fast32.go.html#line-86">#L86</a>: 				return add(unsafe.Pointer(b), dataOffset+<b>bucketCnt</b>*4+i*uintptr(t.ValueSize)), true
+		<a href="../src/runtime/map_fast32.go.html#line-126" class="path-duplicate">map_fast32.go</a><a href="../src/runtime/map_fast32.go.html#line-126">#L126</a>: 		for i := uintptr(0); i &lt; <b>bucketCnt</b>; i++ {
+		<a href="../src/runtime/map_fast32.go.html#line-166" class="path-duplicate">map_fast32.go</a><a href="../src/runtime/map_fast32.go.html#line-166">#L166</a>: 	insertb.tophash[inserti&amp;(<b>bucketCnt</b>-1)] = tophash(hash) // mask inserti to avoid bounds checks
+		<a href="../src/runtime/map_fast32.go.html#line-175" class="path-duplicate">map_fast32.go</a><a href="../src/runtime/map_fast32.go.html#line-175">#L175</a>: 	elem := add(unsafe.Pointer(insertb), dataOffset+<b>bucketCnt</b>*4+inserti*uintptr(t.ValueSize))
+		<a href="../src/runtime/map_fast32.go.html#line-216" class="path-duplicate">map_fast32.go</a><a href="../src/runtime/map_fast32.go.html#line-216">#L216</a>: 		for i := uintptr(0); i &lt; <b>bucketCnt</b>; i++ {
+		<a href="../src/runtime/map_fast32.go.html#line-256" class="path-duplicate">map_fast32.go</a><a href="../src/runtime/map_fast32.go.html#line-256">#L256</a>: 	insertb.tophash[inserti&amp;(<b>bucketCnt</b>-1)] = tophash(hash) // mask inserti to avoid bounds checks
+		<a href="../src/runtime/map_fast32.go.html#line-265" class="path-duplicate">map_fast32.go</a><a href="../src/runtime/map_fast32.go.html#line-265">#L265</a>: 	elem := add(unsafe.Pointer(insertb), dataOffset+<b>bucketCnt</b>*4+inserti*uintptr(t.ValueSize))
+		<a href="../src/runtime/map_fast32.go.html#line-298" class="path-duplicate">map_fast32.go</a><a href="../src/runtime/map_fast32.go.html#line-298">#L298</a>: 		for i, k := uintptr(0), b.keys(); i &lt; <b>bucketCnt</b>; i, k = i+1, add(k, 4) {
+		<a href="../src/runtime/map_fast32.go.html#line-310" class="path-duplicate">map_fast32.go</a><a href="../src/runtime/map_fast32.go.html#line-310">#L310</a>: 			e := add(unsafe.Pointer(b), dataOffset+<b>bucketCnt</b>*4+i*uintptr(t.ValueSize))
+		<a href="../src/runtime/map_fast32.go.html#line-319" class="path-duplicate">map_fast32.go</a><a href="../src/runtime/map_fast32.go.html#line-319">#L319</a>: 			if i == <b>bucketCnt</b>-1 {
+		<a href="../src/runtime/map_fast32.go.html#line-338" class="path-duplicate">map_fast32.go</a><a href="../src/runtime/map_fast32.go.html#line-338">#L338</a>: 					i = <b>bucketCnt</b> - 1
+		<a href="../src/runtime/map_fast32.go.html#line-386" class="path-duplicate">map_fast32.go</a><a href="../src/runtime/map_fast32.go.html#line-386">#L386</a>: 		x.e = add(x.k, <b>bucketCnt</b>*4)
+		<a href="../src/runtime/map_fast32.go.html#line-394" class="path-duplicate">map_fast32.go</a><a href="../src/runtime/map_fast32.go.html#line-394">#L394</a>: 			y.e = add(y.k, <b>bucketCnt</b>*4)
+		<a href="../src/runtime/map_fast32.go.html#line-399" class="path-duplicate">map_fast32.go</a><a href="../src/runtime/map_fast32.go.html#line-399">#L399</a>: 			e := add(k, <b>bucketCnt</b>*4)
+		<a href="../src/runtime/map_fast32.go.html#line-400" class="path-duplicate">map_fast32.go</a><a href="../src/runtime/map_fast32.go.html#line-400">#L400</a>: 			for i := 0; i &lt; <b>bucketCnt</b>; i, k, e = i+1, add(k, 4), add(e, uintptr(t.ValueSize)) {
+		<a href="../src/runtime/map_fast32.go.html#line-422" class="path-duplicate">map_fast32.go</a><a href="../src/runtime/map_fast32.go.html#line-422">#L422</a>: 				if dst.i == <b>bucketCnt</b> {
+		<a href="../src/runtime/map_fast32.go.html#line-426" class="path-duplicate">map_fast32.go</a><a href="../src/runtime/map_fast32.go.html#line-426">#L426</a>: 					dst.e = add(dst.k, <b>bucketCnt</b>*4)
+		<a href="../src/runtime/map_fast32.go.html#line-428" class="path-duplicate">map_fast32.go</a><a href="../src/runtime/map_fast32.go.html#line-428">#L428</a>: 				dst.b.tophash[dst.i&amp;(<b>bucketCnt</b>-1)] = top // mask dst.i as an optimization, to avoid a bounds check
+		<a href="../src/runtime/map_fast64.go.html#line-44">map_fast64.go#L44</a>: 		for i, k := uintptr(0), b.keys(); i &lt; <b>bucketCnt</b>; i, k = i+1, add(k, 8) {
+		<a href="../src/runtime/map_fast64.go.html#line-46" class="path-duplicate">map_fast64.go</a><a href="../src/runtime/map_fast64.go.html#line-46">#L46</a>: 				return add(unsafe.Pointer(b), dataOffset+<b>bucketCnt</b>*8+i*uintptr(t.ValueSize))
+		<a href="../src/runtime/map_fast64.go.html#line-84" class="path-duplicate">map_fast64.go</a><a href="../src/runtime/map_fast64.go.html#line-84">#L84</a>: 		for i, k := uintptr(0), b.keys(); i &lt; <b>bucketCnt</b>; i, k = i+1, add(k, 8) {
+		<a href="../src/runtime/map_fast64.go.html#line-86" class="path-duplicate">map_fast64.go</a><a href="../src/runtime/map_fast64.go.html#line-86">#L86</a>: 				return add(unsafe.Pointer(b), dataOffset+<b>bucketCnt</b>*8+i*uintptr(t.ValueSize)), true
+		<a href="../src/runtime/map_fast64.go.html#line-126" class="path-duplicate">map_fast64.go</a><a href="../src/runtime/map_fast64.go.html#line-126">#L126</a>: 		for i := uintptr(0); i &lt; <b>bucketCnt</b>; i++ {
+		<a href="../src/runtime/map_fast64.go.html#line-166" class="path-duplicate">map_fast64.go</a><a href="../src/runtime/map_fast64.go.html#line-166">#L166</a>: 	insertb.tophash[inserti&amp;(<b>bucketCnt</b>-1)] = tophash(hash) // mask inserti to avoid bounds checks
+		<a href="../src/runtime/map_fast64.go.html#line-175" class="path-duplicate">map_fast64.go</a><a href="../src/runtime/map_fast64.go.html#line-175">#L175</a>: 	elem := add(unsafe.Pointer(insertb), dataOffset+<b>bucketCnt</b>*8+inserti*uintptr(t.ValueSize))
+		<a href="../src/runtime/map_fast64.go.html#line-216" class="path-duplicate">map_fast64.go</a><a href="../src/runtime/map_fast64.go.html#line-216">#L216</a>: 		for i := uintptr(0); i &lt; <b>bucketCnt</b>; i++ {
+		<a href="../src/runtime/map_fast64.go.html#line-256" class="path-duplicate">map_fast64.go</a><a href="../src/runtime/map_fast64.go.html#line-256">#L256</a>: 	insertb.tophash[inserti&amp;(<b>bucketCnt</b>-1)] = tophash(hash) // mask inserti to avoid bounds checks
+		<a href="../src/runtime/map_fast64.go.html#line-265" class="path-duplicate">map_fast64.go</a><a href="../src/runtime/map_fast64.go.html#line-265">#L265</a>: 	elem := add(unsafe.Pointer(insertb), dataOffset+<b>bucketCnt</b>*8+inserti*uintptr(t.ValueSize))
+		<a href="../src/runtime/map_fast64.go.html#line-298" class="path-duplicate">map_fast64.go</a><a href="../src/runtime/map_fast64.go.html#line-298">#L298</a>: 		for i, k := uintptr(0), b.keys(); i &lt; <b>bucketCnt</b>; i, k = i+1, add(k, 8) {
+		<a href="../src/runtime/map_fast64.go.html#line-312" class="path-duplicate">map_fast64.go</a><a href="../src/runtime/map_fast64.go.html#line-312">#L312</a>: 			e := add(unsafe.Pointer(b), dataOffset+<b>bucketCnt</b>*8+i*uintptr(t.ValueSize))
+		<a href="../src/runtime/map_fast64.go.html#line-321" class="path-duplicate">map_fast64.go</a><a href="../src/runtime/map_fast64.go.html#line-321">#L321</a>: 			if i == <b>bucketCnt</b>-1 {
+		<a href="../src/runtime/map_fast64.go.html#line-340" class="path-duplicate">map_fast64.go</a><a href="../src/runtime/map_fast64.go.html#line-340">#L340</a>: 					i = <b>bucketCnt</b> - 1
+		<a href="../src/runtime/map_fast64.go.html#line-388" class="path-duplicate">map_fast64.go</a><a href="../src/runtime/map_fast64.go.html#line-388">#L388</a>: 		x.e = add(x.k, <b>bucketCnt</b>*8)
+		<a href="../src/runtime/map_fast64.go.html#line-396" class="path-duplicate">map_fast64.go</a><a href="../src/runtime/map_fast64.go.html#line-396">#L396</a>: 			y.e = add(y.k, <b>bucketCnt</b>*8)
+		<a href="../src/runtime/map_fast64.go.html#line-401" class="path-duplicate">map_fast64.go</a><a href="../src/runtime/map_fast64.go.html#line-401">#L401</a>: 			e := add(k, <b>bucketCnt</b>*8)
+		<a href="../src/runtime/map_fast64.go.html#line-402" class="path-duplicate">map_fast64.go</a><a href="../src/runtime/map_fast64.go.html#line-402">#L402</a>: 			for i := 0; i &lt; <b>bucketCnt</b>; i, k, e = i+1, add(k, 8), add(e, uintptr(t.ValueSize)) {
+		<a href="../src/runtime/map_fast64.go.html#line-424" class="path-duplicate">map_fast64.go</a><a href="../src/runtime/map_fast64.go.html#line-424">#L424</a>: 				if dst.i == <b>bucketCnt</b> {
+		<a href="../src/runtime/map_fast64.go.html#line-428" class="path-duplicate">map_fast64.go</a><a href="../src/runtime/map_fast64.go.html#line-428">#L428</a>: 					dst.e = add(dst.k, <b>bucketCnt</b>*8)
+		<a href="../src/runtime/map_fast64.go.html#line-430" class="path-duplicate">map_fast64.go</a><a href="../src/runtime/map_fast64.go.html#line-430">#L430</a>: 				dst.b.tophash[dst.i&amp;(<b>bucketCnt</b>-1)] = top // mask dst.i as an optimization, to avoid a bounds check
+		<a href="../src/runtime/map_faststr.go.html#line-30">map_faststr.go#L30</a>: 			for i, kptr := uintptr(0), b.keys(); i &lt; <b>bucketCnt</b>; i, kptr = i+1, add(kptr, 2*goarch.PtrSize) {
+		<a href="../src/runtime/map_faststr.go.html#line-39" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-39">#L39</a>: 					return add(unsafe.Pointer(b), dataOffset+<b>bucketCnt</b>*2*goarch.PtrSize+i*uintptr(t.ValueSize))
+		<a href="../src/runtime/map_faststr.go.html#line-45" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-45">#L45</a>: 		keymaybe := uintptr(<b>bucketCnt</b>)
+		<a href="../src/runtime/map_faststr.go.html#line-46" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-46">#L46</a>: 		for i, kptr := uintptr(0), b.keys(); i &lt; <b>bucketCnt</b>; i, kptr = i+1, add(kptr, 2*goarch.PtrSize) {
+		<a href="../src/runtime/map_faststr.go.html#line-55" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-55">#L55</a>: 				return add(unsafe.Pointer(b), dataOffset+<b>bucketCnt</b>*2*goarch.PtrSize+i*uintptr(t.ValueSize))
+		<a href="../src/runtime/map_faststr.go.html#line-65" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-65">#L65</a>: 			if keymaybe != <b>bucketCnt</b> {
+		<a href="../src/runtime/map_faststr.go.html#line-71" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-71">#L71</a>: 		if keymaybe != <b>bucketCnt</b> {
+		<a href="../src/runtime/map_faststr.go.html#line-74" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-74">#L74</a>: 				return add(unsafe.Pointer(b), dataOffset+<b>bucketCnt</b>*2*goarch.PtrSize+keymaybe*uintptr(t.ValueSize))
+		<a href="../src/runtime/map_faststr.go.html#line-95" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-95">#L95</a>: 		for i, kptr := uintptr(0), b.keys(); i &lt; <b>bucketCnt</b>; i, kptr = i+1, add(kptr, 2*goarch.PtrSize) {
+		<a href="../src/runtime/map_faststr.go.html#line-101" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-101">#L101</a>: 				return add(unsafe.Pointer(b), dataOffset+<b>bucketCnt</b>*2*goarch.PtrSize+i*uintptr(t.ValueSize))
+		<a href="../src/runtime/map_faststr.go.html#line-125" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-125">#L125</a>: 			for i, kptr := uintptr(0), b.keys(); i &lt; <b>bucketCnt</b>; i, kptr = i+1, add(kptr, 2*goarch.PtrSize) {
+		<a href="../src/runtime/map_faststr.go.html#line-134" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-134">#L134</a>: 					return add(unsafe.Pointer(b), dataOffset+<b>bucketCnt</b>*2*goarch.PtrSize+i*uintptr(t.ValueSize)), true
+		<a href="../src/runtime/map_faststr.go.html#line-140" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-140">#L140</a>: 		keymaybe := uintptr(<b>bucketCnt</b>)
+		<a href="../src/runtime/map_faststr.go.html#line-141" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-141">#L141</a>: 		for i, kptr := uintptr(0), b.keys(); i &lt; <b>bucketCnt</b>; i, kptr = i+1, add(kptr, 2*goarch.PtrSize) {
+		<a href="../src/runtime/map_faststr.go.html#line-150" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-150">#L150</a>: 				return add(unsafe.Pointer(b), dataOffset+<b>bucketCnt</b>*2*goarch.PtrSize+i*uintptr(t.ValueSize)), true
+		<a href="../src/runtime/map_faststr.go.html#line-160" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-160">#L160</a>: 			if keymaybe != <b>bucketCnt</b> {
+		<a href="../src/runtime/map_faststr.go.html#line-166" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-166">#L166</a>: 		if keymaybe != <b>bucketCnt</b> {
+		<a href="../src/runtime/map_faststr.go.html#line-169" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-169">#L169</a>: 				return add(unsafe.Pointer(b), dataOffset+<b>bucketCnt</b>*2*goarch.PtrSize+keymaybe*uintptr(t.ValueSize)), true
+		<a href="../src/runtime/map_faststr.go.html#line-190" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-190">#L190</a>: 		for i, kptr := uintptr(0), b.keys(); i &lt; <b>bucketCnt</b>; i, kptr = i+1, add(kptr, 2*goarch.PtrSize) {
+		<a href="../src/runtime/map_faststr.go.html#line-196" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-196">#L196</a>: 				return add(unsafe.Pointer(b), dataOffset+<b>bucketCnt</b>*2*goarch.PtrSize+i*uintptr(t.ValueSize)), true
+		<a href="../src/runtime/map_faststr.go.html#line-238" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-238">#L238</a>: 		for i := uintptr(0); i &lt; <b>bucketCnt</b>; i++ {
+		<a href="../src/runtime/map_faststr.go.html#line-285" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-285">#L285</a>: 	insertb.tophash[inserti&amp;(<b>bucketCnt</b>-1)] = top // mask inserti to avoid bounds checks
+		<a href="../src/runtime/map_faststr.go.html#line-293" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-293">#L293</a>: 	elem := add(unsafe.Pointer(insertb), dataOffset+<b>bucketCnt</b>*2*goarch.PtrSize+inserti*uintptr(t.ValueSize))
+		<a href="../src/runtime/map_faststr.go.html#line-328" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-328">#L328</a>: 		for i, kptr := uintptr(0), b.keys(); i &lt; <b>bucketCnt</b>; i, kptr = i+1, add(kptr, 2*goarch.PtrSize) {
+		<a href="../src/runtime/map_faststr.go.html#line-338" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-338">#L338</a>: 			e := add(unsafe.Pointer(b), dataOffset+<b>bucketCnt</b>*2*goarch.PtrSize+i*uintptr(t.ValueSize))
+		<a href="../src/runtime/map_faststr.go.html#line-347" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-347">#L347</a>: 			if i == <b>bucketCnt</b>-1 {
+		<a href="../src/runtime/map_faststr.go.html#line-366" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-366">#L366</a>: 					i = <b>bucketCnt</b> - 1
+		<a href="../src/runtime/map_faststr.go.html#line-414" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-414">#L414</a>: 		x.e = add(x.k, <b>bucketCnt</b>*2*goarch.PtrSize)
+		<a href="../src/runtime/map_faststr.go.html#line-422" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-422">#L422</a>: 			y.e = add(y.k, <b>bucketCnt</b>*2*goarch.PtrSize)
+		<a href="../src/runtime/map_faststr.go.html#line-427" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-427">#L427</a>: 			e := add(k, <b>bucketCnt</b>*2*goarch.PtrSize)
+		<a href="../src/runtime/map_faststr.go.html#line-428" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-428">#L428</a>: 			for i := 0; i &lt; <b>bucketCnt</b>; i, k, e = i+1, add(k, 2*goarch.PtrSize), add(e, uintptr(t.ValueSize)) {
+		<a href="../src/runtime/map_faststr.go.html#line-450" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-450">#L450</a>: 				if dst.i == <b>bucketCnt</b> {
+		<a href="../src/runtime/map_faststr.go.html#line-454" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-454">#L454</a>: 					dst.e = add(dst.k, <b>bucketCnt</b>*2*goarch.PtrSize)
+		<a href="../src/runtime/map_faststr.go.html#line-456" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-456">#L456</a>: 				dst.b.tophash[dst.i&amp;(<b>bucketCnt</b>-1)] = top // mask dst.i as an optimization, to avoid a bounds check
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

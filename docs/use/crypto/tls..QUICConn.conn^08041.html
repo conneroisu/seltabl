@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/tls.QUICConn.conn</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/crypto/tls.html">crypto/tls</a>.<a href="../../src/crypto/tls/quic.go.html#line-43">QUICConn</a>.<a href="../../src/crypto/tls/quic.go.html#line-44">conn</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">28 uses</span>
+
+	crypto/tls (current package)
+		<a href="../../src/crypto/tls/quic.go.html#line-44">quic.go#L44</a>: 	<b>conn</b> *Conn
+		<a href="../../src/crypto/tls/quic.go.html#line-161" class="path-duplicate">quic.go</a><a href="../../src/crypto/tls/quic.go.html#line-161">#L161</a>: 		<b>conn</b>: conn,
+		<a href="../../src/crypto/tls/quic.go.html#line-170" class="path-duplicate">quic.go</a><a href="../../src/crypto/tls/quic.go.html#line-170">#L170</a>: 	if q.<b>conn</b>.quic.started {
+		<a href="../../src/crypto/tls/quic.go.html#line-173" class="path-duplicate">quic.go</a><a href="../../src/crypto/tls/quic.go.html#line-173">#L173</a>: 	q.<b>conn</b>.quic.started = true
+		<a href="../../src/crypto/tls/quic.go.html#line-174" class="path-duplicate">quic.go</a><a href="../../src/crypto/tls/quic.go.html#line-174">#L174</a>: 	if q.<b>conn</b>.config.MinVersion &lt; VersionTLS13 {
+		<a href="../../src/crypto/tls/quic.go.html#line-177" class="path-duplicate">quic.go</a><a href="../../src/crypto/tls/quic.go.html#line-177">#L177</a>: 	go q.<b>conn</b>.HandshakeContext(ctx)
+		<a href="../../src/crypto/tls/quic.go.html#line-178" class="path-duplicate">quic.go</a><a href="../../src/crypto/tls/quic.go.html#line-178">#L178</a>: 	if _, ok := &lt;-q.<b>conn</b>.quic.blockedc; !ok {
+		<a href="../../src/crypto/tls/quic.go.html#line-179" class="path-duplicate">quic.go</a><a href="../../src/crypto/tls/quic.go.html#line-179">#L179</a>: 		return q.<b>conn</b>.handshakeErr
+		<a href="../../src/crypto/tls/quic.go.html#line-187" class="path-duplicate">quic.go</a><a href="../../src/crypto/tls/quic.go.html#line-187">#L187</a>: 	qs := q.<b>conn</b>.quic
+		<a href="../../src/crypto/tls/quic.go.html#line-206" class="path-duplicate">quic.go</a><a href="../../src/crypto/tls/quic.go.html#line-206">#L206</a>: 	if q.<b>conn</b>.quic.cancel == nil {
+		<a href="../../src/crypto/tls/quic.go.html#line-209" class="path-duplicate">quic.go</a><a href="../../src/crypto/tls/quic.go.html#line-209">#L209</a>: 	q.<b>conn</b>.quic.cancel()
+		<a href="../../src/crypto/tls/quic.go.html#line-210" class="path-duplicate">quic.go</a><a href="../../src/crypto/tls/quic.go.html#line-210">#L210</a>: 	for range q.<b>conn</b>.quic.blockedc {
+		<a href="../../src/crypto/tls/quic.go.html#line-213" class="path-duplicate">quic.go</a><a href="../../src/crypto/tls/quic.go.html#line-213">#L213</a>: 	return q.<b>conn</b>.handshakeErr
+		<a href="../../src/crypto/tls/quic.go.html#line-219" class="path-duplicate">quic.go</a><a href="../../src/crypto/tls/quic.go.html#line-219">#L219</a>: 	c := q.<b>conn</b>
+		<a href="../../src/crypto/tls/quic.go.html#line-235" class="path-duplicate">quic.go</a><a href="../../src/crypto/tls/quic.go.html#line-235">#L235</a>: 	for q.<b>conn</b>.hand.Len() &gt;= 4 &amp;&amp; q.<b>conn</b>.handshakeErr == nil {
+		<a href="../../src/crypto/tls/quic.go.html#line-236" class="path-duplicate">quic.go</a><a href="../../src/crypto/tls/quic.go.html#line-236">#L236</a>: 		b := q.<b>conn</b>.hand.Bytes()
+		<a href="../../src/crypto/tls/quic.go.html#line-239" class="path-duplicate">quic.go</a><a href="../../src/crypto/tls/quic.go.html#line-239">#L239</a>: 			q.<b>conn</b>.handshakeErr = fmt.Errorf("tls: handshake message of length %d bytes exceeds maximum of %d bytes", n, maxHandshake)
+		<a href="../../src/crypto/tls/quic.go.html#line-245" class="path-duplicate">quic.go</a><a href="../../src/crypto/tls/quic.go.html#line-245">#L245</a>: 		if err := q.<b>conn</b>.handlePostHandshakeMessage(); err != nil {
+		<a href="../../src/crypto/tls/quic.go.html#line-246" class="path-duplicate">quic.go</a><a href="../../src/crypto/tls/quic.go.html#line-246">#L246</a>: 			q.<b>conn</b>.handshakeErr = err
+		<a href="../../src/crypto/tls/quic.go.html#line-249" class="path-duplicate">quic.go</a><a href="../../src/crypto/tls/quic.go.html#line-249">#L249</a>: 	if q.<b>conn</b>.handshakeErr != nil {
+		<a href="../../src/crypto/tls/quic.go.html#line-250" class="path-duplicate">quic.go</a><a href="../../src/crypto/tls/quic.go.html#line-250">#L250</a>: 		return quicError(q.<b>conn</b>.handshakeErr)
+		<a href="../../src/crypto/tls/quic.go.html#line-264" class="path-duplicate">quic.go</a><a href="../../src/crypto/tls/quic.go.html#line-264">#L264</a>: 	c := q.<b>conn</b>
+		<a href="../../src/crypto/tls/quic.go.html#line-280" class="path-duplicate">quic.go</a><a href="../../src/crypto/tls/quic.go.html#line-280">#L280</a>: 	return q.<b>conn</b>.ConnectionState()
+		<a href="../../src/crypto/tls/quic.go.html#line-291" class="path-duplicate">quic.go</a><a href="../../src/crypto/tls/quic.go.html#line-291">#L291</a>: 	q.<b>conn</b>.quic.transportParams = params
+		<a href="../../src/crypto/tls/quic.go.html#line-292" class="path-duplicate">quic.go</a><a href="../../src/crypto/tls/quic.go.html#line-292">#L292</a>: 	if q.<b>conn</b>.quic.started {
+		<a href="../../src/crypto/tls/quic.go.html#line-293" class="path-duplicate">quic.go</a><a href="../../src/crypto/tls/quic.go.html#line-293">#L293</a>: 		&lt;-q.<b>conn</b>.quic.signalc
+		<a href="../../src/crypto/tls/quic.go.html#line-294" class="path-duplicate">quic.go</a><a href="../../src/crypto/tls/quic.go.html#line-294">#L294</a>: 		&lt;-q.<b>conn</b>.quic.blockedc
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

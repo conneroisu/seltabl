@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.timerRemoving</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/time.go.html#line-138">timerRemoving</a></b></span>
+
+<span class="title">15 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/time.go.html#line-138">time.go#L138</a>: 	<b>timerRemoving</b>
+		<a href="../src/runtime/time.go.html#line-354" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-354">#L354</a>: 		case timerDeleted, <b>timerRemoving</b>, timerRemoved:
+		<a href="../src/runtime/time.go.html#line-486" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-486">#L486</a>: 		case timerRunning, <b>timerRemoving</b>, timerMoving:
+		<a href="../src/runtime/time.go.html#line-583" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-583">#L583</a>: 			if !t.status.CompareAndSwap(s, <b>timerRemoving</b>) {
+		<a href="../src/runtime/time.go.html#line-587" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-587">#L587</a>: 			if !t.status.CompareAndSwap(<b>timerRemoving</b>, timerRemoved) {
+		<a href="../src/runtime/time.go.html#line-653" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-653">#L653</a>: 			case timerRunning, <b>timerRemoving</b>, timerMoving:
+		<a href="../src/runtime/time.go.html#line-694" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-694">#L694</a>: 			if t.status.CompareAndSwap(s, <b>timerRemoving</b>) {
+		<a href="../src/runtime/time.go.html#line-696" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-696">#L696</a>: 				if !t.status.CompareAndSwap(<b>timerRemoving</b>, timerRemoved) {
+		<a href="../src/runtime/time.go.html#line-718" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-718">#L718</a>: 		case timerNoStatus, timerRunning, <b>timerRemoving</b>, timerRemoved, timerMoving:
+		<a href="../src/runtime/time.go.html#line-796" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-796">#L796</a>: 			if !t.status.CompareAndSwap(s, <b>timerRemoving</b>) {
+		<a href="../src/runtime/time.go.html#line-800" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-800">#L800</a>: 			if !t.status.CompareAndSwap(<b>timerRemoving</b>, timerRemoved) {
+		<a href="../src/runtime/time.go.html#line-826" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-826">#L826</a>: 		case timerRunning, <b>timerRemoving</b>, timerMoving:
+		<a href="../src/runtime/time.go.html#line-937" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-937">#L937</a>: 				if t.status.CompareAndSwap(s, <b>timerRemoving</b>) {
+		<a href="../src/runtime/time.go.html#line-940" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-940">#L940</a>: 					if !t.status.CompareAndSwap(<b>timerRemoving</b>, timerRemoved) {
+		<a href="../src/runtime/time.go.html#line-952" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-952">#L952</a>: 			case timerRunning, <b>timerRemoving</b>, timerMoving:
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

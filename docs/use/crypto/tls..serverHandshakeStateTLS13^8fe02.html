@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/tls.serverHandshakeStateTLS13</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../pkg/crypto/tls.html">crypto/tls</a>.<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-25">serverHandshakeStateTLS13</a></b></span>
+
+<span class="title">16 uses</span>
+
+	crypto/tls (current package)
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-48">handshake_server.go#L48</a>: 		hs := <b>serverHandshakeStateTLS13</b>{
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-25">handshake_server_tls13.go#L25</a>: type <b>serverHandshakeStateTLS13</b> struct {
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-45" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-45">#L45</a>: func (hs *<b>serverHandshakeStateTLS13</b>) handshake() error {
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-90" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-90">#L90</a>: func (hs *<b>serverHandshakeStateTLS13</b>) processClientHello() error {
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-267" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-267">#L267</a>: func (hs *<b>serverHandshakeStateTLS13</b>) checkForResumption() error {
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-429" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-429">#L429</a>: func (hs *<b>serverHandshakeStateTLS13</b>) pickCertificate() error {
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-465" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-465">#L465</a>: func (hs *<b>serverHandshakeStateTLS13</b>) sendDummyChangeCipherSpec() error {
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-477" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-477">#L477</a>: func (hs *<b>serverHandshakeStateTLS13</b>) doHelloRetryRequest(selectedGroup CurveID) error {
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-597" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-597">#L597</a>: func (hs *<b>serverHandshakeStateTLS13</b>) sendServerParameters() error {
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-663" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-663">#L663</a>: func (hs *<b>serverHandshakeStateTLS13</b>) requestClientCert() bool {
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-667" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-667">#L667</a>: func (hs *<b>serverHandshakeStateTLS13</b>) sendServerCertificate() error {
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-734" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-734">#L734</a>: func (hs *<b>serverHandshakeStateTLS13</b>) sendServerFinished() error {
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-789" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-789">#L789</a>: func (hs *<b>serverHandshakeStateTLS13</b>) shouldSendSessionTickets() bool {
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-808" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-808">#L808</a>: func (hs *<b>serverHandshakeStateTLS13</b>) sendSessionTickets() error {
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-886" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-886">#L886</a>: func (hs *<b>serverHandshakeStateTLS13</b>) readClientCertificate() error {
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-975" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-975">#L975</a>: func (hs *<b>serverHandshakeStateTLS13</b>) readClientFinished() error {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

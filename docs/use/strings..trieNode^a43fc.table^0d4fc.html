@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: strings.trieNode.table</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/strings.html">strings</a>.<a href="../src/strings/replace.go.html#line-123">trieNode</a>.<a href="../src/strings/replace.go.html#line-155">table</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">12 uses</span>
+
+	strings (current package)
+		<a href="../src/strings/replace.go.html#line-155">replace.go#L155</a>: 	<b>table</b> []*trieNode
+		<a href="../src/strings/replace.go.html#line-191" class="path-duplicate">replace.go</a><a href="../src/strings/replace.go.html#line-191">#L191</a>: 			t.<b>table</b> = make([]*trieNode, r.tableSize)
+		<a href="../src/strings/replace.go.html#line-192" class="path-duplicate">replace.go</a><a href="../src/strings/replace.go.html#line-192">#L192</a>: 			t.<b>table</b>[r.mapping[t.prefix[0]]] = prefixNode
+		<a href="../src/strings/replace.go.html#line-193" class="path-duplicate">replace.go</a><a href="../src/strings/replace.go.html#line-193">#L193</a>: 			t.<b>table</b>[r.mapping[key[0]]] = keyNode
+		<a href="../src/strings/replace.go.html#line-207" class="path-duplicate">replace.go</a><a href="../src/strings/replace.go.html#line-207">#L207</a>: 	} else if t.<b>table</b> != nil {
+		<a href="../src/strings/replace.go.html#line-210" class="path-duplicate">replace.go</a><a href="../src/strings/replace.go.html#line-210">#L210</a>: 		if t.<b>table</b>[m] == nil {
+		<a href="../src/strings/replace.go.html#line-211" class="path-duplicate">replace.go</a><a href="../src/strings/replace.go.html#line-211">#L211</a>: 			t.<b>table</b>[m] = new(trieNode)
+		<a href="../src/strings/replace.go.html#line-213" class="path-duplicate">replace.go</a><a href="../src/strings/replace.go.html#line-213">#L213</a>: 		t.<b>table</b>[m].add(key[1:], val, priority, r)
+		<a href="../src/strings/replace.go.html#line-238" class="path-duplicate">replace.go</a><a href="../src/strings/replace.go.html#line-238">#L238</a>: 		if node.<b>table</b> != nil {
+		<a href="../src/strings/replace.go.html#line-243" class="path-duplicate">replace.go</a><a href="../src/strings/replace.go.html#line-243">#L243</a>: 			node = node.<b>table</b>[index]
+		<a href="../src/strings/replace.go.html#line-292" class="path-duplicate">replace.go</a><a href="../src/strings/replace.go.html#line-292">#L292</a>: 	r.root.<b>table</b> = make([]*trieNode, r.tableSize)
+		<a href="../src/strings/replace.go.html#line-344" class="path-duplicate">replace.go</a><a href="../src/strings/replace.go.html#line-344">#L344</a>: 			if index == r.tableSize || r.root.<b>table</b>[index] == nil {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

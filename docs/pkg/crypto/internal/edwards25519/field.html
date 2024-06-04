@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: crypto/internal/edwards25519/field</title>
+<link href="../../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>field</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../../../index.html#pkg-crypto/internal/edwards25519/field">crypto/internal/edwards25519/field</a><i> (on <a href="https://pkg.go.dev/crypto/internal/edwards25519/field" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../../../../dep/crypto/internal/edwards25519/field.html">4 packages</a>, and imported by <a href="../../../../dep/crypto/internal/edwards25519/field.html#imported-by">2 packages</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<input type='checkbox' checked class="fold" id="file-0-fold-content"><label for="file-0-fold-content">  <a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#doc">d</a> <a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html">fe.go</a></label><span id='file-0-fold-content-items' class="fold-items">
+<span class="md-text">		Package field implements fast arithmetic modulo 2^255-19.</span>
+</span>
+	<span class="nodocs">    <a href="../../../../src/crypto/internal/edwards25519/field/fe_amd64.go.html">fe_amd64.go</a></span>
+	<span class="nodocs">    <a href="../../../../src/crypto/internal/edwards25519/field/fe_arm64_noasm.go.html">fe_arm64_noasm.go</a></span>
+	<span class="nodocs">    <a href="../../../../src/crypto/internal/edwards25519/field/fe_generic.go.html">fe_generic.go</a></span>
+	<span class="nodocs">    <a href="../../../../src/crypto/internal/edwards25519/field/fe_amd64.s.html">fe_amd64.s</a></span></div>
+<div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (total 2, in which 1 is exported)</i></span></span>
+
+<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-Element" data-popularity="3285">	<input type='checkbox' class="fold" id="Element-fold-content"><label for="Element-fold-content"> <a href="../../../../use/crypto/internal/edwards25519/field..Element.html">type</a> <a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-23">Element</a> <i>(struct)</i></label><span id='Element-fold-content-docs' class="fold-docs">
+<span class="md-text">		Element represents an element of the field GF(2^255-19). Note that this
+		is not a cryptographically secure group, and should only be used to interact
+		with edwards25519.Point coordinates.
+		
+		This type works similarly to math/big.Int, and all arguments and receivers
+		are allowed to alias.
+		
+		The zero value is a valid zero element.</span>
+
+		<input type='checkbox' class="fold" id="Element-fold-fields"><label for="Element-fold-fields">Fields (<i>total 5, none are exported</i>)</label><span id='Element-fold-fields-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="Element-showhide-fields"><i><label for="Element-showhide-fields" class="show-inline">/* 5 unexporteds ... */</label><label for="Element-showhide-fields" class="hide-inline">/* 5 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Element-fold-field-l0"><label for="Element-fold-field-l0"><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-28">l0</a> <i><a href="../../../builtin.html#name-uint64">uint64</a></i></label><span id='Element-fold-field-l0-docs' class="fold-docs">
+<span class="md-text">				An element t represents the integer
+				    t.l0 + t.l1*2^51 + t.l2*2^102 + t.l3*2^153 + t.l4*2^204
+				
+				Between operations, all limbs are expected to be lower than 2^52.</span>
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-29">l1</a> <i><a href="../../../builtin.html#name-uint64">uint64</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-30">l2</a> <i><a href="../../../builtin.html#name-uint64">uint64</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-31">l3</a> <i><a href="../../../builtin.html#name-uint64">uint64</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-32">l4</a> <i><a href="../../../builtin.html#name-uint64">uint64</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="Element-fold-methods"><label for="Element-fold-methods">Methods (<i>total 23, in which 19 are exported</i>)</label><span id='Element-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Element-fold-method-Absolute"><label for="Element-fold-method-Absolute">(*Element) <a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-297">Absolute</a>(u *<b>Element</b>) *<b>Element</b></label><span id='Element-fold-method-Absolute-docs' class="fold-docs">
+<span class="md-text">				Absolute sets v to |u|, and returns v.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Element-fold-method-Add"><label for="Element-fold-method-Add">(*Element) <a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-87">Add</a>(a, b *<b>Element</b>) *<b>Element</b></label><span id='Element-fold-method-Add-docs' class="fold-docs">
+<span class="md-text">				Add sets v = a + b, and returns v.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Element-fold-method-Bytes"><label for="Element-fold-method-Bytes">(*Element) <a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-224">Bytes</a>() []<a href="../../../builtin.html#name-byte">byte</a></label><span id='Element-fold-method-Bytes-docs' class="fold-docs">
+<span class="md-text">				Bytes returns the canonical 32-byte little-endian encoding of v.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Element-fold-method-Equal"><label for="Element-fold-method-Equal">(*Element) <a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-252">Equal</a>(u *<b>Element</b>) <a href="../../../builtin.html#name-int">int</a></label><span id='Element-fold-method-Equal-docs' class="fold-docs">
+<span class="md-text">				Equal returns 1 if v and u are equal, and 0 otherwise.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Element-fold-method-Invert"><label for="Element-fold-method-Invert">(*Element) <a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-120">Invert</a>(z *<b>Element</b>) *<b>Element</b></label><span id='Element-fold-method-Invert-docs' class="fold-docs">
+<span class="md-text">				Invert sets v = 1/z mod p, and returns v.
+				
+				If z == 0, Invert returns v = 0.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Element-fold-method-IsNegative"><label for="Element-fold-method-IsNegative">(*Element) <a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-292">IsNegative</a>() <a href="../../../builtin.html#name-int">int</a></label><span id='Element-fold-method-IsNegative-docs' class="fold-docs">
+<span class="md-text">				IsNegative returns 1 if v is negative, and 0 otherwise.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Element-fold-method-Mult32"><label for="Element-fold-method-Mult32">(*Element) <a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-314">Mult32</a>(x *<b>Element</b>, y <a href="../../../builtin.html#name-uint32">uint32</a>) *<b>Element</b></label><span id='Element-fold-method-Mult32-docs' class="fold-docs">
+<span class="md-text">				Mult32 sets v = x * y, and returns v.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Element-fold-method-Multiply"><label for="Element-fold-method-Multiply">(*Element) <a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-302">Multiply</a>(x, y *<b>Element</b>) *<b>Element</b></label><span id='Element-fold-method-Multiply-docs' class="fold-docs">
+<span class="md-text">				Multiply sets v = x * y, and returns v.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Element-fold-method-Negate"><label for="Element-fold-method-Negate">(*Element) <a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-113">Negate</a>(a *<b>Element</b>) *<b>Element</b></label><span id='Element-fold-method-Negate-docs' class="fold-docs">
+<span class="md-text">				Negate sets v = -a, and returns v.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Element-fold-method-One"><label for="Element-fold-method-One">(*Element) <a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-48">One</a>() *<b>Element</b></label><span id='Element-fold-method-One-docs' class="fold-docs">
+<span class="md-text">				One sets v = 1, and returns v.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Element-fold-method-Pow22523"><label for="Element-fold-method-Pow22523">(*Element) <a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-339">Pow22523</a>(x *<b>Element</b>) *<b>Element</b></label><span id='Element-fold-method-Pow22523-docs' class="fold-docs">
+<span class="md-text">				Pow22523 set v = x^((p-5)/8), and returns v. (p-5)/8 is 2^252-3.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Element-fold-method-Select"><label for="Element-fold-method-Select">(*Element) <a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-261">Select</a>(a, b *<b>Element</b>, cond <a href="../../../builtin.html#name-int">int</a>) *<b>Element</b></label><span id='Element-fold-method-Select-docs' class="fold-docs">
+<span class="md-text">				Select sets v to a if cond == 1, and to b if cond == 0.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Element-fold-method-Set"><label for="Element-fold-method-Set">(*Element) <a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-185">Set</a>(a *<b>Element</b>) *<b>Element</b></label><span id='Element-fold-method-Set-docs' class="fold-docs">
+<span class="md-text">				Set sets v = a, and returns v.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Element-fold-method-SetBytes"><label for="Element-fold-method-SetBytes">(*Element) <a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-198">SetBytes</a>(x []<a href="../../../builtin.html#name-byte">byte</a>) (*<b>Element</b>, <a href="../../../builtin.html#name-error">error</a>)</label><span id='Element-fold-method-SetBytes-docs' class="fold-docs">
+<span class="md-text">				SetBytes sets v to x, where x is a 32-byte little-endian encoding. If x is
+				not of the right length, SetBytes returns nil and an error, and the
+				receiver is unchanged.
+				
+				Consistent with RFC 7748, the most significant bit (the high bit of the
+				last byte) is ignored, and non-canonical values (2^255-19 through 2^255-1)
+				are accepted. Note that this is laxer than specified by RFC 8032, but
+				consistent with most Ed25519 implementations.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Element-fold-method-SqrtRatio"><label for="Element-fold-method-SqrtRatio">(*Element) <a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-398">SqrtRatio</a>(u, v *<b>Element</b>) (R *<b>Element</b>, wasSquare <a href="../../../builtin.html#name-int">int</a>)</label><span id='Element-fold-method-SqrtRatio-docs' class="fold-docs">
+<span class="md-text">				SqrtRatio sets r to the non-negative square root of the ratio of u and v.
+				
+				If u/v is square, SqrtRatio returns r and 1. If u/v is not square, SqrtRatio
+				sets r according to Section 4.3 of draft-irtf-cfrg-ristretto255-decaf448-00,
+				and returns r and 0.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Element-fold-method-Square"><label for="Element-fold-method-Square">(*Element) <a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-308">Square</a>(x *<b>Element</b>) *<b>Element</b></label><span id='Element-fold-method-Square-docs' class="fold-docs">
+<span class="md-text">				Square sets v = x * x, and returns v.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Element-fold-method-Subtract"><label for="Element-fold-method-Subtract">(*Element) <a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-101">Subtract</a>(a, b *<b>Element</b>) *<b>Element</b></label><span id='Element-fold-method-Subtract-docs' class="fold-docs">
+<span class="md-text">				Subtract sets v = a - b, and returns v.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Element-fold-method-Swap"><label for="Element-fold-method-Swap">(*Element) <a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-272">Swap</a>(u *<b>Element</b>, cond <a href="../../../builtin.html#name-int">int</a>)</label><span id='Element-fold-method-Swap-docs' class="fold-docs">
+<span class="md-text">				Swap swaps v and u if cond == 1 or leaves them unchanged if cond == 0, and returns v.</span>
+</span></span><span>
+			<input type='checkbox' class="fold" id="Element-fold-method-Zero"><label for="Element-fold-method-Zero">(*Element) <a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-40">Zero</a>() *<b>Element</b></label><span id='Element-fold-method-Zero-docs' class="fold-docs">
+<span class="md-text">				Zero sets v = 0, and returns v.</span>
+</span></span>
+			<input type='checkbox' class="showhide" id="Element-showhide-methods"><i><label for="Element-showhide-methods" class="show-inline">/* 4 unexporteds ... */</label><label for="Element-showhide-methods" class="hide-inline">/* 4 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs">(*Element) <a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-231">bytes</a>(out *[32]<a href="../../../builtin.html#name-byte">byte</a>) []<a href="../../../builtin.html#name-byte">byte</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*Element) <a href="../../../../src/crypto/internal/edwards25519/field/fe_arm64_noasm.go.html#line-9">carryPropagate</a>() *<b>Element</b></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Element-fold-method-carryPropagateGeneric"><label for="Element-fold-method-carryPropagateGeneric">(*Element) <a href="../../../../src/crypto/internal/edwards25519/field/fe_generic.go.html#line-250">carryPropagateGeneric</a>() *<b>Element</b></label><span id='Element-fold-method-carryPropagateGeneric-docs' class="fold-docs">
+<span class="md-text">				carryPropagateGeneric brings the limbs below 52 bits by applying the reduction
+				identity (a * 2²⁵⁵ + b = a * 19 + b) to the l4 carry.</span>
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Element-fold-method-reduce"><label for="Element-fold-method-reduce">(*Element) <a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-54">reduce</a>() *<b>Element</b></label><span id='Element-fold-method-reduce-docs' class="fold-docs">
+<span class="md-text">				reduce reduces v modulo 2^255 - 19 and returns it.</span>
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="Element-fold-results"><label for="Element-fold-results">As Outputs Of (<i>at least 18, in which 15 are exported</i>)</label><span id='Element-fold-results-items' class="fold-items"><span>
+			func (*Element).<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-297">Absolute</a>(u *<b>Element</b>) *<b>Element</b></span><span>
+			func (*Element).<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-87">Add</a>(a, b *<b>Element</b>) *<b>Element</b></span><span>
+			func (*Element).<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-120">Invert</a>(z *<b>Element</b>) *<b>Element</b></span><span>
+			func (*Element).<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-314">Mult32</a>(x *<b>Element</b>, y <a href="../../../builtin.html#name-uint32">uint32</a>) *<b>Element</b></span><span>
+			func (*Element).<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-302">Multiply</a>(x, y *<b>Element</b>) *<b>Element</b></span><span>
+			func (*Element).<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-113">Negate</a>(a *<b>Element</b>) *<b>Element</b></span><span>
+			func (*Element).<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-48">One</a>() *<b>Element</b></span><span>
+			func (*Element).<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-339">Pow22523</a>(x *<b>Element</b>) *<b>Element</b></span><span>
+			func (*Element).<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-261">Select</a>(a, b *<b>Element</b>, cond <a href="../../../builtin.html#name-int">int</a>) *<b>Element</b></span><span>
+			func (*Element).<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-185">Set</a>(a *<b>Element</b>) *<b>Element</b></span><span>
+			func (*Element).<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-198">SetBytes</a>(x []<a href="../../../builtin.html#name-byte">byte</a>) (*<b>Element</b>, <a href="../../../builtin.html#name-error">error</a>)</span><span>
+			func (*Element).<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-398">SqrtRatio</a>(u, v *<b>Element</b>) (R *<b>Element</b>, wasSquare <a href="../../../builtin.html#name-int">int</a>)</span><span>
+			func (*Element).<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-308">Square</a>(x *<b>Element</b>) *<b>Element</b></span><span>
+			func (*Element).<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-101">Subtract</a>(a, b *<b>Element</b>) *<b>Element</b></span><span>
+			func (*Element).<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-40">Zero</a>() *<b>Element</b></span>
+			<input type='checkbox' class="showhide" id="Element-showhide-inputofs"><i><label for="Element-showhide-inputofs" class="show-inline">/* 3+ unexporteds ... */</label><label for="Element-showhide-inputofs" class="hide-inline">/* 3+ unexporteds: */</label></i><span class="hidden"><i>
+			func (*Element).<a href="../../../../src/crypto/internal/edwards25519/field/fe_arm64_noasm.go.html#line-9">carryPropagate</a>() *<b>Element</b></i></span><span class="hidden"><i>
+			func (*Element).<a href="../../../../src/crypto/internal/edwards25519/field/fe_generic.go.html#line-250">carryPropagateGeneric</a>() *<b>Element</b></i></span><span class="hidden"><i>
+			func (*Element).<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-54">reduce</a>() *<b>Element</b></i></span></span>
+		<input type='checkbox' class="fold" id="Element-fold-params"><label for="Element-fold-params">As Inputs Of (<i>at least 22, in which 14 are exported</i>)</label><span id='Element-fold-params-items' class="fold-items"><span>
+			func (*Element).<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-297">Absolute</a>(u *<b>Element</b>) *<b>Element</b></span><span>
+			func (*Element).<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-87">Add</a>(a, b *<b>Element</b>) *<b>Element</b></span><span>
+			func (*Element).<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-252">Equal</a>(u *<b>Element</b>) <a href="../../../builtin.html#name-int">int</a></span><span>
+			func (*Element).<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-120">Invert</a>(z *<b>Element</b>) *<b>Element</b></span><span>
+			func (*Element).<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-314">Mult32</a>(x *<b>Element</b>, y <a href="../../../builtin.html#name-uint32">uint32</a>) *<b>Element</b></span><span>
+			func (*Element).<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-302">Multiply</a>(x, y *<b>Element</b>) *<b>Element</b></span><span>
+			func (*Element).<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-113">Negate</a>(a *<b>Element</b>) *<b>Element</b></span><span>
+			func (*Element).<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-339">Pow22523</a>(x *<b>Element</b>) *<b>Element</b></span><span>
+			func (*Element).<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-261">Select</a>(a, b *<b>Element</b>, cond <a href="../../../builtin.html#name-int">int</a>) *<b>Element</b></span><span>
+			func (*Element).<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-185">Set</a>(a *<b>Element</b>) *<b>Element</b></span><span>
+			func (*Element).<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-398">SqrtRatio</a>(u, v *<b>Element</b>) (R *<b>Element</b>, wasSquare <a href="../../../builtin.html#name-int">int</a>)</span><span>
+			func (*Element).<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-308">Square</a>(x *<b>Element</b>) *<b>Element</b></span><span>
+			func (*Element).<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-101">Subtract</a>(a, b *<b>Element</b>) *<b>Element</b></span><span>
+			func (*Element).<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-272">Swap</a>(u *<b>Element</b>, cond <a href="../../../builtin.html#name-int">int</a>)</span>
+			<input type='checkbox' class="showhide" id="Element-showhide-outputofs"><i><label for="Element-showhide-outputofs" class="show-inline">/* 8+ unexporteds ... */</label><label for="Element-showhide-outputofs" class="hide-inline">/* 8+ unexporteds: */</label></i><span class="hidden"><i>
+			func <a href="#name-feMul">feMul</a>(out *<b>Element</b>, a *<b>Element</b>, b *<b>Element</b>)</i></span><span class="hidden"><i>
+			func <a href="#name-feMul">feMul</a>(out *<b>Element</b>, a *<b>Element</b>, b *<b>Element</b>)</i></span><span class="hidden"><i>
+			func <a href="#name-feMul">feMul</a>(out *<b>Element</b>, a *<b>Element</b>, b *<b>Element</b>)</i></span><span class="hidden"><i>
+			func <a href="#name-feMulGeneric">feMulGeneric</a>(v, a, b *<b>Element</b>)</i></span><span class="hidden"><i>
+			func <a href="#name-feSquare">feSquare</a>(out *<b>Element</b>, a *<b>Element</b>)</i></span><span class="hidden"><i>
+			func <a href="#name-feSquare">feSquare</a>(out *<b>Element</b>, a *<b>Element</b>)</i></span><span class="hidden"><i>
+			func <a href="#name-feSquareGeneric">feSquareGeneric</a>(v, a *<b>Element</b>)</i></span><span class="hidden"><i>
+			func crypto/internal/edwards25519.<a href="../edwards25519.html#name-copyFieldElement">copyFieldElement</a>(buf *[32]<a href="../../../builtin.html#name-byte">byte</a>, v *<b>Element</b>) []<a href="../../../builtin.html#name-byte">byte</a></i></span></span>
+		<input type='checkbox' class="fold" id="Element-fold-values"><label for="Element-fold-values">As Types Of (<i>total 6, none are exported</i>)</label><span id='Element-fold-values-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="Element-showhide-values"><i><label for="Element-showhide-values" class="show-inline">/* 6 unexporteds ... */</label><label for="Element-showhide-values" class="hide-inline">/* 6 unexporteds: */</label></i><span class="hidden"><i>
+			  var <a href="#name-feOne">feOne</a> *Element</i></span><span class="hidden"><i>
+			  var <a href="#name-feZero">feZero</a> *Element</i></span><span class="hidden"><i>
+			  var <a href="#name-sqrtM1">sqrtM1</a> *Element</i></span><span class="hidden"><i>
+			  var crypto/internal/edwards25519.<a href="../edwards25519.html#name-d">d</a> *Element</i></span><span class="hidden"><i>
+			  var crypto/internal/edwards25519.<a href="../edwards25519.html#name-d2">d2</a> *Element</i></span><span class="hidden"><i>
+			  var crypto/internal/edwards25519.<a href="../edwards25519.html#name-feOne">feOne</a> *Element</i></span></span>
+
+</span></div></div><div>	<input type='checkbox' class="showhide" id="unexported-typenames-showhide"><i><label for="unexported-typenames-showhide" class="show-inline">/* one unexported ... */</label><label for="unexported-typenames-showhide" class="hide-inline">/* one unexported: */</label></i><div class="anchor type-res hidden" id="name-uint128" data-popularity="220">	<input type='checkbox' class="fold" id="uint128-fold-content"><label for="uint128-fold-content"> <a href="../../../../use/crypto/internal/edwards25519/field..uint128^d085c.html">type</a> <a href="../../../../src/crypto/internal/edwards25519/field/fe_generic.go.html#line-11">uint128</a> <i>(struct)</i></label><span id='uint128-fold-content-docs' class="fold-docs">
+<span class="md-text">		uint128 holds a 128-bit number as two 64-bit limbs, for use with the
+		bits.Mul64 and bits.Add64 intrinsics.</span>
+
+		<input type='checkbox' class="fold" id="uint128-fold-fields"><label for="uint128-fold-fields">Fields (<i>total 2, neither is exported</i>)</label><span id='uint128-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="uint128-showhide-fields"><i><label for="uint128-showhide-fields" class="show-inline">/* 2 unexporteds ... */</label><label for="uint128-showhide-fields" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/crypto/internal/edwards25519/field/fe_generic.go.html#line-12">hi</a> <i><a href="../../../builtin.html#name-uint64">uint64</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/crypto/internal/edwards25519/field/fe_generic.go.html#line-12">lo</a> <i><a href="../../../builtin.html#name-uint64">uint64</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="uint128-fold-results"><label for="uint128-fold-results">As Outputs Of (<i>at least 2, neither is exported</i>)</label><span id='uint128-fold-results-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="uint128-showhide-inputofs"><i><label for="uint128-showhide-inputofs" class="show-inline">/* 2+ unexporteds ... */</label><label for="uint128-showhide-inputofs" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			func <a href="#name-addMul64">addMul64</a>(v <b>uint128</b>, a, b <a href="../../../builtin.html#name-uint64">uint64</a>) <b>uint128</b></i></span><span class="hidden"><i>
+			func <a href="#name-mul64">mul64</a>(a, b <a href="../../../builtin.html#name-uint64">uint64</a>) <b>uint128</b></i></span></span>
+		<input type='checkbox' class="fold" id="uint128-fold-params"><label for="uint128-fold-params">As Inputs Of (<i>at least 2, neither is exported</i>)</label><span id='uint128-fold-params-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="uint128-showhide-outputofs"><i><label for="uint128-showhide-outputofs" class="show-inline">/* 2+ unexporteds ... */</label><label for="uint128-showhide-outputofs" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			func <a href="#name-addMul64">addMul64</a>(v <b>uint128</b>, a, b <a href="../../../builtin.html#name-uint64">uint64</a>) <b>uint128</b></i></span><span class="hidden"><i>
+			func <a href="#name-shiftRightBy51">shiftRightBy51</a>(a <b>uint128</b>) <a href="../../../builtin.html#name-uint64">uint64</a></i></span></span>
+
+</span></div></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 9, none are exported)</i></span></span>
+
+	<input type='checkbox' class="showhide" id="unexported-functions-showhide"><i><label for="unexported-functions-showhide" class="show-inline">/* 9 unexporteds ... */</label><label for="unexported-functions-showhide" class="hide-inline">/* 9 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-addMul64"><i>	<input type='checkbox' class="fold" id="addMul64-fold-content"><label for="addMul64-fold-content"> <a href="../../../../use/crypto/internal/edwards25519/field..addMul64^764ce.html">func</a> <a href="../../../../src/crypto/internal/edwards25519/field/fe_generic.go.html#line-22">addMul64</a>(v <a href="#name-uint128">uint128</a>, a, b <a href="../../../builtin.html#name-uint64">uint64</a>) <a href="#name-uint128">uint128</a></label><span id='addMul64-fold-content-docs' class="fold-docs">
+<span class="md-text">		addMul64 returns v + a * b.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-feMul"><i>	<input type='checkbox' class="fold" id="feMul-fold-content"><label for="feMul-fold-content"> <a href="../../../../use/crypto/internal/edwards25519/field..feMul^fd212.html">func</a> <a href="../../../../src/crypto/internal/edwards25519/field/fe_amd64.go.html#line-10">feMul</a>(out *<a href="#name-Element">Element</a>, a *<a href="#name-Element">Element</a>, b *<a href="#name-Element">Element</a>)</label><span id='feMul-fold-content-docs' class="fold-docs">
+<span class="md-text">		feMul sets out = a * b. It works like feMulGeneric.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-feMulGeneric"><i>	<span class="nodocs"> <a href="../../../../use/crypto/internal/edwards25519/field..feMulGeneric^073b1.html">func</a> <a href="../../../../src/crypto/internal/edwards25519/field/fe_generic.go.html#line-34">feMulGeneric</a>(v, a, b *<a href="#name-Element">Element</a>)</span></i></div><div class="anchor value-res hidden" id="name-feSquare"><i>	<input type='checkbox' class="fold" id="feSquare-fold-content"><label for="feSquare-fold-content"> <a href="../../../../use/crypto/internal/edwards25519/field..feSquare^021dd.html">func</a> <a href="../../../../src/crypto/internal/edwards25519/field/fe_amd64.go.html#line-15">feSquare</a>(out *<a href="#name-Element">Element</a>, a *<a href="#name-Element">Element</a>)</label><span id='feSquare-fold-content-docs' class="fold-docs">
+<span class="md-text">		feSquare sets out = a * a. It works like feSquareGeneric.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-feSquareGeneric"><i>	<span class="nodocs"> <a href="../../../../use/crypto/internal/edwards25519/field..feSquareGeneric^beeab.html">func</a> <a href="../../../../src/crypto/internal/edwards25519/field/fe_generic.go.html#line-165">feSquareGeneric</a>(v, a *<a href="#name-Element">Element</a>)</span></i></div><div class="anchor value-res hidden" id="name-mask64Bits"><i>	<input type='checkbox' class="fold" id="mask64Bits-fold-content"><label for="mask64Bits-fold-content"> <a href="../../../../use/crypto/internal/edwards25519/field..mask64Bits^ef1f7.html">func</a> <a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-258">mask64Bits</a>(cond <a href="../../../builtin.html#name-int">int</a>) <a href="../../../builtin.html#name-uint64">uint64</a></label><span id='mask64Bits-fold-content-docs' class="fold-docs">
+<span class="md-text">		mask64Bits returns 0xffffffff if cond is 1, and 0 otherwise.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-mul51"><i>	<input type='checkbox' class="fold" id="mul51-fold-content"><label for="mul51-fold-content"> <a href="../../../../use/crypto/internal/edwards25519/field..mul51^ed513.html">func</a> <a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-331">mul51</a>(a <a href="../../../builtin.html#name-uint64">uint64</a>, b <a href="../../../builtin.html#name-uint32">uint32</a>) (lo <a href="../../../builtin.html#name-uint64">uint64</a>, hi <a href="../../../builtin.html#name-uint64">uint64</a>)</label><span id='mul51-fold-content-docs' class="fold-docs">
+<span class="md-text">		mul51 returns lo + hi * 2⁵¹ = a * b.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-mul64"><i>	<input type='checkbox' class="fold" id="mul64-fold-content"><label for="mul64-fold-content"> <a href="../../../../use/crypto/internal/edwards25519/field..mul64^f3883.html">func</a> <a href="../../../../src/crypto/internal/edwards25519/field/fe_generic.go.html#line-16">mul64</a>(a, b <a href="../../../builtin.html#name-uint64">uint64</a>) <a href="#name-uint128">uint128</a></label><span id='mul64-fold-content-docs' class="fold-docs">
+<span class="md-text">		mul64 returns a * b.</span>
+
+</span></i></div><div class="anchor value-res hidden" id="name-shiftRightBy51"><i>	<input type='checkbox' class="fold" id="shiftRightBy51-fold-content"><label for="shiftRightBy51-fold-content"> <a href="../../../../use/crypto/internal/edwards25519/field..shiftRightBy51^442d4.html">func</a> <a href="../../../../src/crypto/internal/edwards25519/field/fe_generic.go.html#line-30">shiftRightBy51</a>(a <a href="#name-uint128">uint128</a>) <a href="../../../builtin.html#name-uint64">uint64</a></label><span id='shiftRightBy51-fold-content-docs' class="fold-docs">
+<span class="md-text">		shiftRightBy51 returns a &gt;&gt; 51. a is assumed to be at most 115 bits.</span>
+
+</span></i></div></div>
+<div id="exported-variables"><span class="title">Package-Level Variables<span class="title-stat"><i> (total 3, none are exported)</i></span></span>
+
+	<input type='checkbox' class="showhide" id="unexported-variables-showhide"><i><label for="unexported-variables-showhide" class="show-inline">/* 3 unexporteds ... */</label><label for="unexported-variables-showhide" class="hide-inline">/* 3 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-feOne"><i>	<span class="nodocs">  <a href="../../../../use/crypto/internal/edwards25519/field..feOne^41d53.html">var</a> <a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-45">feOne</a> *<a href="#name-Element">Element</a></span></i></div><div class="anchor value-res hidden" id="name-feZero"><i>	<span class="nodocs">  <a href="../../../../use/crypto/internal/edwards25519/field..feZero^55a19.html">var</a> <a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-37">feZero</a> *<a href="#name-Element">Element</a></span></i></div><div class="anchor value-res hidden" id="name-sqrtM1"><i>	<input type='checkbox' class="fold" id="sqrtM1-fold-content"><label for="sqrtM1-fold-content">  <a href="../../../../use/crypto/internal/edwards25519/field..sqrtM1^2975f.html">var</a> <a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-390">sqrtM1</a> *<a href="#name-Element">Element</a></label><span id='sqrtM1-fold-content-docs' class="fold-docs">
+<span class="md-text">		sqrtM1 is 2^((p-1)/4), which squared is equal to -1 by Euler's Criterion.</span>
+
+</span></i></div></div>
+<div id="exported-constants"><span class="title">Package-Level Constants<span class="title-stat"><i> (only one, which is unexported)</i></span></span>
+
+	<input type='checkbox' class="showhide" id="unexported-constants-showhide"><i><label for="unexported-constants-showhide" class="show-inline">/* one unexported ... */</label><label for="unexported-constants-showhide" class="hide-inline">/* one unexported: */</label></i><div class="anchor value-res hidden" id="name-maskLow51Bits"><i>	<span class="nodocs"><a href="../../../../use/crypto/internal/edwards25519/field..maskLow51Bits^f180a.html">const</a> <a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-35">maskLow51Bits</a> <a href="../../../builtin.html#name-uint64">uint64</a> = 2251799813685247</span></i></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

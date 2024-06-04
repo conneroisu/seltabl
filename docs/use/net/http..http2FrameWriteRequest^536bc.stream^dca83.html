@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/http.http2FrameWriteRequest.stream</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/net/http.html">net/http</a>.<a href="../../src/net/http/h2_bundle.go.html#line-10701">http2FrameWriteRequest</a>.<a href="../../src/net/http/h2_bundle.go.html#line-10710">stream</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">24 uses</span>
+
+	net/http (current package)
+		<a href="../../src/net/http/h2_bundle.go.html#line-4913">h2_bundle.go#L4913</a>: 		<b>stream</b>: stream,
+		<a href="../../src/net/http/h2_bundle.go.html#line-5009" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5009">#L5009</a>: 		wr.<b>stream</b>.wroteHeaders = true
+		<a href="../../src/net/http/h2_bundle.go.html#line-5011" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5011">#L5011</a>: 		if wr.<b>stream</b>.wroteHeaders {
+		<a href="../../src/net/http/h2_bundle.go.html#line-5044" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5044">#L5044</a>: 	st := wr.<b>stream</b>
+		<a href="../../src/net/http/h2_bundle.go.html#line-5106" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5106">#L5106</a>: 		st := wr.<b>stream</b>
+		<a href="../../src/net/http/h2_bundle.go.html#line-5139" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5139">#L5139</a>: 			sc.closeStream(wr.<b>stream</b>, http2errHandlerPanicked)
+		<a href="../../src/net/http/h2_bundle.go.html#line-6179" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-6179">#L6179</a>: 				<b>stream</b>: rw.rws.stream,
+		<a href="../../src/net/http/h2_bundle.go.html#line-6220" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-6220">#L6220</a>: 		<b>stream</b>: st,
+		<a href="../../src/net/http/h2_bundle.go.html#line-6243" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-6243">#L6243</a>: 		<b>stream</b>: st,
+		<a href="../../src/net/http/h2_bundle.go.html#line-6298" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-6298">#L6298</a>: 		<b>stream</b>: st,
+		<a href="../../src/net/http/h2_bundle.go.html#line-7010" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-7010">#L7010</a>: 		<b>stream</b>: msg.parent,
+		<a href="../../src/net/http/h2_bundle.go.html#line-10710" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-10710">#L10710</a>: 	<b>stream</b> *http2stream
+		<a href="../../src/net/http/h2_bundle.go.html#line-10721" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-10721">#L10721</a>: 	if wr.<b>stream</b> == nil {
+		<a href="../../src/net/http/h2_bundle.go.html#line-10731" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-10731">#L10731</a>: 	return wr.<b>stream</b>.id
+		<a href="../../src/net/http/h2_bundle.go.html#line-10737" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-10737">#L10737</a>: 	return wr.<b>stream</b> == nil
+		<a href="../../src/net/http/h2_bundle.go.html#line-10769" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-10769">#L10769</a>: 	allowed := wr.<b>stream</b>.flow.available()
+		<a href="../../src/net/http/h2_bundle.go.html#line-10773" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-10773">#L10773</a>: 	if wr.<b>stream</b>.sc.maxFrameSize &lt; allowed {
+		<a href="../../src/net/http/h2_bundle.go.html#line-10774" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-10774">#L10774</a>: 		allowed = wr.<b>stream</b>.sc.maxFrameSize
+		<a href="../../src/net/http/h2_bundle.go.html#line-10780" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-10780">#L10780</a>: 		wr.<b>stream</b>.flow.take(allowed)
+		<a href="../../src/net/http/h2_bundle.go.html#line-10782" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-10782">#L10782</a>: 			<b>stream</b>: wr.<b>stream</b>,
+		<a href="../../src/net/http/h2_bundle.go.html#line-10796" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-10796">#L10796</a>: 			<b>stream</b>: wr.<b>stream</b>,
+		<a href="../../src/net/http/h2_bundle.go.html#line-10809" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-10809">#L10809</a>: 	wr.<b>stream</b>.flow.take(int32(len(wd.p)))
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

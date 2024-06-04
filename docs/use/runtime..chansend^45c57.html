@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.chansend</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/chan.go.html#line-160">chansend</a></b></span>
+
+<span class="title">6 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/chan.go.html#line-145">chan.go#L145</a>: 	<b>chansend</b>(c, elem, true, getcallerpc())
+		<a href="../src/runtime/chan.go.html#line-160" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-160">#L160</a>: func <b>chansend</b>(c *hchan, ep unsafe.Pointer, block bool, callerpc uintptr) bool {
+		<a href="../src/runtime/chan.go.html#line-174" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-174">#L174</a>: 		racereadpc(c.raceaddr(), callerpc, abi.FuncPCABIInternal(<b>chansend</b>))
+		<a href="../src/runtime/chan.go.html#line-694" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-694">#L694</a>: 	return <b>chansend</b>(c, elem, false, getcallerpc())
+		<a href="../src/runtime/chan.go.html#line-719" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-719">#L719</a>: 	return <b>chansend</b>(c, elem, !nb, getcallerpc())
+		<a href="../src/runtime/select.go.html#line-25">select.go#L25</a>: 	chansendpc = abi.FuncPCABIInternal(<b>chansend</b>)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

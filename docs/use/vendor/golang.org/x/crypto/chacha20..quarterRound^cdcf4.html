@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: vendor/golang.org/x/crypto/chacha20.quarterRound</title>
+<link href="../../../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../../../../../pkg/vendor/golang.org/x/crypto/chacha20.html">vendor/golang.org/x/crypto/chacha20</a>.<a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-128">quarterRound</a></b></span>
+
+<span class="title">25 uses</span>
+
+	vendor/golang.org/x/crypto/chacha20 (current package)
+		<a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-128">chacha_generic.go#L128</a>: func <b>quarterRound</b>(a, b, c, d uint32) (uint32, uint32, uint32, uint32) {
+		<a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-283" class="path-duplicate">chacha_generic.go</a><a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-283">#L283</a>: 		s.p1, s.p5, s.p9, s.p13 = <b>quarterRound</b>(c1, c5, c9, c13)
+		<a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-284" class="path-duplicate">chacha_generic.go</a><a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-284">#L284</a>: 		s.p2, s.p6, s.p10, s.p14 = <b>quarterRound</b>(c2, c6, c10, c14)
+		<a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-285" class="path-duplicate">chacha_generic.go</a><a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-285">#L285</a>: 		s.p3, s.p7, s.p11, s.p15 = <b>quarterRound</b>(c3, c7, c11, c15)
+		<a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-293" class="path-duplicate">chacha_generic.go</a><a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-293">#L293</a>: 		fcr0, fcr4, fcr8, fcr12 := <b>quarterRound</b>(c0, c4, c8, s.counter)
+		<a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-296" class="path-duplicate">chacha_generic.go</a><a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-296">#L296</a>: 		x0, x5, x10, x15 := <b>quarterRound</b>(fcr0, s.p5, s.p10, s.p15)
+		<a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-297" class="path-duplicate">chacha_generic.go</a><a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-297">#L297</a>: 		x1, x6, x11, x12 := <b>quarterRound</b>(s.p1, s.p6, s.p11, fcr12)
+		<a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-298" class="path-duplicate">chacha_generic.go</a><a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-298">#L298</a>: 		x2, x7, x8, x13 := <b>quarterRound</b>(s.p2, s.p7, fcr8, s.p13)
+		<a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-299" class="path-duplicate">chacha_generic.go</a><a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-299">#L299</a>: 		x3, x4, x9, x14 := <b>quarterRound</b>(s.p3, fcr4, s.p9, s.p14)
+		<a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-304" class="path-duplicate">chacha_generic.go</a><a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-304">#L304</a>: 			x0, x4, x8, x12 = <b>quarterRound</b>(x0, x4, x8, x12)
+		<a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-305" class="path-duplicate">chacha_generic.go</a><a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-305">#L305</a>: 			x1, x5, x9, x13 = <b>quarterRound</b>(x1, x5, x9, x13)
+		<a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-306" class="path-duplicate">chacha_generic.go</a><a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-306">#L306</a>: 			x2, x6, x10, x14 = <b>quarterRound</b>(x2, x6, x10, x14)
+		<a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-307" class="path-duplicate">chacha_generic.go</a><a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-307">#L307</a>: 			x3, x7, x11, x15 = <b>quarterRound</b>(x3, x7, x11, x15)
+		<a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-310" class="path-duplicate">chacha_generic.go</a><a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-310">#L310</a>: 			x0, x5, x10, x15 = <b>quarterRound</b>(x0, x5, x10, x15)
+		<a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-311" class="path-duplicate">chacha_generic.go</a><a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-311">#L311</a>: 			x1, x6, x11, x12 = <b>quarterRound</b>(x1, x6, x11, x12)
+		<a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-312" class="path-duplicate">chacha_generic.go</a><a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-312">#L312</a>: 			x2, x7, x8, x13 = <b>quarterRound</b>(x2, x7, x8, x13)
+		<a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-313" class="path-duplicate">chacha_generic.go</a><a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-313">#L313</a>: 			x3, x4, x9, x14 = <b>quarterRound</b>(x3, x4, x9, x14)
+		<a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-376" class="path-duplicate">chacha_generic.go</a><a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-376">#L376</a>: 		x0, x4, x8, x12 = <b>quarterRound</b>(x0, x4, x8, x12)
+		<a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-377" class="path-duplicate">chacha_generic.go</a><a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-377">#L377</a>: 		x1, x5, x9, x13 = <b>quarterRound</b>(x1, x5, x9, x13)
+		<a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-378" class="path-duplicate">chacha_generic.go</a><a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-378">#L378</a>: 		x2, x6, x10, x14 = <b>quarterRound</b>(x2, x6, x10, x14)
+		<a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-379" class="path-duplicate">chacha_generic.go</a><a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-379">#L379</a>: 		x3, x7, x11, x15 = <b>quarterRound</b>(x3, x7, x11, x15)
+		<a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-382" class="path-duplicate">chacha_generic.go</a><a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-382">#L382</a>: 		x0, x5, x10, x15 = <b>quarterRound</b>(x0, x5, x10, x15)
+		<a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-383" class="path-duplicate">chacha_generic.go</a><a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-383">#L383</a>: 		x1, x6, x11, x12 = <b>quarterRound</b>(x1, x6, x11, x12)
+		<a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-384" class="path-duplicate">chacha_generic.go</a><a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-384">#L384</a>: 		x2, x7, x8, x13 = <b>quarterRound</b>(x2, x7, x8, x13)
+		<a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-385" class="path-duplicate">chacha_generic.go</a><a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-385">#L385</a>: 		x3, x4, x9, x14 = <b>quarterRound</b>(x3, x4, x9, x14)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

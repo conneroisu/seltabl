@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/cipher.AEAD</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../pkg/crypto/cipher.html">crypto/cipher</a>.<a href="../../src/crypto/cipher/gcm.go.html#line-17">AEAD</a></b></span>
+
+<span class="title">16 uses</span>
+
+	crypto/cipher (current package)
+		<a href="../../src/crypto/cipher/gcm.go.html#line-17">gcm.go#L17</a>: type <b>AEAD</b> interface {
+		<a href="../../src/crypto/cipher/gcm.go.html#line-53" class="path-duplicate">gcm.go</a><a href="../../src/crypto/cipher/gcm.go.html#line-53">#L53</a>: 	NewGCM(nonceSize, tagSize int) (<b>AEAD</b>, error)
+		<a href="../../src/crypto/cipher/gcm.go.html#line-85" class="path-duplicate">gcm.go</a><a href="../../src/crypto/cipher/gcm.go.html#line-85">#L85</a>: func NewGCM(cipher Block) (<b>AEAD</b>, error) {
+		<a href="../../src/crypto/cipher/gcm.go.html#line-96" class="path-duplicate">gcm.go</a><a href="../../src/crypto/cipher/gcm.go.html#line-96">#L96</a>: func NewGCMWithNonceSize(cipher Block, size int) (<b>AEAD</b>, error) {
+		<a href="../../src/crypto/cipher/gcm.go.html#line-108" class="path-duplicate">gcm.go</a><a href="../../src/crypto/cipher/gcm.go.html#line-108">#L108</a>: func NewGCMWithTagSize(cipher Block, tagSize int) (<b>AEAD</b>, error) {
+		<a href="../../src/crypto/cipher/gcm.go.html#line-112" class="path-duplicate">gcm.go</a><a href="../../src/crypto/cipher/gcm.go.html#line-112">#L112</a>: func newGCMWithNonceAndTagSize(cipher Block, nonceSize, tagSize int) (<b>AEAD</b>, error) {
+
+	<a href="../../pkg/crypto/aes.html">crypto/aes</a>
+		<a href="../../src/crypto/aes/aes_gcm.go.html#line-47">aes_gcm.go#L47</a>: func (c *aesCipherGCM) NewGCM(nonceSize, tagSize int) (cipher.<b>AEAD</b>, error) {
+		<a href="../../src/crypto/aes/modes.go.html#line-15">modes.go#L15</a>: 	NewGCM(nonceSize, tagSize int) (cipher.<b>AEAD</b>, error)
+
+	<a href="../../pkg/crypto/internal/boring.html">crypto/internal/boring</a>
+		<a href="../../src/crypto/internal/boring/notboring.go.html#line-52">notboring.go#L52</a>: func NewGCMTLS(cipher.Block) (cipher.<b>AEAD</b>, error)   { panic("boringcrypto: not available") }
+
+	<a href="../../pkg/crypto/tls.html">crypto/tls</a>
+		<a href="../../src/crypto/tls/cipher_suites.go.html#line-457">cipher_suites.go#L457</a>: 	cipher.<b>AEAD</b>
+		<a href="../../src/crypto/tls/cipher_suites.go.html#line-475" class="path-duplicate">cipher_suites.go</a><a href="../../src/crypto/tls/cipher_suites.go.html#line-475">#L475</a>: 	aead  cipher.<b>AEAD</b>
+		<a href="../../src/crypto/tls/cipher_suites.go.html#line-496" class="path-duplicate">cipher_suites.go</a><a href="../../src/crypto/tls/cipher_suites.go.html#line-496">#L496</a>: 	aead      cipher.<b>AEAD</b>
+		<a href="../../src/crypto/tls/cipher_suites.go.html#line-535" class="path-duplicate">cipher_suites.go</a><a href="../../src/crypto/tls/cipher_suites.go.html#line-535">#L535</a>: 	var aead cipher.<b>AEAD</b>
+		<a href="../../src/crypto/tls/conn.go.html#line-907">conn.go#L907</a>: 		case cipher.<b>AEAD</b>:
+
+	<a href="../../pkg/vendor/golang.org/x/crypto/chacha20poly1305.html">vendor/golang.org/x/crypto/chacha20poly1305</a>
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20poly1305/chacha20poly1305.go.html#line-40">chacha20poly1305.go#L40</a>: func New(key []byte) (cipher.<b>AEAD</b>, error) {
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20poly1305/xchacha20poly1305.go.html#line-24">xchacha20poly1305.go#L24</a>: func NewX(key []byte) (cipher.<b>AEAD</b>, error) {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

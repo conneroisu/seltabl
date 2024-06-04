@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net.conn</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../pkg/net.html">net</a>.<a href="../src/net/net.go.html#line-166">conn</a></b></span>
+
+<span class="title">22 uses</span>
+
+	net (current package)
+		<a href="../src/net/iprawsock.go.html#line-100">iprawsock.go#L100</a>: 	<b>conn</b>
+		<a href="../src/net/iprawsock.go.html#line-202" class="path-duplicate">iprawsock.go</a><a href="../src/net/iprawsock.go.html#line-202">#L202</a>: func newIPConn(fd *netFD) *IPConn { return &amp;IPConn{<b>conn</b>{fd}} }
+		<a href="../src/net/net.go.html#line-166">net.go#L166</a>: type <b>conn</b> struct {
+		<a href="../src/net/net.go.html#line-170" class="path-duplicate">net.go</a><a href="../src/net/net.go.html#line-170">#L170</a>: func (c *<b>conn</b>) ok() bool { return c != nil &amp;&amp; c.fd != nil }
+		<a href="../src/net/net.go.html#line-175" class="path-duplicate">net.go</a><a href="../src/net/net.go.html#line-175">#L175</a>: func (c *<b>conn</b>) Read(b []byte) (int, error) {
+		<a href="../src/net/net.go.html#line-187" class="path-duplicate">net.go</a><a href="../src/net/net.go.html#line-187">#L187</a>: func (c *<b>conn</b>) Write(b []byte) (int, error) {
+		<a href="../src/net/net.go.html#line-199" class="path-duplicate">net.go</a><a href="../src/net/net.go.html#line-199">#L199</a>: func (c *<b>conn</b>) Close() error {
+		<a href="../src/net/net.go.html#line-213" class="path-duplicate">net.go</a><a href="../src/net/net.go.html#line-213">#L213</a>: func (c *<b>conn</b>) LocalAddr() Addr {
+		<a href="../src/net/net.go.html#line-223" class="path-duplicate">net.go</a><a href="../src/net/net.go.html#line-223">#L223</a>: func (c *<b>conn</b>) RemoteAddr() Addr {
+		<a href="../src/net/net.go.html#line-231" class="path-duplicate">net.go</a><a href="../src/net/net.go.html#line-231">#L231</a>: func (c *<b>conn</b>) SetDeadline(t time.Time) error {
+		<a href="../src/net/net.go.html#line-242" class="path-duplicate">net.go</a><a href="../src/net/net.go.html#line-242">#L242</a>: func (c *<b>conn</b>) SetReadDeadline(t time.Time) error {
+		<a href="../src/net/net.go.html#line-253" class="path-duplicate">net.go</a><a href="../src/net/net.go.html#line-253">#L253</a>: func (c *<b>conn</b>) SetWriteDeadline(t time.Time) error {
+		<a href="../src/net/net.go.html#line-265" class="path-duplicate">net.go</a><a href="../src/net/net.go.html#line-265">#L265</a>: func (c *<b>conn</b>) SetReadBuffer(bytes int) error {
+		<a href="../src/net/net.go.html#line-277" class="path-duplicate">net.go</a><a href="../src/net/net.go.html#line-277">#L277</a>: func (c *<b>conn</b>) SetWriteBuffer(bytes int) error {
+		<a href="../src/net/net.go.html#line-294" class="path-duplicate">net.go</a><a href="../src/net/net.go.html#line-294">#L294</a>: func (c *<b>conn</b>) File() (f *os.File, err error) {
+		<a href="../src/net/tcpsock.go.html#line-113">tcpsock.go#L113</a>: 	<b>conn</b>
+		<a href="../src/net/tcpsock.go.html#line-262" class="path-duplicate">tcpsock.go</a><a href="../src/net/tcpsock.go.html#line-262">#L262</a>: 	return &amp;TCPConn{<b>conn</b>{fd}}
+		<a href="../src/net/udpsock.go.html#line-123">udpsock.go#L123</a>: 	<b>conn</b>
+		<a href="../src/net/udpsock.go.html#line-281" class="path-duplicate">udpsock.go</a><a href="../src/net/udpsock.go.html#line-281">#L281</a>: func newUDPConn(fd *netFD) *UDPConn { return &amp;UDPConn{<b>conn</b>{fd}} }
+		<a href="../src/net/unixsock.go.html#line-69">unixsock.go#L69</a>: 	<b>conn</b>
+		<a href="../src/net/unixsock.go.html#line-195" class="path-duplicate">unixsock.go</a><a href="../src/net/unixsock.go.html#line-195">#L195</a>: func newUnixConn(fd *netFD) *UnixConn { return &amp;UnixConn{<b>conn</b>{fd}} }
+		<a href="../src/net/writev_unix.go.html#line-14">writev_unix.go#L14</a>: func (c *<b>conn</b>) writeBuffers(v *Buffers) (int64, error) {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

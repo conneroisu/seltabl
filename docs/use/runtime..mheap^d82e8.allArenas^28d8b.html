@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.mheap.allArenas</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/mheap.go.html#line-62">mheap</a>.<a href="../src/runtime/mheap.go.html#line-176">allArenas</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">19 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/malloc.go.html#line-784">malloc.go#L784</a>: 			if len(h.<b>allArenas</b>) == cap(h.<b>allArenas</b>) {
+		<a href="../src/runtime/malloc.go.html#line-785" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-785">#L785</a>: 				size := 2 * uintptr(cap(h.<b>allArenas</b>)) * goarch.PtrSize
+		<a href="../src/runtime/malloc.go.html#line-793" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-793">#L793</a>: 				oldSlice := h.<b>allArenas</b>
+		<a href="../src/runtime/malloc.go.html#line-794" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-794">#L794</a>: 				*(*notInHeapSlice)(unsafe.Pointer(&amp;h.<b>allArenas</b>)) = notInHeapSlice{newArray, len(h.<b>allArenas</b>), int(size / goarch.PtrSize)}
+		<a href="../src/runtime/malloc.go.html#line-795" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-795">#L795</a>: 				copy(h.<b>allArenas</b>, oldSlice)
+		<a href="../src/runtime/malloc.go.html#line-801" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-801">#L801</a>: 			h.<b>allArenas</b> = h.<b>allArenas</b>[:len(h.<b>allArenas</b>)+1]
+		<a href="../src/runtime/malloc.go.html#line-802" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-802">#L802</a>: 			h.<b>allArenas</b>[len(h.<b>allArenas</b>)-1] = ri
+		<a href="../src/runtime/mcheckmark.go.html#line-42">mcheckmark.go#L42</a>: 	for _, ai := range mheap_.<b>allArenas</b> {
+		<a href="../src/runtime/mgc.go.html#line-1578">mgc.go#L1578</a>: 	mheap_.sweepArenas = mheap_.<b>allArenas</b>
+		<a href="../src/runtime/mgc.go.html#line-1641" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1641">#L1641</a>: 	arenas := mheap_.<b>allArenas</b>
+		<a href="../src/runtime/mgcmark.go.html#line-97">mgcmark.go#L97</a>: 	mheap_.markArenas = mheap_.<b>allArenas</b>[:len(mheap_.<b>allArenas</b>):len(mheap_.<b>allArenas</b>)]
+		<a href="../src/runtime/mheap.go.html#line-176">mheap.go#L176</a>: 	<b>allArenas</b> []arenaIdx
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

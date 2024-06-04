@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/tls.Conn.isHandshakeComplete</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/crypto/tls.html">crypto/tls</a>.<a href="../../src/crypto/tls/conn.go.html#line-28">Conn</a>.<a href="../../src/crypto/tls/conn.go.html#line-38">isHandshakeComplete</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">17 uses</span>
+
+	crypto/tls (current package)
+		<a href="../../src/crypto/tls/conn.go.html#line-38">conn.go#L38</a>: 	<b>isHandshakeComplete</b> atomic.Bool
+		<a href="../../src/crypto/tls/conn.go.html#line-613" class="path-duplicate">conn.go</a><a href="../../src/crypto/tls/conn.go.html#line-613">#L613</a>: 	handshakeComplete := c.<b>isHandshakeComplete</b>.Load()
+		<a href="../../src/crypto/tls/conn.go.html#line-1205" class="path-duplicate">conn.go</a><a href="../../src/crypto/tls/conn.go.html#line-1205">#L1205</a>: 	if !c.<b>isHandshakeComplete</b>.Load() {
+		<a href="../../src/crypto/tls/conn.go.html#line-1275" class="path-duplicate">conn.go</a><a href="../../src/crypto/tls/conn.go.html#line-1275">#L1275</a>: 	c.<b>isHandshakeComplete</b>.Store(false)
+		<a href="../../src/crypto/tls/conn.go.html#line-1423" class="path-duplicate">conn.go</a><a href="../../src/crypto/tls/conn.go.html#line-1423">#L1423</a>: 	if c.<b>isHandshakeComplete</b>.Load() {
+		<a href="../../src/crypto/tls/conn.go.html#line-1441" class="path-duplicate">conn.go</a><a href="../../src/crypto/tls/conn.go.html#line-1441">#L1441</a>: 	if !c.<b>isHandshakeComplete</b>.Load() {
+		<a href="../../src/crypto/tls/conn.go.html#line-1500" class="path-duplicate">conn.go</a><a href="../../src/crypto/tls/conn.go.html#line-1500">#L1500</a>: 	if c.<b>isHandshakeComplete</b>.Load() {
+		<a href="../../src/crypto/tls/conn.go.html#line-1546" class="path-duplicate">conn.go</a><a href="../../src/crypto/tls/conn.go.html#line-1546">#L1546</a>: 	if c.<b>isHandshakeComplete</b>.Load() {
+		<a href="../../src/crypto/tls/conn.go.html#line-1562" class="path-duplicate">conn.go</a><a href="../../src/crypto/tls/conn.go.html#line-1562">#L1562</a>: 	if c.handshakeErr == nil &amp;&amp; !c.<b>isHandshakeComplete</b>.Load() {
+		<a href="../../src/crypto/tls/conn.go.html#line-1565" class="path-duplicate">conn.go</a><a href="../../src/crypto/tls/conn.go.html#line-1565">#L1565</a>: 	if c.handshakeErr != nil &amp;&amp; c.<b>isHandshakeComplete</b>.Load() {
+		<a href="../../src/crypto/tls/conn.go.html#line-1607" class="path-duplicate">conn.go</a><a href="../../src/crypto/tls/conn.go.html#line-1607">#L1607</a>: 	state.HandshakeComplete = c.<b>isHandshakeComplete</b>.Load()
+		<a href="../../src/crypto/tls/conn.go.html#line-1659" class="path-duplicate">conn.go</a><a href="../../src/crypto/tls/conn.go.html#line-1659">#L1659</a>: 	if !c.<b>isHandshakeComplete</b>.Load() {
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-518">handshake_client.go#L518</a>: 	c.<b>isHandshakeComplete</b>.Store(true)
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-112">handshake_client_tls13.go#L112</a>: 	c.<b>isHandshakeComplete</b>.Store(true)
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-126">handshake_server.go#L126</a>: 	c.<b>isHandshakeComplete</b>.Store(true)
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-85">handshake_server_tls13.go#L85</a>: 	c.<b>isHandshakeComplete</b>.Store(true)
+		<a href="../../src/crypto/tls/quic.go.html#line-265">quic.go#L265</a>: 	if !c.<b>isHandshakeComplete</b>.Load() {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

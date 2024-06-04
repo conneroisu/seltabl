@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: time.Second</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../pkg/time.html">time</a>.<a href="../src/time/time.go.html#line-641">Second</a></b></span>
+
+<span class="title">37 uses</span>
+
+	time (current package)
+		<a href="../src/time/format.go.html#line-1579">format.go#L1579</a>: 	"s":  uint64(<b>Second</b>),
+		<a href="../src/time/time.go.html#line-641">time.go#L641</a>: 	<b>Second</b>               = 1000 * Millisecond
+		<a href="../src/time/time.go.html#line-642" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-642">#L642</a>: 	Minute               = 60 * <b>Second</b>
+		<a href="../src/time/time.go.html#line-670" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-670">#L670</a>: 	if u &lt; uint64(<b>Second</b>) {
+		<a href="../src/time/time.go.html#line-794" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-794">#L794</a>: 	sec := d / <b>Second</b>
+		<a href="../src/time/time.go.html#line-795" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-795">#L795</a>: 	nsec := d % <b>Second</b>
+		<a href="../src/time/time.go.html#line-904" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-904">#L904</a>: 	d := Duration(t.sec()-u.sec())*<b>Second</b> + Duration(t.nsec()-u.nsec())
+		<a href="../src/time/time.go.html#line-1598" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-1598">#L1598</a>: 	case d &lt; <b>Second</b> &amp;&amp; <b>Second</b>%(d+d) == 0:
+		<a href="../src/time/time.go.html#line-1603" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-1603">#L1603</a>: 	case d%<b>Second</b> == 0:
+		<a href="../src/time/time.go.html#line-1604" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-1604">#L1604</a>: 		d1 := int64(d / <b>Second</b>)
+		<a href="../src/time/time.go.html#line-1606" class="path-duplicate">time.go</a><a href="../src/time/time.go.html#line-1606">#L1606</a>: 		r = Duration(sec%d1)*<b>Second</b> + Duration(nsec)
+
+	<a href="../pkg/crypto/tls.html">crypto/tls</a>
+		<a href="../src/crypto/tls/conn.go.html#line-1454">conn.go#L1454</a>: 		c.SetWriteDeadline(time.Now().Add(time.<b>Second</b> * 5))
+		<a href="../src/crypto/tls/handshake_client_tls13.go.html#line-736">handshake_client_tls13.go#L736</a>: 	lifetime := time.Duration(msg.lifetime) * time.<b>Second</b>
+		<a href="../src/crypto/tls/handshake_server_tls13.go.html#line-862">handshake_server_tls13.go#L862</a>: 	m.lifetime = uint32(maxSessionTicketLifetime / time.<b>Second</b>)
+
+	<a href="../pkg/net.html">net</a>
+		<a href="../src/net/dial.go.html#line-19">dial.go#L19</a>: 	defaultTCPKeepAlive = 15 * time.<b>Second</b>
+		<a href="../src/net/dial.go.html#line-210" class="path-duplicate">dial.go</a><a href="../src/net/dial.go.html#line-210">#L210</a>: 	const saneMinimum = 2 * time.<b>Second</b>
+		<a href="../src/net/dnsclient_unix.go.html#line-405">dnsclient_unix.go#L405</a>: 	if conf.lastChecked.After(now.Add(-5 * time.<b>Second</b>)) {
+		<a href="../src/net/dnsconfig_unix.go.html#line-21">dnsconfig_unix.go#L21</a>: 		timeout:  5 * time.<b>Second</b>,
+		<a href="../src/net/dnsconfig_unix.go.html#line-91" class="path-duplicate">dnsconfig_unix.go</a><a href="../src/net/dnsconfig_unix.go.html#line-91">#L91</a>: 					conf.timeout = time.Duration(n) * time.<b>Second</b>
+		<a href="../src/net/hosts.go.html#line-16">hosts.go#L16</a>: const cacheMaxAge = 5 * time.<b>Second</b>
+		<a href="../src/net/interface.go.html#line-200">interface.go#L200</a>: 	if !force &amp;&amp; zc.lastFetched.After(now.Add(-60*time.<b>Second</b>)) {
+		<a href="../src/net/nss.go.html#line-59">nss.go#L59</a>: 	if conf.lastChecked.After(now.Add(-5 * time.<b>Second</b>)) {
+		<a href="../src/net/tcpsockopt_unix.go.html#line-17">tcpsockopt_unix.go#L17</a>: 	secs := int(roundDurationUp(d, time.<b>Second</b>))
+
+	<a href="../pkg/net/http.html">net/http</a>
+		<a href="../src/net/http/fs.go.html#line-474">fs.go#L474</a>: 	modtime = modtime.Truncate(time.<b>Second</b>)
+		<a href="../src/net/http/fs.go.html#line-525" class="path-duplicate">fs.go</a><a href="../src/net/http/fs.go.html#line-525">#L525</a>: 	modtime = modtime.Truncate(time.<b>Second</b>)
+		<a href="../src/net/http/h2_bundle.go.html#line-3869">h2_bundle.go#L3869</a>: 	http2prefaceTimeout         = 10 * time.<b>Second</b>
+		<a href="../src/net/http/h2_bundle.go.html#line-3870" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-3870">#L3870</a>: 	http2firstSettingsTimeout   = 2 * time.<b>Second</b> // should be in-flight with preface anyway
+		<a href="../src/net/http/h2_bundle.go.html#line-5228" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-5228">#L5228</a>: var http2goAwayTimeout = 1 * time.<b>Second</b>
+		<a href="../src/net/http/h2_bundle.go.html#line-7277" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-7277">#L7277</a>: 		return 15 * time.<b>Second</b>
+		<a href="../src/net/http/h2_bundle.go.html#line-7641" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-7641">#L7641</a>: 				d := time.<b>Second</b> * time.Duration(backoff)
+		<a href="../src/net/http/server.go.html#line-3266">server.go#L3266</a>: 				if max := 1 * time.<b>Second</b>; tempDelay &gt; max {
+		<a href="../src/net/http/transport.go.html#line-46">transport.go#L46</a>: 		Timeout:   30 * time.<b>Second</b>,
+		<a href="../src/net/http/transport.go.html#line-47" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-47">#L47</a>: 		KeepAlive: 30 * time.<b>Second</b>,
+		<a href="../src/net/http/transport.go.html#line-51" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-51">#L51</a>: 	IdleConnTimeout:       90 * time.<b>Second</b>,
+		<a href="../src/net/http/transport.go.html#line-52" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-52">#L52</a>: 	TLSHandshakeTimeout:   10 * time.<b>Second</b>,
+		<a href="../src/net/http/transport.go.html#line-53" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-53">#L53</a>: 	ExpectContinueTimeout: 1 * time.<b>Second</b>,
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

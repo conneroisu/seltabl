@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: bytes.IndexByte</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/bytes.html">bytes</a>.<a href="../src/bytes/bytes.go.html#line-95">IndexByte</a></b></span>
+
+<span class="title">14 uses</span>
+
+	bytes (current package)
+		<a href="../src/bytes/buffer.go.html#line-440">buffer.go#L440</a>: 	i := <b>IndexByte</b>(b.buf[b.off:], delim)
+		<a href="../src/bytes/bytes.go.html#line-95">bytes.go#L95</a>: func <b>IndexByte</b>(b []byte, c byte) int {
+		<a href="../src/bytes/bytes.go.html#line-140" class="path-duplicate">bytes.go</a><a href="../src/bytes/bytes.go.html#line-140">#L140</a>: 		return <b>IndexByte</b>(s, byte(r))
+		<a href="../src/bytes/bytes.go.html#line-1245" class="path-duplicate">bytes.go</a><a href="../src/bytes/bytes.go.html#line-1245">#L1245</a>: 		return <b>IndexByte</b>(s, sep[0])
+		<a href="../src/bytes/bytes.go.html#line-1267" class="path-duplicate">bytes.go</a><a href="../src/bytes/bytes.go.html#line-1267">#L1267</a>: 				o := <b>IndexByte</b>(s[i+1:t], c0)
+		<a href="../src/bytes/bytes.go.html#line-1296" class="path-duplicate">bytes.go</a><a href="../src/bytes/bytes.go.html#line-1296">#L1296</a>: 			o := <b>IndexByte</b>(s[i+1:t], c0)
+
+	<a href="../pkg/bufio.html">bufio</a>
+		<a href="../src/bufio/bufio.go.html#line-351">bufio.go#L351</a>: 		if i := bytes.<b>IndexByte</b>(b.buf[b.r+s:b.w], delim); i &gt;= 0 {
+		<a href="../src/bufio/scan.go.html#line-359">scan.go#L359</a>: 	if i := bytes.<b>IndexByte</b>(data, '\n'); i &gt;= 0 {
+
+	<a href="../pkg/crypto/rsa.html">crypto/rsa</a>
+		<a href="../src/crypto/rsa/pss.go.html#line-162">pss.go#L162</a>: 		psLen := bytes.<b>IndexByte</b>(db, 0x01)
+
+	<a href="../pkg/encoding/pem.html">encoding/pem</a>
+		<a href="../src/encoding/pem/pem.go.html#line-41">pem.go#L41</a>: 	i := bytes.<b>IndexByte</b>(data, '\n')
+
+	<a href="../pkg/net/http.html">net/http</a>
+		<a href="../src/net/http/h2_bundle.go.html#line-3136">h2_bundle.go#L3136</a>: 	i := bytes.<b>IndexByte</b>(b, ' ')
+
+	<a href="../pkg/net/http/internal.html">net/http/internal</a>
+		<a href="../src/net/http/internal/chunked.go.html#line-92">chunked.go#L92</a>: 		return bytes.<b>IndexByte</b>(peek, '\n') &gt;= 0
+
+	<a href="../pkg/net/textproto.html">net/textproto</a>
+		<a href="../src/net/textproto/reader.go.html#line-608">reader.go#L608</a>: 	if bytes.<b>IndexByte</b>(line, ':') &lt; 0 {
+
+	<a href="../pkg/regexp.html">regexp</a>
+		<a href="../src/regexp/regexp.go.html#line-677">regexp.go#L677</a>: 	if bytes.<b>IndexByte</b>(repl, '$') &gt;= 0 {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

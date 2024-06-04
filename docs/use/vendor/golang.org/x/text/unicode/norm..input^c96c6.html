@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: vendor/golang.org/x/text/unicode/norm.input</title>
+<link href="../../../../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../../../../../pkg/vendor/golang.org/x/text/unicode/norm.html">vendor/golang.org/x/text/unicode/norm</a>.<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-9">input</a></b></span>
+
+<span class="title">34 uses</span>
+
+	vendor/golang.org/x/text/unicode/norm (current package)
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/composition.go.html#line-106">composition.go#L106</a>: 	src      <b>input</b>
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/composition.go.html#line-108" class="path-duplicate">composition.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/composition.go.html#line-108">#L108</a>: 	tmpBytes <b>input</b>
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/composition.go.html#line-218" class="path-duplicate">composition.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/composition.go.html#line-218">#L218</a>: func (rb *reorderBuffer) insertFlush(src <b>input</b>, i int, info Properties) insertErr {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/composition.go.html#line-234" class="path-duplicate">composition.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/composition.go.html#line-234">#L234</a>: func (rb *reorderBuffer) insertUnsafe(src <b>input</b>, i int, info Properties) {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/composition.go.html#line-267" class="path-duplicate">composition.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/composition.go.html#line-267">#L267</a>: func (rb *reorderBuffer) insertSingle(src <b>input</b>, i int, info Properties) {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/composition.go.html#line-274" class="path-duplicate">composition.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/composition.go.html#line-274">#L274</a>: 	rb.insertSingle(<b>input</b>{str: GraphemeJoiner}, 0, Properties{size: uint8(len(GraphemeJoiner))})
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/forminfo.go.html#line-51">forminfo.go#L51</a>: type lookupFunc func(b <b>input</b>, i int) Properties
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/forminfo.go.html#line-214" class="path-duplicate">forminfo.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/forminfo.go.html#line-214">#L214</a>: func lookupInfoNFC(b <b>input</b>, i int) Properties {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/forminfo.go.html#line-219" class="path-duplicate">forminfo.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/forminfo.go.html#line-219">#L219</a>: func lookupInfoNFKC(b <b>input</b>, i int) Properties {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-9">input.go#L9</a>: type <b>input</b> struct {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-14" class="path-duplicate">input.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-14">#L14</a>: func inputBytes(str []byte) <b>input</b> {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-15" class="path-duplicate">input.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-15">#L15</a>: 	return <b>input</b>{bytes: str}
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-18" class="path-duplicate">input.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-18">#L18</a>: func inputString(str string) <b>input</b> {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-19" class="path-duplicate">input.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-19">#L19</a>: 	return <b>input</b>{str: str}
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-22" class="path-duplicate">input.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-22">#L22</a>: func (in *<b>input</b>) setBytes(str []byte) {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-27" class="path-duplicate">input.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-27">#L27</a>: func (in *<b>input</b>) setString(str string) {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-32" class="path-duplicate">input.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-32">#L32</a>: func (in *<b>input</b>) _byte(p int) byte {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-39" class="path-duplicate">input.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-39">#L39</a>: func (in *<b>input</b>) skipASCII(p, max int) int {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-50" class="path-duplicate">input.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-50">#L50</a>: func (in *<b>input</b>) skipContinuationBytes(p int) int {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-61" class="path-duplicate">input.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-61">#L61</a>: func (in *<b>input</b>) appendSlice(buf []byte, b, e int) []byte {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-71" class="path-duplicate">input.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-71">#L71</a>: func (in *<b>input</b>) copySlice(buf []byte, b, e int) int {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-78" class="path-duplicate">input.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-78">#L78</a>: func (in *<b>input</b>) charinfoNFC(p int) (uint16, int) {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-85" class="path-duplicate">input.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-85">#L85</a>: func (in *<b>input</b>) charinfoNFKC(p int) (uint16, int) {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-92" class="path-duplicate">input.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-92">#L92</a>: func (in *<b>input</b>) hangul(p int) (r rune) {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-190">iter.go#L190</a>: 		info := i.rb.f.info(<b>input</b>{bytes: d}, j)
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-208" class="path-duplicate">iter.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-208">#L208</a>: 		info := i.rb.f.info(<b>input</b>{bytes: d}, j)
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-212" class="path-duplicate">iter.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-212">#L212</a>: 			i.rb.insertUnsafe(<b>input</b>{bytes: d}, j, info)
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-216" class="path-duplicate">iter.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-216">#L216</a>: 		i.rb.insertUnsafe(<b>input</b>{bytes: d}, j, info)
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-416" class="path-duplicate">iter.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-416">#L416</a>: 		info := i.rb.f.info(<b>input</b>{bytes: d}, 0)
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-417" class="path-duplicate">iter.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-417">#L417</a>: 		i.rb.insertUnsafe(<b>input</b>{bytes: d}, 0, info)
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/normalize.go.html#line-197">normalize.go#L197</a>: func (f Form) doAppend(out []byte, src <b>input</b>, n int) []byte {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/normalize.go.html#line-304" class="path-duplicate">normalize.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/normalize.go.html#line-304">#L304</a>: func (f *formInfo) quickSpan(src <b>input</b>, i, end int, atEOF bool) (n int, ok bool) {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/normalize.go.html#line-370" class="path-duplicate">normalize.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/normalize.go.html#line-370">#L370</a>: func (f Form) firstBoundary(src <b>input</b>, nsrc int) int {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/normalize.go.html#line-418" class="path-duplicate">normalize.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/normalize.go.html#line-418">#L418</a>: func (f Form) nextBoundary(src <b>input</b>, nsrc int, atEOF bool) int {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

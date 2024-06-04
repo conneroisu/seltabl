@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: internal/unsafeheader.Slice.Len</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/internal/unsafeheader.html">internal/unsafeheader</a>.<a href="../../src/internal/unsafeheader/unsafeheader.go.html#line-22">Slice</a>.<a href="../../src/internal/unsafeheader/unsafeheader.go.html#line-24">Len</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">22 uses</span>
+
+	internal/unsafeheader (current package)
+		<a href="../../src/internal/unsafeheader/unsafeheader.go.html#line-24">unsafeheader.go#L24</a>: 	<b>Len</b>  int
+
+	<a href="../../pkg/internal/reflectlite.html">internal/reflectlite</a>
+		<a href="../../src/internal/reflectlite/swapper.go.html#line-69">swapper.go#L69</a>: 		if uint(i) &gt;= uint(s.<b>Len</b>) || uint(j) &gt;= uint(s.<b>Len</b>) {
+		<a href="../../src/internal/reflectlite/value.go.html#line-356">value.go#L356</a>: 		return (*unsafeheader.Slice)(v.ptr).<b>Len</b>
+
+	<a href="../../pkg/reflect.html">reflect</a>
+		<a href="../../src/reflect/swapper.go.html#line-70">swapper.go#L70</a>: 		if uint(i) &gt;= uint(s.<b>Len</b>) || uint(j) &gt;= uint(s.<b>Len</b>) {
+		<a href="../../src/reflect/value.go.html#line-1429">value.go#L1429</a>: 		if uint(i) &gt;= uint(s.<b>Len</b>) {
+		<a href="../../src/reflect/value.go.html#line-1772" class="path-duplicate">value.go</a><a href="../../src/reflect/value.go.html#line-1772">#L1772</a>: 		return (*unsafeheader.Slice)(v.ptr).<b>Len</b>
+		<a href="../../src/reflect/value.go.html#line-2425" class="path-duplicate">value.go</a><a href="../../src/reflect/value.go.html#line-2425">#L2425</a>: 	s.<b>Len</b> = n
+		<a href="../../src/reflect/value.go.html#line-2435" class="path-duplicate">value.go</a><a href="../../src/reflect/value.go.html#line-2435">#L2435</a>: 	if n &lt; s.<b>Len</b> || n &gt; s.Cap {
+		<a href="../../src/reflect/value.go.html#line-2580" class="path-duplicate">value.go</a><a href="../../src/reflect/value.go.html#line-2580">#L2580</a>: 	s.<b>Len</b> = j - i
+		<a href="../../src/reflect/value.go.html#line-2632" class="path-duplicate">value.go</a><a href="../../src/reflect/value.go.html#line-2632">#L2632</a>: 	s.<b>Len</b> = j - i
+		<a href="../../src/reflect/value.go.html#line-2894" class="path-duplicate">value.go</a><a href="../../src/reflect/value.go.html#line-2894">#L2894</a>: 	case p.<b>Len</b>+n &lt; 0:
+		<a href="../../src/reflect/value.go.html#line-2896" class="path-duplicate">value.go</a><a href="../../src/reflect/value.go.html#line-2896">#L2896</a>: 	case p.<b>Len</b>+n &gt; p.Cap:
+		<a href="../../src/reflect/value.go.html#line-2919" class="path-duplicate">value.go</a><a href="../../src/reflect/value.go.html#line-2919">#L2919</a>: 	s.<b>Len</b> += n
+		<a href="../../src/reflect/value.go.html#line-2931" class="path-duplicate">value.go</a><a href="../../src/reflect/value.go.html#line-2931">#L2931</a>: 		typedarrayclear(st.Elem, sh.Data, sh.<b>Len</b>)
+		<a href="../../src/reflect/value.go.html#line-3000" class="path-duplicate">value.go</a><a href="../../src/reflect/value.go.html#line-3000">#L3000</a>: 		ds.<b>Len</b> = dst.Len()
+		<a href="../../src/reflect/value.go.html#line-3001" class="path-duplicate">value.go</a><a href="../../src/reflect/value.go.html#line-3001">#L3001</a>: 		ds.Cap = ds.<b>Len</b>
+		<a href="../../src/reflect/value.go.html#line-3007" class="path-duplicate">value.go</a><a href="../../src/reflect/value.go.html#line-3007">#L3007</a>: 		ss.<b>Len</b> = src.Len()
+		<a href="../../src/reflect/value.go.html#line-3008" class="path-duplicate">value.go</a><a href="../../src/reflect/value.go.html#line-3008">#L3008</a>: 		ss.Cap = ss.<b>Len</b>
+		<a href="../../src/reflect/value.go.html#line-3014" class="path-duplicate">value.go</a><a href="../../src/reflect/value.go.html#line-3014">#L3014</a>: 		ss.<b>Len</b> = sh.Len
+		<a href="../../src/reflect/value.go.html#line-3212" class="path-duplicate">value.go</a><a href="../../src/reflect/value.go.html#line-3212">#L3212</a>: 	s := unsafeheader.Slice{Data: unsafe_NewArray(&amp;(typ.Elem().(*rtype).t), cap), <b>Len</b>: len, Cap: cap}
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

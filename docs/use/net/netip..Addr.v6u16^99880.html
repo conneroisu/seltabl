@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/netip.Addr.v6u16</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/net/netip.html">net/netip</a>.<a href="../../src/net/netip/netip.go.html#line-38">Addr</a>.<a href="../../src/net/netip/netip.go.html#line-364">v6u16</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">7 uses</span>
+
+	net/netip (current package)
+		<a href="../../src/net/netip/netip.go.html#line-364">netip.go#L364</a>: func (ip Addr) <b>v6u16</b>(i uint8) uint16 {
+		<a href="../../src/net/netip/netip.go.html#line-519" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-519">#L519</a>: 		return ip.<b>v6u16</b>(0)&amp;0xffc0 == 0xfe80
+		<a href="../../src/net/netip/netip.go.html#line-560" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-560">#L560</a>: 		return ip.<b>v6u16</b>(0)&amp;0xff0f == 0xff01
+		<a href="../../src/net/netip/netip.go.html#line-575" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-575">#L575</a>: 		return ip.<b>v6u16</b>(0)&amp;0xff0f == 0xff02
+		<a href="../../src/net/netip/netip.go.html#line-873" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-873">#L873</a>: 		for j &lt; 8 &amp;&amp; ip.<b>v6u16</b>(j) == 0 {
+		<a href="../../src/net/netip/netip.go.html#line-892" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-892">#L892</a>: 		ret = appendHex(ret, ip.<b>v6u16</b>(i))
+		<a href="../../src/net/netip/netip.go.html#line-918" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-918">#L918</a>: 		ret = appendHexPad(ret, ip.<b>v6u16</b>(i))
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

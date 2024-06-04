@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: encoding/asn1.BitString</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../pkg/encoding/asn1.html">encoding/asn1</a>.<a href="../../src/encoding/asn1/asn1.go.html#line-160">BitString</a></b></span>
+
+<span class="title">33 uses</span>
+
+	encoding/asn1 (current package)
+		<a href="../../src/encoding/asn1/asn1.go.html#line-160">asn1.go#L160</a>: type <b>BitString</b> struct {
+		<a href="../../src/encoding/asn1/asn1.go.html#line-167" class="path-duplicate">asn1.go</a><a href="../../src/encoding/asn1/asn1.go.html#line-167">#L167</a>: func (b <b>BitString</b>) At(i int) int {
+		<a href="../../src/encoding/asn1/asn1.go.html#line-178" class="path-duplicate">asn1.go</a><a href="../../src/encoding/asn1/asn1.go.html#line-178">#L178</a>: func (b <b>BitString</b>) RightAlign() []byte {
+		<a href="../../src/encoding/asn1/asn1.go.html#line-195" class="path-duplicate">asn1.go</a><a href="../../src/encoding/asn1/asn1.go.html#line-195">#L195</a>: func parseBitString(bytes []byte) (ret <b>BitString</b>, err error) {
+		<a href="../../src/encoding/asn1/asn1.go.html#line-659" class="path-duplicate">asn1.go</a><a href="../../src/encoding/asn1/asn1.go.html#line-659">#L659</a>: 	bitStringType        = reflect.TypeFor[<b>BitString</b>]()
+		<a href="../../src/encoding/asn1/asn1.go.html#line-864" class="path-duplicate">asn1.go</a><a href="../../src/encoding/asn1/asn1.go.html#line-864">#L864</a>: 	case *<b>BitString</b>:
+		<a href="../../src/encoding/asn1/marshal.go.html#line-275">marshal.go#L275</a>: type bitStringEncoder <b>BitString</b>
+		<a href="../../src/encoding/asn1/marshal.go.html#line-472" class="path-duplicate">marshal.go</a><a href="../../src/encoding/asn1/marshal.go.html#line-472">#L472</a>: 		return bitStringEncoder(value.Interface().(<b>BitString</b>)), nil
+
+	<a href="../../pkg/crypto/x509.html">crypto/x509</a>
+		<a href="../../src/crypto/x509/parser.go.html#line-320">parser.go#L320</a>: 	var usageBits asn1.<b>BitString</b>
+		<a href="../../src/crypto/x509/parser.go.html#line-924" class="path-duplicate">parser.go</a><a href="../../src/crypto/x509/parser.go.html#line-924">#L924</a>: 	var spk asn1.<b>BitString</b>
+		<a href="../../src/crypto/x509/parser.go.html#line-980" class="path-duplicate">parser.go</a><a href="../../src/crypto/x509/parser.go.html#line-980">#L980</a>: 	var signature asn1.<b>BitString</b>
+		<a href="../../src/crypto/x509/parser.go.html#line-1079" class="path-duplicate">parser.go</a><a href="../../src/crypto/x509/parser.go.html#line-1079">#L1079</a>: 	var signature asn1.<b>BitString</b>
+		<a href="../../src/crypto/x509/sec1.go.html#line-31">sec1.go#L31</a>: 	PublicKey     asn1.<b>BitString</b>        `asn1:"optional,explicit,tag:1"`
+		<a href="../../src/crypto/x509/sec1.go.html#line-66" class="path-duplicate">sec1.go</a><a href="../../src/crypto/x509/sec1.go.html#line-66">#L66</a>: 		PublicKey:     asn1.<b>BitString</b>{Bytes: elliptic.Marshal(key.Curve, key.X, key.Y)},
+		<a href="../../src/crypto/x509/sec1.go.html#line-76" class="path-duplicate">sec1.go</a><a href="../../src/crypto/x509/sec1.go.html#line-76">#L76</a>: 		PublicKey:  asn1.<b>BitString</b>{Bytes: key.PublicKey().Bytes()},
+		<a href="../../src/crypto/x509/x509.go.html#line-60">x509.go#L60</a>: 	BitString asn1.<b>BitString</b>
+		<a href="../../src/crypto/x509/x509.go.html#line-161" class="path-duplicate">x509.go</a><a href="../../src/crypto/x509/x509.go.html#line-161">#L161</a>: 		BitString: asn1.<b>BitString</b>{
+		<a href="../../src/crypto/x509/x509.go.html#line-176" class="path-duplicate">x509.go</a><a href="../../src/crypto/x509/x509.go.html#line-176">#L176</a>: 	SignatureValue     asn1.<b>BitString</b>
+		<a href="../../src/crypto/x509/x509.go.html#line-188" class="path-duplicate">x509.go</a><a href="../../src/crypto/x509/x509.go.html#line-188">#L188</a>: 	UniqueId           asn1.<b>BitString</b>   `asn1:"optional,tag:1"`
+		<a href="../../src/crypto/x509/x509.go.html#line-189" class="path-duplicate">x509.go</a><a href="../../src/crypto/x509/x509.go.html#line-189">#L189</a>: 	SubjectUniqueId    asn1.<b>BitString</b>   `asn1:"optional,tag:2"`
+		<a href="../../src/crypto/x509/x509.go.html#line-204" class="path-duplicate">x509.go</a><a href="../../src/crypto/x509/x509.go.html#line-204">#L204</a>: 	PublicKey asn1.<b>BitString</b>
+		<a href="../../src/crypto/x509/x509.go.html#line-993" class="path-duplicate">x509.go</a><a href="../../src/crypto/x509/x509.go.html#line-993">#L993</a>: 	Reason            asn1.<b>BitString</b>        `asn1:"optional,tag:1"`
+		<a href="../../src/crypto/x509/x509.go.html#line-1344" class="path-duplicate">x509.go</a><a href="../../src/crypto/x509/x509.go.html#line-1344">#L1344</a>: 	ext.Value, err = asn1.Marshal(asn1.<b>BitString</b>{Bytes: bitString, BitLength: asn1BitLength(bitString)})
+		<a href="../../src/crypto/x509/x509.go.html#line-1656" class="path-duplicate">x509.go</a><a href="../../src/crypto/x509/x509.go.html#line-1656">#L1656</a>: 	encodedPublicKey := asn1.<b>BitString</b>{BitLength: len(publicKeyBytes) * 8, Bytes: publicKeyBytes}
+		<a href="../../src/crypto/x509/x509.go.html#line-1698" class="path-duplicate">x509.go</a><a href="../../src/crypto/x509/x509.go.html#line-1698">#L1698</a>: 		asn1.<b>BitString</b>{Bytes: signature, BitLength: len(signature) * 8},
+		<a href="../../src/crypto/x509/x509.go.html#line-1812" class="path-duplicate">x509.go</a><a href="../../src/crypto/x509/x509.go.html#line-1812">#L1812</a>: 		SignatureValue:     asn1.<b>BitString</b>{Bytes: signature, BitLength: len(signature) * 8},
+		<a href="../../src/crypto/x509/x509.go.html#line-1875" class="path-duplicate">x509.go</a><a href="../../src/crypto/x509/x509.go.html#line-1875">#L1875</a>: 	SignatureValue     asn1.<b>BitString</b>
+		<a href="../../src/crypto/x509/x509.go.html#line-2093" class="path-duplicate">x509.go</a><a href="../../src/crypto/x509/x509.go.html#line-2093">#L2093</a>: 			PublicKey: asn1.<b>BitString</b>{
+		<a href="../../src/crypto/x509/x509.go.html#line-2123" class="path-duplicate">x509.go</a><a href="../../src/crypto/x509/x509.go.html#line-2123">#L2123</a>: 		SignatureValue: asn1.<b>BitString</b>{
+		<a href="../../src/crypto/x509/x509.go.html#line-2308" class="path-duplicate">x509.go</a><a href="../../src/crypto/x509/x509.go.html#line-2308">#L2308</a>: 	SignatureValue     asn1.<b>BitString</b>
+		<a href="../../src/crypto/x509/x509.go.html#line-2492" class="path-duplicate">x509.go</a><a href="../../src/crypto/x509/x509.go.html#line-2492">#L2492</a>: 		SignatureValue:     asn1.<b>BitString</b>{Bytes: signature, BitLength: len(signature) * 8},
+
+	<a href="../../pkg/crypto/x509/pkix.html">crypto/x509/pkix</a>
+		<a href="../../src/crypto/x509/pkix/pkix.go.html#line-291">pkix.go#L291</a>: 	SignatureValue     asn1.<b>BitString</b>
+
+	<a href="../../pkg/vendor/golang.org/x/crypto/cryptobyte.html">vendor/golang.org/x/crypto/cryptobyte</a>
+		<a href="../../src/vendor/golang.org/x/crypto/cryptobyte/asn1.go.html#line-550">asn1.go#L550</a>: func (s *String) ReadASN1BitString(out *encoding_asn1.<b>BitString</b>) bool {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

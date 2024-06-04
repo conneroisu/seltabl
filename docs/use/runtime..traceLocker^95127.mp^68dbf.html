@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.traceLocker.mp</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/trace2runtime.go.html#line-155">traceLocker</a>.<a href="../src/runtime/trace2runtime.go.html#line-156">mp</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">23 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/trace2.go.html#line-251">trace2.go#L251</a>: 		tl.writer().writeProcStatusForP(pp, pp == tl.<b>mp</b>.p.ptr()).end()
+		<a href="../src/runtime/trace2buf.go.html#line-34">trace2buf.go#L34</a>: 	return traceWriter{traceLocker: tl, traceBuf: tl.<b>mp</b>.trace.buf[tl.gen%2]}
+		<a href="../src/runtime/trace2buf.go.html#line-50" class="path-duplicate">trace2buf.go</a><a href="../src/runtime/trace2buf.go.html#line-50">#L50</a>: 	if w.<b>mp</b> == nil {
+		<a href="../src/runtime/trace2buf.go.html#line-55" class="path-duplicate">trace2buf.go</a><a href="../src/runtime/trace2buf.go.html#line-55">#L55</a>: 	w.<b>mp</b>.trace.buf[w.gen%2] = w.traceBuf
+		<a href="../src/runtime/trace2buf.go.html#line-112" class="path-duplicate">trace2buf.go</a><a href="../src/runtime/trace2buf.go.html#line-112">#L112</a>: 	if w.<b>mp</b> != nil {
+		<a href="../src/runtime/trace2buf.go.html#line-113" class="path-duplicate">trace2buf.go</a><a href="../src/runtime/trace2buf.go.html#line-113">#L113</a>: 		mID = uint64(w.<b>mp</b>.procid)
+		<a href="../src/runtime/trace2event.go.html#line-113">trace2event.go#L113</a>: 	if pp := tl.<b>mp</b>.p.ptr(); pp != nil &amp;&amp; !pp.trace.statusWasTraced(tl.gen) &amp;&amp; pp.trace.acquireStatus(tl.gen) {
+		<a href="../src/runtime/trace2event.go.html#line-116" class="path-duplicate">trace2event.go</a><a href="../src/runtime/trace2event.go.html#line-116">#L116</a>: 	if gp := tl.<b>mp</b>.curg; gp != nil &amp;&amp; !gp.trace.statusWasTraced(tl.gen) &amp;&amp; gp.trace.acquireStatus(tl.gen) {
+		<a href="../src/runtime/trace2event.go.html#line-117" class="path-duplicate">trace2event.go</a><a href="../src/runtime/trace2event.go.html#line-117">#L117</a>: 		w = w.writeGoStatus(uint64(gp.goid), int64(tl.<b>mp</b>.procid), goStatus, gp.inMarkAssist)
+		<a href="../src/runtime/trace2event.go.html#line-166" class="path-duplicate">trace2event.go</a><a href="../src/runtime/trace2event.go.html#line-166">#L166</a>: 	return traceArg(traceStack(skip, tl.<b>mp</b>, tl.gen))
+		<a href="../src/runtime/trace2runtime.go.html#line-156">trace2runtime.go#L156</a>: 	<b>mp</b>  *m
+		<a href="../src/runtime/trace2runtime.go.html#line-238" class="path-duplicate">trace2runtime.go</a><a href="../src/runtime/trace2runtime.go.html#line-238">#L238</a>: 	seq := tl.<b>mp</b>.trace.seqlock.Add(1)
+		<a href="../src/runtime/trace2runtime.go.html#line-243" class="path-duplicate">trace2runtime.go</a><a href="../src/runtime/trace2runtime.go.html#line-243">#L243</a>: 	releasem(tl.<b>mp</b>)
+		<a href="../src/runtime/trace2runtime.go.html#line-267" class="path-duplicate">trace2runtime.go</a><a href="../src/runtime/trace2runtime.go.html#line-267">#L267</a>: 	pp := tl.<b>mp</b>.p.ptr()
+		<a href="../src/runtime/trace2runtime.go.html#line-338" class="path-duplicate">trace2runtime.go</a><a href="../src/runtime/trace2runtime.go.html#line-338">#L338</a>: 	pp := tl.<b>mp</b>.p.ptr()
+		<a href="../src/runtime/trace2runtime.go.html#line-354" class="path-duplicate">trace2runtime.go</a><a href="../src/runtime/trace2runtime.go.html#line-354">#L354</a>: 	pp := tl.<b>mp</b>.p.ptr()
+		<a href="../src/runtime/trace2runtime.go.html#line-370" class="path-duplicate">trace2runtime.go</a><a href="../src/runtime/trace2runtime.go.html#line-370">#L370</a>: 	pp := tl.<b>mp</b>.p.ptr()
+		<a href="../src/runtime/trace2runtime.go.html#line-473" class="path-duplicate">trace2runtime.go</a><a href="../src/runtime/trace2runtime.go.html#line-473">#L473</a>: 	pp := tl.<b>mp</b>.p.ptr()
+		<a href="../src/runtime/trace2runtime.go.html#line-474" class="path-duplicate">trace2runtime.go</a><a href="../src/runtime/trace2runtime.go.html#line-474">#L474</a>: 	pp.trace.mSyscallID = int64(tl.<b>mp</b>.procid)
+		<a href="../src/runtime/trace2runtime.go.html#line-494" class="path-duplicate">trace2runtime.go</a><a href="../src/runtime/trace2runtime.go.html#line-494">#L494</a>: 		tl.<b>mp</b>.p.ptr().trace.mSyscallID = -1
+		<a href="../src/runtime/trace2status.go.html#line-91">trace2status.go#L91</a>: 		if w.<b>mp</b>.p.ptr() == pp &amp;&amp; w.<b>mp</b>.curg != nil &amp;&amp; readgstatus(w.<b>mp</b>.curg)&amp;^_Gscan == _Gsyscall {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

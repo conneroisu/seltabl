@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/x509/pkix.Extension.Value</title>
+<link href="../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../../pkg/crypto/x509/pkix.html">crypto/x509/pkix</a>.<a href="../../../src/crypto/x509/pkix/pkix.go.html#line-113">Extension</a>.<a href="../../../src/crypto/x509/pkix/pkix.go.html#line-116">Value</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">35 uses</span>
+
+	crypto/x509/pkix (current package)
+		<a href="../../../src/crypto/x509/pkix/pkix.go.html#line-116">pkix.go#L116</a>: 	<b>Value</b>    []byte
+
+	<a href="../../../pkg/crypto/x509.html">crypto/x509</a>
+		<a href="../../../src/crypto/x509/parser.go.html#line-213">parser.go#L213</a>: 	ext.<b>Value</b> = val
+		<a href="../../../src/crypto/x509/parser.go.html#line-499" class="path-duplicate">parser.go</a><a href="../../../src/crypto/x509/parser.go.html#line-499">#L499</a>: 	outer := cryptobyte.String(e.<b>Value</b>)
+		<a href="../../../src/crypto/x509/parser.go.html#line-651" class="path-duplicate">parser.go</a><a href="../../../src/crypto/x509/parser.go.html#line-651">#L651</a>: 				out.KeyUsage, err = parseKeyUsageExtension(e.<b>Value</b>)
+		<a href="../../../src/crypto/x509/parser.go.html#line-656" class="path-duplicate">parser.go</a><a href="../../../src/crypto/x509/parser.go.html#line-656">#L656</a>: 				out.IsCA, out.MaxPathLen, err = parseBasicConstraintsExtension(e.<b>Value</b>)
+		<a href="../../../src/crypto/x509/parser.go.html#line-663" class="path-duplicate">parser.go</a><a href="../../../src/crypto/x509/parser.go.html#line-663">#L663</a>: 				out.DNSNames, out.EmailAddresses, out.IPAddresses, out.URIs, err = parseSANExtension(e.<b>Value</b>)
+		<a href="../../../src/crypto/x509/parser.go.html#line-692" class="path-duplicate">parser.go</a><a href="../../../src/crypto/x509/parser.go.html#line-692">#L692</a>: 				val := cryptobyte.String(e.<b>Value</b>)
+		<a href="../../../src/crypto/x509/parser.go.html#line-726" class="path-duplicate">parser.go</a><a href="../../../src/crypto/x509/parser.go.html#line-726">#L726</a>: 				val := cryptobyte.String(e.<b>Value</b>)
+		<a href="../../../src/crypto/x509/parser.go.html#line-738" class="path-duplicate">parser.go</a><a href="../../../src/crypto/x509/parser.go.html#line-738">#L738</a>: 				out.ExtKeyUsage, out.UnknownExtKeyUsage, err = parseExtKeyUsageExtension(e.<b>Value</b>)
+		<a href="../../../src/crypto/x509/parser.go.html#line-744" class="path-duplicate">parser.go</a><a href="../../../src/crypto/x509/parser.go.html#line-744">#L744</a>: 				val := cryptobyte.String(e.<b>Value</b>)
+		<a href="../../../src/crypto/x509/parser.go.html#line-751" class="path-duplicate">parser.go</a><a href="../../../src/crypto/x509/parser.go.html#line-751">#L751</a>: 				out.Policies, err = parseCertificatePoliciesExtension(e.<b>Value</b>)
+		<a href="../../../src/crypto/x509/parser.go.html#line-767" class="path-duplicate">parser.go</a><a href="../../../src/crypto/x509/parser.go.html#line-767">#L767</a>: 			val := cryptobyte.String(e.<b>Value</b>)
+		<a href="../../../src/crypto/x509/parser.go.html#line-1148" class="path-duplicate">parser.go</a><a href="../../../src/crypto/x509/parser.go.html#line-1148">#L1148</a>: 						val := cryptobyte.String(ext.<b>Value</b>)
+		<a href="../../../src/crypto/x509/parser.go.html#line-1186" class="path-duplicate">parser.go</a><a href="../../../src/crypto/x509/parser.go.html#line-1186">#L1186</a>: 				rl.AuthorityKeyId = ext.<b>Value</b>
+		<a href="../../../src/crypto/x509/parser.go.html#line-1188" class="path-duplicate">parser.go</a><a href="../../../src/crypto/x509/parser.go.html#line-1188">#L1188</a>: 				value := cryptobyte.String(ext.<b>Value</b>)
+		<a href="../../../src/crypto/x509/verify.go.html#line-882">verify.go#L882</a>: 		if bytes.Equal(candidateSAN.<b>Value</b>, certSAN.<b>Value</b>) {
+		<a href="../../../src/crypto/x509/x509.go.html#line-871">x509.go#L871</a>: 			return e.<b>Value</b>
+		<a href="../../../src/crypto/x509/x509.go.html#line-1139" class="path-duplicate">x509.go</a><a href="../../../src/crypto/x509/x509.go.html#line-1139">#L1139</a>: 		ret[n].<b>Value</b>, err = asn1.Marshal(subjectKeyId)
+		<a href="../../../src/crypto/x509/x509.go.html#line-1148" class="path-duplicate">x509.go</a><a href="../../../src/crypto/x509/x509.go.html#line-1148">#L1148</a>: 		ret[n].<b>Value</b>, err = asn1.Marshal(authKeyId{authorityKeyId})
+		<a href="../../../src/crypto/x509/x509.go.html#line-1171" class="path-duplicate">x509.go</a><a href="../../../src/crypto/x509/x509.go.html#line-1171">#L1171</a>: 		ret[n].<b>Value</b>, err = asn1.Marshal(aiaValues)
+		<a href="../../../src/crypto/x509/x509.go.html#line-1185" class="path-duplicate">x509.go</a><a href="../../../src/crypto/x509/x509.go.html#line-1185">#L1185</a>: 		ret[n].<b>Value</b>, err = marshalSANs(template.DNSNames, template.EmailAddresses, template.IPAddresses, template.URIs)
+		<a href="../../../src/crypto/x509/x509.go.html#line-1293" class="path-duplicate">x509.go</a><a href="../../../src/crypto/x509/x509.go.html#line-1293">#L1293</a>: 		ret[n].<b>Value</b>, err = b.Bytes()
+		<a href="../../../src/crypto/x509/x509.go.html#line-1316" class="path-duplicate">x509.go</a><a href="../../../src/crypto/x509/x509.go.html#line-1316">#L1316</a>: 		ret[n].<b>Value</b>, err = asn1.Marshal(crlDp)
+		<a href="../../../src/crypto/x509/x509.go.html#line-1344" class="path-duplicate">x509.go</a><a href="../../../src/crypto/x509/x509.go.html#line-1344">#L1344</a>: 	ext.<b>Value</b>, err = asn1.Marshal(asn1.BitString{Bytes: bitString, BitLength: asn1BitLength(bitString)})
+		<a href="../../../src/crypto/x509/x509.go.html#line-1363" class="path-duplicate">x509.go</a><a href="../../../src/crypto/x509/x509.go.html#line-1363">#L1363</a>: 	ext.<b>Value</b>, err = asn1.Marshal(oids)
+		<a href="../../../src/crypto/x509/x509.go.html#line-1376" class="path-duplicate">x509.go</a><a href="../../../src/crypto/x509/x509.go.html#line-1376">#L1376</a>: 	ext.<b>Value</b>, err = asn1.Marshal(basicConstraints{isCA, maxPathLen})
+		<a href="../../../src/crypto/x509/x509.go.html#line-1408" class="path-duplicate">x509.go</a><a href="../../../src/crypto/x509/x509.go.html#line-1408">#L1408</a>: 	ext.<b>Value</b>, err = b.Bytes()
+		<a href="../../../src/crypto/x509/x509.go.html#line-1424" class="path-duplicate">x509.go</a><a href="../../../src/crypto/x509/x509.go.html#line-1424">#L1424</a>: 			<b>Value</b>: sanBytes,
+		<a href="../../../src/crypto/x509/x509.go.html#line-1784" class="path-duplicate">x509.go</a><a href="../../../src/crypto/x509/x509.go.html#line-1784">#L1784</a>: 		aki.<b>Value</b>, err = asn1.Marshal(authKeyId{Id: c.SubjectKeyId})
+		<a href="../../../src/crypto/x509/x509.go.html#line-2041" class="path-duplicate">x509.go</a><a href="../../../src/crypto/x509/x509.go.html#line-2041">#L2041</a>: 					Value: e.<b>Value</b>,
+		<a href="../../../src/crypto/x509/x509.go.html#line-2185" class="path-duplicate">x509.go</a><a href="../../../src/crypto/x509/x509.go.html#line-2185">#L2185</a>: 			out.DNSNames, out.EmailAddresses, out.IPAddresses, out.URIs, err = parseSANExtension(extension.<b>Value</b>)
+		<a href="../../../src/crypto/x509/x509.go.html#line-2406" class="path-duplicate">x509.go</a><a href="../../../src/crypto/x509/x509.go.html#line-2406">#L2406</a>: 					<b>Value</b>: reasonBytes,
+		<a href="../../../src/crypto/x509/x509.go.html#line-2445" class="path-duplicate">x509.go</a><a href="../../../src/crypto/x509/x509.go.html#line-2445">#L2445</a>: 				<b>Value</b>: aki,
+		<a href="../../../src/crypto/x509/x509.go.html#line-2449" class="path-duplicate">x509.go</a><a href="../../../src/crypto/x509/x509.go.html#line-2449">#L2449</a>: 				<b>Value</b>: crlNum,
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

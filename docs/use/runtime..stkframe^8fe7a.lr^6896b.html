@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.stkframe.lr</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/stkframe.go.html#line-15">stkframe</a>.<a href="../src/runtime/stkframe.go.html#line-56">lr</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">21 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/panic.go.html#line-941">panic.go#L941</a>: 		p.lr = u.frame.<b>lr</b>
+		<a href="../src/runtime/stkframe.go.html#line-56">stkframe.go#L56</a>: 	<b>lr</b>   uintptr // program counter at caller aka link register
+		<a href="../src/runtime/traceback.go.html#line-170">traceback.go#L170</a>: 		frame.<b>lr</b> = lr0
+		<a href="../src/runtime/traceback.go.html#line-178" class="path-duplicate">traceback.go</a><a href="../src/runtime/traceback.go.html#line-178">#L178</a>: 			frame.<b>lr</b> = 0
+		<a href="../src/runtime/traceback.go.html#line-195" class="path-duplicate">traceback.go</a><a href="../src/runtime/traceback.go.html#line-195">#L195</a>: 		frame.pc = frame.<b>lr</b>
+		<a href="../src/runtime/traceback.go.html#line-196" class="path-duplicate">traceback.go</a><a href="../src/runtime/traceback.go.html#line-196">#L196</a>: 		frame.<b>lr</b> = 0
+		<a href="../src/runtime/traceback.go.html#line-301" class="path-duplicate">traceback.go</a><a href="../src/runtime/traceback.go.html#line-301">#L301</a>: 				frame.<b>lr</b> = gp.sched.lr
+		<a href="../src/runtime/traceback.go.html#line-335" class="path-duplicate">traceback.go</a><a href="../src/runtime/traceback.go.html#line-335">#L335</a>: 		frame.<b>lr</b> = 0
+		<a href="../src/runtime/traceback.go.html#line-366" class="path-duplicate">traceback.go</a><a href="../src/runtime/traceback.go.html#line-366">#L366</a>: 		frame.<b>lr</b> = 0
+		<a href="../src/runtime/traceback.go.html#line-370" class="path-duplicate">traceback.go</a><a href="../src/runtime/traceback.go.html#line-370">#L370</a>: 			if innermost &amp;&amp; frame.sp &lt; frame.fp || frame.<b>lr</b> == 0 {
+		<a href="../src/runtime/traceback.go.html#line-372" class="path-duplicate">traceback.go</a><a href="../src/runtime/traceback.go.html#line-372">#L372</a>: 				frame.<b>lr</b> = *(*uintptr)(unsafe.Pointer(lrPtr))
+		<a href="../src/runtime/traceback.go.html#line-375" class="path-duplicate">traceback.go</a><a href="../src/runtime/traceback.go.html#line-375">#L375</a>: 			if frame.<b>lr</b> == 0 {
+		<a href="../src/runtime/traceback.go.html#line-377" class="path-duplicate">traceback.go</a><a href="../src/runtime/traceback.go.html#line-377">#L377</a>: 				frame.<b>lr</b> = *(*uintptr)(unsafe.Pointer(lrPtr))
+		<a href="../src/runtime/traceback.go.html#line-445" class="path-duplicate">traceback.go</a><a href="../src/runtime/traceback.go.html#line-445">#L445</a>: 	if frame.<b>lr</b> == 0 {
+		<a href="../src/runtime/traceback.go.html#line-449" class="path-duplicate">traceback.go</a><a href="../src/runtime/traceback.go.html#line-449">#L449</a>: 	flr := findfunc(frame.<b>lr</b>)
+		<a href="../src/runtime/traceback.go.html#line-465" class="path-duplicate">traceback.go</a><a href="../src/runtime/traceback.go.html#line-465">#L465</a>: 			print("runtime: g ", gp.goid, ": unexpected return pc for ", funcname(f), " called from ", hex(frame.<b>lr</b>), "\n")
+		<a href="../src/runtime/traceback.go.html#line-471" class="path-duplicate">traceback.go</a><a href="../src/runtime/traceback.go.html#line-471">#L471</a>: 		frame.<b>lr</b> = 0
+		<a href="../src/runtime/traceback.go.html#line-476" class="path-duplicate">traceback.go</a><a href="../src/runtime/traceback.go.html#line-476">#L476</a>: 	if frame.pc == frame.<b>lr</b> &amp;&amp; frame.sp == frame.fp {
+		<a href="../src/runtime/traceback.go.html#line-493" class="path-duplicate">traceback.go</a><a href="../src/runtime/traceback.go.html#line-493">#L493</a>: 	frame.pc = frame.<b>lr</b>
+		<a href="../src/runtime/traceback.go.html#line-494" class="path-duplicate">traceback.go</a><a href="../src/runtime/traceback.go.html#line-494">#L494</a>: 	frame.<b>lr</b> = 0
+		<a href="../src/runtime/traceback.go.html#line-508" class="path-duplicate">traceback.go</a><a href="../src/runtime/traceback.go.html#line-508">#L508</a>: 			frame.<b>lr</b> = x
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: compress/gzip.Writer.buf</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/compress/gzip.html">compress/gzip</a>.<a href="../../src/compress/gzip/gzip.go.html#line-28">Writer</a>.<a href="../../src/compress/gzip/gzip.go.html#line-37">buf</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">17 uses</span>
+
+	compress/gzip (current package)
+		<a href="../../src/compress/gzip/gzip.go.html#line-37">gzip.go#L37</a>: 	<b>buf</b>         [10]byte
+		<a href="../../src/compress/gzip/gzip.go.html#line-97" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-97">#L97</a>: 	le.PutUint16(z.<b>buf</b>[:2], uint16(len(b)))
+		<a href="../../src/compress/gzip/gzip.go.html#line-98" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-98">#L98</a>: 	_, err := z.w.Write(z.<b>buf</b>[:2])
+		<a href="../../src/compress/gzip/gzip.go.html#line-132" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-132">#L132</a>: 	z.<b>buf</b>[0] = 0
+		<a href="../../src/compress/gzip/gzip.go.html#line-133" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-133">#L133</a>: 	_, err = z.w.Write(z.<b>buf</b>[:1])
+		<a href="../../src/compress/gzip/gzip.go.html#line-147" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-147">#L147</a>: 		z.<b>buf</b> = [10]byte{0: gzipID1, 1: gzipID2, 2: gzipDeflate}
+		<a href="../../src/compress/gzip/gzip.go.html#line-149" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-149">#L149</a>: 			z.<b>buf</b>[3] |= 0x04
+		<a href="../../src/compress/gzip/gzip.go.html#line-152" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-152">#L152</a>: 			z.<b>buf</b>[3] |= 0x08
+		<a href="../../src/compress/gzip/gzip.go.html#line-155" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-155">#L155</a>: 			z.<b>buf</b>[3] |= 0x10
+		<a href="../../src/compress/gzip/gzip.go.html#line-160" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-160">#L160</a>: 			le.PutUint32(z.<b>buf</b>[4:8], uint32(z.ModTime.Unix()))
+		<a href="../../src/compress/gzip/gzip.go.html#line-163" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-163">#L163</a>: 			z.<b>buf</b>[8] = 2
+		<a href="../../src/compress/gzip/gzip.go.html#line-165" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-165">#L165</a>: 			z.<b>buf</b>[8] = 4
+		<a href="../../src/compress/gzip/gzip.go.html#line-167" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-167">#L167</a>: 		z.<b>buf</b>[9] = z.OS
+		<a href="../../src/compress/gzip/gzip.go.html#line-168" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-168">#L168</a>: 		_, z.err = z.w.Write(z.<b>buf</b>[:10])
+		<a href="../../src/compress/gzip/gzip.go.html#line-246" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-246">#L246</a>: 	le.PutUint32(z.<b>buf</b>[:4], z.digest)
+		<a href="../../src/compress/gzip/gzip.go.html#line-247" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-247">#L247</a>: 	le.PutUint32(z.<b>buf</b>[4:8], z.size)
+		<a href="../../src/compress/gzip/gzip.go.html#line-248" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-248">#L248</a>: 	_, z.err = z.w.Write(z.<b>buf</b>[:8])
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

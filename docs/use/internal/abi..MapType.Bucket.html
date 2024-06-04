@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: internal/abi.MapType.Bucket</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/internal/abi.html">internal/abi</a>.<a href="../../src/internal/abi/type.go.html#line-446">MapType</a>.<a href="../../src/internal/abi/type.go.html#line-450">Bucket</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">26 uses</span>
+
+	internal/abi (current package)
+		<a href="../../src/internal/abi/type.go.html#line-450">type.go#L450</a>: 	<b>Bucket</b> *Type // internal type representing a hash bucket
+
+	<a href="../../pkg/reflect.html">reflect</a>
+		<a href="../../src/reflect/type.go.html#line-1692">type.go#L1692</a>: 	mt.<b>Bucket</b> = bucketOf(ktyp, etyp)
+		<a href="../../src/reflect/type.go.html#line-1709" class="path-duplicate">type.go</a><a href="../../src/reflect/type.go.html#line-1709">#L1709</a>: 	mt.MapType.BucketSize = uint16(mt.<b>Bucket</b>.Size_)
+
+	<a href="../../pkg/runtime.html">runtime</a>
+		<a href="../../src/runtime/map.go.html#line-264">map.go#L264</a>: 		ovf = (*bmap)(newobject(t.<b>Bucket</b>))
+		<a href="../../src/runtime/map.go.html#line-267" class="path-duplicate">map.go</a><a href="../../src/runtime/map.go.html#line-267">#L267</a>: 	if t.<b>Bucket</b>.PtrBytes == 0 {
+		<a href="../../src/runtime/map.go.html#line-306" class="path-duplicate">map.go</a><a href="../../src/runtime/map.go.html#line-306">#L306</a>: 	mem, overflow := math.MulUintptr(uintptr(hint), t.<b>Bucket</b>.Size_)
+		<a href="../../src/runtime/map.go.html#line-356" class="path-duplicate">map.go</a><a href="../../src/runtime/map.go.html#line-356">#L356</a>: 		sz := t.<b>Bucket</b>.Size_ * nbuckets
+		<a href="../../src/runtime/map.go.html#line-357" class="path-duplicate">map.go</a><a href="../../src/runtime/map.go.html#line-357">#L357</a>: 		up := roundupsize(sz, t.<b>Bucket</b>.PtrBytes == 0)
+		<a href="../../src/runtime/map.go.html#line-359" class="path-duplicate">map.go</a><a href="../../src/runtime/map.go.html#line-359">#L359</a>: 			nbuckets = up / t.<b>Bucket</b>.Size_
+		<a href="../../src/runtime/map.go.html#line-364" class="path-duplicate">map.go</a><a href="../../src/runtime/map.go.html#line-364">#L364</a>: 		buckets = newarray(t.<b>Bucket</b>, int(nbuckets))
+		<a href="../../src/runtime/map.go.html#line-370" class="path-duplicate">map.go</a><a href="../../src/runtime/map.go.html#line-370">#L370</a>: 		size := t.<b>Bucket</b>.Size_ * nbuckets
+		<a href="../../src/runtime/map.go.html#line-371" class="path-duplicate">map.go</a><a href="../../src/runtime/map.go.html#line-371">#L371</a>: 		if t.<b>Bucket</b>.PtrBytes != 0 {
+		<a href="../../src/runtime/map.go.html#line-605" class="path-duplicate">map.go</a><a href="../../src/runtime/map.go.html#line-605">#L605</a>: 		h.buckets = newobject(t.<b>Bucket</b>) // newarray(t.Bucket, 1)
+		<a href="../../src/runtime/map.go.html#line-835" class="path-duplicate">map.go</a><a href="../../src/runtime/map.go.html#line-835">#L835</a>: 	if t.<b>Bucket</b>.PtrBytes == 0 {
+		<a href="../../src/runtime/map.go.html#line-1263" class="path-duplicate">map.go</a><a href="../../src/runtime/map.go.html#line-1263">#L1263</a>: 		if h.flags&amp;oldIterator == 0 &amp;&amp; t.<b>Bucket</b>.PtrBytes != 0 {
+		<a href="../../src/runtime/map.go.html#line-1521" class="path-duplicate">map.go</a><a href="../../src/runtime/map.go.html#line-1521">#L1521</a>: 		dst.buckets = newobject(t.<b>Bucket</b>)
+		<a href="../../src/runtime/map.go.html#line-1523" class="path-duplicate">map.go</a><a href="../../src/runtime/map.go.html#line-1523">#L1523</a>: 		typedmemmove(t.<b>Bucket</b>, dst.buckets, src.buckets)
+		<a href="../../src/runtime/map.go.html#line-1528" class="path-duplicate">map.go</a><a href="../../src/runtime/map.go.html#line-1528">#L1528</a>: 		dst.buckets = newobject(t.<b>Bucket</b>)
+		<a href="../../src/runtime/map_fast32.go.html#line-110">map_fast32.go#L110</a>: 		h.buckets = newobject(t.<b>Bucket</b>) // newarray(t.bucket, 1)
+		<a href="../../src/runtime/map_fast32.go.html#line-200" class="path-duplicate">map_fast32.go</a><a href="../../src/runtime/map_fast32.go.html#line-200">#L200</a>: 		h.buckets = newobject(t.<b>Bucket</b>) // newarray(t.bucket, 1)
+		<a href="../../src/runtime/map_fast32.go.html#line-449" class="path-duplicate">map_fast32.go</a><a href="../../src/runtime/map_fast32.go.html#line-449">#L449</a>: 		if h.flags&amp;oldIterator == 0 &amp;&amp; t.<b>Bucket</b>.PtrBytes != 0 {
+		<a href="../../src/runtime/map_fast64.go.html#line-110">map_fast64.go#L110</a>: 		h.buckets = newobject(t.<b>Bucket</b>) // newarray(t.bucket, 1)
+		<a href="../../src/runtime/map_fast64.go.html#line-200" class="path-duplicate">map_fast64.go</a><a href="../../src/runtime/map_fast64.go.html#line-200">#L200</a>: 		h.buckets = newobject(t.<b>Bucket</b>) // newarray(t.bucket, 1)
+		<a href="../../src/runtime/map_fast64.go.html#line-457" class="path-duplicate">map_fast64.go</a><a href="../../src/runtime/map_fast64.go.html#line-457">#L457</a>: 		if h.flags&amp;oldIterator == 0 &amp;&amp; t.<b>Bucket</b>.PtrBytes != 0 {
+		<a href="../../src/runtime/map_faststr.go.html#line-221">map_faststr.go#L221</a>: 		h.buckets = newobject(t.<b>Bucket</b>) // newarray(t.bucket, 1)
+		<a href="../../src/runtime/map_faststr.go.html#line-472" class="path-duplicate">map_faststr.go</a><a href="../../src/runtime/map_faststr.go.html#line-472">#L472</a>: 		if h.flags&amp;oldIterator == 0 &amp;&amp; t.<b>Bucket</b>.PtrBytes != 0 {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

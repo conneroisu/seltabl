@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: io.EOF</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">var <b><a href="../pkg/io.html">io</a>.<a href="../src/io/io.go.html#line-44">EOF</a></b></span>
+
+<span class="title">140 uses</span>
+
+	io (current package)
+		<a href="../src/io/io.go.html#line-44">io.go#L44</a>: var <b>EOF</b> = errors.New("EOF")
+		<a href="../src/io/io.go.html#line-340" class="path-duplicate">io.go</a><a href="../src/io/io.go.html#line-340">#L340</a>: 	} else if n &gt; 0 &amp;&amp; err == <b>EOF</b> {
+		<a href="../src/io/io.go.html#line-370" class="path-duplicate">io.go</a><a href="../src/io/io.go.html#line-370">#L370</a>: 		err = <b>EOF</b>
+		<a href="../src/io/io.go.html#line-449" class="path-duplicate">io.go</a><a href="../src/io/io.go.html#line-449">#L449</a>: 			if er != <b>EOF</b> {
+		<a href="../src/io/io.go.html#line-474" class="path-duplicate">io.go</a><a href="../src/io/io.go.html#line-474">#L474</a>: 		return 0, <b>EOF</b>
+		<a href="../src/io/io.go.html#line-511" class="path-duplicate">io.go</a><a href="../src/io/io.go.html#line-511">#L511</a>: 		return 0, <b>EOF</b>
+		<a href="../src/io/io.go.html#line-544" class="path-duplicate">io.go</a><a href="../src/io/io.go.html#line-544">#L544</a>: 		return 0, <b>EOF</b>
+		<a href="../src/io/io.go.html#line-551" class="path-duplicate">io.go</a><a href="../src/io/io.go.html#line-551">#L551</a>: 			err = <b>EOF</b>
+		<a href="../src/io/io.go.html#line-670" class="path-duplicate">io.go</a><a href="../src/io/io.go.html#line-670">#L670</a>: 			if err == <b>EOF</b> {
+		<a href="../src/io/io.go.html#line-715" class="path-duplicate">io.go</a><a href="../src/io/io.go.html#line-715">#L715</a>: 			if err == <b>EOF</b> {
+		<a href="../src/io/multi.go.html#line-10">multi.go#L10</a>: 	return 0, <b>EOF</b>
+		<a href="../src/io/multi.go.html#line-27" class="path-duplicate">multi.go</a><a href="../src/io/multi.go.html#line-27">#L27</a>: 		if err == <b>EOF</b> {
+		<a href="../src/io/multi.go.html#line-33" class="path-duplicate">multi.go</a><a href="../src/io/multi.go.html#line-33">#L33</a>: 		if n &gt; 0 || err != <b>EOF</b> {
+		<a href="../src/io/multi.go.html#line-34" class="path-duplicate">multi.go</a><a href="../src/io/multi.go.html#line-34">#L34</a>: 			if err == <b>EOF</b> &amp;&amp; len(mr.readers) &gt; 0 {
+		<a href="../src/io/multi.go.html#line-41" class="path-duplicate">multi.go</a><a href="../src/io/multi.go.html#line-41">#L41</a>: 	return 0, <b>EOF</b>
+		<a href="../src/io/pipe.go.html#line-100">pipe.go#L100</a>: 		err = <b>EOF</b>
+
+	<a href="../pkg/io/fs.html">io/fs</a>
+		<a href="../src/io/fs/readfile.go.html#line-60">readfile.go#L60</a>: 			if err == io.<b>EOF</b> {
+
+	<a href="../pkg/bufio.html">bufio</a>
+		<a href="../src/bufio/bufio.go.html#line-549">bufio.go#L549</a>: 	if b.err == io.<b>EOF</b> {
+		<a href="../src/bufio/bufio.go.html#line-816" class="path-duplicate">bufio.go</a><a href="../src/bufio/bufio.go.html#line-816">#L816</a>: 	if err == io.<b>EOF</b> {
+		<a href="../src/bufio/scan.go.html#line-99">scan.go#L99</a>: 	if s.err == io.<b>EOF</b> {
+		<a href="../src/bufio/scan.go.html#line-258" class="path-duplicate">scan.go</a><a href="../src/bufio/scan.go.html#line-258">#L258</a>: 	if s.err == nil || s.err == io.<b>EOF</b> {
+
+	<a href="../pkg/bytes.html">bytes</a>
+		<a href="../src/bytes/buffer.go.html#line-218">buffer.go#L218</a>: 		if e == io.<b>EOF</b> {
+		<a href="../src/bytes/buffer.go.html#line-326" class="path-duplicate">buffer.go</a><a href="../src/bytes/buffer.go.html#line-326">#L326</a>: 		return 0, io.<b>EOF</b>
+		<a href="../src/bytes/buffer.go.html#line-360" class="path-duplicate">buffer.go</a><a href="../src/bytes/buffer.go.html#line-360">#L360</a>: 		return 0, io.<b>EOF</b>
+		<a href="../src/bytes/buffer.go.html#line-377" class="path-duplicate">buffer.go</a><a href="../src/bytes/buffer.go.html#line-377">#L377</a>: 		return 0, 0, io.<b>EOF</b>
+		<a href="../src/bytes/buffer.go.html#line-444" class="path-duplicate">buffer.go</a><a href="../src/bytes/buffer.go.html#line-444">#L444</a>: 		err = io.<b>EOF</b>
+		<a href="../src/bytes/reader.go.html#line-41">reader.go#L41</a>: 		return 0, io.<b>EOF</b>
+		<a href="../src/bytes/reader.go.html#line-56" class="path-duplicate">reader.go</a><a href="../src/bytes/reader.go.html#line-56">#L56</a>: 		return 0, io.<b>EOF</b>
+		<a href="../src/bytes/reader.go.html#line-60" class="path-duplicate">reader.go</a><a href="../src/bytes/reader.go.html#line-60">#L60</a>: 		err = io.<b>EOF</b>
+		<a href="../src/bytes/reader.go.html#line-69" class="path-duplicate">reader.go</a><a href="../src/bytes/reader.go.html#line-69">#L69</a>: 		return 0, io.<b>EOF</b>
+		<a href="../src/bytes/reader.go.html#line-90" class="path-duplicate">reader.go</a><a href="../src/bytes/reader.go.html#line-90">#L90</a>: 		return 0, 0, io.<b>EOF</b>
+
+	<a href="../pkg/compress/flate.html">compress/flate</a>
+		<a href="../src/compress/flate/inflate.go.html#line-356">inflate.go#L356</a>: 	if f.err == io.<b>EOF</b> {
+		<a href="../src/compress/flate/inflate.go.html#line-683" class="path-duplicate">inflate.go</a><a href="../src/compress/flate/inflate.go.html#line-683">#L683</a>: 		f.err = io.<b>EOF</b>
+		<a href="../src/compress/flate/inflate.go.html#line-690" class="path-duplicate">inflate.go</a><a href="../src/compress/flate/inflate.go.html#line-690">#L690</a>: 	if e == io.<b>EOF</b> {
+
+	<a href="../pkg/compress/gzip.html">compress/gzip</a>
+		<a href="../src/compress/gzip/gunzip.go.html#line-41">gunzip.go#L41</a>: 	if err == io.<b>EOF</b> {
+		<a href="../src/compress/gzip/gunzip.go.html#line-255" class="path-duplicate">gunzip.go</a><a href="../src/compress/gzip/gunzip.go.html#line-255">#L255</a>: 		if z.err != io.<b>EOF</b> {
+		<a href="../src/compress/gzip/gunzip.go.html#line-275" class="path-duplicate">gunzip.go</a><a href="../src/compress/gzip/gunzip.go.html#line-275">#L275</a>: 			return n, io.<b>EOF</b>
+
+	<a href="../pkg/crypto/tls.html">crypto/tls</a>
+		<a href="../src/crypto/tls/conn.go.html#line-631">conn.go#L631</a>: 			err = io.<b>EOF</b>
+		<a href="../src/crypto/tls/conn.go.html#line-721" class="path-duplicate">conn.go</a><a href="../src/crypto/tls/conn.go.html#line-721">#L721</a>: 			return c.in.setErrorLocked(io.<b>EOF</b>)
+		<a href="../src/crypto/tls/conn.go.html#line-804" class="path-duplicate">conn.go</a><a href="../src/crypto/tls/conn.go.html#line-804">#L804</a>: 		return 0, io.<b>EOF</b>
+		<a href="../src/crypto/tls/conn.go.html#line-808" class="path-duplicate">conn.go</a><a href="../src/crypto/tls/conn.go.html#line-808">#L808</a>: 	if r.N &gt; 0 &amp;&amp; err == io.<b>EOF</b> {
+		<a href="../src/crypto/tls/conn.go.html#line-812" class="path-duplicate">conn.go</a><a href="../src/crypto/tls/conn.go.html#line-812">#L812</a>: 		return n, io.<b>EOF</b>
+
+	<a href="../pkg/embed.html">embed</a>
+		<a href="../src/embed/embed.go.html#line-362">embed.go#L362</a>: 		return 0, io.<b>EOF</b>
+		<a href="../src/embed/embed.go.html#line-394" class="path-duplicate">embed.go</a><a href="../src/embed/embed.go.html#line-394">#L394</a>: 		return n, io.<b>EOF</b>
+		<a href="../src/embed/embed.go.html#line-419" class="path-duplicate">embed.go</a><a href="../src/embed/embed.go.html#line-419">#L419</a>: 		return nil, io.<b>EOF</b>
+
+	<a href="../pkg/encoding/base64.html">encoding/base64</a>
+		<a href="../src/encoding/base64/base64.go.html#line-487">base64.go#L487</a>: 		if d.err == io.<b>EOF</b> &amp;&amp; d.nbuf &gt; 0 {
+
+	<a href="../pkg/encoding/binary.html">encoding/binary</a>
+		<a href="../src/encoding/binary/varint.go.html#line-138">varint.go#L138</a>: 			if i &gt; 0 &amp;&amp; err == io.<b>EOF</b> {
+
+	<a href="../pkg/encoding/hex.html">encoding/hex</a>
+		<a href="../src/encoding/hex/hex.go.html#line-215">hex.go#L215</a>: 		if d.err == io.<b>EOF</b> &amp;&amp; len(d.in)%2 != 0 {
+
+	<a href="../pkg/fmt.html">fmt</a>
+		<a href="../src/fmt/scan.go.html#line-90">scan.go#L90</a>: 		err = io.<b>EOF</b>
+		<a href="../src/fmt/scan.go.html#line-185" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-185">#L185</a>: 		err = io.<b>EOF</b>
+		<a href="../src/fmt/scan.go.html#line-195" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-195">#L195</a>: 	} else if err == io.<b>EOF</b> {
+		<a href="../src/fmt/scan.go.html#line-213" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-213">#L213</a>: 		if err == io.<b>EOF</b> {
+		<a href="../src/fmt/scan.go.html#line-352" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-352">#L352</a>: 			if err == io.<b>EOF</b> {
+		<a href="../src/fmt/scan.go.html#line-508" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-508">#L508</a>: 		panic(io.<b>EOF</b>)
+		<a href="../src/fmt/scan.go.html#line-960" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-960">#L960</a>: 			if err == io.<b>EOF</b> {
+		<a href="../src/fmt/scan.go.html#line-1061" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-1061">#L1061</a>: 		} else if eof, ok := e.(error); ok &amp;&amp; eof == io.<b>EOF</b> { // out of input
+
+	<a href="../pkg/golang.org/x/net/html.html">golang.org/x/net/html</a>
+		<a href="../src/golang.org/x/net/html/parse.go.html#line-2314">parse.go#L2314</a>: 	for err != io.<b>EOF</b> {
+		<a href="../src/golang.org/x/net/html/parse.go.html#line-2323" class="path-duplicate">parse.go</a><a href="../src/golang.org/x/net/html/parse.go.html#line-2323">#L2323</a>: 			if err != nil &amp;&amp; err != io.<b>EOF</b> {
+
+	<a href="../pkg/internal/poll.html">internal/poll</a>
+		<a href="../src/internal/poll/fd_posix.go.html#line-18">fd_posix.go#L18</a>: 		return io.<b>EOF</b>
+
+	<a href="../pkg/math/big.html">math/big</a>
+		<a href="../src/math/big/floatconv.go.html#line-278">floatconv.go#L278</a>: 	} else if err2 != io.<b>EOF</b> {
+		<a href="../src/math/big/int.go.html#line-506">int.go#L506</a>: 	if _, err := r.ReadByte(); err != io.<b>EOF</b> {
+		<a href="../src/math/big/natconv.go.html#line-222">natconv.go#L222</a>: 	if err == io.<b>EOF</b> {
+		<a href="../src/math/big/ratconv.go.html#line-75">ratconv.go#L75</a>: 		if _, err = r.ReadByte(); err != io.<b>EOF</b> {
+		<a href="../src/math/big/ratconv.go.html#line-110" class="path-duplicate">ratconv.go</a><a href="../src/math/big/ratconv.go.html#line-110">#L110</a>: 	if _, err = r.ReadByte(); err != io.<b>EOF</b> {
+		<a href="../src/math/big/ratconv.go.html#line-227" class="path-duplicate">ratconv.go</a><a href="../src/math/big/ratconv.go.html#line-227">#L227</a>: 		if err == io.<b>EOF</b> {
+		<a href="../src/math/big/ratconv.go.html#line-283" class="path-duplicate">ratconv.go</a><a href="../src/math/big/ratconv.go.html#line-283">#L283</a>: 	if err == io.<b>EOF</b> {
+
+	<a href="../pkg/mime/multipart.html">mime/multipart</a>
+		<a href="../src/mime/multipart/formdata.go.html#line-111">formdata.go#L111</a>: 		if err == io.<b>EOF</b> {
+		<a href="../src/mime/multipart/formdata.go.html#line-145" class="path-duplicate">formdata.go</a><a href="../src/mime/multipart/formdata.go.html#line-145">#L145</a>: 			if err != nil &amp;&amp; err != io.<b>EOF</b> {
+		<a href="../src/mime/multipart/formdata.go.html#line-172" class="path-duplicate">formdata.go</a><a href="../src/mime/multipart/formdata.go.html#line-172">#L172</a>: 		if err != nil &amp;&amp; err != io.<b>EOF</b> {
+		<a href="../src/mime/multipart/multipart.go.html#line-206">multipart.go#L206</a>: 			if p.readErr == io.<b>EOF</b> {
+		<a href="../src/mime/multipart/multipart.go.html#line-249" class="path-duplicate">multipart.go</a><a href="../src/mime/multipart/multipart.go.html#line-249">#L249</a>: 				return 0, io.<b>EOF</b>
+		<a href="../src/mime/multipart/multipart.go.html#line-265" class="path-duplicate">multipart.go</a><a href="../src/mime/multipart/multipart.go.html#line-265">#L265</a>: 			return i, io.<b>EOF</b>
+		<a href="../src/mime/multipart/multipart.go.html#line-395" class="path-duplicate">multipart.go</a><a href="../src/mime/multipart/multipart.go.html#line-395">#L395</a>: 		if err == io.<b>EOF</b> &amp;&amp; r.isFinalBoundary(line) {
+		<a href="../src/mime/multipart/multipart.go.html#line-401" class="path-duplicate">multipart.go</a><a href="../src/mime/multipart/multipart.go.html#line-401">#L401</a>: 			return nil, io.<b>EOF</b>
+		<a href="../src/mime/multipart/multipart.go.html#line-419" class="path-duplicate">multipart.go</a><a href="../src/mime/multipart/multipart.go.html#line-419">#L419</a>: 			return nil, io.<b>EOF</b>
+
+	<a href="../pkg/mime/quotedprintable.html">mime/quotedprintable</a>
+		<a href="../src/mime/quotedprintable/reader.go.html#line-98">reader.go#L98</a>: 					!(len(rightStripped) == 0 &amp;&amp; len(r.line) &gt; 0 &amp;&amp; r.rerr == io.<b>EOF</b>) {
+
+	<a href="../pkg/net.html">net</a>
+		<a href="../src/net/net.go.html#line-180">net.go#L180</a>: 	if err != nil &amp;&amp; err != io.<b>EOF</b> {
+		<a href="../src/net/net.go.html#line-793" class="path-duplicate">net.go</a><a href="../src/net/net.go.html#line-793">#L793</a>: 		err = io.<b>EOF</b>
+		<a href="../src/net/parse.go.html#line-59">parse.go#L59</a>: 		if err == io.<b>EOF</b> || err == io.ErrUnexpectedEOF {
+		<a href="../src/net/pipe.go.html#line-143">pipe.go#L143</a>: 	if err != nil &amp;&amp; err != io.<b>EOF</b> &amp;&amp; err != io.ErrClosedPipe {
+		<a href="../src/net/pipe.go.html#line-154" class="path-duplicate">pipe.go</a><a href="../src/net/pipe.go.html#line-154">#L154</a>: 		return 0, io.<b>EOF</b>
+		<a href="../src/net/pipe.go.html#line-167" class="path-duplicate">pipe.go</a><a href="../src/net/pipe.go.html#line-167">#L167</a>: 		return 0, io.<b>EOF</b>
+		<a href="../src/net/tcpsock.go.html#line-131">tcpsock.go#L131</a>: 	if err != nil &amp;&amp; err != io.<b>EOF</b> {
+		<a href="../src/net/tcpsock.go.html#line-143" class="path-duplicate">tcpsock.go</a><a href="../src/net/tcpsock.go.html#line-143">#L143</a>: 	if err != nil &amp;&amp; err != io.<b>EOF</b> {
+
+	<a href="../pkg/net/http.html">net/http</a>
+		<a href="../src/net/http/client.go.html#line-967">client.go#L967</a>: 	if err == io.<b>EOF</b> {
+		<a href="../src/net/http/h2_bundle.go.html#line-4581">h2_bundle.go#L4581</a>: 	if err == io.<b>EOF</b> || err == io.ErrUnexpectedEOF || http2isClosedConnError(err) || err == http2errPrefaceTimeout {
+		<a href="../src/net/http/h2_bundle.go.html#line-5272" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-5272">#L5272</a>: 		clientGone := err == io.<b>EOF</b> || err == io.ErrUnexpectedEOF || http2isClosedConnError(err)
+		<a href="../src/net/http/h2_bundle.go.html#line-5704" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-5704">#L5704</a>: 		st.body.closeWithErrorAndCode(io.<b>EOF</b>, st.copyTrailersToHandlerRequest)
+		<a href="../src/net/http/h2_bundle.go.html#line-5705" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-5705">#L5705</a>: 		st.body.CloseWithError(io.<b>EOF</b>)
+		<a href="../src/net/http/h2_bundle.go.html#line-6329" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-6329">#L6329</a>: 		return 0, io.<b>EOF</b>
+		<a href="../src/net/http/h2_bundle.go.html#line-6332" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-6332">#L6332</a>: 	if err == io.<b>EOF</b> {
+		<a href="../src/net/http/h2_bundle.go.html#line-8827" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-8827">#L8827</a>: 			case err == io.<b>EOF</b>:
+		<a href="../src/net/http/h2_bundle.go.html#line-9259" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-9259">#L9259</a>: 	if err == io.<b>EOF</b> {
+		<a href="../src/net/http/h2_bundle.go.html#line-9287" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-9287">#L9287</a>: 	} else if err == io.<b>EOF</b> {
+		<a href="../src/net/http/h2_bundle.go.html#line-9317" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-9317">#L9317</a>: 	if errors.Is(err, io.<b>EOF</b>) {
+		<a href="../src/net/http/h2_bundle.go.html#line-9637" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-9637">#L9637</a>: 		if err == io.<b>EOF</b> &amp;&amp; cs.bytesRemain &gt; 0 {
+		<a href="../src/net/http/h2_bundle.go.html#line-9837" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-9837">#L9837</a>: 		cs.bufPipe.closeWithErrorAndCode(io.<b>EOF</b>, cs.copyTrailers)
+		<a href="../src/net/http/h2_bundle.go.html#line-10123" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-10123">#L10123</a>: func (http2noBodyReader) Read([]byte) (int, error) { return 0, io.<b>EOF</b> }
+		<a href="../src/net/http/http.go.html#line-114">http.go#L114</a>: func (noBody) Read([]byte) (int, error)         { return 0, io.<b>EOF</b> }
+		<a href="../src/net/http/request.go.html#line-1063">request.go#L1063</a>: 		if err == io.<b>EOF</b> {
+		<a href="../src/net/http/response.go.html#line-163">response.go#L163</a>: 		if err == io.<b>EOF</b> {
+		<a href="../src/net/http/response.go.html#line-190" class="path-duplicate">response.go</a><a href="../src/net/http/response.go.html#line-190">#L190</a>: 		if err == io.<b>EOF</b> {
+		<a href="../src/net/http/response.go.html#line-270" class="path-duplicate">response.go</a><a href="../src/net/http/response.go.html#line-270">#L270</a>: 		if err != nil &amp;&amp; err != io.<b>EOF</b> {
+		<a href="../src/net/http/server.go.html#line-772">server.go#L772</a>: 		return 0, io.<b>EOF</b>
+		<a href="../src/net/http/server.go.html#line-931" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-931">#L931</a>: 	if err == io.<b>EOF</b> {
+		<a href="../src/net/http/server.go.html#line-1415" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-1415">#L1415</a>: 			case io.<b>EOF</b>:
+		<a href="../src/net/http/server.go.html#line-1875" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-1875">#L1875</a>: 	if err == io.<b>EOF</b> {
+		<a href="../src/net/http/transfer.go.html#line-47">transfer.go#L47</a>: 		return 0, io.<b>EOF</b>
+		<a href="../src/net/http/transfer.go.html#line-54" class="path-duplicate">transfer.go</a><a href="../src/net/http/transfer.go.html#line-54">#L54</a>: 	return 1, io.<b>EOF</b>
+		<a href="../src/net/http/transfer.go.html#line-223" class="path-duplicate">transfer.go</a><a href="../src/net/http/transfer.go.html#line-223">#L223</a>: 		if rres.n == 0 &amp;&amp; rres.err == io.<b>EOF</b> {
+		<a href="../src/net/http/transfer.go.html#line-417" class="path-duplicate">transfer.go</a><a href="../src/net/http/transfer.go.html#line-417">#L417</a>: 	if err != nil &amp;&amp; err != io.<b>EOF</b> {
+		<a href="../src/net/http/transfer.go.html#line-838" class="path-duplicate">transfer.go</a><a href="../src/net/http/transfer.go.html#line-838">#L838</a>: 		return 0, io.<b>EOF</b>
+		<a href="../src/net/http/transfer.go.html#line-842" class="path-duplicate">transfer.go</a><a href="../src/net/http/transfer.go.html#line-842">#L842</a>: 	if err == io.<b>EOF</b> {
+		<a href="../src/net/http/transfer.go.html#line-872" class="path-duplicate">transfer.go</a><a href="../src/net/http/transfer.go.html#line-872">#L872</a>: 			err = io.<b>EOF</b>
+		<a href="../src/net/http/transfer.go.html#line-934" class="path-duplicate">transfer.go</a><a href="../src/net/http/transfer.go.html#line-934">#L934</a>: 		if err == io.<b>EOF</b> {
+		<a href="../src/net/http/transfer.go.html#line-993" class="path-duplicate">transfer.go</a><a href="../src/net/http/transfer.go.html#line-993">#L993</a>: 			if err == io.<b>EOF</b> {
+		<a href="../src/net/http/transfer.go.html#line-1085" class="path-duplicate">transfer.go</a><a href="../src/net/http/transfer.go.html#line-1085">#L1085</a>: 		err = io.<b>EOF</b>
+		<a href="../src/net/http/transport.go.html#line-1978">transport.go#L1978</a>: 	if err == io.<b>EOF</b> {
+		<a href="../src/net/http/transport.go.html#line-2230" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-2230">#L2230</a>: 				isEOF := err == io.<b>EOF</b>
+		<a href="../src/net/http/transport.go.html#line-2299" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-2299">#L2299</a>: 	if peekErr == io.<b>EOF</b> {
+		<a href="../src/net/http/transport.go.html#line-2852" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-2852">#L2852</a>: 	if es.earlyCloseFn != nil &amp;&amp; es.rerr != io.<b>EOF</b> {
+
+	<a href="../pkg/net/http/internal.html">net/http/internal</a>
+		<a href="../src/net/http/internal/chunked.go.html#line-84">chunked.go#L84</a>: 		cr.err = io.<b>EOF</b>
+		<a href="../src/net/http/internal/chunked.go.html#line-112" class="path-duplicate">chunked.go</a><a href="../src/net/http/internal/chunked.go.html#line-112">#L112</a>: 				if cr.err == io.<b>EOF</b> {
+		<a href="../src/net/http/internal/chunked.go.html#line-144" class="path-duplicate">chunked.go</a><a href="../src/net/http/internal/chunked.go.html#line-144">#L144</a>: 		} else if cr.err == io.<b>EOF</b> {
+		<a href="../src/net/http/internal/chunked.go.html#line-160" class="path-duplicate">chunked.go</a><a href="../src/net/http/internal/chunked.go.html#line-160">#L160</a>: 		if err == io.<b>EOF</b> {
+
+	<a href="../pkg/net/textproto.html">net/textproto</a>
+		<a href="../src/net/textproto/reader.go.html#line-356">reader.go#L356</a>: 			if err == io.<b>EOF</b> {
+		<a href="../src/net/textproto/reader.go.html#line-418" class="path-duplicate">reader.go</a><a href="../src/net/textproto/reader.go.html#line-418">#L418</a>: 		err = io.<b>EOF</b>
+		<a href="../src/net/textproto/reader.go.html#line-461" class="path-duplicate">reader.go</a><a href="../src/net/textproto/reader.go.html#line-461">#L461</a>: 			if err == io.<b>EOF</b> {
+
+	<a href="../pkg/os.html">os</a>
+		<a href="../src/os/dir_unix.go.html#line-146">dir_unix.go#L146</a>: 		return nil, nil, nil, io.<b>EOF</b>
+		<a href="../src/os/file.go.html#line-421">file.go#L421</a>: 	if err == nil || err == io.<b>EOF</b> {
+		<a href="../src/os/file.go.html#line-796" class="path-duplicate">file.go</a><a href="../src/os/file.go.html#line-796">#L796</a>: 			if err == io.<b>EOF</b> {
+		<a href="../src/os/removeall_at.go.html#line-115">removeall_at.go#L115</a>: 			if readErr != nil &amp;&amp; readErr != io.<b>EOF</b> {
+
+	<a href="../pkg/strings.html">strings</a>
+		<a href="../src/strings/reader.go.html#line-41">reader.go#L41</a>: 		return 0, io.<b>EOF</b>
+		<a href="../src/strings/reader.go.html#line-56" class="path-duplicate">reader.go</a><a href="../src/strings/reader.go.html#line-56">#L56</a>: 		return 0, io.<b>EOF</b>
+		<a href="../src/strings/reader.go.html#line-60" class="path-duplicate">reader.go</a><a href="../src/strings/reader.go.html#line-60">#L60</a>: 		err = io.<b>EOF</b>
+		<a href="../src/strings/reader.go.html#line-69" class="path-duplicate">reader.go</a><a href="../src/strings/reader.go.html#line-69">#L69</a>: 		return 0, io.<b>EOF</b>
+		<a href="../src/strings/reader.go.html#line-90" class="path-duplicate">reader.go</a><a href="../src/strings/reader.go.html#line-90">#L90</a>: 		return 0, 0, io.<b>EOF</b>
+
+	<a href="../pkg/vendor/golang.org/x/text/transform.html">vendor/golang.org/x/text/transform</a>
+		<a href="../src/vendor/golang.org/x/text/transform/transform.go.html#line-166">transform.go#L166</a>: 			r.dst1, n, err = r.t.Transform(r.dst, r.src[r.src0:r.src1], r.err == io.<b>EOF</b>)
+		<a href="../src/vendor/golang.org/x/text/transform/transform.go.html#line-187" class="path-duplicate">transform.go</a><a href="../src/vendor/golang.org/x/text/transform/transform.go.html#line-187">#L187</a>: 				if r.err == nil || r.err == io.<b>EOF</b> {
+
+	<a href="../pkg/vendor/golang.org/x/text/unicode/norm.html">vendor/golang.org/x/text/unicode/norm</a>
+		<a href="../src/vendor/golang.org/x/text/unicode/norm/readwriter.go.html#line-106">readwriter.go#L106</a>: 		if err == io.<b>EOF</b> {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.heapArenaBytes</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/malloc.go.html#line-247">heapArenaBytes</a></b></span>
+
+<span class="title">25 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/arena.go.html#line-192">arena.go#L192</a>: 	userArenaChunkBytes    = uintptr(int64(userArenaChunkBytesMax-<b>heapArenaBytes</b>)&amp;(int64(userArenaChunkBytesMax-<b>heapArenaBytes</b>)&gt;&gt;63) + <b>heapArenaBytes</b>) // min(userArenaChunkBytesMax, heapArenaBytes)
+		<a href="../src/runtime/arena.go.html#line-211" class="path-duplicate">arena.go</a><a href="../src/runtime/arena.go.html#line-211">#L211</a>: 	if userArenaChunkBytes &lt; <b>heapArenaBytes</b> {
+		<a href="../src/runtime/arena.go.html#line-212" class="path-duplicate">arena.go</a><a href="../src/runtime/arena.go.html#line-212">#L212</a>: 		if <b>heapArenaBytes</b>%userArenaChunkBytes != 0 {
+		<a href="../src/runtime/arena.go.html#line-216" class="path-duplicate">arena.go</a><a href="../src/runtime/arena.go.html#line-216">#L216</a>: 		if userArenaChunkBytes%<b>heapArenaBytes</b> != 0 {
+		<a href="../src/runtime/heapdump.go.html#line-530">heapdump.go#L530</a>: 			if base+<b>heapArenaBytes</b> &gt; arenaEnd {
+		<a href="../src/runtime/heapdump.go.html#line-531" class="path-duplicate">heapdump.go</a><a href="../src/runtime/heapdump.go.html#line-531">#L531</a>: 				arenaEnd = base + <b>heapArenaBytes</b>
+		<a href="../src/runtime/malloc.go.html#line-247">malloc.go#L247</a>: 	<b>heapArenaBytes</b> = 1 &lt;&lt; logHeapArenaBytes
+		<a href="../src/runtime/malloc.go.html#line-249" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-249">#L249</a>: 	heapArenaWords = <b>heapArenaBytes</b> / goarch.PtrSize
+		<a href="../src/runtime/malloc.go.html#line-259" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-259">#L259</a>: 	pagesPerArena = <b>heapArenaBytes</b> / pageSize
+		<a href="../src/runtime/malloc.go.html#line-591" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-591">#L591</a>: 		p = alignUp(p+(256&lt;&lt;10), <b>heapArenaBytes</b>)
+		<a href="../src/runtime/malloc.go.html#line-600" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-600">#L600</a>: 			a, size := sysReserveAligned(unsafe.Pointer(p), arenaSize, <b>heapArenaBytes</b>)
+		<a href="../src/runtime/malloc.go.html#line-643" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-643">#L643</a>: 	n = alignUp(n, <b>heapArenaBytes</b>)
+		<a href="../src/runtime/malloc.go.html#line-651" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-651">#L651</a>: 		v = h.arena.alloc(n, <b>heapArenaBytes</b>, &amp;gcController.heapReleased)
+		<a href="../src/runtime/malloc.go.html#line-708" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-708">#L708</a>: 		v, size = sysReserveAligned(nil, n, <b>heapArenaBytes</b>)
+		<a href="../src/runtime/malloc.go.html#line-741" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-741">#L741</a>: 	if uintptr(v)&amp;(<b>heapArenaBytes</b>-1) != 0 {
+		<a href="../src/runtime/mcheckmark.go.html#line-28">mcheckmark.go#L28</a>: 	b [<b>heapArenaBytes</b> / goarch.PtrSize / 8]uint8
+		<a href="../src/runtime/mcheckmark.go.html#line-93" class="path-duplicate">mcheckmark.go</a><a href="../src/runtime/mcheckmark.go.html#line-93">#L93</a>: 	arenaWord := (obj / <b>heapArenaBytes</b> / 8) % uintptr(len(arena.checkmarks.b))
+		<a href="../src/runtime/mcheckmark.go.html#line-94" class="path-duplicate">mcheckmark.go</a><a href="../src/runtime/mcheckmark.go.html#line-94">#L94</a>: 	mask := byte(1 &lt;&lt; ((obj / <b>heapArenaBytes</b>) % 8))
+		<a href="../src/runtime/mheap.go.html#line-592">mheap.go#L592</a>: 	return arenaIdx((p - arenaBaseOffset) / <b>heapArenaBytes</b>)
+		<a href="../src/runtime/mheap.go.html#line-598" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-598">#L598</a>: 	return uintptr(i)*<b>heapArenaBytes</b> + arenaBaseOffset
+		<a href="../src/runtime/mheap.go.html#line-1025" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1025">#L1025</a>: 		arenaBase := base % <b>heapArenaBytes</b>
+		<a href="../src/runtime/mheap.go.html#line-1045" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1045">#L1045</a>: 		if arenaLimit &gt; <b>heapArenaBytes</b> {
+		<a href="../src/runtime/mheap.go.html#line-1046" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1046">#L1046</a>: 			arenaLimit = <b>heapArenaBytes</b>
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

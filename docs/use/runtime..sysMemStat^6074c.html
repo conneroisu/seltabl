@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.sysMemStat</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/mstats.go.html#line-641">sysMemStat</a></b></span>
+
+<span class="title">28 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/malloc.go.html#line-1526">malloc.go#L1526</a>: func persistentalloc(size, align uintptr, sysStat *<b>sysMemStat</b>) unsafe.Pointer {
+		<a href="../src/runtime/malloc.go.html#line-1538" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-1538">#L1538</a>: func persistentalloc1(size, align uintptr, sysStat *<b>sysMemStat</b>) *notInHeap {
+		<a href="../src/runtime/malloc.go.html#line-1645" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-1645">#L1645</a>: func (l *linearAlloc) alloc(size, align uintptr, sysStat *<b>sysMemStat</b>) unsafe.Pointer {
+		<a href="../src/runtime/mem.go.html#line-49">mem.go#L49</a>: func sysAlloc(n uintptr, sysStat *<b>sysMemStat</b>) unsafe.Pointer {
+		<a href="../src/runtime/mem.go.html#line-113" class="path-duplicate">mem.go</a><a href="../src/runtime/mem.go.html#line-113">#L113</a>: func sysFree(v unsafe.Pointer, n uintptr, sysStat *<b>sysMemStat</b>) {
+		<a href="../src/runtime/mem.go.html#line-153" class="path-duplicate">mem.go</a><a href="../src/runtime/mem.go.html#line-153">#L153</a>: func sysMap(v unsafe.Pointer, n uintptr, sysStat *<b>sysMemStat</b>) {
+		<a href="../src/runtime/mfixalloc.go.html#line-40">mfixalloc.go#L40</a>: 	stat   *<b>sysMemStat</b>
+		<a href="../src/runtime/mfixalloc.go.html#line-56" class="path-duplicate">mfixalloc.go</a><a href="../src/runtime/mfixalloc.go.html#line-56">#L56</a>: func (f *fixalloc) init(size uintptr, first func(arg, p unsafe.Pointer), arg unsafe.Pointer, stat *<b>sysMemStat</b>) {
+		<a href="../src/runtime/mgcpacer.go.html#line-356">mgcpacer.go#L356</a>: 	heapInUse    <b>sysMemStat</b>    // bytes in mSpanInUse spans
+		<a href="../src/runtime/mgcpacer.go.html#line-357" class="path-duplicate">mgcpacer.go</a><a href="../src/runtime/mgcpacer.go.html#line-357">#L357</a>: 	heapReleased <b>sysMemStat</b>    // bytes released to the OS
+		<a href="../src/runtime/mgcpacer.go.html#line-358" class="path-duplicate">mgcpacer.go</a><a href="../src/runtime/mgcpacer.go.html#line-358">#L358</a>: 	heapFree     <b>sysMemStat</b>    // bytes not in any span, but not released to the OS
+		<a href="../src/runtime/mgcscavenge.go.html#line-1057">mgcscavenge.go#L1057</a>: func (s *scavengeIndex) init(test bool, sysStat *<b>sysMemStat</b>) uintptr {
+		<a href="../src/runtime/mgcscavenge.go.html#line-1068" class="path-duplicate">mgcscavenge.go</a><a href="../src/runtime/mgcscavenge.go.html#line-1068">#L1068</a>: func (s *scavengeIndex) grow(base, limit uintptr, sysStat *<b>sysMemStat</b>) uintptr {
+		<a href="../src/runtime/mpagealloc.go.html#line-289">mpagealloc.go#L289</a>: 	sysStat *<b>sysMemStat</b>
+		<a href="../src/runtime/mpagealloc.go.html#line-305" class="path-duplicate">mpagealloc.go</a><a href="../src/runtime/mpagealloc.go.html#line-305">#L305</a>: func (p *pageAlloc) init(mheapLock *mutex, sysStat *<b>sysMemStat</b>, test bool) {
+		<a href="../src/runtime/mpagealloc_64bit.go.html#line-191">mpagealloc_64bit.go#L191</a>: func (s *scavengeIndex) sysGrow(base, limit uintptr, sysStat *<b>sysMemStat</b>) uintptr {
+		<a href="../src/runtime/mpagealloc_64bit.go.html#line-248" class="path-duplicate">mpagealloc_64bit.go</a><a href="../src/runtime/mpagealloc_64bit.go.html#line-248">#L248</a>: func (s *scavengeIndex) sysInit(test bool, sysStat *<b>sysMemStat</b>) uintptr {
+		<a href="../src/runtime/mranges.go.html#line-251">mranges.go#L251</a>: 	sysStat *<b>sysMemStat</b>
+		<a href="../src/runtime/mranges.go.html#line-254" class="path-duplicate">mranges.go</a><a href="../src/runtime/mranges.go.html#line-254">#L254</a>: func (a *addrRanges) init(sysStat *<b>sysMemStat</b>) {
+		<a href="../src/runtime/mstats.go.html#line-19">mstats.go#L19</a>: 	stacks_sys <b>sysMemStat</b> // only counts newosproc0 stack in mstats; differs from MemStats.StackSys
+		<a href="../src/runtime/mstats.go.html#line-22" class="path-duplicate">mstats.go</a><a href="../src/runtime/mstats.go.html#line-22">#L22</a>: 	mspan_sys    <b>sysMemStat</b>
+		<a href="../src/runtime/mstats.go.html#line-23" class="path-duplicate">mstats.go</a><a href="../src/runtime/mstats.go.html#line-23">#L23</a>: 	mcache_sys   <b>sysMemStat</b>
+		<a href="../src/runtime/mstats.go.html#line-24" class="path-duplicate">mstats.go</a><a href="../src/runtime/mstats.go.html#line-24">#L24</a>: 	buckhash_sys <b>sysMemStat</b> // profiling bucket hash table
+		<a href="../src/runtime/mstats.go.html#line-27" class="path-duplicate">mstats.go</a><a href="../src/runtime/mstats.go.html#line-27">#L27</a>: 	gcMiscSys <b>sysMemStat</b> // updated atomically or during STW
+		<a href="../src/runtime/mstats.go.html#line-30" class="path-duplicate">mstats.go</a><a href="../src/runtime/mstats.go.html#line-30">#L30</a>: 	other_sys <b>sysMemStat</b> // updated atomically or during STW
+		<a href="../src/runtime/mstats.go.html#line-641" class="path-duplicate">mstats.go</a><a href="../src/runtime/mstats.go.html#line-641">#L641</a>: type <b>sysMemStat</b> uint64
+		<a href="../src/runtime/mstats.go.html#line-648" class="path-duplicate">mstats.go</a><a href="../src/runtime/mstats.go.html#line-648">#L648</a>: func (s *<b>sysMemStat</b>) load() uint64 {
+		<a href="../src/runtime/mstats.go.html#line-657" class="path-duplicate">mstats.go</a><a href="../src/runtime/mstats.go.html#line-657">#L657</a>: func (s *<b>sysMemStat</b>) add(n int64) {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.guintptr</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/runtime2.go.html#line-263">guintptr</a></b></span>
+
+<span class="title">29 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/coro.go.html#line-25">coro.go#L25</a>: 	gp <b>guintptr</b>
+		<a href="../src/runtime/coro.go.html#line-143" class="path-duplicate">coro.go</a><a href="../src/runtime/coro.go.html#line-143">#L143</a>: 		var self <b>guintptr</b>
+		<a href="../src/runtime/mgc.go.html#line-1268">mgc.go#L1268</a>: 	gp <b>guintptr</b>
+		<a href="../src/runtime/proc.go.html#line-1715">proc.go#L1715</a>: 	gp.sched.g = <b>guintptr</b>(unsafe.Pointer(gp))
+		<a href="../src/runtime/proc.go.html#line-2043" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-2043">#L2043</a>: 	g   <b>guintptr</b>
+		<a href="../src/runtime/proc.go.html#line-2291" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-2291">#L2291</a>: 	gp.sched.g = <b>guintptr</b>(unsafe.Pointer(gp))
+		<a href="../src/runtime/proc.go.html#line-4930" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4930">#L4930</a>: 	newg.sched.g = <b>guintptr</b>(unsafe.Pointer(newg))
+		<a href="../src/runtime/proc.go.html#line-6643" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6643">#L6643</a>: 		if !pp.runnext.cas(oldnext, <b>guintptr</b>(unsafe.Pointer(gp))) {
+		<a href="../src/runtime/proc.go.html#line-6813" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6813">#L6813</a>: func runqgrab(pp *p, batch *[256]<b>guintptr</b>, batchHead uint32, stealRunNextG bool) uint32 {
+		<a href="../src/runtime/proc.go.html#line-6890" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6890">#L6890</a>: 	head <b>guintptr</b>
+		<a href="../src/runtime/proc.go.html#line-6891" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6891">#L6891</a>: 	tail <b>guintptr</b>
+		<a href="../src/runtime/proc.go.html#line-6957" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6957">#L6957</a>: 	head <b>guintptr</b>
+		<a href="../src/runtime/runtime2.go.html#line-263">runtime2.go#L263</a>: type <b>guintptr</b> uintptr
+		<a href="../src/runtime/runtime2.go.html#line-266" class="path-duplicate">runtime2.go</a><a href="../src/runtime/runtime2.go.html#line-266">#L266</a>: func (gp <b>guintptr</b>) ptr() *g { return (*g)(unsafe.Pointer(gp)) }
+		<a href="../src/runtime/runtime2.go.html#line-269" class="path-duplicate">runtime2.go</a><a href="../src/runtime/runtime2.go.html#line-269">#L269</a>: func (gp *<b>guintptr</b>) set(g *g) { *gp = <b>guintptr</b>(unsafe.Pointer(g)) }
+		<a href="../src/runtime/runtime2.go.html#line-272" class="path-duplicate">runtime2.go</a><a href="../src/runtime/runtime2.go.html#line-272">#L272</a>: func (gp *<b>guintptr</b>) cas(old, new <b>guintptr</b>) bool {
+		<a href="../src/runtime/runtime2.go.html#line-277" class="path-duplicate">runtime2.go</a><a href="../src/runtime/runtime2.go.html#line-277">#L277</a>: func (gp *g) guintptr() <b>guintptr</b> {
+		<a href="../src/runtime/runtime2.go.html#line-278" class="path-duplicate">runtime2.go</a><a href="../src/runtime/runtime2.go.html#line-278">#L278</a>: 	return <b>guintptr</b>(unsafe.Pointer(gp))
+		<a href="../src/runtime/runtime2.go.html#line-287" class="path-duplicate">runtime2.go</a><a href="../src/runtime/runtime2.go.html#line-287">#L287</a>: 	(*<b>guintptr</b>)(unsafe.Pointer(gp)).set(new)
+		<a href="../src/runtime/runtime2.go.html#line-339" class="path-duplicate">runtime2.go</a><a href="../src/runtime/runtime2.go.html#line-339">#L339</a>: 	g    <b>guintptr</b>
+		<a href="../src/runtime/runtime2.go.html#line-458" class="path-duplicate">runtime2.go</a><a href="../src/runtime/runtime2.go.html#line-458">#L458</a>: 	schedlink    <b>guintptr</b>
+		<a href="../src/runtime/runtime2.go.html#line-564" class="path-duplicate">runtime2.go</a><a href="../src/runtime/runtime2.go.html#line-564">#L564</a>: 	caughtsig     <b>guintptr</b> // goroutine running during fatal signal
+		<a href="../src/runtime/runtime2.go.html#line-593" class="path-duplicate">runtime2.go</a><a href="../src/runtime/runtime2.go.html#line-593">#L593</a>: 	lockedg       <b>guintptr</b>
+		<a href="../src/runtime/runtime2.go.html#line-617" class="path-duplicate">runtime2.go</a><a href="../src/runtime/runtime2.go.html#line-617">#L617</a>: 	libcallg  <b>guintptr</b>
+		<a href="../src/runtime/runtime2.go.html#line-668" class="path-duplicate">runtime2.go</a><a href="../src/runtime/runtime2.go.html#line-668">#L668</a>: 	runq     [256]<b>guintptr</b>
+		<a href="../src/runtime/runtime2.go.html#line-681" class="path-duplicate">runtime2.go</a><a href="../src/runtime/runtime2.go.html#line-681">#L681</a>: 	runnext <b>guintptr</b>
+		<a href="../src/runtime/traceback.go.html#line-102">traceback.go#L102</a>: 	g <b>guintptr</b>
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

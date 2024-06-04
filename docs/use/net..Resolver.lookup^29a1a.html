@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net.Resolver.lookup</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/net.html">net</a>.<a href="../src/net/lookup.go.html#line-133">Resolver</a>.<a href="../src/net/dnsclient_unix.go.html#line-444">lookup</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">6 uses</span>
+
+	net (current package)
+		<a href="../src/net/dnsclient_unix.go.html#line-444">dnsclient_unix.go#L444</a>: func (r *Resolver) <b>lookup</b>(ctx context.Context, name string, qtype dnsmessage.Type, conf *dnsConfig) (dnsmessage.Parser, string, error) {
+		<a href="../src/net/dnsclient_unix.go.html#line-848" class="path-duplicate">dnsclient_unix.go</a><a href="../src/net/dnsclient_unix.go.html#line-848">#L848</a>: 	p, server, err := r.<b>lookup</b>(ctx, arpa, dnsmessage.TypePTR, conf)
+		<a href="../src/net/lookup.go.html#line-725">lookup.go#L725</a>: 	p, server, err := r.<b>lookup</b>(ctx, target, dnsmessage.TypeSRV, nil)
+		<a href="../src/net/lookup.go.html#line-771" class="path-duplicate">lookup.go</a><a href="../src/net/lookup.go.html#line-771">#L771</a>: 	p, server, err := r.<b>lookup</b>(ctx, name, dnsmessage.TypeMX, nil)
+		<a href="../src/net/lookup.go.html#line-815" class="path-duplicate">lookup.go</a><a href="../src/net/lookup.go.html#line-815">#L815</a>: 	p, server, err := r.<b>lookup</b>(ctx, name, dnsmessage.TypeNS, nil)
+		<a href="../src/net/lookup.go.html#line-857" class="path-duplicate">lookup.go</a><a href="../src/net/lookup.go.html#line-857">#L857</a>: 	p, server, err := r.<b>lookup</b>(ctx, name, dnsmessage.TypeTXT, nil)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

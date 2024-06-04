@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: math/big.Rat.b</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/math/big.html">math/big</a>.<a href="../../src/math/big/rat.go.html#line-23">Rat</a>.<a href="../../src/math/big/rat.go.html#line-29">b</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">89 uses</span>
+
+	math/big (current package)
+		<a href="../../src/math/big/float.go.html#line-1156">float.go#L1156</a>: 			z.<b>b</b>.abs = z.<b>b</b>.abs[:0] // == 1 (see Rat)
+		<a href="../../src/math/big/float.go.html#line-1160" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-1160">#L1160</a>: 			z.<b>b</b>.abs = z.<b>b</b>.abs[:0] // == 1 (see Rat)
+		<a href="../../src/math/big/float.go.html#line-1164" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-1164">#L1164</a>: 			t := z.<b>b</b>.abs.setUint64(1)
+		<a href="../../src/math/big/float.go.html#line-1165" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-1165">#L1165</a>: 			z.<b>b</b>.abs = t.shl(t, uint(allBits-x.exp))
+		<a href="../../src/math/big/rat.go.html#line-29">rat.go#L29</a>: 	a, <b>b</b> Int
+		<a href="../../src/math/big/rat.go.html#line-64" class="path-duplicate">rat.go</a><a href="../../src/math/big/rat.go.html#line-64">#L64</a>: 	z.<b>b</b>.Set(intOne)
+		<a href="../../src/math/big/rat.go.html#line-66" class="path-duplicate">rat.go</a><a href="../../src/math/big/rat.go.html#line-66">#L66</a>: 		z.<b>b</b>.Lsh(&amp;z.<b>b</b>, uint(shift))
+		<a href="../../src/math/big/rat.go.html#line-274" class="path-duplicate">rat.go</a><a href="../../src/math/big/rat.go.html#line-274">#L274</a>: 	b := x.<b>b</b>.abs
+		<a href="../../src/math/big/rat.go.html#line-290" class="path-duplicate">rat.go</a><a href="../../src/math/big/rat.go.html#line-290">#L290</a>: 	b := x.<b>b</b>.abs
+		<a href="../../src/math/big/rat.go.html#line-313" class="path-duplicate">rat.go</a><a href="../../src/math/big/rat.go.html#line-313">#L313</a>: 	z.<b>b</b>.abs = z.<b>b</b>.abs.set(babs)
+		<a href="../../src/math/big/rat.go.html#line-328" class="path-duplicate">rat.go</a><a href="../../src/math/big/rat.go.html#line-328">#L328</a>: 	z.<b>b</b>.abs = z.<b>b</b>.abs.setUint64(uint64(b))
+		<a href="../../src/math/big/rat.go.html#line-335" class="path-duplicate">rat.go</a><a href="../../src/math/big/rat.go.html#line-335">#L335</a>: 	z.<b>b</b>.abs = z.<b>b</b>.abs.setWord(1)
+		<a href="../../src/math/big/rat.go.html#line-342" class="path-duplicate">rat.go</a><a href="../../src/math/big/rat.go.html#line-342">#L342</a>: 	z.<b>b</b>.abs = z.<b>b</b>.abs.setWord(1)
+		<a href="../../src/math/big/rat.go.html#line-349" class="path-duplicate">rat.go</a><a href="../../src/math/big/rat.go.html#line-349">#L349</a>: 	z.<b>b</b>.abs = z.<b>b</b>.abs.setWord(1)
+		<a href="../../src/math/big/rat.go.html#line-357" class="path-duplicate">rat.go</a><a href="../../src/math/big/rat.go.html#line-357">#L357</a>: 		z.<b>b</b>.Set(&amp;x.<b>b</b>)
+		<a href="../../src/math/big/rat.go.html#line-359" class="path-duplicate">rat.go</a><a href="../../src/math/big/rat.go.html#line-359">#L359</a>: 	if len(z.<b>b</b>.abs) == 0 {
+		<a href="../../src/math/big/rat.go.html#line-360" class="path-duplicate">rat.go</a><a href="../../src/math/big/rat.go.html#line-360">#L360</a>: 		z.<b>b</b>.abs = z.<b>b</b>.abs.setWord(1)
+		<a href="../../src/math/big/rat.go.html#line-386" class="path-duplicate">rat.go</a><a href="../../src/math/big/rat.go.html#line-386">#L386</a>: 	z.a.abs, z.<b>b</b>.abs = z.<b>b</b>.abs, z.a.abs
+		<a href="../../src/math/big/rat.go.html#line-401" class="path-duplicate">rat.go</a><a href="../../src/math/big/rat.go.html#line-401">#L401</a>: 	return len(x.<b>b</b>.abs) == 0 || x.<b>b</b>.abs.cmp(natOne) == 0
+		<a href="../../src/math/big/rat.go.html#line-421" class="path-duplicate">rat.go</a><a href="../../src/math/big/rat.go.html#line-421">#L421</a>: 	if len(x.<b>b</b>.abs) == 0 {
+		<a href="../../src/math/big/rat.go.html#line-427" class="path-duplicate">rat.go</a><a href="../../src/math/big/rat.go.html#line-427">#L427</a>: 	return &amp;x.<b>b</b>
+		<a href="../../src/math/big/rat.go.html#line-436" class="path-duplicate">rat.go</a><a href="../../src/math/big/rat.go.html#line-436">#L436</a>: 	case len(z.<b>b</b>.abs) == 0:
+		<a href="../../src/math/big/rat.go.html#line-438" class="path-duplicate">rat.go</a><a href="../../src/math/big/rat.go.html#line-438">#L438</a>: 		z.<b>b</b>.abs = z.<b>b</b>.abs.setWord(1)
+		<a href="../../src/math/big/rat.go.html#line-443" class="path-duplicate">rat.go</a><a href="../../src/math/big/rat.go.html#line-443">#L443</a>: 		z.<b>b</b>.neg = false
+		<a href="../../src/math/big/rat.go.html#line-444" class="path-duplicate">rat.go</a><a href="../../src/math/big/rat.go.html#line-444">#L444</a>: 		if f := NewInt(0).lehmerGCD(nil, nil, &amp;z.a, &amp;z.<b>b</b>); f.Cmp(intOne) != 0 {
+		<a href="../../src/math/big/rat.go.html#line-446" class="path-duplicate">rat.go</a><a href="../../src/math/big/rat.go.html#line-446">#L446</a>: 			z.<b>b</b>.abs, _ = z.<b>b</b>.abs.div(nil, z.<b>b</b>.abs, f.abs)
+		<a href="../../src/math/big/rat.go.html#line-486" class="path-duplicate">rat.go</a><a href="../../src/math/big/rat.go.html#line-486">#L486</a>: 	a.scaleDenom(&amp;x.a, y.<b>b</b>.abs)
+		<a href="../../src/math/big/rat.go.html#line-487" class="path-duplicate">rat.go</a><a href="../../src/math/big/rat.go.html#line-487">#L487</a>: 	b.scaleDenom(&amp;y.a, x.<b>b</b>.abs)
+		<a href="../../src/math/big/rat.go.html#line-494" class="path-duplicate">rat.go</a><a href="../../src/math/big/rat.go.html#line-494">#L494</a>: 	a1.scaleDenom(&amp;x.a, y.<b>b</b>.abs)
+		<a href="../../src/math/big/rat.go.html#line-495" class="path-duplicate">rat.go</a><a href="../../src/math/big/rat.go.html#line-495">#L495</a>: 	a2.scaleDenom(&amp;y.a, x.<b>b</b>.abs)
+		<a href="../../src/math/big/rat.go.html#line-497" class="path-duplicate">rat.go</a><a href="../../src/math/big/rat.go.html#line-497">#L497</a>: 	z.<b>b</b>.abs = mulDenom(z.<b>b</b>.abs, x.<b>b</b>.abs, y.<b>b</b>.abs)
+		<a href="../../src/math/big/rat.go.html#line-504" class="path-duplicate">rat.go</a><a href="../../src/math/big/rat.go.html#line-504">#L504</a>: 	a1.scaleDenom(&amp;x.a, y.<b>b</b>.abs)
+		<a href="../../src/math/big/rat.go.html#line-505" class="path-duplicate">rat.go</a><a href="../../src/math/big/rat.go.html#line-505">#L505</a>: 	a2.scaleDenom(&amp;y.a, x.<b>b</b>.abs)
+		<a href="../../src/math/big/rat.go.html#line-507" class="path-duplicate">rat.go</a><a href="../../src/math/big/rat.go.html#line-507">#L507</a>: 	z.<b>b</b>.abs = mulDenom(z.<b>b</b>.abs, x.<b>b</b>.abs, y.<b>b</b>.abs)
+		<a href="../../src/math/big/rat.go.html#line-517" class="path-duplicate">rat.go</a><a href="../../src/math/big/rat.go.html#line-517">#L517</a>: 		if len(x.<b>b</b>.abs) == 0 {
+		<a href="../../src/math/big/rat.go.html#line-518" class="path-duplicate">rat.go</a><a href="../../src/math/big/rat.go.html#line-518">#L518</a>: 			z.<b>b</b>.abs = z.<b>b</b>.abs.setWord(1)
+		<a href="../../src/math/big/rat.go.html#line-520" class="path-duplicate">rat.go</a><a href="../../src/math/big/rat.go.html#line-520">#L520</a>: 			z.<b>b</b>.abs = z.<b>b</b>.abs.sqr(x.<b>b</b>.abs)
+		<a href="../../src/math/big/rat.go.html#line-525" class="path-duplicate">rat.go</a><a href="../../src/math/big/rat.go.html#line-525">#L525</a>: 	z.<b>b</b>.abs = mulDenom(z.<b>b</b>.abs, x.<b>b</b>.abs, y.<b>b</b>.abs)
+		<a href="../../src/math/big/rat.go.html#line-536" class="path-duplicate">rat.go</a><a href="../../src/math/big/rat.go.html#line-536">#L536</a>: 	a.scaleDenom(&amp;x.a, y.<b>b</b>.abs)
+		<a href="../../src/math/big/rat.go.html#line-537" class="path-duplicate">rat.go</a><a href="../../src/math/big/rat.go.html#line-537">#L537</a>: 	b.scaleDenom(&amp;y.a, x.<b>b</b>.abs)
+		<a href="../../src/math/big/rat.go.html#line-539" class="path-duplicate">rat.go</a><a href="../../src/math/big/rat.go.html#line-539">#L539</a>: 	z.<b>b</b>.abs = b.abs
+		<a href="../../src/math/big/ratconv.go.html#line-71">ratconv.go#L71</a>: 		if z.<b>b</b>.abs, _, _, err = z.<b>b</b>.abs.scan(r, 0, false); err != nil {
+		<a href="../../src/math/big/ratconv.go.html#line-78" class="path-duplicate">ratconv.go</a><a href="../../src/math/big/ratconv.go.html#line-78">#L78</a>: 		if len(z.<b>b</b>.abs) == 0 {
+		<a href="../../src/math/big/ratconv.go.html#line-181" class="path-duplicate">ratconv.go</a><a href="../../src/math/big/ratconv.go.html#line-181">#L181</a>: 		pow5 := z.<b>b</b>.abs.expNN(natFive, nat(nil).setWord(Word(n)), nil, false) // use underlying array of z.b.abs
+		<a href="../../src/math/big/ratconv.go.html#line-184" class="path-duplicate">ratconv.go</a><a href="../../src/math/big/ratconv.go.html#line-184">#L184</a>: 			z.<b>b</b>.abs = z.<b>b</b>.abs.setWord(1)
+		<a href="../../src/math/big/ratconv.go.html#line-186" class="path-duplicate">ratconv.go</a><a href="../../src/math/big/ratconv.go.html#line-186">#L186</a>: 			z.<b>b</b>.abs = pow5
+		<a href="../../src/math/big/ratconv.go.html#line-189" class="path-duplicate">ratconv.go</a><a href="../../src/math/big/ratconv.go.html#line-189">#L189</a>: 		z.<b>b</b>.abs = z.<b>b</b>.abs.setWord(1)
+		<a href="../../src/math/big/ratconv.go.html#line-199" class="path-duplicate">ratconv.go</a><a href="../../src/math/big/ratconv.go.html#line-199">#L199</a>: 		z.<b>b</b>.abs = z.<b>b</b>.abs.shl(z.<b>b</b>.abs, uint(-exp2))
+		<a href="../../src/math/big/ratconv.go.html#line-310" class="path-duplicate">ratconv.go</a><a href="../../src/math/big/ratconv.go.html#line-310">#L310</a>: 	if len(x.<b>b</b>.abs) != 0 {
+		<a href="../../src/math/big/ratconv.go.html#line-311" class="path-duplicate">ratconv.go</a><a href="../../src/math/big/ratconv.go.html#line-311">#L311</a>: 		buf = x.<b>b</b>.Append(buf, 10)
+		<a href="../../src/math/big/ratconv.go.html#line-345" class="path-duplicate">ratconv.go</a><a href="../../src/math/big/ratconv.go.html#line-345">#L345</a>: 	q, r := nat(nil).div(nat(nil), x.a.abs, x.<b>b</b>.abs)
+		<a href="../../src/math/big/ratconv.go.html#line-353" class="path-duplicate">ratconv.go</a><a href="../../src/math/big/ratconv.go.html#line-353">#L353</a>: 	r, r2 := r.div(nat(nil), r, x.<b>b</b>.abs)
+		<a href="../../src/math/big/ratconv.go.html#line-357" class="path-duplicate">ratconv.go</a><a href="../../src/math/big/ratconv.go.html#line-357">#L357</a>: 	if x.<b>b</b>.abs.cmp(r2) &lt;= 0 {
+		<a href="../../src/math/big/ratmarsh.go.html#line-24">ratmarsh.go#L24</a>: 	buf := make([]byte, 1+4+(len(x.a.abs)+len(x.<b>b</b>.abs))*_S) // extra bytes for version and sign bit (1), and numerator length (4)
+		<a href="../../src/math/big/ratmarsh.go.html#line-25" class="path-duplicate">ratmarsh.go</a><a href="../../src/math/big/ratmarsh.go.html#line-25">#L25</a>: 	i := x.<b>b</b>.abs.bytes(buf)
+		<a href="../../src/math/big/ratmarsh.go.html#line-67" class="path-duplicate">ratmarsh.go</a><a href="../../src/math/big/ratmarsh.go.html#line-67">#L67</a>: 	z.<b>b</b>.abs = z.<b>b</b>.abs.setBytes(buf[i:])
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

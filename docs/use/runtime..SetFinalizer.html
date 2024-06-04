@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.SetFinalizer</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/mfinal.go.html#line-410">SetFinalizer</a></b></span>
+
+<span class="title">15 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/arena.go.html#line-266">arena.go#L266</a>: 	<b>SetFinalizer</b>(a, func(a *userArena) {
+		<a href="../src/runtime/arena.go.html#line-325" class="path-duplicate">arena.go</a><a href="../src/runtime/arena.go.html#line-325">#L325</a>: 	<b>SetFinalizer</b>(a, nil)
+		<a href="../src/runtime/mfinal.go.html#line-410">mfinal.go#L410</a>: func <b>SetFinalizer</b>(obj any, finalizer any) {
+		<a href="../src/runtime/pinner.go.html#line-50">pinner.go#L50</a>: 			<b>SetFinalizer</b>(p.pinner, func(i *pinner) {
+
+	<a href="../pkg/crypto/tls.html">crypto/tls</a>
+		<a href="../src/crypto/tls/cache.go.html#line-63">cache.go#L63</a>: 	runtime.<b>SetFinalizer</b>(a, func(_ *activeCert) {
+
+	<a href="../pkg/internal/intern.html">internal/intern</a>
+		<a href="../src/internal/intern/intern.go.html#line-120">intern.go#L120</a>: 		runtime.<b>SetFinalizer</b>(v, finalize)
+		<a href="../src/internal/intern/intern.go.html#line-133" class="path-duplicate">intern.go</a><a href="../src/internal/intern/intern.go.html#line-133">#L133</a>: 		runtime.<b>SetFinalizer</b>(v, finalize)
+
+	<a href="../pkg/internal/poll.html">internal/poll</a>
+		<a href="../src/internal/poll/splice_linux.go.html#line-202">splice_linux.go#L202</a>: 	runtime.<b>SetFinalizer</b>(p, destroyPipe)
+		<a href="../src/internal/poll/splice_linux.go.html#line-222" class="path-duplicate">splice_linux.go</a><a href="../src/internal/poll/splice_linux.go.html#line-222">#L222</a>: 		runtime.<b>SetFinalizer</b>(p, nil)
+
+	<a href="../pkg/net.html">net</a>
+		<a href="../src/net/fd_posix.go.html#line-32">fd_posix.go#L32</a>: 	runtime.<b>SetFinalizer</b>(fd, (*netFD).Close)
+		<a href="../src/net/fd_posix.go.html#line-36" class="path-duplicate">fd_posix.go</a><a href="../src/net/fd_posix.go.html#line-36">#L36</a>: 	runtime.<b>SetFinalizer</b>(fd, nil)
+
+	<a href="../pkg/os.html">os</a>
+		<a href="../src/os/exec.go.html#line-30">exec.go#L30</a>: 	runtime.<b>SetFinalizer</b>(p, (*Process).Release)
+		<a href="../src/os/exec_unix.go.html#line-89">exec_unix.go#L89</a>: 	runtime.<b>SetFinalizer</b>(p, nil)
+		<a href="../src/os/file_unix.go.html#line-239">file_unix.go#L239</a>: 	runtime.<b>SetFinalizer</b>(f.file, (*file).close)
+		<a href="../src/os/file_unix.go.html#line-323" class="path-duplicate">file_unix.go</a><a href="../src/os/file_unix.go.html#line-323">#L323</a>: 	runtime.<b>SetFinalizer</b>(file, nil)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

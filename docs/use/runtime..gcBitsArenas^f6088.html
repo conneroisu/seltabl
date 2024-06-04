@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.gcBitsArenas</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">var <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/mheap.go.html#line-2116">gcBitsArenas</a></b></span>
+
+<span class="title">35 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/malloc.go.html#line-456">malloc.go#L456</a>: 	lockInit(&amp;<b>gcBitsArenas</b>.lock, lockRankGcBitsArenas)
+		<a href="../src/runtime/mheap.go.html#line-2116">mheap.go#L2116</a>: var <b>gcBitsArenas</b> struct {
+		<a href="../src/runtime/mheap.go.html#line-2147" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-2147">#L2147</a>: 	head := (*gcBitsArena)(atomic.Loadp(unsafe.Pointer(&amp;<b>gcBitsArenas</b>.next)))
+		<a href="../src/runtime/mheap.go.html#line-2154" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-2154">#L2154</a>: 	lock(&amp;<b>gcBitsArenas</b>.lock)
+		<a href="../src/runtime/mheap.go.html#line-2158" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-2158">#L2158</a>: 	if p := <b>gcBitsArenas</b>.next.tryAlloc(bytesNeeded); p != nil {
+		<a href="../src/runtime/mheap.go.html#line-2159" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-2159">#L2159</a>: 		unlock(&amp;<b>gcBitsArenas</b>.lock)
+		<a href="../src/runtime/mheap.go.html#line-2168" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-2168">#L2168</a>: 	if p := <b>gcBitsArenas</b>.next.tryAlloc(bytesNeeded); p != nil {
+		<a href="../src/runtime/mheap.go.html#line-2171" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-2171">#L2171</a>: 		fresh.next = <b>gcBitsArenas</b>.free
+		<a href="../src/runtime/mheap.go.html#line-2172" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-2172">#L2172</a>: 		<b>gcBitsArenas</b>.free = fresh
+		<a href="../src/runtime/mheap.go.html#line-2173" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-2173">#L2173</a>: 		unlock(&amp;<b>gcBitsArenas</b>.lock)
+		<a href="../src/runtime/mheap.go.html#line-2185" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-2185">#L2185</a>: 	fresh.next = <b>gcBitsArenas</b>.next
+		<a href="../src/runtime/mheap.go.html#line-2186" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-2186">#L2186</a>: 	atomic.StorepNoWB(unsafe.Pointer(&amp;<b>gcBitsArenas</b>.next), unsafe.Pointer(fresh))
+		<a href="../src/runtime/mheap.go.html#line-2188" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-2188">#L2188</a>: 	unlock(&amp;<b>gcBitsArenas</b>.lock)
+		<a href="../src/runtime/mheap.go.html#line-2217" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-2217">#L2217</a>: 	lock(&amp;<b>gcBitsArenas</b>.lock)
+		<a href="../src/runtime/mheap.go.html#line-2218" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-2218">#L2218</a>: 	if <b>gcBitsArenas</b>.previous != nil {
+		<a href="../src/runtime/mheap.go.html#line-2219" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-2219">#L2219</a>: 		if <b>gcBitsArenas</b>.free == nil {
+		<a href="../src/runtime/mheap.go.html#line-2220" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-2220">#L2220</a>: 			<b>gcBitsArenas</b>.free = <b>gcBitsArenas</b>.previous
+		<a href="../src/runtime/mheap.go.html#line-2223" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-2223">#L2223</a>: 			last := <b>gcBitsArenas</b>.previous
+		<a href="../src/runtime/mheap.go.html#line-2224" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-2224">#L2224</a>: 			for last = <b>gcBitsArenas</b>.previous; last.next != nil; last = last.next {
+		<a href="../src/runtime/mheap.go.html#line-2226" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-2226">#L2226</a>: 			last.next = <b>gcBitsArenas</b>.free
+		<a href="../src/runtime/mheap.go.html#line-2227" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-2227">#L2227</a>: 			<b>gcBitsArenas</b>.free = <b>gcBitsArenas</b>.previous
+		<a href="../src/runtime/mheap.go.html#line-2230" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-2230">#L2230</a>: 	<b>gcBitsArenas</b>.previous = <b>gcBitsArenas</b>.current
+		<a href="../src/runtime/mheap.go.html#line-2231" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-2231">#L2231</a>: 	<b>gcBitsArenas</b>.current = <b>gcBitsArenas</b>.next
+		<a href="../src/runtime/mheap.go.html#line-2232" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-2232">#L2232</a>: 	atomic.StorepNoWB(unsafe.Pointer(&amp;<b>gcBitsArenas</b>.next), nil) // newMarkBits calls newArena when needed
+		<a href="../src/runtime/mheap.go.html#line-2233" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-2233">#L2233</a>: 	unlock(&amp;<b>gcBitsArenas</b>.lock)
+		<a href="../src/runtime/mheap.go.html#line-2240" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-2240">#L2240</a>: 	if <b>gcBitsArenas</b>.free == nil {
+		<a href="../src/runtime/mheap.go.html#line-2241" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-2241">#L2241</a>: 		unlock(&amp;<b>gcBitsArenas</b>.lock)
+		<a href="../src/runtime/mheap.go.html#line-2246" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-2246">#L2246</a>: 		lock(&amp;<b>gcBitsArenas</b>.lock)
+		<a href="../src/runtime/mheap.go.html#line-2248" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-2248">#L2248</a>: 		result = <b>gcBitsArenas</b>.free
+		<a href="../src/runtime/mheap.go.html#line-2249" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-2249">#L2249</a>: 		<b>gcBitsArenas</b>.free = <b>gcBitsArenas</b>.free.next
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

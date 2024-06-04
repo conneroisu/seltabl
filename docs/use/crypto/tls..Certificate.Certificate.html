@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/tls.Certificate.Certificate</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/crypto/tls.html">crypto/tls</a>.<a href="../../src/crypto/tls/common.go.html#line-1412">Certificate</a>.<a href="../../src/crypto/tls/common.go.html#line-1413">Certificate</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">22 uses</span>
+
+	crypto/tls (current package)
+		<a href="../../src/crypto/tls/common.go.html#line-1339">common.go#L1339</a>: 	for j, cert := range c.<b>Certificate</b> {
+		<a href="../../src/crypto/tls/common.go.html#line-1413" class="path-duplicate">common.go</a><a href="../../src/crypto/tls/common.go.html#line-1413">#L1413</a>: 	<b>Certificate</b> [][]byte
+		<a href="../../src/crypto/tls/common.go.html#line-1440" class="path-duplicate">common.go</a><a href="../../src/crypto/tls/common.go.html#line-1440">#L1440</a>: 	return x509.ParseCertificate(c.<b>Certificate</b>[0])
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-641">handshake_client.go#L641</a>: 		certMsg.certificates = chainToSend.<b>Certificate</b>
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-671" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-671">#L671</a>: 	if chainToSend != nil &amp;&amp; len(chainToSend.<b>Certificate</b>) &gt; 0 {
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-523">handshake_client_tls13.go#L523</a>: 	if len(certMsg.certificate.<b>Certificate</b>) == 0 {
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-531" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-531">#L531</a>: 	if err := c.verifyServerCertificate(certMsg.certificate.<b>Certificate</b>); err != nil {
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-655" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-655">#L655</a>: 	if len(cert.<b>Certificate</b>) == 0 {
+		<a href="../../src/crypto/tls/handshake_messages.go.html#line-1389">handshake_messages.go#L1389</a>: 		for i, cert := range certificate.<b>Certificate</b> {
+		<a href="../../src/crypto/tls/handshake_messages.go.html#line-1454" class="path-duplicate">handshake_messages.go</a><a href="../../src/crypto/tls/handshake_messages.go.html#line-1454">#L1454</a>: 		certificate.<b>Certificate</b> = append(certificate.<b>Certificate</b>, cert)
+		<a href="../../src/crypto/tls/handshake_messages.go.html#line-1462" class="path-duplicate">handshake_messages.go</a><a href="../../src/crypto/tls/handshake_messages.go.html#line-1462">#L1462</a>: 			if len(certificate.<b>Certificate</b>) &gt; 1 {
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-568">handshake_server.go#L568</a>: 	certMsg.certificates = hs.cert.<b>Certificate</b>
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-645" class="path-duplicate">handshake_server.go</a><a href="../../src/crypto/tls/handshake_server.go.html#line-645">#L645</a>: 			<b>Certificate</b>: certMsg.certificates,
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-867" class="path-duplicate">handshake_server.go</a><a href="../../src/crypto/tls/handshake_server.go.html#line-867">#L867</a>: 	certificates := certificate.<b>Certificate</b>
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-926">handshake_server_tls13.go#L926</a>: 	if len(certMsg.certificate.<b>Certificate</b>) != 0 {
+		<a href="../../src/crypto/tls/ticket.go.html#line-138">ticket.go#L138</a>: 		<b>Certificate</b>:                 certificatesToBytesSlice(s.peerCertificates),
+		<a href="../../src/crypto/tls/ticket.go.html#line-223" class="path-duplicate">ticket.go</a><a href="../../src/crypto/tls/ticket.go.html#line-223">#L223</a>: 	for _, cert := range cert.<b>Certificate</b> {
+		<a href="../../src/crypto/tls/tls.go.html#line-257">tls.go#L257</a>: 			cert.<b>Certificate</b> = append(cert.<b>Certificate</b>, certDERBlock.Bytes)
+		<a href="../../src/crypto/tls/tls.go.html#line-263" class="path-duplicate">tls.go</a><a href="../../src/crypto/tls/tls.go.html#line-263">#L263</a>: 	if len(cert.<b>Certificate</b>) == 0 {
+		<a href="../../src/crypto/tls/tls.go.html#line-294" class="path-duplicate">tls.go</a><a href="../../src/crypto/tls/tls.go.html#line-294">#L294</a>: 	x509Cert, err := x509.ParseCertificate(cert.<b>Certificate</b>[0])
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

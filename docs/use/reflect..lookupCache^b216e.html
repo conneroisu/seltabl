@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: reflect.lookupCache</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">var <b><a href="../pkg/reflect.html">reflect</a>.<a href="../src/reflect/type.go.html#line-1567">lookupCache</a></b></span>
+
+<span class="title">13 uses</span>
+
+	reflect (current package)
+		<a href="../src/reflect/type.go.html#line-1567">type.go#L1567</a>: var <b>lookupCache</b> sync.Map // map[cacheKey]*rtype
+		<a href="../src/reflect/type.go.html#line-1600" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1600">#L1600</a>: 	if ch, ok := <b>lookupCache</b>.Load(ckey); ok {
+		<a href="../src/reflect/type.go.html#line-1633" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1633">#L1633</a>: 			ti, _ := <b>lookupCache</b>.LoadOrStore(ckey, toRType(tt))
+		<a href="../src/reflect/type.go.html#line-1648" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1648">#L1648</a>: 	ti, _ := <b>lookupCache</b>.LoadOrStore(ckey, toRType(&amp;ch.Type))
+		<a href="../src/reflect/type.go.html#line-1668" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1668">#L1668</a>: 	if mt, ok := <b>lookupCache</b>.Load(ckey); ok {
+		<a href="../src/reflect/type.go.html#line-1677" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1677">#L1677</a>: 			ti, _ := <b>lookupCache</b>.LoadOrStore(ckey, toRType(tt))
+		<a href="../src/reflect/type.go.html#line-1721" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1721">#L1721</a>: 	ti, _ := <b>lookupCache</b>.LoadOrStore(ckey, toRType(&amp;mt.Type))
+		<a href="../src/reflect/type.go.html#line-2086" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2086">#L2086</a>: 	if slice, ok := <b>lookupCache</b>.Load(ckey); ok {
+		<a href="../src/reflect/type.go.html#line-2095" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2095">#L2095</a>: 			ti, _ := <b>lookupCache</b>.LoadOrStore(ckey, toRType(tt))
+		<a href="../src/reflect/type.go.html#line-2110" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2110">#L2110</a>: 	ti, _ := <b>lookupCache</b>.LoadOrStore(ckey, toRType(&amp;slice.Type))
+		<a href="../src/reflect/type.go.html#line-2602" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2602">#L2602</a>: 	if array, ok := <b>lookupCache</b>.Load(ckey); ok {
+		<a href="../src/reflect/type.go.html#line-2611" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2611">#L2611</a>: 			ti, _ := <b>lookupCache</b>.LoadOrStore(ckey, toRType(tt))
+		<a href="../src/reflect/type.go.html#line-2724" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2724">#L2724</a>: 	ti, _ := <b>lookupCache</b>.LoadOrStore(ckey, toRType(&amp;array.Type))
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

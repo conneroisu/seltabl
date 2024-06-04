@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: syscall.RLIMIT_NOFILE</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../pkg/syscall.html">syscall</a>.<a href="../src/syscall/zerrors_linux_amd64.go.html#line-778">RLIMIT_NOFILE</a></b></span>
+
+<span class="title">8 uses</span>
+
+	syscall (current package)
+		<a href="../src/syscall/exec_linux.go.html#line-631">exec_linux.go#L631</a>: 		rawSetrlimit(<b>RLIMIT_NOFILE</b>, rlim)
+		<a href="../src/syscall/exec_unix.go.html#line-286">exec_unix.go#L286</a>: 		Setrlimit(<b>RLIMIT_NOFILE</b>, rlim)
+		<a href="../src/syscall/rlimit.go.html#line-32">rlimit.go#L32</a>: 	if err := Getrlimit(<b>RLIMIT_NOFILE</b>, &amp;lim); err == nil &amp;&amp; lim.Cur != lim.Max {
+		<a href="../src/syscall/rlimit.go.html#line-37" class="path-duplicate">rlimit.go</a><a href="../src/syscall/rlimit.go.html#line-37">#L37</a>: 		setrlimit(<b>RLIMIT_NOFILE</b>, &amp;nlim)
+		<a href="../src/syscall/rlimit.go.html#line-43" class="path-duplicate">rlimit.go</a><a href="../src/syscall/rlimit.go.html#line-43">#L43</a>: 	if err == nil &amp;&amp; resource == <b>RLIMIT_NOFILE</b> {
+		<a href="../src/syscall/syscall_linux.go.html#line-1288">syscall_linux.go#L1288</a>: 	if err == nil &amp;&amp; newlimit != nil &amp;&amp; resource == <b>RLIMIT_NOFILE</b> {
+		<a href="../src/syscall/zerrors_linux_amd64.go.html#line-778">zerrors_linux_amd64.go#L778</a>: 	<b>RLIMIT_NOFILE</b>                    = 0x7
+
+	<a href="../pkg/net.html">net</a>
+		<a href="../src/net/rlimit_unix.go.html#line-23">rlimit_unix.go#L23</a>: 	if err := syscall.Getrlimit(syscall.<b>RLIMIT_NOFILE</b>, &amp;rlim); err != nil {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: vendor/golang.org/x/text/unicode/bidi.paragraph.Len</title>
+<link href="../../../../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../../../../../pkg/vendor/golang.org/x/text/unicode/bidi.html">vendor/golang.org/x/text/unicode/bidi</a>.<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-71">paragraph</a>.<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-131">Len</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">13 uses</span>
+
+	vendor/golang.org/x/text/unicode/bidi (current package)
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-131">core.go#L131</a>: func (p *paragraph) <b>Len</b>() int { return len(p.initialTypes) }
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-143" class="path-duplicate">core.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-143">#L143</a>: 		p.embeddingLevel = p.determineParagraphEmbeddingLevel(0, p.<b>Len</b>())
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-147" class="path-duplicate">core.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-147">#L147</a>: 	p.resultLevels = make([]level, p.<b>Len</b>())
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-205" class="path-duplicate">core.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-205">#L205</a>: 	p.matchingPDI = make([]int, p.<b>Len</b>())
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-206" class="path-duplicate">core.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-206">#L206</a>: 	p.matchingIsolateInitiator = make([]int, p.<b>Len</b>())
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-217" class="path-duplicate">core.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-217">#L217</a>: 			for j := i + 1; j &lt; p.<b>Len</b>(); j++ {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-229" class="path-duplicate">core.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-229">#L229</a>: 				p.matchingPDI[i] = p.<b>Len</b>()
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-463" class="path-duplicate">core.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-463">#L463</a>: 		for ; limit &lt; p.<b>Len</b>() &amp;&amp; isRemovedByX9(p.initialTypes[limit]); limit++ {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-467" class="path-duplicate">core.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-467">#L467</a>: 		if limit &lt; p.<b>Len</b>() {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-780" class="path-duplicate">core.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-780">#L780</a>: 	runForCharacter := make([]int, p.<b>Len</b>())
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-802" class="path-duplicate">core.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-802">#L802</a>: 				if lastT.in(LRI, RLI, FSI) &amp;&amp; p.matchingPDI[last] != p.<b>Len</b>() {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-863" class="path-duplicate">core.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-863">#L863</a>: 	validateLineBreaks(linebreaks, p.<b>Len</b>())
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-918" class="path-duplicate">core.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-918">#L918</a>: 	validateLineBreaks(linebreaks, p.<b>Len</b>())
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

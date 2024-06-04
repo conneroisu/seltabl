@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.g.waitreason</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/runtime2.go.html#line-422">g</a>.<a href="../src/runtime/runtime2.go.html#line-460">waitreason</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">15 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/coro.go.html#line-45">coro.go#L45</a>: 	gp.<b>waitreason</b> = waitReasonCoroutine
+		<a href="../src/runtime/coro.go.html#line-114" class="path-duplicate">coro.go</a><a href="../src/runtime/coro.go.html#line-114">#L114</a>: 		gp.<b>waitreason</b> = waitReasonCoroutine
+		<a href="../src/runtime/heapdump.go.html#line-362">heapdump.go#L362</a>: 	dumpstr(gp.<b>waitreason</b>.String())
+		<a href="../src/runtime/mfinal.go.html#line-314">mfinal.go#L314</a>: 		empty = empty &amp;&amp; readgstatus(fing) == _Gwaiting &amp;&amp; fing.<b>waitreason</b> == waitReasonFinalizerWait
+		<a href="../src/runtime/proc.go.html#line-397">proc.go#L397</a>: 	gp.<b>waitreason</b> = reason
+		<a href="../src/runtime/proc.go.html#line-1164" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-1164">#L1164</a>: 		if !gp.<b>waitreason</b>.isMutexWait() {
+		<a href="../src/runtime/proc.go.html#line-1179" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-1179">#L1179</a>: 		if !gp.<b>waitreason</b>.isMutexWait() {
+		<a href="../src/runtime/proc.go.html#line-1206" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-1206">#L1206</a>: 	gp.<b>waitreason</b> = reason
+		<a href="../src/runtime/proc.go.html#line-1249" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-1249">#L1249</a>: 	gp.<b>waitreason</b> = waitReasonPreempted
+		<a href="../src/runtime/proc.go.html#line-4202" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4202">#L4202</a>: 	gp.<b>waitreason</b> = waitReasonZero
+		<a href="../src/runtime/proc.go.html#line-6303" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6303">#L6303</a>: 		print("  G", gp.goid, ": status=", readgstatus(gp), "(", gp.<b>waitreason</b>.String(), ") m=")
+		<a href="../src/runtime/runtime2.go.html#line-460">runtime2.go#L460</a>: 	<b>waitreason</b>   waitReason // if status==Gwaiting
+		<a href="../src/runtime/trace2.go.html#line-341">trace2.go#L341</a>: 				ug.waitreason = s.g.<b>waitreason</b>
+		<a href="../src/runtime/traceback.go.html#line-1196">traceback.go#L1196</a>: 	if gpstatus == _Gwaiting &amp;&amp; gp.<b>waitreason</b> != waitReasonZero {
+		<a href="../src/runtime/traceback.go.html#line-1197" class="path-duplicate">traceback.go</a><a href="../src/runtime/traceback.go.html#line-1197">#L1197</a>: 		status = gp.<b>waitreason</b>.String()
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

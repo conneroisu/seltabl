@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.adjustinfo</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/stack.go.html#line-555">adjustinfo</a></b></span>
+
+<span class="title">10 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/stack.go.html#line-555">stack.go#L555</a>: type <b>adjustinfo</b> struct {
+		<a href="../src/runtime/stack.go.html#line-565" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-565">#L565</a>: func adjustpointer(adjinfo *<b>adjustinfo</b>, vpp unsafe.Pointer) {
+		<a href="../src/runtime/stack.go.html#line-597" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-597">#L597</a>: func adjustpointers(scanp unsafe.Pointer, bv *bitvector, adjinfo *<b>adjustinfo</b>, f funcInfo) {
+		<a href="../src/runtime/stack.go.html#line-646" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-646">#L646</a>: func adjustframe(frame *stkframe, adjinfo *<b>adjustinfo</b>) {
+		<a href="../src/runtime/stack.go.html#line-731" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-731">#L731</a>: func adjustctxt(gp *g, adjinfo *<b>adjustinfo</b>) {
+		<a href="../src/runtime/stack.go.html#line-757" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-757">#L757</a>: func adjustdefers(gp *g, adjinfo *<b>adjustinfo</b>) {
+		<a href="../src/runtime/stack.go.html#line-769" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-769">#L769</a>: func adjustpanics(gp *g, adjinfo *<b>adjustinfo</b>) {
+		<a href="../src/runtime/stack.go.html#line-775" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-775">#L775</a>: func adjustsudogs(gp *g, adjinfo *<b>adjustinfo</b>) {
+		<a href="../src/runtime/stack.go.html#line-803" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-803">#L803</a>: func syncadjustsudogs(gp *g, used uintptr, adjinfo *<b>adjustinfo</b>) uintptr {
+		<a href="../src/runtime/stack.go.html#line-879" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-879">#L879</a>: 	var adjinfo <b>adjustinfo</b>
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

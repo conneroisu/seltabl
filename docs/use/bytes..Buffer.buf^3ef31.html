@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: bytes.Buffer.buf</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/bytes.html">bytes</a>.<a href="../src/bytes/buffer.go.html#line-20">Buffer</a>.<a href="../src/bytes/buffer.go.html#line-21">buf</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">52 uses</span>
+
+	bytes (current package)
+		<a href="../src/bytes/buffer.go.html#line-21">buffer.go#L21</a>: 	<b>buf</b>      []byte // contents are the bytes buf[off : len(buf)]
+		<a href="../src/bytes/buffer.go.html#line-54" class="path-duplicate">buffer.go</a><a href="../src/bytes/buffer.go.html#line-54">#L54</a>: func (b *Buffer) Bytes() []byte { return b.<b>buf</b>[b.off:] }
+		<a href="../src/bytes/buffer.go.html#line-60" class="path-duplicate">buffer.go</a><a href="../src/bytes/buffer.go.html#line-60">#L60</a>: func (b *Buffer) AvailableBuffer() []byte { return b.<b>buf</b>[len(b.<b>buf</b>):] }
+		<a href="../src/bytes/buffer.go.html#line-71" class="path-duplicate">buffer.go</a><a href="../src/bytes/buffer.go.html#line-71">#L71</a>: 	return string(b.<b>buf</b>[b.off:])
+		<a href="../src/bytes/buffer.go.html#line-75" class="path-duplicate">buffer.go</a><a href="../src/bytes/buffer.go.html#line-75">#L75</a>: func (b *Buffer) empty() bool { return len(b.<b>buf</b>) &lt;= b.off }
+		<a href="../src/bytes/buffer.go.html#line-79" class="path-duplicate">buffer.go</a><a href="../src/bytes/buffer.go.html#line-79">#L79</a>: func (b *Buffer) Len() int { return len(b.<b>buf</b>) - b.off }
+		<a href="../src/bytes/buffer.go.html#line-83" class="path-duplicate">buffer.go</a><a href="../src/bytes/buffer.go.html#line-83">#L83</a>: func (b *Buffer) Cap() int { return cap(b.<b>buf</b>) }
+		<a href="../src/bytes/buffer.go.html#line-86" class="path-duplicate">buffer.go</a><a href="../src/bytes/buffer.go.html#line-86">#L86</a>: func (b *Buffer) Available() int { return cap(b.<b>buf</b>) - len(b.<b>buf</b>) }
+		<a href="../src/bytes/buffer.go.html#line-100" class="path-duplicate">buffer.go</a><a href="../src/bytes/buffer.go.html#line-100">#L100</a>: 	b.<b>buf</b> = b.<b>buf</b>[:b.off+n]
+		<a href="../src/bytes/buffer.go.html#line-107" class="path-duplicate">buffer.go</a><a href="../src/bytes/buffer.go.html#line-107">#L107</a>: 	b.<b>buf</b> = b.<b>buf</b>[:0]
+		<a href="../src/bytes/buffer.go.html#line-116" class="path-duplicate">buffer.go</a><a href="../src/bytes/buffer.go.html#line-116">#L116</a>: 	if l := len(b.<b>buf</b>); n &lt;= cap(b.<b>buf</b>)-l {
+		<a href="../src/bytes/buffer.go.html#line-117" class="path-duplicate">buffer.go</a><a href="../src/bytes/buffer.go.html#line-117">#L117</a>: 		b.<b>buf</b> = b.<b>buf</b>[:l+n]
+		<a href="../src/bytes/buffer.go.html#line-136" class="path-duplicate">buffer.go</a><a href="../src/bytes/buffer.go.html#line-136">#L136</a>: 	if b.<b>buf</b> == nil &amp;&amp; n &lt;= smallBufferSize {
+		<a href="../src/bytes/buffer.go.html#line-137" class="path-duplicate">buffer.go</a><a href="../src/bytes/buffer.go.html#line-137">#L137</a>: 		b.<b>buf</b> = make([]byte, n, smallBufferSize)
+		<a href="../src/bytes/buffer.go.html#line-140" class="path-duplicate">buffer.go</a><a href="../src/bytes/buffer.go.html#line-140">#L140</a>: 	c := cap(b.<b>buf</b>)
+		<a href="../src/bytes/buffer.go.html#line-146" class="path-duplicate">buffer.go</a><a href="../src/bytes/buffer.go.html#line-146">#L146</a>: 		copy(b.<b>buf</b>, b.<b>buf</b>[b.off:])
+		<a href="../src/bytes/buffer.go.html#line-151" class="path-duplicate">buffer.go</a><a href="../src/bytes/buffer.go.html#line-151">#L151</a>: 		b.<b>buf</b> = growSlice(b.<b>buf</b>[b.off:], b.off+n)
+		<a href="../src/bytes/buffer.go.html#line-155" class="path-duplicate">buffer.go</a><a href="../src/bytes/buffer.go.html#line-155">#L155</a>: 	b.<b>buf</b> = b.<b>buf</b>[:m+n]
+		<a href="../src/bytes/buffer.go.html#line-169" class="path-duplicate">buffer.go</a><a href="../src/bytes/buffer.go.html#line-169">#L169</a>: 	b.<b>buf</b> = b.<b>buf</b>[:m]
+		<a href="../src/bytes/buffer.go.html#line-181" class="path-duplicate">buffer.go</a><a href="../src/bytes/buffer.go.html#line-181">#L181</a>: 	return copy(b.<b>buf</b>[m:], p), nil
+		<a href="../src/bytes/buffer.go.html#line-193" class="path-duplicate">buffer.go</a><a href="../src/bytes/buffer.go.html#line-193">#L193</a>: 	return copy(b.<b>buf</b>[m:], s), nil
+		<a href="../src/bytes/buffer.go.html#line-210" class="path-duplicate">buffer.go</a><a href="../src/bytes/buffer.go.html#line-210">#L210</a>: 		b.<b>buf</b> = b.<b>buf</b>[:i]
+		<a href="../src/bytes/buffer.go.html#line-211" class="path-duplicate">buffer.go</a><a href="../src/bytes/buffer.go.html#line-211">#L211</a>: 		m, e := r.Read(b.<b>buf</b>[i:cap(b.<b>buf</b>)])
+		<a href="../src/bytes/buffer.go.html#line-216" class="path-duplicate">buffer.go</a><a href="../src/bytes/buffer.go.html#line-216">#L216</a>: 		b.<b>buf</b> = b.<b>buf</b>[:i+m]
+		<a href="../src/bytes/buffer.go.html#line-261" class="path-duplicate">buffer.go</a><a href="../src/bytes/buffer.go.html#line-261">#L261</a>: 		m, e := w.Write(b.<b>buf</b>[b.off:])
+		<a href="../src/bytes/buffer.go.html#line-291" class="path-duplicate">buffer.go</a><a href="../src/bytes/buffer.go.html#line-291">#L291</a>: 	b.<b>buf</b>[m] = c
+		<a href="../src/bytes/buffer.go.html#line-310" class="path-duplicate">buffer.go</a><a href="../src/bytes/buffer.go.html#line-310">#L310</a>: 	b.<b>buf</b> = utf8.AppendRune(b.<b>buf</b>[:m], r)
+		<a href="../src/bytes/buffer.go.html#line-311" class="path-duplicate">buffer.go</a><a href="../src/bytes/buffer.go.html#line-311">#L311</a>: 	return len(b.<b>buf</b>) - m, nil
+		<a href="../src/bytes/buffer.go.html#line-328" class="path-duplicate">buffer.go</a><a href="../src/bytes/buffer.go.html#line-328">#L328</a>: 	n = copy(p, b.<b>buf</b>[b.off:])
+		<a href="../src/bytes/buffer.go.html#line-346" class="path-duplicate">buffer.go</a><a href="../src/bytes/buffer.go.html#line-346">#L346</a>: 	data := b.<b>buf</b>[b.off : b.off+n]
+		<a href="../src/bytes/buffer.go.html#line-362" class="path-duplicate">buffer.go</a><a href="../src/bytes/buffer.go.html#line-362">#L362</a>: 	c := b.<b>buf</b>[b.off]
+		<a href="../src/bytes/buffer.go.html#line-379" class="path-duplicate">buffer.go</a><a href="../src/bytes/buffer.go.html#line-379">#L379</a>: 	c := b.<b>buf</b>[b.off]
+		<a href="../src/bytes/buffer.go.html#line-385" class="path-duplicate">buffer.go</a><a href="../src/bytes/buffer.go.html#line-385">#L385</a>: 	r, n := utf8.DecodeRune(b.<b>buf</b>[b.off:])
+		<a href="../src/bytes/buffer.go.html#line-440" class="path-duplicate">buffer.go</a><a href="../src/bytes/buffer.go.html#line-440">#L440</a>: 	i := IndexByte(b.<b>buf</b>[b.off:], delim)
+		<a href="../src/bytes/buffer.go.html#line-443" class="path-duplicate">buffer.go</a><a href="../src/bytes/buffer.go.html#line-443">#L443</a>: 		end = len(b.<b>buf</b>)
+		<a href="../src/bytes/buffer.go.html#line-446" class="path-duplicate">buffer.go</a><a href="../src/bytes/buffer.go.html#line-446">#L446</a>: 	line = b.<b>buf</b>[b.off:end]
+		<a href="../src/bytes/buffer.go.html#line-472" class="path-duplicate">buffer.go</a><a href="../src/bytes/buffer.go.html#line-472">#L472</a>: func NewBuffer(buf []byte) *Buffer { return &amp;Buffer{<b>buf</b>: buf} }
+		<a href="../src/bytes/buffer.go.html#line-481" class="path-duplicate">buffer.go</a><a href="../src/bytes/buffer.go.html#line-481">#L481</a>: 	return &amp;Buffer{<b>buf</b>: []byte(s)}
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

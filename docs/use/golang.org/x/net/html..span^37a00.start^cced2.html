@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: golang.org/x/net/html.span.start</title>
+<link href="../../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../../../pkg/golang.org/x/net/html.html">golang.org/x/net/html</a>.<a href="../../../../src/golang.org/x/net/html/token.go.html#line-122">span</a>.<a href="../../../../src/golang.org/x/net/html/token.go.html#line-123">start</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">44 uses</span>
+
+	golang.org/x/net/html (current package)
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-123">token.go#L123</a>: 	<b>start</b>, end int
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-246" class="path-duplicate">token.go</a><a href="../../../../src/golang.org/x/net/html/token.go.html#line-246">#L246</a>: 		d := z.raw.end - z.raw.<b>start</b>
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-253" class="path-duplicate">token.go</a><a href="../../../../src/golang.org/x/net/html/token.go.html#line-253">#L253</a>: 		copy(buf1, z.buf[z.raw.<b>start</b>:z.raw.end])
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-254" class="path-duplicate">token.go</a><a href="../../../../src/golang.org/x/net/html/token.go.html#line-254">#L254</a>: 		if x := z.raw.<b>start</b>; x != 0 {
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-256" class="path-duplicate">token.go</a><a href="../../../../src/golang.org/x/net/html/token.go.html#line-256">#L256</a>: 			z.data.<b>start</b> -= x
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-258" class="path-duplicate">token.go</a><a href="../../../../src/golang.org/x/net/html/token.go.html#line-258">#L258</a>: 			z.pendingAttr[0].<b>start</b> -= x
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-260" class="path-duplicate">token.go</a><a href="../../../../src/golang.org/x/net/html/token.go.html#line-260">#L260</a>: 			z.pendingAttr[1].<b>start</b> -= x
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-263" class="path-duplicate">token.go</a><a href="../../../../src/golang.org/x/net/html/token.go.html#line-263">#L263</a>: 				z.attr[i][0].<b>start</b> -= x
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-265" class="path-duplicate">token.go</a><a href="../../../../src/golang.org/x/net/html/token.go.html#line-265">#L265</a>: 				z.attr[i][1].<b>start</b> -= x
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-269" class="path-duplicate">token.go</a><a href="../../../../src/golang.org/x/net/html/token.go.html#line-269">#L269</a>: 		z.raw.<b>start</b>, z.raw.end, z.buf = 0, d, buf1[:d]
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-282" class="path-duplicate">token.go</a><a href="../../../../src/golang.org/x/net/html/token.go.html#line-282">#L282</a>: 	if z.maxBuf &gt; 0 &amp;&amp; z.raw.end-z.raw.<b>start</b> &gt;= z.maxBuf {
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-606" class="path-duplicate">token.go</a><a href="../../../../src/golang.org/x/net/html/token.go.html#line-606">#L606</a>: 	z.data.<b>start</b> = z.raw.end
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-608" class="path-duplicate">token.go</a><a href="../../../../src/golang.org/x/net/html/token.go.html#line-608">#L608</a>: 		if z.data.end &lt; z.data.<b>start</b> {
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-610" class="path-duplicate">token.go</a><a href="../../../../src/golang.org/x/net/html/token.go.html#line-610">#L610</a>: 			z.data.end = z.data.<b>start</b>
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-683" class="path-duplicate">token.go</a><a href="../../../../src/golang.org/x/net/html/token.go.html#line-683">#L683</a>: 	z.data.<b>start</b> = z.raw.end
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-701" class="path-duplicate">token.go</a><a href="../../../../src/golang.org/x/net/html/token.go.html#line-701">#L701</a>: 	z.data.<b>start</b> = z.raw.end
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-739" class="path-duplicate">token.go</a><a href="../../../../src/golang.org/x/net/html/token.go.html#line-739">#L739</a>: 			z.raw.end = z.data.<b>start</b>
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-744" class="path-duplicate">token.go</a><a href="../../../../src/golang.org/x/net/html/token.go.html#line-744">#L744</a>: 		z.data.<b>start</b> = z.raw.end
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-764" class="path-duplicate">token.go</a><a href="../../../../src/golang.org/x/net/html/token.go.html#line-764">#L764</a>: 			z.raw.end = z.data.<b>start</b>
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-768" class="path-duplicate">token.go</a><a href="../../../../src/golang.org/x/net/html/token.go.html#line-768">#L768</a>: 	z.data.<b>start</b> = z.raw.end
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-796" class="path-duplicate">token.go</a><a href="../../../../src/golang.org/x/net/html/token.go.html#line-796">#L796</a>: 		if z.data.end-z.data.<b>start</b> != len(s) {
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-800" class="path-duplicate">token.go</a><a href="../../../../src/golang.org/x/net/html/token.go.html#line-800">#L800</a>: 			c := z.buf[z.data.<b>start</b>+i]
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-821" class="path-duplicate">token.go</a><a href="../../../../src/golang.org/x/net/html/token.go.html#line-821">#L821</a>: 	c, raw := z.buf[z.data.<b>start</b>], false
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-840" class="path-duplicate">token.go</a><a href="../../../../src/golang.org/x/net/html/token.go.html#line-840">#L840</a>: 		z.rawTag = strings.ToLower(string(z.buf[z.data.<b>start</b>:z.data.end]))
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-870" class="path-duplicate">token.go</a><a href="../../../../src/golang.org/x/net/html/token.go.html#line-870">#L870</a>: 		if saveAttr &amp;&amp; z.pendingAttr[0].<b>start</b> != z.pendingAttr[0].end {
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-883" class="path-duplicate">token.go</a><a href="../../../../src/golang.org/x/net/html/token.go.html#line-883">#L883</a>: 	z.data.<b>start</b> = z.raw.end - 1
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-905" class="path-duplicate">token.go</a><a href="../../../../src/golang.org/x/net/html/token.go.html#line-905">#L905</a>: 	z.pendingAttr[0].<b>start</b> = z.raw.end
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-914" class="path-duplicate">token.go</a><a href="../../../../src/golang.org/x/net/html/token.go.html#line-914">#L914</a>: 			if z.pendingAttr[0].<b>start</b>+1 == z.raw.end {
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-932" class="path-duplicate">token.go</a><a href="../../../../src/golang.org/x/net/html/token.go.html#line-932">#L932</a>: 	z.pendingAttr[1].<b>start</b> = z.raw.end
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-963" class="path-duplicate">token.go</a><a href="../../../../src/golang.org/x/net/html/token.go.html#line-963">#L963</a>: 		z.pendingAttr[1].<b>start</b> = z.raw.end
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-977" class="path-duplicate">token.go</a><a href="../../../../src/golang.org/x/net/html/token.go.html#line-977">#L977</a>: 		z.pendingAttr[1].<b>start</b> = z.raw.end - 1
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-999" class="path-duplicate">token.go</a><a href="../../../../src/golang.org/x/net/html/token.go.html#line-999">#L999</a>: 	z.raw.<b>start</b> = z.raw.end
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-1000" class="path-duplicate">token.go</a><a href="../../../../src/golang.org/x/net/html/token.go.html#line-1000">#L1000</a>: 	z.data.<b>start</b> = z.raw.end
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-1017" class="path-duplicate">token.go</a><a href="../../../../src/golang.org/x/net/html/token.go.html#line-1017">#L1017</a>: 		if z.data.end &gt; z.data.<b>start</b> {
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-1061" class="path-duplicate">token.go</a><a href="../../../../src/golang.org/x/net/html/token.go.html#line-1061">#L1061</a>: 		if x := z.raw.end - len("&lt;a"); z.raw.<b>start</b> &lt; x {
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-1107" class="path-duplicate">token.go</a><a href="../../../../src/golang.org/x/net/html/token.go.html#line-1107">#L1107</a>: 	if z.raw.<b>start</b> &lt; z.raw.end {
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-1124" class="path-duplicate">token.go</a><a href="../../../../src/golang.org/x/net/html/token.go.html#line-1124">#L1124</a>: 	return z.buf[z.raw.<b>start</b>:z.raw.end]
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-1169" class="path-duplicate">token.go</a><a href="../../../../src/golang.org/x/net/html/token.go.html#line-1169">#L1169</a>: 		s := z.buf[z.data.<b>start</b>:z.data.end]
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-1170" class="path-duplicate">token.go</a><a href="../../../../src/golang.org/x/net/html/token.go.html#line-1170">#L1170</a>: 		z.data.<b>start</b> = z.raw.end
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-1188" class="path-duplicate">token.go</a><a href="../../../../src/golang.org/x/net/html/token.go.html#line-1188">#L1188</a>: 	if z.data.<b>start</b> &lt; z.data.end {
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-1191" class="path-duplicate">token.go</a><a href="../../../../src/golang.org/x/net/html/token.go.html#line-1191">#L1191</a>: 			s := z.buf[z.data.<b>start</b>:z.data.end]
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-1192" class="path-duplicate">token.go</a><a href="../../../../src/golang.org/x/net/html/token.go.html#line-1192">#L1192</a>: 			z.data.<b>start</b> = z.raw.end
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-1209" class="path-duplicate">token.go</a><a href="../../../../src/golang.org/x/net/html/token.go.html#line-1209">#L1209</a>: 			key = z.buf[x[0].<b>start</b>:x[0].end]
+		<a href="../../../../src/golang.org/x/net/html/token.go.html#line-1210" class="path-duplicate">token.go</a><a href="../../../../src/golang.org/x/net/html/token.go.html#line-1210">#L1210</a>: 			val = z.buf[x[1].<b>start</b>:x[1].end]
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

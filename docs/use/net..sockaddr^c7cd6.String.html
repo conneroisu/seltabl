@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net.sockaddr.String</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/net.html">net</a>.<a href="../src/net/sockaddr_posix.go.html#line-15">sockaddr</a>.<a href="../src/net/net.go.html#line-103">String</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">19 uses</span>
+
+	net (current package)
+		<a href="../src/net/dial.go.html#line-279">dial.go#L279</a>: 			return nil, &amp;AddrError{Err: "mismatched local address type", Addr: hint.<b>String</b>()}
+		<a href="../src/net/dial.go.html#line-307" class="path-duplicate">dial.go</a><a href="../src/net/dial.go.html#line-307">#L307</a>: 			return nil, &amp;AddrError{Err: "mismatched local address type", Addr: hint.<b>String</b>()}
+		<a href="../src/net/dial.go.html#line-328" class="path-duplicate">dial.go</a><a href="../src/net/dial.go.html#line-328">#L328</a>: 		return nil, &amp;AddrError{Err: errNoSuitableAddress.Error(), Addr: hint.<b>String</b>()}
+		<a href="../src/net/dial.go.html#line-636" class="path-duplicate">dial.go</a><a href="../src/net/dial.go.html#line-636">#L636</a>: 		raStr := ra.<b>String</b>()
+		<a href="../src/net/fd_unix.go.html#line-47">fd_unix.go#L47</a>: 		ls = fd.laddr.<b>String</b>()
+		<a href="../src/net/fd_unix.go.html#line-50" class="path-duplicate">fd_unix.go</a><a href="../src/net/fd_unix.go.html#line-50">#L50</a>: 		rs = fd.raddr.<b>String</b>()
+		<a href="../src/net/net.go.html#line-103">net.go#L103</a>: 	<b>String</b>() string  // string form of address (for example, "192.0.2.1:25", "[2001:db8::1]:80")
+		<a href="../src/net/net.go.html#line-478" class="path-duplicate">net.go</a><a href="../src/net/net.go.html#line-478">#L478</a>: 		s += " " + e.Source.<b>String</b>()
+		<a href="../src/net/net.go.html#line-486" class="path-duplicate">net.go</a><a href="../src/net/net.go.html#line-486">#L486</a>: 		s += e.Addr.<b>String</b>()
+		<a href="../src/net/sock_posix.go.html#line-98">sock_posix.go#L98</a>: 			ctrlAddr = raddr.<b>String</b>()
+		<a href="../src/net/sock_posix.go.html#line-100" class="path-duplicate">sock_posix.go</a><a href="../src/net/sock_posix.go.html#line-100">#L100</a>: 			ctrlAddr = laddr.<b>String</b>()
+		<a href="../src/net/sock_posix.go.html#line-162" class="path-duplicate">sock_posix.go</a><a href="../src/net/sock_posix.go.html#line-162">#L162</a>: 		if err := ctrlCtxFn(ctx, fd.ctrlNetwork(), laddr.<b>String</b>(), c); err != nil {
+		<a href="../src/net/sock_posix.go.html#line-213" class="path-duplicate">sock_posix.go</a><a href="../src/net/sock_posix.go.html#line-213">#L213</a>: 		if err := ctrlCtxFn(ctx, fd.ctrlNetwork(), laddr.<b>String</b>(), c); err != nil {
+		<a href="../src/net/unixsock_posix.go.html#line-230">unixsock_posix.go#L230</a>: 	return &amp;UnixListener{fd: fd, path: fd.laddr.<b>String</b>(), unlink: true}, nil
+
+	<a href="../pkg/net/http.html">net/http</a>
+		<a href="../src/net/http/h2_bundle.go.html#line-4224">h2_bundle.go#L4224</a>: 		remoteAddrStr:               c.RemoteAddr().<b>String</b>(),
+		<a href="../src/net/http/server.go.html#line-1890">server.go#L1890</a>: 		c.remoteAddr = ra.<b>String</b>()
+		<a href="../src/net/http/server.go.html#line-3743" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-3743">#L3743</a>: 		req.RemoteAddr = h.c.RemoteAddr().<b>String</b>()
+		<a href="../src/net/http/transport.go.html#line-1670">transport.go#L1670</a>: 		d := socksNewDialer("tcp", conn.RemoteAddr().<b>String</b>())
+
+	<a href="../pkg/crypto/tls.html">crypto/tls</a>
+		<a href="../src/crypto/tls/handshake_client.go.html#line-1121">handshake_client.go#L1121</a>: 		return c.conn.RemoteAddr().<b>String</b>()
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

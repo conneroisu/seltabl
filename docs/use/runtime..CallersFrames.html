@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.CallersFrames</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/symtab.go.html#line-76">CallersFrames</a></b></span>
+
+<span class="title">7 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/extern.go.html#line-301">extern.go#L301</a>: 	frame, _ := <b>CallersFrames</b>(rpc).Next()
+		<a href="../src/runtime/symtab.go.html#line-76">symtab.go#L76</a>: func <b>CallersFrames</b>(callers []uintptr) *Frames {
+		<a href="../src/runtime/trace2stack.go.html#line-169">trace2stack.go#L169</a>: 	ci := <b>CallersFrames</b>(pcs)
+
+	<a href="../pkg/internal/bisect.html">internal/bisect</a>
+		<a href="../src/internal/bisect/bisect.go.html#line-511">bisect.go#L511</a>: 	frames := runtime.<b>CallersFrames</b>(stk)
+
+	<a href="../pkg/log.html">log</a>
+		<a href="../src/log/log.go.html#line-225">log.go#L225</a>: 			fs := runtime.<b>CallersFrames</b>([]uintptr{pc})
+
+	<a href="../pkg/net/http.html">net/http</a>
+		<a href="../src/net/http/server.go.html#line-1135">server.go#L1135</a>: 	frames := runtime.<b>CallersFrames</b>(pc[:n])
+
+	<a href="../pkg/reflect.html">reflect</a>
+		<a href="../src/reflect/value.go.html#line-189">value.go#L189</a>: 	frames := runtime.<b>CallersFrames</b>(pc[:n])
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

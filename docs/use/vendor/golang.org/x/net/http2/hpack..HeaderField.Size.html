@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: vendor/golang.org/x/net/http2/hpack.HeaderField.Size</title>
+<link href="../../../../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../../../../../pkg/vendor/golang.org/x/net/http2/hpack.html">vendor/golang.org/x/net/http2/hpack</a>.<a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-36">HeaderField</a>.<a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-61">Size</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">7 uses</span>
+
+	vendor/golang.org/x/net/http2/hpack (current package)
+		<a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/encode.go.html#line-141">encode.go#L141</a>: 	return !f.Sensitive &amp;&amp; f.<b>Size</b>() &lt;= e.dynTab.maxSize
+		<a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-61">hpack.go#L61</a>: func (hf HeaderField) <b>Size</b>() uint32 {
+		<a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-175" class="path-duplicate">hpack.go</a><a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-175">#L175</a>: 	dt.size += f.<b>Size</b>()
+		<a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-183" class="path-duplicate">hpack.go</a><a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-183">#L183</a>: 		dt.size -= dt.table.ents[n].<b>Size</b>()
+
+	<a href="../../../../../../pkg/net/http.html">net/http</a>
+		<a href="../../../../../../src/net/http/h2_bundle.go.html#line-2971">h2_bundle.go#L2971</a>: 		size := hf.<b>Size</b>()
+		<a href="../../../../../../src/net/http/h2_bundle.go.html#line-9093" class="path-duplicate">h2_bundle.go</a><a href="../../../../../../src/net/http/h2_bundle.go.html#line-9093">#L9093</a>: 		hlSize += uint64(hf.<b>Size</b>())
+		<a href="../../../../../../src/net/http/h2_bundle.go.html#line-9150" class="path-duplicate">h2_bundle.go</a><a href="../../../../../../src/net/http/h2_bundle.go.html#line-9150">#L9150</a>: 			hlSize += uint64(hf.<b>Size</b>())
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

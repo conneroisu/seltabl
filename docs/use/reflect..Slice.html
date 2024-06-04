@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: reflect.Slice</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../pkg/reflect.html">reflect</a>.<a href="../src/reflect/type.go.html#line-274">Slice</a></b></span>
+
+<span class="title">58 uses</span>
+
+	reflect (current package)
+		<a href="../src/reflect/abi.go.html#line-221">abi.go#L221</a>: 	case <b>Slice</b>:
+		<a href="../src/reflect/deepequal.go.html#line-51">deepequal.go#L51</a>: 		case Map, <b>Slice</b>, Interface:
+		<a href="../src/reflect/deepequal.go.html#line-98" class="path-duplicate">deepequal.go</a><a href="../src/reflect/deepequal.go.html#line-98">#L98</a>: 	case <b>Slice</b>:
+		<a href="../src/reflect/swapper.go.html#line-20">swapper.go#L20</a>: 	if v.Kind() != <b>Slice</b> {
+		<a href="../src/reflect/type.go.html#line-274">type.go#L274</a>: 	<b>Slice</b>
+		<a href="../src/reflect/type.go.html#line-479" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-479">#L479</a>: 	<b>Slice</b>:         "slice",
+		<a href="../src/reflect/type.go.html#line-1465" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1465">#L1465</a>: 	case Pointer, <b>Slice</b>:
+		<a href="../src/reflect/type.go.html#line-1761" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-1761">#L1761</a>: 	if variadic &amp;&amp; (len(in) == 0 || in[len(in)-1].Kind() != <b>Slice</b>) {
+		<a href="../src/reflect/type.go.html#line-2085" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2085">#L2085</a>: 	ckey := cacheKey{<b>Slice</b>, typ, nil, 0}
+		<a href="../src/reflect/type.go.html#line-2850" class="path-duplicate">type.go</a><a href="../src/reflect/type.go.html#line-2850">#L2850</a>: 	case Chan, Func, Map, Pointer, <b>Slice</b>, String, UnsafePointer:
+		<a href="../src/reflect/value.go.html#line-320">value.go#L320</a>: 	case <b>Slice</b>:
+		<a href="../src/reflect/value.go.html#line-343" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-343">#L343</a>: 	v.mustBe(<b>Slice</b>)
+		<a href="../src/reflect/value.go.html#line-1167" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1167">#L1167</a>: 	if v.kind() == <b>Slice</b> {
+		<a href="../src/reflect/value.go.html#line-1425" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1425">#L1425</a>: 	case <b>Slice</b>:
+		<a href="../src/reflect/value.go.html#line-1569" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1569">#L1569</a>: 	case Interface, <b>Slice</b>:
+		<a href="../src/reflect/value.go.html#line-1624" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1624">#L1624</a>: 	case Chan, Func, Interface, Map, Pointer, <b>Slice</b>, UnsafePointer:
+		<a href="../src/reflect/value.go.html#line-1746" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1746">#L1746</a>: 	case <b>Slice</b>:
+		<a href="../src/reflect/value.go.html#line-1771" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1771">#L1771</a>: 	if v.kind() == <b>Slice</b> {
+		<a href="../src/reflect/value.go.html#line-2246" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2246">#L2246</a>: 	case <b>Slice</b>:
+		<a href="../src/reflect/value.go.html#line-2349" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2349">#L2349</a>: 	v.mustBe(<b>Slice</b>)
+		<a href="../src/reflect/value.go.html#line-2360" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2360">#L2360</a>: 	v.mustBe(<b>Slice</b>)
+		<a href="../src/reflect/value.go.html#line-2420" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2420">#L2420</a>: 	v.mustBe(<b>Slice</b>)
+		<a href="../src/reflect/value.go.html#line-2433" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2433">#L2433</a>: 	v.mustBe(<b>Slice</b>)
+		<a href="../src/reflect/value.go.html#line-2553" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2553">#L2553</a>: 	case <b>Slice</b>:
+		<a href="../src/reflect/value.go.html#line-2589" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2589">#L2589</a>: 	fl := v.flag.ro() | flagIndir | flag(<b>Slice</b>)
+		<a href="../src/reflect/value.go.html#line-2615" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2615">#L2615</a>: 	case <b>Slice</b>:
+		<a href="../src/reflect/value.go.html#line-2641" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2641">#L2641</a>: 	fl := v.flag.ro() | flagIndir | flag(<b>Slice</b>)
+		<a href="../src/reflect/value.go.html#line-2826" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2826">#L2826</a>: 	case <b>Slice</b>:
+		<a href="../src/reflect/value.go.html#line-2884" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2884">#L2884</a>: 	v.mustBe(<b>Slice</b>)
+		<a href="../src/reflect/value.go.html#line-2910" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2910">#L2910</a>: 	v.mustBe(<b>Slice</b>)
+		<a href="../src/reflect/value.go.html#line-2916" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2916">#L2916</a>: 	v.flag = flagIndir | flag(<b>Slice</b>) // equivalent flag to MakeSlice
+		<a href="../src/reflect/value.go.html#line-2928" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2928">#L2928</a>: 	case <b>Slice</b>:
+		<a href="../src/reflect/value.go.html#line-2942" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2942">#L2942</a>: 	s.mustBe(<b>Slice</b>)
+		<a href="../src/reflect/value.go.html#line-2954" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2954">#L2954</a>: 	s.mustBe(<b>Slice</b>)
+		<a href="../src/reflect/value.go.html#line-2955" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2955">#L2955</a>: 	t.mustBe(<b>Slice</b>)
+		<a href="../src/reflect/value.go.html#line-2973" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2973">#L2973</a>: 	if dk != Array &amp;&amp; dk != <b>Slice</b> {
+		<a href="../src/reflect/value.go.html#line-2983" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2983">#L2983</a>: 	if sk != Array &amp;&amp; sk != <b>Slice</b> {
+		<a href="../src/reflect/value.go.html#line-3009" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3009">#L3009</a>: 	} else if sk == <b>Slice</b> {
+		<a href="../src/reflect/value.go.html#line-3199" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3199">#L3199</a>: 	if typ.Kind() != <b>Slice</b> {
+		<a href="../src/reflect/value.go.html#line-3213" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3213">#L3213</a>: 	return Value{&amp;typ.(*rtype).t, unsafe.Pointer(&amp;s), flagIndir | flag(<b>Slice</b>)}
+		<a href="../src/reflect/value.go.html#line-3383" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3383">#L3383</a>: 	case vt.Kind() == <b>Slice</b> &amp;&amp; t.Kind() == Array:
+		<a href="../src/reflect/value.go.html#line-3387" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3387">#L3387</a>: 	case vt.Kind() == <b>Slice</b> &amp;&amp; t.Kind() == Pointer &amp;&amp; t.Elem().Kind() == Array:
+		<a href="../src/reflect/value.go.html#line-3502" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3502">#L3502</a>: 	case Func, Map, <b>Slice</b>:
+		<a href="../src/reflect/value.go.html#line-3558" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3558">#L3558</a>: 	case <b>Slice</b>:
+
+	<a href="../pkg/encoding/asn1.html">encoding/asn1</a>
+		<a href="../src/encoding/asn1/asn1.go.html#line-947">asn1.go#L947</a>: 	case reflect.<b>Slice</b>:
+		<a href="../src/encoding/asn1/common.go.html#line-173">common.go#L173</a>: 	case reflect.<b>Slice</b>:
+		<a href="../src/encoding/asn1/marshal.go.html#line-535">marshal.go#L535</a>: 	case reflect.<b>Slice</b>:
+		<a href="../src/encoding/asn1/marshal.go.html#line-588" class="path-duplicate">marshal.go</a><a href="../src/encoding/asn1/marshal.go.html#line-588">#L588</a>: 	if v.Kind() == reflect.<b>Slice</b> &amp;&amp; v.Len() == 0 &amp;&amp; params.omitEmpty {
+
+	<a href="../pkg/encoding/binary.html">encoding/binary</a>
+		<a href="../src/encoding/binary/binary.go.html#line-324">binary.go#L324</a>: 	case reflect.<b>Slice</b>:
+		<a href="../src/encoding/binary/binary.go.html#line-482" class="path-duplicate">binary.go</a><a href="../src/encoding/binary/binary.go.html#line-482">#L482</a>: 	case reflect.<b>Slice</b>:
+		<a href="../src/encoding/binary/binary.go.html#line-642" class="path-duplicate">binary.go</a><a href="../src/encoding/binary/binary.go.html#line-642">#L642</a>: 	case reflect.<b>Slice</b>:
+		<a href="../src/encoding/binary/binary.go.html#line-707" class="path-duplicate">binary.go</a><a href="../src/encoding/binary/binary.go.html#line-707">#L707</a>: 	case reflect.<b>Slice</b>:
+
+	<a href="../pkg/fmt.html">fmt</a>
+		<a href="../src/fmt/print.go.html#line-552">print.go#L552</a>: 	case reflect.Chan, reflect.Func, reflect.Map, reflect.Pointer, reflect.<b>Slice</b>, reflect.UnsafePointer:
+		<a href="../src/fmt/print.go.html#line-868" class="path-duplicate">print.go</a><a href="../src/fmt/print.go.html#line-868">#L868</a>: 	case reflect.Array, reflect.<b>Slice</b>:
+		<a href="../src/fmt/print.go.html#line-875" class="path-duplicate">print.go</a><a href="../src/fmt/print.go.html#line-875">#L875</a>: 				if f.Kind() == reflect.<b>Slice</b> || f.CanAddr() {
+		<a href="../src/fmt/print.go.html#line-892" class="path-duplicate">print.go</a><a href="../src/fmt/print.go.html#line-892">#L892</a>: 			if f.Kind() == reflect.<b>Slice</b> &amp;&amp; f.IsNil() {
+		<a href="../src/fmt/print.go.html#line-919" class="path-duplicate">print.go</a><a href="../src/fmt/print.go.html#line-919">#L919</a>: 			case reflect.Array, reflect.<b>Slice</b>, reflect.Struct, reflect.Map:
+		<a href="../src/fmt/scan.go.html#line-1033">scan.go#L1033</a>: 		case reflect.<b>Slice</b>:
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

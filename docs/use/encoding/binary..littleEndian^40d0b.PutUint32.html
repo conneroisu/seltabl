@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: encoding/binary.littleEndian.PutUint32</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/encoding/binary.html">encoding/binary</a>.<a href="../../src/encoding/binary/binary.go.html#line-63">littleEndian</a>.<a href="../../src/encoding/binary/binary.go.html#line-88">PutUint32</a></b></span><span style="font-size: large;"><i> (method, <a href="../../imp/encoding/binary.littleEndian^40d0b.html#name-PutUint32">view implemented interface methods</a>)</i></span>
+
+<span class="title">16 uses</span>
+
+	encoding/binary (current package)
+		<a href="../../src/encoding/binary/binary.go.html#line-88">binary.go#L88</a>: func (littleEndian) <b>PutUint32</b>(b []byte, v uint32) {
+
+	<a href="../../pkg/compress/gzip.html">compress/gzip</a>
+		<a href="../../src/compress/gzip/gzip.go.html#line-160">gzip.go#L160</a>: 			le.<b>PutUint32</b>(z.buf[4:8], uint32(z.ModTime.Unix()))
+		<a href="../../src/compress/gzip/gzip.go.html#line-246" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-246">#L246</a>: 	le.<b>PutUint32</b>(z.buf[:4], z.digest)
+		<a href="../../src/compress/gzip/gzip.go.html#line-247" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-247">#L247</a>: 	le.<b>PutUint32</b>(z.buf[4:8], z.size)
+
+	<a href="../../pkg/crypto/md5.html">crypto/md5</a>
+		<a href="../../src/crypto/md5/md5.go.html#line-170">md5.go#L170</a>: 	binary.LittleEndian.<b>PutUint32</b>(digest[0:], d.s[0])
+		<a href="../../src/crypto/md5/md5.go.html#line-171" class="path-duplicate">md5.go</a><a href="../../src/crypto/md5/md5.go.html#line-171">#L171</a>: 	binary.LittleEndian.<b>PutUint32</b>(digest[4:], d.s[1])
+		<a href="../../src/crypto/md5/md5.go.html#line-172" class="path-duplicate">md5.go</a><a href="../../src/crypto/md5/md5.go.html#line-172">#L172</a>: 	binary.LittleEndian.<b>PutUint32</b>(digest[8:], d.s[2])
+		<a href="../../src/crypto/md5/md5.go.html#line-173" class="path-duplicate">md5.go</a><a href="../../src/crypto/md5/md5.go.html#line-173">#L173</a>: 	binary.LittleEndian.<b>PutUint32</b>(digest[12:], d.s[3])
+
+	<a href="../../pkg/vendor/golang.org/x/crypto/chacha20.html">vendor/golang.org/x/crypto/chacha20</a>
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-389">chacha_generic.go#L389</a>: 	binary.LittleEndian.<b>PutUint32</b>(out[0:4], x0)
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-390" class="path-duplicate">chacha_generic.go</a><a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-390">#L390</a>: 	binary.LittleEndian.<b>PutUint32</b>(out[4:8], x1)
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-391" class="path-duplicate">chacha_generic.go</a><a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-391">#L391</a>: 	binary.LittleEndian.<b>PutUint32</b>(out[8:12], x2)
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-392" class="path-duplicate">chacha_generic.go</a><a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-392">#L392</a>: 	binary.LittleEndian.<b>PutUint32</b>(out[12:16], x3)
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-393" class="path-duplicate">chacha_generic.go</a><a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-393">#L393</a>: 	binary.LittleEndian.<b>PutUint32</b>(out[16:20], x12)
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-394" class="path-duplicate">chacha_generic.go</a><a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-394">#L394</a>: 	binary.LittleEndian.<b>PutUint32</b>(out[20:24], x13)
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-395" class="path-duplicate">chacha_generic.go</a><a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-395">#L395</a>: 	binary.LittleEndian.<b>PutUint32</b>(out[24:28], x14)
+		<a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-396" class="path-duplicate">chacha_generic.go</a><a href="../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-396">#L396</a>: 	binary.LittleEndian.<b>PutUint32</b>(out[28:32], x15)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: vendor/golang.org/x/net/dns/dnsmessage.CNAMEResource</title>
+<link href="../../../../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../../../../../pkg/vendor/golang.org/x/net/dns/dnsmessage.html">vendor/golang.org/x/net/dns/dnsmessage</a>.<a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-2249">CNAMEResource</a></b></span>
+
+<span class="title">13 uses</span>
+
+	vendor/golang.org/x/net/dns/dnsmessage (current package)
+		<a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-882">message.go#L882</a>: func (p *Parser) CNAMEResource() (<b>CNAMEResource</b>, error) {
+		<a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-884" class="path-duplicate">message.go</a><a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-884">#L884</a>: 		return <b>CNAMEResource</b>{}, ErrNotStarted
+		<a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-888" class="path-duplicate">message.go</a><a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-888">#L888</a>: 		return <b>CNAMEResource</b>{}, err
+		<a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-1372" class="path-duplicate">message.go</a><a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-1372">#L1372</a>: func (b *Builder) CNAMEResource(h ResourceHeader, r <b>CNAMEResource</b>) error {
+		<a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-2197" class="path-duplicate">message.go</a><a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-2197">#L2197</a>: 		var rb <b>CNAMEResource</b>
+		<a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-2249" class="path-duplicate">message.go</a><a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-2249">#L2249</a>: type <b>CNAMEResource</b> struct {
+		<a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-2253" class="path-duplicate">message.go</a><a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-2253">#L2253</a>: func (r *<b>CNAMEResource</b>) realType() Type {
+		<a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-2258" class="path-duplicate">message.go</a><a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-2258">#L2258</a>: func (r *<b>CNAMEResource</b>) pack(msg []byte, compression map[string]uint16, compressionOff int) ([]byte, error) {
+		<a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-2263" class="path-duplicate">message.go</a><a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-2263">#L2263</a>: func (r *<b>CNAMEResource</b>) GoString() string {
+		<a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-2267" class="path-duplicate">message.go</a><a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-2267">#L2267</a>: func unpackCNAMEResource(msg []byte, off int) (<b>CNAMEResource</b>, error) {
+		<a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-2270" class="path-duplicate">message.go</a><a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-2270">#L2270</a>: 		return <b>CNAMEResource</b>{}, err
+		<a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-2272" class="path-duplicate">message.go</a><a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-2272">#L2272</a>: 	return <b>CNAMEResource</b>{cname}, nil
+
+	<a href="../../../../../../pkg/net.html">net</a>
+		<a href="../../../../../../src/net/lookup.go.html#line-915">lookup.go#L915</a>: 	c, ok := resources[0].Body.(*dnsmessage.<b>CNAMEResource</b>)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

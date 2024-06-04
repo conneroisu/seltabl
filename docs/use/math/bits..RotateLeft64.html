@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: math/bits.RotateLeft64</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../../pkg/math/bits.html">math/bits</a>.<a href="../../src/math/bits/bits.go.html#line-217">RotateLeft64</a></b></span>
+
+<span class="title">12 uses</span>
+
+	math/bits (current package)
+		<a href="../../src/math/bits/bits.go.html#line-180">bits.go#L180</a>: 	return uint(<b>RotateLeft64</b>(uint64(x), k))
+		<a href="../../src/math/bits/bits.go.html#line-217" class="path-duplicate">bits.go</a><a href="../../src/math/bits/bits.go.html#line-217">#L217</a>: func <b>RotateLeft64</b>(x uint64, k int) uint64 {
+
+	<a href="../../pkg/crypto/sha512.html">crypto/sha512</a>
+		<a href="../../src/crypto/sha512/sha512block.go.html#line-107">sha512block.go#L107</a>: 			t1 := bits.<b>RotateLeft64</b>(v1, -19) ^ bits.<b>RotateLeft64</b>(v1, -61) ^ (v1 &gt;&gt; 6)
+		<a href="../../src/crypto/sha512/sha512block.go.html#line-109" class="path-duplicate">sha512block.go</a><a href="../../src/crypto/sha512/sha512block.go.html#line-109">#L109</a>: 			t2 := bits.<b>RotateLeft64</b>(v2, -1) ^ bits.<b>RotateLeft64</b>(v2, -8) ^ (v2 &gt;&gt; 7)
+		<a href="../../src/crypto/sha512/sha512block.go.html#line-117" class="path-duplicate">sha512block.go</a><a href="../../src/crypto/sha512/sha512block.go.html#line-117">#L117</a>: 			t1 := h + (bits.<b>RotateLeft64</b>(e, -14) ^ bits.<b>RotateLeft64</b>(e, -18) ^ bits.<b>RotateLeft64</b>(e, -41)) + ((e &amp; f) ^ (^e &amp; g)) + _K[i] + w[i]
+		<a href="../../src/crypto/sha512/sha512block.go.html#line-119" class="path-duplicate">sha512block.go</a><a href="../../src/crypto/sha512/sha512block.go.html#line-119">#L119</a>: 			t2 := (bits.<b>RotateLeft64</b>(a, -28) ^ bits.<b>RotateLeft64</b>(a, -34) ^ bits.<b>RotateLeft64</b>(a, -39)) + ((a &amp; b) ^ (a &amp; c) ^ (b &amp; c))
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

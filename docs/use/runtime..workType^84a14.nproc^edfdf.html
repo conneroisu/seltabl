@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.workType.nproc</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/mgc.go.html#line-306">workType</a>.<a href="../src/runtime/mgc.go.html#line-344">nproc</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">13 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/mgc.go.html#line-344">mgc.go#L344</a>: 	<b>nproc</b>  uint32
+		<a href="../src/runtime/mgc.go.html#line-816" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-816">#L816</a>: 	if !(gcphase == _GCmark &amp;&amp; work.nwait == work.<b>nproc</b> &amp;&amp; !gcMarkWorkAvailable(nil)) {
+		<a href="../src/runtime/mgc.go.html#line-1257" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1257">#L1257</a>: 	work.<b>nproc</b> = ^uint32(0)
+		<a href="../src/runtime/mgc.go.html#line-1365" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1365">#L1365</a>: 		if decnwait == work.<b>nproc</b> {
+		<a href="../src/runtime/mgc.go.html#line-1366" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1366">#L1366</a>: 			println("runtime: work.nwait=", decnwait, "work.nproc=", work.<b>nproc</b>)
+		<a href="../src/runtime/mgc.go.html#line-1425" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1425">#L1425</a>: 		if incnwait &gt; work.<b>nproc</b> {
+		<a href="../src/runtime/mgc.go.html#line-1427" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1427">#L1427</a>: 				"work.nwait=", incnwait, "work.nproc=", work.<b>nproc</b>)
+		<a href="../src/runtime/mgc.go.html#line-1439" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1439">#L1439</a>: 		if incnwait == work.<b>nproc</b> &amp;&amp; !gcMarkWorkAvailable(nil) {
+		<a href="../src/runtime/mgcmark.go.html#line-654">mgcmark.go#L654</a>: 	if decnwait == work.<b>nproc</b> {
+		<a href="../src/runtime/mgcmark.go.html#line-655" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-655">#L655</a>: 		println("runtime: work.nwait =", decnwait, "work.nproc=", work.<b>nproc</b>)
+		<a href="../src/runtime/mgcmark.go.html#line-681" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-681">#L681</a>: 	if incnwait &gt; work.<b>nproc</b> {
+		<a href="../src/runtime/mgcmark.go.html#line-683" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-683">#L683</a>: 			"work.nproc=", work.<b>nproc</b>)
+		<a href="../src/runtime/mgcmark.go.html#line-687" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-687">#L687</a>: 	if incnwait == work.<b>nproc</b> &amp;&amp; !gcMarkWorkAvailable(nil) {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

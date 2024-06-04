@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: trace2runtime.go in package runtime</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	trace2runtime.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../pkg/runtime.html">runtime</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19],
+input[id=r20]:checked ~pre label[for=r20],
+input[id=r21]:checked ~pre label[for=r21],
+input[id=r22]:checked ~pre label[for=r22],
+input[id=r23]:checked ~pre label[for=r23],
+input[id=r24]:checked ~pre label[for=r24],
+input[id=r25]:checked ~pre label[for=r25],
+input[id=r26]:checked ~pre label[for=r26],
+input[id=r27]:checked ~pre label[for=r27],
+input[id=r28]:checked ~pre label[for=r28],
+input[id=r29]:checked ~pre label[for=r29],
+input[id=r30]:checked ~pre label[for=r30],
+input[id=r31]:checked ~pre label[for=r31],
+input[id=r32]:checked ~pre label[for=r32],
+input[id=r33]:checked ~pre label[for=r33],
+input[id=r34]:checked ~pre label[for=r34],
+input[id=r35]:checked ~pre label[for=r35],
+input[id=r36]:checked ~pre label[for=r36],
+input[id=r37]:checked ~pre label[for=r37],
+input[id=r38]:checked ~pre label[for=r38],
+input[id=r39]:checked ~pre label[for=r39],
+input[id=r40]:checked ~pre label[for=r40],
+input[id=r41]:checked ~pre label[for=r41],
+input[id=r42]:checked ~pre label[for=r42],
+input[id=r43]:checked ~pre label[for=r43],
+input[id=r44]:checked ~pre label[for=r44],
+input[id=r45]:checked ~pre label[for=r45],
+input[id=r46]:checked ~pre label[for=r46],
+input[id=r47]:checked ~pre label[for=r47],
+input[id=r48]:checked ~pre label[for=r48],
+input[id=r49]:checked ~pre label[for=r49],
+input[id=r50]:checked ~pre label[for=r50],
+input[id=r51]:checked ~pre label[for=r51],
+input[id=r52]:checked ~pre label[for=r52],
+input[id=r53]:checked ~pre label[for=r53],
+input[id=r54]:checked ~pre label[for=r54],
+input[id=r55]:checked ~pre label[for=r55],
+input[id=r56]:checked ~pre label[for=r56],
+input[id=r57]:checked ~pre label[for=r57],
+input[id=r58]:checked ~pre label[for=r58],
+input[id=r59]:checked ~pre label[for=r59],
+input[id=r60]:checked ~pre label[for=r60],
+input[id=r61]:checked ~pre label[for=r61],
+input[id=r62]:checked ~pre label[for=r62],
+input[id=r63]:checked ~pre label[for=r63],
+input[id=r64]:checked ~pre label[for=r64],
+input[id=r65]:checked ~pre label[for=r65],
+input[id=r66]:checked ~pre label[for=r66],
+input[id=r67]:checked ~pre label[for=r67],
+input[id=r68]:checked ~pre label[for=r68],
+input[id=r69]:checked ~pre label[for=r69],
+input[id=r70]:checked ~pre label[for=r70],
+input[id=r71]:checked ~pre label[for=r71],
+input[id=r72]:checked ~pre label[for=r72],
+input[id=r73]:checked ~pre label[for=r73],
+input[id=r74]:checked ~pre label[for=r74],
+input[id=r75]:checked ~pre label[for=r75],
+input[id=r76]:checked ~pre label[for=r76],
+input[id=r77]:checked ~pre label[for=r77],
+input[id=r78]:checked ~pre label[for=r78],
+input[id=r79]:checked ~pre label[for=r79],
+input[id=r80]:checked ~pre label[for=r80],
+input[id=r81]:checked ~pre label[for=r81],
+input[id=r82]:checked ~pre label[for=r82],
+input[id=r83]:checked ~pre label[for=r83],
+input[id=r84]:checked ~pre label[for=r84],
+input[id=r85]:checked ~pre label[for=r85],
+input[id=r86]:checked ~pre label[for=r86],
+input[id=r87]:checked ~pre label[for=r87],
+input[id=r88]:checked ~pre label[for=r88],
+input[id=r89]:checked ~pre label[for=r89],
+input[id=r90]:checked ~pre label[for=r90],
+input[id=r91]:checked ~pre label[for=r91],
+input[id=r92]:checked ~pre label[for=r92],
+input[id=r93]:checked ~pre label[for=r93],
+input[id=r94]:checked ~pre label[for=r94],
+input[id=r95]:checked ~pre label[for=r95],
+input[id=r96]:checked ~pre label[for=r96],
+input[id=r97]:checked ~pre label[for=r97],
+input[id=r98]:checked ~pre label[for=r98],
+input[id=r99]:checked ~pre label[for=r99],
+input[id=r100]:checked ~pre label[for=r100],
+input[id=r101]:checked ~pre label[for=r101],
+input[id=r102]:checked ~pre label[for=r102],
+input[id=r103]:checked ~pre label[for=r103],
+input[id=r104]:checked ~pre label[for=r104],
+input[id=r105]:checked ~pre label[for=r105],
+input[id=r106]:checked ~pre label[for=r106],
+input[id=r107]:checked ~pre label[for=r107],
+input[id=r108]:checked ~pre label[for=r108],
+input[id=r109]:checked ~pre label[for=r109],
+input[id=r110]:checked ~pre label[for=r110],
+input[id=r111]:checked ~pre label[for=r111],
+input[id=r112]:checked ~pre label[for=r112],
+input[id=r113]:checked ~pre label[for=r113],
+input[id=r114]:checked ~pre label[for=r114],
+input[id=r115]:checked ~pre label[for=r115],
+input[id=r116]:checked ~pre label[for=r116],
+input[id=r117]:checked ~pre label[for=r117],
+input[id=r118]:checked ~pre label[for=r118],
+input[id=r119]:checked ~pre label[for=r119],
+input[id=r120]:checked ~pre label[for=r120],
+input[id=r121]:checked ~pre label[for=r121],
+input[id=r122]:checked ~pre label[for=r122],
+input[id=r123]:checked ~pre label[for=r123],
+input[id=r124]:checked ~pre label[for=r124],
+input[id=r125]:checked ~pre label[for=r125],
+input[id=r126]:checked ~pre label[for=r126],
+input[id=r127]:checked ~pre label[for=r127],
+input[id=r128]:checked ~pre label[for=r128],
+input[id=r129]:checked ~pre label[for=r129],
+input[id=r130]:checked ~pre label[for=r130],
+input[id=r131]:checked ~pre label[for=r131],
+input[id=r132]:checked ~pre label[for=r132],
+input[id=r133]:checked ~pre label[for=r133],
+input[id=r134]:checked ~pre label[for=r134],
+input[id=r135]:checked ~pre label[for=r135],
+input[id=r136]:checked ~pre label[for=r136],
+input[id=r137]:checked ~pre label[for=r137],
+input[id=r138]:checked ~pre label[for=r138],
+input[id=r139]:checked ~pre label[for=r139],
+input[id=r140]:checked ~pre label[for=r140],
+input[id=r141]:checked ~pre label[for=r141],
+input[id=r142]:checked ~pre label[for=r142]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
+<input id="r20" type="radio" name="g"/>
+<input id="r21" type="radio" name="g"/>
+<input id="r22" type="radio" name="g"/>
+<input id="r23" type="radio" name="g"/>
+<input id="r24" type="radio" name="g"/>
+<input id="r25" type="radio" name="g"/>
+<input id="r26" type="radio" name="g"/>
+<input id="r27" type="radio" name="g"/>
+<input id="r28" type="radio" name="g"/>
+<input id="r29" type="radio" name="g"/>
+<input id="r30" type="radio" name="g"/>
+<input id="r31" type="radio" name="g"/>
+<input id="r32" type="radio" name="g"/>
+<input id="r33" type="radio" name="g"/>
+<input id="r34" type="radio" name="g"/>
+<input id="r35" type="radio" name="g"/>
+<input id="r36" type="radio" name="g"/>
+<input id="r37" type="radio" name="g"/>
+<input id="r38" type="radio" name="g"/>
+<input id="r39" type="radio" name="g"/>
+<input id="r40" type="radio" name="g"/>
+<input id="r41" type="radio" name="g"/>
+<input id="r42" type="radio" name="g"/>
+<input id="r43" type="radio" name="g"/>
+<input id="r44" type="radio" name="g"/>
+<input id="r45" type="radio" name="g"/>
+<input id="r46" type="radio" name="g"/>
+<input id="r47" type="radio" name="g"/>
+<input id="r48" type="radio" name="g"/>
+<input id="r49" type="radio" name="g"/>
+<input id="r50" type="radio" name="g"/>
+<input id="r51" type="radio" name="g"/>
+<input id="r52" type="radio" name="g"/>
+<input id="r53" type="radio" name="g"/>
+<input id="r54" type="radio" name="g"/>
+<input id="r55" type="radio" name="g"/>
+<input id="r56" type="radio" name="g"/>
+<input id="r57" type="radio" name="g"/>
+<input id="r58" type="radio" name="g"/>
+<input id="r59" type="radio" name="g"/>
+<input id="r60" type="radio" name="g"/>
+<input id="r61" type="radio" name="g"/>
+<input id="r62" type="radio" name="g"/>
+<input id="r63" type="radio" name="g"/>
+<input id="r64" type="radio" name="g"/>
+<input id="r65" type="radio" name="g"/>
+<input id="r66" type="radio" name="g"/>
+<input id="r67" type="radio" name="g"/>
+<input id="r68" type="radio" name="g"/>
+<input id="r69" type="radio" name="g"/>
+<input id="r70" type="radio" name="g"/>
+<input id="r71" type="radio" name="g"/>
+<input id="r72" type="radio" name="g"/>
+<input id="r73" type="radio" name="g"/>
+<input id="r74" type="radio" name="g"/>
+<input id="r75" type="radio" name="g"/>
+<input id="r76" type="radio" name="g"/>
+<input id="r77" type="radio" name="g"/>
+<input id="r78" type="radio" name="g"/>
+<input id="r79" type="radio" name="g"/>
+<input id="r80" type="radio" name="g"/>
+<input id="r81" type="radio" name="g"/>
+<input id="r82" type="radio" name="g"/>
+<input id="r83" type="radio" name="g"/>
+<input id="r84" type="radio" name="g"/>
+<input id="r85" type="radio" name="g"/>
+<input id="r86" type="radio" name="g"/>
+<input id="r87" type="radio" name="g"/>
+<input id="r88" type="radio" name="g"/>
+<input id="r89" type="radio" name="g"/>
+<input id="r90" type="radio" name="g"/>
+<input id="r91" type="radio" name="g"/>
+<input id="r92" type="radio" name="g"/>
+<input id="r93" type="radio" name="g"/>
+<input id="r94" type="radio" name="g"/>
+<input id="r95" type="radio" name="g"/>
+<input id="r96" type="radio" name="g"/>
+<input id="r97" type="radio" name="g"/>
+<input id="r98" type="radio" name="g"/>
+<input id="r99" type="radio" name="g"/>
+<input id="r100" type="radio" name="g"/>
+<input id="r101" type="radio" name="g"/>
+<input id="r102" type="radio" name="g"/>
+<input id="r103" type="radio" name="g"/>
+<input id="r104" type="radio" name="g"/>
+<input id="r105" type="radio" name="g"/>
+<input id="r106" type="radio" name="g"/>
+<input id="r107" type="radio" name="g"/>
+<input id="r108" type="radio" name="g"/>
+<input id="r109" type="radio" name="g"/>
+<input id="r110" type="radio" name="g"/>
+<input id="r111" type="radio" name="g"/>
+<input id="r112" type="radio" name="g"/>
+<input id="r113" type="radio" name="g"/>
+<input id="r114" type="radio" name="g"/>
+<input id="r115" type="radio" name="g"/>
+<input id="r116" type="radio" name="g"/>
+<input id="r117" type="radio" name="g"/>
+<input id="r118" type="radio" name="g"/>
+<input id="r119" type="radio" name="g"/>
+<input id="r120" type="radio" name="g"/>
+<input id="r121" type="radio" name="g"/>
+<input id="r122" type="radio" name="g"/>
+<input id="r123" type="radio" name="g"/>
+<input id="r124" type="radio" name="g"/>
+<input id="r125" type="radio" name="g"/>
+<input id="r126" type="radio" name="g"/>
+<input id="r127" type="radio" name="g"/>
+<input id="r128" type="radio" name="g"/>
+<input id="r129" type="radio" name="g"/>
+<input id="r130" type="radio" name="g"/>
+<input id="r131" type="radio" name="g"/>
+<input id="r132" type="radio" name="g"/>
+<input id="r133" type="radio" name="g"/>
+<input id="r134" type="radio" name="g"/>
+<input id="r135" type="radio" name="g"/>
+<input id="r136" type="radio" name="g"/>
+<input id="r137" type="radio" name="g"/>
+<input id="r138" type="radio" name="g"/>
+<input id="r139" type="radio" name="g"/>
+<input id="r140" type="radio" name="g"/>
+<input id="r141" type="radio" name="g"/>
+<input id="r142" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="comment">// Copyright 2023 The Go Authors. All rights reserved.</span></code></span>
+<span class="codeline" id="line-2"><code><span class="comment">// Use of this source code is governed by a BSD-style</span></code></span>
+<span class="codeline" id="line-3"><code><span class="comment">// license that can be found in the LICENSE file.</span></code></span>
+<span class="codeline" id="line-4"><code></code></span>
+<span class="codeline" id="line-5"><code><span class="comment">//go:build goexperiment.exectracer2</span></code></span>
+<span class="codeline" id="line-6"><code></code></span>
+<span class="codeline" id="line-7"><code><span class="comment">// Runtime -&gt; tracer API.</span></code></span>
+<span class="codeline" id="line-8"><code></code></span>
+<span class="codeline" id="line-9"><code><span class="keyword">package</span> runtime</code></span>
+<span class="codeline" id="line-10"><code></code></span>
+<span class="codeline" id="line-11"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-12"><code>	<label for="i0"><span class="lit-string i0">"runtime/internal/atomic"</span></label></code></span>
+<span class="codeline" id="line-13"><code>	<a href="../../pkg/unsafe.html" class="ident i1">_</a> <label for="i1"><span class="lit-string i1">"unsafe"</span></label> <span class="comment">// for go:linkname</span></code></span>
+<span class="codeline" id="line-14"><code>)</code></span>
+<span class="codeline" id="line-15"><code></code></span>
+<span class="codeline" id="line-16"><code><span class="comment">// gTraceState is per-G state for the tracer.</span></code></span>
+<span class="codeline" id="line-17"><code><span class="keyword">type</span> <a href="../../pkg/runtime.html#name-gTraceState" class="ident">gTraceState</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-18"><code>	<a href="trace2status.go.html#line-164" class="ident">traceSchedResourceState</a></code></span>
+<span class="codeline" id="line-19"><code>}</code></span>
+<span class="codeline" id="line-20"><code></code></span>
+<span class="codeline" id="line-21"><code><span class="comment">// reset resets the gTraceState for a new goroutine.</span></code></span>
+<span class="codeline" id="line-22"><code><span class="keyword">func</span> (<label for="r0" class="ident">s</label> *<a href="#line-17" class="ident">gTraceState</a>) <label for="r1" class="ident"><a href="../../use/runtime..gTraceState^0b1c0.reset^01be3.html" class="ident">reset</a></label>() {</code></span>
+<span class="codeline" id="line-23"><code>	<label for="r0" class="ident">s</label>.<a href="trace2status.go.html#line-180" class="ident">seq</a> = [<span class="lit-number">2</span>]<a href="../../pkg/builtin.html#name-uint64" class="ident">uint64</a>{}</code></span>
+<span class="codeline" id="line-24"><code>	<span class="comment">// N.B. s.statusTraced is managed and cleared separately.</span></code></span>
+<span class="codeline" id="line-25"><code>}</code></span>
+<span class="codeline" id="line-26"><code></code></span>
+<span class="codeline" id="line-27"><code><span class="comment">// mTraceState is per-M state for the tracer.</span></code></span>
+<span class="codeline" id="line-28"><code><span class="keyword">type</span> <a href="../../pkg/runtime.html#name-mTraceState" class="ident">mTraceState</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-29"><code>	<a href="../../use/runtime..mTraceState^b3897.seqlock^2ab48.html" class="ident">seqlock</a> <a href="../../pkg/runtime/internal/atomic.html" class="ident i0">atomic</a>.<a href="internal/atomic/types.go.html#line-350" class="ident">Uintptr</a> <span class="comment">// seqlock indicating that this M is writing to a trace buffer.</span></code></span>
+<span class="codeline" id="line-30"><code>	<a href="../../use/runtime..mTraceState^b3897.buf^3ef31.html" class="ident">buf</a>     [<span class="lit-number">2</span>]*<a href="trace2buf.go.html#line-170" class="ident">traceBuf</a>   <span class="comment">// Per-M traceBuf for writing. Indexed by trace.gen%2.</span></code></span>
+<span class="codeline" id="line-31"><code>	<a href="../../use/runtime..mTraceState^b3897.link^b1b1b.html" class="ident">link</a>    *<a href="runtime2.go.html#line-550" class="ident">m</a>             <span class="comment">// Snapshot of alllink or freelink.</span></code></span>
+<span class="codeline" id="line-32"><code>}</code></span>
+<span class="codeline" id="line-33"><code></code></span>
+<span class="codeline" id="line-34"><code><span class="comment">// pTraceState is per-P state for the tracer.</span></code></span>
+<span class="codeline" id="line-35"><code><span class="keyword">type</span> <a href="../../pkg/runtime.html#name-pTraceState" class="ident">pTraceState</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-36"><code>	<a href="trace2status.go.html#line-164" class="ident">traceSchedResourceState</a></code></span>
+<span class="codeline" id="line-37"><code></code></span>
+<span class="codeline" id="line-38"><code>	<span class="comment">// mSyscallID is the ID of the M this was bound to before entering a syscall.</span></code></span>
+<span class="codeline" id="line-39"><code>	<a href="../../use/runtime..pTraceState^f2c14.mSyscallID^2ed6e.html" class="ident">mSyscallID</a> <a href="../../pkg/builtin.html#name-int64" class="ident">int64</a></code></span>
+<span class="codeline" id="line-40"><code></code></span>
+<span class="codeline" id="line-41"><code>	<span class="comment">// maySweep indicates the sweep events should be traced.</span></code></span>
+<span class="codeline" id="line-42"><code><span class="comment">	// This is used to defer the sweep start event until a span</span></code></span>
+<span class="codeline" id="line-43"><code><span class="comment">	// has actually been swept.</span></code></span>
+<span class="codeline" id="line-44"><code>	<a href="../../use/runtime..pTraceState^f2c14.maySweep^e59ee.html" class="ident">maySweep</a> <a href="../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-45"><code></code></span>
+<span class="codeline" id="line-46"><code>	<span class="comment">// inSweep indicates that at least one sweep event has been traced.</span></code></span>
+<span class="codeline" id="line-47"><code>	<a href="../../use/runtime..pTraceState^f2c14.inSweep^e02e6.html" class="ident">inSweep</a> <a href="../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-48"><code></code></span>
+<span class="codeline" id="line-49"><code>	<span class="comment">// swept and reclaimed track the number of bytes swept and reclaimed</span></code></span>
+<span class="codeline" id="line-50"><code><span class="comment">	// by sweeping in the current sweep loop (while maySweep was true).</span></code></span>
+<span class="codeline" id="line-51"><code>	<a href="../../use/runtime..pTraceState^f2c14.swept^0a7d0.html" class="ident">swept</a>, <a href="../../use/runtime..pTraceState^f2c14.reclaimed^8328a.html" class="ident">reclaimed</a> <a href="../../pkg/builtin.html#name-uintptr" class="ident">uintptr</a></code></span>
+<span class="codeline" id="line-52"><code>}</code></span>
+<span class="codeline" id="line-53"><code></code></span>
+<span class="codeline" id="line-54"><code><span class="comment">// traceLockInit initializes global trace locks.</span></code></span>
+<span class="codeline" id="line-55"><code><span class="keyword">func</span> <label for="r2" class="ident"><a href="../../pkg/runtime.html#name-traceLockInit" class="ident">traceLockInit</a></label>() {</code></span>
+<span class="codeline" id="line-56"><code>	<span class="comment">// Sharing a lock rank here is fine because they should never be accessed</span></code></span>
+<span class="codeline" id="line-57"><code><span class="comment">	// together. If they are, we want to find out immediately.</span></code></span>
+<span class="codeline" id="line-58"><code>	<a href="lockrank_off.go.html#line-16" class="ident">lockInit</a>(&amp;<a href="trace2.go.html#line-32" class="ident">trace</a>.<a href="trace2.go.html#line-71" class="ident">stringTab</a>[<span class="lit-number">0</span>].<a href="trace2string.go.html#line-19" class="ident">lock</a>, <a href="lockrank.go.html#line-45" class="ident">lockRankTraceStrings</a>)</code></span>
+<span class="codeline" id="line-59"><code>	<a href="lockrank_off.go.html#line-16" class="ident">lockInit</a>(&amp;<a href="trace2.go.html#line-32" class="ident">trace</a>.<a href="trace2.go.html#line-71" class="ident">stringTab</a>[<span class="lit-number">0</span>].<a href="trace2string.go.html#line-23" class="ident">tab</a>.<a href="trace2map.go.html#line-27" class="ident">lock</a>, <a href="lockrank.go.html#line-45" class="ident">lockRankTraceStrings</a>)</code></span>
+<span class="codeline" id="line-60"><code>	<a href="lockrank_off.go.html#line-16" class="ident">lockInit</a>(&amp;<a href="trace2.go.html#line-32" class="ident">trace</a>.<a href="trace2.go.html#line-71" class="ident">stringTab</a>[<span class="lit-number">1</span>].<a href="trace2string.go.html#line-19" class="ident">lock</a>, <a href="lockrank.go.html#line-45" class="ident">lockRankTraceStrings</a>)</code></span>
+<span class="codeline" id="line-61"><code>	<a href="lockrank_off.go.html#line-16" class="ident">lockInit</a>(&amp;<a href="trace2.go.html#line-32" class="ident">trace</a>.<a href="trace2.go.html#line-71" class="ident">stringTab</a>[<span class="lit-number">1</span>].<a href="trace2string.go.html#line-23" class="ident">tab</a>.<a href="trace2map.go.html#line-27" class="ident">lock</a>, <a href="lockrank.go.html#line-45" class="ident">lockRankTraceStrings</a>)</code></span>
+<span class="codeline" id="line-62"><code>	<a href="lockrank_off.go.html#line-16" class="ident">lockInit</a>(&amp;<a href="trace2.go.html#line-32" class="ident">trace</a>.<a href="trace2.go.html#line-70" class="ident">stackTab</a>[<span class="lit-number">0</span>].<a href="trace2stack.go.html#line-86" class="ident">tab</a>.<a href="trace2map.go.html#line-27" class="ident">lock</a>, <a href="lockrank.go.html#line-68" class="ident">lockRankTraceStackTab</a>)</code></span>
+<span class="codeline" id="line-63"><code>	<a href="lockrank_off.go.html#line-16" class="ident">lockInit</a>(&amp;<a href="trace2.go.html#line-32" class="ident">trace</a>.<a href="trace2.go.html#line-70" class="ident">stackTab</a>[<span class="lit-number">1</span>].<a href="trace2stack.go.html#line-86" class="ident">tab</a>.<a href="trace2map.go.html#line-27" class="ident">lock</a>, <a href="lockrank.go.html#line-68" class="ident">lockRankTraceStackTab</a>)</code></span>
+<span class="codeline" id="line-64"><code>	<a href="lockrank_off.go.html#line-16" class="ident">lockInit</a>(&amp;<a href="trace2.go.html#line-32" class="ident">trace</a>.<a href="trace2.go.html#line-35" class="ident">lock</a>, <a href="lockrank.go.html#line-67" class="ident">lockRankTrace</a>)</code></span>
+<span class="codeline" id="line-65"><code>}</code></span>
+<span class="codeline" id="line-66"><code></code></span>
+<span class="codeline" id="line-67"><code><span class="comment">// lockRankMayTraceFlush records the lock ranking effects of a</span></code></span>
+<span class="codeline" id="line-68"><code><span class="comment">// potential call to traceFlush.</span></code></span>
+<span class="codeline" id="line-69"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-70"><code><span class="comment">// nosplit because traceAcquire is nosplit.</span></code></span>
+<span class="codeline" id="line-71"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-72"><code><span class="comment">//go:nosplit</span></code></span>
+<span class="codeline" id="line-73"><code><span class="keyword">func</span> <label for="r3" class="ident"><a href="../../pkg/runtime.html#name-lockRankMayTraceFlush" class="ident">lockRankMayTraceFlush</a></label>() {</code></span>
+<span class="codeline" id="line-74"><code>	<a href="lockrank_off.go.html#line-43" class="ident">lockWithRankMayAcquire</a>(&amp;<a href="trace2.go.html#line-32" class="ident">trace</a>.<a href="trace2.go.html#line-35" class="ident">lock</a>, <a href="lockrank_off.go.html#line-19" class="ident">getLockRank</a>(&amp;<a href="trace2.go.html#line-32" class="ident">trace</a>.<a href="trace2.go.html#line-35" class="ident">lock</a>))</code></span>
+<span class="codeline" id="line-75"><code>}</code></span>
+<span class="codeline" id="line-76"><code></code></span>
+<span class="codeline" id="line-77"><code><span class="comment">// traceBlockReason is an enumeration of reasons a goroutine might block.</span></code></span>
+<span class="codeline" id="line-78"><code><span class="comment">// This is the interface the rest of the runtime uses to tell the</span></code></span>
+<span class="codeline" id="line-79"><code><span class="comment">// tracer why a goroutine blocked. The tracer then propagates this information</span></code></span>
+<span class="codeline" id="line-80"><code><span class="comment">// into the trace however it sees fit.</span></code></span>
+<span class="codeline" id="line-81"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-82"><code><span class="comment">// Note that traceBlockReasons should not be compared, since reasons that are</span></code></span>
+<span class="codeline" id="line-83"><code><span class="comment">// distinct by name may *not* be distinct by value.</span></code></span>
+<span class="codeline" id="line-84"><code><span class="keyword">type</span> <a href="../../pkg/runtime.html#name-traceBlockReason" class="ident">traceBlockReason</a> <a href="../../pkg/builtin.html#name-uint8" class="ident">uint8</a></code></span>
+<span class="codeline" id="line-85"><code></code></span>
+<span class="codeline" id="line-86"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-87"><code>	<a href="../../pkg/runtime.html#name-traceBlockGeneric" class="ident">traceBlockGeneric</a> <a href="#line-84" class="ident">traceBlockReason</a> = <a href="../../pkg/builtin.html#name-iota" class="ident">iota</a></code></span>
+<span class="codeline" id="line-88"><code>	<a href="../../pkg/runtime.html#name-traceBlockForever" class="ident">traceBlockForever</a></code></span>
+<span class="codeline" id="line-89"><code>	<a href="../../pkg/runtime.html#name-traceBlockNet" class="ident">traceBlockNet</a></code></span>
+<span class="codeline" id="line-90"><code>	<a href="../../pkg/runtime.html#name-traceBlockSelect" class="ident">traceBlockSelect</a></code></span>
+<span class="codeline" id="line-91"><code>	<a href="../../pkg/runtime.html#name-traceBlockCondWait" class="ident">traceBlockCondWait</a></code></span>
+<span class="codeline" id="line-92"><code>	<a href="../../pkg/runtime.html#name-traceBlockSync" class="ident">traceBlockSync</a></code></span>
+<span class="codeline" id="line-93"><code>	<a href="../../pkg/runtime.html#name-traceBlockChanSend" class="ident">traceBlockChanSend</a></code></span>
+<span class="codeline" id="line-94"><code>	<a href="../../pkg/runtime.html#name-traceBlockChanRecv" class="ident">traceBlockChanRecv</a></code></span>
+<span class="codeline" id="line-95"><code>	<a href="../../pkg/runtime.html#name-traceBlockGCMarkAssist" class="ident">traceBlockGCMarkAssist</a></code></span>
+<span class="codeline" id="line-96"><code>	<a href="../../pkg/runtime.html#name-traceBlockGCSweep" class="ident">traceBlockGCSweep</a></code></span>
+<span class="codeline" id="line-97"><code>	<a href="../../pkg/runtime.html#name-traceBlockSystemGoroutine" class="ident">traceBlockSystemGoroutine</a></code></span>
+<span class="codeline" id="line-98"><code>	<a href="../../pkg/runtime.html#name-traceBlockPreempted" class="ident">traceBlockPreempted</a></code></span>
+<span class="codeline" id="line-99"><code>	<a href="../../pkg/runtime.html#name-traceBlockDebugCall" class="ident">traceBlockDebugCall</a></code></span>
+<span class="codeline" id="line-100"><code>	<a href="../../pkg/runtime.html#name-traceBlockUntilGCEnds" class="ident">traceBlockUntilGCEnds</a></code></span>
+<span class="codeline" id="line-101"><code>	<a href="../../pkg/runtime.html#name-traceBlockSleep" class="ident">traceBlockSleep</a></code></span>
+<span class="codeline" id="line-102"><code>)</code></span>
+<span class="codeline" id="line-103"><code></code></span>
+<span class="codeline" id="line-104"><code><span class="keyword">var</span> <a href="../../pkg/runtime.html#name-traceBlockReasonStrings" class="ident">traceBlockReasonStrings</a> = [...]<a href="../../pkg/builtin.html#name-string" class="ident">string</a>{</code></span>
+<span class="codeline" id="line-105"><code>	<a href="#line-87" class="ident">traceBlockGeneric</a>:         <span class="lit-string">"unspecified"</span>,</code></span>
+<span class="codeline" id="line-106"><code>	<a href="#line-88" class="ident">traceBlockForever</a>:         <span class="lit-string">"forever"</span>,</code></span>
+<span class="codeline" id="line-107"><code>	<a href="#line-89" class="ident">traceBlockNet</a>:             <span class="lit-string">"network"</span>,</code></span>
+<span class="codeline" id="line-108"><code>	<a href="#line-90" class="ident">traceBlockSelect</a>:          <span class="lit-string">"select"</span>,</code></span>
+<span class="codeline" id="line-109"><code>	<a href="#line-91" class="ident">traceBlockCondWait</a>:        <span class="lit-string">"sync.(*Cond).Wait"</span>,</code></span>
+<span class="codeline" id="line-110"><code>	<a href="#line-92" class="ident">traceBlockSync</a>:            <span class="lit-string">"sync"</span>,</code></span>
+<span class="codeline" id="line-111"><code>	<a href="#line-93" class="ident">traceBlockChanSend</a>:        <span class="lit-string">"chan send"</span>,</code></span>
+<span class="codeline" id="line-112"><code>	<a href="#line-94" class="ident">traceBlockChanRecv</a>:        <span class="lit-string">"chan receive"</span>,</code></span>
+<span class="codeline" id="line-113"><code>	<a href="#line-95" class="ident">traceBlockGCMarkAssist</a>:    <span class="lit-string">"GC mark assist wait for work"</span>,</code></span>
+<span class="codeline" id="line-114"><code>	<a href="#line-96" class="ident">traceBlockGCSweep</a>:         <span class="lit-string">"GC background sweeper wait"</span>,</code></span>
+<span class="codeline" id="line-115"><code>	<a href="#line-97" class="ident">traceBlockSystemGoroutine</a>: <span class="lit-string">"system goroutine wait"</span>,</code></span>
+<span class="codeline" id="line-116"><code>	<a href="#line-98" class="ident">traceBlockPreempted</a>:       <span class="lit-string">"preempted"</span>,</code></span>
+<span class="codeline" id="line-117"><code>	<a href="#line-99" class="ident">traceBlockDebugCall</a>:       <span class="lit-string">"wait for debug call"</span>,</code></span>
+<span class="codeline" id="line-118"><code>	<a href="#line-100" class="ident">traceBlockUntilGCEnds</a>:     <span class="lit-string">"wait until GC ends"</span>,</code></span>
+<span class="codeline" id="line-119"><code>	<a href="#line-101" class="ident">traceBlockSleep</a>:           <span class="lit-string">"sleep"</span>,</code></span>
+<span class="codeline" id="line-120"><code>}</code></span>
+<span class="codeline" id="line-121"><code></code></span>
+<span class="codeline" id="line-122"><code><span class="comment">// traceGoStopReason is an enumeration of reasons a goroutine might yield.</span></code></span>
+<span class="codeline" id="line-123"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-124"><code><span class="comment">// Note that traceGoStopReasons should not be compared, since reasons that are</span></code></span>
+<span class="codeline" id="line-125"><code><span class="comment">// distinct by name may *not* be distinct by value.</span></code></span>
+<span class="codeline" id="line-126"><code><span class="keyword">type</span> <a href="../../pkg/runtime.html#name-traceGoStopReason" class="ident">traceGoStopReason</a> <a href="../../pkg/builtin.html#name-uint8" class="ident">uint8</a></code></span>
+<span class="codeline" id="line-127"><code></code></span>
+<span class="codeline" id="line-128"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-129"><code>	<a href="../../pkg/runtime.html#name-traceGoStopGeneric" class="ident">traceGoStopGeneric</a> <a href="#line-126" class="ident">traceGoStopReason</a> = <a href="../../pkg/builtin.html#name-iota" class="ident">iota</a></code></span>
+<span class="codeline" id="line-130"><code>	<a href="../../pkg/runtime.html#name-traceGoStopGoSched" class="ident">traceGoStopGoSched</a></code></span>
+<span class="codeline" id="line-131"><code>	<a href="../../pkg/runtime.html#name-traceGoStopPreempted" class="ident">traceGoStopPreempted</a></code></span>
+<span class="codeline" id="line-132"><code>)</code></span>
+<span class="codeline" id="line-133"><code></code></span>
+<span class="codeline" id="line-134"><code><span class="keyword">var</span> <a href="../../pkg/runtime.html#name-traceGoStopReasonStrings" class="ident">traceGoStopReasonStrings</a> = [...]<a href="../../pkg/builtin.html#name-string" class="ident">string</a>{</code></span>
+<span class="codeline" id="line-135"><code>	<a href="#line-129" class="ident">traceGoStopGeneric</a>:   <span class="lit-string">"unspecified"</span>,</code></span>
+<span class="codeline" id="line-136"><code>	<a href="#line-130" class="ident">traceGoStopGoSched</a>:   <span class="lit-string">"runtime.Gosched"</span>,</code></span>
+<span class="codeline" id="line-137"><code>	<a href="#line-131" class="ident">traceGoStopPreempted</a>: <span class="lit-string">"preempted"</span>,</code></span>
+<span class="codeline" id="line-138"><code>}</code></span>
+<span class="codeline" id="line-139"><code></code></span>
+<span class="codeline" id="line-140"><code><span class="comment">// traceEnabled returns true if the trace is currently enabled.</span></code></span>
+<span class="codeline" id="line-141"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-142"><code><span class="comment">//go:nosplit</span></code></span>
+<span class="codeline" id="line-143"><code><span class="keyword">func</span> <label for="r4" class="ident"><a href="../../pkg/runtime.html#name-traceEnabled" class="ident">traceEnabled</a></label>() <a href="../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-144"><code>	<span class="keyword">return</span> <a href="trace2.go.html#line-32" class="ident">trace</a>.<a href="trace2.go.html#line-102" class="ident">gen</a>.<a href="internal/atomic/types.go.html#line-358" class="ident">Load</a>() != <span class="lit-number">0</span></code></span>
+<span class="codeline" id="line-145"><code>}</code></span>
+<span class="codeline" id="line-146"><code></code></span>
+<span class="codeline" id="line-147"><code><span class="comment">// traceShuttingDown returns true if the trace is currently shutting down.</span></code></span>
+<span class="codeline" id="line-148"><code><span class="keyword">func</span> <label for="r5" class="ident"><a href="../../pkg/runtime.html#name-traceShuttingDown" class="ident">traceShuttingDown</a></label>() <a href="../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-149"><code>	<span class="keyword">return</span> <a href="trace2.go.html#line-32" class="ident">trace</a>.<a href="trace2.go.html#line-108" class="ident">shutdown</a>.<a href="internal/atomic/types.go.html#line-167" class="ident">Load</a>()</code></span>
+<span class="codeline" id="line-150"><code>}</code></span>
+<span class="codeline" id="line-151"><code></code></span>
+<span class="codeline" id="line-152"><code><span class="comment">// traceLocker represents an M writing trace events. While a traceLocker value</span></code></span>
+<span class="codeline" id="line-153"><code><span class="comment">// is valid, the tracer observes all operations on the G/M/P or trace events being</span></code></span>
+<span class="codeline" id="line-154"><code><span class="comment">// written as happening atomically.</span></code></span>
+<span class="codeline" id="line-155"><code><span class="keyword">type</span> <a href="../../pkg/runtime.html#name-traceLocker" class="ident">traceLocker</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-156"><code>	<a href="../../use/runtime..traceLocker^95127.mp^68dbf.html" class="ident">mp</a>  *<a href="runtime2.go.html#line-550" class="ident">m</a></code></span>
+<span class="codeline" id="line-157"><code>	<a href="../../use/runtime..traceLocker^95127.gen^3b6a7.html" class="ident">gen</a> <a href="../../pkg/builtin.html#name-uintptr" class="ident">uintptr</a></code></span>
+<span class="codeline" id="line-158"><code>}</code></span>
+<span class="codeline" id="line-159"><code></code></span>
+<span class="codeline" id="line-160"><code><span class="comment">// debugTraceReentrancy checks if the trace is reentrant.</span></code></span>
+<span class="codeline" id="line-161"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-162"><code><span class="comment">// This is optional because throwing in a function makes it instantly</span></code></span>
+<span class="codeline" id="line-163"><code><span class="comment">// not inlineable, and we want traceAcquire to be inlineable for</span></code></span>
+<span class="codeline" id="line-164"><code><span class="comment">// low overhead when the trace is disabled.</span></code></span>
+<span class="codeline" id="line-165"><code><span class="keyword">const</span> <a href="../../pkg/runtime.html#name-debugTraceReentrancy" class="ident">debugTraceReentrancy</a> = <a href="../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-166"><code></code></span>
+<span class="codeline" id="line-167"><code><span class="comment">// traceAcquire prepares this M for writing one or more trace events.</span></code></span>
+<span class="codeline" id="line-168"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-169"><code><span class="comment">// nosplit because it's called on the syscall path when stack movement is forbidden.</span></code></span>
+<span class="codeline" id="line-170"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-171"><code><span class="comment">//go:nosplit</span></code></span>
+<span class="codeline" id="line-172"><code><span class="keyword">func</span> <label for="r6" class="ident"><a href="../../pkg/runtime.html#name-traceAcquire" class="ident">traceAcquire</a></label>() <a href="#line-155" class="ident">traceLocker</a> {</code></span>
+<span class="codeline" id="line-173"><code>	<span class="keyword">if</span> !<a href="#line-143" class="ident">traceEnabled</a>() {</code></span>
+<span class="codeline" id="line-174"><code>		<span class="keyword">return</span> <a href="#line-155" class="ident">traceLocker</a>{}</code></span>
+<span class="codeline" id="line-175"><code>	}</code></span>
+<span class="codeline" id="line-176"><code>	<span class="keyword">return</span> <a href="#line-186" class="ident">traceAcquireEnabled</a>()</code></span>
+<span class="codeline" id="line-177"><code>}</code></span>
+<span class="codeline" id="line-178"><code></code></span>
+<span class="codeline" id="line-179"><code><span class="comment">// traceAcquireEnabled is the traceEnabled path for traceAcquire. It's explicitly</span></code></span>
+<span class="codeline" id="line-180"><code><span class="comment">// broken out to make traceAcquire inlineable to keep the overhead of the tracer</span></code></span>
+<span class="codeline" id="line-181"><code><span class="comment">// when it's disabled low.</span></code></span>
+<span class="codeline" id="line-182"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-183"><code><span class="comment">// nosplit because it's called by traceAcquire, which is nosplit.</span></code></span>
+<span class="codeline" id="line-184"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-185"><code><span class="comment">//go:nosplit</span></code></span>
+<span class="codeline" id="line-186"><code><span class="keyword">func</span> <label for="r7" class="ident"><a href="../../pkg/runtime.html#name-traceAcquireEnabled" class="ident">traceAcquireEnabled</a></label>() <a href="#line-155" class="ident">traceLocker</a> {</code></span>
+<span class="codeline" id="line-187"><code>	<span class="comment">// Any time we acquire a traceLocker, we may flush a trace buffer. But</span></code></span>
+<span class="codeline" id="line-188"><code><span class="comment">	// buffer flushes are rare. Record the lock edge even if it doesn't happen</span></code></span>
+<span class="codeline" id="line-189"><code><span class="comment">	// this time.</span></code></span>
+<span class="codeline" id="line-190"><code>	<a href="#line-73" class="ident">lockRankMayTraceFlush</a>()</code></span>
+<span class="codeline" id="line-191"><code></code></span>
+<span class="codeline" id="line-192"><code>	<span class="comment">// Prevent preemption.</span></code></span>
+<span class="codeline" id="line-193"><code>	<label for="r8" class="ident">mp</label> := <a href="runtime1.go.html#line-579" class="ident">acquirem</a>()</code></span>
+<span class="codeline" id="line-194"><code></code></span>
+<span class="codeline" id="line-195"><code>	<span class="comment">// Acquire the trace seqlock. This prevents traceAdvance from moving forward</span></code></span>
+<span class="codeline" id="line-196"><code><span class="comment">	// until all Ms are observed to be outside of their seqlock critical section.</span></code></span>
+<span class="codeline" id="line-197"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-198"><code><span class="comment">	// Note: The seqlock is mutated here and also in traceCPUSample. If you update</span></code></span>
+<span class="codeline" id="line-199"><code><span class="comment">	// usage of the seqlock here, make sure to also look at what traceCPUSample is</span></code></span>
+<span class="codeline" id="line-200"><code><span class="comment">	// doing.</span></code></span>
+<span class="codeline" id="line-201"><code>	<label for="r9" class="ident">seq</label> := <label for="r8" class="ident">mp</label>.<a href="runtime2.go.html#line-610" class="ident">trace</a>.<a href="#line-29" class="ident">seqlock</a>.<a href="internal/atomic/types.go.html#line-419" class="ident">Add</a>(<span class="lit-number">1</span>)</code></span>
+<span class="codeline" id="line-202"><code>	<span class="keyword">if</span> <a href="#line-165" class="ident">debugTraceReentrancy</a> &amp;&amp; <label for="r9" class="ident">seq</label>%<span class="lit-number">2</span> != <span class="lit-number">1</span> {</code></span>
+<span class="codeline" id="line-203"><code>		<a href="panic.go.html#line-1016" class="ident">throw</a>(<span class="lit-string">"bad use of trace.seqlock or tracer is reentrant"</span>)</code></span>
+<span class="codeline" id="line-204"><code>	}</code></span>
+<span class="codeline" id="line-205"><code></code></span>
+<span class="codeline" id="line-206"><code>	<span class="comment">// N.B. This load of gen appears redundant with the one in traceEnabled.</span></code></span>
+<span class="codeline" id="line-207"><code><span class="comment">	// However, it's very important that the gen we use for writing to the trace</span></code></span>
+<span class="codeline" id="line-208"><code><span class="comment">	// is acquired under a traceLocker so traceAdvance can make sure no stale</span></code></span>
+<span class="codeline" id="line-209"><code><span class="comment">	// gen values are being used.</span></code></span>
+<span class="codeline" id="line-210"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-211"><code><span class="comment">	// Because we're doing this load again, it also means that the trace</span></code></span>
+<span class="codeline" id="line-212"><code><span class="comment">	// might end up being disabled when we load it. In that case we need to undo</span></code></span>
+<span class="codeline" id="line-213"><code><span class="comment">	// what we did and bail.</span></code></span>
+<span class="codeline" id="line-214"><code>	<label for="r10" class="ident">gen</label> := <a href="trace2.go.html#line-32" class="ident">trace</a>.<a href="trace2.go.html#line-102" class="ident">gen</a>.<a href="internal/atomic/types.go.html#line-358" class="ident">Load</a>()</code></span>
+<span class="codeline" id="line-215"><code>	<span class="keyword">if</span> <label for="r10" class="ident">gen</label> == <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-216"><code>		<label for="r8" class="ident">mp</label>.<a href="runtime2.go.html#line-610" class="ident">trace</a>.<a href="#line-29" class="ident">seqlock</a>.<a href="internal/atomic/types.go.html#line-419" class="ident">Add</a>(<span class="lit-number">1</span>)</code></span>
+<span class="codeline" id="line-217"><code>		<a href="runtime1.go.html#line-586" class="ident">releasem</a>(<label for="r8" class="ident">mp</label>)</code></span>
+<span class="codeline" id="line-218"><code>		<span class="keyword">return</span> <a href="#line-155" class="ident">traceLocker</a>{}</code></span>
+<span class="codeline" id="line-219"><code>	}</code></span>
+<span class="codeline" id="line-220"><code>	<span class="keyword">return</span> <a href="#line-155" class="ident">traceLocker</a>{<label for="r8" class="ident">mp</label>, <label for="r10" class="ident">gen</label>}</code></span>
+<span class="codeline" id="line-221"><code>}</code></span>
+<span class="codeline" id="line-222"><code></code></span>
+<span class="codeline" id="line-223"><code><span class="comment">// ok returns true if the traceLocker is valid (i.e. tracing is enabled).</span></code></span>
+<span class="codeline" id="line-224"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-225"><code><span class="comment">// nosplit because it's called on the syscall path when stack movement is forbidden.</span></code></span>
+<span class="codeline" id="line-226"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-227"><code><span class="comment">//go:nosplit</span></code></span>
+<span class="codeline" id="line-228"><code><span class="keyword">func</span> (<label for="r11" class="ident">tl</label> <a href="#line-155" class="ident">traceLocker</a>) <label for="r12" class="ident"><a href="../../use/runtime..traceLocker^95127.ok^26893.html" class="ident">ok</a></label>() <a href="../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-229"><code>	<span class="keyword">return</span> <label for="r11" class="ident">tl</label>.<a href="#line-157" class="ident">gen</a> != <span class="lit-number">0</span></code></span>
+<span class="codeline" id="line-230"><code>}</code></span>
+<span class="codeline" id="line-231"><code></code></span>
+<span class="codeline" id="line-232"><code><span class="comment">// traceRelease indicates that this M is done writing trace events.</span></code></span>
+<span class="codeline" id="line-233"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-234"><code><span class="comment">// nosplit because it's called on the syscall path when stack movement is forbidden.</span></code></span>
+<span class="codeline" id="line-235"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-236"><code><span class="comment">//go:nosplit</span></code></span>
+<span class="codeline" id="line-237"><code><span class="keyword">func</span> <label for="r13" class="ident"><a href="../../pkg/runtime.html#name-traceRelease" class="ident">traceRelease</a></label>(<label for="r14" class="ident">tl</label> <a href="#line-155" class="ident">traceLocker</a>) {</code></span>
+<span class="codeline" id="line-238"><code>	<label for="r15" class="ident">seq</label> := <label for="r14" class="ident">tl</label>.<a href="#line-156" class="ident">mp</a>.<a href="runtime2.go.html#line-610" class="ident">trace</a>.<a href="#line-29" class="ident">seqlock</a>.<a href="internal/atomic/types.go.html#line-419" class="ident">Add</a>(<span class="lit-number">1</span>)</code></span>
+<span class="codeline" id="line-239"><code>	<span class="keyword">if</span> <a href="#line-165" class="ident">debugTraceReentrancy</a> &amp;&amp; <label for="r15" class="ident">seq</label>%<span class="lit-number">2</span> != <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-240"><code>		<a href="../../pkg/builtin.html#name-print" class="ident">print</a>(<span class="lit-string">"runtime: seq="</span>, <label for="r15" class="ident">seq</label>, <span class="lit-string">"\n"</span>)</code></span>
+<span class="codeline" id="line-241"><code>		<a href="panic.go.html#line-1016" class="ident">throw</a>(<span class="lit-string">"bad use of trace.seqlock"</span>)</code></span>
+<span class="codeline" id="line-242"><code>	}</code></span>
+<span class="codeline" id="line-243"><code>	<a href="runtime1.go.html#line-586" class="ident">releasem</a>(<label for="r14" class="ident">tl</label>.<a href="#line-156" class="ident">mp</a>)</code></span>
+<span class="codeline" id="line-244"><code>}</code></span>
+<span class="codeline" id="line-245"><code></code></span>
+<span class="codeline" id="line-246"><code><span class="comment">// traceExitingSyscall marks a goroutine as exiting the syscall slow path.</span></code></span>
+<span class="codeline" id="line-247"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-248"><code><span class="comment">// Must be paired with a traceExitedSyscall call.</span></code></span>
+<span class="codeline" id="line-249"><code><span class="keyword">func</span> <label for="r16" class="ident"><a href="../../pkg/runtime.html#name-traceExitingSyscall" class="ident">traceExitingSyscall</a></label>() {</code></span>
+<span class="codeline" id="line-250"><code>	<a href="trace2.go.html#line-32" class="ident">trace</a>.<a href="trace2.go.html#line-111" class="ident">exitingSyscall</a>.<a href="internal/atomic/types.go.html#line-55" class="ident">Add</a>(<span class="lit-number">1</span>)</code></span>
+<span class="codeline" id="line-251"><code>}</code></span>
+<span class="codeline" id="line-252"><code></code></span>
+<span class="codeline" id="line-253"><code><span class="comment">// traceExitedSyscall marks a goroutine as having exited the syscall slow path.</span></code></span>
+<span class="codeline" id="line-254"><code><span class="keyword">func</span> <label for="r17" class="ident"><a href="../../pkg/runtime.html#name-traceExitedSyscall" class="ident">traceExitedSyscall</a></label>() {</code></span>
+<span class="codeline" id="line-255"><code>	<a href="trace2.go.html#line-32" class="ident">trace</a>.<a href="trace2.go.html#line-111" class="ident">exitingSyscall</a>.<a href="internal/atomic/types.go.html#line-55" class="ident">Add</a>(-<span class="lit-number">1</span>)</code></span>
+<span class="codeline" id="line-256"><code>}</code></span>
+<span class="codeline" id="line-257"><code></code></span>
+<span class="codeline" id="line-258"><code><span class="comment">// Gomaxprocs emits a ProcsChange event.</span></code></span>
+<span class="codeline" id="line-259"><code><span class="keyword">func</span> (<label for="r18" class="ident">tl</label> <a href="#line-155" class="ident">traceLocker</a>) <label for="r19" class="ident"><a href="../../use/runtime..traceLocker^95127.Gomaxprocs^63e9b.html" class="ident">Gomaxprocs</a></label>(<label for="r20" class="ident">procs</label> <a href="../../pkg/builtin.html#name-int32" class="ident">int32</a>) {</code></span>
+<span class="codeline" id="line-260"><code>	<label for="r18" class="ident">tl</label>.<a href="trace2event.go.html#line-111" class="ident">eventWriter</a>(<a href="trace2status.go.html#line-22" class="ident">traceGoRunning</a>, <a href="trace2status.go.html#line-34" class="ident">traceProcRunning</a>).<a href="trace2event.go.html#line-124" class="ident">commit</a>(<a href="trace2event.go.html#line-40" class="ident">traceEvProcsChange</a>, <a href="trace2event.go.html#line-88" class="ident">traceArg</a>(<label for="r20" class="ident">procs</label>), <label for="r18" class="ident">tl</label>.<a href="trace2event.go.html#line-165" class="ident">stack</a>(<span class="lit-number">1</span>))</code></span>
+<span class="codeline" id="line-261"><code>}</code></span>
+<span class="codeline" id="line-262"><code></code></span>
+<span class="codeline" id="line-263"><code><span class="comment">// ProcStart traces a ProcStart event.</span></code></span>
+<span class="codeline" id="line-264"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-265"><code><span class="comment">// Must be called with a valid P.</span></code></span>
+<span class="codeline" id="line-266"><code><span class="keyword">func</span> (<label for="r21" class="ident">tl</label> <a href="#line-155" class="ident">traceLocker</a>) <label for="r22" class="ident"><a href="../../use/runtime..traceLocker^95127.ProcStart.html" class="ident">ProcStart</a></label>() {</code></span>
+<span class="codeline" id="line-267"><code>	<label for="r23" class="ident">pp</label> := <label for="r21" class="ident">tl</label>.<a href="#line-156" class="ident">mp</a>.<a href="runtime2.go.html#line-565" class="ident">p</a>.<a href="runtime2.go.html#line-293" class="ident">ptr</a>()</code></span>
+<span class="codeline" id="line-268"><code>	<span class="comment">// Procs are typically started within the scheduler when there is no user goroutine. If there is a user goroutine,</span></code></span>
+<span class="codeline" id="line-269"><code><span class="comment">	// it must be in _Gsyscall because the only time a goroutine is allowed to have its Proc moved around from under it</span></code></span>
+<span class="codeline" id="line-270"><code><span class="comment">	// is during a syscall.</span></code></span>
+<span class="codeline" id="line-271"><code>	<label for="r21" class="ident">tl</label>.<a href="trace2event.go.html#line-111" class="ident">eventWriter</a>(<a href="trace2status.go.html#line-23" class="ident">traceGoSyscall</a>, <a href="trace2status.go.html#line-35" class="ident">traceProcIdle</a>).<a href="trace2event.go.html#line-124" class="ident">commit</a>(<a href="trace2event.go.html#line-41" class="ident">traceEvProcStart</a>, <a href="trace2event.go.html#line-88" class="ident">traceArg</a>(<label for="r23" class="ident">pp</label>.<a href="runtime2.go.html#line-647" class="ident">id</a>), <label for="r23" class="ident">pp</label>.<a href="runtime2.go.html#line-707" class="ident">trace</a>.<a href="trace2status.go.html#line-211" class="ident">nextSeq</a>(<label for="r21" class="ident">tl</label>.<a href="#line-157" class="ident">gen</a>))</code></span>
+<span class="codeline" id="line-272"><code>}</code></span>
+<span class="codeline" id="line-273"><code></code></span>
+<span class="codeline" id="line-274"><code><span class="comment">// ProcStop traces a ProcStop event.</span></code></span>
+<span class="codeline" id="line-275"><code><span class="keyword">func</span> (<label for="r24" class="ident">tl</label> <a href="#line-155" class="ident">traceLocker</a>) <label for="r25" class="ident"><a href="../../use/runtime..traceLocker^95127.ProcStop.html" class="ident">ProcStop</a></label>(<label for="r26" class="ident">pp</label> *<a href="runtime2.go.html#line-646" class="ident">p</a>) {</code></span>
+<span class="codeline" id="line-276"><code>	<span class="comment">// The only time a goroutine is allowed to have its Proc moved around</span></code></span>
+<span class="codeline" id="line-277"><code><span class="comment">	// from under it is during a syscall.</span></code></span>
+<span class="codeline" id="line-278"><code>	<label for="r24" class="ident">tl</label>.<a href="trace2event.go.html#line-111" class="ident">eventWriter</a>(<a href="trace2status.go.html#line-23" class="ident">traceGoSyscall</a>, <a href="trace2status.go.html#line-34" class="ident">traceProcRunning</a>).<a href="trace2event.go.html#line-124" class="ident">commit</a>(<a href="trace2event.go.html#line-42" class="ident">traceEvProcStop</a>)</code></span>
+<span class="codeline" id="line-279"><code>}</code></span>
+<span class="codeline" id="line-280"><code></code></span>
+<span class="codeline" id="line-281"><code><span class="comment">// GCActive traces a GCActive event.</span></code></span>
+<span class="codeline" id="line-282"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-283"><code><span class="comment">// Must be emitted by an actively running goroutine on an active P. This restriction can be changed</span></code></span>
+<span class="codeline" id="line-284"><code><span class="comment">// easily and only depends on where it's currently called.</span></code></span>
+<span class="codeline" id="line-285"><code><span class="keyword">func</span> (<label for="r27" class="ident">tl</label> <a href="#line-155" class="ident">traceLocker</a>) <label for="r28" class="ident"><a href="../../use/runtime..traceLocker^95127.GCActive.html" class="ident">GCActive</a></label>() {</code></span>
+<span class="codeline" id="line-286"><code>	<label for="r27" class="ident">tl</label>.<a href="trace2event.go.html#line-111" class="ident">eventWriter</a>(<a href="trace2status.go.html#line-22" class="ident">traceGoRunning</a>, <a href="trace2status.go.html#line-34" class="ident">traceProcRunning</a>).<a href="trace2event.go.html#line-124" class="ident">commit</a>(<a href="trace2event.go.html#line-65" class="ident">traceEvGCActive</a>, <a href="trace2event.go.html#line-88" class="ident">traceArg</a>(<a href="trace2.go.html#line-32" class="ident">trace</a>.<a href="trace2.go.html#line-116" class="ident">seqGC</a>))</code></span>
+<span class="codeline" id="line-287"><code>	<span class="comment">// N.B. Only one GC can be running at a time, so this is naturally</span></code></span>
+<span class="codeline" id="line-288"><code><span class="comment">	// serialized by the caller.</span></code></span>
+<span class="codeline" id="line-289"><code>	<a href="trace2.go.html#line-32" class="ident">trace</a>.<a href="trace2.go.html#line-116" class="ident">seqGC</a>++</code></span>
+<span class="codeline" id="line-290"><code>}</code></span>
+<span class="codeline" id="line-291"><code></code></span>
+<span class="codeline" id="line-292"><code><span class="comment">// GCStart traces a GCBegin event.</span></code></span>
+<span class="codeline" id="line-293"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-294"><code><span class="comment">// Must be emitted by an actively running goroutine on an active P. This restriction can be changed</span></code></span>
+<span class="codeline" id="line-295"><code><span class="comment">// easily and only depends on where it's currently called.</span></code></span>
+<span class="codeline" id="line-296"><code><span class="keyword">func</span> (<label for="r29" class="ident">tl</label> <a href="#line-155" class="ident">traceLocker</a>) <label for="r30" class="ident"><a href="../../use/runtime..traceLocker^95127.GCStart.html" class="ident">GCStart</a></label>() {</code></span>
+<span class="codeline" id="line-297"><code>	<label for="r29" class="ident">tl</label>.<a href="trace2event.go.html#line-111" class="ident">eventWriter</a>(<a href="trace2status.go.html#line-22" class="ident">traceGoRunning</a>, <a href="trace2status.go.html#line-34" class="ident">traceProcRunning</a>).<a href="trace2event.go.html#line-124" class="ident">commit</a>(<a href="trace2event.go.html#line-66" class="ident">traceEvGCBegin</a>, <a href="trace2event.go.html#line-88" class="ident">traceArg</a>(<a href="trace2.go.html#line-32" class="ident">trace</a>.<a href="trace2.go.html#line-116" class="ident">seqGC</a>), <label for="r29" class="ident">tl</label>.<a href="trace2event.go.html#line-165" class="ident">stack</a>(<span class="lit-number">3</span>))</code></span>
+<span class="codeline" id="line-298"><code>	<span class="comment">// N.B. Only one GC can be running at a time, so this is naturally</span></code></span>
+<span class="codeline" id="line-299"><code><span class="comment">	// serialized by the caller.</span></code></span>
+<span class="codeline" id="line-300"><code>	<a href="trace2.go.html#line-32" class="ident">trace</a>.<a href="trace2.go.html#line-116" class="ident">seqGC</a>++</code></span>
+<span class="codeline" id="line-301"><code>}</code></span>
+<span class="codeline" id="line-302"><code></code></span>
+<span class="codeline" id="line-303"><code><span class="comment">// GCDone traces a GCEnd event.</span></code></span>
+<span class="codeline" id="line-304"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-305"><code><span class="comment">// Must be emitted by an actively running goroutine on an active P. This restriction can be changed</span></code></span>
+<span class="codeline" id="line-306"><code><span class="comment">// easily and only depends on where it's currently called.</span></code></span>
+<span class="codeline" id="line-307"><code><span class="keyword">func</span> (<label for="r31" class="ident">tl</label> <a href="#line-155" class="ident">traceLocker</a>) <label for="r32" class="ident"><a href="../../use/runtime..traceLocker^95127.GCDone.html" class="ident">GCDone</a></label>() {</code></span>
+<span class="codeline" id="line-308"><code>	<label for="r31" class="ident">tl</label>.<a href="trace2event.go.html#line-111" class="ident">eventWriter</a>(<a href="trace2status.go.html#line-22" class="ident">traceGoRunning</a>, <a href="trace2status.go.html#line-34" class="ident">traceProcRunning</a>).<a href="trace2event.go.html#line-124" class="ident">commit</a>(<a href="trace2event.go.html#line-67" class="ident">traceEvGCEnd</a>, <a href="trace2event.go.html#line-88" class="ident">traceArg</a>(<a href="trace2.go.html#line-32" class="ident">trace</a>.<a href="trace2.go.html#line-116" class="ident">seqGC</a>))</code></span>
+<span class="codeline" id="line-309"><code>	<span class="comment">// N.B. Only one GC can be running at a time, so this is naturally</span></code></span>
+<span class="codeline" id="line-310"><code><span class="comment">	// serialized by the caller.</span></code></span>
+<span class="codeline" id="line-311"><code>	<a href="trace2.go.html#line-32" class="ident">trace</a>.<a href="trace2.go.html#line-116" class="ident">seqGC</a>++</code></span>
+<span class="codeline" id="line-312"><code>}</code></span>
+<span class="codeline" id="line-313"><code></code></span>
+<span class="codeline" id="line-314"><code><span class="comment">// STWStart traces a STWBegin event.</span></code></span>
+<span class="codeline" id="line-315"><code><span class="keyword">func</span> (<label for="r33" class="ident">tl</label> <a href="#line-155" class="ident">traceLocker</a>) <label for="r34" class="ident"><a href="../../use/runtime..traceLocker^95127.STWStart.html" class="ident">STWStart</a></label>(<label for="r35" class="ident">reason</label> <a href="proc.go.html#line-1254" class="ident">stwReason</a>) {</code></span>
+<span class="codeline" id="line-316"><code>	<span class="comment">// Although the current P may be in _Pgcstop here, we model the P as running during the STW. This deviates from the</span></code></span>
+<span class="codeline" id="line-317"><code><span class="comment">	// runtime's state tracking, but it's more accurate and doesn't result in any loss of information.</span></code></span>
+<span class="codeline" id="line-318"><code>	<label for="r33" class="ident">tl</label>.<a href="trace2event.go.html#line-111" class="ident">eventWriter</a>(<a href="trace2status.go.html#line-22" class="ident">traceGoRunning</a>, <a href="trace2status.go.html#line-34" class="ident">traceProcRunning</a>).<a href="trace2event.go.html#line-124" class="ident">commit</a>(<a href="trace2event.go.html#line-61" class="ident">traceEvSTWBegin</a>, <label for="r33" class="ident">tl</label>.<a href="trace2event.go.html#line-185" class="ident">string</a>(<label for="r35" class="ident">reason</label>.<a href="proc.go.html#line-1279" class="ident">String</a>()), <label for="r33" class="ident">tl</label>.<a href="trace2event.go.html#line-165" class="ident">stack</a>(<span class="lit-number">2</span>))</code></span>
+<span class="codeline" id="line-319"><code>}</code></span>
+<span class="codeline" id="line-320"><code></code></span>
+<span class="codeline" id="line-321"><code><span class="comment">// STWDone traces a STWEnd event.</span></code></span>
+<span class="codeline" id="line-322"><code><span class="keyword">func</span> (<label for="r36" class="ident">tl</label> <a href="#line-155" class="ident">traceLocker</a>) <label for="r37" class="ident"><a href="../../use/runtime..traceLocker^95127.STWDone.html" class="ident">STWDone</a></label>() {</code></span>
+<span class="codeline" id="line-323"><code>	<span class="comment">// Although the current P may be in _Pgcstop here, we model the P as running during the STW. This deviates from the</span></code></span>
+<span class="codeline" id="line-324"><code><span class="comment">	// runtime's state tracking, but it's more accurate and doesn't result in any loss of information.</span></code></span>
+<span class="codeline" id="line-325"><code>	<label for="r36" class="ident">tl</label>.<a href="trace2event.go.html#line-111" class="ident">eventWriter</a>(<a href="trace2status.go.html#line-22" class="ident">traceGoRunning</a>, <a href="trace2status.go.html#line-34" class="ident">traceProcRunning</a>).<a href="trace2event.go.html#line-124" class="ident">commit</a>(<a href="trace2event.go.html#line-62" class="ident">traceEvSTWEnd</a>)</code></span>
+<span class="codeline" id="line-326"><code>}</code></span>
+<span class="codeline" id="line-327"><code></code></span>
+<span class="codeline" id="line-328"><code><span class="comment">// GCSweepStart prepares to trace a sweep loop. This does not</span></code></span>
+<span class="codeline" id="line-329"><code><span class="comment">// emit any events until traceGCSweepSpan is called.</span></code></span>
+<span class="codeline" id="line-330"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-331"><code><span class="comment">// GCSweepStart must be paired with traceGCSweepDone and there</span></code></span>
+<span class="codeline" id="line-332"><code><span class="comment">// must be no preemption points between these two calls.</span></code></span>
+<span class="codeline" id="line-333"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-334"><code><span class="comment">// Must be called with a valid P.</span></code></span>
+<span class="codeline" id="line-335"><code><span class="keyword">func</span> (<label for="r38" class="ident">tl</label> <a href="#line-155" class="ident">traceLocker</a>) <label for="r39" class="ident"><a href="../../use/runtime..traceLocker^95127.GCSweepStart.html" class="ident">GCSweepStart</a></label>() {</code></span>
+<span class="codeline" id="line-336"><code>	<span class="comment">// Delay the actual GCSweepBegin event until the first span</span></code></span>
+<span class="codeline" id="line-337"><code><span class="comment">	// sweep. If we don't sweep anything, don't emit any events.</span></code></span>
+<span class="codeline" id="line-338"><code>	<label for="r40" class="ident">pp</label> := <label for="r38" class="ident">tl</label>.<a href="#line-156" class="ident">mp</a>.<a href="runtime2.go.html#line-565" class="ident">p</a>.<a href="runtime2.go.html#line-293" class="ident">ptr</a>()</code></span>
+<span class="codeline" id="line-339"><code>	<span class="keyword">if</span> <label for="r40" class="ident">pp</label>.<a href="runtime2.go.html#line-707" class="ident">trace</a>.<a href="#line-44" class="ident">maySweep</a> {</code></span>
+<span class="codeline" id="line-340"><code>		<a href="panic.go.html#line-1016" class="ident">throw</a>(<span class="lit-string">"double traceGCSweepStart"</span>)</code></span>
+<span class="codeline" id="line-341"><code>	}</code></span>
+<span class="codeline" id="line-342"><code>	<label for="r40" class="ident">pp</label>.<a href="runtime2.go.html#line-707" class="ident">trace</a>.<a href="#line-44" class="ident">maySweep</a>, <label for="r40" class="ident">pp</label>.<a href="runtime2.go.html#line-707" class="ident">trace</a>.<a href="#line-51" class="ident">swept</a>, <label for="r40" class="ident">pp</label>.<a href="runtime2.go.html#line-707" class="ident">trace</a>.<a href="#line-51" class="ident">reclaimed</a> = <a href="../../pkg/builtin.html#name-true" class="ident">true</a>, <span class="lit-number">0</span>, <span class="lit-number">0</span></code></span>
+<span class="codeline" id="line-343"><code>}</code></span>
+<span class="codeline" id="line-344"><code></code></span>
+<span class="codeline" id="line-345"><code><span class="comment">// GCSweepSpan traces the sweep of a single span. If this is</span></code></span>
+<span class="codeline" id="line-346"><code><span class="comment">// the first span swept since traceGCSweepStart was called, this</span></code></span>
+<span class="codeline" id="line-347"><code><span class="comment">// will emit a GCSweepBegin event.</span></code></span>
+<span class="codeline" id="line-348"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-349"><code><span class="comment">// This may be called outside a traceGCSweepStart/traceGCSweepDone</span></code></span>
+<span class="codeline" id="line-350"><code><span class="comment">// pair; however, it will not emit any trace events in this case.</span></code></span>
+<span class="codeline" id="line-351"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-352"><code><span class="comment">// Must be called with a valid P.</span></code></span>
+<span class="codeline" id="line-353"><code><span class="keyword">func</span> (<label for="r41" class="ident">tl</label> <a href="#line-155" class="ident">traceLocker</a>) <label for="r42" class="ident"><a href="../../use/runtime..traceLocker^95127.GCSweepSpan.html" class="ident">GCSweepSpan</a></label>(<label for="r43" class="ident">bytesSwept</label> <a href="../../pkg/builtin.html#name-uintptr" class="ident">uintptr</a>) {</code></span>
+<span class="codeline" id="line-354"><code>	<label for="r44" class="ident">pp</label> := <label for="r41" class="ident">tl</label>.<a href="#line-156" class="ident">mp</a>.<a href="runtime2.go.html#line-565" class="ident">p</a>.<a href="runtime2.go.html#line-293" class="ident">ptr</a>()</code></span>
+<span class="codeline" id="line-355"><code>	<span class="keyword">if</span> <label for="r44" class="ident">pp</label>.<a href="runtime2.go.html#line-707" class="ident">trace</a>.<a href="#line-44" class="ident">maySweep</a> {</code></span>
+<span class="codeline" id="line-356"><code>		<span class="keyword">if</span> <label for="r44" class="ident">pp</label>.<a href="runtime2.go.html#line-707" class="ident">trace</a>.<a href="#line-51" class="ident">swept</a> == <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-357"><code>			<label for="r41" class="ident">tl</label>.<a href="trace2event.go.html#line-111" class="ident">eventWriter</a>(<a href="trace2status.go.html#line-22" class="ident">traceGoRunning</a>, <a href="trace2status.go.html#line-34" class="ident">traceProcRunning</a>).<a href="trace2event.go.html#line-124" class="ident">commit</a>(<a href="trace2event.go.html#line-69" class="ident">traceEvGCSweepBegin</a>, <label for="r41" class="ident">tl</label>.<a href="trace2event.go.html#line-165" class="ident">stack</a>(<span class="lit-number">1</span>))</code></span>
+<span class="codeline" id="line-358"><code>			<label for="r44" class="ident">pp</label>.<a href="runtime2.go.html#line-707" class="ident">trace</a>.<a href="#line-47" class="ident">inSweep</a> = <a href="../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-359"><code>		}</code></span>
+<span class="codeline" id="line-360"><code>		<label for="r44" class="ident">pp</label>.<a href="runtime2.go.html#line-707" class="ident">trace</a>.<a href="#line-51" class="ident">swept</a> += <label for="r43" class="ident">bytesSwept</label></code></span>
+<span class="codeline" id="line-361"><code>	}</code></span>
+<span class="codeline" id="line-362"><code>}</code></span>
+<span class="codeline" id="line-363"><code></code></span>
+<span class="codeline" id="line-364"><code><span class="comment">// GCSweepDone finishes tracing a sweep loop. If any memory was</span></code></span>
+<span class="codeline" id="line-365"><code><span class="comment">// swept (i.e. traceGCSweepSpan emitted an event) then this will emit</span></code></span>
+<span class="codeline" id="line-366"><code><span class="comment">// a GCSweepEnd event.</span></code></span>
+<span class="codeline" id="line-367"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-368"><code><span class="comment">// Must be called with a valid P.</span></code></span>
+<span class="codeline" id="line-369"><code><span class="keyword">func</span> (<label for="r45" class="ident">tl</label> <a href="#line-155" class="ident">traceLocker</a>) <label for="r46" class="ident"><a href="../../use/runtime..traceLocker^95127.GCSweepDone.html" class="ident">GCSweepDone</a></label>() {</code></span>
+<span class="codeline" id="line-370"><code>	<label for="r47" class="ident">pp</label> := <label for="r45" class="ident">tl</label>.<a href="#line-156" class="ident">mp</a>.<a href="runtime2.go.html#line-565" class="ident">p</a>.<a href="runtime2.go.html#line-293" class="ident">ptr</a>()</code></span>
+<span class="codeline" id="line-371"><code>	<span class="keyword">if</span> !<label for="r47" class="ident">pp</label>.<a href="runtime2.go.html#line-707" class="ident">trace</a>.<a href="#line-44" class="ident">maySweep</a> {</code></span>
+<span class="codeline" id="line-372"><code>		<a href="panic.go.html#line-1016" class="ident">throw</a>(<span class="lit-string">"missing traceGCSweepStart"</span>)</code></span>
+<span class="codeline" id="line-373"><code>	}</code></span>
+<span class="codeline" id="line-374"><code>	<span class="keyword">if</span> <label for="r47" class="ident">pp</label>.<a href="runtime2.go.html#line-707" class="ident">trace</a>.<a href="#line-47" class="ident">inSweep</a> {</code></span>
+<span class="codeline" id="line-375"><code>		<label for="r45" class="ident">tl</label>.<a href="trace2event.go.html#line-111" class="ident">eventWriter</a>(<a href="trace2status.go.html#line-22" class="ident">traceGoRunning</a>, <a href="trace2status.go.html#line-34" class="ident">traceProcRunning</a>).<a href="trace2event.go.html#line-124" class="ident">commit</a>(<a href="trace2event.go.html#line-70" class="ident">traceEvGCSweepEnd</a>, <a href="trace2event.go.html#line-88" class="ident">traceArg</a>(<label for="r47" class="ident">pp</label>.<a href="runtime2.go.html#line-707" class="ident">trace</a>.<a href="#line-51" class="ident">swept</a>), <a href="trace2event.go.html#line-88" class="ident">traceArg</a>(<label for="r47" class="ident">pp</label>.<a href="runtime2.go.html#line-707" class="ident">trace</a>.<a href="#line-51" class="ident">reclaimed</a>))</code></span>
+<span class="codeline" id="line-376"><code>		<label for="r47" class="ident">pp</label>.<a href="runtime2.go.html#line-707" class="ident">trace</a>.<a href="#line-47" class="ident">inSweep</a> = <a href="../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-377"><code>	}</code></span>
+<span class="codeline" id="line-378"><code>	<label for="r47" class="ident">pp</label>.<a href="runtime2.go.html#line-707" class="ident">trace</a>.<a href="#line-44" class="ident">maySweep</a> = <a href="../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-379"><code>}</code></span>
+<span class="codeline" id="line-380"><code></code></span>
+<span class="codeline" id="line-381"><code><span class="comment">// GCMarkAssistStart emits a MarkAssistBegin event.</span></code></span>
+<span class="codeline" id="line-382"><code><span class="keyword">func</span> (<label for="r48" class="ident">tl</label> <a href="#line-155" class="ident">traceLocker</a>) <label for="r49" class="ident"><a href="../../use/runtime..traceLocker^95127.GCMarkAssistStart.html" class="ident">GCMarkAssistStart</a></label>() {</code></span>
+<span class="codeline" id="line-383"><code>	<label for="r48" class="ident">tl</label>.<a href="trace2event.go.html#line-111" class="ident">eventWriter</a>(<a href="trace2status.go.html#line-22" class="ident">traceGoRunning</a>, <a href="trace2status.go.html#line-34" class="ident">traceProcRunning</a>).<a href="trace2event.go.html#line-124" class="ident">commit</a>(<a href="trace2event.go.html#line-72" class="ident">traceEvGCMarkAssistBegin</a>, <label for="r48" class="ident">tl</label>.<a href="trace2event.go.html#line-165" class="ident">stack</a>(<span class="lit-number">1</span>))</code></span>
+<span class="codeline" id="line-384"><code>}</code></span>
+<span class="codeline" id="line-385"><code></code></span>
+<span class="codeline" id="line-386"><code><span class="comment">// GCMarkAssistDone emits a MarkAssistEnd event.</span></code></span>
+<span class="codeline" id="line-387"><code><span class="keyword">func</span> (<label for="r50" class="ident">tl</label> <a href="#line-155" class="ident">traceLocker</a>) <label for="r51" class="ident"><a href="../../use/runtime..traceLocker^95127.GCMarkAssistDone.html" class="ident">GCMarkAssistDone</a></label>() {</code></span>
+<span class="codeline" id="line-388"><code>	<label for="r50" class="ident">tl</label>.<a href="trace2event.go.html#line-111" class="ident">eventWriter</a>(<a href="trace2status.go.html#line-22" class="ident">traceGoRunning</a>, <a href="trace2status.go.html#line-34" class="ident">traceProcRunning</a>).<a href="trace2event.go.html#line-124" class="ident">commit</a>(<a href="trace2event.go.html#line-73" class="ident">traceEvGCMarkAssistEnd</a>)</code></span>
+<span class="codeline" id="line-389"><code>}</code></span>
+<span class="codeline" id="line-390"><code></code></span>
+<span class="codeline" id="line-391"><code><span class="comment">// GoCreate emits a GoCreate event.</span></code></span>
+<span class="codeline" id="line-392"><code><span class="keyword">func</span> (<label for="r52" class="ident">tl</label> <a href="#line-155" class="ident">traceLocker</a>) <label for="r53" class="ident"><a href="../../use/runtime..traceLocker^95127.GoCreate.html" class="ident">GoCreate</a></label>(<label for="r54" class="ident">newg</label> *<a href="runtime2.go.html#line-422" class="ident">g</a>, <label for="r55" class="ident">pc</label> <a href="../../pkg/builtin.html#name-uintptr" class="ident">uintptr</a>) {</code></span>
+<span class="codeline" id="line-393"><code>	<label for="r54" class="ident">newg</label>.<a href="runtime2.go.html#line-518" class="ident">trace</a>.<a href="trace2status.go.html#line-206" class="ident">setStatusTraced</a>(<label for="r52" class="ident">tl</label>.<a href="#line-157" class="ident">gen</a>)</code></span>
+<span class="codeline" id="line-394"><code>	<label for="r52" class="ident">tl</label>.<a href="trace2event.go.html#line-111" class="ident">eventWriter</a>(<a href="trace2status.go.html#line-22" class="ident">traceGoRunning</a>, <a href="trace2status.go.html#line-34" class="ident">traceProcRunning</a>).<a href="trace2event.go.html#line-124" class="ident">commit</a>(<a href="trace2event.go.html#line-47" class="ident">traceEvGoCreate</a>, <a href="trace2event.go.html#line-88" class="ident">traceArg</a>(<label for="r54" class="ident">newg</label>.<a href="runtime2.go.html#line-457" class="ident">goid</a>), <label for="r52" class="ident">tl</label>.<a href="trace2event.go.html#line-174" class="ident">startPC</a>(<label for="r55" class="ident">pc</label>), <label for="r52" class="ident">tl</label>.<a href="trace2event.go.html#line-165" class="ident">stack</a>(<span class="lit-number">2</span>))</code></span>
+<span class="codeline" id="line-395"><code>}</code></span>
+<span class="codeline" id="line-396"><code></code></span>
+<span class="codeline" id="line-397"><code><span class="comment">// GoStart emits a GoStart event.</span></code></span>
+<span class="codeline" id="line-398"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-399"><code><span class="comment">// Must be called with a valid P.</span></code></span>
+<span class="codeline" id="line-400"><code><span class="keyword">func</span> (<label for="r56" class="ident">tl</label> <a href="#line-155" class="ident">traceLocker</a>) <label for="r57" class="ident"><a href="../../use/runtime..traceLocker^95127.GoStart.html" class="ident">GoStart</a></label>() {</code></span>
+<span class="codeline" id="line-401"><code>	<label for="r58" class="ident">gp</label> := <a href="stubs.go.html#line-22" class="ident">getg</a>().<a href="runtime2.go.html#line-436" class="ident">m</a>.<a href="runtime2.go.html#line-563" class="ident">curg</a></code></span>
+<span class="codeline" id="line-402"><code>	<label for="r59" class="ident">pp</label> := <label for="r58" class="ident">gp</label>.<a href="runtime2.go.html#line-436" class="ident">m</a>.<a href="runtime2.go.html#line-565" class="ident">p</a></code></span>
+<span class="codeline" id="line-403"><code>	<label for="r60" class="ident">w</label> := <label for="r56" class="ident">tl</label>.<a href="trace2event.go.html#line-111" class="ident">eventWriter</a>(<a href="trace2status.go.html#line-21" class="ident">traceGoRunnable</a>, <a href="trace2status.go.html#line-34" class="ident">traceProcRunning</a>)</code></span>
+<span class="codeline" id="line-404"><code>	<label for="r60" class="ident">w</label> = <label for="r60" class="ident">w</label>.<a href="trace2event.go.html#line-130" class="ident">write</a>(<a href="trace2event.go.html#line-49" class="ident">traceEvGoStart</a>, <a href="trace2event.go.html#line-88" class="ident">traceArg</a>(<label for="r58" class="ident">gp</label>.<a href="runtime2.go.html#line-457" class="ident">goid</a>), <label for="r58" class="ident">gp</label>.<a href="runtime2.go.html#line-518" class="ident">trace</a>.<a href="trace2status.go.html#line-211" class="ident">nextSeq</a>(<label for="r56" class="ident">tl</label>.<a href="#line-157" class="ident">gen</a>))</code></span>
+<span class="codeline" id="line-405"><code>	<span class="keyword">if</span> <label for="r59" class="ident">pp</label>.<a href="runtime2.go.html#line-293" class="ident">ptr</a>().<a href="runtime2.go.html#line-733" class="ident">gcMarkWorkerMode</a> != <a href="mgc.go.html#line-253" class="ident">gcMarkWorkerNotWorker</a> {</code></span>
+<span class="codeline" id="line-406"><code>		<label for="r60" class="ident">w</label> = <label for="r60" class="ident">w</label>.<a href="trace2event.go.html#line-130" class="ident">write</a>(<a href="trace2event.go.html#line-78" class="ident">traceEvGoLabel</a>, <a href="trace2.go.html#line-32" class="ident">trace</a>.<a href="trace2.go.html#line-97" class="ident">markWorkerLabels</a>[<label for="r56" class="ident">tl</label>.<a href="#line-157" class="ident">gen</a>%<span class="lit-number">2</span>][<label for="r59" class="ident">pp</label>.<a href="runtime2.go.html#line-293" class="ident">ptr</a>().<a href="runtime2.go.html#line-733" class="ident">gcMarkWorkerMode</a>])</code></span>
+<span class="codeline" id="line-407"><code>	}</code></span>
+<span class="codeline" id="line-408"><code>	<label for="r60" class="ident">w</label>.<a href="trace2event.go.html#line-136" class="ident">end</a>()</code></span>
+<span class="codeline" id="line-409"><code>}</code></span>
+<span class="codeline" id="line-410"><code></code></span>
+<span class="codeline" id="line-411"><code><span class="comment">// GoEnd emits a GoDestroy event.</span></code></span>
+<span class="codeline" id="line-412"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-413"><code><span class="comment">// TODO(mknyszek): Rename this to GoDestroy.</span></code></span>
+<span class="codeline" id="line-414"><code><span class="keyword">func</span> (<label for="r61" class="ident">tl</label> <a href="#line-155" class="ident">traceLocker</a>) <label for="r62" class="ident"><a href="../../use/runtime..traceLocker^95127.GoEnd.html" class="ident">GoEnd</a></label>() {</code></span>
+<span class="codeline" id="line-415"><code>	<label for="r61" class="ident">tl</label>.<a href="trace2event.go.html#line-111" class="ident">eventWriter</a>(<a href="trace2status.go.html#line-22" class="ident">traceGoRunning</a>, <a href="trace2status.go.html#line-34" class="ident">traceProcRunning</a>).<a href="trace2event.go.html#line-124" class="ident">commit</a>(<a href="trace2event.go.html#line-50" class="ident">traceEvGoDestroy</a>)</code></span>
+<span class="codeline" id="line-416"><code>}</code></span>
+<span class="codeline" id="line-417"><code></code></span>
+<span class="codeline" id="line-418"><code><span class="comment">// GoSched emits a GoStop event with a GoSched reason.</span></code></span>
+<span class="codeline" id="line-419"><code><span class="keyword">func</span> (<label for="r63" class="ident">tl</label> <a href="#line-155" class="ident">traceLocker</a>) <label for="r64" class="ident"><a href="../../use/runtime..traceLocker^95127.GoSched^fd6bb.html" class="ident">GoSched</a></label>() {</code></span>
+<span class="codeline" id="line-420"><code>	<label for="r63" class="ident">tl</label>.<a href="#line-429" class="ident">GoStop</a>(<a href="#line-130" class="ident">traceGoStopGoSched</a>)</code></span>
+<span class="codeline" id="line-421"><code>}</code></span>
+<span class="codeline" id="line-422"><code></code></span>
+<span class="codeline" id="line-423"><code><span class="comment">// GoPreempt emits a GoStop event with a GoPreempted reason.</span></code></span>
+<span class="codeline" id="line-424"><code><span class="keyword">func</span> (<label for="r65" class="ident">tl</label> <a href="#line-155" class="ident">traceLocker</a>) <label for="r66" class="ident"><a href="../../use/runtime..traceLocker^95127.GoPreempt.html" class="ident">GoPreempt</a></label>() {</code></span>
+<span class="codeline" id="line-425"><code>	<label for="r65" class="ident">tl</label>.<a href="#line-429" class="ident">GoStop</a>(<a href="#line-131" class="ident">traceGoStopPreempted</a>)</code></span>
+<span class="codeline" id="line-426"><code>}</code></span>
+<span class="codeline" id="line-427"><code></code></span>
+<span class="codeline" id="line-428"><code><span class="comment">// GoStop emits a GoStop event with the provided reason.</span></code></span>
+<span class="codeline" id="line-429"><code><span class="keyword">func</span> (<label for="r67" class="ident">tl</label> <a href="#line-155" class="ident">traceLocker</a>) <label for="r68" class="ident"><a href="../../use/runtime..traceLocker^95127.GoStop.html" class="ident">GoStop</a></label>(<label for="r69" class="ident">reason</label> <a href="#line-126" class="ident">traceGoStopReason</a>) {</code></span>
+<span class="codeline" id="line-430"><code>	<label for="r67" class="ident">tl</label>.<a href="trace2event.go.html#line-111" class="ident">eventWriter</a>(<a href="trace2status.go.html#line-22" class="ident">traceGoRunning</a>, <a href="trace2status.go.html#line-34" class="ident">traceProcRunning</a>).<a href="trace2event.go.html#line-124" class="ident">commit</a>(<a href="trace2event.go.html#line-52" class="ident">traceEvGoStop</a>, <a href="trace2event.go.html#line-88" class="ident">traceArg</a>(<a href="trace2.go.html#line-32" class="ident">trace</a>.<a href="trace2.go.html#line-98" class="ident">goStopReasons</a>[<label for="r67" class="ident">tl</label>.<a href="#line-157" class="ident">gen</a>%<span class="lit-number">2</span>][<label for="r69" class="ident">reason</label>]), <label for="r67" class="ident">tl</label>.<a href="trace2event.go.html#line-165" class="ident">stack</a>(<span class="lit-number">1</span>))</code></span>
+<span class="codeline" id="line-431"><code>}</code></span>
+<span class="codeline" id="line-432"><code></code></span>
+<span class="codeline" id="line-433"><code><span class="comment">// GoPark emits a GoBlock event with the provided reason.</span></code></span>
+<span class="codeline" id="line-434"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-435"><code><span class="comment">// TODO(mknyszek): Replace traceBlockReason with waitReason. It's silly</span></code></span>
+<span class="codeline" id="line-436"><code><span class="comment">// that we have both, and waitReason is way more descriptive.</span></code></span>
+<span class="codeline" id="line-437"><code><span class="keyword">func</span> (<label for="r70" class="ident">tl</label> <a href="#line-155" class="ident">traceLocker</a>) <label for="r71" class="ident"><a href="../../use/runtime..traceLocker^95127.GoPark.html" class="ident">GoPark</a></label>(<label for="r72" class="ident">reason</label> <a href="#line-84" class="ident">traceBlockReason</a>, <label for="r73" class="ident">skip</label> <a href="../../pkg/builtin.html#name-int" class="ident">int</a>) {</code></span>
+<span class="codeline" id="line-438"><code>	<label for="r70" class="ident">tl</label>.<a href="trace2event.go.html#line-111" class="ident">eventWriter</a>(<a href="trace2status.go.html#line-22" class="ident">traceGoRunning</a>, <a href="trace2status.go.html#line-34" class="ident">traceProcRunning</a>).<a href="trace2event.go.html#line-124" class="ident">commit</a>(<a href="trace2event.go.html#line-53" class="ident">traceEvGoBlock</a>, <a href="trace2event.go.html#line-88" class="ident">traceArg</a>(<a href="trace2.go.html#line-32" class="ident">trace</a>.<a href="trace2.go.html#line-99" class="ident">goBlockReasons</a>[<label for="r70" class="ident">tl</label>.<a href="#line-157" class="ident">gen</a>%<span class="lit-number">2</span>][<label for="r72" class="ident">reason</label>]), <label for="r70" class="ident">tl</label>.<a href="trace2event.go.html#line-165" class="ident">stack</a>(<label for="r73" class="ident">skip</label>))</code></span>
+<span class="codeline" id="line-439"><code>}</code></span>
+<span class="codeline" id="line-440"><code></code></span>
+<span class="codeline" id="line-441"><code><span class="comment">// GoUnpark emits a GoUnblock event.</span></code></span>
+<span class="codeline" id="line-442"><code><span class="keyword">func</span> (<label for="r74" class="ident">tl</label> <a href="#line-155" class="ident">traceLocker</a>) <label for="r75" class="ident"><a href="../../use/runtime..traceLocker^95127.GoUnpark.html" class="ident">GoUnpark</a></label>(<label for="r76" class="ident">gp</label> *<a href="runtime2.go.html#line-422" class="ident">g</a>, <label for="r77" class="ident">skip</label> <a href="../../pkg/builtin.html#name-int" class="ident">int</a>) {</code></span>
+<span class="codeline" id="line-443"><code>	<span class="comment">// Emit a GoWaiting status if necessary for the unblocked goroutine.</span></code></span>
+<span class="codeline" id="line-444"><code>	<label for="r78" class="ident">w</label> := <label for="r74" class="ident">tl</label>.<a href="trace2event.go.html#line-111" class="ident">eventWriter</a>(<a href="trace2status.go.html#line-22" class="ident">traceGoRunning</a>, <a href="trace2status.go.html#line-34" class="ident">traceProcRunning</a>)</code></span>
+<span class="codeline" id="line-445"><code>	<span class="keyword">if</span> !<label for="r76" class="ident">gp</label>.<a href="runtime2.go.html#line-518" class="ident">trace</a>.<a href="trace2status.go.html#line-200" class="ident">statusWasTraced</a>(<label for="r74" class="ident">tl</label>.<a href="#line-157" class="ident">gen</a>) &amp;&amp; <label for="r76" class="ident">gp</label>.<a href="runtime2.go.html#line-518" class="ident">trace</a>.<a href="trace2status.go.html#line-184" class="ident">acquireStatus</a>(<label for="r74" class="ident">tl</label>.<a href="#line-157" class="ident">gen</a>) {</code></span>
+<span class="codeline" id="line-446"><code>		<span class="comment">// Careful: don't use the event writer. We never want status or in-progress events</span></code></span>
+<span class="codeline" id="line-447"><code><span class="comment">		// to trigger more in-progress events.</span></code></span>
+<span class="codeline" id="line-448"><code>		<label for="r78" class="ident">w</label>.<a href="trace2event.go.html#line-95" class="ident">w</a> = <label for="r78" class="ident">w</label>.<a href="trace2event.go.html#line-95" class="ident">w</a>.<a href="trace2status.go.html#line-51" class="ident">writeGoStatus</a>(<label for="r76" class="ident">gp</label>.<a href="runtime2.go.html#line-457" class="ident">goid</a>, -<span class="lit-number">1</span>, <a href="trace2status.go.html#line-24" class="ident">traceGoWaiting</a>, <label for="r76" class="ident">gp</label>.<a href="runtime2.go.html#line-485" class="ident">inMarkAssist</a>)</code></span>
+<span class="codeline" id="line-449"><code>	}</code></span>
+<span class="codeline" id="line-450"><code>	<label for="r78" class="ident">w</label>.<a href="trace2event.go.html#line-124" class="ident">commit</a>(<a href="trace2event.go.html#line-54" class="ident">traceEvGoUnblock</a>, <a href="trace2event.go.html#line-88" class="ident">traceArg</a>(<label for="r76" class="ident">gp</label>.<a href="runtime2.go.html#line-457" class="ident">goid</a>), <label for="r76" class="ident">gp</label>.<a href="runtime2.go.html#line-518" class="ident">trace</a>.<a href="trace2status.go.html#line-211" class="ident">nextSeq</a>(<label for="r74" class="ident">tl</label>.<a href="#line-157" class="ident">gen</a>), <label for="r74" class="ident">tl</label>.<a href="trace2event.go.html#line-165" class="ident">stack</a>(<label for="r77" class="ident">skip</label>))</code></span>
+<span class="codeline" id="line-451"><code>}</code></span>
+<span class="codeline" id="line-452"><code></code></span>
+<span class="codeline" id="line-453"><code><span class="comment">// GoSysCall emits a GoSyscallBegin event.</span></code></span>
+<span class="codeline" id="line-454"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-455"><code><span class="comment">// Must be called with a valid P.</span></code></span>
+<span class="codeline" id="line-456"><code><span class="keyword">func</span> (<label for="r79" class="ident">tl</label> <a href="#line-155" class="ident">traceLocker</a>) <label for="r80" class="ident"><a href="../../use/runtime..traceLocker^95127.GoSysCall.html" class="ident">GoSysCall</a></label>() {</code></span>
+<span class="codeline" id="line-457"><code>	<span class="keyword">var</span> <label for="r81" class="ident">skip</label> <a href="../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-458"><code>	<span class="keyword">switch</span> {</code></span>
+<span class="codeline" id="line-459"><code>	<span class="keyword">case</span> <a href="trace2stack.go.html#line-208" class="ident">tracefpunwindoff</a>():</code></span>
+<span class="codeline" id="line-460"><code>		<span class="comment">// Unwind by skipping 1 frame relative to gp.syscallsp which is captured 3</span></code></span>
+<span class="codeline" id="line-461"><code><span class="comment">		// results by hard coding the number of frames in between our caller and the</span></code></span>
+<span class="codeline" id="line-462"><code><span class="comment">		// actual syscall, see cases below.</span></code></span>
+<span class="codeline" id="line-463"><code><span class="comment">		// TODO(felixge): Implement gp.syscallbp to avoid this workaround?</span></code></span>
+<span class="codeline" id="line-464"><code>		<label for="r81" class="ident">skip</label> = <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-465"><code>	<span class="keyword">case</span> <a href="extern.go.html#line-361" class="ident">GOOS</a> == <span class="lit-string">"solaris"</span> || <a href="extern.go.html#line-361" class="ident">GOOS</a> == <span class="lit-string">"illumos"</span>:</code></span>
+<span class="codeline" id="line-466"><code>		<span class="comment">// These platforms don't use a libc_read_trampoline.</span></code></span>
+<span class="codeline" id="line-467"><code>		<label for="r81" class="ident">skip</label> = <span class="lit-number">3</span></code></span>
+<span class="codeline" id="line-468"><code>	<span class="keyword">default</span>:</code></span>
+<span class="codeline" id="line-469"><code>		<span class="comment">// Skip the extra trampoline frame used on most systems.</span></code></span>
+<span class="codeline" id="line-470"><code>		<label for="r81" class="ident">skip</label> = <span class="lit-number">4</span></code></span>
+<span class="codeline" id="line-471"><code>	}</code></span>
+<span class="codeline" id="line-472"><code>	<span class="comment">// Scribble down the M that the P is currently attached to.</span></code></span>
+<span class="codeline" id="line-473"><code>	<label for="r82" class="ident">pp</label> := <label for="r79" class="ident">tl</label>.<a href="#line-156" class="ident">mp</a>.<a href="runtime2.go.html#line-565" class="ident">p</a>.<a href="runtime2.go.html#line-293" class="ident">ptr</a>()</code></span>
+<span class="codeline" id="line-474"><code>	<label for="r82" class="ident">pp</label>.<a href="runtime2.go.html#line-707" class="ident">trace</a>.<a href="#line-39" class="ident">mSyscallID</a> = <a href="../../pkg/builtin.html#name-int64" class="ident">int64</a>(<label for="r79" class="ident">tl</label>.<a href="#line-156" class="ident">mp</a>.<a href="runtime2.go.html#line-557" class="ident">procid</a>)</code></span>
+<span class="codeline" id="line-475"><code>	<label for="r79" class="ident">tl</label>.<a href="trace2event.go.html#line-111" class="ident">eventWriter</a>(<a href="trace2status.go.html#line-22" class="ident">traceGoRunning</a>, <a href="trace2status.go.html#line-34" class="ident">traceProcRunning</a>).<a href="trace2event.go.html#line-124" class="ident">commit</a>(<a href="trace2event.go.html#line-55" class="ident">traceEvGoSyscallBegin</a>, <label for="r82" class="ident">pp</label>.<a href="runtime2.go.html#line-707" class="ident">trace</a>.<a href="trace2status.go.html#line-211" class="ident">nextSeq</a>(<label for="r79" class="ident">tl</label>.<a href="#line-157" class="ident">gen</a>), <label for="r79" class="ident">tl</label>.<a href="trace2event.go.html#line-165" class="ident">stack</a>(<label for="r81" class="ident">skip</label>))</code></span>
+<span class="codeline" id="line-476"><code>}</code></span>
+<span class="codeline" id="line-477"><code></code></span>
+<span class="codeline" id="line-478"><code><span class="comment">// GoSysExit emits a GoSyscallEnd event, possibly along with a GoSyscallBlocked event</span></code></span>
+<span class="codeline" id="line-479"><code><span class="comment">// if lostP is true.</span></code></span>
+<span class="codeline" id="line-480"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-481"><code><span class="comment">// lostP must be true in all cases that a goroutine loses its P during a syscall.</span></code></span>
+<span class="codeline" id="line-482"><code><span class="comment">// This means it's not sufficient to check if it has no P. In particular, it needs to be</span></code></span>
+<span class="codeline" id="line-483"><code><span class="comment">// true in the following cases:</span></code></span>
+<span class="codeline" id="line-484"><code><span class="comment">// - The goroutine lost its P, it ran some other code, and then got it back. It's now running with that P.</span></code></span>
+<span class="codeline" id="line-485"><code><span class="comment">// - The goroutine lost its P and was unable to reacquire it, and is now running without a P.</span></code></span>
+<span class="codeline" id="line-486"><code><span class="comment">// - The goroutine lost its P and acquired a different one, and is now running with that P.</span></code></span>
+<span class="codeline" id="line-487"><code><span class="keyword">func</span> (<label for="r83" class="ident">tl</label> <a href="#line-155" class="ident">traceLocker</a>) <label for="r84" class="ident"><a href="../../use/runtime..traceLocker^95127.GoSysExit.html" class="ident">GoSysExit</a></label>(<label for="r85" class="ident">lostP</label> <a href="../../pkg/builtin.html#name-bool" class="ident">bool</a>) {</code></span>
+<span class="codeline" id="line-488"><code>	<label for="r86" class="ident">ev</label> := <a href="trace2event.go.html#line-56" class="ident">traceEvGoSyscallEnd</a></code></span>
+<span class="codeline" id="line-489"><code>	<label for="r87" class="ident">procStatus</label> := <a href="trace2status.go.html#line-36" class="ident">traceProcSyscall</a> <span class="comment">// Procs implicitly enter traceProcSyscall on GoSyscallBegin.</span></code></span>
+<span class="codeline" id="line-490"><code>	<span class="keyword">if</span> <label for="r85" class="ident">lostP</label> {</code></span>
+<span class="codeline" id="line-491"><code>		<label for="r86" class="ident">ev</label> = <a href="trace2event.go.html#line-57" class="ident">traceEvGoSyscallEndBlocked</a></code></span>
+<span class="codeline" id="line-492"><code>		<label for="r87" class="ident">procStatus</label> = <a href="trace2status.go.html#line-34" class="ident">traceProcRunning</a> <span class="comment">// If a G has a P when emitting this event, it reacquired a P and is indeed running.</span></code></span>
+<span class="codeline" id="line-493"><code>	} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-494"><code>		<label for="r83" class="ident">tl</label>.<a href="#line-156" class="ident">mp</a>.<a href="runtime2.go.html#line-565" class="ident">p</a>.<a href="runtime2.go.html#line-293" class="ident">ptr</a>().<a href="runtime2.go.html#line-707" class="ident">trace</a>.<a href="#line-39" class="ident">mSyscallID</a> = -<span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-495"><code>	}</code></span>
+<span class="codeline" id="line-496"><code>	<label for="r83" class="ident">tl</label>.<a href="trace2event.go.html#line-111" class="ident">eventWriter</a>(<a href="trace2status.go.html#line-23" class="ident">traceGoSyscall</a>, <label for="r87" class="ident">procStatus</label>).<a href="trace2event.go.html#line-124" class="ident">commit</a>(<label for="r86" class="ident">ev</label>)</code></span>
+<span class="codeline" id="line-497"><code>}</code></span>
+<span class="codeline" id="line-498"><code></code></span>
+<span class="codeline" id="line-499"><code><span class="comment">// ProcSteal indicates that our current M stole a P from another M.</span></code></span>
+<span class="codeline" id="line-500"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-501"><code><span class="comment">// inSyscall indicates that we're stealing the P from a syscall context.</span></code></span>
+<span class="codeline" id="line-502"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-503"><code><span class="comment">// The caller must have ownership of pp.</span></code></span>
+<span class="codeline" id="line-504"><code><span class="keyword">func</span> (<label for="r88" class="ident">tl</label> <a href="#line-155" class="ident">traceLocker</a>) <label for="r89" class="ident"><a href="../../use/runtime..traceLocker^95127.ProcSteal.html" class="ident">ProcSteal</a></label>(<label for="r90" class="ident">pp</label> *<a href="runtime2.go.html#line-646" class="ident">p</a>, <label for="r91" class="ident">inSyscall</label> <a href="../../pkg/builtin.html#name-bool" class="ident">bool</a>) {</code></span>
+<span class="codeline" id="line-505"><code>	<span class="comment">// Grab the M ID we stole from.</span></code></span>
+<span class="codeline" id="line-506"><code>	<label for="r92" class="ident">mStolenFrom</label> := <label for="r90" class="ident">pp</label>.<a href="runtime2.go.html#line-707" class="ident">trace</a>.<a href="#line-39" class="ident">mSyscallID</a></code></span>
+<span class="codeline" id="line-507"><code>	<label for="r90" class="ident">pp</label>.<a href="runtime2.go.html#line-707" class="ident">trace</a>.<a href="#line-39" class="ident">mSyscallID</a> = -<span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-508"><code></code></span>
+<span class="codeline" id="line-509"><code>	<span class="comment">// The status of the proc and goroutine, if we need to emit one here, is not evident from the</span></code></span>
+<span class="codeline" id="line-510"><code><span class="comment">	// context of just emitting this event alone. There are two cases. Either we're trying to steal</span></code></span>
+<span class="codeline" id="line-511"><code><span class="comment">	// the P just to get its attention (e.g. STW or sysmon retake) or we're trying to steal a P for</span></code></span>
+<span class="codeline" id="line-512"><code><span class="comment">	// ourselves specifically to keep running. The two contexts look different, but can be summarized</span></code></span>
+<span class="codeline" id="line-513"><code><span class="comment">	// fairly succinctly. In the former, we're a regular running goroutine and proc, if we have either.</span></code></span>
+<span class="codeline" id="line-514"><code><span class="comment">	// In the latter, we're a goroutine in a syscall.</span></code></span>
+<span class="codeline" id="line-515"><code>	<label for="r93" class="ident">goStatus</label> := <a href="trace2status.go.html#line-22" class="ident">traceGoRunning</a></code></span>
+<span class="codeline" id="line-516"><code>	<label for="r94" class="ident">procStatus</label> := <a href="trace2status.go.html#line-34" class="ident">traceProcRunning</a></code></span>
+<span class="codeline" id="line-517"><code>	<span class="keyword">if</span> <label for="r91" class="ident">inSyscall</label> {</code></span>
+<span class="codeline" id="line-518"><code>		<label for="r93" class="ident">goStatus</label> = <a href="trace2status.go.html#line-23" class="ident">traceGoSyscall</a></code></span>
+<span class="codeline" id="line-519"><code>		<label for="r94" class="ident">procStatus</label> = <a href="trace2status.go.html#line-47" class="ident">traceProcSyscallAbandoned</a></code></span>
+<span class="codeline" id="line-520"><code>	}</code></span>
+<span class="codeline" id="line-521"><code>	<label for="r95" class="ident">w</label> := <label for="r88" class="ident">tl</label>.<a href="trace2event.go.html#line-111" class="ident">eventWriter</a>(<label for="r93" class="ident">goStatus</label>, <label for="r94" class="ident">procStatus</label>)</code></span>
+<span class="codeline" id="line-522"><code></code></span>
+<span class="codeline" id="line-523"><code>	<span class="comment">// Emit the status of the P we're stealing. We may have *just* done this when creating the event</span></code></span>
+<span class="codeline" id="line-524"><code><span class="comment">	// writer but it's not guaranteed, even if inSyscall is true. Although it might seem like from a</span></code></span>
+<span class="codeline" id="line-525"><code><span class="comment">	// syscall context we're always stealing a P for ourselves, we may have not wired it up yet (so</span></code></span>
+<span class="codeline" id="line-526"><code><span class="comment">	// it wouldn't be visible to eventWriter) or we may not even intend to wire it up to ourselves</span></code></span>
+<span class="codeline" id="line-527"><code><span class="comment">	// at all (e.g. entersyscall_gcwait).</span></code></span>
+<span class="codeline" id="line-528"><code>	<span class="keyword">if</span> !<label for="r90" class="ident">pp</label>.<a href="runtime2.go.html#line-707" class="ident">trace</a>.<a href="trace2status.go.html#line-200" class="ident">statusWasTraced</a>(<label for="r88" class="ident">tl</label>.<a href="#line-157" class="ident">gen</a>) &amp;&amp; <label for="r90" class="ident">pp</label>.<a href="runtime2.go.html#line-707" class="ident">trace</a>.<a href="trace2status.go.html#line-184" class="ident">acquireStatus</a>(<label for="r88" class="ident">tl</label>.<a href="#line-157" class="ident">gen</a>) {</code></span>
+<span class="codeline" id="line-529"><code>		<span class="comment">// Careful: don't use the event writer. We never want status or in-progress events</span></code></span>
+<span class="codeline" id="line-530"><code><span class="comment">		// to trigger more in-progress events.</span></code></span>
+<span class="codeline" id="line-531"><code>		<label for="r95" class="ident">w</label>.<a href="trace2event.go.html#line-95" class="ident">w</a> = <label for="r95" class="ident">w</label>.<a href="trace2event.go.html#line-95" class="ident">w</a>.<a href="trace2status.go.html#line-107" class="ident">writeProcStatus</a>(<a href="../../pkg/builtin.html#name-uint64" class="ident">uint64</a>(<label for="r90" class="ident">pp</label>.<a href="runtime2.go.html#line-647" class="ident">id</a>), <a href="trace2status.go.html#line-47" class="ident">traceProcSyscallAbandoned</a>, <label for="r90" class="ident">pp</label>.<a href="runtime2.go.html#line-707" class="ident">trace</a>.<a href="#line-47" class="ident">inSweep</a>)</code></span>
+<span class="codeline" id="line-532"><code>	}</code></span>
+<span class="codeline" id="line-533"><code>	<label for="r95" class="ident">w</label>.<a href="trace2event.go.html#line-124" class="ident">commit</a>(<a href="trace2event.go.html#line-43" class="ident">traceEvProcSteal</a>, <a href="trace2event.go.html#line-88" class="ident">traceArg</a>(<label for="r90" class="ident">pp</label>.<a href="runtime2.go.html#line-647" class="ident">id</a>), <label for="r90" class="ident">pp</label>.<a href="runtime2.go.html#line-707" class="ident">trace</a>.<a href="trace2status.go.html#line-211" class="ident">nextSeq</a>(<label for="r88" class="ident">tl</label>.<a href="#line-157" class="ident">gen</a>), <a href="trace2event.go.html#line-88" class="ident">traceArg</a>(<label for="r92" class="ident">mStolenFrom</label>))</code></span>
+<span class="codeline" id="line-534"><code>}</code></span>
+<span class="codeline" id="line-535"><code></code></span>
+<span class="codeline" id="line-536"><code><span class="comment">// GoSysBlock is a no-op in the new tracer.</span></code></span>
+<span class="codeline" id="line-537"><code><span class="keyword">func</span> (<label for="r96" class="ident">tl</label> <a href="#line-155" class="ident">traceLocker</a>) <label for="r97" class="ident"><a href="../../use/runtime..traceLocker^95127.GoSysBlock.html" class="ident">GoSysBlock</a></label>(<label for="r98" class="ident">pp</label> *<a href="runtime2.go.html#line-646" class="ident">p</a>) {</code></span>
+<span class="codeline" id="line-538"><code>}</code></span>
+<span class="codeline" id="line-539"><code></code></span>
+<span class="codeline" id="line-540"><code><span class="comment">// HeapAlloc emits a HeapAlloc event.</span></code></span>
+<span class="codeline" id="line-541"><code><span class="keyword">func</span> (<label for="r99" class="ident">tl</label> <a href="#line-155" class="ident">traceLocker</a>) <label for="r100" class="ident"><a href="../../use/runtime..traceLocker^95127.HeapAlloc.html" class="ident">HeapAlloc</a></label>(<label for="r101" class="ident">live</label> <a href="../../pkg/builtin.html#name-uint64" class="ident">uint64</a>) {</code></span>
+<span class="codeline" id="line-542"><code>	<label for="r99" class="ident">tl</label>.<a href="trace2event.go.html#line-111" class="ident">eventWriter</a>(<a href="trace2status.go.html#line-22" class="ident">traceGoRunning</a>, <a href="trace2status.go.html#line-34" class="ident">traceProcRunning</a>).<a href="trace2event.go.html#line-124" class="ident">commit</a>(<a href="trace2event.go.html#line-74" class="ident">traceEvHeapAlloc</a>, <a href="trace2event.go.html#line-88" class="ident">traceArg</a>(<label for="r101" class="ident">live</label>))</code></span>
+<span class="codeline" id="line-543"><code>}</code></span>
+<span class="codeline" id="line-544"><code></code></span>
+<span class="codeline" id="line-545"><code><span class="comment">// HeapGoal reads the current heap goal and emits a HeapGoal event.</span></code></span>
+<span class="codeline" id="line-546"><code><span class="keyword">func</span> (<label for="r102" class="ident">tl</label> <a href="#line-155" class="ident">traceLocker</a>) <label for="r103" class="ident"><a href="../../use/runtime..traceLocker^95127.HeapGoal.html" class="ident">HeapGoal</a></label>() {</code></span>
+<span class="codeline" id="line-547"><code>	<label for="r104" class="ident">heapGoal</label> := <a href="mgcpacer.go.html#line-88" class="ident">gcController</a>.<a href="mgcpacer.go.html#line-900" class="ident">heapGoal</a>()</code></span>
+<span class="codeline" id="line-548"><code>	<span class="keyword">if</span> <label for="r104" class="ident">heapGoal</label> == ^<a href="../../pkg/builtin.html#name-uint64" class="ident">uint64</a>(<span class="lit-number">0</span>) {</code></span>
+<span class="codeline" id="line-549"><code>		<span class="comment">// Heap-based triggering is disabled.</span></code></span>
+<span class="codeline" id="line-550"><code>		<label for="r104" class="ident">heapGoal</label> = <span class="lit-number">0</span></code></span>
+<span class="codeline" id="line-551"><code>	}</code></span>
+<span class="codeline" id="line-552"><code>	<label for="r102" class="ident">tl</label>.<a href="trace2event.go.html#line-111" class="ident">eventWriter</a>(<a href="trace2status.go.html#line-22" class="ident">traceGoRunning</a>, <a href="trace2status.go.html#line-34" class="ident">traceProcRunning</a>).<a href="trace2event.go.html#line-124" class="ident">commit</a>(<a href="trace2event.go.html#line-75" class="ident">traceEvHeapGoal</a>, <a href="trace2event.go.html#line-88" class="ident">traceArg</a>(<label for="r104" class="ident">heapGoal</label>))</code></span>
+<span class="codeline" id="line-553"><code>}</code></span>
+<span class="codeline" id="line-554"><code></code></span>
+<span class="codeline" id="line-555"><code><span class="comment">// OneNewExtraM is a no-op in the new tracer. This is worth keeping around though because</span></code></span>
+<span class="codeline" id="line-556"><code><span class="comment">// it's a good place to insert a thread-level event about the new extra M.</span></code></span>
+<span class="codeline" id="line-557"><code><span class="keyword">func</span> (<label for="r105" class="ident">tl</label> <a href="#line-155" class="ident">traceLocker</a>) <label for="r106" class="ident"><a href="../../use/runtime..traceLocker^95127.OneNewExtraM.html" class="ident">OneNewExtraM</a></label>(<label for="r107" class="ident">_</label> *<a href="runtime2.go.html#line-422" class="ident">g</a>) {</code></span>
+<span class="codeline" id="line-558"><code>}</code></span>
+<span class="codeline" id="line-559"><code></code></span>
+<span class="codeline" id="line-560"><code><span class="comment">// GoCreateSyscall indicates that a goroutine has transitioned from dead to GoSyscall.</span></code></span>
+<span class="codeline" id="line-561"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-562"><code><span class="comment">// Unlike GoCreate, the caller must be running on gp.</span></code></span>
+<span class="codeline" id="line-563"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-564"><code><span class="comment">// This occurs when C code calls into Go. On pthread platforms it occurs only when</span></code></span>
+<span class="codeline" id="line-565"><code><span class="comment">// a C thread calls into Go code for the first time.</span></code></span>
+<span class="codeline" id="line-566"><code><span class="keyword">func</span> (<label for="r108" class="ident">tl</label> <a href="#line-155" class="ident">traceLocker</a>) <label for="r109" class="ident"><a href="../../use/runtime..traceLocker^95127.GoCreateSyscall.html" class="ident">GoCreateSyscall</a></label>(<label for="r110" class="ident">gp</label> *<a href="runtime2.go.html#line-422" class="ident">g</a>) {</code></span>
+<span class="codeline" id="line-567"><code>	<span class="comment">// N.B. We should never trace a status for this goroutine (which we're currently running on),</span></code></span>
+<span class="codeline" id="line-568"><code><span class="comment">	// since we want this to appear like goroutine creation.</span></code></span>
+<span class="codeline" id="line-569"><code>	<label for="r110" class="ident">gp</label>.<a href="runtime2.go.html#line-518" class="ident">trace</a>.<a href="trace2status.go.html#line-206" class="ident">setStatusTraced</a>(<label for="r108" class="ident">tl</label>.<a href="#line-157" class="ident">gen</a>)</code></span>
+<span class="codeline" id="line-570"><code>	<label for="r108" class="ident">tl</label>.<a href="trace2event.go.html#line-111" class="ident">eventWriter</a>(<a href="trace2status.go.html#line-20" class="ident">traceGoBad</a>, <a href="trace2status.go.html#line-33" class="ident">traceProcBad</a>).<a href="trace2event.go.html#line-124" class="ident">commit</a>(<a href="trace2event.go.html#line-48" class="ident">traceEvGoCreateSyscall</a>, <a href="trace2event.go.html#line-88" class="ident">traceArg</a>(<label for="r110" class="ident">gp</label>.<a href="runtime2.go.html#line-457" class="ident">goid</a>))</code></span>
+<span class="codeline" id="line-571"><code>}</code></span>
+<span class="codeline" id="line-572"><code></code></span>
+<span class="codeline" id="line-573"><code><span class="comment">// GoDestroySyscall indicates that a goroutine has transitioned from GoSyscall to dead.</span></code></span>
+<span class="codeline" id="line-574"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-575"><code><span class="comment">// Must not have a P.</span></code></span>
+<span class="codeline" id="line-576"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-577"><code><span class="comment">// This occurs when Go code returns back to C. On pthread platforms it occurs only when</span></code></span>
+<span class="codeline" id="line-578"><code><span class="comment">// the C thread is destroyed.</span></code></span>
+<span class="codeline" id="line-579"><code><span class="keyword">func</span> (<label for="r111" class="ident">tl</label> <a href="#line-155" class="ident">traceLocker</a>) <label for="r112" class="ident"><a href="../../use/runtime..traceLocker^95127.GoDestroySyscall.html" class="ident">GoDestroySyscall</a></label>() {</code></span>
+<span class="codeline" id="line-580"><code>	<span class="comment">// N.B. If we trace a status here, we must never have a P, and we must be on a goroutine</span></code></span>
+<span class="codeline" id="line-581"><code><span class="comment">	// that is in the syscall state.</span></code></span>
+<span class="codeline" id="line-582"><code>	<label for="r111" class="ident">tl</label>.<a href="trace2event.go.html#line-111" class="ident">eventWriter</a>(<a href="trace2status.go.html#line-23" class="ident">traceGoSyscall</a>, <a href="trace2status.go.html#line-33" class="ident">traceProcBad</a>).<a href="trace2event.go.html#line-124" class="ident">commit</a>(<a href="trace2event.go.html#line-51" class="ident">traceEvGoDestroySyscall</a>)</code></span>
+<span class="codeline" id="line-583"><code>}</code></span>
+<span class="codeline" id="line-584"><code></code></span>
+<span class="codeline" id="line-585"><code><span class="comment">// To access runtime functions from runtime/trace.</span></code></span>
+<span class="codeline" id="line-586"><code><span class="comment">// See runtime/trace/annotation.go</span></code></span>
+<span class="codeline" id="line-587"><code></code></span>
+<span class="codeline" id="line-588"><code><span class="comment">// trace_userTaskCreate emits a UserTaskCreate event.</span></code></span>
+<span class="codeline" id="line-589"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-590"><code><span class="comment">//go:linkname trace_userTaskCreate runtime/trace.userTaskCreate</span></code></span>
+<span class="codeline" id="line-591"><code><span class="keyword">func</span> <label for="r113" class="ident"><a href="../../pkg/runtime.html#name-trace_userTaskCreate" class="ident">trace_userTaskCreate</a></label>(<label for="r114" class="ident">id</label>, <label for="r115" class="ident">parentID</label> <a href="../../pkg/builtin.html#name-uint64" class="ident">uint64</a>, <label for="r116" class="ident">taskType</label> <a href="../../pkg/builtin.html#name-string" class="ident">string</a>) {</code></span>
+<span class="codeline" id="line-592"><code>	<label for="r117" class="ident">tl</label> := <a href="#line-172" class="ident">traceAcquire</a>()</code></span>
+<span class="codeline" id="line-593"><code>	<span class="keyword">if</span> !<label for="r117" class="ident">tl</label>.<a href="#line-228" class="ident">ok</a>() {</code></span>
+<span class="codeline" id="line-594"><code>		<span class="comment">// Need to do this check because the caller won't have it.</span></code></span>
+<span class="codeline" id="line-595"><code>		<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-596"><code>	}</code></span>
+<span class="codeline" id="line-597"><code>	<label for="r117" class="ident">tl</label>.<a href="trace2event.go.html#line-111" class="ident">eventWriter</a>(<a href="trace2status.go.html#line-22" class="ident">traceGoRunning</a>, <a href="trace2status.go.html#line-34" class="ident">traceProcRunning</a>).<a href="trace2event.go.html#line-124" class="ident">commit</a>(<a href="trace2event.go.html#line-79" class="ident">traceEvUserTaskBegin</a>, <a href="trace2event.go.html#line-88" class="ident">traceArg</a>(<label for="r114" class="ident">id</label>), <a href="trace2event.go.html#line-88" class="ident">traceArg</a>(<label for="r115" class="ident">parentID</label>), <label for="r117" class="ident">tl</label>.<a href="trace2event.go.html#line-185" class="ident">string</a>(<label for="r116" class="ident">taskType</label>), <label for="r117" class="ident">tl</label>.<a href="trace2event.go.html#line-165" class="ident">stack</a>(<span class="lit-number">3</span>))</code></span>
+<span class="codeline" id="line-598"><code>	<a href="#line-237" class="ident">traceRelease</a>(<label for="r117" class="ident">tl</label>)</code></span>
+<span class="codeline" id="line-599"><code>}</code></span>
+<span class="codeline" id="line-600"><code></code></span>
+<span class="codeline" id="line-601"><code><span class="comment">// trace_userTaskEnd emits a UserTaskEnd event.</span></code></span>
+<span class="codeline" id="line-602"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-603"><code><span class="comment">//go:linkname trace_userTaskEnd runtime/trace.userTaskEnd</span></code></span>
+<span class="codeline" id="line-604"><code><span class="keyword">func</span> <label for="r118" class="ident"><a href="../../pkg/runtime.html#name-trace_userTaskEnd" class="ident">trace_userTaskEnd</a></label>(<label for="r119" class="ident">id</label> <a href="../../pkg/builtin.html#name-uint64" class="ident">uint64</a>) {</code></span>
+<span class="codeline" id="line-605"><code>	<label for="r120" class="ident">tl</label> := <a href="#line-172" class="ident">traceAcquire</a>()</code></span>
+<span class="codeline" id="line-606"><code>	<span class="keyword">if</span> !<label for="r120" class="ident">tl</label>.<a href="#line-228" class="ident">ok</a>() {</code></span>
+<span class="codeline" id="line-607"><code>		<span class="comment">// Need to do this check because the caller won't have it.</span></code></span>
+<span class="codeline" id="line-608"><code>		<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-609"><code>	}</code></span>
+<span class="codeline" id="line-610"><code>	<label for="r120" class="ident">tl</label>.<a href="trace2event.go.html#line-111" class="ident">eventWriter</a>(<a href="trace2status.go.html#line-22" class="ident">traceGoRunning</a>, <a href="trace2status.go.html#line-34" class="ident">traceProcRunning</a>).<a href="trace2event.go.html#line-124" class="ident">commit</a>(<a href="trace2event.go.html#line-80" class="ident">traceEvUserTaskEnd</a>, <a href="trace2event.go.html#line-88" class="ident">traceArg</a>(<label for="r119" class="ident">id</label>), <label for="r120" class="ident">tl</label>.<a href="trace2event.go.html#line-165" class="ident">stack</a>(<span class="lit-number">2</span>))</code></span>
+<span class="codeline" id="line-611"><code>	<a href="#line-237" class="ident">traceRelease</a>(<label for="r120" class="ident">tl</label>)</code></span>
+<span class="codeline" id="line-612"><code>}</code></span>
+<span class="codeline" id="line-613"><code></code></span>
+<span class="codeline" id="line-614"><code><span class="comment">// trace_userTaskEnd emits a UserRegionBegin or UserRegionEnd event,</span></code></span>
+<span class="codeline" id="line-615"><code><span class="comment">// depending on mode (0 == Begin, 1 == End).</span></code></span>
+<span class="codeline" id="line-616"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-617"><code><span class="comment">// TODO(mknyszek): Just make this two functions.</span></code></span>
+<span class="codeline" id="line-618"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-619"><code><span class="comment">//go:linkname trace_userRegion runtime/trace.userRegion</span></code></span>
+<span class="codeline" id="line-620"><code><span class="keyword">func</span> <label for="r121" class="ident"><a href="../../pkg/runtime.html#name-trace_userRegion" class="ident">trace_userRegion</a></label>(<label for="r122" class="ident">id</label>, <label for="r123" class="ident">mode</label> <a href="../../pkg/builtin.html#name-uint64" class="ident">uint64</a>, <label for="r124" class="ident">name</label> <a href="../../pkg/builtin.html#name-string" class="ident">string</a>) {</code></span>
+<span class="codeline" id="line-621"><code>	<label for="r125" class="ident">tl</label> := <a href="#line-172" class="ident">traceAcquire</a>()</code></span>
+<span class="codeline" id="line-622"><code>	<span class="keyword">if</span> !<label for="r125" class="ident">tl</label>.<a href="#line-228" class="ident">ok</a>() {</code></span>
+<span class="codeline" id="line-623"><code>		<span class="comment">// Need to do this check because the caller won't have it.</span></code></span>
+<span class="codeline" id="line-624"><code>		<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-625"><code>	}</code></span>
+<span class="codeline" id="line-626"><code>	<span class="keyword">var</span> <label for="r126" class="ident">ev</label> <a href="trace2event.go.html#line-24" class="ident">traceEv</a></code></span>
+<span class="codeline" id="line-627"><code>	<span class="keyword">switch</span> <label for="r123" class="ident">mode</label> {</code></span>
+<span class="codeline" id="line-628"><code>	<span class="keyword">case</span> <span class="lit-number">0</span>:</code></span>
+<span class="codeline" id="line-629"><code>		<label for="r126" class="ident">ev</label> = <a href="trace2event.go.html#line-81" class="ident">traceEvUserRegionBegin</a></code></span>
+<span class="codeline" id="line-630"><code>	<span class="keyword">case</span> <span class="lit-number">1</span>:</code></span>
+<span class="codeline" id="line-631"><code>		<label for="r126" class="ident">ev</label> = <a href="trace2event.go.html#line-82" class="ident">traceEvUserRegionEnd</a></code></span>
+<span class="codeline" id="line-632"><code>	<span class="keyword">default</span>:</code></span>
+<span class="codeline" id="line-633"><code>		<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-634"><code>	}</code></span>
+<span class="codeline" id="line-635"><code>	<label for="r125" class="ident">tl</label>.<a href="trace2event.go.html#line-111" class="ident">eventWriter</a>(<a href="trace2status.go.html#line-22" class="ident">traceGoRunning</a>, <a href="trace2status.go.html#line-34" class="ident">traceProcRunning</a>).<a href="trace2event.go.html#line-124" class="ident">commit</a>(<label for="r126" class="ident">ev</label>, <a href="trace2event.go.html#line-88" class="ident">traceArg</a>(<label for="r122" class="ident">id</label>), <label for="r125" class="ident">tl</label>.<a href="trace2event.go.html#line-185" class="ident">string</a>(<label for="r124" class="ident">name</label>), <label for="r125" class="ident">tl</label>.<a href="trace2event.go.html#line-165" class="ident">stack</a>(<span class="lit-number">3</span>))</code></span>
+<span class="codeline" id="line-636"><code>	<a href="#line-237" class="ident">traceRelease</a>(<label for="r125" class="ident">tl</label>)</code></span>
+<span class="codeline" id="line-637"><code>}</code></span>
+<span class="codeline" id="line-638"><code></code></span>
+<span class="codeline" id="line-639"><code><span class="comment">// trace_userTaskEnd emits a UserRegionBegin or UserRegionEnd event.</span></code></span>
+<span class="codeline" id="line-640"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-641"><code><span class="comment">//go:linkname trace_userLog runtime/trace.userLog</span></code></span>
+<span class="codeline" id="line-642"><code><span class="keyword">func</span> <label for="r127" class="ident"><a href="../../pkg/runtime.html#name-trace_userLog" class="ident">trace_userLog</a></label>(<label for="r128" class="ident">id</label> <a href="../../pkg/builtin.html#name-uint64" class="ident">uint64</a>, <label for="r129" class="ident">category</label>, <label for="r130" class="ident">message</label> <a href="../../pkg/builtin.html#name-string" class="ident">string</a>) {</code></span>
+<span class="codeline" id="line-643"><code>	<label for="r131" class="ident">tl</label> := <a href="#line-172" class="ident">traceAcquire</a>()</code></span>
+<span class="codeline" id="line-644"><code>	<span class="keyword">if</span> !<label for="r131" class="ident">tl</label>.<a href="#line-228" class="ident">ok</a>() {</code></span>
+<span class="codeline" id="line-645"><code>		<span class="comment">// Need to do this check because the caller won't have it.</span></code></span>
+<span class="codeline" id="line-646"><code>		<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-647"><code>	}</code></span>
+<span class="codeline" id="line-648"><code>	<label for="r131" class="ident">tl</label>.<a href="trace2event.go.html#line-111" class="ident">eventWriter</a>(<a href="trace2status.go.html#line-22" class="ident">traceGoRunning</a>, <a href="trace2status.go.html#line-34" class="ident">traceProcRunning</a>).<a href="trace2event.go.html#line-124" class="ident">commit</a>(<a href="trace2event.go.html#line-83" class="ident">traceEvUserLog</a>, <a href="trace2event.go.html#line-88" class="ident">traceArg</a>(<label for="r128" class="ident">id</label>), <label for="r131" class="ident">tl</label>.<a href="trace2event.go.html#line-185" class="ident">string</a>(<label for="r129" class="ident">category</label>), <label for="r131" class="ident">tl</label>.<a href="trace2event.go.html#line-192" class="ident">uniqueString</a>(<label for="r130" class="ident">message</label>), <label for="r131" class="ident">tl</label>.<a href="trace2event.go.html#line-165" class="ident">stack</a>(<span class="lit-number">3</span>))</code></span>
+<span class="codeline" id="line-649"><code>	<a href="#line-237" class="ident">traceRelease</a>(<label for="r131" class="ident">tl</label>)</code></span>
+<span class="codeline" id="line-650"><code>}</code></span>
+<span class="codeline" id="line-651"><code></code></span>
+<span class="codeline" id="line-652"><code><span class="comment">// traceProcFree is called when a P is destroyed.</span></code></span>
+<span class="codeline" id="line-653"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-654"><code><span class="comment">// This must run on the system stack to match the old tracer.</span></code></span>
+<span class="codeline" id="line-655"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-656"><code><span class="comment">//go:systemstack</span></code></span>
+<span class="codeline" id="line-657"><code><span class="keyword">func</span> <label for="r132" class="ident"><a href="../../pkg/runtime.html#name-traceProcFree" class="ident">traceProcFree</a></label>(<label for="r133" class="ident">_</label> *<a href="runtime2.go.html#line-646" class="ident">p</a>) {</code></span>
+<span class="codeline" id="line-658"><code>}</code></span>
+<span class="codeline" id="line-659"><code></code></span>
+<span class="codeline" id="line-660"><code><span class="comment">// traceThreadDestroy is called when a thread is removed from</span></code></span>
+<span class="codeline" id="line-661"><code><span class="comment">// sched.freem.</span></code></span>
+<span class="codeline" id="line-662"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-663"><code><span class="comment">// mp must not be able to emit trace events anymore.</span></code></span>
+<span class="codeline" id="line-664"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-665"><code><span class="comment">// sched.lock must be held to synchronize with traceAdvance.</span></code></span>
+<span class="codeline" id="line-666"><code><span class="keyword">func</span> <label for="r134" class="ident"><a href="../../pkg/runtime.html#name-traceThreadDestroy" class="ident">traceThreadDestroy</a></label>(<label for="r135" class="ident">mp</label> *<a href="runtime2.go.html#line-550" class="ident">m</a>) {</code></span>
+<span class="codeline" id="line-667"><code>	<a href="lockrank_off.go.html#line-47" class="ident">assertLockHeld</a>(&amp;<a href="runtime2.go.html#line-1192" class="ident">sched</a>.<a href="runtime2.go.html#line-804" class="ident">lock</a>)</code></span>
+<span class="codeline" id="line-668"><code></code></span>
+<span class="codeline" id="line-669"><code>	<span class="comment">// Flush all outstanding buffers to maintain the invariant</span></code></span>
+<span class="codeline" id="line-670"><code><span class="comment">	// that an M only has active buffers while on sched.freem</span></code></span>
+<span class="codeline" id="line-671"><code><span class="comment">	// or allm.</span></code></span>
+<span class="codeline" id="line-672"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-673"><code><span class="comment">	// Perform a traceAcquire/traceRelease on behalf of mp to</span></code></span>
+<span class="codeline" id="line-674"><code><span class="comment">	// synchronize with the tracer trying to flush our buffer</span></code></span>
+<span class="codeline" id="line-675"><code><span class="comment">	// as well.</span></code></span>
+<span class="codeline" id="line-676"><code>	<label for="r136" class="ident">seq</label> := <label for="r135" class="ident">mp</label>.<a href="runtime2.go.html#line-610" class="ident">trace</a>.<a href="#line-29" class="ident">seqlock</a>.<a href="internal/atomic/types.go.html#line-419" class="ident">Add</a>(<span class="lit-number">1</span>)</code></span>
+<span class="codeline" id="line-677"><code>	<span class="keyword">if</span> <a href="#line-165" class="ident">debugTraceReentrancy</a> &amp;&amp; <label for="r136" class="ident">seq</label>%<span class="lit-number">2</span> != <span class="lit-number">1</span> {</code></span>
+<span class="codeline" id="line-678"><code>		<a href="panic.go.html#line-1016" class="ident">throw</a>(<span class="lit-string">"bad use of trace.seqlock or tracer is reentrant"</span>)</code></span>
+<span class="codeline" id="line-679"><code>	}</code></span>
+<span class="codeline" id="line-680"><code>	<a href="stubs.go.html#line-58" class="ident">systemstack</a>(<span class="keyword">func</span>() {</code></span>
+<span class="codeline" id="line-681"><code>		<a href="lock_futex.go.html#line-51" class="ident">lock</a>(&amp;<a href="trace2.go.html#line-32" class="ident">trace</a>.<a href="trace2.go.html#line-35" class="ident">lock</a>)</code></span>
+<span class="codeline" id="line-682"><code>		<span class="keyword">for</span> <label for="r137" class="ident">i</label> := <span class="keyword">range</span> <label for="r135" class="ident">mp</label>.<a href="runtime2.go.html#line-610" class="ident">trace</a>.<a href="#line-30" class="ident">buf</a> {</code></span>
+<span class="codeline" id="line-683"><code>			<span class="keyword">if</span> <label for="r135" class="ident">mp</label>.<a href="runtime2.go.html#line-610" class="ident">trace</a>.<a href="#line-30" class="ident">buf</a>[<label for="r137" class="ident">i</label>] != <a href="../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-684"><code>				<span class="comment">// N.B. traceBufFlush accepts a generation, but it</span></code></span>
+<span class="codeline" id="line-685"><code><span class="comment">				// really just cares about gen%2.</span></code></span>
+<span class="codeline" id="line-686"><code>				<a href="trace2buf.go.html#line-240" class="ident">traceBufFlush</a>(<label for="r135" class="ident">mp</label>.<a href="runtime2.go.html#line-610" class="ident">trace</a>.<a href="#line-30" class="ident">buf</a>[<label for="r137" class="ident">i</label>], <a href="../../pkg/builtin.html#name-uintptr" class="ident">uintptr</a>(<label for="r137" class="ident">i</label>))</code></span>
+<span class="codeline" id="line-687"><code>				<label for="r135" class="ident">mp</label>.<a href="runtime2.go.html#line-610" class="ident">trace</a>.<a href="#line-30" class="ident">buf</a>[<label for="r137" class="ident">i</label>] = <a href="../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-688"><code>			}</code></span>
+<span class="codeline" id="line-689"><code>		}</code></span>
+<span class="codeline" id="line-690"><code>		<a href="lock_futex.go.html#line-120" class="ident">unlock</a>(&amp;<a href="trace2.go.html#line-32" class="ident">trace</a>.<a href="trace2.go.html#line-35" class="ident">lock</a>)</code></span>
+<span class="codeline" id="line-691"><code>	})</code></span>
+<span class="codeline" id="line-692"><code>	<label for="r138" class="ident">seq1</label> := <label for="r135" class="ident">mp</label>.<a href="runtime2.go.html#line-610" class="ident">trace</a>.<a href="#line-29" class="ident">seqlock</a>.<a href="internal/atomic/types.go.html#line-419" class="ident">Add</a>(<span class="lit-number">1</span>)</code></span>
+<span class="codeline" id="line-693"><code>	<span class="keyword">if</span> <label for="r138" class="ident">seq1</label> != <label for="r136" class="ident">seq</label>+<span class="lit-number">1</span> {</code></span>
+<span class="codeline" id="line-694"><code>		<a href="../../pkg/builtin.html#name-print" class="ident">print</a>(<span class="lit-string">"runtime: seq1="</span>, <label for="r138" class="ident">seq1</label>, <span class="lit-string">"\n"</span>)</code></span>
+<span class="codeline" id="line-695"><code>		<a href="panic.go.html#line-1016" class="ident">throw</a>(<span class="lit-string">"bad use of trace.seqlock"</span>)</code></span>
+<span class="codeline" id="line-696"><code>	}</code></span>
+<span class="codeline" id="line-697"><code>}</code></span>
+<span class="codeline" id="line-698"><code></code></span>
+<span class="codeline" id="line-699"><code><span class="comment">// Not used in the new tracer; solely for compatibility with the old tracer.</span></code></span>
+<span class="codeline" id="line-700"><code><span class="comment">// nosplit because it's called from exitsyscall without a P.</span></code></span>
+<span class="codeline" id="line-701"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-702"><code><span class="comment">//go:nosplit</span></code></span>
+<span class="codeline" id="line-703"><code><span class="keyword">func</span> (<label for="r139" class="ident">_</label> <a href="#line-155" class="ident">traceLocker</a>) <label for="r140" class="ident"><a href="../../use/runtime..traceLocker^95127.RecordSyscallExitedTime.html" class="ident">RecordSyscallExitedTime</a></label>(<label for="r141" class="ident">_</label> *<a href="runtime2.go.html#line-422" class="ident">g</a>, <label for="r142" class="ident">_</label> *<a href="runtime2.go.html#line-646" class="ident">p</a>) {</code></span>
+<span class="codeline" id="line-704"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

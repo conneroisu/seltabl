@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/netip.PrefixFrom</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../../pkg/net/netip.html">net/netip</a>.<a href="../../src/net/netip/netip.go.html#line-1235">PrefixFrom</a></b></span>
+
+<span class="title">13 uses</span>
+
+	net/netip (current package)
+		<a href="../../src/net/netip/netip.go.html#line-662">netip.go#L662</a>: 	return <b>PrefixFrom</b>(ip, b), nil
+		<a href="../../src/net/netip/netip.go.html#line-1235" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-1235">#L1235</a>: func <b>PrefixFrom</b>(ip Addr, bits int) Prefix {
+		<a href="../../src/net/netip/netip.go.html#line-1321" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-1321">#L1321</a>: 	return <b>PrefixFrom</b>(ip, bits), nil
+		<a href="../../src/net/netip/netip.go.html#line-1491" class="path-duplicate">netip.go</a><a href="../../src/net/netip/netip.go.html#line-1491">#L1491</a>: 	*p = <b>PrefixFrom</b>(addr, int(b[len(b)-1]))
+
+	<a href="../../pkg/net.html">net</a>
+		<a href="../../src/net/addrselect.go.html#line-231">addrselect.go#L231</a>: 		Prefix:     netip.<b>PrefixFrom</b>(netip.AddrFrom16([16]byte{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x01}), 128),
+		<a href="../../src/net/addrselect.go.html#line-238" class="path-duplicate">addrselect.go</a><a href="../../src/net/addrselect.go.html#line-238">#L238</a>: 		Prefix:     netip.<b>PrefixFrom</b>(netip.AddrFrom16([16]byte{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0xff, 0xff}), 96),
+		<a href="../../src/net/addrselect.go.html#line-244" class="path-duplicate">addrselect.go</a><a href="../../src/net/addrselect.go.html#line-244">#L244</a>: 		Prefix:     netip.<b>PrefixFrom</b>(netip.AddrFrom16([16]byte{}), 96),
+		<a href="../../src/net/addrselect.go.html#line-251" class="path-duplicate">addrselect.go</a><a href="../../src/net/addrselect.go.html#line-251">#L251</a>: 		Prefix:     netip.<b>PrefixFrom</b>(netip.AddrFrom16([16]byte{0x20, 0x01}), 32),
+		<a href="../../src/net/addrselect.go.html#line-258" class="path-duplicate">addrselect.go</a><a href="../../src/net/addrselect.go.html#line-258">#L258</a>: 		Prefix:     netip.<b>PrefixFrom</b>(netip.AddrFrom16([16]byte{0x20, 0x02}), 16),
+		<a href="../../src/net/addrselect.go.html#line-264" class="path-duplicate">addrselect.go</a><a href="../../src/net/addrselect.go.html#line-264">#L264</a>: 		Prefix:     netip.<b>PrefixFrom</b>(netip.AddrFrom16([16]byte{0x3f, 0xfe}), 16),
+		<a href="../../src/net/addrselect.go.html#line-270" class="path-duplicate">addrselect.go</a><a href="../../src/net/addrselect.go.html#line-270">#L270</a>: 		Prefix:     netip.<b>PrefixFrom</b>(netip.AddrFrom16([16]byte{0xfe, 0xc0}), 10),
+		<a href="../../src/net/addrselect.go.html#line-276" class="path-duplicate">addrselect.go</a><a href="../../src/net/addrselect.go.html#line-276">#L276</a>: 		Prefix:     netip.<b>PrefixFrom</b>(netip.AddrFrom16([16]byte{0xfc}), 7),
+		<a href="../../src/net/addrselect.go.html#line-282" class="path-duplicate">addrselect.go</a><a href="../../src/net/addrselect.go.html#line-282">#L282</a>: 		Prefix:     netip.<b>PrefixFrom</b>(netip.AddrFrom16([16]byte{}), 0),
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.gobuf.pc</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/runtime2.go.html#line-324">gobuf</a>.<a href="../src/runtime/runtime2.go.html#line-338">pc</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">28 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/heapdump.go.html#line-349">heapdump.go#L349</a>: 		pc = gp.sched.<b>pc</b>
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-1265">mbitmap_allocheaders.go#L1265</a>: 		for u.initAt(gp.m.curg.sched.<b>pc</b>, gp.m.curg.sched.sp, 0, gp.m.curg, 0); u.valid(); u.next() {
+		<a href="../src/runtime/panic.go.html#line-1155">panic.go#L1155</a>: 	gp.sched.<b>pc</b> = pc
+		<a href="../src/runtime/proc.go.html#line-530">proc.go#L530</a>: 		traceback1(g.sched.<b>pc</b>, g.sched.sp, g.sched.lr, g, 0)
+		<a href="../src/runtime/proc.go.html#line-1716" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-1716">#L1716</a>: 	gp.sched.<b>pc</b> = getcallerpc()
+		<a href="../src/runtime/proc.go.html#line-2287" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-2287">#L2287</a>: 	gp.sched.<b>pc</b> = abi.FuncPCABI0(goexit) + sys.PCQuantum
+		<a href="../src/runtime/proc.go.html#line-2292" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-2292">#L2292</a>: 	gp.syscallpc = gp.sched.<b>pc</b>
+		<a href="../src/runtime/proc.go.html#line-4099" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4099">#L4099</a>: 		f := findfunc(gp.sched.<b>pc</b>)
+		<a href="../src/runtime/proc.go.html#line-4266" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4266">#L4266</a>: 	gp.sched.<b>pc</b> = pc
+		<a href="../src/runtime/proc.go.html#line-4454" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4454">#L4454</a>: 	gp.syscallpc = gp.sched.<b>pc</b>
+		<a href="../src/runtime/proc.go.html#line-4929" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4929">#L4929</a>: 	newg.sched.<b>pc</b> = abi.FuncPCABI0(goexit) + sys.PCQuantum // +PCQuantum so that previous instruction is in same function
+		<a href="../src/runtime/runtime2.go.html#line-338">runtime2.go#L338</a>: 	<b>pc</b>   uintptr
+		<a href="../src/runtime/stack.go.html#line-971">stack.go#L971</a>: 		traceback(morebuf.<b>pc</b>, morebuf.sp, morebuf.lr, morebuf.g.ptr())
+		<a href="../src/runtime/stack.go.html#line-981" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-981">#L981</a>: 		gp.syscallpc = morebuf.<b>pc</b>
+		<a href="../src/runtime/stack.go.html#line-983" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-983">#L983</a>: 		f := findfunc(gp.sched.<b>pc</b>)
+		<a href="../src/runtime/stack.go.html#line-986" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-986">#L986</a>: 			pcoff = gp.sched.<b>pc</b> - f.entry()
+		<a href="../src/runtime/stack.go.html#line-990" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-990">#L990</a>: 			"\tmorebuf={pc:", hex(morebuf.<b>pc</b>), " sp:", hex(morebuf.sp), " lr:", hex(morebuf.lr), "}\n",
+		<a href="../src/runtime/stack.go.html#line-991" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-991">#L991</a>: 			"\tsched={pc:", hex(gp.sched.<b>pc</b>), " sp:", hex(gp.sched.sp), " lr:", hex(gp.sched.lr), " ctxt:", gp.sched.ctxt, "}\n")
+		<a href="../src/runtime/stack.go.html#line-994" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-994">#L994</a>: 		traceback(morebuf.<b>pc</b>, morebuf.sp, morebuf.lr, gp)
+		<a href="../src/runtime/stack.go.html#line-999" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-999">#L999</a>: 	thisg.m.morebuf.<b>pc</b> = 0
+		<a href="../src/runtime/stack.go.html#line-1041" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-1041">#L1041</a>: 			"\tmorebuf={pc:", hex(morebuf.<b>pc</b>), " sp:", hex(morebuf.sp), " lr:", hex(morebuf.lr), "}\n",
+		<a href="../src/runtime/stack.go.html#line-1042" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-1042">#L1042</a>: 			"\tsched={pc:", hex(gp.sched.<b>pc</b>), " sp:", hex(gp.sched.sp), " lr:", hex(gp.sched.lr), " ctxt:", gp.sched.ctxt, "}\n")
+		<a href="../src/runtime/stack.go.html#line-1080" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-1080">#L1080</a>: 	if f := findfunc(gp.sched.<b>pc</b>); f.valid() {
+		<a href="../src/runtime/sys_x86.go.html#line-19">sys_x86.go#L19</a>: 	*(*uintptr)(unsafe.Pointer(sp)) = buf.<b>pc</b>
+		<a href="../src/runtime/sys_x86.go.html#line-21" class="path-duplicate">sys_x86.go</a><a href="../src/runtime/sys_x86.go.html#line-21">#L21</a>: 	buf.<b>pc</b> = uintptr(fn)
+		<a href="../src/runtime/trace2stack.go.html#line-69">trace2stack.go#L69</a>: 			pcBuf[1] = curgp.sched.<b>pc</b>
+		<a href="../src/runtime/traceback.go.html#line-158">traceback.go#L158</a>: 			pc0 = gp.sched.<b>pc</b>
+		<a href="../src/runtime/traceback.go.html#line-297" class="path-duplicate">traceback.go</a><a href="../src/runtime/traceback.go.html#line-297">#L297</a>: 				frame.pc = gp.sched.<b>pc</b>
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

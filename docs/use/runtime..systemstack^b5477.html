@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.systemstack</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/stubs.go.html#line-58">systemstack</a></b></span>
+
+<span class="title">116 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/arena.go.html#line-579">arena.go#L579</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/arena.go.html#line-736" class="path-duplicate">arena.go</a><a href="../src/runtime/arena.go.html#line-736">#L736</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/cgo_mmap.go.html#line-39">cgo_mmap.go#L39</a>: 		<b>systemstack</b>(func() {
+		<a href="../src/runtime/cgo_mmap.go.html#line-52" class="path-duplicate">cgo_mmap.go</a><a href="../src/runtime/cgo_mmap.go.html#line-52">#L52</a>: 		<b>systemstack</b>(func() { callCgoMunmap(addr, n) })
+		<a href="../src/runtime/cgo_sigaction.go.html#line-68">cgo_sigaction.go#L68</a>: 			<b>systemstack</b>(func() {
+		<a href="../src/runtime/cgocall.go.html#line-351">cgocall.go#L351</a>: 		<b>systemstack</b>(newextram)
+		<a href="../src/runtime/cgocheck.go.html#line-66">cgocheck.go#L66</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/cgocheck.go.html#line-173" class="path-duplicate">cgocheck.go</a><a href="../src/runtime/cgocheck.go.html#line-173">#L173</a>: 		<b>systemstack</b>(func() {
+		<a href="../src/runtime/coro.go.html#line-39">coro.go#L39</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/debugcall.go.html#line-48">debugcall.go#L48</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/debugcall.go.html#line-122" class="path-duplicate">debugcall.go</a><a href="../src/runtime/debugcall.go.html#line-122">#L122</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/heapdump.go.html#line-32">heapdump.go#L32</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/malloc.go.html#line-1528">malloc.go#L1528</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-877">mbitmap_allocheaders.go#L877</a>: 			<b>systemstack</b>(func() {
+		<a href="../src/runtime/mcache.go.html#line-87">mcache.go#L87</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/mcache.go.html#line-107" class="path-duplicate">mcache.go</a><a href="../src/runtime/mcache.go.html#line-107">#L107</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/metrics.go.html#line-656">metrics.go#L656</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/mfinal.go.html#line-461">mfinal.go#L461</a>: 		<b>systemstack</b>(func() {
+		<a href="../src/runtime/mfinal.go.html#line-510" class="path-duplicate">mfinal.go</a><a href="../src/runtime/mfinal.go.html#line-510">#L510</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/mgc.go.html#line-665">mgc.go#L665</a>: 	<b>systemstack</b>(gcResetMarkState)
+		<a href="../src/runtime/mgc.go.html#line-680" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-680">#L680</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/mgc.go.html#line-684" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-684">#L684</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/mgc.go.html#line-746" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-746">#L746</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/mgc.go.html#line-863" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-863">#L863</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/mgc.go.html#line-880" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-880">#L880</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/mgc.go.html#line-891" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-891">#L891</a>: 		<b>systemstack</b>(func() {
+		<a href="../src/runtime/mgc.go.html#line-953" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-953">#L953</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/mgc.go.html#line-965" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-965">#L965</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/mgc.go.html#line-1007" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1007">#L1007</a>: 	<b>systemstack</b>(gcControllerCommit)
+		<a href="../src/runtime/mgc.go.html#line-1087" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1087">#L1087</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/mgc.go.html#line-1110" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1110">#L1110</a>: 	<b>systemstack</b>(freeStackSpans)
+		<a href="../src/runtime/mgc.go.html#line-1127" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1127">#L1127</a>: 			<b>systemstack</b>(func() {
+		<a href="../src/runtime/mgc.go.html#line-1204" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1204">#L1204</a>: 		<b>systemstack</b>(func() {
+		<a href="../src/runtime/mgc.go.html#line-1370" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1370">#L1370</a>: 		<b>systemstack</b>(func() {
+		<a href="../src/runtime/mgcmark.go.html#line-190">mgcmark.go#L190</a>: 		<b>systemstack</b>(markrootFreeGStacks)
+		<a href="../src/runtime/mgcmark.go.html#line-215" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-215">#L215</a>: 		<b>systemstack</b>(func() {
+		<a href="../src/runtime/mgcmark.go.html#line-555" class="path-duplicate">mgcmark.go</a><a href="../src/runtime/mgcmark.go.html#line-555">#L555</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/mgcpacer.go.html#line-1261">mgcpacer.go#L1261</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/mgcpacer.go.html#line-1308" class="path-duplicate">mgcpacer.go</a><a href="../src/runtime/mgcpacer.go.html#line-1308">#L1308</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/mgcscavenge.go.html#line-682">mgcscavenge.go#L682</a>: 		<b>systemstack</b>(func() {
+		<a href="../src/runtime/mgcsweep.go.html#line-423">mgcsweep.go#L423</a>: 			<b>systemstack</b>(func() {
+		<a href="../src/runtime/mgcsweep.go.html#line-721" class="path-duplicate">mgcsweep.go</a><a href="../src/runtime/mgcsweep.go.html#line-721">#L721</a>: 		<b>systemstack</b>(func() {
+		<a href="../src/runtime/mgcsweep.go.html#line-796" class="path-duplicate">mgcsweep.go</a><a href="../src/runtime/mgcsweep.go.html#line-796">#L796</a>: 				<b>systemstack</b>(func() {
+		<a href="../src/runtime/mgcwork.go.html#line-377">mgcwork.go#L377</a>: 			<b>systemstack</b>(func() {
+		<a href="../src/runtime/mgcwork.go.html#line-475" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-475">#L475</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/mheap.go.html#line-958">mheap.go#L958</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/mheap.go.html#line-1551" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1551">#L1551</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/mheap.go.html#line-1674" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1674">#L1674</a>: 	<b>systemstack</b>(func() { mheap_.scavengeAll() })
+		<a href="../src/runtime/mprof.go.html#line-444">mprof.go#L444</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/mprof.go.html#line-703" class="path-duplicate">mprof.go</a><a href="../src/runtime/mprof.go.html#line-703">#L703</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/mprof.go.html#line-1164" class="path-duplicate">mprof.go</a><a href="../src/runtime/mprof.go.html#line-1164">#L1164</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/mprof.go.html#line-1326" class="path-duplicate">mprof.go</a><a href="../src/runtime/mprof.go.html#line-1326">#L1326</a>: 	<b>systemstack</b>(func() { saveg(^uintptr(0), ^uintptr(0), gp1, &amp;goroutineProfile.records[offset]) })
+		<a href="../src/runtime/mprof.go.html#line-1359" class="path-duplicate">mprof.go</a><a href="../src/runtime/mprof.go.html#line-1359">#L1359</a>: 		<b>systemstack</b>(func() {
+		<a href="../src/runtime/mprof.go.html#line-1385" class="path-duplicate">mprof.go</a><a href="../src/runtime/mprof.go.html#line-1385">#L1385</a>: 			<b>systemstack</b>(func() { saveg(^uintptr(0), ^uintptr(0), gp1, &amp;r[0]) })
+		<a href="../src/runtime/mprof.go.html#line-1437" class="path-duplicate">mprof.go</a><a href="../src/runtime/mprof.go.html#line-1437">#L1437</a>: 		<b>systemstack</b>(func() {
+		<a href="../src/runtime/mprof.go.html#line-1478" class="path-duplicate">mprof.go</a><a href="../src/runtime/mprof.go.html#line-1478">#L1478</a>: 		<b>systemstack</b>(func() {
+		<a href="../src/runtime/mprof.go.html#line-1498" class="path-duplicate">mprof.go</a><a href="../src/runtime/mprof.go.html#line-1498">#L1498</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/mstats.go.html#line-357">mstats.go#L357</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/mstats.go.html#line-379" class="path-duplicate">mstats.go</a><a href="../src/runtime/mstats.go.html#line-379">#L379</a>: 	<b>systemstack</b>(flushallmcaches)
+		<a href="../src/runtime/mstats.go.html#line-566" class="path-duplicate">mstats.go</a><a href="../src/runtime/mstats.go.html#line-566">#L566</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/mwbbuf.go.html#line-180">mwbbuf.go#L180</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/os_linux.go.html#line-90">os_linux.go#L90</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/os_linux.go.html#line-534" class="path-duplicate">os_linux.go</a><a href="../src/runtime/os_linux.go.html#line-534">#L534</a>: 			<b>systemstack</b>(func() {
+		<a href="../src/runtime/panic.go.html#line-911">panic.go#L911</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/panic.go.html#line-1019" class="path-duplicate">panic.go</a><a href="../src/runtime/panic.go.html#line-1019">#L1019</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/panic.go.html#line-1038" class="path-duplicate">panic.go</a><a href="../src/runtime/panic.go.html#line-1038">#L1038</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/panic.go.html#line-1192" class="path-duplicate">panic.go</a><a href="../src/runtime/panic.go.html#line-1192">#L1192</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/panic.go.html#line-1224" class="path-duplicate">panic.go</a><a href="../src/runtime/panic.go.html#line-1224">#L1224</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/panic.go.html#line-1247" class="path-duplicate">panic.go</a><a href="../src/runtime/panic.go.html#line-1247">#L1247</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/pinner.go.html#line-181">pinner.go#L181</a>: 			<b>systemstack</b>(func() {
+		<a href="../src/runtime/pinner.go.html#line-195" class="path-duplicate">pinner.go</a><a href="../src/runtime/pinner.go.html#line-195">#L195</a>: 				<b>systemstack</b>(func() {
+		<a href="../src/runtime/proc.go.html#line-171">proc.go#L171</a>: 		<b>systemstack</b>(func() {
+		<a href="../src/runtime/proc.go.html#line-412" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-412">#L412</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/proc.go.html#line-1107" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-1107">#L1107</a>: 		<b>systemstack</b>(func() {
+		<a href="../src/runtime/proc.go.html#line-1343" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-1343">#L1343</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/proc.go.html#line-1369" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-1369">#L1369</a>: 	<b>systemstack</b>(func() { startTheWorldWithSema(0, w) })
+		<a href="../src/runtime/proc.go.html#line-1895" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-1895">#L1895</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/proc.go.html#line-2098" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-2098">#L2098</a>: 				<b>systemstack</b>(func() {
+		<a href="../src/runtime/proc.go.html#line-4341" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4341">#L4341</a>: 		<b>systemstack</b>(func() {
+		<a href="../src/runtime/proc.go.html#line-4348" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4348">#L4348</a>: 		<b>systemstack</b>(func() {
+		<a href="../src/runtime/proc.go.html#line-4359" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4359">#L4359</a>: 		<b>systemstack</b>(entersyscall_sysmon)
+		<a href="../src/runtime/proc.go.html#line-4365" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4365">#L4365</a>: 		<b>systemstack</b>(runSafePointFn)
+		<a href="../src/runtime/proc.go.html#line-4376" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4376">#L4376</a>: 		<b>systemstack</b>(entersyscall_gcwait)
+		<a href="../src/runtime/proc.go.html#line-4459" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4459">#L4459</a>: 		<b>systemstack</b>(func() {
+		<a href="../src/runtime/proc.go.html#line-4466" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4466">#L4466</a>: 		<b>systemstack</b>(func() {
+		<a href="../src/runtime/proc.go.html#line-4472" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4472">#L4472</a>: 	<b>systemstack</b>(entersyscallblock_handoff)
+		<a href="../src/runtime/proc.go.html#line-4520" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4520">#L4520</a>: 			<b>systemstack</b>(func() {
+		<a href="../src/runtime/proc.go.html#line-4527" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4527">#L4527</a>: 			<b>systemstack</b>(func() {
+		<a href="../src/runtime/proc.go.html#line-4627" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4627">#L4627</a>: 		<b>systemstack</b>(func() {
+		<a href="../src/runtime/proc.go.html#line-4665" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4665">#L4665</a>: 			<b>systemstack</b>(func() {
+		<a href="../src/runtime/proc.go.html#line-4859" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4859">#L4859</a>: 		<b>systemstack</b>(func() {
+		<a href="../src/runtime/proc.go.html#line-4877" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4877">#L4877</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/proc.go.html#line-5102" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-5102">#L5102</a>: 		<b>systemstack</b>(func() {
+		<a href="../src/runtime/proc.go.html#line-5111" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-5111">#L5111</a>: 		<b>systemstack</b>(func() {
+		<a href="../src/runtime/proc.go.html#line-5254" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-5254">#L5254</a>: 		<b>systemstack</b>(badunlockosthread)
+		<a href="../src/runtime/proc.go.html#line-5546" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-5546">#L5546</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/proc.go.html#line-5769" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-5769">#L5769</a>: 		<b>systemstack</b>(func() {
+		<a href="../src/runtime/proc.go.html#line-5776" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-5776">#L5776</a>: 		<b>systemstack</b>(func() {
+		<a href="../src/runtime/rwmutex.go.html#line-82">rwmutex.go#L82</a>: 		<b>systemstack</b>(func() {
+		<a href="../src/runtime/rwmutex.go.html#line-134" class="path-duplicate">rwmutex.go</a><a href="../src/runtime/rwmutex.go.html#line-134">#L134</a>: 		<b>systemstack</b>(func() {
+		<a href="../src/runtime/signal_unix.go.html#line-28">signal_unix.go#L28</a>: 	<b>systemstack</b>(sigpipe)
+		<a href="../src/runtime/stubs.go.html#line-58">stubs.go#L58</a>: func <b>systemstack</b>(fn func())
+		<a href="../src/runtime/trace2.go.html#line-319">trace2.go#L319</a>: 		<b>systemstack</b>(func() {
+		<a href="../src/runtime/trace2.go.html#line-370" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-370">#L370</a>: 		<b>systemstack</b>(func() {
+		<a href="../src/runtime/trace2.go.html#line-448" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-448">#L448</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/trace2.go.html#line-522" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-522">#L522</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/trace2.go.html#line-580" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-580">#L580</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/trace2.go.html#line-677" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-677">#L677</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/trace2buf.go.html#line-71">trace2buf.go#L71</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/trace2buf.go.html#line-84" class="path-duplicate">trace2buf.go</a><a href="../src/runtime/trace2buf.go.html#line-84">#L84</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/trace2map.go.html#line-71">trace2map.go#L71</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/trace2runtime.go.html#line-680">trace2runtime.go#L680</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/trace2string.go.html#line-33">trace2string.go#L33</a>: 		<b>systemstack</b>(func() {
+		<a href="../src/runtime/trace2string.go.html#line-44" class="path-duplicate">trace2string.go</a><a href="../src/runtime/trace2string.go.html#line-44">#L44</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/trace2time.go.html#line-85">trace2time.go#L85</a>: 	<b>systemstack</b>(func() {
+		<a href="../src/runtime/traceback.go.html#line-1101">traceback.go#L1101</a>: 	<b>systemstack</b>(func() {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

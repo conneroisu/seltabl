@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net.ipv6ZoneCache.name</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/net.html">net</a>.<a href="../src/net/interface.go.html#line-181">ipv6ZoneCache</a>.<a href="../src/net/interface.go.html#line-221">name</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">10 uses</span>
+
+	net (current package)
+		<a href="../src/net/cgo_unix.go.html#line-208">cgo_unix.go#L208</a>: 			addr := IPAddr{IP: copyIP(sa.Addr[:]), Zone: zoneCache.<b>name</b>(int(sa.Scope_id))}
+		<a href="../src/net/interface.go.html#line-221">interface.go#L221</a>: func (zc *ipv6ZoneCache) <b>name</b>(index int) string {
+		<a href="../src/net/iprawsock_posix.go.html#line-19">iprawsock_posix.go#L19</a>: 		return &amp;IPAddr{IP: sa.Addr[0:], Zone: zoneCache.<b>name</b>(int(sa.ZoneId))}
+		<a href="../src/net/iprawsock_posix.go.html#line-55" class="path-duplicate">iprawsock_posix.go</a><a href="../src/net/iprawsock_posix.go.html#line-55">#L55</a>: 		addr = &amp;IPAddr{IP: sa.Addr[0:], Zone: zoneCache.<b>name</b>(int(sa.ZoneId))}
+		<a href="../src/net/iprawsock_posix.go.html#line-82" class="path-duplicate">iprawsock_posix.go</a><a href="../src/net/iprawsock_posix.go.html#line-82">#L82</a>: 		addr = &amp;IPAddr{IP: sa.Addr[0:], Zone: zoneCache.<b>name</b>(int(sa.ZoneId))}
+		<a href="../src/net/tcpsock_posix.go.html#line-21">tcpsock_posix.go#L21</a>: 		return &amp;TCPAddr{IP: sa.Addr[0:], Port: sa.Port, Zone: zoneCache.<b>name</b>(int(sa.ZoneId))}
+		<a href="../src/net/udpsock_posix.go.html#line-20">udpsock_posix.go#L20</a>: 		return &amp;UDPAddr{IP: sa.Addr[0:], Port: sa.Port, Zone: zoneCache.<b>name</b>(int(sa.ZoneId))}
+		<a href="../src/net/udpsock_posix.go.html#line-62" class="path-duplicate">udpsock_posix.go</a><a href="../src/net/udpsock_posix.go.html#line-62">#L62</a>: 			*addr = UDPAddr{IP: ip[:], Port: from.Port, Zone: zoneCache.<b>name</b>(int(from.ZoneId))}
+		<a href="../src/net/udpsock_posix.go.html#line-87" class="path-duplicate">udpsock_posix.go</a><a href="../src/net/udpsock_posix.go.html#line-87">#L87</a>: 			ip = netip.AddrFrom16(from.Addr).WithZone(zoneCache.<b>name</b>(int(from.ZoneId)))
+		<a href="../src/net/udpsock_posix.go.html#line-107" class="path-duplicate">udpsock_posix.go</a><a href="../src/net/udpsock_posix.go.html#line-107">#L107</a>: 		ip := netip.AddrFrom16(sa.Addr).WithZone(zoneCache.<b>name</b>(int(sa.ZoneId)))
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

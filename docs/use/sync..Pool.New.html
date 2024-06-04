@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: sync.Pool.New</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/sync.html">sync</a>.<a href="../src/sync/pool.go.html#line-49">Pool</a>.<a href="../src/sync/pool.go.html#line-61">New</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">27 uses</span>
+
+	sync (current package)
+		<a href="../src/sync/pool.go.html#line-61">pool.go#L61</a>: 	<b>New</b> func() any
+		<a href="../src/sync/pool.go.html#line-151" class="path-duplicate">pool.go</a><a href="../src/sync/pool.go.html#line-151">#L151</a>: 	if x == nil &amp;&amp; p.<b>New</b> != nil {
+		<a href="../src/sync/pool.go.html#line-152" class="path-duplicate">pool.go</a><a href="../src/sync/pool.go.html#line-152">#L152</a>: 		x = p.<b>New</b>()
+
+	<a href="../pkg/crypto/tls.html">crypto/tls</a>
+		<a href="../src/crypto/tls/conn.go.html#line-964">conn.go#L964</a>: 	<b>New</b>: func() any {
+
+	<a href="../pkg/fmt.html">fmt</a>
+		<a href="../src/fmt/print.go.html#line-147">print.go#L147</a>: 	<b>New</b>: func() any { return new(pp) },
+		<a href="../src/fmt/scan.go.html#line-379">scan.go#L379</a>: 	<b>New</b>: func() any { return new(ss) },
+
+	<a href="../pkg/internal/poll.html">internal/poll</a>
+		<a href="../src/internal/poll/splice_linux.go.html#line-193">splice_linux.go#L193</a>: var splicePipePool = sync.Pool{<b>New</b>: newPoolPipe}
+
+	<a href="../pkg/io.html">io</a>
+		<a href="../src/io/io.go.html#line-656">io.go#L656</a>: 	<b>New</b>: func() any {
+
+	<a href="../pkg/log.html">log</a>
+		<a href="../src/log/log.go.html#line-166">log.go#L166</a>: var bufferPool = sync.Pool{<b>New</b>: func() any { return new([]byte) }}
+
+	<a href="../pkg/net/http.html">net/http</a>
+		<a href="../src/net/http/h2_bundle.go.html#line-1045">h2_bundle.go#L1045</a>: 	{<b>New</b>: func() interface{} { return new([1 &lt;&lt; 10]byte) }},
+		<a href="../src/net/http/h2_bundle.go.html#line-1046" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-1046">#L1046</a>: 	{<b>New</b>: func() interface{} { return new([2 &lt;&lt; 10]byte) }},
+		<a href="../src/net/http/h2_bundle.go.html#line-1047" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-1047">#L1047</a>: 	{<b>New</b>: func() interface{} { return new([4 &lt;&lt; 10]byte) }},
+		<a href="../src/net/http/h2_bundle.go.html#line-1048" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-1048">#L1048</a>: 	{<b>New</b>: func() interface{} { return new([8 &lt;&lt; 10]byte) }},
+		<a href="../src/net/http/h2_bundle.go.html#line-1049" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-1049">#L1049</a>: 	{<b>New</b>: func() interface{} { return new([16 &lt;&lt; 10]byte) }},
+		<a href="../src/net/http/h2_bundle.go.html#line-1623" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-1623">#L1623</a>: 	<b>New</b>: func() interface{} {
+		<a href="../src/net/http/h2_bundle.go.html#line-3149" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-3149">#L3149</a>: 	<b>New</b>: func() interface{} {
+		<a href="../src/net/http/h2_bundle.go.html#line-3575" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-3575">#L3575</a>: 	<b>New</b>: func() interface{} {
+		<a href="../src/net/http/h2_bundle.go.html#line-3647" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-3647">#L3647</a>: var http2sorterPool = sync.Pool{<b>New</b>: func() interface{} { return new(http2sorter) }}
+		<a href="../src/net/http/h2_bundle.go.html#line-3884" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-3884">#L3884</a>: 	<b>New</b>: func() interface{} {
+		<a href="../src/net/http/h2_bundle.go.html#line-4898" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-4898">#L4898</a>: 	<b>New</b>: func() interface{} { return make(chan error, 1) },
+		<a href="../src/net/http/h2_bundle.go.html#line-4902" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-4902">#L4902</a>: 	<b>New</b>: func() interface{} { return new(http2writeData) },
+		<a href="../src/net/http/header.go.html#line-167">header.go#L167</a>: 	<b>New</b>: func() any { return new(headerSorter) },
+		<a href="../src/net/http/server.go.html#line-811">server.go#L811</a>: var copyBufPool = sync.Pool{<b>New</b>: func() any { return new([copyBufPoolSize]byte) }}
+
+	<a href="../pkg/os.html">os</a>
+		<a href="../src/os/dir_unix.go.html#line-30">dir_unix.go#L30</a>: 	<b>New</b>: func() any {
+
+	<a href="../pkg/reflect.html">reflect</a>
+		<a href="../src/reflect/type.go.html#line-2807">type.go#L2807</a>: 	framePool = &amp;sync.Pool{<b>New</b>: func() any {
+
+	<a href="../pkg/syscall.html">syscall</a>
+		<a href="../src/syscall/netlink_linux.go.html#line-53">netlink_linux.go#L53</a>: var pageBufPool = &amp;sync.Pool{<b>New</b>: func() any {
+
+	<a href="../pkg/vendor/golang.org/x/net/http2/hpack.html">vendor/golang.org/x/net/http2/hpack</a>
+		<a href="../src/vendor/golang.org/x/net/http2/hpack/huffman.go.html#line-15">huffman.go#L15</a>: 	<b>New</b>: func() interface{} { return new(bytes.Buffer) },
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

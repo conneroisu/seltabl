@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/internal/edwards25519/field.Element.Negate</title>
+<link href="../../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../../../pkg/crypto/internal/edwards25519/field.html">crypto/internal/edwards25519/field</a>.<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-23">Element</a>.<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-113">Negate</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">8 uses</span>
+
+	crypto/internal/edwards25519/field (current package)
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-113">fe.go#L113</a>: func (v *Element) <b>Negate</b>(a *Element) *Element {
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-298" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-298">#L298</a>: 	return v.Select(new(Element).<b>Negate</b>(u), u, u.IsNegative())
+		<a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-409" class="path-duplicate">fe.go</a><a href="../../../../src/crypto/internal/edwards25519/field/fe.go.html#line-409">#L409</a>: 	uNeg := new(Element).<b>Negate</b>(u)
+
+	<a href="../../../../pkg/crypto/internal/edwards25519.html">crypto/internal/edwards25519</a>
+		<a href="../../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-177">edwards25519.go#L177</a>: 	xxNeg := new(field.Element).<b>Negate</b>(xx)
+		<a href="../../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-375" class="path-duplicate">edwards25519.go</a><a href="../../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-375">#L375</a>: 	v.x.<b>Negate</b>(&amp;p.x)
+		<a href="../../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-378" class="path-duplicate">edwards25519.go</a><a href="../../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-378">#L378</a>: 	v.t.<b>Negate</b>(&amp;p.t)
+		<a href="../../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-417" class="path-duplicate">edwards25519.go</a><a href="../../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-417">#L417</a>: 	v.T2d.Select(new(field.Element).<b>Negate</b>(&amp;v.T2d), &amp;v.T2d, cond)
+		<a href="../../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-424" class="path-duplicate">edwards25519.go</a><a href="../../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-424">#L424</a>: 	v.T2d.Select(new(field.Element).<b>Negate</b>(&amp;v.T2d), &amp;v.T2d, cond)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

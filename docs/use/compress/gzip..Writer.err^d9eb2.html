@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: compress/gzip.Writer.err</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/compress/gzip.html">compress/gzip</a>.<a href="../../src/compress/gzip/gzip.go.html#line-28">Writer</a>.<a href="../../src/compress/gzip/gzip.go.html#line-38">err</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">32 uses</span>
+
+	compress/gzip (current package)
+		<a href="../../src/compress/gzip/gzip.go.html#line-38">gzip.go#L38</a>: 	<b>err</b>         error
+		<a href="../../src/compress/gzip/gzip.go.html#line-140" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-140">#L140</a>: 	if z.<b>err</b> != nil {
+		<a href="../../src/compress/gzip/gzip.go.html#line-141" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-141">#L141</a>: 		return 0, z.<b>err</b>
+		<a href="../../src/compress/gzip/gzip.go.html#line-168" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-168">#L168</a>: 		_, z.<b>err</b> = z.w.Write(z.buf[:10])
+		<a href="../../src/compress/gzip/gzip.go.html#line-169" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-169">#L169</a>: 		if z.<b>err</b> != nil {
+		<a href="../../src/compress/gzip/gzip.go.html#line-170" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-170">#L170</a>: 			return 0, z.<b>err</b>
+		<a href="../../src/compress/gzip/gzip.go.html#line-173" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-173">#L173</a>: 			z.<b>err</b> = z.writeBytes(z.Extra)
+		<a href="../../src/compress/gzip/gzip.go.html#line-174" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-174">#L174</a>: 			if z.<b>err</b> != nil {
+		<a href="../../src/compress/gzip/gzip.go.html#line-175" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-175">#L175</a>: 				return 0, z.<b>err</b>
+		<a href="../../src/compress/gzip/gzip.go.html#line-179" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-179">#L179</a>: 			z.<b>err</b> = z.writeString(z.Name)
+		<a href="../../src/compress/gzip/gzip.go.html#line-180" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-180">#L180</a>: 			if z.<b>err</b> != nil {
+		<a href="../../src/compress/gzip/gzip.go.html#line-181" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-181">#L181</a>: 				return 0, z.<b>err</b>
+		<a href="../../src/compress/gzip/gzip.go.html#line-185" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-185">#L185</a>: 			z.<b>err</b> = z.writeString(z.Comment)
+		<a href="../../src/compress/gzip/gzip.go.html#line-186" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-186">#L186</a>: 			if z.<b>err</b> != nil {
+		<a href="../../src/compress/gzip/gzip.go.html#line-187" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-187">#L187</a>: 				return 0, z.<b>err</b>
+		<a href="../../src/compress/gzip/gzip.go.html#line-196" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-196">#L196</a>: 	n, z.<b>err</b> = z.compressor.Write(p)
+		<a href="../../src/compress/gzip/gzip.go.html#line-197" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-197">#L197</a>: 	return n, z.<b>err</b>
+		<a href="../../src/compress/gzip/gzip.go.html#line-209" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-209">#L209</a>: 	if z.<b>err</b> != nil {
+		<a href="../../src/compress/gzip/gzip.go.html#line-210" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-210">#L210</a>: 		return z.<b>err</b>
+		<a href="../../src/compress/gzip/gzip.go.html#line-217" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-217">#L217</a>: 		if z.<b>err</b> != nil {
+		<a href="../../src/compress/gzip/gzip.go.html#line-218" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-218">#L218</a>: 			return z.<b>err</b>
+		<a href="../../src/compress/gzip/gzip.go.html#line-221" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-221">#L221</a>: 	z.<b>err</b> = z.compressor.Flush()
+		<a href="../../src/compress/gzip/gzip.go.html#line-222" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-222">#L222</a>: 	return z.<b>err</b>
+		<a href="../../src/compress/gzip/gzip.go.html#line-229" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-229">#L229</a>: 	if z.<b>err</b> != nil {
+		<a href="../../src/compress/gzip/gzip.go.html#line-230" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-230">#L230</a>: 		return z.<b>err</b>
+		<a href="../../src/compress/gzip/gzip.go.html#line-238" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-238">#L238</a>: 		if z.<b>err</b> != nil {
+		<a href="../../src/compress/gzip/gzip.go.html#line-239" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-239">#L239</a>: 			return z.<b>err</b>
+		<a href="../../src/compress/gzip/gzip.go.html#line-242" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-242">#L242</a>: 	z.<b>err</b> = z.compressor.Close()
+		<a href="../../src/compress/gzip/gzip.go.html#line-243" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-243">#L243</a>: 	if z.<b>err</b> != nil {
+		<a href="../../src/compress/gzip/gzip.go.html#line-244" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-244">#L244</a>: 		return z.<b>err</b>
+		<a href="../../src/compress/gzip/gzip.go.html#line-248" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-248">#L248</a>: 	_, z.<b>err</b> = z.w.Write(z.buf[:8])
+		<a href="../../src/compress/gzip/gzip.go.html#line-249" class="path-duplicate">gzip.go</a><a href="../../src/compress/gzip/gzip.go.html#line-249">#L249</a>: 	return z.<b>err</b>
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

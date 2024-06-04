@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: vendor/golang.org/x/net/http2/hpack.headerFieldTable.byNameValue</title>
+<link href="../../../../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../../../../../pkg/vendor/golang.org/x/net/http2/hpack.html">vendor/golang.org/x/net/http2/hpack</a>.<a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/tables.go.html#line-13">headerFieldTable</a>.<a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/tables.go.html#line-38">byNameValue</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">7 uses</span>
+
+	vendor/golang.org/x/net/http2/hpack (current package)
+		<a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/static_table.go.html#line-62">static_table.go#L62</a>: 	<b>byNameValue</b>: map[pairNameValue]uint64{
+		<a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/tables.go.html#line-38">tables.go#L38</a>: 	<b>byNameValue</b> map[pairNameValue]uint64
+		<a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/tables.go.html#line-47" class="path-duplicate">tables.go</a><a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/tables.go.html#line-47">#L47</a>: 	t.<b>byNameValue</b> = make(map[pairNameValue]uint64)
+		<a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/tables.go.html#line-59" class="path-duplicate">tables.go</a><a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/tables.go.html#line-59">#L59</a>: 	t.<b>byNameValue</b>[pairNameValue{f.Name, f.Value}] = id
+		<a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/tables.go.html#line-74" class="path-duplicate">tables.go</a><a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/tables.go.html#line-74">#L74</a>: 		if p := (pairNameValue{f.Name, f.Value}); t.<b>byNameValue</b>[p] == id {
+		<a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/tables.go.html#line-75" class="path-duplicate">tables.go</a><a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/tables.go.html#line-75">#L75</a>: 			delete(t.<b>byNameValue</b>, p)
+		<a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/tables.go.html#line-104" class="path-duplicate">tables.go</a><a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/tables.go.html#line-104">#L104</a>: 		if id := t.<b>byNameValue</b>[pairNameValue{f.Name, f.Value}]; id != 0 {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

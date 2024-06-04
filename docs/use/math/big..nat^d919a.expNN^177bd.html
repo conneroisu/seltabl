@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: math/big.nat.expNN</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/math/big.html">math/big</a>.<a href="../../src/math/big/nat.go.html#line-34">nat</a>.<a href="../../src/math/big/nat.go.html#line-939">expNN</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">8 uses</span>
+
+	math/big (current package)
+		<a href="../../src/math/big/int.go.html#line-597">int.go#L597</a>: 	z.abs = z.abs.<b>expNN</b>(xWords, yWords, mWords, slow)
+		<a href="../../src/math/big/nat.go.html#line-939">nat.go#L939</a>: func (z nat) <b>expNN</b>(x, y, m nat, slow bool) nat {
+		<a href="../../src/math/big/nat.go.html#line-1075" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-1075">#L1075</a>: 	z1 := nat(nil).<b>expNN</b>(x, y, m1, false)
+		<a href="../../src/math/big/nat.go.html#line-1076" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-1076">#L1076</a>: 	z2 := nat(nil).<b>expNN</b>(x, y, m2, false)
+		<a href="../../src/math/big/natconv.go.html#line-455">natconv.go#L455</a>: 	return z.<b>expNN</b>(nat(nil).setWord(x), nat(nil).setWord(y), nil, false)
+		<a href="../../src/math/big/prime.go.html#line-106">prime.go#L106</a>: 		y = y.<b>expNN</b>(x, q, n, false)
+		<a href="../../src/math/big/ratconv.go.html#line-181">ratconv.go#L181</a>: 		pow5 := z.b.abs.<b>expNN</b>(natFive, nat(nil).setWord(Word(n)), nil, false) // use underlying array of z.b.abs
+		<a href="../../src/math/big/ratconv.go.html#line-349" class="path-duplicate">ratconv.go</a><a href="../../src/math/big/ratconv.go.html#line-349">#L349</a>: 		p = nat(nil).<b>expNN</b>(natTen, nat(nil).setUint64(uint64(prec)), nil, false)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

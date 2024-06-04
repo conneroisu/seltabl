@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: time.Time.After</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/time.html">time</a>.<a href="../src/time/time.go.html#line-135">Time</a>.<a href="../src/time/time.go.html#line-256">After</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">11 uses</span>
+
+	time (current package)
+		<a href="../src/time/time.go.html#line-256">time.go#L256</a>: func (t Time) <b>After</b>(u Time) bool {
+
+	<a href="../pkg/compress/gzip.html">compress/gzip</a>
+		<a href="../src/compress/gzip/gzip.go.html#line-157">gzip.go#L157</a>: 		if z.ModTime.<b>After</b>(time.Unix(0, 0)) {
+
+	<a href="../pkg/crypto/tls.html">crypto/tls</a>
+		<a href="../src/crypto/tls/handshake_client.go.html#line-328">handshake_client.go#L328</a>: 	if c.config.time().<b>After</b>(session.peerCertificates[0].NotAfter) {
+		<a href="../src/crypto/tls/handshake_client.go.html#line-355" class="path-duplicate">handshake_client.go</a><a href="../src/crypto/tls/handshake_client.go.html#line-355">#L355</a>: 	if c.config.time().<b>After</b>(time.Unix(int64(session.useBy), 0)) {
+		<a href="../src/crypto/tls/handshake_server.go.html#line-482">handshake_server.go#L482</a>: 	if sessionHasClientCerts &amp;&amp; c.config.time().<b>After</b>(sessionState.peerCertificates[0].NotAfter) {
+		<a href="../src/crypto/tls/handshake_server_tls13.go.html#line-345">handshake_server_tls13.go#L345</a>: 		if sessionHasClientCerts &amp;&amp; c.config.time().<b>After</b>(sessionState.peerCertificates[0].NotAfter) {
+
+	<a href="../pkg/crypto/x509.html">crypto/x509</a>
+		<a href="../src/crypto/x509/verify.go.html#line-580">verify.go#L580</a>: 	} else if now.<b>After</b>(c.NotAfter) {
+
+	<a href="../pkg/net.html">net</a>
+		<a href="../src/net/dnsclient_unix.go.html#line-405">dnsclient_unix.go#L405</a>: 	if conf.lastChecked.<b>After</b>(now.Add(-5 * time.Second)) {
+		<a href="../src/net/interface.go.html#line-200">interface.go#L200</a>: 	if !force &amp;&amp; zc.lastFetched.<b>After</b>(now.Add(-60*time.Second)) {
+		<a href="../src/net/nss.go.html#line-59">nss.go#L59</a>: 	if conf.lastChecked.<b>After</b>(now.Add(-5 * time.Second)) {
+
+	<a href="../pkg/net/http.html">net/http</a>
+		<a href="../src/net/http/client.go.html#line-367">client.go#L367</a>: 		return cancelCtx, func() bool { return time.Now().<b>After</b>(deadline) }
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

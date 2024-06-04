@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/aes.BlockSize</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../../pkg/crypto/aes.html">crypto/aes</a>.<a href="../../src/crypto/aes/cipher.go.html#line-15">BlockSize</a></b></span>
+
+<span class="title">30 uses</span>
+
+	crypto/aes (current package)
+		<a href="../../src/crypto/aes/aes_gcm.go.html#line-95">aes_gcm.go#L95</a>: 	if uint64(len(plaintext)) &gt; ((1&lt;&lt;32)-2)*<b>BlockSize</b> {
+		<a href="../../src/crypto/aes/aes_gcm.go.html#line-144" class="path-duplicate">aes_gcm.go</a><a href="../../src/crypto/aes/aes_gcm.go.html#line-144">#L144</a>: 	if uint64(len(ciphertext)) &gt; ((1&lt;&lt;32)-2)*uint64(<b>BlockSize</b>)+uint64(g.tagSize) {
+		<a href="../../src/crypto/aes/cipher.go.html#line-15">cipher.go#L15</a>: const <b>BlockSize</b> = 16
+		<a href="../../src/crypto/aes/cipher.go.html#line-56" class="path-duplicate">cipher.go</a><a href="../../src/crypto/aes/cipher.go.html#line-56">#L56</a>: func (c *aesCipher) BlockSize() int { return <b>BlockSize</b> }
+		<a href="../../src/crypto/aes/cipher.go.html#line-59" class="path-duplicate">cipher.go</a><a href="../../src/crypto/aes/cipher.go.html#line-59">#L59</a>: 	if len(src) &lt; <b>BlockSize</b> {
+		<a href="../../src/crypto/aes/cipher.go.html#line-62" class="path-duplicate">cipher.go</a><a href="../../src/crypto/aes/cipher.go.html#line-62">#L62</a>: 	if len(dst) &lt; <b>BlockSize</b> {
+		<a href="../../src/crypto/aes/cipher.go.html#line-65" class="path-duplicate">cipher.go</a><a href="../../src/crypto/aes/cipher.go.html#line-65">#L65</a>: 	if alias.InexactOverlap(dst[:<b>BlockSize</b>], src[:<b>BlockSize</b>]) {
+		<a href="../../src/crypto/aes/cipher.go.html#line-72" class="path-duplicate">cipher.go</a><a href="../../src/crypto/aes/cipher.go.html#line-72">#L72</a>: 	if len(src) &lt; <b>BlockSize</b> {
+		<a href="../../src/crypto/aes/cipher.go.html#line-75" class="path-duplicate">cipher.go</a><a href="../../src/crypto/aes/cipher.go.html#line-75">#L75</a>: 	if len(dst) &lt; <b>BlockSize</b> {
+		<a href="../../src/crypto/aes/cipher.go.html#line-78" class="path-duplicate">cipher.go</a><a href="../../src/crypto/aes/cipher.go.html#line-78">#L78</a>: 	if alias.InexactOverlap(dst[:<b>BlockSize</b>], src[:<b>BlockSize</b>]) {
+		<a href="../../src/crypto/aes/cipher_asm.go.html#line-68">cipher_asm.go#L68</a>: func (c *aesCipherAsm) BlockSize() int { return <b>BlockSize</b> }
+		<a href="../../src/crypto/aes/cipher_asm.go.html#line-72" class="path-duplicate">cipher_asm.go</a><a href="../../src/crypto/aes/cipher_asm.go.html#line-72">#L72</a>: 	if len(src) &lt; <b>BlockSize</b> {
+		<a href="../../src/crypto/aes/cipher_asm.go.html#line-75" class="path-duplicate">cipher_asm.go</a><a href="../../src/crypto/aes/cipher_asm.go.html#line-75">#L75</a>: 	if len(dst) &lt; <b>BlockSize</b> {
+		<a href="../../src/crypto/aes/cipher_asm.go.html#line-78" class="path-duplicate">cipher_asm.go</a><a href="../../src/crypto/aes/cipher_asm.go.html#line-78">#L78</a>: 	if alias.InexactOverlap(dst[:<b>BlockSize</b>], src[:<b>BlockSize</b>]) {
+		<a href="../../src/crypto/aes/cipher_asm.go.html#line-86" class="path-duplicate">cipher_asm.go</a><a href="../../src/crypto/aes/cipher_asm.go.html#line-86">#L86</a>: 	if len(src) &lt; <b>BlockSize</b> {
+		<a href="../../src/crypto/aes/cipher_asm.go.html#line-89" class="path-duplicate">cipher_asm.go</a><a href="../../src/crypto/aes/cipher_asm.go.html#line-89">#L89</a>: 	if len(dst) &lt; <b>BlockSize</b> {
+		<a href="../../src/crypto/aes/cipher_asm.go.html#line-92" class="path-duplicate">cipher_asm.go</a><a href="../../src/crypto/aes/cipher_asm.go.html#line-92">#L92</a>: 	if alias.InexactOverlap(dst[:<b>BlockSize</b>], src[:<b>BlockSize</b>]) {
+
+	<a href="../../pkg/crypto/tls.html">crypto/tls</a>
+		<a href="../../src/crypto/tls/ticket.go.html#line-324">ticket.go#L324</a>: 	encrypted := make([]byte, aes.<b>BlockSize</b>+len(state)+sha256.Size)
+		<a href="../../src/crypto/tls/ticket.go.html#line-325" class="path-duplicate">ticket.go</a><a href="../../src/crypto/tls/ticket.go.html#line-325">#L325</a>: 	iv := encrypted[:aes.<b>BlockSize</b>]
+		<a href="../../src/crypto/tls/ticket.go.html#line-326" class="path-duplicate">ticket.go</a><a href="../../src/crypto/tls/ticket.go.html#line-326">#L326</a>: 	ciphertext := encrypted[aes.<b>BlockSize</b> : len(encrypted)-sha256.Size]
+		<a href="../../src/crypto/tls/ticket.go.html#line-365" class="path-duplicate">ticket.go</a><a href="../../src/crypto/tls/ticket.go.html#line-365">#L365</a>: 	if len(encrypted) &lt; aes.<b>BlockSize</b>+sha256.Size {
+		<a href="../../src/crypto/tls/ticket.go.html#line-369" class="path-duplicate">ticket.go</a><a href="../../src/crypto/tls/ticket.go.html#line-369">#L369</a>: 	iv := encrypted[:aes.<b>BlockSize</b>]
+		<a href="../../src/crypto/tls/ticket.go.html#line-370" class="path-duplicate">ticket.go</a><a href="../../src/crypto/tls/ticket.go.html#line-370">#L370</a>: 	ciphertext := encrypted[aes.<b>BlockSize</b> : len(encrypted)-sha256.Size]
+
+	<a href="../../pkg/crypto/x509.html">crypto/x509</a>
+		<a href="../../src/crypto/x509/pem_decrypt.go.html#line-63">pem_decrypt.go#L63</a>: 	blockSize:  aes.<b>BlockSize</b>,
+		<a href="../../src/crypto/x509/pem_decrypt.go.html#line-69" class="path-duplicate">pem_decrypt.go</a><a href="../../src/crypto/x509/pem_decrypt.go.html#line-69">#L69</a>: 	blockSize:  aes.<b>BlockSize</b>,
+		<a href="../../src/crypto/x509/pem_decrypt.go.html#line-75" class="path-duplicate">pem_decrypt.go</a><a href="../../src/crypto/x509/pem_decrypt.go.html#line-75">#L75</a>: 	blockSize:  aes.<b>BlockSize</b>,
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

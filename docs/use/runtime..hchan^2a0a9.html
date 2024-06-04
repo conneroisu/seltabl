@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.hchan</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/chan.go.html#line-33">hchan</a></b></span>
+
+<span class="title">40 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/chan.go.html#line-29">chan.go#L29</a>: 	hchanSize = unsafe.Sizeof(<b>hchan</b>{}) + uintptr(-int(unsafe.Sizeof(<b>hchan</b>{}))&amp;(maxAlign-1))
+		<a href="../src/runtime/chan.go.html#line-33" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-33">#L33</a>: type <b>hchan</b> struct {
+		<a href="../src/runtime/chan.go.html#line-60" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-60">#L60</a>: func reflect_makechan(t *chantype, size int) *<b>hchan</b> {
+		<a href="../src/runtime/chan.go.html#line-64" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-64">#L64</a>: func makechan64(t *chantype, size int64) *<b>hchan</b> {
+		<a href="../src/runtime/chan.go.html#line-72" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-72">#L72</a>: func makechan(t *chantype, size int) *<b>hchan</b> {
+		<a href="../src/runtime/chan.go.html#line-92" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-92">#L92</a>: 	var c *<b>hchan</b>
+		<a href="../src/runtime/chan.go.html#line-96" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-96">#L96</a>: 		c = (*<b>hchan</b>)(mallocgc(hchanSize, nil, true))
+		<a href="../src/runtime/chan.go.html#line-102" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-102">#L102</a>: 		c = (*<b>hchan</b>)(mallocgc(hchanSize+mem, nil, true))
+		<a href="../src/runtime/chan.go.html#line-106" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-106">#L106</a>: 		c = new(<b>hchan</b>)
+		<a href="../src/runtime/chan.go.html#line-122" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-122">#L122</a>: func chanbuf(c *<b>hchan</b>, i uint) unsafe.Pointer {
+		<a href="../src/runtime/chan.go.html#line-130" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-130">#L130</a>: func full(c *<b>hchan</b>) bool {
+		<a href="../src/runtime/chan.go.html#line-144" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-144">#L144</a>: func chansend1(c *<b>hchan</b>, elem unsafe.Pointer) {
+		<a href="../src/runtime/chan.go.html#line-160" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-160">#L160</a>: func chansend(c *<b>hchan</b>, ep unsafe.Pointer, block bool, callerpc uintptr) bool {
+		<a href="../src/runtime/chan.go.html#line-294" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-294">#L294</a>: func send(c *<b>hchan</b>, sg *sudog, ep unsafe.Pointer, unlockf func(), skip int) {
+		<a href="../src/runtime/chan.go.html#line-357" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-357">#L357</a>: func closechan(c *<b>hchan</b>) {
+		<a href="../src/runtime/chan.go.html#line-430" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-430">#L430</a>: func empty(c *<b>hchan</b>) bool {
+		<a href="../src/runtime/chan.go.html#line-441" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-441">#L441</a>: func chanrecv1(c *<b>hchan</b>, elem unsafe.Pointer) {
+		<a href="../src/runtime/chan.go.html#line-446" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-446">#L446</a>: func chanrecv2(c *<b>hchan</b>, elem unsafe.Pointer) (received bool) {
+		<a href="../src/runtime/chan.go.html#line-457" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-457">#L457</a>: func chanrecv(c *<b>hchan</b>, ep unsafe.Pointer, block bool) (selected, received bool) {
+		<a href="../src/runtime/chan.go.html#line-615" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-615">#L615</a>: func recv(c *<b>hchan</b>, sg *sudog, ep unsafe.Pointer, unlockf func(), skip int) {
+		<a href="../src/runtime/chan.go.html#line-693" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-693">#L693</a>: func selectnbsend(c *<b>hchan</b>, elem unsafe.Pointer) (selected bool) {
+		<a href="../src/runtime/chan.go.html#line-713" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-713">#L713</a>: func selectnbrecv(elem unsafe.Pointer, c *<b>hchan</b>) (selected, received bool) {
+		<a href="../src/runtime/chan.go.html#line-718" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-718">#L718</a>: func reflect_chansend(c *<b>hchan</b>, elem unsafe.Pointer, nb bool) (selected bool) {
+		<a href="../src/runtime/chan.go.html#line-723" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-723">#L723</a>: func reflect_chanrecv(c *<b>hchan</b>, nb bool, elem unsafe.Pointer) (selected bool, received bool) {
+		<a href="../src/runtime/chan.go.html#line-728" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-728">#L728</a>: func reflect_chanlen(c *<b>hchan</b>) int {
+		<a href="../src/runtime/chan.go.html#line-736" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-736">#L736</a>: func reflectlite_chanlen(c *<b>hchan</b>) int {
+		<a href="../src/runtime/chan.go.html#line-744" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-744">#L744</a>: func reflect_chancap(c *<b>hchan</b>) int {
+		<a href="../src/runtime/chan.go.html#line-752" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-752">#L752</a>: func reflect_chanclose(c *<b>hchan</b>) {
+		<a href="../src/runtime/chan.go.html#line-802" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-802">#L802</a>: func (c *<b>hchan</b>) raceaddr() unsafe.Pointer {
+		<a href="../src/runtime/chan.go.html#line-811" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-811">#L811</a>: func racesync(c *<b>hchan</b>, sg *sudog) {
+		<a href="../src/runtime/chan.go.html#line-821" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-821">#L821</a>: func racenotify(c *<b>hchan</b>, idx uint, sg *sudog) {
+		<a href="../src/runtime/runtime2.go.html#line-396">runtime2.go#L396</a>: 	c        *<b>hchan</b> // channel
+		<a href="../src/runtime/select.go.html#line-20">select.go#L20</a>: 	c    *<b>hchan</b>         // chan
+		<a href="../src/runtime/select.go.html#line-34" class="path-duplicate">select.go</a><a href="../src/runtime/select.go.html#line-34">#L34</a>: 	var c *<b>hchan</b>
+		<a href="../src/runtime/select.go.html#line-83" class="path-duplicate">select.go</a><a href="../src/runtime/select.go.html#line-83">#L83</a>: 	var lastc *<b>hchan</b>
+		<a href="../src/runtime/select.go.html#line-235" class="path-duplicate">select.go</a><a href="../src/runtime/select.go.html#line-235">#L235</a>: 		c      *<b>hchan</b>
+		<a href="../src/runtime/select.go.html#line-518" class="path-duplicate">select.go</a><a href="../src/runtime/select.go.html#line-518">#L518</a>: func (c *<b>hchan</b>) sortkey() uintptr {
+		<a href="../src/runtime/select.go.html#line-527" class="path-duplicate">select.go</a><a href="../src/runtime/select.go.html#line-527">#L527</a>: 	ch  *<b>hchan</b>         // channel
+		<a href="../src/runtime/stack.go.html#line-809">stack.go#L809</a>: 	var lastc *<b>hchan</b>
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

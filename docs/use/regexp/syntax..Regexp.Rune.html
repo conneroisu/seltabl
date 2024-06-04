@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: regexp/syntax.Regexp.Rune</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/regexp/syntax.html">regexp/syntax</a>.<a href="../../src/regexp/syntax/regexp.go.html#line-17">Regexp</a>.<a href="../../src/regexp/syntax/regexp.go.html#line-22">Rune</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">124 uses</span>
+
+	regexp/syntax (current package)
+		<a href="../../src/regexp/syntax/compile.go.html#line-96">compile.go#L96</a>: 		if len(re.<b>Rune</b>) == 0 {
+		<a href="../../src/regexp/syntax/compile.go.html#line-100" class="path-duplicate">compile.go</a><a href="../../src/regexp/syntax/compile.go.html#line-100">#L100</a>: 		for j := range re.<b>Rune</b> {
+		<a href="../../src/regexp/syntax/compile.go.html#line-101" class="path-duplicate">compile.go</a><a href="../../src/regexp/syntax/compile.go.html#line-101">#L101</a>: 			f1 := c.rune(re.<b>Rune</b>[j:j+1], re.Flags)
+		<a href="../../src/regexp/syntax/compile.go.html#line-110" class="path-duplicate">compile.go</a><a href="../../src/regexp/syntax/compile.go.html#line-110">#L110</a>: 		return c.rune(re.<b>Rune</b>, re.Flags)
+		<a href="../../src/regexp/syntax/parse.go.html#line-221">parse.go#L221</a>: 		size = int64(len(re.<b>Rune</b>))
+		<a href="../../src/regexp/syntax/parse.go.html#line-295" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-295">#L295</a>: 	p.numRunes += len(re.<b>Rune</b>)
+		<a href="../../src/regexp/syntax/parse.go.html#line-296" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-296">#L296</a>: 	if re.Op == OpCharClass &amp;&amp; len(re.<b>Rune</b>) == 2 &amp;&amp; re.<b>Rune</b>[0] == re.<b>Rune</b>[1] {
+		<a href="../../src/regexp/syntax/parse.go.html#line-298" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-298">#L298</a>: 		if p.maybeConcat(re.<b>Rune</b>[0], p.flags&amp;^FoldCase) {
+		<a href="../../src/regexp/syntax/parse.go.html#line-302" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-302">#L302</a>: 		re.<b>Rune</b> = re.<b>Rune</b>[:1]
+		<a href="../../src/regexp/syntax/parse.go.html#line-304" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-304">#L304</a>: 	} else if re.Op == OpCharClass &amp;&amp; len(re.<b>Rune</b>) == 4 &amp;&amp;
+		<a href="../../src/regexp/syntax/parse.go.html#line-305" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-305">#L305</a>: 		re.<b>Rune</b>[0] == re.<b>Rune</b>[1] &amp;&amp; re.<b>Rune</b>[2] == re.<b>Rune</b>[3] &amp;&amp;
+		<a href="../../src/regexp/syntax/parse.go.html#line-306" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-306">#L306</a>: 		unicode.SimpleFold(re.<b>Rune</b>[0]) == re.<b>Rune</b>[2] &amp;&amp;
+		<a href="../../src/regexp/syntax/parse.go.html#line-307" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-307">#L307</a>: 		unicode.SimpleFold(re.<b>Rune</b>[2]) == re.<b>Rune</b>[0] ||
+		<a href="../../src/regexp/syntax/parse.go.html#line-308" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-308">#L308</a>: 		re.Op == OpCharClass &amp;&amp; len(re.<b>Rune</b>) == 2 &amp;&amp;
+		<a href="../../src/regexp/syntax/parse.go.html#line-309" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-309">#L309</a>: 			re.<b>Rune</b>[0]+1 == re.<b>Rune</b>[1] &amp;&amp;
+		<a href="../../src/regexp/syntax/parse.go.html#line-310" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-310">#L310</a>: 			unicode.SimpleFold(re.<b>Rune</b>[0]) == re.<b>Rune</b>[1] &amp;&amp;
+		<a href="../../src/regexp/syntax/parse.go.html#line-311" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-311">#L311</a>: 			unicode.SimpleFold(re.<b>Rune</b>[1]) == re.<b>Rune</b>[0] {
+		<a href="../../src/regexp/syntax/parse.go.html#line-313" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-313">#L313</a>: 		if p.maybeConcat(re.<b>Rune</b>[0], p.flags|FoldCase) {
+		<a href="../../src/regexp/syntax/parse.go.html#line-319" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-319">#L319</a>: 		re.<b>Rune</b> = re.<b>Rune</b>[:1]
+		<a href="../../src/regexp/syntax/parse.go.html#line-353" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-353">#L353</a>: 	re2.<b>Rune</b> = append(re2.<b>Rune</b>, re1.<b>Rune</b>...)
+		<a href="../../src/regexp/syntax/parse.go.html#line-357" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-357">#L357</a>: 		re1.<b>Rune</b> = re1.Rune0[:1]
+		<a href="../../src/regexp/syntax/parse.go.html#line-358" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-358">#L358</a>: 		re1.<b>Rune</b>[0] = r
+		<a href="../../src/regexp/syntax/parse.go.html#line-376" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-376">#L376</a>: 	re.<b>Rune</b> = re.Rune0[:1]
+		<a href="../../src/regexp/syntax/parse.go.html#line-527" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-527">#L527</a>: 		re.<b>Rune</b> = cleanClass(&amp;re.<b>Rune</b>)
+		<a href="../../src/regexp/syntax/parse.go.html#line-528" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-528">#L528</a>: 		if len(re.<b>Rune</b>) == 2 &amp;&amp; re.<b>Rune</b>[0] == 0 &amp;&amp; re.<b>Rune</b>[1] == unicode.MaxRune {
+		<a href="../../src/regexp/syntax/parse.go.html#line-529" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-529">#L529</a>: 			re.<b>Rune</b> = nil
+		<a href="../../src/regexp/syntax/parse.go.html#line-533" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-533">#L533</a>: 		if len(re.<b>Rune</b>) == 4 &amp;&amp; re.<b>Rune</b>[0] == 0 &amp;&amp; re.<b>Rune</b>[1] == '\n'-1 &amp;&amp; re.<b>Rune</b>[2] == '\n'+1 &amp;&amp; re.<b>Rune</b>[3] == unicode.MaxRune {
+		<a href="../../src/regexp/syntax/parse.go.html#line-534" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-534">#L534</a>: 			re.<b>Rune</b> = nil
+		<a href="../../src/regexp/syntax/parse.go.html#line-538" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-538">#L538</a>: 		if cap(re.<b>Rune</b>)-len(re.<b>Rune</b>) &gt; 100 {
+		<a href="../../src/regexp/syntax/parse.go.html#line-541" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-541">#L541</a>: 			re.<b>Rune</b> = append(re.Rune0[:0], re.<b>Rune</b>...)
+		<a href="../../src/regexp/syntax/parse.go.html#line-639" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-639">#L639</a>: 			prefix.<b>Rune</b> = append(prefix.<b>Rune</b>[:0], str...)
+		<a href="../../src/regexp/syntax/parse.go.html#line-741" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-741">#L741</a>: 				if sub[max].Op &lt; sub[j].Op || sub[max].Op == sub[j].Op &amp;&amp; len(sub[max].<b>Rune</b>) &lt; len(sub[j].<b>Rune</b>) {
+		<a href="../../src/regexp/syntax/parse.go.html#line-786" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-786">#L786</a>: 	return re.<b>Rune</b>, re.Flags &amp; FoldCase
+		<a href="../../src/regexp/syntax/parse.go.html#line-818" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-818">#L818</a>: 		re.<b>Rune</b> = re.<b>Rune</b>[:copy(re.<b>Rune</b>, re.<b>Rune</b>[n:])]
+		<a href="../../src/regexp/syntax/parse.go.html#line-819" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-819">#L819</a>: 		if len(re.<b>Rune</b>) == 0 {
+		<a href="../../src/regexp/syntax/parse.go.html#line-871" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-871">#L871</a>: 	re.<b>Rune</b> = re.Rune0[:0] // use local storage for small strings
+		<a href="../../src/regexp/syntax/parse.go.html#line-873" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-873">#L873</a>: 		if len(re.<b>Rune</b>) &gt;= cap(re.<b>Rune</b>) {
+		<a href="../../src/regexp/syntax/parse.go.html#line-875" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-875">#L875</a>: 			re.<b>Rune</b> = []rune(s)
+		<a href="../../src/regexp/syntax/parse.go.html#line-878" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-878">#L878</a>: 		re.<b>Rune</b> = append(re.<b>Rune</b>, c)
+		<a href="../../src/regexp/syntax/parse.go.html#line-1063" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1063">#L1063</a>: 					re.<b>Rune</b> = r
+		<a href="../../src/regexp/syntax/parse.go.html#line-1072" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1072">#L1072</a>: 				re.<b>Rune</b> = r
+		<a href="../../src/regexp/syntax/parse.go.html#line-1306" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1306">#L1306</a>: 	return re.Op == OpLiteral &amp;&amp; len(re.<b>Rune</b>) == 1 ||
+		<a href="../../src/regexp/syntax/parse.go.html#line-1316" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1316">#L1316</a>: 		return len(re.<b>Rune</b>) == 1 &amp;&amp; re.<b>Rune</b>[0] == r
+		<a href="../../src/regexp/syntax/parse.go.html#line-1318" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1318">#L1318</a>: 		for i := 0; i &lt; len(re.<b>Rune</b>); i += 2 {
+		<a href="../../src/regexp/syntax/parse.go.html#line-1319" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1319">#L1319</a>: 			if re.<b>Rune</b>[i] &lt;= r &amp;&amp; r &lt;= re.<b>Rune</b>[i+1] {
+		<a href="../../src/regexp/syntax/parse.go.html#line-1362" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1362">#L1362</a>: 			dst.<b>Rune</b> = appendLiteral(dst.<b>Rune</b>, src.<b>Rune</b>[0], src.Flags)
+		<a href="../../src/regexp/syntax/parse.go.html#line-1364" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1364">#L1364</a>: 			dst.<b>Rune</b> = appendClass(dst.<b>Rune</b>, src.<b>Rune</b>)
+		<a href="../../src/regexp/syntax/parse.go.html#line-1368" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1368">#L1368</a>: 		if src.<b>Rune</b>[0] == dst.<b>Rune</b>[0] &amp;&amp; src.Flags == dst.Flags {
+		<a href="../../src/regexp/syntax/parse.go.html#line-1372" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1372">#L1372</a>: 		dst.<b>Rune</b> = appendLiteral(dst.<b>Rune</b>[:0], dst.<b>Rune</b>[0], dst.Flags)
+		<a href="../../src/regexp/syntax/parse.go.html#line-1373" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1373">#L1373</a>: 		dst.<b>Rune</b> = appendLiteral(dst.<b>Rune</b>, src.<b>Rune</b>[0], src.Flags)
+		<a href="../../src/regexp/syntax/parse.go.html#line-1742" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1742">#L1742</a>: 	re.<b>Rune</b> = re.Rune0[:0]
+		<a href="../../src/regexp/syntax/parse.go.html#line-1752" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1752">#L1752</a>: 			re.<b>Rune</b> = append(re.<b>Rune</b>, '\n', '\n')
+		<a href="../../src/regexp/syntax/parse.go.html#line-1756" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1756">#L1756</a>: 	class := re.<b>Rune</b>
+		<a href="../../src/regexp/syntax/parse.go.html#line-1822" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1822">#L1822</a>: 	re.<b>Rune</b> = class
+		<a href="../../src/regexp/syntax/parse.go.html#line-1823" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1823">#L1823</a>: 	class = cleanClass(&amp;re.<b>Rune</b>)
+		<a href="../../src/regexp/syntax/parse.go.html#line-1827" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1827">#L1827</a>: 	re.<b>Rune</b> = class
+		<a href="../../src/regexp/syntax/regexp.go.html#line-22">regexp.go#L22</a>: 	<b>Rune</b>     []rune     // matched runes, for OpLiteral, OpCharClass
+		<a href="../../src/regexp/syntax/regexp.go.html#line-78" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-78">#L78</a>: 		if len(x.<b>Rune</b>) != len(y.<b>Rune</b>) {
+		<a href="../../src/regexp/syntax/regexp.go.html#line-81" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-81">#L81</a>: 		for i, r := range x.<b>Rune</b> {
+		<a href="../../src/regexp/syntax/regexp.go.html#line-82" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-82">#L82</a>: 			if r != y.<b>Rune</b>[i] {
+		<a href="../../src/regexp/syntax/regexp.go.html#line-151" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-151">#L151</a>: 		for _, r := range re.<b>Rune</b> {
+		<a href="../../src/regexp/syntax/regexp.go.html#line-165" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-165">#L165</a>: 		for i := 0; i &lt; len(re.<b>Rune</b>); i += 2 {
+		<a href="../../src/regexp/syntax/regexp.go.html#line-166" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-166">#L166</a>: 			lo := max(minFold, re.<b>Rune</b>[i])
+		<a href="../../src/regexp/syntax/regexp.go.html#line-167" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-167">#L167</a>: 			hi := min(maxFold, re.<b>Rune</b>[i+1])
+		<a href="../../src/regexp/syntax/regexp.go.html#line-170" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-170">#L170</a>: 					if !(lo &lt;= f &amp;&amp; f &lt;= hi) &amp;&amp; !inCharClass(f, re.<b>Rune</b>) {
+		<a href="../../src/regexp/syntax/regexp.go.html#line-282" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-282">#L282</a>: 		for _, r := range re.<b>Rune</b> {
+		<a href="../../src/regexp/syntax/regexp.go.html#line-286" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-286">#L286</a>: 		if len(re.<b>Rune</b>)%2 != 0 {
+		<a href="../../src/regexp/syntax/regexp.go.html#line-291" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-291">#L291</a>: 		if len(re.<b>Rune</b>) == 0 {
+		<a href="../../src/regexp/syntax/regexp.go.html#line-293" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-293">#L293</a>: 		} else if re.<b>Rune</b>[0] == 0 &amp;&amp; re.<b>Rune</b>[len(re.<b>Rune</b>)-1] == unicode.MaxRune &amp;&amp; len(re.<b>Rune</b>) &gt; 2 {
+		<a href="../../src/regexp/syntax/regexp.go.html#line-297" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-297">#L297</a>: 			for i := 1; i &lt; len(re.<b>Rune</b>)-1; i += 2 {
+		<a href="../../src/regexp/syntax/regexp.go.html#line-298" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-298">#L298</a>: 				lo, hi := re.<b>Rune</b>[i]+1, re.<b>Rune</b>[i+1]-1
+		<a href="../../src/regexp/syntax/regexp.go.html#line-308" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-308">#L308</a>: 			for i := 0; i &lt; len(re.<b>Rune</b>); i += 2 {
+		<a href="../../src/regexp/syntax/regexp.go.html#line-309" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-309">#L309</a>: 				lo, hi := re.<b>Rune</b>[i], re.<b>Rune</b>[i+1]
+		<a href="../../src/regexp/syntax/regexp.go.html#line-353" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-353">#L353</a>: 		if sub.Op &gt; OpCapture || sub.Op == OpLiteral &amp;&amp; len(sub.<b>Rune</b>) &gt; 1 {
+		<a href="../../src/regexp/syntax/simplify.go.html#line-28">simplify.go#L28</a>: 				nre.<b>Rune</b> = nil
+
+	<a href="../../pkg/regexp.html">regexp</a>
+		<a href="../../src/regexp/regexp.go.html#line-280">regexp.go#L280</a>: 		for _, r := range re.<b>Rune</b> {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

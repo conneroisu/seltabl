@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.heapStatsDelta.largeFree</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/mstats.go.html#line-668">heapStatsDelta</a>.<a href="../src/runtime/mstats.go.html#line-685">largeFree</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">7 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/arena.go.html#line-725">arena.go#L725</a>: 	atomic.Xadd64(&amp;stats.<b>largeFree</b>, int64(s.elemsize))
+		<a href="../src/runtime/metrics.go.html#line-612">metrics.go#L612</a>: 	a.totalFreed = a.<b>largeFree</b>
+		<a href="../src/runtime/mgcsweep.go.html#line-809">mgcsweep.go#L809</a>: 			atomic.Xadd64(&amp;stats.<b>largeFree</b>, int64(size))
+		<a href="../src/runtime/mstats.go.html#line-396">mstats.go#L396</a>: 	totalFree := consStats.<b>largeFree</b>
+		<a href="../src/runtime/mstats.go.html#line-685" class="path-duplicate">mstats.go</a><a href="../src/runtime/mstats.go.html#line-685">#L685</a>: 	<b>largeFree</b>       uint64                  // bytes freed for large objects (&gt;maxSmallSize)
+		<a href="../src/runtime/mstats.go.html#line-709" class="path-duplicate">mstats.go</a><a href="../src/runtime/mstats.go.html#line-709">#L709</a>: 	a.<b>largeFree</b> += b.<b>largeFree</b>
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/internal/edwards25519.affineCached.YminusX</title>
+<link href="../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../../pkg/crypto/internal/edwards25519.html">crypto/internal/edwards25519</a>.<a href="../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-52">affineCached</a>.<a href="../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-53">YminusX</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">11 uses</span>
+
+	crypto/internal/edwards25519 (current package)
+		<a href="../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-53">edwards25519.go#L53</a>: 	YplusX, <b>YminusX</b>, T2d field.Element
+		<a href="../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-98" class="path-duplicate">edwards25519.go</a><a href="../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-98">#L98</a>: 	v.<b>YminusX</b>.One()
+		<a href="../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-243" class="path-duplicate">edwards25519.go</a><a href="../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-243">#L243</a>: 	v.<b>YminusX</b>.Subtract(&amp;p.y, &amp;p.x)
+		<a href="../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-249" class="path-duplicate">edwards25519.go</a><a href="../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-249">#L249</a>: 	v.<b>YminusX</b>.Multiply(&amp;v.<b>YminusX</b>, &amp;invZ)
+		<a href="../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-319" class="path-duplicate">edwards25519.go</a><a href="../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-319">#L319</a>: 	MM.Multiply(&amp;YminusX, &amp;q.<b>YminusX</b>)
+		<a href="../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-337" class="path-duplicate">edwards25519.go</a><a href="../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-337">#L337</a>: 	PP.Multiply(&amp;YplusX, &amp;q.<b>YminusX</b>) // flipped sign
+		<a href="../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-409" class="path-duplicate">edwards25519.go</a><a href="../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-409">#L409</a>: 	v.<b>YminusX</b>.Select(&amp;a.<b>YminusX</b>, &amp;b.<b>YminusX</b>, cond)
+		<a href="../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-423" class="path-duplicate">edwards25519.go</a><a href="../../../src/crypto/internal/edwards25519/edwards25519.go.html#line-423">#L423</a>: 	v.YplusX.Swap(&amp;v.<b>YminusX</b>, cond)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

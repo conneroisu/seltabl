@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: pseudo_classes.go in package github.com/andybalholm/cascadia</title>
+<link href="../../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	pseudo_classes.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../pkg/github.com/andybalholm/cascadia.html">github.com/andybalholm/cascadia</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19],
+input[id=r20]:checked ~pre label[for=r20],
+input[id=r21]:checked ~pre label[for=r21],
+input[id=r22]:checked ~pre label[for=r22],
+input[id=r23]:checked ~pre label[for=r23],
+input[id=r24]:checked ~pre label[for=r24],
+input[id=r25]:checked ~pre label[for=r25],
+input[id=r26]:checked ~pre label[for=r26],
+input[id=r27]:checked ~pre label[for=r27],
+input[id=r28]:checked ~pre label[for=r28],
+input[id=r29]:checked ~pre label[for=r29],
+input[id=r30]:checked ~pre label[for=r30],
+input[id=r31]:checked ~pre label[for=r31],
+input[id=r32]:checked ~pre label[for=r32],
+input[id=r33]:checked ~pre label[for=r33],
+input[id=r34]:checked ~pre label[for=r34],
+input[id=r35]:checked ~pre label[for=r35],
+input[id=r36]:checked ~pre label[for=r36],
+input[id=r37]:checked ~pre label[for=r37],
+input[id=r38]:checked ~pre label[for=r38],
+input[id=r39]:checked ~pre label[for=r39],
+input[id=r40]:checked ~pre label[for=r40],
+input[id=r41]:checked ~pre label[for=r41],
+input[id=r42]:checked ~pre label[for=r42],
+input[id=r43]:checked ~pre label[for=r43],
+input[id=r44]:checked ~pre label[for=r44],
+input[id=r45]:checked ~pre label[for=r45],
+input[id=r46]:checked ~pre label[for=r46],
+input[id=r47]:checked ~pre label[for=r47],
+input[id=r48]:checked ~pre label[for=r48],
+input[id=r49]:checked ~pre label[for=r49],
+input[id=r50]:checked ~pre label[for=r50],
+input[id=r51]:checked ~pre label[for=r51],
+input[id=r52]:checked ~pre label[for=r52],
+input[id=r53]:checked ~pre label[for=r53],
+input[id=r54]:checked ~pre label[for=r54],
+input[id=r55]:checked ~pre label[for=r55],
+input[id=r56]:checked ~pre label[for=r56],
+input[id=r57]:checked ~pre label[for=r57],
+input[id=r58]:checked ~pre label[for=r58],
+input[id=r59]:checked ~pre label[for=r59],
+input[id=r60]:checked ~pre label[for=r60],
+input[id=r61]:checked ~pre label[for=r61],
+input[id=r62]:checked ~pre label[for=r62],
+input[id=r63]:checked ~pre label[for=r63],
+input[id=r64]:checked ~pre label[for=r64],
+input[id=r65]:checked ~pre label[for=r65],
+input[id=r66]:checked ~pre label[for=r66],
+input[id=r67]:checked ~pre label[for=r67],
+input[id=r68]:checked ~pre label[for=r68],
+input[id=r69]:checked ~pre label[for=r69],
+input[id=r70]:checked ~pre label[for=r70],
+input[id=r71]:checked ~pre label[for=r71],
+input[id=r72]:checked ~pre label[for=r72],
+input[id=r73]:checked ~pre label[for=r73],
+input[id=r74]:checked ~pre label[for=r74],
+input[id=r75]:checked ~pre label[for=r75],
+input[id=r76]:checked ~pre label[for=r76],
+input[id=r77]:checked ~pre label[for=r77],
+input[id=r78]:checked ~pre label[for=r78],
+input[id=r79]:checked ~pre label[for=r79],
+input[id=r80]:checked ~pre label[for=r80],
+input[id=r81]:checked ~pre label[for=r81],
+input[id=r82]:checked ~pre label[for=r82],
+input[id=r83]:checked ~pre label[for=r83],
+input[id=r84]:checked ~pre label[for=r84],
+input[id=r85]:checked ~pre label[for=r85],
+input[id=r86]:checked ~pre label[for=r86],
+input[id=r87]:checked ~pre label[for=r87],
+input[id=r88]:checked ~pre label[for=r88],
+input[id=r89]:checked ~pre label[for=r89],
+input[id=r90]:checked ~pre label[for=r90],
+input[id=r91]:checked ~pre label[for=r91],
+input[id=r92]:checked ~pre label[for=r92],
+input[id=r93]:checked ~pre label[for=r93],
+input[id=r94]:checked ~pre label[for=r94],
+input[id=r95]:checked ~pre label[for=r95],
+input[id=r96]:checked ~pre label[for=r96],
+input[id=r97]:checked ~pre label[for=r97],
+input[id=r98]:checked ~pre label[for=r98],
+input[id=r99]:checked ~pre label[for=r99],
+input[id=r100]:checked ~pre label[for=r100],
+input[id=r101]:checked ~pre label[for=r101],
+input[id=r102]:checked ~pre label[for=r102],
+input[id=r103]:checked ~pre label[for=r103],
+input[id=r104]:checked ~pre label[for=r104],
+input[id=r105]:checked ~pre label[for=r105],
+input[id=r106]:checked ~pre label[for=r106],
+input[id=r107]:checked ~pre label[for=r107],
+input[id=r108]:checked ~pre label[for=r108],
+input[id=r109]:checked ~pre label[for=r109],
+input[id=r110]:checked ~pre label[for=r110],
+input[id=r111]:checked ~pre label[for=r111]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1,
+input[id=i2]:checked ~pre .i2,
+input[id=i3]:checked ~pre .i3,
+input[id=i4]:checked ~pre .i4,
+input[id=i5]:checked ~pre .i5
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
+<input id="r20" type="radio" name="g"/>
+<input id="r21" type="radio" name="g"/>
+<input id="r22" type="radio" name="g"/>
+<input id="r23" type="radio" name="g"/>
+<input id="r24" type="radio" name="g"/>
+<input id="r25" type="radio" name="g"/>
+<input id="r26" type="radio" name="g"/>
+<input id="r27" type="radio" name="g"/>
+<input id="r28" type="radio" name="g"/>
+<input id="r29" type="radio" name="g"/>
+<input id="r30" type="radio" name="g"/>
+<input id="r31" type="radio" name="g"/>
+<input id="r32" type="radio" name="g"/>
+<input id="r33" type="radio" name="g"/>
+<input id="r34" type="radio" name="g"/>
+<input id="r35" type="radio" name="g"/>
+<input id="r36" type="radio" name="g"/>
+<input id="r37" type="radio" name="g"/>
+<input id="r38" type="radio" name="g"/>
+<input id="r39" type="radio" name="g"/>
+<input id="r40" type="radio" name="g"/>
+<input id="r41" type="radio" name="g"/>
+<input id="r42" type="radio" name="g"/>
+<input id="r43" type="radio" name="g"/>
+<input id="r44" type="radio" name="g"/>
+<input id="r45" type="radio" name="g"/>
+<input id="r46" type="radio" name="g"/>
+<input id="r47" type="radio" name="g"/>
+<input id="r48" type="radio" name="g"/>
+<input id="r49" type="radio" name="g"/>
+<input id="r50" type="radio" name="g"/>
+<input id="r51" type="radio" name="g"/>
+<input id="r52" type="radio" name="g"/>
+<input id="r53" type="radio" name="g"/>
+<input id="r54" type="radio" name="g"/>
+<input id="r55" type="radio" name="g"/>
+<input id="r56" type="radio" name="g"/>
+<input id="r57" type="radio" name="g"/>
+<input id="r58" type="radio" name="g"/>
+<input id="r59" type="radio" name="g"/>
+<input id="r60" type="radio" name="g"/>
+<input id="r61" type="radio" name="g"/>
+<input id="r62" type="radio" name="g"/>
+<input id="r63" type="radio" name="g"/>
+<input id="r64" type="radio" name="g"/>
+<input id="r65" type="radio" name="g"/>
+<input id="r66" type="radio" name="g"/>
+<input id="r67" type="radio" name="g"/>
+<input id="r68" type="radio" name="g"/>
+<input id="r69" type="radio" name="g"/>
+<input id="r70" type="radio" name="g"/>
+<input id="r71" type="radio" name="g"/>
+<input id="r72" type="radio" name="g"/>
+<input id="r73" type="radio" name="g"/>
+<input id="r74" type="radio" name="g"/>
+<input id="r75" type="radio" name="g"/>
+<input id="r76" type="radio" name="g"/>
+<input id="r77" type="radio" name="g"/>
+<input id="r78" type="radio" name="g"/>
+<input id="r79" type="radio" name="g"/>
+<input id="r80" type="radio" name="g"/>
+<input id="r81" type="radio" name="g"/>
+<input id="r82" type="radio" name="g"/>
+<input id="r83" type="radio" name="g"/>
+<input id="r84" type="radio" name="g"/>
+<input id="r85" type="radio" name="g"/>
+<input id="r86" type="radio" name="g"/>
+<input id="r87" type="radio" name="g"/>
+<input id="r88" type="radio" name="g"/>
+<input id="r89" type="radio" name="g"/>
+<input id="r90" type="radio" name="g"/>
+<input id="r91" type="radio" name="g"/>
+<input id="r92" type="radio" name="g"/>
+<input id="r93" type="radio" name="g"/>
+<input id="r94" type="radio" name="g"/>
+<input id="r95" type="radio" name="g"/>
+<input id="r96" type="radio" name="g"/>
+<input id="r97" type="radio" name="g"/>
+<input id="r98" type="radio" name="g"/>
+<input id="r99" type="radio" name="g"/>
+<input id="r100" type="radio" name="g"/>
+<input id="r101" type="radio" name="g"/>
+<input id="r102" type="radio" name="g"/>
+<input id="r103" type="radio" name="g"/>
+<input id="r104" type="radio" name="g"/>
+<input id="r105" type="radio" name="g"/>
+<input id="r106" type="radio" name="g"/>
+<input id="r107" type="radio" name="g"/>
+<input id="r108" type="radio" name="g"/>
+<input id="r109" type="radio" name="g"/>
+<input id="r110" type="radio" name="g"/>
+<input id="r111" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+<input id="i2" type="radio" name="i"/>
+<input id="i3" type="radio" name="i"/>
+<input id="i4" type="radio" name="i"/>
+<input id="i5" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> cascadia</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-4"><code>	<label for="i0"><span class="lit-string i0">"bytes"</span></label></code></span>
+<span class="codeline" id="line-5"><code>	<label for="i1"><span class="lit-string i1">"fmt"</span></label></code></span>
+<span class="codeline" id="line-6"><code>	<label for="i2"><span class="lit-string i2">"regexp"</span></label></code></span>
+<span class="codeline" id="line-7"><code>	<label for="i3"><span class="lit-string i3">"strings"</span></label></code></span>
+<span class="codeline" id="line-8"><code></code></span>
+<span class="codeline" id="line-9"><code>	<label for="i4"><span class="lit-string i4">"golang.org/x/net/html"</span></label></code></span>
+<span class="codeline" id="line-10"><code>	<label for="i5"><span class="lit-string i5">"golang.org/x/net/html/atom"</span></label></code></span>
+<span class="codeline" id="line-11"><code>)</code></span>
+<span class="codeline" id="line-12"><code></code></span>
+<span class="codeline" id="line-13"><code><span class="comment">// This file implements the pseudo classes selectors,</span></code></span>
+<span class="codeline" id="line-14"><code><span class="comment">// which share the implementation of PseudoElement() and Specificity()</span></code></span>
+<span class="codeline" id="line-15"><code></code></span>
+<span class="codeline" id="line-16"><code><span class="keyword">type</span> <a href="../../../../pkg/github.com/andybalholm/cascadia.html#name-abstractPseudoClass" class="ident">abstractPseudoClass</a> <span class="keyword">struct</span>{}</code></span>
+<span class="codeline" id="line-17"><code></code></span>
+<span class="codeline" id="line-18"><code><span class="keyword">func</span> (<label for="r0" class="ident">s</label> <a href="#line-16" class="ident">abstractPseudoClass</a>) <label for="r1" class="ident"><a href="../../../../use/github.com/andybalholm/cascadia..abstractPseudoClass^99bc8.Specificity.html" class="ident">Specificity</a></label>() <a href="specificity.go.html#line-6" class="ident">Specificity</a> {</code></span>
+<span class="codeline" id="line-19"><code>	<span class="keyword">return</span> <a href="specificity.go.html#line-6" class="ident">Specificity</a>{<span class="lit-number">0</span>, <span class="lit-number">1</span>, <span class="lit-number">0</span>}</code></span>
+<span class="codeline" id="line-20"><code>}</code></span>
+<span class="codeline" id="line-21"><code></code></span>
+<span class="codeline" id="line-22"><code><span class="keyword">func</span> (<label for="r2" class="ident">c</label> <a href="#line-16" class="ident">abstractPseudoClass</a>) <label for="r3" class="ident"><a href="../../../../use/github.com/andybalholm/cascadia..abstractPseudoClass^99bc8.PseudoElement.html" class="ident">PseudoElement</a></label>() <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a> {</code></span>
+<span class="codeline" id="line-23"><code>	<span class="keyword">return</span> <span class="lit-string">""</span></code></span>
+<span class="codeline" id="line-24"><code>}</code></span>
+<span class="codeline" id="line-25"><code></code></span>
+<span class="codeline" id="line-26"><code><span class="keyword">type</span> <a href="../../../../pkg/github.com/andybalholm/cascadia.html#name-relativePseudoClassSelector" class="ident">relativePseudoClassSelector</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-27"><code>	<a href="../../../../use/github.com/andybalholm/cascadia..relativePseudoClassSelector^e30aa.name^82a35.html" class="ident">name</a>  <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a> <span class="comment">// one of "not", "has", "haschild"</span></code></span>
+<span class="codeline" id="line-28"><code>	<a href="../../../../use/github.com/andybalholm/cascadia..relativePseudoClassSelector^e30aa.match^4945a.html" class="ident">match</a> <a href="selector.go.html#line-576" class="ident">SelectorGroup</a></code></span>
+<span class="codeline" id="line-29"><code>}</code></span>
+<span class="codeline" id="line-30"><code></code></span>
+<span class="codeline" id="line-31"><code><span class="keyword">func</span> (<label for="r4" class="ident">s</label> <a href="#line-26" class="ident">relativePseudoClassSelector</a>) <label for="r5" class="ident"><a href="../../../../use/github.com/andybalholm/cascadia..relativePseudoClassSelector^e30aa.Match.html" class="ident">Match</a></label>(<label for="r6" class="ident">n</label> *<a href="../../../../pkg/golang.org/x/net/html.html" class="ident i4">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-44" class="ident">Node</a>) <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-32"><code>	<span class="keyword">if</span> <label for="r6" class="ident">n</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-47" class="ident">Type</a> != <a href="../../../../pkg/golang.org/x/net/html.html" class="ident i4">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-18" class="ident">ElementNode</a> {</code></span>
+<span class="codeline" id="line-33"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-34"><code>	}</code></span>
+<span class="codeline" id="line-35"><code>	<span class="keyword">switch</span> <label for="r4" class="ident">s</label>.<a href="#line-27" class="ident">name</a> {</code></span>
+<span class="codeline" id="line-36"><code>	<span class="keyword">case</span> <span class="lit-string">"not"</span>:</code></span>
+<span class="codeline" id="line-37"><code>		<span class="comment">// matches elements that do not match a.</span></code></span>
+<span class="codeline" id="line-38"><code>		<span class="keyword">return</span> !<label for="r4" class="ident">s</label>.<a href="#line-28" class="ident">match</a>.<a href="selector.go.html#line-579" class="ident">Match</a>(<label for="r6" class="ident">n</label>)</code></span>
+<span class="codeline" id="line-39"><code>	<span class="keyword">case</span> <span class="lit-string">"has"</span>:</code></span>
+<span class="codeline" id="line-40"><code>		<span class="comment">//  matches elements with any descendant that matches a.</span></code></span>
+<span class="codeline" id="line-41"><code>		<span class="keyword">return</span> <a href="#line-63" class="ident">hasDescendantMatch</a>(<label for="r6" class="ident">n</label>, <label for="r4" class="ident">s</label>.<a href="#line-28" class="ident">match</a>)</code></span>
+<span class="codeline" id="line-42"><code>	<span class="keyword">case</span> <span class="lit-string">"haschild"</span>:</code></span>
+<span class="codeline" id="line-43"><code>		<span class="comment">// matches elements with a child that matches a.</span></code></span>
+<span class="codeline" id="line-44"><code>		<span class="keyword">return</span> <a href="#line-51" class="ident">hasChildMatch</a>(<label for="r6" class="ident">n</label>, <label for="r4" class="ident">s</label>.<a href="#line-28" class="ident">match</a>)</code></span>
+<span class="codeline" id="line-45"><code>	<span class="keyword">default</span>:</code></span>
+<span class="codeline" id="line-46"><code>		<a href="../../../../pkg/builtin.html#name-panic" class="ident">panic</a>(<a href="../../../../pkg/fmt.html" class="ident i1">fmt</a>.<a href="../../../fmt/print.go.html#line-237" class="ident">Sprintf</a>(<span class="lit-string">"unsupported relative pseudo class selector : %s"</span>, <label for="r4" class="ident">s</label>.<a href="#line-27" class="ident">name</a>))</code></span>
+<span class="codeline" id="line-47"><code>	}</code></span>
+<span class="codeline" id="line-48"><code>}</code></span>
+<span class="codeline" id="line-49"><code></code></span>
+<span class="codeline" id="line-50"><code><span class="comment">// hasChildMatch returns whether n has any child that matches a.</span></code></span>
+<span class="codeline" id="line-51"><code><span class="keyword">func</span> <label for="r7" class="ident"><a href="../../../../pkg/github.com/andybalholm/cascadia.html#name-hasChildMatch" class="ident">hasChildMatch</a></label>(<label for="r8" class="ident">n</label> *<a href="../../../../pkg/golang.org/x/net/html.html" class="ident i4">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-44" class="ident">Node</a>, <label for="r9" class="ident">a</label> <a href="selector.go.html#line-13" class="ident">Matcher</a>) <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-52"><code>	<span class="keyword">for</span> <label for="r10" class="ident">c</label> := <label for="r8" class="ident">n</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-45" class="ident">FirstChild</a>; <label for="r10" class="ident">c</label> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>; <label for="r10" class="ident">c</label> = <label for="r10" class="ident">c</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-45" class="ident">NextSibling</a> {</code></span>
+<span class="codeline" id="line-53"><code>		<span class="keyword">if</span> <label for="r9" class="ident">a</label>.<a href="selector.go.html#line-14" class="ident">Match</a>(<label for="r10" class="ident">c</label>) {</code></span>
+<span class="codeline" id="line-54"><code>			<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-55"><code>		}</code></span>
+<span class="codeline" id="line-56"><code>	}</code></span>
+<span class="codeline" id="line-57"><code>	<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-58"><code>}</code></span>
+<span class="codeline" id="line-59"><code></code></span>
+<span class="codeline" id="line-60"><code><span class="comment">// hasDescendantMatch performs a depth-first search of n's descendants,</span></code></span>
+<span class="codeline" id="line-61"><code><span class="comment">// testing whether any of them match a. It returns true as soon as a match is</span></code></span>
+<span class="codeline" id="line-62"><code><span class="comment">// found, or false if no match is found.</span></code></span>
+<span class="codeline" id="line-63"><code><span class="keyword">func</span> <label for="r11" class="ident"><a href="../../../../pkg/github.com/andybalholm/cascadia.html#name-hasDescendantMatch" class="ident">hasDescendantMatch</a></label>(<label for="r12" class="ident">n</label> *<a href="../../../../pkg/golang.org/x/net/html.html" class="ident i4">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-44" class="ident">Node</a>, <label for="r13" class="ident">a</label> <a href="selector.go.html#line-13" class="ident">Matcher</a>) <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-64"><code>	<span class="keyword">for</span> <label for="r14" class="ident">c</label> := <label for="r12" class="ident">n</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-45" class="ident">FirstChild</a>; <label for="r14" class="ident">c</label> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>; <label for="r14" class="ident">c</label> = <label for="r14" class="ident">c</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-45" class="ident">NextSibling</a> {</code></span>
+<span class="codeline" id="line-65"><code>		<span class="keyword">if</span> <label for="r13" class="ident">a</label>.<a href="selector.go.html#line-14" class="ident">Match</a>(<label for="r14" class="ident">c</label>) || (<label for="r14" class="ident">c</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-47" class="ident">Type</a> == <a href="../../../../pkg/golang.org/x/net/html.html" class="ident i4">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-18" class="ident">ElementNode</a> &amp;&amp; <label for="r11" class="ident">hasDescendantMatch</label>(<label for="r14" class="ident">c</label>, <label for="r13" class="ident">a</label>)) {</code></span>
+<span class="codeline" id="line-66"><code>			<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-67"><code>		}</code></span>
+<span class="codeline" id="line-68"><code>	}</code></span>
+<span class="codeline" id="line-69"><code>	<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-70"><code>}</code></span>
+<span class="codeline" id="line-71"><code></code></span>
+<span class="codeline" id="line-72"><code><span class="comment">// Specificity returns the specificity of the most specific selectors</span></code></span>
+<span class="codeline" id="line-73"><code><span class="comment">// in the pseudo-class arguments.</span></code></span>
+<span class="codeline" id="line-74"><code><span class="comment">// See https://www.w3.org/TR/selectors/#specificity-rules</span></code></span>
+<span class="codeline" id="line-75"><code><span class="keyword">func</span> (<label for="r15" class="ident">s</label> <a href="#line-26" class="ident">relativePseudoClassSelector</a>) <label for="r16" class="ident"><a href="../../../../use/github.com/andybalholm/cascadia..relativePseudoClassSelector^e30aa.Specificity.html" class="ident">Specificity</a></label>() <a href="specificity.go.html#line-6" class="ident">Specificity</a> {</code></span>
+<span class="codeline" id="line-76"><code>	<span class="keyword">var</span> <label for="r17" class="ident">max</label> <a href="specificity.go.html#line-6" class="ident">Specificity</a></code></span>
+<span class="codeline" id="line-77"><code>	<span class="keyword">for</span> <label for="r18" class="ident">_</label>, <label for="r19" class="ident">sel</label> := <span class="keyword">range</span> <label for="r15" class="ident">s</label>.<a href="#line-28" class="ident">match</a> {</code></span>
+<span class="codeline" id="line-78"><code>		<label for="r20" class="ident">newSpe</label> := <label for="r19" class="ident">sel</label>.<a href="selector.go.html#line-20" class="ident">Specificity</a>()</code></span>
+<span class="codeline" id="line-79"><code>		<span class="keyword">if</span> <label for="r17" class="ident">max</label>.<a href="specificity.go.html#line-9" class="ident">Less</a>(<label for="r20" class="ident">newSpe</label>) {</code></span>
+<span class="codeline" id="line-80"><code>			<label for="r17" class="ident">max</label> = <label for="r20" class="ident">newSpe</label></code></span>
+<span class="codeline" id="line-81"><code>		}</code></span>
+<span class="codeline" id="line-82"><code>	}</code></span>
+<span class="codeline" id="line-83"><code>	<span class="keyword">return</span> <label for="r17" class="ident">max</label></code></span>
+<span class="codeline" id="line-84"><code>}</code></span>
+<span class="codeline" id="line-85"><code></code></span>
+<span class="codeline" id="line-86"><code><span class="keyword">func</span> (<label for="r21" class="ident">c</label> <a href="#line-26" class="ident">relativePseudoClassSelector</a>) <label for="r22" class="ident"><a href="../../../../use/github.com/andybalholm/cascadia..relativePseudoClassSelector^e30aa.PseudoElement.html" class="ident">PseudoElement</a></label>() <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a> {</code></span>
+<span class="codeline" id="line-87"><code>	<span class="keyword">return</span> <span class="lit-string">""</span></code></span>
+<span class="codeline" id="line-88"><code>}</code></span>
+<span class="codeline" id="line-89"><code></code></span>
+<span class="codeline" id="line-90"><code><span class="keyword">type</span> <a href="../../../../pkg/github.com/andybalholm/cascadia.html#name-containsPseudoClassSelector" class="ident">containsPseudoClassSelector</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-91"><code>	<a href="#line-16" class="ident">abstractPseudoClass</a></code></span>
+<span class="codeline" id="line-92"><code>	<a href="../../../../use/github.com/andybalholm/cascadia..containsPseudoClassSelector^83246.value^cd424.html" class="ident">value</a> <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-93"><code>	<a href="../../../../use/github.com/andybalholm/cascadia..containsPseudoClassSelector^83246.own^5b397.html" class="ident">own</a>   <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-94"><code>}</code></span>
+<span class="codeline" id="line-95"><code></code></span>
+<span class="codeline" id="line-96"><code><span class="keyword">func</span> (<label for="r23" class="ident">s</label> <a href="#line-90" class="ident">containsPseudoClassSelector</a>) <label for="r24" class="ident"><a href="../../../../use/github.com/andybalholm/cascadia..containsPseudoClassSelector^83246.Match.html" class="ident">Match</a></label>(<label for="r25" class="ident">n</label> *<a href="../../../../pkg/golang.org/x/net/html.html" class="ident i4">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-44" class="ident">Node</a>) <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-97"><code>	<span class="keyword">var</span> <label for="r26" class="ident">text</label> <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-98"><code>	<span class="keyword">if</span> <label for="r23" class="ident">s</label>.<a href="#line-93" class="ident">own</a> {</code></span>
+<span class="codeline" id="line-99"><code>		<span class="comment">// matches nodes that directly contain the given text</span></code></span>
+<span class="codeline" id="line-100"><code>		<label for="r26" class="ident">text</label> = <a href="../../../../pkg/strings.html" class="ident i3">strings</a>.<a href="../../../strings/strings.go.html#line-636" class="ident">ToLower</a>(<a href="#line-147" class="ident">nodeOwnText</a>(<label for="r25" class="ident">n</label>))</code></span>
+<span class="codeline" id="line-101"><code>	} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-102"><code>		<span class="comment">// matches nodes that contain the given text.</span></code></span>
+<span class="codeline" id="line-103"><code>		<label for="r26" class="ident">text</label> = <a href="../../../../pkg/strings.html" class="ident i3">strings</a>.<a href="../../../strings/strings.go.html#line-636" class="ident">ToLower</a>(<a href="#line-139" class="ident">nodeText</a>(<label for="r25" class="ident">n</label>))</code></span>
+<span class="codeline" id="line-104"><code>	}</code></span>
+<span class="codeline" id="line-105"><code>	<span class="keyword">return</span> <a href="../../../../pkg/strings.html" class="ident i3">strings</a>.<a href="../../../strings/strings.go.html#line-60" class="ident">Contains</a>(<label for="r26" class="ident">text</label>, <label for="r23" class="ident">s</label>.<a href="#line-92" class="ident">value</a>)</code></span>
+<span class="codeline" id="line-106"><code>}</code></span>
+<span class="codeline" id="line-107"><code></code></span>
+<span class="codeline" id="line-108"><code><span class="keyword">type</span> <a href="../../../../pkg/github.com/andybalholm/cascadia.html#name-regexpPseudoClassSelector" class="ident">regexpPseudoClassSelector</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-109"><code>	<a href="#line-16" class="ident">abstractPseudoClass</a></code></span>
+<span class="codeline" id="line-110"><code>	<a href="../../../../use/github.com/andybalholm/cascadia..regexpPseudoClassSelector^2e9ac.regexp^0af6c.html" class="ident">regexp</a> *<a href="../../../../pkg/regexp.html" class="ident i2">regexp</a>.<a href="../../../regexp/regexp.go.html#line-84" class="ident">Regexp</a></code></span>
+<span class="codeline" id="line-111"><code>	<a href="../../../../use/github.com/andybalholm/cascadia..regexpPseudoClassSelector^2e9ac.own^5b397.html" class="ident">own</a>    <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-112"><code>}</code></span>
+<span class="codeline" id="line-113"><code></code></span>
+<span class="codeline" id="line-114"><code><span class="keyword">func</span> (<label for="r27" class="ident">s</label> <a href="#line-108" class="ident">regexpPseudoClassSelector</a>) <label for="r28" class="ident"><a href="../../../../use/github.com/andybalholm/cascadia..regexpPseudoClassSelector^2e9ac.Match.html" class="ident">Match</a></label>(<label for="r29" class="ident">n</label> *<a href="../../../../pkg/golang.org/x/net/html.html" class="ident i4">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-44" class="ident">Node</a>) <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-115"><code>	<span class="keyword">var</span> <label for="r30" class="ident">text</label> <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-116"><code>	<span class="keyword">if</span> <label for="r27" class="ident">s</label>.<a href="#line-111" class="ident">own</a> {</code></span>
+<span class="codeline" id="line-117"><code>		<span class="comment">// matches nodes whose text directly matches the specified regular expression</span></code></span>
+<span class="codeline" id="line-118"><code>		<label for="r30" class="ident">text</label> = <a href="#line-147" class="ident">nodeOwnText</a>(<label for="r29" class="ident">n</label>)</code></span>
+<span class="codeline" id="line-119"><code>	} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-120"><code>		<span class="comment">// matches nodes whose text matches the specified regular expression</span></code></span>
+<span class="codeline" id="line-121"><code>		<label for="r30" class="ident">text</label> = <a href="#line-139" class="ident">nodeText</a>(<label for="r29" class="ident">n</label>)</code></span>
+<span class="codeline" id="line-122"><code>	}</code></span>
+<span class="codeline" id="line-123"><code>	<span class="keyword">return</span> <label for="r27" class="ident">s</label>.<a href="#line-110" class="ident">regexp</a>.<a href="../../../regexp/regexp.go.html#line-530" class="ident">MatchString</a>(<label for="r30" class="ident">text</label>)</code></span>
+<span class="codeline" id="line-124"><code>}</code></span>
+<span class="codeline" id="line-125"><code></code></span>
+<span class="codeline" id="line-126"><code><span class="comment">// writeNodeText writes the text contained in n and its descendants to b.</span></code></span>
+<span class="codeline" id="line-127"><code><span class="keyword">func</span> <label for="r31" class="ident"><a href="../../../../pkg/github.com/andybalholm/cascadia.html#name-writeNodeText" class="ident">writeNodeText</a></label>(<label for="r32" class="ident">n</label> *<a href="../../../../pkg/golang.org/x/net/html.html" class="ident i4">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-44" class="ident">Node</a>, <label for="r33" class="ident">b</label> *<a href="../../../../pkg/bytes.html" class="ident i0">bytes</a>.<a href="../../../bytes/buffer.go.html#line-20" class="ident">Buffer</a>) {</code></span>
+<span class="codeline" id="line-128"><code>	<span class="keyword">switch</span> <label for="r32" class="ident">n</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-47" class="ident">Type</a> {</code></span>
+<span class="codeline" id="line-129"><code>	<span class="keyword">case</span> <a href="../../../../pkg/golang.org/x/net/html.html" class="ident i4">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-16" class="ident">TextNode</a>:</code></span>
+<span class="codeline" id="line-130"><code>		<label for="r33" class="ident">b</label>.<a href="../../../bytes/buffer.go.html#line-187" class="ident">WriteString</a>(<label for="r32" class="ident">n</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-49" class="ident">Data</a>)</code></span>
+<span class="codeline" id="line-131"><code>	<span class="keyword">case</span> <a href="../../../../pkg/golang.org/x/net/html.html" class="ident i4">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-18" class="ident">ElementNode</a>:</code></span>
+<span class="codeline" id="line-132"><code>		<span class="keyword">for</span> <label for="r34" class="ident">c</label> := <label for="r32" class="ident">n</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-45" class="ident">FirstChild</a>; <label for="r34" class="ident">c</label> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>; <label for="r34" class="ident">c</label> = <label for="r34" class="ident">c</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-45" class="ident">NextSibling</a> {</code></span>
+<span class="codeline" id="line-133"><code>			<label for="r31" class="ident">writeNodeText</label>(<label for="r34" class="ident">c</label>, <label for="r33" class="ident">b</label>)</code></span>
+<span class="codeline" id="line-134"><code>		}</code></span>
+<span class="codeline" id="line-135"><code>	}</code></span>
+<span class="codeline" id="line-136"><code>}</code></span>
+<span class="codeline" id="line-137"><code></code></span>
+<span class="codeline" id="line-138"><code><span class="comment">// nodeText returns the text contained in n and its descendants.</span></code></span>
+<span class="codeline" id="line-139"><code><span class="keyword">func</span> <label for="r35" class="ident"><a href="../../../../pkg/github.com/andybalholm/cascadia.html#name-nodeText" class="ident">nodeText</a></label>(<label for="r36" class="ident">n</label> *<a href="../../../../pkg/golang.org/x/net/html.html" class="ident i4">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-44" class="ident">Node</a>) <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a> {</code></span>
+<span class="codeline" id="line-140"><code>	<span class="keyword">var</span> <label for="r37" class="ident">b</label> <a href="../../../../pkg/bytes.html" class="ident i0">bytes</a>.<a href="../../../bytes/buffer.go.html#line-20" class="ident">Buffer</a></code></span>
+<span class="codeline" id="line-141"><code>	<a href="#line-127" class="ident">writeNodeText</a>(<label for="r36" class="ident">n</label>, &amp;<label for="r37" class="ident">b</label>)</code></span>
+<span class="codeline" id="line-142"><code>	<span class="keyword">return</span> <label for="r37" class="ident">b</label>.<a href="../../../bytes/buffer.go.html#line-66" class="ident">String</a>()</code></span>
+<span class="codeline" id="line-143"><code>}</code></span>
+<span class="codeline" id="line-144"><code></code></span>
+<span class="codeline" id="line-145"><code><span class="comment">// nodeOwnText returns the contents of the text nodes that are direct</span></code></span>
+<span class="codeline" id="line-146"><code><span class="comment">// children of n.</span></code></span>
+<span class="codeline" id="line-147"><code><span class="keyword">func</span> <label for="r38" class="ident"><a href="../../../../pkg/github.com/andybalholm/cascadia.html#name-nodeOwnText" class="ident">nodeOwnText</a></label>(<label for="r39" class="ident">n</label> *<a href="../../../../pkg/golang.org/x/net/html.html" class="ident i4">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-44" class="ident">Node</a>) <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a> {</code></span>
+<span class="codeline" id="line-148"><code>	<span class="keyword">var</span> <label for="r40" class="ident">b</label> <a href="../../../../pkg/bytes.html" class="ident i0">bytes</a>.<a href="../../../bytes/buffer.go.html#line-20" class="ident">Buffer</a></code></span>
+<span class="codeline" id="line-149"><code>	<span class="keyword">for</span> <label for="r41" class="ident">c</label> := <label for="r39" class="ident">n</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-45" class="ident">FirstChild</a>; <label for="r41" class="ident">c</label> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>; <label for="r41" class="ident">c</label> = <label for="r41" class="ident">c</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-45" class="ident">NextSibling</a> {</code></span>
+<span class="codeline" id="line-150"><code>		<span class="keyword">if</span> <label for="r41" class="ident">c</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-47" class="ident">Type</a> == <a href="../../../../pkg/golang.org/x/net/html.html" class="ident i4">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-16" class="ident">TextNode</a> {</code></span>
+<span class="codeline" id="line-151"><code>			<label for="r40" class="ident">b</label>.<a href="../../../bytes/buffer.go.html#line-187" class="ident">WriteString</a>(<label for="r41" class="ident">c</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-49" class="ident">Data</a>)</code></span>
+<span class="codeline" id="line-152"><code>		}</code></span>
+<span class="codeline" id="line-153"><code>	}</code></span>
+<span class="codeline" id="line-154"><code>	<span class="keyword">return</span> <label for="r40" class="ident">b</label>.<a href="../../../bytes/buffer.go.html#line-66" class="ident">String</a>()</code></span>
+<span class="codeline" id="line-155"><code>}</code></span>
+<span class="codeline" id="line-156"><code></code></span>
+<span class="codeline" id="line-157"><code><span class="keyword">type</span> <a href="../../../../pkg/github.com/andybalholm/cascadia.html#name-nthPseudoClassSelector" class="ident">nthPseudoClassSelector</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-158"><code>	<a href="#line-16" class="ident">abstractPseudoClass</a></code></span>
+<span class="codeline" id="line-159"><code>	<a href="../../../../use/github.com/andybalholm/cascadia..nthPseudoClassSelector^2921c.a^ca978.html" class="ident">a</a>, <a href="../../../../use/github.com/andybalholm/cascadia..nthPseudoClassSelector^2921c.b^3e23e.html" class="ident">b</a>         <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-160"><code>	<a href="../../../../use/github.com/andybalholm/cascadia..nthPseudoClassSelector^2921c.last^3547c.html" class="ident">last</a>, <a href="../../../../use/github.com/andybalholm/cascadia..nthPseudoClassSelector^2921c.ofType^17dd0.html" class="ident">ofType</a> <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-161"><code>}</code></span>
+<span class="codeline" id="line-162"><code></code></span>
+<span class="codeline" id="line-163"><code><span class="keyword">func</span> (<label for="r42" class="ident">s</label> <a href="#line-157" class="ident">nthPseudoClassSelector</a>) <label for="r43" class="ident"><a href="../../../../use/github.com/andybalholm/cascadia..nthPseudoClassSelector^2921c.Match.html" class="ident">Match</a></label>(<label for="r44" class="ident">n</label> *<a href="../../../../pkg/golang.org/x/net/html.html" class="ident i4">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-44" class="ident">Node</a>) <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-164"><code>	<span class="keyword">if</span> <label for="r42" class="ident">s</label>.<a href="#line-159" class="ident">a</a> == <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-165"><code>		<span class="keyword">if</span> <label for="r42" class="ident">s</label>.<a href="#line-160" class="ident">last</a> {</code></span>
+<span class="codeline" id="line-166"><code>			<span class="keyword">return</span> <a href="#line-249" class="ident">simpleNthLastChildMatch</a>(<label for="r42" class="ident">s</label>.<a href="#line-159" class="ident">b</a>, <label for="r42" class="ident">s</label>.<a href="#line-160" class="ident">ofType</a>, <label for="r44" class="ident">n</label>)</code></span>
+<span class="codeline" id="line-167"><code>		} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-168"><code>			<span class="keyword">return</span> <a href="#line-221" class="ident">simpleNthChildMatch</a>(<label for="r42" class="ident">s</label>.<a href="#line-159" class="ident">b</a>, <label for="r42" class="ident">s</label>.<a href="#line-160" class="ident">ofType</a>, <label for="r44" class="ident">n</label>)</code></span>
+<span class="codeline" id="line-169"><code>		}</code></span>
+<span class="codeline" id="line-170"><code>	}</code></span>
+<span class="codeline" id="line-171"><code>	<span class="keyword">return</span> <a href="#line-177" class="ident">nthChildMatch</a>(<label for="r42" class="ident">s</label>.<a href="#line-159" class="ident">a</a>, <label for="r42" class="ident">s</label>.<a href="#line-159" class="ident">b</a>, <label for="r42" class="ident">s</label>.<a href="#line-160" class="ident">last</a>, <label for="r42" class="ident">s</label>.<a href="#line-160" class="ident">ofType</a>, <label for="r44" class="ident">n</label>)</code></span>
+<span class="codeline" id="line-172"><code>}</code></span>
+<span class="codeline" id="line-173"><code></code></span>
+<span class="codeline" id="line-174"><code><span class="comment">// nthChildMatch implements :nth-child(an+b).</span></code></span>
+<span class="codeline" id="line-175"><code><span class="comment">// If last is true, implements :nth-last-child instead.</span></code></span>
+<span class="codeline" id="line-176"><code><span class="comment">// If ofType is true, implements :nth-of-type instead.</span></code></span>
+<span class="codeline" id="line-177"><code><span class="keyword">func</span> <label for="r45" class="ident"><a href="../../../../pkg/github.com/andybalholm/cascadia.html#name-nthChildMatch" class="ident">nthChildMatch</a></label>(<label for="r46" class="ident">a</label>, <label for="r47" class="ident">b</label> <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a>, <label for="r48" class="ident">last</label>, <label for="r49" class="ident">ofType</label> <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a>, <label for="r50" class="ident">n</label> *<a href="../../../../pkg/golang.org/x/net/html.html" class="ident i4">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-44" class="ident">Node</a>) <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-178"><code>	<span class="keyword">if</span> <label for="r50" class="ident">n</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-47" class="ident">Type</a> != <a href="../../../../pkg/golang.org/x/net/html.html" class="ident i4">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-18" class="ident">ElementNode</a> {</code></span>
+<span class="codeline" id="line-179"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-180"><code>	}</code></span>
+<span class="codeline" id="line-181"><code></code></span>
+<span class="codeline" id="line-182"><code>	<label for="r51" class="ident">parent</label> := <label for="r50" class="ident">n</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-45" class="ident">Parent</a></code></span>
+<span class="codeline" id="line-183"><code>	<span class="keyword">if</span> <label for="r51" class="ident">parent</label> == <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-184"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-185"><code>	}</code></span>
+<span class="codeline" id="line-186"><code></code></span>
+<span class="codeline" id="line-187"><code>	<label for="r52" class="ident">i</label> := -<span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-188"><code>	<label for="r53" class="ident">count</label> := <span class="lit-number">0</span></code></span>
+<span class="codeline" id="line-189"><code>	<span class="keyword">for</span> <label for="r54" class="ident">c</label> := <label for="r51" class="ident">parent</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-45" class="ident">FirstChild</a>; <label for="r54" class="ident">c</label> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>; <label for="r54" class="ident">c</label> = <label for="r54" class="ident">c</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-45" class="ident">NextSibling</a> {</code></span>
+<span class="codeline" id="line-190"><code>		<span class="keyword">if</span> (<label for="r54" class="ident">c</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-47" class="ident">Type</a> != <a href="../../../../pkg/golang.org/x/net/html.html" class="ident i4">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-18" class="ident">ElementNode</a>) || (<label for="r49" class="ident">ofType</label> &amp;&amp; <label for="r54" class="ident">c</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-49" class="ident">Data</a> != <label for="r50" class="ident">n</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-49" class="ident">Data</a>) {</code></span>
+<span class="codeline" id="line-191"><code>			<span class="keyword">continue</span></code></span>
+<span class="codeline" id="line-192"><code>		}</code></span>
+<span class="codeline" id="line-193"><code>		<label for="r53" class="ident">count</label>++</code></span>
+<span class="codeline" id="line-194"><code>		<span class="keyword">if</span> <label for="r54" class="ident">c</label> == <label for="r50" class="ident">n</label> {</code></span>
+<span class="codeline" id="line-195"><code>			<label for="r52" class="ident">i</label> = <label for="r53" class="ident">count</label></code></span>
+<span class="codeline" id="line-196"><code>			<span class="keyword">if</span> !<label for="r48" class="ident">last</label> {</code></span>
+<span class="codeline" id="line-197"><code>				<span class="keyword">break</span></code></span>
+<span class="codeline" id="line-198"><code>			}</code></span>
+<span class="codeline" id="line-199"><code>		}</code></span>
+<span class="codeline" id="line-200"><code>	}</code></span>
+<span class="codeline" id="line-201"><code></code></span>
+<span class="codeline" id="line-202"><code>	<span class="keyword">if</span> <label for="r52" class="ident">i</label> == -<span class="lit-number">1</span> {</code></span>
+<span class="codeline" id="line-203"><code>		<span class="comment">// This shouldn't happen, since n should always be one of its parent's children.</span></code></span>
+<span class="codeline" id="line-204"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-205"><code>	}</code></span>
+<span class="codeline" id="line-206"><code></code></span>
+<span class="codeline" id="line-207"><code>	<span class="keyword">if</span> <label for="r48" class="ident">last</label> {</code></span>
+<span class="codeline" id="line-208"><code>		<label for="r52" class="ident">i</label> = <label for="r53" class="ident">count</label> - <label for="r52" class="ident">i</label> + <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-209"><code>	}</code></span>
+<span class="codeline" id="line-210"><code></code></span>
+<span class="codeline" id="line-211"><code>	<label for="r52" class="ident">i</label> -= <label for="r47" class="ident">b</label></code></span>
+<span class="codeline" id="line-212"><code>	<span class="keyword">if</span> <label for="r46" class="ident">a</label> == <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-213"><code>		<span class="keyword">return</span> <label for="r52" class="ident">i</label> == <span class="lit-number">0</span></code></span>
+<span class="codeline" id="line-214"><code>	}</code></span>
+<span class="codeline" id="line-215"><code></code></span>
+<span class="codeline" id="line-216"><code>	<span class="keyword">return</span> <label for="r52" class="ident">i</label>%<label for="r46" class="ident">a</label> == <span class="lit-number">0</span> &amp;&amp; <label for="r52" class="ident">i</label>/<label for="r46" class="ident">a</label> &gt;= <span class="lit-number">0</span></code></span>
+<span class="codeline" id="line-217"><code>}</code></span>
+<span class="codeline" id="line-218"><code></code></span>
+<span class="codeline" id="line-219"><code><span class="comment">// simpleNthChildMatch implements :nth-child(b).</span></code></span>
+<span class="codeline" id="line-220"><code><span class="comment">// If ofType is true, implements :nth-of-type instead.</span></code></span>
+<span class="codeline" id="line-221"><code><span class="keyword">func</span> <label for="r55" class="ident"><a href="../../../../pkg/github.com/andybalholm/cascadia.html#name-simpleNthChildMatch" class="ident">simpleNthChildMatch</a></label>(<label for="r56" class="ident">b</label> <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a>, <label for="r57" class="ident">ofType</label> <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a>, <label for="r58" class="ident">n</label> *<a href="../../../../pkg/golang.org/x/net/html.html" class="ident i4">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-44" class="ident">Node</a>) <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-222"><code>	<span class="keyword">if</span> <label for="r58" class="ident">n</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-47" class="ident">Type</a> != <a href="../../../../pkg/golang.org/x/net/html.html" class="ident i4">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-18" class="ident">ElementNode</a> {</code></span>
+<span class="codeline" id="line-223"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-224"><code>	}</code></span>
+<span class="codeline" id="line-225"><code></code></span>
+<span class="codeline" id="line-226"><code>	<label for="r59" class="ident">parent</label> := <label for="r58" class="ident">n</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-45" class="ident">Parent</a></code></span>
+<span class="codeline" id="line-227"><code>	<span class="keyword">if</span> <label for="r59" class="ident">parent</label> == <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-228"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-229"><code>	}</code></span>
+<span class="codeline" id="line-230"><code></code></span>
+<span class="codeline" id="line-231"><code>	<label for="r60" class="ident">count</label> := <span class="lit-number">0</span></code></span>
+<span class="codeline" id="line-232"><code>	<span class="keyword">for</span> <label for="r61" class="ident">c</label> := <label for="r59" class="ident">parent</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-45" class="ident">FirstChild</a>; <label for="r61" class="ident">c</label> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>; <label for="r61" class="ident">c</label> = <label for="r61" class="ident">c</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-45" class="ident">NextSibling</a> {</code></span>
+<span class="codeline" id="line-233"><code>		<span class="keyword">if</span> <label for="r61" class="ident">c</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-47" class="ident">Type</a> != <a href="../../../../pkg/golang.org/x/net/html.html" class="ident i4">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-18" class="ident">ElementNode</a> || (<label for="r57" class="ident">ofType</label> &amp;&amp; <label for="r61" class="ident">c</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-49" class="ident">Data</a> != <label for="r58" class="ident">n</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-49" class="ident">Data</a>) {</code></span>
+<span class="codeline" id="line-234"><code>			<span class="keyword">continue</span></code></span>
+<span class="codeline" id="line-235"><code>		}</code></span>
+<span class="codeline" id="line-236"><code>		<label for="r60" class="ident">count</label>++</code></span>
+<span class="codeline" id="line-237"><code>		<span class="keyword">if</span> <label for="r61" class="ident">c</label> == <label for="r58" class="ident">n</label> {</code></span>
+<span class="codeline" id="line-238"><code>			<span class="keyword">return</span> <label for="r60" class="ident">count</label> == <label for="r56" class="ident">b</label></code></span>
+<span class="codeline" id="line-239"><code>		}</code></span>
+<span class="codeline" id="line-240"><code>		<span class="keyword">if</span> <label for="r60" class="ident">count</label> &gt;= <label for="r56" class="ident">b</label> {</code></span>
+<span class="codeline" id="line-241"><code>			<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-242"><code>		}</code></span>
+<span class="codeline" id="line-243"><code>	}</code></span>
+<span class="codeline" id="line-244"><code>	<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-245"><code>}</code></span>
+<span class="codeline" id="line-246"><code></code></span>
+<span class="codeline" id="line-247"><code><span class="comment">// simpleNthLastChildMatch implements :nth-last-child(b).</span></code></span>
+<span class="codeline" id="line-248"><code><span class="comment">// If ofType is true, implements :nth-last-of-type instead.</span></code></span>
+<span class="codeline" id="line-249"><code><span class="keyword">func</span> <label for="r62" class="ident"><a href="../../../../pkg/github.com/andybalholm/cascadia.html#name-simpleNthLastChildMatch" class="ident">simpleNthLastChildMatch</a></label>(<label for="r63" class="ident">b</label> <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a>, <label for="r64" class="ident">ofType</label> <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a>, <label for="r65" class="ident">n</label> *<a href="../../../../pkg/golang.org/x/net/html.html" class="ident i4">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-44" class="ident">Node</a>) <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-250"><code>	<span class="keyword">if</span> <label for="r65" class="ident">n</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-47" class="ident">Type</a> != <a href="../../../../pkg/golang.org/x/net/html.html" class="ident i4">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-18" class="ident">ElementNode</a> {</code></span>
+<span class="codeline" id="line-251"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-252"><code>	}</code></span>
+<span class="codeline" id="line-253"><code></code></span>
+<span class="codeline" id="line-254"><code>	<label for="r66" class="ident">parent</label> := <label for="r65" class="ident">n</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-45" class="ident">Parent</a></code></span>
+<span class="codeline" id="line-255"><code>	<span class="keyword">if</span> <label for="r66" class="ident">parent</label> == <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-256"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-257"><code>	}</code></span>
+<span class="codeline" id="line-258"><code></code></span>
+<span class="codeline" id="line-259"><code>	<label for="r67" class="ident">count</label> := <span class="lit-number">0</span></code></span>
+<span class="codeline" id="line-260"><code>	<span class="keyword">for</span> <label for="r68" class="ident">c</label> := <label for="r66" class="ident">parent</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-45" class="ident">LastChild</a>; <label for="r68" class="ident">c</label> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>; <label for="r68" class="ident">c</label> = <label for="r68" class="ident">c</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-45" class="ident">PrevSibling</a> {</code></span>
+<span class="codeline" id="line-261"><code>		<span class="keyword">if</span> <label for="r68" class="ident">c</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-47" class="ident">Type</a> != <a href="../../../../pkg/golang.org/x/net/html.html" class="ident i4">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-18" class="ident">ElementNode</a> || (<label for="r64" class="ident">ofType</label> &amp;&amp; <label for="r68" class="ident">c</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-49" class="ident">Data</a> != <label for="r65" class="ident">n</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-49" class="ident">Data</a>) {</code></span>
+<span class="codeline" id="line-262"><code>			<span class="keyword">continue</span></code></span>
+<span class="codeline" id="line-263"><code>		}</code></span>
+<span class="codeline" id="line-264"><code>		<label for="r67" class="ident">count</label>++</code></span>
+<span class="codeline" id="line-265"><code>		<span class="keyword">if</span> <label for="r68" class="ident">c</label> == <label for="r65" class="ident">n</label> {</code></span>
+<span class="codeline" id="line-266"><code>			<span class="keyword">return</span> <label for="r67" class="ident">count</label> == <label for="r63" class="ident">b</label></code></span>
+<span class="codeline" id="line-267"><code>		}</code></span>
+<span class="codeline" id="line-268"><code>		<span class="keyword">if</span> <label for="r67" class="ident">count</label> &gt;= <label for="r63" class="ident">b</label> {</code></span>
+<span class="codeline" id="line-269"><code>			<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-270"><code>		}</code></span>
+<span class="codeline" id="line-271"><code>	}</code></span>
+<span class="codeline" id="line-272"><code>	<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-273"><code>}</code></span>
+<span class="codeline" id="line-274"><code></code></span>
+<span class="codeline" id="line-275"><code><span class="keyword">type</span> <a href="../../../../pkg/github.com/andybalholm/cascadia.html#name-onlyChildPseudoClassSelector" class="ident">onlyChildPseudoClassSelector</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-276"><code>	<a href="#line-16" class="ident">abstractPseudoClass</a></code></span>
+<span class="codeline" id="line-277"><code>	<a href="../../../../use/github.com/andybalholm/cascadia..onlyChildPseudoClassSelector^19024.ofType^17dd0.html" class="ident">ofType</a> <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-278"><code>}</code></span>
+<span class="codeline" id="line-279"><code></code></span>
+<span class="codeline" id="line-280"><code><span class="comment">// Match implements :only-child.</span></code></span>
+<span class="codeline" id="line-281"><code><span class="comment">// If `ofType` is true, it implements :only-of-type instead.</span></code></span>
+<span class="codeline" id="line-282"><code><span class="keyword">func</span> (<label for="r69" class="ident">s</label> <a href="#line-275" class="ident">onlyChildPseudoClassSelector</a>) <label for="r70" class="ident"><a href="../../../../use/github.com/andybalholm/cascadia..onlyChildPseudoClassSelector^19024.Match.html" class="ident">Match</a></label>(<label for="r71" class="ident">n</label> *<a href="../../../../pkg/golang.org/x/net/html.html" class="ident i4">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-44" class="ident">Node</a>) <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-283"><code>	<span class="keyword">if</span> <label for="r71" class="ident">n</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-47" class="ident">Type</a> != <a href="../../../../pkg/golang.org/x/net/html.html" class="ident i4">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-18" class="ident">ElementNode</a> {</code></span>
+<span class="codeline" id="line-284"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-285"><code>	}</code></span>
+<span class="codeline" id="line-286"><code></code></span>
+<span class="codeline" id="line-287"><code>	<label for="r72" class="ident">parent</label> := <label for="r71" class="ident">n</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-45" class="ident">Parent</a></code></span>
+<span class="codeline" id="line-288"><code>	<span class="keyword">if</span> <label for="r72" class="ident">parent</label> == <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-289"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-290"><code>	}</code></span>
+<span class="codeline" id="line-291"><code></code></span>
+<span class="codeline" id="line-292"><code>	<label for="r73" class="ident">count</label> := <span class="lit-number">0</span></code></span>
+<span class="codeline" id="line-293"><code>	<span class="keyword">for</span> <label for="r74" class="ident">c</label> := <label for="r72" class="ident">parent</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-45" class="ident">FirstChild</a>; <label for="r74" class="ident">c</label> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>; <label for="r74" class="ident">c</label> = <label for="r74" class="ident">c</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-45" class="ident">NextSibling</a> {</code></span>
+<span class="codeline" id="line-294"><code>		<span class="keyword">if</span> (<label for="r74" class="ident">c</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-47" class="ident">Type</a> != <a href="../../../../pkg/golang.org/x/net/html.html" class="ident i4">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-18" class="ident">ElementNode</a>) || (<label for="r69" class="ident">s</label>.<a href="#line-277" class="ident">ofType</a> &amp;&amp; <label for="r74" class="ident">c</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-49" class="ident">Data</a> != <label for="r71" class="ident">n</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-49" class="ident">Data</a>) {</code></span>
+<span class="codeline" id="line-295"><code>			<span class="keyword">continue</span></code></span>
+<span class="codeline" id="line-296"><code>		}</code></span>
+<span class="codeline" id="line-297"><code>		<label for="r73" class="ident">count</label>++</code></span>
+<span class="codeline" id="line-298"><code>		<span class="keyword">if</span> <label for="r73" class="ident">count</label> &gt; <span class="lit-number">1</span> {</code></span>
+<span class="codeline" id="line-299"><code>			<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-300"><code>		}</code></span>
+<span class="codeline" id="line-301"><code>	}</code></span>
+<span class="codeline" id="line-302"><code></code></span>
+<span class="codeline" id="line-303"><code>	<span class="keyword">return</span> <label for="r73" class="ident">count</label> == <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-304"><code>}</code></span>
+<span class="codeline" id="line-305"><code></code></span>
+<span class="codeline" id="line-306"><code><span class="keyword">type</span> <a href="../../../../pkg/github.com/andybalholm/cascadia.html#name-inputPseudoClassSelector" class="ident">inputPseudoClassSelector</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-307"><code>	<a href="#line-16" class="ident">abstractPseudoClass</a></code></span>
+<span class="codeline" id="line-308"><code>}</code></span>
+<span class="codeline" id="line-309"><code></code></span>
+<span class="codeline" id="line-310"><code><span class="comment">// Matches input, select, textarea and button elements.</span></code></span>
+<span class="codeline" id="line-311"><code><span class="keyword">func</span> (<label for="r75" class="ident">s</label> <a href="#line-306" class="ident">inputPseudoClassSelector</a>) <label for="r76" class="ident"><a href="../../../../use/github.com/andybalholm/cascadia..inputPseudoClassSelector^89055.Match.html" class="ident">Match</a></label>(<label for="r77" class="ident">n</label> *<a href="../../../../pkg/golang.org/x/net/html.html" class="ident i4">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-44" class="ident">Node</a>) <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-312"><code>	<span class="keyword">return</span> <label for="r77" class="ident">n</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-47" class="ident">Type</a> == <a href="../../../../pkg/golang.org/x/net/html.html" class="ident i4">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-18" class="ident">ElementNode</a> &amp;&amp; (<label for="r77" class="ident">n</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-49" class="ident">Data</a> == <span class="lit-string">"input"</span> || <label for="r77" class="ident">n</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-49" class="ident">Data</a> == <span class="lit-string">"select"</span> || <label for="r77" class="ident">n</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-49" class="ident">Data</a> == <span class="lit-string">"textarea"</span> || <label for="r77" class="ident">n</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-49" class="ident">Data</a> == <span class="lit-string">"button"</span>)</code></span>
+<span class="codeline" id="line-313"><code>}</code></span>
+<span class="codeline" id="line-314"><code></code></span>
+<span class="codeline" id="line-315"><code><span class="keyword">type</span> <a href="../../../../pkg/github.com/andybalholm/cascadia.html#name-emptyElementPseudoClassSelector" class="ident">emptyElementPseudoClassSelector</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-316"><code>	<a href="#line-16" class="ident">abstractPseudoClass</a></code></span>
+<span class="codeline" id="line-317"><code>}</code></span>
+<span class="codeline" id="line-318"><code></code></span>
+<span class="codeline" id="line-319"><code><span class="comment">// Matches empty elements.</span></code></span>
+<span class="codeline" id="line-320"><code><span class="keyword">func</span> (<label for="r78" class="ident">s</label> <a href="#line-315" class="ident">emptyElementPseudoClassSelector</a>) <label for="r79" class="ident"><a href="../../../../use/github.com/andybalholm/cascadia..emptyElementPseudoClassSelector^aa8b3.Match.html" class="ident">Match</a></label>(<label for="r80" class="ident">n</label> *<a href="../../../../pkg/golang.org/x/net/html.html" class="ident i4">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-44" class="ident">Node</a>) <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-321"><code>	<span class="keyword">if</span> <label for="r80" class="ident">n</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-47" class="ident">Type</a> != <a href="../../../../pkg/golang.org/x/net/html.html" class="ident i4">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-18" class="ident">ElementNode</a> {</code></span>
+<span class="codeline" id="line-322"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-323"><code>	}</code></span>
+<span class="codeline" id="line-324"><code></code></span>
+<span class="codeline" id="line-325"><code>	<span class="keyword">for</span> <label for="r81" class="ident">c</label> := <label for="r80" class="ident">n</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-45" class="ident">FirstChild</a>; <label for="r81" class="ident">c</label> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>; <label for="r81" class="ident">c</label> = <label for="r81" class="ident">c</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-45" class="ident">NextSibling</a> {</code></span>
+<span class="codeline" id="line-326"><code>		<span class="keyword">switch</span> <label for="r81" class="ident">c</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-47" class="ident">Type</a> {</code></span>
+<span class="codeline" id="line-327"><code>		<span class="keyword">case</span> <a href="../../../../pkg/golang.org/x/net/html.html" class="ident i4">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-18" class="ident">ElementNode</a>:</code></span>
+<span class="codeline" id="line-328"><code>			<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-329"><code>		<span class="keyword">case</span> <a href="../../../../pkg/golang.org/x/net/html.html" class="ident i4">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-16" class="ident">TextNode</a>:</code></span>
+<span class="codeline" id="line-330"><code>			<span class="keyword">if</span> <a href="../../../../pkg/strings.html" class="ident i3">strings</a>.<a href="../../../strings/strings.go.html#line-1002" class="ident">TrimSpace</a>(<a href="#line-139" class="ident">nodeText</a>(<label for="r81" class="ident">c</label>)) == <span class="lit-string">""</span> {</code></span>
+<span class="codeline" id="line-331"><code>				<span class="keyword">continue</span></code></span>
+<span class="codeline" id="line-332"><code>			} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-333"><code>				<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-334"><code>			}</code></span>
+<span class="codeline" id="line-335"><code>		}</code></span>
+<span class="codeline" id="line-336"><code>	}</code></span>
+<span class="codeline" id="line-337"><code></code></span>
+<span class="codeline" id="line-338"><code>	<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-339"><code>}</code></span>
+<span class="codeline" id="line-340"><code></code></span>
+<span class="codeline" id="line-341"><code><span class="keyword">type</span> <a href="../../../../pkg/github.com/andybalholm/cascadia.html#name-rootPseudoClassSelector" class="ident">rootPseudoClassSelector</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-342"><code>	<a href="#line-16" class="ident">abstractPseudoClass</a></code></span>
+<span class="codeline" id="line-343"><code>}</code></span>
+<span class="codeline" id="line-344"><code></code></span>
+<span class="codeline" id="line-345"><code><span class="comment">// Match implements :root</span></code></span>
+<span class="codeline" id="line-346"><code><span class="keyword">func</span> (<label for="r82" class="ident">s</label> <a href="#line-341" class="ident">rootPseudoClassSelector</a>) <label for="r83" class="ident"><a href="../../../../use/github.com/andybalholm/cascadia..rootPseudoClassSelector^c97eb.Match.html" class="ident">Match</a></label>(<label for="r84" class="ident">n</label> *<a href="../../../../pkg/golang.org/x/net/html.html" class="ident i4">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-44" class="ident">Node</a>) <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-347"><code>	<span class="keyword">if</span> <label for="r84" class="ident">n</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-47" class="ident">Type</a> != <a href="../../../../pkg/golang.org/x/net/html.html" class="ident i4">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-18" class="ident">ElementNode</a> {</code></span>
+<span class="codeline" id="line-348"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-349"><code>	}</code></span>
+<span class="codeline" id="line-350"><code>	<span class="keyword">if</span> <label for="r84" class="ident">n</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-45" class="ident">Parent</a> == <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-351"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-352"><code>	}</code></span>
+<span class="codeline" id="line-353"><code>	<span class="keyword">return</span> <label for="r84" class="ident">n</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-45" class="ident">Parent</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-47" class="ident">Type</a> == <a href="../../../../pkg/golang.org/x/net/html.html" class="ident i4">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-17" class="ident">DocumentNode</a></code></span>
+<span class="codeline" id="line-354"><code>}</code></span>
+<span class="codeline" id="line-355"><code></code></span>
+<span class="codeline" id="line-356"><code><span class="keyword">func</span> <label for="r85" class="ident"><a href="../../../../pkg/github.com/andybalholm/cascadia.html#name-hasAttr" class="ident">hasAttr</a></label>(<label for="r86" class="ident">n</label> *<a href="../../../../pkg/golang.org/x/net/html.html" class="ident i4">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-44" class="ident">Node</a>, <label for="r87" class="ident">attr</label> <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-357"><code>	<span class="keyword">return</span> <a href="selector.go.html#line-310" class="ident">matchAttribute</a>(<label for="r86" class="ident">n</label>, <label for="r87" class="ident">attr</label>, <span class="keyword">func</span>(<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> { <span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a> })</code></span>
+<span class="codeline" id="line-358"><code>}</code></span>
+<span class="codeline" id="line-359"><code></code></span>
+<span class="codeline" id="line-360"><code><span class="keyword">type</span> <a href="../../../../pkg/github.com/andybalholm/cascadia.html#name-linkPseudoClassSelector" class="ident">linkPseudoClassSelector</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-361"><code>	<a href="#line-16" class="ident">abstractPseudoClass</a></code></span>
+<span class="codeline" id="line-362"><code>}</code></span>
+<span class="codeline" id="line-363"><code></code></span>
+<span class="codeline" id="line-364"><code><span class="comment">// Match implements :link</span></code></span>
+<span class="codeline" id="line-365"><code><span class="keyword">func</span> (<label for="r88" class="ident">s</label> <a href="#line-360" class="ident">linkPseudoClassSelector</a>) <label for="r89" class="ident"><a href="../../../../use/github.com/andybalholm/cascadia..linkPseudoClassSelector^f74fe.Match.html" class="ident">Match</a></label>(<label for="r90" class="ident">n</label> *<a href="../../../../pkg/golang.org/x/net/html.html" class="ident i4">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-44" class="ident">Node</a>) <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-366"><code>	<span class="keyword">return</span> (<label for="r90" class="ident">n</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-48" class="ident">DataAtom</a> == <a href="../../../../pkg/golang.org/x/net/html/atom.html" class="ident i5">atom</a>.<a href="../../../golang.org/x/net/html/atom/table.go.html#line-8" class="ident">A</a> || <label for="r90" class="ident">n</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-48" class="ident">DataAtom</a> == <a href="../../../../pkg/golang.org/x/net/html/atom.html" class="ident i5">atom</a>.<a href="../../../golang.org/x/net/html/atom/table.go.html#line-24" class="ident">Area</a> || <label for="r90" class="ident">n</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-48" class="ident">DataAtom</a> == <a href="../../../../pkg/golang.org/x/net/html/atom.html" class="ident i5">atom</a>.<a href="../../../golang.org/x/net/html/atom/table.go.html#line-150" class="ident">Link</a>) &amp;&amp; <a href="#line-356" class="ident">hasAttr</a>(<label for="r90" class="ident">n</label>, <span class="lit-string">"href"</span>)</code></span>
+<span class="codeline" id="line-367"><code>}</code></span>
+<span class="codeline" id="line-368"><code></code></span>
+<span class="codeline" id="line-369"><code><span class="keyword">type</span> <a href="../../../../pkg/github.com/andybalholm/cascadia.html#name-langPseudoClassSelector" class="ident">langPseudoClassSelector</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-370"><code>	<a href="#line-16" class="ident">abstractPseudoClass</a></code></span>
+<span class="codeline" id="line-371"><code>	<a href="../../../../use/github.com/andybalholm/cascadia..langPseudoClassSelector^c8a36.lang^5cf7d.html" class="ident">lang</a> <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-372"><code>}</code></span>
+<span class="codeline" id="line-373"><code></code></span>
+<span class="codeline" id="line-374"><code><span class="keyword">func</span> (<label for="r91" class="ident">s</label> <a href="#line-369" class="ident">langPseudoClassSelector</a>) <label for="r92" class="ident"><a href="../../../../use/github.com/andybalholm/cascadia..langPseudoClassSelector^c8a36.Match.html" class="ident">Match</a></label>(<label for="r93" class="ident">n</label> *<a href="../../../../pkg/golang.org/x/net/html.html" class="ident i4">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-44" class="ident">Node</a>) <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-375"><code>	<label for="r94" class="ident">own</label> := <a href="selector.go.html#line-310" class="ident">matchAttribute</a>(<label for="r93" class="ident">n</label>, <span class="lit-string">"lang"</span>, <span class="keyword">func</span>(<label for="r95" class="ident">val</label> <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-376"><code>		<span class="keyword">return</span> <label for="r95" class="ident">val</label> == <label for="r91" class="ident">s</label>.<a href="#line-371" class="ident">lang</a> || <a href="../../../../pkg/strings.html" class="ident i3">strings</a>.<a href="../../../strings/strings.go.html#line-462" class="ident">HasPrefix</a>(<label for="r95" class="ident">val</label>, <label for="r91" class="ident">s</label>.<a href="#line-371" class="ident">lang</a>+<span class="lit-string">"-"</span>)</code></span>
+<span class="codeline" id="line-377"><code>	})</code></span>
+<span class="codeline" id="line-378"><code>	<span class="keyword">if</span> <label for="r93" class="ident">n</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-45" class="ident">Parent</a> == <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-379"><code>		<span class="keyword">return</span> <label for="r94" class="ident">own</label></code></span>
+<span class="codeline" id="line-380"><code>	}</code></span>
+<span class="codeline" id="line-381"><code>	<span class="keyword">return</span> <label for="r94" class="ident">own</label> || <label for="r91" class="ident">s</label>.<label for="r92" class="ident">Match</label>(<label for="r93" class="ident">n</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-45" class="ident">Parent</a>)</code></span>
+<span class="codeline" id="line-382"><code>}</code></span>
+<span class="codeline" id="line-383"><code></code></span>
+<span class="codeline" id="line-384"><code><span class="keyword">type</span> <a href="../../../../pkg/github.com/andybalholm/cascadia.html#name-enabledPseudoClassSelector" class="ident">enabledPseudoClassSelector</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-385"><code>	<a href="#line-16" class="ident">abstractPseudoClass</a></code></span>
+<span class="codeline" id="line-386"><code>}</code></span>
+<span class="codeline" id="line-387"><code></code></span>
+<span class="codeline" id="line-388"><code><span class="keyword">func</span> (<label for="r96" class="ident">s</label> <a href="#line-384" class="ident">enabledPseudoClassSelector</a>) <label for="r97" class="ident"><a href="../../../../use/github.com/andybalholm/cascadia..enabledPseudoClassSelector^c8899.Match.html" class="ident">Match</a></label>(<label for="r98" class="ident">n</label> *<a href="../../../../pkg/golang.org/x/net/html.html" class="ident i4">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-44" class="ident">Node</a>) <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-389"><code>	<span class="keyword">if</span> <label for="r98" class="ident">n</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-47" class="ident">Type</a> != <a href="../../../../pkg/golang.org/x/net/html.html" class="ident i4">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-18" class="ident">ElementNode</a> {</code></span>
+<span class="codeline" id="line-390"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-391"><code>	}</code></span>
+<span class="codeline" id="line-392"><code>	<span class="keyword">switch</span> <label for="r98" class="ident">n</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-48" class="ident">DataAtom</a> {</code></span>
+<span class="codeline" id="line-393"><code>	<span class="keyword">case</span> <a href="../../../../pkg/golang.org/x/net/html/atom.html" class="ident i5">atom</a>.<a href="../../../golang.org/x/net/html/atom/table.go.html#line-8" class="ident">A</a>, <a href="../../../../pkg/golang.org/x/net/html/atom.html" class="ident i5">atom</a>.<a href="../../../golang.org/x/net/html/atom/table.go.html#line-24" class="ident">Area</a>, <a href="../../../../pkg/golang.org/x/net/html/atom.html" class="ident i5">atom</a>.<a href="../../../golang.org/x/net/html/atom/table.go.html#line-150" class="ident">Link</a>:</code></span>
+<span class="codeline" id="line-394"><code>		<span class="keyword">return</span> <a href="#line-356" class="ident">hasAttr</a>(<label for="r98" class="ident">n</label>, <span class="lit-string">"href"</span>)</code></span>
+<span class="codeline" id="line-395"><code>	<span class="keyword">case</span> <a href="../../../../pkg/golang.org/x/net/html/atom.html" class="ident i5">atom</a>.<a href="../../../golang.org/x/net/html/atom/table.go.html#line-279" class="ident">Optgroup</a>, <a href="../../../../pkg/golang.org/x/net/html/atom.html" class="ident i5">atom</a>.<a href="../../../golang.org/x/net/html/atom/table.go.html#line-167" class="ident">Menuitem</a>, <a href="../../../../pkg/golang.org/x/net/html/atom.html" class="ident i5">atom</a>.<a href="../../../golang.org/x/net/html/atom/table.go.html#line-90" class="ident">Fieldset</a>:</code></span>
+<span class="codeline" id="line-396"><code>		<span class="keyword">return</span> !<a href="#line-356" class="ident">hasAttr</a>(<label for="r98" class="ident">n</label>, <span class="lit-string">"disabled"</span>)</code></span>
+<span class="codeline" id="line-397"><code>	<span class="keyword">case</span> <a href="../../../../pkg/golang.org/x/net/html/atom.html" class="ident i5">atom</a>.<a href="../../../golang.org/x/net/html/atom/table.go.html#line-44" class="ident">Button</a>, <a href="../../../../pkg/golang.org/x/net/html/atom.html" class="ident i5">atom</a>.<a href="../../../golang.org/x/net/html/atom/table.go.html#line-130" class="ident">Input</a>, <a href="../../../../pkg/golang.org/x/net/html/atom.html" class="ident i5">atom</a>.<a href="../../../golang.org/x/net/html/atom/table.go.html#line-319" class="ident">Select</a>, <a href="../../../../pkg/golang.org/x/net/html/atom.html" class="ident i5">atom</a>.<a href="../../../golang.org/x/net/html/atom/table.go.html#line-352" class="ident">Textarea</a>, <a href="../../../../pkg/golang.org/x/net/html/atom.html" class="ident i5">atom</a>.<a href="../../../golang.org/x/net/html/atom/table.go.html#line-281" class="ident">Option</a>:</code></span>
+<span class="codeline" id="line-398"><code>		<span class="keyword">return</span> !<a href="#line-356" class="ident">hasAttr</a>(<label for="r98" class="ident">n</label>, <span class="lit-string">"disabled"</span>) &amp;&amp; !<a href="#line-429" class="ident">inDisabledFieldset</a>(<label for="r98" class="ident">n</label>)</code></span>
+<span class="codeline" id="line-399"><code>	}</code></span>
+<span class="codeline" id="line-400"><code>	<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-401"><code>}</code></span>
+<span class="codeline" id="line-402"><code></code></span>
+<span class="codeline" id="line-403"><code><span class="keyword">type</span> <a href="../../../../pkg/github.com/andybalholm/cascadia.html#name-disabledPseudoClassSelector" class="ident">disabledPseudoClassSelector</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-404"><code>	<a href="#line-16" class="ident">abstractPseudoClass</a></code></span>
+<span class="codeline" id="line-405"><code>}</code></span>
+<span class="codeline" id="line-406"><code></code></span>
+<span class="codeline" id="line-407"><code><span class="keyword">func</span> (<label for="r99" class="ident">s</label> <a href="#line-403" class="ident">disabledPseudoClassSelector</a>) <label for="r100" class="ident"><a href="../../../../use/github.com/andybalholm/cascadia..disabledPseudoClassSelector^952fe.Match.html" class="ident">Match</a></label>(<label for="r101" class="ident">n</label> *<a href="../../../../pkg/golang.org/x/net/html.html" class="ident i4">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-44" class="ident">Node</a>) <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-408"><code>	<span class="keyword">if</span> <label for="r101" class="ident">n</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-47" class="ident">Type</a> != <a href="../../../../pkg/golang.org/x/net/html.html" class="ident i4">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-18" class="ident">ElementNode</a> {</code></span>
+<span class="codeline" id="line-409"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-410"><code>	}</code></span>
+<span class="codeline" id="line-411"><code>	<span class="keyword">switch</span> <label for="r101" class="ident">n</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-48" class="ident">DataAtom</a> {</code></span>
+<span class="codeline" id="line-412"><code>	<span class="keyword">case</span> <a href="../../../../pkg/golang.org/x/net/html/atom.html" class="ident i5">atom</a>.<a href="../../../golang.org/x/net/html/atom/table.go.html#line-279" class="ident">Optgroup</a>, <a href="../../../../pkg/golang.org/x/net/html/atom.html" class="ident i5">atom</a>.<a href="../../../golang.org/x/net/html/atom/table.go.html#line-167" class="ident">Menuitem</a>, <a href="../../../../pkg/golang.org/x/net/html/atom.html" class="ident i5">atom</a>.<a href="../../../golang.org/x/net/html/atom/table.go.html#line-90" class="ident">Fieldset</a>:</code></span>
+<span class="codeline" id="line-413"><code>		<span class="keyword">return</span> <a href="#line-356" class="ident">hasAttr</a>(<label for="r101" class="ident">n</label>, <span class="lit-string">"disabled"</span>)</code></span>
+<span class="codeline" id="line-414"><code>	<span class="keyword">case</span> <a href="../../../../pkg/golang.org/x/net/html/atom.html" class="ident i5">atom</a>.<a href="../../../golang.org/x/net/html/atom/table.go.html#line-44" class="ident">Button</a>, <a href="../../../../pkg/golang.org/x/net/html/atom.html" class="ident i5">atom</a>.<a href="../../../golang.org/x/net/html/atom/table.go.html#line-130" class="ident">Input</a>, <a href="../../../../pkg/golang.org/x/net/html/atom.html" class="ident i5">atom</a>.<a href="../../../golang.org/x/net/html/atom/table.go.html#line-319" class="ident">Select</a>, <a href="../../../../pkg/golang.org/x/net/html/atom.html" class="ident i5">atom</a>.<a href="../../../golang.org/x/net/html/atom/table.go.html#line-352" class="ident">Textarea</a>, <a href="../../../../pkg/golang.org/x/net/html/atom.html" class="ident i5">atom</a>.<a href="../../../golang.org/x/net/html/atom/table.go.html#line-281" class="ident">Option</a>:</code></span>
+<span class="codeline" id="line-415"><code>		<span class="keyword">return</span> <a href="#line-356" class="ident">hasAttr</a>(<label for="r101" class="ident">n</label>, <span class="lit-string">"disabled"</span>) || <a href="#line-429" class="ident">inDisabledFieldset</a>(<label for="r101" class="ident">n</label>)</code></span>
+<span class="codeline" id="line-416"><code>	}</code></span>
+<span class="codeline" id="line-417"><code>	<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-418"><code>}</code></span>
+<span class="codeline" id="line-419"><code></code></span>
+<span class="codeline" id="line-420"><code><span class="keyword">func</span> <label for="r102" class="ident"><a href="../../../../pkg/github.com/andybalholm/cascadia.html#name-hasLegendInPreviousSiblings" class="ident">hasLegendInPreviousSiblings</a></label>(<label for="r103" class="ident">n</label> *<a href="../../../../pkg/golang.org/x/net/html.html" class="ident i4">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-44" class="ident">Node</a>) <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-421"><code>	<span class="keyword">for</span> <label for="r104" class="ident">s</label> := <label for="r103" class="ident">n</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-45" class="ident">PrevSibling</a>; <label for="r104" class="ident">s</label> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>; <label for="r104" class="ident">s</label> = <label for="r104" class="ident">s</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-45" class="ident">PrevSibling</a> {</code></span>
+<span class="codeline" id="line-422"><code>		<span class="keyword">if</span> <label for="r104" class="ident">s</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-48" class="ident">DataAtom</a> == <a href="../../../../pkg/golang.org/x/net/html/atom.html" class="ident i5">atom</a>.<a href="../../../golang.org/x/net/html/atom/table.go.html#line-148" class="ident">Legend</a> {</code></span>
+<span class="codeline" id="line-423"><code>			<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-424"><code>		}</code></span>
+<span class="codeline" id="line-425"><code>	}</code></span>
+<span class="codeline" id="line-426"><code>	<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-427"><code>}</code></span>
+<span class="codeline" id="line-428"><code></code></span>
+<span class="codeline" id="line-429"><code><span class="keyword">func</span> <label for="r105" class="ident"><a href="../../../../pkg/github.com/andybalholm/cascadia.html#name-inDisabledFieldset" class="ident">inDisabledFieldset</a></label>(<label for="r106" class="ident">n</label> *<a href="../../../../pkg/golang.org/x/net/html.html" class="ident i4">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-44" class="ident">Node</a>) <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-430"><code>	<span class="keyword">if</span> <label for="r106" class="ident">n</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-45" class="ident">Parent</a> == <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-431"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-432"><code>	}</code></span>
+<span class="codeline" id="line-433"><code>	<span class="keyword">if</span> <label for="r106" class="ident">n</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-45" class="ident">Parent</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-48" class="ident">DataAtom</a> == <a href="../../../../pkg/golang.org/x/net/html/atom.html" class="ident i5">atom</a>.<a href="../../../golang.org/x/net/html/atom/table.go.html#line-90" class="ident">Fieldset</a> &amp;&amp; <a href="#line-356" class="ident">hasAttr</a>(<label for="r106" class="ident">n</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-45" class="ident">Parent</a>, <span class="lit-string">"disabled"</span>) &amp;&amp;</code></span>
+<span class="codeline" id="line-434"><code>		(<label for="r106" class="ident">n</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-48" class="ident">DataAtom</a> != <a href="../../../../pkg/golang.org/x/net/html/atom.html" class="ident i5">atom</a>.<a href="../../../golang.org/x/net/html/atom/table.go.html#line-148" class="ident">Legend</a> || <a href="#line-420" class="ident">hasLegendInPreviousSiblings</a>(<label for="r106" class="ident">n</label>)) {</code></span>
+<span class="codeline" id="line-435"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-436"><code>	}</code></span>
+<span class="codeline" id="line-437"><code>	<span class="keyword">return</span> <label for="r105" class="ident">inDisabledFieldset</label>(<label for="r106" class="ident">n</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-45" class="ident">Parent</a>)</code></span>
+<span class="codeline" id="line-438"><code>}</code></span>
+<span class="codeline" id="line-439"><code></code></span>
+<span class="codeline" id="line-440"><code><span class="keyword">type</span> <a href="../../../../pkg/github.com/andybalholm/cascadia.html#name-checkedPseudoClassSelector" class="ident">checkedPseudoClassSelector</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-441"><code>	<a href="#line-16" class="ident">abstractPseudoClass</a></code></span>
+<span class="codeline" id="line-442"><code>}</code></span>
+<span class="codeline" id="line-443"><code></code></span>
+<span class="codeline" id="line-444"><code><span class="keyword">func</span> (<label for="r107" class="ident">s</label> <a href="#line-440" class="ident">checkedPseudoClassSelector</a>) <label for="r108" class="ident"><a href="../../../../use/github.com/andybalholm/cascadia..checkedPseudoClassSelector^f6b36.Match.html" class="ident">Match</a></label>(<label for="r109" class="ident">n</label> *<a href="../../../../pkg/golang.org/x/net/html.html" class="ident i4">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-44" class="ident">Node</a>) <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-445"><code>	<span class="keyword">if</span> <label for="r109" class="ident">n</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-47" class="ident">Type</a> != <a href="../../../../pkg/golang.org/x/net/html.html" class="ident i4">html</a>.<a href="../../../golang.org/x/net/html/node.go.html#line-18" class="ident">ElementNode</a> {</code></span>
+<span class="codeline" id="line-446"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-447"><code>	}</code></span>
+<span class="codeline" id="line-448"><code>	<span class="keyword">switch</span> <label for="r109" class="ident">n</label>.<a href="../../../golang.org/x/net/html/node.go.html#line-48" class="ident">DataAtom</a> {</code></span>
+<span class="codeline" id="line-449"><code>	<span class="keyword">case</span> <a href="../../../../pkg/golang.org/x/net/html/atom.html" class="ident i5">atom</a>.<a href="../../../golang.org/x/net/html/atom/table.go.html#line-130" class="ident">Input</a>, <a href="../../../../pkg/golang.org/x/net/html/atom.html" class="ident i5">atom</a>.<a href="../../../golang.org/x/net/html/atom/table.go.html#line-167" class="ident">Menuitem</a>:</code></span>
+<span class="codeline" id="line-450"><code>		<span class="keyword">return</span> <a href="#line-356" class="ident">hasAttr</a>(<label for="r109" class="ident">n</label>, <span class="lit-string">"checked"</span>) &amp;&amp; <a href="selector.go.html#line-310" class="ident">matchAttribute</a>(<label for="r109" class="ident">n</label>, <span class="lit-string">"type"</span>, <span class="keyword">func</span>(<label for="r110" class="ident">val</label> <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-451"><code>			<label for="r111" class="ident">t</label> := <a href="parser.go.html#line-62" class="ident">toLowerASCII</a>(<label for="r110" class="ident">val</label>)</code></span>
+<span class="codeline" id="line-452"><code>			<span class="keyword">return</span> <label for="r111" class="ident">t</label> == <span class="lit-string">"checkbox"</span> || <label for="r111" class="ident">t</label> == <span class="lit-string">"radio"</span></code></span>
+<span class="codeline" id="line-453"><code>		})</code></span>
+<span class="codeline" id="line-454"><code>	<span class="keyword">case</span> <a href="../../../../pkg/golang.org/x/net/html/atom.html" class="ident i5">atom</a>.<a href="../../../golang.org/x/net/html/atom/table.go.html#line-281" class="ident">Option</a>:</code></span>
+<span class="codeline" id="line-455"><code>		<span class="keyword">return</span> <a href="#line-356" class="ident">hasAttr</a>(<label for="r109" class="ident">n</label>, <span class="lit-string">"selected"</span>)</code></span>
+<span class="codeline" id="line-456"><code>	}</code></span>
+<span class="codeline" id="line-457"><code>	<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-458"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

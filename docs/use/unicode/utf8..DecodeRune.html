@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: unicode/utf8.DecodeRune</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../../pkg/unicode/utf8.html">unicode/utf8</a>.<a href="../../src/unicode/utf8/utf8.go.html#line-151">DecodeRune</a></b></span>
+
+<span class="title">30 uses</span>
+
+	unicode/utf8 (current package)
+		<a href="../../src/unicode/utf8/utf8.go.html#line-151">utf8.go#L151</a>: func <b>DecodeRune</b>(p []byte) (r rune, size int) {
+		<a href="../../src/unicode/utf8/utf8.go.html#line-272" class="path-duplicate">utf8.go</a><a href="../../src/unicode/utf8/utf8.go.html#line-272">#L272</a>: 	r, size = <b>DecodeRune</b>(p[start:end])
+
+	<a href="../../pkg/bufio.html">bufio</a>
+		<a href="../../src/bufio/bufio.go.html#line-312">bufio.go#L312</a>: 		r, size = utf8.<b>DecodeRune</b>(b.buf[b.r:b.w])
+		<a href="../../src/bufio/scan.go.html#line-320">scan.go#L320</a>: 	_, width := utf8.<b>DecodeRune</b>(data)
+		<a href="../../src/bufio/scan.go.html#line-405" class="path-duplicate">scan.go</a><a href="../../src/bufio/scan.go.html#line-405">#L405</a>: 		r, width = utf8.<b>DecodeRune</b>(data[start:])
+		<a href="../../src/bufio/scan.go.html#line-413" class="path-duplicate">scan.go</a><a href="../../src/bufio/scan.go.html#line-413">#L413</a>: 		r, width = utf8.<b>DecodeRune</b>(data[i:])
+
+	<a href="../../pkg/bytes.html">bytes</a>
+		<a href="../../src/bytes/buffer.go.html#line-385">buffer.go#L385</a>: 	r, n := utf8.<b>DecodeRune</b>(b.buf[b.off:])
+		<a href="../../src/bytes/bytes.go.html#line-45">bytes.go#L45</a>: 		_, size = utf8.<b>DecodeRune</b>(s)
+		<a href="../../src/bytes/bytes.go.html#line-143" class="path-duplicate">bytes.go</a><a href="../../src/bytes/bytes.go.html#line-143">#L143</a>: 			r1, n := utf8.<b>DecodeRune</b>(s[i:])
+		<a href="../../src/bytes/bytes.go.html#line-211" class="path-duplicate">bytes.go</a><a href="../../src/bytes/bytes.go.html#line-211">#L211</a>: 		r, width = utf8.<b>DecodeRune</b>(s[i:])
+		<a href="../../src/bytes/bytes.go.html#line-474" class="path-duplicate">bytes.go</a><a href="../../src/bytes/bytes.go.html#line-474">#L474</a>: 			r, size = utf8.<b>DecodeRune</b>(s[i:])
+		<a href="../../src/bytes/bytes.go.html#line-560" class="path-duplicate">bytes.go</a><a href="../../src/bytes/bytes.go.html#line-560">#L560</a>: 			r, wid = utf8.<b>DecodeRune</b>(s[i:])
+		<a href="../../src/bytes/bytes.go.html#line-720" class="path-duplicate">bytes.go</a><a href="../../src/bytes/bytes.go.html#line-720">#L720</a>: 		_, wid := utf8.<b>DecodeRune</b>(s[i:])
+		<a href="../../src/bytes/bytes.go.html#line-798" class="path-duplicate">bytes.go</a><a href="../../src/bytes/bytes.go.html#line-798">#L798</a>: 		_, wid := utf8.<b>DecodeRune</b>(s[i:])
+		<a href="../../src/bytes/bytes.go.html#line-853" class="path-duplicate">bytes.go</a><a href="../../src/bytes/bytes.go.html#line-853">#L853</a>: 			r, wid = utf8.<b>DecodeRune</b>(s[start:])
+		<a href="../../src/bytes/bytes.go.html#line-987" class="path-duplicate">bytes.go</a><a href="../../src/bytes/bytes.go.html#line-987">#L987</a>: 			r, n = utf8.<b>DecodeRune</b>(s)
+		<a href="../../src/bytes/bytes.go.html#line-1093" class="path-duplicate">bytes.go</a><a href="../../src/bytes/bytes.go.html#line-1093">#L1093</a>: 		r, l := utf8.<b>DecodeRune</b>(s)
+		<a href="../../src/bytes/bytes.go.html#line-1129" class="path-duplicate">bytes.go</a><a href="../../src/bytes/bytes.go.html#line-1129">#L1129</a>: 				_, wid := utf8.<b>DecodeRune</b>(s[start:])
+		<a href="../../src/bytes/bytes.go.html#line-1192" class="path-duplicate">bytes.go</a><a href="../../src/bytes/bytes.go.html#line-1192">#L1192</a>: 			r, size := utf8.<b>DecodeRune</b>(s)
+		<a href="../../src/bytes/bytes.go.html#line-1198" class="path-duplicate">bytes.go</a><a href="../../src/bytes/bytes.go.html#line-1198">#L1198</a>: 			r, size := utf8.<b>DecodeRune</b>(t)
+		<a href="../../src/bytes/reader.go.html#line-97">reader.go#L97</a>: 	ch, size = utf8.<b>DecodeRune</b>(r.s[r.i:])
+
+	<a href="../../pkg/fmt.html">fmt</a>
+		<a href="../../src/fmt/format.go.html#line-348">format.go#L348</a>: 				_, wid = utf8.<b>DecodeRune</b>(b[i:])
+		<a href="../../src/fmt/scan.go.html#line-359">scan.go#L359</a>: 	rr, size = utf8.<b>DecodeRune</b>(r.buf[:n])
+
+	<a href="../../pkg/regexp.html">regexp</a>
+		<a href="../../src/regexp/regexp.go.html#line-442">regexp.go#L442</a>: 		return utf8.<b>DecodeRune</b>(i.str[pos:])
+		<a href="../../src/regexp/regexp.go.html#line-472" class="path-duplicate">regexp.go</a><a href="../../src/regexp/regexp.go.html#line-472">#L472</a>: 			r2, _ = utf8.<b>DecodeRune</b>(i.str[pos:])
+		<a href="../../src/regexp/regexp.go.html#line-647" class="path-duplicate">regexp.go</a><a href="../../src/regexp/regexp.go.html#line-647">#L647</a>: 			_, width = utf8.<b>DecodeRune</b>(bsrc[searchPos:])
+
+	<a href="../../pkg/vendor/golang.org/x/text/transform.html">vendor/golang.org/x/text/transform</a>
+		<a href="../../src/vendor/golang.org/x/text/transform/transform.go.html#line-512">transform.go#L512</a>: 			r, sz = utf8.<b>DecodeRune</b>(src)
+
+	<a href="../../pkg/vendor/golang.org/x/text/unicode/norm.html">vendor/golang.org/x/text/unicode/norm</a>
+		<a href="../../src/vendor/golang.org/x/text/unicode/norm/composition.go.html#line-296">composition.go#L296</a>: 	r, _ := utf8.<b>DecodeRune</b>(rb.byte[inf.pos : inf.pos+inf.size])
+		<a href="../../src/vendor/golang.org/x/text/unicode/norm/composition.go.html#line-387" class="path-duplicate">composition.go</a><a href="../../src/vendor/golang.org/x/text/unicode/norm/composition.go.html#line-387">#L387</a>: 	c, _ := utf8.<b>DecodeRune</b>(b)
+		<a href="../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-103">input.go#L103</a>: 		r, size = utf8.<b>DecodeRune</b>(in.bytes[p:])
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

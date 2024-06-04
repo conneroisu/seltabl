@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/url.URL.String</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/net/url.html">net/url</a>.<a href="../../src/net/url/url.go.html#line-369">URL</a>.<a href="../../src/net/url/url.go.html#line-815">String</a></b></span><span style="font-size: large;"><i> (method, <a href="../../imp/net/url.URL.html#name-String">view implemented interface methods</a>)</i></span>
+
+<span class="title">18 uses</span>
+
+	net/url (current package)
+		<a href="../../src/net/url/url.go.html#line-815">url.go#L815</a>: func (u *URL) <b>String</b>() string {
+		<a href="../../src/net/url/url.go.html#line-879" class="path-duplicate">url.go</a><a href="../../src/net/url/url.go.html#line-879">#L879</a>: 	return ru.<b>String</b>()
+		<a href="../../src/net/url/url.go.html#line-1185" class="path-duplicate">url.go</a><a href="../../src/net/url/url.go.html#line-1185">#L1185</a>: 	return []byte(u.<b>String</b>()), nil
+		<a href="../../src/net/url/url.go.html#line-1270" class="path-duplicate">url.go</a><a href="../../src/net/url/url.go.html#line-1270">#L1270</a>: 	result = url.JoinPath(elem...).<b>String</b>()
+
+	<a href="../../pkg/net/http.html">net/http</a>
+		<a href="../../src/net/http/client.go.html#line-159">client.go#L159</a>: 	referer := lastReq.<b>String</b>()
+		<a href="../../src/net/http/client.go.html#line-1035" class="path-duplicate">client.go</a><a href="../../src/net/http/client.go.html#line-1035">#L1035</a>: 		return strings.Replace(u.<b>String</b>(), u.User.String()+"@", u.User.Username()+":***@", 1)
+		<a href="../../src/net/http/client.go.html#line-1037" class="path-duplicate">client.go</a><a href="../../src/net/http/client.go.html#line-1037">#L1037</a>: 	return u.<b>String</b>()
+		<a href="../../src/net/http/fs.go.html#line-164">fs.go#L164</a>: 		fmt.Fprintf(w, "&lt;a href=\"%s\"&gt;%s&lt;/a&gt;\n", url.<b>String</b>(), htmlReplacer.Replace(name))
+		<a href="../../src/net/http/servemux121.go.html#line-108">servemux121.go#L108</a>: 			return RedirectHandler(u.<b>String</b>(), StatusMovedPermanently), u.Path
+		<a href="../../src/net/http/servemux121.go.html#line-122" class="path-duplicate">servemux121.go</a><a href="../../src/net/http/servemux121.go.html#line-122">#L122</a>: 		return RedirectHandler(u.<b>String</b>(), StatusMovedPermanently), u.Path
+		<a href="../../src/net/http/servemux121.go.html#line-128" class="path-duplicate">servemux121.go</a><a href="../../src/net/http/servemux121.go.html#line-128">#L128</a>: 		return RedirectHandler(u.<b>String</b>(), StatusMovedPermanently), pattern
+		<a href="../../src/net/http/server.go.html#line-2524">server.go#L2524</a>: 			return RedirectHandler(u.<b>String</b>(), StatusMovedPermanently), u.Path, nil, nil
+		<a href="../../src/net/http/server.go.html#line-2540" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-2540">#L2540</a>: 			return RedirectHandler(u.<b>String</b>(), StatusMovedPermanently), u.Path, nil, nil
+		<a href="../../src/net/http/server.go.html#line-2549" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-2549">#L2549</a>: 			return RedirectHandler(u.<b>String</b>(), StatusMovedPermanently), patStr, nil, nil
+		<a href="../../src/net/http/transport.go.html#line-1862">transport.go#L1862</a>: 		proxyStr = cm.proxyURL.<b>String</b>()
+
+	<a href="../../pkg/crypto/x509.html">crypto/x509</a>
+		<a href="../../src/crypto/x509/verify.go.html#line-421">verify.go#L421</a>: 		return false, fmt.Errorf("URI with empty host (%q) cannot be matched against constraints", uri.<b>String</b>())
+		<a href="../../src/crypto/x509/verify.go.html#line-434" class="path-duplicate">verify.go</a><a href="../../src/crypto/x509/verify.go.html#line-434">#L434</a>: 		return false, fmt.Errorf("URI with IP (%q) cannot be matched against constraints", uri.<b>String</b>())
+		<a href="../../src/crypto/x509/x509.go.html#line-1085">x509.go#L1085</a>: 		uriStr := uri.<b>String</b>()
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

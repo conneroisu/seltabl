@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.bitvector</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/stack.go.html#line-581">bitvector</a></b></span>
+
+<span class="title">20 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/heapdump.go.html#line-213">heapdump.go#L213</a>: func dumpobj(obj unsafe.Pointer, size uintptr, bv <b>bitvector</b>) {
+		<a href="../src/runtime/heapdump.go.html#line-240" class="path-duplicate">heapdump.go</a><a href="../src/runtime/heapdump.go.html#line-240">#L240</a>: 	args   <b>bitvector</b> // if args.n &gt;= 0, pointer map of args region
+		<a href="../src/runtime/heapdump.go.html#line-246" class="path-duplicate">heapdump.go</a><a href="../src/runtime/heapdump.go.html#line-246">#L246</a>: func dumpbv(cbv *<b>bitvector</b>, offset uintptr) {
+		<a href="../src/runtime/heapdump.go.html#line-273" class="path-duplicate">heapdump.go</a><a href="../src/runtime/heapdump.go.html#line-273">#L273</a>: 	var bv <b>bitvector</b>
+		<a href="../src/runtime/heapdump.go.html#line-718" class="path-duplicate">heapdump.go</a><a href="../src/runtime/heapdump.go.html#line-718">#L718</a>: func dumpfields(bv <b>bitvector</b>) {
+		<a href="../src/runtime/heapdump.go.html#line-723" class="path-duplicate">heapdump.go</a><a href="../src/runtime/heapdump.go.html#line-723">#L723</a>: func makeheapobjbv(p uintptr, size uintptr) <b>bitvector</b> {
+		<a href="../src/runtime/heapdump.go.html#line-764" class="path-duplicate">heapdump.go</a><a href="../src/runtime/heapdump.go.html#line-764">#L764</a>: 	return <b>bitvector</b>{int32(nptr), &amp;tmpbuf[0]}
+		<a href="../src/runtime/mbitmap.go.html#line-484">mbitmap.go#L484</a>: func progToPointerMask(prog *byte, size uintptr) <b>bitvector</b> {
+		<a href="../src/runtime/mbitmap.go.html#line-492" class="path-duplicate">mbitmap.go</a><a href="../src/runtime/mbitmap.go.html#line-492">#L492</a>: 	return <b>bitvector</b>{int32(n), &amp;x[0]}
+		<a href="../src/runtime/stack.go.html#line-581">stack.go#L581</a>: type <b>bitvector</b> struct {
+		<a href="../src/runtime/stack.go.html#line-590" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-590">#L590</a>: func (bv *<b>bitvector</b>) ptrbit(i uintptr) uint8 {
+		<a href="../src/runtime/stack.go.html#line-597" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-597">#L597</a>: func adjustpointers(scanp unsafe.Pointer, bv *<b>bitvector</b>, adjinfo *adjustinfo, f funcInfo) {
+		<a href="../src/runtime/stkframe.go.html#line-67">stkframe.go#L67</a>: 	stack  *<b>bitvector</b> // ptrmap for both args and results
+		<a href="../src/runtime/stkframe.go.html#line-94" class="path-duplicate">stkframe.go</a><a href="../src/runtime/stkframe.go.html#line-94">#L94</a>: func (frame *stkframe) argMapInternal() (argMap <b>bitvector</b>, hasReflectStackObj bool) {
+		<a href="../src/runtime/stkframe.go.html#line-130" class="path-duplicate">stkframe.go</a><a href="../src/runtime/stkframe.go.html#line-130">#L130</a>: 			return <b>bitvector</b>{}, false // No locals, so also no stack objects
+		<a href="../src/runtime/stkframe.go.html#line-157" class="path-duplicate">stkframe.go</a><a href="../src/runtime/stkframe.go.html#line-157">#L157</a>: func (frame *stkframe) getStackMap(debug bool) (locals, args <b>bitvector</b>, objs []stackObjectRecord) {
+		<a href="../src/runtime/symtab.go.html#line-375">symtab.go#L375</a>: 	gcdatamask, gcbssmask <b>bitvector</b>
+		<a href="../src/runtime/symtab.go.html#line-458" class="path-duplicate">symtab.go</a><a href="../src/runtime/symtab.go.html#line-458">#L458</a>: 		if md.gcdatamask == (<b>bitvector</b>{}) {
+		<a href="../src/runtime/symtab.go.html#line-1152" class="path-duplicate">symtab.go</a><a href="../src/runtime/symtab.go.html#line-1152">#L1152</a>: func stackmapdata(stkmap *stackmap, n int32) <b>bitvector</b> {
+		<a href="../src/runtime/symtab.go.html#line-1159" class="path-duplicate">symtab.go</a><a href="../src/runtime/symtab.go.html#line-1159">#L1159</a>: 	return <b>bitvector</b>{stkmap.nbit, addb(&amp;stkmap.bytedata[0], uintptr(n*((stkmap.nbit+7)&gt;&gt;3)))}
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.sig</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">var <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/sigqueue.go.html#line-51">sig</a></b></span>
+
+<span class="title">47 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/sigqueue.go.html#line-51">sigqueue.go#L51</a>: var <b>sig</b> struct {
+		<a href="../src/runtime/sigqueue.go.html#line-73" class="path-duplicate">sigqueue.go</a><a href="../src/runtime/sigqueue.go.html#line-73">#L73</a>: 	if s &gt;= uint32(32*len(<b>sig</b>.wanted)) {
+		<a href="../src/runtime/sigqueue.go.html#line-77" class="path-duplicate">sigqueue.go</a><a href="../src/runtime/sigqueue.go.html#line-77">#L77</a>: 	<b>sig</b>.delivering.Add(1)
+		<a href="../src/runtime/sigqueue.go.html#line-80" class="path-duplicate">sigqueue.go</a><a href="../src/runtime/sigqueue.go.html#line-80">#L80</a>: 	if w := atomic.Load(&amp;<b>sig</b>.wanted[s/32]); w&amp;bit == 0 {
+		<a href="../src/runtime/sigqueue.go.html#line-81" class="path-duplicate">sigqueue.go</a><a href="../src/runtime/sigqueue.go.html#line-81">#L81</a>: 		<b>sig</b>.delivering.Add(-1)
+		<a href="../src/runtime/sigqueue.go.html#line-87" class="path-duplicate">sigqueue.go</a><a href="../src/runtime/sigqueue.go.html#line-87">#L87</a>: 		mask := <b>sig</b>.mask[s/32]
+		<a href="../src/runtime/sigqueue.go.html#line-89" class="path-duplicate">sigqueue.go</a><a href="../src/runtime/sigqueue.go.html#line-89">#L89</a>: 			<b>sig</b>.delivering.Add(-1)
+		<a href="../src/runtime/sigqueue.go.html#line-92" class="path-duplicate">sigqueue.go</a><a href="../src/runtime/sigqueue.go.html#line-92">#L92</a>: 		if atomic.Cas(&amp;<b>sig</b>.mask[s/32], mask, mask|bit) {
+		<a href="../src/runtime/sigqueue.go.html#line-100" class="path-duplicate">sigqueue.go</a><a href="../src/runtime/sigqueue.go.html#line-100">#L100</a>: 		switch <b>sig</b>.state.Load() {
+		<a href="../src/runtime/sigqueue.go.html#line-104" class="path-duplicate">sigqueue.go</a><a href="../src/runtime/sigqueue.go.html#line-104">#L104</a>: 			if <b>sig</b>.state.CompareAndSwap(sigIdle, sigSending) {
+		<a href="../src/runtime/sigqueue.go.html#line-111" class="path-duplicate">sigqueue.go</a><a href="../src/runtime/sigqueue.go.html#line-111">#L111</a>: 			if <b>sig</b>.state.CompareAndSwap(sigReceiving, sigIdle) {
+		<a href="../src/runtime/sigqueue.go.html#line-113" class="path-duplicate">sigqueue.go</a><a href="../src/runtime/sigqueue.go.html#line-113">#L113</a>: 					sigNoteWakeup(&amp;<b>sig</b>.note)
+		<a href="../src/runtime/sigqueue.go.html#line-116" class="path-duplicate">sigqueue.go</a><a href="../src/runtime/sigqueue.go.html#line-116">#L116</a>: 				notewakeup(&amp;<b>sig</b>.note)
+		<a href="../src/runtime/sigqueue.go.html#line-122" class="path-duplicate">sigqueue.go</a><a href="../src/runtime/sigqueue.go.html#line-122">#L122</a>: 	<b>sig</b>.delivering.Add(-1)
+		<a href="../src/runtime/sigqueue.go.html#line-134" class="path-duplicate">sigqueue.go</a><a href="../src/runtime/sigqueue.go.html#line-134">#L134</a>: 			if <b>sig</b>.recv[i/32]&amp;(1&lt;&lt;(i&amp;31)) != 0 {
+		<a href="../src/runtime/sigqueue.go.html#line-135" class="path-duplicate">sigqueue.go</a><a href="../src/runtime/sigqueue.go.html#line-135">#L135</a>: 				<b>sig</b>.recv[i/32] &amp;^= 1 &lt;&lt; (i &amp; 31)
+		<a href="../src/runtime/sigqueue.go.html#line-143" class="path-duplicate">sigqueue.go</a><a href="../src/runtime/sigqueue.go.html#line-143">#L143</a>: 			switch <b>sig</b>.state.Load() {
+		<a href="../src/runtime/sigqueue.go.html#line-147" class="path-duplicate">sigqueue.go</a><a href="../src/runtime/sigqueue.go.html#line-147">#L147</a>: 				if <b>sig</b>.state.CompareAndSwap(sigIdle, sigReceiving) {
+		<a href="../src/runtime/sigqueue.go.html#line-149" class="path-duplicate">sigqueue.go</a><a href="../src/runtime/sigqueue.go.html#line-149">#L149</a>: 						sigNoteSleep(&amp;<b>sig</b>.note)
+		<a href="../src/runtime/sigqueue.go.html#line-152" class="path-duplicate">sigqueue.go</a><a href="../src/runtime/sigqueue.go.html#line-152">#L152</a>: 					notetsleepg(&amp;<b>sig</b>.note, -1)
+		<a href="../src/runtime/sigqueue.go.html#line-153" class="path-duplicate">sigqueue.go</a><a href="../src/runtime/sigqueue.go.html#line-153">#L153</a>: 					noteclear(&amp;<b>sig</b>.note)
+		<a href="../src/runtime/sigqueue.go.html#line-157" class="path-duplicate">sigqueue.go</a><a href="../src/runtime/sigqueue.go.html#line-157">#L157</a>: 				if <b>sig</b>.state.CompareAndSwap(sigSending, sigIdle) {
+		<a href="../src/runtime/sigqueue.go.html#line-164" class="path-duplicate">sigqueue.go</a><a href="../src/runtime/sigqueue.go.html#line-164">#L164</a>: 		for i := range <b>sig</b>.mask {
+		<a href="../src/runtime/sigqueue.go.html#line-165" class="path-duplicate">sigqueue.go</a><a href="../src/runtime/sigqueue.go.html#line-165">#L165</a>: 			<b>sig</b>.recv[i] = atomic.Xchg(&amp;<b>sig</b>.mask[i], 0)
+		<a href="../src/runtime/sigqueue.go.html#line-185" class="path-duplicate">sigqueue.go</a><a href="../src/runtime/sigqueue.go.html#line-185">#L185</a>: 	for <b>sig</b>.delivering.Load() != 0 {
+		<a href="../src/runtime/sigqueue.go.html#line-192" class="path-duplicate">sigqueue.go</a><a href="../src/runtime/sigqueue.go.html#line-192">#L192</a>: 	for <b>sig</b>.state.Load() != sigReceiving {
+		<a href="../src/runtime/sigqueue.go.html#line-201" class="path-duplicate">sigqueue.go</a><a href="../src/runtime/sigqueue.go.html#line-201">#L201</a>: 	if !<b>sig</b>.inuse {
+		<a href="../src/runtime/sigqueue.go.html#line-203" class="path-duplicate">sigqueue.go</a><a href="../src/runtime/sigqueue.go.html#line-203">#L203</a>: 		<b>sig</b>.inuse = true // enable reception of signals; cannot disable
+		<a href="../src/runtime/sigqueue.go.html#line-205" class="path-duplicate">sigqueue.go</a><a href="../src/runtime/sigqueue.go.html#line-205">#L205</a>: 			sigNoteSetup(&amp;<b>sig</b>.note)
+		<a href="../src/runtime/sigqueue.go.html#line-207" class="path-duplicate">sigqueue.go</a><a href="../src/runtime/sigqueue.go.html#line-207">#L207</a>: 			noteclear(&amp;<b>sig</b>.note)
+		<a href="../src/runtime/sigqueue.go.html#line-211" class="path-duplicate">sigqueue.go</a><a href="../src/runtime/sigqueue.go.html#line-211">#L211</a>: 	if s &gt;= uint32(len(<b>sig</b>.wanted)*32) {
+		<a href="../src/runtime/sigqueue.go.html#line-215" class="path-duplicate">sigqueue.go</a><a href="../src/runtime/sigqueue.go.html#line-215">#L215</a>: 	w := <b>sig</b>.wanted[s/32]
+		<a href="../src/runtime/sigqueue.go.html#line-217" class="path-duplicate">sigqueue.go</a><a href="../src/runtime/sigqueue.go.html#line-217">#L217</a>: 	atomic.Store(&amp;<b>sig</b>.wanted[s/32], w)
+		<a href="../src/runtime/sigqueue.go.html#line-219" class="path-duplicate">sigqueue.go</a><a href="../src/runtime/sigqueue.go.html#line-219">#L219</a>: 	i := <b>sig</b>.ignored[s/32]
+		<a href="../src/runtime/sigqueue.go.html#line-221" class="path-duplicate">sigqueue.go</a><a href="../src/runtime/sigqueue.go.html#line-221">#L221</a>: 	atomic.Store(&amp;<b>sig</b>.ignored[s/32], i)
+		<a href="../src/runtime/sigqueue.go.html#line-230" class="path-duplicate">sigqueue.go</a><a href="../src/runtime/sigqueue.go.html#line-230">#L230</a>: 	if s &gt;= uint32(len(<b>sig</b>.wanted)*32) {
+		<a href="../src/runtime/sigqueue.go.html#line-235" class="path-duplicate">sigqueue.go</a><a href="../src/runtime/sigqueue.go.html#line-235">#L235</a>: 	w := <b>sig</b>.wanted[s/32]
+		<a href="../src/runtime/sigqueue.go.html#line-237" class="path-duplicate">sigqueue.go</a><a href="../src/runtime/sigqueue.go.html#line-237">#L237</a>: 	atomic.Store(&amp;<b>sig</b>.wanted[s/32], w)
+		<a href="../src/runtime/sigqueue.go.html#line-244" class="path-duplicate">sigqueue.go</a><a href="../src/runtime/sigqueue.go.html#line-244">#L244</a>: 	if s &gt;= uint32(len(<b>sig</b>.wanted)*32) {
+		<a href="../src/runtime/sigqueue.go.html#line-249" class="path-duplicate">sigqueue.go</a><a href="../src/runtime/sigqueue.go.html#line-249">#L249</a>: 	w := <b>sig</b>.wanted[s/32]
+		<a href="../src/runtime/sigqueue.go.html#line-251" class="path-duplicate">sigqueue.go</a><a href="../src/runtime/sigqueue.go.html#line-251">#L251</a>: 	atomic.Store(&amp;<b>sig</b>.wanted[s/32], w)
+		<a href="../src/runtime/sigqueue.go.html#line-253" class="path-duplicate">sigqueue.go</a><a href="../src/runtime/sigqueue.go.html#line-253">#L253</a>: 	i := <b>sig</b>.ignored[s/32]
+		<a href="../src/runtime/sigqueue.go.html#line-255" class="path-duplicate">sigqueue.go</a><a href="../src/runtime/sigqueue.go.html#line-255">#L255</a>: 	atomic.Store(&amp;<b>sig</b>.ignored[s/32], i)
+		<a href="../src/runtime/sigqueue.go.html#line-264" class="path-duplicate">sigqueue.go</a><a href="../src/runtime/sigqueue.go.html#line-264">#L264</a>: 	i := <b>sig</b>.ignored[s/32]
+		<a href="../src/runtime/sigqueue.go.html#line-266" class="path-duplicate">sigqueue.go</a><a href="../src/runtime/sigqueue.go.html#line-266">#L266</a>: 	atomic.Store(&amp;<b>sig</b>.ignored[s/32], i)
+		<a href="../src/runtime/sigqueue.go.html#line-273" class="path-duplicate">sigqueue.go</a><a href="../src/runtime/sigqueue.go.html#line-273">#L273</a>: 	i := atomic.Load(&amp;<b>sig</b>.ignored[s/32])
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

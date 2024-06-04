@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.cpuprof</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">var <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/cpuprof.go.html#line-59">cpuprof</a></b></span>
+
+<span class="title">33 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/cpuprof.go.html#line-59">cpuprof.go#L59</a>: var <b>cpuprof</b> cpuProfile
+		<a href="../src/runtime/cpuprof.go.html#line-77" class="path-duplicate">cpuprof.go</a><a href="../src/runtime/cpuprof.go.html#line-77">#L77</a>: 	lock(&amp;<b>cpuprof</b>.lock)
+		<a href="../src/runtime/cpuprof.go.html#line-79" class="path-duplicate">cpuprof.go</a><a href="../src/runtime/cpuprof.go.html#line-79">#L79</a>: 		if <b>cpuprof</b>.on || <b>cpuprof</b>.log != nil {
+		<a href="../src/runtime/cpuprof.go.html#line-81" class="path-duplicate">cpuprof.go</a><a href="../src/runtime/cpuprof.go.html#line-81">#L81</a>: 			unlock(&amp;<b>cpuprof</b>.lock)
+		<a href="../src/runtime/cpuprof.go.html#line-85" class="path-duplicate">cpuprof.go</a><a href="../src/runtime/cpuprof.go.html#line-85">#L85</a>: 		<b>cpuprof</b>.on = true
+		<a href="../src/runtime/cpuprof.go.html#line-86" class="path-duplicate">cpuprof.go</a><a href="../src/runtime/cpuprof.go.html#line-86">#L86</a>: 		<b>cpuprof</b>.log = newProfBuf(1, profBufWordCount, profBufTagCount)
+		<a href="../src/runtime/cpuprof.go.html#line-88" class="path-duplicate">cpuprof.go</a><a href="../src/runtime/cpuprof.go.html#line-88">#L88</a>: 		<b>cpuprof</b>.log.write(nil, nanotime(), hdr[:], nil)
+		<a href="../src/runtime/cpuprof.go.html#line-90" class="path-duplicate">cpuprof.go</a><a href="../src/runtime/cpuprof.go.html#line-90">#L90</a>: 	} else if <b>cpuprof</b>.on {
+		<a href="../src/runtime/cpuprof.go.html#line-92" class="path-duplicate">cpuprof.go</a><a href="../src/runtime/cpuprof.go.html#line-92">#L92</a>: 		<b>cpuprof</b>.on = false
+		<a href="../src/runtime/cpuprof.go.html#line-93" class="path-duplicate">cpuprof.go</a><a href="../src/runtime/cpuprof.go.html#line-93">#L93</a>: 		<b>cpuprof</b>.addExtra()
+		<a href="../src/runtime/cpuprof.go.html#line-94" class="path-duplicate">cpuprof.go</a><a href="../src/runtime/cpuprof.go.html#line-94">#L94</a>: 		<b>cpuprof</b>.log.close()
+		<a href="../src/runtime/cpuprof.go.html#line-96" class="path-duplicate">cpuprof.go</a><a href="../src/runtime/cpuprof.go.html#line-96">#L96</a>: 	unlock(&amp;<b>cpuprof</b>.lock)
+		<a href="../src/runtime/cpuprof.go.html#line-122" class="path-duplicate">cpuprof.go</a><a href="../src/runtime/cpuprof.go.html#line-122">#L122</a>: 		<b>cpuprof</b>.log.write(tagPtr, nanotime(), hdr[:], stk)
+		<a href="../src/runtime/cpuprof.go.html#line-150" class="path-duplicate">cpuprof.go</a><a href="../src/runtime/cpuprof.go.html#line-150">#L150</a>: 	if <b>cpuprof</b>.numExtra+1+len(stk) &lt; len(<b>cpuprof</b>.extra) {
+		<a href="../src/runtime/cpuprof.go.html#line-151" class="path-duplicate">cpuprof.go</a><a href="../src/runtime/cpuprof.go.html#line-151">#L151</a>: 		i := <b>cpuprof</b>.numExtra
+		<a href="../src/runtime/cpuprof.go.html#line-152" class="path-duplicate">cpuprof.go</a><a href="../src/runtime/cpuprof.go.html#line-152">#L152</a>: 		<b>cpuprof</b>.extra[i] = uintptr(1 + len(stk))
+		<a href="../src/runtime/cpuprof.go.html#line-153" class="path-duplicate">cpuprof.go</a><a href="../src/runtime/cpuprof.go.html#line-153">#L153</a>: 		copy(<b>cpuprof</b>.extra[i+1:], stk)
+		<a href="../src/runtime/cpuprof.go.html#line-154" class="path-duplicate">cpuprof.go</a><a href="../src/runtime/cpuprof.go.html#line-154">#L154</a>: 		<b>cpuprof</b>.numExtra += 1 + len(stk)
+		<a href="../src/runtime/cpuprof.go.html#line-156" class="path-duplicate">cpuprof.go</a><a href="../src/runtime/cpuprof.go.html#line-156">#L156</a>: 		<b>cpuprof</b>.lostExtra++
+		<a href="../src/runtime/cpuprof.go.html#line-227" class="path-duplicate">cpuprof.go</a><a href="../src/runtime/cpuprof.go.html#line-227">#L227</a>: 	lock(&amp;<b>cpuprof</b>.lock)
+		<a href="../src/runtime/cpuprof.go.html#line-228" class="path-duplicate">cpuprof.go</a><a href="../src/runtime/cpuprof.go.html#line-228">#L228</a>: 	log := <b>cpuprof</b>.log
+		<a href="../src/runtime/cpuprof.go.html#line-229" class="path-duplicate">cpuprof.go</a><a href="../src/runtime/cpuprof.go.html#line-229">#L229</a>: 	unlock(&amp;<b>cpuprof</b>.lock)
+		<a href="../src/runtime/cpuprof.go.html#line-236" class="path-duplicate">cpuprof.go</a><a href="../src/runtime/cpuprof.go.html#line-236">#L236</a>: 		lock(&amp;<b>cpuprof</b>.lock)
+		<a href="../src/runtime/cpuprof.go.html#line-237" class="path-duplicate">cpuprof.go</a><a href="../src/runtime/cpuprof.go.html#line-237">#L237</a>: 		<b>cpuprof</b>.log = nil
+		<a href="../src/runtime/cpuprof.go.html#line-238" class="path-duplicate">cpuprof.go</a><a href="../src/runtime/cpuprof.go.html#line-238">#L238</a>: 		unlock(&amp;<b>cpuprof</b>.lock)
+		<a href="../src/runtime/proc.go.html#line-761">proc.go#L761</a>: 	lockInit(&amp;<b>cpuprof</b>.lock, lockRankCpuprof)
+		<a href="../src/runtime/proc.go.html#line-5323" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-5323">#L5323</a>: 				<b>cpuprof</b>.lostAtomic++
+		<a href="../src/runtime/proc.go.html#line-5331" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-5331">#L5331</a>: 			<b>cpuprof</b>.lostAtomic++
+		<a href="../src/runtime/proc.go.html#line-5403" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-5403">#L5403</a>: 		<b>cpuprof</b>.add(tagPtr, stk[:n])
+		<a href="../src/runtime/signal_unix.go.html#line-525">signal_unix.go#L525</a>: 			<b>cpuprof</b>.addNonGo(sigprofCallers[:n])
+		<a href="../src/runtime/signal_unix.go.html#line-544" class="path-duplicate">signal_unix.go</a><a href="../src/runtime/signal_unix.go.html#line-544">#L544</a>: 		<b>cpuprof</b>.addNonGo(stk)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: regexp/syntax.InstMatch</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../../pkg/regexp/syntax.html">regexp/syntax</a>.<a href="../../src/regexp/syntax/prog.go.html#line-32">InstMatch</a></b></span>
+
+<span class="title">19 uses</span>
+
+	regexp/syntax (current package)
+		<a href="../../src/regexp/syntax/compile.go.html#line-75">compile.go#L75</a>: 	f.out.patch(c.p, c.inst(<b>InstMatch</b>).i)
+		<a href="../../src/regexp/syntax/prog.go.html#line-32">prog.go#L32</a>: 	<b>InstMatch</b>
+		<a href="../../src/regexp/syntax/prog.go.html#line-155" class="path-duplicate">prog.go</a><a href="../../src/regexp/syntax/prog.go.html#line-155">#L155</a>: 		return "", i.Op == <b>InstMatch</b>
+		<a href="../../src/regexp/syntax/prog.go.html#line-164" class="path-duplicate">prog.go</a><a href="../../src/regexp/syntax/prog.go.html#line-164">#L164</a>: 	return buf.String(), i.Op == <b>InstMatch</b>
+		<a href="../../src/regexp/syntax/prog.go.html#line-326" class="path-duplicate">prog.go</a><a href="../../src/regexp/syntax/prog.go.html#line-326">#L326</a>: 	case <b>InstMatch</b>:
+
+	<a href="../../pkg/regexp.html">regexp</a>
+		<a href="../../src/regexp/backtrack.go.html#line-269">backtrack.go#L269</a>: 		case syntax.<b>InstMatch</b>:
+		<a href="../../src/regexp/exec.go.html#line-278">exec.go#L278</a>: 		case syntax.<b>InstMatch</b>:
+		<a href="../../src/regexp/exec.go.html#line-361" class="path-duplicate">exec.go</a><a href="../../src/regexp/exec.go.html#line-361">#L361</a>: 	case syntax.<b>InstMatch</b>, syntax.InstRune, syntax.InstRune1, syntax.InstRuneAny, syntax.InstRuneAnyNotNL:
+		<a href="../../src/regexp/exec.go.html#line-450" class="path-duplicate">exec.go</a><a href="../../src/regexp/exec.go.html#line-450">#L450</a>: 		case syntax.<b>InstMatch</b>:
+		<a href="../../src/regexp/onepass.go.html#line-44">onepass.go#L44</a>: 		return "", i.Op == syntax.<b>InstMatch</b>, uint32(p.Start)
+		<a href="../../src/regexp/onepass.go.html#line-54" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-54">#L54</a>: 		return "", i.Op == syntax.<b>InstMatch</b>, uint32(p.Start)
+		<a href="../../src/regexp/onepass.go.html#line-65" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-65">#L65</a>: 		p.Inst[i.Out].Op == syntax.<b>InstMatch</b> {
+		<a href="../../src/regexp/onepass.go.html#line-212" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-212">#L212</a>: 		case syntax.InstCapture, syntax.InstEmptyWidth, syntax.InstNop, syntax.<b>InstMatch</b>, syntax.InstFail:
+		<a href="../../src/regexp/onepass.go.html#line-366" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-366">#L366</a>: 		case syntax.<b>InstMatch</b>, syntax.InstFail:
+		<a href="../../src/regexp/onepass.go.html#line-367" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-367">#L367</a>: 			m[pc] = inst.Op == syntax.<b>InstMatch</b>
+		<a href="../../src/regexp/onepass.go.html#line-480" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-480">#L480</a>: 			if opOut == syntax.<b>InstMatch</b> {
+		<a href="../../src/regexp/onepass.go.html#line-484" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-484">#L484</a>: 			if opOut == syntax.<b>InstMatch</b> || prog.Inst[inst.Arg].Op == syntax.<b>InstMatch</b> {
+		<a href="../../src/regexp/onepass.go.html#line-488" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-488">#L488</a>: 			if opOut == syntax.<b>InstMatch</b> {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.deadlock</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">var <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/panic.go.html#line-1315">deadlock</a></b></span>
+
+<span class="title">8 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/panic.go.html#line-1315">panic.go#L1315</a>: var <b>deadlock</b> mutex
+		<a href="../src/runtime/panic.go.html#line-1355" class="path-duplicate">panic.go</a><a href="../src/runtime/panic.go.html#line-1355">#L1355</a>: 		lock(&amp;<b>deadlock</b>)
+		<a href="../src/runtime/panic.go.html#line-1356" class="path-duplicate">panic.go</a><a href="../src/runtime/panic.go.html#line-1356">#L1356</a>: 		lock(&amp;<b>deadlock</b>)
+		<a href="../src/runtime/proc.go.html#line-755">proc.go#L755</a>: 	lockInit(&amp;<b>deadlock</b>, lockRankDeadlock)
+		<a href="../src/runtime/proc.go.html#line-1536" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-1536">#L1536</a>: 		lock(&amp;<b>deadlock</b>)
+		<a href="../src/runtime/proc.go.html#line-1537" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-1537">#L1537</a>: 		lock(&amp;<b>deadlock</b>)
+		<a href="../src/runtime/proc.go.html#line-3878" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-3878">#L3878</a>: 		lock(&amp;<b>deadlock</b>)
+		<a href="../src/runtime/proc.go.html#line-3879" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-3879">#L3879</a>: 		lock(&amp;<b>deadlock</b>)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

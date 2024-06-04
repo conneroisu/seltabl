@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: fmt.ss.errorString</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/fmt.html">fmt</a>.<a href="../src/fmt/scan.go.html#line-157">ss</a>.<a href="../src/fmt/scan.go.html#line-243">errorString</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">24 uses</span>
+
+	fmt (current package)
+		<a href="../src/fmt/scan.go.html#line-243">scan.go#L243</a>: func (s *ss) <b>errorString</b>(err string) {
+		<a href="../src/fmt/scan.go.html#line-433" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-433">#L433</a>: 			s.<b>errorString</b>("unexpected newline")
+		<a href="../src/fmt/scan.go.html#line-526" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-526">#L526</a>: 	s.<b>errorString</b>("bad verb '%" + string(verb) + "' for " + typ)
+		<a href="../src/fmt/scan.go.html#line-592" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-592">#L592</a>: 			s.<b>errorString</b>("expected integer")
+		<a href="../src/fmt/scan.go.html#line-607" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-607">#L607</a>: 		s.<b>errorString</b>("overflow on character value " + string(r))
+		<a href="../src/fmt/scan.go.html#line-648" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-648">#L648</a>: 			s.<b>errorString</b>("bad unicode format ")
+		<a href="../src/fmt/scan.go.html#line-664" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-664">#L664</a>: 		s.<b>errorString</b>("integer overflow on token " + tok)
+		<a href="../src/fmt/scan.go.html#line-681" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-681">#L681</a>: 			s.<b>errorString</b>("bad unicode format ")
+		<a href="../src/fmt/scan.go.html#line-694" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-694">#L694</a>: 		s.<b>errorString</b>("unsigned integer overflow on token " + tok)
+		<a href="../src/fmt/scan.go.html#line-877" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-877">#L877</a>: 		s.<b>errorString</b>("expected quoted string")
+		<a href="../src/fmt/scan.go.html#line-911" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-911">#L911</a>: 		s.<b>errorString</b>("illegal hex digit")
+		<a href="../src/fmt/scan.go.html#line-928" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-928">#L928</a>: 		s.<b>errorString</b>("no hex data for %x string")
+		<a href="../src/fmt/scan.go.html#line-948" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-948">#L948</a>: 		s.<b>errorString</b>("missing literal %")
+		<a href="../src/fmt/scan.go.html#line-1021" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-1021">#L1021</a>: 			s.<b>errorString</b>("type not a pointer: " + val.Type().String())
+		<a href="../src/fmt/scan.go.html#line-1037" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-1037">#L1037</a>: 				s.<b>errorString</b>("can't scan type: " + val.Type().String())
+		<a href="../src/fmt/scan.go.html#line-1051" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-1051">#L1051</a>: 			s.<b>errorString</b>("can't scan type: " + val.Type().String())
+		<a href="../src/fmt/scan.go.html#line-1084" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-1084">#L1084</a>: 				s.<b>errorString</b>("expected newline")
+		<a href="../src/fmt/scan.go.html#line-1129" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-1129">#L1129</a>: 					s.<b>errorString</b>("newline in format does not match input")
+		<a href="../src/fmt/scan.go.html#line-1138" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-1138">#L1138</a>: 						s.<b>errorString</b>("expected space in input to match format")
+		<a href="../src/fmt/scan.go.html#line-1141" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-1141">#L1141</a>: 						s.<b>errorString</b>("newline in input does not match format")
+		<a href="../src/fmt/scan.go.html#line-1158" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-1158">#L1158</a>: 				s.<b>errorString</b>("missing verb: % at end of format string")
+		<a href="../src/fmt/scan.go.html#line-1195" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-1195">#L1195</a>: 				s.<b>errorString</b>("input does not match format")
+		<a href="../src/fmt/scan.go.html#line-1225" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-1225">#L1225</a>: 			s.<b>errorString</b>("too few operands for format '%" + format[i-w:] + "'")
+		<a href="../src/fmt/scan.go.html#line-1235" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-1235">#L1235</a>: 		s.<b>errorString</b>("too many operands")
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

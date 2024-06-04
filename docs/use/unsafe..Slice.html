@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: unsafe.Slice</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/unsafe.html">unsafe</a>.<a href="../src/unsafe/unsafe.go.html#line-241">Slice</a></b></span>
+
+<span class="title">24 uses</span>
+
+	unsafe (current package)
+		<a href="../src/unsafe/unsafe.go.html#line-241">unsafe.go#L241</a>: func <b>Slice</b>(ptr *ArbitraryType, len IntegerType) []ArbitraryType
+
+	<a href="../pkg/crypto/internal/boring/bbig.html">crypto/internal/boring/bbig</a>
+		<a href="../src/crypto/internal/boring/bbig/big.go.html#line-21">big.go#L21</a>: 	return unsafe.<b>Slice</b>((*uint)(&amp;x[0]), len(x))
+		<a href="../src/crypto/internal/boring/bbig/big.go.html#line-31" class="path-duplicate">big.go</a><a href="../src/crypto/internal/boring/bbig/big.go.html#line-31">#L31</a>: 	x := unsafe.<b>Slice</b>((*big.Word)(&amp;b[0]), len(b))
+
+	<a href="../pkg/internal/abi.html">internal/abi</a>
+		<a href="../src/internal/abi/type.go.html#line-188">type.go#L188</a>: 	return unsafe.<b>Slice</b>(t.GCData, int(end))[begin:]
+
+	<a href="../pkg/net.html">net</a>
+		<a href="../src/net/cgo_unix.go.html#line-327">cgo_unix.go#L327</a>: 		memSlice := unsafe.<b>Slice</b>((*byte)(mem), resStateSize)
+		<a href="../src/net/cgo_unix.go.html#line-370" class="path-duplicate">cgo_unix.go</a><a href="../src/net/cgo_unix.go.html#line-370">#L370</a>: 	if _, err := p.Start(unsafe.<b>Slice</b>((*byte)(unsafe.Pointer(buf)), size)); err != nil {
+
+	<a href="../pkg/os.html">os</a>
+		<a href="../src/os/file.go.html#line-294">file.go#L294</a>: 	b := unsafe.<b>Slice</b>(unsafe.StringData(s), len(s))
+
+	<a href="../pkg/reflect.html">reflect</a>
+		<a href="../src/reflect/type.go.html#line-1776">type.go#L1776</a>: 	args := unsafe.<b>Slice</b>((**rtype)(unsafe.Pointer(o.Field(1).Addr().Pointer())), n)[0:0:n]
+		<a href="../src/reflect/value.go.html#line-335">value.go#L335</a>: 		return unsafe.<b>Slice</b>(p, n)
+		<a href="../src/reflect/value.go.html#line-1615" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1615">#L1615</a>: 			return isZero(unsafe.<b>Slice</b>(((*byte)(v.ptr)), typ.Size()))
+		<a href="../src/reflect/value.go.html#line-1641" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1641">#L1641</a>: 			return isZero(unsafe.<b>Slice</b>(((*byte)(v.ptr)), typ.Size()))
+		<a href="../src/reflect/value.go.html#line-1684" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1684">#L1684</a>: 	w := unsafe.<b>Slice</b>((*uint64)(unsafe.Pointer(&amp;b[0])), len(b)/8)
+
+	<a href="../pkg/runtime.html">runtime</a>
+		<a href="../src/runtime/iface.go.html#line-468">iface.go#L468</a>: 	oldEntries := unsafe.<b>Slice</b>(&amp;oldC.Entries[0], oldC.Mask+1)
+		<a href="../src/runtime/iface.go.html#line-488" class="path-duplicate">iface.go</a><a href="../src/runtime/iface.go.html#line-488">#L488</a>: 	newEntries := unsafe.<b>Slice</b>(&amp;newC.Entries[0], newN)
+		<a href="../src/runtime/iface.go.html#line-522" class="path-duplicate">iface.go</a><a href="../src/runtime/iface.go.html#line-522">#L522</a>: 	cases := unsafe.<b>Slice</b>(&amp;s.Cases[0], s.NCases)
+		<a href="../src/runtime/iface.go.html#line-574" class="path-duplicate">iface.go</a><a href="../src/runtime/iface.go.html#line-574">#L574</a>: 	oldEntries := unsafe.<b>Slice</b>(&amp;oldC.Entries[0], oldC.Mask+1)
+		<a href="../src/runtime/iface.go.html#line-594" class="path-duplicate">iface.go</a><a href="../src/runtime/iface.go.html#line-594">#L594</a>: 	newEntries := unsafe.<b>Slice</b>(&amp;newC.Entries[0], newN)
+		<a href="../src/runtime/pinner.go.html#line-307">pinner.go#L307</a>: 	for _, x := range unsafe.<b>Slice</b>((*uint64)(unsafe.Pointer(&amp;p.x)), bytes/8) {
+		<a href="../src/runtime/slice.go.html#line-369">slice.go#L369</a>: 	return unsafe.<b>Slice</b>((*byte)(mallocgc(uintptr(len), nil, false)), len)
+		<a href="../src/runtime/stkframe.go.html#line-250">stkframe.go#L250</a>: 			objs = unsafe.<b>Slice</b>(r0, int(n))
+		<a href="../src/runtime/string.go.html#line-268">string.go#L268</a>: 	return unsafe.String((*byte)(p), size), unsafe.<b>Slice</b>((*byte)(p), size)
+		<a href="../src/runtime/trace2stack.go.html#line-123">trace2stack.go#L123</a>: 			stack := unsafe.<b>Slice</b>((*uintptr)(unsafe.Pointer(&amp;stk.data[0])), uintptr(len(stk.data))/unsafe.Sizeof(uintptr(0)))
+
+	<a href="../pkg/syscall.html">syscall</a>
+		<a href="../src/syscall/syscall_linux.go.html#line-658">syscall_linux.go#L658</a>: 		sa.Name = string(unsafe.<b>Slice</b>((*byte)(unsafe.Pointer(&amp;pp.Path[0])), n))
+		<a href="../src/syscall/syscall_unix.go.html#line-60">syscall_unix.go#L60</a>: 	b := unsafe.<b>Slice</b>((*byte)(unsafe.Pointer(addr)), length)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

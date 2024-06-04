@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: strings.Contains</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/strings.html">strings</a>.<a href="../src/strings/strings.go.html#line-60">Contains</a></b></span>
+
+<span class="title">30 uses</span>
+
+	strings (current package)
+		<a href="../src/strings/strings.go.html#line-60">strings.go#L60</a>: func <b>Contains</b>(s, substr string) bool {
+
+	<a href="../pkg/crypto/x509.html">crypto/x509</a>
+		<a href="../src/crypto/x509/parser.go.html#line-585">parser.go#L585</a>: 				if strings.<b>Contains</b>(constraint, "@") {
+		<a href="../src/crypto/x509/root_unix.go.html#line-107">root_unix.go#L107</a>: 	return err == nil &amp;&amp; !strings.<b>Contains</b>(target, "/")
+		<a href="../src/crypto/x509/verify.go.html#line-397">verify.go#L397</a>: 	if strings.<b>Contains</b>(constraint, "@") {
+		<a href="../src/crypto/x509/verify.go.html#line-424" class="path-duplicate">verify.go</a><a href="../src/crypto/x509/verify.go.html#line-424">#L424</a>: 	if strings.<b>Contains</b>(host, ":") &amp;&amp; !strings.HasSuffix(host, "]") {
+
+	<a href="../pkg/encoding/pem.html">encoding/pem</a>
+		<a href="../src/encoding/pem/pem.go.html#line-243">pem.go#L243</a>: 		if strings.<b>Contains</b>(k, ":") {
+
+	<a href="../pkg/github.com/andybalholm/cascadia.html">github.com/andybalholm/cascadia</a>
+		<a href="../src/github.com/andybalholm/cascadia/pseudo_classes.go.html#line-105">pseudo_classes.go#L105</a>: 	return strings.<b>Contains</b>(text, s.value)
+		<a href="../src/github.com/andybalholm/cascadia/selector.go.html#line-407">selector.go#L407</a>: 				return strings.<b>Contains</b>(strings.ToLower(s), strings.ToLower(val))
+		<a href="../src/github.com/andybalholm/cascadia/selector.go.html#line-409" class="path-duplicate">selector.go</a><a href="../src/github.com/andybalholm/cascadia/selector.go.html#line-409">#L409</a>: 			return strings.<b>Contains</b>(s, val)
+
+	<a href="../pkg/github.com/conneroisu/seltabl/internal/errors.html">github.com/conneroisu/seltabl/internal/errors</a>
+		<a href="../src/github.com/conneroisu/seltabl/internal/errors/selection.go.html#line-77">selection.go#L77</a>: 		if strings.<b>Contains</b>(value, highlightSelector) {
+		<a href="../src/github.com/conneroisu/seltabl/internal/errors/selector.go.html#line-68">selector.go#L68</a>: 		if strings.<b>Contains</b>(value, highlightSelector) {
+
+	<a href="../pkg/github.com/PuerkitoBio^56e6a/goquery.html">github.com/PuerkitoBio/goquery</a>
+		<a href="../src/github.com/PuerkitoBio^56e6a/goquery/property.go.html#line-128">property.go#L128</a>: 			if !strings.<b>Contains</b>(curClasses, " "+newClass+" ") {
+		<a href="../src/github.com/PuerkitoBio^56e6a/goquery/property.go.html#line-145" class="path-duplicate">property.go</a><a href="../src/github.com/PuerkitoBio^56e6a/goquery/property.go.html#line-145">#L145</a>: 		if strings.<b>Contains</b>(classes, class) {
+		<a href="../src/github.com/PuerkitoBio^56e6a/goquery/property.go.html#line-195" class="path-duplicate">property.go</a><a href="../src/github.com/PuerkitoBio^56e6a/goquery/property.go.html#line-195">#L195</a>: 			if strings.<b>Contains</b>(classes, " "+tcl+" ") {
+
+	<a href="../pkg/golang.org/x/net/html.html">golang.org/x/net/html</a>
+		<a href="../src/golang.org/x/net/html/render.go.html#line-260">render.go#L260</a>: 	if strings.<b>Contains</b>(s, `"`) {
+
+	<a href="../pkg/net/http.html">net/http</a>
+		<a href="../src/net/http/cookie.go.html#line-317">cookie.go#L317</a>: 	if net.ParseIP(v) != nil &amp;&amp; !strings.<b>Contains</b>(v, ":") {
+		<a href="../src/net/http/fs.go.html#line-804">fs.go#L804</a>: 	if !strings.<b>Contains</b>(v, "..") {
+		<a href="../src/net/http/h2_bundle.go.html#line-3354">h2_bundle.go#L3354</a>: 	if strings.<b>Contains</b>(e, "http2debug=1") {
+		<a href="../src/net/http/h2_bundle.go.html#line-3357" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-3357">#L3357</a>: 	if strings.<b>Contains</b>(e, "http2debug=2") {
+		<a href="../src/net/http/h2_bundle.go.html#line-4555" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-4555">#L4555</a>: 	if strings.<b>Contains</b>(str, "use of closed network connection") {
+		<a href="../src/net/http/h2_bundle.go.html#line-7022" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-7022">#L7022</a>: 	if !strings.<b>Contains</b>(v, ",") {
+		<a href="../src/net/http/server.go.html#line-1535">server.go#L1535</a>: 	if !strings.<b>Contains</b>(v, ",") {
+		<a href="../src/net/http/server.go.html#line-2475" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-2475">#L2475</a>: 	if !strings.<b>Contains</b>(h, ":") {
+		<a href="../src/net/http/server.go.html#line-3151" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-3151">#L3151</a>: 		if strings.<b>Contains</b>(r.URL.RawQuery, ";") {
+
+	<a href="../pkg/net/url.html">net/url</a>
+		<a href="../src/net/url/url.go.html#line-554">url.go#L554</a>: 		if segment, _, _ := strings.Cut(rest, "/"); strings.<b>Contains</b>(segment, ":") {
+		<a href="../src/net/url/url.go.html#line-603" class="path-duplicate">url.go</a><a href="../src/net/url/url.go.html#line-603">#L603</a>: 	if !strings.<b>Contains</b>(userinfo, ":") {
+		<a href="../src/net/url/url.go.html#line-851" class="path-duplicate">url.go</a><a href="../src/net/url/url.go.html#line-851">#L851</a>: 			if segment, _, _ := strings.Cut(path, "/"); strings.<b>Contains</b>(segment, ":") {
+		<a href="../src/net/url/url.go.html#line-943" class="path-duplicate">url.go</a><a href="../src/net/url/url.go.html#line-943">#L943</a>: 		if strings.<b>Contains</b>(key, ";") {
+
+	<a href="../pkg/path/filepath.html">path/filepath</a>
+		<a href="../src/path/filepath/match.go.html#line-51">match.go#L51</a>: 			return !strings.<b>Contains</b>(name, string(Separator)), nil
+
+	<a href="../pkg/regexp.html">regexp</a>
+		<a href="../src/regexp/regexp.go.html#line-578">regexp.go#L578</a>: 	if strings.<b>Contains</b>(repl, "$") {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

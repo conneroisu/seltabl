@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.trace</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">var <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/trace2.go.html#line-32">trace</a></b></span>
+
+<span class="title">159 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/mstats.go.html#line-462">mstats.go#L462</a>: 		lock(&amp;<b>trace</b>.lock)
+		<a href="../src/runtime/mstats.go.html#line-500" class="path-duplicate">mstats.go</a><a href="../src/runtime/mstats.go.html#line-500">#L500</a>: 		unlock(&amp;<b>trace</b>.lock)
+		<a href="../src/runtime/trace2.go.html#line-32">trace2.go#L32</a>: var <b>trace</b> struct {
+		<a href="../src/runtime/trace2.go.html#line-151" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-151">#L151</a>: 	firstGen := traceNextGen(<b>trace</b>.lastNonZeroGen)
+		<a href="../src/runtime/trace2.go.html#line-154" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-154">#L154</a>: 	<b>trace</b>.seqGC = 1
+		<a href="../src/runtime/trace2.go.html#line-157" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-157">#L157</a>: 	<b>trace</b>.headerWritten = false
+		<a href="../src/runtime/trace2.go.html#line-158" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-158">#L158</a>: 	<b>trace</b>.readerGen.Store(firstGen)
+		<a href="../src/runtime/trace2.go.html#line-159" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-159">#L159</a>: 	<b>trace</b>.flushedGen.Store(0)
+		<a href="../src/runtime/trace2.go.html#line-216" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-216">#L216</a>: 	<b>trace</b>.gen.Store(firstGen)
+		<a href="../src/runtime/trace2.go.html#line-230" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-230">#L230</a>: 	for <b>trace</b>.exitingSyscall.Load() != 0 {
+		<a href="../src/runtime/trace2.go.html#line-282" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-282">#L282</a>: 	gen := <b>trace</b>.gen.Load()
+		<a href="../src/runtime/trace2.go.html#line-368" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-368">#L368</a>: 	<b>trace</b>.lastNonZeroGen = gen
+		<a href="../src/runtime/trace2.go.html#line-375" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-375">#L375</a>: 			lock(&amp;<b>trace</b>.lock)
+		<a href="../src/runtime/trace2.go.html#line-376" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-376">#L376</a>: 			<b>trace</b>.shutdown.Store(true)
+		<a href="../src/runtime/trace2.go.html#line-377" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-377">#L377</a>: 			<b>trace</b>.gen.Store(0)
+		<a href="../src/runtime/trace2.go.html#line-378" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-378">#L378</a>: 			unlock(&amp;<b>trace</b>.lock)
+		<a href="../src/runtime/trace2.go.html#line-381" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-381">#L381</a>: 		<b>trace</b>.gen.Store(traceNextGen(gen))
+		<a href="../src/runtime/trace2.go.html#line-466" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-466">#L466</a>: 				lock(&amp;<b>trace</b>.lock)
+		<a href="../src/runtime/trace2.go.html#line-472" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-472">#L472</a>: 				unlock(&amp;<b>trace</b>.lock)
+		<a href="../src/runtime/trace2.go.html#line-529" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-529">#L529</a>: 		<b>trace</b>.stackTab[gen%2].dump(gen)
+		<a href="../src/runtime/trace2.go.html#line-530" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-530">#L530</a>: 		<b>trace</b>.stringTab[gen%2].reset(gen)
+		<a href="../src/runtime/trace2.go.html#line-533" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-533">#L533</a>: 		lock(&amp;<b>trace</b>.lock)
+		<a href="../src/runtime/trace2.go.html#line-534" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-534">#L534</a>: 		<b>trace</b>.flushedGen.Store(gen)
+		<a href="../src/runtime/trace2.go.html#line-535" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-535">#L535</a>: 		unlock(&amp;<b>trace</b>.lock)
+		<a href="../src/runtime/trace2.go.html#line-573" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-573">#L573</a>: 	semacquire(&amp;<b>trace</b>.doneSema[gen%2])
+		<a href="../src/runtime/trace2.go.html#line-575" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-575">#L575</a>: 		raceacquire(unsafe.Pointer(&amp;<b>trace</b>.doneSema[gen%2]))
+		<a href="../src/runtime/trace2.go.html#line-581" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-581">#L581</a>: 		lock(&amp;<b>trace</b>.lock)
+		<a href="../src/runtime/trace2.go.html#line-582" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-582">#L582</a>: 		if !<b>trace</b>.full[gen%2].empty() {
+		<a href="../src/runtime/trace2.go.html#line-586" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-586">#L586</a>: 			if !<b>trace</b>.full[1-(gen%2)].empty() {
+		<a href="../src/runtime/trace2.go.html#line-589" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-589">#L589</a>: 			if <b>trace</b>.reading != nil || <b>trace</b>.reader.Load() != nil {
+		<a href="../src/runtime/trace2.go.html#line-593" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-593">#L593</a>: 			for <b>trace</b>.empty != nil {
+		<a href="../src/runtime/trace2.go.html#line-594" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-594">#L594</a>: 				buf := <b>trace</b>.empty
+		<a href="../src/runtime/trace2.go.html#line-595" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-595">#L595</a>: 				<b>trace</b>.empty = buf.link
+		<a href="../src/runtime/trace2.go.html#line-599" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-599">#L599</a>: 			<b>trace</b>.headerWritten = false
+		<a href="../src/runtime/trace2.go.html#line-600" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-600">#L600</a>: 			<b>trace</b>.shutdown.Store(false)
+		<a href="../src/runtime/trace2.go.html#line-602" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-602">#L602</a>: 		unlock(&amp;<b>trace</b>.lock)
+		<a href="../src/runtime/trace2.go.html#line-658" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-658">#L658</a>: 		<b>trace</b>.markWorkerLabels[gen%2][i] = traceArg(<b>trace</b>.stringTab[gen%2].put(gen, label))
+		<a href="../src/runtime/trace2.go.html#line-661" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-661">#L661</a>: 		<b>trace</b>.goBlockReasons[gen%2][i] = traceArg(<b>trace</b>.stringTab[gen%2].put(gen, str))
+		<a href="../src/runtime/trace2.go.html#line-664" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-664">#L664</a>: 		<b>trace</b>.goStopReasons[gen%2][i] = traceArg(<b>trace</b>.stringTab[gen%2].put(gen, str))
+		<a href="../src/runtime/trace2.go.html#line-682" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-682">#L682</a>: 			if !<b>trace</b>.reader.CompareAndSwapNoWB(nil, gp) {
+		<a href="../src/runtime/trace2.go.html#line-726" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-726">#L726</a>: 	lock(&amp;<b>trace</b>.lock)
+		<a href="../src/runtime/trace2.go.html#line-728" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-728">#L728</a>: 	if <b>trace</b>.reader.Load() != nil {
+		<a href="../src/runtime/trace2.go.html#line-732" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-732">#L732</a>: 		unlock(&amp;<b>trace</b>.lock)
+		<a href="../src/runtime/trace2.go.html#line-737" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-737">#L737</a>: 	if buf := <b>trace</b>.reading; buf != nil {
+		<a href="../src/runtime/trace2.go.html#line-738" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-738">#L738</a>: 		buf.link = <b>trace</b>.empty
+		<a href="../src/runtime/trace2.go.html#line-739" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-739">#L739</a>: 		<b>trace</b>.empty = buf
+		<a href="../src/runtime/trace2.go.html#line-740" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-740">#L740</a>: 		<b>trace</b>.reading = nil
+		<a href="../src/runtime/trace2.go.html#line-743" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-743">#L743</a>: 	if !<b>trace</b>.headerWritten {
+		<a href="../src/runtime/trace2.go.html#line-744" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-744">#L744</a>: 		<b>trace</b>.headerWritten = true
+		<a href="../src/runtime/trace2.go.html#line-745" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-745">#L745</a>: 		unlock(&amp;<b>trace</b>.lock)
+		<a href="../src/runtime/trace2.go.html#line-751" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-751">#L751</a>: 	if <b>trace</b>.readerGen.Load() == 0 {
+		<a href="../src/runtime/trace2.go.html#line-752" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-752">#L752</a>: 		<b>trace</b>.readerGen.Store(1)
+		<a href="../src/runtime/trace2.go.html#line-756" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-756">#L756</a>: 		assertLockHeld(&amp;<b>trace</b>.lock)
+		<a href="../src/runtime/trace2.go.html#line-757" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-757">#L757</a>: 		gen = <b>trace</b>.readerGen.Load()
+		<a href="../src/runtime/trace2.go.html#line-761" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-761">#L761</a>: 		if !<b>trace</b>.full[gen%2].empty() {
+		<a href="../src/runtime/trace2.go.html#line-769" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-769">#L769</a>: 		if <b>trace</b>.flushedGen.Load() == gen {
+		<a href="../src/runtime/trace2.go.html#line-770" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-770">#L770</a>: 			if <b>trace</b>.shutdown.Load() {
+		<a href="../src/runtime/trace2.go.html#line-771" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-771">#L771</a>: 				unlock(&amp;<b>trace</b>.lock)
+		<a href="../src/runtime/trace2.go.html#line-781" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-781">#L781</a>: 					racerelease(unsafe.Pointer(&amp;<b>trace</b>.doneSema[gen%2]))
+		<a href="../src/runtime/trace2.go.html#line-783" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-783">#L783</a>: 				semrelease(&amp;<b>trace</b>.doneSema[gen%2])
+		<a href="../src/runtime/trace2.go.html#line-792" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-792">#L792</a>: 			<b>trace</b>.readerGen.Store(<b>trace</b>.gen.Load())
+		<a href="../src/runtime/trace2.go.html#line-793" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-793">#L793</a>: 			unlock(&amp;<b>trace</b>.lock)
+		<a href="../src/runtime/trace2.go.html#line-801" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-801">#L801</a>: 				racerelease(unsafe.Pointer(&amp;<b>trace</b>.doneSema[gen%2]))
+		<a href="../src/runtime/trace2.go.html#line-803" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-803">#L803</a>: 			semrelease(&amp;<b>trace</b>.doneSema[gen%2])
+		<a href="../src/runtime/trace2.go.html#line-806" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-806">#L806</a>: 			lock(&amp;<b>trace</b>.lock)
+		<a href="../src/runtime/trace2.go.html#line-818" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-818">#L818</a>: 		<b>trace</b>.workAvailable.Store(false)
+		<a href="../src/runtime/trace2.go.html#line-819" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-819">#L819</a>: 		unlock(&amp;<b>trace</b>.lock)
+		<a href="../src/runtime/trace2.go.html#line-823" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-823">#L823</a>: 	tbuf := <b>trace</b>.full[gen%2].pop()
+		<a href="../src/runtime/trace2.go.html#line-824" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-824">#L824</a>: 	<b>trace</b>.reading = tbuf
+		<a href="../src/runtime/trace2.go.html#line-825" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-825">#L825</a>: 	unlock(&amp;<b>trace</b>.lock)
+		<a href="../src/runtime/trace2.go.html#line-837" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-837">#L837</a>: 	if gp == nil || !<b>trace</b>.reader.CompareAndSwapNoWB(gp, nil) {
+		<a href="../src/runtime/trace2.go.html#line-861" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-861">#L861</a>: 	if <b>trace</b>.flushedGen.Load() == <b>trace</b>.readerGen.Load() || <b>trace</b>.workAvailable.Load() || <b>trace</b>.shutdown.Load() {
+		<a href="../src/runtime/trace2.go.html#line-862" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-862">#L862</a>: 		return <b>trace</b>.reader.Load()
+		<a href="../src/runtime/trace2buf.go.html#line-72">trace2buf.go#L72</a>: 		lock(&amp;<b>trace</b>.lock)
+		<a href="../src/runtime/trace2buf.go.html#line-76" class="path-duplicate">trace2buf.go</a><a href="../src/runtime/trace2buf.go.html#line-76">#L76</a>: 		unlock(&amp;<b>trace</b>.lock)
+		<a href="../src/runtime/trace2buf.go.html#line-85" class="path-duplicate">trace2buf.go</a><a href="../src/runtime/trace2buf.go.html#line-85">#L85</a>: 		lock(&amp;<b>trace</b>.lock)
+		<a href="../src/runtime/trace2buf.go.html#line-89" class="path-duplicate">trace2buf.go</a><a href="../src/runtime/trace2buf.go.html#line-89">#L89</a>: 		if <b>trace</b>.empty != nil {
+		<a href="../src/runtime/trace2buf.go.html#line-90" class="path-duplicate">trace2buf.go</a><a href="../src/runtime/trace2buf.go.html#line-90">#L90</a>: 			w.traceBuf = <b>trace</b>.empty
+		<a href="../src/runtime/trace2buf.go.html#line-91" class="path-duplicate">trace2buf.go</a><a href="../src/runtime/trace2buf.go.html#line-91">#L91</a>: 			<b>trace</b>.empty = w.traceBuf.link
+		<a href="../src/runtime/trace2buf.go.html#line-92" class="path-duplicate">trace2buf.go</a><a href="../src/runtime/trace2buf.go.html#line-92">#L92</a>: 			unlock(&amp;<b>trace</b>.lock)
+		<a href="../src/runtime/trace2buf.go.html#line-94" class="path-duplicate">trace2buf.go</a><a href="../src/runtime/trace2buf.go.html#line-94">#L94</a>: 			unlock(&amp;<b>trace</b>.lock)
+		<a href="../src/runtime/trace2buf.go.html#line-241" class="path-duplicate">trace2buf.go</a><a href="../src/runtime/trace2buf.go.html#line-241">#L241</a>: 	assertLockHeld(&amp;<b>trace</b>.lock)
+		<a href="../src/runtime/trace2buf.go.html#line-252" class="path-duplicate">trace2buf.go</a><a href="../src/runtime/trace2buf.go.html#line-252">#L252</a>: 	<b>trace</b>.full[gen%2].push(buf)
+		<a href="../src/runtime/trace2buf.go.html#line-256" class="path-duplicate">trace2buf.go</a><a href="../src/runtime/trace2buf.go.html#line-256">#L256</a>: 	if !<b>trace</b>.workAvailable.Load() {
+		<a href="../src/runtime/trace2buf.go.html#line-257" class="path-duplicate">trace2buf.go</a><a href="../src/runtime/trace2buf.go.html#line-257">#L257</a>: 		<b>trace</b>.workAvailable.Store(true)
+		<a href="../src/runtime/trace2cpu.go.html#line-20">trace2cpu.go#L20</a>: 	<b>trace</b>.cpuLogRead[0] = newProfBuf(3, profBufWordCount, profBufTagCount)
+		<a href="../src/runtime/trace2cpu.go.html#line-21" class="path-duplicate">trace2cpu.go</a><a href="../src/runtime/trace2cpu.go.html#line-21">#L21</a>: 	<b>trace</b>.cpuLogRead[1] = newProfBuf(3, profBufWordCount, profBufTagCount)
+		<a href="../src/runtime/trace2cpu.go.html#line-29" class="path-duplicate">trace2cpu.go</a><a href="../src/runtime/trace2cpu.go.html#line-29">#L29</a>: 	<b>trace</b>.cpuLogWrite[0].Store(<b>trace</b>.cpuLogRead[0])
+		<a href="../src/runtime/trace2cpu.go.html#line-30" class="path-duplicate">trace2cpu.go</a><a href="../src/runtime/trace2cpu.go.html#line-30">#L30</a>: 	<b>trace</b>.cpuLogWrite[1].Store(<b>trace</b>.cpuLogRead[1])
+		<a href="../src/runtime/trace2cpu.go.html#line-42" class="path-duplicate">trace2cpu.go</a><a href="../src/runtime/trace2cpu.go.html#line-42">#L42</a>: 	<b>trace</b>.cpuSleep = newWakeableSleep()
+		<a href="../src/runtime/trace2cpu.go.html#line-56" class="path-duplicate">trace2cpu.go</a><a href="../src/runtime/trace2cpu.go.html#line-56">#L56</a>: 			<b>trace</b>.cpuSleep.sleep(100_000_000)
+		<a href="../src/runtime/trace2cpu.go.html#line-71" class="path-duplicate">trace2cpu.go</a><a href="../src/runtime/trace2cpu.go.html#line-71">#L71</a>: 	<b>trace</b>.cpuLogDone = done
+		<a href="../src/runtime/trace2cpu.go.html#line-89" class="path-duplicate">trace2cpu.go</a><a href="../src/runtime/trace2cpu.go.html#line-89">#L89</a>: 	<b>trace</b>.cpuLogWrite[0].Store(nil)
+		<a href="../src/runtime/trace2cpu.go.html#line-90" class="path-duplicate">trace2cpu.go</a><a href="../src/runtime/trace2cpu.go.html#line-90">#L90</a>: 	<b>trace</b>.cpuLogWrite[1].Store(nil)
+		<a href="../src/runtime/trace2cpu.go.html#line-91" class="path-duplicate">trace2cpu.go</a><a href="../src/runtime/trace2cpu.go.html#line-91">#L91</a>: 	<b>trace</b>.cpuLogRead[0].close()
+		<a href="../src/runtime/trace2cpu.go.html#line-92" class="path-duplicate">trace2cpu.go</a><a href="../src/runtime/trace2cpu.go.html#line-92">#L92</a>: 	<b>trace</b>.cpuLogRead[1].close()
+		<a href="../src/runtime/trace2cpu.go.html#line-93" class="path-duplicate">trace2cpu.go</a><a href="../src/runtime/trace2cpu.go.html#line-93">#L93</a>: 	<b>trace</b>.cpuSleep.wake()
+		<a href="../src/runtime/trace2cpu.go.html#line-96" class="path-duplicate">trace2cpu.go</a><a href="../src/runtime/trace2cpu.go.html#line-96">#L96</a>: 	&lt;-<b>trace</b>.cpuLogDone
+		<a href="../src/runtime/trace2cpu.go.html#line-99" class="path-duplicate">trace2cpu.go</a><a href="../src/runtime/trace2cpu.go.html#line-99">#L99</a>: 	<b>trace</b>.cpuLogDone = nil
+		<a href="../src/runtime/trace2cpu.go.html#line-100" class="path-duplicate">trace2cpu.go</a><a href="../src/runtime/trace2cpu.go.html#line-100">#L100</a>: 	<b>trace</b>.cpuLogRead[0] = nil
+		<a href="../src/runtime/trace2cpu.go.html#line-101" class="path-duplicate">trace2cpu.go</a><a href="../src/runtime/trace2cpu.go.html#line-101">#L101</a>: 	<b>trace</b>.cpuLogRead[1] = nil
+		<a href="../src/runtime/trace2cpu.go.html#line-102" class="path-duplicate">trace2cpu.go</a><a href="../src/runtime/trace2cpu.go.html#line-102">#L102</a>: 	<b>trace</b>.cpuSleep.close()
+		<a href="../src/runtime/trace2cpu.go.html#line-121" class="path-duplicate">trace2cpu.go</a><a href="../src/runtime/trace2cpu.go.html#line-121">#L121</a>: 	data, tags, eof := <b>trace</b>.cpuLogRead[gen%2].read(profBufNonBlocking)
+		<a href="../src/runtime/trace2cpu.go.html#line-170" class="path-duplicate">trace2cpu.go</a><a href="../src/runtime/trace2cpu.go.html#line-170">#L170</a>: 		w := unsafeTraceWriter(gen, <b>trace</b>.cpuBuf[gen%2])
+		<a href="../src/runtime/trace2cpu.go.html#line-181" class="path-duplicate">trace2cpu.go</a><a href="../src/runtime/trace2cpu.go.html#line-181">#L181</a>: 		stackID := <b>trace</b>.stackTab[gen%2].put(pcBuf[:nstk])
+		<a href="../src/runtime/trace2cpu.go.html#line-191" class="path-duplicate">trace2cpu.go</a><a href="../src/runtime/trace2cpu.go.html#line-191">#L191</a>: 		<b>trace</b>.cpuBuf[gen%2] = w.traceBuf
+		<a href="../src/runtime/trace2cpu.go.html#line-205" class="path-duplicate">trace2cpu.go</a><a href="../src/runtime/trace2cpu.go.html#line-205">#L205</a>: 	if buf := <b>trace</b>.cpuBuf[gen%2]; buf != nil {
+		<a href="../src/runtime/trace2cpu.go.html#line-206" class="path-duplicate">trace2cpu.go</a><a href="../src/runtime/trace2cpu.go.html#line-206">#L206</a>: 		lock(&amp;<b>trace</b>.lock)
+		<a href="../src/runtime/trace2cpu.go.html#line-208" class="path-duplicate">trace2cpu.go</a><a href="../src/runtime/trace2cpu.go.html#line-208">#L208</a>: 		unlock(&amp;<b>trace</b>.lock)
+		<a href="../src/runtime/trace2cpu.go.html#line-209" class="path-duplicate">trace2cpu.go</a><a href="../src/runtime/trace2cpu.go.html#line-209">#L209</a>: 		<b>trace</b>.cpuBuf[gen%2] = nil
+		<a href="../src/runtime/trace2cpu.go.html#line-238" class="path-duplicate">trace2cpu.go</a><a href="../src/runtime/trace2cpu.go.html#line-238">#L238</a>: 	gen := <b>trace</b>.gen.Load()
+		<a href="../src/runtime/trace2cpu.go.html#line-269" class="path-duplicate">trace2cpu.go</a><a href="../src/runtime/trace2cpu.go.html#line-269">#L269</a>: 	for !<b>trace</b>.signalLock.CompareAndSwap(0, 1) {
+		<a href="../src/runtime/trace2cpu.go.html#line-274" class="path-duplicate">trace2cpu.go</a><a href="../src/runtime/trace2cpu.go.html#line-274">#L274</a>: 	if log := <b>trace</b>.cpuLogWrite[gen%2].Load(); log != nil {
+		<a href="../src/runtime/trace2cpu.go.html#line-281" class="path-duplicate">trace2cpu.go</a><a href="../src/runtime/trace2cpu.go.html#line-281">#L281</a>: 	<b>trace</b>.signalLock.Store(0)
+		<a href="../src/runtime/trace2event.go.html#line-176">trace2event.go#L176</a>: 	return traceArg(<b>trace</b>.stackTab[tl.gen%2].put([]uintptr{
+		<a href="../src/runtime/trace2event.go.html#line-186" class="path-duplicate">trace2event.go</a><a href="../src/runtime/trace2event.go.html#line-186">#L186</a>: 	return traceArg(<b>trace</b>.stringTab[tl.gen%2].put(tl.gen, s))
+		<a href="../src/runtime/trace2event.go.html#line-193" class="path-duplicate">trace2event.go</a><a href="../src/runtime/trace2event.go.html#line-193">#L193</a>: 	return traceArg(<b>trace</b>.stringTab[tl.gen%2].emit(tl.gen, s))
+		<a href="../src/runtime/trace2runtime.go.html#line-58">trace2runtime.go#L58</a>: 	lockInit(&amp;<b>trace</b>.stringTab[0].lock, lockRankTraceStrings)
+		<a href="../src/runtime/trace2runtime.go.html#line-59" class="path-duplicate">trace2runtime.go</a><a href="../src/runtime/trace2runtime.go.html#line-59">#L59</a>: 	lockInit(&amp;<b>trace</b>.stringTab[0].tab.lock, lockRankTraceStrings)
+		<a href="../src/runtime/trace2runtime.go.html#line-60" class="path-duplicate">trace2runtime.go</a><a href="../src/runtime/trace2runtime.go.html#line-60">#L60</a>: 	lockInit(&amp;<b>trace</b>.stringTab[1].lock, lockRankTraceStrings)
+		<a href="../src/runtime/trace2runtime.go.html#line-61" class="path-duplicate">trace2runtime.go</a><a href="../src/runtime/trace2runtime.go.html#line-61">#L61</a>: 	lockInit(&amp;<b>trace</b>.stringTab[1].tab.lock, lockRankTraceStrings)
+		<a href="../src/runtime/trace2runtime.go.html#line-62" class="path-duplicate">trace2runtime.go</a><a href="../src/runtime/trace2runtime.go.html#line-62">#L62</a>: 	lockInit(&amp;<b>trace</b>.stackTab[0].tab.lock, lockRankTraceStackTab)
+		<a href="../src/runtime/trace2runtime.go.html#line-63" class="path-duplicate">trace2runtime.go</a><a href="../src/runtime/trace2runtime.go.html#line-63">#L63</a>: 	lockInit(&amp;<b>trace</b>.stackTab[1].tab.lock, lockRankTraceStackTab)
+		<a href="../src/runtime/trace2runtime.go.html#line-64" class="path-duplicate">trace2runtime.go</a><a href="../src/runtime/trace2runtime.go.html#line-64">#L64</a>: 	lockInit(&amp;<b>trace</b>.lock, lockRankTrace)
+		<a href="../src/runtime/trace2runtime.go.html#line-74" class="path-duplicate">trace2runtime.go</a><a href="../src/runtime/trace2runtime.go.html#line-74">#L74</a>: 	lockWithRankMayAcquire(&amp;<b>trace</b>.lock, getLockRank(&amp;<b>trace</b>.lock))
+		<a href="../src/runtime/trace2runtime.go.html#line-144" class="path-duplicate">trace2runtime.go</a><a href="../src/runtime/trace2runtime.go.html#line-144">#L144</a>: 	return <b>trace</b>.gen.Load() != 0
+		<a href="../src/runtime/trace2runtime.go.html#line-149" class="path-duplicate">trace2runtime.go</a><a href="../src/runtime/trace2runtime.go.html#line-149">#L149</a>: 	return <b>trace</b>.shutdown.Load()
+		<a href="../src/runtime/trace2runtime.go.html#line-214" class="path-duplicate">trace2runtime.go</a><a href="../src/runtime/trace2runtime.go.html#line-214">#L214</a>: 	gen := <b>trace</b>.gen.Load()
+		<a href="../src/runtime/trace2runtime.go.html#line-250" class="path-duplicate">trace2runtime.go</a><a href="../src/runtime/trace2runtime.go.html#line-250">#L250</a>: 	<b>trace</b>.exitingSyscall.Add(1)
+		<a href="../src/runtime/trace2runtime.go.html#line-255" class="path-duplicate">trace2runtime.go</a><a href="../src/runtime/trace2runtime.go.html#line-255">#L255</a>: 	<b>trace</b>.exitingSyscall.Add(-1)
+		<a href="../src/runtime/trace2runtime.go.html#line-286" class="path-duplicate">trace2runtime.go</a><a href="../src/runtime/trace2runtime.go.html#line-286">#L286</a>: 	tl.eventWriter(traceGoRunning, traceProcRunning).commit(traceEvGCActive, traceArg(<b>trace</b>.seqGC))
+		<a href="../src/runtime/trace2runtime.go.html#line-289" class="path-duplicate">trace2runtime.go</a><a href="../src/runtime/trace2runtime.go.html#line-289">#L289</a>: 	<b>trace</b>.seqGC++
+		<a href="../src/runtime/trace2runtime.go.html#line-297" class="path-duplicate">trace2runtime.go</a><a href="../src/runtime/trace2runtime.go.html#line-297">#L297</a>: 	tl.eventWriter(traceGoRunning, traceProcRunning).commit(traceEvGCBegin, traceArg(<b>trace</b>.seqGC), tl.stack(3))
+		<a href="../src/runtime/trace2runtime.go.html#line-300" class="path-duplicate">trace2runtime.go</a><a href="../src/runtime/trace2runtime.go.html#line-300">#L300</a>: 	<b>trace</b>.seqGC++
+		<a href="../src/runtime/trace2runtime.go.html#line-308" class="path-duplicate">trace2runtime.go</a><a href="../src/runtime/trace2runtime.go.html#line-308">#L308</a>: 	tl.eventWriter(traceGoRunning, traceProcRunning).commit(traceEvGCEnd, traceArg(<b>trace</b>.seqGC))
+		<a href="../src/runtime/trace2runtime.go.html#line-311" class="path-duplicate">trace2runtime.go</a><a href="../src/runtime/trace2runtime.go.html#line-311">#L311</a>: 	<b>trace</b>.seqGC++
+		<a href="../src/runtime/trace2runtime.go.html#line-406" class="path-duplicate">trace2runtime.go</a><a href="../src/runtime/trace2runtime.go.html#line-406">#L406</a>: 		w = w.write(traceEvGoLabel, <b>trace</b>.markWorkerLabels[tl.gen%2][pp.ptr().gcMarkWorkerMode])
+		<a href="../src/runtime/trace2runtime.go.html#line-430" class="path-duplicate">trace2runtime.go</a><a href="../src/runtime/trace2runtime.go.html#line-430">#L430</a>: 	tl.eventWriter(traceGoRunning, traceProcRunning).commit(traceEvGoStop, traceArg(<b>trace</b>.goStopReasons[tl.gen%2][reason]), tl.stack(1))
+		<a href="../src/runtime/trace2runtime.go.html#line-438" class="path-duplicate">trace2runtime.go</a><a href="../src/runtime/trace2runtime.go.html#line-438">#L438</a>: 	tl.eventWriter(traceGoRunning, traceProcRunning).commit(traceEvGoBlock, traceArg(<b>trace</b>.goBlockReasons[tl.gen%2][reason]), tl.stack(skip))
+		<a href="../src/runtime/trace2runtime.go.html#line-681" class="path-duplicate">trace2runtime.go</a><a href="../src/runtime/trace2runtime.go.html#line-681">#L681</a>: 		lock(&amp;<b>trace</b>.lock)
+		<a href="../src/runtime/trace2runtime.go.html#line-690" class="path-duplicate">trace2runtime.go</a><a href="../src/runtime/trace2runtime.go.html#line-690">#L690</a>: 		unlock(&amp;<b>trace</b>.lock)
+		<a href="../src/runtime/trace2stack.go.html#line-79">trace2stack.go#L79</a>: 	id := <b>trace</b>.stackTab[gen%2].put(pcBuf[:nstk])
+		<a href="../src/runtime/trace2stack.go.html#line-196" class="path-duplicate">trace2stack.go</a><a href="../src/runtime/trace2stack.go.html#line-196">#L196</a>: 	frame.funcID = <b>trace</b>.stringTab[gen%2].put(gen, fn)
+		<a href="../src/runtime/trace2stack.go.html#line-202" class="path-duplicate">trace2stack.go</a><a href="../src/runtime/trace2stack.go.html#line-202">#L202</a>: 	frame.fileID = <b>trace</b>.stringTab[gen%2].put(gen, file)
+		<a href="../src/runtime/trace2string.go.html#line-94">trace2string.go#L94</a>: 		lock(&amp;<b>trace</b>.lock)
+		<a href="../src/runtime/trace2string.go.html#line-96" class="path-duplicate">trace2string.go</a><a href="../src/runtime/trace2string.go.html#line-96">#L96</a>: 		unlock(&amp;<b>trace</b>.lock)
+		<a href="../src/runtime/trace2time.go.html#line-86">trace2time.go#L86</a>: 		lock(&amp;<b>trace</b>.lock)
+		<a href="../src/runtime/trace2time.go.html#line-88" class="path-duplicate">trace2time.go</a><a href="../src/runtime/trace2time.go.html#line-88">#L88</a>: 		unlock(&amp;<b>trace</b>.lock)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

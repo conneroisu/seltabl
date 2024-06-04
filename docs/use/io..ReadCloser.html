@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: io.ReadCloser</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../pkg/io.html">io</a>.<a href="../src/io/io.go.html#line-137">ReadCloser</a></b></span>
+
+<span class="title">28 uses</span>
+
+	io (current package)
+		<a href="../src/io/io.go.html#line-137">io.go#L137</a>: type <b>ReadCloser</b> interface {
+		<a href="../src/io/io.go.html#line-682" class="path-duplicate">io.go</a><a href="../src/io/io.go.html#line-682">#L682</a>: func NopCloser(r Reader) <b>ReadCloser</b> {
+
+	<a href="../pkg/compress/flate.html">compress/flate</a>
+		<a href="../src/compress/flate/inflate.go.html#line-807">inflate.go#L807</a>: func NewReader(r io.Reader) io.<b>ReadCloser</b> {
+		<a href="../src/compress/flate/inflate.go.html#line-826" class="path-duplicate">inflate.go</a><a href="../src/compress/flate/inflate.go.html#line-826">#L826</a>: func NewReaderDict(r io.Reader, dict []byte) io.<b>ReadCloser</b> {
+
+	<a href="../pkg/compress/gzip.html">compress/gzip</a>
+		<a href="../src/compress/gzip/gunzip.go.html#line-77">gunzip.go#L77</a>: 	decompressor io.<b>ReadCloser</b>
+
+	<a href="../pkg/net/http.html">net/http</a>
+		<a href="../src/net/http/client.go.html#line-958">client.go#L958</a>: 	rc            io.<b>ReadCloser</b>
+		<a href="../src/net/http/h2_bundle.go.html#line-7445">h2_bundle.go#L7445</a>: 	reqBody              io.<b>ReadCloser</b>
+		<a href="../src/net/http/h2_bundle.go.html#line-10117" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-10117">#L10117</a>: var http2noBody io.<b>ReadCloser</b> = http2noBodyReader{}
+		<a href="../src/net/http/h2_bundle.go.html#line-10150" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-10150">#L10150</a>: 	body io.<b>ReadCloser</b> // underlying Response.Body
+		<a href="../src/net/http/http.go.html#line-121">http.go#L121</a>: 	_ io.<b>ReadCloser</b> = NoBody
+		<a href="../src/net/http/request.go.html#line-186">request.go#L186</a>: 	Body io.<b>ReadCloser</b>
+		<a href="../src/net/http/request.go.html#line-194" class="path-duplicate">request.go</a><a href="../src/net/http/request.go.html#line-194">#L194</a>: 	GetBody func() (io.<b>ReadCloser</b>, error)
+		<a href="../src/net/http/request.go.html#line-899" class="path-duplicate">request.go</a><a href="../src/net/http/request.go.html#line-899">#L899</a>: 	rc, ok := body.(io.<b>ReadCloser</b>)
+		<a href="../src/net/http/request.go.html#line-921" class="path-duplicate">request.go</a><a href="../src/net/http/request.go.html#line-921">#L921</a>: 			req.GetBody = func() (io.<b>ReadCloser</b>, error) {
+		<a href="../src/net/http/request.go.html#line-928" class="path-duplicate">request.go</a><a href="../src/net/http/request.go.html#line-928">#L928</a>: 			req.GetBody = func() (io.<b>ReadCloser</b>, error) {
+		<a href="../src/net/http/request.go.html#line-935" class="path-duplicate">request.go</a><a href="../src/net/http/request.go.html#line-935">#L935</a>: 			req.GetBody = func() (io.<b>ReadCloser</b>, error) {
+		<a href="../src/net/http/request.go.html#line-956" class="path-duplicate">request.go</a><a href="../src/net/http/request.go.html#line-956">#L956</a>: 			req.GetBody = func() (io.<b>ReadCloser</b>, error) { return NoBody, nil }
+		<a href="../src/net/http/request.go.html#line-1158" class="path-duplicate">request.go</a><a href="../src/net/http/request.go.html#line-1158">#L1158</a>: func MaxBytesReader(w ResponseWriter, r io.<b>ReadCloser</b>, n int64) io.<b>ReadCloser</b> {
+		<a href="../src/net/http/request.go.html#line-1177" class="path-duplicate">request.go</a><a href="../src/net/http/request.go.html#line-1177">#L1177</a>: 	r   io.<b>ReadCloser</b> // underlying reader
+		<a href="../src/net/http/response.go.html#line-72">response.go#L72</a>: 	Body io.<b>ReadCloser</b>
+		<a href="../src/net/http/server.go.html#line-425">server.go#L425</a>: 	reqBody          io.<b>ReadCloser</b>
+		<a href="../src/net/http/server.go.html#line-910" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-910">#L910</a>: 	readCloser io.<b>ReadCloser</b>
+		<a href="../src/net/http/server.go.html#line-2131" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-2131">#L2131</a>: func registerOnHitEOF(rc io.<b>ReadCloser</b>, fn func()) {
+		<a href="../src/net/http/server.go.html#line-2144" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-2144">#L2144</a>: func requestBodyRemains(rc io.<b>ReadCloser</b>) bool {
+		<a href="../src/net/http/transfer.go.html#line-447">transfer.go#L447</a>: 	Body          io.<b>ReadCloser</b>
+		<a href="../src/net/http/transport.go.html#line-650">transport.go#L650</a>: 	io.<b>ReadCloser</b>
+		<a href="../src/net/http/transport.go.html#line-2812" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-2812">#L2812</a>: 	body         io.<b>ReadCloser</b>
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

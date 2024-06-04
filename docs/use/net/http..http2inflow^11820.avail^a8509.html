@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/http.http2inflow.avail</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/net/http.html">net/http</a>.<a href="../../src/net/http/h2_bundle.go.html#line-1316">http2inflow</a>.<a href="../../src/net/http/h2_bundle.go.html#line-1317">avail</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">11 uses</span>
+
+	net/http (current package)
+		<a href="../../src/net/http/h2_bundle.go.html#line-1317">h2_bundle.go#L1317</a>: 	<b>avail</b>  int32
+		<a href="../../src/net/http/h2_bundle.go.html#line-1323" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1323">#L1323</a>: 	f.<b>avail</b> = n
+		<a href="../../src/net/http/h2_bundle.go.html#line-1341" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1341">#L1341</a>: 	if unsent+int64(f.<b>avail</b>) &gt; maxWindow {
+		<a href="../../src/net/http/h2_bundle.go.html#line-1345" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1345">#L1345</a>: 	if f.unsent &lt; http2inflowMinRefresh &amp;&amp; f.unsent &lt; f.<b>avail</b> {
+		<a href="../../src/net/http/h2_bundle.go.html#line-1350" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1350">#L1350</a>: 	f.<b>avail</b> += f.unsent
+		<a href="../../src/net/http/h2_bundle.go.html#line-1358" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1358">#L1358</a>: 	if n &gt; uint32(f.<b>avail</b>) {
+		<a href="../../src/net/http/h2_bundle.go.html#line-1361" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1361">#L1361</a>: 	f.<b>avail</b> -= int32(n)
+		<a href="../../src/net/http/h2_bundle.go.html#line-1369" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1369">#L1369</a>: 	if n &gt; uint32(f1.<b>avail</b>) || n &gt; uint32(f2.<b>avail</b>) {
+		<a href="../../src/net/http/h2_bundle.go.html#line-1372" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1372">#L1372</a>: 	f1.<b>avail</b> -= int32(n)
+		<a href="../../src/net/http/h2_bundle.go.html#line-1373" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1373">#L1373</a>: 	f2.<b>avail</b> -= int32(n)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: encoding/base64.NewEncoder</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../../pkg/encoding/base64.html">encoding/base64</a>.<a href="../../src/encoding/base64/base64.go.html#line-284">NewEncoder</a></b></span>
+
+<span class="title">3 uses</span>
+
+	encoding/base64 (current package)
+		<a href="../../src/encoding/base64/base64.go.html#line-284">base64.go#L284</a>: func <b>NewEncoder</b>(enc *Encoding, w io.Writer) io.WriteCloser {
+
+	<a href="../../pkg/encoding/pem.html">encoding/pem</a>
+		<a href="../../src/encoding/pem/pem.go.html#line-291">pem.go#L291</a>: 	b64 := base64.<b>NewEncoder</b>(base64.StdEncoding, &amp;breaker)
+
+	<a href="../../pkg/mime.html">mime</a>
+		<a href="../../src/mime/encodedword.go.html#line-83">encodedword.go#L83</a>: 	w := base64.<b>NewEncoder</b>(base64.StdEncoding, buf)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

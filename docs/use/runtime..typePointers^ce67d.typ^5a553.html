@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.typePointers.typ</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/mbitmap_allocheaders.go.html#line-128">typePointers</a>.<a href="../src/runtime/mbitmap_allocheaders.go.html#line-146">typ</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">16 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-146">mbitmap_allocheaders.go#L146</a>: 	<b>typ</b> *_type
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-203" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-203">#L203</a>: 	return typePointers{elem: addr, addr: addr, mask: readUintptr(gcdata), <b>typ</b>: typ}
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-226" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-226">#L226</a>: 	return typePointers{elem: addr, addr: addr, mask: readUintptr(gcdata), <b>typ</b>: typ}
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-282" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-282">#L282</a>: 		if tp.<b>typ</b> == nil {
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-287" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-287">#L287</a>: 		if tp.addr+goarch.PtrSize*ptrBits &gt;= tp.elem+tp.<b>typ</b>.PtrBytes {
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-288" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-288">#L288</a>: 			tp.elem += tp.<b>typ</b>.Size_
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-300" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-300">#L300</a>: 		tp.mask = readUintptr(addb(tp.<b>typ</b>.GCData, (tp.addr-tp.elem)/goarch.PtrSize/8))
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-321" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-321">#L321</a>: 	if tp.<b>typ</b> == nil {
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-335" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-335">#L335</a>: 	if n &gt;= tp.<b>typ</b>.Size_ {
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-339" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-339">#L339</a>: 		tp.elem += (tp.addr - tp.elem + n) / tp.<b>typ</b>.Size_ * tp.<b>typ</b>.Size_
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-345" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-345">#L345</a>: 	if tp.addr-tp.elem &gt;= tp.<b>typ</b>.PtrBytes {
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-348" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-348">#L348</a>: 		tp.elem += tp.<b>typ</b>.Size_
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-350" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-350">#L350</a>: 		tp.mask = readUintptr(tp.<b>typ</b>.GCData)
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-359" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-359">#L359</a>: 		tp.mask = readUintptr(addb(tp.<b>typ</b>.GCData, (tp.addr-tp.elem)/goarch.PtrSize/8))
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-1112" class="path-duplicate">mbitmap_allocheaders.go</a><a href="../src/runtime/mbitmap_allocheaders.go.html#line-1112">#L1112</a>: 	print("runtime: tp.elem=", hex(tp.elem), " tp.typ=", unsafe.Pointer(tp.<b>typ</b>), "\n")
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

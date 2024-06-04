@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/http.http2ErrCode</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../pkg/net/http.html">net/http</a>.<a href="../../src/net/http/h2_bundle.go.html#line-1173">http2ErrCode</a></b></span>
+
+<span class="title">42 uses</span>
+
+	net/http (current package)
+		<a href="../../src/net/http/h2_bundle.go.html#line-1173">h2_bundle.go#L1173</a>: type <b>http2ErrCode</b> uint32
+		<a href="../../src/net/http/h2_bundle.go.html#line-1176" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1176">#L1176</a>: 	http2ErrCodeNo                 <b>http2ErrCode</b> = 0x0
+		<a href="../../src/net/http/h2_bundle.go.html#line-1177" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1177">#L1177</a>: 	http2ErrCodeProtocol           <b>http2ErrCode</b> = 0x1
+		<a href="../../src/net/http/h2_bundle.go.html#line-1178" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1178">#L1178</a>: 	http2ErrCodeInternal           <b>http2ErrCode</b> = 0x2
+		<a href="../../src/net/http/h2_bundle.go.html#line-1179" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1179">#L1179</a>: 	http2ErrCodeFlowControl        <b>http2ErrCode</b> = 0x3
+		<a href="../../src/net/http/h2_bundle.go.html#line-1180" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1180">#L1180</a>: 	http2ErrCodeSettingsTimeout    <b>http2ErrCode</b> = 0x4
+		<a href="../../src/net/http/h2_bundle.go.html#line-1181" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1181">#L1181</a>: 	http2ErrCodeStreamClosed       <b>http2ErrCode</b> = 0x5
+		<a href="../../src/net/http/h2_bundle.go.html#line-1182" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1182">#L1182</a>: 	http2ErrCodeFrameSize          <b>http2ErrCode</b> = 0x6
+		<a href="../../src/net/http/h2_bundle.go.html#line-1183" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1183">#L1183</a>: 	http2ErrCodeRefusedStream      <b>http2ErrCode</b> = 0x7
+		<a href="../../src/net/http/h2_bundle.go.html#line-1184" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1184">#L1184</a>: 	http2ErrCodeCancel             <b>http2ErrCode</b> = 0x8
+		<a href="../../src/net/http/h2_bundle.go.html#line-1185" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1185">#L1185</a>: 	http2ErrCodeCompression        <b>http2ErrCode</b> = 0x9
+		<a href="../../src/net/http/h2_bundle.go.html#line-1186" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1186">#L1186</a>: 	http2ErrCodeConnect            <b>http2ErrCode</b> = 0xa
+		<a href="../../src/net/http/h2_bundle.go.html#line-1187" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1187">#L1187</a>: 	http2ErrCodeEnhanceYourCalm    <b>http2ErrCode</b> = 0xb
+		<a href="../../src/net/http/h2_bundle.go.html#line-1188" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1188">#L1188</a>: 	http2ErrCodeInadequateSecurity <b>http2ErrCode</b> = 0xc
+		<a href="../../src/net/http/h2_bundle.go.html#line-1189" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1189">#L1189</a>: 	http2ErrCodeHTTP11Required     <b>http2ErrCode</b> = 0xd
+		<a href="../../src/net/http/h2_bundle.go.html#line-1192" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1192">#L1192</a>: var http2errCodeName = map[<b>http2ErrCode</b>]string{
+		<a href="../../src/net/http/h2_bundle.go.html#line-1209" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1209">#L1209</a>: func (e <b>http2ErrCode</b>) String() string {
+		<a href="../../src/net/http/h2_bundle.go.html#line-1216" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1216">#L1216</a>: func (e <b>http2ErrCode</b>) stringToken() string {
+		<a href="../../src/net/http/h2_bundle.go.html#line-1225" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1225">#L1225</a>: type http2ConnectionError <b>http2ErrCode</b>
+		<a href="../../src/net/http/h2_bundle.go.html#line-1228" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1228">#L1228</a>: 	return fmt.Sprintf("connection error: %s", <b>http2ErrCode</b>(e))
+		<a href="../../src/net/http/h2_bundle.go.html#line-1235" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1235">#L1235</a>: 	Code     <b>http2ErrCode</b>
+		<a href="../../src/net/http/h2_bundle.go.html#line-1244" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1244">#L1244</a>: func http2streamError(id uint32, code <b>http2ErrCode</b>) http2StreamError {
+		<a href="../../src/net/http/h2_bundle.go.html#line-1272" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1272">#L1272</a>: 	Code   <b>http2ErrCode</b> // the ConnectionError error code
+		<a href="../../src/net/http/h2_bundle.go.html#line-1939" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-1939">#L1939</a>: func (fr *http2Framer) connError(code <b>http2ErrCode</b>, reason string) error {
+		<a href="../../src/net/http/h2_bundle.go.html#line-2293" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2293">#L2293</a>: 	ErrCode      <b>http2ErrCode</b>
+		<a href="../../src/net/http/h2_bundle.go.html#line-2318" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2318">#L2318</a>: 		ErrCode:          <b>http2ErrCode</b>(binary.BigEndian.Uint32(p[4:8])),
+		<a href="../../src/net/http/h2_bundle.go.html#line-2323" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2323">#L2323</a>: func (f *http2Framer) WriteGoAway(maxStreamID uint32, code <b>http2ErrCode</b>, debugData []byte) error {
+		<a href="../../src/net/http/h2_bundle.go.html#line-2615" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2615">#L2615</a>: 	ErrCode <b>http2ErrCode</b>
+		<a href="../../src/net/http/h2_bundle.go.html#line-2627" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2627">#L2627</a>: 	return &amp;http2RSTStreamFrame{fh, <b>http2ErrCode</b>(binary.BigEndian.Uint32(p[:4]))}, nil
+		<a href="../../src/net/http/h2_bundle.go.html#line-2634" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-2634">#L2634</a>: func (f *http2Framer) WriteRSTStream(streamID uint32, code <b>http2ErrCode</b>) error {
+		<a href="../../src/net/http/h2_bundle.go.html#line-4357" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-4357">#L4357</a>: func (sc *http2serverConn) rejectConn(err <b>http2ErrCode</b>, debug string) {
+		<a href="../../src/net/http/h2_bundle.go.html#line-4414" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-4414">#L4414</a>: 	goAwayCode                  <b>http2ErrCode</b>
+		<a href="../../src/net/http/h2_bundle.go.html#line-5234" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5234">#L5234</a>: func (sc *http2serverConn) goAway(code <b>http2ErrCode</b>) {
+		<a href="../../src/net/http/h2_bundle.go.html#line-5309" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-5309">#L5309</a>: 		sc.goAway(<b>http2ErrCode</b>(ev))
+		<a href="../../src/net/http/h2_bundle.go.html#line-7087" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-7087">#L7087</a>: 	var code <b>http2ErrCode</b>
+		<a href="../../src/net/http/h2_bundle.go.html#line-7091" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-7091">#L7091</a>: 		code = <b>http2ErrCode</b>(e)
+		<a href="../../src/net/http/h2_bundle.go.html#line-7094" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-7094">#L7094</a>: 		code = <b>http2ErrCode</b>(e.Code)
+		<a href="../../src/net/http/h2_bundle.go.html#line-9240" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9240">#L9240</a>: 		cc.fr.WriteGoAway(0, <b>http2ErrCode</b>(ce), nil)
+		<a href="../../src/net/http/h2_bundle.go.html#line-9249" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9249">#L9249</a>: 	ErrCode      <b>http2ErrCode</b>
+		<a href="../../src/net/http/h2_bundle.go.html#line-9313" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9313">#L9313</a>: 		errCode := <b>http2ErrCode</b>(ce)
+		<a href="../../src/net/http/h2_bundle.go.html#line-10083" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-10083">#L10083</a>: func (cc *http2ClientConn) writeStreamReset(streamID uint32, code <b>http2ErrCode</b>, err error) {
+		<a href="../../src/net/http/h2_bundle.go.html#line-10375" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-10375">#L10375</a>: 	code        <b>http2ErrCode</b>
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

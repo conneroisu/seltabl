@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: vendor/golang.org/x/text/unicode/bidi.AN</title>
+<link href="../../../../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../../../../../../pkg/vendor/golang.org/x/text/unicode/bidi.html">vendor/golang.org/x/text/unicode/bidi</a>.<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/trieval.go.html#line-14">AN</a></b></span>
+
+<span class="title">18 uses</span>
+
+	vendor/golang.org/x/text/unicode/bidi (current package)
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/bracket.go.html#line-236">bracket.go#L236</a>: 	case EN, <b>AN</b>, AL, R:
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-489">core.go#L489</a>: 	s.assertOnly(L, R, AL, EN, ES, ET, <b>AN</b>, CS, B, S, WS, ON, NSM, LRI, RLI, FSI, PDI)
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-512" class="path-duplicate">core.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-512">#L512</a>: 						s.types[i] = <b>AN</b>
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-547" class="path-duplicate">core.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-547">#L547</a>: 			} else if s.types[i] == CS &amp;&amp; prevSepType == <b>AN</b> &amp;&amp; succSepType == <b>AN</b> {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-548" class="path-duplicate">core.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-548">#L548</a>: 				s.types[i] = <b>AN</b>
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-609" class="path-duplicate">core.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-609">#L609</a>: 	s.assertOnly(L, R, EN, <b>AN</b>, B, S, WS, ON, RLI, LRI, FSI, PDI)
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-627" class="path-duplicate">core.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-627">#L627</a>: 				if leadType.in(<b>AN</b>, EN) {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-635" class="path-duplicate">core.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-635">#L635</a>: 				if trailType.in(<b>AN</b>, EN) {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-675" class="path-duplicate">core.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/core.go.html#line-675">#L675</a>: 	s.assertOnly(L, R, EN, <b>AN</b>)
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/bidi/trieval.go.html#line-14">trieval.go#L14</a>: 	<b>AN</b>                   // ArabicNumber
+
+	<a href="../../../../../../pkg/vendor/golang.org/x/text/secure/bidirule.html">vendor/golang.org/x/text/secure/bidirule</a>
+		<a href="../../../../../../src/vendor/golang.org/x/text/secure/bidirule/bidirule.go.html#line-76">bidirule.go#L76</a>: 		{ruleRTLFinal, 1&lt;&lt;bidi.R | 1&lt;&lt;bidi.AL | 1&lt;&lt;bidi.EN | 1&lt;&lt;bidi.<b>AN</b>},
+		<a href="../../../../../../src/vendor/golang.org/x/text/secure/bidirule/bidirule.go.html#line-87" class="path-duplicate">bidirule.go</a><a href="../../../../../../src/vendor/golang.org/x/text/secure/bidirule/bidirule.go.html#line-87">#L87</a>: 		{ruleRTLFinal, 1&lt;&lt;bidi.R | 1&lt;&lt;bidi.AL | 1&lt;&lt;bidi.EN | 1&lt;&lt;bidi.<b>AN</b> | 1&lt;&lt;bidi.NSM},
+		<a href="../../../../../../src/vendor/golang.org/x/text/secure/bidirule/bidirule.go.html#line-124" class="path-duplicate">bidirule.go</a><a href="../../../../../../src/vendor/golang.org/x/text/secure/bidirule/bidirule.go.html#line-124">#L124</a>: const exclusiveRTL = uint16(1&lt;&lt;bidi.EN | 1&lt;&lt;bidi.<b>AN</b>)
+		<a href="../../../../../../src/vendor/golang.org/x/text/secure/bidirule/bidirule.go.html#line-142" class="path-duplicate">bidirule.go</a><a href="../../../../../../src/vendor/golang.org/x/text/secure/bidirule/bidirule.go.html#line-142">#L142</a>: 		if c == bidi.R || c == bidi.AL || c == bidi.<b>AN</b> {
+		<a href="../../../../../../src/vendor/golang.org/x/text/secure/bidirule/bidirule.go.html#line-161" class="path-duplicate">bidirule.go</a><a href="../../../../../../src/vendor/golang.org/x/text/secure/bidirule/bidirule.go.html#line-161">#L161</a>: 		if c == bidi.R || c == bidi.AL || c == bidi.<b>AN</b> {
+		<a href="../../../../../../src/vendor/golang.org/x/text/secure/bidirule/bidirule.go.html#line-202" class="path-duplicate">bidirule.go</a><a href="../../../../../../src/vendor/golang.org/x/text/secure/bidirule/bidirule.go.html#line-202">#L202</a>: 	const isRTL = 1&lt;&lt;bidi.R | 1&lt;&lt;bidi.AL | 1&lt;&lt;bidi.<b>AN</b>
+
+	<a href="../../../../../../pkg/vendor/golang.org/x/net/idna.html">vendor/golang.org/x/net/idna</a>
+		<a href="../../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-469">idna10.0.0.go#L469</a>: 	case bidi.R, bidi.AL, bidi.<b>AN</b>:
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

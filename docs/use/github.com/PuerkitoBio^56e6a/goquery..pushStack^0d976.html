@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: github.com/PuerkitoBio/goquery.pushStack</title>
+<link href="../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../../../pkg/github.com/PuerkitoBio^56e6a/goquery.html">github.com/PuerkitoBio/goquery</a>.<a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/utilities.go.html#line-175">pushStack</a></b></span>
+
+<span class="title">40 uses</span>
+
+	github.com/PuerkitoBio/goquery (current package)
+		<a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/array.go.html#line-67">array.go#L67</a>: 	return <b>pushStack</b>(s, s.Nodes[start:end])
+		<a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/expand.go.html#line-38">expand.go#L38</a>: 	return <b>pushStack</b>(s, appendWithoutDuplicates(s.Nodes, nodes, nil))
+		<a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/filter.go.html#line-15">filter.go#L15</a>: 	return <b>pushStack</b>(s, winnow(s, m, true))
+		<a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/filter.go.html#line-27" class="path-duplicate">filter.go</a><a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/filter.go.html#line-27">#L27</a>: 	return <b>pushStack</b>(s, winnow(s, m, false))
+		<a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/filter.go.html#line-33" class="path-duplicate">filter.go</a><a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/filter.go.html#line-33">#L33</a>: 	return <b>pushStack</b>(s, winnowFunction(s, f, true))
+		<a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/filter.go.html#line-39" class="path-duplicate">filter.go</a><a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/filter.go.html#line-39">#L39</a>: 	return <b>pushStack</b>(s, winnowFunction(s, f, false))
+		<a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/filter.go.html#line-45" class="path-duplicate">filter.go</a><a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/filter.go.html#line-45">#L45</a>: 	return <b>pushStack</b>(s, winnowNodes(s, nodes, true))
+		<a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/filter.go.html#line-51" class="path-duplicate">filter.go</a><a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/filter.go.html#line-51">#L51</a>: 	return <b>pushStack</b>(s, winnowNodes(s, nodes, false))
+		<a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/filter.go.html#line-59" class="path-duplicate">filter.go</a><a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/filter.go.html#line-59">#L59</a>: 		return <b>pushStack</b>(s, winnowNodes(s, nil, true))
+		<a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/filter.go.html#line-61" class="path-duplicate">filter.go</a><a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/filter.go.html#line-61">#L61</a>: 	return <b>pushStack</b>(s, winnowNodes(s, sel.Nodes, true))
+		<a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/filter.go.html#line-68" class="path-duplicate">filter.go</a><a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/filter.go.html#line-68">#L68</a>: 		return <b>pushStack</b>(s, winnowNodes(s, nil, false))
+		<a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/filter.go.html#line-70" class="path-duplicate">filter.go</a><a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/filter.go.html#line-70">#L70</a>: 	return <b>pushStack</b>(s, winnowNodes(s, sel.Nodes, false))
+		<a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/manipulation.go.html#line-178">manipulation.go#L178</a>: 	return <b>pushStack</b>(s, nodes)
+		<a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-30">traversal.go#L30</a>: 	return <b>pushStack</b>(s, findWithMatcher(s.Nodes, compileMatcher(selector)))
+		<a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-37" class="path-duplicate">traversal.go</a><a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-37">#L37</a>: 	return <b>pushStack</b>(s, findWithMatcher(s.Nodes, m))
+		<a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-45" class="path-duplicate">traversal.go</a><a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-45">#L45</a>: 		return <b>pushStack</b>(s, nil)
+		<a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-54" class="path-duplicate">traversal.go</a><a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-54">#L54</a>: 	return <b>pushStack</b>(s, mapNodes(nodes, func(i int, n *html.Node) []*html.Node {
+		<a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-66" class="path-duplicate">traversal.go</a><a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-66">#L66</a>: 	return <b>pushStack</b>(s, getChildrenNodes(s.Nodes, siblingAllIncludingNonElements))
+		<a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-92" class="path-duplicate">traversal.go</a><a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-92">#L92</a>: 	return <b>pushStack</b>(s, getChildrenNodes(s.Nodes, siblingAll))
+		<a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-112" class="path-duplicate">traversal.go</a><a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-112">#L112</a>: 	return <b>pushStack</b>(s, getParentNodes(s.Nodes))
+		<a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-137" class="path-duplicate">traversal.go</a><a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-137">#L137</a>: 	return <b>pushStack</b>(s, mapNodes(s.Nodes, func(i int, n *html.Node) []*html.Node {
+		<a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-156" class="path-duplicate">traversal.go</a><a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-156">#L156</a>: 	return <b>pushStack</b>(s, mapNodes(s.Nodes, func(i int, n *html.Node) []*html.Node {
+		<a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-173" class="path-duplicate">traversal.go</a><a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-173">#L173</a>: 		return <b>pushStack</b>(s, nil)
+		<a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-181" class="path-duplicate">traversal.go</a><a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-181">#L181</a>: 	return <b>pushStack</b>(s, getParentsNodes(s.Nodes, nil, nil))
+		<a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-200" class="path-duplicate">traversal.go</a><a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-200">#L200</a>: 	return <b>pushStack</b>(s, getParentsNodes(s.Nodes, compileMatcher(selector), nil))
+		<a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-207" class="path-duplicate">traversal.go</a><a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-207">#L207</a>: 	return <b>pushStack</b>(s, getParentsNodes(s.Nodes, m, nil))
+		<a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-224" class="path-duplicate">traversal.go</a><a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-224">#L224</a>: 	return <b>pushStack</b>(s, getParentsNodes(s.Nodes, nil, nodes))
+		<a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-274" class="path-duplicate">traversal.go</a><a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-274">#L274</a>: 	return <b>pushStack</b>(s, getSiblingNodes(s.Nodes, siblingAll, nil, nil))
+		<a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-294" class="path-duplicate">traversal.go</a><a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-294">#L294</a>: 	return <b>pushStack</b>(s, getSiblingNodes(s.Nodes, siblingNext, nil, nil))
+		<a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-314" class="path-duplicate">traversal.go</a><a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-314">#L314</a>: 	return <b>pushStack</b>(s, getSiblingNodes(s.Nodes, siblingNextAll, nil, nil))
+		<a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-334" class="path-duplicate">traversal.go</a><a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-334">#L334</a>: 	return <b>pushStack</b>(s, getSiblingNodes(s.Nodes, siblingPrev, nil, nil))
+		<a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-354" class="path-duplicate">traversal.go</a><a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-354">#L354</a>: 	return <b>pushStack</b>(s, getSiblingNodes(s.Nodes, siblingPrevAll, nil, nil))
+		<a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-375" class="path-duplicate">traversal.go</a><a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-375">#L375</a>: 	return <b>pushStack</b>(s, getSiblingNodes(s.Nodes, siblingNextUntil,
+		<a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-383" class="path-duplicate">traversal.go</a><a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-383">#L383</a>: 	return <b>pushStack</b>(s, getSiblingNodes(s.Nodes, siblingNextUntil,
+		<a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-401" class="path-duplicate">traversal.go</a><a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-401">#L401</a>: 	return <b>pushStack</b>(s, getSiblingNodes(s.Nodes, siblingNextUntil,
+		<a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-409" class="path-duplicate">traversal.go</a><a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-409">#L409</a>: 	return <b>pushStack</b>(s, getSiblingNodes(s.Nodes, siblingPrevUntil,
+		<a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-417" class="path-duplicate">traversal.go</a><a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-417">#L417</a>: 	return <b>pushStack</b>(s, getSiblingNodes(s.Nodes, siblingPrevUntil,
+		<a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-435" class="path-duplicate">traversal.go</a><a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-435">#L435</a>: 	return <b>pushStack</b>(s, getSiblingNodes(s.Nodes, siblingPrevUntil,
+		<a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-543" class="path-duplicate">traversal.go</a><a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/traversal.go.html#line-543">#L543</a>: 	return <b>pushStack</b>(srcSel, winnow(sel, m, true))
+		<a href="../../../src/github.com/PuerkitoBio^56e6a/goquery/utilities.go.html#line-175">utilities.go#L175</a>: func <b>pushStack</b>(fromSel *Selection, nodes []*html.Node) *Selection {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: reflect.Value.pointer</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/reflect.html">reflect</a>.<a href="../src/reflect/value.go.html#line-39">Value</a>.<a href="../src/reflect/value.go.html#line-108">pointer</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">23 uses</span>
+
+	reflect (current package)
+		<a href="../src/reflect/deepequal.go.html#line-66">deepequal.go#L66</a>: 				return v.<b>pointer</b>()
+		<a href="../src/reflect/value.go.html#line-108">value.go#L108</a>: func (v Value) <b>pointer</b>() unsafe.Pointer {
+		<a href="../src/reflect/value.go.html#line-1179" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1179">#L1179</a>: 		return chancap(v.<b>pointer</b>())
+		<a href="../src/reflect/value.go.html#line-1200" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1200">#L1200</a>: 	chanclose(v.<b>pointer</b>())
+		<a href="../src/reflect/value.go.html#line-1783" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1783">#L1783</a>: 		return chanlen(v.<b>pointer</b>())
+		<a href="../src/reflect/value.go.html#line-1785" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1785">#L1785</a>: 		return maplen(v.<b>pointer</b>())
+		<a href="../src/reflect/value.go.html#line-1819" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1819">#L1819</a>: 		e = mapaccess_faststr(v.typ(), v.<b>pointer</b>(), k)
+		<a href="../src/reflect/value.go.html#line-1828" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1828">#L1828</a>: 		e = mapaccess(v.typ(), v.<b>pointer</b>(), k)
+		<a href="../src/reflect/value.go.html#line-1850" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1850">#L1850</a>: 	m := v.<b>pointer</b>()
+		<a href="../src/reflect/value.go.html#line-2000" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2000">#L2000</a>: 		mapiterinit(iter.m.typ(), iter.m.<b>pointer</b>(), &amp;iter.hiter)
+		<a href="../src/reflect/value.go.html#line-2227" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2227">#L2227</a>: 		return uintptr(v.<b>pointer</b>())
+		<a href="../src/reflect/value.go.html#line-2238" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2238">#L2238</a>: 		p := v.<b>pointer</b>()
+		<a href="../src/reflect/value.go.html#line-2280" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2280">#L2280</a>: 	selected, ok := chanrecv(v.<b>pointer</b>(), nb, p)
+		<a href="../src/reflect/value.go.html#line-2311" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2311">#L2311</a>: 	return chansend(v.<b>pointer</b>(), p, nb)
+		<a href="../src/reflect/value.go.html#line-2456" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2456">#L2456</a>: 			mapdelete_faststr(v.typ(), v.<b>pointer</b>(), k)
+		<a href="../src/reflect/value.go.html#line-2467" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2467">#L2467</a>: 		mapassign_faststr(v.typ(), v.<b>pointer</b>(), k, e)
+		<a href="../src/reflect/value.go.html#line-2479" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2479">#L2479</a>: 		mapdelete(v.typ(), v.<b>pointer</b>(), k)
+		<a href="../src/reflect/value.go.html#line-2490" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2490">#L2490</a>: 	mapassign(v.typ(), v.<b>pointer</b>(), k, e)
+		<a href="../src/reflect/value.go.html#line-2806" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2806">#L2806</a>: 		return v.<b>pointer</b>()
+		<a href="../src/reflect/value.go.html#line-2818" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2818">#L2818</a>: 		p := v.<b>pointer</b>()
+		<a href="../src/reflect/value.go.html#line-2933" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2933">#L2933</a>: 		mapclear(v.typ(), v.<b>pointer</b>())
+		<a href="../src/reflect/value.go.html#line-3132" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3132">#L3132</a>: 			rc.ch = ch.<b>pointer</b>()
+		<a href="../src/reflect/value.go.html#line-3163" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3163">#L3163</a>: 			rc.ch = ch.<b>pointer</b>()
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

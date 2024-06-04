@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/md5.digest</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../pkg/crypto/md5.html">crypto/md5</a>.<a href="../../src/crypto/md5/md5.go.html#line-38">digest</a></b></span>
+
+<span class="title">13 uses</span>
+
+	crypto/md5 (current package)
+		<a href="../../src/crypto/md5/md5.go.html#line-38">md5.go#L38</a>: type <b>digest</b> struct {
+		<a href="../../src/crypto/md5/md5.go.html#line-45" class="path-duplicate">md5.go</a><a href="../../src/crypto/md5/md5.go.html#line-45">#L45</a>: func (d *<b>digest</b>) Reset() {
+		<a href="../../src/crypto/md5/md5.go.html#line-59" class="path-duplicate">md5.go</a><a href="../../src/crypto/md5/md5.go.html#line-59">#L59</a>: func (d *<b>digest</b>) MarshalBinary() ([]byte, error) {
+		<a href="../../src/crypto/md5/md5.go.html#line-72" class="path-duplicate">md5.go</a><a href="../../src/crypto/md5/md5.go.html#line-72">#L72</a>: func (d *<b>digest</b>) UnmarshalBinary(b []byte) error {
+		<a href="../../src/crypto/md5/md5.go.html#line-102" class="path-duplicate">md5.go</a><a href="../../src/crypto/md5/md5.go.html#line-102">#L102</a>: 	d := new(<b>digest</b>)
+		<a href="../../src/crypto/md5/md5.go.html#line-107" class="path-duplicate">md5.go</a><a href="../../src/crypto/md5/md5.go.html#line-107">#L107</a>: func (d *<b>digest</b>) Size() int { return Size }
+		<a href="../../src/crypto/md5/md5.go.html#line-109" class="path-duplicate">md5.go</a><a href="../../src/crypto/md5/md5.go.html#line-109">#L109</a>: func (d *<b>digest</b>) BlockSize() int { return BlockSize }
+		<a href="../../src/crypto/md5/md5.go.html#line-111" class="path-duplicate">md5.go</a><a href="../../src/crypto/md5/md5.go.html#line-111">#L111</a>: func (d *<b>digest</b>) Write(p []byte) (nn int, err error) {
+		<a href="../../src/crypto/md5/md5.go.html#line-145" class="path-duplicate">md5.go</a><a href="../../src/crypto/md5/md5.go.html#line-145">#L145</a>: func (d *<b>digest</b>) Sum(in []byte) []byte {
+		<a href="../../src/crypto/md5/md5.go.html#line-152" class="path-duplicate">md5.go</a><a href="../../src/crypto/md5/md5.go.html#line-152">#L152</a>: func (d *<b>digest</b>) checkSum() [Size]byte {
+		<a href="../../src/crypto/md5/md5.go.html#line-179" class="path-duplicate">md5.go</a><a href="../../src/crypto/md5/md5.go.html#line-179">#L179</a>: 	var d <b>digest</b>
+		<a href="../../src/crypto/md5/md5block.go.html#line-14">md5block.go#L14</a>: func blockGeneric(dig *<b>digest</b>, p []byte) {
+		<a href="../../src/crypto/md5/md5block_decl.go.html#line-12">md5block_decl.go#L12</a>: func block(dig *<b>digest</b>, p []byte)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

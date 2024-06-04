@@ -34,14 +34,3 @@ for target in "${targets[@]}"; do
 		continue
 	fi
 done
-# gum spin --spinner dot --title "Formatting Go Files" --show-output -- \
-#         go fmt *.go
-# # gum spin --spinner dot --title "Formatting Go Files" --show-output -- \
-# # golines --max-len=80 *.go **/*.go **/**/*.go --dry-run >
-# OUTPUT=$(golines --max-len=80 *.go **/*.go **/**/*.go --dry-run)
-# gum pager < <(echo "$OUTPUT") && gum confirm "Commit changes?" && gum spin --spinner dot --title "Formatting Go Files" --show-output -- \
-#         golines -w --max-len=80 *.go **/*.go **/**/*.go
-#
-# OUTPUT=$(caddy fmt --diff ./deploy/**/**/Caddyfile)
-gum pager < <(echo "$OUTPUT") && gum confirm "Commit changes?" && gum spin --spinner dot --title "Formatting Caddyfiles Files" --show-output -- \
-	caddy fmt ./deploy/**/**/Caddyfile --overwrite

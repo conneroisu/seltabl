@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: strconv.FormatInt</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/strconv.html">strconv</a>.<a href="../src/strconv/itoa.go.html#line-25">FormatInt</a></b></span>
+
+<span class="title">18 uses</span>
+
+	strconv (current package)
+		<a href="../src/strconv/itoa.go.html#line-25">itoa.go#L25</a>: func <b>FormatInt</b>(i int64, base int) string {
+		<a href="../src/strconv/itoa.go.html#line-35" class="path-duplicate">itoa.go</a><a href="../src/strconv/itoa.go.html#line-35">#L35</a>: 	return <b>FormatInt</b>(int64(i), 10)
+
+	<a href="../pkg/compress/flate.html">compress/flate</a>
+		<a href="../src/compress/flate/inflate.go.html#line-36">inflate.go#L36</a>: 	return "flate: corrupt input before offset " + strconv.<b>FormatInt</b>(int64(e), 10)
+		<a href="../src/compress/flate/inflate.go.html#line-53" class="path-duplicate">inflate.go</a><a href="../src/compress/flate/inflate.go.html#line-53">#L53</a>: 	return "flate: read error at offset " + strconv.<b>FormatInt</b>(e.Offset, 10) + ": " + e.Err.Error()
+		<a href="../src/compress/flate/inflate.go.html#line-65" class="path-duplicate">inflate.go</a><a href="../src/compress/flate/inflate.go.html#line-65">#L65</a>: 	return "flate: write error at offset " + strconv.<b>FormatInt</b>(e.Offset, 10) + ": " + e.Err.Error()
+
+	<a href="../pkg/crypto/tls.html">crypto/tls</a>
+		<a href="../src/crypto/tls/common_string.go.html#line-63">common_string.go#L63</a>: 		return "SignatureScheme(" + strconv.<b>FormatInt</b>(int64(i), 10) + ")"
+		<a href="../src/crypto/tls/common_string.go.html#line-93" class="path-duplicate">common_string.go</a><a href="../src/crypto/tls/common_string.go.html#line-93">#L93</a>: 		return "CurveID(" + strconv.<b>FormatInt</b>(int64(i), 10) + ")"
+		<a href="../src/crypto/tls/common_string.go.html#line-113" class="path-duplicate">common_string.go</a><a href="../src/crypto/tls/common_string.go.html#line-113">#L113</a>: 		return "ClientAuthType(" + strconv.<b>FormatInt</b>(int64(i), 10) + ")"
+
+	<a href="../pkg/encoding/base64.html">encoding/base64</a>
+		<a href="../src/encoding/base64/base64.go.html#line-304">base64.go#L304</a>: 	return "illegal base64 data at input byte " + strconv.<b>FormatInt</b>(int64(e), 10)
+
+	<a href="../pkg/math/big.html">math/big</a>
+		<a href="../src/math/big/accuracy_string.go.html#line-23">accuracy_string.go#L23</a>: 		return "Accuracy(" + strconv.<b>FormatInt</b>(int64(i+-1), 10) + ")"
+		<a href="../src/math/big/roundingmode_string.go.html#line-25">roundingmode_string.go#L25</a>: 		return "RoundingMode(" + strconv.<b>FormatInt</b>(int64(i), 10) + ")"
+
+	<a href="../pkg/net/http.html">net/http</a>
+		<a href="../src/net/http/fs.go.html#line-373">fs.go#L373</a>: 		w.Header().Set("Content-Length", strconv.<b>FormatInt</b>(sendSize, 10))
+		<a href="../src/net/http/h2_bundle.go.html#line-9076">h2_bundle.go#L9076</a>: 			f("content-length", strconv.<b>FormatInt</b>(contentLength, 10))
+		<a href="../src/net/http/transfer.go.html#line-294">transfer.go#L294</a>: 		if _, err := io.WriteString(w, strconv.<b>FormatInt</b>(t.ContentLength, 10)+"\r\n"); err != nil {
+		<a href="../src/net/http/transfer.go.html#line-298" class="path-duplicate">transfer.go</a><a href="../src/net/http/transfer.go.html#line-298">#L298</a>: 			trace.WroteHeaderField("Content-Length", []string{strconv.<b>FormatInt</b>(t.ContentLength, 10)})
+
+	<a href="../pkg/regexp/syntax.html">regexp/syntax</a>
+		<a href="../src/regexp/syntax/op_string.go.html#line-50">op_string.go#L50</a>: 		return "Op(" + strconv.<b>FormatInt</b>(int64(i), 10) + ")"
+		<a href="../src/regexp/syntax/regexp.go.html#line-436">regexp.go#L436</a>: 			s := strconv.<b>FormatInt</b>(int64(r), 16)
+		<a href="../src/regexp/syntax/regexp.go.html#line-444" class="path-duplicate">regexp.go</a><a href="../src/regexp/syntax/regexp.go.html#line-444">#L444</a>: 		b.WriteString(strconv.<b>FormatInt</b>(int64(r), 16))
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

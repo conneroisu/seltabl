@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: strings.ContainsRune</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/strings.html">strings</a>.<a href="../src/strings/strings.go.html#line-70">ContainsRune</a></b></span>
+
+<span class="title">7 uses</span>
+
+	strings (current package)
+		<a href="../src/strings/strings.go.html#line-70">strings.go#L70</a>: func <b>ContainsRune</b>(s string, r rune) bool {
+		<a href="../src/strings/strings.go.html#line-944" class="path-duplicate">strings.go</a><a href="../src/strings/strings.go.html#line-944">#L944</a>: 		if !<b>ContainsRune</b>(cutset, r) {
+		<a href="../src/strings/strings.go.html#line-992" class="path-duplicate">strings.go</a><a href="../src/strings/strings.go.html#line-992">#L992</a>: 		if !<b>ContainsRune</b>(cutset, r) {
+
+	<a href="../pkg/math/big.html">math/big</a>
+		<a href="../src/math/big/ratconv.go.html#line-18">ratconv.go#L18</a>: 	return strings.<b>ContainsRune</b>("+-/0123456789.eE", ch)
+		<a href="../src/math/big/ratconv.go.html#line-31" class="path-duplicate">ratconv.go</a><a href="../src/math/big/ratconv.go.html#line-31">#L31</a>: 	if !strings.<b>ContainsRune</b>("efgEFGv", ch) {
+
+	<a href="../pkg/mime.html">mime</a>
+		<a href="../src/mime/grammar.go.html#line-14">grammar.go#L14</a>: 	return strings.<b>ContainsRune</b>(`()&lt;&gt;@,;:\"/[]?=`, r)
+
+	<a href="../pkg/regexp/syntax.html">regexp/syntax</a>
+		<a href="../src/regexp/syntax/regexp.go.html#line-413">regexp.go#L413</a>: 		if strings.<b>ContainsRune</b>(meta, r) || force {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

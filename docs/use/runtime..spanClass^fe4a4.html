@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.spanClass</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/mheap.go.html#line-558">spanClass</a></b></span>
+
+<span class="title">19 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/malloc.go.html#line-938">malloc.go#L938</a>: func (c *mcache) nextFree(spc <b>spanClass</b>) (v gclinkptr, s *mspan, shouldhelpgc bool) {
+		<a href="../src/runtime/mcache.go.html#line-147">mcache.go#L147</a>: func (c *mcache) refill(spc <b>spanClass</b>) {
+		<a href="../src/runtime/mcache.go.html#line-274" class="path-duplicate">mcache.go</a><a href="../src/runtime/mcache.go.html#line-274">#L274</a>: 			atomic.Xadd64(&amp;stats.smallAllocCount[<b>spanClass</b>(i).sizeclass()], slotsUsed)
+		<a href="../src/runtime/mcentral.go.html#line-23">mcentral.go#L23</a>: 	spanclass <b>spanClass</b>
+		<a href="../src/runtime/mcentral.go.html#line-48" class="path-duplicate">mcentral.go</a><a href="../src/runtime/mcentral.go.html#line-48">#L48</a>: func (c *mcentral) init(spc <b>spanClass</b>) {
+		<a href="../src/runtime/mgcsweep.go.html#line-91">mgcsweep.go#L91</a>: func (s sweepClass) split() (spc <b>spanClass</b>, full bool) {
+		<a href="../src/runtime/mgcsweep.go.html#line-92" class="path-duplicate">mgcsweep.go</a><a href="../src/runtime/mgcsweep.go.html#line-92">#L92</a>: 	return <b>spanClass</b>(s &gt;&gt; 1), s&amp;1 == 0
+		<a href="../src/runtime/mheap.go.html#line-481">mheap.go#L481</a>: 	spanclass             <b>spanClass</b>     // size class and noscan (uint8)
+		<a href="../src/runtime/mheap.go.html#line-558" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-558">#L558</a>: type <b>spanClass</b> uint8
+		<a href="../src/runtime/mheap.go.html#line-562" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-562">#L562</a>: 	tinySpanClass  = <b>spanClass</b>(tinySizeClass&lt;&lt;1 | 1)
+		<a href="../src/runtime/mheap.go.html#line-565" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-565">#L565</a>: func makeSpanClass(sizeclass uint8, noscan bool) <b>spanClass</b> {
+		<a href="../src/runtime/mheap.go.html#line-566" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-566">#L566</a>: 	return <b>spanClass</b>(sizeclass&lt;&lt;1) | <b>spanClass</b>(bool2int(noscan))
+		<a href="../src/runtime/mheap.go.html#line-570" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-570">#L570</a>: func (sc <b>spanClass</b>) sizeclass() int8 {
+		<a href="../src/runtime/mheap.go.html#line-575" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-575">#L575</a>: func (sc <b>spanClass</b>) noscan() bool {
+		<a href="../src/runtime/mheap.go.html#line-766" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-766">#L766</a>: 		h.central[i].mcentral.init(<b>spanClass</b>(i))
+		<a href="../src/runtime/mheap.go.html#line-953" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-953">#L953</a>: func (h *mheap) alloc(npages uintptr, spanclass <b>spanClass</b>) *mspan {
+		<a href="../src/runtime/mheap.go.html#line-1171" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1171">#L1171</a>: func (h *mheap) allocSpan(npages uintptr, typ spanAllocType, spanclass <b>spanClass</b>) (s *mspan) {
+		<a href="../src/runtime/mheap.go.html#line-1377" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1377">#L1377</a>: func (h *mheap) initSpan(s *mspan, typ spanAllocType, spanclass <b>spanClass</b>, base, npages uintptr) {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

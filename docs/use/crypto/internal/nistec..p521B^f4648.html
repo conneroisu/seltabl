@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/internal/nistec.p521B</title>
+<link href="../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../../../pkg/crypto/internal/nistec.html">crypto/internal/nistec</a>.<a href="../../../src/crypto/internal/nistec/p521.go.html#line-113">p521B</a></b></span>
+
+<span class="title">6 uses</span>
+
+	crypto/internal/nistec (current package)
+		<a href="../../../src/crypto/internal/nistec/p521.go.html#line-113">p521.go#L113</a>: func <b>p521B</b>() *fiat.P521Element {
+		<a href="../../../src/crypto/internal/nistec/p521.go.html#line-129" class="path-duplicate">p521.go</a><a href="../../../src/crypto/internal/nistec/p521.go.html#line-129">#L129</a>: 	return y2.Add(y2, <b>p521B</b>())
+		<a href="../../../src/crypto/internal/nistec/p521.go.html#line-237" class="path-duplicate">p521.go</a><a href="../../../src/crypto/internal/nistec/p521.go.html#line-237">#L237</a>: 	z3 := new(fiat.P521Element).Mul(<b>p521B</b>(), t2) // Z3 := b * t2
+		<a href="../../../src/crypto/internal/nistec/p521.go.html#line-243" class="path-duplicate">p521.go</a><a href="../../../src/crypto/internal/nistec/p521.go.html#line-243">#L243</a>: 	y3.Mul(<b>p521B</b>(), y3)                          // Y3 := b * Y3
+		<a href="../../../src/crypto/internal/nistec/p521.go.html#line-281" class="path-duplicate">p521.go</a><a href="../../../src/crypto/internal/nistec/p521.go.html#line-281">#L281</a>: 	y3 := new(fiat.P521Element).Mul(<b>p521B</b>(), t2) // Y3 := b * t2
+		<a href="../../../src/crypto/internal/nistec/p521.go.html#line-291" class="path-duplicate">p521.go</a><a href="../../../src/crypto/internal/nistec/p521.go.html#line-291">#L291</a>: 	z3.Mul(<b>p521B</b>(), z3)                          // Z3 := b * Z3
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

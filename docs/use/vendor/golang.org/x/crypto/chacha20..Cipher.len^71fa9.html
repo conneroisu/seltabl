@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: vendor/golang.org/x/crypto/chacha20.Cipher.len</title>
+<link href="../../../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../../../../pkg/vendor/golang.org/x/crypto/chacha20.html">vendor/golang.org/x/crypto/chacha20</a>.<a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-36">Cipher</a>.<a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-47">len</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">9 uses</span>
+
+	vendor/golang.org/x/crypto/chacha20 (current package)
+		<a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-47">chacha_generic.go#L47</a>: 	<b>len</b> int
+		<a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-157" class="path-duplicate">chacha_generic.go</a><a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-157">#L157</a>: 	outputCounter := s.counter - uint32(s.<b>len</b>)/blockSize
+		<a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-167" class="path-duplicate">chacha_generic.go</a><a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-167">#L167</a>: 		s.<b>len</b> = int(s.counter-counter) * blockSize
+		<a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-170" class="path-duplicate">chacha_generic.go</a><a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-170">#L170</a>: 		s.<b>len</b> = 0
+		<a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-197" class="path-duplicate">chacha_generic.go</a><a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-197">#L197</a>: 	if s.<b>len</b> != 0 {
+		<a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-198" class="path-duplicate">chacha_generic.go</a><a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-198">#L198</a>: 		keyStream := s.buf[bufSize-s.<b>len</b>:]
+		<a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-206" class="path-duplicate">chacha_generic.go</a><a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-206">#L206</a>: 		s.<b>len</b> -= len(keyStream)
+		<a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-242" class="path-duplicate">chacha_generic.go</a><a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-242">#L242</a>: 		s.<b>len</b> = len(buf) - copy(dst, buf)
+		<a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-252" class="path-duplicate">chacha_generic.go</a><a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-252">#L252</a>: 		s.<b>len</b> = bufSize - copy(dst, s.buf[:])
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

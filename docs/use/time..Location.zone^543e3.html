@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: time.Location.zone</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/time.html">time</a>.<a href="../src/time/zoneinfo.go.html#line-23">Location</a>.<a href="../src/time/zoneinfo.go.html#line-25">zone</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">18 uses</span>
+
+	time (current package)
+		<a href="../src/time/zoneinfo.go.html#line-25">zoneinfo.go#L25</a>: 	<b>zone</b> []zone
+		<a href="../src/time/zoneinfo.go.html#line-133" class="path-duplicate">zoneinfo.go</a><a href="../src/time/zoneinfo.go.html#line-133">#L133</a>: 		<b>zone</b>:       []zone{{name, offset, false}},
+		<a href="../src/time/zoneinfo.go.html#line-138" class="path-duplicate">zoneinfo.go</a><a href="../src/time/zoneinfo.go.html#line-138">#L138</a>: 	l.cacheZone = &amp;l.<b>zone</b>[0]
+		<a href="../src/time/zoneinfo.go.html#line-152" class="path-duplicate">zoneinfo.go</a><a href="../src/time/zoneinfo.go.html#line-152">#L152</a>: 	if len(l.<b>zone</b>) == 0 {
+		<a href="../src/time/zoneinfo.go.html#line-171" class="path-duplicate">zoneinfo.go</a><a href="../src/time/zoneinfo.go.html#line-171">#L171</a>: 		zone := &amp;l.<b>zone</b>[l.lookupFirstZone()]
+		<a href="../src/time/zoneinfo.go.html#line-200" class="path-duplicate">zoneinfo.go</a><a href="../src/time/zoneinfo.go.html#line-200">#L200</a>: 	zone := &amp;l.<b>zone</b>[tx[lo].index]
+		<a href="../src/time/zoneinfo.go.html#line-240" class="path-duplicate">zoneinfo.go</a><a href="../src/time/zoneinfo.go.html#line-240">#L240</a>: 	if len(l.tx) &gt; 0 &amp;&amp; l.<b>zone</b>[l.tx[0].index].isDST {
+		<a href="../src/time/zoneinfo.go.html#line-242" class="path-duplicate">zoneinfo.go</a><a href="../src/time/zoneinfo.go.html#line-242">#L242</a>: 			if !l.<b>zone</b>[zi].isDST {
+		<a href="../src/time/zoneinfo.go.html#line-249" class="path-duplicate">zoneinfo.go</a><a href="../src/time/zoneinfo.go.html#line-249">#L249</a>: 	for zi := range l.<b>zone</b> {
+		<a href="../src/time/zoneinfo.go.html#line-250" class="path-duplicate">zoneinfo.go</a><a href="../src/time/zoneinfo.go.html#line-250">#L250</a>: 		if !l.<b>zone</b>[zi].isDST {
+		<a href="../src/time/zoneinfo.go.html#line-621" class="path-duplicate">zoneinfo.go</a><a href="../src/time/zoneinfo.go.html#line-621">#L621</a>: 	for i := range l.<b>zone</b> {
+		<a href="../src/time/zoneinfo.go.html#line-622" class="path-duplicate">zoneinfo.go</a><a href="../src/time/zoneinfo.go.html#line-622">#L622</a>: 		zone := &amp;l.<b>zone</b>[i]
+		<a href="../src/time/zoneinfo.go.html#line-632" class="path-duplicate">zoneinfo.go</a><a href="../src/time/zoneinfo.go.html#line-632">#L632</a>: 	for i := range l.<b>zone</b> {
+		<a href="../src/time/zoneinfo.go.html#line-633" class="path-duplicate">zoneinfo.go</a><a href="../src/time/zoneinfo.go.html#line-633">#L633</a>: 		zone := &amp;l.<b>zone</b>[i]
+		<a href="../src/time/zoneinfo_read.go.html#line-317">zoneinfo_read.go#L317</a>: 	l := &amp;Location{<b>zone</b>: zones, tx: tx, name: name, extend: extend}
+		<a href="../src/time/zoneinfo_read.go.html#line-326" class="path-duplicate">zoneinfo_read.go</a><a href="../src/time/zoneinfo_read.go.html#line-326">#L326</a>: 			l.cacheZone = &amp;l.<b>zone</b>[tx[i].index]
+		<a href="../src/time/zoneinfo_read.go.html#line-336" class="path-duplicate">zoneinfo_read.go</a><a href="../src/time/zoneinfo_read.go.html#line-336">#L336</a>: 					if zoneIdx := findZone(l.<b>zone</b>, name, offset, isDST); zoneIdx != -1 {
+		<a href="../src/time/zoneinfo_read.go.html#line-337" class="path-duplicate">zoneinfo_read.go</a><a href="../src/time/zoneinfo_read.go.html#line-337">#L337</a>: 						l.cacheZone = &amp;l.<b>zone</b>[zoneIdx]
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

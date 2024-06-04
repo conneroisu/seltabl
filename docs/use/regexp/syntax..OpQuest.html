@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: regexp/syntax.OpQuest</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../../pkg/regexp/syntax.html">regexp/syntax</a>.<a href="../../src/regexp/syntax/regexp.go.html#line-54">OpQuest</a></b></span>
+
+<span class="title">12 uses</span>
+
+	regexp/syntax (current package)
+		<a href="../../src/regexp/syntax/compile.go.html#line-136">compile.go#L136</a>: 	case <b>OpQuest</b>:
+		<a href="../../src/regexp/syntax/op_string.go.html#line-26">op_string.go#L26</a>: 	_ = x[<b>OpQuest</b>-16]
+		<a href="../../src/regexp/syntax/parse.go.html#line-225">parse.go#L225</a>: 	case OpPlus, <b>OpQuest</b>:
+		<a href="../../src/regexp/syntax/parse.go.html#line-988" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-988">#L988</a>: 				op = <b>OpQuest</b>
+		<a href="../../src/regexp/syntax/regexp.go.html#line-54">regexp.go#L54</a>: 	<b>OpQuest</b>                        // matches Sub[0] zero or one times
+		<a href="../../src/regexp/syntax/regexp.go.html#line-97" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-97">#L97</a>: 	case OpStar, OpPlus, <b>OpQuest</b>:
+		<a href="../../src/regexp/syntax/regexp.go.html#line-193" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-193">#L193</a>: 	case OpCapture, OpStar, OpPlus, <b>OpQuest</b>, OpRepeat:
+		<a href="../../src/regexp/syntax/regexp.go.html#line-350" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-350">#L350</a>: 	case OpStar, OpPlus, <b>OpQuest</b>, OpRepeat:
+		<a href="../../src/regexp/syntax/regexp.go.html#line-363" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-363">#L363</a>: 		case <b>OpQuest</b>:
+		<a href="../../src/regexp/syntax/simplify.go.html#line-37">simplify.go#L37</a>: 	case OpStar, OpPlus, <b>OpQuest</b>:
+		<a href="../../src/regexp/syntax/simplify.go.html#line-96" class="path-duplicate">simplify.go</a><a href="../../src/regexp/syntax/simplify.go.html#line-96">#L96</a>: 			suffix := simplify1(<b>OpQuest</b>, re.Flags, sub, nil)
+		<a href="../../src/regexp/syntax/simplify.go.html#line-100" class="path-duplicate">simplify.go</a><a href="../../src/regexp/syntax/simplify.go.html#line-100">#L100</a>: 				suffix = simplify1(<b>OpQuest</b>, re.Flags, nre2, nil)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/rsa.PrivateKey.D</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/crypto/rsa.html">crypto/rsa</a>.<a href="../../src/crypto/rsa/rsa.go.html#line-113">PrivateKey</a>.<a href="../../src/crypto/rsa/rsa.go.html#line-115">D</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">13 uses</span>
+
+	crypto/rsa (current package)
+		<a href="../../src/crypto/rsa/rsa.go.html#line-115">rsa.go#L115</a>: 	<b>D</b>         *big.Int   // private exponent
+		<a href="../../src/crypto/rsa/rsa.go.html#line-136" class="path-duplicate">rsa.go</a><a href="../../src/crypto/rsa/rsa.go.html#line-136">#L136</a>: 	if !priv.PublicKey.Equal(&amp;xx.PublicKey) || !bigIntEqual(priv.<b>D</b>, xx.<b>D</b>) {
+		<a href="../../src/crypto/rsa/rsa.go.html#line-259" class="path-duplicate">rsa.go</a><a href="../../src/crypto/rsa/rsa.go.html#line-259">#L259</a>: 	de.Mul(de, priv.<b>D</b>)
+		<a href="../../src/crypto/rsa/rsa.go.html#line-338" class="path-duplicate">rsa.go</a><a href="../../src/crypto/rsa/rsa.go.html#line-338">#L338</a>: 			<b>D</b>:      D,
+		<a href="../../src/crypto/rsa/rsa.go.html#line-427" class="path-duplicate">rsa.go</a><a href="../../src/crypto/rsa/rsa.go.html#line-427">#L427</a>: 		priv.<b>D</b> = new(big.Int)
+		<a href="../../src/crypto/rsa/rsa.go.html#line-429" class="path-duplicate">rsa.go</a><a href="../../src/crypto/rsa/rsa.go.html#line-429">#L429</a>: 		ok := priv.<b>D</b>.ModInverse(e, totient)
+		<a href="../../src/crypto/rsa/rsa.go.html#line-612" class="path-duplicate">rsa.go</a><a href="../../src/crypto/rsa/rsa.go.html#line-612">#L612</a>: 	priv.Precomputed.Dp.Mod(priv.<b>D</b>, priv.Precomputed.Dp)
+		<a href="../../src/crypto/rsa/rsa.go.html#line-615" class="path-duplicate">rsa.go</a><a href="../../src/crypto/rsa/rsa.go.html#line-615">#L615</a>: 	priv.Precomputed.Dq.Mod(priv.<b>D</b>, priv.Precomputed.Dq)
+		<a href="../../src/crypto/rsa/rsa.go.html#line-626" class="path-duplicate">rsa.go</a><a href="../../src/crypto/rsa/rsa.go.html#line-626">#L626</a>: 		values.Exp.Mod(priv.<b>D</b>, values.Exp)
+		<a href="../../src/crypto/rsa/rsa.go.html#line-661" class="path-duplicate">rsa.go</a><a href="../../src/crypto/rsa/rsa.go.html#line-661">#L661</a>: 		m = bigmod.NewNat().Exp(c, priv.<b>D</b>.Bytes(), N)
+
+	<a href="../../pkg/crypto/x509.html">crypto/x509</a>
+		<a href="../../src/crypto/x509/pkcs1.go.html#line-77">pkcs1.go#L77</a>: 	key.<b>D</b> = priv.D
+		<a href="../../src/crypto/x509/pkcs1.go.html#line-116" class="path-duplicate">pkcs1.go</a><a href="../../src/crypto/x509/pkcs1.go.html#line-116">#L116</a>: 		D:       key.<b>D</b>,
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

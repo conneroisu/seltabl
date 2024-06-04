@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.stack</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/runtime2.go.html#line-411">stack</a></b></span>
+
+<span class="title">13 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/mgcstack.go.html#line-170">mgcstack.go#L170</a>: 	stack <b>stack</b>
+		<a href="../src/runtime/runtime2.go.html#line-411">runtime2.go#L411</a>: type <b>stack</b> struct {
+		<a href="../src/runtime/runtime2.go.html#line-430" class="path-duplicate">runtime2.go</a><a href="../src/runtime/runtime2.go.html#line-430">#L430</a>: 	stack       <b>stack</b>   // offset known to runtime/cgo
+		<a href="../src/runtime/signal_unix.go.html#line-1352">signal_unix.go#L1352</a>: 	stack       <b>stack</b>
+		<a href="../src/runtime/signal_unix.go.html#line-1397" class="path-duplicate">signal_unix.go</a><a href="../src/runtime/signal_unix.go.html#line-1397">#L1397</a>: func signalstack(s *<b>stack</b>) {
+		<a href="../src/runtime/stack.go.html#line-336">stack.go#L336</a>: func stackalloc(n uint32) <b>stack</b> {
+		<a href="../src/runtime/stack.go.html#line-357" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-357">#L357</a>: 		return <b>stack</b>{uintptr(v), uintptr(v) + uintptr(n)}
+		<a href="../src/runtime/stack.go.html#line-430" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-430">#L430</a>: 	return <b>stack</b>{uintptr(v), uintptr(v) + uintptr(n)}
+		<a href="../src/runtime/stack.go.html#line-439" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-439">#L439</a>: func stackfree(stk <b>stack</b>) {
+		<a href="../src/runtime/stack.go.html#line-556" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-556">#L556</a>: 	old   <b>stack</b>
+		<a href="../src/runtime/stack.go.html#line-783" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-783">#L783</a>: func fillstack(stk <b>stack</b>, b byte) {
+		<a href="../src/runtime/stack.go.html#line-789" class="path-duplicate">stack.go</a><a href="../src/runtime/stack.go.html#line-789">#L789</a>: func findsghi(gp *g, stk <b>stack</b>) uintptr {
+		<a href="../src/runtime/traceback.go.html#line-1267">traceback.go#L1267</a>: func tracebackHexdump(stk <b>stack</b>, frame *stkframe, bad uintptr) {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

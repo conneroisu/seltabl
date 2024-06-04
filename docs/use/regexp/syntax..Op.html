@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: regexp/syntax.Op</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../pkg/regexp/syntax.html">regexp/syntax</a>.<a href="../../src/regexp/syntax/regexp.go.html#line-32">Op</a></b></span>
+
+<span class="title">11 uses</span>
+
+	regexp/syntax (current package)
+		<a href="../../src/regexp/syntax/op_string.go.html#line-42">op_string.go#L42</a>: func (i <b>Op</b>) String() string {
+		<a href="../../src/regexp/syntax/parse.go.html#line-140">parse.go#L140</a>: func (p *parser) newRegexp(op <b>Op</b>) *Regexp {
+		<a href="../../src/regexp/syntax/parse.go.html#line-395" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-395">#L395</a>: func (p *parser) op(op <b>Op</b>) *Regexp {
+		<a href="../../src/regexp/syntax/parse.go.html#line-405" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-405">#L405</a>: func (p *parser) repeat(op <b>Op</b>, min, max int, before, after, lastRepeat string) (string, error) {
+		<a href="../../src/regexp/syntax/parse.go.html#line-550" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-550">#L550</a>: func (p *parser) collapse(subs []*Regexp, op <b>Op</b>) *Regexp {
+		<a href="../../src/regexp/syntax/parse.go.html#line-918" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-918">#L918</a>: 		op         <b>Op</b>
+		<a href="../../src/regexp/syntax/regexp.go.html#line-18">regexp.go#L18</a>: 	Op       <b>Op</b> // operator
+		<a href="../../src/regexp/syntax/regexp.go.html#line-32" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-32">#L32</a>: type <b>Op</b> uint8
+		<a href="../../src/regexp/syntax/regexp.go.html#line-39" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-39">#L39</a>: 	OpNoMatch        <b>Op</b> = 1 + iota // matches no strings
+		<a href="../../src/regexp/syntax/regexp.go.html#line-60" class="path-duplicate">regexp.go</a><a href="../../src/regexp/syntax/regexp.go.html#line-60">#L60</a>: const opPseudo <b>Op</b> = 128 // where pseudo-ops start
+		<a href="../../src/regexp/syntax/simplify.go.html#line-134">simplify.go#L134</a>: func simplify1(op <b>Op</b>, flags Flags, sub, re *Regexp) *Regexp {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

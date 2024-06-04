@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/tls.clientHandshakeState.serverHello</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/crypto/tls.html">crypto/tls</a>.<a href="../../src/crypto/tls/handshake_client.go.html#line-28">clientHandshakeState</a>.<a href="../../src/crypto/tls/handshake_client.go.html#line-31">serverHello</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">20 uses</span>
+
+	crypto/tls (current package)
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-31">handshake_client.go#L31</a>: 	<b>serverHello</b>  *serverHelloMsg
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-269" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-269">#L269</a>: 		<b>serverHello</b>: serverHello,
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-460" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-460">#L460</a>: 	if err := transcriptMsg(hs.<b>serverHello</b>, &amp;hs.finishedHash); err != nil {
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-517" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-517">#L517</a>: 	c.ekm = ekmFromMasterSecret(c.vers, hs.suite, hs.masterSecret, hs.hello.random, hs.<b>serverHello</b>.random)
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-524" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-524">#L524</a>: 	if hs.suite = mutualCipherSuite(hs.hello.cipherSuites, hs.<b>serverHello</b>.cipherSuite); hs.suite == nil {
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-560" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-560">#L560</a>: 		if !hs.<b>serverHello</b>.ocspStapling {
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-600" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-600">#L600</a>: 		err = keyAgreement.processServerKeyExchange(c.config, hs.hello, hs.<b>serverHello</b>, c.peerCertificates[0], skx)
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-658" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-658">#L658</a>: 	if hs.<b>serverHello</b>.extendedMasterSecret {
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-664" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-664">#L664</a>: 			hs.hello.random, hs.<b>serverHello</b>.random)
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-727" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-727">#L727</a>: 		keysFromMasterSecret(c.vers, hs.suite, hs.masterSecret, hs.hello.random, hs.<b>serverHello</b>.random, hs.suite.macLen, hs.suite.keyLen, hs.suite.ivLen)
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-749" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-749">#L749</a>: 		bytes.Equal(hs.<b>serverHello</b>.sessionId, hs.hello.sessionId)
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-759" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-759">#L759</a>: 	if hs.<b>serverHello</b>.compressionMethod != compressionNone {
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-764" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-764">#L764</a>: 	if c.handshakes == 0 &amp;&amp; hs.<b>serverHello</b>.secureRenegotiationSupported {
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-766" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-766">#L766</a>: 		if len(hs.<b>serverHello</b>.secureRenegotiation) != 0 {
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-776" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-776">#L776</a>: 		if !bytes.Equal(hs.<b>serverHello</b>.secureRenegotiation, expectedSecureRenegotiation[:]) {
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-782" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-782">#L782</a>: 	if err := checkALPN(hs.hello.alpnProtocols, hs.<b>serverHello</b>.alpnProtocol, false); err != nil {
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-786" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-786">#L786</a>: 	c.clientProtocol = hs.<b>serverHello</b>.alpnProtocol
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-788" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-788">#L788</a>: 	c.scts = hs.<b>serverHello</b>.scts
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-805" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-805">#L805</a>: 	if hs.session.extMasterSecret != hs.<b>serverHello</b>.extendedMasterSecret {
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-883" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-883">#L883</a>: 	if !hs.<b>serverHello</b>.ticketSupported {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

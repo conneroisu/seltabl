@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: compress/flate.compressor.tokens</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/compress/flate.html">compress/flate</a>.<a href="../../src/compress/flate/deflate.go.html#line-81">compressor</a>.<a href="../../src/compress/flate/deflate.go.html#line-111">tokens</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">31 uses</span>
+
+	compress/flate (current package)
+		<a href="../../src/compress/flate/deflate.go.html#line-111">deflate.go#L111</a>: 	<b>tokens</b> []token
+		<a href="../../src/compress/flate/deflate.go.html#line-356" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-356">#L356</a>: 	d.<b>tokens</b> = d.bestSpeed.encode(d.<b>tokens</b>[:0], d.window[:d.windowEnd])
+		<a href="../../src/compress/flate/deflate.go.html#line-359" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-359">#L359</a>: 	if len(d.<b>tokens</b>) &gt; d.windowEnd-(d.windowEnd&gt;&gt;4) {
+		<a href="../../src/compress/flate/deflate.go.html#line-362" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-362">#L362</a>: 		d.w.writeBlockDynamic(d.<b>tokens</b>, false, d.window[:d.windowEnd])
+		<a href="../../src/compress/flate/deflate.go.html#line-371" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-371">#L371</a>: 	d.<b>tokens</b> = make([]token, 0, maxFlateBlockTokens+1)
+		<a href="../../src/compress/flate/deflate.go.html#line-404" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-404">#L404</a>: 					d.<b>tokens</b> = append(d.<b>tokens</b>, literalToken(uint32(d.window[d.index-1])))
+		<a href="../../src/compress/flate/deflate.go.html#line-407" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-407">#L407</a>: 				if len(d.<b>tokens</b>) &gt; 0 {
+		<a href="../../src/compress/flate/deflate.go.html#line-408" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-408">#L408</a>: 					if d.err = d.writeBlock(d.<b>tokens</b>, d.index); d.err != nil {
+		<a href="../../src/compress/flate/deflate.go.html#line-411" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-411">#L411</a>: 					d.<b>tokens</b> = d.<b>tokens</b>[:0]
+		<a href="../../src/compress/flate/deflate.go.html#line-446" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-446">#L446</a>: 				d.<b>tokens</b> = append(d.<b>tokens</b>, matchToken(uint32(d.length-baseMatchLength), uint32(d.offset-baseMatchOffset)))
+		<a href="../../src/compress/flate/deflate.go.html#line-448" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-448">#L448</a>: 				d.<b>tokens</b> = append(d.<b>tokens</b>, matchToken(uint32(prevLength-baseMatchLength), uint32(prevOffset-baseMatchOffset)))
+		<a href="../../src/compress/flate/deflate.go.html#line-484" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-484">#L484</a>: 			if len(d.<b>tokens</b>) == maxFlateBlockTokens {
+		<a href="../../src/compress/flate/deflate.go.html#line-486" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-486">#L486</a>: 				if d.err = d.writeBlock(d.<b>tokens</b>, d.index); d.err != nil {
+		<a href="../../src/compress/flate/deflate.go.html#line-489" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-489">#L489</a>: 				d.<b>tokens</b> = d.<b>tokens</b>[:0]
+		<a href="../../src/compress/flate/deflate.go.html#line-497" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-497">#L497</a>: 				d.<b>tokens</b> = append(d.<b>tokens</b>, literalToken(uint32(d.window[i])))
+		<a href="../../src/compress/flate/deflate.go.html#line-498" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-498">#L498</a>: 				if len(d.<b>tokens</b>) == maxFlateBlockTokens {
+		<a href="../../src/compress/flate/deflate.go.html#line-499" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-499">#L499</a>: 					if d.err = d.writeBlock(d.<b>tokens</b>, i+1); d.err != nil {
+		<a href="../../src/compress/flate/deflate.go.html#line-502" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-502">#L502</a>: 					d.<b>tokens</b> = d.<b>tokens</b>[:0]
+		<a href="../../src/compress/flate/deflate.go.html#line-586" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-586">#L586</a>: 		d.<b>tokens</b> = make([]token, maxStoreBlockSize)
+		<a href="../../src/compress/flate/deflate.go.html#line-610" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-610">#L610</a>: 		d.<b>tokens</b> = d.<b>tokens</b>[:0]
+		<a href="../../src/compress/flate/deflate.go.html#line-623" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-623">#L623</a>: 		d.<b>tokens</b> = d.<b>tokens</b>[:0]
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

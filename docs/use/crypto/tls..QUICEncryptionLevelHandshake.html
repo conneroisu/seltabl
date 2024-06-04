@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/tls.QUICEncryptionLevelHandshake</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../../pkg/crypto/tls.html">crypto/tls</a>.<a href="../../src/crypto/tls/quic.go.html#line-20">QUICEncryptionLevelHandshake</a></b></span>
+
+<span class="title">10 uses</span>
+
+	crypto/tls (current package)
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-396">handshake_client_tls13.go#L396</a>: 	c.out.setTrafficSecret(hs.suite, <b>QUICEncryptionLevelHandshake</b>, clientSecret)
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-399" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-399">#L399</a>: 	c.in.setTrafficSecret(hs.suite, <b>QUICEncryptionLevelHandshake</b>, serverSecret)
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-405" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-405">#L405</a>: 		c.quicSetWriteSecret(<b>QUICEncryptionLevelHandshake</b>, hs.suite.id, clientSecret)
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-406" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-406">#L406</a>: 		c.quicSetReadSecret(<b>QUICEncryptionLevelHandshake</b>, hs.suite.id, serverSecret)
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-620">handshake_server_tls13.go#L620</a>: 	c.in.setTrafficSecret(hs.suite, <b>QUICEncryptionLevelHandshake</b>, clientSecret)
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-623" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-623">#L623</a>: 	c.out.setTrafficSecret(hs.suite, <b>QUICEncryptionLevelHandshake</b>, serverSecret)
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-629" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-629">#L629</a>: 		c.quicSetWriteSecret(<b>QUICEncryptionLevelHandshake</b>, hs.suite.id, serverSecret)
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-630" class="path-duplicate">handshake_server_tls13.go</a><a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-630">#L630</a>: 		c.quicSetReadSecret(<b>QUICEncryptionLevelHandshake</b>, hs.suite.id, clientSecret)
+		<a href="../../src/crypto/tls/quic.go.html#line-20">quic.go#L20</a>: 	<b>QUICEncryptionLevelHandshake</b>
+		<a href="../../src/crypto/tls/quic.go.html#line-30" class="path-duplicate">quic.go</a><a href="../../src/crypto/tls/quic.go.html#line-30">#L30</a>: 	case <b>QUICEncryptionLevelHandshake</b>:
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

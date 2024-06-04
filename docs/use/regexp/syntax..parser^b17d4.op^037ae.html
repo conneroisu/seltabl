@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: regexp/syntax.parser.op</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/regexp/syntax.html">regexp/syntax</a>.<a href="../../src/regexp/syntax/parse.go.html#line-126">parser</a>.<a href="../../src/regexp/syntax/parse.go.html#line-395">op</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">15 uses</span>
+
+	regexp/syntax (current package)
+		<a href="../../src/regexp/syntax/parse.go.html#line-395">parse.go#L395</a>: func (p *parser) <b>op</b>(op Op) *Regexp {
+		<a href="../../src/regexp/syntax/parse.go.html#line-943" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-943">#L943</a>: 			p.<b>op</b>(opLeftParen).Cap = p.numCap
+		<a href="../../src/regexp/syntax/parse.go.html#line-957" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-957">#L957</a>: 				p.<b>op</b>(OpBeginText)
+		<a href="../../src/regexp/syntax/parse.go.html#line-959" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-959">#L959</a>: 				p.<b>op</b>(OpBeginLine)
+		<a href="../../src/regexp/syntax/parse.go.html#line-964" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-964">#L964</a>: 				p.<b>op</b>(OpEndText).Flags |= WasDollar
+		<a href="../../src/regexp/syntax/parse.go.html#line-966" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-966">#L966</a>: 				p.<b>op</b>(OpEndLine)
+		<a href="../../src/regexp/syntax/parse.go.html#line-971" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-971">#L971</a>: 				p.<b>op</b>(OpAnyChar)
+		<a href="../../src/regexp/syntax/parse.go.html#line-973" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-973">#L973</a>: 				p.<b>op</b>(OpAnyCharNotNL)
+		<a href="../../src/regexp/syntax/parse.go.html#line-1019" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1019">#L1019</a>: 					p.<b>op</b>(OpBeginText)
+		<a href="../../src/regexp/syntax/parse.go.html#line-1023" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1023">#L1023</a>: 					p.<b>op</b>(OpWordBoundary)
+		<a href="../../src/regexp/syntax/parse.go.html#line-1027" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1027">#L1027</a>: 					p.<b>op</b>(OpNoWordBoundary)
+		<a href="../../src/regexp/syntax/parse.go.html#line-1047" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1047">#L1047</a>: 					p.<b>op</b>(OpEndText)
+		<a href="../../src/regexp/syntax/parse.go.html#line-1192" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1192">#L1192</a>: 		re := p.<b>op</b>(opLeftParen)
+		<a href="../../src/regexp/syntax/parse.go.html#line-1248" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1248">#L1248</a>: 				p.<b>op</b>(opLeftParen)
+		<a href="../../src/regexp/syntax/parse.go.html#line-1341" class="path-duplicate">parse.go</a><a href="../../src/regexp/syntax/parse.go.html#line-1341">#L1341</a>: 		p.<b>op</b>(opVerticalBar)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

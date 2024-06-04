@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net.Conn.Write</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/net.html">net</a>.<a href="../src/net/net.go.html#line-109">Conn</a>.<a href="../src/net/net.go.html#line-118">Write</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">11 uses</span>
+
+	net (current package)
+		<a href="../src/net/dnsclient_unix.go.html#line-101">dnsclient_unix.go#L101</a>: 	if _, err := c.<b>Write</b>(b); err != nil {
+		<a href="../src/net/dnsclient_unix.go.html#line-128" class="path-duplicate">dnsclient_unix.go</a><a href="../src/net/dnsclient_unix.go.html#line-128">#L128</a>: 	if _, err := c.<b>Write</b>(b); err != nil {
+		<a href="../src/net/net.go.html#line-118">net.go#L118</a>: 	<b>Write</b>(b []byte) (n int, err error)
+
+	<a href="../pkg/net/http.html">net/http</a>
+		<a href="../src/net/http/h2_bundle.go.html#line-7533">h2_bundle.go#L7533</a>: 		nn, err := sew.conn.<b>Write</b>(p[n:])
+		<a href="../src/net/http/server.go.html#line-3771">server.go#L3771</a>: 	n, err = c.Conn.<b>Write</b>(p)
+		<a href="../src/net/http/server.go.html#line-3798" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-3798">#L3798</a>: 	n, err = w.c.rwc.<b>Write</b>(p)
+		<a href="../src/net/http/socks_bundle.go.html#line-70">socks_bundle.go#L70</a>: 	if _, ctxErr = c.<b>Write</b>(b); ctxErr != nil {
+		<a href="../src/net/http/socks_bundle.go.html#line-111" class="path-duplicate">socks_bundle.go</a><a href="../src/net/http/socks_bundle.go.html#line-111">#L111</a>: 	if _, ctxErr = c.<b>Write</b>(b); ctxErr != nil {
+		<a href="../src/net/http/transport.go.html#line-1815">transport.go#L1815</a>: 	n, err = w.pc.conn.<b>Write</b>(p)
+
+	<a href="../pkg/crypto/tls.html">crypto/tls</a>
+		<a href="../src/crypto/tls/conn.go.html#line-945">conn.go#L945</a>: 	n, err := c.conn.<b>Write</b>(data)
+		<a href="../src/crypto/tls/conn.go.html#line-955" class="path-duplicate">conn.go</a><a href="../src/crypto/tls/conn.go.html#line-955">#L955</a>: 	n, err := c.conn.<b>Write</b>(c.sendBuf)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

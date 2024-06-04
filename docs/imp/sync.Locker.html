@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Method Implmentations: sync.Locker</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+<pre><code><span style="font-size:x-large;">type <a href="../pkg/sync.html">sync</a>.<b><a href="../src/sync/mutex.go.html#line-40">Locker</a></b></span><span style="font-size:large;"> <b><i>(interface)</i></b></span>
+
+<code><span class="title">Method Implmentations<span class="title-stat"><i></i></span></span>
+
+<div class="anchor" id="name-Lock">	<a href="../use/sync..Locker.Lock.html">Lock</a>()
+		(*<a href="../pkg/sync.html#name-Mutex">Mutex</a>).<b><a href="../src/sync/mutex.go.html#line-81">Lock</a></b>
+		(*<a href="../pkg/sync.html#name-RWMutex">RWMutex</a>).<b><a href="../src/sync/rwmutex.go.html#line-140">Lock</a></b>
+		(*<a href="../pkg/sync.html#name-noCopy">noCopy</a>).<b><a href="../src/sync/cond.go.html#line-120">Lock</a></b>
+		(*<a href="../pkg/sync.html#name-rlocker">rlocker</a>).<b><a href="../src/sync/rwmutex.go.html#line-242">Lock</a></b>
+		*sync/atomic.<a href="../pkg/sync/atomic.html#name-noCopy">noCopy</a>.<b><a href="../src/sync/atomic/type.go.html#line-194">Lock</a></b>
+		*crypto/tls.<a href="../pkg/crypto/tls.html#name-halfConn">halfConn</a>.<i><a href="../src/crypto/tls/conn.go.html#line-169">Mutex</a></i>.<b><a href="../src/sync/mutex.go.html#line-81">Lock</a></b>
+		*crypto/tls.<a href="../pkg/crypto/tls.html#name-lruSessionCache">lruSessionCache</a>.<i><a href="../src/crypto/tls/common.go.html#line-1451">Mutex</a></i>.<b><a href="../src/sync/mutex.go.html#line-81">Lock</a></b>
+		*io.<a href="../pkg/io.html#name-onceError">onceError</a>.<i><a href="../src/io/pipe.go.html#line-17">Mutex</a></i>.<b><a href="../src/sync/mutex.go.html#line-81">Lock</a></b>
+		*net.<a href="../pkg/net.html#name-ipv6ZoneCache">ipv6ZoneCache</a>.<i><a href="../src/net/interface.go.html#line-182">RWMutex</a></i>.<b><a href="../src/sync/rwmutex.go.html#line-140">Lock</a></b>
+		net/http.<a href="../pkg/net/http.html#name-fakeLocker">fakeLocker</a>.<b><a href="../src/net/http/transport.go.html#line-2915">Lock</a></b>
+		*runtime/internal/atomic.<a href="../pkg/runtime/internal/atomic.html#name-noCopy">noCopy</a>.<b><a href="../src/runtime/internal/atomic/types.go.html#line-581">Lock</a></b>
+		*syscall.<a href="../pkg/syscall.html#name-mmapper">mmapper</a>.<i><a href="../src/syscall/syscall_unix.go.html#line-42">Mutex</a></i>.<b><a href="../src/sync/mutex.go.html#line-81">Lock</a></b></div>
+<div class="anchor" id="name-Unlock">	<a href="../use/sync..Locker.Unlock.html">Unlock</a>()
+		(*<a href="../pkg/sync.html#name-Mutex">Mutex</a>).<b><a href="../src/sync/mutex.go.html#line-212">Unlock</a></b>
+		(*<a href="../pkg/sync.html#name-RWMutex">RWMutex</a>).<b><a href="../src/sync/rwmutex.go.html#line-197">Unlock</a></b>
+		(*<a href="../pkg/sync.html#name-noCopy">noCopy</a>).<b><a href="../src/sync/cond.go.html#line-121">Unlock</a></b>
+		(*<a href="../pkg/sync.html#name-rlocker">rlocker</a>).<b><a href="../src/sync/rwmutex.go.html#line-243">Unlock</a></b>
+		*sync/atomic.<a href="../pkg/sync/atomic.html#name-noCopy">noCopy</a>.<b><a href="../src/sync/atomic/type.go.html#line-195">Unlock</a></b>
+		*crypto/tls.<a href="../pkg/crypto/tls.html#name-halfConn">halfConn</a>.<i><a href="../src/crypto/tls/conn.go.html#line-169">Mutex</a></i>.<b><a href="../src/sync/mutex.go.html#line-212">Unlock</a></b>
+		*crypto/tls.<a href="../pkg/crypto/tls.html#name-lruSessionCache">lruSessionCache</a>.<i><a href="../src/crypto/tls/common.go.html#line-1451">Mutex</a></i>.<b><a href="../src/sync/mutex.go.html#line-212">Unlock</a></b>
+		*io.<a href="../pkg/io.html#name-onceError">onceError</a>.<i><a href="../src/io/pipe.go.html#line-17">Mutex</a></i>.<b><a href="../src/sync/mutex.go.html#line-212">Unlock</a></b>
+		*net.<a href="../pkg/net.html#name-ipv6ZoneCache">ipv6ZoneCache</a>.<i><a href="../src/net/interface.go.html#line-182">RWMutex</a></i>.<b><a href="../src/sync/rwmutex.go.html#line-197">Unlock</a></b>
+		net/http.<a href="../pkg/net/http.html#name-fakeLocker">fakeLocker</a>.<b><a href="../src/net/http/transport.go.html#line-2916">Unlock</a></b>
+		*runtime/internal/atomic.<a href="../pkg/runtime/internal/atomic.html#name-noCopy">noCopy</a>.<b><a href="../src/runtime/internal/atomic/types.go.html#line-582">Unlock</a></b>
+		*syscall.<a href="../pkg/syscall.html#name-mmapper">mmapper</a>.<i><a href="../src/syscall/syscall_unix.go.html#line-42">Mutex</a></i>.<b><a href="../src/sync/mutex.go.html#line-212">Unlock</a></b></div></code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

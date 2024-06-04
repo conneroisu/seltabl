@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: fmt.ss</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../pkg/fmt.html">fmt</a>.<a href="../src/fmt/scan.go.html#line-157">ss</a></b></span>
+
+<span class="title">41 uses</span>
+
+	fmt (current package)
+		<a href="../src/fmt/scan.go.html#line-157">scan.go#L157</a>: type <b>ss</b> struct {
+		<a href="../src/fmt/scan.go.html#line-179" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-179">#L179</a>: func (s *<b>ss</b>) Read(buf []byte) (n int, err error) {
+		<a href="../src/fmt/scan.go.html#line-183" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-183">#L183</a>: func (s *<b>ss</b>) ReadRune() (r rune, size int, err error) {
+		<a href="../src/fmt/scan.go.html#line-201" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-201">#L201</a>: func (s *<b>ss</b>) Width() (wid int, ok bool) {
+		<a href="../src/fmt/scan.go.html#line-210" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-210">#L210</a>: func (s *<b>ss</b>) getRune() (r rune) {
+		<a href="../src/fmt/scan.go.html#line-224" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-224">#L224</a>: func (s *<b>ss</b>) mustReadRune() (r rune) {
+		<a href="../src/fmt/scan.go.html#line-232" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-232">#L232</a>: func (s *<b>ss</b>) UnreadRune() error {
+		<a href="../src/fmt/scan.go.html#line-239" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-239">#L239</a>: func (s *<b>ss</b>) error(err error) {
+		<a href="../src/fmt/scan.go.html#line-243" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-243">#L243</a>: func (s *<b>ss</b>) errorString(err string) {
+		<a href="../src/fmt/scan.go.html#line-247" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-247">#L247</a>: func (s *<b>ss</b>) Token(skipSpace bool, f func(rune) bool) (tok []byte, err error) {
+		<a href="../src/fmt/scan.go.html#line-379" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-379">#L379</a>: 	New: func() any { return new(<b>ss</b>) },
+		<a href="../src/fmt/scan.go.html#line-383" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-383">#L383</a>: func newScanState(r io.Reader, nlIsSpace, nlIsEnd bool) (s *<b>ss</b>, old ssave) {
+		<a href="../src/fmt/scan.go.html#line-384" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-384">#L384</a>: 	s = ssFree.Get().(*<b>ss</b>)
+		<a href="../src/fmt/scan.go.html#line-402" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-402">#L402</a>: func (s *<b>ss</b>) free(old ssave) {
+		<a href="../src/fmt/scan.go.html#line-420" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-420">#L420</a>: func (s *<b>ss</b>) SkipSpace() {
+		<a href="../src/fmt/scan.go.html#line-446" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-446">#L446</a>: func (s *<b>ss</b>) token(skipSpace bool, f func(rune) bool) []byte {
+		<a href="../src/fmt/scan.go.html#line-479" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-479">#L479</a>: func (s *<b>ss</b>) consume(ok string, accept bool) bool {
+		<a href="../src/fmt/scan.go.html#line-497" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-497">#L497</a>: func (s *<b>ss</b>) peek(ok string) bool {
+		<a href="../src/fmt/scan.go.html#line-505" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-505">#L505</a>: func (s *<b>ss</b>) notEOF() {
+		<a href="../src/fmt/scan.go.html#line-515" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-515">#L515</a>: func (s *<b>ss</b>) accept(ok string) bool {
+		<a href="../src/fmt/scan.go.html#line-520" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-520">#L520</a>: func (s *<b>ss</b>) okVerb(verb rune, okVerbs, typ string) bool {
+		<a href="../src/fmt/scan.go.html#line-531" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-531">#L531</a>: func (s *<b>ss</b>) scanBool(verb rune) bool {
+		<a href="../src/fmt/scan.go.html#line-569" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-569">#L569</a>: func (s *<b>ss</b>) getBase(verb rune) (base int, digits string) {
+		<a href="../src/fmt/scan.go.html#line-588" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-588">#L588</a>: func (s *<b>ss</b>) scanNumber(digits string, haveDigits bool) string {
+		<a href="../src/fmt/scan.go.html#line-601" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-601">#L601</a>: func (s *<b>ss</b>) scanRune(bitSize int) int64 {
+		<a href="../src/fmt/scan.go.html#line-615" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-615">#L615</a>: func (s *<b>ss</b>) scanBasePrefix() (base int, digits string, zeroFound bool) {
+		<a href="../src/fmt/scan.go.html#line-638" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-638">#L638</a>: func (s *<b>ss</b>) scanInt(verb rune, bitSize int) int64 {
+		<a href="../src/fmt/scan.go.html#line-671" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-671">#L671</a>: func (s *<b>ss</b>) scanUint(verb rune, bitSize int) uint64 {
+		<a href="../src/fmt/scan.go.html#line-702" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-702">#L702</a>: func (s *<b>ss</b>) floatToken() string {
+		<a href="../src/fmt/scan.go.html#line-743" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-743">#L743</a>: func (s *<b>ss</b>) complexTokens() (real, imag string) {
+		<a href="../src/fmt/scan.go.html#line-774" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-774">#L774</a>: func (s *<b>ss</b>) convertFloat(str string, n int) float64 {
+		<a href="../src/fmt/scan.go.html#line-810" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-810">#L810</a>: func (s *<b>ss</b>) scanComplex(verb rune, n int) complex128 {
+		<a href="../src/fmt/scan.go.html#line-824" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-824">#L824</a>: func (s *<b>ss</b>) convertString(verb rune) (str string) {
+		<a href="../src/fmt/scan.go.html#line-842" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-842">#L842</a>: func (s *<b>ss</b>) quotedString() string {
+		<a href="../src/fmt/scan.go.html#line-899" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-899">#L899</a>: func (s *<b>ss</b>) hexByte() (b byte, ok bool) {
+		<a href="../src/fmt/scan.go.html#line-918" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-918">#L918</a>: func (s *<b>ss</b>) hexString() string {
+		<a href="../src/fmt/scan.go.html#line-944" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-944">#L944</a>: func (s *<b>ss</b>) scanPercent() {
+		<a href="../src/fmt/scan.go.html#line-953" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-953">#L953</a>: func (s *<b>ss</b>) scanOne(verb rune, arg any) {
+		<a href="../src/fmt/scan.go.html#line-1070" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-1070">#L1070</a>: func (s *<b>ss</b>) doScan(a []any) (numProcessed int, err error) {
+		<a href="../src/fmt/scan.go.html#line-1100" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-1100">#L1100</a>: func (s *<b>ss</b>) advance(format string) (i int) {
+		<a href="../src/fmt/scan.go.html#line-1181" class="path-duplicate">scan.go</a><a href="../src/fmt/scan.go.html#line-1181">#L1181</a>: func (s *<b>ss</b>) doScanf(format string, a []any) (numProcessed int, err error) {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

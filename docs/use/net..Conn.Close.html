@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net.Conn.Close</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/net.html">net</a>.<a href="../src/net/net.go.html#line-109">Conn</a>.<a href="../src/net/net.go.html#line-122">Close</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">30 uses</span>
+
+	net (current package)
+		<a href="../src/net/dial.go.html#line-541">dial.go#L541</a>: 				c.<b>Close</b>()
+		<a href="../src/net/dnsclient_unix.go.html#line-190">dnsclient_unix.go#L190</a>: 		c.<b>Close</b>()
+		<a href="../src/net/net.go.html#line-122">net.go#L122</a>: 	<b>Close</b>() error
+
+	<a href="../pkg/net/http.html">net/http</a>
+		<a href="../src/net/http/h2_bundle.go.html#line-4362">h2_bundle.go#L4362</a>: 	sc.conn.<b>Close</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-4478" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-4478">#L4478</a>: func (sc *http2serverConn) CloseConn() error { return sc.conn.<b>Close</b>() }
+		<a href="../src/net/http/h2_bundle.go.html#line-4707" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-4707">#L4707</a>: 	defer sc.conn.<b>Close</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-5027" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-5027">#L5027</a>: 				sc.conn.<b>Close</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-8077" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-8077">#L8077</a>: 	cc.tconn.<b>Close</b>()
+		<a href="../src/net/http/h2_bundle.go.html#line-8088" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-8088">#L8088</a>: 		nc.<b>Close</b>()
+		<a href="../src/net/http/server.go.html#line-383">server.go#L383</a>: 			cw.res.conn.rwc.<b>Close</b>()
+		<a href="../src/net/http/server.go.html#line-392" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-392">#L392</a>: 		cw.res.conn.rwc.<b>Close</b>()
+		<a href="../src/net/http/server.go.html#line-1751" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-1751">#L1751</a>: 	c.rwc.<b>Close</b>()
+		<a href="../src/net/http/server.go.html#line-1927" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-1927">#L1927</a>: 				re.Conn.<b>Close</b>()
+		<a href="../src/net/http/server.go.html#line-2950" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-2950">#L2950</a>: 		c.rwc.<b>Close</b>()
+		<a href="../src/net/http/server.go.html#line-3054" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-3054">#L3054</a>: 		c.rwc.<b>Close</b>()
+		<a href="../src/net/http/server.go.html#line-3785" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-3785">#L3785</a>: 	err = c.Conn.<b>Close</b>()
+		<a href="../src/net/http/socks_bundle.go.html#line-330">socks_bundle.go#L330</a>: 		c.<b>Close</b>()
+		<a href="../src/net/http/socks_bundle.go.html#line-383" class="path-duplicate">socks_bundle.go</a><a href="../src/net/http/socks_bundle.go.html#line-383">#L383</a>: 		c.<b>Close</b>()
+		<a href="../src/net/http/transport.go.html#line-1580">transport.go#L1580</a>: 		plainConn.<b>Close</b>()
+		<a href="../src/net/http/transport.go.html#line-1635" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-1635">#L1635</a>: 				go pconn.conn.<b>Close</b>()
+		<a href="../src/net/http/transport.go.html#line-1683" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-1683">#L1683</a>: 			conn.<b>Close</b>()
+		<a href="../src/net/http/transport.go.html#line-1700" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-1700">#L1700</a>: 				conn.<b>Close</b>()
+		<a href="../src/net/http/transport.go.html#line-1751" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-1751">#L1751</a>: 			conn.<b>Close</b>()
+		<a href="../src/net/http/transport.go.html#line-1758" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-1758">#L1758</a>: 			conn.<b>Close</b>()
+		<a href="../src/net/http/transport.go.html#line-1771" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-1771">#L1771</a>: 			conn.<b>Close</b>()
+		<a href="../src/net/http/transport.go.html#line-2769" class="path-duplicate">transport.go</a><a href="../src/net/http/transport.go.html#line-2769">#L2769</a>: 				pc.conn.<b>Close</b>()
+
+	<a href="../pkg/crypto/tls.html">crypto/tls</a>
+		<a href="../src/crypto/tls/conn.go.html#line-1419">conn.go#L1419</a>: 		return c.conn.<b>Close</b>()
+		<a href="../src/crypto/tls/conn.go.html#line-1429" class="path-duplicate">conn.go</a><a href="../src/crypto/tls/conn.go.html#line-1429">#L1429</a>: 	if err := c.conn.<b>Close</b>(); err != nil {
+		<a href="../src/crypto/tls/conn.go.html#line-1532" class="path-duplicate">conn.go</a><a href="../src/crypto/tls/conn.go.html#line-1532">#L1532</a>: 				_ = c.conn.<b>Close</b>()
+		<a href="../src/crypto/tls/tls.go.html#line-158">tls.go#L158</a>: 		rawConn.<b>Close</b>()
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

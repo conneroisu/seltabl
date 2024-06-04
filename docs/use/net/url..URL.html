@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/url.URL</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../pkg/net/url.html">net/url</a>.<a href="../../src/net/url/url.go.html#line-369">URL</a></b></span>
+
+<span class="title">83 uses</span>
+
+	net/url (current package)
+		<a href="../../src/net/url/url.go.html#line-369">url.go#L369</a>: type <b>URL</b> struct {
+		<a href="../../src/net/url/url.go.html#line-473" class="path-duplicate">url.go</a><a href="../../src/net/url/url.go.html#line-473">#L473</a>: func Parse(rawURL string) (*<b>URL</b>, error) {
+		<a href="../../src/net/url/url.go.html#line-494" class="path-duplicate">url.go</a><a href="../../src/net/url/url.go.html#line-494">#L494</a>: func ParseRequestURI(rawURL string) (*<b>URL</b>, error) {
+		<a href="../../src/net/url/url.go.html#line-506" class="path-duplicate">url.go</a><a href="../../src/net/url/url.go.html#line-506">#L506</a>: func parse(rawURL string, viaRequest bool) (*<b>URL</b>, error) {
+		<a href="../../src/net/url/url.go.html#line-517" class="path-duplicate">url.go</a><a href="../../src/net/url/url.go.html#line-517">#L517</a>: 	url := new(<b>URL</b>)
+		<a href="../../src/net/url/url.go.html#line-680" class="path-duplicate">url.go</a><a href="../../src/net/url/url.go.html#line-680">#L680</a>: func (u *<b>URL</b>) setPath(p string) error {
+		<a href="../../src/net/url/url.go.html#line-704" class="path-duplicate">url.go</a><a href="../../src/net/url/url.go.html#line-704">#L704</a>: func (u *<b>URL</b>) EscapedPath() string {
+		<a href="../../src/net/url/url.go.html#line-744" class="path-duplicate">url.go</a><a href="../../src/net/url/url.go.html#line-744">#L744</a>: func (u *<b>URL</b>) setFragment(f string) error {
+		<a href="../../src/net/url/url.go.html#line-767" class="path-duplicate">url.go</a><a href="../../src/net/url/url.go.html#line-767">#L767</a>: func (u *<b>URL</b>) EscapedFragment() string {
+		<a href="../../src/net/url/url.go.html#line-815" class="path-duplicate">url.go</a><a href="../../src/net/url/url.go.html#line-815">#L815</a>: func (u *<b>URL</b>) String() string {
+		<a href="../../src/net/url/url.go.html#line-870" class="path-duplicate">url.go</a><a href="../../src/net/url/url.go.html#line-870">#L870</a>: func (u *<b>URL</b>) Redacted() string {
+		<a href="../../src/net/url/url.go.html#line-1065" class="path-duplicate">url.go</a><a href="../../src/net/url/url.go.html#line-1065">#L1065</a>: func (u *<b>URL</b>) IsAbs() bool {
+		<a href="../../src/net/url/url.go.html#line-1072" class="path-duplicate">url.go</a><a href="../../src/net/url/url.go.html#line-1072">#L1072</a>: func (u *<b>URL</b>) Parse(ref string) (*<b>URL</b>, error) {
+		<a href="../../src/net/url/url.go.html#line-1086" class="path-duplicate">url.go</a><a href="../../src/net/url/url.go.html#line-1086">#L1086</a>: func (u *<b>URL</b>) ResolveReference(ref *<b>URL</b>) *<b>URL</b> {
+		<a href="../../src/net/url/url.go.html#line-1121" class="path-duplicate">url.go</a><a href="../../src/net/url/url.go.html#line-1121">#L1121</a>: func (u *<b>URL</b>) Query() Values {
+		<a href="../../src/net/url/url.go.html#line-1128" class="path-duplicate">url.go</a><a href="../../src/net/url/url.go.html#line-1128">#L1128</a>: func (u *<b>URL</b>) RequestURI() string {
+		<a href="../../src/net/url/url.go.html#line-1150" class="path-duplicate">url.go</a><a href="../../src/net/url/url.go.html#line-1150">#L1150</a>: func (u *<b>URL</b>) Hostname() string {
+		<a href="../../src/net/url/url.go.html#line-1158" class="path-duplicate">url.go</a><a href="../../src/net/url/url.go.html#line-1158">#L1158</a>: func (u *<b>URL</b>) Port() string {
+		<a href="../../src/net/url/url.go.html#line-1184" class="path-duplicate">url.go</a><a href="../../src/net/url/url.go.html#line-1184">#L1184</a>: func (u *<b>URL</b>) MarshalBinary() (text []byte, err error) {
+		<a href="../../src/net/url/url.go.html#line-1188" class="path-duplicate">url.go</a><a href="../../src/net/url/url.go.html#line-1188">#L1188</a>: func (u *<b>URL</b>) UnmarshalBinary(text []byte) error {
+		<a href="../../src/net/url/url.go.html#line-1200" class="path-duplicate">url.go</a><a href="../../src/net/url/url.go.html#line-1200">#L1200</a>: func (u *<b>URL</b>) JoinPath(elem ...string) *<b>URL</b> {
+
+	<a href="../../pkg/net/http.html">net/http</a>
+		<a href="../../src/net/http/client.go.html#line-147">client.go#L147</a>: func refererForURL(lastReq, newReq *url.<b>URL</b>, explicitRef string) string {
+		<a href="../../src/net/http/client.go.html#line-985" class="path-duplicate">client.go</a><a href="../../src/net/http/client.go.html#line-985">#L985</a>: func shouldCopyHeaderOnRedirect(headerKey string, initial, dest *url.<b>URL</b>) bool {
+		<a href="../../src/net/http/client.go.html#line-1032" class="path-duplicate">client.go</a><a href="../../src/net/http/client.go.html#line-1032">#L1032</a>: func stripPassword(u *url.<b>URL</b>) string {
+		<a href="../../src/net/http/clone.go.html#line-22">clone.go#L22</a>: func cloneURL(u *url.<b>URL</b>) *url.<b>URL</b> {
+		<a href="../../src/net/http/clone.go.html#line-26" class="path-duplicate">clone.go</a><a href="../../src/net/http/clone.go.html#line-26">#L26</a>: 	u2 := new(url.<b>URL</b>)
+		<a href="../../src/net/http/fs.go.html#line-163">fs.go#L163</a>: 		url := url.<b>URL</b>{Path: name}
+		<a href="../../src/net/http/h2_bundle.go.html#line-6062">h2_bundle.go#L6062</a>: 	var url_ *url.<b>URL</b>
+		<a href="../../src/net/http/h2_bundle.go.html#line-6065" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-6065">#L6065</a>: 		url_ = &amp;url.<b>URL</b>{Host: rp.authority}
+		<a href="../../src/net/http/h2_bundle.go.html#line-6929" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-6929">#L6929</a>: 	url    *url.<b>URL</b>
+		<a href="../../src/net/http/h2_bundle.go.html#line-10544" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-10544">#L10544</a>: 	url      *url.<b>URL</b> // for :scheme, :authority, :path
+		<a href="../../src/net/http/jar.go.html#line-21">jar.go#L21</a>: 	SetCookies(u *url.<b>URL</b>, cookies []*Cookie)
+		<a href="../../src/net/http/jar.go.html#line-26" class="path-duplicate">jar.go</a><a href="../../src/net/http/jar.go.html#line-26">#L26</a>: 	Cookies(u *url.<b>URL</b>) []*Cookie
+		<a href="../../src/net/http/request.go.html#line-128">request.go#L128</a>: 	URL *url.<b>URL</b>
+		<a href="../../src/net/http/response.go.html#line-137">response.go#L137</a>: func (r *Response) Location() (*url.<b>URL</b>, error) {
+		<a href="../../src/net/http/servemux121.go.html#line-127">servemux121.go#L127</a>: 		u := &amp;url.<b>URL</b>{Path: path, RawQuery: r.URL.RawQuery}
+		<a href="../../src/net/http/servemux121.go.html#line-176" class="path-duplicate">servemux121.go</a><a href="../../src/net/http/servemux121.go.html#line-176">#L176</a>: func (mux *serveMux121) redirectToPathSlash(host, path string, u *url.<b>URL</b>) (*url.<b>URL</b>, bool) {
+		<a href="../../src/net/http/servemux121.go.html#line-184" class="path-duplicate">servemux121.go</a><a href="../../src/net/http/servemux121.go.html#line-184">#L184</a>: 	u = &amp;url.<b>URL</b>{Path: path, RawQuery: u.RawQuery}
+		<a href="../../src/net/http/server.go.html#line-2205">server.go#L2205</a>: 			r2.URL = new(url.<b>URL</b>)
+		<a href="../../src/net/http/server.go.html#line-2537" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-2537">#L2537</a>: 		var u *url.<b>URL</b>
+		<a href="../../src/net/http/server.go.html#line-2548" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-2548">#L2548</a>: 			u := &amp;url.<b>URL</b>{Path: path, RawQuery: r.URL.RawQuery}
+		<a href="../../src/net/http/server.go.html#line-2574" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-2574">#L2574</a>: func (mux *ServeMux) matchOrRedirect(host, method, path string, u *url.<b>URL</b>) (_ *routingNode, matches []string, redirectTo *url.<b>URL</b>) {
+		<a href="../../src/net/http/server.go.html#line-2586" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-2586">#L2586</a>: 			return nil, nil, &amp;url.<b>URL</b>{Path: cleanPath(u.Path) + "/", RawQuery: u.RawQuery}
+		<a href="../../src/net/http/server.go.html#line-3154" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-3154">#L3154</a>: 			r2.URL = new(url.<b>URL</b>)
+		<a href="../../src/net/http/transport.go.html#line-125">transport.go#L125</a>: 	Proxy func(*Request) (*url.<b>URL</b>, error)
+		<a href="../../src/net/http/transport.go.html#line-130" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-130">#L130</a>: 	OnProxyConnectResponse func(ctx context.Context, proxyURL *url.<b>URL</b>, connectReq *Request, connectRes *Response) error
+		<a href="../../src/net/http/transport.go.html#line-262" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-262">#L262</a>: 	GetProxyConnectHeader func(ctx context.Context, proxyURL *url.<b>URL</b>, target string) (Header, error)
+		<a href="../../src/net/http/transport.go.html#line-452" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-452">#L452</a>: func ProxyFromEnvironment(req *Request) (*url.<b>URL</b>, error) {
+		<a href="../../src/net/http/transport.go.html#line-458" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-458">#L458</a>: func ProxyURL(fixedURL *url.<b>URL</b>) func(*Request) (*url.<b>URL</b>, error) {
+		<a href="../../src/net/http/transport.go.html#line-459" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-459">#L459</a>: 	return func(*Request) (*url.<b>URL</b>, error) {
+		<a href="../../src/net/http/transport.go.html#line-833" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-833">#L833</a>: 	envProxyFuncValue func(*url.<b>URL</b>) (*url.<b>URL</b>, error)
+		<a href="../../src/net/http/transport.go.html#line-838" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-838">#L838</a>: func envProxyFunc() func(*url.<b>URL</b>) (*url.<b>URL</b>, error) {
+		<a href="../../src/net/http/transport.go.html#line-1715" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-1715">#L1715</a>: 			URL:    &amp;url.<b>URL</b>{Opaque: cm.targetAddr},
+		<a href="../../src/net/http/transport.go.html#line-1849" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-1849">#L1849</a>: 	proxyURL     *url.<b>URL</b> // nil for no proxy, else full proxy URL
+		<a href="../../src/net/http/transport.go.html#line-2783" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-2783">#L2783</a>: func idnaASCIIFromURL(url *url.<b>URL</b>) string {
+		<a href="../../src/net/http/transport.go.html#line-2792" class="path-duplicate">transport.go</a><a href="../../src/net/http/transport.go.html#line-2792">#L2792</a>: func canonicalAddr(url *url.<b>URL</b>) string {
+
+	<a href="../../pkg/crypto/x509.html">crypto/x509</a>
+		<a href="../../src/crypto/x509/parser.go.html#line-373">parser.go#L373</a>: func parseSANExtension(der cryptobyte.String) (dnsNames, emailAddresses []string, ipAddresses []net.IP, uris []*url.<b>URL</b>, err error) {
+		<a href="../../src/crypto/x509/verify.go.html#line-410">verify.go#L410</a>: func matchURIConstraint(uri *url.<b>URL</b>, constraint string) (bool, error) {
+		<a href="../../src/crypto/x509/verify.go.html#line-647" class="path-duplicate">verify.go</a><a href="../../src/crypto/x509/verify.go.html#line-647">#L647</a>: 							return matchURIConstraint(parsedName.(*url.<b>URL</b>), constraint.(string))
+		<a href="../../src/crypto/x509/x509.go.html#line-759">x509.go#L759</a>: 	URIs           []*url.<b>URL</b>
+		<a href="../../src/crypto/x509/x509.go.html#line-1062" class="path-duplicate">x509.go</a><a href="../../src/crypto/x509/x509.go.html#line-1062">#L1062</a>: func marshalSANs(dnsNames, emailAddresses []string, ipAddresses []net.IP, uris []*url.<b>URL</b>) (derBytes []byte, err error) {
+		<a href="../../src/crypto/x509/x509.go.html#line-1857" class="path-duplicate">x509.go</a><a href="../../src/crypto/x509/x509.go.html#line-1857">#L1857</a>: 	URIs           []*url.<b>URL</b>
+
+	<a href="../../pkg/github.com/PuerkitoBio^56e6a/goquery.html">github.com/PuerkitoBio/goquery</a>
+		<a href="../../src/github.com/PuerkitoBio^56e6a/goquery/type.go.html#line-20">type.go#L20</a>: 	Url      *url.<b>URL</b>
+		<a href="../../src/github.com/PuerkitoBio^56e6a/goquery/type.go.html#line-89" class="path-duplicate">type.go</a><a href="../../src/github.com/PuerkitoBio^56e6a/goquery/type.go.html#line-89">#L89</a>: func newDocument(root *html.Node, url *url.<b>URL</b>) *Document {
+
+	<a href="../../pkg/vendor/golang.org/x/net/http/httpproxy.html">vendor/golang.org/x/net/http/httpproxy</a>
+		<a href="../../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-68">proxy.go#L68</a>: 	httpsProxy *url.<b>URL</b>
+		<a href="../../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-71" class="path-duplicate">proxy.go</a><a href="../../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-71">#L71</a>: 	httpProxy *url.<b>URL</b>
+		<a href="../../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-117" class="path-duplicate">proxy.go</a><a href="../../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-117">#L117</a>: func (cfg *Config) ProxyFunc() func(reqURL *url.<b>URL</b>) (*url.<b>URL</b>, error) {
+		<a href="../../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-126" class="path-duplicate">proxy.go</a><a href="../../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-126">#L126</a>: func (cfg *config) proxyForURL(reqURL *url.<b>URL</b>) (*url.<b>URL</b>, error) {
+		<a href="../../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-127" class="path-duplicate">proxy.go</a><a href="../../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-127">#L127</a>: 	var proxy *url.<b>URL</b>
+		<a href="../../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-146" class="path-duplicate">proxy.go</a><a href="../../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-146">#L146</a>: func parseProxy(proxy string) (*url.<b>URL</b>, error) {
+		<a href="../../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-283" class="path-duplicate">proxy.go</a><a href="../../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-283">#L283</a>: func canonicalAddr(url *url.<b>URL</b>) string {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

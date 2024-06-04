@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: sync.Map.dirty</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/sync.html">sync</a>.<a href="../src/sync/map.go.html#line-35">Map</a>.<a href="../src/sync/map.go.html#line-59">dirty</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">20 uses</span>
+
+	sync (current package)
+		<a href="../src/sync/map.go.html#line-59">map.go#L59</a>: 	<b>dirty</b> map[any]*entry
+		<a href="../src/sync/map.go.html#line-131" class="path-duplicate">map.go</a><a href="../src/sync/map.go.html#line-131">#L131</a>: 			e, ok = m.<b>dirty</b>[key]
+		<a href="../src/sync/map.go.html#line-217" class="path-duplicate">map.go</a><a href="../src/sync/map.go.html#line-217">#L217</a>: 			m.<b>dirty</b>[key] = e
+		<a href="../src/sync/map.go.html#line-220" class="path-duplicate">map.go</a><a href="../src/sync/map.go.html#line-220">#L220</a>: 	} else if e, ok := m.<b>dirty</b>[key]; ok {
+		<a href="../src/sync/map.go.html#line-230" class="path-duplicate">map.go</a><a href="../src/sync/map.go.html#line-230">#L230</a>: 		m.<b>dirty</b>[key] = newEntry(value)
+		<a href="../src/sync/map.go.html#line-280" class="path-duplicate">map.go</a><a href="../src/sync/map.go.html#line-280">#L280</a>: 			e, ok = m.<b>dirty</b>[key]
+		<a href="../src/sync/map.go.html#line-281" class="path-duplicate">map.go</a><a href="../src/sync/map.go.html#line-281">#L281</a>: 			delete(m.<b>dirty</b>, key)
+		<a href="../src/sync/map.go.html#line-347" class="path-duplicate">map.go</a><a href="../src/sync/map.go.html#line-347">#L347</a>: 			m.<b>dirty</b>[key] = e
+		<a href="../src/sync/map.go.html#line-353" class="path-duplicate">map.go</a><a href="../src/sync/map.go.html#line-353">#L353</a>: 	} else if e, ok := m.<b>dirty</b>[key]; ok {
+		<a href="../src/sync/map.go.html#line-365" class="path-duplicate">map.go</a><a href="../src/sync/map.go.html#line-365">#L365</a>: 		m.<b>dirty</b>[key] = newEntry(value)
+		<a href="../src/sync/map.go.html#line-388" class="path-duplicate">map.go</a><a href="../src/sync/map.go.html#line-388">#L388</a>: 	} else if e, ok := m.<b>dirty</b>[key]; ok {
+		<a href="../src/sync/map.go.html#line-414" class="path-duplicate">map.go</a><a href="../src/sync/map.go.html#line-414">#L414</a>: 			e, ok = m.<b>dirty</b>[key]
+		<a href="../src/sync/map.go.html#line-463" class="path-duplicate">map.go</a><a href="../src/sync/map.go.html#line-463">#L463</a>: 			read = readOnly{m: m.<b>dirty</b>}
+		<a href="../src/sync/map.go.html#line-466" class="path-duplicate">map.go</a><a href="../src/sync/map.go.html#line-466">#L466</a>: 			m.<b>dirty</b> = nil
+		<a href="../src/sync/map.go.html#line-485" class="path-duplicate">map.go</a><a href="../src/sync/map.go.html#line-485">#L485</a>: 	if m.misses &lt; len(m.<b>dirty</b>) {
+		<a href="../src/sync/map.go.html#line-488" class="path-duplicate">map.go</a><a href="../src/sync/map.go.html#line-488">#L488</a>: 	m.read.Store(&amp;readOnly{m: m.<b>dirty</b>})
+		<a href="../src/sync/map.go.html#line-489" class="path-duplicate">map.go</a><a href="../src/sync/map.go.html#line-489">#L489</a>: 	m.<b>dirty</b> = nil
+		<a href="../src/sync/map.go.html#line-494" class="path-duplicate">map.go</a><a href="../src/sync/map.go.html#line-494">#L494</a>: 	if m.<b>dirty</b> != nil {
+		<a href="../src/sync/map.go.html#line-499" class="path-duplicate">map.go</a><a href="../src/sync/map.go.html#line-499">#L499</a>: 	m.<b>dirty</b> = make(map[any]*entry, len(read.m))
+		<a href="../src/sync/map.go.html#line-502" class="path-duplicate">map.go</a><a href="../src/sync/map.go.html#line-502">#L502</a>: 			m.<b>dirty</b>[k] = e
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

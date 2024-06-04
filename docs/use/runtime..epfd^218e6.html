@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.epfd</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">var <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/netpoll_epoll.go.html#line-16">epfd</a></b></span>
+
+<span class="title">9 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/netpoll_epoll.go.html#line-16">netpoll_epoll.go#L16</a>: 	<b>epfd</b> int32 = -1 // epoll descriptor
+		<a href="../src/runtime/netpoll_epoll.go.html#line-25" class="path-duplicate">netpoll_epoll.go</a><a href="../src/runtime/netpoll_epoll.go.html#line-25">#L25</a>: 	<b>epfd</b>, errno = syscall.EpollCreate1(syscall.EPOLL_CLOEXEC)
+		<a href="../src/runtime/netpoll_epoll.go.html#line-39" class="path-duplicate">netpoll_epoll.go</a><a href="../src/runtime/netpoll_epoll.go.html#line-39">#L39</a>: 	errno = syscall.EpollCtl(<b>epfd</b>, syscall.EPOLL_CTL_ADD, r, &amp;ev)
+		<a href="../src/runtime/netpoll_epoll.go.html#line-49" class="path-duplicate">netpoll_epoll.go</a><a href="../src/runtime/netpoll_epoll.go.html#line-49">#L49</a>: 	return fd == uintptr(<b>epfd</b>) || fd == netpollBreakRd || fd == netpollBreakWr
+		<a href="../src/runtime/netpoll_epoll.go.html#line-57" class="path-duplicate">netpoll_epoll.go</a><a href="../src/runtime/netpoll_epoll.go.html#line-57">#L57</a>: 	return syscall.EpollCtl(<b>epfd</b>, syscall.EPOLL_CTL_ADD, int32(fd), &amp;ev)
+		<a href="../src/runtime/netpoll_epoll.go.html#line-62" class="path-duplicate">netpoll_epoll.go</a><a href="../src/runtime/netpoll_epoll.go.html#line-62">#L62</a>: 	return syscall.EpollCtl(<b>epfd</b>, syscall.EPOLL_CTL_DEL, int32(fd), &amp;ev)
+		<a href="../src/runtime/netpoll_epoll.go.html#line-99" class="path-duplicate">netpoll_epoll.go</a><a href="../src/runtime/netpoll_epoll.go.html#line-99">#L99</a>: 	if <b>epfd</b> == -1 {
+		<a href="../src/runtime/netpoll_epoll.go.html#line-118" class="path-duplicate">netpoll_epoll.go</a><a href="../src/runtime/netpoll_epoll.go.html#line-118">#L118</a>: 	n, errno := syscall.EpollWait(<b>epfd</b>, events[:], int32(len(events)), waitms)
+		<a href="../src/runtime/netpoll_epoll.go.html#line-121" class="path-duplicate">netpoll_epoll.go</a><a href="../src/runtime/netpoll_epoll.go.html#line-121">#L121</a>: 			println("runtime: epollwait on fd", <b>epfd</b>, "failed with", errno)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

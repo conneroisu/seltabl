@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/http.http2responseWriterState.snapHeader</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/net/http.html">net/http</a>.<a href="../../src/net/http/h2_bundle.go.html#line-6359">http2responseWriterState</a>.<a href="../../src/net/http/h2_bundle.go.html#line-6370">snapHeader</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">13 uses</span>
+
+	net/http (current package)
+		<a href="../../src/net/http/h2_bundle.go.html#line-6370">h2_bundle.go#L6370</a>: 	<b>snapHeader</b>    Header   // snapshot of handlerHeader at WriteHeader time
+		<a href="../../src/net/http/h2_bundle.go.html#line-6441" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-6441">#L6441</a>: 		if clen = rws.<b>snapHeader</b>.Get("Content-Length"); clen != "" {
+		<a href="../../src/net/http/h2_bundle.go.html#line-6442" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-6442">#L6442</a>: 			rws.<b>snapHeader</b>.Del("Content-Length")
+		<a href="../../src/net/http/h2_bundle.go.html#line-6449" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-6449">#L6449</a>: 		_, hasContentLength := rws.<b>snapHeader</b>["Content-Length"]
+		<a href="../../src/net/http/h2_bundle.go.html#line-6453" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-6453">#L6453</a>: 		_, hasContentType := rws.<b>snapHeader</b>["Content-Type"]
+		<a href="../../src/net/http/h2_bundle.go.html#line-6456" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-6456">#L6456</a>: 		ce := rws.<b>snapHeader</b>.Get("Content-Encoding")
+		<a href="../../src/net/http/h2_bundle.go.html#line-6462" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-6462">#L6462</a>: 		if _, ok := rws.<b>snapHeader</b>["Date"]; !ok {
+		<a href="../../src/net/http/h2_bundle.go.html#line-6467" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-6467">#L6467</a>: 		for _, v := range rws.<b>snapHeader</b>["Trailer"] {
+		<a href="../../src/net/http/h2_bundle.go.html#line-6476" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-6476">#L6476</a>: 		if _, ok := rws.<b>snapHeader</b>["Connection"]; ok {
+		<a href="../../src/net/http/h2_bundle.go.html#line-6477" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-6477">#L6477</a>: 			v := rws.<b>snapHeader</b>.Get("Connection")
+		<a href="../../src/net/http/h2_bundle.go.html#line-6478" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-6478">#L6478</a>: 			delete(rws.<b>snapHeader</b>, "Connection")
+		<a href="../../src/net/http/h2_bundle.go.html#line-6488" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-6488">#L6488</a>: 			h:             rws.<b>snapHeader</b>,
+		<a href="../../src/net/http/h2_bundle.go.html#line-6754" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-6754">#L6754</a>: 		rws.<b>snapHeader</b> = http2cloneHeader(rws.handlerHeader)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

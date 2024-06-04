@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/http.http2sorter</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../pkg/net/http.html">net/http</a>.<a href="../../src/net/http/h2_bundle.go.html#line-3649">http2sorter</a></b></span>
+
+<span class="title">9 uses</span>
+
+	net/http (current package)
+		<a href="../../src/net/http/h2_bundle.go.html#line-3647">h2_bundle.go#L3647</a>: var http2sorterPool = sync.Pool{New: func() interface{} { return new(<b>http2sorter</b>) }}
+		<a href="../../src/net/http/h2_bundle.go.html#line-3649" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-3649">#L3649</a>: type <b>http2sorter</b> struct {
+		<a href="../../src/net/http/h2_bundle.go.html#line-3653" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-3653">#L3653</a>: func (s *<b>http2sorter</b>) Len() int { return len(s.v) }
+		<a href="../../src/net/http/h2_bundle.go.html#line-3655" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-3655">#L3655</a>: func (s *<b>http2sorter</b>) Swap(i, j int) { s.v[i], s.v[j] = s.v[j], s.v[i] }
+		<a href="../../src/net/http/h2_bundle.go.html#line-3657" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-3657">#L3657</a>: func (s *<b>http2sorter</b>) Less(i, j int) bool { return s.v[i] &lt; s.v[j] }
+		<a href="../../src/net/http/h2_bundle.go.html#line-3663" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-3663">#L3663</a>: func (s *<b>http2sorter</b>) Keys(h Header) []string {
+		<a href="../../src/net/http/h2_bundle.go.html#line-3673" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-3673">#L3673</a>: func (s *<b>http2sorter</b>) SortStrings(ss []string) {
+		<a href="../../src/net/http/h2_bundle.go.html#line-6578" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-6578">#L6578</a>: 		sorter := http2sorterPool.Get().(*<b>http2sorter</b>)
+		<a href="../../src/net/http/h2_bundle.go.html#line-10625" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-10625">#L10625</a>: 		sorter := http2sorterPool.Get().(*<b>http2sorter</b>)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.fixalloc.free</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/mfixalloc.go.html#line-31">fixalloc</a>.<a href="../src/runtime/mfixalloc.go.html#line-104">free</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">12 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/malloc.go.html#line-693">malloc.go#L693</a>: 		h.arenaHintAlloc.<b>free</b>(unsafe.Pointer(hint))
+		<a href="../src/runtime/mcache.go.html#line-117">mcache.go#L117</a>: 		mheap_.cachealloc.<b>free</b>(unsafe.Pointer(c))
+		<a href="../src/runtime/mfixalloc.go.html#line-104">mfixalloc.go#L104</a>: func (f *fixalloc) <b>free</b>(p unsafe.Pointer) {
+		<a href="../src/runtime/mgc.go.html#line-1809">mgc.go#L1809</a>: 		mheap_.specialReachableAlloc.<b>free</b>(unsafe.Pointer(s))
+		<a href="../src/runtime/mheap.go.html#line-1151">mheap.go#L1151</a>: 	h.spanalloc.<b>free</b>(unsafe.Pointer(s))
+		<a href="../src/runtime/mheap.go.html#line-1976" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1976">#L1976</a>: 	mheap_.specialfinalizeralloc.<b>free</b>(unsafe.Pointer(s))
+		<a href="../src/runtime/mheap.go.html#line-1988" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1988">#L1988</a>: 	mheap_.specialfinalizeralloc.<b>free</b>(unsafe.Pointer(s))
+		<a href="../src/runtime/mheap.go.html#line-2061" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-2061">#L2061</a>: 		mheap_.specialfinalizeralloc.<b>free</b>(unsafe.Pointer(sf))
+		<a href="../src/runtime/mheap.go.html#line-2067" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-2067">#L2067</a>: 		mheap_.specialprofilealloc.<b>free</b>(unsafe.Pointer(sp))
+		<a href="../src/runtime/mheap.go.html#line-2075" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-2075">#L2075</a>: 		mheap_.specialPinCounterAlloc.<b>free</b>(unsafe.Pointer(s))
+		<a href="../src/runtime/pinner.go.html#line-359">pinner.go#L359</a>: 		mheap_.specialPinCounterAlloc.<b>free</b>(unsafe.Pointer(counter))
+		<a href="../src/runtime/proc.go.html#line-5549">proc.go#L5549</a>: 			mheap_.spanalloc.<b>free</b>(unsafe.Pointer(pp.mspancache.buf[i]))
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

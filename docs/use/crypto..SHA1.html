@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto.SHA1</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../pkg/crypto.html">crypto</a>.<a href="../src/crypto/crypto.go.html#line-71">SHA1</a></b></span>
+
+<span class="title">15 uses</span>
+
+	crypto (current package)
+		<a href="../src/crypto/crypto.go.html#line-29">crypto.go#L29</a>: 	case <b>SHA1</b>:
+		<a href="../src/crypto/crypto.go.html#line-71" class="path-duplicate">crypto.go</a><a href="../src/crypto/crypto.go.html#line-71">#L71</a>: 	<b>SHA1</b>                        // import crypto/sha1
+		<a href="../src/crypto/crypto.go.html#line-94" class="path-duplicate">crypto.go</a><a href="../src/crypto/crypto.go.html#line-94">#L94</a>: 	<b>SHA1</b>:        20,
+
+	<a href="../pkg/crypto/rsa.html">crypto/rsa</a>
+		<a href="../src/crypto/rsa/pkcs1v15.go.html#line-266">pkcs1v15.go#L266</a>: 	crypto.<b>SHA1</b>:      {0x30, 0x21, 0x30, 0x09, 0x06, 0x05, 0x2b, 0x0e, 0x03, 0x02, 0x1a, 0x05, 0x00, 0x04, 0x14},
+
+	<a href="../pkg/crypto/sha1.html">crypto/sha1</a>
+		<a href="../src/crypto/sha1/sha1.go.html#line-20">sha1.go#L20</a>: 	crypto.RegisterHash(crypto.<b>SHA1</b>, New)
+
+	<a href="../pkg/crypto/tls.html">crypto/tls</a>
+		<a href="../src/crypto/tls/auth.go.html#line-113">auth.go#L113</a>: 		hash = crypto.<b>SHA1</b>
+		<a href="../src/crypto/tls/auth.go.html#line-136" class="path-duplicate">auth.go</a><a href="../src/crypto/tls/auth.go.html#line-136">#L136</a>: 		return signatureECDSA, crypto.<b>SHA1</b>, nil
+		<a href="../src/crypto/tls/auth.go.html#line-164" class="path-duplicate">auth.go</a><a href="../src/crypto/tls/auth.go.html#line-164">#L164</a>: 	{PKCS1WithSHA1, 15 + crypto.<b>SHA1</b>.Size() + 11, VersionTLS12},
+		<a href="../src/crypto/tls/handshake_client_tls13.go.html#line-558">handshake_client_tls13.go#L558</a>: 	if sigType == signaturePKCS1v15 || sigHash == crypto.<b>SHA1</b> {
+		<a href="../src/crypto/tls/handshake_server_tls13.go.html#line-950">handshake_server_tls13.go#L950</a>: 		if sigType == signaturePKCS1v15 || sigHash == crypto.<b>SHA1</b> {
+
+	<a href="../pkg/crypto/x509.html">crypto/x509</a>
+		<a href="../src/crypto/x509/x509.go.html#line-364">x509.go#L364</a>: 	{SHA1WithRSA, "SHA1-RSA", oidSignatureSHA1WithRSA, RSA, crypto.<b>SHA1</b>},
+		<a href="../src/crypto/x509/x509.go.html#line-365" class="path-duplicate">x509.go</a><a href="../src/crypto/x509/x509.go.html#line-365">#L365</a>: 	{SHA1WithRSA, "SHA1-RSA", oidISOSignatureSHA1WithRSA, RSA, crypto.<b>SHA1</b>},
+		<a href="../src/crypto/x509/x509.go.html#line-372" class="path-duplicate">x509.go</a><a href="../src/crypto/x509/x509.go.html#line-372">#L372</a>: 	{DSAWithSHA1, "DSA-SHA1", oidSignatureDSAWithSHA1, DSA, crypto.<b>SHA1</b>},
+		<a href="../src/crypto/x509/x509.go.html#line-374" class="path-duplicate">x509.go</a><a href="../src/crypto/x509/x509.go.html#line-374">#L374</a>: 	{ECDSAWithSHA1, "ECDSA-SHA1", oidSignatureECDSAWithSHA1, ECDSA, crypto.<b>SHA1</b>},
+		<a href="../src/crypto/x509/x509.go.html#line-904" class="path-duplicate">x509.go</a><a href="../src/crypto/x509/x509.go.html#line-904">#L904</a>: 	case crypto.<b>SHA1</b>:
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

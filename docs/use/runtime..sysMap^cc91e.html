@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.sysMap</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/mem.go.html#line-153">sysMap</a></b></span>
+
+<span class="title">7 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/arena.go.html#line-870">arena.go#L870</a>: 	<b>sysMap</b>(unsafe.Pointer(base), userArenaChunkBytes, &amp;gcController.heapReleased)
+		<a href="../src/runtime/malloc.go.html#line-1655">malloc.go#L1655</a>: 			<b>sysMap</b>(unsafe.Pointer(l.mapped), n, sysStat)
+		<a href="../src/runtime/mem.go.html#line-153">mem.go#L153</a>: func <b>sysMap</b>(v unsafe.Pointer, n uintptr, sysStat *sysMemStat) {
+		<a href="../src/runtime/mheap.go.html#line-1503">mheap.go#L1503</a>: 				<b>sysMap</b>(unsafe.Pointer(h.curArena.base), size, &amp;gcController.heapReleased)
+		<a href="../src/runtime/mheap.go.html#line-1534" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1534">#L1534</a>: 	<b>sysMap</b>(unsafe.Pointer(v), nBase-v, &amp;gcController.heapReleased)
+		<a href="../src/runtime/mpagealloc_64bit.go.html#line-179">mpagealloc_64bit.go#L179</a>: 		<b>sysMap</b>(unsafe.Pointer(need.base.addr()), need.size(), p.sysStat)
+		<a href="../src/runtime/mpagealloc_64bit.go.html#line-232" class="path-duplicate">mpagealloc_64bit.go</a><a href="../src/runtime/mpagealloc_64bit.go.html#line-232">#L232</a>: 		<b>sysMap</b>(unsafe.Pointer(need.base.addr()), need.size(), sysStat)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

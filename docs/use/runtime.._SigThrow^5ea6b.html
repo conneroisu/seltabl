@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime._SigThrow</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/runtime2.go.html#line-923">_SigThrow</a></b></span>
+
+<span class="title">12 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/runtime2.go.html#line-923">runtime2.go#L923</a>: 	<b>_SigThrow</b>                // if signal.Notify doesn't take it, exit loudly
+		<a href="../src/runtime/signal_unix.go.html#line-672">signal_unix.go#L672</a>: 	flags := int32(<b>_SigThrow</b>)
+		<a href="../src/runtime/signal_unix.go.html#line-683" class="path-duplicate">signal_unix.go</a><a href="../src/runtime/signal_unix.go.html#line-683">#L683</a>: 		flags = <b>_SigThrow</b>
+		<a href="../src/runtime/signal_unix.go.html#line-688" class="path-duplicate">signal_unix.go</a><a href="../src/runtime/signal_unix.go.html#line-688">#L688</a>: 		flags = <b>_SigThrow</b>
+		<a href="../src/runtime/signal_unix.go.html#line-726" class="path-duplicate">signal_unix.go</a><a href="../src/runtime/signal_unix.go.html#line-726">#L726</a>: 	if flags&amp;(<b>_SigThrow</b>|_SigPanic) == 0 {
+		<a href="../src/runtime/signal_unix.go.html#line-1346" class="path-duplicate">signal_unix.go</a><a href="../src/runtime/signal_unix.go.html#line-1346">#L1346</a>: 	return flags&amp;(_SigKill|<b>_SigThrow</b>) == 0
+		<a href="../src/runtime/sigtab_linux_generic.go.html#line-13">sigtab_linux_generic.go#L13</a>: 	/* 3 */ {_SigNotify + <b>_SigThrow</b>, "SIGQUIT: quit"},
+		<a href="../src/runtime/sigtab_linux_generic.go.html#line-14" class="path-duplicate">sigtab_linux_generic.go</a><a href="../src/runtime/sigtab_linux_generic.go.html#line-14">#L14</a>: 	/* 4 */ {<b>_SigThrow</b> + _SigUnblock, "SIGILL: illegal instruction"},
+		<a href="../src/runtime/sigtab_linux_generic.go.html#line-15" class="path-duplicate">sigtab_linux_generic.go</a><a href="../src/runtime/sigtab_linux_generic.go.html#line-15">#L15</a>: 	/* 5 */ {<b>_SigThrow</b> + _SigUnblock, "SIGTRAP: trace trap"},
+		<a href="../src/runtime/sigtab_linux_generic.go.html#line-16" class="path-duplicate">sigtab_linux_generic.go</a><a href="../src/runtime/sigtab_linux_generic.go.html#line-16">#L16</a>: 	/* 6 */ {_SigNotify + <b>_SigThrow</b>, "SIGABRT: abort"},
+		<a href="../src/runtime/sigtab_linux_generic.go.html#line-26" class="path-duplicate">sigtab_linux_generic.go</a><a href="../src/runtime/sigtab_linux_generic.go.html#line-26">#L26</a>: 	/* 16 */ {<b>_SigThrow</b> + _SigUnblock, "SIGSTKFLT: stack fault"},
+		<a href="../src/runtime/sigtab_linux_generic.go.html#line-41" class="path-duplicate">sigtab_linux_generic.go</a><a href="../src/runtime/sigtab_linux_generic.go.html#line-41">#L41</a>: 	/* 31 */ {<b>_SigThrow</b>, "SIGSYS: bad system call"},
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

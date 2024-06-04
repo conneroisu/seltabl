@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime._SigUnblock</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/runtime2.go.html#line-928">_SigUnblock</a></b></span>
+
+<span class="title">13 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/runtime2.go.html#line-928">runtime2.go#L928</a>: 	<b>_SigUnblock</b>              // always unblock; see blockableSig
+		<a href="../src/runtime/signal_unix.go.html#line-1337">signal_unix.go#L1337</a>: 	if flags&amp;<b>_SigUnblock</b> != 0 {
+		<a href="../src/runtime/sigtab_linux_generic.go.html#line-14">sigtab_linux_generic.go#L14</a>: 	/* 4 */ {_SigThrow + <b>_SigUnblock</b>, "SIGILL: illegal instruction"},
+		<a href="../src/runtime/sigtab_linux_generic.go.html#line-15" class="path-duplicate">sigtab_linux_generic.go</a><a href="../src/runtime/sigtab_linux_generic.go.html#line-15">#L15</a>: 	/* 5 */ {_SigThrow + <b>_SigUnblock</b>, "SIGTRAP: trace trap"},
+		<a href="../src/runtime/sigtab_linux_generic.go.html#line-17" class="path-duplicate">sigtab_linux_generic.go</a><a href="../src/runtime/sigtab_linux_generic.go.html#line-17">#L17</a>: 	/* 7 */ {_SigPanic + <b>_SigUnblock</b>, "SIGBUS: bus error"},
+		<a href="../src/runtime/sigtab_linux_generic.go.html#line-18" class="path-duplicate">sigtab_linux_generic.go</a><a href="../src/runtime/sigtab_linux_generic.go.html#line-18">#L18</a>: 	/* 8 */ {_SigPanic + <b>_SigUnblock</b>, "SIGFPE: floating-point exception"},
+		<a href="../src/runtime/sigtab_linux_generic.go.html#line-21" class="path-duplicate">sigtab_linux_generic.go</a><a href="../src/runtime/sigtab_linux_generic.go.html#line-21">#L21</a>: 	/* 11 */ {_SigPanic + <b>_SigUnblock</b>, "SIGSEGV: segmentation violation"},
+		<a href="../src/runtime/sigtab_linux_generic.go.html#line-26" class="path-duplicate">sigtab_linux_generic.go</a><a href="../src/runtime/sigtab_linux_generic.go.html#line-26">#L26</a>: 	/* 16 */ {_SigThrow + <b>_SigUnblock</b>, "SIGSTKFLT: stack fault"},
+		<a href="../src/runtime/sigtab_linux_generic.go.html#line-27" class="path-duplicate">sigtab_linux_generic.go</a><a href="../src/runtime/sigtab_linux_generic.go.html#line-27">#L27</a>: 	/* 17 */ {_SigNotify + <b>_SigUnblock</b> + _SigIgn, "SIGCHLD: child status has changed"},
+		<a href="../src/runtime/sigtab_linux_generic.go.html#line-37" class="path-duplicate">sigtab_linux_generic.go</a><a href="../src/runtime/sigtab_linux_generic.go.html#line-37">#L37</a>: 	/* 27 */ {_SigNotify + <b>_SigUnblock</b>, "SIGPROF: profiling alarm clock"},
+		<a href="../src/runtime/sigtab_linux_generic.go.html#line-42" class="path-duplicate">sigtab_linux_generic.go</a><a href="../src/runtime/sigtab_linux_generic.go.html#line-42">#L42</a>: 	/* 32 */ {_SigSetStack + <b>_SigUnblock</b>, "signal 32"}, /* SIGCANCEL; see issue 6997 */
+		<a href="../src/runtime/sigtab_linux_generic.go.html#line-43" class="path-duplicate">sigtab_linux_generic.go</a><a href="../src/runtime/sigtab_linux_generic.go.html#line-43">#L43</a>: 	/* 33 */ {_SigSetStack + <b>_SigUnblock</b>, "signal 33"}, /* SIGSETXID; see issues 3871, 9400, 12498 */
+		<a href="../src/runtime/sigtab_linux_generic.go.html#line-44" class="path-duplicate">sigtab_linux_generic.go</a><a href="../src/runtime/sigtab_linux_generic.go.html#line-44">#L44</a>: 	/* 34 */ {_SigSetStack + <b>_SigUnblock</b>, "signal 34"}, /* musl SIGSYNCCALL; see issue 39343 */
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

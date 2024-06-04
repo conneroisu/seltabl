@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.bmap</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/map.go.html#line-151">bmap</a></b></span>
+
+<span class="title">103 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/map.go.html#line-86">map.go#L86</a>: 		b <b>bmap</b>
+		<a href="../src/runtime/map.go.html#line-143" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-143">#L143</a>: 	overflow    *[]*<b>bmap</b>
+		<a href="../src/runtime/map.go.html#line-144" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-144">#L144</a>: 	oldoverflow *[]*<b>bmap</b>
+		<a href="../src/runtime/map.go.html#line-147" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-147">#L147</a>: 	nextOverflow *<b>bmap</b>
+		<a href="../src/runtime/map.go.html#line-151" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-151">#L151</a>: type <b>bmap</b> struct {
+		<a href="../src/runtime/map.go.html#line-172" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-172">#L172</a>: 	bptr        *<b>bmap</b>          // current bucket
+		<a href="../src/runtime/map.go.html#line-173" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-173">#L173</a>: 	overflow    *[]*<b>bmap</b>       // keeps overflow buckets of hmap.buckets alive
+		<a href="../src/runtime/map.go.html#line-174" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-174">#L174</a>: 	oldoverflow *[]*<b>bmap</b>       // keeps overflow buckets of hmap.oldbuckets alive
+		<a href="../src/runtime/map.go.html#line-204" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-204">#L204</a>: func evacuated(b *<b>bmap</b>) bool {
+		<a href="../src/runtime/map.go.html#line-209" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-209">#L209</a>: func (b *<b>bmap</b>) overflow(t *maptype) *<b>bmap</b> {
+		<a href="../src/runtime/map.go.html#line-210" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-210">#L210</a>: 	return *(**<b>bmap</b>)(add(unsafe.Pointer(b), uintptr(t.BucketSize)-goarch.PtrSize))
+		<a href="../src/runtime/map.go.html#line-213" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-213">#L213</a>: func (b *<b>bmap</b>) setoverflow(t *maptype, ovf *<b>bmap</b>) {
+		<a href="../src/runtime/map.go.html#line-214" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-214">#L214</a>: 	*(**<b>bmap</b>)(add(unsafe.Pointer(b), uintptr(t.BucketSize)-goarch.PtrSize)) = ovf
+		<a href="../src/runtime/map.go.html#line-217" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-217">#L217</a>: func (b *<b>bmap</b>) keys() unsafe.Pointer {
+		<a href="../src/runtime/map.go.html#line-247" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-247">#L247</a>: func (h *hmap) newoverflow(t *maptype, b *<b>bmap</b>) *<b>bmap</b> {
+		<a href="../src/runtime/map.go.html#line-248" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-248">#L248</a>: 	var ovf *<b>bmap</b>
+		<a href="../src/runtime/map.go.html#line-255" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-255">#L255</a>: 			h.extra.nextOverflow = (*<b>bmap</b>)(add(unsafe.Pointer(ovf), uintptr(t.BucketSize)))
+		<a href="../src/runtime/map.go.html#line-264" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-264">#L264</a>: 		ovf = (*<b>bmap</b>)(newobject(t.Bucket))
+		<a href="../src/runtime/map.go.html#line-280" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-280">#L280</a>: 		h.extra.overflow = new([]*<b>bmap</b>)
+		<a href="../src/runtime/map.go.html#line-329" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-329">#L329</a>: 		var nextOverflow *<b>bmap</b>
+		<a href="../src/runtime/map.go.html#line-346" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-346">#L346</a>: func makeBucketArray(t *maptype, b uint8, dirtyalloc unsafe.Pointer) (buckets unsafe.Pointer, nextOverflow *<b>bmap</b>) {
+		<a href="../src/runtime/map.go.html#line-384" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-384">#L384</a>: 		nextOverflow = (*<b>bmap</b>)(add(buckets, base*uintptr(t.BucketSize)))
+		<a href="../src/runtime/map.go.html#line-385" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-385">#L385</a>: 		last := (*<b>bmap</b>)(add(buckets, (nbuckets-1)*uintptr(t.BucketSize)))
+		<a href="../src/runtime/map.go.html#line-386" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-386">#L386</a>: 		last.setoverflow(t, (*<b>bmap</b>)(buckets))
+		<a href="../src/runtime/map.go.html#line-420" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-420">#L420</a>: 	b := (*<b>bmap</b>)(add(h.buckets, (hash&amp;m)*uintptr(t.BucketSize)))
+		<a href="../src/runtime/map.go.html#line-426" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-426">#L426</a>: 		oldb := (*<b>bmap</b>)(add(c, (hash&amp;m)*uintptr(t.BucketSize)))
+		<a href="../src/runtime/map.go.html#line-481" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-481">#L481</a>: 	b := (*<b>bmap</b>)(add(h.buckets, (hash&amp;m)*uintptr(t.BucketSize)))
+		<a href="../src/runtime/map.go.html#line-487" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-487">#L487</a>: 		oldb := (*<b>bmap</b>)(add(c, (hash&amp;m)*uintptr(t.BucketSize)))
+		<a href="../src/runtime/map.go.html#line-525" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-525">#L525</a>: 	b := (*<b>bmap</b>)(add(h.buckets, (hash&amp;m)*uintptr(t.BucketSize)))
+		<a href="../src/runtime/map.go.html#line-531" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-531">#L531</a>: 		oldb := (*<b>bmap</b>)(add(c, (hash&amp;m)*uintptr(t.BucketSize)))
+		<a href="../src/runtime/map.go.html#line-613" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-613">#L613</a>: 	b := (*<b>bmap</b>)(add(h.buckets, bucket*uintptr(t.BucketSize)))
+		<a href="../src/runtime/map.go.html#line-729" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-729">#L729</a>: 	b := (*<b>bmap</b>)(add(h.buckets, bucket*uintptr(t.BucketSize)))
+		<a href="../src/runtime/map.go.html#line-891" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-891">#L891</a>: 			b = (*<b>bmap</b>)(add(h.oldbuckets, oldbucket*uintptr(t.BucketSize)))
+		<a href="../src/runtime/map.go.html#line-895" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-895">#L895</a>: 				b = (*<b>bmap</b>)(add(it.buckets, bucket*uintptr(t.BucketSize)))
+		<a href="../src/runtime/map.go.html#line-899" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-899">#L899</a>: 			b = (*<b>bmap</b>)(add(it.buckets, bucket*uintptr(t.BucketSize)))
+		<a href="../src/runtime/map.go.html#line-1009" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1009">#L1009</a>: 			b := (*<b>bmap</b>)(add(bucket, i*uintptr(t.BucketSize)))
+		<a href="../src/runtime/map.go.html#line-1152" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1152">#L1152</a>: 	b := (*<b>bmap</b>)(add(h.oldbuckets, bucket*uintptr(t.BucketSize)))
+		<a href="../src/runtime/map.go.html#line-1158" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1158">#L1158</a>: 	b *<b>bmap</b>          // current destination bucket
+		<a href="../src/runtime/map.go.html#line-1165" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1165">#L1165</a>: 	b := (*<b>bmap</b>)(add(h.oldbuckets, oldbucket*uintptr(t.BucketSize)))
+		<a href="../src/runtime/map.go.html#line-1174" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1174">#L1174</a>: 		x.b = (*<b>bmap</b>)(add(h.buckets, oldbucket*uintptr(t.BucketSize)))
+		<a href="../src/runtime/map.go.html#line-1182" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1182">#L1182</a>: 			y.b = (*<b>bmap</b>)(add(h.buckets, (oldbucket+newbit)*uintptr(t.BucketSize)))
+		<a href="../src/runtime/map.go.html#line-1454" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1454">#L1454</a>: func moveToBmap(t *maptype, h *hmap, dst *<b>bmap</b>, pos int, src *<b>bmap</b>) (*<b>bmap</b>, int) {
+		<a href="../src/runtime/map.go.html#line-1533" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1533">#L1533</a>: 		dstBmap := (*<b>bmap</b>)(add(dst.buckets, uintptr(i*int(t.BucketSize))))
+		<a href="../src/runtime/map.go.html#line-1536" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1536">#L1536</a>: 			srcBmap := (*<b>bmap</b>)(add(src.buckets, uintptr((i+j)*int(t.BucketSize))))
+		<a href="../src/runtime/map.go.html#line-1556" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1556">#L1556</a>: 		srcBmap := (*<b>bmap</b>)(add(srcOldbuckets, uintptr(i*int(t.BucketSize))))
+		<a href="../src/runtime/map.go.html#line-1562" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1562">#L1562</a>: 			dstBmap := (*<b>bmap</b>)(add(dst.buckets, (uintptr(i)&amp;bucketMask(dst.B))*uintptr(t.BucketSize)))
+		<a href="../src/runtime/map.go.html#line-1620" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1620">#L1620</a>: 		copyKeys(t, h, (*<b>bmap</b>)(h.buckets), s, offset)
+		<a href="../src/runtime/map.go.html#line-1627" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1627">#L1627</a>: 		b := (*<b>bmap</b>)(add(buckets, uintptr(bucket)*uintptr(t.BucketSize)))
+		<a href="../src/runtime/map.go.html#line-1635" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1635">#L1635</a>: 			b := (*<b>bmap</b>)(add(h.oldbuckets, uintptr(bucket)*uintptr(t.BucketSize)))
+		<a href="../src/runtime/map.go.html#line-1645" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1645">#L1645</a>: func copyKeys(t *maptype, h *hmap, b *<b>bmap</b>, s *slice, offset uint8) {
+		<a href="../src/runtime/map.go.html#line-1683" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1683">#L1683</a>: 		copyValues(t, h, (*<b>bmap</b>)(h.buckets), s, offset)
+		<a href="../src/runtime/map.go.html#line-1690" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1690">#L1690</a>: 		b := (*<b>bmap</b>)(add(buckets, uintptr(bucket)*uintptr(t.BucketSize)))
+		<a href="../src/runtime/map.go.html#line-1698" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1698">#L1698</a>: 			b := (*<b>bmap</b>)(add(h.oldbuckets, uintptr(bucket)*uintptr(t.BucketSize)))
+		<a href="../src/runtime/map.go.html#line-1708" class="path-duplicate">map.go</a><a href="../src/runtime/map.go.html#line-1708">#L1708</a>: func copyValues(t *maptype, h *hmap, b *<b>bmap</b>, s *slice, offset uint8) {
+		<a href="../src/runtime/map_fast32.go.html#line-24">map_fast32.go#L24</a>: 	var b *<b>bmap</b>
+		<a href="../src/runtime/map_fast32.go.html#line-27" class="path-duplicate">map_fast32.go</a><a href="../src/runtime/map_fast32.go.html#line-27">#L27</a>: 		b = (*<b>bmap</b>)(h.buckets)
+		<a href="../src/runtime/map_fast32.go.html#line-31" class="path-duplicate">map_fast32.go</a><a href="../src/runtime/map_fast32.go.html#line-31">#L31</a>: 		b = (*<b>bmap</b>)(add(h.buckets, (hash&amp;m)*uintptr(t.BucketSize)))
+		<a href="../src/runtime/map_fast32.go.html#line-37" class="path-duplicate">map_fast32.go</a><a href="../src/runtime/map_fast32.go.html#line-37">#L37</a>: 			oldb := (*<b>bmap</b>)(add(c, (hash&amp;m)*uintptr(t.BucketSize)))
+		<a href="../src/runtime/map_fast32.go.html#line-64" class="path-duplicate">map_fast32.go</a><a href="../src/runtime/map_fast32.go.html#line-64">#L64</a>: 	var b *<b>bmap</b>
+		<a href="../src/runtime/map_fast32.go.html#line-67" class="path-duplicate">map_fast32.go</a><a href="../src/runtime/map_fast32.go.html#line-67">#L67</a>: 		b = (*<b>bmap</b>)(h.buckets)
+		<a href="../src/runtime/map_fast32.go.html#line-71" class="path-duplicate">map_fast32.go</a><a href="../src/runtime/map_fast32.go.html#line-71">#L71</a>: 		b = (*<b>bmap</b>)(add(h.buckets, (hash&amp;m)*uintptr(t.BucketSize)))
+		<a href="../src/runtime/map_fast32.go.html#line-77" class="path-duplicate">map_fast32.go</a><a href="../src/runtime/map_fast32.go.html#line-77">#L77</a>: 			oldb := (*<b>bmap</b>)(add(c, (hash&amp;m)*uintptr(t.BucketSize)))
+		<a href="../src/runtime/map_fast32.go.html#line-118" class="path-duplicate">map_fast32.go</a><a href="../src/runtime/map_fast32.go.html#line-118">#L118</a>: 	b := (*<b>bmap</b>)(add(h.buckets, bucket*uintptr(t.BucketSize)))
+		<a href="../src/runtime/map_fast32.go.html#line-120" class="path-duplicate">map_fast32.go</a><a href="../src/runtime/map_fast32.go.html#line-120">#L120</a>: 	var insertb *<b>bmap</b>
+		<a href="../src/runtime/map_fast32.go.html#line-208" class="path-duplicate">map_fast32.go</a><a href="../src/runtime/map_fast32.go.html#line-208">#L208</a>: 	b := (*<b>bmap</b>)(add(h.buckets, bucket*uintptr(t.BucketSize)))
+		<a href="../src/runtime/map_fast32.go.html#line-210" class="path-duplicate">map_fast32.go</a><a href="../src/runtime/map_fast32.go.html#line-210">#L210</a>: 	var insertb *<b>bmap</b>
+		<a href="../src/runtime/map_fast32.go.html#line-294" class="path-duplicate">map_fast32.go</a><a href="../src/runtime/map_fast32.go.html#line-294">#L294</a>: 	b := (*<b>bmap</b>)(add(h.buckets, bucket*uintptr(t.BucketSize)))
+		<a href="../src/runtime/map_fast32.go.html#line-375" class="path-duplicate">map_fast32.go</a><a href="../src/runtime/map_fast32.go.html#line-375">#L375</a>: 	b := (*<b>bmap</b>)(add(h.oldbuckets, oldbucket*uintptr(t.BucketSize)))
+		<a href="../src/runtime/map_fast32.go.html#line-384" class="path-duplicate">map_fast32.go</a><a href="../src/runtime/map_fast32.go.html#line-384">#L384</a>: 		x.b = (*<b>bmap</b>)(add(h.buckets, oldbucket*uintptr(t.BucketSize)))
+		<a href="../src/runtime/map_fast32.go.html#line-392" class="path-duplicate">map_fast32.go</a><a href="../src/runtime/map_fast32.go.html#line-392">#L392</a>: 			y.b = (*<b>bmap</b>)(add(h.buckets, (oldbucket+newbit)*uintptr(t.BucketSize)))
+		<a href="../src/runtime/map_fast64.go.html#line-24">map_fast64.go#L24</a>: 	var b *<b>bmap</b>
+		<a href="../src/runtime/map_fast64.go.html#line-27" class="path-duplicate">map_fast64.go</a><a href="../src/runtime/map_fast64.go.html#line-27">#L27</a>: 		b = (*<b>bmap</b>)(h.buckets)
+		<a href="../src/runtime/map_fast64.go.html#line-31" class="path-duplicate">map_fast64.go</a><a href="../src/runtime/map_fast64.go.html#line-31">#L31</a>: 		b = (*<b>bmap</b>)(add(h.buckets, (hash&amp;m)*uintptr(t.BucketSize)))
+		<a href="../src/runtime/map_fast64.go.html#line-37" class="path-duplicate">map_fast64.go</a><a href="../src/runtime/map_fast64.go.html#line-37">#L37</a>: 			oldb := (*<b>bmap</b>)(add(c, (hash&amp;m)*uintptr(t.BucketSize)))
+		<a href="../src/runtime/map_fast64.go.html#line-64" class="path-duplicate">map_fast64.go</a><a href="../src/runtime/map_fast64.go.html#line-64">#L64</a>: 	var b *<b>bmap</b>
+		<a href="../src/runtime/map_fast64.go.html#line-67" class="path-duplicate">map_fast64.go</a><a href="../src/runtime/map_fast64.go.html#line-67">#L67</a>: 		b = (*<b>bmap</b>)(h.buckets)
+		<a href="../src/runtime/map_fast64.go.html#line-71" class="path-duplicate">map_fast64.go</a><a href="../src/runtime/map_fast64.go.html#line-71">#L71</a>: 		b = (*<b>bmap</b>)(add(h.buckets, (hash&amp;m)*uintptr(t.BucketSize)))
+		<a href="../src/runtime/map_fast64.go.html#line-77" class="path-duplicate">map_fast64.go</a><a href="../src/runtime/map_fast64.go.html#line-77">#L77</a>: 			oldb := (*<b>bmap</b>)(add(c, (hash&amp;m)*uintptr(t.BucketSize)))
+		<a href="../src/runtime/map_fast64.go.html#line-118" class="path-duplicate">map_fast64.go</a><a href="../src/runtime/map_fast64.go.html#line-118">#L118</a>: 	b := (*<b>bmap</b>)(add(h.buckets, bucket*uintptr(t.BucketSize)))
+		<a href="../src/runtime/map_fast64.go.html#line-120" class="path-duplicate">map_fast64.go</a><a href="../src/runtime/map_fast64.go.html#line-120">#L120</a>: 	var insertb *<b>bmap</b>
+		<a href="../src/runtime/map_fast64.go.html#line-208" class="path-duplicate">map_fast64.go</a><a href="../src/runtime/map_fast64.go.html#line-208">#L208</a>: 	b := (*<b>bmap</b>)(add(h.buckets, bucket*uintptr(t.BucketSize)))
+		<a href="../src/runtime/map_fast64.go.html#line-210" class="path-duplicate">map_fast64.go</a><a href="../src/runtime/map_fast64.go.html#line-210">#L210</a>: 	var insertb *<b>bmap</b>
+		<a href="../src/runtime/map_fast64.go.html#line-294" class="path-duplicate">map_fast64.go</a><a href="../src/runtime/map_fast64.go.html#line-294">#L294</a>: 	b := (*<b>bmap</b>)(add(h.buckets, bucket*uintptr(t.BucketSize)))
+		<a href="../src/runtime/map_fast64.go.html#line-377" class="path-duplicate">map_fast64.go</a><a href="../src/runtime/map_fast64.go.html#line-377">#L377</a>: 	b := (*<b>bmap</b>)(add(h.oldbuckets, oldbucket*uintptr(t.BucketSize)))
+		<a href="../src/runtime/map_fast64.go.html#line-386" class="path-duplicate">map_fast64.go</a><a href="../src/runtime/map_fast64.go.html#line-386">#L386</a>: 		x.b = (*<b>bmap</b>)(add(h.buckets, oldbucket*uintptr(t.BucketSize)))
+		<a href="../src/runtime/map_fast64.go.html#line-394" class="path-duplicate">map_fast64.go</a><a href="../src/runtime/map_fast64.go.html#line-394">#L394</a>: 			y.b = (*<b>bmap</b>)(add(h.buckets, (oldbucket+newbit)*uintptr(t.BucketSize)))
+		<a href="../src/runtime/map_faststr.go.html#line-27">map_faststr.go#L27</a>: 		b := (*<b>bmap</b>)(h.buckets)
+		<a href="../src/runtime/map_faststr.go.html#line-82" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-82">#L82</a>: 	b := (*<b>bmap</b>)(add(h.buckets, (hash&amp;m)*uintptr(t.BucketSize)))
+		<a href="../src/runtime/map_faststr.go.html#line-88" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-88">#L88</a>: 		oldb := (*<b>bmap</b>)(add(c, (hash&amp;m)*uintptr(t.BucketSize)))
+		<a href="../src/runtime/map_faststr.go.html#line-122" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-122">#L122</a>: 		b := (*<b>bmap</b>)(h.buckets)
+		<a href="../src/runtime/map_faststr.go.html#line-177" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-177">#L177</a>: 	b := (*<b>bmap</b>)(add(h.buckets, (hash&amp;m)*uintptr(t.BucketSize)))
+		<a href="../src/runtime/map_faststr.go.html#line-183" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-183">#L183</a>: 		oldb := (*<b>bmap</b>)(add(c, (hash&amp;m)*uintptr(t.BucketSize)))
+		<a href="../src/runtime/map_faststr.go.html#line-229" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-229">#L229</a>: 	b := (*<b>bmap</b>)(add(h.buckets, bucket*uintptr(t.BucketSize)))
+		<a href="../src/runtime/map_faststr.go.html#line-232" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-232">#L232</a>: 	var insertb *<b>bmap</b>
+		<a href="../src/runtime/map_faststr.go.html#line-323" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-323">#L323</a>: 	b := (*<b>bmap</b>)(add(h.buckets, bucket*uintptr(t.BucketSize)))
+		<a href="../src/runtime/map_faststr.go.html#line-403" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-403">#L403</a>: 	b := (*<b>bmap</b>)(add(h.oldbuckets, oldbucket*uintptr(t.BucketSize)))
+		<a href="../src/runtime/map_faststr.go.html#line-412" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-412">#L412</a>: 		x.b = (*<b>bmap</b>)(add(h.buckets, oldbucket*uintptr(t.BucketSize)))
+		<a href="../src/runtime/map_faststr.go.html#line-420" class="path-duplicate">map_faststr.go</a><a href="../src/runtime/map_faststr.go.html#line-420">#L420</a>: 			y.b = (*<b>bmap</b>)(add(h.buckets, (oldbucket+newbit)*uintptr(t.BucketSize)))
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

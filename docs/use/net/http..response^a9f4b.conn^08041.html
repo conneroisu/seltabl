@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/http.response.conn</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/net/http.html">net/http</a>.<a href="../../src/net/http/server.go.html#line-422">response</a>.<a href="../../src/net/http/server.go.html#line-423">conn</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">39 uses</span>
+
+	net/http (current package)
+		<a href="../../src/net/http/server.go.html#line-381">server.go#L381</a>: 		_, err = fmt.Fprintf(cw.res.<b>conn</b>.bufw, "%x\r\n", len(p))
+		<a href="../../src/net/http/server.go.html#line-383" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-383">#L383</a>: 			cw.res.<b>conn</b>.rwc.Close()
+		<a href="../../src/net/http/server.go.html#line-387" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-387">#L387</a>: 	n, err = cw.res.<b>conn</b>.bufw.Write(p)
+		<a href="../../src/net/http/server.go.html#line-389" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-389">#L389</a>: 		_, err = cw.res.<b>conn</b>.bufw.Write(crlf)
+		<a href="../../src/net/http/server.go.html#line-392" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-392">#L392</a>: 		cw.res.<b>conn</b>.rwc.Close()
+		<a href="../../src/net/http/server.go.html#line-401" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-401">#L401</a>: 	return cw.res.<b>conn</b>.bufw.Flush()
+		<a href="../../src/net/http/server.go.html#line-409" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-409">#L409</a>: 		bw := cw.res.<b>conn</b>.bufw // conn's bufio writer
+		<a href="../../src/net/http/server.go.html#line-423" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-423">#L423</a>: 	<b>conn</b>             *conn
+		<a href="../../src/net/http/server.go.html#line-496" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-496">#L496</a>: 	return c.<b>conn</b>.rwc.SetReadDeadline(deadline)
+		<a href="../../src/net/http/server.go.html#line-500" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-500">#L500</a>: 	return c.<b>conn</b>.rwc.SetWriteDeadline(deadline)
+		<a href="../../src/net/http/server.go.html#line-584" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-584">#L584</a>: 	rf, ok := w.<b>conn</b>.rwc.(io.ReaderFrom)
+		<a href="../../src/net/http/server.go.html#line-920" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-920">#L920</a>: 	if !w.wroteContinue &amp;&amp; w.canWriteContinue.Load() &amp;&amp; !w.<b>conn</b>.hijacked() {
+		<a href="../../src/net/http/server.go.html#line-924" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-924">#L924</a>: 			w.<b>conn</b>.bufw.WriteString("HTTP/1.1 100 Continue\r\n\r\n")
+		<a href="../../src/net/http/server.go.html#line-925" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-925">#L925</a>: 			w.<b>conn</b>.bufw.Flush()
+		<a href="../../src/net/http/server.go.html#line-1053" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1053">#L1053</a>: 		<b>conn</b>:          c,
+		<a href="../../src/net/http/server.go.html#line-1150" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1150">#L1150</a>: 	if w.<b>conn</b>.hijacked() {
+		<a href="../../src/net/http/server.go.html#line-1152" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1152">#L1152</a>: 		w.<b>conn</b>.server.logf("http: response.WriteHeader on hijacked connection from %s (%s:%d)", caller.Function, path.Base(caller.File), caller.Line)
+		<a href="../../src/net/http/server.go.html#line-1157" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1157">#L1157</a>: 		w.<b>conn</b>.server.logf("http: superfluous response.WriteHeader call from %s (%s:%d)", caller.Function, path.Base(caller.File), caller.Line)
+		<a href="../../src/net/http/server.go.html#line-1174" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1174">#L1174</a>: 		writeStatusLine(w.<b>conn</b>.bufw, w.req.ProtoAtLeast(1, 1), code, w.statusBuf[:])
+		<a href="../../src/net/http/server.go.html#line-1177" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1177">#L1177</a>: 		w.handlerHeader.WriteSubset(w.<b>conn</b>.bufw, excludedHeadersNoBody)
+		<a href="../../src/net/http/server.go.html#line-1178" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1178">#L1178</a>: 		w.<b>conn</b>.bufw.Write(crlf)
+		<a href="../../src/net/http/server.go.html#line-1179" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1179">#L1179</a>: 		w.<b>conn</b>.bufw.Flush()
+		<a href="../../src/net/http/server.go.html#line-1196" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1196">#L1196</a>: 			w.<b>conn</b>.server.logf("http: invalid Content-Length of %q", cl)
+		<a href="../../src/net/http/server.go.html#line-1266" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1266">#L1266</a>: 	keepAlivesEnabled := w.<b>conn</b>.server.doKeepAlives()
+		<a href="../../src/net/http/server.go.html#line-1461" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1461">#L1461</a>: 		w.<b>conn</b>.server.logf("http: WriteHeader called with both Transfer-Encoding of %q and a Content-Length of %d",
+		<a href="../../src/net/http/server.go.html#line-1522" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1522">#L1522</a>: 	writeStatusLine(w.<b>conn</b>.bufw, w.req.ProtoAtLeast(1, 1), code, w.statusBuf[:])
+		<a href="../../src/net/http/server.go.html#line-1523" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1523">#L1523</a>: 	cw.header.WriteSubset(w.<b>conn</b>.bufw, excludeHeader)
+		<a href="../../src/net/http/server.go.html#line-1524" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1524">#L1524</a>: 	setHeader.Write(w.<b>conn</b>.bufw)
+		<a href="../../src/net/http/server.go.html#line-1525" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1525">#L1525</a>: 	w.<b>conn</b>.bufw.Write(crlf)
+		<a href="../../src/net/http/server.go.html#line-1620" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1620">#L1620</a>: 	if w.<b>conn</b>.hijacked() {
+		<a href="../../src/net/http/server.go.html#line-1623" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1623">#L1623</a>: 			w.<b>conn</b>.server.logf("http: response.Write on hijacked connection from %s (%s:%d)", caller.Function, path.Base(caller.File), caller.Line)
+		<a href="../../src/net/http/server.go.html#line-1669" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1669">#L1669</a>: 	w.<b>conn</b>.bufw.Flush()
+		<a href="../../src/net/http/server.go.html#line-1671" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1671">#L1671</a>: 	w.<b>conn</b>.r.abortPendingRead()
+		<a href="../../src/net/http/server.go.html#line-1699" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1699">#L1699</a>: 	if w.<b>conn</b>.werr != nil {
+		<a href="../../src/net/http/server.go.html#line-1906" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-1906">#L1906</a>: 				inFlightResponse.<b>conn</b>.r.abortPendingRead()
+		<a href="../../src/net/http/server.go.html#line-2026" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-2026">#L2026</a>: 			registerOnHitEOF(req.Body, w.<b>conn</b>.r.startBackgroundRead)
+		<a href="../../src/net/http/server.go.html#line-2028" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-2028">#L2028</a>: 			w.<b>conn</b>.r.startBackgroundRead()
+		<a href="../../src/net/http/server.go.html#line-2056" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-2056">#L2056</a>: 		if !w.<b>conn</b>.server.doKeepAlives() {
+		<a href="../../src/net/http/server.go.html#line-2110" class="path-duplicate">server.go</a><a href="../../src/net/http/server.go.html#line-2110">#L2110</a>: 	c := w.<b>conn</b>
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

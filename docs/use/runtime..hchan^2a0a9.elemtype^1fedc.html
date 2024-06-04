@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.hchan.elemtype</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/chan.go.html#line-33">hchan</a>.<a href="../src/runtime/chan.go.html#line-39">elemtype</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">31 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/chan.go.html#line-39">chan.go#L39</a>: 	<b>elemtype</b> *_type // element type
+		<a href="../src/runtime/chan.go.html#line-111" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-111">#L111</a>: 	c.<b>elemtype</b> = elem
+		<a href="../src/runtime/chan.go.html#line-222" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-222">#L222</a>: 		typedmemmove(c.<b>elemtype</b>, qp, ep)
+		<a href="../src/runtime/chan.go.html#line-312" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-312">#L312</a>: 		sendDirect(c.<b>elemtype</b>, sg, ep)
+		<a href="../src/runtime/chan.go.html#line-385" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-385">#L385</a>: 			typedmemclr(c.<b>elemtype</b>, sg.elem)
+		<a href="../src/runtime/chan.go.html#line-500" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-500">#L500</a>: 				typedmemclr(c.<b>elemtype</b>, ep)
+		<a href="../src/runtime/chan.go.html#line-520" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-520">#L520</a>: 				typedmemclr(c.<b>elemtype</b>, ep)
+		<a href="../src/runtime/chan.go.html#line-544" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-544">#L544</a>: 			typedmemmove(c.<b>elemtype</b>, ep, qp)
+		<a href="../src/runtime/chan.go.html#line-546" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-546">#L546</a>: 		typedmemclr(c.<b>elemtype</b>, qp)
+		<a href="../src/runtime/chan.go.html#line-622" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-622">#L622</a>: 			recvDirect(c.<b>elemtype</b>, sg, ep)
+		<a href="../src/runtime/chan.go.html#line-636" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-636">#L636</a>: 			typedmemmove(c.<b>elemtype</b>, ep, qp)
+		<a href="../src/runtime/chan.go.html#line-639" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-639">#L639</a>: 		typedmemmove(c.<b>elemtype</b>, qp, sg.elem)
+		<a href="../src/runtime/select.go.html#line-396">select.go#L396</a>: 			raceReadObjectPC(c.<b>elemtype</b>, cas.elem, casePC(casi), chansendpc)
+		<a href="../src/runtime/select.go.html#line-398" class="path-duplicate">select.go</a><a href="../src/runtime/select.go.html#line-398">#L398</a>: 			raceWriteObjectPC(c.<b>elemtype</b>, cas.elem, casePC(casi), chanrecvpc)
+		<a href="../src/runtime/select.go.html#line-403" class="path-duplicate">select.go</a><a href="../src/runtime/select.go.html#line-403">#L403</a>: 			msanread(cas.elem, c.<b>elemtype</b>.Size_)
+		<a href="../src/runtime/select.go.html#line-405" class="path-duplicate">select.go</a><a href="../src/runtime/select.go.html#line-405">#L405</a>: 			msanwrite(cas.elem, c.<b>elemtype</b>.Size_)
+		<a href="../src/runtime/select.go.html#line-410" class="path-duplicate">select.go</a><a href="../src/runtime/select.go.html#line-410">#L410</a>: 			asanread(cas.elem, c.<b>elemtype</b>.Size_)
+		<a href="../src/runtime/select.go.html#line-412" class="path-duplicate">select.go</a><a href="../src/runtime/select.go.html#line-412">#L412</a>: 			asanwrite(cas.elem, c.<b>elemtype</b>.Size_)
+		<a href="../src/runtime/select.go.html#line-423" class="path-duplicate">select.go</a><a href="../src/runtime/select.go.html#line-423">#L423</a>: 			raceWriteObjectPC(c.<b>elemtype</b>, cas.elem, casePC(casi), chanrecvpc)
+		<a href="../src/runtime/select.go.html#line-428" class="path-duplicate">select.go</a><a href="../src/runtime/select.go.html#line-428">#L428</a>: 		msanwrite(cas.elem, c.<b>elemtype</b>.Size_)
+		<a href="../src/runtime/select.go.html#line-431" class="path-duplicate">select.go</a><a href="../src/runtime/select.go.html#line-431">#L431</a>: 		asanwrite(cas.elem, c.<b>elemtype</b>.Size_)
+		<a href="../src/runtime/select.go.html#line-436" class="path-duplicate">select.go</a><a href="../src/runtime/select.go.html#line-436">#L436</a>: 		typedmemmove(c.<b>elemtype</b>, cas.elem, qp)
+		<a href="../src/runtime/select.go.html#line-438" class="path-duplicate">select.go</a><a href="../src/runtime/select.go.html#line-438">#L438</a>: 	typedmemclr(c.<b>elemtype</b>, qp)
+		<a href="../src/runtime/select.go.html#line-451" class="path-duplicate">select.go</a><a href="../src/runtime/select.go.html#line-451">#L451</a>: 		raceReadObjectPC(c.<b>elemtype</b>, cas.elem, casePC(casi), chansendpc)
+		<a href="../src/runtime/select.go.html#line-454" class="path-duplicate">select.go</a><a href="../src/runtime/select.go.html#line-454">#L454</a>: 		msanread(cas.elem, c.<b>elemtype</b>.Size_)
+		<a href="../src/runtime/select.go.html#line-457" class="path-duplicate">select.go</a><a href="../src/runtime/select.go.html#line-457">#L457</a>: 		asanread(cas.elem, c.<b>elemtype</b>.Size_)
+		<a href="../src/runtime/select.go.html#line-459" class="path-duplicate">select.go</a><a href="../src/runtime/select.go.html#line-459">#L459</a>: 	typedmemmove(c.<b>elemtype</b>, chanbuf(c, c.sendx), cas.elem)
+		<a href="../src/runtime/select.go.html#line-482" class="path-duplicate">select.go</a><a href="../src/runtime/select.go.html#line-482">#L482</a>: 		typedmemclr(c.<b>elemtype</b>, cas.elem)
+		<a href="../src/runtime/select.go.html#line-492" class="path-duplicate">select.go</a><a href="../src/runtime/select.go.html#line-492">#L492</a>: 		raceReadObjectPC(c.<b>elemtype</b>, cas.elem, casePC(casi), chansendpc)
+		<a href="../src/runtime/select.go.html#line-495" class="path-duplicate">select.go</a><a href="../src/runtime/select.go.html#line-495">#L495</a>: 		msanread(cas.elem, c.<b>elemtype</b>.Size_)
+		<a href="../src/runtime/select.go.html#line-498" class="path-duplicate">select.go</a><a href="../src/runtime/select.go.html#line-498">#L498</a>: 		asanread(cas.elem, c.<b>elemtype</b>.Size_)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

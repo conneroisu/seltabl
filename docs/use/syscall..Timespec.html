@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: syscall.Timespec</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../pkg/syscall.html">syscall</a>.<a href="../src/syscall/ztypes_linux_amd64.go.html#line-24">Timespec</a></b></span>
+
+<span class="title">17 uses</span>
+
+	syscall (current package)
+		<a href="../src/syscall/syscall.go.html#line-80">syscall.go#L80</a>: func (ts *<b>Timespec</b>) Unix() (sec int64, nsec int64) {
+		<a href="../src/syscall/syscall.go.html#line-90" class="path-duplicate">syscall.go</a><a href="../src/syscall/syscall.go.html#line-90">#L90</a>: func (ts *<b>Timespec</b>) Nano() int64 {
+		<a href="../src/syscall/syscall_linux.go.html#line-347">syscall_linux.go#L347</a>: func UtimesNano(path string, ts []<b>Timespec</b>) (err error) {
+		<a href="../src/syscall/syscall_linux.go.html#line-351" class="path-duplicate">syscall_linux.go</a><a href="../src/syscall/syscall_linux.go.html#line-351">#L351</a>: 	return utimensat(_AT_FDCWD, path, (*[2]<b>Timespec</b>)(unsafe.Pointer(&amp;ts[0])), 0)
+		<a href="../src/syscall/syscall_linux_amd64.go.html#line-112">syscall_linux_amd64.go#L112</a>: func setTimespec(sec, nsec int64) <b>Timespec</b> {
+		<a href="../src/syscall/syscall_linux_amd64.go.html#line-113" class="path-duplicate">syscall_linux_amd64.go</a><a href="../src/syscall/syscall_linux_amd64.go.html#line-113">#L113</a>: 	return <b>Timespec</b>{Sec: sec, Nsec: nsec}
+		<a href="../src/syscall/timestruct.go.html#line-10">timestruct.go#L10</a>: func TimespecToNsec(ts <b>Timespec</b>) int64 { return ts.Nano() }
+		<a href="../src/syscall/timestruct.go.html#line-13" class="path-duplicate">timestruct.go</a><a href="../src/syscall/timestruct.go.html#line-13">#L13</a>: func NsecToTimespec(nsec int64) <b>Timespec</b> {
+		<a href="../src/syscall/zsyscall_linux_amd64.go.html#line-175">zsyscall_linux_amd64.go#L175</a>: func utimensat(dirfd int, path string, times *[2]<b>Timespec</b>, flag int) (err error) {
+		<a href="../src/syscall/zsyscall_linux_amd64.go.html#line-689" class="path-duplicate">zsyscall_linux_amd64.go</a><a href="../src/syscall/zsyscall_linux_amd64.go.html#line-689">#L689</a>: func Nanosleep(time *<b>Timespec</b>, leftover *<b>Timespec</b>) (err error) {
+		<a href="../src/syscall/ztypes_linux_amd64.go.html#line-24">ztypes_linux_amd64.go#L24</a>: type <b>Timespec</b> struct {
+		<a href="../src/syscall/ztypes_linux_amd64.go.html#line-113" class="path-duplicate">ztypes_linux_amd64.go</a><a href="../src/syscall/ztypes_linux_amd64.go.html#line-113">#L113</a>: 	Atim      <b>Timespec</b>
+		<a href="../src/syscall/ztypes_linux_amd64.go.html#line-114" class="path-duplicate">ztypes_linux_amd64.go</a><a href="../src/syscall/ztypes_linux_amd64.go.html#line-114">#L114</a>: 	Mtim      <b>Timespec</b>
+		<a href="../src/syscall/ztypes_linux_amd64.go.html#line-115" class="path-duplicate">ztypes_linux_amd64.go</a><a href="../src/syscall/ztypes_linux_amd64.go.html#line-115">#L115</a>: 	Ctim      <b>Timespec</b>
+
+	<a href="../pkg/os.html">os</a>
+		<a href="../src/os/file_posix.go.html#line-180">file_posix.go#L180</a>: 	var utimes [2]syscall.<b>Timespec</b>
+		<a href="../src/os/file_posix.go.html#line-183" class="path-duplicate">file_posix.go</a><a href="../src/os/file_posix.go.html#line-183">#L183</a>: 			utimes[i] = syscall.<b>Timespec</b>{Sec: _UTIME_OMIT, Nsec: _UTIME_OMIT}
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

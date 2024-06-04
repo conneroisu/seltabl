@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: internal/reflectlite.Value.typ</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/internal/reflectlite.html">internal/reflectlite</a>.<a href="../../src/internal/reflectlite/value.go.html#line-36">Value</a>.<a href="../../src/internal/reflectlite/value.go.html#line-91">typ</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">15 uses</span>
+
+	internal/reflectlite (current package)
+		<a href="../../src/internal/reflectlite/value.go.html#line-91">value.go#L91</a>: func (v Value) <b>typ</b>() *abi.Type {
+		<a href="../../src/internal/reflectlite/value.go.html#line-103" class="path-duplicate">value.go</a><a href="../../src/internal/reflectlite/value.go.html#line-103">#L103</a>: 	if v.<b>typ</b>().Size() != goarch.PtrSize || !v.<b>typ</b>().Pointers() {
+		<a href="../../src/internal/reflectlite/value.go.html#line-114" class="path-duplicate">value.go</a><a href="../../src/internal/reflectlite/value.go.html#line-114">#L114</a>: 	t := v.<b>typ</b>()
+		<a href="../../src/internal/reflectlite/value.go.html#line-241" class="path-duplicate">value.go</a><a href="../../src/internal/reflectlite/value.go.html#line-241">#L241</a>: 		if v.<b>typ</b>().NumMethod() == 0 {
+		<a href="../../src/internal/reflectlite/value.go.html#line-262" class="path-duplicate">value.go</a><a href="../../src/internal/reflectlite/value.go.html#line-262">#L262</a>: 		tt := (*ptrType)(unsafe.Pointer(v.<b>typ</b>()))
+		<a href="../../src/internal/reflectlite/value.go.html#line-348" class="path-duplicate">value.go</a><a href="../../src/internal/reflectlite/value.go.html#line-348">#L348</a>: 		tt := (*arrayType)(unsafe.Pointer(v.<b>typ</b>()))
+		<a href="../../src/internal/reflectlite/value.go.html#line-366" class="path-duplicate">value.go</a><a href="../../src/internal/reflectlite/value.go.html#line-366">#L366</a>: 	if v.<b>typ</b>() == nil {
+		<a href="../../src/internal/reflectlite/value.go.html#line-369" class="path-duplicate">value.go</a><a href="../../src/internal/reflectlite/value.go.html#line-369">#L369</a>: 	return v.<b>typ</b>().NumMethod()
+		<a href="../../src/internal/reflectlite/value.go.html#line-382" class="path-duplicate">value.go</a><a href="../../src/internal/reflectlite/value.go.html#line-382">#L382</a>: 	x = x.assignTo("reflectlite.Set", v.<b>typ</b>(), target)
+		<a href="../../src/internal/reflectlite/value.go.html#line-384" class="path-duplicate">value.go</a><a href="../../src/internal/reflectlite/value.go.html#line-384">#L384</a>: 		typedmemmove(v.<b>typ</b>(), v.ptr, x.ptr)
+		<a href="../../src/internal/reflectlite/value.go.html#line-397" class="path-duplicate">value.go</a><a href="../../src/internal/reflectlite/value.go.html#line-397">#L397</a>: 	return toRType(v.<b>typ</b>())
+		<a href="../../src/internal/reflectlite/value.go.html#line-427" class="path-duplicate">value.go</a><a href="../../src/internal/reflectlite/value.go.html#line-427">#L427</a>: 	case directlyAssignable(dst, v.<b>typ</b>()):
+		<a href="../../src/internal/reflectlite/value.go.html#line-434" class="path-duplicate">value.go</a><a href="../../src/internal/reflectlite/value.go.html#line-434">#L434</a>: 	case implements(dst, v.<b>typ</b>()):
+		<a href="../../src/internal/reflectlite/value.go.html#line-454" class="path-duplicate">value.go</a><a href="../../src/internal/reflectlite/value.go.html#line-454">#L454</a>: 	panic(context + ": value of type " + toRType(v.<b>typ</b>()).String() + " is not assignable to type " + toRType(dst).String())
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

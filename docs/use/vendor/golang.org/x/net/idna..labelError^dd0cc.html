@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: vendor/golang.org/x/net/idna.labelError</title>
+<link href="../../../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../../../../pkg/vendor/golang.org/x/net/idna.html">vendor/golang.org/x/net/idna</a>.<a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-320">labelError</a></b></span>
+
+<span class="title">17 uses</span>
+
+	vendor/golang.org/x/net/idna (current package)
+		<a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-320">idna10.0.0.go#L320</a>: type <b>labelError</b> struct{ label, code_ string }
+		<a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-322" class="path-duplicate">idna10.0.0.go</a><a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-322">#L322</a>: func (e <b>labelError</b>) code() string { return e.code_ }
+		<a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-323" class="path-duplicate">idna10.0.0.go</a><a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-323">#L323</a>: func (e <b>labelError</b>) Error() string {
+		<a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-351" class="path-duplicate">idna10.0.0.go</a><a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-351">#L351</a>: 		err = &amp;<b>labelError</b>{s, "A4"}
+		<a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-360" class="path-duplicate">idna10.0.0.go</a><a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-360">#L360</a>: 				err = &amp;<b>labelError</b>{s, "A4"}
+		<a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-391" class="path-duplicate">idna10.0.0.go</a><a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-391">#L391</a>: 				err = &amp;<b>labelError</b>{s, "B"}
+		<a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-409" class="path-duplicate">idna10.0.0.go</a><a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-409">#L409</a>: 				err = &amp;<b>labelError</b>{label, "A4"}
+		<a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-421" class="path-duplicate">idna10.0.0.go</a><a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-421">#L421</a>: 			err = &amp;<b>labelError</b>{s, "A4"}
+		<a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-439" class="path-duplicate">idna10.0.0.go</a><a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-439">#L439</a>: 		return s, false, &amp;<b>labelError</b>{s, "V1"}
+		<a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-628" class="path-duplicate">idna10.0.0.go</a><a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-628">#L628</a>: 		return &amp;<b>labelError</b>{s, "V1"}
+		<a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-638" class="path-duplicate">idna10.0.0.go</a><a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-638">#L638</a>: 			return &amp;<b>labelError</b>{s, "V6"}
+		<a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-712" class="path-duplicate">idna10.0.0.go</a><a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-712">#L712</a>: 			return &amp;<b>labelError</b>{s, "A4"}
+		<a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-718" class="path-duplicate">idna10.0.0.go</a><a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-718">#L718</a>: 			return &amp;<b>labelError</b>{s, "V2"}
+		<a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-721" class="path-duplicate">idna10.0.0.go</a><a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-721">#L721</a>: 			return &amp;<b>labelError</b>{s, "V3"}
+		<a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-732" class="path-duplicate">idna10.0.0.go</a><a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-732">#L732</a>: 		return &amp;<b>labelError</b>{s, "V5"}
+		<a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-757" class="path-duplicate">idna10.0.0.go</a><a href="../../../../../src/vendor/golang.org/x/net/idna/idna10.0.0.go.html#line-757">#L757</a>: 		return &amp;<b>labelError</b>{s, "C"}
+		<a href="../../../../../src/vendor/golang.org/x/net/idna/punycode.go.html#line-31">punycode.go#L31</a>: func punyError(s string) error { return &amp;<b>labelError</b>{s, "A3"} }
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

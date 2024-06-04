@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: vendor/golang.org/x/crypto/internal/poly1305.uint128.lo</title>
+<link href="../../../../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../../../../../pkg/vendor/golang.org/x/crypto/internal/poly1305.html">vendor/golang.org/x/crypto/internal/poly1305</a>.<a href="../../../../../../src/vendor/golang.org/x/crypto/internal/poly1305/sum_generic.go.html#line-112">uint128</a>.<a href="../../../../../../src/vendor/golang.org/x/crypto/internal/poly1305/sum_generic.go.html#line-113">lo</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">11 uses</span>
+
+	vendor/golang.org/x/crypto/internal/poly1305 (current package)
+		<a href="../../../../../../src/vendor/golang.org/x/crypto/internal/poly1305/sum_generic.go.html#line-113">sum_generic.go#L113</a>: 	<b>lo</b>, hi uint64
+		<a href="../../../../../../src/vendor/golang.org/x/crypto/internal/poly1305/sum_generic.go.html#line-122" class="path-duplicate">sum_generic.go</a><a href="../../../../../../src/vendor/golang.org/x/crypto/internal/poly1305/sum_generic.go.html#line-122">#L122</a>: 	lo, c := bitsAdd64(a.<b>lo</b>, b.<b>lo</b>, 0)
+		<a href="../../../../../../src/vendor/golang.org/x/crypto/internal/poly1305/sum_generic.go.html#line-131" class="path-duplicate">sum_generic.go</a><a href="../../../../../../src/vendor/golang.org/x/crypto/internal/poly1305/sum_generic.go.html#line-131">#L131</a>: 	a.<b>lo</b> = a.<b>lo</b>&gt;&gt;2 | (a.hi&amp;3)&lt;&lt;62
+		<a href="../../../../../../src/vendor/golang.org/x/crypto/internal/poly1305/sum_generic.go.html#line-221" class="path-duplicate">sum_generic.go</a><a href="../../../../../../src/vendor/golang.org/x/crypto/internal/poly1305/sum_generic.go.html#line-221">#L221</a>: 		t0 := m0.<b>lo</b>
+		<a href="../../../../../../src/vendor/golang.org/x/crypto/internal/poly1305/sum_generic.go.html#line-222" class="path-duplicate">sum_generic.go</a><a href="../../../../../../src/vendor/golang.org/x/crypto/internal/poly1305/sum_generic.go.html#line-222">#L222</a>: 		t1, c := bitsAdd64(m1.<b>lo</b>, m0.hi, 0)
+		<a href="../../../../../../src/vendor/golang.org/x/crypto/internal/poly1305/sum_generic.go.html#line-223" class="path-duplicate">sum_generic.go</a><a href="../../../../../../src/vendor/golang.org/x/crypto/internal/poly1305/sum_generic.go.html#line-223">#L223</a>: 		t2, c := bitsAdd64(m2.<b>lo</b>, m1.hi, c)
+		<a href="../../../../../../src/vendor/golang.org/x/crypto/internal/poly1305/sum_generic.go.html#line-224" class="path-duplicate">sum_generic.go</a><a href="../../../../../../src/vendor/golang.org/x/crypto/internal/poly1305/sum_generic.go.html#line-224">#L224</a>: 		t3, _ := bitsAdd64(m3.<b>lo</b>, m2.hi, c)
+		<a href="../../../../../../src/vendor/golang.org/x/crypto/internal/poly1305/sum_generic.go.html#line-246" class="path-duplicate">sum_generic.go</a><a href="../../../../../../src/vendor/golang.org/x/crypto/internal/poly1305/sum_generic.go.html#line-246">#L246</a>: 		h0, c = bitsAdd64(h0, cc.<b>lo</b>, 0)
+		<a href="../../../../../../src/vendor/golang.org/x/crypto/internal/poly1305/sum_generic.go.html#line-252" class="path-duplicate">sum_generic.go</a><a href="../../../../../../src/vendor/golang.org/x/crypto/internal/poly1305/sum_generic.go.html#line-252">#L252</a>: 		h0, c = bitsAdd64(h0, cc.<b>lo</b>, 0)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

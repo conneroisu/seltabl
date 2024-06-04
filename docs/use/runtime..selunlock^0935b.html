@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.selunlock</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/select.go.html#line-44">selunlock</a></b></span>
+
+<span class="title">9 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/select.go.html#line-44">select.go#L44</a>: func <b>selunlock</b>(scases []scase, lockorder []uint16) {
+		<a href="../src/runtime/select.go.html#line-283" class="path-duplicate">select.go</a><a href="../src/runtime/select.go.html#line-283">#L283</a>: 		<b>selunlock</b>(scases, lockorder)
+		<a href="../src/runtime/select.go.html#line-416" class="path-duplicate">select.go</a><a href="../src/runtime/select.go.html#line-416">#L416</a>: 	<b>selunlock</b>(scases, lockorder)
+		<a href="../src/runtime/select.go.html#line-444" class="path-duplicate">select.go</a><a href="../src/runtime/select.go.html#line-444">#L444</a>: 	<b>selunlock</b>(scases, lockorder)
+		<a href="../src/runtime/select.go.html#line-465" class="path-duplicate">select.go</a><a href="../src/runtime/select.go.html#line-465">#L465</a>: 	<b>selunlock</b>(scases, lockorder)
+		<a href="../src/runtime/select.go.html#line-470" class="path-duplicate">select.go</a><a href="../src/runtime/select.go.html#line-470">#L470</a>: 	recv(c, sg, cas.elem, func() { <b>selunlock</b>(scases, lockorder) }, 2)
+		<a href="../src/runtime/select.go.html#line-479" class="path-duplicate">select.go</a><a href="../src/runtime/select.go.html#line-479">#L479</a>: 	<b>selunlock</b>(scases, lockorder)
+		<a href="../src/runtime/select.go.html#line-500" class="path-duplicate">select.go</a><a href="../src/runtime/select.go.html#line-500">#L500</a>: 	send(c, sg, cas.elem, func() { <b>selunlock</b>(scases, lockorder) }, 2)
+		<a href="../src/runtime/select.go.html#line-514" class="path-duplicate">select.go</a><a href="../src/runtime/select.go.html#line-514">#L514</a>: 	<b>selunlock</b>(scases, lockorder)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

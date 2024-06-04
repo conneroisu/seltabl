@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: bufio.NewWriterSize</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/bufio.html">bufio</a>.<a href="../src/bufio/bufio.go.html#line-586">NewWriterSize</a></b></span>
+
+<span class="title">6 uses</span>
+
+	bufio (current package)
+		<a href="../src/bufio/bufio.go.html#line-586">bufio.go#L586</a>: func <b>NewWriterSize</b>(w io.Writer, size int) *Writer {
+		<a href="../src/bufio/bufio.go.html#line-605" class="path-duplicate">bufio.go</a><a href="../src/bufio/bufio.go.html#line-605">#L605</a>: 	return <b>NewWriterSize</b>(w, defaultBufSize)
+
+	<a href="../pkg/net/http.html">net/http</a>
+		<a href="../src/net/http/h2_bundle.go.html#line-3576">h2_bundle.go#L3576</a>: 		return bufio.<b>NewWriterSize</b>(nil, http2bufWriterPoolBufferSize)
+		<a href="../src/net/http/h2_bundle.go.html#line-3886" class="path-duplicate">h2_bundle.go</a><a href="../src/net/http/h2_bundle.go.html#line-3886">#L3886</a>: 		rws.bw = bufio.<b>NewWriterSize</b>(http2chunkWriter{rws}, http2handlerChunkWriteSize)
+		<a href="../src/net/http/server.go.html#line-858">server.go#L858</a>: 	return bufio.<b>NewWriterSize</b>(w, size)
+		<a href="../src/net/http/transport.go.html#line-1797">transport.go#L1797</a>: 	pconn.bw = bufio.<b>NewWriterSize</b>(persistConnWriter{pconn}, t.writeBufferSize())
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

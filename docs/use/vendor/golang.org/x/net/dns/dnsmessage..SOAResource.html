@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: vendor/golang.org/x/net/dns/dnsmessage.SOAResource</title>
+<link href="../../../../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../../../../../pkg/vendor/golang.org/x/net/dns/dnsmessage.html">vendor/golang.org/x/net/dns/dnsmessage</a>.<a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-2370">SOAResource</a></b></span>
+
+<span class="title">18 uses</span>
+
+	vendor/golang.org/x/net/dns/dnsmessage (current package)
+		<a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-954">message.go#L954</a>: func (p *Parser) SOAResource() (<b>SOAResource</b>, error) {
+		<a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-956" class="path-duplicate">message.go</a><a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-956">#L956</a>: 		return <b>SOAResource</b>{}, ErrNotStarted
+		<a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-960" class="path-duplicate">message.go</a><a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-960">#L960</a>: 		return <b>SOAResource</b>{}, err
+		<a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-1468" class="path-duplicate">message.go</a><a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-1468">#L1468</a>: func (b *Builder) SOAResource(h ResourceHeader, r <b>SOAResource</b>) error {
+		<a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-2202" class="path-duplicate">message.go</a><a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-2202">#L2202</a>: 		var rb <b>SOAResource</b>
+		<a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-2370" class="path-duplicate">message.go</a><a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-2370">#L2370</a>: type <b>SOAResource</b> struct {
+		<a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-2384" class="path-duplicate">message.go</a><a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-2384">#L2384</a>: func (r *<b>SOAResource</b>) realType() Type {
+		<a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-2389" class="path-duplicate">message.go</a><a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-2389">#L2389</a>: func (r *<b>SOAResource</b>) pack(msg []byte, compression map[string]uint16, compressionOff int) ([]byte, error) {
+		<a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-2407" class="path-duplicate">message.go</a><a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-2407">#L2407</a>: func (r *<b>SOAResource</b>) GoString() string {
+		<a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-2418" class="path-duplicate">message.go</a><a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-2418">#L2418</a>: func unpackSOAResource(msg []byte, off int) (<b>SOAResource</b>, error) {
+		<a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-2422" class="path-duplicate">message.go</a><a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-2422">#L2422</a>: 		return <b>SOAResource</b>{}, &amp;nestedError{"NS", err}
+		<a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-2426" class="path-duplicate">message.go</a><a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-2426">#L2426</a>: 		return <b>SOAResource</b>{}, &amp;nestedError{"MBox", err}
+		<a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-2430" class="path-duplicate">message.go</a><a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-2430">#L2430</a>: 		return <b>SOAResource</b>{}, &amp;nestedError{"Serial", err}
+		<a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-2434" class="path-duplicate">message.go</a><a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-2434">#L2434</a>: 		return <b>SOAResource</b>{}, &amp;nestedError{"Refresh", err}
+		<a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-2438" class="path-duplicate">message.go</a><a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-2438">#L2438</a>: 		return <b>SOAResource</b>{}, &amp;nestedError{"Retry", err}
+		<a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-2442" class="path-duplicate">message.go</a><a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-2442">#L2442</a>: 		return <b>SOAResource</b>{}, &amp;nestedError{"Expire", err}
+		<a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-2446" class="path-duplicate">message.go</a><a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-2446">#L2446</a>: 		return <b>SOAResource</b>{}, &amp;nestedError{"MinTTL", err}
+		<a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-2448" class="path-duplicate">message.go</a><a href="../../../../../../src/vendor/golang.org/x/net/dns/dnsmessage/message.go.html#line-2448">#L2448</a>: 	return <b>SOAResource</b>{ns, mbox, serial, refresh, retry, expire, minTTL}, nil
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/internal/bigmod._W</title>
+<link href="../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../../../pkg/crypto/internal/bigmod.html">crypto/internal/bigmod</a>.<a href="../../../src/crypto/internal/bigmod/nat.go.html#line-16">_W</a></b></span>
+
+<span class="title">18 uses</span>
+
+	crypto/internal/bigmod (current package)
+		<a href="../../../src/crypto/internal/bigmod/nat.go.html#line-16">nat.go#L16</a>: 	<b>_W</b> = bits.UintSize
+		<a href="../../../src/crypto/internal/bigmod/nat.go.html#line-18" class="path-duplicate">nat.go</a><a href="../../../src/crypto/internal/bigmod/nat.go.html#line-18">#L18</a>: 	_S = <b>_W</b> / 8
+		<a href="../../../src/crypto/internal/bigmod/nat.go.html#line-65" class="path-duplicate">nat.go</a><a href="../../../src/crypto/internal/bigmod/nat.go.html#line-65">#L65</a>: const preallocLimbs = (preallocTarget + <b>_W</b> - 1) / <b>_W</b>
+		<a href="../../../src/crypto/internal/bigmod/nat.go.html#line-173" class="path-duplicate">nat.go</a><a href="../../../src/crypto/internal/bigmod/nat.go.html#line-173">#L173</a>: 	leading := <b>_W</b> - bitLen(x.limbs[len(x.limbs)-1])
+		<a href="../../../src/crypto/internal/bigmod/nat.go.html#line-184" class="path-duplicate">nat.go</a><a href="../../../src/crypto/internal/bigmod/nat.go.html#line-184">#L184</a>: 	if <b>_W</b> == 64 {
+		<a href="../../../src/crypto/internal/bigmod/nat.go.html#line-198" class="path-duplicate">nat.go</a><a href="../../../src/crypto/internal/bigmod/nat.go.html#line-198">#L198</a>: 	for s := 0; s &lt; <b>_W</b> &amp;&amp; k &lt; len(x.limbs) &amp;&amp; i &gt; 0; s += 8 {
+		<a href="../../../src/crypto/internal/bigmod/nat.go.html#line-323" class="path-duplicate">nat.go</a><a href="../../../src/crypto/internal/bigmod/nat.go.html#line-323">#L323</a>: 	logR := <b>_W</b> * n
+		<a href="../../../src/crypto/internal/bigmod/nat.go.html#line-327" class="path-duplicate">nat.go</a><a href="../../../src/crypto/internal/bigmod/nat.go.html#line-327">#L327</a>: 	rr.limbs[n-1] = 1 &lt;&lt; ((mLen - 1) % <b>_W</b>)
+		<a href="../../../src/crypto/internal/bigmod/nat.go.html#line-396" class="path-duplicate">nat.go</a><a href="../../../src/crypto/internal/bigmod/nat.go.html#line-396">#L396</a>: 	m.leading = <b>_W</b> - bitLen(m.nat.limbs[len(m.nat.limbs)-1])
+		<a href="../../../src/crypto/internal/bigmod/nat.go.html#line-423" class="path-duplicate">nat.go</a><a href="../../../src/crypto/internal/bigmod/nat.go.html#line-423">#L423</a>: 	return len(m.nat.limbs)*<b>_W</b> - int(m.leading)
+		<a href="../../../src/crypto/internal/bigmod/nat.go.html#line-451" class="path-duplicate">nat.go</a><a href="../../../src/crypto/internal/bigmod/nat.go.html#line-451">#L451</a>: 	for i := <b>_W</b> - 1; i &gt;= 0; i-- {
+		<a href="../../../src/crypto/internal/bigmod/nat.go.html#line-657" class="path-duplicate">nat.go</a><a href="../../../src/crypto/internal/bigmod/nat.go.html#line-657">#L657</a>: 	case 1024 / <b>_W</b>:
+		<a href="../../../src/crypto/internal/bigmod/nat.go.html#line-658" class="path-duplicate">nat.go</a><a href="../../../src/crypto/internal/bigmod/nat.go.html#line-658">#L658</a>: 		const n = 1024 / <b>_W</b> // compiler hint
+		<a href="../../../src/crypto/internal/bigmod/nat.go.html#line-671" class="path-duplicate">nat.go</a><a href="../../../src/crypto/internal/bigmod/nat.go.html#line-671">#L671</a>: 	case 1536 / <b>_W</b>:
+		<a href="../../../src/crypto/internal/bigmod/nat.go.html#line-672" class="path-duplicate">nat.go</a><a href="../../../src/crypto/internal/bigmod/nat.go.html#line-672">#L672</a>: 		const n = 1536 / <b>_W</b> // compiler hint
+		<a href="../../../src/crypto/internal/bigmod/nat.go.html#line-685" class="path-duplicate">nat.go</a><a href="../../../src/crypto/internal/bigmod/nat.go.html#line-685">#L685</a>: 	case 2048 / <b>_W</b>:
+		<a href="../../../src/crypto/internal/bigmod/nat.go.html#line-686" class="path-duplicate">nat.go</a><a href="../../../src/crypto/internal/bigmod/nat.go.html#line-686">#L686</a>: 		const n = 2048 / <b>_W</b> // compiler hint
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

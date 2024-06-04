@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/internal/boring.Enabled</title>
+<link href="../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../../../pkg/crypto/internal/boring.html">crypto/internal/boring</a>.<a href="../../../src/crypto/internal/boring/doc.go.html#line-14">Enabled</a></b></span>
+
+<span class="title">36 uses</span>
+
+	crypto/internal/boring (current package)
+		<a href="../../../src/crypto/internal/boring/doc.go.html#line-14">doc.go#L14</a>: const <b>Enabled</b> = available
+
+	<a href="../../../pkg/crypto/aes.html">crypto/aes</a>
+		<a href="../../../src/crypto/aes/cipher.go.html#line-41">cipher.go#L41</a>: 	if boring.<b>Enabled</b> {
+
+	<a href="../../../pkg/crypto/ecdh.html">crypto/ecdh</a>
+		<a href="../../../src/crypto/ecdh/nist.go.html#line-39">nist.go#L39</a>: 	if boring.<b>Enabled</b> &amp;&amp; rand == boring.RandReader {
+		<a href="../../../src/crypto/ecdh/nist.go.html#line-82" class="path-duplicate">nist.go</a><a href="../../../src/crypto/ecdh/nist.go.html#line-82">#L82</a>: 	if boring.<b>Enabled</b> {
+		<a href="../../../src/crypto/ecdh/nist.go.html#line-176" class="path-duplicate">nist.go</a><a href="../../../src/crypto/ecdh/nist.go.html#line-176">#L176</a>: 	if boring.<b>Enabled</b> {
+		<a href="../../../src/crypto/ecdh/nist.go.html#line-199" class="path-duplicate">nist.go</a><a href="../../../src/crypto/ecdh/nist.go.html#line-199">#L199</a>: 	if boring.<b>Enabled</b> {
+
+	<a href="../../../pkg/crypto/ecdsa.html">crypto/ecdsa</a>
+		<a href="../../../src/crypto/ecdsa/ecdsa.go.html#line-161">ecdsa.go#L161</a>: 	if boring.<b>Enabled</b> &amp;&amp; rand == boring.RandReader {
+		<a href="../../../src/crypto/ecdsa/ecdsa.go.html#line-259" class="path-duplicate">ecdsa.go</a><a href="../../../src/crypto/ecdsa/ecdsa.go.html#line-259">#L259</a>: 	if boring.<b>Enabled</b> &amp;&amp; rand == boring.RandReader {
+		<a href="../../../src/crypto/ecdsa/ecdsa.go.html#line-469" class="path-duplicate">ecdsa.go</a><a href="../../../src/crypto/ecdsa/ecdsa.go.html#line-469">#L469</a>: 	if boring.<b>Enabled</b> {
+
+	<a href="../../../pkg/crypto/hmac.html">crypto/hmac</a>
+		<a href="../../../src/crypto/hmac/hmac.go.html#line-130">hmac.go#L130</a>: 	if boring.<b>Enabled</b> {
+
+	<a href="../../../pkg/crypto/rand.html">crypto/rand</a>
+		<a href="../../../src/crypto/rand/rand_unix.go.html#line-26">rand_unix.go#L26</a>: 	if boring.<b>Enabled</b> {
+
+	<a href="../../../pkg/crypto/rsa.html">crypto/rsa</a>
+		<a href="../../../src/crypto/rsa/pkcs1v15.go.html#line-52">pkcs1v15.go#L52</a>: 	if boring.<b>Enabled</b> &amp;&amp; random == boring.RandReader {
+		<a href="../../../src/crypto/rsa/pkcs1v15.go.html#line-72" class="path-duplicate">pkcs1v15.go</a><a href="../../../src/crypto/rsa/pkcs1v15.go.html#line-72">#L72</a>: 	if boring.<b>Enabled</b> {
+		<a href="../../../src/crypto/rsa/pkcs1v15.go.html#line-97" class="path-duplicate">pkcs1v15.go</a><a href="../../../src/crypto/rsa/pkcs1v15.go.html#line-97">#L97</a>: 	if boring.<b>Enabled</b> {
+		<a href="../../../src/crypto/rsa/pkcs1v15.go.html#line-191" class="path-duplicate">pkcs1v15.go</a><a href="../../../src/crypto/rsa/pkcs1v15.go.html#line-191">#L191</a>: 	if boring.<b>Enabled</b> {
+		<a href="../../../src/crypto/rsa/pkcs1v15.go.html#line-299" class="path-duplicate">pkcs1v15.go</a><a href="../../../src/crypto/rsa/pkcs1v15.go.html#line-299">#L299</a>: 	if boring.<b>Enabled</b> {
+		<a href="../../../src/crypto/rsa/pkcs1v15.go.html#line-325" class="path-duplicate">pkcs1v15.go</a><a href="../../../src/crypto/rsa/pkcs1v15.go.html#line-325">#L325</a>: 	if boring.<b>Enabled</b> {
+		<a href="../../../src/crypto/rsa/pss.go.html#line-217">pss.go#L217</a>: 	if boring.<b>Enabled</b> {
+		<a href="../../../src/crypto/rsa/pss.go.html#line-299" class="path-duplicate">pss.go</a><a href="../../../src/crypto/rsa/pss.go.html#line-299">#L299</a>: 	if boring.<b>Enabled</b> &amp;&amp; rand == boring.RandReader {
+		<a href="../../../src/crypto/rsa/pss.go.html#line-342" class="path-duplicate">pss.go</a><a href="../../../src/crypto/rsa/pss.go.html#line-342">#L342</a>: 	if boring.<b>Enabled</b> {
+		<a href="../../../src/crypto/rsa/rsa.go.html#line-301">rsa.go#L301</a>: 	if boring.<b>Enabled</b> &amp;&amp; random == boring.RandReader &amp;&amp; nprimes == 2 &amp;&amp;
+		<a href="../../../src/crypto/rsa/rsa.go.html#line-532" class="path-duplicate">rsa.go</a><a href="../../../src/crypto/rsa/rsa.go.html#line-532">#L532</a>: 	if boring.<b>Enabled</b> &amp;&amp; random == boring.RandReader {
+		<a href="../../../src/crypto/rsa/rsa.go.html#line-561" class="path-duplicate">rsa.go</a><a href="../../../src/crypto/rsa/rsa.go.html#line-561">#L561</a>: 	if boring.<b>Enabled</b> {
+		<a href="../../../src/crypto/rsa/rsa.go.html#line-722" class="path-duplicate">rsa.go</a><a href="../../../src/crypto/rsa/rsa.go.html#line-722">#L722</a>: 	if boring.<b>Enabled</b> {
+
+	<a href="../../../pkg/crypto/sha1.html">crypto/sha1</a>
+		<a href="../../../src/crypto/sha1/sha1.go.html#line-111">sha1.go#L111</a>: 	if boring.<b>Enabled</b> {
+		<a href="../../../src/crypto/sha1/sha1.go.html#line-258" class="path-duplicate">sha1.go</a><a href="../../../src/crypto/sha1/sha1.go.html#line-258">#L258</a>: 	if boring.<b>Enabled</b> {
+
+	<a href="../../../pkg/crypto/sha256.html">crypto/sha256</a>
+		<a href="../../../src/crypto/sha256/sha256.go.html#line-151">sha256.go#L151</a>: 	if boring.<b>Enabled</b> {
+		<a href="../../../src/crypto/sha256/sha256.go.html#line-161" class="path-duplicate">sha256.go</a><a href="../../../src/crypto/sha256/sha256.go.html#line-161">#L161</a>: 	if boring.<b>Enabled</b> {
+		<a href="../../../src/crypto/sha256/sha256.go.html#line-254" class="path-duplicate">sha256.go</a><a href="../../../src/crypto/sha256/sha256.go.html#line-254">#L254</a>: 	if boring.<b>Enabled</b> {
+		<a href="../../../src/crypto/sha256/sha256.go.html#line-265" class="path-duplicate">sha256.go</a><a href="../../../src/crypto/sha256/sha256.go.html#line-265">#L265</a>: 	if boring.<b>Enabled</b> {
+
+	<a href="../../../pkg/crypto/sha512.html">crypto/sha512</a>
+		<a href="../../../src/crypto/sha512/sha512.go.html#line-209">sha512.go#L209</a>: 	if boring.<b>Enabled</b> {
+		<a href="../../../src/crypto/sha512/sha512.go.html#line-233" class="path-duplicate">sha512.go</a><a href="../../../src/crypto/sha512/sha512.go.html#line-233">#L233</a>: 	if boring.<b>Enabled</b> {
+		<a href="../../../src/crypto/sha512/sha512.go.html#line-344" class="path-duplicate">sha512.go</a><a href="../../../src/crypto/sha512/sha512.go.html#line-344">#L344</a>: 	if boring.<b>Enabled</b> {
+		<a href="../../../src/crypto/sha512/sha512.go.html#line-355" class="path-duplicate">sha512.go</a><a href="../../../src/crypto/sha512/sha512.go.html#line-355">#L355</a>: 	if boring.<b>Enabled</b> {
+
+	<a href="../../../pkg/crypto/tls.html">crypto/tls</a>
+		<a href="../../../src/crypto/tls/cipher_suites.go.html#line-444">cipher_suites.go#L444</a>: 	if !boring.<b>Enabled</b> {
+		<a href="../../../src/crypto/tls/cipher_suites.go.html#line-536" class="path-duplicate">cipher_suites.go</a><a href="../../../src/crypto/tls/cipher_suites.go.html#line-536">#L536</a>: 	if boring.<b>Enabled</b> {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

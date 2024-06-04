@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.mstats.heapStats</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/mstats.go.html#line-14">mstats</a>.<a href="../src/runtime/mstats.go.html#line-16">heapStats</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">31 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/arena.go.html#line-721">arena.go#L721</a>: 	stats := memstats.<b>heapStats</b>.acquire()
+		<a href="../src/runtime/arena.go.html#line-726" class="path-duplicate">arena.go</a><a href="../src/runtime/arena.go.html#line-726">#L726</a>: 	memstats.<b>heapStats</b>.release()
+		<a href="../src/runtime/arena.go.html#line-886" class="path-duplicate">arena.go</a><a href="../src/runtime/arena.go.html#line-886">#L886</a>: 	stats := memstats.<b>heapStats</b>.acquire()
+		<a href="../src/runtime/arena.go.html#line-893" class="path-duplicate">arena.go</a><a href="../src/runtime/arena.go.html#line-893">#L893</a>: 	memstats.<b>heapStats</b>.release()
+		<a href="../src/runtime/mcache.go.html#line-162">mcache.go#L162</a>: 		stats := memstats.<b>heapStats</b>.acquire()
+		<a href="../src/runtime/mcache.go.html#line-171" class="path-duplicate">mcache.go</a><a href="../src/runtime/mcache.go.html#line-171">#L171</a>: 		memstats.<b>heapStats</b>.release()
+		<a href="../src/runtime/mcache.go.html#line-240" class="path-duplicate">mcache.go</a><a href="../src/runtime/mcache.go.html#line-240">#L240</a>: 	stats := memstats.<b>heapStats</b>.acquire()
+		<a href="../src/runtime/mcache.go.html#line-243" class="path-duplicate">mcache.go</a><a href="../src/runtime/mcache.go.html#line-243">#L243</a>: 	memstats.<b>heapStats</b>.release()
+		<a href="../src/runtime/mcache.go.html#line-273" class="path-duplicate">mcache.go</a><a href="../src/runtime/mcache.go.html#line-273">#L273</a>: 			stats := memstats.<b>heapStats</b>.acquire()
+		<a href="../src/runtime/mcache.go.html#line-275" class="path-duplicate">mcache.go</a><a href="../src/runtime/mcache.go.html#line-275">#L275</a>: 			memstats.<b>heapStats</b>.release()
+		<a href="../src/runtime/mcache.go.html#line-300" class="path-duplicate">mcache.go</a><a href="../src/runtime/mcache.go.html#line-300">#L300</a>: 	stats := memstats.<b>heapStats</b>.acquire()
+		<a href="../src/runtime/mcache.go.html#line-303" class="path-duplicate">mcache.go</a><a href="../src/runtime/mcache.go.html#line-303">#L303</a>: 	memstats.<b>heapStats</b>.release()
+		<a href="../src/runtime/metrics.go.html#line-606">metrics.go#L606</a>: 	memstats.<b>heapStats</b>.read(&amp;a.heapStatsDelta)
+		<a href="../src/runtime/mgcscavenge.go.html#line-788">mgcscavenge.go#L788</a>: 				stats := memstats.<b>heapStats</b>.acquire()
+		<a href="../src/runtime/mgcscavenge.go.html#line-791" class="path-duplicate">mgcscavenge.go</a><a href="../src/runtime/mgcscavenge.go.html#line-791">#L791</a>: 				memstats.<b>heapStats</b>.release()
+		<a href="../src/runtime/mgcsweep.go.html#line-743">mgcsweep.go#L743</a>: 			stats := memstats.<b>heapStats</b>.acquire()
+		<a href="../src/runtime/mgcsweep.go.html#line-745" class="path-duplicate">mgcsweep.go</a><a href="../src/runtime/mgcsweep.go.html#line-745">#L745</a>: 			memstats.<b>heapStats</b>.release()
+		<a href="../src/runtime/mgcsweep.go.html#line-807" class="path-duplicate">mgcsweep.go</a><a href="../src/runtime/mgcsweep.go.html#line-807">#L807</a>: 			stats := memstats.<b>heapStats</b>.acquire()
+		<a href="../src/runtime/mgcsweep.go.html#line-810" class="path-duplicate">mgcsweep.go</a><a href="../src/runtime/mgcsweep.go.html#line-810">#L810</a>: 			memstats.<b>heapStats</b>.release()
+		<a href="../src/runtime/mheap.go.html#line-1356">mheap.go#L1356</a>: 	stats := memstats.<b>heapStats</b>.acquire()
+		<a href="../src/runtime/mheap.go.html#line-1369" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1369">#L1369</a>: 	memstats.<b>heapStats</b>.release()
+		<a href="../src/runtime/mheap.go.html#line-1505" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1505">#L1505</a>: 				stats := memstats.<b>heapStats</b>.acquire()
+		<a href="../src/runtime/mheap.go.html#line-1507" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1507">#L1507</a>: 				memstats.<b>heapStats</b>.release()
+		<a href="../src/runtime/mheap.go.html#line-1538" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1538">#L1538</a>: 	stats := memstats.<b>heapStats</b>.acquire()
+		<a href="../src/runtime/mheap.go.html#line-1540" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1540">#L1540</a>: 	memstats.<b>heapStats</b>.release()
+		<a href="../src/runtime/mheap.go.html#line-1626" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1626">#L1626</a>: 	stats := memstats.<b>heapStats</b>.acquire()
+		<a href="../src/runtime/mheap.go.html#line-1637" class="path-duplicate">mheap.go</a><a href="../src/runtime/mheap.go.html#line-1637">#L1637</a>: 	memstats.<b>heapStats</b>.release()
+		<a href="../src/runtime/mstats.go.html#line-16">mstats.go#L16</a>: 	<b>heapStats</b> consistentHeapStats
+		<a href="../src/runtime/mstats.go.html#line-335" class="path-duplicate">mstats.go</a><a href="../src/runtime/mstats.go.html#line-335">#L335</a>: 	if offset := unsafe.Offsetof(memstats.<b>heapStats</b>); offset%8 != 0 {
+		<a href="../src/runtime/mstats.go.html#line-391" class="path-duplicate">mstats.go</a><a href="../src/runtime/mstats.go.html#line-391">#L391</a>: 	memstats.<b>heapStats</b>.unsafeRead(&amp;consStats)
+		<a href="../src/runtime/proc.go.html#line-768">proc.go#L768</a>: 	lockInit(&amp;memstats.<b>heapStats</b>.noPLock, lockRankLeafRank)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

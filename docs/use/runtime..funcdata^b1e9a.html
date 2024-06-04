@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.funcdata</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/symtab.go.html#line-1087">funcdata</a></b></span>
+
+<span class="title">12 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/heapdump.go.html#line-271">heapdump.go#L271</a>: 	stkmap := (*stackmap)(<b>funcdata</b>(f, abi.FUNCDATA_LocalsPointerMaps))
+		<a href="../src/runtime/heapdump.go.html#line-332" class="path-duplicate">heapdump.go</a><a href="../src/runtime/heapdump.go.html#line-332">#L332</a>: 	stkmap = (*stackmap)(<b>funcdata</b>(f, abi.FUNCDATA_ArgsPointerMaps))
+		<a href="../src/runtime/panic.go.html#line-952">panic.go#L952</a>: 	fd := <b>funcdata</b>(fn, abi.FUNCDATA_OpenCodedDeferInfo)
+		<a href="../src/runtime/preempt.go.html#line-406">preempt.go#L406</a>: 	if fd := <b>funcdata</b>(f, abi.FUNCDATA_LocalsPointerMaps); fd == nil || f.flag&amp;abi.FuncFlagAsm != 0 {
+		<a href="../src/runtime/stkframe.go.html#line-192">stkframe.go#L192</a>: 		stkmap := (*stackmap)(<b>funcdata</b>(f, abi.FUNCDATA_LocalsPointerMaps))
+		<a href="../src/runtime/stkframe.go.html#line-219" class="path-duplicate">stkframe.go</a><a href="../src/runtime/stkframe.go.html#line-219">#L219</a>: 		stackmap := (*stackmap)(<b>funcdata</b>(f, abi.FUNCDATA_ArgsPointerMaps))
+		<a href="../src/runtime/stkframe.go.html#line-245" class="path-duplicate">stkframe.go</a><a href="../src/runtime/stkframe.go.html#line-245">#L245</a>: 		p := <b>funcdata</b>(f, abi.FUNCDATA_StackObjects)
+		<a href="../src/runtime/symtab.go.html#line-1087">symtab.go#L1087</a>: func <b>funcdata</b>(f funcInfo, i uint8) unsafe.Pointer {
+		<a href="../src/runtime/symtabinl.go.html#line-55">symtabinl.go#L55</a>: 	inldata := <b>funcdata</b>(f, abi.FUNCDATA_InlTree)
+		<a href="../src/runtime/trace2stack.go.html#line-289">trace2stack.go#L289</a>: 	w := <b>funcdata</b>(f, abi.FUNCDATA_WrapInfo)
+		<a href="../src/runtime/traceback.go.html#line-671">traceback.go#L671</a>: 	p := (*[maxLen]uint8)(<b>funcdata</b>(f, abi.FUNCDATA_ArgInfo))
+		<a href="../src/runtime/traceback.go.html#line-676" class="path-duplicate">traceback.go</a><a href="../src/runtime/traceback.go.html#line-676">#L676</a>: 	liveInfo := <b>funcdata</b>(f, abi.FUNCDATA_ArgLiveInfo)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

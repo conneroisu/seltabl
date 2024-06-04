@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: math/big.Int.Exp</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/math/big.html">math/big</a>.<a href="../../src/math/big/int.go.html#line-33">Int</a>.<a href="../../src/math/big/int.go.html#line-565">Exp</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">13 uses</span>
+
+	math/big (current package)
+		<a href="../../src/math/big/int.go.html#line-565">int.go#L565</a>: func (z *Int) <b>Exp</b>(x, y, m *Int) *Int {
+		<a href="../../src/math/big/int.go.html#line-1001" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1001">#L1001</a>: 	z.<b>Exp</b>(x, e, p)               // z = x^e mod p
+		<a href="../../src/math/big/int.go.html#line-1018" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1018">#L1018</a>: 	alpha := new(Int).<b>Exp</b>(tx, e, p)
+		<a href="../../src/math/big/int.go.html#line-1054" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1054">#L1054</a>: 	y.<b>Exp</b>(x, &amp;y, p)  // y = x^((s+1)/2)
+		<a href="../../src/math/big/int.go.html#line-1055" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1055">#L1055</a>: 	b.<b>Exp</b>(x, &amp;s, p)  // b = x^s
+		<a href="../../src/math/big/int.go.html#line-1056" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1056">#L1056</a>: 	g.<b>Exp</b>(&amp;n, &amp;s, p) // g = n^s
+		<a href="../../src/math/big/int.go.html#line-1071" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1071">#L1071</a>: 		t.SetInt64(0).SetBit(&amp;t, int(r-m-1), 1).<b>Exp</b>(&amp;g, &amp;t, p)
+
+	<a href="../../pkg/crypto/dsa.html">crypto/dsa</a>
+		<a href="../../src/crypto/dsa/dsa.go.html#line-146">dsa.go#L146</a>: 		g.<b>Exp</b>(h, e, p)
+		<a href="../../src/crypto/dsa/dsa.go.html#line-180" class="path-duplicate">dsa.go</a><a href="../../src/crypto/dsa/dsa.go.html#line-180">#L180</a>: 	priv.Y.<b>Exp</b>(priv.G, x, priv.P)
+		<a href="../../src/crypto/dsa/dsa.go.html#line-191" class="path-duplicate">dsa.go</a><a href="../../src/crypto/dsa/dsa.go.html#line-191">#L191</a>: 	return new(big.Int).<b>Exp</b>(k, pMinus2, P)
+		<a href="../../src/crypto/dsa/dsa.go.html#line-238" class="path-duplicate">dsa.go</a><a href="../../src/crypto/dsa/dsa.go.html#line-238">#L238</a>: 		r = new(big.Int).<b>Exp</b>(priv.G, k, priv.P)
+		<a href="../../src/crypto/dsa/dsa.go.html#line-302" class="path-duplicate">dsa.go</a><a href="../../src/crypto/dsa/dsa.go.html#line-302">#L302</a>: 	v := u1.<b>Exp</b>(pub.G, u1, pub.P)
+		<a href="../../src/crypto/dsa/dsa.go.html#line-303" class="path-duplicate">dsa.go</a><a href="../../src/crypto/dsa/dsa.go.html#line-303">#L303</a>: 	u2.<b>Exp</b>(pub.Y, u2, pub.P)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

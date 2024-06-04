@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime/internal/atomic.Xaddint64</title>
+<link href="../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../../../pkg/runtime/internal/atomic.html">runtime/internal/atomic</a>.<a href="../../../src/runtime/internal/atomic/stubs.go.html#line-53">Xaddint64</a></b></span>
+
+<span class="title">21 uses</span>
+
+	runtime/internal/atomic (current package)
+		<a href="../../../src/runtime/internal/atomic/stubs.go.html#line-53">stubs.go#L53</a>: func <b>Xaddint64</b>(ptr *int64, delta int64) int64
+		<a href="../../../src/runtime/internal/atomic/types.go.html#line-109">types.go#L109</a>: 	return <b>Xaddint64</b>(&amp;i.value, delta)
+
+	<a href="../../../pkg/runtime.html">runtime</a>
+		<a href="../../../src/runtime/arena.go.html#line-722">arena.go#L722</a>: 	atomic.<b>Xaddint64</b>(&amp;stats.committed, -int64(s.npages*pageSize))
+		<a href="../../../src/runtime/arena.go.html#line-723" class="path-duplicate">arena.go</a><a href="../../../src/runtime/arena.go.html#line-723">#L723</a>: 	atomic.<b>Xaddint64</b>(&amp;stats.inHeap, -int64(s.npages*pageSize))
+		<a href="../../../src/runtime/arena.go.html#line-887" class="path-duplicate">arena.go</a><a href="../../../src/runtime/arena.go.html#line-887">#L887</a>: 	atomic.<b>Xaddint64</b>(&amp;stats.inHeap, int64(userArenaChunkBytes))
+		<a href="../../../src/runtime/arena.go.html#line-888" class="path-duplicate">arena.go</a><a href="../../../src/runtime/arena.go.html#line-888">#L888</a>: 	atomic.<b>Xaddint64</b>(&amp;stats.committed, int64(userArenaChunkBytes))
+		<a href="../../../src/runtime/mgc.go.html#line-1419">mgc.go#L1419</a>: 			atomic.<b>Xaddint64</b>(&amp;pp.gcFractionalMarkTime, duration)
+		<a href="../../../src/runtime/mgcscavenge.go.html#line-789">mgcscavenge.go#L789</a>: 				atomic.<b>Xaddint64</b>(&amp;stats.committed, -nbytes)
+		<a href="../../../src/runtime/mgcscavenge.go.html#line-790" class="path-duplicate">mgcscavenge.go</a><a href="../../../src/runtime/mgcscavenge.go.html#line-790">#L790</a>: 				atomic.<b>Xaddint64</b>(&amp;stats.released, nbytes)
+		<a href="../../../src/runtime/mheap.go.html#line-1357">mheap.go#L1357</a>: 	atomic.<b>Xaddint64</b>(&amp;stats.committed, int64(scav))
+		<a href="../../../src/runtime/mheap.go.html#line-1358" class="path-duplicate">mheap.go</a><a href="../../../src/runtime/mheap.go.html#line-1358">#L1358</a>: 	atomic.<b>Xaddint64</b>(&amp;stats.released, -int64(scav))
+		<a href="../../../src/runtime/mheap.go.html#line-1361" class="path-duplicate">mheap.go</a><a href="../../../src/runtime/mheap.go.html#line-1361">#L1361</a>: 		atomic.<b>Xaddint64</b>(&amp;stats.inHeap, int64(nbytes))
+		<a href="../../../src/runtime/mheap.go.html#line-1363" class="path-duplicate">mheap.go</a><a href="../../../src/runtime/mheap.go.html#line-1363">#L1363</a>: 		atomic.<b>Xaddint64</b>(&amp;stats.inStacks, int64(nbytes))
+		<a href="../../../src/runtime/mheap.go.html#line-1365" class="path-duplicate">mheap.go</a><a href="../../../src/runtime/mheap.go.html#line-1365">#L1365</a>: 		atomic.<b>Xaddint64</b>(&amp;stats.inPtrScalarBits, int64(nbytes))
+		<a href="../../../src/runtime/mheap.go.html#line-1367" class="path-duplicate">mheap.go</a><a href="../../../src/runtime/mheap.go.html#line-1367">#L1367</a>: 		atomic.<b>Xaddint64</b>(&amp;stats.inWorkBufs, int64(nbytes))
+		<a href="../../../src/runtime/mheap.go.html#line-1506" class="path-duplicate">mheap.go</a><a href="../../../src/runtime/mheap.go.html#line-1506">#L1506</a>: 				atomic.<b>Xaddint64</b>(&amp;stats.released, int64(size))
+		<a href="../../../src/runtime/mheap.go.html#line-1539" class="path-duplicate">mheap.go</a><a href="../../../src/runtime/mheap.go.html#line-1539">#L1539</a>: 	atomic.<b>Xaddint64</b>(&amp;stats.released, int64(nBase-v))
+		<a href="../../../src/runtime/mheap.go.html#line-1629" class="path-duplicate">mheap.go</a><a href="../../../src/runtime/mheap.go.html#line-1629">#L1629</a>: 		atomic.<b>Xaddint64</b>(&amp;stats.inHeap, -int64(nbytes))
+		<a href="../../../src/runtime/mheap.go.html#line-1631" class="path-duplicate">mheap.go</a><a href="../../../src/runtime/mheap.go.html#line-1631">#L1631</a>: 		atomic.<b>Xaddint64</b>(&amp;stats.inStacks, -int64(nbytes))
+		<a href="../../../src/runtime/mheap.go.html#line-1633" class="path-duplicate">mheap.go</a><a href="../../../src/runtime/mheap.go.html#line-1633">#L1633</a>: 		atomic.<b>Xaddint64</b>(&amp;stats.inPtrScalarBits, -int64(nbytes))
+		<a href="../../../src/runtime/mheap.go.html#line-1635" class="path-duplicate">mheap.go</a><a href="../../../src/runtime/mheap.go.html#line-1635">#L1635</a>: 		atomic.<b>Xaddint64</b>(&amp;stats.inWorkBufs, -int64(nbytes))
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

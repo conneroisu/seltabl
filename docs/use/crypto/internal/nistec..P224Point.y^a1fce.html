@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/internal/nistec.P224Point.y</title>
+<link href="../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../../pkg/crypto/internal/nistec.html">crypto/internal/nistec</a>.<a href="../../../src/crypto/internal/nistec/p224.go.html#line-21">P224Point</a>.<a href="../../../src/crypto/internal/nistec/p224.go.html#line-24">y</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">23 uses</span>
+
+	crypto/internal/nistec (current package)
+		<a href="../../../src/crypto/internal/nistec/p224.go.html#line-24">p224.go#L24</a>: 	x, <b>y</b>, z *fiat.P224Element
+		<a href="../../../src/crypto/internal/nistec/p224.go.html#line-31" class="path-duplicate">p224.go</a><a href="../../../src/crypto/internal/nistec/p224.go.html#line-31">#L31</a>: 		<b>y</b>: new(fiat.P224Element).One(),
+		<a href="../../../src/crypto/internal/nistec/p224.go.html#line-39" class="path-duplicate">p224.go</a><a href="../../../src/crypto/internal/nistec/p224.go.html#line-39">#L39</a>: 	p.<b>y</b>.SetBytes([]byte{0xbd, 0x37, 0x63, 0x88, 0xb5, 0xf7, 0x23, 0xfb, 0x4c, 0x22, 0xdf, 0xe6, 0xcd, 0x43, 0x75, 0xa0, 0x5a, 0x7, 0x47, 0x64, 0x44, 0xd5, 0x81, 0x99, 0x85, 0x0, 0x7e, 0x34})
+		<a href="../../../src/crypto/internal/nistec/p224.go.html#line-47" class="path-duplicate">p224.go</a><a href="../../../src/crypto/internal/nistec/p224.go.html#line-47">#L47</a>: 	p.<b>y</b>.Set(q.<b>y</b>)
+		<a href="../../../src/crypto/internal/nistec/p224.go.html#line-76" class="path-duplicate">p224.go</a><a href="../../../src/crypto/internal/nistec/p224.go.html#line-76">#L76</a>: 		p.<b>y</b>.Set(y)
+		<a href="../../../src/crypto/internal/nistec/p224.go.html#line-101" class="path-duplicate">p224.go</a><a href="../../../src/crypto/internal/nistec/p224.go.html#line-101">#L101</a>: 		p.<b>y</b>.Set(y)
+		<a href="../../../src/crypto/internal/nistec/p224.go.html#line-159" class="path-duplicate">p224.go</a><a href="../../../src/crypto/internal/nistec/p224.go.html#line-159">#L159</a>: 	y := new(fiat.P224Element).Mul(p.<b>y</b>, zinv)
+		<a href="../../../src/crypto/internal/nistec/p224.go.html#line-204" class="path-duplicate">p224.go</a><a href="../../../src/crypto/internal/nistec/p224.go.html#line-204">#L204</a>: 	y := new(fiat.P224Element).Mul(p.<b>y</b>, zinv)
+		<a href="../../../src/crypto/internal/nistec/p224.go.html#line-220" class="path-duplicate">p224.go</a><a href="../../../src/crypto/internal/nistec/p224.go.html#line-220">#L220</a>: 	t1 := new(fiat.P224Element).Mul(p1.<b>y</b>, p2.<b>y</b>)  // t1 := Y1 * Y2
+		<a href="../../../src/crypto/internal/nistec/p224.go.html#line-222" class="path-duplicate">p224.go</a><a href="../../../src/crypto/internal/nistec/p224.go.html#line-222">#L222</a>: 	t3 := new(fiat.P224Element).Add(p1.x, p1.<b>y</b>)  // t3 := X1 + Y1
+		<a href="../../../src/crypto/internal/nistec/p224.go.html#line-223" class="path-duplicate">p224.go</a><a href="../../../src/crypto/internal/nistec/p224.go.html#line-223">#L223</a>: 	t4 := new(fiat.P224Element).Add(p2.x, p2.<b>y</b>)  // t4 := X2 + Y2
+		<a href="../../../src/crypto/internal/nistec/p224.go.html#line-227" class="path-duplicate">p224.go</a><a href="../../../src/crypto/internal/nistec/p224.go.html#line-227">#L227</a>: 	t4.Add(p1.<b>y</b>, p1.z)                           // t4 := Y1 + Z1
+		<a href="../../../src/crypto/internal/nistec/p224.go.html#line-228" class="path-duplicate">p224.go</a><a href="../../../src/crypto/internal/nistec/p224.go.html#line-228">#L228</a>: 	x3 := new(fiat.P224Element).Add(p2.<b>y</b>, p2.z)  // X3 := Y2 + Z2
+		<a href="../../../src/crypto/internal/nistec/p224.go.html#line-264" class="path-duplicate">p224.go</a><a href="../../../src/crypto/internal/nistec/p224.go.html#line-264">#L264</a>: 	q.<b>y</b>.Set(y3)
+		<a href="../../../src/crypto/internal/nistec/p224.go.html#line-275" class="path-duplicate">p224.go</a><a href="../../../src/crypto/internal/nistec/p224.go.html#line-275">#L275</a>: 	t1 := new(fiat.P224Element).Square(p.<b>y</b>)      // t1 := Y ^ 2
+		<a href="../../../src/crypto/internal/nistec/p224.go.html#line-277" class="path-duplicate">p224.go</a><a href="../../../src/crypto/internal/nistec/p224.go.html#line-277">#L277</a>: 	t3 := new(fiat.P224Element).Mul(p.x, p.<b>y</b>)    // t3 := X * Y
+		<a href="../../../src/crypto/internal/nistec/p224.go.html#line-301" class="path-duplicate">p224.go</a><a href="../../../src/crypto/internal/nistec/p224.go.html#line-301">#L301</a>: 	t0.Mul(p.<b>y</b>, p.z)                             // t0 := Y * Z
+		<a href="../../../src/crypto/internal/nistec/p224.go.html#line-310" class="path-duplicate">p224.go</a><a href="../../../src/crypto/internal/nistec/p224.go.html#line-310">#L310</a>: 	q.<b>y</b>.Set(y3)
+		<a href="../../../src/crypto/internal/nistec/p224.go.html#line-318" class="path-duplicate">p224.go</a><a href="../../../src/crypto/internal/nistec/p224.go.html#line-318">#L318</a>: 	q.<b>y</b>.Select(p1.<b>y</b>, p2.<b>y</b>, cond)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

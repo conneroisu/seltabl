@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: regexp/syntax.Inst.Out</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/regexp/syntax.html">regexp/syntax</a>.<a href="../../src/regexp/syntax/prog.go.html#line-115">Inst</a>.<a href="../../src/regexp/syntax/prog.go.html#line-117">Out</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">70 uses</span>
+
+	regexp/syntax (current package)
+		<a href="../../src/regexp/syntax/compile.go.html#line-32">compile.go#L32</a>: 			head = i.<b>Out</b>
+		<a href="../../src/regexp/syntax/compile.go.html#line-33" class="path-duplicate">compile.go</a><a href="../../src/regexp/syntax/compile.go.html#line-33">#L33</a>: 			i.<b>Out</b> = val
+		<a href="../../src/regexp/syntax/compile.go.html#line-51" class="path-duplicate">compile.go</a><a href="../../src/regexp/syntax/compile.go.html#line-51">#L51</a>: 		i.<b>Out</b> = l2.head
+		<a href="../../src/regexp/syntax/compile.go.html#line-212" class="path-duplicate">compile.go</a><a href="../../src/regexp/syntax/compile.go.html#line-212">#L212</a>: 	i.<b>Out</b> = f1.i
+		<a href="../../src/regexp/syntax/compile.go.html#line-226" class="path-duplicate">compile.go</a><a href="../../src/regexp/syntax/compile.go.html#line-226">#L226</a>: 		i.<b>Out</b> = f1.i
+		<a href="../../src/regexp/syntax/compile.go.html#line-245" class="path-duplicate">compile.go</a><a href="../../src/regexp/syntax/compile.go.html#line-245">#L245</a>: 		i.<b>Out</b> = f1.i
+		<a href="../../src/regexp/syntax/prog.go.html#line-117">prog.go#L117</a>: 	<b>Out</b>  uint32 // all but InstMatch, InstFail
+		<a href="../../src/regexp/syntax/prog.go.html#line-132" class="path-duplicate">prog.go</a><a href="../../src/regexp/syntax/prog.go.html#line-132">#L132</a>: 		i = &amp;p.Inst[i.<b>Out</b>]
+		<a href="../../src/regexp/syntax/prog.go.html#line-162" class="path-duplicate">prog.go</a><a href="../../src/regexp/syntax/prog.go.html#line-162">#L162</a>: 		i = p.skipNop(i.<b>Out</b>)
+		<a href="../../src/regexp/syntax/prog.go.html#line-185" class="path-duplicate">prog.go</a><a href="../../src/regexp/syntax/prog.go.html#line-185">#L185</a>: 		pc = i.<b>Out</b>
+		<a href="../../src/regexp/syntax/prog.go.html#line-319" class="path-duplicate">prog.go</a><a href="../../src/regexp/syntax/prog.go.html#line-319">#L319</a>: 		bw(b, "alt -&gt; ", u32(i.<b>Out</b>), ", ", u32(i.Arg))
+		<a href="../../src/regexp/syntax/prog.go.html#line-321" class="path-duplicate">prog.go</a><a href="../../src/regexp/syntax/prog.go.html#line-321">#L321</a>: 		bw(b, "altmatch -&gt; ", u32(i.<b>Out</b>), ", ", u32(i.Arg))
+		<a href="../../src/regexp/syntax/prog.go.html#line-323" class="path-duplicate">prog.go</a><a href="../../src/regexp/syntax/prog.go.html#line-323">#L323</a>: 		bw(b, "cap ", u32(i.Arg), " -&gt; ", u32(i.<b>Out</b>))
+		<a href="../../src/regexp/syntax/prog.go.html#line-325" class="path-duplicate">prog.go</a><a href="../../src/regexp/syntax/prog.go.html#line-325">#L325</a>: 		bw(b, "empty ", u32(i.Arg), " -&gt; ", u32(i.<b>Out</b>))
+		<a href="../../src/regexp/syntax/prog.go.html#line-331" class="path-duplicate">prog.go</a><a href="../../src/regexp/syntax/prog.go.html#line-331">#L331</a>: 		bw(b, "nop -&gt; ", u32(i.<b>Out</b>))
+		<a href="../../src/regexp/syntax/prog.go.html#line-341" class="path-duplicate">prog.go</a><a href="../../src/regexp/syntax/prog.go.html#line-341">#L341</a>: 		bw(b, " -&gt; ", u32(i.<b>Out</b>))
+		<a href="../../src/regexp/syntax/prog.go.html#line-343" class="path-duplicate">prog.go</a><a href="../../src/regexp/syntax/prog.go.html#line-343">#L343</a>: 		bw(b, "rune1 ", strconv.QuoteToASCII(string(i.Rune)), " -&gt; ", u32(i.<b>Out</b>))
+		<a href="../../src/regexp/syntax/prog.go.html#line-345" class="path-duplicate">prog.go</a><a href="../../src/regexp/syntax/prog.go.html#line-345">#L345</a>: 		bw(b, "any -&gt; ", u32(i.<b>Out</b>))
+		<a href="../../src/regexp/syntax/prog.go.html#line-347" class="path-duplicate">prog.go</a><a href="../../src/regexp/syntax/prog.go.html#line-347">#L347</a>: 		bw(b, "anynotnl -&gt; ", u32(i.<b>Out</b>))
+
+	<a href="../../pkg/regexp.html">regexp</a>
+		<a href="../../src/regexp/backtrack.go.html#line-187">backtrack.go#L187</a>: 				pc = inst.<b>Out</b>
+		<a href="../../src/regexp/backtrack.go.html#line-193" class="path-duplicate">backtrack.go</a><a href="../../src/regexp/backtrack.go.html#line-193">#L193</a>: 			switch re.prog.Inst[inst.<b>Out</b>].Op {
+		<a href="../../src/regexp/backtrack.go.html#line-202" class="path-duplicate">backtrack.go</a><a href="../../src/regexp/backtrack.go.html#line-202">#L202</a>: 			b.push(re, inst.<b>Out</b>, b.end, false)
+		<a href="../../src/regexp/backtrack.go.html#line-203" class="path-duplicate">backtrack.go</a><a href="../../src/regexp/backtrack.go.html#line-203">#L203</a>: 			pc = inst.<b>Out</b>
+		<a href="../../src/regexp/backtrack.go.html#line-212" class="path-duplicate">backtrack.go</a><a href="../../src/regexp/backtrack.go.html#line-212">#L212</a>: 			pc = inst.<b>Out</b>
+		<a href="../../src/regexp/backtrack.go.html#line-221" class="path-duplicate">backtrack.go</a><a href="../../src/regexp/backtrack.go.html#line-221">#L221</a>: 			pc = inst.<b>Out</b>
+		<a href="../../src/regexp/backtrack.go.html#line-230" class="path-duplicate">backtrack.go</a><a href="../../src/regexp/backtrack.go.html#line-230">#L230</a>: 			pc = inst.<b>Out</b>
+		<a href="../../src/regexp/backtrack.go.html#line-239" class="path-duplicate">backtrack.go</a><a href="../../src/regexp/backtrack.go.html#line-239">#L239</a>: 			pc = inst.<b>Out</b>
+		<a href="../../src/regexp/backtrack.go.html#line-253" class="path-duplicate">backtrack.go</a><a href="../../src/regexp/backtrack.go.html#line-253">#L253</a>: 				pc = inst.<b>Out</b>
+		<a href="../../src/regexp/backtrack.go.html#line-262" class="path-duplicate">backtrack.go</a><a href="../../src/regexp/backtrack.go.html#line-262">#L262</a>: 			pc = inst.<b>Out</b>
+		<a href="../../src/regexp/backtrack.go.html#line-266" class="path-duplicate">backtrack.go</a><a href="../../src/regexp/backtrack.go.html#line-266">#L266</a>: 			pc = inst.<b>Out</b>
+		<a href="../../src/regexp/exec.go.html#line-304">exec.go#L304</a>: 			t = m.add(nextq, i.<b>Out</b>, nextPos, t.cap, nextCond, t)
+		<a href="../../src/regexp/exec.go.html#line-340" class="path-duplicate">exec.go</a><a href="../../src/regexp/exec.go.html#line-340">#L340</a>: 		t = m.add(q, i.<b>Out</b>, pos, cap, cond, t)
+		<a href="../../src/regexp/exec.go.html#line-345" class="path-duplicate">exec.go</a><a href="../../src/regexp/exec.go.html#line-345">#L345</a>: 			pc = i.<b>Out</b>
+		<a href="../../src/regexp/exec.go.html#line-349" class="path-duplicate">exec.go</a><a href="../../src/regexp/exec.go.html#line-349">#L349</a>: 		pc = i.<b>Out</b>
+		<a href="../../src/regexp/exec.go.html#line-355" class="path-duplicate">exec.go</a><a href="../../src/regexp/exec.go.html#line-355">#L355</a>: 			m.add(q, i.<b>Out</b>, pos, cap, cond, nil)
+		<a href="../../src/regexp/exec.go.html#line-358" class="path-duplicate">exec.go</a><a href="../../src/regexp/exec.go.html#line-358">#L358</a>: 			pc = i.<b>Out</b>
+		<a href="../../src/regexp/exec.go.html#line-446" class="path-duplicate">exec.go</a><a href="../../src/regexp/exec.go.html#line-446">#L446</a>: 		pc = int(inst.<b>Out</b>)
+		<a href="../../src/regexp/onepass.go.html#line-46">onepass.go#L46</a>: 	pc = i.<b>Out</b>
+		<a href="../../src/regexp/onepass.go.html#line-49" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-49">#L49</a>: 		pc = i.<b>Out</b>
+		<a href="../../src/regexp/onepass.go.html#line-61" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-61">#L61</a>: 		pc, i = i.<b>Out</b>, &amp;p.Inst[i.<b>Out</b>]
+		<a href="../../src/regexp/onepass.go.html#line-65" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-65">#L65</a>: 		p.Inst[i.<b>Out</b>].Op == syntax.InstMatch {
+		<a href="../../src/regexp/onepass.go.html#line-81" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-81">#L81</a>: 		return i.<b>Out</b>
+		<a href="../../src/regexp/onepass.go.html#line-243" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-243">#L243</a>: 			p_A_Other := &amp;p.Inst[pc].<b>Out</b>
+		<a href="../../src/regexp/onepass.go.html#line-262" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-262">#L262</a>: 			p_B_Alt := &amp;p.Inst[*p_A_Alt].<b>Out</b>
+		<a href="../../src/regexp/onepass.go.html#line-265" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-265">#L265</a>: 			if instAlt.<b>Out</b> == uint32(pc) {
+		<a href="../../src/regexp/onepass.go.html#line-324" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-324">#L324</a>: 			ok = check(inst.<b>Out</b>, m) &amp;&amp; check(inst.Arg, m)
+		<a href="../../src/regexp/onepass.go.html#line-326" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-326">#L326</a>: 			matchOut := m[inst.<b>Out</b>]
+		<a href="../../src/regexp/onepass.go.html#line-334" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-334">#L334</a>: 				inst.<b>Out</b>, inst.Arg = inst.Arg, inst.<b>Out</b>
+		<a href="../../src/regexp/onepass.go.html#line-344" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-344">#L344</a>: 				&amp;onePassRunes[inst.<b>Out</b>], &amp;onePassRunes[inst.Arg], inst.<b>Out</b>, inst.Arg)
+		<a href="../../src/regexp/onepass.go.html#line-350" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-350">#L350</a>: 			ok = check(inst.<b>Out</b>, m)
+		<a href="../../src/regexp/onepass.go.html#line-351" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-351">#L351</a>: 			m[pc] = m[inst.<b>Out</b>]
+		<a href="../../src/regexp/onepass.go.html#line-353" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-353">#L353</a>: 			onePassRunes[pc] = append([]rune{}, onePassRunes[inst.<b>Out</b>]...)
+		<a href="../../src/regexp/onepass.go.html#line-356" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-356">#L356</a>: 				inst.Next[i] = inst.<b>Out</b>
+		<a href="../../src/regexp/onepass.go.html#line-359" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-359">#L359</a>: 			ok = check(inst.<b>Out</b>, m)
+		<a href="../../src/regexp/onepass.go.html#line-360" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-360">#L360</a>: 			m[pc] = m[inst.<b>Out</b>]
+		<a href="../../src/regexp/onepass.go.html#line-361" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-361">#L361</a>: 			onePassRunes[pc] = append([]rune{}, onePassRunes[inst.<b>Out</b>]...)
+		<a href="../../src/regexp/onepass.go.html#line-364" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-364">#L364</a>: 				inst.Next[i] = inst.<b>Out</b>
+		<a href="../../src/regexp/onepass.go.html#line-373" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-373">#L373</a>: 			instQueue.insert(inst.<b>Out</b>)
+		<a href="../../src/regexp/onepass.go.html#line-376" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-376">#L376</a>: 				inst.Next = []uint32{inst.<b>Out</b>}
+		<a href="../../src/regexp/onepass.go.html#line-393" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-393">#L393</a>: 				inst.Next[i] = inst.<b>Out</b>
+		<a href="../../src/regexp/onepass.go.html#line-401" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-401">#L401</a>: 			instQueue.insert(inst.<b>Out</b>)
+		<a href="../../src/regexp/onepass.go.html#line-417" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-417">#L417</a>: 				inst.Next[i] = inst.<b>Out</b>
+		<a href="../../src/regexp/onepass.go.html#line-425" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-425">#L425</a>: 			instQueue.insert(inst.<b>Out</b>)
+		<a href="../../src/regexp/onepass.go.html#line-427" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-427">#L427</a>: 			inst.Next = []uint32{inst.<b>Out</b>}
+		<a href="../../src/regexp/onepass.go.html#line-433" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-433">#L433</a>: 			instQueue.insert(inst.<b>Out</b>)
+		<a href="../../src/regexp/onepass.go.html#line-437" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-437">#L437</a>: 				inst.Next[i] = inst.<b>Out</b>
+		<a href="../../src/regexp/onepass.go.html#line-477" class="path-duplicate">onepass.go</a><a href="../../src/regexp/onepass.go.html#line-477">#L477</a>: 		opOut := prog.Inst[inst.<b>Out</b>].Op
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

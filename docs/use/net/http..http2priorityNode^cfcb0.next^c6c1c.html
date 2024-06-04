@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/http.http2priorityNode.next</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/net/http.html">net/http</a>.<a href="../../src/net/http/h2_bundle.go.html#line-10990">http2priorityNode</a>.<a href="../../src/net/http/h2_bundle.go.html#line-11001">next</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">16 uses</span>
+
+	net/http (current package)
+		<a href="../../src/net/http/h2_bundle.go.html#line-11001">h2_bundle.go#L11001</a>: 	prev, <b>next</b> *http2priorityNode // doubly-linked list of siblings
+		<a href="../../src/net/http/h2_bundle.go.html#line-11014" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11014">#L11014</a>: 			parent.kids = n.<b>next</b>
+		<a href="../../src/net/http/h2_bundle.go.html#line-11016" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11016">#L11016</a>: 			n.prev.<b>next</b> = n.<b>next</b>
+		<a href="../../src/net/http/h2_bundle.go.html#line-11018" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11018">#L11018</a>: 		if n.<b>next</b> != nil {
+		<a href="../../src/net/http/h2_bundle.go.html#line-11019" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11019">#L11019</a>: 			n.<b>next</b>.prev = n.prev
+		<a href="../../src/net/http/h2_bundle.go.html#line-11027" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11027">#L11027</a>: 		n.<b>next</b> = nil
+		<a href="../../src/net/http/h2_bundle.go.html#line-11030" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11030">#L11030</a>: 		n.<b>next</b> = parent.kids
+		<a href="../../src/net/http/h2_bundle.go.html#line-11032" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11032">#L11032</a>: 		if n.<b>next</b> != nil {
+		<a href="../../src/net/http/h2_bundle.go.html#line-11033" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11033">#L11033</a>: 			n.<b>next</b>.prev = n
+		<a href="../../src/net/http/h2_bundle.go.html#line-11071" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11071">#L11071</a>: 	for k := n.kids.<b>next</b>; k != nil; k = k.<b>next</b> {
+		<a href="../../src/net/http/h2_bundle.go.html#line-11078" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11078">#L11078</a>: 		for k := n.kids; k != nil; k = k.<b>next</b> {
+		<a href="../../src/net/http/h2_bundle.go.html#line-11097" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11097">#L11097</a>: 	for k := n.kids; k != nil; k = k.<b>next</b> {
+		<a href="../../src/net/http/h2_bundle.go.html#line-11269" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11269">#L11269</a>: 			next := k.<b>next</b>
+		<a href="../../src/net/http/h2_bundle.go.html#line-11343" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11343">#L11343</a>: 	for k := n.kids; k != nil; k = k.<b>next</b> {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

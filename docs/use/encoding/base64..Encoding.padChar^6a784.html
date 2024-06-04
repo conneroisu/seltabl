@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: encoding/base64.Encoding.padChar</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/encoding/base64.html">encoding/base64</a>.<a href="../../src/encoding/base64/base64.go.html#line-24">Encoding</a>.<a href="../../src/encoding/base64/base64.go.html#line-27">padChar</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">15 uses</span>
+
+	encoding/base64 (current package)
+		<a href="../../src/encoding/base64/base64.go.html#line-27">base64.go#L27</a>: 	<b>padChar</b>   rune
+		<a href="../../src/encoding/base64/base64.go.html#line-70" class="path-duplicate">base64.go</a><a href="../../src/encoding/base64/base64.go.html#line-70">#L70</a>: 	e.<b>padChar</b> = StdPadding
+		<a href="../../src/encoding/base64/base64.go.html#line-103" class="path-duplicate">base64.go</a><a href="../../src/encoding/base64/base64.go.html#line-103">#L103</a>: 	enc.<b>padChar</b> = padding
+		<a href="../../src/encoding/base64/base64.go.html#line-185" class="path-duplicate">base64.go</a><a href="../../src/encoding/base64/base64.go.html#line-185">#L185</a>: 		if enc.<b>padChar</b> != NoPadding {
+		<a href="../../src/encoding/base64/base64.go.html#line-186" class="path-duplicate">base64.go</a><a href="../../src/encoding/base64/base64.go.html#line-186">#L186</a>: 			dst[di+3] = byte(enc.<b>padChar</b>)
+		<a href="../../src/encoding/base64/base64.go.html#line-189" class="path-duplicate">base64.go</a><a href="../../src/encoding/base64/base64.go.html#line-189">#L189</a>: 		if enc.<b>padChar</b> != NoPadding {
+		<a href="../../src/encoding/base64/base64.go.html#line-190" class="path-duplicate">base64.go</a><a href="../../src/encoding/base64/base64.go.html#line-190">#L190</a>: 			dst[di+2] = byte(enc.<b>padChar</b>)
+		<a href="../../src/encoding/base64/base64.go.html#line-191" class="path-duplicate">base64.go</a><a href="../../src/encoding/base64/base64.go.html#line-191">#L191</a>: 			dst[di+3] = byte(enc.<b>padChar</b>)
+		<a href="../../src/encoding/base64/base64.go.html#line-291" class="path-duplicate">base64.go</a><a href="../../src/encoding/base64/base64.go.html#line-291">#L291</a>: 	if enc.<b>padChar</b> == NoPadding {
+		<a href="../../src/encoding/base64/base64.go.html#line-325" class="path-duplicate">base64.go</a><a href="../../src/encoding/base64/base64.go.html#line-325">#L325</a>: 			case j == 1, enc.<b>padChar</b> != NoPadding:
+		<a href="../../src/encoding/base64/base64.go.html#line-345" class="path-duplicate">base64.go</a><a href="../../src/encoding/base64/base64.go.html#line-345">#L345</a>: 		if rune(in) != enc.<b>padChar</b> {
+		<a href="../../src/encoding/base64/base64.go.html#line-364" class="path-duplicate">base64.go</a><a href="../../src/encoding/base64/base64.go.html#line-364">#L364</a>: 			if rune(src[si]) != enc.<b>padChar</b> {
+		<a href="../../src/encoding/base64/base64.go.html#line-415" class="path-duplicate">base64.go</a><a href="../../src/encoding/base64/base64.go.html#line-415">#L415</a>: 	for n &gt; 0 &amp;&amp; rune(src[n-1]) == enc.<b>padChar</b> {
+		<a href="../../src/encoding/base64/base64.go.html#line-471" class="path-duplicate">base64.go</a><a href="../../src/encoding/base64/base64.go.html#line-471">#L471</a>: 		if d.enc.<b>padChar</b> == NoPadding &amp;&amp; d.nbuf &gt; 0 {
+		<a href="../../src/encoding/base64/base64.go.html#line-651" class="path-duplicate">base64.go</a><a href="../../src/encoding/base64/base64.go.html#line-651">#L651</a>: 	return decodedLen(n, enc.<b>padChar</b>)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

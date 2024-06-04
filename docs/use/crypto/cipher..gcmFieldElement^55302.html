@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/cipher.gcmFieldElement</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../pkg/crypto/cipher.html">crypto/cipher</a>.<a href="../../src/crypto/cipher/gcm.go.html#line-64">gcmFieldElement</a></b></span>
+
+<span class="title">14 uses</span>
+
+	crypto/cipher (current package)
+		<a href="../../src/crypto/cipher/gcm.go.html#line-64">gcm.go#L64</a>: type <b>gcmFieldElement</b> struct {
+		<a href="../../src/crypto/cipher/gcm.go.html#line-76" class="path-duplicate">gcm.go</a><a href="../../src/crypto/cipher/gcm.go.html#line-76">#L76</a>: 	productTable [16]<b>gcmFieldElement</b>
+		<a href="../../src/crypto/cipher/gcm.go.html#line-139" class="path-duplicate">gcm.go</a><a href="../../src/crypto/cipher/gcm.go.html#line-139">#L139</a>: 	x := <b>gcmFieldElement</b>{
+		<a href="../../src/crypto/cipher/gcm.go.html#line-256" class="path-duplicate">gcm.go</a><a href="../../src/crypto/cipher/gcm.go.html#line-256">#L256</a>: func gcmAdd(x, y *<b>gcmFieldElement</b>) <b>gcmFieldElement</b> {
+		<a href="../../src/crypto/cipher/gcm.go.html#line-258" class="path-duplicate">gcm.go</a><a href="../../src/crypto/cipher/gcm.go.html#line-258">#L258</a>: 	return <b>gcmFieldElement</b>{x.low ^ y.low, x.high ^ y.high}
+		<a href="../../src/crypto/cipher/gcm.go.html#line-262" class="path-duplicate">gcm.go</a><a href="../../src/crypto/cipher/gcm.go.html#line-262">#L262</a>: func gcmDouble(x *<b>gcmFieldElement</b>) (double <b>gcmFieldElement</b>) {
+		<a href="../../src/crypto/cipher/gcm.go.html#line-290" class="path-duplicate">gcm.go</a><a href="../../src/crypto/cipher/gcm.go.html#line-290">#L290</a>: func (g *gcm) mul(y *<b>gcmFieldElement</b>) {
+		<a href="../../src/crypto/cipher/gcm.go.html#line-291" class="path-duplicate">gcm.go</a><a href="../../src/crypto/cipher/gcm.go.html#line-291">#L291</a>: 	var z <b>gcmFieldElement</b>
+		<a href="../../src/crypto/cipher/gcm.go.html#line-324" class="path-duplicate">gcm.go</a><a href="../../src/crypto/cipher/gcm.go.html#line-324">#L324</a>: func (g *gcm) updateBlocks(y *<b>gcmFieldElement</b>, blocks []byte) {
+		<a href="../../src/crypto/cipher/gcm.go.html#line-335" class="path-duplicate">gcm.go</a><a href="../../src/crypto/cipher/gcm.go.html#line-335">#L335</a>: func (g *gcm) update(y *<b>gcmFieldElement</b>, data []byte) {
+		<a href="../../src/crypto/cipher/gcm.go.html#line-402" class="path-duplicate">gcm.go</a><a href="../../src/crypto/cipher/gcm.go.html#line-402">#L402</a>: 		var y <b>gcmFieldElement</b>
+		<a href="../../src/crypto/cipher/gcm.go.html#line-414" class="path-duplicate">gcm.go</a><a href="../../src/crypto/cipher/gcm.go.html#line-414">#L414</a>: 	var y <b>gcmFieldElement</b>
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime/internal/atomic.Uint32.Add</title>
+<link href="../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../../pkg/runtime/internal/atomic.html">runtime/internal/atomic</a>.<a href="../../../src/runtime/internal/atomic/types.go.html#line-185">Uint32</a>.<a href="../../../src/runtime/internal/atomic/types.go.html#line-290">Add</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">35 uses</span>
+
+	runtime/internal/atomic (current package)
+		<a href="../../../src/runtime/internal/atomic/types.go.html#line-290">types.go#L290</a>: func (u *Uint32) <b>Add</b>(delta int32) uint32 {
+
+	<a href="../../../pkg/runtime.html">runtime</a>
+		<a href="../../../src/runtime/mgc.go.html#line-692">mgc.go#L692</a>: 	work.cycles.<b>Add</b>(1)
+		<a href="../../../src/runtime/mspanset.go.html#line-213">mspanset.go#L213</a>: 	if block.popped.<b>Add</b>(1) == spanSetBlockEntries {
+		<a href="../../../src/runtime/mstats.go.html#line-778">mstats.go#L778</a>: 		seq := pp.statsSeq.<b>Add</b>(1)
+		<a href="../../../src/runtime/mstats.go.html#line-807" class="path-duplicate">mstats.go</a><a href="../../../src/runtime/mstats.go.html#line-807">#L807</a>: 		seq := pp.statsSeq.<b>Add</b>(1)
+		<a href="../../../src/runtime/netpoll.go.html#line-682">netpoll.go#L682</a>: 		netpollWaiters.<b>Add</b>(delta)
+		<a href="../../../src/runtime/panic.go.html#line-762">panic.go#L762</a>: 	runningPanicDefers.<b>Add</b>(1)
+		<a href="../../../src/runtime/panic.go.html#line-1095" class="path-duplicate">panic.go</a><a href="../../../src/runtime/panic.go.html#line-1095">#L1095</a>: 		runningPanicDefers.<b>Add</b>(-1)
+		<a href="../../../src/runtime/panic.go.html#line-1232" class="path-duplicate">panic.go</a><a href="../../../src/runtime/panic.go.html#line-1232">#L1232</a>: 			runningPanicDefers.<b>Add</b>(-1)
+		<a href="../../../src/runtime/panic.go.html#line-1287" class="path-duplicate">panic.go</a><a href="../../../src/runtime/panic.go.html#line-1287">#L1287</a>: 		panicking.<b>Add</b>(1)
+		<a href="../../../src/runtime/panic.go.html#line-1350" class="path-duplicate">panic.go</a><a href="../../../src/runtime/panic.go.html#line-1350">#L1350</a>: 	if panicking.<b>Add</b>(-1) != 0 {
+		<a href="../../../src/runtime/proc.go.html#line-2532">proc.go#L2532</a>: 				extraMWaiters.<b>Add</b>(1)
+		<a href="../../../src/runtime/proc.go.html#line-2548" class="path-duplicate">proc.go</a><a href="../../../src/runtime/proc.go.html#line-2548">#L2548</a>: 	extraMLength.<b>Add</b>(delta)
+		<a href="../../../src/runtime/proc.go.html#line-2561" class="path-duplicate">proc.go</a><a href="../../../src/runtime/proc.go.html#line-2561">#L2561</a>: 	extraMInUse.<b>Add</b>(1)
+		<a href="../../../src/runtime/proc.go.html#line-2571" class="path-duplicate">proc.go</a><a href="../../../src/runtime/proc.go.html#line-2571">#L2571</a>: 	extraMInUse.<b>Add</b>(-1)
+		<a href="../../../src/runtime/sema.go.html#line-150">sema.go#L150</a>: 		root.nwait.<b>Add</b>(1)
+		<a href="../../../src/runtime/sema.go.html#line-153" class="path-duplicate">sema.go</a><a href="../../../src/runtime/sema.go.html#line-153">#L153</a>: 			root.nwait.<b>Add</b>(-1)
+		<a href="../../../src/runtime/sema.go.html#line-196" class="path-duplicate">sema.go</a><a href="../../../src/runtime/sema.go.html#line-196">#L196</a>: 		root.nwait.<b>Add</b>(-1)
+		<a href="../../../src/runtime/sema.go.html#line-537" class="path-duplicate">sema.go</a><a href="../../../src/runtime/sema.go.html#line-537">#L537</a>: 	return l.wait.<b>Add</b>(1) - 1
+		<a href="../../../src/runtime/signal_unix.go.html#line-352">signal_unix.go#L352</a>: 	gp.m.preemptGen.<b>Add</b>(1)
+		<a href="../../../src/runtime/sigqueue.go.html#line-77">sigqueue.go#L77</a>: 	sig.delivering.<b>Add</b>(1)
+		<a href="../../../src/runtime/sigqueue.go.html#line-81" class="path-duplicate">sigqueue.go</a><a href="../../../src/runtime/sigqueue.go.html#line-81">#L81</a>: 		sig.delivering.<b>Add</b>(-1)
+		<a href="../../../src/runtime/sigqueue.go.html#line-89" class="path-duplicate">sigqueue.go</a><a href="../../../src/runtime/sigqueue.go.html#line-89">#L89</a>: 			sig.delivering.<b>Add</b>(-1)
+		<a href="../../../src/runtime/sigqueue.go.html#line-122" class="path-duplicate">sigqueue.go</a><a href="../../../src/runtime/sigqueue.go.html#line-122">#L122</a>: 	sig.delivering.<b>Add</b>(-1)
+		<a href="../../../src/runtime/time.go.html#line-307">time.go#L307</a>: 	pp.numTimers.<b>Add</b>(1)
+		<a href="../../../src/runtime/time.go.html#line-330" class="path-duplicate">time.go</a><a href="../../../src/runtime/time.go.html#line-330">#L330</a>: 				tpp.deletedTimers.<b>Add</b>(1)
+		<a href="../../../src/runtime/time.go.html#line-348" class="path-duplicate">time.go</a><a href="../../../src/runtime/time.go.html#line-348">#L348</a>: 				tpp.deletedTimers.<b>Add</b>(1)
+		<a href="../../../src/runtime/time.go.html#line-401" class="path-duplicate">time.go</a><a href="../../../src/runtime/time.go.html#line-401">#L401</a>: 	n := pp.numTimers.<b>Add</b>(-1)
+		<a href="../../../src/runtime/time.go.html#line-429" class="path-duplicate">time.go</a><a href="../../../src/runtime/time.go.html#line-429">#L429</a>: 	n := pp.numTimers.<b>Add</b>(-1)
+		<a href="../../../src/runtime/time.go.html#line-481" class="path-duplicate">time.go</a><a href="../../../src/runtime/time.go.html#line-481">#L481</a>: 				t.pp.ptr().deletedTimers.<b>Add</b>(-1)
+		<a href="../../../src/runtime/time.go.html#line-590" class="path-duplicate">time.go</a><a href="../../../src/runtime/time.go.html#line-590">#L590</a>: 			pp.deletedTimers.<b>Add</b>(-1)
+		<a href="../../../src/runtime/time.go.html#line-699" class="path-duplicate">time.go</a><a href="../../../src/runtime/time.go.html#line-699">#L699</a>: 				pp.deletedTimers.<b>Add</b>(-1)
+		<a href="../../../src/runtime/time.go.html#line-803" class="path-duplicate">time.go</a><a href="../../../src/runtime/time.go.html#line-803">#L803</a>: 			pp.deletedTimers.<b>Add</b>(-1)
+		<a href="../../../src/runtime/time.go.html#line-968" class="path-duplicate">time.go</a><a href="../../../src/runtime/time.go.html#line-968">#L968</a>: 	pp.deletedTimers.<b>Add</b>(-cdel)
+		<a href="../../../src/runtime/time.go.html#line-969" class="path-duplicate">time.go</a><a href="../../../src/runtime/time.go.html#line-969">#L969</a>: 	pp.numTimers.<b>Add</b>(-cdel)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

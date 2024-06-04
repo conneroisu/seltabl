@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: compress/flate.maxStoreBlockSize</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../../pkg/compress/flate.html">compress/flate</a>.<a href="../../src/compress/flate/deflate.go.html#line-52">maxStoreBlockSize</a></b></span>
+
+<span class="title">12 uses</span>
+
+	compress/flate (current package)
+		<a href="../../src/compress/flate/deflate.go.html#line-52">deflate.go#L52</a>: 	<b>maxStoreBlockSize</b>   = 65535
+		<a href="../../src/compress/flate/deflate.go.html#line-333" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-333">#L333</a>: 	if d.windowEnd &lt; <b>maxStoreBlockSize</b> {
+		<a href="../../src/compress/flate/deflate.go.html#line-520" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-520">#L520</a>: 	if d.windowEnd &gt; 0 &amp;&amp; (d.windowEnd == <b>maxStoreBlockSize</b> || d.sync) {
+		<a href="../../src/compress/flate/deflate.go.html#line-573" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-573">#L573</a>: 		d.window = make([]byte, <b>maxStoreBlockSize</b>)
+		<a href="../../src/compress/flate/deflate.go.html#line-577" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-577">#L577</a>: 		d.window = make([]byte, <b>maxStoreBlockSize</b>)
+		<a href="../../src/compress/flate/deflate.go.html#line-582" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-582">#L582</a>: 		d.window = make([]byte, <b>maxStoreBlockSize</b>)
+		<a href="../../src/compress/flate/deflate.go.html#line-586" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-586">#L586</a>: 		d.tokens = make([]token, <b>maxStoreBlockSize</b>)
+		<a href="../../src/compress/flate/deflatefast.go.html#line-23">deflatefast.go#L23</a>: 	bufferReset = math.MaxInt32 - <b>maxStoreBlockSize</b>*2
+		<a href="../../src/compress/flate/deflatefast.go.html#line-64" class="path-duplicate">deflatefast.go</a><a href="../../src/compress/flate/deflatefast.go.html#line-64">#L64</a>: 	return &amp;deflateFast{cur: <b>maxStoreBlockSize</b>, prev: make([]byte, 0, <b>maxStoreBlockSize</b>)}
+		<a href="../../src/compress/flate/deflatefast.go.html#line-78" class="path-duplicate">deflatefast.go</a><a href="../../src/compress/flate/deflatefast.go.html#line-78">#L78</a>: 		e.cur += <b>maxStoreBlockSize</b>
+		<a href="../../src/compress/flate/huffman_bit_writer.go.html#line-321">huffman_bit_writer.go#L321</a>: 	if len(in) &lt;= <b>maxStoreBlockSize</b> {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

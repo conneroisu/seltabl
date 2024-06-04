@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: github.com/andybalholm/cascadia.idSelector</title>
+<link href="../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../../pkg/github.com/andybalholm/cascadia.html">github.com/andybalholm/cascadia</a>.<a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-246">idSelector</a></b></span>
+
+<span class="title">10 uses</span>
+
+	github.com/andybalholm/cascadia (current package)
+		<a href="../../../src/github.com/andybalholm/cascadia/parser.go.html#line-316">parser.go#L316</a>: func (p *parser) parseIDSelector() (<b>idSelector</b>, error) {
+		<a href="../../../src/github.com/andybalholm/cascadia/parser.go.html#line-318" class="path-duplicate">parser.go</a><a href="../../../src/github.com/andybalholm/cascadia/parser.go.html#line-318">#L318</a>: 		return <b>idSelector</b>{}, fmt.Errorf("expected id selector (#id), found EOF instead")
+		<a href="../../../src/github.com/andybalholm/cascadia/parser.go.html#line-321" class="path-duplicate">parser.go</a><a href="../../../src/github.com/andybalholm/cascadia/parser.go.html#line-321">#L321</a>: 		return <b>idSelector</b>{}, fmt.Errorf("expected id selector (#id), found '%c' instead", p.s[p.i])
+		<a href="../../../src/github.com/andybalholm/cascadia/parser.go.html#line-327" class="path-duplicate">parser.go</a><a href="../../../src/github.com/andybalholm/cascadia/parser.go.html#line-327">#L327</a>: 		return <b>idSelector</b>{}, err
+		<a href="../../../src/github.com/andybalholm/cascadia/parser.go.html#line-330" class="path-duplicate">parser.go</a><a href="../../../src/github.com/andybalholm/cascadia/parser.go.html#line-330">#L330</a>: 	return <b>idSelector</b>{id: id}, nil
+		<a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-246">selector.go#L246</a>: type <b>idSelector</b> struct {
+		<a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-251" class="path-duplicate">selector.go</a><a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-251">#L251</a>: func (t <b>idSelector</b>) Match(n *html.Node) bool {
+		<a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-257" class="path-duplicate">selector.go</a><a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-257">#L257</a>: func (c <b>idSelector</b>) Specificity() Specificity {
+		<a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-261" class="path-duplicate">selector.go</a><a href="../../../src/github.com/andybalholm/cascadia/selector.go.html#line-261">#L261</a>: func (c <b>idSelector</b>) PseudoElement() string {
+		<a href="../../../src/github.com/andybalholm/cascadia/serialize.go.html#line-28">serialize.go#L28</a>: func (c <b>idSelector</b>) String() string {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

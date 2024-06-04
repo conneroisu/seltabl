@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: io.WriteString</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/io.html">io</a>.<a href="../src/io/io.go.html#line-314">WriteString</a></b></span>
+
+<span class="title">22 uses</span>
+
+	io (current package)
+		<a href="../src/io/io.go.html#line-314">io.go#L314</a>: func <b>WriteString</b>(w Writer, s string) (n int, err error) {
+
+	<a href="../pkg/compress/gzip.html">compress/gzip</a>
+		<a href="../src/compress/gzip/gzip.go.html#line-126">gzip.go#L126</a>: 		_, err = io.<b>WriteString</b>(z.w, s)
+
+	<a href="../pkg/crypto/tls.html">crypto/tls</a>
+		<a href="../src/crypto/tls/auth.go.html#line-85">auth.go#L85</a>: 		io.<b>WriteString</b>(b, context)
+		<a href="../src/crypto/tls/auth.go.html#line-91" class="path-duplicate">auth.go</a><a href="../src/crypto/tls/auth.go.html#line-91">#L91</a>: 	io.<b>WriteString</b>(h, context)
+
+	<a href="../pkg/mime.html">mime</a>
+		<a href="../src/mime/encodedword.go.html#line-87">encodedword.go#L87</a>: 		io.<b>WriteString</b>(w, s)
+		<a href="../src/mime/encodedword.go.html#line-101" class="path-duplicate">encodedword.go</a><a href="../src/mime/encodedword.go.html#line-101">#L101</a>: 			io.<b>WriteString</b>(w, s[last:i])
+		<a href="../src/mime/encodedword.go.html#line-108" class="path-duplicate">encodedword.go</a><a href="../src/mime/encodedword.go.html#line-108">#L108</a>: 	io.<b>WriteString</b>(w, s[last:])
+
+	<a href="../pkg/net/http.html">net/http</a>
+		<a href="../src/net/http/h2_bundle.go.html#line-6203">h2_bundle.go#L6203</a>: 	io.<b>WriteString</b>(w, "&lt;h1&gt;HTTP Error 431&lt;/h1&gt;&lt;p&gt;Request Header Field(s) Too Large&lt;/p&gt;")
+		<a href="../src/net/http/request.go.html#line-720">request.go#L720</a>: 	_, err = io.<b>WriteString</b>(w, "\r\n")
+		<a href="../src/net/http/response.go.html#line-316">response.go#L316</a>: 		if _, err := io.<b>WriteString</b>(w, "Content-Length: 0\r\n"); err != nil {
+		<a href="../src/net/http/response.go.html#line-322" class="path-duplicate">response.go</a><a href="../src/net/http/response.go.html#line-322">#L322</a>: 	if _, err := io.<b>WriteString</b>(w, "\r\n"); err != nil {
+		<a href="../src/net/http/server.go.html#line-1926">server.go#L1926</a>: 				io.<b>WriteString</b>(re.Conn, "HTTP/1.0 400 Bad Request\r\n\r\nClient sent an HTTP request to an HTTPS server.\n")
+		<a href="../src/net/http/server.go.html#line-3620" class="path-duplicate">server.go</a><a href="../src/net/http/server.go.html#line-3620">#L3620</a>: 			io.<b>WriteString</b>(w, h.errorBody())
+		<a href="../src/net/http/transfer.go.html#line-279">transfer.go#L279</a>: 		if _, err := io.<b>WriteString</b>(w, "Connection: close\r\n"); err != nil {
+		<a href="../src/net/http/transfer.go.html#line-291" class="path-duplicate">transfer.go</a><a href="../src/net/http/transfer.go.html#line-291">#L291</a>: 		if _, err := io.<b>WriteString</b>(w, "Content-Length: "); err != nil {
+		<a href="../src/net/http/transfer.go.html#line-294" class="path-duplicate">transfer.go</a><a href="../src/net/http/transfer.go.html#line-294">#L294</a>: 		if _, err := io.<b>WriteString</b>(w, strconv.FormatInt(t.ContentLength, 10)+"\r\n"); err != nil {
+		<a href="../src/net/http/transfer.go.html#line-301" class="path-duplicate">transfer.go</a><a href="../src/net/http/transfer.go.html#line-301">#L301</a>: 		if _, err := io.<b>WriteString</b>(w, "Transfer-Encoding: chunked\r\n"); err != nil {
+		<a href="../src/net/http/transfer.go.html#line-324" class="path-duplicate">transfer.go</a><a href="../src/net/http/transfer.go.html#line-324">#L324</a>: 			if _, err := io.<b>WriteString</b>(w, "Trailer: "+strings.Join(keys, ",")+"\r\n"); err != nil {
+		<a href="../src/net/http/transfer.go.html#line-403" class="path-duplicate">transfer.go</a><a href="../src/net/http/transfer.go.html#line-403">#L403</a>: 		_, err = io.<b>WriteString</b>(w, "\r\n")
+
+	<a href="../pkg/net/http/internal.html">net/http/internal</a>
+		<a href="../src/net/http/internal/chunked.go.html#line-242">chunked.go#L242</a>: 	if _, err = io.<b>WriteString</b>(cw.Wire, "\r\n"); err != nil {
+		<a href="../src/net/http/internal/chunked.go.html#line-252" class="path-duplicate">chunked.go</a><a href="../src/net/http/internal/chunked.go.html#line-252">#L252</a>: 	_, err := io.<b>WriteString</b>(cw.Wire, "0\r\n")
+
+	<a href="../pkg/strings.html">strings</a>
+		<a href="../src/strings/reader.go.html#line-143">reader.go#L143</a>: 	m, err := io.<b>WriteString</b>(w, s)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

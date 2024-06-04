@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/http.http2priorityWriteScheduler.nodes</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/net/http.html">net/http</a>.<a href="../../src/net/http/h2_bundle.go.html#line-11125">http2priorityWriteScheduler</a>.<a href="../../src/net/http/h2_bundle.go.html#line-11131">nodes</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">14 uses</span>
+
+	net/http (current package)
+		<a href="../../src/net/http/h2_bundle.go.html#line-10965">h2_bundle.go#L10965</a>: 		<b>nodes</b>:                make(map[uint32]*http2priorityNode),
+		<a href="../../src/net/http/h2_bundle.go.html#line-10970" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-10970">#L10970</a>: 	ws.<b>nodes</b>[0] = &amp;ws.root
+		<a href="../../src/net/http/h2_bundle.go.html#line-11131" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11131">#L11131</a>: 	<b>nodes</b> map[uint32]*http2priorityNode
+		<a href="../../src/net/http/h2_bundle.go.html#line-11156" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11156">#L11156</a>: 	if curr := ws.<b>nodes</b>[streamID]; curr != nil {
+		<a href="../../src/net/http/h2_bundle.go.html#line-11168" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11168">#L11168</a>: 	parent := ws.<b>nodes</b>[options.PusherID]
+		<a href="../../src/net/http/h2_bundle.go.html#line-11179" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11179">#L11179</a>: 	ws.<b>nodes</b>[streamID] = n
+		<a href="../../src/net/http/h2_bundle.go.html#line-11189" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11189">#L11189</a>: 	if ws.<b>nodes</b>[streamID] == nil {
+		<a href="../../src/net/http/h2_bundle.go.html#line-11192" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11192">#L11192</a>: 	if ws.<b>nodes</b>[streamID].state != http2priorityNodeOpen {
+		<a href="../../src/net/http/h2_bundle.go.html#line-11196" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11196">#L11196</a>: 	n := ws.<b>nodes</b>[streamID]
+		<a href="../../src/net/http/h2_bundle.go.html#line-11218" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11218">#L11218</a>: 	n := ws.<b>nodes</b>[streamID]
+		<a href="../../src/net/http/h2_bundle.go.html#line-11231" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11231">#L11231</a>: 		ws.<b>nodes</b>[streamID] = n
+		<a href="../../src/net/http/h2_bundle.go.html#line-11237" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11237">#L11237</a>: 	parent := ws.<b>nodes</b>[priority.StreamDep]
+		<a href="../../src/net/http/h2_bundle.go.html#line-11287" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11287">#L11287</a>: 		n = ws.<b>nodes</b>[id]
+		<a href="../../src/net/http/h2_bundle.go.html#line-11347" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-11347">#L11347</a>: 	delete(ws.<b>nodes</b>, n.id)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

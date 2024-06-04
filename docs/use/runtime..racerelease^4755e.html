@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.racerelease</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/race0.go.html#line-33">racerelease</a></b></span>
+
+<span class="title">13 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/chan.go.html#line-371">chan.go#L371</a>: 		<b>racerelease</b>(c.raceaddr())
+		<a href="../src/runtime/chan.go.html#line-812" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-812">#L812</a>: 	<b>racerelease</b>(chanbuf(c, 0))
+		<a href="../src/runtime/chan.go.html#line-839" class="path-duplicate">chan.go</a><a href="../src/runtime/chan.go.html#line-839">#L839</a>: 			<b>racerelease</b>(qp)
+		<a href="../src/runtime/metrics.go.html#line-52">metrics.go#L52</a>: 		<b>racerelease</b>(unsafe.Pointer(&amp;metricsSema))
+		<a href="../src/runtime/race0.go.html#line-33">race0.go#L33</a>: func <b>racerelease</b>(addr unsafe.Pointer)                                       { throw("race") }
+		<a href="../src/runtime/time.go.html#line-213">time.go#L213</a>: 		<b>racerelease</b>(unsafe.Pointer(t))
+		<a href="../src/runtime/time.go.html#line-233" class="path-duplicate">time.go</a><a href="../src/runtime/time.go.html#line-233">#L233</a>: 		<b>racerelease</b>(unsafe.Pointer(t))
+		<a href="../src/runtime/trace2.go.html#line-781">trace2.go#L781</a>: 					<b>racerelease</b>(unsafe.Pointer(&amp;trace.doneSema[gen%2]))
+		<a href="../src/runtime/trace2.go.html#line-801" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-801">#L801</a>: 				<b>racerelease</b>(unsafe.Pointer(&amp;trace.doneSema[gen%2]))
+		<a href="../src/runtime/trace2.go.html#line-943" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-943">#L943</a>: 		<b>racerelease</b>(unsafe.Pointer(&amp;s.lock))
+		<a href="../src/runtime/trace2.go.html#line-972" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-972">#L972</a>: 		<b>racerelease</b>(unsafe.Pointer(&amp;s.lock))
+		<a href="../src/runtime/trace2.go.html#line-997" class="path-duplicate">trace2.go</a><a href="../src/runtime/trace2.go.html#line-997">#L997</a>: 		<b>racerelease</b>(unsafe.Pointer(&amp;s.lock))
+		<a href="../src/runtime/type.go.html#line-104">type.go#L104</a>: 		<b>racerelease</b>(unsafe.Pointer(&amp;reflectOffs.lock))
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

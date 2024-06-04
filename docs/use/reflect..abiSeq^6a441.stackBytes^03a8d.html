@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: reflect.abiSeq.stackBytes</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/reflect.html">reflect</a>.<a href="../src/reflect/abi.go.html#line-70">abiSeq</a>.<a href="../src/reflect/abi.go.html#line-88">stackBytes</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">13 uses</span>
+
+	reflect (current package)
+		<a href="../src/reflect/abi.go.html#line-88">abi.go#L88</a>: 	<b>stackBytes</b>   uintptr // stack space used
+		<a href="../src/reflect/abi.go.html#line-101" class="path-duplicate">abi.go</a><a href="../src/reflect/abi.go.html#line-101">#L101</a>: 	println("stack", a.<b>stackBytes</b>)
+		<a href="../src/reflect/abi.go.html#line-143" class="path-duplicate">abi.go</a><a href="../src/reflect/abi.go.html#line-143">#L143</a>: 		a.<b>stackBytes</b> = align(a.<b>stackBytes</b>, uintptr(t.Align()))
+		<a href="../src/reflect/abi.go.html#line-317" class="path-duplicate">abi.go</a><a href="../src/reflect/abi.go.html#line-317">#L317</a>: 	a.<b>stackBytes</b> = align(a.<b>stackBytes</b>, alignment)
+		<a href="../src/reflect/abi.go.html#line-322" class="path-duplicate">abi.go</a><a href="../src/reflect/abi.go.html#line-322">#L322</a>: 		stkOff: a.<b>stackBytes</b>,
+		<a href="../src/reflect/abi.go.html#line-324" class="path-duplicate">abi.go</a><a href="../src/reflect/abi.go.html#line-324">#L324</a>: 	a.<b>stackBytes</b> += size
+		<a href="../src/reflect/abi.go.html#line-437" class="path-duplicate">abi.go</a><a href="../src/reflect/abi.go.html#line-437">#L437</a>: 	stackCallArgsSize := in.<b>stackBytes</b>
+		<a href="../src/reflect/abi.go.html#line-438" class="path-duplicate">abi.go</a><a href="../src/reflect/abi.go.html#line-438">#L438</a>: 	retOffset := align(in.<b>stackBytes</b>, goarch.PtrSize)
+		<a href="../src/reflect/abi.go.html#line-451" class="path-duplicate">abi.go</a><a href="../src/reflect/abi.go.html#line-451">#L451</a>: 	out.<b>stackBytes</b> = retOffset
+		<a href="../src/reflect/abi.go.html#line-466" class="path-duplicate">abi.go</a><a href="../src/reflect/abi.go.html#line-466">#L466</a>: 	out.<b>stackBytes</b> -= retOffset
+		<a href="../src/reflect/type.go.html#line-2791">type.go#L2791</a>: 		Size_:    align(abid.retOffset+abid.ret.<b>stackBytes</b>, goarch.PtrSize),
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

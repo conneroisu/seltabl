@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: vendor/golang.org/x/text/unicode/norm.input.str</title>
+<link href="../../../../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../../../../../pkg/vendor/golang.org/x/text/unicode/norm.html">vendor/golang.org/x/text/unicode/norm</a>.<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-9">input</a>.<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-10">str</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">19 uses</span>
+
+	vendor/golang.org/x/text/unicode/norm (current package)
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/composition.go.html#line-274">composition.go#L274</a>: 	rb.insertSingle(input{<b>str</b>: GraphemeJoiner}, 0, Properties{size: uint8(len(GraphemeJoiner))})
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-10">input.go#L10</a>: 	<b>str</b>   string
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-19" class="path-duplicate">input.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-19">#L19</a>: 	return input{<b>str</b>: str}
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-23" class="path-duplicate">input.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-23">#L23</a>: 	in.<b>str</b> = ""
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-28" class="path-duplicate">input.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-28">#L28</a>: 	in.<b>str</b> = str
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-34" class="path-duplicate">input.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-34">#L34</a>: 		return in.<b>str</b>[p]
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-41" class="path-duplicate">input.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-41">#L41</a>: 		for ; p &lt; max &amp;&amp; in.<b>str</b>[p] &lt; utf8.RuneSelf; p++ {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-52" class="path-duplicate">input.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-52">#L52</a>: 		for ; p &lt; len(in.<b>str</b>) &amp;&amp; !utf8.RuneStart(in.<b>str</b>[p]); p++ {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-66" class="path-duplicate">input.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-66">#L66</a>: 		buf = append(buf, in.<b>str</b>[i])
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-73" class="path-duplicate">input.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-73">#L73</a>: 		return copy(buf, in.<b>str</b>[b:e])
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-80" class="path-duplicate">input.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-80">#L80</a>: 		return nfcData.lookupString(in.<b>str</b>[p:])
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-87" class="path-duplicate">input.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-87">#L87</a>: 		return nfkcData.lookupString(in.<b>str</b>[p:])
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-95" class="path-duplicate">input.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-95">#L95</a>: 		if !isHangulString(in.<b>str</b>[p:]) {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-98" class="path-duplicate">input.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/input.go.html#line-98">#L98</a>: 		r, size = utf8.DecodeRuneInString(in.<b>str</b>[p:])
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-99">iter.go#L99</a>: 		return i.buf[:copy(i.buf[:], i.rb.src.<b>str</b>[a:b])]
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-148" class="path-duplicate">iter.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-148">#L148</a>: 		i.buf[0] = i.rb.src.<b>str</b>[i.p]
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-152" class="path-duplicate">iter.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-152">#L152</a>: 	if i.rb.src.<b>str</b>[p] &lt; utf8.RuneSelf {
+		<a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-153" class="path-duplicate">iter.go</a><a href="../../../../../../src/vendor/golang.org/x/text/unicode/norm/iter.go.html#line-153">#L153</a>: 		i.buf[0] = i.rb.src.<b>str</b>[i.p]
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

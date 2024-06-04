@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.kindPtr</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/typekind.go.html#line-29">kindPtr</a></b></span>
+
+<span class="title">14 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/arena.go.html#line-113">arena.go#L113</a>: 	if t.Kind_&amp;kindMask != <b>kindPtr</b> {
+		<a href="../src/runtime/arena.go.html#line-152" class="path-duplicate">arena.go</a><a href="../src/runtime/arena.go.html#line-152">#L152</a>: 	case <b>kindPtr</b>:
+		<a href="../src/runtime/arena.go.html#line-178" class="path-duplicate">arena.go</a><a href="../src/runtime/arena.go.html#line-178">#L178</a>: 	case <b>kindPtr</b>:
+		<a href="../src/runtime/arena.go.html#line-298" class="path-duplicate">arena.go</a><a href="../src/runtime/arena.go.html#line-298">#L298</a>: 	if typ.Kind_&amp;kindMask != <b>kindPtr</b> {
+		<a href="../src/runtime/cgocall.go.html#line-498">cgocall.go#L498</a>: 	if arg != nil &amp;&amp; (t.Kind_&amp;kindMask == <b>kindPtr</b> || t.Kind_&amp;kindMask == kindUnsafePointer) {
+		<a href="../src/runtime/cgocall.go.html#line-637" class="path-duplicate">cgocall.go</a><a href="../src/runtime/cgocall.go.html#line-637">#L637</a>: 	case <b>kindPtr</b>, kindUnsafePointer:
+		<a href="../src/runtime/debuglog.go.html#line-281">debuglog.go#L281</a>: 		case kindChan, kindFunc, kindMap, <b>kindPtr</b>, kindUnsafePointer:
+		<a href="../src/runtime/mbitmap_allocheaders.go.html#line-1135">mbitmap_allocheaders.go#L1135</a>: 	if t.Kind_&amp;kindMask != <b>kindPtr</b> {
+		<a href="../src/runtime/mfinal.go.html#line-239">mfinal.go#L239</a>: 				case <b>kindPtr</b>:
+		<a href="../src/runtime/mfinal.go.html#line-421" class="path-duplicate">mfinal.go</a><a href="../src/runtime/mfinal.go.html#line-421">#L421</a>: 	if etyp.Kind_&amp;kindMask != <b>kindPtr</b> {
+		<a href="../src/runtime/mfinal.go.html#line-482" class="path-duplicate">mfinal.go</a><a href="../src/runtime/mfinal.go.html#line-482">#L482</a>: 	case fint.Kind_&amp;kindMask == <b>kindPtr</b>:
+		<a href="../src/runtime/pinner.go.html#line-110">pinner.go#L110</a>: 	if kind := etyp.Kind_ &amp; kindMask; kind != <b>kindPtr</b> &amp;&amp; kind != kindUnsafePointer {
+		<a href="../src/runtime/type.go.html#line-427">type.go#L427</a>: 	case <b>kindPtr</b>:
+		<a href="../src/runtime/typekind.go.html#line-29">typekind.go#L29</a>: 	<b>kindPtr</b>
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

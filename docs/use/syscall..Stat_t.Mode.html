@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: syscall.Stat_t.Mode</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/syscall.html">syscall</a>.<a href="../src/syscall/ztypes_linux_amd64.go.html#line-101">Stat_t</a>.<a href="../src/syscall/ztypes_linux_amd64.go.html#line-105">Mode</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">12 uses</span>
+
+	syscall (current package)
+		<a href="../src/syscall/syscall_linux.go.html#line-211">syscall_linux.go#L211</a>: 		if st.<b>Mode</b>&amp;0111 != 0 {
+		<a href="../src/syscall/syscall_linux.go.html#line-220" class="path-duplicate">syscall_linux.go</a><a href="../src/syscall/syscall_linux.go.html#line-220">#L220</a>: 		fmode = (st.<b>Mode</b> &gt;&gt; 6) &amp; 7
+		<a href="../src/syscall/syscall_linux.go.html#line-230" class="path-duplicate">syscall_linux.go</a><a href="../src/syscall/syscall_linux.go.html#line-230">#L230</a>: 			fmode = (st.<b>Mode</b> &gt;&gt; 3) &amp; 7
+		<a href="../src/syscall/syscall_linux.go.html#line-232" class="path-duplicate">syscall_linux.go</a><a href="../src/syscall/syscall_linux.go.html#line-232">#L232</a>: 			fmode = st.<b>Mode</b> &amp; 7
+		<a href="../src/syscall/ztypes_linux_amd64.go.html#line-105">ztypes_linux_amd64.go#L105</a>: 	<b>Mode</b>      uint32
+
+	<a href="../pkg/os.html">os</a>
+		<a href="../src/os/file_unix.go.html#line-190">file_unix.go#L190</a>: 			typ := st.<b>Mode</b> &amp; syscall.S_IFMT
+		<a href="../src/os/removeall_at.go.html#line-89">removeall_at.go#L89</a>: 	if statInfo.<b>Mode</b>&amp;syscall.S_IFMT != syscall.S_IFDIR {
+		<a href="../src/os/stat_linux.go.html#line-16">stat_linux.go#L16</a>: 	fs.mode = FileMode(fs.sys.<b>Mode</b> &amp; 0777)
+		<a href="../src/os/stat_linux.go.html#line-17" class="path-duplicate">stat_linux.go</a><a href="../src/os/stat_linux.go.html#line-17">#L17</a>: 	switch fs.sys.<b>Mode</b> &amp; syscall.S_IFMT {
+		<a href="../src/os/stat_linux.go.html#line-33" class="path-duplicate">stat_linux.go</a><a href="../src/os/stat_linux.go.html#line-33">#L33</a>: 	if fs.sys.<b>Mode</b>&amp;syscall.S_ISGID != 0 {
+		<a href="../src/os/stat_linux.go.html#line-36" class="path-duplicate">stat_linux.go</a><a href="../src/os/stat_linux.go.html#line-36">#L36</a>: 	if fs.sys.<b>Mode</b>&amp;syscall.S_ISUID != 0 {
+		<a href="../src/os/stat_linux.go.html#line-39" class="path-duplicate">stat_linux.go</a><a href="../src/os/stat_linux.go.html#line-39">#L39</a>: 	if fs.sys.<b>Mode</b>&amp;syscall.S_ISVTX != 0 {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

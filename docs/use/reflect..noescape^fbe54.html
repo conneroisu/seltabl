@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: reflect.noescape</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/reflect.html">reflect</a>.<a href="../src/reflect/value.go.html#line-4008">noescape</a></b></span>
+
+<span class="title">6 uses</span>
+
+	reflect (current package)
+		<a href="../src/reflect/type.go.html#line-1164">type.go#L1164</a>: 	return toType((*abi.Type)(<b>noescape</b>(unsafe.Pointer(eface.typ))))
+		<a href="../src/reflect/value.go.html#line-102">value.go#L102</a>: 	return (*abi.Type)(<b>noescape</b>(unsafe.Pointer(v.typ_)))
+		<a href="../src/reflect/value.go.html#line-1610" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1610">#L1610</a>: 			return typ.Equal(<b>noescape</b>(v.ptr), unsafe.Pointer(&amp;zeroVal[0]))
+		<a href="../src/reflect/value.go.html#line-1636" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1636">#L1636</a>: 			return typ.Equal(<b>noescape</b>(v.ptr), unsafe.Pointer(&amp;zeroVal[0]))
+		<a href="../src/reflect/value.go.html#line-2692" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2692">#L2692</a>: 		return (*rtype)(<b>noescape</b>(unsafe.Pointer(v.typ_))) // inline of toRType(v.typ()), for own inlining in inline test
+		<a href="../src/reflect/value.go.html#line-4008" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-4008">#L4008</a>: func <b>noescape</b>(p unsafe.Pointer) unsafe.Pointer {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

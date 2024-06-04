@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: reflect.Value.IsValid</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/reflect.html">reflect</a>.<a href="../src/reflect/value.go.html#line-39">Value</a>.<a href="../src/reflect/value.go.html#line-1582">IsValid</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">28 uses</span>
+
+	reflect (current package)
+		<a href="../src/reflect/deepequal.go.html#line-28">deepequal.go#L28</a>: 	if !v1.<b>IsValid</b>() || !v2.<b>IsValid</b>() {
+		<a href="../src/reflect/deepequal.go.html#line-29" class="path-duplicate">deepequal.go</a><a href="../src/reflect/deepequal.go.html#line-29">#L29</a>: 		return v1.<b>IsValid</b>() == v2.<b>IsValid</b>()
+		<a href="../src/reflect/deepequal.go.html#line-149" class="path-duplicate">deepequal.go</a><a href="../src/reflect/deepequal.go.html#line-149">#L149</a>: 			if !val1.<b>IsValid</b>() || !val2.<b>IsValid</b>() || !deepValueEqual(val1, val2, visited) {
+		<a href="../src/reflect/value.go.html#line-1582">value.go#L1582</a>: func (v Value) <b>IsValid</b>() bool {
+		<a href="../src/reflect/value.go.html#line-1996" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-1996">#L1996</a>: 	if !iter.m.<b>IsValid</b>() {
+		<a href="../src/reflect/value.go.html#line-2015" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-2015">#L2015</a>: 	if v.<b>IsValid</b>() {
+		<a href="../src/reflect/value.go.html#line-3114" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3114">#L3114</a>: 			if c.Chan.<b>IsValid</b>() {
+		<a href="../src/reflect/value.go.html#line-3117" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3117">#L3117</a>: 			if c.Send.<b>IsValid</b>() {
+		<a href="../src/reflect/value.go.html#line-3123" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3123">#L3123</a>: 			if !ch.<b>IsValid</b>() {
+		<a href="../src/reflect/value.go.html#line-3135" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3135">#L3135</a>: 			if !v.<b>IsValid</b>() {
+		<a href="../src/reflect/value.go.html#line-3150" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3150">#L3150</a>: 			if c.Send.<b>IsValid</b>() {
+		<a href="../src/reflect/value.go.html#line-3154" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3154">#L3154</a>: 			if !ch.<b>IsValid</b>() {
+		<a href="../src/reflect/value.go.html#line-3450" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3450">#L3450</a>: 	if !v.<b>IsValid</b>() || !u.<b>IsValid</b>() {
+		<a href="../src/reflect/value.go.html#line-3451" class="path-duplicate">value.go</a><a href="../src/reflect/value.go.html#line-3451">#L3451</a>: 		return v.<b>IsValid</b>() == u.<b>IsValid</b>()
+
+	<a href="../pkg/encoding/asn1.html">encoding/asn1</a>
+		<a href="../src/encoding/asn1/marshal.go.html#line-580">marshal.go#L580</a>: 	if !v.<b>IsValid</b>() {
+
+	<a href="../pkg/encoding/binary.html">encoding/binary</a>
+		<a href="../src/encoding/binary/binary.go.html#line-497">binary.go#L497</a>: 		if v.<b>IsValid</b>() {
+
+	<a href="../pkg/fmt.html">fmt</a>
+		<a href="../src/fmt/print.go.html#line-372">print.go#L372</a>: 	if !v.<b>IsValid</b>() {
+		<a href="../src/fmt/print.go.html#line-391" class="path-duplicate">print.go</a><a href="../src/fmt/print.go.html#line-391">#L391</a>: 	case p.value.<b>IsValid</b>():
+		<a href="../src/fmt/print.go.html#line-747" class="path-duplicate">print.go</a><a href="../src/fmt/print.go.html#line-747">#L747</a>: 		if f.<b>IsValid</b>() &amp;&amp; f.CanInterface() {
+		<a href="../src/fmt/print.go.html#line-768" class="path-duplicate">print.go</a><a href="../src/fmt/print.go.html#line-768">#L768</a>: 	if depth &gt; 0 &amp;&amp; value.<b>IsValid</b>() &amp;&amp; value.CanInterface() {
+		<a href="../src/fmt/print.go.html#line-858" class="path-duplicate">print.go</a><a href="../src/fmt/print.go.html#line-858">#L858</a>: 		if !value.<b>IsValid</b>() {
+
+	<a href="../pkg/github.com/conneroisu/seltabl.html">github.com/conneroisu/seltabl</a>
+		<a href="../src/github.com/conneroisu/seltabl/reflect.go.html#line-23">reflect.go#L23</a>: 	if !field.<b>IsValid</b>() {
+
+	<a href="../pkg/net/http.html">net/http</a>
+		<a href="../src/net/http/transport.go.html#line-386">transport.go#L386</a>: 	if rv := reflect.ValueOf(altProto["https"]); rv.<b>IsValid</b>() &amp;&amp; rv.Type().Kind() == reflect.Struct &amp;&amp; rv.Type().NumField() == 1 {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: encoding/base64.encoder.nbuf</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/encoding/base64.html">encoding/base64</a>.<a href="../../src/encoding/base64/base64.go.html#line-212">encoder</a>.<a href="../../src/encoding/base64/base64.go.html#line-217">nbuf</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">12 uses</span>
+
+	encoding/base64 (current package)
+		<a href="../../src/encoding/base64/base64.go.html#line-217">base64.go#L217</a>: 	<b>nbuf</b> int        // number of bytes in buf
+		<a href="../../src/encoding/base64/base64.go.html#line-227" class="path-duplicate">base64.go</a><a href="../../src/encoding/base64/base64.go.html#line-227">#L227</a>: 	if e.<b>nbuf</b> &gt; 0 {
+		<a href="../../src/encoding/base64/base64.go.html#line-229" class="path-duplicate">base64.go</a><a href="../../src/encoding/base64/base64.go.html#line-229">#L229</a>: 		for i = 0; i &lt; len(p) &amp;&amp; e.<b>nbuf</b> &lt; 3; i++ {
+		<a href="../../src/encoding/base64/base64.go.html#line-230" class="path-duplicate">base64.go</a><a href="../../src/encoding/base64/base64.go.html#line-230">#L230</a>: 			e.buf[e.<b>nbuf</b>] = p[i]
+		<a href="../../src/encoding/base64/base64.go.html#line-231" class="path-duplicate">base64.go</a><a href="../../src/encoding/base64/base64.go.html#line-231">#L231</a>: 			e.<b>nbuf</b>++
+		<a href="../../src/encoding/base64/base64.go.html#line-235" class="path-duplicate">base64.go</a><a href="../../src/encoding/base64/base64.go.html#line-235">#L235</a>: 		if e.<b>nbuf</b> &lt; 3 {
+		<a href="../../src/encoding/base64/base64.go.html#line-242" class="path-duplicate">base64.go</a><a href="../../src/encoding/base64/base64.go.html#line-242">#L242</a>: 		e.<b>nbuf</b> = 0
+		<a href="../../src/encoding/base64/base64.go.html#line-262" class="path-duplicate">base64.go</a><a href="../../src/encoding/base64/base64.go.html#line-262">#L262</a>: 	e.<b>nbuf</b> = len(p)
+		<a href="../../src/encoding/base64/base64.go.html#line-271" class="path-duplicate">base64.go</a><a href="../../src/encoding/base64/base64.go.html#line-271">#L271</a>: 	if e.err == nil &amp;&amp; e.<b>nbuf</b> &gt; 0 {
+		<a href="../../src/encoding/base64/base64.go.html#line-272" class="path-duplicate">base64.go</a><a href="../../src/encoding/base64/base64.go.html#line-272">#L272</a>: 		e.enc.Encode(e.out[:], e.buf[:e.<b>nbuf</b>])
+		<a href="../../src/encoding/base64/base64.go.html#line-273" class="path-duplicate">base64.go</a><a href="../../src/encoding/base64/base64.go.html#line-273">#L273</a>: 		_, e.err = e.w.Write(e.out[:e.enc.EncodedLen(e.<b>nbuf</b>)])
+		<a href="../../src/encoding/base64/base64.go.html#line-274" class="path-duplicate">base64.go</a><a href="../../src/encoding/base64/base64.go.html#line-274">#L274</a>: 		e.<b>nbuf</b> = 0
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.p.id</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/runtime2.go.html#line-646">p</a>.<a href="../src/runtime/runtime2.go.html#line-647">id</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">19 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/debuglog.go.html#line-113">debuglog.go#L113</a>: 		l.w.varint(int64(gp.m.p.ptr().<b>id</b>))
+		<a href="../src/runtime/mgc.go.html#line-658">mgc.go#L658</a>: 			println("runtime: p", p.<b>id</b>, "flushGen", fg, "!= sweepgen", mheap_.sweepgen)
+		<a href="../src/runtime/mgc.go.html#line-1520" class="path-duplicate">mgc.go</a><a href="../src/runtime/mgc.go.html#line-1520">#L1520</a>: 			print("runtime: P ", p.<b>id</b>, " flushedWork ", gcw.flushedWork)
+		<a href="../src/runtime/mgcpacer.go.html#line-713">mgcpacer.go#L713</a>: 	myID := gp.m.p.ptr().<b>id</b>
+		<a href="../src/runtime/proc.go.html#line-5461">proc.go#L5461</a>: 	pp.<b>id</b> = id
+		<a href="../src/runtime/proc.go.html#line-5656" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-5656">#L5656</a>: 	if gp.m.p != 0 &amp;&amp; gp.m.p.ptr().<b>id</b> &lt; nprocs {
+		<a href="../src/runtime/proc.go.html#line-6283" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6283">#L6283</a>: 			print(pp.<b>id</b>)
+		<a href="../src/runtime/proc.go.html#line-6516" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6516">#L6516</a>: 		timerpMask.clear(pp.<b>id</b>)
+		<a href="../src/runtime/proc.go.html#line-6542" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6542">#L6542</a>: 	idlepMask.set(pp.<b>id</b>)
+		<a href="../src/runtime/proc.go.html#line-6568" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6568">#L6568</a>: 		timerpMask.set(pp.<b>id</b>)
+		<a href="../src/runtime/proc.go.html#line-6569" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6569">#L6569</a>: 		idlepMask.clear(pp.<b>id</b>)
+		<a href="../src/runtime/proc.go.html#line-7008" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-7008">#L7008</a>: 	return int(mp.p.ptr().<b>id</b>)
+		<a href="../src/runtime/runtime2.go.html#line-647">runtime2.go#L647</a>: 	<b>id</b>          int32
+		<a href="../src/runtime/trace2cpu.go.html#line-257">trace2cpu.go#L257</a>: 		hdr[0] = uint64(pp.<b>id</b>)&lt;&lt;1 | 0b1
+		<a href="../src/runtime/trace2event.go.html#line-114">trace2event.go#L114</a>: 		w = w.writeProcStatus(uint64(pp.<b>id</b>), procStatus, pp.trace.inSweep)
+		<a href="../src/runtime/trace2runtime.go.html#line-271">trace2runtime.go#L271</a>: 	tl.eventWriter(traceGoSyscall, traceProcIdle).commit(traceEvProcStart, traceArg(pp.<b>id</b>), pp.trace.nextSeq(tl.gen))
+		<a href="../src/runtime/trace2runtime.go.html#line-531" class="path-duplicate">trace2runtime.go</a><a href="../src/runtime/trace2runtime.go.html#line-531">#L531</a>: 		w.w = w.w.writeProcStatus(uint64(pp.<b>id</b>), traceProcSyscallAbandoned, pp.trace.inSweep)
+		<a href="../src/runtime/trace2runtime.go.html#line-533" class="path-duplicate">trace2runtime.go</a><a href="../src/runtime/trace2runtime.go.html#line-533">#L533</a>: 	w.commit(traceEvProcSteal, traceArg(pp.<b>id</b>), pp.trace.nextSeq(tl.gen), traceArg(mStolenFrom))
+		<a href="../src/runtime/trace2status.go.html#line-99">trace2status.go#L99</a>: 	w = w.writeProcStatus(uint64(pp.<b>id</b>), status, pp.trace.inSweep)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

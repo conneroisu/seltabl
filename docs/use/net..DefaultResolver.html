@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net.DefaultResolver</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">var <b><a href="../pkg/net.html">net</a>.<a href="../src/net/lookup.go.html#line-128">DefaultResolver</a></b></span>
+
+<span class="title">17 uses</span>
+
+	net (current package)
+		<a href="../src/net/dial.go.html#line-194">dial.go#L194</a>: 	return <b>DefaultResolver</b>
+		<a href="../src/net/dial.go.html#line-718" class="path-duplicate">dial.go</a><a href="../src/net/dial.go.html#line-718">#L718</a>: 	addrs, err := <b>DefaultResolver</b>.resolveAddrList(ctx, "listen", network, address, nil)
+		<a href="../src/net/dial.go.html#line-752" class="path-duplicate">dial.go</a><a href="../src/net/dial.go.html#line-752">#L752</a>: 	addrs, err := <b>DefaultResolver</b>.resolveAddrList(ctx, "listen", network, address, nil)
+		<a href="../src/net/iprawsock.go.html#line-90">iprawsock.go#L90</a>: 	addrs, err := <b>DefaultResolver</b>.internetAddrList(context.Background(), afnet, address)
+		<a href="../src/net/lookup.go.html#line-128">lookup.go#L128</a>: var <b>DefaultResolver</b> = &amp;Resolver{}
+		<a href="../src/net/lookup.go.html#line-176" class="path-duplicate">lookup.go</a><a href="../src/net/lookup.go.html#line-176">#L176</a>: 		return &amp;<b>DefaultResolver</b>.lookupGroup
+		<a href="../src/net/lookup.go.html#line-187" class="path-duplicate">lookup.go</a><a href="../src/net/lookup.go.html#line-187">#L187</a>: 	return <b>DefaultResolver</b>.LookupHost(context.Background(), host)
+		<a href="../src/net/lookup.go.html#line-206" class="path-duplicate">lookup.go</a><a href="../src/net/lookup.go.html#line-206">#L206</a>: 	addrs, err := <b>DefaultResolver</b>.LookupIPAddr(context.Background(), host)
+		<a href="../src/net/lookup.go.html#line-423" class="path-duplicate">lookup.go</a><a href="../src/net/lookup.go.html#line-423">#L423</a>: 	return <b>DefaultResolver</b>.LookupPort(context.Background(), network, service)
+		<a href="../src/net/lookup.go.html#line-467" class="path-duplicate">lookup.go</a><a href="../src/net/lookup.go.html#line-467">#L467</a>: 	return <b>DefaultResolver</b>.LookupCNAME(context.Background(), host)
+		<a href="../src/net/lookup.go.html#line-509" class="path-duplicate">lookup.go</a><a href="../src/net/lookup.go.html#line-509">#L509</a>: 	return <b>DefaultResolver</b>.LookupSRV(context.Background(), service, proto, name)
+		<a href="../src/net/lookup.go.html#line-560" class="path-duplicate">lookup.go</a><a href="../src/net/lookup.go.html#line-560">#L560</a>: 	return <b>DefaultResolver</b>.LookupMX(context.Background(), name)
+		<a href="../src/net/lookup.go.html#line-600" class="path-duplicate">lookup.go</a><a href="../src/net/lookup.go.html#line-600">#L600</a>: 	return <b>DefaultResolver</b>.LookupNS(context.Background(), name)
+		<a href="../src/net/lookup.go.html#line-635" class="path-duplicate">lookup.go</a><a href="../src/net/lookup.go.html#line-635">#L635</a>: 	return <b>DefaultResolver</b>.lookupTXT(context.Background(), name)
+		<a href="../src/net/lookup.go.html#line-656" class="path-duplicate">lookup.go</a><a href="../src/net/lookup.go.html#line-656">#L656</a>: 	return <b>DefaultResolver</b>.LookupAddr(context.Background(), addr)
+		<a href="../src/net/tcpsock.go.html#line-92">tcpsock.go#L92</a>: 	addrs, err := <b>DefaultResolver</b>.internetAddrList(context.Background(), network, address)
+		<a href="../src/net/udpsock.go.html#line-95">udpsock.go#L95</a>: 	addrs, err := <b>DefaultResolver</b>.internetAddrList(context.Background(), network, address)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

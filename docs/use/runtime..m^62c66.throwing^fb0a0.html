@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.m.throwing</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/runtime2.go.html#line-550">m</a>.<a href="../src/runtime/runtime2.go.html#line-570">throwing</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">12 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/panic.go.html#line-1186">panic.go#L1186</a>: 	if gp.m.<b>throwing</b> == throwTypeNone {
+		<a href="../src/runtime/panic.go.html#line-1187" class="path-duplicate">panic.go</a><a href="../src/runtime/panic.go.html#line-1187">#L1187</a>: 		gp.m.<b>throwing</b> = t
+		<a href="../src/runtime/panic.go.html#line-1339" class="path-duplicate">panic.go</a><a href="../src/runtime/panic.go.html#line-1339">#L1339</a>: 		} else if level &gt;= 2 || gp.m.<b>throwing</b> &gt;= throwTypeRuntime {
+		<a href="../src/runtime/panic.go.html#line-1380" class="path-duplicate">panic.go</a><a href="../src/runtime/panic.go.html#line-1380">#L1380</a>: 	if mp.locks != 1 || mp.mallocing != 0 || mp.<b>throwing</b> != throwTypeNone || mp.preemptoff != "" || mp.dying != 0 {
+		<a href="../src/runtime/proc.go.html#line-6293">proc.go#L6293</a>: 		print(" mallocing=", mp.mallocing, " throwing=", mp.<b>throwing</b>, " preemptoff=", mp.preemptoff, " locks=", mp.locks, " dying=", mp.dying, " spinning=", mp.spinning, " blocked=", mp.blocked, " lockedg=")
+		<a href="../src/runtime/runtime1.go.html#line-41">runtime1.go#L41</a>: 	all = gp.m.<b>throwing</b> &gt;= throwTypeUser || t&amp;tracebackAll != 0
+		<a href="../src/runtime/runtime1.go.html#line-44" class="path-duplicate">runtime1.go</a><a href="../src/runtime/runtime1.go.html#line-44">#L44</a>: 	} else if gp.m.<b>throwing</b> &gt;= throwTypeRuntime {
+		<a href="../src/runtime/runtime2.go.html#line-570">runtime2.go#L570</a>: 	<b>throwing</b>      throwType
+		<a href="../src/runtime/signal_unix.go.html#line-730">signal_unix.go#L730</a>: 	mp.<b>throwing</b> = throwTypeRuntime
+		<a href="../src/runtime/traceback.go.html#line-1018">traceback.go#L1018</a>: 				if gp.m != nil &amp;&amp; gp.m.<b>throwing</b> &gt;= throwTypeRuntime &amp;&amp; gp == gp.m.curg || level &gt;= 2 {
+		<a href="../src/runtime/traceback.go.html#line-1119" class="path-duplicate">traceback.go</a><a href="../src/runtime/traceback.go.html#line-1119">#L1119</a>: 	if mp.<b>throwing</b> &gt;= throwTypeRuntime &amp;&amp; gp != nil &amp;&amp; (gp == mp.curg || gp == mp.caughtsig.ptr()) {
+		<a href="../src/runtime/traceback.go.html#line-1206" class="path-duplicate">traceback.go</a><a href="../src/runtime/traceback.go.html#line-1206">#L1206</a>: 	if gp.m != nil &amp;&amp; gp.m.<b>throwing</b> &gt;= throwTypeRuntime &amp;&amp; gp == gp.m.curg || level &gt;= 2 {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/tls.clientHandshakeStateTLS13.ecdheKey</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/crypto/tls.html">crypto/tls</a>.<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-19">clientHandshakeStateTLS13</a>.<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-24">ecdheKey</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">8 uses</span>
+
+	crypto/tls (current package)
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-256">handshake_client.go#L256</a>: 			<b>ecdheKey</b>:    ecdheKey,
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-24">handshake_client_tls13.go#L24</a>: 	<b>ecdheKey</b>    *ecdh.PrivateKey
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-56" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-56">#L56</a>: 	if hs.<b>ecdheKey</b> == nil || len(hs.hello.keyShares) != 1 {
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-235" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-235">#L235</a>: 		if sentID, _ := curveIDForCurve(hs.<b>ecdheKey</b>.Curve()); sentID == curveID {
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-248" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-248">#L248</a>: 		hs.<b>ecdheKey</b> = key
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-336" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-336">#L336</a>: 	if sentID, _ := curveIDForCurve(hs.<b>ecdheKey</b>.Curve()); hs.serverHello.serverShare.group != sentID {
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-375" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-375">#L375</a>: 	peerKey, err := hs.<b>ecdheKey</b>.Curve().NewPublicKey(hs.serverHello.serverShare.data)
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-380" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-380">#L380</a>: 	sharedKey, err := hs.<b>ecdheKey</b>.ECDH(peerKey)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

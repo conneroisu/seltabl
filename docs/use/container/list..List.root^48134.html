@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: container/list.List.root</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/container/list.html">container/list</a>.<a href="../../src/container/list/list.go.html#line-48">List</a>.<a href="../../src/container/list/list.go.html#line-49">root</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">18 uses</span>
+
+	container/list (current package)
+		<a href="../../src/container/list/list.go.html#line-32">list.go#L32</a>: 	if p := e.next; e.list != nil &amp;&amp; p != &amp;e.list.<b>root</b> {
+		<a href="../../src/container/list/list.go.html#line-40" class="path-duplicate">list.go</a><a href="../../src/container/list/list.go.html#line-40">#L40</a>: 	if p := e.prev; e.list != nil &amp;&amp; p != &amp;e.list.<b>root</b> {
+		<a href="../../src/container/list/list.go.html#line-49" class="path-duplicate">list.go</a><a href="../../src/container/list/list.go.html#line-49">#L49</a>: 	<b>root</b> Element // sentinel list element, only &amp;root, root.prev, and root.next are used
+		<a href="../../src/container/list/list.go.html#line-55" class="path-duplicate">list.go</a><a href="../../src/container/list/list.go.html#line-55">#L55</a>: 	l.<b>root</b>.next = &amp;l.<b>root</b>
+		<a href="../../src/container/list/list.go.html#line-56" class="path-duplicate">list.go</a><a href="../../src/container/list/list.go.html#line-56">#L56</a>: 	l.<b>root</b>.prev = &amp;l.<b>root</b>
+		<a href="../../src/container/list/list.go.html#line-73" class="path-duplicate">list.go</a><a href="../../src/container/list/list.go.html#line-73">#L73</a>: 	return l.<b>root</b>.next
+		<a href="../../src/container/list/list.go.html#line-81" class="path-duplicate">list.go</a><a href="../../src/container/list/list.go.html#line-81">#L81</a>: 	return l.<b>root</b>.prev
+		<a href="../../src/container/list/list.go.html#line-86" class="path-duplicate">list.go</a><a href="../../src/container/list/list.go.html#line-86">#L86</a>: 	if l.<b>root</b>.next == nil {
+		<a href="../../src/container/list/list.go.html#line-146" class="path-duplicate">list.go</a><a href="../../src/container/list/list.go.html#line-146">#L146</a>: 	return l.insertValue(v, &amp;l.<b>root</b>)
+		<a href="../../src/container/list/list.go.html#line-152" class="path-duplicate">list.go</a><a href="../../src/container/list/list.go.html#line-152">#L152</a>: 	return l.insertValue(v, l.<b>root</b>.prev)
+		<a href="../../src/container/list/list.go.html#line-181" class="path-duplicate">list.go</a><a href="../../src/container/list/list.go.html#line-181">#L181</a>: 	if e.list != l || l.<b>root</b>.next == e {
+		<a href="../../src/container/list/list.go.html#line-185" class="path-duplicate">list.go</a><a href="../../src/container/list/list.go.html#line-185">#L185</a>: 	l.move(e, &amp;l.<b>root</b>)
+		<a href="../../src/container/list/list.go.html#line-192" class="path-duplicate">list.go</a><a href="../../src/container/list/list.go.html#line-192">#L192</a>: 	if e.list != l || l.<b>root</b>.prev == e {
+		<a href="../../src/container/list/list.go.html#line-196" class="path-duplicate">list.go</a><a href="../../src/container/list/list.go.html#line-196">#L196</a>: 	l.move(e, l.<b>root</b>.prev)
+		<a href="../../src/container/list/list.go.html#line-224" class="path-duplicate">list.go</a><a href="../../src/container/list/list.go.html#line-224">#L224</a>: 		l.insertValue(e.Value, l.<b>root</b>.prev)
+		<a href="../../src/container/list/list.go.html#line-233" class="path-duplicate">list.go</a><a href="../../src/container/list/list.go.html#line-233">#L233</a>: 		l.insertValue(e.Value, &amp;l.<b>root</b>)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: math/big.Int.Mod</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/math/big.html">math/big</a>.<a href="../../src/math/big/int.go.html#line-33">Int</a>.<a href="../../src/math/big/int.go.html#line-319">Mod</a></b></span><span style="font-size: large;"><i> (method)</i></span>
+
+<span class="title">52 uses</span>
+
+	math/big (current package)
+		<a href="../../src/math/big/int.go.html#line-319">int.go#L319</a>: func (z *Int) <b>Mod</b>(x, y *Int) *Int {
+		<a href="../../src/math/big/int.go.html#line-910" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-910">#L910</a>: 		g = g2.<b>Mod</b>(g, n)
+		<a href="../../src/math/big/int.go.html#line-965" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-965">#L965</a>: 		a.<b>Mod</b>(&amp;a, &amp;b)
+		<a href="../../src/math/big/int.go.html#line-1020" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1020">#L1020</a>: 	beta.<b>Mod</b>(beta, p)
+		<a href="../../src/math/big/int.go.html#line-1022" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1022">#L1022</a>: 	beta.<b>Mod</b>(beta, p)
+		<a href="../../src/math/big/int.go.html#line-1025" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1025">#L1025</a>: 	beta.<b>Mod</b>(beta, p)
+		<a href="../../src/math/big/int.go.html#line-1027" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1027">#L1027</a>: 	z.<b>Mod</b>(beta, p)
+		<a href="../../src/math/big/int.go.html#line-1063" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1063">#L1063</a>: 			t.Mul(&amp;t, &amp;t).<b>Mod</b>(&amp;t, p)
+		<a href="../../src/math/big/int.go.html#line-1073" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1073">#L1073</a>: 		g.Mul(&amp;t, &amp;t).<b>Mod</b>(&amp;g, p) // g = g^(2^(r-m)) mod p
+		<a href="../../src/math/big/int.go.html#line-1074" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1074">#L1074</a>: 		y.Mul(&amp;y, &amp;t).<b>Mod</b>(&amp;y, p)
+		<a href="../../src/math/big/int.go.html#line-1075" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1075">#L1075</a>: 		b.Mul(&amp;b, &amp;g).<b>Mod</b>(&amp;b, p)
+		<a href="../../src/math/big/int.go.html#line-1094" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-1094">#L1094</a>: 		x = new(Int).<b>Mod</b>(x, p)
+
+	<a href="../../pkg/crypto/dsa.html">crypto/dsa</a>
+		<a href="../../src/crypto/dsa/dsa.go.html#line-121">dsa.go#L121</a>: 			rem.<b>Mod</b>(p, q)
+		<a href="../../src/crypto/dsa/dsa.go.html#line-239" class="path-duplicate">dsa.go</a><a href="../../src/crypto/dsa/dsa.go.html#line-239">#L239</a>: 		r.<b>Mod</b>(r, priv.Q)
+		<a href="../../src/crypto/dsa/dsa.go.html#line-249" class="path-duplicate">dsa.go</a><a href="../../src/crypto/dsa/dsa.go.html#line-249">#L249</a>: 		s.<b>Mod</b>(s, priv.Q)
+		<a href="../../src/crypto/dsa/dsa.go.html#line-251" class="path-duplicate">dsa.go</a><a href="../../src/crypto/dsa/dsa.go.html#line-251">#L251</a>: 		s.<b>Mod</b>(s, priv.Q)
+		<a href="../../src/crypto/dsa/dsa.go.html#line-299" class="path-duplicate">dsa.go</a><a href="../../src/crypto/dsa/dsa.go.html#line-299">#L299</a>: 	u1.<b>Mod</b>(u1, pub.Q)
+		<a href="../../src/crypto/dsa/dsa.go.html#line-301" class="path-duplicate">dsa.go</a><a href="../../src/crypto/dsa/dsa.go.html#line-301">#L301</a>: 	u2.<b>Mod</b>(u2, pub.Q)
+		<a href="../../src/crypto/dsa/dsa.go.html#line-305" class="path-duplicate">dsa.go</a><a href="../../src/crypto/dsa/dsa.go.html#line-305">#L305</a>: 	v.<b>Mod</b>(v, pub.P)
+		<a href="../../src/crypto/dsa/dsa.go.html#line-306" class="path-duplicate">dsa.go</a><a href="../../src/crypto/dsa/dsa.go.html#line-306">#L306</a>: 	v.<b>Mod</b>(v, pub.Q)
+
+	<a href="../../pkg/crypto/ecdsa.html">crypto/ecdsa</a>
+		<a href="../../src/crypto/ecdsa/ecdsa_legacy.go.html#line-96">ecdsa_legacy.go#L96</a>: 			r.<b>Mod</b>(r, N)
+		<a href="../../src/crypto/ecdsa/ecdsa_legacy.go.html#line-106" class="path-duplicate">ecdsa_legacy.go</a><a href="../../src/crypto/ecdsa/ecdsa_legacy.go.html#line-106">#L106</a>: 		s.<b>Mod</b>(s, N) // N != 0
+		<a href="../../src/crypto/ecdsa/ecdsa_legacy.go.html#line-151" class="path-duplicate">ecdsa_legacy.go</a><a href="../../src/crypto/ecdsa/ecdsa_legacy.go.html#line-151">#L151</a>: 	u1.<b>Mod</b>(u1, N)
+		<a href="../../src/crypto/ecdsa/ecdsa_legacy.go.html#line-153" class="path-duplicate">ecdsa_legacy.go</a><a href="../../src/crypto/ecdsa/ecdsa_legacy.go.html#line-153">#L153</a>: 	u2.<b>Mod</b>(u2, N)
+		<a href="../../src/crypto/ecdsa/ecdsa_legacy.go.html#line-162" class="path-duplicate">ecdsa_legacy.go</a><a href="../../src/crypto/ecdsa/ecdsa_legacy.go.html#line-162">#L162</a>: 	x.<b>Mod</b>(x, N)
+
+	<a href="../../pkg/crypto/elliptic.html">crypto/elliptic</a>
+		<a href="../../src/crypto/elliptic/elliptic.go.html#line-204">elliptic.go#L204</a>: 		y.Neg(y).<b>Mod</b>(y, p)
+		<a href="../../src/crypto/elliptic/nistec.go.html#line-203">nistec.go#L203</a>: 		s.<b>Mod</b>(s, curve.params.N)
+		<a href="../../src/crypto/elliptic/nistec_p256.go.html#line-21">nistec_p256.go#L21</a>: 		k = new(big.Int).<b>Mod</b>(k, c.params.N)
+		<a href="../../src/crypto/elliptic/params.go.html#line-45">params.go#L45</a>: 	x3.<b>Mod</b>(x3, curve.P)
+		<a href="../../src/crypto/elliptic/params.go.html#line-70" class="path-duplicate">params.go</a><a href="../../src/crypto/elliptic/params.go.html#line-70">#L70</a>: 	y2.<b>Mod</b>(y2, curve.P)
+		<a href="../../src/crypto/elliptic/params.go.html#line-97" class="path-duplicate">params.go</a><a href="../../src/crypto/elliptic/params.go.html#line-97">#L97</a>: 	xOut.<b>Mod</b>(xOut, curve.P)
+		<a href="../../src/crypto/elliptic/params.go.html#line-100" class="path-duplicate">params.go</a><a href="../../src/crypto/elliptic/params.go.html#line-100">#L100</a>: 	yOut.<b>Mod</b>(yOut, curve.P)
+		<a href="../../src/crypto/elliptic/params.go.html#line-143" class="path-duplicate">params.go</a><a href="../../src/crypto/elliptic/params.go.html#line-143">#L143</a>: 	z1z1.<b>Mod</b>(z1z1, curve.P)
+		<a href="../../src/crypto/elliptic/params.go.html#line-145" class="path-duplicate">params.go</a><a href="../../src/crypto/elliptic/params.go.html#line-145">#L145</a>: 	z2z2.<b>Mod</b>(z2z2, curve.P)
+		<a href="../../src/crypto/elliptic/params.go.html#line-148" class="path-duplicate">params.go</a><a href="../../src/crypto/elliptic/params.go.html#line-148">#L148</a>: 	u1.<b>Mod</b>(u1, curve.P)
+		<a href="../../src/crypto/elliptic/params.go.html#line-150" class="path-duplicate">params.go</a><a href="../../src/crypto/elliptic/params.go.html#line-150">#L150</a>: 	u2.<b>Mod</b>(u2, curve.P)
+		<a href="../../src/crypto/elliptic/params.go.html#line-162" class="path-duplicate">params.go</a><a href="../../src/crypto/elliptic/params.go.html#line-162">#L162</a>: 	s1.<b>Mod</b>(s1, curve.P)
+		<a href="../../src/crypto/elliptic/params.go.html#line-165" class="path-duplicate">params.go</a><a href="../../src/crypto/elliptic/params.go.html#line-165">#L165</a>: 	s2.<b>Mod</b>(s2, curve.P)
+		<a href="../../src/crypto/elliptic/params.go.html#line-182" class="path-duplicate">params.go</a><a href="../../src/crypto/elliptic/params.go.html#line-182">#L182</a>: 	x3.<b>Mod</b>(x3, curve.P)
+		<a href="../../src/crypto/elliptic/params.go.html#line-190" class="path-duplicate">params.go</a><a href="../../src/crypto/elliptic/params.go.html#line-190">#L190</a>: 	y3.<b>Mod</b>(y3, curve.P)
+		<a href="../../src/crypto/elliptic/params.go.html#line-197" class="path-duplicate">params.go</a><a href="../../src/crypto/elliptic/params.go.html#line-197">#L197</a>: 	z3.<b>Mod</b>(z3, curve.P)
+		<a href="../../src/crypto/elliptic/params.go.html#line-225" class="path-duplicate">params.go</a><a href="../../src/crypto/elliptic/params.go.html#line-225">#L225</a>: 	delta.<b>Mod</b>(delta, curve.P)
+		<a href="../../src/crypto/elliptic/params.go.html#line-227" class="path-duplicate">params.go</a><a href="../../src/crypto/elliptic/params.go.html#line-227">#L227</a>: 	gamma.<b>Mod</b>(gamma, curve.P)
+		<a href="../../src/crypto/elliptic/params.go.html#line-242" class="path-duplicate">params.go</a><a href="../../src/crypto/elliptic/params.go.html#line-242">#L242</a>: 	beta8.<b>Mod</b>(beta8, curve.P)
+		<a href="../../src/crypto/elliptic/params.go.html#line-247" class="path-duplicate">params.go</a><a href="../../src/crypto/elliptic/params.go.html#line-247">#L247</a>: 	x3.<b>Mod</b>(x3, curve.P)
+		<a href="../../src/crypto/elliptic/params.go.html#line-259" class="path-duplicate">params.go</a><a href="../../src/crypto/elliptic/params.go.html#line-259">#L259</a>: 	z3.<b>Mod</b>(z3, curve.P)
+		<a href="../../src/crypto/elliptic/params.go.html#line-270" class="path-duplicate">params.go</a><a href="../../src/crypto/elliptic/params.go.html#line-270">#L270</a>: 	gamma.<b>Mod</b>(gamma, curve.P)
+		<a href="../../src/crypto/elliptic/params.go.html#line-276" class="path-duplicate">params.go</a><a href="../../src/crypto/elliptic/params.go.html#line-276">#L276</a>: 	y3.<b>Mod</b>(y3, curve.P)
+
+	<a href="../../pkg/crypto/rsa.html">crypto/rsa</a>
+		<a href="../../src/crypto/rsa/rsa.go.html#line-262">rsa.go#L262</a>: 		congruence.<b>Mod</b>(de, pminus1)
+		<a href="../../src/crypto/rsa/rsa.go.html#line-612" class="path-duplicate">rsa.go</a><a href="../../src/crypto/rsa/rsa.go.html#line-612">#L612</a>: 	priv.Precomputed.Dp.<b>Mod</b>(priv.D, priv.Precomputed.Dp)
+		<a href="../../src/crypto/rsa/rsa.go.html#line-615" class="path-duplicate">rsa.go</a><a href="../../src/crypto/rsa/rsa.go.html#line-615">#L615</a>: 	priv.Precomputed.Dq.<b>Mod</b>(priv.D, priv.Precomputed.Dq)
+		<a href="../../src/crypto/rsa/rsa.go.html#line-626" class="path-duplicate">rsa.go</a><a href="../../src/crypto/rsa/rsa.go.html#line-626">#L626</a>: 		values.Exp.<b>Mod</b>(priv.D, values.Exp)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

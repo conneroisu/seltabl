@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/tls.Certificate</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../pkg/crypto/tls.html">crypto/tls</a>.<a href="../../src/crypto/tls/common.go.html#line-1412">Certificate</a></b></span>
+
+<span class="title">39 uses</span>
+
+	crypto/tls (current package)
+		<a href="../../src/crypto/tls/auth.go.html#line-173">auth.go#L173</a>: func signatureSchemesForCertificate(version uint16, cert *<b>Certificate</b>) []SignatureScheme {
+		<a href="../../src/crypto/tls/auth.go.html#line-232" class="path-duplicate">auth.go</a><a href="../../src/crypto/tls/auth.go.html#line-232">#L232</a>: func selectSignatureScheme(vers uint16, c *<b>Certificate</b>, peerAlgs []SignatureScheme) (SignatureScheme, error) {
+		<a href="../../src/crypto/tls/auth.go.html#line-257" class="path-duplicate">auth.go</a><a href="../../src/crypto/tls/auth.go.html#line-257">#L257</a>: func unsupportedCertificateError(cert *<b>Certificate</b>) error {
+		<a href="../../src/crypto/tls/common.go.html#line-549">common.go#L549</a>: 	Certificates []<b>Certificate</b>
+		<a href="../../src/crypto/tls/common.go.html#line-558" class="path-duplicate">common.go</a><a href="../../src/crypto/tls/common.go.html#line-558">#L558</a>: 	NameToCertificate map[string]*<b>Certificate</b>
+		<a href="../../src/crypto/tls/common.go.html#line-569" class="path-duplicate">common.go</a><a href="../../src/crypto/tls/common.go.html#line-569">#L569</a>: 	GetCertificate func(*ClientHelloInfo) (*<b>Certificate</b>, error)
+		<a href="../../src/crypto/tls/common.go.html#line-586" class="path-duplicate">common.go</a><a href="../../src/crypto/tls/common.go.html#line-586">#L586</a>: 	GetClientCertificate func(*CertificateRequestInfo) (*<b>Certificate</b>, error)
+		<a href="../../src/crypto/tls/common.go.html#line-1123" class="path-duplicate">common.go</a><a href="../../src/crypto/tls/common.go.html#line-1123">#L1123</a>: func (c *Config) getCertificate(clientHello *ClientHelloInfo) (*<b>Certificate</b>, error) {
+		<a href="../../src/crypto/tls/common.go.html#line-1177" class="path-duplicate">common.go</a><a href="../../src/crypto/tls/common.go.html#line-1177">#L1177</a>: func (chi *ClientHelloInfo) SupportsCertificate(c *<b>Certificate</b>) error {
+		<a href="../../src/crypto/tls/common.go.html#line-1330" class="path-duplicate">common.go</a><a href="../../src/crypto/tls/common.go.html#line-1330">#L1330</a>: func (cri *CertificateRequestInfo) SupportsCertificate(c *<b>Certificate</b>) error {
+		<a href="../../src/crypto/tls/common.go.html#line-1367" class="path-duplicate">common.go</a><a href="../../src/crypto/tls/common.go.html#line-1367">#L1367</a>: 	c.NameToCertificate = make(map[string]*<b>Certificate</b>)
+		<a href="../../src/crypto/tls/common.go.html#line-1412" class="path-duplicate">common.go</a><a href="../../src/crypto/tls/common.go.html#line-1412">#L1412</a>: type <b>Certificate</b> struct {
+		<a href="../../src/crypto/tls/common.go.html#line-1436" class="path-duplicate">common.go</a><a href="../../src/crypto/tls/common.go.html#line-1436">#L1436</a>: func (c *<b>Certificate</b>) leaf() (*x509.Certificate, error) {
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-612">handshake_client.go#L612</a>: 	var chainToSend *<b>Certificate</b>
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-1098" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-1098">#L1098</a>: func (c *Conn) getClientCertificate(cri *CertificateRequestInfo) (*<b>Certificate</b>, error) {
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-1111" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-1111">#L1111</a>: 	return new(<b>Certificate</b>), nil
+		<a href="../../src/crypto/tls/handshake_messages.go.html#line-1357">handshake_messages.go#L1357</a>: 	certificate  <b>Certificate</b>
+		<a href="../../src/crypto/tls/handshake_messages.go.html#line-1387" class="path-duplicate">handshake_messages.go</a><a href="../../src/crypto/tls/handshake_messages.go.html#line-1387">#L1387</a>: func marshalCertificate(b *cryptobyte.Builder, certificate <b>Certificate</b>) {
+		<a href="../../src/crypto/tls/handshake_messages.go.html#line-1442" class="path-duplicate">handshake_messages.go</a><a href="../../src/crypto/tls/handshake_messages.go.html#line-1442">#L1442</a>: func unmarshalCertificate(s *cryptobyte.String, certificate *<b>Certificate</b>) bool {
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-37">handshake_server.go#L37</a>: 	cert         *<b>Certificate</b>
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-644" class="path-duplicate">handshake_server.go</a><a href="../../src/crypto/tls/handshake_server.go.html#line-644">#L644</a>: 		if err := c.processCertsFromClient(<b>Certificate</b>{
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-866" class="path-duplicate">handshake_server.go</a><a href="../../src/crypto/tls/handshake_server.go.html#line-866">#L866</a>: func (c *Conn) processCertsFromClient(certificate <b>Certificate</b>) error {
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-34">handshake_server_tls13.go#L34</a>: 	cert            *<b>Certificate</b>
+		<a href="../../src/crypto/tls/key_agreement.go.html#line-27">key_agreement.go#L27</a>: 	generateServerKeyExchange(*Config, *<b>Certificate</b>, *clientHelloMsg, *serverHelloMsg) (*serverKeyExchangeMsg, error)
+		<a href="../../src/crypto/tls/key_agreement.go.html#line-28" class="path-duplicate">key_agreement.go</a><a href="../../src/crypto/tls/key_agreement.go.html#line-28">#L28</a>: 	processClientKeyExchange(*Config, *<b>Certificate</b>, *clientKeyExchangeMsg, uint16) ([]byte, error)
+		<a href="../../src/crypto/tls/key_agreement.go.html#line-45" class="path-duplicate">key_agreement.go</a><a href="../../src/crypto/tls/key_agreement.go.html#line-45">#L45</a>: func (ka rsaKeyAgreement) generateServerKeyExchange(config *Config, cert *<b>Certificate</b>, clientHello *clientHelloMsg, hello *serverHelloMsg) (*serverKeyExchangeMsg, error) {
+		<a href="../../src/crypto/tls/key_agreement.go.html#line-49" class="path-duplicate">key_agreement.go</a><a href="../../src/crypto/tls/key_agreement.go.html#line-49">#L49</a>: func (ka rsaKeyAgreement) processClientKeyExchange(config *Config, cert *<b>Certificate</b>, ckx *clientKeyExchangeMsg, version uint16) ([]byte, error) {
+		<a href="../../src/crypto/tls/key_agreement.go.html#line-169" class="path-duplicate">key_agreement.go</a><a href="../../src/crypto/tls/key_agreement.go.html#line-169">#L169</a>: func (ka *ecdheKeyAgreement) generateServerKeyExchange(config *Config, cert *<b>Certificate</b>, clientHello *clientHelloMsg, hello *serverHelloMsg) (*serverKeyExchangeMsg, error) {
+		<a href="../../src/crypto/tls/key_agreement.go.html#line-258" class="path-duplicate">key_agreement.go</a><a href="../../src/crypto/tls/key_agreement.go.html#line-258">#L258</a>: func (ka *ecdheKeyAgreement) processClientKeyExchange(config *Config, cert *<b>Certificate</b>, ckx *clientKeyExchangeMsg, version uint16) ([]byte, error) {
+		<a href="../../src/crypto/tls/ticket.go.html#line-137">ticket.go#L137</a>: 	marshalCertificate(&amp;b, <b>Certificate</b>{
+		<a href="../../src/crypto/tls/ticket.go.html#line-185" class="path-duplicate">ticket.go</a><a href="../../src/crypto/tls/ticket.go.html#line-185">#L185</a>: 	var cert <b>Certificate</b>
+		<a href="../../src/crypto/tls/tls.go.html#line-230">tls.go#L230</a>: func LoadX509KeyPair(certFile, keyFile string) (<b>Certificate</b>, error) {
+		<a href="../../src/crypto/tls/tls.go.html#line-233" class="path-duplicate">tls.go</a><a href="../../src/crypto/tls/tls.go.html#line-233">#L233</a>: 		return <b>Certificate</b>{}, err
+		<a href="../../src/crypto/tls/tls.go.html#line-237" class="path-duplicate">tls.go</a><a href="../../src/crypto/tls/tls.go.html#line-237">#L237</a>: 		return <b>Certificate</b>{}, err
+		<a href="../../src/crypto/tls/tls.go.html#line-245" class="path-duplicate">tls.go</a><a href="../../src/crypto/tls/tls.go.html#line-245">#L245</a>: func X509KeyPair(certPEMBlock, keyPEMBlock []byte) (<b>Certificate</b>, error) {
+		<a href="../../src/crypto/tls/tls.go.html#line-246" class="path-duplicate">tls.go</a><a href="../../src/crypto/tls/tls.go.html#line-246">#L246</a>: 	fail := func(err error) (<b>Certificate</b>, error) { return <b>Certificate</b>{}, err }
+		<a href="../../src/crypto/tls/tls.go.html#line-248" class="path-duplicate">tls.go</a><a href="../../src/crypto/tls/tls.go.html#line-248">#L248</a>: 	var cert <b>Certificate</b>
+
+	<a href="../../pkg/net/http.html">net/http</a>
+		<a href="../../src/net/http/server.go.html#line-3317">server.go#L3317</a>: 		config.Certificates = make([]tls.<b>Certificate</b>, 1)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

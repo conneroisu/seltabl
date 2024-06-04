@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.m.gsignal</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/runtime2.go.html#line-550">m</a>.<a href="../src/runtime/runtime2.go.html#line-558">gsignal</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">34 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/arena.go.html#line-479">arena.go#L479</a>: 	if mp.<b>gsignal</b> == getg() {
+		<a href="../src/runtime/arena.go.html#line-572" class="path-duplicate">arena.go</a><a href="../src/runtime/arena.go.html#line-572">#L572</a>: 	if mp.<b>gsignal</b> == getg() {
+		<a href="../src/runtime/cgocheck.go.html#line-43">cgocheck.go#L43</a>: 	if gp == gp.m.g0 || gp == gp.m.<b>gsignal</b> {
+		<a href="../src/runtime/debug.go.html#line-100">debug.go#L100</a>: 	if gp == gp.m.g0 || gp == gp.m.<b>gsignal</b> {
+		<a href="../src/runtime/debug.go.html#line-119" class="path-duplicate">debug.go</a><a href="../src/runtime/debug.go.html#line-119">#L119</a>: 	if gp == gp.m.g0 || gp == gp.m.<b>gsignal</b> {
+		<a href="../src/runtime/malloc.go.html#line-1032">malloc.go#L1032</a>: 	if mp.<b>gsignal</b> == getg() {
+		<a href="../src/runtime/malloc.go.html#line-1446" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-1446">#L1446</a>: 		if gp := getg(); gp == gp.m.<b>gsignal</b> {
+		<a href="../src/runtime/os_linux.go.html#line-375">os_linux.go#L375</a>: 	mp.<b>gsignal</b> = malg(32 * 1024) // Linux wants &gt;= 2K
+		<a href="../src/runtime/os_linux.go.html#line-376" class="path-duplicate">os_linux.go</a><a href="../src/runtime/os_linux.go.html#line-376">#L376</a>: 	mp.<b>gsignal</b>.m = mp
+		<a href="../src/runtime/proc.go.html#line-908">proc.go#L908</a>: 	if mp.<b>gsignal</b> != nil {
+		<a href="../src/runtime/proc.go.html#line-909" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-909">#L909</a>: 		mp.<b>gsignal</b>.stackguard1 = mp.<b>gsignal</b>.stack.lo + stackGuard
+		<a href="../src/runtime/proc.go.html#line-1803" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-1803">#L1803</a>: 	if mp.<b>gsignal</b> != nil {
+		<a href="../src/runtime/proc.go.html#line-1804" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-1804">#L1804</a>: 		stackfree(mp.<b>gsignal</b>.stack)
+		<a href="../src/runtime/proc.go.html#line-1809" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-1809">#L1809</a>: 		mp.<b>gsignal</b> = nil
+		<a href="../src/runtime/proc.go.html#line-4257" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4257">#L4257</a>: 	if gp == gp.m.g0 || gp == gp.m.<b>gsignal</b> {
+		<a href="../src/runtime/runtime2.go.html#line-558">runtime2.go#L558</a>: 	<b>gsignal</b>       *g                // signal-handling g
+		<a href="../src/runtime/signal_unix.go.html#line-476">signal_unix.go#L476</a>: 	setg(gp.m.<b>gsignal</b>)
+		<a href="../src/runtime/signal_unix.go.html#line-482" class="path-duplicate">signal_unix.go</a><a href="../src/runtime/signal_unix.go.html#line-482">#L482</a>: 		gp.m.<b>gsignal</b>.stktopsp = getcallersp()
+		<a href="../src/runtime/signal_unix.go.html#line-557" class="path-duplicate">signal_unix.go</a><a href="../src/runtime/signal_unix.go.html#line-557">#L557</a>: 	if sp &gt;= mp.<b>gsignal</b>.stack.lo &amp;&amp; sp &lt; mp.<b>gsignal</b>.stack.hi {
+		<a href="../src/runtime/signal_unix.go.html#line-1063" class="path-duplicate">signal_unix.go</a><a href="../src/runtime/signal_unix.go.html#line-1063">#L1063</a>: 	print("mp.gsignal stack [", hex(mp.<b>gsignal</b>.stack.lo), " ", hex(mp.<b>gsignal</b>.stack.hi), "], ")
+		<a href="../src/runtime/signal_unix.go.html#line-1281" class="path-duplicate">signal_unix.go</a><a href="../src/runtime/signal_unix.go.html#line-1281">#L1281</a>: 		signalstack(&amp;mp.<b>gsignal</b>.stack)
+		<a href="../src/runtime/signal_unix.go.html#line-1369" class="path-duplicate">signal_unix.go</a><a href="../src/runtime/signal_unix.go.html#line-1369">#L1369</a>: 		old.stack = gp.m.<b>gsignal</b>.stack
+		<a href="../src/runtime/signal_unix.go.html#line-1370" class="path-duplicate">signal_unix.go</a><a href="../src/runtime/signal_unix.go.html#line-1370">#L1370</a>: 		old.stackguard0 = gp.m.<b>gsignal</b>.stackguard0
+		<a href="../src/runtime/signal_unix.go.html#line-1371" class="path-duplicate">signal_unix.go</a><a href="../src/runtime/signal_unix.go.html#line-1371">#L1371</a>: 		old.stackguard1 = gp.m.<b>gsignal</b>.stackguard1
+		<a href="../src/runtime/signal_unix.go.html#line-1372" class="path-duplicate">signal_unix.go</a><a href="../src/runtime/signal_unix.go.html#line-1372">#L1372</a>: 		old.stktopsp = gp.m.<b>gsignal</b>.stktopsp
+		<a href="../src/runtime/signal_unix.go.html#line-1375" class="path-duplicate">signal_unix.go</a><a href="../src/runtime/signal_unix.go.html#line-1375">#L1375</a>: 	gp.m.<b>gsignal</b>.stack.lo = stsp
+		<a href="../src/runtime/signal_unix.go.html#line-1376" class="path-duplicate">signal_unix.go</a><a href="../src/runtime/signal_unix.go.html#line-1376">#L1376</a>: 	gp.m.<b>gsignal</b>.stack.hi = stsp + st.ss_size
+		<a href="../src/runtime/signal_unix.go.html#line-1377" class="path-duplicate">signal_unix.go</a><a href="../src/runtime/signal_unix.go.html#line-1377">#L1377</a>: 	gp.m.<b>gsignal</b>.stackguard0 = stsp + stackGuard
+		<a href="../src/runtime/signal_unix.go.html#line-1378" class="path-duplicate">signal_unix.go</a><a href="../src/runtime/signal_unix.go.html#line-1378">#L1378</a>: 	gp.m.<b>gsignal</b>.stackguard1 = stsp + stackGuard
+		<a href="../src/runtime/signal_unix.go.html#line-1387" class="path-duplicate">signal_unix.go</a><a href="../src/runtime/signal_unix.go.html#line-1387">#L1387</a>: 	gp := getg().m.<b>gsignal</b>
+		<a href="../src/runtime/stack.go.html#line-969">stack.go#L969</a>: 		print("runtime: newstack called from g=", hex(thisg.m.morebuf.g), "\n"+"\tm=", thisg.m, " m-&gt;curg=", thisg.m.curg, " m-&gt;g0=", thisg.m.g0, " m-&gt;gsignal=", thisg.m.<b>gsignal</b>, "\n")
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

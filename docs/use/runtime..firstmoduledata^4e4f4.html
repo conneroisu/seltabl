@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.firstmoduledata</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">var <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/symtab.go.html#line-411">firstmoduledata</a></b></span>
+
+<span class="title">34 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/covercounter.go.html#line-16">covercounter.go#L16</a>: 	for datap := &amp;<b>firstmoduledata</b>; datap != nil; datap = datap.next {
+		<a href="../src/runtime/debuglog.go.html#line-297">debuglog.go#L297</a>: 	datap := &amp;<b>firstmoduledata</b>
+		<a href="../src/runtime/debuglog.go.html#line-662" class="path-duplicate">debuglog.go</a><a href="../src/runtime/debuglog.go.html#line-662">#L662</a>: 		ptr += <b>firstmoduledata</b>.etext
+		<a href="../src/runtime/heapdump.go.html#line-444">heapdump.go#L444</a>: 	dumpint(uint64(<b>firstmoduledata</b>.data))
+		<a href="../src/runtime/heapdump.go.html#line-445" class="path-duplicate">heapdump.go</a><a href="../src/runtime/heapdump.go.html#line-445">#L445</a>: 	dumpmemrange(unsafe.Pointer(<b>firstmoduledata</b>.data), <b>firstmoduledata</b>.edata-<b>firstmoduledata</b>.data)
+		<a href="../src/runtime/heapdump.go.html#line-446" class="path-duplicate">heapdump.go</a><a href="../src/runtime/heapdump.go.html#line-446">#L446</a>: 	dumpfields(<b>firstmoduledata</b>.gcdatamask)
+		<a href="../src/runtime/heapdump.go.html#line-450" class="path-duplicate">heapdump.go</a><a href="../src/runtime/heapdump.go.html#line-450">#L450</a>: 	dumpint(uint64(<b>firstmoduledata</b>.bss))
+		<a href="../src/runtime/heapdump.go.html#line-451" class="path-duplicate">heapdump.go</a><a href="../src/runtime/heapdump.go.html#line-451">#L451</a>: 	dumpmemrange(unsafe.Pointer(<b>firstmoduledata</b>.bss), <b>firstmoduledata</b>.ebss-<b>firstmoduledata</b>.bss)
+		<a href="../src/runtime/heapdump.go.html#line-452" class="path-duplicate">heapdump.go</a><a href="../src/runtime/heapdump.go.html#line-452">#L452</a>: 	dumpfields(<b>firstmoduledata</b>.gcbssmask)
+		<a href="../src/runtime/malloc.go.html#line-584">malloc.go#L584</a>: 		p := <b>firstmoduledata</b>.end
+		<a href="../src/runtime/mfinal.go.html#line-292">mfinal.go#L292</a>: 	for datap := &amp;<b>firstmoduledata</b>; datap != nil; datap = datap.next {
+		<a href="../src/runtime/plugin.go.html#line-12">plugin.go#L12</a>: 	for pmd := <b>firstmoduledata</b>.next; pmd != nil; pmd = pmd.next {
+		<a href="../src/runtime/proc.go.html#line-252">proc.go#L252</a>: 	for m := &amp;<b>firstmoduledata</b>; m != nil; m = m.next {
+		<a href="../src/runtime/proc.go.html#line-5383" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-5383">#L5383</a>: 		} else if pc &gt; <b>firstmoduledata</b>.etext {
+		<a href="../src/runtime/stack.go.html#line-1278">stack.go#L1278</a>: 	for datap := &amp;<b>firstmoduledata</b>; datap != nil; datap = datap.next {
+		<a href="../src/runtime/stkframe.go.html#line-274">stkframe.go#L274</a>: 	for datap := &amp;<b>firstmoduledata</b>; datap != nil; datap = datap.next {
+		<a href="../src/runtime/symtab.go.html#line-299">symtab.go#L299</a>: 	for datap := &amp;<b>firstmoduledata</b>; datap != nil; datap = datap.next {
+		<a href="../src/runtime/symtab.go.html#line-411" class="path-duplicate">symtab.go</a><a href="../src/runtime/symtab.go.html#line-411">#L411</a>: var <b>firstmoduledata</b> moduledata  // linker symbol
+		<a href="../src/runtime/symtab.go.html#line-453" class="path-duplicate">symtab.go</a><a href="../src/runtime/symtab.go.html#line-453">#L453</a>: 	for md := &amp;<b>firstmoduledata</b>; md != nil; md = md.next {
+		<a href="../src/runtime/symtab.go.html#line-479" class="path-duplicate">symtab.go</a><a href="../src/runtime/symtab.go.html#line-479">#L479</a>: 			(*modules)[i] = &amp;<b>firstmoduledata</b>
+		<a href="../src/runtime/symtab.go.html#line-517" class="path-duplicate">symtab.go</a><a href="../src/runtime/symtab.go.html#line-517">#L517</a>: 	for datap := &amp;<b>firstmoduledata</b>; datap != nil; datap = datap.next {
+		<a href="../src/runtime/symtab.go.html#line-734" class="path-duplicate">symtab.go</a><a href="../src/runtime/symtab.go.html#line-734">#L734</a>: 	for datap := &amp;<b>firstmoduledata</b>; datap != nil; datap = datap.next {
+		<a href="../src/runtime/type.go.html#line-114">type.go#L114</a>: 	for md := &amp;<b>firstmoduledata</b>; md != nil; md = md.next {
+		<a href="../src/runtime/type.go.html#line-131" class="path-duplicate">type.go</a><a href="../src/runtime/type.go.html#line-131">#L131</a>: 		for next := &amp;<b>firstmoduledata</b>; next != nil; next = next.next {
+		<a href="../src/runtime/type.go.html#line-151" class="path-duplicate">type.go</a><a href="../src/runtime/type.go.html#line-151">#L151</a>: 	for next := &amp;<b>firstmoduledata</b>; next != nil; next = next.next {
+		<a href="../src/runtime/type.go.html#line-163" class="path-duplicate">type.go</a><a href="../src/runtime/type.go.html#line-163">#L163</a>: 			for next := &amp;<b>firstmoduledata</b>; next != nil; next = next.next {
+		<a href="../src/runtime/type.go.html#line-193" class="path-duplicate">type.go</a><a href="../src/runtime/type.go.html#line-193">#L193</a>: 	for next := &amp;<b>firstmoduledata</b>; next != nil; next = next.next {
+		<a href="../src/runtime/type.go.html#line-205" class="path-duplicate">type.go</a><a href="../src/runtime/type.go.html#line-205">#L205</a>: 			for next := &amp;<b>firstmoduledata</b>; next != nil; next = next.next {
+		<a href="../src/runtime/type.go.html#line-255" class="path-duplicate">type.go</a><a href="../src/runtime/type.go.html#line-255">#L255</a>: 	if <b>firstmoduledata</b>.next == nil {
+		<a href="../src/runtime/type.go.html#line-258" class="path-duplicate">type.go</a><a href="../src/runtime/type.go.html#line-258">#L258</a>: 	typehash := make(map[uint32][]*_type, len(<b>firstmoduledata</b>.typelinks))
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

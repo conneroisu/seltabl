@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: sync/atomic.Pointer</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../pkg/sync/atomic.html">sync/atomic</a>.<a href="../../src/sync/atomic/type.go.html#line-43">Pointer</a></b></span>
+
+<span class="title">14 uses</span>
+
+	sync/atomic (current package)
+		<a href="../../src/sync/atomic/type.go.html#line-40">type.go#L40</a>: var _ = &amp;<b>Pointer</b>[int]{}
+		<a href="../../src/sync/atomic/type.go.html#line-43" class="path-duplicate">type.go</a><a href="../../src/sync/atomic/type.go.html#line-43">#L43</a>: type <b>Pointer</b>[T any] struct {
+		<a href="../../src/sync/atomic/type.go.html#line-54" class="path-duplicate">type.go</a><a href="../../src/sync/atomic/type.go.html#line-54">#L54</a>: func (x *<b>Pointer</b>[T]) Load() *T { return (*T)(LoadPointer(&amp;x.v)) }
+		<a href="../../src/sync/atomic/type.go.html#line-57" class="path-duplicate">type.go</a><a href="../../src/sync/atomic/type.go.html#line-57">#L57</a>: func (x *<b>Pointer</b>[T]) Store(val *T) { StorePointer(&amp;x.v, unsafe.Pointer(val)) }
+		<a href="../../src/sync/atomic/type.go.html#line-60" class="path-duplicate">type.go</a><a href="../../src/sync/atomic/type.go.html#line-60">#L60</a>: func (x *<b>Pointer</b>[T]) Swap(new *T) (old *T) { return (*T)(SwapPointer(&amp;x.v, unsafe.Pointer(new))) }
+		<a href="../../src/sync/atomic/type.go.html#line-63" class="path-duplicate">type.go</a><a href="../../src/sync/atomic/type.go.html#line-63">#L63</a>: func (x *<b>Pointer</b>[T]) CompareAndSwap(old, new *T) (swapped bool) {
+
+	<a href="../../pkg/sync.html">sync</a>
+		<a href="../../src/sync/map.go.html#line-47">map.go#L47</a>: 	read atomic.<b>Pointer</b>[readOnly]
+		<a href="../../src/sync/map.go.html#line-101" class="path-duplicate">map.go</a><a href="../../src/sync/map.go.html#line-101">#L101</a>: 	p atomic.<b>Pointer</b>[any]
+
+	<a href="../../pkg/internal/godebug.html">internal/godebug</a>
+		<a href="../../src/internal/godebug/godebug.go.html#line-53">godebug.go#L53</a>: 	value          atomic.<b>Pointer</b>[value]
+
+	<a href="../../pkg/log.html">log</a>
+		<a href="../../src/log/log.go.html#line-61">log.go#L61</a>: 	prefix    atomic.<b>Pointer</b>[string] // prefix on each line to identify the logger (but see Lmsgprefix)
+
+	<a href="../../pkg/math/rand.html">math/rand</a>
+		<a href="../../src/math/rand/rand.go.html#line-312">rand.go#L312</a>: var globalRandGenerator atomic.<b>Pointer</b>[Rand]
+
+	<a href="../../pkg/net.html">net</a>
+		<a href="../../src/net/dnsclient_unix.go.html#line-366">dnsclient_unix.go#L366</a>: 	dnsConfig atomic.<b>Pointer</b>[dnsConfig] // parsed resolv.conf structure used in lookups
+
+	<a href="../../pkg/net/http.html">net/http</a>
+		<a href="../../src/net/http/server.go.html#line-295">server.go#L295</a>: 	curReq atomic.<b>Pointer</b>[response] // (which has a Request in it)
+
+	<a href="../../pkg/syscall.html">syscall</a>
+		<a href="../../src/syscall/rlimit.go.html#line-14">rlimit.go#L14</a>: var origRlimitNofile atomic.<b>Pointer</b>[Rlimit]
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

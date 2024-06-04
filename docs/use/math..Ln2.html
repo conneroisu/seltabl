@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: math.Ln2</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../pkg/math.html">math</a>.<a href="../src/math/const.go.html#line-21">Ln2</a></b></span>
+
+<span class="title">5 uses</span>
+
+	math (current package)
+		<a href="../src/math/acosh.go.html#line-59">acosh.go#L59</a>: 		return Log(x) + <b>Ln2</b> // x &gt; 2**28
+		<a href="../src/math/const.go.html#line-21">const.go#L21</a>: 	<b>Ln2</b>    = 0.693147180559945309417232121458176568075500134360255254120680009 // https://oeis.org/A002162
+		<a href="../src/math/const.go.html#line-22" class="path-duplicate">const.go</a><a href="../src/math/const.go.html#line-22">#L22</a>: 	Log2E  = 1 / <b>Ln2</b>
+		<a href="../src/math/erfinv.go.html#line-100">erfinv.go#L100</a>: 		r := Sqrt(<b>Ln2</b> - Log(1.0-x))
+		<a href="../src/math/log10.go.html#line-36">log10.go#L36</a>: 	return Log(frac)*(1/<b>Ln2</b>) + float64(exp)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

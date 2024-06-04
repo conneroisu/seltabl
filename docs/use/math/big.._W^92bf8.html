@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: math/big._W</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../../pkg/math/big.html">math/big</a>.<a href="../../src/math/big/arith.go.html#line-21">_W</a></b></span>
+
+<span class="title">87 uses</span>
+
+	math/big (current package)
+		<a href="../../src/math/big/arith.go.html#line-19">arith.go#L19</a>: 	_S = <b>_W</b> / 8 // word size in bytes
+		<a href="../../src/math/big/arith.go.html#line-21" class="path-duplicate">arith.go</a><a href="../../src/math/big/arith.go.html#line-21">#L21</a>: 	<b>_W</b> = bits.UintSize // word size in bits
+		<a href="../../src/math/big/arith.go.html#line-22" class="path-duplicate">arith.go</a><a href="../../src/math/big/arith.go.html#line-22">#L22</a>: 	_B = 1 &lt;&lt; <b>_W</b>       // digit base
+		<a href="../../src/math/big/arith.go.html#line-154" class="path-duplicate">arith.go</a><a href="../../src/math/big/arith.go.html#line-154">#L154</a>: 	s &amp;= <b>_W</b> - 1 // hint to the compiler that shifts by s don't need guard code
+		<a href="../../src/math/big/arith.go.html#line-155" class="path-duplicate">arith.go</a><a href="../../src/math/big/arith.go.html#line-155">#L155</a>: 	ŝ := <b>_W</b> - s
+		<a href="../../src/math/big/arith.go.html#line-156" class="path-duplicate">arith.go</a><a href="../../src/math/big/arith.go.html#line-156">#L156</a>: 	ŝ &amp;= <b>_W</b> - 1 // ditto
+		<a href="../../src/math/big/arith.go.html#line-177" class="path-duplicate">arith.go</a><a href="../../src/math/big/arith.go.html#line-177">#L177</a>: 	s &amp;= <b>_W</b> - 1 // hint to the compiler that shifts by s don't need guard code
+		<a href="../../src/math/big/arith.go.html#line-178" class="path-duplicate">arith.go</a><a href="../../src/math/big/arith.go.html#line-178">#L178</a>: 	ŝ := <b>_W</b> - s
+		<a href="../../src/math/big/arith.go.html#line-179" class="path-duplicate">arith.go</a><a href="../../src/math/big/arith.go.html#line-179">#L179</a>: 	ŝ &amp;= <b>_W</b> - 1 // ditto
+		<a href="../../src/math/big/arith.go.html#line-214" class="path-duplicate">arith.go</a><a href="../../src/math/big/arith.go.html#line-214">#L214</a>: 		x1 = x1&lt;&lt;s | x0&gt;&gt;(<b>_W</b>-s)
+		<a href="../../src/math/big/decimal.go.html#line-42">decimal.go#L42</a>: const maxShift = <b>_W</b> - 4
+		<a href="../../src/math/big/float.go.html#line-219">float.go#L219</a>: 	return uint(len(x.mant))*<b>_W</b> - x.mant.trailingZeroBits()
+		<a href="../../src/math/big/float.go.html#line-381" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-381">#L381</a>: 	const msb = 1 &lt;&lt; (<b>_W</b> - 1)
+		<a href="../../src/math/big/float.go.html#line-413" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-413">#L413</a>: 	bits := m * <b>_W</b>           // present mantissa bits; bits &gt; 0
+		<a href="../../src/math/big/float.go.html#line-443" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-443">#L443</a>: 	n := (z.prec + (<b>_W</b> - 1)) / <b>_W</b> // mantissa length in words for desired precision
+		<a href="../../src/math/big/float.go.html#line-450" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-450">#L450</a>: 	ntz := n*<b>_W</b> - z.prec // 0 &lt;= ntz &lt; _W
+		<a href="../../src/math/big/float.go.html#line-494" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-494">#L494</a>: 				const msb = 1 &lt;&lt; (<b>_W</b> - 1)
+		<a href="../../src/math/big/float.go.html#line-702" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-702">#L702</a>: 	if debugFloat &amp;&amp; x[i]&amp;(1&lt;&lt;(<b>_W</b>-1)) == 0 {
+		<a href="../../src/math/big/float.go.html#line-705" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-705">#L705</a>: 	switch <b>_W</b> {
+		<a href="../../src/math/big/float.go.html#line-720" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-720">#L720</a>: 	if debugFloat &amp;&amp; x[i]&amp;(1&lt;&lt;(<b>_W</b>-1)) == 0 {
+		<a href="../../src/math/big/float.go.html#line-723" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-723">#L723</a>: 	switch <b>_W</b> {
+		<a href="../../src/math/big/float.go.html#line-878" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-878">#L878</a>: 			if p &lt; 0 /* m &lt;= 0.25 */ || p == 0 &amp;&amp; x.mant.sticky(uint(len(x.mant))*<b>_W</b>-1) == 0 /* m == 0.5 */ {
+		<a href="../../src/math/big/float.go.html#line-998" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-998">#L998</a>: 			if p &lt; 0 /* m &lt;= 0.25 */ || p == 0 &amp;&amp; x.mant.sticky(uint(len(x.mant))*<b>_W</b>-1) == 0 /* m == 0.5 */ {
+		<a href="../../src/math/big/float.go.html#line-1103" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-1103">#L1103</a>: 		allBits := uint(len(x.mant)) * <b>_W</b>
+		<a href="../../src/math/big/float.go.html#line-1150" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-1150">#L1150</a>: 		allBits := int32(len(x.mant)) * <b>_W</b>
+		<a href="../../src/math/big/float.go.html#line-1229" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-1229">#L1229</a>: 	ex := int64(x.exp) - int64(len(x.mant))*<b>_W</b>
+		<a href="../../src/math/big/float.go.html#line-1230" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-1230">#L1230</a>: 	ey := int64(y.exp) - int64(len(y.mant))*<b>_W</b>
+		<a href="../../src/math/big/float.go.html#line-1260" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-1260">#L1260</a>: 	z.setExpAndRound(ex+int64(len(z.mant))*<b>_W</b>-fnorm(z.mant), 0)
+		<a href="../../src/math/big/float.go.html#line-1276" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-1276">#L1276</a>: 	ex := int64(x.exp) - int64(len(x.mant))*<b>_W</b>
+		<a href="../../src/math/big/float.go.html#line-1277" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-1277">#L1277</a>: 	ey := int64(y.exp) - int64(len(y.mant))*<b>_W</b>
+		<a href="../../src/math/big/float.go.html#line-1313" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-1313">#L1313</a>: 	z.setExpAndRound(ex+int64(len(z.mant))*<b>_W</b>-fnorm(z.mant), 0)
+		<a href="../../src/math/big/float.go.html#line-1350" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-1350">#L1350</a>: 	n := int(z.prec/<b>_W</b>) + 1
+		<a href="../../src/math/big/float.go.html#line-1370" class="path-duplicate">float.go</a><a href="../../src/math/big/float.go.html#line-1370">#L1370</a>: 	e := int64(x.exp) - int64(y.exp) - int64(d-len(z.mant))*<b>_W</b>
+		<a href="../../src/math/big/floatconv.go.html#line-85">floatconv.go#L85</a>: 	exp2 := int64(len(z.mant))*<b>_W</b> - fnorm(z.mant)
+		<a href="../../src/math/big/floatmarsh.go.html#line-31">floatmarsh.go#L31</a>: 		n = int((x.prec + (<b>_W</b> - 1)) / <b>_W</b>) // required mantissa length in words for given precision
+		<a href="../../src/math/big/ftoa.go.html#line-330">ftoa.go#L330</a>: 	switch w := uint32(len(x.mant)) * <b>_W</b>; {
+		<a href="../../src/math/big/ftoa.go.html#line-381" class="path-duplicate">ftoa.go</a><a href="../../src/math/big/ftoa.go.html#line-381">#L381</a>: 	switch w := uint(len(x.mant)) * <b>_W</b>; {
+		<a href="../../src/math/big/int.go.html#line-87">int.go#L87</a>: 	} else if <b>_W</b> == 32 &amp;&amp; u&gt;&gt;32 != 0 {
+		<a href="../../src/math/big/int.go.html#line-417" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-417">#L417</a>: 	if <b>_W</b> == 32 &amp;&amp; len(x) &gt; 1 {
+		<a href="../../src/math/big/int.go.html#line-441" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-441">#L441</a>: 	if len(x.abs) &lt;= 64/<b>_W</b> {
+		<a href="../../src/math/big/int.go.html#line-450" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-450">#L450</a>: 	return !x.neg &amp;&amp; len(x.abs) &lt;= 64/<b>_W</b>
+		<a href="../../src/math/big/int.go.html#line-671" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-671">#L671</a>: 	a1 = A.abs[n-1]&lt;&lt;h | A.abs[n-2]&gt;&gt;(<b>_W</b>-h)
+		<a href="../../src/math/big/int.go.html#line-675" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-675">#L675</a>: 		a2 = B.abs[n-1]&lt;&lt;h | B.abs[n-2]&gt;&gt;(<b>_W</b>-h)
+		<a href="../../src/math/big/int.go.html#line-677" class="path-duplicate">int.go</a><a href="../../src/math/big/int.go.html#line-677">#L677</a>: 		a2 = B.abs[n-2] &gt;&gt; (<b>_W</b> - h)
+		<a href="../../src/math/big/nat.go.html#line-671">nat.go#L671</a>: 		return i*<b>_W</b> + bits.Len(top)
+		<a href="../../src/math/big/nat.go.html#line-687" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-687">#L687</a>: 	return i*<b>_W</b> + uint(bits.TrailingZeros(uint(x[i])))
+		<a href="../../src/math/big/nat.go.html#line-697" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-697">#L697</a>: 		return i*<b>_W</b> + uint(bits.TrailingZeros(uint(x[i]))), true
+		<a href="../../src/math/big/nat.go.html#line-723" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-723">#L723</a>: 	n := m + int(s/<b>_W</b>)
+		<a href="../../src/math/big/nat.go.html#line-725" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-725">#L725</a>: 	z[n] = shlVU(z[n-m:n], x, s%<b>_W</b>)
+		<a href="../../src/math/big/nat.go.html#line-743" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-743">#L743</a>: 	n := m - int(s/<b>_W</b>)
+		<a href="../../src/math/big/nat.go.html#line-750" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-750">#L750</a>: 	shrVU(z, x[m-n:], s%<b>_W</b>)
+		<a href="../../src/math/big/nat.go.html#line-756" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-756">#L756</a>: 	j := int(i / <b>_W</b>)
+		<a href="../../src/math/big/nat.go.html#line-757" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-757">#L757</a>: 	m := Word(1) &lt;&lt; (i % <b>_W</b>)
+		<a href="../../src/math/big/nat.go.html#line-786" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-786">#L786</a>: 	j := i / <b>_W</b>
+		<a href="../../src/math/big/nat.go.html#line-791" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-791">#L791</a>: 	return uint(x[j] &gt;&gt; (i % <b>_W</b>) &amp; 1)
+		<a href="../../src/math/big/nat.go.html#line-797" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-797">#L797</a>: 	j := i / <b>_W</b>
+		<a href="../../src/math/big/nat.go.html#line-810" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-810">#L810</a>: 	if x[j]&lt;&lt;(<b>_W</b>-i%<b>_W</b>) != 0 {
+		<a href="../../src/math/big/nat.go.html#line-834" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-834">#L834</a>: 	w := (n + <b>_W</b> - 1) / <b>_W</b>
+		<a href="../../src/math/big/nat.go.html#line-840" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-840">#L840</a>: 	if n%<b>_W</b> != 0 {
+		<a href="../../src/math/big/nat.go.html#line-841" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-841">#L841</a>: 		z[len(z)-1] &amp;= 1&lt;&lt;(n%<b>_W</b>) - 1
+		<a href="../../src/math/big/nat.go.html#line-909" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-909">#L909</a>: 	bitLengthOfMSW := uint(n % <b>_W</b>)
+		<a href="../../src/math/big/nat.go.html#line-911" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-911">#L911</a>: 		bitLengthOfMSW = <b>_W</b>
+		<a href="../../src/math/big/nat.go.html#line-916" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-916">#L916</a>: 		switch <b>_W</b> {
+		<a href="../../src/math/big/nat.go.html#line-1004" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-1004">#L1004</a>: 	const mask = 1 &lt;&lt; (<b>_W</b> - 1)
+		<a href="../../src/math/big/nat.go.html#line-1010" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-1010">#L1010</a>: 	w := <b>_W</b> - int(shift)
+		<a href="../../src/math/big/nat.go.html#line-1034" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-1034">#L1034</a>: 		for j := 0; j &lt; <b>_W</b>; j++ {
+		<a href="../../src/math/big/nat.go.html#line-1121" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-1121">#L1121</a>: 	w := int((logM + <b>_W</b> - 1) / <b>_W</b>)
+		<a href="../../src/math/big/nat.go.html#line-1147" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-1147">#L1147</a>: 	mtop := int((logM - 2) / <b>_W</b>) // -2 because the top word of N bits is the (N-1)/W'th word.
+		<a href="../../src/math/big/nat.go.html#line-1149" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-1149">#L1149</a>: 	if mbits := (logM - 1) &amp; (<b>_W</b> - 1); mbits != 0 {
+		<a href="../../src/math/big/nat.go.html#line-1162" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-1162">#L1162</a>: 		for j := 0; j &lt; <b>_W</b>; j += n {
+		<a href="../../src/math/big/nat.go.html#line-1185" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-1185">#L1185</a>: 			zz = zz.mul(z, *powers[yi&gt;&gt;(<b>_W</b>-n)])
+		<a href="../../src/math/big/nat.go.html#line-1225" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-1225">#L1225</a>: 	for i := 1; i &lt; <b>_W</b>; i &lt;&lt;= 1 {
+		<a href="../../src/math/big/nat.go.html#line-1233" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-1233">#L1233</a>: 	zz := nat(nil).shl(RR, uint(2*numWords*<b>_W</b>))
+		<a href="../../src/math/big/nat.go.html#line-1262" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-1262">#L1262</a>: 		for j := 0; j &lt; <b>_W</b>; j += n {
+		<a href="../../src/math/big/nat.go.html#line-1269" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-1269">#L1269</a>: 			zz = zz.montgomery(z, powers[yi&gt;&gt;(<b>_W</b>-n)], m, k0, numWords)
+		<a href="../../src/math/big/nat.go.html#line-1329" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-1329">#L1329</a>: 	if <b>_W</b> == 64 {
+		<a href="../../src/math/big/nat.go.html#line-1414" class="path-duplicate">nat.go</a><a href="../../src/math/big/nat.go.html#line-1414">#L1414</a>: 	for uint(len(z))*<b>_W</b> &lt; n {
+		<a href="../../src/math/big/natconv.go.html#line-287">natconv.go#L287</a>: 		nbits := uint(<b>_W</b>) // number of unprocessed bits in w
+		<a href="../../src/math/big/natconv.go.html#line-303" class="path-duplicate">natconv.go</a><a href="../../src/math/big/natconv.go.html#line-303">#L303</a>: 				nbits = <b>_W</b>
+		<a href="../../src/math/big/natconv.go.html#line-312" class="path-duplicate">natconv.go</a><a href="../../src/math/big/natconv.go.html#line-312">#L312</a>: 				nbits = <b>_W</b> - (shift - nbits)
+		<a href="../../src/math/big/prime.go.html#line-61">prime.go#L61</a>: 	switch <b>_W</b> {
+		<a href="../../src/math/big/sqrt.go.html#line-128">sqrt.go#L128</a>: 	z.mant = z.mant.make(int(prec2/<b>_W</b>) * 2)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.m.lockedg</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/runtime2.go.html#line-550">m</a>.<a href="../src/runtime/runtime2.go.html#line-593">lockedg</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">16 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/debugcall.go.html#line-147">debugcall.go#L147</a>: 		mp.<b>lockedg</b>.set(newg)
+		<a href="../src/runtime/debugcall.go.html#line-189" class="path-duplicate">debugcall.go</a><a href="../src/runtime/debugcall.go.html#line-189">#L189</a>: 	mp.<b>lockedg</b>.set(gp)
+		<a href="../src/runtime/debugcall.go.html#line-224" class="path-duplicate">debugcall.go</a><a href="../src/runtime/debugcall.go.html#line-224">#L224</a>: 			gp.m.<b>lockedg</b> = 0
+		<a href="../src/runtime/proc.go.html#line-589">proc.go#L589</a>: 	return gp.lockedm != 0 &amp;&amp; gp.m.<b>lockedg</b> != 0
+		<a href="../src/runtime/proc.go.html#line-2306" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-2306">#L2306</a>: 	mp.<b>lockedg</b>.set(gp)
+		<a href="../src/runtime/proc.go.html#line-3016" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-3016">#L3016</a>: 	if gp.m.<b>lockedg</b> == 0 || gp.m.<b>lockedg</b>.ptr().lockedm.ptr() != gp.m {
+		<a href="../src/runtime/proc.go.html#line-3027" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-3027">#L3027</a>: 	status := readgstatus(gp.m.<b>lockedg</b>.ptr())
+		<a href="../src/runtime/proc.go.html#line-3030" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-3030">#L3030</a>: 		dumpgstatus(gp.m.<b>lockedg</b>.ptr())
+		<a href="../src/runtime/proc.go.html#line-3846" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-3846">#L3846</a>: 	if mp.<b>lockedg</b> != 0 {
+		<a href="../src/runtime/proc.go.html#line-3848" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-3848">#L3848</a>: 		execute(mp.<b>lockedg</b>.ptr(), false) // Never returns.
+		<a href="../src/runtime/proc.go.html#line-4196" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-4196">#L4196</a>: 	mp.<b>lockedg</b> = 0
+		<a href="../src/runtime/proc.go.html#line-5168" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-5168">#L5168</a>: 	gp.m.<b>lockedg</b>.set(gp)
+		<a href="../src/runtime/proc.go.html#line-5223" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-5223">#L5223</a>: 	gp.m.<b>lockedg</b> = 0
+		<a href="../src/runtime/proc.go.html#line-6294" class="path-duplicate">proc.go</a><a href="../src/runtime/proc.go.html#line-6294">#L6294</a>: 		if lockedg := mp.<b>lockedg</b>.ptr(); lockedg != nil {
+		<a href="../src/runtime/runtime2.go.html#line-593">runtime2.go#L593</a>: 	<b>lockedg</b>       guintptr
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

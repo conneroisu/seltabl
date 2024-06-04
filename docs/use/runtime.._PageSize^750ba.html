@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime._PageSize</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/malloc.go.html#line-121">_PageSize</a></b></span>
+
+<span class="title">11 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/heapdump.go.html#line-475">heapdump.go#L475</a>: var freemark [<b>_PageSize</b> / 8]bool
+		<a href="../src/runtime/malloc.go.html#line-119">malloc.go#L119</a>: 	pageSize  = <b>_PageSize</b>
+		<a href="../src/runtime/malloc.go.html#line-121" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-121">#L121</a>: 	<b>_PageSize</b> = 1 &lt;&lt; _PageShift
+		<a href="../src/runtime/malloc.go.html#line-122" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-122">#L122</a>: 	_PageMask = <b>_PageSize</b> - 1
+		<a href="../src/runtime/malloc.go.html#line-1550" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-1550">#L1550</a>: 		if align &gt; <b>_PageSize</b> {
+		<a href="../src/runtime/mcache.go.html#line-220">mcache.go#L220</a>: 	if size+<b>_PageSize</b> &lt; size {
+		<a href="../src/runtime/mcache.go.html#line-231" class="path-duplicate">mcache.go</a><a href="../src/runtime/mcache.go.html#line-231">#L231</a>: 	deductSweepCredit(npages*<b>_PageSize</b>, npages)
+		<a href="../src/runtime/mcentral.go.html#line-83">mcentral.go#L83</a>: 	spanBytes := uintptr(class_to_allocnpages[c.spanclass.sizeclass()]) * <b>_PageSize</b>
+		<a href="../src/runtime/mgcsweep.go.html#line-522">mgcsweep.go#L522</a>: 		trace.GCSweepSpan(s.npages * <b>_PageSize</b>)
+		<a href="../src/runtime/mgcsweep.go.html#line-979" class="path-duplicate">mgcsweep.go</a><a href="../src/runtime/mgcsweep.go.html#line-979">#L979</a>: 		if heapDistance &lt; <b>_PageSize</b> {
+		<a href="../src/runtime/mgcsweep.go.html#line-981" class="path-duplicate">mgcsweep.go</a><a href="../src/runtime/mgcsweep.go.html#line-981">#L981</a>: 			heapDistance = <b>_PageSize</b>
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

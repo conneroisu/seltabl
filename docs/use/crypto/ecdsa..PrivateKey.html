@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/ecdsa.PrivateKey</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../pkg/crypto/ecdsa.html">crypto/ecdsa</a>.<a href="../../src/crypto/ecdsa/ecdsa.go.html#line-87">PrivateKey</a></b></span>
+
+<span class="title">28 uses</span>
+
+	crypto/ecdsa (current package)
+		<a href="../../src/crypto/ecdsa/ecdsa.go.html#line-87">ecdsa.go#L87</a>: type <b>PrivateKey</b> struct {
+		<a href="../../src/crypto/ecdsa/ecdsa.go.html#line-95" class="path-duplicate">ecdsa.go</a><a href="../../src/crypto/ecdsa/ecdsa.go.html#line-95">#L95</a>: func (k *<b>PrivateKey</b>) ECDH() (*ecdh.PrivateKey, error) {
+		<a href="../../src/crypto/ecdsa/ecdsa.go.html#line-121" class="path-duplicate">ecdsa.go</a><a href="../../src/crypto/ecdsa/ecdsa.go.html#line-121">#L121</a>: func (priv *<b>PrivateKey</b>) Public() crypto.PublicKey {
+		<a href="../../src/crypto/ecdsa/ecdsa.go.html#line-128" class="path-duplicate">ecdsa.go</a><a href="../../src/crypto/ecdsa/ecdsa.go.html#line-128">#L128</a>: func (priv *<b>PrivateKey</b>) Equal(x crypto.PrivateKey) bool {
+		<a href="../../src/crypto/ecdsa/ecdsa.go.html#line-129" class="path-duplicate">ecdsa.go</a><a href="../../src/crypto/ecdsa/ecdsa.go.html#line-129">#L129</a>: 	xx, ok := x.(*<b>PrivateKey</b>)
+		<a href="../../src/crypto/ecdsa/ecdsa.go.html#line-149" class="path-duplicate">ecdsa.go</a><a href="../../src/crypto/ecdsa/ecdsa.go.html#line-149">#L149</a>: func (priv *<b>PrivateKey</b>) Sign(rand io.Reader, digest []byte, opts crypto.SignerOpts) ([]byte, error) {
+		<a href="../../src/crypto/ecdsa/ecdsa.go.html#line-158" class="path-duplicate">ecdsa.go</a><a href="../../src/crypto/ecdsa/ecdsa.go.html#line-158">#L158</a>: func GenerateKey(c elliptic.Curve, rand io.Reader) (*<b>PrivateKey</b>, error) {
+		<a href="../../src/crypto/ecdsa/ecdsa.go.html#line-166" class="path-duplicate">ecdsa.go</a><a href="../../src/crypto/ecdsa/ecdsa.go.html#line-166">#L166</a>: 		return &amp;<b>PrivateKey</b>{PublicKey: PublicKey{Curve: c, X: bbig.Dec(x), Y: bbig.Dec(y)}, D: bbig.Dec(d)}, nil
+		<a href="../../src/crypto/ecdsa/ecdsa.go.html#line-184" class="path-duplicate">ecdsa.go</a><a href="../../src/crypto/ecdsa/ecdsa.go.html#line-184">#L184</a>: func generateNISTEC[Point nistPoint[Point]](c *nistCurve[Point], rand io.Reader) (*<b>PrivateKey</b>, error) {
+		<a href="../../src/crypto/ecdsa/ecdsa.go.html#line-190" class="path-duplicate">ecdsa.go</a><a href="../../src/crypto/ecdsa/ecdsa.go.html#line-190">#L190</a>: 	priv := new(<b>PrivateKey</b>)
+		<a href="../../src/crypto/ecdsa/ecdsa.go.html#line-256" class="path-duplicate">ecdsa.go</a><a href="../../src/crypto/ecdsa/ecdsa.go.html#line-256">#L256</a>: func SignASN1(rand io.Reader, priv *<b>PrivateKey</b>, hash []byte) ([]byte, error) {
+		<a href="../../src/crypto/ecdsa/ecdsa.go.html#line-291" class="path-duplicate">ecdsa.go</a><a href="../../src/crypto/ecdsa/ecdsa.go.html#line-291">#L291</a>: func signNISTEC[Point nistPoint[Point]](c *nistCurve[Point], priv *<b>PrivateKey</b>, csprng io.Reader, hash []byte) (sig []byte, err error) {
+		<a href="../../src/crypto/ecdsa/ecdsa.go.html#line-413" class="path-duplicate">ecdsa.go</a><a href="../../src/crypto/ecdsa/ecdsa.go.html#line-413">#L413</a>: func mixedCSPRNG(rand io.Reader, priv *<b>PrivateKey</b>, hash []byte) (io.Reader, error) {
+		<a href="../../src/crypto/ecdsa/ecdsa_legacy.go.html#line-20">ecdsa_legacy.go#L20</a>: func generateLegacy(c elliptic.Curve, rand io.Reader) (*<b>PrivateKey</b>, error) {
+		<a href="../../src/crypto/ecdsa/ecdsa_legacy.go.html#line-26" class="path-duplicate">ecdsa_legacy.go</a><a href="../../src/crypto/ecdsa/ecdsa_legacy.go.html#line-26">#L26</a>: 	priv := new(<b>PrivateKey</b>)
+		<a href="../../src/crypto/ecdsa/ecdsa_legacy.go.html#line-58" class="path-duplicate">ecdsa_legacy.go</a><a href="../../src/crypto/ecdsa/ecdsa_legacy.go.html#line-58">#L58</a>: func Sign(rand io.Reader, priv *<b>PrivateKey</b>, hash []byte) (r, s *big.Int, err error) {
+		<a href="../../src/crypto/ecdsa/ecdsa_legacy.go.html#line-77" class="path-duplicate">ecdsa_legacy.go</a><a href="../../src/crypto/ecdsa/ecdsa_legacy.go.html#line-77">#L77</a>: func signLegacy(priv *<b>PrivateKey</b>, csprng io.Reader, hash []byte) (sig []byte, err error) {
+		<a href="../../src/crypto/ecdsa/ecdsa_noasm.go.html#line-15">ecdsa_noasm.go#L15</a>: func signAsm(priv *<b>PrivateKey</b>, csprng io.Reader, hash []byte) (sig []byte, err error) {
+		<a href="../../src/crypto/ecdsa/notboring.go.html#line-14">notboring.go#L14</a>: func boringPrivateKey(*<b>PrivateKey</b>) (*boring.PrivateKeyECDSA, error) {
+
+	<a href="../../pkg/crypto/tls.html">crypto/tls</a>
+		<a href="../../src/crypto/tls/auth.go.html#line-259">auth.go#L259</a>: 	case rsa.PrivateKey, ecdsa.<b>PrivateKey</b>:
+		<a href="../../src/crypto/tls/tls.go.html#line-314">tls.go#L314</a>: 		priv, ok := cert.PrivateKey.(*ecdsa.<b>PrivateKey</b>)
+		<a href="../../src/crypto/tls/tls.go.html#line-345" class="path-duplicate">tls.go</a><a href="../../src/crypto/tls/tls.go.html#line-345">#L345</a>: 		case *rsa.PrivateKey, *ecdsa.<b>PrivateKey</b>, ed25519.PrivateKey:
+
+	<a href="../../pkg/crypto/x509.html">crypto/x509</a>
+		<a href="../../src/crypto/x509/pkcs8.go.html#line-112">pkcs8.go#L112</a>: 	case *ecdsa.<b>PrivateKey</b>:
+		<a href="../../src/crypto/x509/sec1.go.html#line-37">sec1.go#L37</a>: func ParseECPrivateKey(der []byte) (*ecdsa.<b>PrivateKey</b>, error) {
+		<a href="../../src/crypto/x509/sec1.go.html#line-46" class="path-duplicate">sec1.go</a><a href="../../src/crypto/x509/sec1.go.html#line-46">#L46</a>: func MarshalECPrivateKey(key *ecdsa.<b>PrivateKey</b>) ([]byte, error) {
+		<a href="../../src/crypto/x509/sec1.go.html#line-57" class="path-duplicate">sec1.go</a><a href="../../src/crypto/x509/sec1.go.html#line-57">#L57</a>: func marshalECPrivateKeyWithOID(key *ecdsa.<b>PrivateKey</b>, oid asn1.ObjectIdentifier) ([]byte, error) {
+		<a href="../../src/crypto/x509/sec1.go.html#line-84" class="path-duplicate">sec1.go</a><a href="../../src/crypto/x509/sec1.go.html#line-84">#L84</a>: func parseECPrivateKey(namedCurveOID *asn1.ObjectIdentifier, der []byte) (key *ecdsa.<b>PrivateKey</b>, err error) {
+		<a href="../../src/crypto/x509/sec1.go.html#line-114" class="path-duplicate">sec1.go</a><a href="../../src/crypto/x509/sec1.go.html#line-114">#L114</a>: 	priv := new(ecdsa.<b>PrivateKey</b>)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

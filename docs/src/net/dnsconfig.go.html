@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: dnsconfig.go in package net</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	dnsconfig.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../pkg/net.html">net</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1,
+input[id=i2]:checked ~pre .i2
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+<input id="i2" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="comment">// Copyright 2022 The Go Authors. All rights reserved.</span></code></span>
+<span class="codeline" id="line-2"><code><span class="comment">// Use of this source code is governed by a BSD-style</span></code></span>
+<span class="codeline" id="line-3"><code><span class="comment">// license that can be found in the LICENSE file.</span></code></span>
+<span class="codeline" id="line-4"><code></code></span>
+<span class="codeline" id="line-5"><code><span class="keyword">package</span> net</code></span>
+<span class="codeline" id="line-6"><code></code></span>
+<span class="codeline" id="line-7"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-8"><code>	<label for="i0"><span class="lit-string i0">"os"</span></label></code></span>
+<span class="codeline" id="line-9"><code>	<label for="i1"><span class="lit-string i1">"sync/atomic"</span></label></code></span>
+<span class="codeline" id="line-10"><code>	<label for="i2"><span class="lit-string i2">"time"</span></label></code></span>
+<span class="codeline" id="line-11"><code>)</code></span>
+<span class="codeline" id="line-12"><code></code></span>
+<span class="codeline" id="line-13"><code><span class="keyword">var</span> (</code></span>
+<span class="codeline" id="line-14"><code>	<a href="../../pkg/net.html#name-defaultNS" class="ident">defaultNS</a>   = []<a href="../../pkg/builtin.html#name-string" class="ident">string</a>{<span class="lit-string">"127.0.0.1:53"</span>, <span class="lit-string">"[::1]:53"</span>}</code></span>
+<span class="codeline" id="line-15"><code>	<a href="../../pkg/net.html#name-getHostname" class="ident">getHostname</a> = <a href="../../pkg/os.html" class="ident i0">os</a>.<a href="../os/sys.go.html#line-8" class="ident">Hostname</a> <span class="comment">// variable for testing</span></code></span>
+<span class="codeline" id="line-16"><code>)</code></span>
+<span class="codeline" id="line-17"><code></code></span>
+<span class="codeline" id="line-18"><code><span class="keyword">type</span> <a href="../../pkg/net.html#name-dnsConfig" class="ident">dnsConfig</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-19"><code>	<a href="../../use/net..dnsConfig^9bfab.servers^8e3dc.html" class="ident">servers</a>       []<a href="../../pkg/builtin.html#name-string" class="ident">string</a>      <span class="comment">// server addresses (in host:port form) to use</span></code></span>
+<span class="codeline" id="line-20"><code>	<a href="../../use/net..dnsConfig^9bfab.search^24193.html" class="ident">search</a>        []<a href="../../pkg/builtin.html#name-string" class="ident">string</a>      <span class="comment">// rooted suffixes to append to local name</span></code></span>
+<span class="codeline" id="line-21"><code>	<a href="../../use/net..dnsConfig^9bfab.ndots^e84f9.html" class="ident">ndots</a>         <a href="../../pkg/builtin.html#name-int" class="ident">int</a>           <span class="comment">// number of dots in name to trigger absolute lookup</span></code></span>
+<span class="codeline" id="line-22"><code>	<a href="../../use/net..dnsConfig^9bfab.timeout^f77d1.html" class="ident">timeout</a>       <a href="../../pkg/time.html" class="ident i2">time</a>.<a href="../time/time.go.html#line-618" class="ident">Duration</a> <span class="comment">// wait before giving up on a query, including retries</span></code></span>
+<span class="codeline" id="line-23"><code>	<a href="../../use/net..dnsConfig^9bfab.attempts^1ac7d.html" class="ident">attempts</a>      <a href="../../pkg/builtin.html#name-int" class="ident">int</a>           <span class="comment">// lost packets before giving up on server</span></code></span>
+<span class="codeline" id="line-24"><code>	<a href="../../use/net..dnsConfig^9bfab.rotate^299bc.html" class="ident">rotate</a>        <a href="../../pkg/builtin.html#name-bool" class="ident">bool</a>          <span class="comment">// round robin among servers</span></code></span>
+<span class="codeline" id="line-25"><code>	<a href="../../use/net..dnsConfig^9bfab.unknownOpt^a1e7f.html" class="ident">unknownOpt</a>    <a href="../../pkg/builtin.html#name-bool" class="ident">bool</a>          <span class="comment">// anything unknown was encountered</span></code></span>
+<span class="codeline" id="line-26"><code>	<a href="../../use/net..dnsConfig^9bfab.lookup^29a1a.html" class="ident">lookup</a>        []<a href="../../pkg/builtin.html#name-string" class="ident">string</a>      <span class="comment">// OpenBSD top-level database "lookup" order</span></code></span>
+<span class="codeline" id="line-27"><code>	<a href="../../use/net..dnsConfig^9bfab.err^d9eb2.html" class="ident">err</a>           <a href="../../pkg/builtin.html#name-error" class="ident">error</a>         <span class="comment">// any error that occurs during open of resolv.conf</span></code></span>
+<span class="codeline" id="line-28"><code>	<a href="../../use/net..dnsConfig^9bfab.mtime^4df0c.html" class="ident">mtime</a>         <a href="../../pkg/time.html" class="ident i2">time</a>.<a href="../time/time.go.html#line-135" class="ident">Time</a>     <span class="comment">// time of resolv.conf modification</span></code></span>
+<span class="codeline" id="line-29"><code>	<a href="../../use/net..dnsConfig^9bfab.soffset^72330.html" class="ident">soffset</a>       <a href="../../pkg/builtin.html#name-uint32" class="ident">uint32</a>        <span class="comment">// used by serverOffset</span></code></span>
+<span class="codeline" id="line-30"><code>	<a href="../../use/net..dnsConfig^9bfab.singleRequest^f69dc.html" class="ident">singleRequest</a> <a href="../../pkg/builtin.html#name-bool" class="ident">bool</a>          <span class="comment">// use sequential A and AAAA queries instead of parallel queries</span></code></span>
+<span class="codeline" id="line-31"><code>	<a href="../../use/net..dnsConfig^9bfab.useTCP^35413.html" class="ident">useTCP</a>        <a href="../../pkg/builtin.html#name-bool" class="ident">bool</a>          <span class="comment">// force usage of TCP for DNS resolutions</span></code></span>
+<span class="codeline" id="line-32"><code>	<a href="../../use/net..dnsConfig^9bfab.trustAD^1134a.html" class="ident">trustAD</a>       <a href="../../pkg/builtin.html#name-bool" class="ident">bool</a>          <span class="comment">// add AD flag to queries</span></code></span>
+<span class="codeline" id="line-33"><code>	<a href="../../use/net..dnsConfig^9bfab.noReload^9f9f9.html" class="ident">noReload</a>      <a href="../../pkg/builtin.html#name-bool" class="ident">bool</a>          <span class="comment">// do not check for config file updates</span></code></span>
+<span class="codeline" id="line-34"><code>}</code></span>
+<span class="codeline" id="line-35"><code></code></span>
+<span class="codeline" id="line-36"><code><span class="comment">// serverOffset returns an offset that can be used to determine</span></code></span>
+<span class="codeline" id="line-37"><code><span class="comment">// indices of servers in c.servers when making queries.</span></code></span>
+<span class="codeline" id="line-38"><code><span class="comment">// When the rotate option is enabled, this offset increases.</span></code></span>
+<span class="codeline" id="line-39"><code><span class="comment">// Otherwise it is always 0.</span></code></span>
+<span class="codeline" id="line-40"><code><span class="keyword">func</span> (<label for="r0" class="ident">c</label> *<a href="#line-18" class="ident">dnsConfig</a>) <label for="r1" class="ident"><a href="../../use/net..dnsConfig^9bfab.serverOffset^42503.html" class="ident">serverOffset</a></label>() <a href="../../pkg/builtin.html#name-uint32" class="ident">uint32</a> {</code></span>
+<span class="codeline" id="line-41"><code>	<span class="keyword">if</span> <label for="r0" class="ident">c</label>.<a href="#line-24" class="ident">rotate</a> {</code></span>
+<span class="codeline" id="line-42"><code>		<span class="keyword">return</span> <a href="../../pkg/sync/atomic.html" class="ident i1">atomic</a>.<a href="../sync/atomic/doc.go.html#line-124" class="ident">AddUint32</a>(&amp;<label for="r0" class="ident">c</label>.<a href="#line-29" class="ident">soffset</a>, <span class="lit-number">1</span>) - <span class="lit-number">1</span> <span class="comment">// return 0 to start</span></code></span>
+<span class="codeline" id="line-43"><code>	}</code></span>
+<span class="codeline" id="line-44"><code>	<span class="keyword">return</span> <span class="lit-number">0</span></code></span>
+<span class="codeline" id="line-45"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

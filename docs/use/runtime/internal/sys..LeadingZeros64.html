@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime/internal/sys.LeadingZeros64</title>
+<link href="../../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../../../pkg/runtime/internal/sys.html">runtime/internal/sys</a>.<a href="../../../src/runtime/internal/sys/intrinsics.go.html#line-153">LeadingZeros64</a></b></span>
+
+<span class="title">8 uses</span>
+
+	runtime/internal/sys (current package)
+		<a href="../../../src/runtime/internal/sys/intrinsics.go.html#line-153">intrinsics.go#L153</a>: func <b>LeadingZeros64</b>(x uint64) int { return 64 - Len64(x) }
+
+	<a href="../../../pkg/runtime.html">runtime</a>
+		<a href="../../../src/runtime/mgcscavenge.go.html#line-933">mgcscavenge.go#L933</a>: 	z1 := uint(sys.<b>LeadingZeros64</b>(^x))
+		<a href="../../../src/runtime/mgcscavenge.go.html#line-938" class="path-duplicate">mgcscavenge.go</a><a href="../../../src/runtime/mgcscavenge.go.html#line-938">#L938</a>: 		run = uint(sys.<b>LeadingZeros64</b>(x &lt;&lt; z1))
+		<a href="../../../src/runtime/mgcscavenge.go.html#line-946" class="path-duplicate">mgcscavenge.go</a><a href="../../../src/runtime/mgcscavenge.go.html#line-946">#L946</a>: 			run += uint(sys.<b>LeadingZeros64</b>(x))
+		<a href="../../../src/runtime/mpallocbits.go.html#line-147">mpallocbits.go#L147</a>: 		l := uint(sys.<b>LeadingZeros64</b>(x))
+		<a href="../../../src/runtime/mpallocbits.go.html#line-296" class="path-duplicate">mpallocbits.go</a><a href="../../../src/runtime/mpallocbits.go.html#line-296">#L296</a>: 		end = uint(sys.<b>LeadingZeros64</b>(bi))
+		<a href="../../../src/runtime/mpallocbits.go.html#line-325" class="path-duplicate">mpallocbits.go</a><a href="../../../src/runtime/mpallocbits.go.html#line-325">#L325</a>: 			size = uint(sys.<b>LeadingZeros64</b>(x))
+		<a href="../../../src/runtime/mpallocbits.go.html#line-335" class="path-duplicate">mpallocbits.go</a><a href="../../../src/runtime/mpallocbits.go.html#line-335">#L335</a>: 			size = uint(sys.<b>LeadingZeros64</b>(x))
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

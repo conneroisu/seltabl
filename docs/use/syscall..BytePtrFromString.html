@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: syscall.BytePtrFromString</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">func <b><a href="../pkg/syscall.html">syscall</a>.<a href="../src/syscall/syscall.go.html#line-67">BytePtrFromString</a></b></span>
+
+<span class="title">52 uses</span>
+
+	syscall (current package)
+		<a href="../src/syscall/exec_unix.go.html#line-158">exec_unix.go#L158</a>: 	argv0p, err := <b>BytePtrFromString</b>(argv0)
+		<a href="../src/syscall/exec_unix.go.html#line-177" class="path-duplicate">exec_unix.go</a><a href="../src/syscall/exec_unix.go.html#line-177">#L177</a>: 		chroot, err = <b>BytePtrFromString</b>(sys.Chroot)
+		<a href="../src/syscall/exec_unix.go.html#line-184" class="path-duplicate">exec_unix.go</a><a href="../src/syscall/exec_unix.go.html#line-184">#L184</a>: 		dir, err = <b>BytePtrFromString</b>(attr.Dir)
+		<a href="../src/syscall/exec_unix.go.html#line-270" class="path-duplicate">exec_unix.go</a><a href="../src/syscall/exec_unix.go.html#line-270">#L270</a>: 	argv0p, err := <b>BytePtrFromString</b>(argv0)
+		<a href="../src/syscall/syscall.go.html#line-67">syscall.go#L67</a>: func <b>BytePtrFromString</b>(s string) (*byte, error) {
+		<a href="../src/syscall/syscall_linux.go.html#line-1025">syscall_linux.go#L1025</a>: 	datap, err := <b>BytePtrFromString</b>(data)
+		<a href="../src/syscall/zsyscall_linux_amd64.go.html#line-14">zsyscall_linux_amd64.go#L14</a>: 	_p0, err = <b>BytePtrFromString</b>(path)
+		<a href="../src/syscall/zsyscall_linux_amd64.go.html#line-29" class="path-duplicate">zsyscall_linux_amd64.go</a><a href="../src/syscall/zsyscall_linux_amd64.go.html#line-29">#L29</a>: 	_p0, err = <b>BytePtrFromString</b>(path)
+		<a href="../src/syscall/zsyscall_linux_amd64.go.html#line-44" class="path-duplicate">zsyscall_linux_amd64.go</a><a href="../src/syscall/zsyscall_linux_amd64.go.html#line-44">#L44</a>: 	_p0, err = <b>BytePtrFromString</b>(path)
+		<a href="../src/syscall/zsyscall_linux_amd64.go.html#line-59" class="path-duplicate">zsyscall_linux_amd64.go</a><a href="../src/syscall/zsyscall_linux_amd64.go.html#line-59">#L59</a>: 	_p0, err = <b>BytePtrFromString</b>(path)
+		<a href="../src/syscall/zsyscall_linux_amd64.go.html#line-74" class="path-duplicate">zsyscall_linux_amd64.go</a><a href="../src/syscall/zsyscall_linux_amd64.go.html#line-74">#L74</a>: 	_p0, err = <b>BytePtrFromString</b>(oldpath)
+		<a href="../src/syscall/zsyscall_linux_amd64.go.html#line-79" class="path-duplicate">zsyscall_linux_amd64.go</a><a href="../src/syscall/zsyscall_linux_amd64.go.html#line-79">#L79</a>: 	_p1, err = <b>BytePtrFromString</b>(newpath)
+		<a href="../src/syscall/zsyscall_linux_amd64.go.html#line-94" class="path-duplicate">zsyscall_linux_amd64.go</a><a href="../src/syscall/zsyscall_linux_amd64.go.html#line-94">#L94</a>: 	_p0, err = <b>BytePtrFromString</b>(path)
+		<a href="../src/syscall/zsyscall_linux_amd64.go.html#line-120" class="path-duplicate">zsyscall_linux_amd64.go</a><a href="../src/syscall/zsyscall_linux_amd64.go.html#line-120">#L120</a>: 	_p0, err = <b>BytePtrFromString</b>(path)
+		<a href="../src/syscall/zsyscall_linux_amd64.go.html#line-142" class="path-duplicate">zsyscall_linux_amd64.go</a><a href="../src/syscall/zsyscall_linux_amd64.go.html#line-142">#L142</a>: 	_p0, err = <b>BytePtrFromString</b>(oldpath)
+		<a href="../src/syscall/zsyscall_linux_amd64.go.html#line-147" class="path-duplicate">zsyscall_linux_amd64.go</a><a href="../src/syscall/zsyscall_linux_amd64.go.html#line-147">#L147</a>: 	_p1, err = <b>BytePtrFromString</b>(newpath)
+		<a href="../src/syscall/zsyscall_linux_amd64.go.html#line-162" class="path-duplicate">zsyscall_linux_amd64.go</a><a href="../src/syscall/zsyscall_linux_amd64.go.html#line-162">#L162</a>: 	_p0, err = <b>BytePtrFromString</b>(path)
+		<a href="../src/syscall/zsyscall_linux_amd64.go.html#line-177" class="path-duplicate">zsyscall_linux_amd64.go</a><a href="../src/syscall/zsyscall_linux_amd64.go.html#line-177">#L177</a>: 	_p0, err = <b>BytePtrFromString</b>(path)
+		<a href="../src/syscall/zsyscall_linux_amd64.go.html#line-240" class="path-duplicate">zsyscall_linux_amd64.go</a><a href="../src/syscall/zsyscall_linux_amd64.go.html#line-240">#L240</a>: 	_p0, err = <b>BytePtrFromString</b>(arg)
+		<a href="../src/syscall/zsyscall_linux_amd64.go.html#line-255" class="path-duplicate">zsyscall_linux_amd64.go</a><a href="../src/syscall/zsyscall_linux_amd64.go.html#line-255">#L255</a>: 	_p0, err = <b>BytePtrFromString</b>(source)
+		<a href="../src/syscall/zsyscall_linux_amd64.go.html#line-260" class="path-duplicate">zsyscall_linux_amd64.go</a><a href="../src/syscall/zsyscall_linux_amd64.go.html#line-260">#L260</a>: 	_p1, err = <b>BytePtrFromString</b>(target)
+		<a href="../src/syscall/zsyscall_linux_amd64.go.html#line-265" class="path-duplicate">zsyscall_linux_amd64.go</a><a href="../src/syscall/zsyscall_linux_amd64.go.html#line-265">#L265</a>: 	_p2, err = <b>BytePtrFromString</b>(fstype)
+		<a href="../src/syscall/zsyscall_linux_amd64.go.html#line-280" class="path-duplicate">zsyscall_linux_amd64.go</a><a href="../src/syscall/zsyscall_linux_amd64.go.html#line-280">#L280</a>: 	_p0, err = <b>BytePtrFromString</b>(path)
+		<a href="../src/syscall/zsyscall_linux_amd64.go.html#line-306" class="path-duplicate">zsyscall_linux_amd64.go</a><a href="../src/syscall/zsyscall_linux_amd64.go.html#line-306">#L306</a>: 	_p0, err = <b>BytePtrFromString</b>(path)
+		<a href="../src/syscall/zsyscall_linux_amd64.go.html#line-321" class="path-duplicate">zsyscall_linux_amd64.go</a><a href="../src/syscall/zsyscall_linux_amd64.go.html#line-321">#L321</a>: 	_p0, err = <b>BytePtrFromString</b>(path)
+		<a href="../src/syscall/zsyscall_linux_amd64.go.html#line-418" class="path-duplicate">zsyscall_linux_amd64.go</a><a href="../src/syscall/zsyscall_linux_amd64.go.html#line-418">#L418</a>: 	_p0, err = <b>BytePtrFromString</b>(path)
+		<a href="../src/syscall/zsyscall_linux_amd64.go.html#line-547" class="path-duplicate">zsyscall_linux_amd64.go</a><a href="../src/syscall/zsyscall_linux_amd64.go.html#line-547">#L547</a>: 	_p0, err = <b>BytePtrFromString</b>(path)
+		<a href="../src/syscall/zsyscall_linux_amd64.go.html#line-552" class="path-duplicate">zsyscall_linux_amd64.go</a><a href="../src/syscall/zsyscall_linux_amd64.go.html#line-552">#L552</a>: 	_p1, err = <b>BytePtrFromString</b>(attr)
+		<a href="../src/syscall/zsyscall_linux_amd64.go.html#line-574" class="path-duplicate">zsyscall_linux_amd64.go</a><a href="../src/syscall/zsyscall_linux_amd64.go.html#line-574">#L574</a>: 	_p0, err = <b>BytePtrFromString</b>(pathname)
+		<a href="../src/syscall/zsyscall_linux_amd64.go.html#line-639" class="path-duplicate">zsyscall_linux_amd64.go</a><a href="../src/syscall/zsyscall_linux_amd64.go.html#line-639">#L639</a>: 	_p0, err = <b>BytePtrFromString</b>(path)
+		<a href="../src/syscall/zsyscall_linux_amd64.go.html#line-661" class="path-duplicate">zsyscall_linux_amd64.go</a><a href="../src/syscall/zsyscall_linux_amd64.go.html#line-661">#L661</a>: 	_p0, err = <b>BytePtrFromString</b>(path)
+		<a href="../src/syscall/zsyscall_linux_amd64.go.html#line-676" class="path-duplicate">zsyscall_linux_amd64.go</a><a href="../src/syscall/zsyscall_linux_amd64.go.html#line-676">#L676</a>: 	_p0, err = <b>BytePtrFromString</b>(path)
+		<a href="../src/syscall/zsyscall_linux_amd64.go.html#line-701" class="path-duplicate">zsyscall_linux_amd64.go</a><a href="../src/syscall/zsyscall_linux_amd64.go.html#line-701">#L701</a>: 	_p0, err = <b>BytePtrFromString</b>(newroot)
+		<a href="../src/syscall/zsyscall_linux_amd64.go.html#line-706" class="path-duplicate">zsyscall_linux_amd64.go</a><a href="../src/syscall/zsyscall_linux_amd64.go.html#line-706">#L706</a>: 	_p1, err = <b>BytePtrFromString</b>(putold)
+		<a href="../src/syscall/zsyscall_linux_amd64.go.html#line-748" class="path-duplicate">zsyscall_linux_amd64.go</a><a href="../src/syscall/zsyscall_linux_amd64.go.html#line-748">#L748</a>: 	_p0, err = <b>BytePtrFromString</b>(path)
+		<a href="../src/syscall/zsyscall_linux_amd64.go.html#line-753" class="path-duplicate">zsyscall_linux_amd64.go</a><a href="../src/syscall/zsyscall_linux_amd64.go.html#line-753">#L753</a>: 	_p1, err = <b>BytePtrFromString</b>(attr)
+		<a href="../src/syscall/zsyscall_linux_amd64.go.html#line-841" class="path-duplicate">zsyscall_linux_amd64.go</a><a href="../src/syscall/zsyscall_linux_amd64.go.html#line-841">#L841</a>: 	_p0, err = <b>BytePtrFromString</b>(path)
+		<a href="../src/syscall/zsyscall_linux_amd64.go.html#line-846" class="path-duplicate">zsyscall_linux_amd64.go</a><a href="../src/syscall/zsyscall_linux_amd64.go.html#line-846">#L846</a>: 	_p1, err = <b>BytePtrFromString</b>(attr)
+		<a href="../src/syscall/zsyscall_linux_amd64.go.html#line-934" class="path-duplicate">zsyscall_linux_amd64.go</a><a href="../src/syscall/zsyscall_linux_amd64.go.html#line-934">#L934</a>: 	_p0, err = <b>BytePtrFromString</b>(target)
+		<a href="../src/syscall/zsyscall_linux_amd64.go.html#line-1268" class="path-duplicate">zsyscall_linux_amd64.go</a><a href="../src/syscall/zsyscall_linux_amd64.go.html#line-1268">#L1268</a>: 	_p0, err = <b>BytePtrFromString</b>(oldpath)
+		<a href="../src/syscall/zsyscall_linux_amd64.go.html#line-1273" class="path-duplicate">zsyscall_linux_amd64.go</a><a href="../src/syscall/zsyscall_linux_amd64.go.html#line-1273">#L1273</a>: 	_p1, err = <b>BytePtrFromString</b>(newpath)
+		<a href="../src/syscall/zsyscall_linux_amd64.go.html#line-1372" class="path-duplicate">zsyscall_linux_amd64.go</a><a href="../src/syscall/zsyscall_linux_amd64.go.html#line-1372">#L1372</a>: 	_p0, err = <b>BytePtrFromString</b>(path)
+		<a href="../src/syscall/zsyscall_linux_amd64.go.html#line-1397" class="path-duplicate">zsyscall_linux_amd64.go</a><a href="../src/syscall/zsyscall_linux_amd64.go.html#line-1397">#L1397</a>: 	_p0, err = <b>BytePtrFromString</b>(path)
+		<a href="../src/syscall/zsyscall_linux_amd64.go.html#line-1453" class="path-duplicate">zsyscall_linux_amd64.go</a><a href="../src/syscall/zsyscall_linux_amd64.go.html#line-1453">#L1453</a>: 	_p0, err = <b>BytePtrFromString</b>(path)
+		<a href="../src/syscall/zsyscall_linux_amd64.go.html#line-1623" class="path-duplicate">zsyscall_linux_amd64.go</a><a href="../src/syscall/zsyscall_linux_amd64.go.html#line-1623">#L1623</a>: 	_p0, err = <b>BytePtrFromString</b>(path)
+		<a href="../src/syscall/zsyscall_linux_amd64.go.html#line-1638" class="path-duplicate">zsyscall_linux_amd64.go</a><a href="../src/syscall/zsyscall_linux_amd64.go.html#line-1638">#L1638</a>: 	_p0, err = <b>BytePtrFromString</b>(path)
+		<a href="../src/syscall/zsyscall_linux_amd64.go.html#line-1653" class="path-duplicate">zsyscall_linux_amd64.go</a><a href="../src/syscall/zsyscall_linux_amd64.go.html#line-1653">#L1653</a>: 	_p0, err = <b>BytePtrFromString</b>(path)
+
+	<a href="../pkg/internal/syscall/unix.html">internal/syscall/unix</a>
+		<a href="../src/internal/syscall/unix/at.go.html#line-15">at.go#L15</a>: 	p, err := syscall.<b>BytePtrFromString</b>(path)
+		<a href="../src/internal/syscall/unix/at.go.html#line-29" class="path-duplicate">at.go</a><a href="../src/internal/syscall/unix/at.go.html#line-29">#L29</a>: 	p, err := syscall.<b>BytePtrFromString</b>(path)
+		<a href="../src/internal/syscall/unix/at_fstatat.go.html#line-16">at_fstatat.go#L16</a>: 	p, err := syscall.<b>BytePtrFromString</b>(path)
+
+	<a href="../pkg/net.html">net</a>
+		<a href="../src/net/cgo_unix.go.html#line-163">cgo_unix.go#L163</a>: 	h, err := syscall.<b>BytePtrFromString</b>(name)
+		<a href="../src/net/cgo_unix.go.html#line-348" class="path-duplicate">cgo_unix.go</a><a href="../src/net/cgo_unix.go.html#line-348">#L348</a>: 	s, err := syscall.<b>BytePtrFromString</b>(hostname)
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

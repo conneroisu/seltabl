@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/tls.clientHandshakeStateTLS13.session</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/crypto/tls.html">crypto/tls</a>.<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-19">clientHandshakeStateTLS13</a>.<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-26">session</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">14 uses</span>
+
+	crypto/tls (current package)
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-257">handshake_client.go#L257</a>: 			<b>session</b>:     session,
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-26">handshake_client_tls13.go#L26</a>: 	<b>session</b>     *SessionState
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-254" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-254">#L254</a>: 		pskSuite := cipherSuiteTLS13ByID(hs.<b>session</b>.cipherSuite)
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-260" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-260">#L260</a>: 			ticketAge := c.config.time().Sub(time.Unix(int64(hs.<b>session</b>.createdAt), 0))
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-261" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-261">#L261</a>: 			hs.hello.pskIdentities[0].obfuscatedTicketAge = uint32(ticketAge/time.Millisecond) + hs.<b>session</b>.ageAdd
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-350" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-350">#L350</a>: 	if len(hs.hello.pskIdentities) != 1 || hs.<b>session</b> == nil {
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-353" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-353">#L353</a>: 	pskSuite := cipherSuiteTLS13ByID(hs.<b>session</b>.cipherSuite)
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-364" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-364">#L364</a>: 	c.peerCertificates = hs.<b>session</b>.peerCertificates
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-365" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-365">#L365</a>: 	c.activeCertHandles = hs.<b>session</b>.activeCertHandles
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-366" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-366">#L366</a>: 	c.verifiedChains = hs.<b>session</b>.verifiedChains
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-367" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-367">#L367</a>: 	c.ocspResponse = hs.<b>session</b>.ocspResponse
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-368" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-368">#L368</a>: 	c.scts = hs.<b>session</b>.scts
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-472" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-472">#L472</a>: 		if hs.<b>session</b>.cipherSuite != c.cipherSuite {
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-476" class="path-duplicate">handshake_client_tls13.go</a><a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-476">#L476</a>: 		if hs.<b>session</b>.alpnProtocol != c.clientProtocol {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

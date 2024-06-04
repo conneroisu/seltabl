@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: net/http.http2ClientConn.bw</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/net/http.html">net/http</a>.<a href="../../src/net/http/h2_bundle.go.html#line-7357">http2ClientConn</a>.<a href="../../src/net/http/h2_bundle.go.html#line-7407">bw</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">17 uses</span>
+
+	net/http (current package)
+		<a href="../../src/net/http/h2_bundle.go.html#line-7407">h2_bundle.go#L7407</a>: 	<b>bw</b>   *bufio.Writer
+		<a href="../../src/net/http/h2_bundle.go.html#line-7833" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-7833">#L7833</a>: 	cc.<b>bw</b> = bufio.NewWriter(http2stickyErrWriter{
+		<a href="../../src/net/http/h2_bundle.go.html#line-7839" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-7839">#L7839</a>: 	cc.fr = http2NewFramer(cc.<b>bw</b>, cc.br)
+		<a href="../../src/net/http/h2_bundle.go.html#line-7877" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-7877">#L7877</a>: 	cc.<b>bw</b>.Write(http2clientPreface)
+		<a href="../../src/net/http/h2_bundle.go.html#line-7881" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-7881">#L7881</a>: 	cc.<b>bw</b>.Flush()
+		<a href="../../src/net/http/h2_bundle.go.html#line-8172" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-8172">#L8172</a>: 	if err := cc.<b>bw</b>.Flush(); err != nil {
+		<a href="../../src/net/http/h2_bundle.go.html#line-8710" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-8710">#L8710</a>: 	cc.<b>bw</b>.Flush()
+		<a href="../../src/net/http/h2_bundle.go.html#line-8854" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-8854">#L8854</a>: 				err = cc.<b>bw</b>.Flush()
+		<a href="../../src/net/http/h2_bundle.go.html#line-8898" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-8898">#L8898</a>: 	if ferr := cc.<b>bw</b>.Flush(); ferr != nil &amp;&amp; err == nil {
+		<a href="../../src/net/http/h2_bundle.go.html#line-9665" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9665">#L9665</a>: 		cc.<b>bw</b>.Flush()
+		<a href="../../src/net/http/h2_bundle.go.html#line-9693" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9693">#L9693</a>: 		cc.<b>bw</b>.Flush()
+		<a href="../../src/net/http/h2_bundle.go.html#line-9740" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9740">#L9740</a>: 				cc.<b>bw</b>.Flush()
+		<a href="../../src/net/http/h2_bundle.go.html#line-9810" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9810">#L9810</a>: 			cc.<b>bw</b>.Flush()
+		<a href="../../src/net/http/h2_bundle.go.html#line-9893" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-9893">#L9893</a>: 		cc.<b>bw</b>.Flush()
+		<a href="../../src/net/http/h2_bundle.go.html#line-10033" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-10033">#L10033</a>: 		if err := cc.<b>bw</b>.Flush(); err != nil {
+		<a href="../../src/net/http/h2_bundle.go.html#line-10069" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-10069">#L10069</a>: 	return cc.<b>bw</b>.Flush()
+		<a href="../../src/net/http/h2_bundle.go.html#line-10090" class="path-duplicate">h2_bundle.go</a><a href="../../src/net/http/h2_bundle.go.html#line-10090">#L10090</a>: 	cc.<b>bw</b>.Flush()
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

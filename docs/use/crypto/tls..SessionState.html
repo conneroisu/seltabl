@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/tls.SessionState</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">type <b><a href="../../pkg/crypto/tls.html">crypto/tls</a>.<a href="../../src/crypto/tls/ticket.go.html#line-21">SessionState</a></b></span>
+
+<span class="title">19 uses</span>
+
+	crypto/tls (current package)
+		<a href="../../src/crypto/tls/common.go.html#line-720">common.go#L720</a>: 	UnwrapSession func(identity []byte, cs ConnectionState) (*<b>SessionState</b>, error)
+		<a href="../../src/crypto/tls/common.go.html#line-736" class="path-duplicate">common.go</a><a href="../../src/crypto/tls/common.go.html#line-736">#L736</a>: 	WrapSession func(ConnectionState, *<b>SessionState</b>) ([]byte, error)
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-36">handshake_client.go#L36</a>: 	session      *<b>SessionState</b> // the session being resumed
+		<a href="../../src/crypto/tls/handshake_client.go.html#line-282" class="path-duplicate">handshake_client.go</a><a href="../../src/crypto/tls/handshake_client.go.html#line-282">#L282</a>: 	session *<b>SessionState</b>, earlySecret, binderKey []byte, err error) {
+		<a href="../../src/crypto/tls/handshake_client_tls13.go.html#line-26">handshake_client_tls13.go#L26</a>: 	session     *<b>SessionState</b>
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-34">handshake_server.go#L34</a>: 	sessionState *<b>SessionState</b>
+		<a href="../../src/crypto/tls/handshake_server.go.html#line-420" class="path-duplicate">handshake_server.go</a><a href="../../src/crypto/tls/handshake_server.go.html#line-420">#L420</a>: 	var sessionState *<b>SessionState</b>
+		<a href="../../src/crypto/tls/handshake_server_tls13.go.html#line-298">handshake_server_tls13.go#L298</a>: 		var sessionState *<b>SessionState</b>
+		<a href="../../src/crypto/tls/ticket.go.html#line-21">ticket.go#L21</a>: type <b>SessionState</b> struct {
+		<a href="../../src/crypto/tls/ticket.go.html#line-107" class="path-duplicate">ticket.go</a><a href="../../src/crypto/tls/ticket.go.html#line-107">#L107</a>: func (s *<b>SessionState</b>) Bytes() ([]byte, error) {
+		<a href="../../src/crypto/tls/ticket.go.html#line-181" class="path-duplicate">ticket.go</a><a href="../../src/crypto/tls/ticket.go.html#line-181">#L181</a>: func ParseSessionState(data []byte) (*<b>SessionState</b>, error) {
+		<a href="../../src/crypto/tls/ticket.go.html#line-182" class="path-duplicate">ticket.go</a><a href="../../src/crypto/tls/ticket.go.html#line-182">#L182</a>: 	ss := &amp;<b>SessionState</b>{}
+		<a href="../../src/crypto/tls/ticket.go.html#line-292" class="path-duplicate">ticket.go</a><a href="../../src/crypto/tls/ticket.go.html#line-292">#L292</a>: func (c *Conn) sessionState() (*<b>SessionState</b>, error) {
+		<a href="../../src/crypto/tls/ticket.go.html#line-293" class="path-duplicate">ticket.go</a><a href="../../src/crypto/tls/ticket.go.html#line-293">#L293</a>: 	return &amp;<b>SessionState</b>{
+		<a href="../../src/crypto/tls/ticket.go.html#line-310" class="path-duplicate">ticket.go</a><a href="../../src/crypto/tls/ticket.go.html#line-310">#L310</a>: func (c *Config) EncryptTicket(cs ConnectionState, ss *<b>SessionState</b>) ([]byte, error) {
+		<a href="../../src/crypto/tls/ticket.go.html#line-351" class="path-duplicate">ticket.go</a><a href="../../src/crypto/tls/ticket.go.html#line-351">#L351</a>: func (c *Config) DecryptTicket(identity []byte, cs ConnectionState) (*<b>SessionState</b>, error) {
+		<a href="../../src/crypto/tls/ticket.go.html#line-400" class="path-duplicate">ticket.go</a><a href="../../src/crypto/tls/ticket.go.html#line-400">#L400</a>: 	session *<b>SessionState</b>
+		<a href="../../src/crypto/tls/ticket.go.html#line-408" class="path-duplicate">ticket.go</a><a href="../../src/crypto/tls/ticket.go.html#line-408">#L408</a>: func (cs *ClientSessionState) ResumptionState() (ticket []byte, state *<b>SessionState</b>, err error) {
+		<a href="../../src/crypto/tls/ticket.go.html#line-417" class="path-duplicate">ticket.go</a><a href="../../src/crypto/tls/ticket.go.html#line-417">#L417</a>: func NewResumptionState(ticket []byte, state *<b>SessionState</b>) (*ClientSessionState, error) {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

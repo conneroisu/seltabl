@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: crypto/sha256.digest.h</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/crypto/sha256.html">crypto/sha256</a>.<a href="../../src/crypto/sha256/sha256.go.html#line-52">digest</a>.<a href="../../src/crypto/sha256/sha256.go.html#line-53">h</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">57 uses</span>
+
+	crypto/sha256 (current package)
+		<a href="../../src/crypto/sha256/sha256.go.html#line-53">sha256.go#L53</a>: 	<b>h</b>     [8]uint32
+		<a href="../../src/crypto/sha256/sha256.go.html#line-73" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-73">#L73</a>: 	b = binary.BigEndian.AppendUint32(b, d.<b>h</b>[0])
+		<a href="../../src/crypto/sha256/sha256.go.html#line-74" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-74">#L74</a>: 	b = binary.BigEndian.AppendUint32(b, d.<b>h</b>[1])
+		<a href="../../src/crypto/sha256/sha256.go.html#line-75" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-75">#L75</a>: 	b = binary.BigEndian.AppendUint32(b, d.<b>h</b>[2])
+		<a href="../../src/crypto/sha256/sha256.go.html#line-76" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-76">#L76</a>: 	b = binary.BigEndian.AppendUint32(b, d.<b>h</b>[3])
+		<a href="../../src/crypto/sha256/sha256.go.html#line-77" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-77">#L77</a>: 	b = binary.BigEndian.AppendUint32(b, d.<b>h</b>[4])
+		<a href="../../src/crypto/sha256/sha256.go.html#line-78" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-78">#L78</a>: 	b = binary.BigEndian.AppendUint32(b, d.<b>h</b>[5])
+		<a href="../../src/crypto/sha256/sha256.go.html#line-79" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-79">#L79</a>: 	b = binary.BigEndian.AppendUint32(b, d.<b>h</b>[6])
+		<a href="../../src/crypto/sha256/sha256.go.html#line-80" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-80">#L80</a>: 	b = binary.BigEndian.AppendUint32(b, d.<b>h</b>[7])
+		<a href="../../src/crypto/sha256/sha256.go.html#line-95" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-95">#L95</a>: 	b, d.<b>h</b>[0] = consumeUint32(b)
+		<a href="../../src/crypto/sha256/sha256.go.html#line-96" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-96">#L96</a>: 	b, d.<b>h</b>[1] = consumeUint32(b)
+		<a href="../../src/crypto/sha256/sha256.go.html#line-97" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-97">#L97</a>: 	b, d.<b>h</b>[2] = consumeUint32(b)
+		<a href="../../src/crypto/sha256/sha256.go.html#line-98" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-98">#L98</a>: 	b, d.<b>h</b>[3] = consumeUint32(b)
+		<a href="../../src/crypto/sha256/sha256.go.html#line-99" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-99">#L99</a>: 	b, d.<b>h</b>[4] = consumeUint32(b)
+		<a href="../../src/crypto/sha256/sha256.go.html#line-100" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-100">#L100</a>: 	b, d.<b>h</b>[5] = consumeUint32(b)
+		<a href="../../src/crypto/sha256/sha256.go.html#line-101" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-101">#L101</a>: 	b, d.<b>h</b>[6] = consumeUint32(b)
+		<a href="../../src/crypto/sha256/sha256.go.html#line-102" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-102">#L102</a>: 	b, d.<b>h</b>[7] = consumeUint32(b)
+		<a href="../../src/crypto/sha256/sha256.go.html#line-124" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-124">#L124</a>: 		d.<b>h</b>[0] = init0
+		<a href="../../src/crypto/sha256/sha256.go.html#line-125" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-125">#L125</a>: 		d.<b>h</b>[1] = init1
+		<a href="../../src/crypto/sha256/sha256.go.html#line-126" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-126">#L126</a>: 		d.<b>h</b>[2] = init2
+		<a href="../../src/crypto/sha256/sha256.go.html#line-127" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-127">#L127</a>: 		d.<b>h</b>[3] = init3
+		<a href="../../src/crypto/sha256/sha256.go.html#line-128" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-128">#L128</a>: 		d.<b>h</b>[4] = init4
+		<a href="../../src/crypto/sha256/sha256.go.html#line-129" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-129">#L129</a>: 		d.<b>h</b>[5] = init5
+		<a href="../../src/crypto/sha256/sha256.go.html#line-130" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-130">#L130</a>: 		d.<b>h</b>[6] = init6
+		<a href="../../src/crypto/sha256/sha256.go.html#line-131" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-131">#L131</a>: 		d.<b>h</b>[7] = init7
+		<a href="../../src/crypto/sha256/sha256.go.html#line-133" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-133">#L133</a>: 		d.<b>h</b>[0] = init0_224
+		<a href="../../src/crypto/sha256/sha256.go.html#line-134" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-134">#L134</a>: 		d.<b>h</b>[1] = init1_224
+		<a href="../../src/crypto/sha256/sha256.go.html#line-135" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-135">#L135</a>: 		d.<b>h</b>[2] = init2_224
+		<a href="../../src/crypto/sha256/sha256.go.html#line-136" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-136">#L136</a>: 		d.<b>h</b>[3] = init3_224
+		<a href="../../src/crypto/sha256/sha256.go.html#line-137" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-137">#L137</a>: 		d.<b>h</b>[4] = init4_224
+		<a href="../../src/crypto/sha256/sha256.go.html#line-138" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-138">#L138</a>: 		d.<b>h</b>[5] = init5_224
+		<a href="../../src/crypto/sha256/sha256.go.html#line-139" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-139">#L139</a>: 		d.<b>h</b>[6] = init6_224
+		<a href="../../src/crypto/sha256/sha256.go.html#line-140" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-140">#L140</a>: 		d.<b>h</b>[7] = init7_224
+		<a href="../../src/crypto/sha256/sha256.go.html#line-238" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-238">#L238</a>: 	binary.BigEndian.PutUint32(digest[0:], d.<b>h</b>[0])
+		<a href="../../src/crypto/sha256/sha256.go.html#line-239" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-239">#L239</a>: 	binary.BigEndian.PutUint32(digest[4:], d.<b>h</b>[1])
+		<a href="../../src/crypto/sha256/sha256.go.html#line-240" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-240">#L240</a>: 	binary.BigEndian.PutUint32(digest[8:], d.<b>h</b>[2])
+		<a href="../../src/crypto/sha256/sha256.go.html#line-241" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-241">#L241</a>: 	binary.BigEndian.PutUint32(digest[12:], d.<b>h</b>[3])
+		<a href="../../src/crypto/sha256/sha256.go.html#line-242" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-242">#L242</a>: 	binary.BigEndian.PutUint32(digest[16:], d.<b>h</b>[4])
+		<a href="../../src/crypto/sha256/sha256.go.html#line-243" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-243">#L243</a>: 	binary.BigEndian.PutUint32(digest[20:], d.<b>h</b>[5])
+		<a href="../../src/crypto/sha256/sha256.go.html#line-244" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-244">#L244</a>: 	binary.BigEndian.PutUint32(digest[24:], d.<b>h</b>[6])
+		<a href="../../src/crypto/sha256/sha256.go.html#line-246" class="path-duplicate">sha256.go</a><a href="../../src/crypto/sha256/sha256.go.html#line-246">#L246</a>: 		binary.BigEndian.PutUint32(digest[28:], d.<b>h</b>[7])
+		<a href="../../src/crypto/sha256/sha256block.go.html#line-82">sha256block.go#L82</a>: 	h0, h1, h2, h3, h4, h5, h6, h7 := dig.<b>h</b>[0], dig.<b>h</b>[1], dig.<b>h</b>[2], dig.<b>h</b>[3], dig.<b>h</b>[4], dig.<b>h</b>[5], dig.<b>h</b>[6], dig.<b>h</b>[7]
+		<a href="../../src/crypto/sha256/sha256block.go.html#line-127" class="path-duplicate">sha256block.go</a><a href="../../src/crypto/sha256/sha256block.go.html#line-127">#L127</a>: 	dig.<b>h</b>[0], dig.<b>h</b>[1], dig.<b>h</b>[2], dig.<b>h</b>[3], dig.<b>h</b>[4], dig.<b>h</b>[5], dig.<b>h</b>[6], dig.<b>h</b>[7] = h0, h1, h2, h3, h4, h5, h6, h7
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

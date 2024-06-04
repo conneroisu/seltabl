@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.workbuf.obj</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/mgcwork.go.html#line-324">workbuf</a>.<a href="../src/runtime/mgcwork.go.html#line-328">obj</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">13 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/mgcwork.go.html#line-124">mgcwork.go#L124</a>: 	} else if wbuf.nobj == len(wbuf.<b>obj</b>) {
+		<a href="../src/runtime/mgcwork.go.html#line-127" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-127">#L127</a>: 		if wbuf.nobj == len(wbuf.<b>obj</b>) {
+		<a href="../src/runtime/mgcwork.go.html#line-136" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-136">#L136</a>: 	wbuf.<b>obj</b>[wbuf.nobj] = obj
+		<a href="../src/runtime/mgcwork.go.html#line-154" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-154">#L154</a>: 	if wbuf == nil || wbuf.nobj == len(wbuf.<b>obj</b>) {
+		<a href="../src/runtime/mgcwork.go.html#line-158" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-158">#L158</a>: 	wbuf.<b>obj</b>[wbuf.nobj] = obj
+		<a href="../src/runtime/mgcwork.go.html#line-180" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-180">#L180</a>: 		for wbuf.nobj == len(wbuf.<b>obj</b>) {
+		<a href="../src/runtime/mgcwork.go.html#line-187" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-187">#L187</a>: 		n := copy(wbuf.<b>obj</b>[wbuf.nobj:], obj)
+		<a href="../src/runtime/mgcwork.go.html#line-226" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-226">#L226</a>: 	return wbuf.<b>obj</b>[wbuf.nobj]
+		<a href="../src/runtime/mgcwork.go.html#line-241" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-241">#L241</a>: 	return wbuf.<b>obj</b>[wbuf.nobj]
+		<a href="../src/runtime/mgcwork.go.html#line-328" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-328">#L328</a>: 	<b>obj</b> [(_WorkbufSize - unsafe.Sizeof(workbufhdr{})) / goarch.PtrSize]uintptr
+		<a href="../src/runtime/mgcwork.go.html#line-443" class="path-duplicate">mgcwork.go</a><a href="../src/runtime/mgcwork.go.html#line-443">#L443</a>: 	memmove(unsafe.Pointer(&amp;b1.<b>obj</b>[0]), unsafe.Pointer(&amp;b.<b>obj</b>[b.nobj]), uintptr(n)*unsafe.Sizeof(b1.<b>obj</b>[0]))
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

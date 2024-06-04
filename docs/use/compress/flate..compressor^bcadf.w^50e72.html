@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: compress/flate.compressor.w</title>
+<link href="../../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;"><b><a href="../../pkg/compress/flate.html">compress/flate</a>.<a href="../../src/compress/flate/deflate.go.html#line-81">compressor</a>.<a href="../../src/compress/flate/deflate.go.html#line-84">w</a></b></span><span style="font-size: large;"><i> (field)</i></span>
+
+<span class="title">27 uses</span>
+
+	compress/flate (current package)
+		<a href="../../src/compress/flate/deflate.go.html#line-84">deflate.go#L84</a>: 	<b>w</b>          *huffmanBitWriter
+		<a href="../../src/compress/flate/deflate.go.html#line-170" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-170">#L170</a>: 		d.<b>w</b>.writeBlock(tokens, false, window)
+		<a href="../../src/compress/flate/deflate.go.html#line-171" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-171">#L171</a>: 		return d.<b>w</b>.err
+		<a href="../../src/compress/flate/deflate.go.html#line-283" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-283">#L283</a>: 	if d.<b>w</b>.writeStoredHeader(len(buf), false); d.<b>w</b>.err != nil {
+		<a href="../../src/compress/flate/deflate.go.html#line-284" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-284">#L284</a>: 		return d.<b>w</b>.err
+		<a href="../../src/compress/flate/deflate.go.html#line-286" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-286">#L286</a>: 	d.<b>w</b>.writeBytes(buf)
+		<a href="../../src/compress/flate/deflate.go.html#line-287" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-287">#L287</a>: 	return d.<b>w</b>.err
+		<a href="../../src/compress/flate/deflate.go.html#line-346" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-346">#L346</a>: 				d.<b>w</b>.writeBlockHuff(false, d.window[:d.windowEnd])
+		<a href="../../src/compress/flate/deflate.go.html#line-347" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-347">#L347</a>: 				d.err = d.<b>w</b>.err
+		<a href="../../src/compress/flate/deflate.go.html#line-360" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-360">#L360</a>: 		d.<b>w</b>.writeBlockHuff(false, d.window[:d.windowEnd])
+		<a href="../../src/compress/flate/deflate.go.html#line-362" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-362">#L362</a>: 		d.<b>w</b>.writeBlockDynamic(d.tokens, false, d.window[:d.windowEnd])
+		<a href="../../src/compress/flate/deflate.go.html#line-364" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-364">#L364</a>: 	d.err = d.<b>w</b>.err
+		<a href="../../src/compress/flate/deflate.go.html#line-533" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-533">#L533</a>: 	d.<b>w</b>.writeBlockHuff(false, d.window[:d.windowEnd])
+		<a href="../../src/compress/flate/deflate.go.html#line-534" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-534">#L534</a>: 	d.err = d.<b>w</b>.err
+		<a href="../../src/compress/flate/deflate.go.html#line-560" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-560">#L560</a>: 		d.<b>w</b>.writeStoredHeader(0, false)
+		<a href="../../src/compress/flate/deflate.go.html#line-561" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-561">#L561</a>: 		d.<b>w</b>.flush()
+		<a href="../../src/compress/flate/deflate.go.html#line-562" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-562">#L562</a>: 		d.err = d.<b>w</b>.err
+		<a href="../../src/compress/flate/deflate.go.html#line-569" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-569">#L569</a>: 	d.<b>w</b> = newHuffmanBitWriter(w)
+		<a href="../../src/compress/flate/deflate.go.html#line-602" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-602">#L602</a>: 	d.<b>w</b>.reset(w)
+		<a href="../../src/compress/flate/deflate.go.html#line-642" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-642">#L642</a>: 	if d.<b>w</b>.writeStoredHeader(0, true); d.<b>w</b>.err != nil {
+		<a href="../../src/compress/flate/deflate.go.html#line-643" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-643">#L643</a>: 		return d.<b>w</b>.err
+		<a href="../../src/compress/flate/deflate.go.html#line-645" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-645">#L645</a>: 	d.<b>w</b>.flush()
+		<a href="../../src/compress/flate/deflate.go.html#line-646" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-646">#L646</a>: 	if d.<b>w</b>.err != nil {
+		<a href="../../src/compress/flate/deflate.go.html#line-647" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-647">#L647</a>: 		return d.<b>w</b>.err
+		<a href="../../src/compress/flate/deflate.go.html#line-737" class="path-duplicate">deflate.go</a><a href="../../src/compress/flate/deflate.go.html#line-737">#L737</a>: 	if dw, ok := w.d.<b>w</b>.writer.(*dictWriter); ok {
+</code></pre><pre id="footer">
+<table><tr><td><img src="../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

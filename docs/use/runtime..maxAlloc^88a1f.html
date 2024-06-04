@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>References: runtime.maxAlloc</title>
+<link href="../css/auto-v0.6.8.css" rel="stylesheet">
+<script src="../jvs/golds-v0.6.8.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:x-large;">const <b><a href="../pkg/runtime.html">runtime</a>.<a href="../src/runtime/malloc.go.html#line-218">maxAlloc</a></b></span>
+
+<span class="title">18 uses</span>
+
+	runtime (current package)
+		<a href="../src/runtime/arena.go.html#line-543">arena.go#L543</a>: 	if overflow || n &lt; 0 || mem &gt; <b>maxAlloc</b> {
+		<a href="../src/runtime/chan.go.html#line-84">chan.go#L84</a>: 	if overflow || mem &gt; <b>maxAlloc</b>-hchanSize || size &lt; 0 {
+		<a href="../src/runtime/malloc.go.html#line-218">malloc.go#L218</a>: 	<b>maxAlloc</b> = (1 &lt;&lt; heapAddrBits) - (1-_64bit)*1
+		<a href="../src/runtime/malloc.go.html#line-1409" class="path-duplicate">malloc.go</a><a href="../src/runtime/malloc.go.html#line-1409">#L1409</a>: 	if overflow || mem &gt; <b>maxAlloc</b> || n &lt; 0 {
+		<a href="../src/runtime/map.go.html#line-307">map.go#L307</a>: 	if overflow || mem &gt; <b>maxAlloc</b> {
+		<a href="../src/runtime/slice.go.html#line-43">slice.go#L43</a>: 		if overflow || tomem &gt; <b>maxAlloc</b> || tolen &lt; 0 {
+		<a href="../src/runtime/slice.go.html#line-94" class="path-duplicate">slice.go</a><a href="../src/runtime/slice.go.html#line-94">#L94</a>: 	if overflow || mem &gt; <b>maxAlloc</b> || len &lt; 0 || len &gt; cap {
+		<a href="../src/runtime/slice.go.html#line-101" class="path-duplicate">slice.go</a><a href="../src/runtime/slice.go.html#line-101">#L101</a>: 		if overflow || mem &gt; <b>maxAlloc</b> || len &lt; 0 {
+		<a href="../src/runtime/slice.go.html#line-192" class="path-duplicate">slice.go</a><a href="../src/runtime/slice.go.html#line-192">#L192</a>: 		overflow = uintptr(newcap) &gt; <b>maxAlloc</b>
+		<a href="../src/runtime/slice.go.html#line-198" class="path-duplicate">slice.go</a><a href="../src/runtime/slice.go.html#line-198">#L198</a>: 		overflow = uintptr(newcap) &gt; <b>maxAlloc</b>/goarch.PtrSize
+		<a href="../src/runtime/slice.go.html#line-211" class="path-duplicate">slice.go</a><a href="../src/runtime/slice.go.html#line-211">#L211</a>: 		overflow = uintptr(newcap) &gt; (<b>maxAlloc</b> &gt;&gt; shift)
+		<a href="../src/runtime/slice.go.html#line-236" class="path-duplicate">slice.go</a><a href="../src/runtime/slice.go.html#line-236">#L236</a>: 	if overflow || capmem &gt; <b>maxAlloc</b> {
+		<a href="../src/runtime/slice.go.html#line-366" class="path-duplicate">slice.go</a><a href="../src/runtime/slice.go.html#line-366">#L366</a>: 	if uintptr(len) &gt; <b>maxAlloc</b> {
+		<a href="../src/runtime/string.go.html#line-285">string.go#L285</a>: 	if uintptr(size) &gt; <b>maxAlloc</b>/4 {
+		<a href="../src/runtime/string.go.html#line-304" class="path-duplicate">string.go</a><a href="../src/runtime/string.go.html#line-304">#L304</a>: 	if n &lt; 0 || uintptr(n) &gt; <b>maxAlloc</b> {
+		<a href="../src/runtime/string.go.html#line-517" class="path-duplicate">string.go</a><a href="../src/runtime/string.go.html#line-517">#L517</a>: 		p := (*[<b>maxAlloc</b>/2 - 1]byte)(unsafe.Pointer(s))
+		<a href="../src/runtime/string.go.html#line-555" class="path-duplicate">string.go</a><a href="../src/runtime/string.go.html#line-555">#L555</a>: 	p := (*[<b>maxAlloc</b>/2/2 - 1]uint16)(unsafe.Pointer(s))
+		<a href="../src/runtime/string.go.html#line-572" class="path-duplicate">string.go</a><a href="../src/runtime/string.go.html#line-572">#L572</a>: 	str := (*[<b>maxAlloc</b>/2/2 - 1]uint16)(unsafe.Pointer(strw))
+</code></pre><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.6.8</i>. (GOOS=linux GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

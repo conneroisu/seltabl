@@ -23,18 +23,43 @@ import (
 	"github.com/conneroisu/seltabl/testdata"
 )
 
-type fixtureStruct struct {
+type TableStruct struct {
 	A string `json:"a" seltabl:"a" hSel:"tr:nth-child(1) td:nth-child(1)" dSel:"tr td:nth-child(1)" cSel:"$text"`
 	B string `json:"b" seltabl:"b" hSel:"tr:nth-child(1) td:nth-child(2)" dSel:"tr td:nth-child(2)" cSel:"$text"`
 }
 
+var fixture = `
+<table>
+	<tr>
+		<td>a</td>
+		<td>b</td>
+	</tr>
+	<tr>
+		<td> 1 </td>
+		<td>2</td>
+	</tr>
+	<tr>
+		<td>3 </td>
+		<td>4 </td>
+	</tr>
+	<tr>
+		<td> 5 </td>
+		<td> 6</td>
+	</tr>
+	<tr>
+		<td>7 </td>
+		<td> 8</td>
+	</tr>
+</table>
+`
+
 func main() {
-	p, err := seltabl.NewFromString[fixtureStruct](testdata.FixtureABNumTable)
+	fss, err := seltabl.NewFromString[TableStruct](fixture)
 	if err != nil {
-		panic(err)
+		panic(fmt.Errorf("failed to parse html: %w", err))
 	}
-	for _, pp := range p {
-		fmt.Printf("%+v\n", pp)
+	for _, fs := range fss {
+		fmt.Printf("%+v\n", fs)
 	}
 }
 ```

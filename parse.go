@@ -21,7 +21,15 @@ const (
 	cellSelectorTag   = "cSel"
 )
 
-// NewFromString parses a string into a slice of structs.
+func NewFromString[T any](htmlInput string) ([]T, error) {
+	doc, err := goquery.NewDocumentFromReader(strings.NewReader(htmlInput))
+	if err != nil {
+		return nil, fmt.Errorf("failed to parse html: %w", err)
+	}
+	return New[T](doc)
+}
+
+// New parses a string into a slice of structs.
 //
 // The struct must have a field with the tag seltabl, a header selector with
 // the tag hSel, and a data selector with the tag dSel.
@@ -70,7 +78,7 @@ const (
 //	}
 //
 //	func main() {
-//		p, err := seltabl.NewFromString[fixtureStruct](fixture)
+//		p, err := seltabl.New[fixtureStruct](fixture)
 //		if err != nil {
 //			panic(err)
 //		}
@@ -78,11 +86,7 @@ const (
 //			fmt.Printf("pp %+v\n", pp)
 //		}
 //	}
-func NewFromString[T any](htmlInput string) ([]T, error) {
-	doc, err := goquery.NewDocumentFromReader(strings.NewReader(htmlInput))
-	if err != nil {
-		return nil, fmt.Errorf("failed to parse html: %w", err)
-	}
+func New[T any](doc *goquery.Document) ([]T, error) {
 	dType := reflect.TypeOf((*T)(nil)).Elem()
 	if dType.Kind() != reflect.Struct {
 		return nil, fmt.Errorf("expected struct, got %s", dType.Kind())
@@ -156,6 +160,20 @@ func NewFromString[T any](htmlInput string) ([]T, error) {
 	return results, nil
 }
 
+// NewFromReader parses a reader into a slice of structs.
+//
+// The reader must be a valid html page with a single table.
+//
+// The passed in generic type must be a struct with valid selectors for the
+// table and data (hSel, dSel, cSel).
+func NewFromReader[T any](r io.Reader) ([]T, error) {
+	doc, err := goquery.NewDocumentFromReader(r)
+	if err != nil {
+		return nil, fmt.Errorf("failed to parse html: %w", err)
+	}
+	return New[T](doc)
+}
+
 // NewFromURL parses a URL into a slice of structs.
 //
 // The URL must be a valid html page with a single table.
@@ -173,5 +191,27 @@ func NewFromURL[T any](url string) ([]T, error) {
 	if err != nil {
 		return nil, fmt.Errorf("failed to read body: %w", err)
 	}
-	return NewFromString[T](string(body))
+	doc, err := goquery.NewDocumentFromReader(strings.NewReader(string(body)))
+	if err != nil {
+		return nil, fmt.Errorf("failed to parse html: %w", err)
+	}
+	return New[T](doc)
+}
+
+// Decoder is a struct for decoding a reader into a slice of structs.
+type Decoder[T any] struct {
+	reader io.ReadCloser
+}
+
+// NewDecoder parses a reader into a slice of structs.
+func NewDecoder[T any](r io.ReadCloser) *Decoder[T] {
+	return &Decoder[T]{
+		reader: r,
+	}
+}
+
+// Decode parses a reader into a slice of structs.
+func (d *Decoder[T]) Decode() ([]T, error) {
+	defer d.reader.Close()
+	return NewFromReader[T](d.reader)
 }

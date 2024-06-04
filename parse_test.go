@@ -1,6 +1,7 @@
 package seltabl
 
 import (
+	"reflect"
 	"testing"
 
 	"github.com/conneroisu/seltabl/testdata"
@@ -37,32 +38,52 @@ func TestNumberedTable(t *testing.T) {
 	assert.Equal(t, "Row 3, Cell 3", p[2].Header3)
 }
 
-// TestSuperNovaTable tests the parsing of a table with supernova data.
-func TestSuperNovaTable(t *testing.T) {
-	p, err := NewFromString[testdata.SuperNovaStruct](testdata.SuperNovaTable)
-	assert.Nil(t, err)
-	assert.Equal(t, "SN 1006", p[0].Supernova)
-	assert.Equal(t, "1006", p[0].Year)
-	assert.Equal(t, "Type Ia", p[0].Type)
-	assert.Equal(t, "7,200", p[0].Distance)
-	assert.Equal(t, "Brightest recorded supernova in history", p[0].Notes)
+// / TestNewFromString tests the NewFromString function
+func TestNewFromString(t *testing.T) {
+	type args struct {
+		htmlInput string
+		typ       interface{}
+	}
 
-	assert.Equal(t, "SN 1054 (Crab Nebula)", p[1].Supernova)
-	assert.Equal(t, "1054", p[1].Year)
-	assert.Equal(t, "Type II", p[1].Type)
-	assert.Equal(t, "6,500", p[1].Distance)
-	assert.Equal(t, "Formed the Crab Nebula and pulsar", p[1].Notes)
-
-	assert.Equal(t, "SN 1572 (Tycho's Supernova)", p[2].Supernova)
-	assert.Equal(t, "1572", p[2].Year)
-	assert.Equal(t, "Type Ia", p[2].Type)
-	assert.Equal(t, "8,000-10,000", p[2].Distance)
-	assert.Equal(t, "Observed by Tycho Brahe", p[2].Notes)
-
-	assert.Equal(t, "SN 1604 (Kepler's Supernova)", p[3].Supernova)
-	assert.Equal(t, "1604", p[3].Year)
-	assert.Equal(t, "Type Ia", p[3].Type)
-	assert.Equal(t, "20,000", p[3].Distance)
-	assert.Equal(t, "Last observed supernova in the Milky Way", p[3].Notes)
-
+	tests := []struct {
+		name    string
+		args    args
+		want    interface{}
+		wantErr bool
+	}{
+		{
+			name: "Test supernova table",
+			args: args{
+				htmlInput: testdata.SuperNovaTable,
+				typ:       reflect.TypeOf(testdata.SuperNovaStruct{}),
+			},
+			want:    testdata.SuperNovaTableResult,
+			wantErr: false,
+		},
+		{
+			name: "TestNewFromStringWithInvalidHTML",
+			args: args{
+				htmlInput: "invalid",
+				typ:       reflect.TypeOf(testdata.SuperNovaStruct{}),
+			},
+			want:    nil, // nil is an error
+			wantErr: true,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got, err := NewFromString[testdata.SuperNovaStruct](tt.args.htmlInput)
+			if (err != nil) != tt.wantErr {
+				t.Errorf("NewFromString() error = %v, wantErr %v", err, tt.wantErr)
+				return
+			}
+			if tt.wantErr {
+				assert.Error(t, err)
+				return
+			}
+			if !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("NewFromString() got = %v, want %v", got, tt.want)
+			}
+		})
+	}
 }

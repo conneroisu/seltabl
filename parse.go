@@ -15,6 +15,7 @@ const (
 	innerTextSelector = "$text"
 	attrSelector      = "@"
 
+	headerTag         = "seltabl"
 	dataSelectorTag   = "dSel"
 	headerSelectorTag = "hSel"
 	cellSelectorTag   = "cSel"
@@ -89,7 +90,7 @@ func NewFromString[T any](htmlInput string) ([]T, error) {
 	results := make([]T, 0)
 	for i := 0; i < dType.NumField(); i++ {
 		field := dType.Field(i)
-		headName := field.Tag.Get("seltabl")
+		headName := field.Tag.Get(headerTag)
 		if headName == "" {
 			continue
 		}
@@ -148,6 +149,9 @@ func NewFromString[T any](htmlInput string) ([]T, error) {
 				)
 			}
 		}
+	}
+	if len(results) <= 1 {
+		return nil, fmt.Errorf("no data found for struct %s", dType.Name())
 	}
 	return results, nil
 }

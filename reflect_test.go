@@ -8,12 +8,14 @@ import (
 	"github.com/PuerkitoBio/goquery"
 )
 
+// TestStruct is a test struct
 type TestStruct struct {
 	Name  string
 	Age   int
 	Score float64
 }
 
+// createSelectionFromHTML creates a goquery selection from a html string
 func createSelectionFromHTML(html string) *goquery.Selection {
 	doc, _ := goquery.NewDocumentFromReader(strings.NewReader(html))
 	return doc.Selection
@@ -77,12 +79,10 @@ func TestSetStructField(t *testing.T) {
 			ts := &TestStruct{}
 			cellValue := createSelectionFromHTML(tt.html)
 			err := SetStructField(ts, tt.fieldName, cellValue, tt.selector)
-
 			if (err != nil) != tt.wantErr {
 				t.Errorf("SetStructField() error = %v, wantErr %v", err, tt.wantErr)
 				return
 			}
-
 			if !tt.wantErr {
 				v := reflect.ValueOf(ts).Elem().FieldByName(tt.fieldName).Interface()
 				if !reflect.DeepEqual(v, tt.expected) {

@@ -211,7 +211,7 @@ func NewDecoder[T any](r io.ReadCloser) *Decoder[T] {
 }
 
 // Decode parses a reader into a slice of structs.
-func (d *Decoder[T]) Decode() ([]T, error) {
+func (d *Decoder[T]) Decode(value T) ([]T, error) {
 	defer d.reader.Close()
 	return NewFromReader[T](d.reader)
 }

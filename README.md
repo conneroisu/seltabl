@@ -8,6 +8,8 @@ Enables data binding to structs and provides a simple, but dynamic way to define
 
 ## Installation
 
+Install the package with:
+
 ```bash
 go get github.com/conneroisu/seltabl
 ```

@@ -18,10 +18,6 @@ type SelectionNotFound[T any] struct {
 	SelectionQuery string
 }
 
-//
-// func (e *HeaderNotFoundError[T]) Error() string {
-//         return fmt.Sprintf(
-
 // selectionStructHighlight returns a string representation of the golang struct
 // and highlights the selector that was used to find the header row which was
 // not found.

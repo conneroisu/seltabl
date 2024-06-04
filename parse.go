@@ -102,20 +102,20 @@ func NewFromString[T any](htmlInput string) ([]T, error) {
 				Selector:  headerSelectorTag,
 			}
 		}
-		headerRow := doc.Find(headSelector)
-		if headerRow.Length() == 0 {
-			return nil, &errors.SelectionNotFound[T]{
-				Struct:         *new(T),
-				FieldName:      headName,
-				SelectionQuery: headSelector,
-			}
-		}
 		dataSelector := field.Tag.Get(dataSelectorTag)
 		if dataSelector == "" {
 			return nil, &errors.SelectorNotFound[T]{
 				Struct:    *new(T),
 				FieldName: headName,
 				Selector:  dataSelectorTag,
+			}
+		}
+		headRow := doc.Find(headSelector)
+		if headRow.Length() == 0 {
+			return nil, &errors.SelectionNotFound[T]{
+				Struct:         *new(T),
+				FieldName:      headName,
+				SelectionQuery: headSelector,
 			}
 		}
 		dataRows := doc.Find(
@@ -157,6 +157,11 @@ func NewFromString[T any](htmlInput string) ([]T, error) {
 }
 
 // NewFromURL parses a URL into a slice of structs.
+//
+// The URL must be a valid html page with a single table.
+//
+// The passed in generic type must be a struct with valid selectors for the
+// table and data (hSel, dSel, cSel).
 func NewFromURL[T any](url string) ([]T, error) {
 	client := &http.Client{}
 	resp, err := client.Get(url)

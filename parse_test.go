@@ -10,6 +10,7 @@ import (
 
 // TestFixtureTables tests the parsing of a table with headers.
 func TestFixtureTables(t *testing.T) {
+	t.Parallel()
 	p, err := NewFromString[testdata.FixtureStruct](testdata.FixtureABNumTable)
 	assert.Nil(t, err)
 	assert.Equal(t, "1", p[0].A)
@@ -24,6 +25,7 @@ func TestFixtureTables(t *testing.T) {
 
 // TestNumberedTable tests the parsing of a table with numbered headers.
 func TestNumberedTable(t *testing.T) {
+	t.Parallel()
 	p, err := NewFromString[testdata.NumberedStruct](testdata.NumberedTable)
 	assert.Nil(t, err)
 	assert.NoError(t, err)

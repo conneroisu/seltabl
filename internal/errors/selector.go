@@ -36,7 +36,7 @@ func selectorStructHighlight(structPtr interface{}, selector string) (string, er
 	for i := 0; i < val.NumField(); i++ {
 		field := structType.Field(i)
 		fieldValue := val.Field(i)
-		skv, err := genStructTagString(field, selector)
+		skv, err := GenStructTagString(field, selector)
 		if err != nil {
 			return "", fmt.Errorf("failed to generate struct tag string: %w", err)
 		}
@@ -50,11 +50,11 @@ func selectorStructHighlight(structPtr interface{}, selector string) (string, er
 	return result.String(), nil
 }
 
-// genStructTagString returns a string representation of the struct tag
+// GenStructTagString returns a string representation of the struct tag
 // for a struct field.
 //
 // It is used by the HeaderNotFoundError struct.
-func genStructTagString(field reflect.StructField, highlightSelector string) (*string, error) {
+func GenStructTagString(field reflect.StructField, highlightSelector string) (*string, error) {
 	var result strings.Builder
 	var err error
 	result.WriteString("`")
@@ -66,7 +66,7 @@ func genStructTagString(field reflect.StructField, highlightSelector string) (*s
 		key := match[1]
 		value := match[2]
 		if strings.Contains(value, highlightSelector) {
-			_, err = result.WriteString(fmt.Sprintf(" %s:%s", key, "==\""+value+"\"=="))
+			_, err = result.WriteString(fmt.Sprintf(" %s:%s", key, "==\""+value+"==\""))
 			if err != nil {
 				return nil, fmt.Errorf("failed to write struct tag: %w", err)
 			}

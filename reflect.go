@@ -27,10 +27,12 @@ func SetStructField[T any](
 		return fmt.Errorf("cannot set field: %s", fieldName)
 	}
 	fieldType := field.Type().Kind()
-	cellText := cellValue.Text()
 	var exists bool
+	var cellText string
+
 	switch selector {
 	case innerTextSelector:
+		cellText = cellValue.Text()
 		cellText = strings.TrimSpace(cellText)
 		if cellValue.Length() == 0 {
 			return fmt.Errorf("failed to find selector: %s", selector)
@@ -43,6 +45,7 @@ func SetStructField[T any](
 	default:
 		print("default")
 	}
+
 	switch fieldType {
 	case reflect.String:
 		field.SetString(cellText)

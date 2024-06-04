@@ -81,7 +81,6 @@ One can run the documentation generator with:
 make doc
 ```
 
-
 ## License
 
 MIT

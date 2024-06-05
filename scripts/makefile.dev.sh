@@ -4,5 +4,5 @@
 # title: Running Development Scripts
 
 shopt -s globstar
+
 templ generate --watch --proxy="http://localhost:8080" --cmd="doppler run -- air"
-# doppler run -- air

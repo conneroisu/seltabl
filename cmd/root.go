@@ -1,4 +1,4 @@
-package main
+package cmd
 
 import (
 	"fmt"
@@ -14,7 +14,7 @@ var rootCmd = &cobra.Command{
 seltabl: A golang library for configurably parsing html sequences into stucts originally built for html tables, but can be used for any html sequence.
 
 Command allows you to generate a golang struct from a html table given the data selectors for the table and the data selectors for the types of fields in the struct.
-	`,
+`,
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.
@@ -30,5 +30,4 @@ func Execute() error {
 func init() {
 	// rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.seltabl.yaml)")
 	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
-
 }

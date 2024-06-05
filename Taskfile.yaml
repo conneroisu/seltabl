@@ -1,0 +1,30 @@
+version: '3'
+
+tasks:
+  clean:
+    cmds:
+      - sh ./scripts/makefile.clean.sh
+      
+  fmt:
+    cmds:
+    - sh ./scripts/makefile.fmt.sh
+
+  lint:
+    cmds:
+    - sh ./scripts/makefile.lint.sh
+
+  test:
+    cmds:
+      - sh ./scripts/makefile.test.sh
+        
+  database:
+    cmds:
+      - sh ./scripts/makefile.database.sh 
+      
+  coverage:
+    cmds:
+      - sh ./scripts/makefile.coverage.sh
+
+  install:
+    cmds:
+      - sh ./scripts/makefile.install.sh

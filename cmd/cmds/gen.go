@@ -1,6 +1,3 @@
-/*
-Copyright © 2024 Conner Ohnesorge <conneroisu@outlook.com>
-*/
 package cmds
 
 import (

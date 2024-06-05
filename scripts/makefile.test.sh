@@ -8,11 +8,8 @@
 
 gum spin --spinner dot --title "Running Go Test With Race" --show-output -- \
     go test -race -v -timeout 30s ./...
-# gum spin --spinner dot --title "Running Go Test With Coverage" --show-output -- \
+
 go test -coverprofile=coverage.out ./... 
-# gum spin --spinner dot --title "Running Make Lint" --show-output -- \
-    # make lint
-    #
 
 # if gocovsh is executable
 if [ -x "$(command -v gocovsh)" ]; then
@@ -21,7 +18,7 @@ if [ -x "$(command -v gocovsh)" ]; then
         # run gocovsh
         gocovsh
     else
-        # if gocovsh is empty
+        # if coverage.out is empty/not found
         echo "No coverage.out file found."
     fi
 else

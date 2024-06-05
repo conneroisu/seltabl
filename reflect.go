@@ -121,6 +121,15 @@ func SetStructField[T any](
 			return fmt.Errorf("failed to parse float: %s", err)
 		}
 		field.SetFloat(in)
+	case reflect.Struct:
+		if err := SetStructField(
+			structPtr,
+			fieldName,
+			cellValue,
+			selector,
+		); err != nil {
+			return fmt.Errorf("failed to set field %s: %s", fieldName, err)
+		}
 	default:
 		return fmt.Errorf("unsupported type: %s", fieldType)
 	}

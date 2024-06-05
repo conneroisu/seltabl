@@ -21,6 +21,10 @@ const (
 	cellSelectorTag   = "cSel"
 )
 
+// NewFromString parses a string into a slice of structs.
+//
+// The struct must have a field with the tag seltabl, a header selector with
+// the tag hSel, and a data selector with the tag dSel.
 func NewFromString[T any](htmlInput string) ([]T, error) {
 	doc, err := goquery.NewDocumentFromReader(strings.NewReader(htmlInput))
 	if err != nil {
@@ -29,9 +33,9 @@ func NewFromString[T any](htmlInput string) ([]T, error) {
 	return New[T](doc)
 }
 
-// New parses a string into a slice of structs.
+// New parses a goquery doc into a slice of structs.
 //
-// The struct must have a field with the tag seltabl, a header selector with
+// The struct given as an argument must have a field with the tag seltabl, a header selector with
 // the tag hSel, and a data selector with the tag dSel.
 //
 // The selectors responsibilties:
@@ -196,22 +200,4 @@ func NewFromURL[T any](url string) ([]T, error) {
 		return nil, fmt.Errorf("failed to parse html: %w", err)
 	}
 	return New[T](doc)
-}
-
-// Decoder is a struct for decoding a reader into a slice of structs.
-type Decoder[T any] struct {
-	reader io.ReadCloser
-}
-
-// NewDecoder parses a reader into a slice of structs.
-func NewDecoder[T any](r io.ReadCloser) *Decoder[T] {
-	return &Decoder[T]{
-		reader: r,
-	}
-}
-
-// Decode parses a reader into a slice of structs.
-func (d *Decoder[T]) Decode(value *T) ([]T, error) {
-	defer d.reader.Close()
-	return NewFromReader[T](d.reader)
 }

@@ -24,7 +24,7 @@ type SelectionNotFound[T any] struct {
 //
 // It is used by the HeaderNotFoundError struct.
 func selectionStructHighlight(structPtr interface{}, selector string) (string, error) {
-	sPtr := reflect.Indirect(reflect.ValueOf(structPtr))
+	sPtr := &structPtr
 	val := reflect.ValueOf(sPtr)
 	if val.Kind() != reflect.Ptr || val.Elem().Kind() != reflect.Struct {
 		return "", fmt.Errorf("expected struct pointer, got %s", val.Kind())

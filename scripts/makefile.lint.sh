@@ -11,3 +11,6 @@ gum spin --spinner dot --title "Running Static Check" --show-output -- \
 
 gum spin --spinner dot --title "Running GolangCI Lint" --show-output -- \
 	golangci-lint run
+
+gum spin --spinner dot --title "Running GoVet" --show-output -- \
+	go vet ./...

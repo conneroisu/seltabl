@@ -122,8 +122,9 @@ func SetStructField[T any](
 		}
 		field.SetFloat(in)
 	case reflect.Struct:
+		fieldStructPtr := field.Addr().Interface().(*T)
 		if err := SetStructField(
-			structPtr,
+			fieldStructPtr,
 			fieldName,
 			cellValue,
 			selector,

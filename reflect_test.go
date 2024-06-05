@@ -9,6 +9,7 @@ import (
 )
 
 // TestStruct is a test struct
+// fields in this struct are used in the tests
 type TestStruct struct {
 	Name        string
 	Age         int
@@ -226,6 +227,15 @@ func TestSetStructField(t *testing.T) {
 			expected:  123.45,
 		},
 		{
+			name:      "set float32 field",
+			structPtr: &TestStruct{},
+			fieldName: "FloatField2",
+			cellHTML:  "<div>1.45</div>",
+			selector:  innerTextSelector,
+			wantErr:   false,
+			expected:  float32(1.45),
+		},
+		{
 			name:      "Field does not exist",
 			structPtr: &TestStruct{},
 			fieldName: "NonExistentField",
@@ -279,16 +289,6 @@ func TestSetStructField(t *testing.T) {
 			wantErr:   true,
 			expected:  nil,
 		},
-		{
-			name:      "valid float32",
-			structPtr: &TestStruct{},
-			fieldName: "FloatField2",
-			cellHTML:  "<div>1.45</div>",
-			selector:  innerTextSelector,
-			wantErr:   false,
-			expected:  float32(1.45),
-		},
-
 		{
 			name:      "invalid float32",
 			structPtr: &TestStruct{},

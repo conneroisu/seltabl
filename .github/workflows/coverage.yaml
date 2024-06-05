@@ -44,7 +44,7 @@ jobs:
         if: steps.verify-changed-files.outputs.files_changed == 'true'
         uses: devops-infra/action-commit-push@master
         with:
-          github_token: "${{ github.GITHUB_TOKEN }}"
+          github_token: "${{ secrets.GITHUB_TOKEN }}"
           add_timestamp: true
           commit_prefix: "[RELEASE][AUTO]"
           commit_message: "Automatic Commit for Binary Build"

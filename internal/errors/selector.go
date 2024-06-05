@@ -23,7 +23,7 @@ type SelectorNotFound[T any] struct {
 // not found.
 //
 // It is used by the HeaderNotFoundError struct.
-func selectorStructHighlight(structPtr interface{}, selector string) (string, error) {
+func selectorStructHighlight[T any](structPtr T, selector string) (string, error) {
 	val := reflect.ValueOf(structPtr)
 	if val.Kind() != reflect.Ptr || val.Elem().Kind() != reflect.Struct {
 		return "", fmt.Errorf("expected struct pointer, got %s", val.Kind())

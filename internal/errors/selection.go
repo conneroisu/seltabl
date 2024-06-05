@@ -23,9 +23,8 @@ type SelectionNotFound[T any] struct {
 // not found.
 //
 // It is used by the HeaderNotFoundError struct.
-func selectionStructHighlight(structPtr interface{}, selector string) (string, error) {
-	sPtr := &structPtr
-	val := reflect.ValueOf(sPtr)
+func selectionStructHighlight[T any](structPtr *T, selector string) (string, error) {
+	val := reflect.ValueOf(structPtr)
 	if val.Kind() != reflect.Ptr || val.Elem().Kind() != reflect.Struct {
 		return "", fmt.Errorf("expected struct pointer, got %s", val.Kind())
 	}
@@ -93,7 +92,7 @@ func genStructKeyString(
 
 // Error returns a string representation of the error
 func (s *SelectionNotFound[T]) Error() string {
-	val, err := selectionStructHighlight(s.Struct, s.SelectionQuery)
+	val, err := selectionStructHighlight(&s.Struct, s.SelectionQuery)
 	if err != nil {
 		return fmt.Sprintf("failed to generate struct: %s", err)
 	}

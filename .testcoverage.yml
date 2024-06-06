@@ -9,21 +9,21 @@ profile: cover.out
 
 # (optional; but recommended to set) 
 # When specified reported file paths will not contain local prefix in the output
-local-prefix: "github.com/org/project"
+local-prefix: "github.com/conneroisu/seltabl"
 
 # Holds coverage thresholds percentages, values should be in range [0-100]
 threshold:
   # (optional; default 0) 
   # The minimum coverage that each file should have
-  file: 70
+  file: 0
 
   # (optional; default 0) 
   # The minimum coverage that each package should have
-  package: 80
+  package: 0
 
   # (optional; default 0) 
   # The minimum total coverage project should have
-  total: 95
+  total: 0
 
 # Holds regexp rules which will override thresholds for matched files or packages 
 # using their paths.

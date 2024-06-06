@@ -5,6 +5,7 @@ import (
 	"testing"
 )
 
+// TestEditor tests the editor function
 func TestEditor(t *testing.T) {
 	filename := "README.md"
 	for k, v := range map[string][]string{

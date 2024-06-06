@@ -14,3 +14,6 @@ gum spin --spinner dot --title "Running GolangCI Lint" --show-output -- \
 
 gum spin --spinner dot --title "Running GoVet" --show-output -- \
 	go vet ./...
+
+gum spin --spinner dot --title "Running Revive" --show-output -- \
+	revive -config revive.toml ./...

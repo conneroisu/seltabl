@@ -60,6 +60,7 @@ func Cmd(app, path string, options ...Option) (*exec.Cmd, error) {
 	return exec.Command(editor, args...), nil
 }
 
+// getEditor returns the editor and the arguments to pass to it
 func getEditor() (string, []string) {
 	editor := strings.Fields(os.Getenv("EDITOR"))
 	if len(editor) > 1 {

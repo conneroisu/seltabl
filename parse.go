@@ -92,9 +92,9 @@ func NewFromString[T any](htmlInput string) ([]T, error) {
 //	}
 func New[T any](doc *goquery.Document) ([]T, error) {
 	dType := reflect.TypeOf((*T)(nil)).Elem()
-	if dType.Kind() != reflect.Struct {
-		return nil, fmt.Errorf("expected struct, got %s", dType.Kind())
-	}
+	// if dType.Kind() != reflect.Struct {
+	//         return nil, fmt.Errorf("expected struct, got %s", dType.Kind())
+	// }
 	results := make([]T, 0)
 	for i := 0; i < dType.NumField(); i++ {
 		field := dType.Field(i)

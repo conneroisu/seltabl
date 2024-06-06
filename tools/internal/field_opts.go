@@ -1,32 +1,23 @@
-package main
+package internal
 
 import (
 	"fmt"
-	"io"
-	"net/http"
 	"strconv"
 	"strings"
 
 	"github.com/PuerkitoBio/goquery"
 	"github.com/charmbracelet/huh"
+	"github.com/conneroisu/seltabl/tools/internal/config"
 )
 
-// getFieldOptions returns the field options for the form
-func getFieldOptions(ctf *SeltablConfig) []huh.Option[string] {
-	// get request to the url
-	client := &http.Client{}
-	resp, err := client.Get(ctf.URL)
-	if err != nil {
-		return nil
-	}
-	defer resp.Body.Close()
-	body, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil
-	}
+// GetFieldOptions returns the field options for the form
+//
+// It is used by the GenerateCmd to generate the field options for the form
+// from the config file.
+func GetFieldOptions(ctf *config.Config, body []byte) ([]huh.Option[string], error) {
 	doc, err := goquery.NewDocumentFromReader(strings.NewReader(string(body)))
 	if err != nil {
-		return nil
+		return nil, fmt.Errorf("failed to parse html: %w", err)
 	}
 	tables := doc.Find("table")
 	var tableHeaders []string
@@ -84,5 +75,5 @@ func getFieldOptions(ctf *SeltablConfig) []huh.Option[string] {
 			Value: tableHeader,
 		})
 	}
-	return opts
+	return opts, nil
 }

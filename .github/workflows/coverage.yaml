@@ -1,52 +1,23 @@
-name: Generate code coverage badge
+name: Go test coverage check
+runs-on: ubuntu-latest
+steps:
+  - uses: actions/checkout@v3
+  - uses: actions/setup-go@v3
+  
+  - name: generate test coverage
+    run: go test ./... -coverprofile=./cover.out -covermode=atomic -coverpkg=./...
 
-on:
-  pull_request:
-    branches:
-      - main
-  push:
-    branches:
-      - main
-
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    name: Update coverage badge
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
-          fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
+  - name: check test coverage
+    uses: vladopajic/go-test-coverage@v2
+    with:
+      # Configure action using config file (option 1)
+      config: ./.testcoverage.yml
       
-      - name: Setup go
-        uses: actions/setup-go@v4
-        with:
-          go-version-file: 'go.mod'
-
-      - name: Run Test
-        run: |
-          go test -v ./... -covermode=count -coverprofile=coverage.out
-          go tool cover -func=coverage.out -o=coverage.out
-
-      - name: Go Coverage Badge  # Pass the `coverage.out` output to this action
-        uses: tj-actions/coverage-badge-go@v2
-        with:
-          filename: coverage.out
-
-      - name: Verify Changed files
-        uses: tj-actions/verify-changed-files@v16
-        id: verify-changed-files
-        with:
-          files: README.md
-
-      - name: Commit and Push
-        if: steps.verify-changed-files.outputs.files_changed == 'true'
-        uses: devops-infra/action-commit-push@master
-        with:
-          github_token: "${{ secrets.GITHUB_TOKEN }}"
-          add_timestamp: true
-          commit_prefix: "[RELEASE][AUTO]"
-          commit_message: "Automatic Commit for Binary Build"
-          force: false
-          target_branch: main
+      # Configure action by specifying input parameters individually (option 2).
+      # If you are using config file (option 1) you shouldn't use these parameters, however
+      # specifing these action parameters will override appropriate config values.
+      profile: cover.out
+      local-prefix: github.com/org/project
+      threshold-file: 80
+      threshold-package: 80
+      threshold-total: 95

@@ -1,10 +1,10 @@
-package cmd
+package main
 
 import (
-	"github.com/conneroisu/seltabl/cmd/cmds"
 	"github.com/spf13/cobra"
 )
 
-func AddRoutes(rootCmd *cobra.Command) {
-	rootCmd.AddCommand(cmds.NewGenCmd())
+// AddRoutes adds the routes to the root command
+func AddRoutes(rootCmd *cobra.Command, cfg *SeltablConfig) {
+	rootCmd.AddCommand(NewGenerateCmd(cfg))
 }

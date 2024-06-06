@@ -1,2 +1,2 @@
-// Package cmd is the command package for the application
-package cmd
+// Package main is the command package for the application
+package main

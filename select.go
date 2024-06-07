@@ -19,7 +19,7 @@ type selector struct {
 
 // Run runs the selector on the cellValue and sets the cellText
 // and returns the cellText
-func (s *selector) Run(cellValue *goquery.Selection) (*string, error) {
+func (s selector) Run(cellValue *goquery.Selection) (*string, error) {
 	var cellText string
 	var exists bool
 	switch s.query {

@@ -4,6 +4,8 @@
 # title: Cleaning Script
 # description: This script cleans the project
 
+task install
+
 # if there is a tmp folder, delete it
 if [ -d "tmp" ]; then
     rm -rf tmp

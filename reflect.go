@@ -28,6 +28,9 @@ func SetStructField[T any](
 		return fmt.Errorf("cannot change the value of field: %s", fieldName)
 	}
 	fieldType := field.Type().Kind()
+	if !isTypeSupported(field.Type()) {
+		return fmt.Errorf("unsupported type: %s", field.Type())
+	}
 	var cellText *string
 	cellText, err := selector.Run(cellValue)
 	if err != nil {
@@ -109,11 +112,6 @@ func SetStructField[T any](
 			return fmt.Errorf("failed to parse float: %s", err)
 		}
 		field.SetFloat(in)
-	case reflect.Struct:
-		fieldStructPtr := field.Addr().Interface().(*T)
-		if err := SetStructField(fieldStructPtr, fieldName, cellValue, selector); err != nil {
-			return fmt.Errorf("failed to set field %s: %s", fieldName, err)
-		}
 	default:
 		return fmt.Errorf("unsupported type: %s", fieldType)
 	}

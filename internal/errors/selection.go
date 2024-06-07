@@ -35,8 +35,14 @@ func selectionStructHighlight[T any](
 	val = val.Elem()
 	structType := val.Type()
 	var result strings.Builder
-	result.WriteString(fmt.Sprintf("Selector: %s\n", selector))
-	result.WriteString(fmt.Sprintf("type struct %s {\n", structType.Name()))
+	_, err := result.WriteString(fmt.Sprintf("Selector: %s\n", selector))
+	if err != nil {
+		return "", fmt.Errorf("failed to write string: %w", err)
+	}
+	_, err = result.WriteString(fmt.Sprintf("type struct %s {\n", structType.Name()))
+	if err != nil {
+		return "", fmt.Errorf("failed to write string: %w", err)
+	}
 	for i := 0; i < val.NumField(); i++ {
 		field := structType.Field(i)
 		fieldValue := val.Field(i)
@@ -54,7 +60,7 @@ func selectionStructHighlight[T any](
 			return "", fmt.Errorf("failed to write string: %w", err)
 		}
 	}
-	_, err := result.WriteString("}")
+	_, err = result.WriteString("}")
 	if err != nil {
 		return "", fmt.Errorf("failed to write string: %w", err)
 	}
@@ -68,10 +74,10 @@ func selectionStructHighlight[T any](
 func genStructKeyString(
 	field reflect.StructField,
 	highlightSelector string,
-	fieldName string,
 ) (*string, error) {
 	var result strings.Builder
 	var err error
+	current := false
 	result.WriteString("`")
 	// split on '"' s and iterate over them
 	tags := string(field.Tag)
@@ -80,10 +86,10 @@ func genStructKeyString(
 	for _, match := range matches {
 		key := match[1]
 		value := match[2]
-		if !strings.Contains(key, fieldName) {
-			continue
-		}
 		if strings.Contains(value, highlightSelector) {
+			if strings.Contains(key, field.Name) {
+				current = true
+			}
 			_, err = result.WriteString(
 				fmt.Sprintf(" %s:%s", key, "==\""+value+"\"=="),
 			)
@@ -97,9 +103,16 @@ func genStructKeyString(
 			}
 		}
 	}
-	_, err = result.WriteString("`")
-	if err != nil {
-		return nil, fmt.Errorf("failed to write string: %w", err)
+	if !current {
+		_, err = result.WriteString("`")
+		if err != nil {
+			return nil, fmt.Errorf("failed to write string: %w", err)
+		}
+	} else {
+		_, err = result.WriteString("`     ❌")
+		if err != nil {
+			return nil, fmt.Errorf("failed to write string: %w", err)
+		}
 	}
 	res := result.String()
 	return &res, nil

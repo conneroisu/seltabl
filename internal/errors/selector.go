@@ -7,10 +7,10 @@ import (
 	"strings"
 )
 
-// SelectorNotFound is returned when a header selector is not found
+// SelectorNotFound is returned when a selector is not found
 // for a struct field
 //
-// It shows a generated golang stuct and highlights the header selector that was
+// It shows a generated golang stuct and highlights the selector that was
 // used to find the header row which was not found.
 type SelectorNotFound[T any] struct {
 	Struct    T
@@ -39,7 +39,7 @@ func selectorStructHighlight[T any](
 	for i := 0; i < val.NumField(); i++ {
 		field := structType.Field(i)
 		fieldValue := val.Field(i)
-		skv, err := GenStructTagString(field, selector)
+		skv, err := GenStructTagString(field, selector, field.Name)
 		if err != nil {
 			return "", fmt.Errorf(
 				"failed to generate struct tag string: %w",
@@ -65,17 +65,21 @@ func selectorStructHighlight[T any](
 func GenStructTagString(
 	field reflect.StructField,
 	highlightSelector string,
+	fieldName string,
 ) (*string, error) {
 	var result strings.Builder
 	var err error
 	result.WriteString("`")
-	// split on '"' s and iterate over them
 	tags := string(field.Tag)
 	re := regexp.MustCompile(`(\w+):"([^"]*)"`)
 	matches := re.FindAllStringSubmatch(tags, -1)
+	current := false
 	for _, match := range matches {
 		key := match[1]
 		value := match[2]
+		if !strings.Contains(key, fieldName) {
+			continue
+		}
 		if strings.Contains(value, highlightSelector) {
 			_, err = result.WriteString(
 				fmt.Sprintf(" %s:%s", key, "==\""+value+"==\""),
@@ -83,6 +87,7 @@ func GenStructTagString(
 			if err != nil {
 				return nil, fmt.Errorf("failed to write struct tag: %w", err)
 			}
+			current = true
 		} else {
 			_, err = result.WriteString(fmt.Sprintf(" %v:\"%v\"", match[1], match[2]))
 			if err != nil {
@@ -90,7 +95,17 @@ func GenStructTagString(
 			}
 		}
 	}
-	_, err = result.WriteString("`")
+	if !current {
+		_, err = result.WriteString("`")
+		if err != nil {
+			return nil, fmt.Errorf("failed to write struct tag: %w", err)
+		}
+	} else {
+		_, err = result.WriteString("`     ❌")
+		if err != nil {
+			return nil, fmt.Errorf("failed to write struct tag: %w", err)
+		}
+	}
 	if err != nil {
 		return nil, fmt.Errorf("failed to write struct tag: %w", err)
 	}

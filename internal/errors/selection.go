@@ -26,6 +26,7 @@ type SelectionNotFound[T any] struct {
 func selectionStructHighlight[T any](
 	structPtr *T,
 	selector string,
+	fieldName string,
 ) (string, error) {
 	val := reflect.ValueOf(structPtr)
 	if val.Kind() != reflect.Ptr || val.Elem().Kind() != reflect.Struct {
@@ -39,7 +40,7 @@ func selectionStructHighlight[T any](
 	for i := 0; i < val.NumField(); i++ {
 		field := structType.Field(i)
 		fieldValue := val.Field(i)
-		skv, err := genStructKeyString(field, selector)
+		skv, err := genStructKeyString(field, selector, fieldName)
 		if err != nil {
 			return "", fmt.Errorf(
 				"failed to generate struct key string: %w",
@@ -67,6 +68,7 @@ func selectionStructHighlight[T any](
 func genStructKeyString(
 	field reflect.StructField,
 	highlightSelector string,
+	fieldName string,
 ) (*string, error) {
 	var result strings.Builder
 	var err error
@@ -78,6 +80,9 @@ func genStructKeyString(
 	for _, match := range matches {
 		key := match[1]
 		value := match[2]
+		if !strings.Contains(key, fieldName) {
+			continue
+		}
 		if strings.Contains(value, highlightSelector) {
 			_, err = result.WriteString(
 				fmt.Sprintf(" %s:%s", key, "==\""+value+"\"=="),
@@ -102,7 +107,11 @@ func genStructKeyString(
 
 // Error returns a string representation of the error
 func (s *SelectionNotFound[T]) Error() string {
-	val, err := selectionStructHighlight(&s.Struct, s.SelectionQuery)
+	val, err := selectionStructHighlight(
+		&s.Struct,
+		s.SelectionQuery,
+		s.FieldName,
+	)
 	if err != nil {
 		return fmt.Sprintf("failed to generate struct: %s", err)
 	}

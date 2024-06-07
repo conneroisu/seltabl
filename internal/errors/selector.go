@@ -77,10 +77,8 @@ func GenStructTagString(
 	for _, match := range matches {
 		key := match[1]
 		value := match[2]
-		if strings.Contains(value, highlightSelector) {
-			if strings.Contains(key, fieldName) {
-				current = true
-			}
+		if strings.Contains(value, highlightSelector) && strings.Contains(key, fieldName) {
+			current = true
 			_, err = result.WriteString(
 				fmt.Sprintf(" %s:%s", key, "==\""+value+"==\""),
 			)

@@ -47,11 +47,17 @@ func TestNewFromString(t *testing.T) {
 		}
 		for _, tt := range tests {
 			t.Run(tt.name, func(t *testing.T) {
-				doc, err := goquery.NewDocumentFromReader(strings.NewReader(tt.args.htmlInput))
+				doc, err := goquery.NewDocumentFromReader(
+					strings.NewReader(tt.args.htmlInput),
+				)
 				assert.Nil(t, err)
 				got, err := New[testdata.SuperNovaStruct](doc)
 				if (err != nil) != tt.wantErr {
-					t.Errorf("NewFromString() error = %v, wantErr %v", err, tt.wantErr)
+					t.Errorf(
+						"NewFromString() error = %v, wantErr %v",
+						err,
+						tt.wantErr,
+					)
 					return
 				}
 				if tt.wantErr {
@@ -98,11 +104,17 @@ func TestNewFromString(t *testing.T) {
 		}
 		for _, tt := range tests {
 			t.Run(tt.name, func(t *testing.T) {
-				doc, err := goquery.NewDocumentFromReader(strings.NewReader(tt.args.htmlInput))
+				doc, err := goquery.NewDocumentFromReader(
+					strings.NewReader(tt.args.htmlInput),
+				)
 				assert.Nil(t, err)
 				got, err := New[testdata.NumberedStruct](doc)
 				if (err != nil) != tt.wantErr {
-					t.Errorf("NewFromString() error = %v, wantErr %v", err, tt.wantErr)
+					t.Errorf(
+						"NewFromString() error = %v, wantErr %v",
+						err,
+						tt.wantErr,
+					)
 					return
 				}
 				if tt.wantErr {
@@ -149,11 +161,17 @@ func TestNewFromString(t *testing.T) {
 		}
 		for _, tt := range tests {
 			t.Run(tt.name, func(t *testing.T) {
-				doc, err := goquery.NewDocumentFromReader(strings.NewReader(tt.args.htmlInput))
+				doc, err := goquery.NewDocumentFromReader(
+					strings.NewReader(tt.args.htmlInput),
+				)
 				assert.Nil(t, err)
 				got, err := New[testdata.FixtureStruct](doc)
 				if (err != nil) != tt.wantErr {
-					t.Errorf("NewFromString() error = %v, wantErr %v", err, tt.wantErr)
+					t.Errorf(
+						"NewFromString() error = %v, wantErr %v",
+						err,
+						tt.wantErr,
+					)
 					return
 				}
 				if tt.wantErr {

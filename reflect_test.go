@@ -379,20 +379,38 @@ func TestSetStructField(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			tt := tt
 			t.Parallel()
-			doc, err := goquery.NewDocumentFromReader(strings.NewReader(tt.cellHTML))
+			doc, err := goquery.NewDocumentFromReader(
+				strings.NewReader(tt.cellHTML),
+			)
 			if err != nil {
 				t.Fatalf("failed to create document: %v", err)
 			}
 			cellValue := doc.Find("div")
-			err = SetStructField(tt.structPtr, tt.fieldName, cellValue, tt.selector)
+			err = SetStructField(
+				tt.structPtr,
+				tt.fieldName,
+				cellValue,
+				tt.selector,
+			)
 			if (err != nil) != tt.wantErr {
-				t.Errorf("SetStructField() error = %v, wantErr %v", err, tt.wantErr)
+				t.Errorf(
+					"SetStructField() error = %v, wantErr %v",
+					err,
+					tt.wantErr,
+				)
 				return
 			}
 			if err == nil {
-				v := reflect.ValueOf(tt.structPtr).Elem().FieldByName(tt.fieldName).Interface()
+				v := reflect.ValueOf(tt.structPtr).
+					Elem().
+					FieldByName(tt.fieldName).
+					Interface()
 				if !reflect.DeepEqual(v, tt.expected) {
-					t.Errorf("SetStructField() = %v, expected %v", v, tt.expected)
+					t.Errorf(
+						"SetStructField() = %v, expected %v",
+						v,
+						tt.expected,
+					)
 				}
 			}
 		})
@@ -683,20 +701,38 @@ func BenchSetStructField(t *testing.B) {
 	for _, tt := range Benchs {
 		t.Run(tt.name, func(t *testing.B) {
 			tt := tt
-			doc, err := goquery.NewDocumentFromReader(strings.NewReader(tt.cellHTML))
+			doc, err := goquery.NewDocumentFromReader(
+				strings.NewReader(tt.cellHTML),
+			)
 			if err != nil {
 				t.Fatalf("failed to create document: %v", err)
 			}
 			cellValue := doc.Find("div")
-			err = SetStructField(tt.structPtr, tt.fieldName, cellValue, tt.selector)
+			err = SetStructField(
+				tt.structPtr,
+				tt.fieldName,
+				cellValue,
+				tt.selector,
+			)
 			if (err != nil) != tt.wantErr {
-				t.Errorf("SetStructField() error = %v, wantErr %v", err, tt.wantErr)
+				t.Errorf(
+					"SetStructField() error = %v, wantErr %v",
+					err,
+					tt.wantErr,
+				)
 				return
 			}
 			if err == nil {
-				v := reflect.ValueOf(tt.structPtr).Elem().FieldByName(tt.fieldName).Interface()
+				v := reflect.ValueOf(tt.structPtr).
+					Elem().
+					FieldByName(tt.fieldName).
+					Interface()
 				if !reflect.DeepEqual(v, tt.expected) {
-					t.Errorf("SetStructField() = %v, expected %v", v, tt.expected)
+					t.Errorf(
+						"SetStructField() = %v, expected %v",
+						v,
+						tt.expected,
+					)
 				}
 			}
 		})

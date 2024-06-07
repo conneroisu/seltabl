@@ -23,7 +23,10 @@ type SelectionNotFound[T any] struct {
 // not found.
 //
 // It is used by the HeaderNotFoundError struct.
-func selectionStructHighlight[T any](structPtr *T, selector string) (string, error) {
+func selectionStructHighlight[T any](
+	structPtr *T,
+	selector string,
+) (string, error) {
 	val := reflect.ValueOf(structPtr)
 	if val.Kind() != reflect.Ptr || val.Elem().Kind() != reflect.Struct {
 		return "", fmt.Errorf("expected struct pointer, got %s", val.Kind())
@@ -38,9 +41,14 @@ func selectionStructHighlight[T any](structPtr *T, selector string) (string, err
 		fieldValue := val.Field(i)
 		skv, err := genStructKeyString(field, selector)
 		if err != nil {
-			return "", fmt.Errorf("failed to generate struct key string: %w", err)
+			return "", fmt.Errorf(
+				"failed to generate struct key string: %w",
+				err,
+			)
 		}
-		_, err = result.WriteString(fmt.Sprintf("\t%s %v %s\n", field.Name, fieldValue.Type(), *skv))
+		_, err = result.WriteString(
+			fmt.Sprintf("\t%s %v %s\n", field.Name, fieldValue.Type(), *skv),
+		)
 		if err != nil {
 			return "", fmt.Errorf("failed to write string: %w", err)
 		}
@@ -71,7 +79,9 @@ func genStructKeyString(
 		key := match[1]
 		value := match[2]
 		if strings.Contains(value, highlightSelector) {
-			_, err = result.WriteString(fmt.Sprintf(" %s:%s", key, "==\""+value+"\"=="))
+			_, err = result.WriteString(
+				fmt.Sprintf(" %s:%s", key, "==\""+value+"\"=="),
+			)
 			if err != nil {
 				return nil, fmt.Errorf("failed to write string: %w", err)
 			}

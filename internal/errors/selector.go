@@ -23,7 +23,10 @@ type SelectorNotFound[T any] struct {
 // not found.
 //
 // It is used by the HeaderNotFoundError struct.
-func selectorStructHighlight[T any](structPtr T, selector string) (string, error) {
+func selectorStructHighlight[T any](
+	structPtr T,
+	selector string,
+) (string, error) {
 	val := reflect.ValueOf(structPtr)
 	if val.Kind() != reflect.Ptr || val.Elem().Kind() != reflect.Struct {
 		return "", fmt.Errorf("expected struct pointer, got %s", val.Kind())
@@ -38,9 +41,14 @@ func selectorStructHighlight[T any](structPtr T, selector string) (string, error
 		fieldValue := val.Field(i)
 		skv, err := GenStructTagString(field, selector)
 		if err != nil {
-			return "", fmt.Errorf("failed to generate struct tag string: %w", err)
+			return "", fmt.Errorf(
+				"failed to generate struct tag string: %w",
+				err,
+			)
 		}
-		result.WriteString(fmt.Sprintf("\t%s %v %s\n", field.Name, fieldValue.Type(), *skv))
+		result.WriteString(
+			fmt.Sprintf("\t%s %v %s\n", field.Name, fieldValue.Type(), *skv),
+		)
 	}
 	_, err := result.WriteString("}")
 	if err != nil {
@@ -54,7 +62,10 @@ func selectorStructHighlight[T any](structPtr T, selector string) (string, error
 // for a struct field.
 //
 // It is used by the HeaderNotFoundError struct.
-func GenStructTagString(field reflect.StructField, highlightSelector string) (*string, error) {
+func GenStructTagString(
+	field reflect.StructField,
+	highlightSelector string,
+) (*string, error) {
 	var result strings.Builder
 	var err error
 	result.WriteString("`")
@@ -66,7 +77,9 @@ func GenStructTagString(field reflect.StructField, highlightSelector string) (*s
 		key := match[1]
 		value := match[2]
 		if strings.Contains(value, highlightSelector) {
-			_, err = result.WriteString(fmt.Sprintf(" %s:%s", key, "==\""+value+"==\""))
+			_, err = result.WriteString(
+				fmt.Sprintf(" %s:%s", key, "==\""+value+"==\""),
+			)
 			if err != nil {
 				return nil, fmt.Errorf("failed to write struct tag: %w", err)
 			}
@@ -89,7 +102,8 @@ func GenStructTagString(field reflect.StructField, highlightSelector string) (*s
 func (e *SelectorNotFound[T]) Error() string {
 	structString, err := selectorStructHighlight(e.Struct, e.Selector)
 	if err != nil {
-		return fmt.Errorf("failed to generate struct string while reporting that a selector was not found: %w", err).Error()
+		return fmt.Errorf("failed to generate struct string while reporting that a selector was not found: %w", err).
+			Error()
 	}
 	return fmt.Sprintf(
 		"selector %s not found for field %s\n%s",

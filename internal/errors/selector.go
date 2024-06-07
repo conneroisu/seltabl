@@ -39,7 +39,7 @@ func selectorStructHighlight[T any](
 	for i := 0; i < val.NumField(); i++ {
 		field := structType.Field(i)
 		fieldValue := val.Field(i)
-		skv, err := GenStructTagString(field, selector, field.Name)
+		skv, err := GenStructTagString(field, selector)
 		if err != nil {
 			return "", fmt.Errorf(
 				"failed to generate struct tag string: %w",
@@ -65,20 +65,18 @@ func selectorStructHighlight[T any](
 func GenStructTagString(
 	field reflect.StructField,
 	highlightSelector string,
-	fieldName string,
 ) (*string, error) {
 	var result strings.Builder
 	var err error
-	var current = false
 	result.WriteString("`")
+	// split on '"' s and iterate over them
 	tags := string(field.Tag)
 	re := regexp.MustCompile(`(\w+):"([^"]*)"`)
 	matches := re.FindAllStringSubmatch(tags, -1)
 	for _, match := range matches {
 		key := match[1]
 		value := match[2]
-		if strings.Contains(value, highlightSelector) && strings.Contains(key, fieldName) {
-			current = true
+		if strings.Contains(value, highlightSelector) {
 			_, err = result.WriteString(
 				fmt.Sprintf(" %s:%s", key, "==\""+value+"==\""),
 			)
@@ -92,17 +90,7 @@ func GenStructTagString(
 			}
 		}
 	}
-	if !current {
-		_, err = result.WriteString("`")
-		if err != nil {
-			return nil, fmt.Errorf("failed to write struct tag: %w", err)
-		}
-	} else {
-		_, err = result.WriteString("`     ❌")
-		if err != nil {
-			return nil, fmt.Errorf("failed to write struct tag: %w", err)
-		}
-	}
+	_, err = result.WriteString("`")
 	if err != nil {
 		return nil, fmt.Errorf("failed to write struct tag: %w", err)
 	}

@@ -26,7 +26,6 @@ type SelectionNotFound[T any] struct {
 func selectionStructHighlight[T any](
 	structPtr *T,
 	selector string,
-	_ string,
 ) (string, error) {
 	val := reflect.ValueOf(structPtr)
 	if val.Kind() != reflect.Ptr || val.Elem().Kind() != reflect.Struct {
@@ -39,7 +38,9 @@ func selectionStructHighlight[T any](
 	if err != nil {
 		return "", fmt.Errorf("failed to write string: %w", err)
 	}
-	_, err = result.WriteString(fmt.Sprintf("type struct %s {\n", structType.Name()))
+	_, err = result.WriteString(
+		fmt.Sprintf("type struct %s {\n", structType.Name()),
+	)
 	if err != nil {
 		return "", fmt.Errorf("failed to write string: %w", err)
 	}
@@ -77,7 +78,6 @@ func genStructKeyString(
 ) (*string, error) {
 	var result strings.Builder
 	var err error
-	var current = false
 	result.WriteString("`")
 	// split on '"' s and iterate over them
 	tags := string(field.Tag)
@@ -86,8 +86,7 @@ func genStructKeyString(
 	for _, match := range matches {
 		key := match[1]
 		value := match[2]
-		if strings.Contains(value, highlightSelector) && strings.Contains(key, field.Name) {
-			current = true
+		if strings.Contains(value, highlightSelector) {
 			_, err = result.WriteString(
 				fmt.Sprintf(" %s:%s", key, "==\""+value+"\"=="),
 			)
@@ -101,16 +100,9 @@ func genStructKeyString(
 			}
 		}
 	}
-	if !current {
-		_, err = result.WriteString("`")
-		if err != nil {
-			return nil, fmt.Errorf("failed to write string: %w", err)
-		}
-	} else {
-		_, err = result.WriteString("`     ❌")
-		if err != nil {
-			return nil, fmt.Errorf("failed to write string: %w", err)
-		}
+	_, err = result.WriteString("`")
+	if err != nil {
+		return nil, fmt.Errorf("failed to write string: %w", err)
 	}
 	res := result.String()
 	return &res, nil
@@ -121,7 +113,6 @@ func (s *SelectionNotFound[T]) Error() string {
 	val, err := selectionStructHighlight(
 		&s.Struct,
 		s.SelectionQuery,
-		s.FieldName,
 	)
 	if err != nil {
 		return fmt.Sprintf("failed to generate struct: %s", err)

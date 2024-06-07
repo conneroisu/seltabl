@@ -10,4 +10,4 @@ gum spin --spinner dot --title "Formatting Go Files with 'go fmt' in ." --show-o
     gofmt -w .
 
 gum spin --spinner dot --title "Formatting Go Files with 'golines' in ." --show-output -- \
-    goline -w --max-len=79 .
+    golines -w --max-len=79 .

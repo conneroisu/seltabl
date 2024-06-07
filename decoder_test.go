@@ -126,7 +126,11 @@ func TestDecoder_Decode(t *testing.T) {
 			}
 
 			if len(result) != len(tc.expected) {
-				t.Errorf("Expected %d results, but got %d", len(tc.expected), len(result))
+				t.Errorf(
+					"Expected %d results, but got %d",
+					len(tc.expected),
+					len(result),
+				)
 			}
 
 			for i, expected := range tc.expected {

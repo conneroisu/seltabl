@@ -199,10 +199,12 @@ func TestNewFromURLWithRandomData(t *testing.T) {
 
 // httpTestServer sets up a test HTTP server
 func httpTestServer(t *testing.T, body string) *httptest.Server {
-	return httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		_, err := w.Write([]byte(body))
-		if err != nil {
-			t.Fatalf("Failed to write response: %v", err)
-		}
-	}))
+	return httptest.NewServer(
+		http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			_, err := w.Write([]byte(body))
+			if err != nil {
+				t.Fatalf("Failed to write response: %v", err)
+			}
+		}),
+	)
 }

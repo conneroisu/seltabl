@@ -26,9 +26,9 @@ lint:
 test:
 	@+sh ./scripts/makefile.test.sh
 
-.PHONY: dev.requirements
-dev.requirements:
-	@sh ./scripts/makefile.dev.requirements.sh
+.PHONY: install
+install:
+	@sh ./scripts/makefile.install.sh
 
 .PHONY: clean
 clean:

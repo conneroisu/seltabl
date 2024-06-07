@@ -69,11 +69,11 @@ func GenStructTagString(
 ) (*string, error) {
 	var result strings.Builder
 	var err error
+	var current = false
 	result.WriteString("`")
 	tags := string(field.Tag)
 	re := regexp.MustCompile(`(\w+):"([^"]*)"`)
 	matches := re.FindAllStringSubmatch(tags, -1)
-	current := false
 	for _, match := range matches {
 		key := match[1]
 		value := match[2]
@@ -87,7 +87,6 @@ func GenStructTagString(
 			if err != nil {
 				return nil, fmt.Errorf("failed to write struct tag: %w", err)
 			}
-			current = true
 		} else {
 			_, err = result.WriteString(fmt.Sprintf(" %v:\"%v\"", match[1], match[2]))
 			if err != nil {

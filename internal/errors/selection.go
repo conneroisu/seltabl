@@ -26,7 +26,7 @@ type SelectionNotFound[T any] struct {
 func selectionStructHighlight[T any](
 	structPtr *T,
 	selector string,
-	fieldName string,
+	_ string,
 ) (string, error) {
 	val := reflect.ValueOf(structPtr)
 	if val.Kind() != reflect.Ptr || val.Elem().Kind() != reflect.Struct {
@@ -46,7 +46,7 @@ func selectionStructHighlight[T any](
 	for i := 0; i < val.NumField(); i++ {
 		field := structType.Field(i)
 		fieldValue := val.Field(i)
-		skv, err := genStructKeyString(field, selector, fieldName)
+		skv, err := genStructKeyString(field, selector)
 		if err != nil {
 			return "", fmt.Errorf(
 				"failed to generate struct key string: %w",
@@ -77,7 +77,7 @@ func genStructKeyString(
 ) (*string, error) {
 	var result strings.Builder
 	var err error
-	current := false
+	var current = false
 	result.WriteString("`")
 	// split on '"' s and iterate over them
 	tags := string(field.Tag)

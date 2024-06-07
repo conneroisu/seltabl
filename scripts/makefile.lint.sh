@@ -6,11 +6,10 @@
 #
 # Usage: make js
 
-gum spin --spinner dot --title "Running Static Check" --show-output -- \
-	staticcheck ./...
+staticcheck ./...
 
-gum spin --spinner dot --title "Running GolangCI Lint" --show-output -- \
-	golangci-lint run
+golangci-lint run
 
-gum spin --spinner dot --title "Running GoVet" --show-output -- \
-	go vet ./...
+go vet ./...
+
+revive -config .revive.toml ./...

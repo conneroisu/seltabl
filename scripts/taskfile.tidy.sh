@@ -6,4 +6,5 @@
 #
 # Usage: make tidy
 
-go mod tidy
+gum spin --spinner dot --title "Running Go Mod Tidy" --show-output -- \
+    go mod tidy

@@ -1,6 +1,9 @@
 package seltabl
 
-import "io"
+import (
+	"fmt"
+	"io"
+)
 
 // Decoder is a struct for decoding a reader into a slice of structs.
 //
@@ -72,7 +75,12 @@ func NewDecoder[T any](r io.ReadCloser) *Decoder[T] {
 // This allows for decoding a reader into a slice of structs.
 //
 // Similar to the json.Decoder for brevity.
-func (d *Decoder[T]) Decode(value *T) ([]T, error) {
+func (d *Decoder[T]) Decode() ([]T, error) {
 	defer d.reader.Close()
-	return NewFromReader[T](d.reader)
+	var result []T
+	result, err := NewFromReader[T](d.reader)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode: %w", err)
+	}
+	return result, nil
 }

@@ -9,7 +9,7 @@ import (
 	"os"
 )
 
-// Scrapes from: https://en.wikipedia.org/wiki/List_of_penguins
+// main scrapes from: https://en.wikipedia.org/wiki/List_of_penguins
 func main() {
 	if err := run(); err != nil {
 		fmt.Println(err)
@@ -19,6 +19,6 @@ func main() {
 
 // run runs the example
 func run() error {
-	fmt.Println("Hello, World from Example2!")
+	fmt.Println("Hello, World from list of penguins!")
 	return nil
 }

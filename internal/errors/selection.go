@@ -63,7 +63,7 @@ func selectionStructHighlight[T any](
 // genStructKeyString returns a string representation of the struct tag
 // for a struct field.
 //
-// It is used by the HeaderNotFoundError struct.
+// It is used by the SelectionNotFoundError struct.
 func genStructKeyString(
 	field reflect.StructField,
 	highlightSelector string,
@@ -107,7 +107,7 @@ func (s *SelectionNotFound[T]) Error() string {
 		return fmt.Sprintf("failed to generate struct: %s", err)
 	}
 	return fmt.Sprintf(
-		"no header for field %s with selector (%s)\n\n%s",
+		"no selection found for field %s with selector (%s)\n\n%s",
 		s.FieldName,
 		s.SelectionQuery,
 		val,

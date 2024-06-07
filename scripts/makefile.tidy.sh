@@ -1,3 +1,9 @@
 #!/bin/bash
-gum spin --spinner dot --title "Running Go Mod Tidy" --show-output -- \
-	go mod tidy
+# file: makefile.tidy.sh
+# url: https://github.com/conneroisu/seltabl/scripts/makefile.tidy.sh
+# title: Running Go Mod Tidy
+# description: This script runs go mod tidy to clean up the go.mod and go.sum files.
+#
+# Usage: make tidy
+
+go mod tidy

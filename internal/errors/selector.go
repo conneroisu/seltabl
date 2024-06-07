@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// SelectionNotFound is returned when a header selector is not found
+// SelectorNotFound is returned when a header selector is not found
 // for a struct field
 //
 // It shows a generated golang stuct and highlights the header selector that was

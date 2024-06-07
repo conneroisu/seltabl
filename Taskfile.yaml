@@ -7,28 +7,28 @@ tasks:
       
   clean:
     cmds:
-      - sh ./scripts/makefile.clean.sh
+      - sh ./scripts/taskfile.clean.sh
       
   fmt:
     cmds:
-    - sh ./scripts/makefile.fmt.sh
+    - sh ./scripts/taskfile.fmt.sh
 
   lint:
     cmds:
-    - sh ./scripts/makefile.lint.sh
+    - sh ./scripts/taskfile.lint.sh
 
   test:
     cmds:
-      - sh ./scripts/makefile.test.sh
+      - sh ./scripts/taskfile.test.sh
         
   database:
     cmds:
-      - sh ./scripts/makefile.database.sh 
+      - sh ./scripts/taskfile.database.sh 
       
   coverage:
     cmds:
-      - sh ./scripts/makefile.coverage.sh
+      - sh ./scripts/taskfile.coverage.sh
 
   install:
     cmds:
-      - sh ./scripts/makefile.install.sh
+      - sh ./scripts/taskfile.install.sh

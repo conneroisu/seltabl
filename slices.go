@@ -108,7 +108,7 @@ func New[T any](doc *goquery.Document) ([]T, error) {
 			return nil, fmt.Errorf("selector not found for field %s with type %s", field.Name, field.Type)
 		}
 		selectorQuery := field.Tag.Get(selectorQueryTag)
-		if selectorQuery == "" {
+		if selectorQuery == "" || dataSelector == innerTextSelector {
 			selectorQuery = innerTextSelector
 		}
 		headRow := doc.Find(headSelector)

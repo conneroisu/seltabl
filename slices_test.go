@@ -1,6 +1,8 @@
 package seltabl
 
 import (
+	"net/http"
+	"net/http/httptest"
 	"reflect"
 	"strings"
 	"testing"
@@ -570,4 +572,222 @@ func TestNewFromString(t *testing.T) {
 			})
 		}
 	})
+
+	// test a struct with no seltabl field or blank one
+	type NoSeltablField struct {
+		A string `json:"a" dSel:"tr td:nth-child(1)" cSel:"$text"`
+		B string `json:"b" seltabl:"b" dSel:"tr td:nth-child(2)" cSel:"$text"`
+	}
+
+	t.Run("TestNewFromStringWithNoSeltablField", func(t *testing.T) {
+		t.Parallel()
+		type args struct {
+			htmlInput string
+			typ       interface{}
+		}
+		tests := []struct {
+			name    string
+			args    args
+			want    interface{}
+			wantErr bool
+		}{
+			{
+				name: "TestNewFromStringWithNoSeltablField",
+				args: args{
+					htmlInput: testdata.FixtureABNumTable,
+					typ:       reflect.TypeOf(NoSeltablField{}),
+				},
+				want:    nil,
+				wantErr: true,
+			},
+			{
+				name: "TestNewFromStringWithInvalidHTML",
+				args: args{
+					htmlInput: "invalid",
+					typ:       reflect.TypeOf(NoSeltablField{}),
+				},
+				want:    nil,
+				wantErr: true,
+			},
+		}
+		for _, tt := range tests {
+			tt := tt
+			t.Run(tt.name, func(t *testing.T) {
+				t.Parallel()
+				doc, err := goquery.NewDocumentFromReader(
+					strings.NewReader(tt.args.htmlInput),
+				)
+				assert.Nil(t, err)
+				_, err = New[NoSeltablField](doc)
+				if (err != nil) != tt.wantErr {
+					t.Errorf(
+						"NewFromString() error = %v, wantErr %v",
+						err,
+						tt.wantErr,
+					)
+					return
+				}
+				if tt.wantErr {
+					assert.Error(t, err)
+					return
+				}
+			})
+		}
+	})
+}
+
+func TestNewFromUrl(t *testing.T) {
+	t.Run("TestNewFromUrl", func(t *testing.T) {
+		t.Parallel()
+		type args struct {
+			url string
+		}
+		tests := []struct {
+			name    string
+			args    args
+			want    interface{}
+			wantErr bool
+		}{
+			{
+				name: "TestNewFromUrlWithInvalidURL",
+				args: args{
+					url: "https://github.com/conneroisu/seltabl/blob/main/testdata/ab_num_table.html",
+				},
+				want:    nil,
+				wantErr: true,
+			},
+		}
+		for _, tt := range tests {
+			tt := tt
+			t.Run(tt.name, func(t *testing.T) {
+				t.Parallel()
+				got, err := NewFromURL[testdata.FixtureStruct](tt.args.url)
+				if (err != nil) != tt.wantErr {
+					t.Errorf(
+						"NewFromURL() error = %v, wantErr %v",
+						err,
+						tt.wantErr,
+					)
+					return
+				}
+				if tt.wantErr {
+					assert.Error(t, err)
+					return
+				}
+				if !reflect.DeepEqual(got, tt.want) {
+					t.Errorf("NewFromURL() got = %v, want %v", got, tt.want)
+				}
+			})
+		}
+	})
+
+	// test a struct with no seltabl field or blank one
+	type NoSeltablField struct {
+		A string `json:"a" dSel:"tr td:nth-child(1)" cSel:"$text"`
+		B string `json:"b" seltabl:"b" dSel:"tr td:nth-child(2)" cSel:"$text"`
+	}
+
+	t.Run("TestNewFromUrlWithNoSeltablField", func(t *testing.T) {
+		t.Parallel()
+		type args struct {
+			url string
+		}
+		tests := []struct {
+			name    string
+			args    args
+			want    interface{}
+			wantErr bool
+		}{
+			{
+				name: "TestNewFromUrlWithInvalidURL",
+				args: args{
+					url: "ttps://github.com/conneroisu/seltabl/blob/main/testdata/ab_num_table.html",
+				},
+				want:    nil,
+				wantErr: true,
+			},
+		}
+		for _, tt := range tests {
+			tt := tt
+			t.Run(tt.name, func(t *testing.T) {
+				t.Parallel()
+				got, err := NewFromURL[NoSeltablField](tt.args.url)
+				if (err != nil) != tt.wantErr {
+					t.Errorf(
+						"NewFromURL() error = %v, wantErr %v",
+						err,
+						tt.wantErr,
+					)
+					return
+				}
+				if tt.wantErr {
+					assert.Error(t, err)
+					return
+				}
+				if !reflect.DeepEqual(got, tt.want) {
+					t.Errorf("NewFromURL() got = %v, want %v", got, tt.want)
+				}
+			})
+		}
+	})
+
+	// test with a undecodable body in respinse to NewFromURL
+	t.Run("TestNewFromUrlWithInvalidBody", func(t *testing.T) {
+		t.Parallel()
+		// Mock HTTP server for testing
+		server := httpTestServer(t, ":86;&")
+		defer server.Close()
+
+		type args struct {
+			url string
+		}
+		tests := []struct {
+			name    string
+			args    args
+			want    interface{}
+			wantErr bool
+		}{
+			{
+				name: "TestNewFromUrlWithInvalidBody",
+				args: args{
+					url: server.URL,
+				},
+				want:    nil,
+				wantErr: true,
+			},
+		}
+		for _, tt := range tests {
+			tt := tt
+			t.Run(tt.name, func(t *testing.T) {
+				t.Parallel()
+				got, err := NewFromURL[testdata.FixtureStruct](tt.args.url)
+				if (err != nil) != tt.wantErr {
+					t.Errorf(
+						"NewFromURL() error = %v, wantErr %v",
+						err,
+						tt.wantErr,
+					)
+					return
+				}
+				if tt.wantErr {
+					assert.Error(t, err)
+					return
+				}
+				if !reflect.DeepEqual(got, tt.want) {
+					t.Errorf("NewFromURL() got = %v, want %v", got, tt.want)
+				}
+			})
+		}
+	})
+}
+
+func httpTestServer(t *testing.T, body string) *httptest.Server {
+	return httptest.NewServer(
+		http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
+			_, err := w.Write([]byte(body))
+			if err != nil {
+				t.Fatalf("Failed to write response: %v", err)
+			}
+		}),
+	)
 }

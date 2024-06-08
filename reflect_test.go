@@ -432,6 +432,7 @@ type BenchStruct struct {
 	Uint16Field uint16
 	Uint32Field uint32
 	Uint64Field uint64
+	StructField *BenchStruct
 }
 
 // BenchSetStructField tests the SetStructField function
@@ -737,4 +738,5 @@ func BenchSetStructField(t *testing.B) {
 			}
 		})
 	}
+
 }

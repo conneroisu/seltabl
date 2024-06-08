@@ -6,21 +6,10 @@
 #
 # usage: make test
 
-go test -race -v -timeout 30s ./...
+staticcheck ./...
 
-go test -coverprofile=coverage.out ./...
+golangci-lint run
 
-# if gocovsh is executable
-if [ -x "$(command -v gocovsh)" ]; then
-    # if gocovsh is not empty
-    if [ -s coverage.out ]; then
-        # run gocovsh
-        gocovsh
-    else
-        # if coverage.out is empty/not found
-        echo "No coverage.out file found."
-    fi
-else
-    # if gocovsh is not executable
-    echo "gocovsh is not executable."
-fi
+go vet ./...
+
+revive -config .revive.toml ./...

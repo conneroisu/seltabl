@@ -8,7 +8,6 @@ import (
 	"strings"
 
 	"github.com/PuerkitoBio/goquery"
-	"github.com/conneroisu/seltabl/internal/errors"
 )
 
 const (
@@ -99,37 +98,21 @@ func New[T any](doc *goquery.Document) ([]T, error) {
 		}
 		headSelector := field.Tag.Get(headerSelectorTag)
 		if headSelector == "" {
-			return nil, &errors.SelectorNotFound[T]{
-				Struct:    *new(T),
-				FieldName: headName,
-				Selector:  headerSelectorTag,
-			}
+			return nil, fmt.Errorf("selector not found for field %s with type %s", field.Name, field.Type)
 		}
 		dataSelector := field.Tag.Get(dataSelectorTag)
 		if dataSelector == "" {
-			return nil, &errors.SelectorNotFound[T]{
-				Struct:    *new(T),
-				FieldName: headName,
-				Selector:  dataSelectorTag,
-			}
+			return nil, fmt.Errorf("selector not found for field %s with type %s", field.Name, field.Type)
 		}
 		headRow := doc.Find(headSelector)
 		if headRow.Length() == 0 {
-			return nil, &errors.SelectionNotFound[T]{
-				Struct:         *new(T),
-				FieldName:      headName,
-				SelectionQuery: headSelector,
-			}
+			return nil, fmt.Errorf("no header row found for field %s with type %s", field.Name, field.Type)
 		}
 		dataRows := doc.Find(
 			fmt.Sprintf("%s:not(%s)", dataSelector, headSelector),
 		)
 		if dataRows.Length() == 0 {
-			return nil, &errors.SelectionNotFound[T]{
-				Struct:         *new(T),
-				FieldName:      headName,
-				SelectionQuery: dataSelector,
-			}
+			return nil, fmt.Errorf("no data found for field %s with type %s", field.Name, field.Type)
 		}
 		cellSelector := field.Tag.Get(cellSelectorTag)
 		if cellSelector == "" {

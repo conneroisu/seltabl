@@ -22,14 +22,16 @@ const (
 
 	// headerTag is the tag used to mark a header cell.
 	headerTag = "seltabl"
-	// dataSelectorTag is the tag used to mark a data cell.
-	dataSelectorTag = "dSel"
-	// headerSelectorTag is the tag used to mark a header selector.
-	headerSelectorTag = "hSel"
-	// controlSelectorTag is the tag used to mark a data selector.
-	controlSelectorTag = "cSel"
+	// selectorDataTag is the tag used to mark a data cell.
+	selectorDataTag = "dSel"
+	// selectorHeaderTag is the tag used to mark a header selector.
+	selectorHeaderTag = "hSel"
+	// selectorControlTag is the tag used to mark a data selector.
+	selectorControlTag = "cSel"
 	// selectorTag is the tag used to mark a selector.
 	selectorQueryTag = "qSel"
+	// selectorIgnoreTag is the tag used to mark a selector to ignore.
+	selectorIgnoreTag = "ignore"
 )
 
 // New parses a goquery doc into a slice of structs.
@@ -94,57 +96,82 @@ const (
 func New[T any](doc *goquery.Document) ([]T, error) {
 	results := make([]T, 0)
 	dType := reflect.TypeOf((*T)(nil)).Elem()
+
 	if dType.Kind() != reflect.Struct && dType.Kind() != reflect.Ptr {
 		return nil, fmt.Errorf("expected struct, got %s", dType.Kind())
 	}
 	for i := 0; i < dType.NumField(); i++ {
 		field := dType.Field(i)
-		headName := field.Tag.Get(headerTag)
+
+		// get selectors
+		headName, dataSelector, headSelector, querySelector := field.Tag.Get(headerTag),
+			field.Tag.Get(selectorDataTag),
+			field.Tag.Get(selectorHeaderTag),
+			field.Tag.Get(selectorQueryTag)
 		if headName == "" {
 			continue
 		}
-		headSelector := field.Tag.Get(headerSelectorTag)
 		if headSelector == "" {
 			return nil, fmt.Errorf(
-				"selector not found for field %s with type %s",
+				"header selector not found for field %s with type %s",
 				field.Name,
 				field.Type,
 			)
 		}
-		dataSelector := field.Tag.Get(dataSelectorTag)
 		if dataSelector == "" {
 			return nil, fmt.Errorf(
-				"selector not found for field %s with type %s",
+				"data/column selector not found for field %s with type %s",
 				field.Name,
 				field.Type,
 			)
 		}
-		selectorQuery := field.Tag.Get(selectorQueryTag)
-		if selectorQuery == "" || dataSelector == cSelInnerTextSelector {
-			selectorQuery = cSelInnerTextSelector
+		if querySelector == "" || dataSelector == cSelAttrSelector {
+			querySelector = cSelInnerTextSelector
 		}
+		headerRow := doc.Find(headSelector)
+		if headerRow.Length() == 0 {
+			return nil, fmt.Errorf(
+				"%s found no header row found for field %s with type %s",
+				headSelector,
+				field.Name,
+				field.Type,
+			)
+		}
+		headerRowHTML, err := headerRow.Html()
+		if err != nil {
+			return nil, fmt.Errorf("failed to get header row html: %w", err)
+		}
+		fmt.Printf("headerRowHTML %+v\n", headerRowHTML)
+
+		// get data
+		dataRows := doc.Find(dataSelector)
+		if dataRows.Length() == 0 {
+			return nil, fmt.Errorf(
+				"%s found no data rows found for field %s with type %s",
+				dataSelector,
+				field.Name,
+				field.Type,
+			)
+		}
+		dataRowsHTML, err := dataRows.Html()
+		if err != nil {
+			return nil, fmt.Errorf("failed to get data rows html: %w", err)
+		}
+		fmt.Printf("dataRowsHTML %+v\n", dataRowsHTML)
 		headRow := doc.Find(headSelector)
 		if headRow.Length() == 0 {
 			return nil, fmt.Errorf(
-				"no header row found for field %s with type %s",
+				"%s found no header row found for field %s with type %s",
+				headSelector,
 				field.Name,
 				field.Type,
 			)
 		}
-		dataRows := doc.Find(
-			fmt.Sprintf("%s:not(%s)", dataSelector, headSelector),
-		)
-		if dataRows.Length() == 0 {
-			return nil, fmt.Errorf(
-				"no data found for field %s with type %s",
-				field.Name,
-				field.Type,
-			)
-		}
-		cellSelector := field.Tag.Get(controlSelectorTag)
+		cellSelector := field.Tag.Get(selectorControlTag)
 		if cellSelector == "" {
 			cellSelector = cSelInnerTextSelector
 		}
+
 		if len(results) == 0 {
 			results = make([]T, dataRows.Length())
 		}
@@ -153,7 +180,7 @@ func New[T any](doc *goquery.Document) ([]T, error) {
 				&results[j],                            // result row for this data row
 				field.Name,                             // name of the field to set
 				dataRows.Eq(j),                         // goquery selection for cell
-				&selector{cellSelector, selectorQuery}, // selector for the inner cell
+				&selector{cellSelector, querySelector}, // selector for the inner cell
 			); err != nil {
 				return nil, fmt.Errorf(
 					"failed to set field %s: %s",

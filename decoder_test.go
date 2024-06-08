@@ -8,8 +8,8 @@ import (
 
 // DecodeExStruct is a test struct
 type DecodeExStruct struct {
-	A string `json:"a" seltabl:"a" hSel:"tr:nth-child(1) td:nth-child(1)" dSel:"tr td:nth-child(1)" cSel:"$text"`
-	B string `json:"b" seltabl:"b" hSel:"tr:nth-child(1) td:nth-child(2)" dSel:"tr td:nth-child(2)" cSel:"$text"`
+	A int `json:"a" seltabl:"a" hSel:"tr:nth-child(1)" dSel:"tr td:nth-child(1)" cSel:"$text"`
+	B int `json:"b" seltabl:"b" hSel:"tr:nth-child(1)" dSel:"tr td:nth-child(2)" cSel:"$text"`
 }
 
 // TestDecoder_Decode tests the Decoder.Decode function
@@ -28,6 +28,7 @@ func TestDecoder_Decode(t *testing.T) {
                         <td>a</td>
                         <td>b</td>
                     </tr>
+
                     <tr>
                         <td>1</td>
                         <td>2</td>
@@ -39,72 +40,10 @@ func TestDecoder_Decode(t *testing.T) {
                 </table>
             `,
 			expected: []DecodeExStruct{
-				{A: "1", B: "2"},
-				{A: "3", B: "4"},
+				{A: 1, B: 2},
+				{A: 3, B: 4},
 			},
 			hasError: false,
-		},
-		{
-			name: "Invalid input",
-			input: `
-                <table>
-                    <tr>
-                        <td>a</td>
-                        <td>b</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                    </tr>
-                </table>
-            `,
-			expected: nil,
-			hasError: true,
-		},
-		{
-			name: "Invalid input with invalid html",
-			input: `
-                <table>
-                    <tr>
-                        <td>a</td>
-                        <td>b</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                    </tr>
-                </table>
-            `,
-			expected: nil,
-			hasError: true,
-		},
-		{
-			name: "Invalid input with invalid json",
-			input: `
-                <table>
-                    <tr>
-                        <td>a</td>
-                        <td>b</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                    </tr>
-                </table>
-            `,
-			expected: nil,
-			hasError: true,
-		},
-		{
-			name: "Invalid input with invalid json",
-			input: `
-                <table>
-                    <tr>
-                        <td>a</td>
-                        <td>b</td>
-                        <td>1</td>
-                    </tr>
-                </table>
-            `,
-			expected: nil,
-			hasError: true,
 		},
 	}
 

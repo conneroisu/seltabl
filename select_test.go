@@ -12,13 +12,17 @@ import (
 func TestSelect(t *testing.T) {
 	t.Run("Select text from a div", func(t *testing.T) {
 		// Create a mock cellValue
-		cellValue, err := goquery.NewDocumentFromReader(strings.NewReader("<html><body><div>Hello, World!</div></body></html>"))
+		cellValue, err := goquery.NewDocumentFromReader(
+			strings.NewReader(
+				"<html><body><div>Hello, World!</div></body></html>",
+			),
+		)
 		if err != nil {
 			t.Fatalf("failed to create document: %v", err)
 		}
 		divs := cellValue.Find("div")
 		// Create a new instance of the selector
-		s := selector{identifer: innerTextSelector}
+		s := selector{identifer: cSelInnerTextSelector}
 		// Call the Run method
 		cellText, err := s.Select(divs)
 		if err != nil {
@@ -27,7 +31,11 @@ func TestSelect(t *testing.T) {
 		// Check the expected result
 		expected := "Hello, World!"
 		if *cellText != expected {
-			t.Errorf("Expected cellText to be %q, but got %q", expected, *cellText)
+			t.Errorf(
+				"Expected cellText to be %q, but got %q",
+				expected,
+				*cellText,
+			)
 		}
 	})
 
@@ -47,7 +55,7 @@ func TestSelect(t *testing.T) {
 		}
 		links := cellValue.Find("a")
 		// Create a new instance of the selector
-		s := selector{identifer: attrSelector, query: "href"}
+		s := selector{identifer: cSelAttrSelector, query: "href"}
 		// Call the Run method
 		cellText, err := s.Select(links)
 		if err != nil {
@@ -62,13 +70,15 @@ func TestSelect(t *testing.T) {
 	t.Run("Select text from empty no text", func(t *testing.T) {
 		t.Parallel()
 		// Create a mock cellValue
-		cellValue, err := goquery.NewDocumentFromReader(strings.NewReader("<html><body></body></html>"))
+		cellValue, err := goquery.NewDocumentFromReader(
+			strings.NewReader("<html><body></body></html>"),
+		)
 		if err != nil {
 			t.Fatalf("failed to create document: %v", err)
 		}
 		divs := cellValue.Find("div")
 		// Create a new instance of the selector
-		s := selector{identifer: innerTextSelector, query: innerTextSelector}
+		s := selector{identifer: cSelInnerTextSelector, query: cSelInnerTextSelector}
 		// Call the Select method
 		_, err = s.Select(divs)
 		if err == nil {

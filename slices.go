@@ -10,11 +10,15 @@ import (
 	"github.com/PuerkitoBio/goquery"
 )
 
+var (
+	cSels = []string{cSelInnerTextSelector, cSelAttrSelector}
+)
+
 const (
-	// innerTextSelector is the selector used to extract text from a cell.
-	innerTextSelector = "$text"
-	// attrSelector is the selector used to extract attributes from a cell.
-	attrSelector = "$query"
+	// cSelInnerTextSelector is the selector used to extract text from a cell.
+	cSelInnerTextSelector = "$text"
+	// cSelAttrSelector is the selector used to extract attributes from a cell.
+	cSelAttrSelector = "$query"
 
 	// headerTag is the tag used to mark a header cell.
 	headerTag = "seltabl"
@@ -22,8 +26,8 @@ const (
 	dataSelectorTag = "dSel"
 	// headerSelectorTag is the tag used to mark a header selector.
 	headerSelectorTag = "hSel"
-	// cellSelectorTag is the tag used to mark a data selector.
-	cellSelectorTag = "cSel"
+	// controlSelectorTag is the tag used to mark a data selector.
+	controlSelectorTag = "cSel"
 	// selectorTag is the tag used to mark a selector.
 	selectorQueryTag = "qSel"
 )
@@ -33,7 +37,7 @@ const (
 // The struct given as an argument must have a field with the tag seltabl, a header selector with
 // the tag hSel, and a data selector with the tag dSel.
 //
-// The selectors responsibilties:
+// The selectors responsibilities:
 //
 //   - header selector (hSel): used to find the header row and column for the
 //     field in the given struct.
@@ -101,29 +105,45 @@ func New[T any](doc *goquery.Document) ([]T, error) {
 		}
 		headSelector := field.Tag.Get(headerSelectorTag)
 		if headSelector == "" {
-			return nil, fmt.Errorf("selector not found for field %s with type %s", field.Name, field.Type)
+			return nil, fmt.Errorf(
+				"selector not found for field %s with type %s",
+				field.Name,
+				field.Type,
+			)
 		}
 		dataSelector := field.Tag.Get(dataSelectorTag)
 		if dataSelector == "" {
-			return nil, fmt.Errorf("selector not found for field %s with type %s", field.Name, field.Type)
+			return nil, fmt.Errorf(
+				"selector not found for field %s with type %s",
+				field.Name,
+				field.Type,
+			)
 		}
 		selectorQuery := field.Tag.Get(selectorQueryTag)
-		if selectorQuery == "" || dataSelector == innerTextSelector {
-			selectorQuery = innerTextSelector
+		if selectorQuery == "" || dataSelector == cSelInnerTextSelector {
+			selectorQuery = cSelInnerTextSelector
 		}
 		headRow := doc.Find(headSelector)
 		if headRow.Length() == 0 {
-			return nil, fmt.Errorf("no header row found for field %s with type %s", field.Name, field.Type)
+			return nil, fmt.Errorf(
+				"no header row found for field %s with type %s",
+				field.Name,
+				field.Type,
+			)
 		}
 		dataRows := doc.Find(
 			fmt.Sprintf("%s:not(%s)", dataSelector, headSelector),
 		)
 		if dataRows.Length() == 0 {
-			return nil, fmt.Errorf("no data found for field %s with type %s", field.Name, field.Type)
+			return nil, fmt.Errorf(
+				"no data found for field %s with type %s",
+				field.Name,
+				field.Type,
+			)
 		}
-		cellSelector := field.Tag.Get(cellSelectorTag)
+		cellSelector := field.Tag.Get(controlSelectorTag)
 		if cellSelector == "" {
-			cellSelector = innerTextSelector
+			cellSelector = cSelInnerTextSelector
 		}
 		if len(results) == 0 {
 			results = make([]T, dataRows.Length())
@@ -316,7 +336,11 @@ func NewFromURL[T any](url string) ([]T, error) {
 	if err != nil {
 		return nil, fmt.Errorf("failed to read body: %w", err)
 	}
-	doc, err := goquery.NewDocumentFromReader(strings.NewReader(string(body)))
+	doc, err := goquery.NewDocumentFromReader(
+		strings.NewReader(
+			string(body),
+		),
+	)
 	if err != nil {
 		return nil, fmt.Errorf("failed to parse html: %w", err)
 	}

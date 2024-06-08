@@ -8,6 +8,8 @@
 
 task install
 
+task test
+
 # if gocovsh is executable
 if [ -x "$(command -v gocovsh)" ]; then
     # if gocovsh is not empty

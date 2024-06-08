@@ -16,63 +16,69 @@ import (
 // for all the different types of tables that we have in the
 // testdata package
 func TestNewFromString(t *testing.T) {
-	t.Run("SuperNova", func(t *testing.T) {
-		t.Parallel()
-		type args struct {
-			htmlInput string
-			typ       interface{}
-		}
-		tests := []struct {
-			name    string
-			args    args
-			want    interface{}
-			wantErr bool
-		}{
-			{
-				name: "Test supernova table",
-				args: args{
-					htmlInput: testdata.SuperNovaTable,
-					typ:       reflect.TypeOf(testdata.SuperNovaStruct{}),
+	t.Run(
+		"Test that NewFromString returns the correct result when the html is valid with the SuperNova table",
+		func(t *testing.T) {
+			t.Parallel()
+			type args struct {
+				htmlInput string
+				typ       interface{}
+			}
+			tests := []struct {
+				name    string
+				args    args
+				want    interface{}
+				wantErr bool
+			}{
+				{
+					name: "Test that NewFromString returns the correct result when the html is valid",
+					args: args{
+						htmlInput: testdata.SuperNovaTable,
+						typ:       reflect.TypeOf(testdata.SuperNovaStruct{}),
+					},
+					want:    testdata.SuperNovaTableResult,
+					wantErr: false,
 				},
-				want:    testdata.SuperNovaTableResult,
-				wantErr: false,
-			},
-			{
-				name: "TestNewFromStringWithInvalidHTML",
-				args: args{
-					htmlInput: "invalid",
-					typ:       reflect.TypeOf(testdata.SuperNovaStruct{}),
+				{
+					name: "TestNewFromStringWithInvalidHTML",
+					args: args{
+						htmlInput: "invalid",
+						typ:       reflect.TypeOf(testdata.SuperNovaStruct{}),
+					},
+					want:    nil,
+					wantErr: true,
 				},
-				want:    nil,
-				wantErr: true,
-			},
-		}
-		for _, tt := range tests {
-			t.Run(tt.name, func(t *testing.T) {
-				doc, err := goquery.NewDocumentFromReader(
-					strings.NewReader(tt.args.htmlInput),
-				)
-				assert.Nil(t, err)
-				got, err := New[testdata.SuperNovaStruct](doc)
-				if (err != nil) != tt.wantErr {
-					t.Errorf(
-						"NewFromString() error = %v, wantErr %v",
-						err,
-						tt.wantErr,
+			}
+			for _, tt := range tests {
+				t.Run(tt.name, func(t *testing.T) {
+					doc, err := goquery.NewDocumentFromReader(
+						strings.NewReader(tt.args.htmlInput),
 					)
-					return
-				}
-				if tt.wantErr {
-					assert.Error(t, err)
-					return
-				}
-				if !reflect.DeepEqual(got, tt.want) {
-					t.Errorf("NewFromString() got = %v, want %v", got, tt.want)
-				}
-			})
-		}
-	})
-
+					assert.Nil(t, err)
+					got, err := New[testdata.SuperNovaStruct](doc)
+					if (err != nil) != tt.wantErr {
+						t.Errorf(
+							"NewFromString() error = %v, wantErr %v",
+							err,
+							tt.wantErr,
+						)
+						return
+					}
+					if tt.wantErr {
+						assert.Error(t, err)
+						return
+					}
+					if !reflect.DeepEqual(got, tt.want) {
+						t.Errorf(
+							"NewFromString() got = %v, want %v",
+							got,
+							tt.want,
+						)
+					}
+				})
+			}
+		},
+	)
 	t.Run("Numbered Table", func(t *testing.T) {
 		t.Parallel()
 		type args struct {
@@ -95,7 +101,7 @@ func TestNewFromString(t *testing.T) {
 				wantErr: false,
 			},
 			{
-				name: "TestNewFromStringWithInvalidHTML",
+				name: "Test that NewFromString returns an error when the html is invalid",
 				args: args{
 					htmlInput: "invalid",
 					typ:       reflect.TypeOf(testdata.NumberedStruct{}),
@@ -131,112 +137,121 @@ func TestNewFromString(t *testing.T) {
 			})
 		}
 	})
-
-	t.Run("Fixture Tables", func(t *testing.T) {
-		t.Parallel()
-		type args struct {
-			htmlInput string
-			typ       interface{}
-		}
-		tests := []struct {
-			name    string
-			args    args
-			want    interface{}
-			wantErr bool
-		}{
-			{
-				name: "Test fixture table",
-				args: args{
-					htmlInput: testdata.FixtureABNumTable,
-					typ:       reflect.TypeOf(testdata.FixtureStruct{}),
+	t.Run(
+		"Test correct operation with testdata fixture tables",
+		func(t *testing.T) {
+			t.Parallel()
+			type args struct {
+				htmlInput string
+				typ       interface{}
+			}
+			tests := []struct {
+				name    string
+				args    args
+				want    interface{}
+				wantErr bool
+			}{
+				{
+					name: "Test fixture table",
+					args: args{
+						htmlInput: testdata.FixtureABNumTable,
+						typ:       reflect.TypeOf(testdata.FixtureStruct{}),
+					},
+					want:    testdata.FixtureABNumTableResult,
+					wantErr: false,
 				},
-				want:    testdata.FixtureABNumTableResult,
-				wantErr: false,
-			},
-			{
-				name: "TestNewFromStringWithInvalidHTML",
-				args: args{
-					htmlInput: "invalid",
-					typ:       reflect.TypeOf(testdata.FixtureStruct{}),
+				{
+					name: "TestNewFromStringWithInvalidHTML",
+					args: args{
+						htmlInput: "invalid",
+						typ:       reflect.TypeOf(testdata.FixtureStruct{}),
+					},
+					want:    nil,
+					wantErr: true,
 				},
-				want:    nil,
-				wantErr: true,
-			},
-		}
-		for _, tt := range tests {
-			tt := tt
-			t.Run(tt.name, func(t *testing.T) {
-				t.Parallel()
-				doc, err := goquery.NewDocumentFromReader(
-					strings.NewReader(tt.args.htmlInput),
-				)
-				assert.Nil(t, err)
-				got, err := New[testdata.FixtureStruct](doc)
-				if (err != nil) != tt.wantErr {
-					t.Errorf(
-						"NewFromString() error = %v, wantErr %v",
-						err,
-						tt.wantErr,
+			}
+			for _, tt := range tests {
+				tt := tt
+				t.Run(tt.name, func(t *testing.T) {
+					t.Parallel()
+					doc, err := goquery.NewDocumentFromReader(
+						strings.NewReader(tt.args.htmlInput),
 					)
-					return
-				}
-				if tt.wantErr {
-					assert.Error(t, err)
-					return
-				}
-				if !reflect.DeepEqual(got, tt.want) {
-					t.Errorf("NewFromString() got = %v, want %v", got, tt.want)
-				}
-			})
-		}
-	})
+					assert.Nil(t, err)
+					got, err := New[testdata.FixtureStruct](doc)
+					if (err != nil) != tt.wantErr {
+						t.Errorf(
+							"NewFromString() error = %v, wantErr %v",
+							err,
+							tt.wantErr,
+						)
+						return
+					}
+					if tt.wantErr {
+						assert.Error(t, err)
+						return
+					}
+					if !reflect.DeepEqual(got, tt.want) {
+						t.Errorf(
+							"NewFromString() got = %v, want %v",
+							got,
+							tt.want,
+						)
+					}
+				})
+			}
+		},
+	)
 
-	t.Run("TestNewFromStringWithInvalidHTML", func(t *testing.T) {
-		t.Parallel()
-		type args struct {
-			htmlInput string
-			typ       interface{}
-		}
-		tests := []struct {
-			name    string
-			args    args
-			want    interface{}
-			wantErr bool
-		}{
-			{
-				name: "TestNewFromStringWithInvalidHTML",
-				args: args{
-					htmlInput: "invalid",
-					typ:       reflect.TypeOf(testdata.FixtureStruct{}),
+	t.Run(
+		"Test that NewFromString returns an error when the html is invalid",
+		func(t *testing.T) {
+			t.Parallel()
+			type args struct {
+				htmlInput string
+				typ       interface{}
+			}
+			tests := []struct {
+				name    string
+				args    args
+				want    interface{}
+				wantErr bool
+			}{
+				{
+					name: "TestNewFromStringWithInvalidHTML",
+					args: args{
+						htmlInput: "invalid",
+						typ:       reflect.TypeOf(testdata.FixtureStruct{}),
+					},
+					want:    nil,
+					wantErr: true,
 				},
-				want:    nil,
-				wantErr: true,
-			},
-		}
-		for _, tt := range tests {
-			tt := tt
-			t.Run(tt.name, func(t *testing.T) {
-				t.Parallel()
-				doc, err := goquery.NewDocumentFromReader(
-					strings.NewReader(tt.args.htmlInput),
-				)
-				assert.Nil(t, err)
-				_, err = New[testdata.FixtureStruct](doc)
-				if (err != nil) != tt.wantErr {
-					t.Errorf(
-						"NewFromString() error = %v, wantErr %v",
-						err,
-						tt.wantErr,
+			}
+			for _, tt := range tests {
+				tt := tt
+				t.Run(tt.name, func(t *testing.T) {
+					t.Parallel()
+					doc, err := goquery.NewDocumentFromReader(
+						strings.NewReader(tt.args.htmlInput),
 					)
-					return
-				}
-				if tt.wantErr {
-					assert.Error(t, err)
-					return
-				}
-			})
-		}
-	})
+					assert.Nil(t, err)
+					_, err = New[testdata.FixtureStruct](doc)
+					if (err != nil) != tt.wantErr {
+						t.Errorf(
+							"NewFromString() error = %v, wantErr %v",
+							err,
+							tt.wantErr,
+						)
+						return
+					}
+					if tt.wantErr {
+						assert.Error(t, err)
+						return
+					}
+				})
+			}
+		},
+	)
 
 	t.Run("TestNewFromStringWithInvalidJSON", func(t *testing.T) {
 		t.Parallel()
@@ -332,7 +347,7 @@ func TestNewFromString(t *testing.T) {
 		}
 	})
 
-	type NoHSelector struct {
+	type NoHeaderSelectorStruct struct {
 		A string `json:"a" seltabl:"a" dSel:"tr td:nth-child(1)" cSel:"$text"`
 		B string `json:"b" seltabl:"b" dSel:"tr td:nth-child(2)" cSel:"$text"`
 	}
@@ -353,7 +368,7 @@ func TestNewFromString(t *testing.T) {
 				name: "TestNewFromStringWithNoHeaderSelector",
 				args: args{
 					htmlInput: testdata.FixtureABNumTable,
-					typ:       reflect.TypeOf(NoHSelector{}),
+					typ:       reflect.TypeOf(NoHeaderSelectorStruct{}),
 				},
 				want:    nil,
 				wantErr: true,
@@ -362,7 +377,7 @@ func TestNewFromString(t *testing.T) {
 				name: "TestNewFromStringWithInvalidHTML",
 				args: args{
 					htmlInput: "invalid",
-					typ:       reflect.TypeOf(NoHSelector{}),
+					typ:       reflect.TypeOf(NoHeaderSelectorStruct{}),
 				},
 				want:    nil,
 				wantErr: true,
@@ -376,7 +391,7 @@ func TestNewFromString(t *testing.T) {
 					strings.NewReader(tt.args.htmlInput),
 				)
 				assert.Nil(t, err)
-				got, err := New[NoHSelector](doc)
+				got, err := New[NoHeaderSelectorStruct](doc)
 				if (err != nil) != tt.wantErr {
 					t.Errorf(
 						"NewFromString() error = %v, wantErr %v",
@@ -395,12 +410,10 @@ func TestNewFromString(t *testing.T) {
 			})
 		}
 	})
-
-	type NoDataSelector struct {
+	type NoDataSelectorStruct struct {
 		A string `json:"a" seltabl:"a" hSel:"tr:nth-child(1) td:nth-child(1)" cSel:"$text"`
 		B string `json:"b" seltabl:"b" hSel:"tr:nth-child(1) td:nth-child(2)" cSel:"$text"`
 	}
-
 	t.Run("TestNewFromStringWithNoDataSelector", func(t *testing.T) {
 		t.Parallel()
 		type args struct {
@@ -417,7 +430,7 @@ func TestNewFromString(t *testing.T) {
 				name: "TestNewFromStringWithNoDataSelector",
 				args: args{
 					htmlInput: testdata.FixtureABNumTable,
-					typ:       reflect.TypeOf(NoDataSelector{}),
+					typ:       reflect.TypeOf(NoDataSelectorStruct{}),
 				},
 				want:    nil,
 				wantErr: true,
@@ -426,7 +439,7 @@ func TestNewFromString(t *testing.T) {
 				name: "TestNewFromStringWithInvalidHTML",
 				args: args{
 					htmlInput: "invalid",
-					typ:       reflect.TypeOf(NoDataSelector{}),
+					typ:       reflect.TypeOf(NoDataSelectorStruct{}),
 				},
 				want:    nil,
 				wantErr: true,
@@ -440,7 +453,7 @@ func TestNewFromString(t *testing.T) {
 					strings.NewReader(tt.args.htmlInput),
 				)
 				assert.Nil(t, err)
-				got, err := New[NoDataSelector](doc)
+				got, err := New[NoDataSelectorStruct](doc)
 				if (err != nil) != tt.wantErr {
 					t.Errorf(
 						"NewFromString() error = %v, wantErr %v",
@@ -460,7 +473,7 @@ func TestNewFromString(t *testing.T) {
 		}
 	})
 
-	type NoCellSelector struct {
+	type NoCellSelectorStruct struct {
 		A string `json:"a" seltabl:"a" dSel:"tr td:nth-child(1)" cSel:""`
 		B string `json:"b" seltabl:"b" dSel:"tr td:nth-child(2)" cSel:""`
 	}
@@ -481,7 +494,7 @@ func TestNewFromString(t *testing.T) {
 				name: "TestNewFromStringWithNoCellSelector",
 				args: args{
 					htmlInput: testdata.FixtureABNumTable,
-					typ:       reflect.TypeOf(NoCellSelector{}),
+					typ:       reflect.TypeOf(NoCellSelectorStruct{}),
 				},
 				want:    nil,
 				wantErr: true,
@@ -490,7 +503,7 @@ func TestNewFromString(t *testing.T) {
 				name: "TestNewFromStringWithInvalidHTML",
 				args: args{
 					htmlInput: "invalid",
-					typ:       reflect.TypeOf(NoCellSelector{}),
+					typ:       reflect.TypeOf(NoCellSelectorStruct{}),
 				},
 				want:    nil,
 				wantErr: true,
@@ -504,7 +517,7 @@ func TestNewFromString(t *testing.T) {
 					strings.NewReader(tt.args.htmlInput),
 				)
 				assert.Nil(t, err)
-				got, err := New[NoCellSelector](doc)
+				got, err := New[NoCellSelectorStruct](doc)
 				if (err != nil) != tt.wantErr {
 					t.Errorf(
 						"NewFromString() error = %v, wantErr %v",
@@ -526,57 +539,73 @@ func TestNewFromString(t *testing.T) {
 
 	type InvalidTGenericType func(a, b int) int
 
-	t.Run("TestNewFromStringWithInvalidGenericType", func(t *testing.T) {
-		t.Parallel()
-		type args struct {
-			htmlInput string
-			typ       interface{}
-		}
-		tests := []struct {
-			name    string
-			args    args
-			want    interface{}
-			wantErr bool
-		}{
-			{
-				name: "TestNewFromStringWithInvalidGenericType",
-				args: args{
-					htmlInput: "invalid",
-					typ:       reflect.TypeOf(func(a, b int) int { return a + b }),
+	t.Run(
+		"Test that NewFromString returns an error when the generic type is invalid like when the test passes in a function",
+		func(t *testing.T) {
+			t.Parallel()
+			type args struct {
+				htmlInput string
+				typ       interface{}
+			}
+			tests := []struct {
+				name    string
+				args    args
+				want    interface{}
+				wantErr bool
+			}{
+				{
+					name: "TestNewFromStringWithInvalidGenericType",
+					args: args{
+						htmlInput: "invalid",
+						typ: reflect.TypeOf(
+							func(a, b int) int { return a + b },
+						),
+					},
+					want:    nil,
+					wantErr: true,
 				},
-				want:    nil,
-				wantErr: true,
-			},
-		}
-		for _, tt := range tests {
-			tt := tt
-			t.Run(tt.name, func(t *testing.T) {
-				t.Parallel()
-				doc, err := goquery.NewDocumentFromReader(
-					strings.NewReader(tt.args.htmlInput),
-				)
-				assert.Nil(t, err)
-				_, err = New[InvalidTGenericType](doc)
-				if (err != nil) != tt.wantErr {
-					t.Errorf(
-						"NewFromString() error = %v, wantErr %v",
-						err,
-						tt.wantErr,
+				{
+					name: "Test that NewFromString returns an error when the generic type is invalid like when the test passes in a function",
+					args: args{
+						htmlInput: "invalid",
+						typ: reflect.TypeOf(
+							func(b int) int { return b },
+						),
+					},
+					want:    nil,
+					wantErr: true,
+				},
+			}
+			for _, tt := range tests {
+				tt := tt
+				t.Run(tt.name, func(t *testing.T) {
+					t.Parallel()
+					doc, err := goquery.NewDocumentFromReader(
+						strings.NewReader(tt.args.htmlInput),
 					)
-					return
-				}
-				if tt.wantErr {
-					assert.Error(t, err)
-					return
-				}
-			})
-		}
-	})
+					assert.Nil(t, err)
+					_, err = New[InvalidTGenericType](doc)
+					if (err != nil) != tt.wantErr {
+						t.Errorf(
+							"NewFromString() error = %v, wantErr %v",
+							err,
+							tt.wantErr,
+						)
+						return
+					}
+					if tt.wantErr {
+						assert.Error(t, err)
+						return
+					}
+				})
+			}
+		},
+	)
 
 	// test a struct with no seltabl field or blank one
 	type NoSeltablField struct {
 		A string `json:"a" dSel:"tr td:nth-child(1)" cSel:"$text"`
-		B string `json:"b" seltabl:"b" dSel:"tr td:nth-child(2)" cSel:"$text"`
+		B string `json:"b" dSel:"tr td:nth-child(2)" cSel:"$text" seltabl:"b"`
 	}
 
 	t.Run("TestNewFromStringWithNoSeltablField", func(t *testing.T) {
@@ -636,6 +665,7 @@ func TestNewFromString(t *testing.T) {
 	})
 }
 
+// TestNewFromUrl tests the NewFromURL function
 func TestNewFromUrl(t *testing.T) {
 	t.Run("TestNewFromUrl", func(t *testing.T) {
 		t.Parallel()
@@ -680,13 +710,11 @@ func TestNewFromUrl(t *testing.T) {
 			})
 		}
 	})
-
 	// test a struct with no seltabl field or blank one
 	type NoSeltablField struct {
 		A string `json:"a" dSel:"tr td:nth-child(1)" cSel:"$text"`
-		B string `json:"b" seltabl:"b" dSel:"tr td:nth-child(2)" cSel:"$text"`
+		B string `json:"b" dSel:"tr td:nth-child(2)" cSel:"$text" seltabl:"b"`
 	}
-
 	t.Run("TestNewFromUrlWithNoSeltablField", func(t *testing.T) {
 		t.Parallel()
 		type args struct {
@@ -781,6 +809,7 @@ func TestNewFromUrl(t *testing.T) {
 	})
 }
 
+// httpTestServer sets up a test HTTP server
 func httpTestServer(t *testing.T, body string) *httptest.Server {
 	return httptest.NewServer(
 		http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {

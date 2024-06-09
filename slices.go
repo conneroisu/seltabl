@@ -122,7 +122,7 @@ func New[T any](doc *goquery.Document) ([]T, error) {
 
 		if cfg.MustBePresent != "" && !strings.Contains(doc.Text(), cfg.MustBePresent) {
 			return nil, &ErrMissingMustBePresent{
-				cfg:   cfg,
+				Cfg:   cfg,
 				Field: field,
 			}
 		}

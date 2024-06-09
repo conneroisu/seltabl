@@ -38,7 +38,7 @@ func TestScrapeTeamCodes(t *testing.T) {
 				defer cancel()
 				start := time.Now()
 				teamResults, err := ScrapeTeamCodes(ctx, &arg.content)
-				t.Logf("time: %s\n", time.Now().Sub(start))
+				t.Logf("time: %s\n", time.Since(start))
 				stop := time.Now()
 				fmt.Printf("time: %s\n", stop.Sub(start))
 				assert.Equal(t, arg.wantErr, err != nil)

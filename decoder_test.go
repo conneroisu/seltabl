@@ -8,8 +8,8 @@ import (
 
 // DecodeExStruct is a test struct
 type DecodeExStruct struct {
-	A int `json:"a" seltabl:"a" hSel:"tr:nth-child(1)" dSel:"tr td:nth-child(1)" cSel:"$text"`
-	B int `json:"b" seltabl:"b" hSel:"tr:nth-child(1)" dSel:"tr td:nth-child(2)" cSel:"$text"`
+	A int `json:"a" seltabl:"a" hSel:"tr:nth-child(1)" dSel:"table tr:not(:first-child) td:nth-child(1)" cSel:"$text"`
+	B int `json:"b" seltabl:"b" hSel:"tr:nth-child(1)" dSel:"table tr:not(:first-child) td:nth-child(2)" cSel:"$text"`
 }
 
 // TestDecoder_Decode tests the Decoder.Decode function

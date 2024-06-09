@@ -15,29 +15,20 @@ var (
 )
 
 const (
-	// cSelInnerTextSelector is the selector used to extract text from a cell.
-	cSelInnerTextSelector = "$text"
-	// cSelAttrSelector is the selector used to extract attributes from a cell.
-	cSelAttrSelector = "$query"
-
-	// headerTag is the tag used to mark a header cell.
-	headerTag = "seltabl"
-	// selectorDataTag is the tag used to mark a data cell.
-	selectorDataTag = "dSel"
-	// selectorHeaderTag is the tag used to mark a header selector.
-	selectorHeaderTag = "hSel"
-	// selectorControlTag is the tag used to mark a data selector.
-	selectorControlTag = "cSel"
-	// selectorTag is the tag used to mark a selector.
-	selectorQueryTag = "qSel"
-	// selectorIgnoreTag is the tag used to mark a selector to ignore.
-	selectorIgnoreTag = "ignore"
+	cSelInnerTextSelector = "$text"   // cSelInnerTextSelector is the selector used to extract text from a cell.
+	cSelAttrSelector      = "$query"  // cSelAttrSelector is the selector used to extract attributes from a cell.
+	headerTag             = "seltabl" // headerTag is the tag used to mark a header cell.
+	selectorDataTag       = "dSel"    // selectorDataTag is the tag used to mark a data cell.
+	selectorHeaderTag     = "hSel"    // selectorHeaderTag is the tag used to mark a header selector.
+	selectorControlTag    = "cSel"    // selectorControlTag is the tag used to mark a data selector.
+	selectorQueryTag      = "qSel"    // selectorTag is the tag used to mark a selector.
 )
 
 // New parses a goquery doc into a slice of structs.
 //
-// The struct given as an argument must have a field with the tag seltabl, a header selector with
-// the tag hSel, and a data selector with the tag dSel.
+// The struct given as an argument must have a field with the
+// tag seltabl, a header selector with the tag hSel, and a data
+// selector with the tag dSel.
 //
 // The selectors responsibilities:
 //
@@ -45,8 +36,10 @@ const (
 //     field in the given struct.
 //   - data selector (dSel): used to find the data column for the field in the
 //     given struct.
-//   - cell selector (cSel): used to find the inner text or attribute of the
-//     cell.
+//   - query selector (qSel): used to query for the inner text or attribute of
+//     the cell.
+//   - control selector (cSel): used to control what to query for the inner
+//     text or attribute of the cell.
 //
 // Example:
 //
@@ -100,76 +93,68 @@ func New[T any](doc *goquery.Document) ([]T, error) {
 	if dType.Kind() != reflect.Struct && dType.Kind() != reflect.Ptr {
 		return nil, fmt.Errorf("expected struct, got %s", dType.Kind())
 	}
+	var cfg *SelectorConfig
 	for i := 0; i < dType.NumField(); i++ {
 		field := dType.Field(i)
 
-		// get selectors
-		headName, dataSelector, headSelector, querySelector := field.Tag.Get(headerTag),
-			field.Tag.Get(selectorDataTag),
-			field.Tag.Get(selectorHeaderTag),
-			field.Tag.Get(selectorQueryTag)
-		if headName == "" {
+		cfg = NewSelectorConfig(field.Tag)
+		if cfg.HeadName == "" {
 			continue
 		}
-		if headSelector == "" {
+		if cfg.HeadSelector == "" {
 			return nil, fmt.Errorf(
 				"header selector not found for field %s with type %s",
 				field.Name,
 				field.Type,
 			)
 		}
-		if dataSelector == "" {
+		if cfg.DataSelector == "" {
 			return nil, fmt.Errorf(
 				"data/column selector not found for field %s with type %s",
 				field.Name,
 				field.Type,
 			)
 		}
-		if querySelector == "" || dataSelector == cSelAttrSelector {
-			querySelector = cSelInnerTextSelector
+		if cfg.QuerySelector == "" || cfg.DataSelector == cSelAttrSelector {
+			cfg.QuerySelector, cfg.ControlTag = cSelInnerTextSelector, cSelInnerTextSelector
 		}
-		headerRow := doc.Find(headSelector)
-		if headerRow.Length() == 0 {
-			return nil, fmt.Errorf(
-				"%s found no header row found for field %s with type %s",
-				headSelector,
-				field.Name,
-				field.Type,
-			)
-		}
-		headerRowHTML, err := headerRow.Html()
-		if err != nil {
-			return nil, fmt.Errorf("failed to get header row html: %w", err)
-		}
-		fmt.Printf("headerRowHTML %+v\n", headerRowHTML)
 
-		// get data
-		dataRows := doc.Find(dataSelector)
+		dataRows := doc.Find(cfg.DataSelector)
 		if dataRows.Length() == 0 {
+			docHTML, err := doc.Html()
+			if err != nil {
+				return nil, fmt.Errorf("failed to get data rows html: %w", err)
+			}
 			return nil, fmt.Errorf(
-				"%s found no data rows found for field %s with type %s",
-				dataSelector,
+				"%s found no data rows found for field %s with type %s in html: %s",
+				cfg.DataSelector,
 				field.Name,
 				field.Type,
+				docHTML,
 			)
 		}
-		dataRowsHTML, err := dataRows.Html()
-		if err != nil {
-			return nil, fmt.Errorf("failed to get data rows html: %w", err)
+		headerRow := doc.Find(cfg.HeadSelector)
+		if headerRow.Length() == 0 {
+			docHTML, err := doc.Html()
+			if err != nil {
+				return nil, fmt.Errorf("failed to get data rows html: %w", err)
+			}
+			return nil, fmt.Errorf(
+				"%s found no header row found for field %s with type %s in html: %s",
+				cfg.HeadSelector,
+				field.Name,
+				field.Type,
+				docHTML,
+			)
 		}
-		fmt.Printf("dataRowsHTML %+v\n", dataRowsHTML)
-		headRow := doc.Find(headSelector)
+		headRow := doc.Find(cfg.HeadSelector)
 		if headRow.Length() == 0 {
 			return nil, fmt.Errorf(
 				"%s found no header row found for field %s with type %s",
-				headSelector,
+				cfg.HeadSelector,
 				field.Name,
 				field.Type,
 			)
-		}
-		cellSelector := field.Tag.Get(selectorControlTag)
-		if cellSelector == "" {
-			cellSelector = cSelInnerTextSelector
 		}
 
 		if len(results) == 0 {
@@ -177,10 +162,10 @@ func New[T any](doc *goquery.Document) ([]T, error) {
 		}
 		for j := 0; j < dataRows.Length(); j++ {
 			if err := SetStructField(
-				&results[j],                            // result row for this data row
-				field.Name,                             // name of the field to set
-				dataRows.Eq(j),                         // goquery selection for cell
-				&selector{cellSelector, querySelector}, // selector for the inner cell
+				&results[j],    // result row for this data row
+				field.Name,     // name of the field to set
+				dataRows.Eq(j), // goquery selection for cell
+				&selector{cfg.ControlTag, cfg.QuerySelector}, // selector for the inner cell
 			); err != nil {
 				return nil, fmt.Errorf(
 					"failed to set field %s: %s",
@@ -200,6 +185,17 @@ func New[T any](doc *goquery.Document) ([]T, error) {
 //
 // The struct must have a field with the tag seltabl, a header selector with
 // the tag hSel, and a data selector with the tag dSel.
+//
+// The selectors responsibilities:
+//
+//   - header selector (hSel): used to find the header row and column for the
+//     field in the given struct.
+//   - data selector (dSel): used to find the data column for the field in the
+//     given struct.
+//   - query selector (qSel): used to query for the inner text or attribute of
+//     the cell.
+//   - control selector (cSel): used to control what to query for the inner
+//     text or attribute of the cell.
 //
 // Example:
 //
@@ -255,7 +251,11 @@ func NewFromString[T any](htmlInput string) ([]T, error) {
 		reader,
 	)
 	if err != nil {
-		return nil, fmt.Errorf("failed to parse html: %w", err)
+		return nil,
+			fmt.Errorf(
+				"failed to create new goquery document from reader: %w",
+				err,
+			)
 	}
 	return New[T](doc)
 }
@@ -266,6 +266,17 @@ func NewFromString[T any](htmlInput string) ([]T, error) {
 //
 // The passed in generic type must be a struct with valid selectors for the
 // table and data (hSel, dSel, cSel).
+//
+// The selectors responsibilities:
+//
+//   - header selector (hSel): used to find the header row and column for the
+//     field in the given struct.
+//   - data selector (dSel): used to find the data column for the field in the
+//     given struct.
+//   - query selector (qSel): used to query for the inner text or attribute of
+//     the cell.
+//   - control selector (cSel): used to control what to query for the inner
+//     text or attribute of the cell.
 //
 // Example:
 //
@@ -328,6 +339,17 @@ func NewFromReader[T any](r io.Reader) ([]T, error) {
 //
 // The passed in generic type must be a struct with valid selectors for the
 // table and data (hSel, dSel, cSel).
+//
+// The selectors responsibilities:
+//
+//   - header selector (hSel): used to find the header row and column for the
+//     field in the given struct.
+//   - data selector (dSel): used to find the data column for the field in the
+//     given struct.
+//   - query selector (qSel): used to query for the inner text or attribute of
+//     the cell.
+//   - control selector (cSel): used to control what to query for the inner
+//     text or attribute of the cell.
 //
 // Example:
 //

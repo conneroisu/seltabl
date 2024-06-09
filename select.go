@@ -36,7 +36,11 @@ func (s selector) Select(cellValue *goquery.Selection) (*string, error) {
 			return nil, fmt.Errorf("failed to find selector: %s", s.identifer)
 		}
 	default:
-		return nil, fmt.Errorf("unsupported identifer: %s (identifers are %s)", s.identifer, strings.Join(cSels, " "))
+		return nil, fmt.Errorf(
+			"unsupported identifer: %s (identifers are %s)",
+			s.identifer,
+			strings.Join(cSels, " "),
+		)
 	}
 	return &cellText, nil
 }

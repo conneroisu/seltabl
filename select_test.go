@@ -78,7 +78,10 @@ func TestSelect(t *testing.T) {
 		}
 		divs := cellValue.Find("div")
 		// Create a new instance of the selector
-		s := selector{identifer: cSelInnerTextSelector, query: cSelInnerTextSelector}
+		s := selector{
+			identifer: cSelInnerTextSelector,
+			query:     cSelInnerTextSelector,
+		}
 		// Call the Select method
 		_, err = s.Select(divs)
 		if err == nil {

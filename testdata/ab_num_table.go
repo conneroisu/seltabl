@@ -2,8 +2,8 @@ package testdata
 
 // FixtureStruct is a test struct
 type FixtureStruct struct {
-	A string `json:"a" seltabl:"a" hSel:"tr:nth-child(1) td:nth-child(1)" dSel:"tr:nth-child(1+) td:nth-child(1)" cSel:"$text"`
-	B string `json:"b" seltabl:"b" hSel:"tr:nth-child(1) td:nth-child(2)" dSel:"tr:nth-child(1+) td:nth-child(2)" cSel:"$text"`
+	A string `json:"a" seltabl:"a" hSel:"tr:nth-child(1)" dSel:"table tr:not(:first-child) td:nth-child(1)" cSel:"$text"`
+	B string `json:"b" seltabl:"b" hSel:"tr:nth-child(1)" dSel:"table tr:not(:first-child) td:nth-child(2)" cSel:"$text"`
 }
 
 var FixtureABNumTable string = `

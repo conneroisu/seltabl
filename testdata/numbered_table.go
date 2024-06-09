@@ -6,9 +6,9 @@ import (
 
 // NumberedStruct is a test struct
 type NumberedStruct struct {
-	Header1 string `json:"Header 1" seltabl:"Header 1" hSel:"tr:nth-child(1) td:nth-child(1)" dSel:"tr td:nth-child(1)" cSel:"$text"`
-	Header2 string `json:"Header 2" seltabl:"Header 2" hSel:"tr:nth-child(1) td:nth-child(2)" dSel:"tr td:nth-child(2)" cSel:"$text"`
-	Header3 string `json:"Header 3" seltabl:"Header 3" hSel:"tr:nth-child(1) td:nth-child(3)" dSel:"tr td:nth-child(3)" cSel:"$text"`
+	Header1 string `json:"Header 1" seltabl:"Header 1" hSel:"tr:nth-child(1) td:nth-child(1)" dSel:"tr:not(:first-child) td:nth-child(1)" cSel:"$text"`
+	Header2 string `json:"Header 2" seltabl:"Header 2" hSel:"tr:nth-child(1) td:nth-child(2)" dSel:"tr:not(:first-child) td:nth-child(2)" cSel:"$text"`
+	Header3 string `json:"Header 3" seltabl:"Header 3" hSel:"tr:nth-child(1) td:nth-child(3)" dSel:"tr:not(:first-child) td:nth-child(3)" cSel:"$text"`
 }
 
 //go:embed numbered_table.html

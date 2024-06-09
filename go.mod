@@ -4,9 +4,8 @@ go 1.22.3
 
 require (
 	github.com/PuerkitoBio/goquery v1.9.2
-	github.com/brianvoe/gofakeit v3.18.0+incompatible
-	github.com/dave/jennifer v1.7.0
 	github.com/stretchr/testify v1.9.0
+	golang.org/x/sync v0.1.0
 )
 
 require (

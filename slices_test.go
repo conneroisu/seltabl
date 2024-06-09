@@ -783,6 +783,14 @@ func TestNewFromUrl(t *testing.T) {
 				want:    nil,
 				wantErr: true,
 			},
+			{
+				name: "TestNewFromUrlWithInvalidURL",
+				args: args{
+					url: "http//github.com/conneroisu/seltabl/blob/main/testdata/ab_num_table.html",
+				},
+				want:    nil,
+				wantErr: true,
+			},
 		}
 		for _, tt := range tests {
 			tt := tt

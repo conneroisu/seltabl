@@ -102,6 +102,7 @@ func New[T any](doc *goquery.Document) ([]T, error) {
 		if cfg.HeadName == "" {
 			continue
 		}
+
 		if cfg.HeadSelector == "" {
 			return nil, fmt.Errorf(
 				"header selector not found for field %s with type %s",

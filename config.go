@@ -11,6 +11,7 @@ type SelectorConfig struct {
 	HeadSelector  string
 	QuerySelector string
 	ControlTag    string
+	MustBePresent string
 }
 
 // NewSelectorConfig parses a struct tag and returns a SelectorConfig
@@ -21,6 +22,7 @@ func NewSelectorConfig(tag reflect.StructTag) *SelectorConfig {
 		DataSelector:  tag.Get(selectorDataTag),
 		QuerySelector: tag.Get(selectorQueryTag),
 		ControlTag:    tag.Get(selectorControlTag),
+		MustBePresent: tag.Get(selectorMustBePresentTag),
 	}
 	return cfg
 }

@@ -15,13 +15,14 @@ var (
 )
 
 const (
-	cSelInnerTextSelector = "$text"   // cSelInnerTextSelector is the selector used to extract text from a cell.
-	cSelAttrSelector      = "$query"  // cSelAttrSelector is the selector used to extract attributes from a cell.
-	headerTag             = "seltabl" // headerTag is the tag used to mark a header cell.
-	selectorDataTag       = "dSel"    // selectorDataTag is the tag used to mark a data cell.
-	selectorHeaderTag     = "hSel"    // selectorHeaderTag is the tag used to mark a header selector.
-	selectorControlTag    = "cSel"    // selectorControlTag is the tag used to mark a data selector.
-	selectorQueryTag      = "qSel"    // selectorTag is the tag used to mark a selector.
+	cSelInnerTextSelector    = "$text"   // cSelInnerTextSelector is the selector used to extract text from a cell.
+	cSelAttrSelector         = "$query"  // cSelAttrSelector is the selector used to extract attributes from a cell.
+	headerTag                = "seltabl" // headerTag is the tag used to mark a header cell.
+	selectorDataTag          = "dSel"    // selectorDataTag is the tag used to mark a data cell.
+	selectorHeaderTag        = "hSel"    // selectorHeaderTag is the tag used to mark a header selector.
+	selectorControlTag       = "cSel"    // selectorControlTag is the tag used to mark a data selector.
+	selectorQueryTag         = "qSel"    // selectorTag is the tag used to mark a selector.
+	selectorMustBePresentTag = "must"    // selectorMustBePresentTag is the tag used to mark a selector.
 )
 
 // New parses a goquery doc into a slice of structs.
@@ -117,6 +118,12 @@ func New[T any](doc *goquery.Document) ([]T, error) {
 		}
 		if cfg.QuerySelector == "" || cfg.DataSelector == cSelAttrSelector {
 			cfg.QuerySelector, cfg.ControlTag = cSelInnerTextSelector, cSelInnerTextSelector
+		}
+
+		if cfg.MustBePresent != "" {
+			if !strings.Contains(doc.Text(), cfg.MustBePresent) {
+				return nil, fmt.Errorf("must be present not found for field %s with type %s", field.Name, field.Type)
+			}
 		}
 
 		dataRows := doc.Find(cfg.DataSelector)

@@ -121,7 +121,8 @@ func New[T any](doc *goquery.Document) ([]T, error) {
 			cfg.QuerySelector, cfg.ControlTag = cSelInnerTextSelector, cSelInnerTextSelector
 		}
 
-		if cfg.MustBePresent != "" && !strings.Contains(doc.Text(), cfg.MustBePresent) {
+		if cfg.MustBePresent != "" &&
+			!strings.Contains(doc.Text(), cfg.MustBePresent) {
 			return nil, &ErrMissingMustBePresent{
 				Cfg:   cfg,
 				Field: field,

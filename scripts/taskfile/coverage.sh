@@ -1,5 +1,5 @@
 #!/bin/bash
-# file: taskfile.coverage.sh
+# file: taskfile/coverage.sh
 # url: https://github.com/conneroisu/seltabl/scripts/taskfile.coverage.sh
 # title: Running GoCovSh
 # description: This script runs gocovsh to generate a coverage report.

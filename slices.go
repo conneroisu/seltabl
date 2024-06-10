@@ -104,18 +104,16 @@ func New[T any](doc *goquery.Document) ([]T, error) {
 		}
 
 		if cfg.HeadSelector == "" {
-			return nil, fmt.Errorf(
-				"header selector not found for field %s with type %s",
-				field.Name,
-				field.Type,
-			)
+			return nil, &ErrSelectorNotFound{
+				Typ:   dType,
+				Field: field,
+				Cfg:   cfg}
 		}
 		if cfg.DataSelector == "" {
-			return nil, fmt.Errorf(
-				"data/column selector not found for field %s with type %s",
-				field.Name,
-				field.Type,
-			)
+			return nil, &ErrSelectorNotFound{
+				Typ:   dType,
+				Field: field,
+				Cfg:   cfg}
 		}
 		if cfg.QuerySelector == "" || cfg.DataSelector == cSelAttrSelector {
 			cfg.QuerySelector, cfg.ControlTag = cSelInnerTextSelector, cSelInnerTextSelector
@@ -131,40 +129,26 @@ func New[T any](doc *goquery.Document) ([]T, error) {
 
 		dataRows := doc.Find(cfg.DataSelector)
 		if dataRows.Length() == 0 {
-			docHTML, err := doc.Html()
-			if err != nil {
-				return nil, fmt.Errorf("failed to get data rows html: %w", err)
-			}
-			return nil, fmt.Errorf(
-				"%s found no data rows found for field %s with type %s in html: %s",
-				cfg.DataSelector,
-				field.Name,
-				field.Type,
-				docHTML,
-			)
+			return nil, &ErrNoDataFound{
+				Typ:   dType,
+				Field: field,
+				Cfg:   cfg}
 		}
 		headerRow := doc.Find(cfg.HeadSelector)
 		if headerRow.Length() == 0 {
-			docHTML, err := doc.Html()
-			if err != nil {
-				return nil, fmt.Errorf("failed to get data rows html: %w", err)
-			}
-			return nil, fmt.Errorf(
-				"%s found no header row found for field %s with type %s in html: %s",
-				cfg.HeadSelector,
-				field.Name,
-				field.Type,
-				docHTML,
-			)
+			return nil, &ErrNoDataFound{
+				Field: field,
+				Typ:   field.Type,
+				Cfg:   cfg,
+				Doc:   doc}
 		}
 		headRow := doc.Find(cfg.HeadSelector)
 		if headRow.Length() == 0 {
-			return nil, fmt.Errorf(
-				"%s found no header row found for field %s with type %s",
-				cfg.HeadSelector,
-				field.Name,
-				field.Type,
-			)
+			return nil, &ErrNoDataFound{
+				Field: field,
+				Typ:   field.Type,
+				Cfg:   cfg,
+				Doc:   doc}
 		}
 
 		if len(results) == 0 {

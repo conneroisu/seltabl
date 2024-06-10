@@ -22,7 +22,7 @@ func TestSelect(t *testing.T) {
 		}
 		divs := cellValue.Find("div")
 		// Create a new instance of the selector
-		s := selector{identifer: cSelInnerTextSelector}
+		s := selector{control: cSelInnerTextSelector}
 		// Call the Run method
 		cellText, err := s.Select(divs)
 		if err != nil {
@@ -55,7 +55,7 @@ func TestSelect(t *testing.T) {
 		}
 		links := cellValue.Find("a")
 		// Create a new instance of the selector
-		s := selector{identifer: cSelAttrSelector, query: "href"}
+		s := selector{control: cSelAttrSelector, query: "href"}
 		// Call the Run method
 		cellText, err := s.Select(links)
 		if err != nil {
@@ -79,8 +79,8 @@ func TestSelect(t *testing.T) {
 		divs := cellValue.Find("div")
 		// Create a new instance of the selector
 		s := selector{
-			identifer: cSelInnerTextSelector,
-			query:     cSelInnerTextSelector,
+			control: cSelInnerTextSelector,
+			query:   cSelInnerTextSelector,
 		}
 		// Call the Select method
 		_, err = s.Select(divs)

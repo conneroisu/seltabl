@@ -14,8 +14,8 @@ type SelectorInferface interface {
 
 // Selector is a struct for running a goquery selector on a cellValue
 type selector struct {
-	identifer string
-	query     string
+	control string
+	query   string
 }
 
 // Select runs the selector on the cellValue and sets the cellText
@@ -23,22 +23,22 @@ type selector struct {
 func (s selector) Select(cellValue *goquery.Selection) (*string, error) {
 	var cellText string
 	var exists bool
-	switch s.identifer {
+	switch s.control {
 	case cSelInnerTextSelector:
 		cellText = cellValue.Text()
 		cellText = strings.TrimSpace(cellText)
 		if cellValue.Length() == 0 {
-			return nil, fmt.Errorf("failed to find selector: %s", s.identifer)
+			return nil, fmt.Errorf("failed to find selector: %s", s.control)
 		}
 	case cSelAttrSelector:
 		cellText, exists = cellValue.Attr(s.query)
 		if !exists {
-			return nil, fmt.Errorf("failed to find selector: %s", s.identifer)
+			return nil, fmt.Errorf("failed to find selector: %s", s.control)
 		}
 	default:
 		return nil, fmt.Errorf(
 			"unsupported identifer: %s (identifers are %s)",
-			s.identifer,
+			s.control,
 			strings.Join(cSels, " "),
 		)
 	}

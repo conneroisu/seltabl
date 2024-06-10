@@ -102,55 +102,20 @@ func New[T any](doc *goquery.Document) ([]T, error) {
 		if cfg.HeadName == "" {
 			continue
 		}
-
 		if cfg.HeadSelector == "" {
-			return nil, &ErrSelectorNotFound{
-				Typ:   dType,
-				Field: field,
-				Cfg:   cfg}
+			return nil, &ErrSelectorNotFound{dType, field, cfg, doc}
 		}
 		if cfg.DataSelector == "" {
-			return nil, &ErrSelectorNotFound{
-				Typ:   dType,
-				Field: field,
-				Cfg:   cfg}
+			return nil, &ErrSelectorNotFound{dType, field, cfg, doc}
 		}
-		if cfg.QuerySelector == "" || cfg.DataSelector == cSelAttrSelector {
-			cfg.QuerySelector, cfg.ControlTag = cSelInnerTextSelector, cSelInnerTextSelector
-		}
-
 		if cfg.MustBePresent != "" &&
 			!strings.Contains(doc.Text(), cfg.MustBePresent) {
-			return nil, &ErrMissingMustBePresent{
-				Cfg:   cfg,
-				Field: field,
-			}
+			return nil, &ErrMissingMustBePresent{field, cfg}
 		}
-
 		dataRows := doc.Find(cfg.DataSelector)
 		if dataRows.Length() == 0 {
-			return nil, &ErrNoDataFound{
-				Typ:   dType,
-				Field: field,
-				Cfg:   cfg}
+			return nil, &ErrNoDataFound{dType, field, cfg, doc}
 		}
-		headerRow := doc.Find(cfg.HeadSelector)
-		if headerRow.Length() == 0 {
-			return nil, &ErrNoDataFound{
-				Field: field,
-				Typ:   field.Type,
-				Cfg:   cfg,
-				Doc:   doc}
-		}
-		headRow := doc.Find(cfg.HeadSelector)
-		if headRow.Length() == 0 {
-			return nil, &ErrNoDataFound{
-				Field: field,
-				Typ:   field.Type,
-				Cfg:   cfg,
-				Doc:   doc}
-		}
-
 		if len(results) == 0 {
 			results = make([]T, dataRows.Length())
 		}

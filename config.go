@@ -24,5 +24,8 @@ func NewSelectorConfig(tag reflect.StructTag) *SelectorConfig {
 		ControlTag:    tag.Get(selectorControlTag),
 		MustBePresent: tag.Get(selectorMustBePresentTag),
 	}
+	if cfg.QuerySelector == "" || cfg.DataSelector == cSelAttrSelector {
+		cfg.QuerySelector, cfg.ControlTag = cSelInnerTextSelector, cSelInnerTextSelector
+	}
 	return cfg
 }

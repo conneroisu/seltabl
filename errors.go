@@ -31,7 +31,7 @@ type ErrNoDataFound struct {
 	Doc   *goquery.Document
 }
 
-// Error implements the error interface
+// Error implements the error interface for ErrNoDataFound
 func (e *ErrNoDataFound) Error() string {
 	doc, err := e.Doc.Html()
 	if err != nil {
@@ -52,15 +52,21 @@ type ErrSelectorNotFound struct {
 	Typ   reflect.Type
 	Field reflect.StructField
 	Cfg   *SelectorConfig
+	Doc   *goquery.Document
 }
 
-// Error implements the error interface
+// Error implements the error interface for ErrSelectorNotFound
 func (e *ErrSelectorNotFound) Error() string {
+	doc, err := e.Doc.Html()
+	if err != nil {
+		return fmt.Sprintf("failed to get data rows html: %s", err)
+	}
 	return fmt.Sprintf(
-		"selector %s with type %s not found for field %s with type %s",
+		"selector %s with type %s not found for field %s with type %s\n html: %s",
 		e.Cfg.QuerySelector,
 		e.Typ,
 		e.Field.Name,
 		e.Field.Type,
+		doc,
 	)
 }

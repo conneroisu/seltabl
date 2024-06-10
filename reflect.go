@@ -19,7 +19,6 @@ func SetStructField[T any](
 	cellValue *goquery.Selection,
 	selector SelectorInferface,
 ) error {
-	var err error
 	v := reflect.ValueOf(structPtr).Elem()
 	field := v.FieldByName(fieldName)
 	if !field.IsValid() {
@@ -29,8 +28,7 @@ func SetStructField[T any](
 		return fmt.Errorf("cannot change the value of field: %s", fieldName)
 	}
 	fieldType := field.Type().Kind()
-	var cellText *string
-	cellText, err = selector.Select(cellValue)
+	cellText, err := selector.Select(cellValue)
 	if err != nil {
 		return fmt.Errorf("failed to run selector: %w", err)
 	}

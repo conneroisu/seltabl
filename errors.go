@@ -20,3 +20,21 @@ func (e *ErrMissingMustBePresent) Error() string {
 		e.Field.Type,
 	)
 }
+
+// ErrNoDataFound is an error for when no data is found for a selector
+type ErrNoDataFound struct {
+	Typ   reflect.Type
+	Field reflect.StructField
+	Cfg   *SelectorConfig
+}
+
+// Error implements the error interface
+func (e *ErrNoDataFound) Error() string {
+	return fmt.Sprintf(
+		"no data found for selector %s with type %s in field %s with type %s",
+		e.Cfg.QuerySelector,
+		e.Typ,
+		e.Field.Name,
+		e.Field.Type,
+	)
+}

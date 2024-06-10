@@ -10,21 +10,6 @@ import (
 	"github.com/PuerkitoBio/goquery"
 )
 
-var (
-	cSels = []string{cSelInnerTextSelector, cSelAttrSelector}
-)
-
-const (
-	cSelInnerTextSelector    = "$text"   // cSelInnerTextSelector is the selector used to extract text from a cell.
-	cSelAttrSelector         = "$query"  // cSelAttrSelector is the selector used to extract attributes from a cell.
-	headerTag                = "seltabl" // headerTag is the tag used to mark a header cell.
-	selectorDataTag          = "dSel"    // selectorDataTag is the tag used to mark a data cell.
-	selectorHeaderTag        = "hSel"    // selectorHeaderTag is the tag used to mark a header selector.
-	selectorControlTag       = "cSel"    // selectorControlTag is the tag used to mark a data selector.
-	selectorQueryTag         = "qSel"    // selectorTag is the tag used to mark a selector.
-	selectorMustBePresentTag = "must"    // selectorMustBePresentTag is the tag used to mark a selector.
-)
-
 // New parses a goquery doc into a slice of structs.
 //
 // The struct given as an argument must have a field with the
@@ -48,34 +33,17 @@ const (
 //
 //	var fixture = `
 //	<table>
-//
-//	     <tr>
-//	     	<td>a</td>
-//	     	<td>b</td>
-//	     </tr>
-//	     <tr>
-//	     	<td>1</td>
-//	     	<td>2</td>
-//	     </tr>
-//	     <tr>
-//	     	<td>3</td>
-//	     	<td>4</td>
-//	     </tr>
-//	     <tr>
-//	     	<td>5</td>
-//	     	<td>6</td>
-//	     </tr>
-//	     <tr>
-//	     	<td>7</td>
-//	     	<td>8</td>
-//	     </tr>
-//
+//	     <tr> <td>a</td> <td>b</td> </tr>
+//	     <tr> <td>1</td> <td>2</td> </tr>
+//	     <tr> <td>3</td> <td>4</td> </tr>
+//	     <tr> <td>5</td> <td>6</td> </tr>
+//	     <tr> <td>7</td> <td>8</td> </tr>
 //	</table>
 //	`
 //
-//	type fixtureStruct struct {
-//		A string `json:"a" seltabl:"a" hSel:"tr:nth-child(1) td:nth-child(1)" dSel:"tr td:nth-child(1)" cSel:"$text"`
-//		B string `json:"b" seltabl:"b" hSel:"tr:nth-child(1) td:nth-child(2)" dSel:"tr td:nth-child(2)" cSel:"$text"`
+//	type FixtureStruct struct {
+//	        A string `json:"a" seltabl:"a" hSel:"tr:nth-child(1)" dSel:"table tr:not(:first-child) td:nth-child(1)" cSel:"$text"`
+//	        B string `json:"b" seltabl:"b" hSel:"tr:nth-child(1)" dSel:"table tr:not(:first-child) td:nth-child(2)" cSel:"$text"`
 //	}
 //
 //	func main() {
@@ -165,34 +133,19 @@ func New[T any](doc *goquery.Document) ([]T, error) {
 //		"github.com/conneroisu/seltabl"
 //	)
 //
-//	type TableStruct struct {
-//		A string `json:"a" seltabl:"a" hSel:"tr:nth-child(1) td:nth-child(1)" dSel:"tr td:nth-child(1)" cSel:"$text"`
-//		B string `json:"b" seltabl:"b" hSel:"tr:nth-child(1) td:nth-child(2)" dSel:"tr td:nth-child(2)" cSel:"$text"`
+//	type FixtureStruct struct {
+//	        A string `json:"a" seltabl:"a" hSel:"tr:nth-child(1)" dSel:"table tr:not(:first-child) td:nth-child(1)" cSel:"$text"`
+//	        B string `json:"b" seltabl:"b" hSel:"tr:nth-child(1)" dSel:"table tr:not(:first-child) td:nth-child(2)" cSel:"$text"`
 //	}
 //
 //	func main() {
 //		p, err := seltabl.NewFromString[TableStruct](`
 //		<table>
-//			<tr>
-//				<td>a</td>
-//				<td>b</td>
-//			</tr>
-//			<tr>
-//				<td>1</td>
-//				<td>2</td>
-//			</tr>
-//			<tr>
-//				<td>3</td>
-//				<td>4</td>
-//			</tr>
-//			<tr>
-//				<td>5</td>
-//				<td>6</td>
-//			</tr>
-//			<tr>
-//				<td>7</td>
-//				<td>8</td>
-//			</tr>
+//			<tr> <td>a</td> <td>b</td> </tr>
+//			<tr> <td>1</td> <td>2</td> </tr>
+//			<tr> <td>3</td> <td>4</td> </tr>
+//			<tr> <td>5</td> <td>6</td> </tr>
+//			<tr> <td>7</td> <td>8</td> </tr>
 //		</table>
 //		`)
 //		if err != nil {
@@ -254,26 +207,11 @@ func NewFromString[T any](htmlInput string) ([]T, error) {
 //	func main() {
 //		p, err := seltabl.NewFromReader[TableStruct](strings.NewReader(`
 //		<table>
-//			<tr>
-//				<td>a</td>
-//				<td>b</td>
-//			</tr>
-//			<tr>
-//				<td>1</td>
-//				<td>2</td>
-//			</tr>
-//			<tr>
-//				<td>3</td>
-//				<td>4</td>
-//			</tr>
-//			<tr>
-//				<td>5</td>
-//				<td>6</td>
-//			</tr>
-//			<tr>
-//				<td>7</td>
-//				<td>8</td>
-//			</tr>
+//			<tr> <td>a</td> <td>b</td> </tr>
+//			<tr> <td>1</td> <td>2</td> </tr>
+//			<tr> <td>3</td> <td>4</td> </tr>
+//			<tr> <td>5</td> <td>6</td> </tr>
+//			<tr> <td>7</td> <td>8</td> </tr>
 //		</table>
 //		`))
 //		if err != nil {
@@ -319,9 +257,9 @@ func NewFromReader[T any](r io.Reader) ([]T, error) {
 //		"github.com/conneroisu/seltabl"
 //	)
 //
-//	type TableStruct struct {
-//		A string `json:"a" seltabl:"a" hSel:"tr:nth-child(1) td:nth-child(1)" dSel:"tr td:nth-child(1)" cSel:"$text"`
-//		B string `json:"b" seltabl:"b" hSel:"tr:nth-child(1) td:nth-child(2)" dSel:"tr td:nth-child(2)" cSel:"$text"`
+//	type FixtureStruct struct {
+//	        A string `json:"a" seltabl:"a" hSel:"tr:nth-child(1)" dSel:"table tr:not(:first-child) td:nth-child(1)" cSel:"$text"`
+//	        B string `json:"b" seltabl:"b" hSel:"tr:nth-child(1)" dSel:"table tr:not(:first-child) td:nth-child(2)" cSel:"$text"`
 //	}
 //
 //	func main() {

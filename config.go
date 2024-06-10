@@ -4,6 +4,21 @@ import (
 	"reflect"
 )
 
+var (
+	cSels = []string{cSelInnerTextSelector, cSelAttrSelector}
+)
+
+const (
+	cSelInnerTextSelector    = "$text"   // cSelInnerTextSelector is the selector used to extract text from a cell.
+	cSelAttrSelector         = "$query"  // cSelAttrSelector is the selector used to extract attributes from a cell.
+	headerTag                = "seltabl" // headerTag is the tag used to mark a header cell.
+	selectorDataTag          = "dSel"    // selectorDataTag is the tag used to mark a data cell.
+	selectorHeaderTag        = "hSel"    // selectorHeaderTag is the tag used to mark a header selector.
+	selectorControlTag       = "cSel"    // selectorControlTag is the tag used to mark a data selector.
+	selectorQueryTag         = "qSel"    // selectorTag is the tag used to mark a selector.
+	selectorMustBePresentTag = "must"    // selectorMustBePresentTag is the tag used to mark a selector.
+)
+
 // SelectorConfig is a struct for configuring a selector
 type SelectorConfig struct {
 	HeadName      string

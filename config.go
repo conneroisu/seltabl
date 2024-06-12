@@ -5,28 +5,38 @@ import (
 )
 
 var (
-	cSels = []string{cSelInnerTextSelector, cSelAttrSelector}
+	cSels = []string{ctlInnerTextSelector, ctlAttrSelector}
 )
 
 const (
-	cSelInnerTextSelector    = "$text"   // cSelInnerTextSelector is the selector used to extract text from a cell.
-	cSelAttrSelector         = "$query"  // cSelAttrSelector is the selector used to extract attributes from a cell.
-	headerTag                = "seltabl" // headerTag is the tag used to mark a header cell.
-	selectorDataTag          = "dSel"    // selectorDataTag is the tag used to mark a data cell.
-	selectorHeaderTag        = "hSel"    // selectorHeaderTag is the tag used to mark a header selector.
-	selectorControlTag       = "cSel"    // selectorControlTag is the tag used to mark a data selector.
-	selectorQueryTag         = "qSel"    // selectorTag is the tag used to mark a selector.
-	selectorMustBePresentTag = "must"    // selectorMustBePresentTag is the tag used to mark a selector.
+	// selectorControlTag is the tag used to signify selecting aspects of a cell
+	selectorControlTag = "ctl"
+	// values that can be used for the selectorControlTag:
+	// cSelInnerTextSelector is the selector used to extract text from a cell.
+	ctlInnerTextSelector = "text"
+	// cSelAttrSelector is the selector used to extract attributes from a cell.
+	ctlAttrSelector = "query"
+
+	// headerTag is the tag used to match a header cell's Value.
+	headerTag = "seltabl"
+	// selectorDataTag is the tag used to mark a data cell.
+	selectorDataTag = "dSel"
+	// selectorHeaderTag is the tag used to mark a header selector.
+	selectorHeaderTag = "hSel"
+	// selectorTag is the tag used to mark a selector.
+	selectorQueryTag = "qSel"
+	// selectorMustBePresentTag is the tag used to mark text that must be present in a given content.
+	selectorMustBePresentTag = "must"
 )
 
 // SelectorConfig is a struct for configuring a selector
 type SelectorConfig struct {
-	HeadName      string
-	DataSelector  string
-	HeadSelector  string
-	QuerySelector string
-	ControlTag    string
-	MustBePresent string
+	HeadName      string // name of the header cell
+	DataSelector  string // selector for the data cell
+	HeadSelector  string // selector for the header cell
+	QuerySelector string // selector for the data cell
+	ControlTag    string // tag used to signify selecting aspects of a cell
+	MustBePresent string // text that must be present in a given content
 }
 
 // NewSelectorConfig parses a struct tag and returns a SelectorConfig
@@ -39,8 +49,10 @@ func NewSelectorConfig(tag reflect.StructTag) *SelectorConfig {
 		ControlTag:    tag.Get(selectorControlTag),
 		MustBePresent: tag.Get(selectorMustBePresentTag),
 	}
-	if cfg.QuerySelector == "" || cfg.DataSelector == cSelAttrSelector {
-		cfg.QuerySelector, cfg.ControlTag = cSelInnerTextSelector, cSelInnerTextSelector
+	if cfg.QuerySelector == "" || cfg.DataSelector == ctlAttrSelector {
+		cfg.QuerySelector, cfg.ControlTag =
+			ctlInnerTextSelector,
+			ctlInnerTextSelector
 	}
 	return cfg
 }

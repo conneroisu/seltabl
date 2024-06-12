@@ -22,7 +22,7 @@ func TestSelect(t *testing.T) {
 		}
 		divs := cellValue.Find("div")
 		// Create a new instance of the selector
-		s := selector{control: cSelInnerTextSelector}
+		s := selector{control: ctlInnerTextSelector}
 		// Call the Run method
 		cellText, err := s.Select(divs)
 		if err != nil {
@@ -30,11 +30,11 @@ func TestSelect(t *testing.T) {
 		}
 		// Check the expected result
 		expected := "Hello, World!"
-		if *cellText != expected {
+		if cellText != expected {
 			t.Errorf(
 				"Expected cellText to be %q, but got %q",
 				expected,
-				*cellText,
+				cellText,
 			)
 		}
 	})
@@ -55,15 +55,15 @@ func TestSelect(t *testing.T) {
 		}
 		links := cellValue.Find("a")
 		// Create a new instance of the selector
-		s := selector{control: cSelAttrSelector, query: "href"}
+		s := selector{control: ctlAttrSelector, query: "href"}
 		// Call the Run method
 		cellText, err := s.Select(links)
 		if err != nil {
 			t.Errorf("Unexpected error: %v", err)
 		}
 		// Check the expected result
-		if *cellText != url {
-			t.Errorf("Expected cellText to be %q, but got %q", url, *cellText)
+		if cellText != url {
+			t.Errorf("Expected cellText to be %q, but got %q", url, cellText)
 		}
 	})
 
@@ -79,8 +79,8 @@ func TestSelect(t *testing.T) {
 		divs := cellValue.Find("div")
 		// Create a new instance of the selector
 		s := selector{
-			control: cSelInnerTextSelector,
-			query:   cSelInnerTextSelector,
+			control: ctlInnerTextSelector,
+			query:   ctlInnerTextSelector,
 		}
 		// Call the Select method
 		_, err = s.Select(divs)

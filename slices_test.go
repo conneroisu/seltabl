@@ -12,6 +12,12 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+// NoDataSelectorStruct is a test struct
+type NoDataSelectorStruct struct {
+	A string `json:"a" seltabl:"a" hSel:"tr:nth-child(1) td:nth-child(1)" cSel:"$text"`
+	B string `json:"b" seltabl:"b" hSel:"tr:nth-child(1) td:nth-child(2)" cSel:"$text"`
+}
+
 // TestNewFromString tests the NewFromString function
 // for all the different types of tables that we have in the
 // testdata package
@@ -410,10 +416,6 @@ func TestNewFromString(t *testing.T) {
 			})
 		}
 	})
-	type NoDataSelectorStruct struct {
-		A string `json:"a" seltabl:"a" hSel:"tr:nth-child(1) td:nth-child(1)" cSel:"$text"`
-		B string `json:"b" seltabl:"b" hSel:"tr:nth-child(1) td:nth-child(2)" cSel:"$text"`
-	}
 	t.Run("TestNewFromStringWithNoDataSelector", func(t *testing.T) {
 		t.Parallel()
 		type args struct {

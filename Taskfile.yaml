@@ -32,3 +32,7 @@ tasks:
   install:
     cmds:
       - sh ./scripts/taskfile/install.sh
+
+  watch:
+    cmds:
+      - cd ./scripts/watch && go run .

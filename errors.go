@@ -49,10 +49,10 @@ func (e *ErrNoDataFound) Error() string {
 
 // ErrSelectorNotFound is an error for when a selector is not found
 type ErrSelectorNotFound struct {
-	Typ   reflect.Type
-	Field reflect.StructField
-	Cfg   *SelectorConfig
-	Doc   *goquery.Document
+	Typ   reflect.Type        // type of the struct
+	Field reflect.StructField // field of the struct
+	Cfg   *SelectorConfig     // selector config
+	Doc   *goquery.Document   // goquery document
 }
 
 // Error implements the error interface for ErrSelectorNotFound

@@ -13,8 +13,60 @@ type SuperNovaStruct struct {
 	Notes     string `json:"Notes"     seltabl:"Notes"     hSel:"tr:nth-child(1) th:nth-child(5)" dSel:"tr td:nth-child(5)"`
 }
 
-//go:embed supernova.html
-var SuperNovaTable string
+// SuperNovaTable is the html for the supernova table
+var SuperNovaTable = `
+<table>
+	<tr>
+		<th>Supernova</th>
+		<th>Year</th>
+		<th>Type</th>
+		<th>Distance (light-years)</th>
+		<th>Notes</th>
+	</tr>
+	<tr>
+		<td>SN 1006</td>
+		<td>1006</td>
+		<td>Type Ia</td>
+		<td>7,200</td>
+		<td>Brightest recorded supernova in history</td>
+	</tr>
+	<tr>
+		<td>SN 1054 (Crab Nebula)</td>
+		<td>1054</td>
+		<td>Type II</td>
+		<td>6,500</td>
+		<td>Formed the Crab Nebula and pulsar</td>
+	</tr>
+	<tr>
+		<td>SN 1572 (Tycho's Supernova)</td>
+		<td>1572</td>
+		<td>Type Ia</td>
+		<td>8,000-10,000</td>
+		<td>Observed by Tycho Brahe</td>
+	</tr>
+	<tr>
+		<td>SN 1604 (Kepler's Supernova)</td>
+		<td>1604</td>
+		<td>Type Ia</td>
+		<td>20,000</td>
+		<td>Last observed supernova in the Milky Way</td>
+	</tr>
+	<tr>
+		<td>SN 1987A</td>
+		<td>1987</td>
+		<td>Type II</td>
+		<td>168,000</td>
+		<td>Closest observed supernova since 1604</td>
+	</tr>
+	<tr>
+		<td>SN 1993J</td>
+		<td>1993</td>
+		<td>Type IIb</td>
+		<td>11,000,000</td>
+		<td>In the galaxy M81</td>
+	</tr>
+</table>
+`
 
 // SuperNovaTableResult is the expected result of parsing the supernova table
 var SuperNovaTableResult = []SuperNovaStruct{

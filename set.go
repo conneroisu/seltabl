@@ -30,10 +30,23 @@ func SetStructField[T any](
 	}
 	fieldType := field.Type().Kind()
 	// select the value from the cell
-	cellText, err := selector.Select(cellValue)
+	value, err := selector.Select(cellValue)
 	if err != nil {
 		return fmt.Errorf("failed to run selector: %w", err)
 	}
+	// setting the field's value
+	err = SetFieldValue(fieldType, value, &field)
+	if err != nil {
+		return fmt.Errorf("failed to insert value: %w", err)
+	}
+	return nil
+}
+
+// SetFieldValue sets the value of a field
+//
+// It is used by the SetStructField function to set the value of a struct field after
+// selecting the value from a html node.
+func SetFieldValue(fieldType reflect.Kind, cellText string, field *reflect.Value) error {
 	switch fieldType {
 	case reflect.String:
 		field.SetString(cellText)

@@ -1,0 +1,520 @@
+<div id="stats_app_dialog" style="display:none;"></div>
+<div class="card p-1">
+  <div class="card-body application teams p-0">
+    <h3 class="card-title p-0"></h3>
+    <div class="container-fluid p-0">
+      <div class="row align-items-center justify-content-center p-0">
+        <div class="col-sm-12 p-0">
+          <div class="card">
+            <div class="card-header">
+              <a target="ATHLETICS_URL" href="http://www.acusports.com">
+                Abilene Christian Wildcats
+              </a>
+              (16-32)
+              <a class="skipMask" target="TEAM_SHEET_38548_572260_WIN" href="/selection_rankings/nitty_gritties/38548/teams/572260/team_sheet">
+                RPI Ranking - 248
+              </a>
+            </div>
+            <div class="card-body p-1">
+              <form onsubmit="mask(&#39;Loading&#39;);" id="change_sport_form" action="http://stats.ncaa.org" accept-charset="UTF-8" method="get">
+                <input name="utf8" type="hidden" value="✓"/>
+                <select name="year_id" id="year_list" onchange="submit_form(this.value);">
+                  <option value="153116">
+                    1998-99
+                  </option>
+                  <option value="413670">
+                    1997-98
+                  </option>
+                  <option value="266351">
+                    1996-97
+                  </option>
+                </select>
+                <select name="sport_id" id="sport_list" onchange="submit_form(this.value);">
+                  <option value="560649">
+                    Men&#39;s Basketball
+                  </option>
+                  <option value="573995">
+                    Baseball
+                  </option>
+                  <option value="584873">
+                    Men&#39;s Tennis
+                  </option>
+                </select>
+                <a href="/teams/history/WSB/2">
+                  Team History
+                </a>
+                |
+                <a href="/teams/coaches_summary/WSB/2">
+                  Coaches Summary
+                </a>
+                <div style="display:none;">
+                  <input type="submit" name="commit" value="Submit" id="team_sport_btn" data-disable-with="Submit"/>
+                </div>
+                <span id="tst" style="float:right;">
+                  <div id="team_sport_autocomplete" class="ui-widget">
+                    Teams Sponsoring Softball:
+                    <input type="text" name="org_sport_name" id="org_sport_name" style="width:200px"/>
+                    <input type="hidden" name="org_id" id="sport_search_org_id"/>
+                  </div>
+                </span>
+              </form>
+              <!--
+  </div>
+ 
+  <div class="card">
+    <div class="card-body">
+      -->
+              <div class="row">
+                <div class="col p-0">
+                  <div class="card m-2" id="team_venues_572260">
+                    <div class="card-header">
+                      Stadium
+                    </div>
+                    <div class="card-body">
+                      <div class="card m-2" id="team_page_season_venue_320970">
+                        <div class="card-body">
+                          <dl class="row mb-0 text-nowrap">
+                            <dt class="col-sm-3 mb-0">
+                              Name:
+                            </dt>
+                            <dd class="col-sm-9 mb-0">
+                              Poly Wells Field
+                            </dd>
+                            <dt class="col-sm-3 mb-0">
+                              Capacity:
+                            </dt>
+                            <dd class="col-sm-9 mb-0">
+                              1,000
+                            </dd>
+                            <dt class="col-sm-3 mb-0">
+                              Year Built:
+                            </dt>
+                            <dd class="col-sm-9 mb-0">
+                              1997
+                            </dd>
+                          </dl>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col p-0">
+                  <div class="card m-2">
+                    <div class="card-header">
+                      Coach
+                    </div>
+                    <div class="card-body">
+                      <div class="card">
+                        <dl class="row mb-0 text-nowrap">
+                          <dt class="col-sm-3 mb-0">
+                            Name:
+                          </dt>
+                          <dd class="col-sm-9 mb-0">
+                            <a href="/people/2299741?sport_code=WSB">
+                              Abigail Farler
+                            </a>
+                          </dd>
+                          <dt class="col-sm-3 mb-0">
+                            Alma Mater:
+                          </dt>
+                          <dd class="col-sm-9 mb-0">
+                            Marshall - 2007
+                          </dd>
+                          <dt class="col-sm-3 mb-0">
+                            Seasons:
+                          </dt>
+                          <dd class="col-sm-9 mb-0">
+                            13
+                          </dd>
+                          <dt class="col-sm-3 mb-0">
+                            Record:
+                          </dt>
+                          <dd class="col-sm-9 mb-0">
+                            197-188
+                          </dd>
+                        </dl>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--
+    don't close this here, but make sure to close it at the end of rosters, schedule results, game by game etc.
+  </div>
+  -->
+              <div class="row">
+                <div class="col p-0">
+                  <div class="card mb-2 mx-2">
+                    <div class="card-header">
+                      Season-to-date Records
+                    </div>
+                    <div class="card-body p-0">
+                      <div class="row">
+                        <div class="card mx-2 my-2" style="min-width: 10em;">
+                          <div class="card-header p-1">
+                            Overall
+                          </div>
+                          <div class="card-body p-1">
+                            <div class="row">
+                              <span>
+                                16-32 (0.333)
+                              </span>
+                            </div>
+                            <div class="row">
+                              <span>
+                                Streak: L6
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card mx-2 my-2" style="min-width: 10em;">
+                          <div class="card-header p-1">
+                            Conference
+                          </div>
+                          <div class="card-body p-1">
+                            <div class="row">
+                              <span>
+                                8-18 (0.308)
+                              </span>
+                            </div>
+                            <div class="row">
+                              <span>
+                                Streak: L6
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card mx-2 my-2" style="min-width: 10em;">
+                          <div class="card-header p-1">
+                            Home
+                          </div>
+                          <div class="card-body p-1">
+                            <div class="row">
+                              <span>
+                                7-11 (0.389)
+                              </span>
+                            </div>
+                            <div class="row">
+                              <span>
+                                Streak: L3
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card mx-2 my-2" style="min-width: 10em;">
+                          <div class="card-header p-1">
+                            Road
+                          </div>
+                          <div class="card-body p-1">
+                            <div class="row">
+                              <span>
+                                9-17 (0.346)
+                              </span>
+                            </div>
+                            <div class="row">
+                              <span>
+                                Streak: L4
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card mx-2 my-2" style="min-width: 10em;">
+                          <div class="card-header p-1">
+                            Neutral
+                          </div>
+                          <div class="card-body p-1">
+                            <div class="row">
+                              <span>
+                                0-4 (0.000)
+                              </span>
+                            </div>
+                            <div class="row">
+                              <span>
+                                Streak: L7
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card mx-2 my-2" style="min-width: 10em;">
+                          <div class="card-header p-1">
+                            Non-Division
+                          </div>
+                          <div class="card-body p-1">
+                            <div class="row">
+                              <span>
+                                0-0 (0.000)
+                              </span>
+                            </div>
+                            <div class="row">
+                              <span>
+                                Streak: W2
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <nav>
+              <ul class="nav nav-tabs padding-nav">
+                <li class="nav-item">
+                  <a class="nav-link active" href="/teams/572260">
+                    Schedule/Results
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/teams/572260/roster">
+                    Roster
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/teams/572260/season_to_date_stats">
+                    Team Statistics
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/players/8247983">
+                    Game By Game
+                  </a>
+                </li>
+                <!--
+<a href="/team/team_game_highs?org_id=2&amp;sport_year_ctl_id=16540">Game Highs</a> 
+<a href="/team/conf_game_highs?org_id=2&amp;sport_year_ctl_id=16540">Conf Game Highs</a> 
+<a href="/player/player_rank_history?game_sport_year_ctl_id=16540&amp;index_start=0&amp;org_id=2&amp;stat_seq_to_chart=0&amp;stats_player_seq=-100">Ranking Trends</a> 
+<a href="/player/team_player_rank_yearly_history?game_sport_year_ctl_id=16540&amp;index_start=0&amp;org_id=2&amp;stat_seq_to_chart=0&amp;stats_player_seq=-100">Team Final Trends</a> 
+-->
+                <li class="nav-item">
+                  <a class="nav-link" href="/rankings/ranking_summary?academic_year=2024&amp;division=1&amp;org_id=2&amp;ranking_period=78&amp;sport_code=WSB">
+                    Ranking Summary
+                  </a>
+                </li>
+              </ul>
+            </nav>
+            <!--
+
+  <div class="row">
+  <tr>
+    <td colspan="2">
+    </td>
+  </tr>
+</div>
+-->
+            <div class="row">
+              <div class="col p-0" style="min-width: 400px;">
+                <div class="card m-2">
+                  <div class="card-header">
+                    Schedule/Results
+                  </div>
+                  <div class="card-body">
+                    <table style="border-collapse: collapse" width="80%">
+                      <thead>
+                        <tr>
+                          <th>
+                            Opponent
+                          </th>
+                          <th>
+                            Result
+                          </th>
+                          <th align="right" style="text-align: right !important">
+                            Attendance
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td colspan="4"></td>
+                        </tr>
+                        <tr class="underline_rows">
+                          <td>
+                            05/04/2024
+                          </td>
+                          <td>
+                            @
+                            <a href="/teams/572227">
+                              Grand Canyon
+                            </a>
+                          </td>
+                          <td>
+                            <a target="BOX_SCORE_WINDOW" class="skipMask" href="/contests/4511941/box_score">
+                              L 2-10
+                            </a>
+                          </td>
+                          <td align="right">
+                            206
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colspan="4"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div class="col p-0">
+                <div class="card m-2">
+                  <div class="card-header">
+                    Team Stats - Through games 06/06/2024
+                  </div>
+                  <div class="card-body">
+                    <table class="" style="border-collapse: collapse" width="50%">
+                      <thead>
+                        <tr>
+                          <th align="left">
+                            Stat
+                          </th>
+                          <th align="right" sytle="text-align: right !important">
+                            Rank
+                          </th>
+                          <th align="rigth" style="text-align: right !important">
+                            Value
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="underline_rows">
+                          <td nowrap="">
+                            <a target="Rankings" class="skipMask" href="/rankings/WSB/2024/1/350/88">
+                              Double Plays per Game
+                            </a>
+                          </td>
+                          <td align="right">
+                            61
+                          </td>
+                          <td align="right">
+                            0.40
+                          </td>
+                        </tr>
+                        <tr class="underline_rows">
+                          <td nowrap="">
+                            <a target="Rankings" class="skipMask" href="/rankings/WSB/2024/1/1188/88">
+                              Strikeout-to-Walk Ratio
+                            </a>
+                          </td>
+                          <td align="right">
+                            275
+                          </td>
+                          <td align="right">
+                            0.84
+                          </td>
+                        </tr>
+                        <tr class="underline_rows">
+                          <td nowrap="">
+                            <a target="Rankings" class="skipMask" href="/rankings/WSB/2024/1/1223/88">
+                              Walks
+                            </a>
+                          </td>
+                          <td align="right">
+                            248
+                          </td>
+                          <td align="right">
+                            109
+                          </td>
+                        </tr>
+                      </tbody>
+                      <tfoot>
+                        <tr>
+                          <td colspan="3">
+                            <a target="RANKINGS_WIN" class="skipMask" href="/rankings/ranking_summary?academic_year=2024.0&amp;division=1.0&amp;game_high=N&amp;org_id=2&amp;ranking_period=88&amp;sport_code=WSB&amp;team_individual=T">
+                              View Complete Ranking Summary
+                            </a>
+                          </td>
+                        </tr>
+                      </tfoot>
+                    </table>
+                  </div>
+                </div>
+                <br/>
+                <div class="card m-2">
+                  <div class="card-header">
+                    Individual Leaders
+                  </div>
+                  <div class="card-body">
+                    <table style="border-collapse: collapse" width="50%">
+                      <thead>
+                        <tr>
+                          <th align="left">
+                            Player
+                          </th>
+                          <th align="right" style="text-align: right !important;">
+                            Value
+                          </th>
+                          <th align="right" style="text-align: right !important;">
+                            PG
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="underline_rows">
+                          <td>
+                            SBA
+                          </td>
+                          <td>
+                            <a href="/players/8235529">
+                              Olivia Marble
+                            </a>
+                          </td>
+                          <td align="right">
+                            20
+                          </td>
+                          <td align="right">
+                            0.42
+                          </td>
+                        </tr>
+                        <tr class="underline_rows">
+                          <td>
+                            SV
+                          </td>
+                          <td>
+                            <a href="/players/8240547">
+                              Bubba Rote
+                            </a>
+                          </td>
+                          <td align="right">
+                            1
+                          </td>
+                          <td align="right">
+                            0.02
+                          </td>
+                        </tr>
+                        <tr class="underline_rows">
+                          <td>
+                            W
+                          </td>
+                          <td>
+                            <a href="/players/8229431">
+                              Talia Nielsen
+                            </a>
+                          </td>
+                          <td align="right">
+                            6
+                          </td>
+                          <td align="right">
+                            0.30
+                          </td>
+                        </tr>
+                      </tbody>
+                      <tfoot>
+                        <tr>
+                          <td colspan="3">
+                            <a href="/team/2/stats/16540">
+                              Team Stats
+                            </a>
+                          </td>
+                        </tr>
+                      </tfoot>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /.container -->

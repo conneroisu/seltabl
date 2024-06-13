@@ -36,3 +36,4 @@ tasks:
   watch:
     cmds:
       - cd ./scripts/watch && go run .
+

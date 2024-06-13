@@ -2,14 +2,13 @@ package cmd
 
 import (
 	"bufio"
-	"encoding/json"
 	"fmt"
 	"io"
 	"log"
 	"os"
 
-	"github.com/conneroisu/seltabl/tools/lsp"
-	"github.com/conneroisu/seltabl/tools/rpc"
+	"github.com/conneroisu/seltabl/tools/pkg/analysis"
+	"github.com/conneroisu/seltabl/tools/pkg/rpc"
 	"github.com/spf13/cobra"
 )
 
@@ -21,23 +20,36 @@ func Execute() error {
 	return nil
 }
 
+// writeResponse writes a message to the writer
+func writeResponse(writer io.Writer, msg any) error {
+	reply, err := rpc.EncodeMessage(msg)
+	if err != nil {
+		return fmt.Errorf("failed to encode message: %w", err)
+	}
+	res, err := writer.Write([]byte(reply))
+	if err != nil {
+		return fmt.Errorf("failed to write response: %w", err)
+	}
+	if res != len(reply) {
+		return fmt.Errorf("failed to write all response: %w", err)
+	}
+	return nil
+}
+
 // rootCmd is the root command for the command line tool
 var rootCmd = &cobra.Command{
 	Use:   "seltabl-lsp", // the name of the command
 	Short: "A command line tool for parsing html tables into structs",
 	Long: `A command line tool for parsing html tables into structs.
 
-The command line tool is used to parse html tables into structs.
-
-The command line tool can be used to parse html tables into structs.
-
-The command line tool can be used to parse html tables into structs.
 `,
 	RunE: func(cmd *cobra.Command, args []string) error {
 		logger := getLogger("./seltabl.log")
+		logger.Println("Starting the server...")
 		scanner := bufio.NewScanner(os.Stdin)
 		scanner.Split(rpc.Split)
-		writer := os.Stdout
+		state := analysis.NewState()
+
 		for scanner.Scan() {
 			msg := scanner.Bytes()
 			logger.Printf("Received message: %s\n", msg)
@@ -46,42 +58,20 @@ The command line tool can be used to parse html tables into structs.
 				logger.Printf("failed to decode message: %s\n", err)
 				continue
 			}
-			handleMessage(logger, writer, method, content)
+			err = handleMessage(
+				logger,
+				os.Stdout,
+				&state,
+				method,
+				content,
+			)
+			if err != nil {
+				logger.Printf("failed to handle message: %s\n", err)
+				continue
+			}
 		}
 		return nil
 	},
-}
-
-// handleMessage handles a message
-func handleMessage(
-	logger *log.Logger,
-	writer io.Writer,
-	method string,
-	msg []byte,
-) {
-	logger.Printf("Received message (%s): %s\n", method, msg)
-	switch method {
-	case "initialize":
-		logger.Println("received initialize request")
-		var request lsp.InitializeRequest
-		if err := json.Unmarshal([]byte(msg), &request); err != nil {
-			logger.Printf("failed to decode initialize request: %s\n", err)
-			return
-		}
-		logger.Printf(
-			"Connected to: %s %s",
-			request.Params.ClientInfo.Name,
-			request.Params.ClientInfo.Version,
-		)
-	case "textDocument/didOpen":
-		logger.Println("Received didOpen message")
-	case "textDocument/didChange":
-		logger.Println("Received didChange message")
-	case "textDocument/didClose":
-		logger.Println("Received didClose message")
-	default:
-		logger.Printf("Unknown method: %s\n", method)
-	}
 }
 
 // getLogger returns a logger that writes to a file

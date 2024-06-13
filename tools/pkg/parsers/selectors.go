@@ -42,7 +42,16 @@ func GetAllSelectors(doc *goquery.Document) []string {
 			selectorParts = append(selectorParts, "[href="+attr+"]")
 		}
 		selector := strings.Join(selectorParts, "")
-		strs = append(strs, selector)
+		found := false
+		for _, str := range strs {
+			if str == selector {
+				found = true
+				break
+			}
+		}
+		if !found {
+			strs = append(strs, selector)
+		}
 	})
 	return strs
 }

@@ -3,7 +3,9 @@ package lsp
 // TextDocumentDidChangeNotification is sent from the client to the server to signal
 // that the content of a text document has changed.
 type TextDocumentDidChangeNotification struct {
+	// TextDocumentDidChangeNotification embeds the Notification struct
 	Notification
+	// Params are the parameters for the notification.
 	Params DidChangeTextDocumentParams `json:"params"`
 }
 

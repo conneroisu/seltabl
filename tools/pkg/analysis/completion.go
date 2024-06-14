@@ -34,11 +34,10 @@ func (s *State) TextDocumentCompletion(
 	document *lsp.TextDocumentIdentifier,
 	location *lsp.Position,
 ) lsp.CompletionResponse {
-	logger := getLogger("./seltabl.log")
-	logger.Println("Received text document completion uri: " + document.URI)
+	s.Logger.Println("Received text document completion uri: " + document.URI)
 	urls, err := parsers.ExtractUrls(s.Documents[document.URI])
 	if err != nil {
-		logger.Printf("failed to extract urls: %s\n", err)
+		s.Logger.Printf("failed to extract urls: %s\n", err)
 		return lsp.CompletionResponse{
 			Response: lsp.Response{
 				RPC: "2.0",
@@ -53,7 +52,7 @@ func (s *State) TextDocumentCompletion(
 	for _, url := range urls {
 		doc, err := minify.GetMinifiedDoc(url, ignores)
 		if err != nil {
-			logger.Printf("failed to get minified doc: %s\n", err)
+			s.Logger.Printf("failed to get minified doc: %s\n", err)
 			return lsp.CompletionResponse{
 				Response: lsp.Response{
 					RPC: "2.0",

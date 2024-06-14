@@ -151,7 +151,7 @@ func TestSelectors(t *testing.T) {
 					</body>
 				</html>
 				`,
-				want: []string{"head", "body", "table", "tbody", "tr", "td", "html", "div", "h1", "p", "td a[href=https://example.com]"},
+				want: []string{"html head", "html body", "html", "html body table", "html body table tbody", "html body table tr", "html body table tr td", "html body table tr td a[href=https://example.com]"},
 			},
 		}
 		for _, tt := range tests {

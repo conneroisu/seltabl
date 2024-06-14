@@ -2,7 +2,9 @@ package lsp
 
 // InitializeRequest is a struct for the initialize request.
 type InitializeRequest struct {
+	// InitializeRequest embeds the Request struct
 	Request
+	// Params are the parameters for the initialize request.
 	Params InitializeRequestParams `json:"params"`
 }
 
@@ -34,8 +36,10 @@ type InitializeResponse struct {
 
 // InitializeResult is a struct for the initialize result used in the initialize response.
 type InitializeResult struct {
+	// Capabilities are the capabilities of the server for the initialize response.
 	Capabilities ServerCapabilities `json:"capabilities"`
-	ServerInfo   ServerInfo         `json:"serverInfo"`
+	// ServerInfo is the server info for the initialize response.
+	ServerInfo ServerInfo `json:"serverInfo"`
 }
 
 // ServerCapabilities is a struct for the server capabilities
@@ -85,12 +89,15 @@ func NewInitializeResponse(id int) InitializeResponse {
 
 // InitializedParamsRequest is a struct for the initialized params.
 type InitializedParamsRequest struct {
+	// InitializedParamsRequest embeds the Request struct
 	Response
 }
 
 // InitializedParamsResponse is a struct for the initialized params.
 type InitializedParamsResponse struct {
+	// InitializedParamsResponse embeds the Response struct
 	Response
+	// Params are the parameters for the initialized params.
 	Params InitializedParams `json:"params"`
 }
 

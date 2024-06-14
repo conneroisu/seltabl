@@ -7,7 +7,4 @@
 # Usage: make fmt
 
 gum spin --spinner dot --title "Formatting Go Files" --show-output -- \
-    gum spin --spinner dot --title "Formatting Go Files with 'go fmt' in ." --show-output -- \
-    gofmt -w . &&
-    gum spin --spinner dot --title "Formatting Go Files with 'golines' in ." --show-output -- \
-        golines -w --max-len=79 .
+    gofmt -w . && golines -w --max-len=79 .

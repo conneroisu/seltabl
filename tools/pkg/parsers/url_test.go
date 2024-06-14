@@ -96,7 +96,11 @@ func TestSplit(t *testing.T) {
 				t.Parallel()
 				result, err := ExtractUrls(tt.input)
 				if (err != nil) != tt.wantErr {
-					t.Errorf("ExtractUrls() error = %v, wantErr %v", err, tt.wantErr)
+					t.Errorf(
+						"ExtractUrls() error = %v, wantErr %v",
+						err,
+						tt.wantErr,
+					)
 					return
 				}
 				assert.Equal(t, tt.expected, result)

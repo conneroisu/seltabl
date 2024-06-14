@@ -16,7 +16,11 @@ import (
 func main() {
 	if err := cmd.Execute(); err != nil {
 		// log to logs.txt
-		file, err := os.OpenFile("logs.txt", os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0666)
+		file, err := os.OpenFile(
+			"logs.txt",
+			os.O_CREATE|os.O_APPEND|os.O_WRONLY,
+			0666,
+		)
 		if err != nil {
 			fmt.Println(err)
 			os.Exit(1)

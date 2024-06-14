@@ -11,5 +11,9 @@ func EncodeMessage(msg any) (string, error) {
 	if err != nil {
 		return "", err
 	}
-	return fmt.Sprintf("Content-Length: %d\r\n\r\n%s", len(content), content), nil
+	return fmt.Sprintf(
+		"Content-Length: %d\r\n\r\n%s",
+		len(content),
+		content,
+	), nil
 }

@@ -34,7 +34,11 @@ func TestSelectors(t *testing.T) {
 					</tr>
 				</table>
 				`,
-				want: []string{"head", "body", "table", "tbody", "tr", "td", "html"},
+				want: []string{
+					"html",
+					"html body table",
+					"html body table tbody tr",
+				},
 			},
 			{
 				name: "TestSelectors",
@@ -65,7 +69,14 @@ func TestSelectors(t *testing.T) {
 					</body>
 				</html>
 				`,
-				want: []string{"head", "body", "table", "tbody", "body table tr", "body table tr td", "html", "body div", "div h1", "div p"},
+				want: []string{
+					"html",
+					"html body",
+					"html body table",
+					"html body table tbody tr",
+					"html head title",
+					"html body div h1",
+				},
 			},
 			{
 				name: "TestSelectors",
@@ -81,7 +92,17 @@ func TestSelectors(t *testing.T) {
 					</body>
 				</html>
 				`,
-				want: []string{"head", "body", "table", "tbody", "tr", "td", "html", "div", "h1"},
+				want: []string{
+					"head",
+					"body",
+					"table",
+					"tbody",
+					"tr",
+					"td",
+					"html",
+					"div",
+					"h1",
+				},
 			},
 			{
 				name: "TestSelectors",
@@ -116,7 +137,18 @@ func TestSelectors(t *testing.T) {
 					</body>
 				</html>
 				`,
-				want: []string{"head", "body", "table", "tbody", "tr", "td", "html", "div", "h1", "p"},
+				want: []string{
+					"head",
+					"body",
+					"table",
+					"tbody",
+					"tr",
+					"td",
+					"html",
+					"div",
+					"h1",
+					"p",
+				},
 			},
 			{
 				name: "TestSelectors",
@@ -151,7 +183,16 @@ func TestSelectors(t *testing.T) {
 					</body>
 				</html>
 				`,
-				want: []string{"html head", "html body", "html", "html body table", "html body table tbody", "html body table tr", "html body table tr td", "html body table tr td a[href=https://example.com]"},
+				want: []string{
+					"html head",
+					"html body",
+					"html",
+					"html body table",
+					"html body table tbody",
+					"html body table tr",
+					"html body table tr td",
+					"html body table tr td a[href=https://example.com]",
+				},
 			},
 		}
 		for _, tt := range tests {
@@ -164,6 +205,9 @@ func TestSelectors(t *testing.T) {
 				}
 				got := GetAllSelectors(doc)
 				for _, wa := range tt.want {
+					// TODO: Need a better message here
+					assert.NotEmpty(t, doc.Find(wa))
+					// TODO: Need a better message here
 					assert.Contains(t, got, wa)
 				}
 			})

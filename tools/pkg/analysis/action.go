@@ -7,7 +7,12 @@ import (
 )
 
 // TextDocumentCodeAction returns the code actions for a given text document.
-func (s *State) TextDocumentCodeAction(id int, uri string) lsp.TextDocumentCodeActionResponse {
+func (s *State) TextDocumentCodeAction(
+	id int,
+	uri string,
+) lsp.TextDocumentCodeActionResponse {
+	// Should be able to refresh selectors from the database by requesting the url
+	// Should be able to
 	text := s.Documents[uri]
 	actions := []lsp.CodeAction{}
 	for row, line := range strings.Split(text, "\n") {

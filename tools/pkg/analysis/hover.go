@@ -5,7 +5,11 @@ import (
 )
 
 // Hover returns a hover response for the given uri and position
-func (s *State) Hover(id int, uri string, position lsp.Position) lsp.HoverResponse {
+func (s *State) Hover(
+	id int,
+	uri string,
+	position lsp.Position,
+) lsp.HoverResponse {
 	// document := s.Documents[uri]
 
 	return lsp.HoverResponse{

@@ -4,7 +4,7 @@
 # title: Combining SQL Schemas, Queries, and Seeds into Combined SQL Files (queries.sql, schema.sql, seeds.sql)
 
 dbs=(
-	"sqlite3"
+	"master"
 )
 
 # for each known database

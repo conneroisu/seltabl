@@ -46,7 +46,11 @@ func SetStructField[T any](
 //
 // It is used by the SetStructField function to set the value of a struct field after
 // selecting the value from a html node.
-func SetFieldValue(fieldType reflect.Kind, cellText string, field *reflect.Value) error {
+func SetFieldValue(
+	fieldType reflect.Kind,
+	cellText string,
+	field *reflect.Value,
+) error {
 	switch fieldType {
 	case reflect.String:
 		field.SetString(cellText)

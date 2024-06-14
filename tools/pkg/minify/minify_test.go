@@ -57,7 +57,10 @@ func run(ctx context.Context, args []string) error {
 		return fmt.Errorf("error creating file: %w", err)
 	}
 	defer f.Close()
-	content, err := cleanHTML(body, []string{"script", "style", "link", "img", "footer", "header"})
+	content, err := cleanHTML(
+		body,
+		[]string{"script", "style", "link", "img", "footer", "header"},
+	)
 	bytes := []byte(gohtml.Format(content))
 	// write the body to the file
 	_, err = f.Write(bytes)

@@ -5,7 +5,7 @@ import (
 	"log"
 
 	"github.com/conneroisu/seltabl/tools/data"
-	"github.com/conneroisu/seltabl/tools/data/sqlite3"
+	"github.com/conneroisu/seltabl/tools/data/master"
 	"github.com/conneroisu/seltabl/tools/pkg/lsp"
 )
 
@@ -14,14 +14,22 @@ type State struct {
 	// Map of file names to contents
 	Documents map[string]string
 	// Database is the database for the state
-	Database *data.Database[sqlite3.Queries]
+	Database *data.Database[master.Queries]
 	// Logger is the logger for the state
 	Logger *log.Logger
 }
 
 // NewState returns a new state with no documents
 func NewState() State {
-	db, err := data.NewDb(context.Background(), sqlite3.New, &data.Config{URI: "sqlite://./seltabl.db", Schema: sqlite3.MasterSchema}, "urls.sqlite")
+	db, err := data.NewDb(
+		context.Background(),
+		master.New,
+		&data.Config{
+			URI:    "sqlite://./seltabl.db",
+			Schema: master.MasterSchema,
+		},
+		"urls.sqlite",
+	)
 	if err != nil {
 		panic(err)
 	}

@@ -8,15 +8,20 @@ import (
 
 // Request is the request to a LSP
 type Request struct {
-	RPC    string `json:"jsonrpc"`
-	ID     int    `json:"id,omitempty"`
+	// RPC is the rpc method for the request
+	RPC string `json:"jsonrpc"`
+	// ID is the id of the request
+	ID int `json:"id,omitempty"`
+	// Method is the method for the request
 	Method string `json:"method"`
 }
 
 // Response is the response of a LSP
 type Response struct {
+	// RPC is the rpc method for the response
 	RPC string `json:"jsonrpc"`
-	ID  *int   `json:"id,omitempty"`
+	// ID is the id of the response
+	ID *int `json:"id,omitempty"`
 	// Result string `json:"result"`
 	// Error  string `json:"error"`
 }
@@ -46,6 +51,8 @@ func (r *Response) String() string {
 
 // Notification is a notification from a LSP
 type Notification struct {
-	RPC    string `json:"jsonrpc"`
+	// RPC is the rpc method for the notification.
+	RPC string `json:"jsonrpc"`
+	// Method is the method for the notification.
 	Method string `json:"method"`
 }

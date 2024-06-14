@@ -3,7 +3,11 @@ package analysis
 import "github.com/conneroisu/seltabl/tools/pkg/lsp"
 
 // Definition returns the definition.
-func (s *State) Definition(id int, uri string, position lsp.Position) lsp.DefinitionResponse {
+func (s *State) Definition(
+	id int,
+	uri string,
+	position lsp.Position,
+) lsp.DefinitionResponse {
 	// In real life, this would look up the definition
 
 	return lsp.DefinitionResponse{

@@ -46,7 +46,10 @@ func cleanHTML(body []byte, disallowedTags []string) (string, error) {
 	return fmtd, nil
 }
 
-func GetMinifiedDoc(url string, disallowedTags []string) (*goquery.Document, error) {
+func GetMinifiedDoc(
+	url string,
+	disallowedTags []string,
+) (*goquery.Document, error) {
 	client := &http.Client{}
 	resp, err := client.Get(url)
 	if err != nil {

@@ -2,71 +2,76 @@ package lsp
 
 // TextDocumentItem is a text document.
 type TextDocumentItem struct {
-	/**
-	 * The text document's URI.
-	 */
+	// URI is the uri for the text document.
 	URI string `json:"uri"`
 
-	/**
-	 * The text document's language identifier.
-	 */
+	// LanguageID is the language id for the text document.
 	LanguageID string `json:"languageId"`
 
-	/**
-	 * The version number of this document (it will increase after each
-	 * change, including undo/redo).
-	 */
+	// Version is the version number of a given text document.
 	Version int `json:"version"`
 
-	/**
-	 * The content of the opened text document.
-	 */
+	// Text is the text of the text document.
 	Text string `json:"text"`
 }
 
 // TextDocumentIdentifier is a unique identifier for a text document.
 type TextDocumentIdentifier struct {
+	// URI is the uri for the text document.
 	URI string `json:"uri"`
 }
 
 // VersionTextDocumentIdentifier is a text document with a version number.
 type VersionTextDocumentIdentifier struct {
+	// VersionTextDocumentIdentifier embeds the TextDocumentIdentifier struct
 	TextDocumentIdentifier
+	// Version is the version number for the text document.
 	Version int `json:"version"`
 }
 
 // TextDocumentPositionParams is a text document position parameters.
 type TextDocumentPositionParams struct {
+	// TextDocument is the text document for the position parameters.
 	TextDocument TextDocumentIdentifier `json:"textDocument"`
-	Position     Position               `json:"position"`
+	// Position is the position for the text document.
+	Position Position `json:"position"`
 }
 
 // Position is a position inside a text document.
 type Position struct {
-	Line      int `json:"line"`
+	// Line is the line number for the position.
+	Line int `json:"line"`
+	// Character is the character number for the position.
 	Character int `json:"character"`
 }
 
 // Location is a location inside a resource, such as a line
 // inside a text file.
 type Location struct {
-	URI   string `json:"uri"`
-	Range Range  `json:"range"`
+	// URI is the uri for the location.
+	URI string `json:"uri"`
+	// Range is the range for the location.
+	Range Range `json:"range"`
 }
 
 // Range is a range in a text document.
 type Range struct {
+	// Start is the start of a given range.
 	Start Position `json:"start"`
-	End   Position `json:"end"`
+	// End is the end of a given range.
+	End Position `json:"end"`
 }
 
 // WorkspaceEdit is the workspace edit object.
 type WorkspaceEdit struct {
+	// Changes is the changes for the workspace edit.
 	Changes map[string][]TextEdit `json:"changes"`
 }
 
 // TextEdit represents an edit operation on a single text document.
 type TextEdit struct {
-	Range   Range  `json:"range"`
+	// Range is the range for the text edit.
+	Range Range `json:"range"`
+	// NewText is the new text for the text edit.
 	NewText string `json:"newText"`
 }

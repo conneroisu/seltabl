@@ -40,9 +40,10 @@ func getSelectorsFromSelection(s *goquery.Selection) string {
 	// Get the selector for the current node
 	currentSelector := singleSelector(s)
 	// Combine the parent and current selectors
+	// should output html body div#ContentArea table tbody tr.heading td a[href=https://example.com]
 	if parentSelector != "" && currentSelector != "" {
 		return parentSelector + " " + currentSelector
-	} else if parentSelector != "" {
+	} else if parentSelector != "" && currentSelector == "" {
 		return parentSelector
 	}
 	return currentSelector
@@ -53,21 +54,21 @@ func singleSelector(selection *goquery.Selection) string {
 	var selector string
 
 	if id, exists := selection.Attr("id"); exists {
-		selector = fmt.Sprintf("#%s", id)
+		selector = fmt.Sprintf("%s#%s", goquery.NodeName(selection), id)
 	} else if class, exists := selection.Attr("class"); exists {
 		selector = fmt.Sprintf("%s.%s", goquery.NodeName(selection), strings.Join(strings.Fields(class), "."))
 	} else if attr, exists := selection.Attr("name"); exists {
-		selector = fmt.Sprintf("[name=%s]", attr)
+		selector = fmt.Sprintf("%s[name=%s]", goquery.NodeName(selection), attr)
 	} else if attr, exists := selection.Attr("type"); exists {
-		selector = fmt.Sprintf("[type=%s]", attr)
+		selector = fmt.Sprintf("%s[type=%s]", goquery.NodeName(selection), attr)
 	} else if attr, exists := selection.Attr("placeholder"); exists {
-		selector = fmt.Sprintf("[placeholder=%s]", attr)
+		selector = fmt.Sprintf("%s[placeholder=%s]", goquery.NodeName(selection), attr)
 	} else if attr, exists := selection.Attr("value"); exists {
-		selector = fmt.Sprintf("[value=%s]", attr)
+		selector = fmt.Sprintf("%s[value=%s]", goquery.NodeName(selection), attr)
 	} else if attr, exists := selection.Attr("src"); exists {
-		selector = fmt.Sprintf("[src=%s]", attr)
+		selector = fmt.Sprintf("%s[src=%s]", goquery.NodeName(selection), attr)
 	} else if attr, exists := selection.Attr("href"); exists {
-		selector = fmt.Sprintf("[href=%s]", attr)
+		selector = fmt.Sprintf("%s[href=%s]", goquery.NodeName(selection), attr)
 	} else {
 		selector = goquery.NodeName(selection)
 	}

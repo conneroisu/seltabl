@@ -9,14 +9,6 @@ var (
 )
 
 const (
-	// selectorControlTag is the tag used to signify selecting aspects of a cell
-	selectorControlTag = "ctl"
-
-	// cSelInnerTextSelector is the selector used to extract text from a cell.
-	ctlInnerTextSelector = "text"
-	// cSelAttrSelector is the selector used to extract attributes from a cell.
-	ctlAttrSelector = "query"
-
 	// headerTag is the tag used to match a header cell's Value.
 	headerTag = "seltabl"
 	// selectorDataTag is the tag used to mark a data cell.
@@ -27,6 +19,14 @@ const (
 	selectorQueryTag = "qSel"
 	// selectorMustBePresentTag is the tag used to mark text that must be present in a given content.
 	selectorMustBePresentTag = "must"
+
+	// selectorControlTag is the tag used to signify selecting aspects of a cell
+	selectorControlTag = "ctl"
+
+	// cSelInnerTextSelector is the selector used to extract text from a cell.
+	ctlInnerTextSelector = "text"
+	// cSelAttrSelector is the selector used to extract attributes from a cell.
+	ctlAttrSelector = "query"
 )
 
 // SelectorConfig is a struct for configuring a selector

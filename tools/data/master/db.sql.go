@@ -1,3 +1,4 @@
+// Package master contains the sqlite database schema
 package master
 
 import (

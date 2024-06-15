@@ -10,17 +10,10 @@ import (
 // GetAllSelectors retrieves all selectors from the given HTML document
 func GetAllSelectors(doc *goquery.Document) []string {
 	strs := []string{}
-	doc.Find("*").Each(func(i int, s *goquery.Selection) {
+	doc.Find("*").Each(func(_ int, s *goquery.Selection) {
 		str := getSelectorsFromSelection(s)
 		if str != "" {
-			found := false
-			for _, str2 := range strs {
-				if str2 == str {
-					found = true
-					break
-				}
-			}
-			if !found {
+			if !contains(strs, str) {
 				strs = append(strs, str)
 			}
 		}

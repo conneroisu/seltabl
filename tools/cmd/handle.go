@@ -8,7 +8,7 @@ import (
 	"github.com/conneroisu/seltabl/tools/pkg/rpc"
 )
 
-// handleMessage handles a message sent from the client to the language server.
+// HandleMessage handles a message sent from the client to the language server.
 // It parses the message and returns with a response.
 func (s *Root) HandleMessage(
 	msg []byte,
@@ -22,7 +22,11 @@ func (s *Root) HandleMessage(
 	s.Logger.Printf("Received message (%s): %s\n", method, contents)
 	defer func() {
 		if r := recover(); r != nil {
-			s.Logger.Printf("Recovered from panic: %v\n had error: %s\n", r, err)
+			s.Logger.Printf(
+				"Recovered from panic: %v\n had error: %s\n",
+				r,
+				err,
+			)
 		}
 	}()
 	defer func() {
@@ -53,7 +57,7 @@ func (s *Root) HandleMessage(
 		if err = s.writeResponse(msg); err != nil {
 			s.Logger.Print(
 				fmt.Errorf(
-					"failed to write a response: %v\nthe response that failed to write: %s\n",
+					"failed to write a response: %v the response that failed to write: %s",
 					err,
 					contents,
 				),
@@ -77,7 +81,7 @@ func (s *Root) HandleMessage(
 		if err = s.writeResponse(msg); err != nil {
 			s.Logger.Print(
 				fmt.Errorf(
-					"failed to write a response: %v\nthe response that failed to write: %s\n",
+					"failed to write a response: %v the response that failed to write: %s",
 					err,
 					contents,
 				),
@@ -259,7 +263,7 @@ func (s *Root) HandleMessage(
 		)
 		if err = s.writeResponse(response); err != nil {
 			s.Logger.Printf(
-				"failed to write a response: %s\nthe response that failed to write: %s\n",
+				"failed to write a response: %sthe response that failed to write: %s",
 				err,
 				contents,
 			)
@@ -278,7 +282,7 @@ func (s *Root) HandleMessage(
 }
 
 func (s *Root) logF(method string, msg string) {
-	s.Logger.Printf("Received message (%s): %s\n", method, msg)
+	s.Logger.Printf("received message (%s): %s\n", method, msg)
 }
 
 // logE logs an error for a given method and message

@@ -1,3 +1,4 @@
+// Package data provides a set of data types for the database.
 package data
 
 import (
@@ -29,6 +30,13 @@ func NewDb(
 	}
 
 	bu := bun.NewDB(db, sqlitedialect.New())
+	_, err = bu.NewCreateTable().
+		Model((*Selector)(nil)).
+		IfNotExists().
+		Exec(ctx)
+	if err != nil {
+		return nil, fmt.Errorf("failed to create table: %w", err)
+	}
 	_, err = bu.NewCreateTable().Model((*Selector)(nil)).IfNotExists().Exec(ctx)
 	if err != nil {
 		return nil, fmt.Errorf("failed to create table: %w", err)
@@ -54,6 +62,7 @@ type Selector struct {
 	Context string `bun:"context"`
 }
 
+// HTML is a struct for a html
 type HTML struct {
 	bun.BaseModel `bun:"table:html,alias:h"`
 	// ID is the id of the html

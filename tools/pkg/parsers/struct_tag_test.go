@@ -57,7 +57,12 @@ func main() {
 			}
 			if status != tt.expected {
 				highlightedSrc := highlightPosition(src, pos)
-				t.Errorf("expected status %d, got %d\n%s", tt.expected, status, highlightedSrc)
+				t.Errorf(
+					"expected status %d, got %d\n%s",
+					tt.expected,
+					status,
+					highlightedSrc,
+				)
 			}
 		})
 	}
@@ -74,7 +79,9 @@ func highlightPosition(src string, pos lsp.Position) string {
 	if pos.Character-1 < 0 || pos.Character-1 >= len(line) {
 		return src
 	}
-	highlightedLine := line[:pos.Character-1] + ">>>" + string(line[pos.Character-1]) + "<<<" + line[pos.Character:]
+	highlightedLine := line[:pos.Character-1] + ">>>" + string(
+		line[pos.Character-1],
+	) + "<<<" + line[pos.Character:]
 	lines[pos.Line-1] = highlightedLine
 	return strings.Join(lines, "\n")
 }
@@ -93,7 +100,12 @@ func TestPositionStatusInStructTag2(t *testing.T) {
 		}
 		if status != 2 {
 			highlightedSrc := highlightPosition(src, pos)
-			t.Errorf("expected status %d, got %d\n%s", 1, status, highlightedSrc)
+			t.Errorf(
+				"expected status %d, got %d\n%s",
+				1,
+				status,
+				highlightedSrc,
+			)
 		}
 	})
 }

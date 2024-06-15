@@ -10,7 +10,7 @@ import (
 // GetAllSelectors retrieves all selectors from the given HTML document
 func GetAllSelectors(doc *goquery.Document) []string {
 	strs := []string{}
-	doc.Find("*").Each(func(i int, s *goquery.Selection) {
+	doc.Find("*").Each(func(_ int, s *goquery.Selection) {
 		str := getSelectorsFromSelection(s)
 		if str != "" {
 			if !contains(strs, str) {

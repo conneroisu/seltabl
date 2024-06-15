@@ -36,6 +36,7 @@ func cleanHTML(body []byte, disallowedTags []string) (string, error) {
 	return fmtd, nil
 }
 
+// GetMinifiedDoc gets the minified doc from a given url
 func GetMinifiedDoc(
 	url string,
 	disallowedTags []string,

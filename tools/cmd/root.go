@@ -23,7 +23,7 @@ func (s *Root) ReturnCmd() *cobra.Command {
 		Long: `A command line tool for parsing html tables into structs.
 
 `,
-		RunE: func(_ *cobra.Command, args []string) error {
+		RunE: func(_ *cobra.Command, _ []string) error {
 			s.Logger = getLogger("./seltabl.log")
 			s.Logger.Println("Starting the server...")
 			scanner := bufio.NewScanner(os.Stdin)
@@ -100,13 +100,22 @@ func (s *Root) writeResponse(msg interface{}) error {
 	return nil
 }
 
-func (s *Root) BeforeQuery(ctx context.Context, event *bun.QueryEvent) context.Context {
+// BeforeQuery is a function for the root server that is called before a query is made
+func (s *Root) BeforeQuery(
+	ctx context.Context,
+	event *bun.QueryEvent,
+) context.Context {
 	query := event.Query
 	stash := event.Stash
 	s.Logger.Println(fmt.Sprintf("before query: %s \nstash: %s", query, stash))
+	ctx = context.WithValue(ctx, event, event)
 	return ctx
 }
 
-func (q *Root) AfterQuery(ctx context.Context, event *bun.QueryEvent) {
-	fmt.Println("after query")
+// AfterQuery is a function for the root server that is called after a query is made
+func (s *Root) AfterQuery(ctx context.Context, event *bun.QueryEvent) {
+	query := event.Query
+	stash := event.Stash
+	s.Logger.Println(fmt.Sprintf("after query: %s \nstash: %s", query, stash))
+	ctx = context.WithValue(ctx, event, event)
 }

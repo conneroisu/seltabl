@@ -13,8 +13,11 @@ const (
 	// tagMarkerEnd is the marker used to indicate the end of a struct tag
 	tagMarkerEnd = "<<<"
 
-	StateOutsideTag         = 0
-	StateInsideTag          = 1
+	// StateOutsideTag is the state for when the tag is outside of a struct tag
+	StateOutsideTag = 0
+	// StateInsideTag is the state for inside a tag
+	StateInsideTag = 1
+	// StateInsideDoubleQuotes is the state for inside double quotes
 	StateInsideDoubleQuotes = 2
 )
 
@@ -41,7 +44,9 @@ func PositionStatusInStructTag(src string, pos lsp.Position) (int, error) {
 	if pos.Character-1 < 0 || pos.Character-1 >= len(line) {
 		return 0, fmt.Errorf("character number out of range")
 	}
-	highlightedLine := line[:pos.Character-1] + tagMarker + string(line[pos.Character-1]) + tagMarkerEnd + line[pos.Character:]
+	highlightedLine := line[:pos.Character-1] + tagMarker + string(
+		line[pos.Character-1],
+	) + tagMarkerEnd + line[pos.Character:]
 
 	return determinePositionStatus(highlightedLine, pos.Character)
 }

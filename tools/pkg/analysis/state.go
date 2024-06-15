@@ -15,6 +15,8 @@ import (
 type State struct {
 	// Map of file names to contents
 	Documents map[string]string
+	// Selectors is the map of file names to selectors
+	Selectors map[string][]data.Selector
 	// Database is the database for the state
 	Database *bun.DB
 	// Logger is the logger for the state
@@ -46,6 +48,7 @@ func NewState(srv lsp.Server) State {
 	logger := getLogger("./state.log")
 	return State{
 		Documents: map[string]string{},
+		Selectors: map[string][]data.Selector{},
 		Database:  db,
 		Logger:    logger,
 	}

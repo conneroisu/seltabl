@@ -13,6 +13,7 @@ func (s *State) TextDocumentCodeAction(
 ) lsp.TextDocumentCodeActionResponse {
 	// Should be able to refresh selectors from the database by requesting the url
 	text := s.Documents[uri]
+	_ = s.Selectors[uri]
 	actions := []lsp.CodeAction{}
 	for row, line := range strings.Split(text, "\n") {
 		idx := strings.Index(line, "VS Code")

@@ -1,3 +1,4 @@
+// Package parsers provides a set of functions for parsing html documents.
 package parsers
 
 import (

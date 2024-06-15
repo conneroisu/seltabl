@@ -11,7 +11,7 @@ tasks:
       
   fmt:
     cmds:
-    - sh ./scripts/taskfile/fmt.sh
+    - gofmt -w . && golines -w --max-len=79 .
 
   lint:
     cmds:

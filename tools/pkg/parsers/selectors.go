@@ -13,14 +13,7 @@ func GetAllSelectors(doc *goquery.Document) []string {
 	doc.Find("*").Each(func(i int, s *goquery.Selection) {
 		str := getSelectorsFromSelection(s)
 		if str != "" {
-			found := false
-			for _, str2 := range strs {
-				if str2 == str {
-					found = true
-					break
-				}
-			}
-			if !found {
+			if !contains(strs, str) {
 				strs = append(strs, str)
 			}
 		}

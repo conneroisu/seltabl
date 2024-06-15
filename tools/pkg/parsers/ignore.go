@@ -35,11 +35,8 @@ func ExtractIgnores(fileContent string) ([]string, error) {
 		if len(matches) > 0 {
 			res := matches[1]
 			split := strings.Split(res, ", ")
-			for _, v := range split {
-				if v == "" {
-					continue
-				}
-				result = append(result, v)
+			if !contains(split, "") && !contains(split, res) {
+				result = append(result, res)
 			}
 		}
 		matches = ignoreRegex2.FindStringSubmatch(line)

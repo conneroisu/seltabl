@@ -12,23 +12,25 @@ var (
 	urlRegex2 = regexp.MustCompile(`//@url:\s*(https?://[^\s]+)`)
 )
 
-// ExtractUrls splits a string into a slice of strings of only the comments in a given file's content's
-// url comments.
-func ExtractUrls(fileContent string) ([]string, error) {
+// ExtractUrls collects all the urls with comments using the // @url: syntax
+// and returns a slice of strings of only the urls.
+//
+// It also returns an error if there is an error while scanning the file.
+func ExtractUrls(src string) ([]string, error) {
 	var result []string
 	result = make([]string, 0)
 	// Define the regex to match URL comments
 	// Scan the file line by line
-	scanner := bufio.NewScanner(strings.NewReader(fileContent))
+	scanner := bufio.NewScanner(strings.NewReader(src))
 	for scanner.Scan() {
 		line := scanner.Text()
 		// Find the URL in the line
 		matches := urlRegex.FindStringSubmatch(line)
-		if len(matches) > 0 {
+		if len(matches) > 0 && matches != nil {
 			result = append(result, matches[1])
 		}
 		matches = urlRegex2.FindStringSubmatch(line)
-		if len(matches) > 0 {
+		if len(matches) > 0 && matches != nil {
 			result = append(result, matches[1])
 		}
 	}

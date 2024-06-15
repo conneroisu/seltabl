@@ -6,6 +6,8 @@ require (
 	github.com/PuerkitoBio/goquery v1.9.2
 	github.com/gocolly/colly v1.2.0
 	github.com/gocolly/colly/v2 v2.1.0
+	github.com/mitchellh/go-homedir v1.1.0
+	github.com/rqlite/gorqlite v0.0.0-20240227123050-397b03f02418
 	github.com/spf13/cobra v1.8.0
 	github.com/stretchr/testify v1.9.0
 	github.com/tursodatabase/go-libsql v0.0.0-20240429120401-651096bbee0b

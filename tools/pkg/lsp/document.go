@@ -39,9 +39,9 @@ type TextDocumentPositionParams struct {
 
 // Position is a position inside a text document.
 type Position struct {
-	// Line is the line number for the position.
+	// Line is the line number for the position (zero-based).
 	Line int `json:"line"`
-	// Character is the character number for the position.
+	// Character is the character number for the position (zero-based).
 	Character int `json:"character"`
 }
 

@@ -25,7 +25,7 @@ func NewState() State {
 		context.Background(),
 		master.New,
 		&data.Config{
-			URI:    "sqlite://./seltabl.db",
+			URI:    "",
 			Schema: master.MasterSchema,
 		},
 		"urls.sqlite",

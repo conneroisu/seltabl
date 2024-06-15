@@ -11,7 +11,7 @@ var (
 const (
 	// selectorControlTag is the tag used to signify selecting aspects of a cell
 	selectorControlTag = "ctl"
-	// values that can be used for the selectorControlTag:
+
 	// cSelInnerTextSelector is the selector used to extract text from a cell.
 	ctlInnerTextSelector = "text"
 	// cSelAttrSelector is the selector used to extract attributes from a cell.

@@ -5,10 +5,12 @@ import (
 	"database/sql"
 	"fmt"
 	"net/url"
+	"path/filepath"
 
 	"github.com/conneroisu/seltabl/tools/data/generic"
 	"github.com/conneroisu/seltabl/tools/data/master"
-	"github.com/tursodatabase/go-libsql"
+	"github.com/mitchellh/go-homedir"
+
 	"golang.org/x/sync/errgroup"
 
 	// Import the database dialects. Automatically registers dialects.
@@ -54,7 +56,6 @@ type Config struct {
 	Schema string
 	URI    string
 	Name   string
-	Opts   []libsql.Option
 }
 
 // NewDb sets up the database using the URI and optional options.
@@ -75,7 +76,8 @@ func NewDb[
 	}
 	switch u.Scheme {
 	case "sqlite":
-		db, err := sql.Open("sqlite", path)
+		dir, err := homedir.Dir()
+		db, err := sql.Open("sqlite", filepath.Join(dir, path))
 		if err != nil {
 			return nil, fmt.Errorf("failed to open db: %v", err)
 		}

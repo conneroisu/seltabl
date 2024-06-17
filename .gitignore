@@ -3,3 +3,5 @@ tmp
 bin
 node_modules
 Pipfile
+state.log
+seltabl.log

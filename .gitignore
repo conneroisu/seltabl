@@ -5,3 +5,13 @@ node_modules
 Pipfile
 state.log
 seltabl.log
+**/state.log
+**/seltabl.log
+**/**/state.log
+**/**/seltabl.log
+**/**/**/state.log
+**/**/**/seltabl.log
+**/**/**/**/state.log
+**/**/**/**/seltabl.log
+**/**/**/**/**/state.log
+**/**/**/**/**/seltabl.log

@@ -33,7 +33,6 @@ func getSelectorsFromSelection(s *goquery.Selection) string {
 	// Get the selector for the current node
 	currentSelector := singleSelector(s)
 	// Combine the parent and current selectors
-	// should output html body div#ContentArea table tbody tr.heading td a[href=https://example.com]
 	if parentSelector != "" && currentSelector != "" {
 		return parentSelector + " " + currentSelector
 	} else if parentSelector != "" && currentSelector == "" {
@@ -45,7 +44,6 @@ func getSelectorsFromSelection(s *goquery.Selection) string {
 // singleSelector returns a single CSS selector for the given node
 func singleSelector(selection *goquery.Selection) string {
 	var selector string
-
 	if id, exists := selection.Attr("id"); exists {
 		selector = fmt.Sprintf("%s#%s", goquery.NodeName(selection), id)
 	} else if class, exists := selection.Attr("class"); exists {
@@ -65,6 +63,5 @@ func singleSelector(selection *goquery.Selection) string {
 	} else {
 		selector = goquery.NodeName(selection)
 	}
-
 	return selector
 }

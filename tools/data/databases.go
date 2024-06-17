@@ -6,14 +6,16 @@ import (
 	"database/sql"
 	"fmt"
 
-	"github.com/conneroisu/seltabl/tools/pkg/lsp"
 	"github.com/uptrace/bun"
-	"github.com/uptrace/bun/dialect/sqlitedialect"
 	"github.com/uptrace/bun/driver/sqliteshim"
+	"github.com/uptrace/bun/schema"
 
 	// Import the database dialects. Automatically registers dialects.
 	_ "modernc.org/sqlite"
 )
+
+// SetupFunc is a function for setting up the database
+type SetupFunc func(ctx context.Context, getenv func(string) string, db *bun.DB) error
 
 // NewDb sets up the database using the URI and optional options.
 // Using generics to return the appropriate type of query struct,
@@ -21,31 +23,19 @@ import (
 // queries struct utilizing the URI and optional options provided.
 func NewDb(
 	ctx context.Context,
+	getenv func(string) string,
 	path string,
-	srv lsp.Server,
+	fn SetupFunc,
+	dialect schema.Dialect,
 ) (*bun.DB, error) {
 	db, err := sql.Open(sqliteshim.ShimName, path)
 	if err != nil {
 		return nil, fmt.Errorf("failed to open db: %w", err)
 	}
-
-	bu := bun.NewDB(db, sqlitedialect.New())
-	_, err = bu.NewCreateTable().
-		Model((*Selector)(nil)).
-		IfNotExists().
-		Exec(ctx)
-	if err != nil {
-		return nil, fmt.Errorf("failed to create table: %w", err)
+	bu := bun.NewDB(db, dialect)
+	if err = fn(ctx, getenv, bu); err != nil {
+		return nil, fmt.Errorf("failed to apply schema: %w", err)
 	}
-	_, err = bu.NewCreateTable().Model((*Selector)(nil)).IfNotExists().Exec(ctx)
-	if err != nil {
-		return nil, fmt.Errorf("failed to create table: %w", err)
-	}
-	_, err = bu.NewCreateTable().Model((*HTML)(nil)).IfNotExists().Exec(ctx)
-	if err != nil {
-		return nil, fmt.Errorf("failed to create table: %w", err)
-	}
-	bu.AddQueryHook(srv)
 	return bu, nil
 }
 
@@ -56,10 +46,25 @@ type Selector struct {
 	ID int64 `bun:"id,pk,autoincrement"`
 	// Selector is the selector for the selector
 	Selector string `bun:"selector"`
-	// URL is the url for the selector
-	URL string `bun:"url"`
-	// Context is the context for the selector
+	// Context is the html context for the selector
 	Context string `bun:"context"`
+	// URL is the url for the selector
+	URLID int64 `bun:"url_id"`
+	// URL is the url for the selector
+	URL URL `bun:"rel:belongs-to,join:url_id=id"`
+}
+
+// URL is a struct for a url
+type URL struct {
+	bun.BaseModel `bun:"table:urls"`
+	// ID is the id of the url
+	ID int64 `bun:"id,pk,autoincrement"`
+	// URL is the url for the url
+	URL string `bun:"url"`
+	// HTMLID is the id of the html
+	HTMLID int64 `bun:"html_id"`
+	// Content is the content of the url response
+	HTML HTML `bun:"rel:belongs-to,join:html_id=id"`
 }
 
 // HTML is a struct for a html

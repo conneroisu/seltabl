@@ -9,6 +9,7 @@ import (
 	"github.com/conneroisu/seltabl/tools/pkg/lsp"
 	"github.com/conneroisu/seltabl/tools/pkg/parsers"
 	"github.com/uptrace/bun"
+	"github.com/uptrace/bun/dialect/sqlitedialect"
 )
 
 // State is the state of the document analysis
@@ -36,11 +37,13 @@ func getLogger(fileName string) *log.Logger {
 }
 
 // NewState returns a new state with no documents
-func NewState(srv lsp.Server) State {
+func NewState(getenv func(string) string) State {
 	db, err := data.NewDb(
 		context.Background(),
+		getenv,
 		"urls.sqlite",
-		srv,
+		data.SetupMasterDatabase,
+		sqlitedialect.New(),
 	)
 	if err != nil {
 		panic(err)
@@ -88,9 +91,23 @@ func (s State) getSelectors(
 			if err != nil {
 				s.Logger.Printf("failed to get html: %s\n", err)
 			}
+			var url []data.URL
+			err = s.Database.NewSelect().Model(&url).Where("url = ?", sel).Scan(ctx, &url)
+			if err != nil {
+				s.Logger.Printf("failed to get urls: %s\n", err)
+			}
+			var u *data.URL
+			if len(url) == 0 {
+				u = &data.URL{
+					URL: sel,
+				}
+				s.Database.NewInsert().Model(u).Exec(ctx)
+			} else {
+				u = &url[0]
+			}
 			selector := data.Selector{
 				Selector: sel,
-				URL:      url,
+				URL:      *u,
 				Context:  htm,
 			}
 			selectors = append(selectors, selector)

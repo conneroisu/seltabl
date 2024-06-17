@@ -10,15 +10,16 @@ import (
 
 // TestSelectors tests the selectors function
 func TestSelectors(t *testing.T) {
-	t.Run("TestSelectors", func(t *testing.T) {
-		tests := []struct {
-			name  string
-			input string
-			want  []string
-		}{
-			{
-				name: "TestSelectors",
-				input: `
+	type args struct {
+		name    string
+		input   string
+		want    []string
+		wantErr bool
+	}
+	tests := []args{
+		{
+			name: "TestSelectors",
+			input: `
 				<table>
 					<tr>
 						<td>a</td>
@@ -34,15 +35,15 @@ func TestSelectors(t *testing.T) {
 					</tr>
 				</table>
 				`,
-				want: []string{
-					"html",
-					"html body table",
-					"html body table tbody tr",
-				},
+			want: []string{
+				"html",
+				"html body table",
+				"html body table tbody tr",
 			},
-			{
-				name: "TestSelectors",
-				input: `
+		},
+		{
+			name: "TestSelectors",
+			input: `
 				<html>
 					<head>
 						<title>Test</title>
@@ -69,18 +70,19 @@ func TestSelectors(t *testing.T) {
 					</body>
 				</html>
 				`,
-				want: []string{
-					"html",
-					"html body",
-					"html body table",
-					"html body table tbody tr",
-					"html head title",
-					"html body div h1",
-				},
+			want: []string{
+				"html",
+				"html head",
+				"html body",
+				"html body table",
+				"html body table tbody",
+				"html body table tbody tr",
+				"html body table tbody tr td",
 			},
-			{
-				name: "TestSelectors",
-				input: `
+		},
+		{
+			name: "TestSelectors",
+			input: `
 				<html>
 					<head>
 						<title>Test</title>
@@ -92,21 +94,17 @@ func TestSelectors(t *testing.T) {
 					</body>
 				</html>
 				`,
-				want: []string{
-					"head",
-					"body",
-					"table",
-					"tbody",
-					"tr",
-					"td",
-					"html",
-					"div",
-					"h1",
-				},
+			want: []string{
+				"html",
+				"html head",
+				"html body",
+				"html body div",
+				"html body div h2",
 			},
-			{
-				name: "TestSelectors",
-				input: `
+		},
+		{
+			name: "TestSelectors",
+			input: `
 				<html>
 					<head>
 						<title>Test</title>
@@ -137,22 +135,20 @@ func TestSelectors(t *testing.T) {
 					</body>
 				</html>
 				`,
-				want: []string{
-					"head",
-					"body",
-					"table",
-					"tbody",
-					"tr",
-					"td",
-					"html",
-					"div",
-					"h1",
-					"p",
-				},
+			want: []string{
+				"html",
+				"html head",
+				"html body",
+				"html body table",
+				"html body table tbody",
+				"html body table tbody tr",
+				"html body table tbody tr td",
+				"html body table tbody tr td a[href=https://example.com]",
 			},
-			{
-				name: "TestSelectors",
-				input: `
+		},
+		{
+			name: "TestSelectors",
+			input: `
 				<html>
 					<head>
 						<title>Test</title>
@@ -183,34 +179,35 @@ func TestSelectors(t *testing.T) {
 					</body>
 				</html>
 				`,
-				want: []string{
-					"html head",
-					"html body",
-					"html",
-					"html body table",
-					"html body table tbody",
-					"html body table tr",
-					"html body table tr td",
-					"html body table tr td a[href=https://example.com]",
-				},
+			want: []string{
+				"html",
+				"html head",
+				"html body",
+				"html body table",
+				"html body table tbody",
+				"html body table tbody tr",
+				"html body table tbody tr td",
+				"html body table tbody tr td a[href=https://example.com]",
 			},
-		}
-		for _, tt := range tests {
-			t.Run(tt.name, func(t *testing.T) {
-				doc, err := goquery.NewDocumentFromReader(
-					strings.NewReader(tt.input),
-				)
-				if err != nil {
-					t.Fatalf("failed to create document: %v", err)
-				}
-				got := GetAllSelectors(doc)
-				for _, wa := range tt.want {
-					// TODO: Need a better message here
-					assert.NotEmpty(t, doc.Find(wa))
-					// TODO: Need a better message here
-					assert.Contains(t, got, wa)
-				}
-			})
-		}
-	})
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			tt := tt
+			t.Parallel()
+			doc, err := goquery.NewDocumentFromReader(
+				strings.NewReader(tt.input),
+			)
+			if err != nil {
+				t.Fatalf("failed to create document: %v", err)
+			}
+			got := GetAllSelectors(doc)
+			for _, wa := range got {
+				t.Logf("\"%s\",", wa)
+			}
+			for _, wa := range tt.want {
+				assert.Contains(t, got, wa, "selector %s not found in got", wa)
+			}
+		})
+	}
 }

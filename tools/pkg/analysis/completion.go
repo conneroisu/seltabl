@@ -70,7 +70,7 @@ func (s *State) TextDocumentCompletion(
 	for _, selector := range selectors {
 		items = append(items, lsp.CompletionItem{
 			Label:         selector.Selector,
-			Detail:        "from: " + selector.URL,
+			Detail:        "from: " + selector.URL.URL,
 			Documentation: "A selector for the " + selector.Selector,
 		})
 	}

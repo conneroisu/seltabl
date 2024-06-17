@@ -2,7 +2,6 @@ package cmd
 
 import (
 	"bufio"
-	"context"
 	"fmt"
 	"io"
 	"log"
@@ -20,15 +19,16 @@ func (s *Root) ReturnCmd() *cobra.Command {
 	return &cobra.Command{
 		Use:   "seltabl-lsp", // the name of the command
 		Short: "A command line tool for parsing html tables into structs",
-		Long: `A command line tool for parsing html tables into structs.
+		Long: `Language Server for the seltabl package.
 
+Provides completions, hovers, and code actions for seltabl defined structs.
 `,
 		RunE: func(_ *cobra.Command, _ []string) error {
 			s.Logger = getLogger("./seltabl.log")
 			s.Logger.Println("Starting the server...")
 			scanner := bufio.NewScanner(os.Stdin)
 			scanner.Split(rpc.Split)
-			analysis.NewState(s)
+			analysis.NewState(os.Getenv)
 
 			for scanner.Scan() {
 				msg := scanner.Bytes()
@@ -98,24 +98,4 @@ func (s *Root) writeResponse(msg interface{}) error {
 	}
 	s.Logger.Println("Received message and replied: ", reply)
 	return nil
-}
-
-// BeforeQuery is a function for the root server that is called before a query is made
-func (s *Root) BeforeQuery(
-	ctx context.Context,
-	event *bun.QueryEvent,
-) context.Context {
-	query := event.Query
-	stash := event.Stash
-	s.Logger.Println(fmt.Sprintf("before query: %s \nstash: %s", query, stash))
-	ctx = context.WithValue(ctx, event, event)
-	return ctx
-}
-
-// AfterQuery is a function for the root server that is called after a query is made
-func (s *Root) AfterQuery(ctx context.Context, event *bun.QueryEvent) {
-	query := event.Query
-	stash := event.Stash
-	s.Logger.Println(fmt.Sprintf("after query: %s \nstash: %s", query, stash))
-	ctx = context.WithValue(ctx, event, event)
 }

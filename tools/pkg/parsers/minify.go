@@ -12,9 +12,6 @@ import (
 )
 
 // cleanHTML removes all the non-essential elements from the HTML document.
-var reduceRepeaters = []string{"tr", "th", "option"}
-
-// cleanHTML removes all the non-essential elements from the HTML document.
 func cleanHTML(body []byte, disallowedTags []string) (string, error) {
 	reader := bytes.NewReader(body)
 	doc, err := goquery.NewDocumentFromReader(reader)

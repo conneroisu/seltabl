@@ -16,7 +16,7 @@ import (
 // @ignore-elements: script, style, link, img, footer, header
 func main() {
 	rs := &cmd.Root{Writer: os.Stdout}
-	rs.State = analysis.NewState(rs)
+	rs.State = analysis.NewState(os.Getenv)
 	if err := cmd.Execute(rs); err != nil {
 		// log to logs.txt
 		file, err := os.OpenFile(

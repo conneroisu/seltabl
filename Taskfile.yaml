@@ -20,10 +20,6 @@ tasks:
   test:
     cmds:
       - sh ./scripts/taskfile/test.sh
-        
-  database:
-    cmds:
-      - sh ./scripts/taskfile/database.sh 
       
   coverage:
     cmds:

@@ -7,11 +7,16 @@ state.log
 seltabl.log
 **/state.log
 **/seltabl.log
+**/*.sqlite
 **/**/state.log
 **/**/seltabl.log
+**/**/**/*.sqlite
 **/**/**/state.log
 **/**/**/seltabl.log
+**/**/**/**/*.sqlite
 **/**/**/**/state.log
 **/**/**/**/seltabl.log
+**/**/**/**/**/*.sqlite
 **/**/**/**/**/state.log
 **/**/**/**/**/seltabl.log
+**/**/**/**/**/**/*.sqlite

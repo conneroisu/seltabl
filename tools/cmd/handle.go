@@ -165,7 +165,7 @@ func (s *Root) HandleMessage(
 	enc, err := rpc.EncodeMessage(response)
 	s.Logger.Println(
 		fmt.Sprintf(
-			"Received message (%s) err: [%w] response: `%s` contents: %s", method, err, enc, contents,
+			"Received message (%s) err: [%s] response: `%s` contents: %s", method, err, enc, contents,
 		))
 	return nil
 }

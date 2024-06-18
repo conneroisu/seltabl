@@ -8,7 +8,7 @@ import (
 )
 
 // SetupMasterDatabase sets up the database schema
-func SetupMasterDatabase(ctx context.Context, getenv func(string) string, db *bun.DB) error {
+func SetupMasterDatabase(ctx context.Context, _ func(string) string, db *bun.DB) error {
 	var err error
 	_, err = db.NewCreateTable().Model((*HTML)(nil)).IfNotExists().Exec(ctx)
 	if err != nil {

@@ -13,8 +13,10 @@ import (
 
 // cleanHTML removes all the non-essential elements from the HTML document.
 func cleanHTML(body []byte, disallowedTags []string) (string, error) {
+	var doc *goquery.Document
+	var err error
 	reader := bytes.NewReader(body)
-	doc, err := goquery.NewDocumentFromReader(reader)
+	doc, err = goquery.NewDocumentFromReader(reader)
 	if err != nil {
 		return "", fmt.Errorf(
 			"clean failed error creating goquery document: %w",
@@ -24,13 +26,11 @@ func cleanHTML(body []byte, disallowedTags []string) (string, error) {
 	for _, v := range disallowedTags {
 		_ = doc.Find(v).Remove()
 	}
-	bdy := doc.Find("body")
-	docHTML, err := bdy.Html()
+	docHTML, err := doc.Find("body").Html()
 	if err != nil {
 		return "", fmt.Errorf("error getting html: %w", err)
 	}
-	fmtd := gohtml.Format(docHTML)
-	return fmtd, nil
+	return gohtml.Format(docHTML), nil
 }
 
 // GetMinifiedDoc gets the minified doc from a given url
@@ -38,6 +38,9 @@ func GetMinifiedDoc(
 	url string,
 	disallowedTags []string,
 ) (*goquery.Document, error) {
+	var doc *goquery.Document
+	var err error
+	var content string
 	client := &http.Client{}
 	resp, err := client.Get(url)
 	if err != nil {
@@ -48,8 +51,8 @@ func GetMinifiedDoc(
 	if err != nil {
 		return nil, fmt.Errorf("error reading response body: %w", err)
 	}
-	content, err := cleanHTML(body, disallowedTags)
-	doc, err := goquery.NewDocumentFromReader(
+	content, err = cleanHTML(body, disallowedTags)
+	doc, err = goquery.NewDocumentFromReader(
 		strings.NewReader(
 			string(content),
 		),

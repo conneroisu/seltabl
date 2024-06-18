@@ -7,7 +7,7 @@ import (
 
 // EncodeMessage encodes a message into a string
 //
-// It uses the sonic library to encode the message
+// It uses the json library to encode the message
 // and returns a string representation of the encoded message with
 // a Content-Length header.
 //

@@ -5,10 +5,15 @@ import (
 	"context"
 	"database/sql"
 	"fmt"
+	"net/url"
+	"strings"
 
+	"github.com/conneroisu/seltabl/tools/seltabl-lsp/data/generic"
+	"github.com/conneroisu/seltabl/tools/seltabl-lsp/data/master"
 	"github.com/uptrace/bun"
-	"github.com/uptrace/bun/driver/sqliteshim"
+	"github.com/uptrace/bun/dialect/sqlitedialect"
 	"github.com/uptrace/bun/schema"
+	"golang.org/x/sync/errgroup"
 
 	// Import the database dialects. Automatically registers dialects.
 	_ "modernc.org/sqlite"
@@ -17,63 +22,89 @@ import (
 // SetupFunc is a function for setting up the database
 type SetupFunc func(ctx context.Context, getenv func(string) string, db *bun.DB) error
 
+// Database is a struct that holds the sql database and the queries.
+// It uses generics to hold the appropriate type of query struct.
+type Database[
+	T master.Queries,
+] struct {
+	Queries *T
+	Bun     *bun.DB
+}
+
+// NewSQLDatabase creates a new database struct with the sql database and the
+// queries struct. It uses generics to return the appropriate type of query
+func NewSQLDatabase[
+	Q master.Queries,
+](
+	parentCtx context.Context,
+	dialect schema.Dialect,
+	db *sql.DB,
+	newFunc func(generic.DBTX) *Q,
+) (*Database[Q], error) {
+	eg, ctx := errgroup.WithContext(parentCtx)
+	q := &Database[Q]{
+		Queries: newFunc(db),
+		Bun:     bun.NewDB(db, dialect),
+	}
+	eg.Go(func() error {
+		<-ctx.Done()
+		err := db.Close()
+		if err != nil {
+			return fmt.Errorf("failed to close db: %v", err)
+		}
+		return nil
+	})
+	return q, nil
+}
+
+// Config is a struct that holds the configuration for a database.
+type Config struct {
+	// Schema is the schema for the libsql database
+	Schema string
+	// URI is the uri for the libsql database
+	URI string
+	// Name is the name for the libsql database
+	Name string
+	// FileName is the file name for the sqlite database
+	FileName string
+}
+
 // NewDb sets up the database using the URI and optional options.
 // Using generics to return the appropriate type of query struct,
 // it creates a new database struct with the sql database and the
 // queries struct utilizing the URI and optional options provided.
-func NewDb(
+func NewDb[
+	Q master.Queries,
+](
 	ctx context.Context,
-	getenv func(string) string,
-	path string,
-	fn SetupFunc,
-	dialect schema.Dialect,
-) (*bun.DB, error) {
-	db, err := sql.Open(sqliteshim.ShimName, path)
+	newFunc func(generic.DBTX) *Q,
+	config *Config,
+) (*Database[Q], error) {
+	u, err := url.Parse(config.URI)
 	if err != nil {
-		return nil, fmt.Errorf("failed to open db: %w", err)
+		return nil, fmt.Errorf("error parsing url: %v", err)
 	}
-	bu := bun.NewDB(db, dialect)
-	if err = fn(ctx, getenv, bu); err != nil {
-		return nil, fmt.Errorf("failed to apply schema: %w", err)
+	switch u.Scheme {
+	case "sqlite":
+		fileName := config.FileName
+		if fileName == "" {
+			return nil, fmt.Errorf("file name is required")
+		}
+		db, err := sql.Open("sqlite", fileName)
+		if err != nil {
+			return nil, fmt.Errorf("failed to open db: %v", err)
+		}
+		split := strings.Split(config.Schema, ";")
+		for _, v := range split {
+			if v == "" {
+				continue
+			}
+			if _, err := db.Exec(v); err != nil {
+				return nil, fmt.Errorf("error executing schema %s: %v", v, err)
+			}
+		}
+		return NewSQLDatabase(ctx, sqlitedialect.New(), db, newFunc)
+	default:
+		return nil, fmt.Errorf("unsupported scheme: %s", u.Scheme)
 	}
-	return bu, nil
-}
-
-// Selector is a struct for a selector
-type Selector struct {
-	bun.BaseModel `bun:"table:selectors,alias:s"`
-	// ID is the id of the selector
-	ID int64 `bun:"id,pk,autoincrement"`
-	// Selector is the selector for the selector
-	Selector string `bun:"selector"`
-	// Context is the html context for the selector
-	Context string `bun:"context"`
-	// URL is the url for the selector
-	URLID int64 `bun:"url_id"`
-	// URL is the url for the selector
-	URL URL `bun:"rel:belongs-to,join:url_id=id"`
-}
-
-// URL is a struct for a url
-type URL struct {
-	bun.BaseModel `bun:"table:urls"`
-	// ID is the id of the url
-	ID int64 `bun:"id,pk,autoincrement"`
-	// URL is the url for the url
-	URL string `bun:"url"`
-	// HTMLID is the id of the html
-	HTMLID int64 `bun:"html_id"`
-	// Content is the content of the url response
-	HTML HTML `bun:"rel:belongs-to,join:html_id=id"`
-}
-
-// HTML is a struct for a html
-type HTML struct {
-	bun.BaseModel `bun:"table:html,alias:h"`
-	// ID is the id of the html
-	ID int64 `bun:"id,pk,autoincrement"`
-	// HTML is the html for the html
-	HTML string `bun:"html"`
-	// URL is the url for the html
-	URL string `bun:"url"`
 }

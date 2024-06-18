@@ -4,9 +4,26 @@
 
 package master
 
+import (
+	"time"
+)
+
+type Html struct {
+	ID        int64      `db:"id" json:"id"`
+	Value     string     `db:"value" json:"value"`
+	UpdatedAt *time.Time `db:"updated_at" json:"updated_at"`
+	CreatedAt *time.Time `db:"created_at" json:"created_at"`
+}
+
 type Selector struct {
-	ID       int64  `db:"id" json:"id"`
-	Selector string `db:"selector" json:"selector"`
-	Url      string `db:"url" json:"url"`
-	Context  string `db:"context" json:"context"`
+	ID      int64  `db:"id" json:"id"`
+	Value   string `db:"value" json:"value"`
+	UrlID   int64  `db:"url_id" json:"url_id"`
+	Context string `db:"context" json:"context"`
+}
+
+type Url struct {
+	ID     int64  `db:"id" json:"id"`
+	Value  string `db:"value" json:"value"`
+	HtmlID int64  `db:"html_id" json:"html_id"`
 }

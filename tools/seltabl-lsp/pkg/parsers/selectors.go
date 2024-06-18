@@ -8,7 +8,7 @@ import (
 )
 
 // GetAllSelectors retrieves all selectors from the given HTML document
-func GetAllSelectors(doc *goquery.Document) []string {
+func GetAllSelectors(doc *goquery.Document) ([]string, error) {
 	strs := []string{}
 	doc.Find("*").Each(func(_ int, s *goquery.Selection) {
 		str := getSelectorsFromSelection(s)
@@ -18,7 +18,10 @@ func GetAllSelectors(doc *goquery.Document) []string {
 			}
 		}
 	})
-	return strs
+	if len(strs) == 0 {
+		return nil, fmt.Errorf("no selectors found in document")
+	}
+	return strs, nil
 }
 
 // getSelectorsFromSelection returns the CSS selector for the given goquery selection

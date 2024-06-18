@@ -21,7 +21,7 @@ type Response struct {
 	// RPC is the rpc method for the response
 	RPC string `json:"jsonrpc"`
 	// ID is the id of the response
-	ID *int `json:"id,omitempty"`
+	ID int `json:"id,omitempty"`
 	// Result string `json:"result"`
 	// Error  string `json:"error"`
 }
@@ -33,7 +33,7 @@ func (r *Response) String() string {
 		return fmt.Sprintf(
 			"failed to even encode response of type %s of id: %d due to error: %s",
 			r.RPC,
-			*r.ID,
+			r.ID,
 			err,
 		)
 	}

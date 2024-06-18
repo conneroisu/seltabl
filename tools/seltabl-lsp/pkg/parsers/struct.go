@@ -86,7 +86,11 @@ func ParseStruct(ctx context.Context, src []byte) (*Structure, error) {
 }
 
 // makeInspector creates an inspector for the given structure
-func makeInspector(eg *errgroup.Group, structure *Structure, fset *token.FileSet) Inspector {
+func makeInspector(
+	eg *errgroup.Group,
+	structure *Structure,
+	fset *token.FileSet,
+) Inspector {
 	return func(n ast.Node) bool {
 		s, ok := n.(*ast.StructType)
 		if !ok {

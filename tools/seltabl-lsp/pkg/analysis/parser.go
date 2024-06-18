@@ -7,10 +7,7 @@ import (
 	"github.com/conneroisu/seltabl/tools/seltabl-lsp/pkg/parsers"
 )
 
-func (s *State) getUrlsAndIgnores(src string) ([]string, []string, error) {
-	var urls []string
-	var err error
-	var ignores []string
+func (s *State) getUrlsAndIgnores(src string) (urls []string, ignores []string, err error) {
 	ctx := context.Background()
 	urls, err = parsers.ExtractUrls(src)
 	if err != nil {

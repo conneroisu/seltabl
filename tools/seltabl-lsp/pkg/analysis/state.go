@@ -7,10 +7,9 @@ import (
 	"os"
 
 	"github.com/conneroisu/seltabl/tools/seltabl-lsp/data"
+	"github.com/conneroisu/seltabl/tools/seltabl-lsp/data/master"
 	"github.com/conneroisu/seltabl/tools/seltabl-lsp/pkg/lsp"
 	"github.com/conneroisu/seltabl/tools/seltabl-lsp/pkg/parsers"
-	"github.com/uptrace/bun"
-	"github.com/uptrace/bun/dialect/sqlitedialect"
 )
 
 // State is the state of the document analysis
@@ -18,13 +17,14 @@ type State struct {
 	// Map of file names to contents
 	Documents map[string]string
 	// Selectors is the map of file names to selectors
-	Selectors map[string][]data.Selector
+	Selectors map[string][]master.Selector
 	// Database is the database for the state
-	Database *bun.DB
+	Database data.Database[master.Queries]
 	// Logger is the logger for the state
 	Logger *log.Logger
 }
 
+// getLogger returns a logger that writes to a file
 func getLogger(fileName string) *log.Logger {
 	logFile, err := os.OpenFile(
 		fileName,
@@ -38,24 +38,27 @@ func getLogger(fileName string) *log.Logger {
 }
 
 // NewState returns a new state with no documents
-func NewState(getenv func(string) string) State {
+func NewState() (state State) {
 	db, err := data.NewDb(
 		context.Background(),
-		getenv,
-		"urls.sqlite",
-		data.SetupMasterDatabase,
-		sqlitedialect.New(),
+		master.New,
+		&data.Config{
+			Schema:   master.MasterSchema,
+			URI:      "sqlite://urls.sqlite",
+			FileName: "./urls.db",
+		},
 	)
 	if err != nil {
 		panic(err)
 	}
 	logger := getLogger("./state.log")
-	return State{
-		Documents: map[string]string{},
-		Selectors: map[string][]data.Selector{},
-		Database:  db,
+	state = State{
+		Documents: make(map[string]string),
+		Selectors: make(map[string][]master.Selector),
+		Database:  *db,
 		Logger:    logger,
 	}
+	return state
 }
 
 // LineRange returns a range of a line in a document
@@ -74,52 +77,77 @@ func LineRange(line, start, end int) lsp.Range {
 
 // getSelectors gets all the selectors from the given URL and appends them to the selectors slice
 func (s State) getSelectors(
-	url string,
+	ctx context.Context,
+	url []string,
 	ignores []string,
-) ([]data.Selector, error) {
-	ctx := context.Background()
-	res := []data.Selector{}
-	err := s.Database.NewSelect().Model(&res).Scan(ctx)
-	if err != nil || len(res) == 0 {
-		doc, err := parsers.GetMinifiedDoc(url, ignores)
+) ([]master.Selector, error) {
+	u, err := s.Database.Queries.GetURLByValue(
+		ctx,
+		master.GetURLByValueParams{Value: url[0]},
+	)
+	if err == nil {
+		rows, err := s.Database.Queries.GetSelectorsByURL(
+			ctx,
+			master.GetSelectorsByURLParams{Value: u.Value},
+		)
 		if err != nil {
-			s.Logger.Printf("failed to get minified doc: %s\n", err)
+			return nil, fmt.Errorf("failed to get selectors by url: %w", err)
 		}
-		got := parsers.GetAllSelectors(doc)
-		var selectors []data.Selector
-		for _, sel := range got {
-			htm, err := doc.Find(sel).Parent().Html()
-			if err != nil {
-				s.Logger.Printf("failed to get html: %s\n", err)
+		if rows != nil {
+			var selectors []master.Selector
+			for _, row := range rows {
+				selectors = append(selectors, *row)
 			}
-			var url []data.URL
-			err = s.Database.NewSelect().Model(&url).Where("url = ?", sel).Scan(ctx, &url)
-			if err != nil {
-				s.Logger.Printf("failed to get urls: %s\n", err)
-			}
-			var u data.URL
-			if len(url) == 0 {
-				u = data.URL{
-					URL: sel,
-				}
-				_, err = s.Database.NewInsert().Model(&u).Exec(ctx)
-				if err != nil {
-					return nil, fmt.Errorf("failed to insert url: %w", err)
-				}
-			} else {
-				u = url[0]
-			}
-			selector := data.Selector{
-				Selector: sel,
-				URL:      u,
-				Context:  htm,
-			}
-			selectors = append(selectors, selector)
-			if _, err := s.Database.NewInsert().Model(&selector).Exec(ctx); err != nil {
-				s.Logger.Printf("failed to insert selector: %s\n", err)
-			}
+			return selectors, nil
 		}
-		return selectors, nil
 	}
-	return res, nil
+	doc, err := parsers.GetMinifiedDoc(url[0], ignores)
+	if err != nil {
+		s.Logger.Printf("failed to get minified doc: %s\n", err)
+	}
+	docHTML, err := doc.Html()
+	if err != nil {
+		s.Logger.Printf("failed to get html: %s\n", err)
+	}
+	HTML, err := s.Database.Queries.InsertHTML(
+		ctx,
+		master.InsertHTMLParams{Value: docHTML},
+	)
+	if err != nil {
+		s.Logger.Printf("failed to insert html: %s\n", err)
+	}
+	URL, err := s.Database.Queries.InsertURL(
+		ctx,
+		master.InsertURLParams{Value: url[0], HtmlID: HTML.ID},
+	)
+	if err != nil {
+		return nil, fmt.Errorf("failed to insert url: %w", err)
+	}
+	selectorStrs, err := parsers.GetAllSelectors(doc)
+	if err != nil {
+		s.Logger.Printf("failed to get selectors: %s\n", err)
+	}
+	selectors := []master.Selector{}
+	for _, sel := range selectorStrs {
+		context, err := doc.Find(sel).Parent().Html()
+		if err != nil {
+			s.Logger.Printf("failed to get html: %s\n", err)
+		}
+		if err != nil {
+			s.Logger.Printf("failed to get urls: %s\n", err)
+		}
+		selector, err := s.Database.Queries.InsertSelector(
+			ctx,
+			master.InsertSelectorParams{
+				Value:   sel,
+				UrlID:   URL.ID,
+				Context: context,
+			},
+		)
+		if err != nil {
+			s.Logger.Printf("failed to insert selector: %s\n", err)
+		}
+		selectors = append(selectors, *selector)
+	}
+	return selectors, nil
 }

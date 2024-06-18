@@ -1,6 +1,6 @@
 #!/bin/bash
 # file: makefile.test.sh
-# url: https://github.com/conneroisu/seltabl/scripts/makefile.test.sh
+# url: https://github.com/conneroisu/seltab/tools/seltab-lsp/scripts/makefile.test.sh
 # title: Test Script
 # description: This script runs the test for the project.
 #

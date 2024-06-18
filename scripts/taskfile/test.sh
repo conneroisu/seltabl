@@ -1,6 +1,6 @@
 #!/bin/bash
 # file: taskfile.test.sh
-# url: https://github.com/conneroisu/blob/main/seltabl/scripts/taskfile.test.sh
+# url: https://github.com/conneroisu/blob/main/seltab/tools/seltab-lsp/scripts/taskfile.test.sh
 # title: Test Script
 # description: This script runs the test for the project.
 #

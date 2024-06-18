@@ -15,7 +15,7 @@ func (s *State) Hover(
 		return lsp.HoverResponse{
 			Response: lsp.Response{
 				RPC: "2.0",
-				ID:  &id,
+				ID:  id,
 			},
 			Result: lsp.HoverResult{
 				Contents: "",
@@ -26,7 +26,7 @@ func (s *State) Hover(
 	return lsp.HoverResponse{
 		Response: lsp.Response{
 			RPC: "2.0",
-			ID:  &id,
+			ID:  id,
 		},
 		// Result: lsp.HoverResult{
 		//         Contents: fmt.Sprintf("File: %s, Characters: %d", uri, len(document)),

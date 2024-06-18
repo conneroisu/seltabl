@@ -1,6 +1,8 @@
 package analysis
 
 import (
+	"context"
+
 	"github.com/conneroisu/seltabl/tools/seltabl-lsp/pkg/lsp"
 )
 
@@ -56,29 +58,24 @@ var (
 func (s *State) TextDocumentCompletion(
 	id int,
 	document *lsp.TextDocumentIdentifier,
-	_ *lsp.Position,
+	pos *lsp.Position,
 ) lsp.CompletionResponse {
+	ctx := context.Background()
+	s.Logger.Printf("pos: %v\n", pos)
 	text := s.Documents[document.URI]
-	urls, _, err := s.getUrlsAndIgnores(text)
+	s.Logger.Printf("text: %s\n", text)
+	urls, ignores, err := s.getUrlsAndIgnores(text)
 	if err != nil {
 		s.Logger.Printf("failed to get urls and ignores: %s\n", err)
 	}
-	items := []lsp.CompletionItem{
-		{
-			Label:         "Neovim (BTW)",
-			Detail:        "Very cool editor",
-			Documentation: "Fun to watch in videos. Don't forget to like & subscribe to streamers using it :)",
-		},
-	}
-	for _, url := range urls {
-		selectors := s.Selectors[url]
-		for _, selector := range selectors {
-			items = append(items, lsp.CompletionItem{
-				Label:         selector.Selector,
-				Detail:        "from: " + selector.URL.URL,
-				Documentation: "A selector for the " + selector.Selector,
-			})
-		}
+	selectors, err := s.getSelectors(ctx, urls, ignores)
+	items := []lsp.CompletionItem{}
+	for _, selector := range selectors {
+		items = append(items, lsp.CompletionItem{
+			Label:         selector.Value,
+			Detail:        "context: \n" + selector.Context,
+			Documentation: "seltabl-lsp",
+		})
 	}
 	for _, key := range keys {
 		items = append(items, lsp.CompletionItem{
@@ -90,7 +87,7 @@ func (s *State) TextDocumentCompletion(
 	response := lsp.CompletionResponse{
 		Response: lsp.Response{
 			RPC: "2.0",
-			ID:  &id,
+			ID:  id,
 		},
 		Result: items,
 	}

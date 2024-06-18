@@ -24,7 +24,10 @@ func (s *Root) HandleMessage(
 	case "initialize":
 		var request lsp.InitializeRequest
 		if err = json.Unmarshal([]byte(contents), &request); err != nil {
-			return fmt.Errorf("decode initialize request (initialize) failed: %w", err)
+			return fmt.Errorf(
+				"decode initialize request (initialize) failed: %w",
+				err,
+			)
 		}
 		response = lsp.NewInitializeResponse(request.ID)
 		err = s.writeResponse(response)
@@ -34,14 +37,17 @@ func (s *Root) HandleMessage(
 	case "initialized":
 		var request lsp.InitializedParamsRequest
 		if err = json.Unmarshal([]byte(contents), &request); err != nil {
-			s.Logger.Fatal("decode initialized request (initialized) failed", err)
+			s.Logger.Fatal(
+				"decode initialized request (initialized) failed",
+				err,
+			)
 			return fmt.Errorf("decode (initialized) request failed: %w", err)
 		}
-		response := lsp.NewInitializedParamsResponse(*request.ID)
-		err = s.writeResponse(response)
-		if err != nil {
-			return fmt.Errorf("write (initialized) response failed: %w", err)
-		}
+		// response = lsp.NewInitializedParamsResponse(request.ID)
+		// err = s.writeResponse(response)
+		// if err != nil {
+		//         return fmt.Errorf("write (initialized) response failed: %w", err)
+		// }
 	case "textDocument/didClose":
 		var request lsp.DidCloseTextDocumentParamsNotification
 		if err = json.Unmarshal([]byte(contents), &request); err != nil {
@@ -55,13 +61,16 @@ func (s *Root) HandleMessage(
 	case "textDocument/didOpen":
 		var request lsp.DidOpenTextDocumentNotification
 		if err = json.Unmarshal(contents, &request); err != nil {
-			return fmt.Errorf("decode (textDocument/didOpen) request failed: %w", err)
+			return fmt.Errorf(
+				"decode (textDocument/didOpen) request failed: %w",
+				err,
+			)
 		}
 		diagnostics := s.State.OpenDocument(
 			request.Params.TextDocument.URI,
 			request.Params.TextDocument.Text,
 		)
-		response := lsp.PublishDiagnosticsNotification{
+		response = lsp.PublishDiagnosticsNotification{
 			Notification: lsp.Notification{
 				RPC:    "2.0",
 				Method: "textDocument/publishDiagnostics",
@@ -79,7 +88,10 @@ func (s *Root) HandleMessage(
 		var request lsp.TextDocumentDidChangeNotification
 		err = json.Unmarshal(contents, &request)
 		if err != nil {
-			return fmt.Errorf("decode (textDocument/didChange) request failed: %w", err)
+			return fmt.Errorf(
+				"decode (textDocument/didChange) request failed: %w",
+				err,
+			)
 		}
 		diagnostics := []lsp.Diagnostic{}
 		for _, change := range request.Params.ContentChanges {
@@ -105,7 +117,10 @@ func (s *Root) HandleMessage(
 		var request lsp.HoverRequest
 		err = json.Unmarshal(contents, &request)
 		if err != nil {
-			return fmt.Errorf("failed to unmarshal of hover request (): %w", err)
+			return fmt.Errorf(
+				"failed to unmarshal of hover request (): %w",
+				err,
+			)
 		}
 		response = s.State.Hover(
 			request.ID,
@@ -120,7 +135,10 @@ func (s *Root) HandleMessage(
 		var request lsp.DefinitionRequest
 		err = json.Unmarshal(contents, &request)
 		if err != nil {
-			return fmt.Errorf("failed to unmarshal of definition request (textDocument/definition): %w", err)
+			return fmt.Errorf(
+				"failed to unmarshal of definition request (textDocument/definition): %w",
+				err,
+			)
 		}
 		response = s.State.Definition(
 			request.ID,
@@ -135,7 +153,10 @@ func (s *Root) HandleMessage(
 		var request lsp.CodeActionRequest
 		err = json.Unmarshal(contents, &request)
 		if err != nil {
-			return fmt.Errorf("failed to unmarshal of codeAction request (textDocument/codeAction): %w", err)
+			return fmt.Errorf(
+				"failed to unmarshal of codeAction request (textDocument/codeAction): %w",
+				err,
+			)
 		}
 		response = s.State.TextDocumentCodeAction(
 			request.ID,
@@ -149,7 +170,10 @@ func (s *Root) HandleMessage(
 		var request lsp.CompletionRequest
 		err = json.Unmarshal(contents, &request)
 		if err != nil {
-			return fmt.Errorf("failed to unmarshal completion request (textDocument/completion): %w", err)
+			return fmt.Errorf(
+				"failed to unmarshal completion request (textDocument/completion): %w",
+				err,
+			)
 		}
 		response = s.State.TextDocumentCompletion(
 			request.ID,
@@ -160,6 +184,8 @@ func (s *Root) HandleMessage(
 		if err != nil {
 			return fmt.Errorf("failed to write response: %w", err)
 		}
+	case "textDocument/didSave":
+		// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_didSave
 	case "shutdown":
 		var request lsp.ShutdownRequest
 		if err = json.Unmarshal([]byte(contents), &request); err != nil {
@@ -168,25 +194,39 @@ func (s *Root) HandleMessage(
 		response = lsp.ShutdownResponse{
 			Response: lsp.Response{
 				RPC: "2.0",
-				ID:  &request.ID,
+				ID:  request.ID,
 			},
 		}
 		err = s.writeResponse(response)
 		if err != nil {
 			return fmt.Errorf("write (shutdown) response failed: %w", err)
 		}
+	case "exit":
+		return nil
 	default:
 		return fmt.Errorf("unknown method: %s", method)
 	}
-	enc, err := rpc.EncodeMessage(response)
-	if err != nil {
-		return fmt.Errorf("failed to encode message: %w", err)
+	if response != nil {
+		enc, err := rpc.EncodeMessage(response)
+		if err != nil {
+			return fmt.Errorf("failed to encode message: %w", err)
+		}
+		s.Logger.Printf(
+			"Received message (%s) err: [%s] response: `%s` contents: %s",
+			method,
+			err,
+			strings.Replace(enc, "\n", " ", -1),
+			contents,
+		)
+		s.State.Logger.Printf(
+			"Received message (%s) err: [%s] response: `%s` contents: %s",
+			method,
+			err,
+			strings.Replace(enc, "\n", " ", -1),
+			contents,
+		)
+		return nil
 	}
-	s.Logger.Printf(
-		"Received message (%s) err: [%s] response: `%s` contents: %s", method, err, strings.Replace(enc, "\n", " ", -1), contents,
-	)
-	s.State.Logger.Printf(
-		"Received message (%s) err: [%s] response: `%s` contents: %s", method, err, strings.Replace(enc, "\n", " ", -1), contents,
-	)
+	s.Logger.Printf("no response for %s", method)
 	return nil
 }

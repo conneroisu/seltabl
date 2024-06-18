@@ -27,6 +27,9 @@ type ClientInfo struct {
 }
 
 // InitializeResponse is a struct for the initialize response.
+//
+// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#initialize
+//
 // It embeds the Response struct.
 type InitializeResponse struct {
 	Response
@@ -69,7 +72,7 @@ func NewInitializeResponse(id int) InitializeResponse {
 	return InitializeResponse{
 		Response: Response{
 			RPC: "2.0",
-			ID:  &id,
+			ID:  id,
 		},
 		Result: InitializeResult{
 			Capabilities: ServerCapabilities{
@@ -120,13 +123,13 @@ func NewInitializedParamsResponse(id int) InitializedParamsResponse {
 	return InitializedParamsResponse{
 		Response: Response{
 			RPC: "2.0",
-			ID:  &id,
+			ID:  id,
 		},
 		Params: InitializedParams{
 			// The process ID of the client for which the server has been started.
-			ProcessID: 1,
-			// The initialization options of the client in the request.
-			Trace: "off",
+			ProcessID: 0,
+			// Trace is the trace of the client in the request
+			Trace: "on",
 			// The capabilities provided by the client in the request.
 			Capabilities: ClientCapabilities{
 				TextDocumentSync:   1,

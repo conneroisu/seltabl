@@ -13,7 +13,7 @@ func (s *State) Definition(
 	return lsp.DefinitionResponse{
 		Response: lsp.Response{
 			RPC: "2.0",
-			ID:  &id,
+			ID:  id,
 		},
 		Result: lsp.Location{
 			URI: uri,

@@ -201,7 +201,13 @@ func TestSelectors(t *testing.T) {
 			if err != nil {
 				t.Fatalf("failed to create document: %v", err)
 			}
-			got := GetAllSelectors(doc)
+			got, err := GetAllSelectors(doc)
+			if err != nil {
+				if tt.wantErr {
+					return
+				}
+				t.Fatalf("failed to get selectors: %v", err)
+			}
 			for _, wa := range got {
 				t.Logf("\"%s\",", wa)
 			}

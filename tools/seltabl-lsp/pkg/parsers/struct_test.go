@@ -70,7 +70,13 @@ func TestParseStruct(t *testing.T) {
 	for i, field := range expected.Fields {
 		gotField := got.Fields[i]
 		if gotField.Name == field.Name {
-			assert.Equal(t, field.Type, gotField.Type, "field %s type not found", field.Name)
+			assert.Equal(
+				t,
+				field.Type,
+				gotField.Type,
+				"field %s type not found",
+				field.Name,
+			)
 		}
 		// check the line
 		if gotField.Line != field.Line {

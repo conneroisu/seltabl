@@ -9,80 +9,177 @@ import (
 	"context"
 )
 
-const deleteSelector = `-- name: DeleteSelector :exec
-DELETE FROM selectors
-WHERE id = ?
+const deleteHTMLByID = `-- name: DeleteHTMLByID :exec
+DELETE FROM
+    htmls
+WHERE
+    id = ?
 `
 
-type DeleteSelectorParams struct {
+type DeleteHTMLByIDParams struct {
 	ID int64 `db:"id" json:"id"`
 }
 
-// DeleteSelector
+// DeleteHTMLByID
 //
-//	DELETE FROM selectors
-//	WHERE id = ?
-func (q *Queries) DeleteSelector(ctx context.Context, arg DeleteSelectorParams) error {
-	_, err := q.db.ExecContext(ctx, deleteSelector, arg.ID)
+//	DELETE FROM
+//	    htmls
+//	WHERE
+//	    id = ?
+func (q *Queries) DeleteHTMLByID(ctx context.Context, arg DeleteHTMLByIDParams) error {
+	_, err := q.db.ExecContext(ctx, deleteHTMLByID, arg.ID)
 	return err
 }
 
-const insertSelector = `-- name: InsertSelector :one
-INSERT INTO selectors (selector, url, context)
-VALUES (?, ?, ?) RETURNING id, selector, url, context
+const deleteSelectorByID = `-- name: DeleteSelectorByID :exec
+DELETE FROM
+	selectors
+WHERE
+	id = ?
 `
 
-type InsertSelectorParams struct {
-	Selector string `db:"selector" json:"selector"`
-	Url      string `db:"url" json:"url"`
-	Context  string `db:"context" json:"context"`
+type DeleteSelectorByIDParams struct {
+	ID int64 `db:"id" json:"id"`
 }
 
-// InsertSelector
+// DeleteSelectorByID
 //
-//	INSERT INTO selectors (selector, url, context)
-//	VALUES (?, ?, ?) RETURNING id, selector, url, context
-func (q *Queries) InsertSelector(ctx context.Context, arg InsertSelectorParams) (Selector, error) {
-	row := q.db.QueryRowContext(ctx, insertSelector, arg.Selector, arg.Url, arg.Context)
+//	DELETE FROM
+//		selectors
+//	WHERE
+//		id = ?
+func (q *Queries) DeleteSelectorByID(ctx context.Context, arg DeleteSelectorByIDParams) error {
+	_, err := q.db.ExecContext(ctx, deleteSelectorByID, arg.ID)
+	return err
+}
+
+const deleteURL = `-- name: DeleteURL :exec
+DELETE FROM
+    urls
+WHERE
+    id = ?
+`
+
+type DeleteURLParams struct {
+	ID int64 `db:"id" json:"id"`
+}
+
+// DeleteURL
+//
+//	DELETE FROM
+//	    urls
+//	WHERE
+//	    id = ?
+func (q *Queries) DeleteURL(ctx context.Context, arg DeleteURLParams) error {
+	_, err := q.db.ExecContext(ctx, deleteURL, arg.ID)
+	return err
+}
+
+const getSelectorByID = `-- name: GetSelectorByID :one
+SELECT
+	id, value, url_id, context
+FROM
+	selectors
+WHERE
+	id = ?
+`
+
+type GetSelectorByIDParams struct {
+	ID int64 `db:"id" json:"id"`
+}
+
+// GetSelectorByID
+//
+//	SELECT
+//		id, value, url_id, context
+//	FROM
+//		selectors
+//	WHERE
+//		id = ?
+func (q *Queries) GetSelectorByID(ctx context.Context, arg GetSelectorByIDParams) (*Selector, error) {
+	row := q.db.QueryRowContext(ctx, getSelectorByID, arg.ID)
 	var i Selector
 	err := row.Scan(
 		&i.ID,
-		&i.Selector,
-		&i.Url,
+		&i.Value,
+		&i.UrlID,
 		&i.Context,
 	)
-	return i, err
+	return &i, err
 }
 
-const listSelectorsByURL = `-- name: ListSelectorsByURL :many
-SELECT id, selector, url, context from selectors WHERE url = ?
+const getSelectorByValue = `-- name: GetSelectorByValue :one
+SELECT
+	id, value, url_id, context
+FROM
+	selectors
+WHERE
+	value = ?
 `
 
-type ListSelectorsByURLParams struct {
-	Url string `db:"url" json:"url"`
+type GetSelectorByValueParams struct {
+	Value string `db:"value" json:"value"`
 }
 
-// ListSelectorsByURL
+// GetSelectorByValue
 //
-//	SELECT id, selector, url, context from selectors WHERE url = ?
-func (q *Queries) ListSelectorsByURL(ctx context.Context, arg ListSelectorsByURLParams) ([]Selector, error) {
-	rows, err := q.db.QueryContext(ctx, listSelectorsByURL, arg.Url)
+//	SELECT
+//		id, value, url_id, context
+//	FROM
+//		selectors
+//	WHERE
+//		value = ?
+func (q *Queries) GetSelectorByValue(ctx context.Context, arg GetSelectorByValueParams) (*Selector, error) {
+	row := q.db.QueryRowContext(ctx, getSelectorByValue, arg.Value)
+	var i Selector
+	err := row.Scan(
+		&i.ID,
+		&i.Value,
+		&i.UrlID,
+		&i.Context,
+	)
+	return &i, err
+}
+
+const getSelectorsByContext = `-- name: GetSelectorsByContext :many
+SELECT
+	id, value, url_id, context
+FROM
+	selectors
+WHERE
+	context = ?
+`
+
+type GetSelectorsByContextParams struct {
+	Context string `db:"context" json:"context"`
+}
+
+// GetSelectorsByContext
+//
+//	SELECT
+//		id, value, url_id, context
+//	FROM
+//		selectors
+//	WHERE
+//		context = ?
+func (q *Queries) GetSelectorsByContext(ctx context.Context, arg GetSelectorsByContextParams) ([]*Selector, error) {
+	rows, err := q.db.QueryContext(ctx, getSelectorsByContext, arg.Context)
 	if err != nil {
 		return nil, err
 	}
 	defer rows.Close()
-	var items []Selector
+	var items []*Selector
 	for rows.Next() {
 		var i Selector
 		if err := rows.Scan(
 			&i.ID,
-			&i.Selector,
-			&i.Url,
+			&i.Value,
+			&i.UrlID,
 			&i.Context,
 		); err != nil {
 			return nil, err
 		}
-		items = append(items, i)
+		items = append(items, &i)
 	}
 	if err := rows.Close(); err != nil {
 		return nil, err
@@ -93,58 +190,470 @@ func (q *Queries) ListSelectorsByURL(ctx context.Context, arg ListSelectorsByURL
 	return items, nil
 }
 
-const updateSelector = `-- name: UpdateSelector :exec
-UPDATE selectors
-SET selector = ?, url = ?, context = ?
-WHERE id = ?
+const getSelectorsByURL = `-- name: GetSelectorsByURL :many
+SELECT
+	selectors.id, selectors.value, selectors.url_id, selectors.context
+FROM
+	selectors
+	JOIN urls ON urls.id = selectors.url_id
+WHERE
+	urls.value = ?
 `
 
-type UpdateSelectorParams struct {
-	Selector string `db:"selector" json:"selector"`
-	Url      string `db:"url" json:"url"`
-	Context  string `db:"context" json:"context"`
-	ID       int64  `db:"id" json:"id"`
+type GetSelectorsByURLParams struct {
+	Value string `db:"value" json:"value"`
 }
 
-// UpdateSelector
+// GetSelectorsByURL
 //
-//	UPDATE selectors
-//	SET selector = ?, url = ?, context = ?
-//	WHERE id = ?
-func (q *Queries) UpdateSelector(ctx context.Context, arg UpdateSelectorParams) error {
-	_, err := q.db.ExecContext(ctx, updateSelector,
-		arg.Selector,
-		arg.Url,
+//	SELECT
+//		selectors.id, selectors.value, selectors.url_id, selectors.context
+//	FROM
+//		selectors
+//		JOIN urls ON urls.id = selectors.url_id
+//	WHERE
+//		urls.value = ?
+func (q *Queries) GetSelectorsByURL(ctx context.Context, arg GetSelectorsByURLParams) ([]*Selector, error) {
+	rows, err := q.db.QueryContext(ctx, getSelectorsByURL, arg.Value)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []*Selector
+	for rows.Next() {
+		var i Selector
+		if err := rows.Scan(
+			&i.ID,
+			&i.Value,
+			&i.UrlID,
+			&i.Context,
+		); err != nil {
+			return nil, err
+		}
+		items = append(items, &i)
+	}
+	if err := rows.Close(); err != nil {
+		return nil, err
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
+const getURLByValue = `-- name: GetURLByValue :one
+SELECT
+    id, value, html_id
+FROM
+    urls
+WHERE
+    value = ?
+`
+
+type GetURLByValueParams struct {
+	Value string `db:"value" json:"value"`
+}
+
+// GetURLByValue
+//
+//	SELECT
+//	    id, value, html_id
+//	FROM
+//	    urls
+//	WHERE
+//	    value = ?
+func (q *Queries) GetURLByValue(ctx context.Context, arg GetURLByValueParams) (*Url, error) {
+	row := q.db.QueryRowContext(ctx, getURLByValue, arg.Value)
+	var i Url
+	err := row.Scan(&i.ID, &i.Value, &i.HtmlID)
+	return &i, err
+}
+
+const insertHTML = `-- name: InsertHTML :one
+INSERT INTO
+    htmls (value)
+VALUES
+    (?) RETURNING id, value, updated_at, created_at
+`
+
+type InsertHTMLParams struct {
+	Value string `db:"value" json:"value"`
+}
+
+// InsertHTML
+//
+//	INSERT INTO
+//	    htmls (value)
+//	VALUES
+//	    (?) RETURNING id, value, updated_at, created_at
+func (q *Queries) InsertHTML(ctx context.Context, arg InsertHTMLParams) (*Html, error) {
+	row := q.db.QueryRowContext(ctx, insertHTML, arg.Value)
+	var i Html
+	err := row.Scan(
+		&i.ID,
+		&i.Value,
+		&i.UpdatedAt,
+		&i.CreatedAt,
+	)
+	return &i, err
+}
+
+const insertSelector = `-- name: InsertSelector :one
+
+/*
+ ** selectors.sql
+ ** Description: This file contains the SQLite queries for the selectors table
+ ** Dialect: sqlite3
+ */
+INSERT INTO
+	selectors (value, url_id, context)
+VALUES
+	(?, ?, ?) RETURNING id, value, url_id, context
+`
+
+type InsertSelectorParams struct {
+	Value   string `db:"value" json:"value"`
+	UrlID   int64  `db:"url_id" json:"url_id"`
+	Context string `db:"context" json:"context"`
+}
+
+// ****************************************************************************
+// ****************************************************************************
+//
+//	/*
+//	 ** selectors.sql
+//	 ** Description: This file contains the SQLite queries for the selectors table
+//	 ** Dialect: sqlite3
+//	 */
+//	INSERT INTO
+//		selectors (value, url_id, context)
+//	VALUES
+//		(?, ?, ?) RETURNING id, value, url_id, context
+func (q *Queries) InsertSelector(ctx context.Context, arg InsertSelectorParams) (*Selector, error) {
+	row := q.db.QueryRowContext(ctx, insertSelector, arg.Value, arg.UrlID, arg.Context)
+	var i Selector
+	err := row.Scan(
+		&i.ID,
+		&i.Value,
+		&i.UrlID,
+		&i.Context,
+	)
+	return &i, err
+}
+
+const insertURL = `-- name: InsertURL :one
+INSERT INTO
+    urls (value, html_id)
+VALUES
+    (?, ?) RETURNING id, value, html_id
+`
+
+type InsertURLParams struct {
+	Value  string `db:"value" json:"value"`
+	HtmlID int64  `db:"html_id" json:"html_id"`
+}
+
+// InsertURL
+//
+//	INSERT INTO
+//	    urls (value, html_id)
+//	VALUES
+//	    (?, ?) RETURNING id, value, html_id
+func (q *Queries) InsertURL(ctx context.Context, arg InsertURLParams) (*Url, error) {
+	row := q.db.QueryRowContext(ctx, insertURL, arg.Value, arg.HtmlID)
+	var i Url
+	err := row.Scan(&i.ID, &i.Value, &i.HtmlID)
+	return &i, err
+}
+
+const listAll = `-- name: ListAll :many
+SELECT
+    urls.id,
+    urls.value,
+    htmls.value as html,
+    selectors.value as selector
+FROM
+    urls
+    JOIN htmls ON urls.html_id = htmls.id
+    JOIN selectors ON urls.id = selectors.url_id
+`
+
+type ListAllRow struct {
+	ID       int64  `db:"id" json:"id"`
+	Value    string `db:"value" json:"value"`
+	Html     string `db:"html" json:"html"`
+	Selector string `db:"selector" json:"selector"`
+}
+
+// ListAll
+//
+//	SELECT
+//	    urls.id,
+//	    urls.value,
+//	    htmls.value as html,
+//	    selectors.value as selector
+//	FROM
+//	    urls
+//	    JOIN htmls ON urls.html_id = htmls.id
+//	    JOIN selectors ON urls.id = selectors.url_id
+func (q *Queries) ListAll(ctx context.Context) ([]*ListAllRow, error) {
+	rows, err := q.db.QueryContext(ctx, listAll)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []*ListAllRow
+	for rows.Next() {
+		var i ListAllRow
+		if err := rows.Scan(
+			&i.ID,
+			&i.Value,
+			&i.Html,
+			&i.Selector,
+		); err != nil {
+			return nil, err
+		}
+		items = append(items, &i)
+	}
+	if err := rows.Close(); err != nil {
+		return nil, err
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
+const listHTMLs = `-- name: ListHTMLs :many
+/* 
+ ** File: htmls.sql
+ ** Description: This file contains the SQLite queries for the htmls table
+ ** Dialect: sqlite3
+ */
+SELECT
+    id, value, updated_at, created_at
+from
+    htmls
+`
+
+// ****************************************************************************
+//
+//	/*
+//	 ** File: htmls.sql
+//	 ** Description: This file contains the SQLite queries for the htmls table
+//	 ** Dialect: sqlite3
+//	 */
+//	SELECT
+//	    id, value, updated_at, created_at
+//	from
+//	    htmls
+func (q *Queries) ListHTMLs(ctx context.Context) ([]*Html, error) {
+	rows, err := q.db.QueryContext(ctx, listHTMLs)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []*Html
+	for rows.Next() {
+		var i Html
+		if err := rows.Scan(
+			&i.ID,
+			&i.Value,
+			&i.UpdatedAt,
+			&i.CreatedAt,
+		); err != nil {
+			return nil, err
+		}
+		items = append(items, &i)
+	}
+	if err := rows.Close(); err != nil {
+		return nil, err
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
+const listURLs = `-- name: ListURLs :many
+
+/*
+ ** File: urls.sql
+ ** Description: This file contains the SQLite queries for the urls table
+ ** Dialect: sqlite3
+ */
+SELECT
+    id, value, html_id
+from
+    urls
+`
+
+// ****************************************************************************
+// ****************************************************************************
+//
+//	/*
+//	 ** File: urls.sql
+//	 ** Description: This file contains the SQLite queries for the urls table
+//	 ** Dialect: sqlite3
+//	 */
+//	SELECT
+//	    id, value, html_id
+//	from
+//	    urls
+func (q *Queries) ListURLs(ctx context.Context) ([]*Url, error) {
+	rows, err := q.db.QueryContext(ctx, listURLs)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []*Url
+	for rows.Next() {
+		var i Url
+		if err := rows.Scan(&i.ID, &i.Value, &i.HtmlID); err != nil {
+			return nil, err
+		}
+		items = append(items, &i)
+	}
+	if err := rows.Close(); err != nil {
+		return nil, err
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
+const updateHTMLByID = `-- name: UpdateHTMLByID :one
+UPDATE
+    htmls
+SET
+    value = ?
+WHERE
+    id = ? RETURNING id, value, updated_at, created_at
+`
+
+type UpdateHTMLByIDParams struct {
+	Value string `db:"value" json:"value"`
+	ID    int64  `db:"id" json:"id"`
+}
+
+// UpdateHTMLByID
+//
+//	UPDATE
+//	    htmls
+//	SET
+//	    value = ?
+//	WHERE
+//	    id = ? RETURNING id, value, updated_at, created_at
+func (q *Queries) UpdateHTMLByID(ctx context.Context, arg UpdateHTMLByIDParams) (*Html, error) {
+	row := q.db.QueryRowContext(ctx, updateHTMLByID, arg.Value, arg.ID)
+	var i Html
+	err := row.Scan(
+		&i.ID,
+		&i.Value,
+		&i.UpdatedAt,
+		&i.CreatedAt,
+	)
+	return &i, err
+}
+
+const updateSelectorByID = `-- name: UpdateSelectorByID :exec
+UPDATE
+	selectors
+SET
+	value = ?,
+	url_id = ?,
+	context = ?
+WHERE
+	id = ?
+`
+
+type UpdateSelectorByIDParams struct {
+	Value   string `db:"value" json:"value"`
+	UrlID   int64  `db:"url_id" json:"url_id"`
+	Context string `db:"context" json:"context"`
+	ID      int64  `db:"id" json:"id"`
+}
+
+// UpdateSelectorByID
+//
+//	UPDATE
+//		selectors
+//	SET
+//		value = ?,
+//		url_id = ?,
+//		context = ?
+//	WHERE
+//		id = ?
+func (q *Queries) UpdateSelectorByID(ctx context.Context, arg UpdateSelectorByIDParams) error {
+	_, err := q.db.ExecContext(ctx, updateSelectorByID,
+		arg.Value,
+		arg.UrlID,
 		arg.Context,
 		arg.ID,
 	)
 	return err
 }
 
-const updateSelectorBySelector = `-- name: UpdateSelectorBySelector :exec
-UPDATE selectors
-SET selector = ?, url = ?, context = ?
-WHERE selector = ?
+const updateURL = `-- name: UpdateURL :exec
+UPDATE
+    urls
+SET
+    value = ?,
+    html_id = ?
+WHERE
+    id = ?
 `
 
-type UpdateSelectorBySelectorParams struct {
-	Selector   string `db:"selector" json:"selector"`
-	Url        string `db:"url" json:"url"`
-	Context    string `db:"context" json:"context"`
-	Selector_2 string `db:"selector_2" json:"selector_2"`
+type UpdateURLParams struct {
+	Value  string `db:"value" json:"value"`
+	HtmlID int64  `db:"html_id" json:"html_id"`
+	ID     int64  `db:"id" json:"id"`
 }
 
-// UpdateSelectorBySelector
+// UpdateURL
 //
-//	UPDATE selectors
-//	SET selector = ?, url = ?, context = ?
-//	WHERE selector = ?
-func (q *Queries) UpdateSelectorBySelector(ctx context.Context, arg UpdateSelectorBySelectorParams) error {
-	_, err := q.db.ExecContext(ctx, updateSelectorBySelector,
-		arg.Selector,
-		arg.Url,
-		arg.Context,
-		arg.Selector_2,
-	)
+//	UPDATE
+//	    urls
+//	SET
+//	    value = ?,
+//	    html_id = ?
+//	WHERE
+//	    id = ?
+func (q *Queries) UpdateURL(ctx context.Context, arg UpdateURLParams) error {
+	_, err := q.db.ExecContext(ctx, updateURL, arg.Value, arg.HtmlID, arg.ID)
 	return err
+}
+
+const upsertURL = `-- name: UpsertURL :one
+INSERT INTO
+    urls (value, html_id)
+VALUES
+    (?, ?)
+ON CONFLICT (value)
+DO UPDATE
+    SET
+        html_id = excluded.html_id RETURNING id, value, html_id
+`
+
+type UpsertURLParams struct {
+	Value  string `db:"value" json:"value"`
+	HtmlID int64  `db:"html_id" json:"html_id"`
+}
+
+// UpsertURL
+//
+//	INSERT INTO
+//	    urls (value, html_id)
+//	VALUES
+//	    (?, ?)
+//	ON CONFLICT (value)
+//	DO UPDATE
+//	    SET
+//	        html_id = excluded.html_id RETURNING id, value, html_id
+func (q *Queries) UpsertURL(ctx context.Context, arg UpsertURLParams) (*Url, error) {
+	row := q.db.QueryRowContext(ctx, upsertURL, arg.Value, arg.HtmlID)
+	var i Url
+	err := row.Scan(&i.ID, &i.Value, &i.HtmlID)
+	return &i, err
 }

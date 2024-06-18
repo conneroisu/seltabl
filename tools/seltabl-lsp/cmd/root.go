@@ -11,7 +11,6 @@ import (
 	"github.com/conneroisu/seltabl/tools/seltabl-lsp/pkg/lsp"
 	"github.com/conneroisu/seltabl/tools/seltabl-lsp/pkg/rpc"
 	"github.com/spf13/cobra"
-	"github.com/uptrace/bun"
 )
 
 // ReturnCmd returns the command for the root
@@ -23,29 +22,40 @@ func (s *Root) ReturnCmd() *cobra.Command {
 
 Provides completions, hovers, and code actions for seltabl defined structs.
 `,
-		RunE: func(_ *cobra.Command, _ []string) (err error) {
+		Run: func(_ *cobra.Command, _ []string) {
+			s.State = analysis.NewState()
 			s.Logger = getLogger("./seltabl.log")
 			s.State.Logger = getLogger("./state.log")
 			scanner := bufio.NewScanner(os.Stdin)
 			scanner.Split(rpc.Split)
-			analysis.NewState(os.Getenv)
-			go func() {
-				if r := recover(); r != nil {
-					s.Logger.Printf("Recovered: %v\n", r)
-					s.State.Logger.Printf("Recovered: %v\n", r)
-				}
-			}()
 			for scanner.Scan() {
-				msg := scanner.Bytes()
-				err = s.HandleMessage(msg)
-				if err != nil {
-					s.Logger.Printf("failed to handle message: %s\n", err)
-					s.State.Logger.Printf("failed to handle message: %s\n", err)
-					continue
-				}
+				s.handle(scanner)
 			}
-			return nil
 		},
+	}
+}
+
+// handle handles a message from the client to the language server.
+func (s *Root) handle(scanner *bufio.Scanner) {
+	defer func() {
+		out := os.Stderr
+		if err := scanner.Err(); err != nil {
+			fmt.Fprintf(out, "scanner error: %v\n", err)
+			s.Logger.Printf("scanner error: %v\n", err)
+			s.State.Logger.Printf("scanner error: %v\n", err)
+		}
+	}()
+	msg := scanner.Bytes()
+	out := os.Stderr
+	err := s.HandleMessage(msg)
+	if err != nil {
+		fmt.Fprintf(out, "failed to handle message: %s\n", err)
+		s.Logger.Printf("failed to handle message: %s\n", err)
+		s.State.Logger.Printf(
+			"failed to handle message: %s\n",
+			err,
+		)
+		return
 	}
 }
 
@@ -81,8 +91,6 @@ type Root struct {
 	Logger *log.Logger
 	// Writer is the Writer for the server
 	Writer io.Writer
-	// Database is the database for the server
-	Database *bun.DB
 }
 
 // writeResponse writes a message to the writer

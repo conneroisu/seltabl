@@ -37,7 +37,7 @@ func TestSetStructField(t *testing.T) {
 		structPtr *TestStruct
 		fieldName string
 		cellHTML  string
-		selector  SelectorInferface
+		selector  SelectorI
 		wantErr   bool
 		expected  interface{}
 	}{
@@ -442,7 +442,7 @@ func BenchSetStructField(t *testing.B) {
 		structPtr *BenchStruct
 		fieldName string
 		cellHTML  string
-		selector  SelectorInferface
+		selector  SelectorI
 		wantErr   bool
 		expected  interface{}
 	}{

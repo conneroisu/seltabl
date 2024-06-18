@@ -3,7 +3,7 @@ package analysis
 import (
 	"strings"
 
-	"github.com/conneroisu/seltabl/tools/pkg/lsp"
+	"github.com/conneroisu/seltabl/tools/seltabl-lsp/pkg/lsp"
 )
 
 // TextDocumentCodeAction returns the code actions for a given text document.

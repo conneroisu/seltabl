@@ -1,7 +1,7 @@
 package analysis
 
 import (
-	"github.com/conneroisu/seltabl/tools/pkg/lsp"
+	"github.com/conneroisu/seltabl/tools/seltabl-lsp/pkg/lsp"
 )
 
 // Hover returns a hover response for the given uri and position

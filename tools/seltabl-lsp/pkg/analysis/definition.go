@@ -1,6 +1,6 @@
 package analysis
 
-import "github.com/conneroisu/seltabl/tools/pkg/lsp"
+import "github.com/conneroisu/seltabl/tools/seltabl-lsp/pkg/lsp"
 
 // Definition returns the definition.
 func (s *State) Definition(

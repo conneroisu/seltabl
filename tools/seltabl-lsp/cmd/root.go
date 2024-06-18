@@ -7,9 +7,9 @@ import (
 	"log"
 	"os"
 
-	"github.com/conneroisu/seltabl/tools/pkg/analysis"
-	"github.com/conneroisu/seltabl/tools/pkg/lsp"
-	"github.com/conneroisu/seltabl/tools/pkg/rpc"
+	"github.com/conneroisu/seltabl/tools/seltabl-lsp/pkg/analysis"
+	"github.com/conneroisu/seltabl/tools/seltabl-lsp/pkg/lsp"
+	"github.com/conneroisu/seltabl/tools/seltabl-lsp/pkg/rpc"
 	"github.com/spf13/cobra"
 	"github.com/uptrace/bun"
 )
@@ -23,19 +23,24 @@ func (s *Root) ReturnCmd() *cobra.Command {
 
 Provides completions, hovers, and code actions for seltabl defined structs.
 `,
-		RunE: func(_ *cobra.Command, _ []string) error {
+		RunE: func(_ *cobra.Command, _ []string) (err error) {
 			s.Logger = getLogger("./seltabl.log")
-			s.Logger.Println("Starting the server...")
+			s.State.Logger = getLogger("./state.log")
 			scanner := bufio.NewScanner(os.Stdin)
 			scanner.Split(rpc.Split)
 			analysis.NewState(os.Getenv)
-
+			go func() {
+				if r := recover(); r != nil {
+					s.Logger.Printf("Recovered: %v\n", r)
+					s.State.Logger.Printf("Recovered: %v\n", r)
+				}
+			}()
 			for scanner.Scan() {
 				msg := scanner.Bytes()
-				s.Logger.Printf("Received message: %s\n", msg)
-				err := s.HandleMessage(msg)
+				err = s.HandleMessage(msg)
 				if err != nil {
 					s.Logger.Printf("failed to handle message: %s\n", err)
+					s.State.Logger.Printf("failed to handle message: %s\n", err)
 					continue
 				}
 			}

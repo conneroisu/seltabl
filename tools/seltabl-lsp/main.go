@@ -27,7 +27,7 @@ func main() {
 			0666,
 		)
 		if err != nil {
-			fmt.Println(err)
+			rs.Logger.Println(err)
 			os.Exit(1)
 		}
 		defer file.Close()
@@ -35,11 +35,11 @@ func main() {
 		if err != nil {
 			_, err = file.WriteString(err.Error())
 			if err != nil {
-				fmt.Println(err)
+				rs.Logger.Println(err)
 				os.Exit(1)
 			}
 		}
-		fmt.Fprintf(file, "%s\n", err)
+		rs.Logger.Println(err)
 		os.Exit(1)
 	}
 

@@ -6,7 +6,7 @@ import (
 
 	_ "embed"
 
-	"github.com/conneroisu/seltabl/tools/data/generic"
+	"github.com/conneroisu/seltabl/tools/seltabl-lsp/data/generic"
 )
 
 // New creates a new queries type

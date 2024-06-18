@@ -1,7 +1,7 @@
 package analysis
 
 import (
-	"github.com/conneroisu/seltabl/tools/pkg/lsp"
+	"github.com/conneroisu/seltabl/tools/seltabl-lsp/pkg/lsp"
 )
 
 var (
@@ -58,8 +58,11 @@ func (s *State) TextDocumentCompletion(
 	document *lsp.TextDocumentIdentifier,
 	_ *lsp.Position,
 ) lsp.CompletionResponse {
-	_ = s.Documents[document.URI]
-	selectors := s.Selectors[document.URI]
+	text := s.Documents[document.URI]
+	urls, _, err := s.getUrlsAndIgnores(text)
+	if err != nil {
+		s.Logger.Printf("failed to get urls and ignores: %s\n", err)
+	}
 	items := []lsp.CompletionItem{
 		{
 			Label:         "Neovim (BTW)",
@@ -67,12 +70,15 @@ func (s *State) TextDocumentCompletion(
 			Documentation: "Fun to watch in videos. Don't forget to like & subscribe to streamers using it :)",
 		},
 	}
-	for _, selector := range selectors {
-		items = append(items, lsp.CompletionItem{
-			Label:         selector.Selector,
-			Detail:        "from: " + selector.URL.URL,
-			Documentation: "A selector for the " + selector.Selector,
-		})
+	for _, url := range urls {
+		selectors := s.Selectors[url]
+		for _, selector := range selectors {
+			items = append(items, lsp.CompletionItem{
+				Label:         selector.Selector,
+				Detail:        "from: " + selector.URL.URL,
+				Documentation: "A selector for the " + selector.Selector,
+			})
+		}
 	}
 	response := lsp.CompletionResponse{
 		Response: lsp.Response{

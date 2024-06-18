@@ -5,9 +5,9 @@ import (
 	"log"
 	"os"
 
-	"github.com/conneroisu/seltabl/tools/data"
-	"github.com/conneroisu/seltabl/tools/pkg/lsp"
-	"github.com/conneroisu/seltabl/tools/pkg/parsers"
+	"github.com/conneroisu/seltabl/tools/seltabl-lsp/data"
+	"github.com/conneroisu/seltabl/tools/seltabl-lsp/pkg/lsp"
+	"github.com/conneroisu/seltabl/tools/seltabl-lsp/pkg/parsers"
 	"github.com/uptrace/bun"
 	"github.com/uptrace/bun/dialect/sqlitedialect"
 )

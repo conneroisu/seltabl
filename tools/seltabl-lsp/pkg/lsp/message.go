@@ -3,7 +3,7 @@ package lsp
 import (
 	"fmt"
 
-	"github.com/conneroisu/seltabl/tools/pkg/rpc"
+	"github.com/conneroisu/seltabl/tools/seltabl-lsp/pkg/rpc"
 )
 
 // Request is the request to a LSP

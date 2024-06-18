@@ -80,7 +80,7 @@ func NewInitializeResponse(id int) InitializeResponse {
 				CompletionProvider: map[string]any{},
 			},
 			ServerInfo: ServerInfo{
-				Name:    "educationalsp",
+				Name:    "seltabl_lsp",
 				Version: "0.0.0.0.0.0-beta1.final",
 			},
 		},

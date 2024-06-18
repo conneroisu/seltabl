@@ -3,7 +3,7 @@ package analysis
 import (
 	"strings"
 
-	"github.com/conneroisu/seltabl/tools/pkg/lsp"
+	"github.com/conneroisu/seltabl/tools/seltabl-lsp/pkg/lsp"
 )
 
 // getDiagnosticsForFile returns diagnostics for a given file

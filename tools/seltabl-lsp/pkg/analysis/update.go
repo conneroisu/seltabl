@@ -1,6 +1,6 @@
 package analysis
 
-import "github.com/conneroisu/seltabl/tools/pkg/lsp"
+import "github.com/conneroisu/seltabl/tools/seltabl-lsp/pkg/lsp"
 
 // UpdateDocument updates the state with the given document
 func (s *State) UpdateDocument(uri, text string) []lsp.Diagnostic {

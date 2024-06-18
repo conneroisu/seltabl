@@ -3,10 +3,12 @@ package cmd
 import (
 	"encoding/json"
 	"fmt"
+	"os"
 	"strconv"
+	"strings"
 
-	"github.com/conneroisu/seltabl/tools/pkg/lsp"
-	"github.com/conneroisu/seltabl/tools/pkg/rpc"
+	"github.com/conneroisu/seltabl/tools/seltabl-lsp/pkg/lsp"
+	"github.com/conneroisu/seltabl/tools/seltabl-lsp/pkg/rpc"
 )
 
 // HandleMessage handles a message sent from the client to the language server.
@@ -20,7 +22,17 @@ func (s *Root) HandleMessage(
 	if err != nil {
 		return fmt.Errorf("failed to decode message: %w", err)
 	}
-	s.Logger.Printf("Received message (%s): %s\n", method, contents)
+
+	defer func() {
+		if r := recover(); r != nil {
+			out := os.Stderr
+			_, err := out.Write([]byte(fmt.Sprintf("failed to write response: %s\n", r)))
+			if err != nil {
+				s.Logger.Fatal(fmt.Sprintf("failed to write response: %s\n", r))
+				s.State.Logger.Fatal(fmt.Sprintf("failed to write response: %s\n", r))
+			}
+		}
+	}()
 	switch method {
 	case "initialize":
 		var request lsp.InitializeRequest
@@ -181,8 +193,14 @@ func (s *Root) HandleMessage(
 		return fmt.Errorf("unknown method: %s", method)
 	}
 	enc, err := rpc.EncodeMessage(response)
+	if err != nil {
+		return fmt.Errorf("failed to encode message: %w", err)
+	}
 	s.Logger.Printf(
-		"Received message (%s) err: [%s] response: `%s` contents: %s", method, err, enc, contents,
+		"Received message (%s) err: [%s] response: `%s` contents: %s", method, err, strings.Replace(enc, "\n", " ", -1), contents,
+	)
+	s.State.Logger.Printf(
+		"Received message (%s) err: [%s] response: `%s` contents: %s", method, err, strings.Replace(enc, "\n", " ", -1), contents,
 	)
 	return nil
 }

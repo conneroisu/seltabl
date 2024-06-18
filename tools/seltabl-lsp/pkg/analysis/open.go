@@ -1,6 +1,6 @@
 package analysis
 
-import "github.com/conneroisu/seltabl/tools/pkg/lsp"
+import "github.com/conneroisu/seltabl/tools/seltabl-lsp/pkg/lsp"
 
 // OpenDocument opens a document in the state and returns any diagnostics for the document
 func (s *State) OpenDocument(uri, text string) []lsp.Diagnostic {

@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/conneroisu/seltabl/tools/pkg/parsers"
+	"github.com/conneroisu/seltabl/tools/seltabl-lsp/pkg/parsers"
 )
 
 func (s *State) getUrlsAndIgnores(src string) ([]string, []string, error) {

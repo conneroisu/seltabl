@@ -2,11 +2,15 @@ package rpc
 
 import (
 	"bytes"
+	"fmt"
 	"strconv"
 )
 
 // Split splits a byte slice into a header and content
-func Split(data []byte, _ bool) (advance int, token []byte, err error) {
+func Split(data []byte, _ bool) (int, []byte, error) {
+	var err error
+	var advance int
+	var token []byte
 	header, content, found := bytes.Cut(data, []byte{'\r', '\n', '\r', '\n'})
 	if !found {
 		return 0, nil, nil
@@ -15,11 +19,12 @@ func Split(data []byte, _ bool) (advance int, token []byte, err error) {
 	contentLengthBytes := header[len("Content-Length: "):]
 	contentLength, err := strconv.Atoi(string(contentLengthBytes))
 	if err != nil {
-		return 0, nil, err
+		return 0, nil, fmt.Errorf("failed to parse content length: %w", err)
 	}
 	if len(content) < contentLength {
 		return 0, nil, nil
 	}
-	totalLength := len(header) + 4 + contentLength
-	return totalLength, data[:totalLength], nil
+	advance = len(header) + 4 + contentLength
+	token = data[:advance]
+	return advance, token, nil
 }

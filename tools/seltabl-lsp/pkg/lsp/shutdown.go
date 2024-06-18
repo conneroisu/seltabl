@@ -2,7 +2,7 @@ package lsp
 
 // ShutdownRequest is the request
 type ShutdownRequest struct {
-	ID *string `json:"id,omitempty"`
+	Request
 }
 
 // ShutdownResponse is the response to a ShutdownRequest.

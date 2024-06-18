@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
-	"strconv"
 	"strings"
 
 	"github.com/conneroisu/seltabl/tools/seltabl-lsp/pkg/lsp"
@@ -22,11 +21,10 @@ func (s *Root) HandleMessage(
 	if err != nil {
 		return fmt.Errorf("failed to decode message: %w", err)
 	}
-
 	defer func() {
 		if r := recover(); r != nil {
 			out := os.Stderr
-			_, err := out.Write([]byte(fmt.Sprintf("failed to write response: %s\n", r)))
+			_, err := out.Write([]byte(fmt.Sprintf("failed to write response: %s\n response: %v\n", r, response)))
 			if err != nil {
 				s.Logger.Fatal(fmt.Sprintf("failed to write response: %s\n", r))
 				s.State.Logger.Fatal(fmt.Sprintf("failed to write response: %s\n", r))
@@ -177,12 +175,10 @@ func (s *Root) HandleMessage(
 		if err = json.Unmarshal([]byte(contents), &request); err != nil {
 			return fmt.Errorf("decode (shutdown) request failed: %w", err)
 		}
-		in, err := strconv.ParseInt(*request.ID, 10, 64)
-		input := int(in)
 		response = lsp.ShutdownResponse{
 			Response: lsp.Response{
 				RPC: "2.0",
-				ID:  &input,
+				ID:  &request.ID,
 			},
 		}
 		err = s.writeResponse(response)

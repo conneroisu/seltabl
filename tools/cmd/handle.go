@@ -163,9 +163,8 @@ func (s *Root) HandleMessage(
 		return fmt.Errorf("unknown method: %s", method)
 	}
 	enc, err := rpc.EncodeMessage(response)
-	s.Logger.Println(
-		fmt.Sprintf(
-			"Received message (%s) err: [%s] response: `%s` contents: %s", method, err, enc, contents,
-		))
+	s.Logger.Printf(
+		"Received message (%s) err: [%s] response: `%s` contents: %s", method, err, enc, contents,
+	)
 	return nil
 }

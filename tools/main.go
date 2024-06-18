@@ -31,7 +31,11 @@ func main() {
 		defer file.Close()
 		_, err = fmt.Println(err)
 		if err != nil {
-			file.WriteString(err.Error())
+			_, err = file.WriteString(err.Error())
+			if err != nil {
+				fmt.Println(err)
+				os.Exit(1)
+			}
 		}
 		fmt.Fprintf(file, "%s\n", err)
 		os.Exit(1)

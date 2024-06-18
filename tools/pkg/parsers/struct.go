@@ -73,8 +73,8 @@ type Inspector func(n ast.Node) bool
 func ParseStruct(ctx context.Context, src []byte) (*Structure, error) {
 	var structure Structure
 	var err error
-	eg := &errgroup.Group{}
-	eg, ctx = errgroup.WithContext(ctx)
+	var eg *errgroup.Group
+	eg, _ = errgroup.WithContext(ctx)
 	fset := token.NewFileSet()
 	file, err := parser.ParseFile(fset, "", src, parser.ParseComments)
 	if err != nil {

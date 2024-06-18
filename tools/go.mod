@@ -5,7 +5,6 @@ go 1.22.3
 require (
 	github.com/PuerkitoBio/goquery v1.9.2
 	github.com/bytedance/sonic v1.11.8
-	github.com/sourcegraph/conc v0.3.0
 	github.com/spf13/cobra v1.8.0
 	github.com/stretchr/testify v1.9.0
 	github.com/uptrace/bun v1.2.1

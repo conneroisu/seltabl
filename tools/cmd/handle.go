@@ -1,9 +1,9 @@
 package cmd
 
 import (
+	"encoding/json"
 	"fmt"
 
-	"github.com/bytedance/sonic"
 	"github.com/conneroisu/seltabl/tools/pkg/lsp"
 	"github.com/conneroisu/seltabl/tools/pkg/rpc"
 )
@@ -23,7 +23,7 @@ func (s *Root) HandleMessage(
 	switch method {
 	case "initialize":
 		var request lsp.InitializeRequest
-		if err = sonic.Unmarshal([]byte(contents), &request); err != nil {
+		if err = json.Unmarshal([]byte(contents), &request); err != nil {
 			return fmt.Errorf("decode initialize request (initialize) failed: %w", err)
 		}
 		response = lsp.NewInitializeResponse(request.ID)
@@ -33,7 +33,7 @@ func (s *Root) HandleMessage(
 		}
 	case "initialized":
 		var request lsp.InitializedParamsRequest
-		if err = sonic.Unmarshal([]byte(contents), &request); err != nil {
+		if err = json.Unmarshal([]byte(contents), &request); err != nil {
 			return fmt.Errorf("decode (initialized) request failed: %w", err)
 		}
 		response = lsp.NewInitializedParamsResponse(*request.ID)
@@ -43,7 +43,7 @@ func (s *Root) HandleMessage(
 		}
 	case "textDocument/didClose":
 		var request lsp.DidCloseTextDocumentParamsNotification
-		if err = sonic.Unmarshal([]byte(contents), &request); err != nil {
+		if err = json.Unmarshal([]byte(contents), &request); err != nil {
 			return fmt.Errorf("decode (didClose) request failed: %w", err)
 		}
 		response := lsp.NewDidCloseTextDocumentParamsNotification()
@@ -53,7 +53,7 @@ func (s *Root) HandleMessage(
 		}
 	case "textDocument/didOpen":
 		var request lsp.DidOpenTextDocumentNotification
-		if err = sonic.Unmarshal(contents, &request); err != nil {
+		if err = json.Unmarshal(contents, &request); err != nil {
 			return fmt.Errorf("decode (textDocument/didOpen) request failed: %w", err)
 		}
 		diagnostics := s.State.OpenDocument(
@@ -76,7 +76,7 @@ func (s *Root) HandleMessage(
 		}
 	case "textDocument/didChange":
 		var request lsp.TextDocumentDidChangeNotification
-		err = sonic.Unmarshal(contents, &request)
+		err = json.Unmarshal(contents, &request)
 		if err != nil {
 			return fmt.Errorf("decode (textDocument/didChange) request failed: %w", err)
 		}
@@ -102,7 +102,7 @@ func (s *Root) HandleMessage(
 		}
 	case "textDocument/hover":
 		var request lsp.HoverRequest
-		err = sonic.Unmarshal(contents, &request)
+		err = json.Unmarshal(contents, &request)
 		if err != nil {
 			return fmt.Errorf("failed to unmarshal of hover request (): %w", err)
 		}
@@ -117,7 +117,7 @@ func (s *Root) HandleMessage(
 		}
 	case "textDocument/definition":
 		var request lsp.DefinitionRequest
-		err = sonic.Unmarshal(contents, &request)
+		err = json.Unmarshal(contents, &request)
 		if err != nil {
 			return fmt.Errorf("failed to unmarshal of definition request (textDocument/definition): %w", err)
 		}
@@ -132,7 +132,7 @@ func (s *Root) HandleMessage(
 		}
 	case "textDocument/codeAction":
 		var request lsp.CodeActionRequest
-		err = sonic.Unmarshal(contents, &request)
+		err = json.Unmarshal(contents, &request)
 		if err != nil {
 			return fmt.Errorf("failed to unmarshal of codeAction request (textDocument/codeAction): %w", err)
 		}
@@ -146,7 +146,7 @@ func (s *Root) HandleMessage(
 		}
 	case "textDocument/completion":
 		var request lsp.CompletionRequest
-		err = sonic.Unmarshal(contents, &request)
+		err = json.Unmarshal(contents, &request)
 		if err != nil {
 			return fmt.Errorf("failed to unmarshal completion request (textDocument/completion): %w", err)
 		}

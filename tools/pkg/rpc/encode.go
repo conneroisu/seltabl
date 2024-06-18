@@ -1,9 +1,8 @@
 package rpc
 
 import (
+	"encoding/json"
 	"fmt"
-
-	"github.com/bytedance/sonic"
 )
 
 // EncodeMessage encodes a message into a string
@@ -14,7 +13,7 @@ import (
 //
 // It also returns an error if there is an error while encoding the message.
 func EncodeMessage(msg any) (string, error) {
-	content, err := sonic.Marshal(msg)
+	content, err := json.Marshal(msg)
 	if err != nil {
 		return "", err
 	}

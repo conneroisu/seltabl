@@ -96,18 +96,18 @@ func (s State) getSelectors(
 			if err != nil {
 				s.Logger.Printf("failed to get urls: %s\n", err)
 			}
-			var u *data.URL
+			var u data.URL
 			if len(url) == 0 {
-				u = &data.URL{
+				u = data.URL{
 					URL: sel,
 				}
-				s.Database.NewInsert().Model(u).Exec(ctx)
+				s.Database.NewInsert().Model(&u).Exec(ctx)
 			} else {
-				u = &url[0]
+				u = url[0]
 			}
 			selector := data.Selector{
 				Selector: sel,
-				URL:      *u,
+				URL:      u,
 				Context:  htm,
 			}
 			selectors = append(selectors, selector)

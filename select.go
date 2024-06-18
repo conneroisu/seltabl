@@ -8,11 +8,18 @@ import (
 )
 
 // SelectorInferface is an interface for running a goquery selector on a cellValue
+//
+// It is an interface that defines a Select method that takes a cellValue (goquery.Selection)
+// and returns a string of the applied selection and an error.
 type SelectorInferface interface {
 	Select(cellValue *goquery.Selection) (string, error)
 }
 
-// Selector is a struct for running a goquery selector on a cellValue
+// selector is a struct for running a goquery selector on a cellValue
+//
+// It is a struct that satisfies the SelectorInferface interface.
+//
+// It contains a control tag and a query selector.
 type selector struct {
 	control string
 	query   string
@@ -20,6 +27,8 @@ type selector struct {
 
 // Select runs the selector on the cellValue and sets the cellText
 // and returns the cellText
+//
+// It returns an error if the selector is not supported or fails.
 func (s selector) Select(cellValue *goquery.Selection) (string, error) {
 	var cellText string
 	var exists bool

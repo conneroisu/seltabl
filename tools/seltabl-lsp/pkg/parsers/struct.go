@@ -26,8 +26,6 @@ var (
 	errKeyNotSet = errors.New("tag key does not exist")
 	// errTagNotExist    = errors.New("tag does not exist")
 	errTagNotExist = errors.New("tag does not exist")
-	// errTagKeyMismatch = errors.New("mismatch between key and tag.key")
-	errTagKeyMismatch = errors.New("mismatch between key and tag.key")
 )
 
 // Structure is a struct for a struct golang definition

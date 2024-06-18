@@ -3,7 +3,6 @@ package cmd
 import (
 	"encoding/json"
 	"fmt"
-	"os"
 	"strings"
 
 	"github.com/conneroisu/seltabl/tools/seltabl-lsp/pkg/lsp"
@@ -21,16 +20,6 @@ func (s *Root) HandleMessage(
 	if err != nil {
 		return fmt.Errorf("failed to decode message: %w", err)
 	}
-	defer func() {
-		if r := recover(); r != nil {
-			out := os.Stderr
-			_, err := out.Write([]byte(fmt.Sprintf("failed to write response: %s\n response: %v\n", r, response)))
-			if err != nil {
-				s.Logger.Fatal(fmt.Sprintf("failed to write response: %s\n", r))
-				s.State.Logger.Fatal(fmt.Sprintf("failed to write response: %s\n", r))
-			}
-		}
-	}()
 	switch method {
 	case "initialize":
 		var request lsp.InitializeRequest
@@ -45,9 +34,10 @@ func (s *Root) HandleMessage(
 	case "initialized":
 		var request lsp.InitializedParamsRequest
 		if err = json.Unmarshal([]byte(contents), &request); err != nil {
+			s.Logger.Fatal("decode initialized request (initialized) failed", err)
 			return fmt.Errorf("decode (initialized) request failed: %w", err)
 		}
-		response = lsp.NewInitializedParamsResponse(*request.ID)
+		response := lsp.NewInitializedParamsResponse(*request.ID)
 		err = s.writeResponse(response)
 		if err != nil {
 			return fmt.Errorf("write (initialized) response failed: %w", err)

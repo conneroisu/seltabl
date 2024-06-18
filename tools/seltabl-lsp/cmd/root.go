@@ -101,6 +101,5 @@ func (s *Root) writeResponse(msg interface{}) error {
 		s.Logger.Printf("failed to write all response: %s\n", err)
 		return fmt.Errorf("failed to write all response: %w", err)
 	}
-	s.Logger.Println("Received message and replied: ", reply)
 	return nil
 }

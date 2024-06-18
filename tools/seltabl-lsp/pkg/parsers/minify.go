@@ -52,6 +52,9 @@ func GetMinifiedDoc(
 		return nil, fmt.Errorf("error reading response body: %w", err)
 	}
 	content, err = cleanHTML(body, disallowedTags)
+	if err != nil {
+		return nil, fmt.Errorf("error cleaning html: %w", err)
+	}
 	doc, err = goquery.NewDocumentFromReader(
 		strings.NewReader(
 			string(content),

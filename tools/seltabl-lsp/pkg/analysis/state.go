@@ -2,6 +2,7 @@ package analysis
 
 import (
 	"context"
+	"fmt"
 	"log"
 	"os"
 
@@ -101,7 +102,10 @@ func (s State) getSelectors(
 				u = data.URL{
 					URL: sel,
 				}
-				s.Database.NewInsert().Model(&u).Exec(ctx)
+				_, err = s.Database.NewInsert().Model(&u).Exec(ctx)
+				if err != nil {
+					return nil, fmt.Errorf("failed to insert url: %w", err)
+				}
 			} else {
 				u = url[0]
 			}
@@ -111,7 +115,7 @@ func (s State) getSelectors(
 				Context:  htm,
 			}
 			selectors = append(selectors, selector)
-			if _, err := s.Database.NewInsert().Model(selector).Exec(ctx); err != nil {
+			if _, err := s.Database.NewInsert().Model(&selector).Exec(ctx); err != nil {
 				s.Logger.Printf("failed to insert selector: %s\n", err)
 			}
 		}

@@ -41,8 +41,8 @@ var (
 		Detail:        "Title Text for the control selector",
 		Documentation: "This is the documentation for the control selector",
 	}
-	// selectors is the slice of selectors to return for completions inside a struct tag but not a "" selector
-	selectors = []lsp.CompletionItem{
+	// keys is the slice of keys to return for completions inside a struct tag but not a "" selector
+	keys = []lsp.CompletionItem{
 		headerTag,
 		selectorDataTag,
 		selectorHeaderTag,
@@ -79,6 +79,13 @@ func (s *State) TextDocumentCompletion(
 				Documentation: "A selector for the " + selector.Selector,
 			})
 		}
+	}
+	for _, key := range keys {
+		items = append(items, lsp.CompletionItem{
+			Label:         key.Label,
+			Detail:        key.Detail,
+			Documentation: key.Documentation,
+		})
 	}
 	response := lsp.CompletionResponse{
 		Response: lsp.Response{

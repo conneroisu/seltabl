@@ -30,15 +30,6 @@ type Response struct {
 func (r *Response) String() string {
 	resp, err := rpc.EncodeMessage(r)
 	if err != nil {
-		// return fmt.Sprintf(
-		//         "failed to even encode response of type %s of id: %d of result: %s with error %s due to error: %s",
-		//         r.RPC,
-		//         *r.ID,
-		//         r.Result,
-		//         r.Error,
-		//         err,
-		// )
-
 		return fmt.Sprintf(
 			"failed to even encode response of type %s of id: %d due to error: %s",
 			r.RPC,
@@ -46,7 +37,7 @@ func (r *Response) String() string {
 			err,
 		)
 	}
-	return fmt.Sprintf(resp)
+	return resp
 }
 
 // Notification is a notification from a LSP

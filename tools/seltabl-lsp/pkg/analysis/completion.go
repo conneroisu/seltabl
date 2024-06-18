@@ -2,6 +2,7 @@ package analysis
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/conneroisu/seltabl/tools/seltabl-lsp/pkg/lsp"
 )
@@ -54,21 +55,24 @@ var (
 	}
 )
 
-// TextDocumentCompletion returns the completions for a given text document.
-func (s *State) TextDocumentCompletion(
+// CreateTextDocumentCompletion returns the completions for a given text document.
+func (s *State) CreateTextDocumentCompletion(
 	id int,
 	document *lsp.TextDocumentIdentifier,
 	pos *lsp.Position,
-) lsp.CompletionResponse {
+) (response *lsp.CompletionResponse, err error) {
 	ctx := context.Background()
 	s.Logger.Printf("pos: %v\n", pos)
 	text := s.Documents[document.URI]
 	s.Logger.Printf("text: %s\n", text)
 	urls, ignores, err := s.getUrlsAndIgnores(text)
 	if err != nil {
-		s.Logger.Printf("failed to get urls and ignores: %s\n", err)
+		return nil, fmt.Errorf("failed to get urls and ignores: %s", err)
 	}
 	selectors, err := s.getSelectors(ctx, urls, ignores)
+	if err != nil {
+		return nil, fmt.Errorf("failed to get selectors: %s", err)
+	}
 	items := []lsp.CompletionItem{}
 	for _, selector := range selectors {
 		items = append(items, lsp.CompletionItem{
@@ -84,12 +88,11 @@ func (s *State) TextDocumentCompletion(
 			Documentation: key.Documentation,
 		})
 	}
-	response := lsp.CompletionResponse{
+	return &lsp.CompletionResponse{
 		Response: lsp.Response{
 			RPC: "2.0",
 			ID:  id,
 		},
 		Result: items,
-	}
-	return response
+	}, nil
 }

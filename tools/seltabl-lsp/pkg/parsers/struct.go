@@ -68,9 +68,7 @@ type Tag struct {
 type Inspector func(n ast.Node) bool
 
 // ParseStruct checks if the struct tag is in the url and returns a
-func ParseStruct(ctx context.Context, src []byte) (*Structure, error) {
-	var structure Structure
-	var err error
+func ParseStruct(ctx context.Context, src []byte) (structure *Structure, err error) {
 	var eg *errgroup.Group
 	eg, _ = errgroup.WithContext(ctx)
 	fset := token.NewFileSet()
@@ -78,11 +76,11 @@ func ParseStruct(ctx context.Context, src []byte) (*Structure, error) {
 	if err != nil {
 		return nil, fmt.Errorf("failed to parse struct: %w", err)
 	}
-	ast.Inspect(file, makeInspector(eg, &structure, fset))
+	ast.Inspect(file, makeInspector(eg, structure, fset))
 	if err := eg.Wait(); err != nil {
 		return nil, fmt.Errorf("failed to parse struct: %w", err)
 	}
-	return &structure, nil
+	return structure, nil
 }
 
 // makeInspector creates an inspector for the given structure

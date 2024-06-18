@@ -170,16 +170,16 @@ func (s *Root) HandleMessage(
 		var request lsp.CompletionRequest
 		err = json.Unmarshal(contents, &request)
 		if err != nil {
-			return fmt.Errorf(
-				"failed to unmarshal completion request (textDocument/completion): %w",
-				err,
-			)
+			return fmt.Errorf("failed to unmarshal completion request (textDocument/completion): %w", err)
 		}
-		response = s.State.TextDocumentCompletion(
+		response, err = s.State.CreateTextDocumentCompletion(
 			request.ID,
 			&request.Params.TextDocument,
 			&request.Params.Position,
 		)
+		if err != nil {
+			return fmt.Errorf("failed to get completions: %w", err)
+		}
 		err = s.writeResponse(response)
 		if err != nil {
 			return fmt.Errorf("failed to write response: %w", err)

@@ -45,7 +45,7 @@ func NewState() (state State) {
 		&data.Config{
 			Schema:   master.MasterSchema,
 			URI:      "sqlite://urls.sqlite",
-			FileName: "./urls.db",
+			FileName: "./urls.sqlite",
 		},
 	)
 	if err != nil {

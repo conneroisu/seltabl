@@ -51,10 +51,7 @@ func (s *Root) handle(scanner *bufio.Scanner) {
 	if err != nil {
 		fmt.Fprintf(out, "failed to handle message: %s\n", err)
 		s.Logger.Printf("failed to handle message: %s\n", err)
-		s.State.Logger.Printf(
-			"failed to handle message: %s\n",
-			err,
-		)
+		s.State.Logger.Printf("failed to handle message: %s\n", err)
 		return
 	}
 }

@@ -8,7 +8,9 @@ import (
 )
 
 var (
-	urlRegex  = regexp.MustCompile(`// @url:\s*(https?://[^\s]+)`)
+	// urlRegex is a regex for finding urls in a comment with a space
+	urlRegex = regexp.MustCompile(`// @url:\s*(https?://[^\s]+)`)
+	// urlRegex2 is a regex for finding urls in a comment without a space
 	urlRegex2 = regexp.MustCompile(`//@url:\s*(https?://[^\s]+)`)
 )
 

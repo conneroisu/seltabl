@@ -10,14 +10,16 @@ import (
 
 // SetStructField sets a struct field to a value.
 // It uses generics to specify the type of the struct
-// and the field name.
+// and the field name. It also uses the selector interface
+// to find the value and uses the type of the selector to
+// parse and set the value.
 //
 // It is used by the NewFromString function.
 func SetStructField[T any](
 	structPtr *T,
 	fieldName string,
 	cellValue *goquery.Selection,
-	selector SelectorInferface,
+	selector SelectorI,
 ) error {
 	var err error
 	v := reflect.ValueOf(structPtr).Elem()

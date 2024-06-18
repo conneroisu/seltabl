@@ -7,11 +7,11 @@ import (
 	"github.com/PuerkitoBio/goquery"
 )
 
-// SelectorInferface is an interface for running a goquery selector on a cellValue
+// SelectorI is an interface for running a goquery selector on a cellValue
 //
 // It is an interface that defines a Select method that takes a cellValue (goquery.Selection)
 // and returns a string of the applied selection and an error.
-type SelectorInferface interface {
+type SelectorI interface {
 	Select(cellValue *goquery.Selection) (string, error)
 }
 

@@ -28,7 +28,7 @@ type selector struct {
 // Select runs the selector on the cellValue and sets the cellText
 // and returns the cellText
 //
-// It returns an error if the selector is not supported or fails.
+// It returns the output of running a  selector and an error if the selector is not supported or fails.
 func (s selector) Select(cellValue *goquery.Selection) (string, error) {
 	var cellText string
 	var exists bool

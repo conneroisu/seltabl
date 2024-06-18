@@ -5,6 +5,7 @@ import (
 )
 
 var (
+	// cSels is a list of supported control selectors
 	cSels = []string{ctlInnerTextSelector, ctlAttrSelector}
 )
 

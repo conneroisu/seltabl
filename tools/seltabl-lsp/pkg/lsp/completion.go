@@ -1,6 +1,9 @@
 package lsp
 
 // CompletionRequest is a request for a completion to the language server
+//
+// Microsoft LSP Docs:
+// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_completion
 type CompletionRequest struct {
 	// CompletionRequest embeds the Request struct
 	Request

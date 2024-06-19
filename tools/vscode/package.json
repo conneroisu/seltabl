@@ -1,7 +1,7 @@
 {
 	"private": true,
 	"name": "seltabl-lsp-vscode",
-	"description": "VSCode Language Server Protocol Implementation",
+	"description": "VSCode Language Server Protocol Implementation for the SelTabl go package",
 	"version": "1.0.0",
 	"author": "Conner Ohnesorge",
 	"license": "MIT",

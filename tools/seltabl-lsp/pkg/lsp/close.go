@@ -1,6 +1,9 @@
 package lsp
 
 // DidCloseTextDocumentParamsNotification is a struct for the did close text document params notification
+//
+// Microsoft LSP Docs:
+// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_didClose
 type DidCloseTextDocumentParamsNotification struct {
 	Notification
 }

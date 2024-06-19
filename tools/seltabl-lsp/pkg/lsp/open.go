@@ -2,6 +2,9 @@ package lsp
 
 // DidOpenTextDocumentNotification is a notification that is sent when
 // the client opens a text document.
+//
+// Microsoft LSP Docs:
+// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_didOpen
 type DidOpenTextDocumentNotification struct {
 	// DidOpenTextDocumentNotification embeds the Notification struct
 	Notification

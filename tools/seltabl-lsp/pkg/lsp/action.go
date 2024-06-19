@@ -1,6 +1,9 @@
 package lsp
 
 // CodeActionRequest is a request for a code action to the language server.
+//
+// Microsoft LSP Docs:
+// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_code
 type CodeActionRequest struct {
 	// CodeActionRequest embeds the Request struct
 	Request

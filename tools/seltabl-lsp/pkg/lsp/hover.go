@@ -2,6 +2,9 @@ package lsp
 
 // HoverRequest is sent from the client to the server to request hover
 // information.
+//
+// Microsoft LSP Docs:
+// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_hover
 type HoverRequest struct {
 	// HoverRequest embeeds the request struct.
 	Request

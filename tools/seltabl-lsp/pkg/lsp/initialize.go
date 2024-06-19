@@ -91,12 +91,18 @@ func NewInitializeResponse(id int) InitializeResponse {
 }
 
 // InitializedParamsRequest is a struct for the initialized params.
+//
+// Microsoft LSP Docs:
+// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#initialized
 type InitializedParamsRequest struct {
 	// InitializedParamsRequest embeds the Request struct
 	Response
 }
 
 // InitializedParamsResponse is a struct for the initialized params.
+//
+// Microsoft LSP Docs:
+// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#initialized
 type InitializedParamsResponse struct {
 	// InitializedParamsResponse embeds the Response struct
 	Response

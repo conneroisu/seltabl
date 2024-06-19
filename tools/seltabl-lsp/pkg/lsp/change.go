@@ -2,6 +2,9 @@ package lsp
 
 // TextDocumentDidChangeNotification is sent from the client to the server to signal
 // that the content of a text document has changed.
+//
+// Microsoft LSP Docs:
+// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_didChange
 type TextDocumentDidChangeNotification struct {
 	// TextDocumentDidChangeNotification embeds the Notification struct
 	Notification

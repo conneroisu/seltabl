@@ -4,12 +4,11 @@ go 1.22.3
 
 require (
 	github.com/PuerkitoBio/goquery v1.9.2
+	github.com/mitchellh/go-homedir v1.1.0
 	github.com/spf13/cobra v1.8.0
 	github.com/stretchr/testify v1.9.0
 	github.com/uptrace/bun v1.2.1
 	github.com/uptrace/bun/dialect/sqlitedialect v1.2.1
-	github.com/uptrace/bun/driver/sqliteshim v1.2.1
-	github.com/yosssi/gohtml v0.0.0-20201013000340-ee4748c638f4
 	golang.org/x/sync v0.7.0
 	modernc.org/sqlite v1.30.1
 )
@@ -24,7 +23,6 @@ require (
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/kr/text v0.2.0 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
-	github.com/mattn/go-sqlite3 v1.14.22 // indirect
 	github.com/ncruces/go-strftime v0.1.9 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect

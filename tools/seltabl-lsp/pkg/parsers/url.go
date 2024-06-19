@@ -27,7 +27,6 @@ func ExtractUrls(_ context.Context, src string) ([]string, error) {
 	scanner := bufio.NewScanner(strings.NewReader(src))
 	for scanner.Scan() {
 		line := scanner.Text()
-		// Find the URL in the line
 		matches := urlRegex.FindStringSubmatch(line)
 		if len(matches) > 0 && matches != nil {
 			result = append(result, matches[1])

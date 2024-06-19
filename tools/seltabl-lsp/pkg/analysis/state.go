@@ -8,6 +8,7 @@ import (
 
 	"github.com/conneroisu/seltabl/tools/seltabl-lsp/data"
 	"github.com/conneroisu/seltabl/tools/seltabl-lsp/data/master"
+	"github.com/conneroisu/seltabl/tools/seltabl-lsp/internal/config"
 	"github.com/conneroisu/seltabl/tools/seltabl-lsp/pkg/lsp"
 	"github.com/conneroisu/seltabl/tools/seltabl-lsp/pkg/parsers"
 )
@@ -38,20 +39,20 @@ func getLogger(fileName string) *log.Logger {
 }
 
 // NewState returns a new state with no documents
-func NewState() (state State) {
+func NewState(config *config.Config) (state State) {
 	db, err := data.NewDb(
 		context.Background(),
 		master.New,
 		&data.Config{
 			Schema:   master.MasterSchema,
-			URI:      "sqlite://urls.sqlite",
-			FileName: "./urls.sqlite",
+			URI:      "sqlite://uri.sqlite",
+			FileName: config.ConfigPath + "/urls.sqlite",
 		},
 	)
 	if err != nil {
 		panic(err)
 	}
-	logger := getLogger("./state.log")
+	logger := getLogger(config.ConfigPath + "/state.log")
 	state = State{
 		Documents: make(map[string]string),
 		Selectors: make(map[string][]master.Selector),

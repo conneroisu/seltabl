@@ -48,6 +48,10 @@ type Field struct {
 	Line int
 	// Tags are the tags for the field
 	Tags Tags
+	// Start is the start of the tag in the source code
+	Start int
+	// End is the end of the tag in the source code
+	End int
 }
 
 // Tags represent a set of tags from a single struct field
@@ -66,6 +70,12 @@ type Tag struct {
 	// Options is a part of the value. It contains a slice of tag options i.e:
 	// `json:"foo,omitempty". Here options is: ["omitempty"]
 	Options []string
+	// Line is the line of the tag in the source code
+	Line int
+	// Start is the start of the tag in the source code horizontally
+	Start int
+	// End is the end of the tag in the source code horizontally
+	End int
 }
 
 // Inspector is a function for concurrently inspecting a node recursively
@@ -94,16 +104,20 @@ func ParseStruct(ctx context.Context, src []byte) (Structure, error) {
 				i := i
 				eg.Go(func() error {
 					tags, err := ParseTags(
-						f.Tag.Value[1 : len(f.Tag.Value)-1],
+						f.Tag.Value[1:len(f.Tag.Value)-1],
+						fset.Position(f.Pos()).Offset,
+						fset.Position(f.End()).Offset,
+						fset.Position(f.Pos()).Line,
 					)
 					if err != nil {
 						return fmt.Errorf("failed to parse tags: %w", err)
 					}
 					structure.Fields[i] = Field{
-						Name: f.Names[0].Name,
-						Type: fmt.Sprintf("%s", f.Type),
-						Tags: *tags,
-						Line: fset.Position(f.Pos()).Line,
+						Name:  f.Names[0].Name,
+						Type:  fmt.Sprintf("%s", f.Type),
+						Tags:  *tags,
+						Line:  fset.Position(f.Pos()).Line,
+						Start: fset.Position(f.Pos()).Offset,
 					}
 					return nil
 				})
@@ -121,7 +135,7 @@ func ParseStruct(ctx context.Context, src []byte) (Structure, error) {
 }
 
 // ParseTags parses a single struct field tag and returns the set of tags.
-func ParseTags(tag string) (*Tags, error) {
+func ParseTags(tag string, start, end, line int) (*Tags, error) {
 	var tags []*Tag
 	hasTag := tag != ""
 	// NOTE following code is from reflect and vet package with some
@@ -184,6 +198,9 @@ func ParseTags(tag string) (*Tags, error) {
 			Key:     key,
 			Name:    name,
 			Options: options,
+			Start:   start,
+			End:     end,
+			Line:    line,
 		})
 	}
 	if hasTag && len(tags) == 0 {

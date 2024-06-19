@@ -6,6 +6,7 @@ import (
 	"os"
 
 	"github.com/conneroisu/seltabl/tools/seltabl-lsp/cmd"
+	"github.com/conneroisu/seltabl/tools/seltabl-lsp/internal/config"
 )
 
 // main is the entry point for the command line tool, a
@@ -13,7 +14,11 @@ import (
 // @url: https://stats.ncaa.org/game_upload/team_codes
 // @ignore-elements: script, style, link, img, footer, header
 func main() {
-	rs := &cmd.Root{Writer: os.Stdout}
+	cfg, err := config.CreateConfigDir()
+	if err != nil {
+		panic(err)
+	}
+	rs := &cmd.Root{Writer: os.Stdout, Config: cfg}
 	if err := cmd.Execute(rs); err != nil {
 		rs.Logger.Println(err)
 	}

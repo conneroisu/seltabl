@@ -7,6 +7,7 @@ import (
 	"log"
 	"os"
 
+	"github.com/conneroisu/seltabl/tools/seltabl-lsp/internal/config"
 	"github.com/conneroisu/seltabl/tools/seltabl-lsp/pkg/analysis"
 	"github.com/conneroisu/seltabl/tools/seltabl-lsp/pkg/lsp"
 	"github.com/conneroisu/seltabl/tools/seltabl-lsp/pkg/rpc"
@@ -23,9 +24,8 @@ func (s *Root) ReturnCmd() *cobra.Command {
 Provides completions, hovers, and code actions for seltabl defined structs.
 `,
 		Run: func(_ *cobra.Command, _ []string) {
-			s.State = analysis.NewState()
-			s.Logger = getLogger("./seltabl.log")
-			s.State.Logger = getLogger("./state.log")
+			s.State = analysis.NewState(s.Config)
+			s.Logger = getLogger(s.Config.ConfigPath + "/seltabl.log")
 			scanner := bufio.NewScanner(os.Stdin)
 			scanner.Split(rpc.Split)
 			for scanner.Scan() {
@@ -88,6 +88,8 @@ type Root struct {
 	Logger *log.Logger
 	// Writer is the Writer for the server
 	Writer io.Writer
+	// Config is the config for the server
+	Config *config.Config
 }
 
 // writeResponse writes a message to the writer

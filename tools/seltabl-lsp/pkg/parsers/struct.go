@@ -98,24 +98,24 @@ func ParseStruct(ctx context.Context, src []byte) (Structure, error) {
 				return true
 			}
 			structure.Fields = make([]Field, len(s.Fields.List))
-			for i, f := range s.Fields.List {
-				f, i := f, i
+			for idx, field := range s.Fields.List {
+				field, idx := field, idx
 				eg.Go(func() error {
 					tags, err := ParseTags(
-						f.Tag.Value[1:len(f.Tag.Value)-1],
-						fset.Position(f.Pos()).Offset,
-						fset.Position(f.End()).Offset,
-						fset.Position(f.Pos()).Line,
+						field.Tag.Value[1:len(field.Tag.Value)-1],
+						fset.Position(field.Pos()).Offset,
+						fset.Position(field.End()).Offset,
+						fset.Position(field.Pos()).Line,
 					)
 					if err != nil {
 						return fmt.Errorf("failed to parse tags: %w", err)
 					}
-					structure.Fields[i] = Field{
-						Name:  f.Names[0].Name,
-						Type:  fmt.Sprintf("%s", f.Type),
+					structure.Fields[idx] = Field{
+						Name:  field.Names[0].Name,
+						Type:  fmt.Sprintf("%s", field.Type),
 						Tags:  *tags,
-						Line:  fset.Position(f.Pos()).Line,
-						Start: fset.Position(f.Pos()).Offset,
+						Line:  fset.Position(field.Pos()).Line,
+						Start: fset.Position(field.Pos()).Offset,
 					}
 					return nil
 				})

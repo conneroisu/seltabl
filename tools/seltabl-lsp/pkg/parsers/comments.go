@@ -1,3 +1,6 @@
+// Package parsers provides functions for parsing comments in Go source code.
+//
+// It includes functions for extracting URLs and ignore-elements from comments.
 package parsers
 
 import (
@@ -9,7 +12,10 @@ import (
 	"strings"
 )
 
+// errNoURLs is an error for when no @urls are found in a file
 var errNoURLs = errors.New("no urls found in file")
+
+// errIgnoreOnly is an error for when only @ignore-elements are found in a file
 var errIgnoreOnly = errors.New("ignores only found in file")
 
 // StructCommentData holds the parsed URLs and ignore-elements.
@@ -21,6 +27,7 @@ type StructCommentData struct {
 // ParseStructComments parses the comments from struct type declarations in the provided Go source code
 // and extracts @url and @ignore-elements into separate arrays.
 func ParseStructComments(src string) (StructCommentData, error) {
+	// Create a new file set for the source code
 	fset := token.NewFileSet()
 	// Parse the source code into an ast.File.
 	node, err := parser.ParseFile(fset, "", src, parser.ParseComments)
@@ -28,7 +35,9 @@ func ParseStructComments(src string) (StructCommentData, error) {
 		return StructCommentData{}, err
 	}
 	var data StructCommentData
+	// @url: <url>
 	urlPattern := regexp.MustCompile(`@url:\s*(\S+)`)
+	// @ignore-elements: <element1>, <element2>, ...
 	ignorePattern := regexp.MustCompile(`@ignore-elements:\s*(.*)`)
 	// Inspect the AST to find struct type declarations and their comments
 	ast.Inspect(node, func(n ast.Node) bool {
@@ -59,8 +68,6 @@ func ParseStructComments(src string) (StructCommentData, error) {
 									}
 								}
 							}
-							if len(data.URLs) == 0 && len(data.IgnoreElements) == 0 {
-							}
 						}
 					}
 				}
@@ -68,7 +75,11 @@ func ParseStructComments(src string) (StructCommentData, error) {
 		}
 		return true
 	})
-	if len(data.URLs) == 0 {
+	hasNoURLs := len(data.URLs) == 0
+	if hasNoURLs && len(data.IgnoreElements) != 0 {
+		return StructCommentData{}, errIgnoreOnly
+	}
+	if hasNoURLs {
 		return StructCommentData{}, errNoURLs
 	}
 	return data, nil

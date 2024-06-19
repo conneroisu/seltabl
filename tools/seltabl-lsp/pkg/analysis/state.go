@@ -12,6 +12,7 @@ import (
 	"github.com/conneroisu/seltabl/tools/seltabl-lsp/internal/config"
 	"github.com/conneroisu/seltabl/tools/seltabl-lsp/pkg/lsp"
 	"github.com/conneroisu/seltabl/tools/seltabl-lsp/pkg/parsers"
+	"github.com/yosssi/gohtml"
 )
 
 // State is the state of the document analysis
@@ -137,6 +138,7 @@ func (s State) getSelectors(
 		if err != nil {
 			s.Logger.Printf("failed to get urls: %s\n", err)
 		}
+		context = gohtml.Format(context)
 		selector, err := s.Database.Queries.InsertSelector(
 			ctx,
 			master.InsertSelectorParams{

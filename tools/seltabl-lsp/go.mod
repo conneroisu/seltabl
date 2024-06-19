@@ -9,6 +9,7 @@ require (
 	github.com/stretchr/testify v1.9.0
 	github.com/uptrace/bun v1.2.1
 	github.com/uptrace/bun/dialect/sqlitedialect v1.2.1
+	github.com/yosssi/gohtml v0.0.0-20201013000340-ee4748c638f4
 	golang.org/x/sync v0.7.0
 	modernc.org/sqlite v1.30.1
 )

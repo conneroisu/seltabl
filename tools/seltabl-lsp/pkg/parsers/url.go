@@ -2,6 +2,7 @@ package parsers
 
 import (
 	"bufio"
+	"context"
 	"fmt"
 	"regexp"
 	"strings"
@@ -18,7 +19,7 @@ var (
 // and returns a slice of strings of only the urls.
 //
 // It also returns an error if there is an error while scanning the file.
-func ExtractUrls(src string) ([]string, error) {
+func ExtractUrls(_ context.Context, src string) ([]string, error) {
 	var result []string
 	result = make([]string, 0)
 	// Define the regex to match URL comments

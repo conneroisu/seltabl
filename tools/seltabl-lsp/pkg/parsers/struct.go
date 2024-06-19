@@ -32,6 +32,10 @@ var (
 type Structure struct {
 	// Fields is a map of the fields in the struct
 	Fields []Field
+	// StartLine is the first line number of the struct
+	StartLine int
+	// EndLine is the final line number of the struct
+	EndLine int
 }
 
 // Field is a struct for a field within a struct

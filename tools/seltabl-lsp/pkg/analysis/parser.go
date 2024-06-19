@@ -9,7 +9,7 @@ import (
 
 func (s *State) getUrlsAndIgnores(src string) (urls []string, ignores []string, err error) {
 	ctx := context.Background()
-	urls, err = parsers.ExtractUrls(src)
+	urls, err = parsers.ExtractUrls(ctx, src)
 	if err != nil {
 		s.Logger.Printf("failed to extract urls: %s\n", err)
 		return nil, nil, err

@@ -80,7 +80,7 @@ func (s State) getSelectors(
 	ctx context.Context,
 	url []string,
 	ignores []string,
-) ([]master.Selector, error) {
+) (selectors []master.Selector, err error) {
 	u, err := s.Database.Queries.GetURLByValue(
 		ctx,
 		master.GetURLByValueParams{Value: url[0]},
@@ -127,7 +127,6 @@ func (s State) getSelectors(
 	if err != nil {
 		s.Logger.Printf("failed to get selectors: %s\n", err)
 	}
-	selectors := []master.Selector{}
 	for _, sel := range selectorStrs {
 		context, err := doc.Find(sel).Parent().Html()
 		if err != nil {

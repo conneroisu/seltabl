@@ -15,8 +15,6 @@ func (s *State) OpenDocument(uri, text string) []lsp.Diagnostic {
 		s.Logger.Printf("failed to get urls and ignores: %s\n", err)
 		return nil
 	}
-	s.Logger.Printf("urls: %v\n", urls)
-	s.Logger.Printf("ignores: %v\n", ignores)
 	for _, url := range urls {
 		s.Selectors[uri], err = s.getSelectors(ctx, []string{url}, ignores)
 		if err != nil {

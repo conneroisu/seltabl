@@ -1,6 +1,7 @@
 package parsers
 
 import (
+	"context"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -8,13 +9,14 @@ import (
 
 // TestSplit tests the ExtractUrls function
 func TestSplit(t *testing.T) {
+	ctx := context.Background()
 	t.Run("ExtractUrls with no separator", func(t *testing.T) {
 		t.Parallel()
 		input := `
 		// @url: https://asdf.com
 		`
 		expected := []string{"https://asdf.com"}
-		result, err := ExtractUrls(input)
+		result, err := ExtractUrls(ctx, input)
 		assert.Nil(t, err)
 		for _, line := range expected {
 			assert.Contains(t, result, line)
@@ -31,7 +33,7 @@ func TestSplit(t *testing.T) {
 		`
 		expected := []string{"https://elon.com", "https://musk.com"}
 		unexpectd := []string{"https://mars.com"}
-		result, err := ExtractUrls(input)
+		result, err := ExtractUrls(ctx, input)
 		assert.Nil(t, err)
 		assert.Equal(t, expected, result)
 		for _, line := range unexpectd {
@@ -94,7 +96,7 @@ func TestSplit(t *testing.T) {
 			tt := tt
 			t.Run(tt.name, func(t *testing.T) {
 				t.Parallel()
-				result, err := ExtractUrls(tt.input)
+				result, err := ExtractUrls(ctx, tt.input)
 				if (err != nil) != tt.wantErr {
 					t.Errorf(
 						"ExtractUrls() error = %v, wantErr %v",

@@ -6,6 +6,7 @@ import (
 	"io"
 	"log"
 	"os"
+	"path"
 
 	"github.com/conneroisu/seltabl/tools/seltabl-lsp/internal/config"
 	"github.com/conneroisu/seltabl/tools/seltabl-lsp/pkg/analysis"
@@ -24,8 +25,13 @@ func (s *Root) ReturnCmd() *cobra.Command {
 Provides completions, hovers, and code actions for seltabl defined structs.
 `,
 		Run: func(_ *cobra.Command, _ []string) {
+			cfg, err := config.CreateConfigDir()
+			if err != nil {
+				panic(err)
+			}
+			s.Config = cfg
 			s.State = analysis.NewState(s.Config)
-			s.Logger = getLogger(s.Config.ConfigPath + "/seltabl.log")
+			s.Logger = getLogger(path.Join(s.Config.ConfigPath, "seltabl.log"))
 			scanner := bufio.NewScanner(os.Stdin)
 			scanner.Split(rpc.Split)
 			for scanner.Scan() {

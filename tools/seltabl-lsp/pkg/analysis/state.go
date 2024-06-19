@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"path"
 
 	"github.com/conneroisu/seltabl/tools/seltabl-lsp/data"
 	"github.com/conneroisu/seltabl/tools/seltabl-lsp/data/master"
@@ -46,13 +47,13 @@ func NewState(config *config.Config) (state State) {
 		&data.Config{
 			Schema:   master.MasterSchema,
 			URI:      "sqlite://uri.sqlite",
-			FileName: config.ConfigPath + "/urls.sqlite",
+			FileName: path.Join(config.ConfigPath, "uri.sqlite"),
 		},
 	)
 	if err != nil {
 		panic(err)
 	}
-	logger := getLogger(config.ConfigPath + "/state.log")
+	logger := getLogger(path.Join(config.ConfigPath, "state.log"))
 	state = State{
 		Documents: make(map[string]string),
 		Selectors: make(map[string][]master.Selector),

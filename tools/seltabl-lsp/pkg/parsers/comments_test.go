@@ -14,6 +14,7 @@ type testCase struct {
 	wantedErr string
 }
 
+// TestParseStructComments tests the ParseStructComments function
 func TestParseStructComments(t *testing.T) {
 	// Define the test cases
 	tests := []testCase{

@@ -10,7 +10,7 @@ import (
 )
 
 var errNoURLs = errors.New("no urls found in file")
-var errIgnoreOnly = errors.New("ignores only found in file but no urls found")
+var errIgnoreOnly = errors.New("ignores only found in file")
 
 // StructCommentData holds the parsed URLs and ignore-elements.
 type StructCommentData struct {
@@ -58,6 +58,9 @@ func ParseStructComments(src string) (StructCommentData, error) {
 										data.IgnoreElements = append(data.IgnoreElements, strings.TrimSpace(elem))
 									}
 								}
+							}
+							if len(data.URLs) == 0 && len(data.IgnoreElements) == 0 {
+								return false
 							}
 						}
 					}

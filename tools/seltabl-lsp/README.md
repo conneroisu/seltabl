@@ -16,7 +16,7 @@ go intall github.com/conneroisu/seltabl/seltabl-lsp
 ---@diagnostic disable-next-line: missing-fields
 local client = vim.lsp.start {
 	name = "tools",
-	cmd = { "/run/media/conner/source/001Repos/seltabl/tools/tools" },
+	cmd = { "path to seltabl-lsp binary" },
 	on_attach = require("lsp_attach").on_attach,
 }
 

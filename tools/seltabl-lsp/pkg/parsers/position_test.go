@@ -60,15 +60,18 @@ type MyStruct struct {
 
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
+			failed := false
 			for _, structNode := range structNodes {
 				result := IsPositionInTag(structNode, tc.position, fset)
 				if result != tc.expected {
+					failed = true
 					t.Errorf("expected %v, got %v", tc.expected, result)
 
 				}
-				return
 			}
-			t.Fail()
+			if failed {
+				t.Fail()
+			}
 		})
 	}
 }
@@ -108,15 +111,18 @@ type MyStruct struct {
 
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
+			failed := false
 			for _, structNode := range structNodes {
 				result := IsPositionInStructTagValue(structNode, tc.position, fset)
 				if result != tc.expected {
 					t.Errorf("expected %v, got %v", tc.expected, result)
+					failed = true
 
 				}
-				return
 			}
-			t.Fail()
+			if failed {
+				t.Fail()
+			}
 		})
 	}
 }
@@ -175,15 +181,16 @@ type TableStruct struct {
 
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
+			failed := false
 			for _, structNode := range structNodes {
 				result := IsPositionInStructTagValue(structNode, tc.position, fset)
 				if result != tc.expected {
 					t.Errorf("expected %v, got %v", tc.expected, result)
-
 				}
-				return
 			}
-			t.Fail()
+			if failed {
+				t.Fail()
+			}
 		})
 	}
 }

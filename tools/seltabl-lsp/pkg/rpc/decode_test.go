@@ -4,6 +4,7 @@ import (
 	"testing"
 )
 
+// TestDecode tests the decode function
 func TestDecode(t *testing.T) {
 	incomingMessage := "Content-Length: 15\r\n\r\n{\"Method\":\"hi\"}"
 	method, content, err := DecodeMessage([]byte(incomingMessage))

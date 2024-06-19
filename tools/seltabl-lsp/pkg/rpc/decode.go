@@ -15,6 +15,7 @@ type BaseMessage struct {
 
 // DecodeMessage decodes a rpc message
 func DecodeMessage(msg []byte) (string, []byte, error) {
+	// Split the message into header and content
 	header, content, found := bytes.Cut(msg, []byte{'\r', '\n', '\r', '\n'})
 	if !found {
 		return "", nil, fmt.Errorf("no header found")

@@ -6,6 +6,7 @@ import (
 
 	"github.com/conneroisu/seltabl/tools/seltabl-lsp/data/master"
 	"github.com/conneroisu/seltabl/tools/seltabl-lsp/pkg/lsp"
+	"github.com/conneroisu/seltabl/tools/seltabl-lsp/pkg/parsers"
 )
 
 var (
@@ -67,11 +68,11 @@ func (s *State) CreateTextDocumentCompletion(
 	s.Logger.Printf("pos: %v\n", pos)
 	text := s.Documents[document.URI]
 	s.Logger.Printf("text: %s\n", text)
-	urls, ignores, err := s.getUrlsAndIgnores(text)
+	out, err := parsers.ParseStructComments(text)
 	if err != nil {
 		return nil, fmt.Errorf("failed to get urls and ignores: %s", err)
 	}
-	selectors, err = s.getSelectors(ctx, urls, ignores)
+	selectors, err = s.getSelectors(ctx, out.URLs, out.IgnoreElements)
 	if err != nil {
 		return nil, fmt.Errorf("failed to get selectors: %s", err)
 	}

@@ -15,67 +15,66 @@ import (
 )
 
 var (
-	// errTagSyntax      = errors.New("bad syntax for struct tag pair")
+	// errTagSyntax is an error for when a tag is not valid
 	errTagSyntax = errors.New("bad syntax for struct tag pair")
-	// errTagKeySyntax   = errors.New("bad syntax for struct tag key")
+	// errTagKeySyntax is an error for when a tag key is not valid
 	errTagKeySyntax = errors.New("bad syntax for struct tag key")
-	// errTagValueSyntax = errors.New("bad syntax for struct tag value")
+	// errTagValueSyntax is an error for when a tag value is not valid
 	errTagValueSyntax = errors.New("bad syntax for struct tag value")
-
-	// errKeyNotSet      = errors.New("tag key does not exist")
+	// errKeyNotSet is an error for when a tag key is not set
 	errKeyNotSet = errors.New("tag key does not exist")
-	// errTagNotExist    = errors.New("tag does not exist")
+	// errTagNotExist is an error for when a tag does not exist
 	errTagNotExist = errors.New("tag does not exist")
 )
 
 // Structure is a struct for a struct golang definition
 type Structure struct {
 	// Fields is a map of the fields in the struct
-	Fields []Field
+	Fields []Field `json:"fields"`
 	// StartLine is the first line number of the struct
-	StartLine int
+	StartLine int `json:"start_line"`
 	// EndLine is the final line number of the struct
-	EndLine int
+	EndLine int `json:"end_line"`
 }
 
 // Field is a struct for a field within a struct
 type Field struct {
 	// Name is the name of the field
-	Name string
+	Name string `json:"name"`
 	// Type is the type of the field actually in the struct
-	Type string
+	Type string `json:"type"`
 	// Line is the line of the field in the source code
-	Line int
+	Line int `json:"line"`
 	// Tags are the tags for the field
-	Tags Tags
+	Tags Tags `json:"tags"`
 	// Start is the start of the tag in the source code
-	Start int
+	Start int `json:"start"`
 	// End is the end of the tag in the source code
-	End int
+	End int `json:"end"`
 }
 
 // Tags represent a set of tags from a single struct field
 type Tags struct {
-	Tgs []*Tag
+	tags []*Tag
 }
 
 // Tag defines a single struct's string literal tag
 type Tag struct {
 	// Key is the tag key, such as json, xml, etc..
 	// i.e: `json:"foo,omitempty". Here key is: "json"
-	Key string
+	Key string `json:"key"`
 	// Name is a part of the value
 	// i.e: `json:"foo,omitempty". Here name is: "foo"
-	Name string
+	Name string `json:"name"`
 	// Options is a part of the value. It contains a slice of tag options i.e:
 	// `json:"foo,omitempty". Here options is: ["omitempty"]
-	Options []string
+	Options []string `json:"options"`
 	// Line is the line of the tag in the source code
-	Line int
+	Line int `json:"line"`
 	// Start is the start of the tag in the source code horizontally
-	Start int
+	Start int `json:"start"`
 	// End is the end of the tag in the source code horizontally
-	End int
+	End int `json:"end"`
 }
 
 // Inspector is a function for concurrently inspecting a node recursively
@@ -100,8 +99,7 @@ func ParseStruct(ctx context.Context, src []byte) (Structure, error) {
 			}
 			structure.Fields = make([]Field, len(s.Fields.List))
 			for i, f := range s.Fields.List {
-				f := f
-				i := i
+				f, i := f, i
 				eg.Go(func() error {
 					tags, err := ParseTags(
 						f.Tag.Value[1:len(f.Tag.Value)-1],
@@ -138,9 +136,6 @@ func ParseStruct(ctx context.Context, src []byte) (Structure, error) {
 func ParseTags(tag string, start, end, line int) (*Tags, error) {
 	var tags []*Tag
 	hasTag := tag != ""
-	// NOTE following code is from reflect and vet package with some
-	// modifications to collect all necessary information and extend it with
-	// usable methods
 	for tag != "" {
 		// Skip leading space.
 		i := 0
@@ -207,7 +202,7 @@ func ParseTags(tag string, start, end, line int) (*Tags, error) {
 		return nil, nil
 	}
 	return &Tags{
-		Tgs: tags,
+		tags: tags,
 	}, nil
 }
 
@@ -216,7 +211,7 @@ func ParseTags(tag string, start, end, line int) (*Tags, error) {
 // returned value will be the empty string. The ok return value reports whether
 // the tag exists or not (which the return value is nil).
 func (t *Tags) Get(key string) (*Tag, error) {
-	for _, tag := range t.Tgs {
+	for _, tag := range t.tags {
 		if tag.Key == key {
 			return tag, nil
 		}
@@ -230,15 +225,15 @@ func (t *Tags) Set(tag *Tag) error {
 		return errKeyNotSet
 	}
 	added := false
-	for i, tg := range t.Tgs {
+	for i, tg := range t.tags {
 		if tg.Key == tag.Key {
 			added = true
-			t.Tgs[i] = tag
+			t.tags[i] = tag
 		}
 	}
 	if !added {
 		// this means this is a new tag, add it
-		t.Tgs = append(t.Tgs, tag)
+		t.tags = append(t.tags, tag)
 	}
 	return nil
 }
@@ -246,7 +241,7 @@ func (t *Tags) Set(tag *Tag) error {
 // AddOptions adds the given option for the given key. If the option already
 // exists it doesn't add it again.
 func (t *Tags) AddOptions(key string, options ...string) {
-	for i, tag := range t.Tgs {
+	for i, tag := range t.tags {
 		if tag.Key != key {
 			continue
 		}
@@ -255,20 +250,20 @@ func (t *Tags) AddOptions(key string, options ...string) {
 				tag.Options = append(tag.Options, opt)
 			}
 		}
-		t.Tgs[i] = tag
+		t.tags[i] = tag
 	}
 }
 
 // Tags returns a slice of tags. The order is the original tag order unless it
 // was changed.
 func (t *Tags) Tags() []*Tag {
-	return t.Tgs
+	return t.tags
 }
 
 // Keys returns a slice of tags' keys.
 func (t *Tags) Keys() []string {
 	var keys []string
-	for _, tag := range t.Tgs {
+	for _, tag := range t.tags {
 		keys = append(keys, tag.Key)
 	}
 	return keys

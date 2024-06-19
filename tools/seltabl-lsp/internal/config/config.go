@@ -9,13 +9,13 @@ import (
 	"github.com/mitchellh/go-homedir"
 )
 
-// Config is the configuration for the server
+// Config is the configuration for the server.
 type Config struct {
 	// ConfigPath is the path to the configuration folder
 	ConfigPath string
 }
 
-// CreateConfigDir creates a new config directory and returns a config
+// CreateConfigDir creates a new config directory and returns a config.
 func CreateConfigDir() (*Config, error) {
 	path, err := homedir.Expand("~/.config/seltabl-lsp/")
 	if err != nil {

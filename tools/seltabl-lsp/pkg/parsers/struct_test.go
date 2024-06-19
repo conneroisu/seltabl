@@ -23,7 +23,7 @@ func TestParseStruct(t *testing.T) {
 				Name: "Name",
 				Type: "string",
 				Tags: Tags{
-					Tgs: []*Tag{
+					tags: []*Tag{
 						{
 							Key:     "json",
 							Name:    "name",
@@ -37,7 +37,7 @@ func TestParseStruct(t *testing.T) {
 				Name: "Age",
 				Type: "int",
 				Tags: Tags{
-					Tgs: []*Tag{
+					tags: []*Tag{
 						{
 							Key:     "json",
 							Name:    "age",
@@ -51,7 +51,7 @@ func TestParseStruct(t *testing.T) {
 				Name: "Address",
 				Type: "string",
 				Tags: Tags{
-					Tgs: []*Tag{
+					tags: []*Tag{
 						{
 							Key:     "json",
 							Name:    "address",

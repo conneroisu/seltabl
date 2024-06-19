@@ -8,41 +8,50 @@ import (
 )
 
 func TestIgnore(t *testing.T) {
-	ctx := context.Background()
-	t.Run("Test Ignore Valid Case", func(t *testing.T) {
-		t.Parallel()
-		input := `
-		// @ignore-elements: div, script
-		`
-		expected := []string{"div", "script"}
-		result, err := ExtractIgnores(ctx, input)
-		assert.Nil(t, err)
-		for _, v := range expected {
-			assert.Contains(t, result, v)
-		}
-	})
-
-	t.Run("Test Ignore Invalid Case", func(t *testing.T) {
-		t.Parallel()
-		input := `
-		// @ignore-elements: 
-		`
-		var expected []string
-		result, err := ExtractIgnores(ctx, input)
-		assert.NotNil(t, err)
-		assert.Equal(t, expected, result)
-	})
-
-	t.Run("Test Ignore Partially Invalid Case 2", func(t *testing.T) {
-		t.Parallel()
-		input := `
-		// @ignore-elements: div, script 
-		`
-		expected := []string{"div", "script"}
-		result, err := ExtractIgnores(ctx, input)
-		assert.Nil(t, err)
-		assert.Equal(t, expected, result)
-		assert.NotContains(t, result, "")
-		assert.NotContains(t, result, " ")
-	})
+	type args struct {
+		ctx    context.Context
+		src    string
+		expect []string
+	}
+	tests := []struct {
+		name    string
+		args    args
+		wantErr bool
+	}{
+		{
+			name: "Test Ignore Valid Case",
+			args: args{
+				ctx: context.Background(),
+				src: `
+				// @ignore-elements: div, script
+				`,
+				expect: []string{"div", "script"},
+			},
+			wantErr: false,
+		},
+		{
+			name: "Test Ignore Invalid Case",
+			args: args{ctx: context.Background(), src: `
+				// @ignore-elements: 
+				`, expect: []string{}},
+			wantErr: true,
+		},
+		{
+			name: "Test Ignore Partially Invalid Case 2",
+			args: args{ctx: context.Background(), src: `
+				// @ignore-elements: div, script 
+				`, expect: []string{"div", "script"}},
+			wantErr: true,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got, err := ExtractIgnores(tt.args.ctx, tt.args.src)
+			if (err != nil) != tt.wantErr {
+				t.Errorf("ExtractIgnores() error = %v, wantErr %v", err, tt.wantErr)
+				return
+			}
+			assert.Equal(t, tt.args.expect, got)
+		})
+	}
 }

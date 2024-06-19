@@ -47,23 +47,39 @@ func getSelectorsFromSelection(s *goquery.Selection) string {
 // singleSelector returns a single CSS selector for the given node
 func singleSelector(selection *goquery.Selection) string {
 	var selector string
-	if id, exists := selection.Attr("id"); exists {
+	id, exists := selection.Attr("id")
+	if exists {
 		selector = fmt.Sprintf("%s#%s", goquery.NodeName(selection), id)
-	} else if class, exists := selection.Attr("class"); exists {
-		selector = fmt.Sprintf("%s.%s", goquery.NodeName(selection), strings.Join(strings.Fields(class), "."))
-	} else if attr, exists := selection.Attr("name"); exists {
+	}
+	attr, exists := selection.Attr("class")
+	if exists {
+		selector = fmt.Sprintf("%s.%s", goquery.NodeName(selection), strings.Join(strings.Fields(attr), "."))
+	}
+	attr, exists = selection.Attr("name")
+	if exists {
 		selector = fmt.Sprintf("%s[name=%s]", goquery.NodeName(selection), attr)
-	} else if attr, exists := selection.Attr("type"); exists {
+	}
+	attr, exists = selection.Attr("type")
+	if exists {
 		selector = fmt.Sprintf("%s[type=%s]", goquery.NodeName(selection), attr)
-	} else if attr, exists := selection.Attr("placeholder"); exists {
+	}
+	attr, exists = selection.Attr("placeholder")
+	if exists {
 		selector = fmt.Sprintf("%s[placeholder=%s]", goquery.NodeName(selection), attr)
-	} else if attr, exists := selection.Attr("value"); exists {
+	}
+	attr, exists = selection.Attr("value")
+	if exists {
 		selector = fmt.Sprintf("%s[value=%s]", goquery.NodeName(selection), attr)
-	} else if attr, exists := selection.Attr("src"); exists {
+	}
+	attr, exists = selection.Attr("src")
+	if exists {
 		selector = fmt.Sprintf("%s[src=%s]", goquery.NodeName(selection), attr)
-	} else if attr, exists := selection.Attr("href"); exists {
+	}
+	attr, exists = selection.Attr("href")
+	if exists {
 		selector = fmt.Sprintf("%s[href=%s]", goquery.NodeName(selection), attr)
-	} else {
+	}
+	if selector == "" {
 		selector = goquery.NodeName(selection)
 	}
 	return selector

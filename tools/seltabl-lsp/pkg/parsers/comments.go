@@ -60,7 +60,6 @@ func ParseStructComments(src string) (StructCommentData, error) {
 								}
 							}
 							if len(data.URLs) == 0 && len(data.IgnoreElements) == 0 {
-								return false
 							}
 						}
 					}

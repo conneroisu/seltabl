@@ -8,8 +8,8 @@ import (
 	"github.com/conneroisu/seltabl/tools/seltabl-lsp/pkg/lsp"
 )
 
-// isPositionInStructTagValue checks if the given position is within the value of a struct tag.
-func isPositionInStructTagValue(node *ast.StructType, pos lsp.Position, fset *token.FileSet) bool {
+// IsPositionInStructTagValue checks if the given position is within the value of a struct tag.
+func IsPositionInStructTagValue(node *ast.StructType, pos lsp.Position, fset *token.FileSet) bool {
 	for _, field := range node.Fields.List {
 		if field.Tag != nil {
 			if IsPositionInNode(field.Tag, pos, fset) {
@@ -45,7 +45,6 @@ func isPositionInStructTagValue(node *ast.StructType, pos lsp.Position, fset *to
 func IsPositionInNode(node ast.Node, pos lsp.Position, fset *token.FileSet) bool {
 	start := fset.Position(node.Pos())
 	end := fset.Position(node.End())
-
 	// Check if the position is within the node's range
 	if (pos.Line > start.Line || (pos.Line == start.Line && pos.Character >= start.Column)) &&
 		(pos.Line < end.Line || (pos.Line == end.Line && pos.Character <= end.Column)) {
@@ -54,8 +53,8 @@ func IsPositionInNode(node ast.Node, pos lsp.Position, fset *token.FileSet) bool
 	return false
 }
 
-// FindStructNode finds the struct node in the AST.
-func FindStructNode(node ast.Node) (structNodes []*ast.StructType) {
+// FindStructNodes finds the struct nodes in the AST.
+func FindStructNodes(node ast.Node) (structNodes []*ast.StructType) {
 	ast.Inspect(node, func(n ast.Node) bool {
 		if n != nil {
 			if s, ok := n.(*ast.StructType); ok {

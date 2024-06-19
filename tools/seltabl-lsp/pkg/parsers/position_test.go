@@ -22,7 +22,7 @@ type MyStruct struct {
 		t.Fatalf("Failed to parse source: %v", err)
 	}
 
-	structNode := FindStructNode(node)
+	structNode := FindStructNodes(node)
 	if structNode == nil {
 		t.Error("Expected to find struct node, but did not find any")
 	}
@@ -42,8 +42,8 @@ type MyStruct struct {
 		t.Fatalf("Failed to parse source: %v", err)
 	}
 
-	structNode := FindStructNode(node)
-	if structNode == nil {
+	structNodes := FindStructNodes(node)
+	if structNodes == nil {
 		t.Fatalf("Expected to find struct node, but did not find any")
 	}
 
@@ -60,10 +60,15 @@ type MyStruct struct {
 
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
-			result := IsPositionInTag(structNode, tc.position, fset)
-			if result != tc.expected {
-				t.Errorf("expected %v, got %v", tc.expected, result)
+			for _, structNode := range structNodes {
+				result := IsPositionInTag(structNode, tc.position, fset)
+				if result != tc.expected {
+					t.Errorf("expected %v, got %v", tc.expected, result)
+
+				}
+				return
 			}
+			t.Fail()
 		})
 	}
 }
@@ -82,8 +87,8 @@ type MyStruct struct {
 		t.Fatalf("Failed to parse source: %v", err)
 	}
 
-	structNode := FindStructNode(node)
-	if structNode == nil {
+	structNodes := FindStructNodes(node)
+	if structNodes == nil {
 		t.Fatalf("Expected to find struct node, but did not find any")
 	}
 
@@ -103,10 +108,15 @@ type MyStruct struct {
 
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
-			result := isPositionInStructTagValue(structNode, tc.position, fset)
-			if result != tc.expected {
-				t.Errorf("expected %v, got %v", tc.expected, result)
+			for _, structNode := range structNodes {
+				result := IsPositionInStructTagValue(structNode, tc.position, fset)
+				if result != tc.expected {
+					t.Errorf("expected %v, got %v", tc.expected, result)
+
+				}
+				return
 			}
+			t.Fail()
 		})
 	}
 }
@@ -145,8 +155,8 @@ type TableStruct struct {
 		t.Fatalf("Failed to parse source: %v", err)
 	}
 
-	structNode := FindStructNode(node)
-	if structNode == nil {
+	structNodes := FindStructNodes(node)
+	if structNodes == nil {
 		t.Fatalf("Expected to find struct node, but did not find any")
 	}
 
@@ -165,10 +175,15 @@ type TableStruct struct {
 
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
-			result := isPositionInStructTagValue(structNode, tc.position, fset)
-			if result != tc.expected {
-				t.Errorf("expected %v, got %v", tc.expected, result)
+			for _, structNode := range structNodes {
+				result := IsPositionInStructTagValue(structNode, tc.position, fset)
+				if result != tc.expected {
+					t.Errorf("expected %v, got %v", tc.expected, result)
+
+				}
+				return
 			}
+			t.Fail()
 		})
 	}
 }

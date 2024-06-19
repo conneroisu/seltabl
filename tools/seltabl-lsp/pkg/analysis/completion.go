@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"go/parser"
 	"go/token"
-	"log"
 
 	"github.com/conneroisu/seltabl/tools/seltabl-lsp/pkg/lsp"
 	"github.com/conneroisu/seltabl/tools/seltabl-lsp/pkg/parsers"
@@ -67,26 +66,34 @@ func (s *State) CreateTextDocumentCompletion(
 	text := s.Documents[document.URI]
 	selectors := s.Selectors[document.URI]
 	items := []lsp.CompletionItem{}
-	for _, selector := range selectors {
-		items = append(items, lsp.CompletionItem{
-			Label:         selector.Value,
-			Detail:        "context: \n" + selector.Context,
-			Documentation: "seltabl-lsp",
-		})
-	}
-	for _, key := range keys {
-		items = append(items, lsp.CompletionItem{
-			Label:         key.Label,
-			Detail:        key.Detail,
-			Documentation: key.Documentation,
-		})
-	}
 	// Check if the position is within the struct tag
 	isPositionInStructTag, err := s.CheckPosition(*pos, text)
 	if err != nil {
 		return nil, err
 	}
 	s.Logger.Println("isPositionInStructTag", *isPositionInStructTag)
+	if isPositionInStructTag != nil {
+		if *isPositionInStructTag {
+
+			for _, selector := range selectors {
+				items = append(items, lsp.CompletionItem{
+					Label:         selector.Value,
+					Detail:        "context: \n" + selector.Context,
+					Documentation: "seltabl-lsp",
+				})
+			}
+		} else {
+
+			for _, key := range keys {
+				items = append(items, lsp.CompletionItem{
+					Label:         key.Label,
+					Detail:        key.Detail,
+					Documentation: key.Documentation,
+				})
+			}
+
+		}
+	}
 	return &lsp.CompletionResponse{
 		Response: lsp.Response{
 			RPC: "2.0",
@@ -104,27 +111,28 @@ func (s *State) CheckPosition(position lsp.Position, text string) (res *bool, er
 	var FALSE = false
 	// Read the Go source code from a file
 	sourceCode := bytes.NewBufferString(text)
-
 	// Create a new token file set
 	fset := token.NewFileSet()
-
 	// Parse the source code
 	node, err := parser.ParseFile(fset, "", sourceCode, parser.Trace)
 	if err != nil {
 		return nil, err
 	}
 	// Find the struct node in the AST
-	structNodes := parsers.FindStructNode(node)
+	structNodes := parsers.FindStructNodes(node)
 	s.Logger.Println("structNodes N: ", len(structNodes))
 	s.Logger.Println("position", position)
 	for _, structNode := range structNodes {
 		// Check if the position is within the struct node
 		if parsers.IsPositionInNode(structNode, position, fset) {
-			log.Println("Position is within the struct")
 			// Check if the position is within a struct tag
 			if parsers.IsPositionInTag(structNode, position, fset) {
-				return &TRUE, nil
+				if parsers.IsPositionInStructTagValue(structNode, position, fset) {
+					s.Logger.Println("Position is within a struct tag value")
+					return &TRUE, nil
+				}
 			}
+			s.Logger.Println("Position is not within a struct key")
 			return &FALSE, nil
 		}
 	}

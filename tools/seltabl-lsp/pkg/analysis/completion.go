@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 
+	"github.com/conneroisu/seltabl/tools/seltabl-lsp/data/master"
 	"github.com/conneroisu/seltabl/tools/seltabl-lsp/pkg/lsp"
 )
 
@@ -61,6 +62,7 @@ func (s *State) CreateTextDocumentCompletion(
 	document *lsp.TextDocumentIdentifier,
 	pos *lsp.Position,
 ) (response *lsp.CompletionResponse, err error) {
+	var selectors []master.Selector
 	ctx := context.Background()
 	s.Logger.Printf("pos: %v\n", pos)
 	text := s.Documents[document.URI]
@@ -69,7 +71,7 @@ func (s *State) CreateTextDocumentCompletion(
 	if err != nil {
 		return nil, fmt.Errorf("failed to get urls and ignores: %s", err)
 	}
-	selectors, err := s.getSelectors(ctx, urls, ignores)
+	selectors, err = s.getSelectors(ctx, urls, ignores)
 	if err != nil {
 		return nil, fmt.Errorf("failed to get selectors: %s", err)
 	}

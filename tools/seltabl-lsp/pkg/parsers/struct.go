@@ -68,57 +68,52 @@ type Tag struct {
 type Inspector func(n ast.Node) bool
 
 // ParseStruct checks if the struct tag is in the url and returns a
-func ParseStruct(ctx context.Context, src []byte) (structure *Structure, err error) {
+func ParseStruct(ctx context.Context, src []byte) (Structure, error) {
+	var structure Structure
+	var err error
 	var eg *errgroup.Group
 	eg, _ = errgroup.WithContext(ctx)
 	fset := token.NewFileSet()
 	file, err := parser.ParseFile(fset, "", src, parser.ParseComments)
 	if err != nil {
-		return nil, fmt.Errorf("failed to parse struct: %w", err)
+		return Structure{}, fmt.Errorf("failed to parse struct: %w", err)
 	}
-	ast.Inspect(file, makeInspector(eg, structure, fset))
+	ast.Inspect(file, func() func(n ast.Node) bool {
+		return func(n ast.Node) bool {
+			s, ok := n.(*ast.StructType)
+			if !ok {
+				return true
+			}
+			structure.Fields = make([]Field, len(s.Fields.List))
+			for i, f := range s.Fields.List {
+				f := f
+				i := i
+				eg.Go(func() error {
+					tags, err := ParseTags(
+						f.Tag.Value[1 : len(f.Tag.Value)-1],
+					)
+					if err != nil {
+						return fmt.Errorf("failed to parse tags: %w", err)
+					}
+					structure.Fields[i] = Field{
+						Name: f.Names[0].Name,
+						Type: fmt.Sprintf("%s", f.Type),
+						Tags: *tags,
+						Line: fset.Position(f.Pos()).Line,
+					}
+					return nil
+				})
+			}
+			if err := eg.Wait(); err != nil {
+				return true
+			}
+			return true
+		}
+	}())
 	if err := eg.Wait(); err != nil {
-		return nil, fmt.Errorf("failed to parse struct: %w", err)
+		return Structure{}, fmt.Errorf("failed to parse struct: %w", err)
 	}
 	return structure, nil
-}
-
-// makeInspector creates an inspector for the given structure
-func makeInspector(
-	eg *errgroup.Group,
-	structure *Structure,
-	fset *token.FileSet,
-) Inspector {
-	return func(n ast.Node) bool {
-		s, ok := n.(*ast.StructType)
-		if !ok {
-			return true
-		}
-		structure.Fields = make([]Field, len(s.Fields.List))
-		for i, f := range s.Fields.List {
-			f := f
-			i := i
-			eg.Go(func() error {
-				tags, err := ParseTags(
-					f.Tag.Value[1 : len(f.Tag.Value)-1],
-				)
-				if err != nil {
-					return fmt.Errorf("failed to parse tags: %w", err)
-				}
-				structure.Fields[i] = Field{
-					Name: f.Names[0].Name,
-					Type: fmt.Sprintf("%s", f.Type),
-					Tags: *tags,
-					Line: fset.Position(f.Pos()).Line,
-				}
-				return nil
-			})
-		}
-		if err := eg.Wait(); err != nil {
-			return true
-		}
-		return true
-	}
 }
 
 // ParseTags parses a single struct field tag and returns the set of tags.

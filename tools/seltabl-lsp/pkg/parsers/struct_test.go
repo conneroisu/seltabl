@@ -64,9 +64,6 @@ func TestParseStruct(t *testing.T) {
 		},
 	}
 	assert.NoError(t, err)
-	if got == nil {
-		t.Fatal("expected struct, got nil")
-	}
 	for i, field := range expected.Fields {
 		gotField := got.Fields[i]
 		if gotField.Name == field.Name {

@@ -3,11 +3,6 @@ package analysis
 import "github.com/conneroisu/seltabl/tools/seltabl-lsp/pkg/lsp"
 
 var (
-	// headerTag is the tag used to match a header cell's Value.
-	headerTag = lsp.CompletionItem{Label: "seltabl",
-		Detail:        "Title Text for the header",
-		Documentation: "This is the documentation for the header",
-	}
 	// selectorDataTag is the tag used to mark a data cell.
 	selectorDataTag = lsp.CompletionItem{Label: "dSel",
 		Detail:        "Title Text for the data selector",

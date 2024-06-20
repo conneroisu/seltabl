@@ -13,7 +13,6 @@ import (
 var (
 	// completionKeys is the slice of completionKeys to return for completions inside a struct tag but not a "" selector
 	completionKeys = []lsp.CompletionItem{
-		headerTag,
 		selectorDataTag,
 		selectorHeaderTag,
 		selectorQueryTag,

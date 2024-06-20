@@ -56,7 +56,12 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 			scanner := bufio.NewScanner(os.Stdin)
 			scanner.Split(rpc.Split)
 			for scanner.Scan() {
-				s.handle(ctx, scanner)
+				err = s.handle(ctx, scanner)
+				if err != nil {
+					s.Logger.Printf("failed to handle message: %s\n", err)
+					s.State.Logger.Printf("failed to handle message: %s\n", err)
+					s.State.Logger.Printf("exiting...\n")
+				}
 			}
 			return nil
 		},
@@ -64,7 +69,7 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 }
 
 // handle handles a message from the client to the language server.
-func (s *Root) handle(ctx context.Context, scanner *bufio.Scanner) {
+func (s *Root) handle(ctx context.Context, scanner *bufio.Scanner) error {
 	defer func() {
 		if err := scanner.Err(); err != nil {
 			out := os.Stderr
@@ -80,8 +85,8 @@ func (s *Root) handle(ctx context.Context, scanner *bufio.Scanner) {
 		fmt.Fprintf(out, "failed to handle message: %s\n", err)
 		s.Logger.Printf("failed to handle message: %s\n", err)
 		s.State.Logger.Printf("failed to handle message: %s\n", err)
-		return
 	}
+	return nil
 }
 
 // getLogger returns a logger that writes to a file

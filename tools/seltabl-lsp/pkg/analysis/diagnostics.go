@@ -4,7 +4,8 @@ import (
 	"bytes"
 	"context"
 	"fmt"
-	"strings"
+	"io"
+	"net/http"
 
 	"github.com/PuerkitoBio/goquery"
 	"github.com/conneroisu/seltabl/tools/seltabl-lsp/pkg/lsp"
@@ -13,7 +14,6 @@ import (
 
 var (
 	diagnosticKeys = []string{
-		headerTag.Label,
 		selectorDataTag.Label,
 		selectorHeaderTag.Label,
 		selectorQueryTag.Label,
@@ -27,7 +27,7 @@ func (s *State) GetDiagnosticsForFile(text string) []lsp.Diagnostic {
 	ctx := context.Background()
 	urls, err := parsers.ParseStructComments(text)
 	if err != nil {
-		s.Logger.Printf("failed to get urls: %s\n", err)
+		return diagnostics
 	}
 	sts, err := parsers.ParseStructs(ctx, []byte(text))
 	if err != nil {
@@ -36,28 +36,6 @@ func (s *State) GetDiagnosticsForFile(text string) []lsp.Diagnostic {
 	for _, st := range sts {
 		diagnostics = append(diagnostics, s.getDiagnosticsForStruct(st, urls)...)
 	}
-	for row, line := range strings.Split(text, "\n") {
-		if strings.Contains(line, "VS Code") {
-			idx := strings.Index(line, "VS Code")
-			diagnostics = append(diagnostics, lsp.Diagnostic{
-				Range:    lsp.LineRange(row, idx, idx+len("VS Code")),
-				Severity: 1,
-				Source:   "Common Sense",
-				Message:  "Please make sure we use good language in this video",
-			})
-		}
-		if strings.Contains(line, "Neovim") {
-			idx := strings.Index(line, "Neovim")
-			diagnostics = append(diagnostics, lsp.Diagnostic{
-				Range:    lsp.LineRange(row, idx, idx+len("Neovim")),
-				Severity: 2,
-				Source:   "Common Sense",
-				Message:  "Great choice :)",
-			})
-
-		}
-	}
-
 	return diagnostics
 }
 
@@ -70,7 +48,7 @@ func (s *State) getDiagnosticsForStruct(st parsers.Structure, data parsers.Struc
 		for _, tag := range tags.Tags() {
 			for _, key := range diagnosticKeys {
 				if key == tag.Key {
-					verified := s.validateSelector(tag.Value(), s.Documents[data.URLs[0]])
+					verified := s.clientValidateSelector(tag.Value(), data.URLs[0])
 					if !verified {
 						diagnostics = append(diagnostics, lsp.Diagnostic{
 							Range:    lsp.LineRange(line-1, tag.Start, tag.End),
@@ -94,12 +72,36 @@ func (s *State) validateSelector(selector, text string) bool {
 		s.Logger.Printf("failed to create a new goquery document: %v\n", err)
 		return false
 	}
-
 	// Check if the selector is in the response body
 	if doc.Find(selector).Length() < 1 {
 		fmt.Printf("Selector '%s' not found in the response body\n", selector)
 		return false
 	}
-
 	return true
+}
+
+// clientValidateSelector validates a selector using a client
+func (s *State) clientValidateSelector(selector, url string) bool {
+	// Http request to the server
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		s.Logger.Printf("failed to create a new request: %v\n", err)
+		return false
+	}
+	req.Header.Set("Content-Type", "application/json")
+	// Send the request
+	client := &http.Client{}
+	resp, err := client.Do(req)
+	if err != nil {
+		s.Logger.Printf("failed to send the request: %v\n", err)
+		return false
+	}
+	defer resp.Body.Close()
+	// Read the response body
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		s.Logger.Printf("failed to read the response body: %v\n", err)
+		return false
+	}
+	return s.validateSelector(selector, string(body))
 }

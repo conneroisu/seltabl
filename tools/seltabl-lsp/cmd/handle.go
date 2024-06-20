@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"os"
 	"strings"
 
 	"github.com/conneroisu/seltabl/tools/seltabl-lsp/pkg/lsp"
@@ -204,6 +205,7 @@ func (s *Root) HandleMessage(
 		if err != nil {
 			return fmt.Errorf("write (shutdown) response failed: %w", err)
 		}
+		os.Exit(0)
 	case "$/cancelRequest":
 		var request lsp.CancelRequest
 		err = json.Unmarshal(contents, &request)
@@ -222,6 +224,7 @@ func (s *Root) HandleMessage(
 			return fmt.Errorf("failed to write response: %w", err)
 		}
 	case "exit":
+		os.Exit(0)
 		return nil
 	default:
 		return fmt.Errorf("unknown method: %s", method)

@@ -12,116 +12,6 @@ import (
 //go:embed struct.test.txt
 var testContent string
 
-// TestParseStruct tests the PositionStatusInStructTag function
-func TestParseStruct(t *testing.T) {
-	src := testContent
-	ctx := context.Background()
-	got, err := ParseStruct(ctx, []byte(src))
-	expected := &Structure{
-		Fields: []Field{
-			{
-				Name: "Name",
-				Type: "string",
-				Tags: Tags{
-					tags: []*Tag{
-						{
-							Key:     "json",
-							Name:    "name",
-							Options: []string{},
-						},
-					},
-				},
-				Line: 5,
-			},
-			{
-				Name: "Age",
-				Type: "int",
-				Tags: Tags{
-					tags: []*Tag{
-						{
-							Key:     "json",
-							Name:    "age",
-							Options: []string{},
-						},
-					},
-				},
-				Line: 6,
-			},
-			{
-				Name: "Address",
-				Type: "string",
-				Tags: Tags{
-					tags: []*Tag{
-						{
-							Key:     "json",
-							Name:    "address",
-							Options: []string{"omitempty"},
-						},
-					},
-				},
-				Line: 7,
-			},
-		},
-	}
-	assert.NoError(t, err)
-	for i, field := range expected.Fields {
-		gotField := got.Fields[i]
-		if gotField.Name == field.Name {
-			assert.Equal(
-				t,
-				field.Type,
-				gotField.Type,
-				"field %s type not found",
-				field.Name,
-			)
-		}
-		// check the line
-		if gotField.Line != field.Line {
-			t.Errorf("field line: %d, expected: %d", gotField.Line, field.Line)
-		}
-	}
-}
-
-func TestParseStructee(t *testing.T) {
-	tests := []struct {
-		name    string
-		src     string
-		wantErr bool
-	}{
-		{
-			name: "valid struct",
-			src: `package main
-				type User struct {
-					Name string ` + "`json:\"name\"`" + `
-				}`,
-			wantErr: false,
-		},
-		{
-			name: "invalid struct",
-			src: `package main
-				type User struct {
-					Name string ` + "`json:\"name\"`" + `
-					Age int ` + "`json:\"age\"`" + `
-				`,
-			wantErr: true,
-		},
-	}
-
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			ctx := context.Background()
-			_, err := ParseStruct(ctx, []byte(tt.src))
-			if (err != nil) != tt.wantErr {
-				t.Errorf(
-					"ParseStruct() error = %v, wantErr %v",
-					err,
-					tt.wantErr,
-				)
-			}
-		})
-	}
-}
-
 // TestParseTags tests the ParseTags function
 func TestParseTags(t *testing.T) {
 	t.Parallel()
@@ -282,6 +172,7 @@ func TestTag_String(t *testing.T) {
 	}
 }
 
+// TestParseStructs tests the ParseStructs function
 func TestParseStructs(t *testing.T) {
 	src := `package main
 
@@ -372,6 +263,7 @@ type MyStruct2 struct {
 	assert.Equal(t, 2, len(structs), "expected 2 structs")
 
 	for i, structDef := range structs {
+		assert.Equal(t, len(expected[i].Fields), len(structDef.Fields), "expected %d fields", i)
 		t.Logf("struct %d: %v", i, structDef)
 		// expect the field names to match
 		assert.Equal(t, expected[i].Fields[0].Name, structDef.Fields[0].Name)

@@ -76,22 +76,20 @@ type Tag struct {
 // Inspector is a function for concurrently inspecting a node recursively
 type Inspector func(n ast.Node) bool
 
-// ParseStruct checks if the struct tag is in the url and returns a
-func ParseStruct(ctx context.Context, src []byte) (Structure, error) {
+// ParseStructs checks if the struct tag is in the url and returns a
+func ParseStructs(ctx context.Context, src []byte) (structures []Structure, err error) {
 	// add a package main to the source
 	strSrc := string(src)
-	if !strings.HasPrefix(strSrc, "package main") {
+	if !strings.Contains(strSrc, "package ") {
 		strSrc = "package main\n" + strSrc
 	}
 	src = []byte(strSrc)
-	var structure Structure
-	var err error
 	var eg *errgroup.Group
 	eg, _ = errgroup.WithContext(ctx)
 	fset := token.NewFileSet()
 	file, err := parser.ParseFile(fset, "", src, parser.ParseComments)
 	if err != nil {
-		return Structure{}, fmt.Errorf("failed to parse struct: %w", err)
+		return nil, fmt.Errorf("failed to parse struct: %w", err)
 	}
 	ast.Inspect(file, func() func(n ast.Node) bool {
 		return func(n ast.Node) bool {
@@ -99,6 +97,7 @@ func ParseStruct(ctx context.Context, src []byte) (Structure, error) {
 			if !ok {
 				return true
 			}
+			var structure Structure
 			structure.Fields = make([]Field, len(s.Fields.List))
 			for idx, field := range s.Fields.List {
 				field, idx := field, idx
@@ -125,13 +124,14 @@ func ParseStruct(ctx context.Context, src []byte) (Structure, error) {
 			if err := eg.Wait(); err != nil {
 				return true
 			}
+			structures = append(structures, structure)
 			return true
 		}
 	}())
 	if err := eg.Wait(); err != nil {
-		return Structure{}, fmt.Errorf("failed to parse struct: %w", err)
+		return nil, fmt.Errorf("failed to parse struct: %w", err)
 	}
-	return structure, nil
+	return structures, nil
 }
 
 // ParseTags parses a single struct field tag and returns the set of tags.
@@ -324,54 +324,4 @@ func (t *Tag) GoString() string {
 // String returns a string representation of the tag
 func (t *Tag) String() string {
 	return fmt.Sprintf(`%s:%q`, t.Key, t.Value())
-}
-
-// ParseStructs parses the Go source code and returns a slice of struct definitions.
-func ParseStructs(ctx context.Context, src []byte) ([]Structure, error) {
-	// split the source code into struct definitions
-	structDefs, err := SplitStructs(src)
-	if err != nil {
-		return nil, fmt.Errorf("failed to split structs: %v", err)
-	}
-	// parse each struct definitions
-	structs := make([]Structure, len(structDefs))
-	for i, structDef := range structDefs {
-		structs[i], err = ParseStruct(ctx, []byte(structDef))
-		if err != nil {
-			return nil, fmt.Errorf("failed to parse struct: %v", err)
-		}
-	}
-	return structs, nil
-}
-
-// SplitStructs parses the Go source code and returns a slice of struct definitions.
-func SplitStructs(src []byte) ([]string, error) {
-	fset := token.NewFileSet()
-	node, err := parser.ParseFile(fset, "", src, parser.ParseComments)
-	if err != nil {
-		return nil, fmt.Errorf("failed to parse file: %v", err)
-	}
-	var structDefs []string
-	ast.Inspect(node, func(n ast.Node) bool {
-		genDecl, ok := n.(*ast.GenDecl)
-		if ok && genDecl.Tok == token.TYPE {
-			for _, spec := range genDecl.Specs {
-				typeSpec, ok := spec.(*ast.TypeSpec)
-				if !ok {
-					continue
-				}
-				structType, ok := typeSpec.Type.(*ast.StructType)
-				if !ok {
-					continue
-				}
-				start := fset.Position(genDecl.Pos()).Line - 1
-				end := fset.Position(structType.End()).Line
-				lines := strings.Split(string(src), "\n")[start:end]
-				structDef := strings.Join(lines, "\n")
-				structDefs = append(structDefs, structDef)
-			}
-		}
-		return true
-	})
-	return structDefs, nil
 }

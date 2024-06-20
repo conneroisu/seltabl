@@ -9,7 +9,11 @@ import (
 )
 
 // IsPositionInStructTagValue checks if the given position is within the value of a struct tag.
-func IsPositionInStructTagValue(node *ast.StructType, pos lsp.Position, fset *token.FileSet) bool {
+func IsPositionInStructTagValue(
+	node *ast.StructType,
+	pos lsp.Position,
+	fset *token.FileSet,
+) bool {
 	for _, field := range node.Fields.List {
 		if field.Tag != nil {
 			if IsPositionInNode(field.Tag, pos, fset) {
@@ -20,7 +24,10 @@ func IsPositionInStructTagValue(node *ast.StructType, pos lsp.Position, fset *to
 				for i := 0; i < len(tagContent); i++ {
 					if tagContent[i] == '"' {
 						startQuote := i + 1
-						endQuote := strings.Index(tagContent[startQuote:], "\"")
+						endQuote := strings.Index(
+							tagContent[startQuote:],
+							"\"",
+						)
 						if endQuote == -1 {
 							continue
 						}
@@ -29,7 +36,9 @@ func IsPositionInStructTagValue(node *ast.StructType, pos lsp.Position, fset *to
 						tagColumnStart := start.Column + startQuote
 						tagColumnEnd := start.Column + endQuote
 
-						if pos.Line == tagRow && pos.Character >= tagColumnStart && pos.Character <= tagColumnEnd {
+						if pos.Line == tagRow &&
+							pos.Character >= tagColumnStart &&
+							pos.Character <= tagColumnEnd {
 							return true
 						}
 						i = endQuote
@@ -42,7 +51,11 @@ func IsPositionInStructTagValue(node *ast.StructType, pos lsp.Position, fset *to
 }
 
 // IsPositionInNode checks if a given position is within the range of an AST node.
-func IsPositionInNode(node ast.Node, pos lsp.Position, fset *token.FileSet) bool {
+func IsPositionInNode(
+	node ast.Node,
+	pos lsp.Position,
+	fset *token.FileSet,
+) bool {
 	start := fset.Position(node.Pos())
 	end := fset.Position(node.End())
 	// Check if the position is within the node's range
@@ -68,7 +81,11 @@ func FindStructNodes(node ast.Node) (structNodes []*ast.StructType) {
 }
 
 // IsPositionInTag checks if the given position is within a struct tag.
-func IsPositionInTag(node *ast.StructType, pos lsp.Position, fset *token.FileSet) bool {
+func IsPositionInTag(
+	node *ast.StructType,
+	pos lsp.Position,
+	fset *token.FileSet,
+) bool {
 	for _, field := range node.Fields.List {
 		if field.Tag != nil {
 			if IsPositionInNode(field.Tag, pos, fset) {
@@ -77,4 +94,40 @@ func IsPositionInTag(node *ast.StructType, pos lsp.Position, fset *token.FileSet
 		}
 	}
 	return false
+}
+
+// PositionBeforeValue returns the value of the position in a file
+func PositionBeforeValue(pos lsp.Position, text string) byte {
+	split := strings.Split(text, "\n")
+	if pos.Line > len(split) {
+		return '\n'
+	}
+	line := split[pos.Line]
+	if pos.Character > len(line) {
+		return '\n'
+	}
+	return line[pos.Character-1]
+}
+
+const (
+	// StateInTag is the state for when the position is within a struct tag
+	StateInTag = iota
+	// StateInTagValue is the state for when the position is within a struct tag value
+	StateInTagValue
+	// StateAfterColon is the state for when the position is after a colon
+	StateAfterColon
+	// StateInvalid is the state for when the position is invalid or not within a struct
+	StateInvalid
+)
+
+// GetLineRangeFromNode returns a range for a given node
+func GetLineRangeFromNode(node ast.Node, fset *token.FileSet) lsp.Range {
+	start := fset.Position(node.Pos())
+	end := fset.Position(node.End())
+	// Check if the position is within the node's range
+	if (end.Line > start.Line || (end.Line == start.Line && end.Column >= start.Column)) &&
+		(start.Line < end.Line || (start.Line == end.Line && start.Column <= end.Column)) {
+		return lsp.LineRange(start.Line, start.Column, end.Column)
+	}
+	return lsp.LineRange(start.Line, start.Column, start.Column)
 }

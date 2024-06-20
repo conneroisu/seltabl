@@ -3,6 +3,7 @@
 package main
 
 import (
+	"fmt"
 	"os"
 
 	"github.com/conneroisu/seltabl/tools/seltabl-lsp/cmd"
@@ -11,9 +12,11 @@ import (
 // main is the entry point for the command line tool, a
 // language server for the seltabl package
 func main() {
-	rs := &cmd.Root{Writer: os.Stdout}
-	if err := cmd.Execute(rs); err != nil {
-		rs.Logger.Println(err)
+	if err := cmd.Execute(); err != nil {
+		out := os.Stderr
+		fmt.Fprintf(out, "failed to execute command: %s\n", err)
+		fmt.Fprintf(out, "exiting...\n")
+		os.Exit(1)
 	}
 }
 

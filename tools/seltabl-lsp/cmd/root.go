@@ -18,25 +18,32 @@ import (
 // ReturnCmd returns the command for the root
 func (s *Root) ReturnCmd() *cobra.Command {
 	return &cobra.Command{
-		Use:   "seltabl-lsp", // the name of the command
+		Use:   "seltabl", // the name of the command
 		Short: "A command line tool for parsing html tables into structs",
-		Long: `Language Server for the seltabl package.
+		Long: `
+CLI and Language Server for the seltabl package.
 
-Provides completions, hovers, and code actions for seltabl defined structs.
+Language server provides completions, hovers, and code actions for seltabl defined structs.
+	
+CLI provides a command line tool for verifying, linting, and reporting on seltabl defined structs.
 `,
-		Run: func(_ *cobra.Command, _ []string) {
+		RunE: func(_ *cobra.Command, _ []string) error {
 			cfg, err := config.CreateConfigDir()
 			if err != nil {
-				panic(err)
+				return fmt.Errorf("failed to create config directory: %w", err)
 			}
 			s.Config = cfg
-			s.State = analysis.NewState(s.Config)
+			s.State, err = analysis.NewState(s.Config)
+			if err != nil {
+				return fmt.Errorf("failed to create state: %w", err)
+			}
 			s.Logger = getLogger(path.Join(s.Config.ConfigPath, "seltabl.log"))
 			scanner := bufio.NewScanner(os.Stdin)
 			scanner.Split(rpc.Split)
 			for scanner.Scan() {
 				s.handle(scanner)
 			}
+			return nil
 		},
 	}
 }
@@ -44,8 +51,8 @@ Provides completions, hovers, and code actions for seltabl defined structs.
 // handle handles a message from the client to the language server.
 func (s *Root) handle(scanner *bufio.Scanner) {
 	defer func() {
-		out := os.Stderr
 		if err := scanner.Err(); err != nil {
+			out := os.Stderr
 			fmt.Fprintf(out, "scanner error: %v\n", err)
 			s.Logger.Printf("scanner error: %v\n", err)
 			s.State.Logger.Printf("scanner error: %v\n", err)
@@ -63,7 +70,8 @@ func (s *Root) handle(scanner *bufio.Scanner) {
 }
 
 // Execute runs the root command
-func Execute(srv lsp.Server) error {
+func Execute() error {
+	srv := &Root{Writer: os.Stdout}
 	cmd := srv.ReturnCmd()
 	err := cmd.Execute()
 	if err != nil {

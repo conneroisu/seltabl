@@ -112,7 +112,11 @@ func TestParseStructee(t *testing.T) {
 			ctx := context.Background()
 			_, err := ParseStruct(ctx, []byte(tt.src))
 			if (err != nil) != tt.wantErr {
-				t.Errorf("ParseStruct() error = %v, wantErr %v", err, tt.wantErr)
+				t.Errorf(
+					"ParseStruct() error = %v, wantErr %v",
+					err,
+					tt.wantErr,
+				)
 			}
 		})
 	}
@@ -169,7 +173,9 @@ func TestTags_Set(t *testing.T) {
 	t.Parallel()
 	tags := &Tags{}
 
-	err := tags.Set(&Tag{Key: "json", Name: "name", Options: []string{"omitempty"}})
+	err := tags.Set(
+		&Tag{Key: "json", Name: "name", Options: []string{"omitempty"}},
+	)
 	if err != nil {
 		t.Errorf("Tags.Set() error = %v", err)
 	}
@@ -192,7 +198,11 @@ func TestTags_AddOptions(t *testing.T) {
 	tags.AddOptions("json", "readonly")
 	tag, _ := tags.Get("json")
 	if !tag.HasOption("readonly") {
-		t.Errorf("Tags.AddOptions() = %v, want %v", tag.Options, []string{"omitempty", "readonly"})
+		t.Errorf(
+			"Tags.AddOptions() = %v, want %v",
+			tag.Options,
+			[]string{"omitempty", "readonly"},
+		)
 	}
 }
 

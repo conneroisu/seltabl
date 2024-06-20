@@ -6,6 +6,7 @@ import (
 	"testing"
 
 	"github.com/conneroisu/seltabl/tools/seltabl-lsp/pkg/lsp"
+	"github.com/stretchr/testify/assert"
 )
 
 // TestFindStructNode tests the findStructNode function.
@@ -101,11 +102,31 @@ type MyStruct struct {
 		position lsp.Position
 		expected bool
 	}{
-		{"Position in Field1 tag value", lsp.Position{Line: 5, Character: 22}, true},
-		{"Position in Field2 tag value", lsp.Position{Line: 6, Character: 22}, true},
-		{"Position out Field1 tag value", lsp.Position{Line: 5, Character: 21}, false},
-		{"Position out Field2 tag value", lsp.Position{Line: 6, Character: 21}, false},
-		{"Position outside tag values", lsp.Position{Line: 4, Character: 1}, false},
+		{
+			"Position in Field1 tag value",
+			lsp.Position{Line: 5, Character: 22},
+			true,
+		},
+		{
+			"Position in Field2 tag value",
+			lsp.Position{Line: 6, Character: 22},
+			true,
+		},
+		{
+			"Position out Field1 tag value",
+			lsp.Position{Line: 5, Character: 21},
+			false,
+		},
+		{
+			"Position out Field2 tag value",
+			lsp.Position{Line: 6, Character: 21},
+			false,
+		},
+		{
+			"Position outside tag values",
+			lsp.Position{Line: 4, Character: 1},
+			false,
+		},
 		{"Position out of range", lsp.Position{Line: 7, Character: 99}, false},
 	}
 
@@ -113,12 +134,12 @@ type MyStruct struct {
 		t.Run(tc.name, func(t *testing.T) {
 			failed := false
 			for _, structNode := range structNodes {
-				result := IsPositionInStructTagValue(structNode, tc.position, fset)
-				if result != tc.expected {
-					t.Errorf("expected %v, got %v", tc.expected, result)
-					failed = true
-
-				}
+				is := IsPositionInStructTagValue(
+					structNode,
+					tc.position,
+					fset,
+				)
+				assert.Equal(t, tc.expected, is)
 			}
 			if failed {
 				t.Fail()
@@ -172,20 +193,44 @@ type TableStruct struct {
 		position lsp.Position
 		expected bool
 	}{
-		{"Position out Field1 tag value", lsp.Position{Line: 5, Character: 22}, false},
-		{"Position out Field2 tag value", lsp.Position{Line: 6, Character: 22}, false},
-		{"Position out Field1 tag value", lsp.Position{Line: 5, Character: 0}, false},
-		{"Position out Field2 tag value", lsp.Position{Line: 6, Character: 0}, false},
-		{"Position in Field1 tag value", lsp.Position{Line: 24, Character: 18}, true},
+		{
+			"Position out Field1 tag value",
+			lsp.Position{Line: 5, Character: 22},
+			false,
+		},
+		{
+			"Position out Field2 tag value",
+			lsp.Position{Line: 6, Character: 22},
+			false,
+		},
+		{
+			"Position out Field1 tag value",
+			lsp.Position{Line: 5, Character: 0},
+			false,
+		},
+		{
+			"Position out Field2 tag value",
+			lsp.Position{Line: 6, Character: 0},
+			false,
+		},
+		{
+			"Position in Field1 tag value",
+			lsp.Position{Line: 24, Character: 18},
+			true,
+		},
 	}
 
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
 			failed := false
 			for _, structNode := range structNodes {
-				result := IsPositionInStructTagValue(structNode, tc.position, fset)
-				if result != tc.expected {
-					t.Errorf("expected %v, got %v", tc.expected, result)
+				is := IsPositionInStructTagValue(
+					structNode,
+					tc.position,
+					fset,
+				)
+				if is != tc.expected {
+					t.Errorf("expected %v, got %v", tc.expected, is)
 				}
 			}
 			if failed {

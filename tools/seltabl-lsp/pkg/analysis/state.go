@@ -10,7 +10,6 @@ import (
 	"github.com/conneroisu/seltabl/tools/seltabl-lsp/data"
 	"github.com/conneroisu/seltabl/tools/seltabl-lsp/data/master"
 	"github.com/conneroisu/seltabl/tools/seltabl-lsp/internal/config"
-	"github.com/conneroisu/seltabl/tools/seltabl-lsp/pkg/lsp"
 	"github.com/conneroisu/seltabl/tools/seltabl-lsp/pkg/parsers"
 	"github.com/yosssi/gohtml"
 )
@@ -27,6 +26,30 @@ type State struct {
 	Logger *log.Logger
 }
 
+// NewState returns a new state with no documents
+func NewState(config *config.Config) (state State, err error) {
+	db, err := data.NewDb(
+		context.Background(),
+		master.New,
+		&data.Config{
+			Schema:   master.MasterSchema,
+			URI:      "sqlite://uri.sqlite",
+			FileName: path.Join(config.ConfigPath, "uri.sqlite"),
+		},
+	)
+	if err != nil {
+		return state, fmt.Errorf("failed to create database: %w", err)
+	}
+	logger := getLogger(path.Join(config.ConfigPath, "state.log"))
+	state = State{
+		Documents: make(map[string]string),
+		Selectors: make(map[string][]master.Selector),
+		Database:  *db,
+		Logger:    logger,
+	}
+	return state, nil
+}
+
 // getLogger returns a logger that writes to a file
 func getLogger(fileName string) *log.Logger {
 	logFile, err := os.OpenFile(
@@ -38,44 +61,6 @@ func getLogger(fileName string) *log.Logger {
 		log.Fatal(err)
 	}
 	return log.New(logFile, "[seltabl-lsp#state]", log.LstdFlags)
-}
-
-// NewState returns a new state with no documents
-func NewState(config *config.Config) (state State) {
-	db, err := data.NewDb(
-		context.Background(),
-		master.New,
-		&data.Config{
-			Schema:   master.MasterSchema,
-			URI:      "sqlite://uri.sqlite",
-			FileName: path.Join(config.ConfigPath, "uri.sqlite"),
-		},
-	)
-	if err != nil {
-		panic(err)
-	}
-	logger := getLogger(path.Join(config.ConfigPath, "state.log"))
-	state = State{
-		Documents: make(map[string]string),
-		Selectors: make(map[string][]master.Selector),
-		Database:  *db,
-		Logger:    logger,
-	}
-	return state
-}
-
-// LineRange returns a range of a line in a document
-func LineRange(line, start, end int) lsp.Range {
-	return lsp.Range{
-		Start: lsp.Position{
-			Line:      line,
-			Character: start,
-		},
-		End: lsp.Position{
-			Line:      line,
-			Character: end,
-		},
-	}
 }
 
 // getSelectors gets all the selectors from the given URL and appends them to the selectors slice

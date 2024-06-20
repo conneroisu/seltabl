@@ -28,7 +28,9 @@ type Structure struct {
 	Fields []Field
 }`,
 			expected: StructCommentData{
-				URLs:           []string{"https://github.com/conneroisu/seltabl/blob/main/testdata/ab_num_table.html"},
+				URLs: []string{
+					"https://github.com/conneroisu/seltabl/blob/main/testdata/ab_num_table.html",
+				},
 				IgnoreElements: []string{"div", "script"},
 			},
 			wantErr: false,
@@ -49,7 +51,10 @@ type SecondStruct struct {
 	Field2 int
 }`,
 			expected: StructCommentData{
-				URLs:           []string{"https://example.com/one", "https://example.com/two"},
+				URLs: []string{
+					"https://example.com/one",
+					"https://example.com/two",
+				},
 				IgnoreElements: []string{"p", "span", "div", "style"},
 			},
 			wantErr: false,
@@ -100,7 +105,10 @@ type MultipleAnnotationsStruct struct {
 	Field string
 }`,
 			expected: StructCommentData{
-				URLs:           []string{"https://example.com/multiple1", "https://example.com/multiple2"},
+				URLs: []string{
+					"https://example.com/multiple1",
+					"https://example.com/multiple2",
+				},
 				IgnoreElements: []string{"header", "footer", "nav"},
 			},
 			wantErr: false,
@@ -208,7 +216,9 @@ type SpecialCharsStruct struct {
 	Field string
 }`,
 			expected: StructCommentData{
-				URLs:           []string{"https://example.com/special?chars&test=true"},
+				URLs: []string{
+					"https://example.com/special?chars&test=true",
+				},
 				IgnoreElements: []string{"#id", ".class"},
 			},
 			wantErr: false,
@@ -236,10 +246,18 @@ type MixedOrderStruct struct {
 		t.Run(tt.name, func(t *testing.T) {
 			actual, err := ParseStructComments(tt.input)
 			if (err != nil) != tt.wantErr {
-				t.Fatalf("ParseStructComments() error = %v, wantErr %v", err, tt.wantErr)
+				t.Fatalf(
+					"ParseStructComments() error = %v, wantErr %v",
+					err,
+					tt.wantErr,
+				)
 			}
 			if !reflect.DeepEqual(actual, tt.expected) && tt.wantedErr == "" {
-				t.Errorf("ParseStructComments() = %v, want %v", actual, tt.expected)
+				t.Errorf(
+					"ParseStructComments() = %v, want %v",
+					actual,
+					tt.expected,
+				)
 			} else if tt.wantedErr != "" {
 				if err.Error() != tt.wantedErr {
 					t.Errorf("ParseStructComments() error = %v, wantErr %v", err, tt.wantedErr)

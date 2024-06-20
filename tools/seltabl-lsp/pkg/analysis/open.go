@@ -17,7 +17,11 @@ func (s *State) OpenDocument(uri, text string) []lsp.Diagnostic {
 		return nil
 	}
 	for _, url := range out.URLs {
-		s.Selectors[uri], err = s.getSelectors(ctx, []string{url}, out.IgnoreElements)
+		s.Selectors[uri], err = s.getSelectors(
+			ctx,
+			[]string{url},
+			out.IgnoreElements,
+		)
 		if err != nil {
 			s.Logger.Printf("failed to get selectors: %s\n", err)
 		}

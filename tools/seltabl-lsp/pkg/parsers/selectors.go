@@ -53,23 +53,43 @@ func singleSelector(selection *goquery.Selection) string {
 	}
 	attr, exists := selection.Attr("class")
 	if exists {
-		selector = fmt.Sprintf("%s.%s", goquery.NodeName(selection), strings.Join(strings.Fields(attr), "."))
+		selector = fmt.Sprintf(
+			"%s.%s",
+			goquery.NodeName(selection),
+			strings.Join(strings.Fields(attr), "."),
+		)
 	}
 	attr, exists = selection.Attr("name")
 	if exists {
-		selector = fmt.Sprintf("%s[name=%s]", goquery.NodeName(selection), attr)
+		selector = fmt.Sprintf(
+			"%s[name=%s]",
+			goquery.NodeName(selection),
+			attr,
+		)
 	}
 	attr, exists = selection.Attr("type")
 	if exists {
-		selector = fmt.Sprintf("%s[type=%s]", goquery.NodeName(selection), attr)
+		selector = fmt.Sprintf(
+			"%s[type=%s]",
+			goquery.NodeName(selection),
+			attr,
+		)
 	}
 	attr, exists = selection.Attr("placeholder")
 	if exists {
-		selector = fmt.Sprintf("%s[placeholder=%s]", goquery.NodeName(selection), attr)
+		selector = fmt.Sprintf(
+			"%s[placeholder=%s]",
+			goquery.NodeName(selection),
+			attr,
+		)
 	}
 	attr, exists = selection.Attr("value")
 	if exists {
-		selector = fmt.Sprintf("%s[value=%s]", goquery.NodeName(selection), attr)
+		selector = fmt.Sprintf(
+			"%s[value=%s]",
+			goquery.NodeName(selection),
+			attr,
+		)
 	}
 	attr, exists = selection.Attr("src")
 	if exists {
@@ -77,7 +97,11 @@ func singleSelector(selection *goquery.Selection) string {
 	}
 	attr, exists = selection.Attr("href")
 	if exists {
-		selector = fmt.Sprintf("%s[href=%s]", goquery.NodeName(selection), attr)
+		selector = fmt.Sprintf(
+			"%s[href=%s]",
+			goquery.NodeName(selection),
+			attr,
+		)
 	}
 	if selector == "" {
 		selector = goquery.NodeName(selection)

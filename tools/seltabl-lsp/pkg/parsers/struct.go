@@ -31,10 +31,6 @@ var (
 type Structure struct {
 	// Fields is a map of the fields in the struct
 	Fields []Field `json:"fields"`
-	// StartLine is the first line number of the struct
-	StartLine int `json:"start_line"`
-	// EndLine is the final line number of the struct
-	EndLine int `json:"end_line"`
 }
 
 // Field is a struct for a field within a struct

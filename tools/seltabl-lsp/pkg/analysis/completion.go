@@ -72,31 +72,44 @@ func (s *State) CreateTextDocumentCompletion(
 	text := s.Documents[document.URI]
 	selectors := s.Selectors[document.URI]
 	items := []lsp.CompletionItem{}
-	isPositionInStructTag, err := s.CheckPosition(*pos, text)
+	check, err := s.CheckPosition(*pos, text)
 	if err != nil {
 		return nil, fmt.Errorf("failed to check position: %w", err)
 	}
-	if isPositionInStructTag != nil {
-		s.Logger.Println("isPositionInStructTag", *isPositionInStructTag)
-		if *isPositionInStructTag {
-			for _, selector := range selectors {
-				items = append(items, lsp.CompletionItem{
-					Label:         selector.Value,
-					Detail:        "context: \n" + selector.Context,
-					Documentation: "seltabl-lsp",
-				})
-			}
-		} else {
-
-			for _, key := range keys {
-				items = append(items, lsp.CompletionItem{
-					Label:         key.Label,
-					Detail:        key.Detail,
-					Documentation: key.Documentation,
-				})
-			}
-
+	switch check {
+	case parsers.StateInTag:
+		s.Logger.Println("Found position in struct tag")
+		for _, key := range keys {
+			items = append(items, lsp.CompletionItem{
+				Label:         key.Label,
+				Detail:        key.Detail,
+				Documentation: key.Documentation,
+				Kind:          lsp.Enum,
+			})
 		}
+	case parsers.StateInTagValue:
+		s.Logger.Println("Found position in struct tag value")
+		for _, selector := range selectors {
+			items = append(items, lsp.CompletionItem{
+				Label:         selector.Value,
+				Detail:        "context: \n" + selector.Context,
+				Documentation: "seltabl-lsp",
+				Kind:          lsp.Reference,
+			})
+		}
+	case parsers.StateAfterColon:
+		s.Logger.Println("Found position in struct tag after colon")
+		for _, selector := range selectors {
+			items = append(items, lsp.CompletionItem{
+				Label:         "\"" + selector.Value + "\"",
+				Detail:        "context: \n" + selector.Context,
+				Documentation: "seltabl-lsp",
+				Kind:          lsp.Reference,
+			})
+		}
+	case parsers.StateInvalid:
+	default:
+		return nil, nil
 	}
 	return &lsp.CompletionResponse{
 		Response: lsp.Response{
@@ -108,9 +121,11 @@ func (s *State) CreateTextDocumentCompletion(
 }
 
 // CheckPosition checks if the position is within the struct tag
-func (s *State) CheckPosition(position lsp.Position, text string) (res *bool, err error) {
-	var TRUE = true
-	var FALSE = false
+func (s *State) CheckPosition(
+	position lsp.Position,
+	text string,
+) (res int, err error) {
+	var is bool
 	// Read the Go source code from a file
 	sourceCode := bytes.NewBufferString(text)
 	// Create a new token file set
@@ -118,7 +133,10 @@ func (s *State) CheckPosition(position lsp.Position, text string) (res *bool, er
 	// Parse the source code
 	node, err := parser.ParseFile(fset, "", sourceCode, parser.Trace)
 	if err != nil {
-		return nil, err
+		return parsers.StateInvalid, fmt.Errorf(
+			"failed to parse struct: %w",
+			err,
+		)
 	}
 	// Find the struct node in the AST
 	structNodes := parsers.FindStructNodes(node)
@@ -128,12 +146,21 @@ func (s *State) CheckPosition(position lsp.Position, text string) (res *bool, er
 			// Check if the position is within a struct tag
 			if parsers.IsPositionInTag(structNode, position, fset) {
 				// Check if the position is within a struct tag value (i.e. value inside and including " and " characters)
-				if parsers.IsPositionInStructTagValue(structNode, position, fset) {
-					return &TRUE, nil
+				is = parsers.IsPositionInStructTagValue(
+					structNode,
+					position,
+					fset,
+				)
+				if is {
+					return parsers.StateInTagValue, nil
 				}
+				// Check if the position is at / after a colon
+				if parsers.PositionBeforeValue(position, text) == ':' {
+					return parsers.StateAfterColon, nil
+				}
+				return parsers.StateInTag, nil
 			}
-			return &FALSE, nil
 		}
 	}
-	return nil, nil
+	return parsers.StateInvalid, nil
 }

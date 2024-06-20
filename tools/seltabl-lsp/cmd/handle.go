@@ -117,11 +117,14 @@ func (s *Root) HandleMessage(
 				err,
 			)
 		}
-		response = s.State.Hover(
+		response, err = s.State.Hover(
 			request.ID,
 			request.Params.TextDocument.URI,
 			request.Params.Position,
 		)
+		if err != nil {
+			return fmt.Errorf("failed to get hover: %w", err)
+		}
 		err = s.writeResponse(response)
 		if err != nil {
 			return fmt.Errorf("failed to write response: %w", err)
@@ -165,7 +168,10 @@ func (s *Root) HandleMessage(
 		var request lsp.CompletionRequest
 		err = json.Unmarshal(contents, &request)
 		if err != nil {
-			return fmt.Errorf("failed to unmarshal completion request (textDocument/completion): %w", err)
+			return fmt.Errorf(
+				"failed to unmarshal completion request (textDocument/completion): %w",
+				err,
+			)
 		}
 		response, err = s.State.CreateTextDocumentCompletion(
 			request.ID,

@@ -6,8 +6,9 @@ import (
 	"github.com/conneroisu/seltabl/tools/seltabl-lsp/pkg/lsp"
 )
 
-// getDiagnosticsForFile returns diagnostics for a given file
-func getDiagnosticsForFile(text string) []lsp.Diagnostic {
+// GetDiagnosticsForFile returns diagnostics for a given file
+// text is all the characters in the file
+func (s *State) GetDiagnosticsForFile(text string) []lsp.Diagnostic {
 	diagnostics := []lsp.Diagnostic{}
 	for row, line := range strings.Split(text, "\n") {
 		if strings.Contains(line, "VS Code") {

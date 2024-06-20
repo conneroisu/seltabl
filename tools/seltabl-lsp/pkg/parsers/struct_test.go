@@ -122,6 +122,7 @@ func TestParseStructee(t *testing.T) {
 	}
 }
 
+// TestParseTags tests the ParseTags function
 func TestParseTags(t *testing.T) {
 	t.Parallel()
 	tests := []struct {
@@ -151,6 +152,7 @@ func TestParseTags(t *testing.T) {
 	}
 }
 
+// TestTags_Get tests the Get function to get
 func TestTags_Get(t *testing.T) {
 	t.Parallel()
 	tags := &Tags{
@@ -278,4 +280,102 @@ func TestTag_String(t *testing.T) {
 	if got != want {
 		t.Errorf("Tag.String() = %v, want %v", got, want)
 	}
+}
+
+func TestParseStructs(t *testing.T) {
+	src := `package main
+
+// @url: https://example.com/one
+// @ignore-elements: img, link
+type MyStruct struct {
+	Field1 string ` + "`json:\"field1\"`" + `
+	Field2 int    ` + "`json:\"field2\"`" + `
+}
+// @url: https://example.com/one
+// @ignore-elements: img, link
+type MyStruct2 struct {
+	Field1 string ` + "`json:\"field1\"`" + `
+	Field2 int    ` + "`json:\"field2\"`" + `
+}
+	`
+	expected := []Structure{
+		{
+			Fields: []Field{
+				{
+					Name: "Field1",
+					Type: "string",
+					Tags: Tags{
+						tags: []*Tag{
+							{
+								Key:     "json",
+								Name:    "field1",
+								Options: []string{},
+							},
+						},
+					},
+					Line: 5,
+				},
+				{
+					Name: "Field2",
+					Type: "int",
+					Tags: Tags{
+						tags: []*Tag{
+							{
+								Key:     "json",
+								Name:    "field2",
+								Options: []string{},
+							},
+						},
+					},
+					Line: 6,
+				},
+			},
+		},
+		{
+			Fields: []Field{
+				{
+					Name: "Field1",
+					Type: "string",
+					Tags: Tags{
+						tags: []*Tag{
+							{
+								Key:     "json",
+								Name:    "field1",
+								Options: []string{},
+							},
+						},
+					},
+					Line: 12,
+				},
+				{
+					Name: "Field2",
+					Type: "int",
+					Tags: Tags{
+						tags: []*Tag{
+							{
+								Key:     "json",
+								Name:    "field2",
+								Options: []string{},
+							},
+						},
+					},
+					Line: 13,
+				},
+			},
+		},
+	}
+	structs, err := ParseStructs(context.Background(), []byte(src))
+	if err != nil {
+		t.Fatalf("Failed to parse struct: %v", err)
+	}
+
+	assert.Equal(t, 2, len(structs), "expected 2 structs")
+
+	for i, structDef := range structs {
+		t.Logf("struct %d: %v", i, structDef)
+		// expect the field names to match
+		assert.Equal(t, expected[i].Fields[0].Name, structDef.Fields[0].Name)
+		assert.Equal(t, expected[i].Fields[1].Name, structDef.Fields[1].Name)
+	}
+
 }

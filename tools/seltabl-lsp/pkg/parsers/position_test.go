@@ -134,7 +134,7 @@ type MyStruct struct {
 		t.Run(tc.name, func(t *testing.T) {
 			failed := false
 			for _, structNode := range structNodes {
-				is := IsPositionInStructTagValue(
+				_, is := IsPositionInStructTagValue(
 					structNode,
 					tc.position,
 					fset,
@@ -224,7 +224,7 @@ type TableStruct struct {
 		t.Run(tc.name, func(t *testing.T) {
 			failed := false
 			for _, structNode := range structNodes {
-				is := IsPositionInStructTagValue(
+				_, is := IsPositionInStructTagValue(
 					structNode,
 					tc.position,
 					fset,

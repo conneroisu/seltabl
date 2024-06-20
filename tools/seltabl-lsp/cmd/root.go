@@ -2,11 +2,13 @@ package cmd
 
 import (
 	"bufio"
+	"context"
 	"fmt"
 	"io"
 	"log"
 	"os"
 	"path"
+	"time"
 
 	"github.com/conneroisu/seltabl/tools/seltabl-lsp/internal/config"
 	"github.com/conneroisu/seltabl/tools/seltabl-lsp/pkg/analysis"
@@ -15,8 +17,21 @@ import (
 	"github.com/spf13/cobra"
 )
 
+// Execute runs the root command
+func Execute() error {
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+	srv := &Root{Writer: os.Stdout}
+	cmd := srv.ReturnCmd(ctx)
+	err := cmd.Execute()
+	if err != nil {
+		return fmt.Errorf("failed to execute root command: %w", err)
+	}
+	return nil
+}
+
 // ReturnCmd returns the command for the root
-func (s *Root) ReturnCmd() *cobra.Command {
+func (s *Root) ReturnCmd(ctx context.Context) *cobra.Command {
 	return &cobra.Command{
 		Use:   "seltabl", // the name of the command
 		Short: "A command line tool for parsing html tables into structs",
@@ -41,7 +56,7 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 			scanner := bufio.NewScanner(os.Stdin)
 			scanner.Split(rpc.Split)
 			for scanner.Scan() {
-				s.handle(scanner)
+				s.handle(ctx, scanner)
 			}
 			return nil
 		},
@@ -49,7 +64,7 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 }
 
 // handle handles a message from the client to the language server.
-func (s *Root) handle(scanner *bufio.Scanner) {
+func (s *Root) handle(ctx context.Context, scanner *bufio.Scanner) {
 	defer func() {
 		if err := scanner.Err(); err != nil {
 			out := os.Stderr
@@ -60,24 +75,13 @@ func (s *Root) handle(scanner *bufio.Scanner) {
 	}()
 	msg := scanner.Bytes()
 	out := os.Stderr
-	err := s.HandleMessage(msg)
+	err := s.HandleMessage(ctx, msg)
 	if err != nil {
 		fmt.Fprintf(out, "failed to handle message: %s\n", err)
 		s.Logger.Printf("failed to handle message: %s\n", err)
 		s.State.Logger.Printf("failed to handle message: %s\n", err)
 		return
 	}
-}
-
-// Execute runs the root command
-func Execute() error {
-	srv := &Root{Writer: os.Stdout}
-	cmd := srv.ReturnCmd()
-	err := cmd.Execute()
-	if err != nil {
-		return fmt.Errorf("failed to execute root command: %w", err)
-	}
-	return nil
 }
 
 // getLogger returns a logger that writes to a file
@@ -107,20 +111,26 @@ type Root struct {
 }
 
 // writeResponse writes a message to the writer
-func (s *Root) writeResponse(msg interface{}) error {
+func (s *Root) writeResponse(
+	ctx context.Context,
+	method string,
+	msg interface{},
+) error {
+	_, cancel := context.WithTimeout(ctx, time.Second*5)
+	defer cancel()
 	reply, err := rpc.EncodeMessage(msg)
 	if err != nil {
-		s.Logger.Printf("failed to encode message: %s\n", err)
-		return fmt.Errorf("failed to encode message: %w", err)
+		s.Logger.Printf("failed to encode message (%s): %s\n", method, err)
+		return fmt.Errorf("failed to encode message (%s): %w", method, err)
 	}
 	res, err := s.Writer.Write([]byte(reply))
 	if err != nil {
-		s.Logger.Printf("failed to write response: %s\n", err)
-		return fmt.Errorf("failed to write response: %w", err)
+		s.Logger.Printf("failed to write message (%s): %s\n", method, err)
+		return fmt.Errorf("failed to write message (%s): %w", method, err)
 	}
 	if res != len(reply) {
-		s.Logger.Printf("failed to write all response: %s\n", err)
-		return fmt.Errorf("failed to write all response: %w", err)
+		s.Logger.Printf("failed to write all message (%s): %s\n", method, err)
+		return fmt.Errorf("failed to write all message (%s): %w", method, err)
 	}
 	return nil
 }

@@ -13,14 +13,19 @@ func IsPositionInStructTagValue(
 	node *ast.StructType,
 	pos lsp.Position,
 	fset *token.FileSet,
-) bool {
+) (string, bool) {
+	closestTagValue := ""
+	closestDistance := int(
+		^uint(0) >> 1,
+	) // Initialize with the maximum possible integer value
+
 	for _, field := range node.Fields.List {
 		if field.Tag != nil {
-			if IsPositionInNode(field.Tag, pos, fset) {
+			inNode := IsPositionInNode(field.Tag, pos, fset)
+			if inNode {
 				tagValue := field.Tag.Value
 				tagContent := strings.Trim(tagValue, "`")
 				start := fset.Position(field.Tag.Pos())
-
 				for i := 0; i < len(tagContent); i++ {
 					if tagContent[i] == '"' {
 						startQuote := i + 1
@@ -35,19 +40,27 @@ func IsPositionInStructTagValue(
 						tagRow := start.Line
 						tagColumnStart := start.Column + startQuote
 						tagColumnEnd := start.Column + endQuote
-
 						if pos.Line == tagRow &&
 							pos.Character >= tagColumnStart &&
 							pos.Character <= tagColumnEnd {
-							return true
+							return tagContent[startQuote:endQuote], true
 						}
 						i = endQuote
 					}
 				}
 			}
+
+			// Calculate the distance to the current tag for the closest tag logic
+			start := fset.Position(field.Tag.Pos())
+			distance := (start.Line-pos.Line)*(start.Line-pos.Line) + (start.Column-pos.Character)*(start.Column-pos.Character)
+			if distance < closestDistance {
+				closestDistance = distance
+				closestTagValue = strings.Trim(field.Tag.Value, "`")
+			}
 		}
 	}
-	return false
+
+	return closestTagValue, false
 }
 
 // IsPositionInNode checks if a given position is within the range of an AST node.
@@ -109,16 +122,29 @@ func PositionBeforeValue(pos lsp.Position, text string) byte {
 	return line[pos.Character-1]
 }
 
+// State represents the state of a position within a struct.
+type State int
+
 const (
-	// StateInTag is the state for when the position is within a struct tag
-	StateInTag = iota
-	// StateInTagValue is the state for when the position is within a struct tag value
+	// StateInTag is the state for when the position is within a struct tag.
+	StateInTag State = iota
+	// StateInTagValue is the state for when the position is within a struct tag value.
 	StateInTagValue
-	// StateAfterColon is the state for when the position is after a colon
+	// StateAfterColon is the state for when the position is after a colon.
 	StateAfterColon
-	// StateInvalid is the state for when the position is invalid or not within a struct
+	// StateInvalid is the state for when the position is invalid or not within a struct.
 	StateInvalid
 )
+
+// String returns the string representation of the State.
+func (s State) String() string {
+	return [...]string{
+		"StateInTag",
+		"StateInTagValue",
+		"StateAfterColon",
+		"StateInvalid",
+	}[s]
+}
 
 // GetLineRangeFromNode returns a range for a given node
 func GetLineRangeFromNode(node ast.Node, fset *token.FileSet) lsp.Range {

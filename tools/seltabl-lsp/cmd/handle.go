@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"strings"
@@ -12,6 +13,7 @@ import (
 // HandleMessage handles a message sent from the client to the language server.
 // It parses the message and returns with a response.
 func (s *Root) HandleMessage(
+	ctx context.Context,
 	msg []byte,
 ) error {
 	var response interface{}
@@ -30,7 +32,7 @@ func (s *Root) HandleMessage(
 			)
 		}
 		response = lsp.NewInitializeResponse(request.ID)
-		err = s.writeResponse(response)
+		err = s.writeResponse(ctx, method, response)
 		if err != nil {
 			return fmt.Errorf("failed to write (initialize) response: %w", err)
 		}
@@ -49,7 +51,7 @@ func (s *Root) HandleMessage(
 			return fmt.Errorf("decode (didClose) request failed: %w", err)
 		}
 		response := lsp.NewDidCloseTextDocumentParamsNotification()
-		err = s.writeResponse(response)
+		err = s.writeResponse(ctx, method, response)
 		if err != nil {
 			return fmt.Errorf("failed to write response: %w", err)
 		}
@@ -75,7 +77,7 @@ func (s *Root) HandleMessage(
 				Diagnostics: diagnostics,
 			},
 		}
-		err = s.writeResponse(response)
+		err = s.writeResponse(ctx, method, response)
 		if err != nil {
 			return fmt.Errorf("failed to write response: %w", err)
 		}
@@ -105,7 +107,7 @@ func (s *Root) HandleMessage(
 				Diagnostics: diagnostics,
 			},
 		}
-		if err = s.writeResponse(response); err != nil {
+		if err = s.writeResponse(ctx, method, response); err != nil {
 			return fmt.Errorf("failed to write response: %w", err)
 		}
 	case "textDocument/hover":
@@ -125,7 +127,7 @@ func (s *Root) HandleMessage(
 		if err != nil {
 			return fmt.Errorf("failed to get hover: %w", err)
 		}
-		err = s.writeResponse(response)
+		err = s.writeResponse(ctx, method, response)
 		if err != nil {
 			return fmt.Errorf("failed to write response: %w", err)
 		}
@@ -143,7 +145,7 @@ func (s *Root) HandleMessage(
 			request.Params.TextDocument.URI,
 			request.Params.Position,
 		)
-		err = s.writeResponse(response)
+		err = s.writeResponse(ctx, method, response)
 		if err != nil {
 			return fmt.Errorf("failed to write response: %w", err)
 		}
@@ -160,7 +162,7 @@ func (s *Root) HandleMessage(
 			request.ID,
 			request.Params.TextDocument.URI,
 		)
-		err = s.writeResponse(response)
+		err = s.writeResponse(ctx, method, response)
 		if err != nil {
 			return fmt.Errorf("failed to write response: %w", err)
 		}
@@ -181,7 +183,7 @@ func (s *Root) HandleMessage(
 		if err != nil {
 			return fmt.Errorf("failed to get completions: %w", err)
 		}
-		err = s.writeResponse(response)
+		err = s.writeResponse(ctx, method, response)
 		if err != nil {
 			return fmt.Errorf("failed to write response: %w", err)
 		}
@@ -198,9 +200,26 @@ func (s *Root) HandleMessage(
 				ID:  request.ID,
 			},
 		}
-		err = s.writeResponse(response)
+		err = s.writeResponse(ctx, method, response)
 		if err != nil {
 			return fmt.Errorf("write (shutdown) response failed: %w", err)
+		}
+	case "$/cancelRequest":
+		var request lsp.CancelRequest
+		err = json.Unmarshal(contents, &request)
+		if err != nil {
+			return fmt.Errorf(
+				"failed to unmarshal cancel request ($/cancelRequest): %w",
+				err,
+			)
+		}
+		response, err = s.State.CancelRequest(request.ID)
+		if err != nil {
+			return fmt.Errorf("failed to cancel request: %w", err)
+		}
+		err = s.writeResponse(ctx, method, response)
+		if err != nil {
+			return fmt.Errorf("failed to write response: %w", err)
 		}
 	case "exit":
 		return nil

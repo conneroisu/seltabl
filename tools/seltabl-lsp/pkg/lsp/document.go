@@ -1,5 +1,7 @@
 package lsp
 
+import "fmt"
+
 // TextDocumentItem is a text document.
 type TextDocumentItem struct {
 	// URI is the uri for the text document.
@@ -43,6 +45,11 @@ type Position struct {
 	Line int `json:"line"`
 	// Character is the character number for the position (zero-based).
 	Character int `json:"character"`
+}
+
+// String returns a string representation of the position.
+func (p Position) String() string {
+	return fmt.Sprintf("Line: %d, Character: %d", p.Line, p.Character)
 }
 
 // Location is a location inside a resource, such as a line

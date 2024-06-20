@@ -26,5 +26,5 @@ func (s *State) OpenDocument(uri, text string) []lsp.Diagnostic {
 			s.Logger.Printf("failed to get selectors: %s\n", err)
 		}
 	}
-	return getDiagnosticsForFile(text)
+	return s.GetDiagnosticsForFile(text)
 }

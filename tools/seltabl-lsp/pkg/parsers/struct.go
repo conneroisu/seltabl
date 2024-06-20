@@ -78,6 +78,12 @@ type Inspector func(n ast.Node) bool
 
 // ParseStruct checks if the struct tag is in the url and returns a
 func ParseStruct(ctx context.Context, src []byte) (Structure, error) {
+	// add a package main to the source
+	strSrc := string(src)
+	if !strings.HasPrefix(strSrc, "package main") {
+		strSrc = "package main\n" + strSrc
+	}
+	src = []byte(strSrc)
 	var structure Structure
 	var err error
 	var eg *errgroup.Group
@@ -318,4 +324,54 @@ func (t *Tag) GoString() string {
 // String returns a string representation of the tag
 func (t *Tag) String() string {
 	return fmt.Sprintf(`%s:%q`, t.Key, t.Value())
+}
+
+// ParseStructs parses the Go source code and returns a slice of struct definitions.
+func ParseStructs(ctx context.Context, src []byte) ([]Structure, error) {
+	// split the source code into struct definitions
+	structDefs, err := SplitStructs(src)
+	if err != nil {
+		return nil, fmt.Errorf("failed to split structs: %v", err)
+	}
+	// parse each struct definitions
+	structs := make([]Structure, len(structDefs))
+	for i, structDef := range structDefs {
+		structs[i], err = ParseStruct(ctx, []byte(structDef))
+		if err != nil {
+			return nil, fmt.Errorf("failed to parse struct: %v", err)
+		}
+	}
+	return structs, nil
+}
+
+// SplitStructs parses the Go source code and returns a slice of struct definitions.
+func SplitStructs(src []byte) ([]string, error) {
+	fset := token.NewFileSet()
+	node, err := parser.ParseFile(fset, "", src, parser.ParseComments)
+	if err != nil {
+		return nil, fmt.Errorf("failed to parse file: %v", err)
+	}
+	var structDefs []string
+	ast.Inspect(node, func(n ast.Node) bool {
+		genDecl, ok := n.(*ast.GenDecl)
+		if ok && genDecl.Tok == token.TYPE {
+			for _, spec := range genDecl.Specs {
+				typeSpec, ok := spec.(*ast.TypeSpec)
+				if !ok {
+					continue
+				}
+				structType, ok := typeSpec.Type.(*ast.StructType)
+				if !ok {
+					continue
+				}
+				start := fset.Position(genDecl.Pos()).Line - 1
+				end := fset.Position(structType.End()).Line
+				lines := strings.Split(string(src), "\n")[start:end]
+				structDef := strings.Join(lines, "\n")
+				structDefs = append(structDefs, structDef)
+			}
+		}
+		return true
+	})
+	return structDefs, nil
 }

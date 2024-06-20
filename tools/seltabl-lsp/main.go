@@ -26,4 +26,6 @@ func main() {
 type TableStruct struct {
 	A string `json:"a" seltabl:"a" hSel:"tr:nth-child(1) td:nth-child(1)" dSel:"tr td:nth-child(1)" ctl:"text"`
 	B string `json:"b" seltabl:"b" hSel:"tr:nth-child(1) td:nth-child(2)" dSel:"tr td:nth-child(2)" ctl:"text"`
+	C string `json:"c" seltabl:"c" hSel:"tr:nth-child(1) td:nth-child(3)" dSel:"tr td:nth-child(3)" ctl:"text"`
+	D string `json:"d" seltabl:"d" hSel:"tr:nth-child(1) td:nth-child(4)" dSel:"tr td:nth-child(4)" ctl:"text"`
 }

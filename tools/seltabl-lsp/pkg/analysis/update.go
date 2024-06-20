@@ -6,5 +6,5 @@ import "github.com/conneroisu/seltabl/tools/seltabl-lsp/pkg/lsp"
 func (s *State) UpdateDocument(uri, text string) []lsp.Diagnostic {
 	s.Documents[uri] = text
 
-	return getDiagnosticsForFile(text)
+	return s.GetDiagnosticsForFile(text)
 }

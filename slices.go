@@ -42,8 +42,8 @@ import (
 //	`
 //
 //	type FixtureStruct struct {
-//	        A string `json:"a" seltabl:"a" hSel:"tr:nth-child(1)" dSel:"table tr:not(:first-child) td:nth-child(1)" cSel:"$text"`
-//	        B string `json:"b" seltabl:"b" hSel:"tr:nth-child(1)" dSel:"table tr:not(:first-child) td:nth-child(2)" cSel:"$text"`
+//	        A string `json:"a" hSel:"tr:nth-child(1)" dSel:"table tr:not(:first-child) td:nth-child(1)" cSel:"$text"`
+//	        B string `json:"b" hSel:"tr:nth-child(1)" dSel:"table tr:not(:first-child) td:nth-child(2)" cSel:"$text"`
 //	}
 //
 //	func main() {
@@ -67,9 +67,6 @@ func New[T any](doc *goquery.Document) ([]T, error) {
 		field := dType.Field(i)
 
 		cfg = NewSelectorConfig(field.Tag)
-		if cfg.HeadName == "" {
-			continue
-		}
 		if cfg.HeadSelector == "" {
 			return nil, &ErrSelectorNotFound{dType, field, cfg, doc}
 		}
@@ -134,8 +131,8 @@ func New[T any](doc *goquery.Document) ([]T, error) {
 //	)
 //
 //	type FixtureStruct struct {
-//	        A string `json:"a" seltabl:"a" hSel:"tr:nth-child(1)" dSel:"table tr:not(:first-child) td:nth-child(1)" cSel:"$text"`
-//	        B string `json:"b" seltabl:"b" hSel:"tr:nth-child(1)" dSel:"table tr:not(:first-child) td:nth-child(2)" cSel:"$text"`
+//	        A string `json:"a" hSel:"tr:nth-child(1)" dSel:"table tr:not(:first-child) td:nth-child(1)" cSel:"$text"`
+//	        B string `json:"b" hSel:"tr:nth-child(1)" dSel:"table tr:not(:first-child) td:nth-child(2)" cSel:"$text"`
 //	}
 //
 //	func main() {
@@ -200,8 +197,8 @@ func NewFromString[T any](htmlInput string) ([]T, error) {
 //	)
 //
 //	type TableStruct struct {
-//		A string `json:"a" seltabl:"a" hSel:"tr:nth-child(1) td:nth-child(1)" dSel:"tr td:nth-child(1)" cSel:"$text"`
-//		B string `json:"b" seltabl:"b" hSel:"tr:nth-child(1) td:nth-child(2)" dSel:"tr td:nth-child(2)" cSel:"$text"`
+//		A string `json:"a" hSel:"tr:nth-child(1) td:nth-child(1)" dSel:"tr td:nth-child(1)" cSel:"$text"`
+//		B string `json:"b" hSel:"tr:nth-child(1) td:nth-child(2)" dSel:"tr td:nth-child(2)" cSel:"$text"`
 //	}
 //
 //	func main() {
@@ -258,8 +255,8 @@ func NewFromReader[T any](r io.Reader) ([]T, error) {
 //	)
 //
 //	type FixtureStruct struct {
-//	        A string `json:"a" seltabl:"a" hSel:"tr:nth-child(1)" dSel:"table tr:not(:first-child) td:nth-child(1)" cSel:"$text"`
-//	        B string `json:"b" seltabl:"b" hSel:"tr:nth-child(1)" dSel:"table tr:not(:first-child) td:nth-child(2)" cSel:"$text"`
+//	        A string `json:"a" hSel:"tr:nth-child(1)" dSel:"table tr:not(:first-child) td:nth-child(1)" cSel:"$text"`
+//	        B string `json:"b" hSel:"tr:nth-child(1)" dSel:"table tr:not(:first-child) td:nth-child(2)" cSel:"$text"`
 //	}
 //
 //	func main() {

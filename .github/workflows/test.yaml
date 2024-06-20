@@ -12,6 +12,8 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    - name: Setup upterm session
+      uses: lhotari/action-upterm@v1
     - name: Set Up Go
       uses: actions/setup-go@v5
       with:
@@ -27,5 +29,3 @@ jobs:
       uses: codecov/codecov-action@v4.0.1
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
-    - name: Setup upterm session
-      uses: lhotari/action-upterm@v1

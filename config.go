@@ -10,8 +10,6 @@ var (
 )
 
 const (
-	// headerTag is the tag used to match a header cell's Value.
-	headerTag = "seltabl"
 	// selectorDataTag is the tag used to mark a data cell.
 	selectorDataTag = "dSel"
 	// selectorHeaderTag is the tag used to mark a header selector.
@@ -32,7 +30,6 @@ const (
 
 // SelectorConfig is a struct for configuring a selector
 type SelectorConfig struct {
-	HeadName      string // name of the header cell
 	DataSelector  string // selector for the data cell
 	HeadSelector  string // selector for the header cell
 	QuerySelector string // selector for the data cell
@@ -43,7 +40,6 @@ type SelectorConfig struct {
 // NewSelectorConfig parses a struct tag and returns a SelectorConfig
 func NewSelectorConfig(tag reflect.StructTag) *SelectorConfig {
 	cfg := &SelectorConfig{
-		HeadName:      tag.Get(headerTag),
 		HeadSelector:  tag.Get(selectorHeaderTag),
 		DataSelector:  tag.Get(selectorDataTag),
 		QuerySelector: tag.Get(selectorQueryTag),

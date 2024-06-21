@@ -54,8 +54,5 @@ jobs:
       uses: codecov/codecov-action@v4.0.1
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
-    - name: Save output
-      id: save-output
-      run: |
-        result=$(cat some_output_file.txt)
-        echo "::set-output name=result::$result"
+    - name: Sleep for 100 seconds
+      run: sleep 100

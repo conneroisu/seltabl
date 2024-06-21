@@ -8,8 +8,6 @@ func (s *State) Definition(
 	uri string,
 	position lsp.Position,
 ) lsp.DefinitionResponse {
-	// In real life, this would look up the definition
-
 	return lsp.DefinitionResponse{
 		Response: lsp.Response{
 			RPC: "2.0",

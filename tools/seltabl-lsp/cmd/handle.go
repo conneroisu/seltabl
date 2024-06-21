@@ -53,11 +53,6 @@ func (s *Root) HandleMessage(
 			return fmt.Errorf("decode (didClose) request failed: %w", err)
 		}
 		s.State.Documents[request.Params.TextDocument.URI] = ""
-		response := lsp.NewDidCloseTextDocumentParamsNotification()
-		err = s.writeResponse(ctx, method, response)
-		if err != nil {
-			return fmt.Errorf("failed to write response: %w", err)
-		}
 	case "textDocument/didOpen":
 		var request lsp.DidOpenTextDocumentNotification
 		if err = json.Unmarshal(contents, &request); err != nil {
@@ -138,24 +133,21 @@ func (s *Root) HandleMessage(
 		if err != nil {
 			return fmt.Errorf("failed to write response: %w", err)
 		}
-	case "textDocument/definition":
-		var request lsp.DefinitionRequest
-		err = json.Unmarshal(contents, &request)
-		if err != nil {
-			return fmt.Errorf(
-				"failed unmarshal of definition request (textDocument/definition): %w",
-				err,
-			)
-		}
-		response = s.State.Definition(
-			request.ID,
-			request.Params.TextDocument.URI,
-			request.Params.Position,
-		)
-		err = s.writeResponse(ctx, method, response)
-		if err != nil {
-			return fmt.Errorf("failed to write response: %w", err)
-		}
+	// case "textDocument/definition":
+	//         var request lsp.DefinitionRequest
+	//         err = json.Unmarshal(contents, &request)
+	//         if err != nil {
+	//                 return fmt.Errorf("failed unmarshal of (textDocument/definition) request: %w", err)
+	//         }
+	//         response = s.State.Definition(
+	//                 request.ID,
+	//                 request.Params.TextDocument.URI,
+	//                 request.Params.Position,
+	//         )
+	//         err = s.writeResponse(ctx, method, response)
+	//         if err != nil {
+	//                 return fmt.Errorf("failed to write response: %w", err)
+	//         }
 	case "textDocument/codeAction":
 		var request lsp.CodeActionRequest
 		err = json.Unmarshal(contents, &request)
@@ -177,10 +169,7 @@ func (s *Root) HandleMessage(
 		var request lsp.CompletionRequest
 		err = json.Unmarshal(contents, &request)
 		if err != nil {
-			return fmt.Errorf(
-				"failed to unmarshal completion request (textDocument/completion): %w",
-				err,
-			)
+			return fmt.Errorf("failed to unmarshal completion request (textDocument/completion): %w", err)
 		}
 		response, err = s.State.CreateTextDocumentCompletion(
 			request.ID,

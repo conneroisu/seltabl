@@ -11,8 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - name: Setup upterm session
-      uses: lhotari/action-upterm@v1
     - name: Set Up Go
       uses: actions/setup-go@v5
       with:

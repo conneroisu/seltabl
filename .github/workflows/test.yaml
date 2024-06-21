@@ -11,14 +11,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+    - name: Setup upterm session
+      uses: lhotari/action-upterm@v1
     - name: Set Up Go
       uses: actions/setup-go@v5
       with:
         go-version-file: go.mod
-    - name: Setup upterm session
-      run: git clone https://github.com/owenthereal/upterm.git && cd upterm && go install ./cmd/upterm/...
-    - name: Set Up Go
-      run: upterm session current &
     - name: Test
       uses: robherley/go-test-action@v0
 

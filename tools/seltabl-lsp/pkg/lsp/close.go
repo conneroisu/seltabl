@@ -6,6 +6,7 @@ package lsp
 // https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_didClose
 type DidCloseTextDocumentParamsNotification struct {
 	Notification
+	Params DidCloseTextDocumentParamsNotificationParams `json:"params"`
 }
 
 // NewDidCloseTextDocumentParamsNotification returns a new did close text document params notification

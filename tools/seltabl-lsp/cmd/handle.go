@@ -47,10 +47,12 @@ func (s *Root) HandleMessage(
 			return fmt.Errorf("decode (initialized) request failed: %w", err)
 		}
 	case "textDocument/didClose":
+		// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_didClose
 		var request lsp.DidCloseTextDocumentParamsNotification
 		if err = json.Unmarshal([]byte(contents), &request); err != nil {
 			return fmt.Errorf("decode (didClose) request failed: %w", err)
 		}
+		s.State.Documents[request.Params.TextDocument.URI] = ""
 		response := lsp.NewDidCloseTextDocumentParamsNotification()
 		err = s.writeResponse(ctx, method, response)
 		if err != nil {
@@ -64,10 +66,13 @@ func (s *Root) HandleMessage(
 				err,
 			)
 		}
-		diagnostics := s.State.OpenDocument(
+		diagnostics, err := s.State.OpenDocument(
 			request.Params.TextDocument.URI,
-			request.Params.TextDocument.Text,
+			&request.Params.TextDocument.Text,
 		)
+		if err != nil {
+			return fmt.Errorf("failed to open document: %w", err)
+		}
 		response = lsp.PublishDiagnosticsNotification{
 			Notification: lsp.Notification{
 				RPC:    "2.0",
@@ -93,10 +98,14 @@ func (s *Root) HandleMessage(
 		}
 		diagnostics := []lsp.Diagnostic{}
 		for _, change := range request.Params.ContentChanges {
-			diagnostics = append(diagnostics, s.State.UpdateDocument(
+			diags, err := s.State.UpdateDocument(
 				request.Params.TextDocument.URI,
 				change.Text,
-			)...)
+			)
+			if err != nil {
+				return fmt.Errorf("failed to update document: %w", err)
+			}
+			diagnostics = append(diagnostics, diags...)
 		}
 		response = lsp.PublishDiagnosticsNotification{
 			Notification: lsp.Notification{
@@ -115,10 +124,7 @@ func (s *Root) HandleMessage(
 		var request lsp.HoverRequest
 		err = json.Unmarshal(contents, &request)
 		if err != nil {
-			return fmt.Errorf(
-				"failed to unmarshal of hover request (): %w",
-				err,
-			)
+			return fmt.Errorf("failed unmarshal of hover request (): %w", err)
 		}
 		response, err = s.State.Hover(
 			request.ID,
@@ -137,7 +143,7 @@ func (s *Root) HandleMessage(
 		err = json.Unmarshal(contents, &request)
 		if err != nil {
 			return fmt.Errorf(
-				"failed to unmarshal of definition request (textDocument/definition): %w",
+				"failed unmarshal of definition request (textDocument/definition): %w",
 				err,
 			)
 		}
@@ -178,8 +184,8 @@ func (s *Root) HandleMessage(
 		}
 		response, err = s.State.CreateTextDocumentCompletion(
 			request.ID,
-			&request.Params.TextDocument,
-			&request.Params.Position,
+			request.Params.TextDocument,
+			request.Params.Position,
 		)
 		if err != nil {
 			return fmt.Errorf("failed to get completions: %w", err)

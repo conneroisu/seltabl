@@ -29,21 +29,30 @@ var (
 // if the position is within the struct tag value.
 func (s *State) CreateTextDocumentCompletion(
 	id int,
-	document *lsp.TextDocumentIdentifier,
-	pos *lsp.Position,
-) (response *lsp.CompletionResponse, err error) {
-	text := s.Documents[document.URI]
+	document lsp.TextDocumentIdentifier,
+	pos lsp.Position,
+) (response lsp.CompletionResponse, err error) {
+	response.Response = lsp.Response{
+		RPC: "2.0",
+		ID:  id,
+	}
+	response.Result = []lsp.CompletionItem{}
+	// Get the content for the given document.
+	content := s.Documents[document.URI]
+	// Get the selectors for the given document in current state.
 	selectors := s.Selectors[document.URI]
-	items := []lsp.CompletionItem{}
-	check, err := s.CheckPosition(*pos, text)
+	// Check if the position is within a golang struct tag.
+	check, err := s.CheckPosition(pos, content)
 	if err != nil {
-		return nil, fmt.Errorf("failed to check position: %w", err)
+		return lsp.CompletionResponse{}, fmt.Errorf(
+			"failed to check position: %w",
+			err,
+		)
 	}
 	switch check {
 	case parsers.StateInTag:
-		s.Logger.Println("Found position in struct tag")
 		for _, key := range completionKeys {
-			items = append(items, lsp.CompletionItem{
+			response.Result = append(response.Result, lsp.CompletionItem{
 				Label:         key.Label,
 				Detail:        key.Detail,
 				Documentation: key.Documentation,
@@ -51,9 +60,8 @@ func (s *State) CreateTextDocumentCompletion(
 			})
 		}
 	case parsers.StateInTagValue:
-		s.Logger.Println("Found position in struct tag value")
 		for _, selector := range selectors {
-			items = append(items, lsp.CompletionItem{
+			response.Result = append(response.Result, lsp.CompletionItem{
 				Label:         selector.Value,
 				Detail:        "context: \n" + selector.Context,
 				Documentation: "seltabl-lsp",
@@ -61,9 +69,8 @@ func (s *State) CreateTextDocumentCompletion(
 			})
 		}
 	case parsers.StateAfterColon:
-		s.Logger.Println("Found position in struct tag after colon")
 		for _, selector := range selectors {
-			items = append(items, lsp.CompletionItem{
+			response.Result = append(response.Result, lsp.CompletionItem{
 				Label:         "\"" + selector.Value + "\"",
 				Detail:        "context: \n" + selector.Context,
 				Documentation: "seltabl-lsp",
@@ -71,16 +78,11 @@ func (s *State) CreateTextDocumentCompletion(
 			})
 		}
 	case parsers.StateInvalid:
+		return response, nil
 	default:
-		return nil, nil
+		return response, nil
 	}
-	return &lsp.CompletionResponse{
-		Response: lsp.Response{
-			RPC: "2.0",
-			ID:  id,
-		},
-		Result: items,
-	}, nil
+	return response, nil
 }
 
 // CheckPosition checks if the position is within the struct tag
@@ -89,29 +91,31 @@ func (s *State) CheckPosition(
 	text string,
 ) (res parsers.State, err error) {
 	var inValue bool
-	// Read the Go source code from a file
-	sourceCode := bytes.NewBufferString(text)
 	// Create a new token file set
 	fset := token.NewFileSet()
-	// Parse the source code
-	node, err := parser.ParseFile(fset, "", sourceCode, parser.Trace)
+	// Parse the source code from a new buffer
+	node, err := parser.ParseFile(
+		fset,
+		"",
+		bytes.NewBufferString(text),
+		parser.Trace,
+	)
 	if err != nil {
-		return parsers.StateInvalid, fmt.Errorf(
-			"failed to parse struct: %w",
-			err,
-		)
+		return parsers.StateInvalid,
+			fmt.Errorf("failed to parse struct: %w", err)
 	}
 	// Find the struct node in the AST
 	structNodes := parsers.FindStructNodes(node)
-	for _, structNode := range structNodes {
+	// for each of the nodes
+	for i := range structNodes {
 		// Check if the position is within the struct node
-		inPosition := parsers.IsPositionInNode(structNode, position, fset)
+		inPosition := parsers.IsPositionInNode(structNodes[i], position, fset)
 		// Check if the position is within a struct tag
-		inTag := parsers.IsPositionInTag(structNode, position, fset)
+		inTag := parsers.IsPositionInTag(structNodes[i], position, fset)
 		if inPosition && inTag {
 			// Check if the position is within a struct tag value (i.e. value inside and including " and " characters)
 			_, inValue = parsers.IsPositionInStructTagValue(
-				structNode,
+				structNodes[i],
 				position,
 				fset,
 			)

@@ -6,7 +6,6 @@ import (
 	"database/sql"
 	"fmt"
 	"net/url"
-	"strings"
 
 	"github.com/conneroisu/seltabl/tools/seltabl-lsp/data/generic"
 	"github.com/conneroisu/seltabl/tools/seltabl-lsp/data/master"
@@ -94,14 +93,12 @@ func NewDb[
 		if err != nil {
 			return nil, fmt.Errorf("failed to open db: %v", err)
 		}
-		split := strings.Split(config.Schema, ";")
-		for _, v := range split {
-			if v == "" {
-				continue
-			}
-			if _, err := db.Exec(v); err != nil {
-				return nil, fmt.Errorf("error executing schema %s: %v", v, err)
-			}
+		if _, err := db.Exec(config.Schema); err != nil {
+			return nil, fmt.Errorf(
+				"error executing schema %s: %v",
+				config.Schema,
+				err,
+			)
 		}
 		return NewSQLDatabase(ctx, sqlitedialect.New(), db, newFunc)
 	default:

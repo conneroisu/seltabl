@@ -58,7 +58,10 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 				err = s.handle(ctx, scanner)
 				if err != nil {
 					s.Logger.Printf("failed to handle message: %s\n", err)
-					s.State.Logger.Printf("failed to handle message: %s\n", err)
+					s.State.Logger.Printf(
+						"failed to handle message: %s\n",
+						err,
+					)
 					s.State.Logger.Printf("exiting...\n")
 				}
 			}

@@ -9,9 +9,6 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-//go:embed struct.test.txt
-var testContent string
-
 // TestParseTags tests the ParseTags function
 func TestParseTags(t *testing.T) {
 	t.Parallel()
@@ -263,7 +260,13 @@ type MyStruct2 struct {
 	assert.Equal(t, 2, len(structs), "expected 2 structs")
 
 	for i, structDef := range structs {
-		assert.Equal(t, len(expected[i].Fields), len(structDef.Fields), "expected %d fields", i)
+		assert.Equal(
+			t,
+			len(expected[i].Fields),
+			len(structDef.Fields),
+			"expected %d fields",
+			i,
+		)
 		t.Logf("struct %d: %v", i, structDef)
 		// expect the field names to match
 		assert.Equal(t, expected[i].Fields[0].Name, structDef.Fields[0].Name)

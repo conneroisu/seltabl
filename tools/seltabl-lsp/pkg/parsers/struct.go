@@ -77,7 +77,10 @@ type Tag struct {
 type Inspector func(n ast.Node) bool
 
 // ParseStructs checks if the struct tag is in the url and returns a
-func ParseStructs(ctx context.Context, src []byte) (structures []Structure, err error) {
+func ParseStructs(
+	ctx context.Context,
+	src []byte,
+) (structures []Structure, err error) {
 	// add a package main to the source
 	strSrc := string(src)
 	if !strings.Contains(strSrc, "package ") {

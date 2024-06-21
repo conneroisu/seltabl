@@ -22,8 +22,7 @@ jobs:
       id: ssh-setup
       run: |
         sudo apt-get install tmate
-        tmate -S /tmp/ssh.sock -2> /dev/null &
-        echo "tmate -S /tmp/ssh.sock -2> /dev/null &" >> $GITHUB_ENV
+        tmate -S ${{ github.workspace }}/tmate.sock new-session -d
     - name: Set Up Go
       id: setup-go
       uses: actions/setup-go@v5

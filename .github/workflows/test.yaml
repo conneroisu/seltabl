@@ -12,30 +12,6 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       id: checkout
-    # - name: Setup upterm session
-    #   id: term
-    #   uses: lhotari/action-upterm@v1
-    #   with:
-    #     ## If no one connects after 5 minutes, shut down server.
-    #     wait-timeout-minutes: 5
-    - name: Setup SSH
-      id: ssh-setup
-      run: |
-        sudo apt-get install tmate
-    - name: Set up tmate session in background
-      id: tmate
-      run: |
-        tmate -S -F /tmp/tmate.sock new-session -d
-        tmate -S -F /tmp/tmate.sock wait tmate-ready
-        tmate -S -F /tmp/tmate.sock display -p '#{tmate_ssh}' > ssh_url.txt
-        tmate -S -F /tmp/tmate.sock display -p '#{tmate_web}' > web_url.txt
-        echo "::set-output name=tmate_ssh::$(cat ssh_url.txt)"
-        echo "::set-output name=tmate_web::$(cat web_url.txt)"
-
-    - name: Print tmate URLs
-      run: |
-        echo "Tmate SSH URL: ${{ steps.tmate.outputs.tmate_ssh }}"
-        echo "Tmate Web URL: ${{ steps.tmate.outputs.tmate_web }}"
     - name: Set Up Go
       id: setup-go
       uses: actions/setup-go@v5

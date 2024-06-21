@@ -11,22 +11,39 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - name: Setup upterm session
-      uses: lhotari/action-upterm@v1
-      with:
-        ## If no one connects after 5 minutes, shut down server.
-        wait-timeout-minutes: 5
+      id: checkout
+    # - name: Setup upterm session
+    #   id: term
+    #   uses: lhotari/action-upterm@v1
+    #   with:
+    #     ## If no one connects after 5 minutes, shut down server.
+    #     wait-timeout-minutes: 5
+    - name: Setup SSH
+      id: ssh-setup
+      run: |
+        sudo apt-get install tmate
+        tmate -S /tmp/ssh.sock -2> /dev/null &
+        echo "tmate -S /tmp/ssh.sock -2> /dev/null &" >> $GITHUB_ENV
     - name: Set Up Go
+      id: setup-go
       uses: actions/setup-go@v5
       with:
         go-version-file: go.mod
     - name: Test
+      id: test
       uses: robherley/go-test-action@v0
 
     - name: Custom Tests
+      id: custom-tests
       run: make test
 
     - name: Upload coverage reports to Codecov
+      id: codecov
       uses: codecov/codecov-action@v4.0.1
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
+    - name: Save output
+      id: save-output
+      run: |
+        result=$(cat some_output_file.txt)
+        echo "::set-output name=result::$result"

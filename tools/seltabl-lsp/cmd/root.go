@@ -8,7 +8,6 @@ import (
 	"log"
 	"os"
 	"path"
-	"time"
 
 	"github.com/conneroisu/seltabl/tools/seltabl-lsp/internal/config"
 	"github.com/conneroisu/seltabl/tools/seltabl-lsp/pkg/analysis"
@@ -121,8 +120,6 @@ func (s *Root) writeResponse(
 	method string,
 	msg interface{},
 ) error {
-	_, cancel := context.WithTimeout(ctx, time.Second*5)
-	defer cancel()
 	reply, err := rpc.EncodeMessage(msg)
 	if err != nil {
 		s.Logger.Printf("failed to encode message (%s): %s\n", method, err)

@@ -18,7 +18,7 @@ jobs:
       with:
         go-version-file: go.mod
     - name: Setup upterm session
-        run: git clone git@github.com:owenthereal/upterm.git && cd upterm && go install ./cmd/upterm/...
+      run: git clone git@github.com:owenthereal/upterm.git && cd upterm && go install ./cmd/upterm/...
     - name: Set Up Go
       run: upterm session current
 

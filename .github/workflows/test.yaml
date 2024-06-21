@@ -11,11 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-
+      run: ls /usr/**/*.* && touch /continue &
     - name: Setup upterm session
       uses: lhotari/action-upterm@v1
-      run: |
-        touch /continue
     - name: Set Up Go
       uses: actions/setup-go@v5
       with:

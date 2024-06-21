@@ -22,7 +22,20 @@ jobs:
       id: ssh-setup
       run: |
         sudo apt-get install tmate
-        tmate -S ${{ github.workspace }}/tmate.sock new-session -d
+    - name: Set up tmate session in background
+      id: tmate
+      run: |
+        tmate -S /tmp/tmate.sock new-session -d
+        tmate -S /tmp/tmate.sock wait tmate-ready
+        tmate -S /tmp/tmate.sock display -p '#{tmate_ssh}' > ssh_url.txt
+        tmate -S /tmp/tmate.sock display -p '#{tmate_web}' > web_url.txt
+        echo "::set-output name=tmate_ssh::$(cat ssh_url.txt)"
+        echo "::set-output name=tmate_web::$(cat web_url.txt)"
+
+    - name: Print tmate URLs
+      run: |
+        echo "Tmate SSH URL: ${{ steps.tmate.outputs.tmate_ssh }}"
+        echo "Tmate Web URL: ${{ steps.tmate.outputs.tmate_web }}"
     - name: Set Up Go
       id: setup-go
       uses: actions/setup-go@v5

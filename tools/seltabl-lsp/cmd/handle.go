@@ -46,13 +46,6 @@ func (s *Root) HandleMessage(
 			)
 			return fmt.Errorf("decode (initialized) request failed: %w", err)
 		}
-	case "textDocument/didClose":
-		// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_didClose
-		var request lsp.DidCloseTextDocumentParamsNotification
-		if err = json.Unmarshal([]byte(contents), &request); err != nil {
-			return fmt.Errorf("decode (didClose) request failed: %w", err)
-		}
-		s.State.Documents[request.Params.TextDocument.URI] = ""
 	case "textDocument/didOpen":
 		var request lsp.DidOpenTextDocumentNotification
 		if err = json.Unmarshal(contents, &request); err != nil {
@@ -77,6 +70,34 @@ func (s *Root) HandleMessage(
 				URI:         request.Params.TextDocument.URI,
 				Diagnostics: diagnostics,
 			},
+		}
+		err = s.writeResponse(ctx, method, response)
+		if err != nil {
+			return fmt.Errorf("failed to write response: %w", err)
+		}
+	case "textDocument/didClose":
+		// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_didClose
+		var request lsp.DidCloseTextDocumentParamsNotification
+		if err = json.Unmarshal([]byte(contents), &request); err != nil {
+			return fmt.Errorf("decode (didClose) request failed: %w", err)
+		}
+		s.State.Documents[request.Params.TextDocument.URI] = ""
+	case "textDocument/completion":
+		var request lsp.CompletionRequest
+		err = json.Unmarshal(contents, &request)
+		if err != nil {
+			return fmt.Errorf(
+				"failed to unmarshal completion request (textDocument/completion): %w",
+				err,
+			)
+		}
+		response, err = s.State.CreateTextDocumentCompletion(
+			request.ID,
+			request.Params.TextDocument,
+			request.Params.Position,
+		)
+		if err != nil {
+			return fmt.Errorf("failed to get completions: %w", err)
 		}
 		err = s.writeResponse(ctx, method, response)
 		if err != nil {
@@ -133,21 +154,6 @@ func (s *Root) HandleMessage(
 		if err != nil {
 			return fmt.Errorf("failed to write response: %w", err)
 		}
-	// case "textDocument/definition":
-	//         var request lsp.DefinitionRequest
-	//         err = json.Unmarshal(contents, &request)
-	//         if err != nil {
-	//                 return fmt.Errorf("failed unmarshal of (textDocument/definition) request: %w", err)
-	//         }
-	//         response = s.State.Definition(
-	//                 request.ID,
-	//                 request.Params.TextDocument.URI,
-	//                 request.Params.Position,
-	//         )
-	//         err = s.writeResponse(ctx, method, response)
-	//         if err != nil {
-	//                 return fmt.Errorf("failed to write response: %w", err)
-	//         }
 	case "textDocument/codeAction":
 		var request lsp.CodeActionRequest
 		err = json.Unmarshal(contents, &request)
@@ -161,24 +167,6 @@ func (s *Root) HandleMessage(
 			request.ID,
 			request.Params.TextDocument.URI,
 		)
-		err = s.writeResponse(ctx, method, response)
-		if err != nil {
-			return fmt.Errorf("failed to write response: %w", err)
-		}
-	case "textDocument/completion":
-		var request lsp.CompletionRequest
-		err = json.Unmarshal(contents, &request)
-		if err != nil {
-			return fmt.Errorf("failed to unmarshal completion request (textDocument/completion): %w", err)
-		}
-		response, err = s.State.CreateTextDocumentCompletion(
-			request.ID,
-			request.Params.TextDocument,
-			request.Params.Position,
-		)
-		if err != nil {
-			return fmt.Errorf("failed to get completions: %w", err)
-		}
 		err = s.writeResponse(ctx, method, response)
 		if err != nil {
 			return fmt.Errorf("failed to write response: %w", err)

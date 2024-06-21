@@ -10,7 +10,9 @@ type DidCloseTextDocumentParamsNotification struct {
 }
 
 // NewDidCloseTextDocumentParamsNotification returns a new did close text document params notification
-func NewDidCloseTextDocumentParamsNotification(uri string) DidCloseTextDocumentParamsNotification {
+func NewDidCloseTextDocumentParamsNotification(
+	uri string,
+) DidCloseTextDocumentParamsNotification {
 	return DidCloseTextDocumentParamsNotification{
 		Notification: Notification{
 			RPC: "2.0",

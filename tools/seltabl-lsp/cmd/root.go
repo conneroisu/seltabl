@@ -116,7 +116,7 @@ type Root struct {
 
 // writeResponse writes a message to the writer
 func (s *Root) writeResponse(
-	ctx context.Context,
+	_ context.Context,
 	method string,
 	msg interface{},
 ) error {

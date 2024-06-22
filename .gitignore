@@ -20,3 +20,6 @@ seltabl.log
 **/**/**/**/**/state.log
 **/**/**/**/**/seltabl.log
 **/**/**/**/**/**/*.sqlite
+.vscode
+.vscode-test
+

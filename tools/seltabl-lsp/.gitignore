@@ -22,4 +22,5 @@ seltabl.log
 **/**/**/**/**/**/*.sqlite
 seltabl-lsp
 tools
-
+.vscode
+.vscode-test

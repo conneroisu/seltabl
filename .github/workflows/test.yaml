@@ -20,6 +20,7 @@ jobs:
       uses: actions/setup-go@v5
       with:
         go-version-file: go.mod
+
     - name: Test
       id: test
       uses: robherley/go-test-action@v0
@@ -33,5 +34,3 @@ jobs:
       uses: codecov/codecov-action@v4.0.1
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
-    - name: Sleep for 100 seconds
-      run: sleep 100

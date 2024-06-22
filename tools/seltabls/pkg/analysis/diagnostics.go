@@ -10,7 +10,7 @@ import (
 	"github.com/PuerkitoBio/goquery"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/parsers"
-	"golang.org/x/sync/errgroup"
+	"github.com/sourcegraph/conc"
 )
 
 var (
@@ -52,11 +52,11 @@ func (s *State) getDiagnosticsForStruct(
 	if err != nil {
 		s.Logger.Printf("failed to get the content of the url: %v\n", err)
 	}
-	eg := errgroup.Group{}
+	wg := conc.WaitGroup{}
 	for j := range st.Fields {
 		for i := range st.Fields[j].Tags.Tags() {
 			j, i := j, i
-			eg.Go(func() error {
+			wg.Go(func() {
 				for k := range diagnosticKeys {
 					if diagnosticKeys[k] == st.Fields[j].Tags.Tags()[i].Key {
 						selector := st.Fields[j].Tags.Tags()[i].Value()
@@ -71,20 +71,17 @@ func (s *State) getDiagnosticsForStruct(
 								Severity: lsp.DiagnosticWarning,
 								Source:   "seltabls",
 								Message: fmt.Sprintf(
-									"Could not verify selector %s",
+									"Could not verify selector %s against url content",
 									st.Fields[j].Tags.Tags()[i].Value(),
 								),
 							})
 						}
 					}
 				}
-				return nil
 			})
 		}
 	}
-	if err := eg.Wait(); err != nil {
-		s.Logger.Printf("failed to get diagnostics for struct: %v\n", err)
-	}
+	wg.Wait()
 	return diagnostics
 }
 

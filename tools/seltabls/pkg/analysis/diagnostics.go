@@ -30,10 +30,13 @@ func (s *State) GetDiagnosticsForFile(
 	ctx := context.Background()
 	sts, err := parsers.ParseStructs(ctx, []byte(*text))
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("failed to parse structs: %w", err)
 	}
 	for _, st := range sts {
-		diags := s.getDiagnosticsForStruct(st, data)
+		diags, err := s.getDiagnosticsForStruct(st, data)
+		if err != nil {
+			return nil, fmt.Errorf("failed to get diagnostics for struct: %w", err)
+		}
 		diagnostics = append(
 			diagnostics,
 			diags...,
@@ -44,55 +47,66 @@ func (s *State) GetDiagnosticsForFile(
 
 // getDiagnosticsForStruct returns diagnostics for a given struct
 func (s *State) getDiagnosticsForStruct(
-	st parsers.Structure,
+	strt parsers.Structure,
 	data parsers.StructCommentData,
-) []lsp.Diagnostic {
-	var diagnostics []lsp.Diagnostic
+) (diagnostics []lsp.Diagnostic, err error) {
 	content, err := s.clientGet(data.URLs[0])
 	if err != nil {
-		s.Logger.Printf("failed to get the content of the url: %v\n", err)
+		return nil, fmt.Errorf("failed to get the content of the url: %w", err)
 	}
 	wg := conc.WaitGroup{}
-	for j := range st.Fields {
-		for i := range st.Fields[j].Tags.Tags() {
+	for j := range strt.Fields {
+		for i := range strt.Fields[j].Tags.Tags() {
 			j, i := j, i
 			wg.Go(func() {
 				for k := range diagnosticKeys {
-					if diagnosticKeys[k] == st.Fields[j].Tags.Tags()[i].Key {
-						selector := st.Fields[j].Tags.Tags()[i].Value()
-						verified := s.validateSelector(selector, content)
-						if !verified {
-							diagnostics = append(diagnostics, lsp.Diagnostic{
-								Range: lsp.LineRange(
-									st.Fields[j].Line-1,
-									st.Fields[j].Tags.Tags()[i].Start,
-									st.Fields[j].Tags.Tags()[i].End,
-								),
-								Severity: lsp.DiagnosticWarning,
-								Source:   "seltabls",
-								Message: fmt.Sprintf(
-									"Could not verify selector %s against url content",
-									st.Fields[j].Tags.Tags()[i].Value(),
-								),
-							})
+					wg.Go(func() {
+						if diagnosticKeys[k] == strt.Fields[j].Tags.Tags()[i].Key {
+							selector := strt.Fields[j].Tags.Tags()[i].Value()
+							verified, err := s.validateSelector(selector, content)
+							if !verified || err != nil {
+								diag := lsp.Diagnostic{
+									Range: lsp.LineRange(
+										strt.Fields[j].Line-1,
+										strt.Fields[j].Tags.Tags()[i].Start,
+										strt.Fields[j].Tags.Tags()[i].End,
+									),
+									Severity: lsp.DiagnosticWarning,
+									Source:   "seltabls",
+								}
+								if err != nil {
+									diag.Message = fmt.Sprintf(
+										"Failed to validate selector %s against known url content: %s",
+										strt.Fields[j].Tags.Tags()[i].Value(),
+										err.Error(),
+									)
+									diagnostics = append(diagnostics, diag)
+									return
+								}
+								diag.Message = fmt.Sprintf(
+									"Could not verify selector %s against known url content",
+									strt.Fields[j].Tags.Tags()[i].Value(),
+								)
+								diagnostics = append(diagnostics, diag)
+							}
 						}
-					}
+					})
 				}
 			})
 		}
 	}
 	wg.Wait()
-	return diagnostics
+	return diagnostics, nil
 }
 
-// validateSelector validates a selector
-func (s *State) validateSelector(selector string, doc *goquery.Document) bool {
+// validateSelector validates a selector against a known url content in the form of a goquery document
+func (s *State) validateSelector(selector string, doc *goquery.Document) (bool, error) {
 	// Create a new goquery document from the response body
 	selection := doc.Find(selector)
 	content, err := selection.Html()
 	if err != nil {
 		s.Logger.Printf("failed to get the html of the selector: %v\n", err)
-		return false
+		return false, fmt.Errorf("failed to get the html of the selector: %w", err)
 	}
 	s.Logger.Printf("Selector '%s' found selecting %s\n", selector, content)
 	// Check if the selector is in the response body
@@ -101,9 +115,9 @@ func (s *State) validateSelector(selector string, doc *goquery.Document) bool {
 			"Selector '%s' not found in the response body\n",
 			selector,
 		)
-		return false
+		return false, nil
 	}
-	return true
+	return true, nil
 }
 
 // clientValidateSelector validates a selector using a client
@@ -128,11 +142,7 @@ func (s *State) clientGet(url string) (*goquery.Document, error) {
 	}
 	doc, err := goquery.NewDocumentFromReader(bytes.NewReader(body))
 	if err != nil {
-		return nil, fmt.Errorf(
-			"failed to create a new goquery document: %v",
-			err,
-		)
+		return nil, fmt.Errorf("failed to create a new goquery document: %v", err)
 	}
 	return doc, nil
-
 }

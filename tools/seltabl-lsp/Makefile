@@ -1,38 +1,43 @@
 .PHONY: all
 all: install
 
+.PHONY: act
+act:
+	# run github actions locally
+	@act
+
 .PHONY: install
 install:
-	./scripts/makefile/install.sh
+	@sh ./scripts/makefile/install.sh
 
 .PHONY: test
 test:
-	./scripts/makefile/test.sh
+	@sh ./scripts/makefile/test.sh
 
 .PHONY: coverage
 coverage:
-	./scripts/makefile/coverage.sh
+	@sh ./scripts/makefile/coverage.sh
 
 .PHONY: lint
 lint:
-	./scripts/makefile/lint.sh
+	@sh ./scripts/makefile/lint.sh
 
 .PHONY: clean
 clean:
-	./scripts/makefile/clean.sh
+	@sh ./scripts/makefile/clean.sh
 
 .PHONY: tidy
 tidy:
-	./scripts/makefile/tidy.sh
+	@sh ./scripts/makefile/tidy.sh
 
 .PHONY: database
 database:
-	./scripts/makefile/database.sh
+	@sh ./scripts/makefile/database.sh
 
 .PHONY: docs
 docs:
-	./scripts/makefile/docs.sh
+	@sh ./scripts/makefile/docs.sh
 
 .PHONY: fmt
 fmt:
-	./scripts/makefile/fmt.sh
+	@sh ./scripts/makefile/fmt.sh

@@ -5,6 +5,10 @@ tasks:
     cmds:
       - task install
       
+  act:
+    cmds:
+      - act
+
   clean:
     cmds:
       - sh ./scripts/taskfile/clean.sh

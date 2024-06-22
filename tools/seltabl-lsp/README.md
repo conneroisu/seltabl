@@ -5,7 +5,7 @@ This is a [language server](https://microsoft.github.io/language-server-protocol
 ## Installation
 
 ```sh
-go intall github.com/conneroisu/seltabl/seltabl-lsp
+go install github.com/conneroisu/seltabl/tools/seltabl-lsp@latest
 ```
 
 ## Usage

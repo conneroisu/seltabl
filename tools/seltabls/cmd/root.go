@@ -14,6 +14,7 @@ import (
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/rpc"
 	"github.com/spf13/cobra"
+	"golang.org/x/sync/errgroup"
 )
 
 // Execute runs the root command
@@ -32,7 +33,7 @@ func Execute() error {
 // ReturnCmd returns the command for the root
 func (s *Root) ReturnCmd(ctx context.Context) *cobra.Command {
 	return &cobra.Command{
-		Use:   "seltabl", // the name of the command
+		Use:   "seltabls", // the name of the command
 		Short: "A command line tool for parsing html tables into structs",
 		Long: `
 CLI and Language Server for the seltabl package.
@@ -119,23 +120,28 @@ type Root struct {
 
 // writeResponse writes a message to the writer
 func (s *Root) writeResponse(
-	_ context.Context,
+	ctx context.Context,
 	method string,
 	msg interface{},
 ) error {
-	reply, err := rpc.EncodeMessage(msg)
-	if err != nil {
-		s.Logger.Printf("failed to encode message (%s): %s\n", method, err)
-		return fmt.Errorf("failed to encode message (%s): %w", method, err)
-	}
-	res, err := s.Writer.Write([]byte(reply))
-	if err != nil {
+	eg, ctx := errgroup.WithContext(ctx)
+	eg.Go(func() error {
+		reply, err := rpc.EncodeMessage(msg)
+		if err != nil {
+			return fmt.Errorf("failed to encode message (%s): %w", method, err)
+		}
+		res, err := s.Writer.Write([]byte(reply))
+		if err != nil {
+			return fmt.Errorf("failed to write message (%s): %w", method, err)
+		}
+		if res != len(reply) {
+			return fmt.Errorf("failed to write all message (%s): %w", method, err)
+		}
+		return nil
+	})
+	if err := eg.Wait(); err != nil {
 		s.Logger.Printf("failed to write message (%s): %s\n", method, err)
 		return fmt.Errorf("failed to write message (%s): %w", method, err)
-	}
-	if res != len(reply) {
-		s.Logger.Printf("failed to write all message (%s): %s\n", method, err)
-		return fmt.Errorf("failed to write all message (%s): %w", method, err)
 	}
 	return nil
 }

@@ -22,3 +22,18 @@ func TestSetupMasterDbSchema(t *testing.T) {
 	assert.NoError(t, err)
 	assert.NotNil(t, db)
 }
+
+// TestSetupMasterDbSchemaInvalid tests the SetupMasterDatabase function with an invalid schema
+func TestSetupMasterDbSchemaInvalid(t *testing.T) {
+	db, err := NewDb(
+		context.Background(),
+		master.New,
+		&Config{
+			Schema:   "invalid",
+			URI:      "sqlite://urls.sqlite",
+			FileName: "urls.sqlite",
+		},
+	)
+	assert.Error(t, err)
+	assert.Nil(t, db)
+}

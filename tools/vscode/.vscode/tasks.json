@@ -2,17 +2,25 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
-			"label": "npm: watch",
+			"type": "npm",
+			"script": "compile",
+			"group": "build",
+			"presentation": {
+				"panel": "dedicated",
+				"reveal": "never"
+			},
+			"problemMatcher": [
+				"$tsc"
+			]
+		},
+		{
 			"type": "npm",
 			"script": "watch",
+			"isBackground": true,
 			"group": {
 				"kind": "build",
 				"isDefault": true
 			},
-			"runOptions": {
-				"runOn": "folderOpen"
-			},
-			"isBackground": true,
 			"presentation": {
 				"panel": "dedicated",
 				"reveal": "never"
@@ -20,53 +28,6 @@
 			"problemMatcher": [
 				"$tsc-watch"
 			]
-		},
-		{
-			"label": "npm: compile",
-			"type": "npm",
-			"script": "compile",
-			"problemMatcher": [
-				"$tsc"
-			],
-			"presentation": {
-				"panel": "dedicated",
-				"reveal": "silent"
-			}
-		},
-		{
-			"label": "npm: clean",
-			"type": "npm",
-			"script": "clean",
-			"presentation": {
-				"reveal": "never",
-				"focus": false,
-				"panel": "shared",
-				"showReuseMessage": true,
-				"clear": false
-			},
-			"problemMatcher": []
-		},
-		{
-			"label": "npm: watch:testbed",
-			"type": "npm",
-			"script": "watch:testbed",
-			"group": "build",
-			"isBackground": true,
-			"dependsOn":[ "npm: symlink:testbed" ],
-			"presentation": {
-				"panel": "dedicated",
-				"reveal": "never"
-			},
-			"problemMatcher": [
-				"$tsc-watch"
-			]
-		},
-		{
-			"type": "npm",
-			"script": "symlink:testbed",
-			"problemMatcher": [],
-			"label": "npm: symlink:testbed",
-			"detail": "node ./build/bin/symlink-testbed.js"
 		}
 	]
 }

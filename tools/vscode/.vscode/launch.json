@@ -1,122 +1,38 @@
+// A launch configuration that compiles the extension and then opens it inside a new window
 {
 	"version": "0.2.0",
 	"configurations": [
 		{
-			"request": "launch",
-			"type": "node",
-			"name": "test:types",
-			"program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
-			"stopOnEntry": false,
-			"args": ["--timeout", "999999"],
-			"cwd": "${workspaceRoot}/types",
-			"runtimeExecutable": null,
-			"runtimeArgs": [],
-			"env": { },
-			"sourceMaps": true,
-			"outFiles": ["${workspaceRoot}/types/lib/umd/**/*.js"],
-			"preLaunchTask": "npm: watch"
-		},
-		{
-			"request": "launch",
-			"type": "node",
-			"name": "test:textDocument",
-			"program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
-			"stopOnEntry": false,
-			"args": ["--timeout", "999999"],
-			"cwd": "${workspaceRoot}/textDocument",
-			"runtimeExecutable": null,
-			"runtimeArgs": [],
-			"env": { },
-			"sourceMaps": true,
-			"outFiles": ["${workspaceRoot}/textDocument/lib/umd/**/*.js"],
-			"preLaunchTask": "npm: watch"
-		},
-		{
-			"request": "launch",
-			"type": "node",
-			"name": "test:jsonrpc",
-			"program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
-			"stopOnEntry": false,
-			"args": ["--timeout", "999999"],
-			"cwd": "${workspaceRoot}/jsonrpc",
-			"runtimeExecutable": null,
-			"runtimeArgs": [],
-			"env": { },
-			"sourceMaps": true,
-			"outFiles": ["${workspaceRoot}/jsonrpc/lib/**/*.js"],
-			"preLaunchTask": "npm: watch"
-		},
-		{
-			"request": "launch",
-			"type": "node",
-			"name": "test:protocol",
-			"program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
-			"stopOnEntry": false,
-			"args": ["--timeout", "999999"],
-			"cwd": "${workspaceRoot}/protocol",
-			"runtimeExecutable": null,
-			"runtimeArgs": [],
-			"env": { },
-			"sourceMaps": true,
-			"outFiles": ["${workspaceRoot}/protocol/lib/**/*.js"],
-			"preLaunchTask": "npm: watch"
-		},
-		{
-			"request": "launch",
-			"type": "node",
-			"name": "test:server",
-			"program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
-			"stopOnEntry": false,
-			"args": ["--timeout", "999999"],
-			"cwd": "${workspaceRoot}/server",
-			"runtimeExecutable": null,
-			"runtimeArgs": ["--preserve-symlinks"],
-			"env": { },
-			"sourceMaps": true,
-			"outFiles": ["${workspaceRoot}/server/lib/**/*.js"],
-			"preLaunchTask": "npm: watch"
-		},
-		{
 			"type": "extensionHost",
 			"request": "launch",
-			"name": "test:client",
+			"name": "Launch Client",
 			"runtimeExecutable": "${execPath}",
-			"autoAttachChildProcesses": true,
 			"args": [
-				"--extensionDevelopmentPath=${workspaceFolder}/client-node-tests",
-				"--extensionTestsPath=${workspaceFolder}/client-node-tests/lib"
+				"--extensionDevelopmentPath=${workspaceRoot}"
 			],
-			"sourceMaps": true,
 			"outFiles": [
-				"${workspaceRoot}/client-node-tests/lib/**/*.js"
+				"${workspaceRoot}/client/out/**/*.js",
+				"${workspaceRoot}/server/out/**/*.js"
 			],
-			"preLaunchTask": "npm: watch"
+			"autoAttachChildProcesses": true,
+			"preLaunchTask": {
+				"type": "npm",
+				"script": "watch"
+			}
 		},
 		{
+			"name": "Language Server E2E Test",
 			"type": "extensionHost",
 			"request": "launch",
-			"name": "Launch TestBed Client",
 			"runtimeExecutable": "${execPath}",
-			"args": ["--extensionDevelopmentPath=${workspaceRoot}/testbed"],
-			"outFiles": [
-				"${workspaceRoot}/testbed/server/out/**/*.js",
-				"${workspaceRoot}/testbed/client/out/**/*.js"
-			],
-			"autoAttachChildProcesses": true,
-			"sourceMaps": true
-		},
-		{
-			"type": "node",
-			"request": "launch",
-			"name": "Meta Model",
-			"cwd": "${workspaceRoot}",
-			"program": "${workspaceFolder}/tools/lib/main.js",
 			"args": [
-				"-p", "./protocol/src/common/tsconfig.json",
+				"--extensionDevelopmentPath=${workspaceRoot}",
+				"--extensionTestsPath=${workspaceRoot}/client/out/test/index",
+				"${workspaceRoot}/client/testFixture"
 			],
-			"sourceMaps": true,
-			"outFiles": ["${workspaceRoot}/tools/lib/**/*.js"],
-			"preLaunchTask": "npm: watch"
+			"outFiles": [
+				"${workspaceRoot}/client/out/test/**/*.js"
+			]
 		}
 	]
 }

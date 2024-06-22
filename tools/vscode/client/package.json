@@ -1,50 +1,22 @@
 {
-	"name": "vscode-languageclient",
-	"description": "VSCode Language client implementation",
-	"version": "10.0.0-next.8",
-	"author": "Microsoft Corporation",
-	"license": "MIT",
-	"engines": {
-		"vscode": "^1.89.0"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/Microsoft/vscode-languageserver-node.git",
-		"directory": "client"
-	},
-	"bugs": {
-		"url": "https://github.com/Microsoft/vscode-languageserver-node/issues"
-	},
-	"enabledApiProposals": [],
-	"main": "./lib/node/main.js",
-	"browser": {
-		"./lib/node/main.js": "./lib/browser/main.js"
-	},
-	"typings": "./lib/common/api.d.ts",
-	"devDependencies": {
-		"@types/minimatch": "^5.1.2",
-		"@types/semver": "^7.5.8",
-		"@types/vscode": "1.89.0",
-		"shx": "^0.3.4"
-	},
-	"dependencies": {
-		"minimatch": "^9.0.3",
-		"semver": "^7.6.0",
-		"vscode-languageserver-protocol": "3.17.6-next.6"
-	},
-	"scripts": {
-		"prepublishOnly": "echo \"⛔ Can only publish from a secure pipeline ⛔\" && node ../build/npm/fail",
-		"prepack": "npm run all:publish",
-		"compile": "node ../build/bin/tsc -b ./tsconfig.json && shx cp src/node/terminateProcess.sh lib/node/terminateProcess.sh",
-		"compile:clean": "git clean -xfd . && npm install && npm run clean && npm run compile",
-		"watch": "node ../build/bin/tsc -b ./tsconfig.watch.json -w",
-		"lint": "node ../node_modules/eslint/bin/eslint.js --ext ts src",
-		"test": "cd ../client-node-tests && npm test && cd ../client",
-		"clean": "node ../node_modules/rimraf/dist/esm/bin.mjs lib",
-		"all": "npm run clean && npm run compile && npm run lint && npm test",
-		"compile:publish": "node ../build/bin/tsc -b ./tsconfig.publish.json && shx cp src/node/terminateProcess.sh lib/node/terminateProcess.sh",
-		"all:publish": "git clean -xfd . && npm install && npm run updateVSCodeVersion && npm run compile:publish && npm run lint && cd ../client-node-tests && npm run all:publish && cd ..",
-		"preversion": "npm test",
-		"updateVSCodeVersion": "node ./bin/updateVSCode.js"
-	}
+  "name": "seltabl-lsp",
+  "description": "LSP for Seltabl",
+  "author": "Conner Ohnesorge",
+  "license": "MIT",
+  "version": "0.0.1",
+  "publisher": "vscode",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/conneroisu/seltabl"
+  },
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "dependencies": {
+    "vscode-languageclient": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.75.1",
+    "@vscode/test-electron": "^2.3.9"
+  }
 }

@@ -1,36 +1,21 @@
 {
-    "compilerOptions": {
-        "incremental": true,
-        "composite": true
-    },
-    "files": [],
-    "references": [
-        {
-            "path": "./textDocument/tsconfig.json"
-        },
-        {
-            "path": "./types/tsconfig.json"
-        },
-        {
-            "path": "./jsonrpc/tsconfig.json"
-        },
-        {
-            "path": "./protocol/tsconfig.json"
-        },
-        {
-            "path": "./client/tsconfig.json"
-        },
-        {
-            "path": "./server/tsconfig.json"
-        },
-        {
-            "path": "./client-node-tests/tsconfig.json"
-        },
-        {
-            "path": "./tools/tsconfig.json"
-        },
-        {
-            "path": "./tsconfig-gen/tsconfig.json"
-        }
-    ]
+	"compilerOptions": {
+		"module": "commonjs",
+		"target": "es2020",
+		"lib": ["es2020"],
+		"outDir": "out",
+		"rootDir": "src",
+		"sourceMap": true
+	},
+	"include": [
+		"src"
+	],
+	"exclude": [
+		"node_modules",
+		".vscode-test"
+	],
+	"references": [
+		{ "path": "./client" },
+		{ "path": "./server" }
+	]
 }

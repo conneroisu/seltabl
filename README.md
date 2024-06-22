@@ -23,7 +23,7 @@ go get github.com/conneroisu/seltabl
 Install the lsp with:
 
 ```bash
-go install github.com/conneroisu/seltabl/tools/seltabl-lsp@latest
+go install github.com/conneroisu/seltabl/tools/seltabls@latest
 ```
 
 ## Usage

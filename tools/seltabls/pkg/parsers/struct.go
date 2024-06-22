@@ -73,20 +73,12 @@ type Tag struct {
 	End int `json:"end"`
 }
 
-// Inspector is a function for concurrently inspecting a node recursively
-type Inspector func(n ast.Node) bool
-
 // ParseStructs checks if the struct tag is in the url and returns a
 func ParseStructs(
 	ctx context.Context,
 	src []byte,
 ) (structures []Structure, err error) {
 	// add a package main to the source
-	strSrc := string(src)
-	if !strings.Contains(strSrc, "package ") {
-		strSrc = "package main\n" + strSrc
-	}
-	src = []byte(strSrc)
 	var eg *errgroup.Group
 	eg, _ = errgroup.WithContext(ctx)
 	fset := token.NewFileSet()

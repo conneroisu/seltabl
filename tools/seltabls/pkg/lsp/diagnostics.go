@@ -22,6 +22,11 @@ type PublishDiagnosticsNotification struct {
 	Params PublishDiagnosticsParams `json:"params"`
 }
 
+// Method returns the method for the publish diagnostics notification
+func (r PublishDiagnosticsNotification) Method() string {
+	return "textDocument/publishDiagnostics"
+}
+
 // PublishDiagnosticsParams are the parameters for the publish diagnostics notification.
 type PublishDiagnosticsParams struct {
 	// URI is the uri for the diagnostics.

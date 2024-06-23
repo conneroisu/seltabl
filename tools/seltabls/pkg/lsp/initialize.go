@@ -37,6 +37,11 @@ type InitializeResponse struct {
 	Result InitializeResult `json:"result"`
 }
 
+// Method returns the method for the initialize response
+func (r InitializeResponse) Method() string {
+	return "initialize"
+}
+
 // InitializeResult is a struct for the initialize result used in the initialize response.
 type InitializeResult struct {
 	// Capabilities are the capabilities of the server for the initialize response.

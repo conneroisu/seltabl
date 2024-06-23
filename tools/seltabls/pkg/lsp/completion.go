@@ -28,6 +28,11 @@ type CompletionResponse struct {
 	Result []CompletionItem `json:"result"`
 }
 
+// Method returns the method for the completion response
+func (r CompletionResponse) Method() string {
+	return "textDocument/completion"
+}
+
 // CompletionItem is a struct for a completion item
 //
 // Microsoft LSP Docs:

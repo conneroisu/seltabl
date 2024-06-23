@@ -9,7 +9,6 @@ import (
 
 	"github.com/conneroisu/seltabl/tools/seltabls/data"
 	"github.com/conneroisu/seltabl/tools/seltabls/data/master"
-	"github.com/conneroisu/seltabl/tools/seltabls/internal/config"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/parsers"
 	"github.com/yosssi/gohtml"
 )
@@ -27,20 +26,20 @@ type State struct {
 }
 
 // NewState returns a new state with no documents
-func NewState(config *config.Config) (state State, err error) {
+func NewState(configPath string) (state State, err error) {
 	db, err := data.NewDb(
 		context.Background(),
 		master.New,
 		&data.Config{
 			Schema:   master.MasterSchema,
 			URI:      "sqlite://uri.sqlite",
-			FileName: path.Join(config.ConfigPath, "uri.sqlite"),
+			FileName: path.Join(configPath, "uri.sqlite"),
 		},
 	)
 	if err != nil {
 		return state, fmt.Errorf("failed to create database: %w", err)
 	}
-	logger := getLogger(path.Join(config.ConfigPath, "state.log"))
+	logger := getLogger(path.Join(configPath, "state.log"))
 	state = State{
 		Documents: make(map[string]string),
 		Selectors: make(map[string][]master.Selector),

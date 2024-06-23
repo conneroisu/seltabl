@@ -15,19 +15,17 @@ type Config struct {
 	ConfigPath string
 }
 
-// CreateConfigDir creates a new config directory and returns a config.
-func CreateConfigDir() (*Config, error) {
+// CreateConfigDir creates a new config directory and returns the path.
+func CreateConfigDir() (string, error) {
 	path, err := homedir.Expand("~/.config/seltabls/")
 	if err != nil {
-		return nil, fmt.Errorf("failed to expand home directory: %w", err)
+		return "", fmt.Errorf("failed to expand home directory: %w", err)
 	}
 	if err := os.MkdirAll(path, 0755); err != nil {
 		if os.IsExist(err) {
-			return &Config{ConfigPath: path}, nil
+			return path, nil
 		}
-		return nil, fmt.Errorf("failed to create config directory: %w", err)
+		return "", fmt.Errorf("failed to create config directory: %w", err)
 	}
-	return &Config{
-		ConfigPath: path,
-	}, nil
+	return path, nil
 }

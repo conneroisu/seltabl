@@ -3,6 +3,7 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"os"
 
@@ -12,11 +13,11 @@ import (
 // main is the entry point for the command line tool, a
 // language server for the seltabl package
 func main() {
-	if err := cmd.Execute(); err != nil {
-		out := os.Stderr
-		fmt.Fprintf(out, "failed to execute command: %s\n", err)
-		fmt.Fprintf(out, "exiting...\n")
-		os.Exit(1)
+	ctx := context.Background()
+	if err := cmd.Execute(ctx); err != nil {
+		fmt.Fprintf(os.Stderr, "failed to execute command: %s\n", err)
+		println("failed to execute command: " + err.Error())
+		panic(err)
 	}
 }
 

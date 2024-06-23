@@ -9,17 +9,17 @@ import (
 // TextDocumentCodeAction returns the code actions for a given text document.
 func (s *State) TextDocumentCodeAction(
 	id int,
-	uri string,
-) lsp.TextDocumentCodeActionResponse {
+	documentURI string,
+) (lsp.TextDocumentCodeActionResponse, error) {
 	// Should be able to refresh selectors from the database by requesting the url
-	text := s.Documents[uri]
-	_ = s.Selectors[uri]
+	text := s.Documents[documentURI]
+	_ = s.Selectors[documentURI]
 	actions := []lsp.CodeAction{}
 	for row, line := range strings.Split(text, "\n") {
 		idx := strings.Index(line, "VS Code")
 		if idx >= 0 {
 			replaceChange := map[string][]lsp.TextEdit{}
-			replaceChange[uri] = []lsp.TextEdit{
+			replaceChange[documentURI] = []lsp.TextEdit{
 				{
 					Range:   lsp.LineRange(row, idx, idx+len("VS Code")),
 					NewText: "Neovim",
@@ -30,7 +30,7 @@ func (s *State) TextDocumentCodeAction(
 				Edit:  &lsp.WorkspaceEdit{Changes: replaceChange},
 			})
 			censorChange := map[string][]lsp.TextEdit{}
-			censorChange[uri] = []lsp.TextEdit{
+			censorChange[documentURI] = []lsp.TextEdit{
 				{
 					Range:   lsp.LineRange(row, idx, idx+len("VS Code")),
 					NewText: "VS C*de",
@@ -49,5 +49,5 @@ func (s *State) TextDocumentCodeAction(
 		},
 		Result: actions,
 	}
-	return response
+	return response, nil
 }

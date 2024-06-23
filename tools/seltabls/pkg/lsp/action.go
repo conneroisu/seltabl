@@ -29,6 +29,11 @@ type TextDocumentCodeActionResponse struct {
 	Result []CodeAction `json:"result"`
 }
 
+// Method returns the method for the code action response
+func (r TextDocumentCodeActionResponse) Method() string {
+	return "textDocument/codeAction"
+}
+
 // CodeActionContext is the context for a code action request.
 type CodeActionContext struct {
 	// Add fields for CodeActionContext as needed

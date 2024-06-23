@@ -9,17 +9,11 @@ import (
 
 	"github.com/conneroisu/seltabl/tools/seltabls/data/generic"
 	"github.com/conneroisu/seltabl/tools/seltabls/data/master"
-	"github.com/uptrace/bun"
-	"github.com/uptrace/bun/dialect/sqlitedialect"
-	"github.com/uptrace/bun/schema"
 	"golang.org/x/sync/errgroup"
 
 	// Import the database dialects. Automatically registers dialects.
 	_ "modernc.org/sqlite"
 )
-
-// SetupFunc is a function for setting up the database
-type SetupFunc func(ctx context.Context, getenv func(string) string, db *bun.DB) error
 
 // Database is a struct that holds the sql database and the queries.
 // It uses generics to hold the appropriate type of query struct.
@@ -27,7 +21,6 @@ type Database[
 	T master.Queries,
 ] struct {
 	Queries *T
-	Bun     *bun.DB
 }
 
 // NewSQLDatabase creates a new database struct with the sql database and the
@@ -36,14 +29,12 @@ func NewSQLDatabase[
 	Q master.Queries,
 ](
 	parentCtx context.Context,
-	dialect schema.Dialect,
 	db *sql.DB,
 	newFunc func(generic.DBTX) *Q,
 ) (*Database[Q], error) {
 	eg, ctx := errgroup.WithContext(parentCtx)
 	q := &Database[Q]{
 		Queries: newFunc(db),
-		Bun:     bun.NewDB(db, dialect),
 	}
 	eg.Go(func() error {
 		<-ctx.Done()
@@ -100,7 +91,7 @@ func NewDb[
 				err,
 			)
 		}
-		return NewSQLDatabase(ctx, sqlitedialect.New(), db, newFunc)
+		return NewSQLDatabase(ctx, db, newFunc)
 	default:
 		return nil, fmt.Errorf("unsupported scheme: %s", u.Scheme)
 	}

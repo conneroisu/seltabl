@@ -17,7 +17,15 @@ type CancelParams struct {
 }
 
 // CancelResponse is the response for a cancel request.
+//
+// Microsoft LSP Docs:
+// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_cancel
 type CancelResponse struct {
 	// CancelResponse embeds the Response struct
 	Response
+}
+
+// Method returns the method for the cancel response
+func (r *CancelResponse) Method() string {
+	return "textDocument_cancel"
 }

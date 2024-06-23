@@ -15,3 +15,8 @@ type ShutdownResponse struct {
 	Response
 	Error *error `json:"error,omitempty"`
 }
+
+// Method returns the method for the shutdown response
+func (r ShutdownResponse) Method() string {
+	return "shutdown"
+}

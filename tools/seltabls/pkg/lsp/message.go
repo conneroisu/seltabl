@@ -26,6 +26,11 @@ type Response struct {
 	// Error  string `json:"error"`
 }
 
+// Method returns the method for the response
+func (r Response) Method() string {
+	return ""
+}
+
 // String returns a string representation of the response
 func (r *Response) String() string {
 	resp, err := rpc.EncodeMessage(r)

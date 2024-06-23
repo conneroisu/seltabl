@@ -65,7 +65,6 @@ func New[T any](doc *goquery.Document) ([]T, error) {
 	var cfg *SelectorConfig
 	for i := 0; i < dType.NumField(); i++ {
 		field := dType.Field(i)
-
 		cfg = NewSelectorConfig(field.Tag)
 		if cfg.HeadSelector == "" {
 			return nil, &ErrSelectorNotFound{dType, field, cfg, doc}

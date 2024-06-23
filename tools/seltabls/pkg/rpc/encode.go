@@ -5,6 +5,11 @@ import (
 	"fmt"
 )
 
+// MethodActor is a type for responding to a request
+type MethodActor interface {
+	Method() string
+}
+
 // EncodeMessage encodes a message into a string
 //
 // It uses the json library to encode the message
@@ -12,7 +17,7 @@ import (
 // a Content-Length header.
 //
 // It also returns an error if there is an error while encoding the message.
-func EncodeMessage(msg any) (string, error) {
+func EncodeMessage(msg MethodActor) (string, error) {
 	content, err := json.Marshal(msg)
 	if err != nil {
 		return "", err

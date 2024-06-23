@@ -95,12 +95,11 @@ func singleSelector(selection *goquery.Selection) string {
 	if exists {
 		selector = fmt.Sprintf("%s[src=%s]", goquery.NodeName(selection), attr)
 	}
-	attr, exists = selection.Attr("href")
+	_, exists = selection.Attr("href")
 	if exists {
 		selector = fmt.Sprintf(
-			"%s[href=%s]",
+			"%s[href]",
 			goquery.NodeName(selection),
-			attr,
 		)
 	}
 	if selector == "" {

@@ -11,11 +11,14 @@ import (
 func NewVetCmd(ctx context.Context, w io.Writer) *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "vet",
-		Short: "Vet the project",
+		Short: "Evaluate code for common errors or invalid selectors",
 		Long: `
-Vet the project.
+Similar to go vet, but for seltabl.
+Evaluate code for common errors or invalid selectors.
 `,
-		RunE: func(_ *cobra.Command, _ []string) error {
+		RunE: func(cmd *cobra.Command, args []string) error {
+			// eg, ctx := errgroup.WithContext(ctx)
+
 			return nil
 		},
 	}

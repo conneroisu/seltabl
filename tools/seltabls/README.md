@@ -15,8 +15,8 @@ go install github.com/conneroisu/seltabl/tools/seltabls@latest
 ```lua
 ---@diagnostic disable-next-line: missing-fields
 local client = vim.lsp.start {
-	name = "tools",
-	cmd = { "path to seltabls binary" },
+	name = "seltabls",
+	cmd = { "seltabls", "lsp" },
 	on_attach = require("lsp_attach").on_attach,
 }
 
@@ -46,6 +46,15 @@ seltabls
 
 ### Run tests
 
+Using makefile:
+```sh
+make test
+```
+Using taskfile:
+```sh
+task test
+```
+Manually:
 ```sh
 go test ./...
 ```

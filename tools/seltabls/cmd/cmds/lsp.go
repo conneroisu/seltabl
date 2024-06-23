@@ -92,6 +92,7 @@ func HandleMessage(
 			)
 		}
 		diagnostics, err := state.OpenDocument(
+			ctx,
 			request.Params.TextDocument.URI,
 			&request.Params.TextDocument.Text,
 		)

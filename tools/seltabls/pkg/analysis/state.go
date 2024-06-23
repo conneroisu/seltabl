@@ -65,17 +65,17 @@ func getLogger(fileName string) *log.Logger {
 // getSelectors gets all the selectors from the given URL and appends them to the selectors slice
 func (s State) getSelectors(
 	ctx context.Context,
-	url []string,
+	url string,
 	ignores []string,
 ) (selectors []master.Selector, err error) {
-	u, err := s.Database.Queries.GetURLByValue(
+	got, err := s.Database.Queries.GetURLByValue(
 		ctx,
-		master.GetURLByValueParams{Value: url[0]},
+		master.GetURLByValueParams{Value: url},
 	)
 	if err == nil {
 		rows, err := s.Database.Queries.GetSelectorsByURL(
 			ctx,
-			master.GetSelectorsByURLParams{Value: u.Value},
+			master.GetSelectorsByURLParams{Value: got.Value},
 		)
 		if err != nil {
 			return nil, fmt.Errorf("failed to get selectors by url: %w", err)
@@ -88,7 +88,7 @@ func (s State) getSelectors(
 			return selectors, nil
 		}
 	}
-	doc, err := parsers.GetMinifiedDoc(url[0], ignores)
+	doc, err := parsers.GetMinifiedDoc(url, ignores)
 	if err != nil {
 		s.Logger.Printf("failed to get minified doc: %s\n", err)
 	}
@@ -105,7 +105,7 @@ func (s State) getSelectors(
 	}
 	URL, err := s.Database.Queries.InsertURL(
 		ctx,
-		master.InsertURLParams{Value: url[0], HtmlID: HTML.ID},
+		master.InsertURLParams{Value: url, HtmlID: HTML.ID},
 	)
 	if err != nil {
 		return nil, fmt.Errorf("failed to insert url: %w", err)

@@ -214,6 +214,7 @@ func HandleMessage(
 	case "textDocument/didSave":
 		// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_didSave
 	case "shutdown":
+		// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#shutdown
 		var request lsp.ShutdownRequest
 		if err = json.Unmarshal([]byte(contents), &request); err != nil {
 			return fmt.Errorf("decode (shutdown) request failed: %w", err)

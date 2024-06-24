@@ -60,9 +60,10 @@ func HandleMessage(
 	if err != nil {
 		return fmt.Errorf("failed to decode message: %w", err)
 	}
+	mux := lsp.DefaultMux
+	addRoutes(ctx, mux, state)
 	switch method {
 	case "initialize":
-		// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#initialize
 		var request lsp.InitializeRequest
 		if err = json.Unmarshal([]byte(contents), &request); err != nil {
 			return fmt.Errorf("decode initialize request (initialize) failed: %w", err)
@@ -73,13 +74,11 @@ func HandleMessage(
 			return fmt.Errorf("failed to write (initialize) response: %w", err)
 		}
 	case "initialized":
-		// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#initialized
 		var request lsp.InitializedParamsRequest
 		if err = json.Unmarshal([]byte(contents), &request); err != nil {
 			return fmt.Errorf("decode (initialized) request failed: %w", err)
 		}
 	case "textDocument/didOpen":
-		// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_didOpen
 		var request lsp.NotificationDidOpenTextDocument
 		if err = json.Unmarshal(contents, &request); err != nil {
 			return fmt.Errorf(
@@ -110,14 +109,12 @@ func HandleMessage(
 			return fmt.Errorf("failed to write response: %w", err)
 		}
 	case "textDocument/didClose":
-		// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_didClose
 		var request lsp.DidCloseTextDocumentParamsNotification
 		if err = json.Unmarshal([]byte(contents), &request); err != nil {
 			return fmt.Errorf("decode (didClose) request failed: %w", err)
 		}
 		state.Documents[request.Params.TextDocument.URI] = ""
 	case "textDocument/completion":
-		// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_completion
 		var request lsp.CompletionRequest
 		err = json.Unmarshal(contents, &request)
 		if err != nil {

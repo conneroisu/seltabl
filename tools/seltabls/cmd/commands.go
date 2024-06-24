@@ -8,8 +8,8 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// AddRoutes adds the routes for the root command
-func AddRoutes(ctx context.Context, root *cobra.Command) error {
+// AddCommands adds the routes for the root command
+func AddCommands(ctx context.Context, root *cobra.Command) error {
 	root.AddCommand(cmds.NewVetCmd(ctx, os.Stdout))
 	root.AddCommand(cmds.NewLSPCmd(ctx, os.Stdout, cmds.HandleMessage))
 	root.AddCommand(cmds.NewCompletionCmd(ctx, os.Stdout))

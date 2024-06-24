@@ -20,7 +20,7 @@ Language server provides completions, hovers, and code actions for seltabl defin
 CLI provides a command line tool for verifying, linting, and reporting on seltabl defined structs.
 `,
 	}
-	err := AddRoutes(ctx, cmd)
+	err := AddCommands(ctx, cmd)
 	if err != nil {
 		return nil, fmt.Errorf("failed to add routes: %w", err)
 	}

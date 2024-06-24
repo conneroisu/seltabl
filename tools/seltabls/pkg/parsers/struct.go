@@ -257,6 +257,16 @@ func (t *Tags) Tags() []*Tag {
 	return t.tags
 }
 
+// Len returns the length of the tags
+func (t *Tags) Len() int {
+	return len(t.tags)
+}
+
+// Tag returns a tag at the given index
+func (t *Tags) Tag(idx int) *Tag {
+	return t.tags[idx]
+}
+
 // Keys returns a slice of tags' keys.
 func (t *Tags) Keys() []string {
 	var keys []string

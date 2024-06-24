@@ -56,41 +56,38 @@ func (s *State) getDiagnosticsForStruct(
 	}
 	wg := conc.WaitGroup{}
 	for j := range strt.Fields {
-		for i := range strt.Fields[j].Tags.Tags() {
-			j, i := j, i
+		for i := range strt.Fields[j].Tags.Len() {
 			wg.Go(func() {
 				for k := range diagnosticKeys {
-					wg.Go(func() {
-						if diagnosticKeys[k] == strt.Fields[j].Tags.Tags()[i].Key {
-							selector := strt.Fields[j].Tags.Tags()[i].Value()
-							verified, err := s.validateSelector(selector, content)
-							if !verified || err != nil {
-								diag := lsp.Diagnostic{
-									Range: lsp.LineRange(
-										strt.Fields[j].Line-1,
-										strt.Fields[j].Tags.Tags()[i].Start,
-										strt.Fields[j].Tags.Tags()[i].End,
-									),
-									Severity: lsp.DiagnosticWarning,
-									Source:   "seltabls",
-								}
-								if err != nil {
-									diag.Message = fmt.Sprintf(
-										"Failed to validate selector %s against known url content: %s",
-										strt.Fields[j].Tags.Tags()[i].Value(),
-										err.Error(),
-									)
-									diagnostics = append(diagnostics, diag)
-									return
-								}
+					if diagnosticKeys[k] == strt.Fields[j].Tags.Tag(i).Key {
+						selector := strt.Fields[j].Tags.Tag(i).Value()
+						verified, err := s.validateSelector(selector, content)
+						if !verified || err != nil {
+							diag := lsp.Diagnostic{
+								Range: lsp.LineRange(
+									strt.Fields[j].Line-1,
+									strt.Fields[j].Tags.Tag(i).Start,
+									strt.Fields[j].Tags.Tag(i).End,
+								),
+								Severity: lsp.DiagnosticWarning,
+								Source:   "seltabls",
+							}
+							if err != nil {
 								diag.Message = fmt.Sprintf(
-									"Could not verify selector %s against known url content",
-									strt.Fields[j].Tags.Tags()[i].Value(),
+									"Failed to validate selector %s against known url content: %s",
+									strt.Fields[j].Tags.Tag(i).Value(),
+									err.Error(),
 								)
 								diagnostics = append(diagnostics, diag)
+								return
 							}
+							diag.Message = fmt.Sprintf(
+								"Could not verify selector %s against known url content",
+								strt.Fields[j].Tags.Tag(i).Value(),
+							)
+							diagnostics = append(diagnostics, diag)
 						}
-					})
+					}
 				}
 			})
 		}
@@ -103,18 +100,8 @@ func (s *State) getDiagnosticsForStruct(
 func (s *State) validateSelector(selector string, doc *goquery.Document) (bool, error) {
 	// Create a new goquery document from the response body
 	selection := doc.Find(selector)
-	content, err := selection.Html()
-	if err != nil {
-		s.Logger.Printf("failed to get the html of the selector: %v\n", err)
-		return false, fmt.Errorf("failed to get the html of the selector: %w", err)
-	}
-	s.Logger.Printf("Selector '%s' found selecting %s\n", selector, content)
 	// Check if the selector is in the response body
 	if selection.Length() < 1 {
-		s.Logger.Printf(
-			"Selector '%s' not found in the response body\n",
-			selector,
-		)
 		return false, nil
 	}
 	return true, nil

@@ -80,7 +80,7 @@ func HandleMessage(
 		}
 	case "textDocument/didOpen":
 		// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_didOpen
-		var request lsp.DidOpenTextDocumentNotification
+		var request lsp.NotificationDidOpenTextDocument
 		if err = json.Unmarshal(contents, &request); err != nil {
 			return fmt.Errorf(
 				"decode (textDocument/didOpen) request failed: %w",
@@ -212,15 +212,11 @@ func HandleMessage(
 	case "shutdown":
 		// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#shutdown
 		var request lsp.ShutdownRequest
-		if err = json.Unmarshal([]byte(contents), &request); err != nil {
+		err = json.Unmarshal([]byte(contents), &request)
+		if err != nil {
 			return fmt.Errorf("decode (shutdown) request failed: %w", err)
 		}
-		response := lsp.ShutdownResponse{
-			Response: lsp.Response{
-				RPC: "2.0",
-				ID:  request.ID,
-			},
-		}
+		response := lsp.NewShutdownResponse(request, nil)
 		err = WriteResponse(ctx, writer, response)
 		if err != nil {
 			return fmt.Errorf("write (shutdown) response failed: %w", err)

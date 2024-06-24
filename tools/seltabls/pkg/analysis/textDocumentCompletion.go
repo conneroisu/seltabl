@@ -106,7 +106,6 @@ func (s *State) CheckPosition(
 	}
 	// Find the struct node in the AST
 	structNodes := parsers.FindStructNodes(node)
-	// for each of the nodes
 	for i := range structNodes {
 		// Check if the position is within the struct node
 		inPosition := parsers.IsPositionInNode(structNodes[i], position, fset)
@@ -122,13 +121,21 @@ func (s *State) CheckPosition(
 			if inValue {
 				return parsers.StateInTagValue, nil
 			}
-			// Check if the position is at / after a colon
+			// Check if the position is after a colon
 			if parsers.PositionBeforeValue(position, text) == ':' {
+				// If the position is after a colon, return the state after the colon
+				// Also return the key of the struct tag before the colon
+				// TODO: Get the key of the struct tag before the colon
 				return parsers.StateAfterColon, nil
 			}
 			if parsers.PositionBeforeValue(position, text) == '"' {
+				// If the position is before a double quote, return the state in the tag Value
+				// Also return the key of the struct tag before the double quote aka our position.
+				// TODO: Get the key of the struct tag before the double quote
 				return parsers.StateInTagValue, nil
 			}
+			// If we are in the tag, we should return completion items for the struct tag
+			// that are not yet set/defined
 			return parsers.StateInTag, nil
 		}
 	}

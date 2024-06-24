@@ -49,13 +49,23 @@ type Prime struct {
 	Response     Response     `json:"response,omitempty"`
 }
 
+// ErrWrite is an error for when the write fails
+type ErrWrite struct {
+	Message string
+}
+
+// Error implements the error interface
+func (e ErrWrite) Error() string {
+	return e.Message
+}
+
 // Write writes the given bytes to the database
 func (q *Queries) Write(p []byte) (n int, err error) {
 	// decode the bytes into a string
 	var log Prime
-	err = json.Unmarshal(p, log)
+	err = json.Unmarshal(p, &log)
 	if err != nil {
-		return 0, err
+		return 0, &ErrWrite{Message: err.Error()}
 	}
 	return len(p), nil
 }

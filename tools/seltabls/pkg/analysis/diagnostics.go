@@ -55,13 +55,12 @@ func (s *State) getDiagnosticsForStruct(
 		return nil, fmt.Errorf("failed to get the content of the url: %w", err)
 	}
 	wg := conc.WaitGroup{}
-	for j := range strt.Fields {
+	for j := range len(strt.Fields) {
 		for i := range strt.Fields[j].Tags.Len() {
 			wg.Go(func() {
 				for k := range diagnosticKeys {
 					if diagnosticKeys[k] == strt.Fields[j].Tags.Tag(i).Key {
-						selector := strt.Fields[j].Tags.Tag(i).Value()
-						verified, err := s.validateSelector(selector, content)
+						verified, err := s.validateSelector(strt.Fields[j].Tags.Tag(i).Value(), content)
 						if !verified || err != nil {
 							diag := lsp.Diagnostic{
 								Range: lsp.LineRange(

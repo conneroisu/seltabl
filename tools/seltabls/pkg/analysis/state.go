@@ -10,6 +10,7 @@ import (
 	"github.com/conneroisu/seltabl/tools/seltabls/data"
 	"github.com/conneroisu/seltabl/tools/seltabls/data/master"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/parsers"
+	"github.com/mitchellh/go-homedir"
 	"github.com/yosssi/gohtml"
 )
 
@@ -26,9 +27,14 @@ type State struct {
 }
 
 // NewState returns a new state with no documents
-func NewState(configPath string) (state State, err error) {
+func NewState() (state State, err error) {
+	ctx := context.Background()
+	configPath, err := CreateConfigDir("~/.config/seltabls/")
+	if err != nil {
+		return state, fmt.Errorf("failed to create config directory: %w", err)
+	}
 	db, err := data.NewDb(
-		context.Background(),
+		ctx,
 		master.New,
 		&data.Config{
 			Schema:   master.MasterSchema,
@@ -137,4 +143,19 @@ func (s State) getSelectors(
 		selectors = append(selectors, *selector)
 	}
 	return selectors, nil
+}
+
+// CreateConfigDir creates a new config directory and returns the path.
+func CreateConfigDir(dirPath string) (string, error) {
+	path, err := homedir.Expand(dirPath)
+	if err != nil {
+		return "", fmt.Errorf("failed to expand home directory: %w", err)
+	}
+	if err := os.MkdirAll(path, 0755); err != nil {
+		if os.IsExist(err) {
+			return path, nil
+		}
+		return "", fmt.Errorf("failed to create or find config directory: %w", err)
+	}
+	return path, nil
 }

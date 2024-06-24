@@ -32,11 +32,7 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 		RunE: func(_ *cobra.Command, _ []string) error {
 			scanner := bufio.NewScanner(os.Stdin)
 			scanner.Split(rpc.Split)
-			configPath, err := CreateConfigDir()
-			if err != nil {
-				return fmt.Errorf("failed to create config directory: %w", err)
-			}
-			state, err := analysis.NewState(configPath)
+			state, err := analysis.NewState()
 			if err != nil {
 				return fmt.Errorf("failed to create state: %w", err)
 			}

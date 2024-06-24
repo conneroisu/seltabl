@@ -4,10 +4,8 @@ import (
 	"context"
 	"fmt"
 	"io"
-	"os"
 
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/rpc"
-	"github.com/mitchellh/go-homedir"
 	"golang.org/x/sync/errgroup"
 )
 
@@ -48,19 +46,4 @@ func WriteResponse(
 		return fmt.Errorf("failed to write message (%s): %w", msg.Method(), err)
 	}
 	return nil
-}
-
-// CreateConfigDir creates a new config directory and returns the path.
-func CreateConfigDir() (string, error) {
-	path, err := homedir.Expand("~/.config/seltabls/")
-	if err != nil {
-		return "", fmt.Errorf("failed to expand home directory: %w", err)
-	}
-	if err := os.MkdirAll(path, 0755); err != nil {
-		if os.IsExist(err) {
-			return path, nil
-		}
-		return "", fmt.Errorf("failed to create or find config directory: %w", err)
-	}
-	return path, nil
 }

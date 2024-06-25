@@ -241,7 +241,7 @@ func HandleMessage(
 		os.Exit(0)
 		return nil
 	default:
-		return fmt.Errorf("unknown method: %s", method)
+		state.Logger.Printf("unknown method: %s", method)
 	}
 	return nil
 }

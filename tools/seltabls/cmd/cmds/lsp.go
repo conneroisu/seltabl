@@ -29,7 +29,9 @@ Language server provides completions, hovers, and code actions for seltabl defin
 	
 CLI provides a command line tool for verifying, linting, and reporting on seltabl defined structs.
 `,
-		RunE: func(_ *cobra.Command, _ []string) error {
+		RunE: func(cmd *cobra.Command, _ []string) error {
+			cmd.SetOut(writer)
+			cmd.SetContext(ctx)
 			scanner := bufio.NewScanner(os.Stdin)
 			scanner.Split(rpc.Split)
 			state, err := analysis.NewState()

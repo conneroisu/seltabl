@@ -19,8 +19,8 @@ var url = "https://api.groq.com/openai/v1"
 // NewGenerateCmd returns the generate command
 func NewGenerateCmd(
 	ctx context.Context,
-	_ io.Writer,
-	_ io.Reader,
+	w io.Writer,
+	r io.Reader,
 ) (*cobra.Command, error) {
 	var llmModel string
 	var name string
@@ -34,6 +34,10 @@ Generates a new seltabl struct for a given url.
 The command will create a new package in the current directory with the name "seltabl".
 `,
 		RunE: func(cmd *cobra.Command, _ []string) error {
+			cmd.SetOutput(w)
+			cmd.SetIn(r)
+			cmd.SetErr(w)
+			cmd.SetContext(ctx)
 			llmAPIKey := os.Getenv("LLM_API_KEY")
 			if llmAPIKey == "" {
 				return fmt.Errorf("LLM_API_KEY is not set")
@@ -65,7 +69,8 @@ The command will create a new package in the current directory with the name "se
 			)
 			history := []openai.ChatCompletionMessage{{
 				Role:    openai.ChatMessageRoleUser,
-				Content: basePrompt}}
+				Content: basePrompt,
+			}}
 			content, history, err := Chat(
 				ctx,
 				client,

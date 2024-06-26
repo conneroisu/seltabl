@@ -109,25 +109,7 @@ The command will create a new package in the current directory with the name "se
 		[]string{"script", "style", "link", "img", "footer", "header"},
 		"The elements to ignore when generating the struct.",
 	)
-	err := registerCompletionFuncForGlobalFlags(cmd)
-	if err != nil {
-		return nil, fmt.Errorf("failed to register completion func: %w", err)
-	}
 	return cmd, nil
-}
-
-// registerCompletionFuncForGlobalFlags registers a completion function for the global flags
-func registerCompletionFuncForGlobalFlags(cmd *cobra.Command) (err error) {
-	err = cmd.RegisterFlagCompletionFunc(
-		"url",
-		func(_ *cobra.Command, _ []string, _ string) ([]string, cobra.ShellCompDirective) {
-			return []string{
-				"https://github.com/conneroisu/seltabl/blob/main/testdata/ab_num_table.html",
-				"https://github.com/conneroisu/seltabl/blob/main/testdata/numbered_table.html",
-			}, cobra.ShellCompDirectiveDefault
-		},
-	)
-	return err
 }
 
 // verify verifies the generated struct

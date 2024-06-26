@@ -68,8 +68,8 @@ func getLogger(fileName string) *log.Logger {
 	return log.New(logFile, "[seltabls#state]", log.LstdFlags)
 }
 
-// getSelectors gets all the selectors from the given URL and appends them to the selectors slice
-func (s State) getSelectors(
+// GetSelectors gets all the selectors from the given URL and appends them to the selectors slice
+func (s State) GetSelectors(
 	ctx context.Context,
 	url string,
 	ignores []string,

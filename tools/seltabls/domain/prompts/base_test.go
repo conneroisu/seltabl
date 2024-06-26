@@ -1,17 +1,34 @@
 package prompts
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/conneroisu/seltabl/tools/seltabls/data/master"
+)
 
 // TestNewBasePrompt tests the NewBasePrompt function
 func TestNewBasePrompt(t *testing.T) {
-	selectors := []string{
-		"html",
-		"html head",
-		"html body",
-		"html body table",
-		"html body table tbody",
-		"html body table tbody tr",
-		"html body table tbody tr td",
+	selectors := []master.Selector{
+		{
+			Value:   "html",
+			UrlID:   0,
+			Context: "html",
+		},
+		{
+			Value:   "html head",
+			UrlID:   0,
+			Context: "html head",
+		},
+		{
+			Value:   "html body",
+			UrlID:   0,
+			Context: "html body",
+		},
+		{
+			Value:   "html body table",
+			UrlID:   0,
+			Context: "html body table",
+		},
 	}
 	content := "Hello, World!"
 	url := "https://example.com"

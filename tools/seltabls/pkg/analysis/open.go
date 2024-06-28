@@ -40,7 +40,7 @@ func (s *State) OpenDocument(
 		})
 	}
 	if err := eg.Wait(); err != nil {
-		return nil, fmt.Errorf("failed to get selectors for urls: %w", err)
+		return diags, fmt.Errorf("failed to get selectors for urls: %w", err)
 	}
 	diags, err = s.GetDiagnosticsForFile(content, data)
 	if err != nil {

@@ -8,6 +8,7 @@ import (
 	"path"
 
 	"github.com/conneroisu/seltabl/tools/seltabls/data"
+
 	"github.com/conneroisu/seltabl/tools/seltabls/data/master"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/parsers"
 	"github.com/mitchellh/go-homedir"
@@ -71,15 +72,16 @@ func getLogger(fileName string) *log.Logger {
 // getSelectors gets all the selectors from the given URL and appends them to the selectors slice
 func (s State) getSelectors(
 	ctx context.Context,
+	state *State,
 	url string,
 	ignores []string,
 ) (selectors []master.Selector, err error) {
-	got, err := s.Database.Queries.GetURLByValue(
+	got, err := state.Database.Queries.GetURLByValue(
 		ctx,
 		master.GetURLByValueParams{Value: url},
 	)
-	if err == nil {
-		rows, err := s.Database.Queries.GetSelectorsByURL(
+	if err == nil && got != nil {
+		rows, err := state.Database.Queries.GetSelectorsByURL(
 			ctx,
 			master.GetSelectorsByURLParams{Value: got.Value},
 		)
@@ -96,20 +98,20 @@ func (s State) getSelectors(
 	}
 	doc, err := parsers.GetMinifiedDoc(url, ignores)
 	if err != nil {
-		s.Logger.Printf("failed to get minified doc: %s\n", err)
+		return nil, fmt.Errorf("failed to get minified doc: %w", err)
 	}
 	docHTML, err := doc.Html()
 	if err != nil {
-		s.Logger.Printf("failed to get html: %s\n", err)
+		return nil, fmt.Errorf("failed to get html: %w", err)
 	}
-	HTML, err := s.Database.Queries.InsertHTML(
+	HTML, err := state.Database.Queries.InsertHTML(
 		ctx,
 		master.InsertHTMLParams{Value: docHTML},
 	)
 	if err != nil {
-		s.Logger.Printf("failed to insert html: %s\n", err)
+		return nil, fmt.Errorf("failed to insert html: %w", err)
 	}
-	URL, err := s.Database.Queries.InsertURL(
+	URL, err := state.Database.Queries.InsertURL(
 		ctx,
 		master.InsertURLParams{Value: url, HtmlID: HTML.ID},
 	)
@@ -118,18 +120,15 @@ func (s State) getSelectors(
 	}
 	selectorStrs, err := parsers.GetAllSelectors(doc)
 	if err != nil {
-		s.Logger.Printf("failed to get selectors: %s\n", err)
+		return nil, fmt.Errorf("failed to get selectors: %w", err)
 	}
 	for _, sel := range selectorStrs {
 		context, err := doc.Find(sel).Parent().Html()
 		if err != nil {
-			s.Logger.Printf("failed to get html: %s\n", err)
-		}
-		if err != nil {
-			s.Logger.Printf("failed to get urls: %s\n", err)
+			state.Logger.Printf("failed to get html: %s\n", err)
 		}
 		context = gohtml.Format(context)
-		selector, err := s.Database.Queries.InsertSelector(
+		selector, err := state.Database.Queries.InsertSelector(
 			ctx,
 			master.InsertSelectorParams{
 				Value:   sel,
@@ -138,7 +137,7 @@ func (s State) getSelectors(
 			},
 		)
 		if err != nil {
-			s.Logger.Printf("failed to insert selector: %s\n", err)
+			return nil, fmt.Errorf("failed to insert selector: %w", err)
 		}
 		selectors = append(selectors, *selector)
 	}

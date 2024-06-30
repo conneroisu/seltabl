@@ -48,7 +48,7 @@ The command will create a new package in the current directory with the name "se
 				return fmt.Errorf("failed to create state: %w", err)
 			}
 			ignores := []string{"script", "style", "link", "img", "footer", "header"}
-			sels, err := state.GetSelectors(
+			sels, err := analysis.GetSelectors(
 				ctx,
 				&state,
 				url,

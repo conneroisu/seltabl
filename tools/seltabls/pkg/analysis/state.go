@@ -70,7 +70,7 @@ func getLogger(fileName string) *log.Logger {
 }
 
 // GetSelectors gets all the selectors from the given URL and appends them to the selectors slice
-func (s State) GetSelectors(
+func GetSelectors(
 	ctx context.Context,
 	state *State,
 	url string,

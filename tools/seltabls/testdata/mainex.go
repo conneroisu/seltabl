@@ -12,8 +12,6 @@ import (
 
 // main is the entry point for the command line tool, a
 // language server for the seltabl package
-// @url: https://stats.ncaa.org/game_upload/team_codes
-// @ignore-elements: script, style, link, img, footer, header
 func main() {
 	if err := cmd.Execute(); err != nil {
 		// log to logs.txt
@@ -36,6 +34,10 @@ func main() {
 	}
 }
 
+// TableStruct is a struct for a table
+// @url: https://stats.ncaa.org/game_upload/team_codes
+// @ignore-elements: script, style, link, img, footer, header
 type TableStruct struct {
 	A string `json"ctl" seltabl:"a" hSel:"tr:nth-child(1) td:nth-child(1)" dSel:"" ctl:"text"`
+	B string `json"ctl" seltabl:"b" hSel:"tr:nth-child(1) td:nth-child(2)" dSel:"" ctl:"text"`
 }

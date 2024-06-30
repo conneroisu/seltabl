@@ -90,6 +90,7 @@ func (s *State) CheckPosition(
 	var inValue bool
 	// Create a new token file set
 	fset := token.NewFileSet()
+	position.Line = position.Line + 1
 	// Parse the source code from a new buffer
 	node, err := parser.ParseFile(
 		fset,

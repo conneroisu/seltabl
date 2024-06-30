@@ -28,7 +28,7 @@ func (s *State) OpenDocument(
 	}
 	for _, url := range data.URLs {
 		eg.Go(func() error {
-			s.Selectors[uri], err = s.GetSelectors(
+			s.Selectors[uri], err = s.getSelectors(
 				ctx,
 				url,
 				data.IgnoreElements,
@@ -40,7 +40,7 @@ func (s *State) OpenDocument(
 		})
 	}
 	if err := eg.Wait(); err != nil {
-		return diags, fmt.Errorf("failed to get selectors for urls: %w", err)
+		return nil, fmt.Errorf("failed to get selectors for urls: %w", err)
 	}
 	diags, err = s.GetDiagnosticsForFile(content, data)
 	if err != nil {

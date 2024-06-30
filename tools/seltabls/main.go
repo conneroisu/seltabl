@@ -25,8 +25,8 @@ func main() {
 // @url: https://stats.ncaa.org/game_upload/team_codes
 // @ignore-elements: script, style, link, img, footer, header
 type TableStruct struct {
-	A string `hSel:"tr:nth-child(1) td:nth-child(1)" dSel:"tr td:nth-child(1)" ctl:"text"`
-	B string `hSel:"tr:nth-child(1) td:nth-child(1)" dSel:"tr td:nth-child(1)" ctl:"text"`
-	C string `hSel:"html body div[class=contentArea] table" dSel:"tr td:nth-child(1)" ctl:"text"`
-	D string `hSel:"html head meta[name=csrf-token]" dSel:"tr td:nth-child(2)" ctl:"text"`
+	A string `json:"a" hSel:"tr:nth-child(1) td:nth-child(1)" dSel:"tr td:nth-child(1)" ctl:"text"`
+	B string `json:"b" hSel:"tr:nth-child(1) td:nth-child(1)" dSel:"tr td:nth-child(1)" ctl:"text"`
+	C string `json:"c" hSel:"tr:nth-child(1) td:nth-child(1)" dSel:"tr td:nth-child(1)" ctl:"text"`
+	D string `json:"d" hSel:"html head meta[name=csrf-token]" dSel:"tr td:nth-child(2)" ctl:"text"`
 }

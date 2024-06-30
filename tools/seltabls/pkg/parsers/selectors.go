@@ -54,7 +54,7 @@ func singleSelector(selection *goquery.Selection) string {
 	attr, exists := selection.Attr("class")
 	if exists {
 		selector = fmt.Sprintf(
-			"%s[class=%s]",
+			"%s.%s",
 			goquery.NodeName(selection),
 			strings.Join(strings.Fields(attr), "."),
 		)

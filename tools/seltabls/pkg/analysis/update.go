@@ -15,6 +15,9 @@ func (s *State) UpdateDocument(
 		s.Logger.Printf("failed to get urls and ignores: %s", err)
 		return diags, nil
 	}
+	for _, url := range data.URLs {
+		s.URLs[uri] = append(s.URLs[uri], url)
+	}
 	diags, err = s.GetDiagnosticsForFile(&content, data)
 	if err != nil {
 		s.Logger.Printf("failed to get diagnostics for file: %s\n", err)

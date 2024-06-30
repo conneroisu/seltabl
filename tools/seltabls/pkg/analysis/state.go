@@ -21,6 +21,8 @@ type State struct {
 	Documents map[string]string
 	// Selectors is the map of file names to selectors
 	Selectors map[string][]master.Selector
+	// URLs is the map of file names to urls
+	URLs map[string][]string
 	// Database is the database for the state
 	Database data.Database[master.Queries]
 	// Logger is the logger for the state
@@ -52,6 +54,7 @@ func NewState() (state State, err error) {
 		Selectors: make(map[string][]master.Selector),
 		Database:  *db,
 		Logger:    logger,
+		URLs:      make(map[string][]string),
 	}
 	return state, nil
 }

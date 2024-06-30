@@ -70,8 +70,6 @@ func HandleMessage(
 	if err != nil {
 		return fmt.Errorf("failed to decode message: %w", err)
 	}
-	mux := lsp.DefaultMux
-	addRoutes(ctx, mux, state)
 	switch method {
 	case "initialize":
 		var request lsp.InitializeRequest

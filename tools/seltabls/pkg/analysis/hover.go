@@ -73,11 +73,10 @@ func (s *State) GetSelectorHover(
 				fset,
 			)
 			if !inValue {
-				if parsers.PositionBeforeValue(position, text) != ':' || parsers.PositionBeforeValue(position, text) != '"' {
+				if parsers.PositionBeforeValue(position, text) != ':' && parsers.PositionBeforeValue(position, text) != '"' {
 					continue
 				}
 			}
-			s.Logger.Printf("val: %s\n", val)
 			HTML, err := doc.Find(val).Parent().Html()
 			if err != nil {
 				return res, fmt.Errorf("failed to get html: %w", err)

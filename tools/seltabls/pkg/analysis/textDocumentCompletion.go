@@ -44,10 +44,7 @@ func (s *State) CreateTextDocumentCompletion(
 	// Check if the position is within a golang struct tag.
 	check, err := s.CheckPosition(pos, content)
 	if err != nil {
-		return lsp.CompletionResponse{}, fmt.Errorf(
-			"failed to check position: %w",
-			err,
-		)
+		return response, nil
 	}
 	switch check {
 	case parsers.StateInTag:

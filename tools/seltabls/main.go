@@ -29,4 +29,8 @@ type TableStruct struct {
 	B string `json:"b" hSel:"tr:nth-child(1) td:nth-child(1)" dSel:"tr td:nth-child(1)" ctl:"text"`
 	C string `json:"c" hSel:"tr:nth-child(1) td:nth-child(1)" dSel:"tr td:nth-child(1)" ctl:"text"`
 	D string `json:"d" hSel:"html head meta[name=csrf-token]" dSel:"tr td:nth-child(2)" ctl:"text"`
+	A string `hSel:"tr:nth-child(1) td:nth-child(1)" dSel:"tr td:nth-child(1)" ctl:"text"`
+	B string `hSel:"tr:nth-child(1) td:nth-child(1)" dSel:"tr td:nth-child(1)" ctl:"text"`
+	C string `hSel:"htmle body div[class=contentArea] table" dSel:"tr td:nth-child(1)" ctl:"text"`
+	D string `hSel:"html head meta[name=csrf-token]" dSel:"tr td:nth-child(2)" ctl:"text"`
 }

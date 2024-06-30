@@ -123,7 +123,7 @@ func (s State) getSelectors(
 		return nil, fmt.Errorf("failed to get selectors: %w", err)
 	}
 	for _, sel := range selectorStrs {
-		context, err := doc.Find(sel).Parent().Html()
+		context, err := doc.Find(sel).Parent().Find(":nth-child(1)").Html()
 		if err != nil {
 			state.Logger.Printf("failed to get html: %s\n", err)
 		}

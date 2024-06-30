@@ -37,28 +37,13 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 				return fmt.Errorf("failed to create state: %w", err)
 			}
 			for scanner.Scan() {
-				msgCtx, cancel := context.WithCancel(ctx)
+				_, cancel := context.WithCancel(ctx)
 				defer cancel()
 				msg := scanner.Bytes()
-				message, err := rpc.DecodeMessage(msg)
+				_, _, err := rpc.DecodeMessage(msg)
 				if err != nil {
 					return fmt.Errorf("failed to decode message: %w", err)
 				}
-				if message.ID != nil {
-					state.Ctxs.Put(*message.ID, analysis.ContextUnit{Ctx: msgCtx, Cancel: cancel})
-					if message.Method == "$/cancelRequest" {
-						unit, exists := state.Ctxs.Get(*message.ID)
-						if !exists {
-							return fmt.Errorf("no context found for id: %d", *message.ID)
-						}
-						unit.Cancel()
-						state.Ctxs.Remove(*message.ID)
-					}
-				}
-				content := bytes.ReplaceAll(message.Content, []byte("\r\n"), []byte(""))
-				content = bytes.ReplaceAll(content, []byte("\\"), []byte(""))
-				content = bytes.ReplaceAll(content, []byte("/"), []byte(""))
-				state.Logger.Printf("received message (%s): %s", message.Method, string(content))
 				err = handle(ctx, &writer, &state, msg)
 				if err != nil {
 					return fmt.Errorf("failed to handle message: %w", err)

@@ -2,14 +2,26 @@ package cmds
 
 import (
 	"context"
+	"fmt"
 	"io"
+	"net/http"
+	"os"
 
+	"github.com/conneroisu/seltabl/tools/seltabls/domain/prompts"
+	"github.com/conneroisu/seltabl/tools/seltabls/pkg/analysis"
+	"github.com/conneroisu/seltabl/tools/seltabls/pkg/llm"
+	"github.com/sashabaranov/go-openai"
 	"github.com/spf13/cobra"
 )
 
+// baseURL is the base url for the openai api of groq
+const baseURL = "https://api.groq.com/openai/v1"
+
 // NewGenerateCmd returns the generate command
-func NewGenerateCmd(_ context.Context, _ io.Writer, _ io.Reader) *cobra.Command {
+func NewGenerateCmd(ctx context.Context, w io.Writer, r io.Reader) *cobra.Command {
 	var url string
+	var name string
+	var llmModel string
 	cmd := &cobra.Command{
 		Use:   "generate", // the name of the command
 		Short: "Generates a new seltabl struct for a given url.",
@@ -35,7 +47,8 @@ The command will create a new package in the current directory with the name "se
 			if err != nil {
 				return fmt.Errorf("failed to create state: %w", err)
 			}
-			sels, err := analysis.GetSelectors(
+			ignores := []string{"script", "style", "link", "img", "footer", "header"}
+			sels, err := state.GetSelectors(
 				ctx,
 				&state,
 				url,
@@ -80,34 +93,9 @@ The command will create a new package in the current directory with the name "se
 		},
 	}
 	cmd.PersistentFlags().StringVarP(&url, "url", "u", "", "The url for which to generate a seltabl struct.")
-	cmd.PersistentFlags().StringVarP(&url, "name", "n", "", "The name of the struct to generate.")
-	registerCompletionFuncForGlobalFlags(cmd)
+	cmd.PersistentFlags().StringVarP(&name, "name", "n", "", "The name of the struct to generate.")
+	cmd.PersistentFlags().StringVarP(&llmModel, "llm-model", "m", "llama3-70b-8192", "The name of the llm model to use for generating the struct.")
 	return cmd
-}
-
-// registerCompletionFuncForGlobalFlags registers a completion function for the global flags
-func registerCompletionFuncForGlobalFlags(cmd *cobra.Command) (err error) {
-	err = cmd.RegisterFlagCompletionFunc(
-		"url",
-		func(_ *cobra.Command, _ []string, _ string) ([]string, cobra.ShellCompDirective) {
-			return []string{"https://github.com/conneroisu/seltabl/blob/main/testdata/ab_num_table.html"}, cobra.ShellCompDirectiveDefault
-		},
-	)
-	cmd.PersistentFlags().StringVarP(
-		&llmModel,
-		"llm-model",
-		"m",
-		"llama3-70b-8192",
-		"The name of the llm model to use for generating the struct.",
-	)
-	cmd.PersistentFlags().StringSliceVarP(
-		&ignores,
-		"ignore",
-		"i",
-		[]string{"script", "style", "link", "img", "footer", "header"},
-		"The elements to ignore when generating the struct.",
-	)
-	return cmd, nil
 }
 
 // verify verifies the generated struct

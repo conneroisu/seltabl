@@ -5,8 +5,10 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"net/url"
 	"os"
 
+	"github.com/charmbracelet/huh"
 	"github.com/conneroisu/seltabl/tools/seltabls/domain/prompts"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/analysis"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/llm"
@@ -22,6 +24,8 @@ func NewGenerateCmd(ctx context.Context, w io.Writer, r io.Reader) *cobra.Comman
 	var url string
 	var name string
 	var llmModel string
+	var llmKey string
+	var ignoreElements []string
 	cmd := &cobra.Command{
 		Use:   "generate", // the name of the command
 		Short: "Generates a new seltabl struct for a given url.",
@@ -31,17 +35,23 @@ Generates a new seltabl struct for a given url.
 The command will create a new package in the current directory with the name "seltabl".
 `,
 		RunE: func(cmd *cobra.Command, _ []string) error {
-			cmd.SetOutput(w)
-			cmd.SetIn(r)
-			cmd.SetErr(w)
-			cmd.SetContext(ctx)
-			llmAPIKey := os.Getenv("LLM_API_KEY")
-			if llmAPIKey == "" {
-				return fmt.Errorf("LLM_API_KEY is not set")
+			if url == "" {
+				input := huh.NewInput().
+					Title("Enter the url for which to generate a seltabl struct:").
+					Prompt("?").
+					Validate(isURL).
+					Value(&url)
+				input.Run()
+			}
+			if llmKey == "" {
+				llmKey := os.Getenv("LLM_API_KEY")
+				if llmKey == "" {
+					return fmt.Errorf("LLM_API_KEY is not set")
+				}
 			}
 			client := llm.CreateClient(
 				url,
-				llmAPIKey,
+				llmKey,
 			)
 			state, err := analysis.NewState()
 			if err != nil {
@@ -92,9 +102,15 @@ The command will create a new package in the current directory with the name "se
 			return nil
 		},
 	}
+	cmd.SetOutput(w)
+	cmd.SetIn(r)
+	cmd.SetErr(w)
+	cmd.SetContext(ctx)
 	cmd.PersistentFlags().StringVarP(&url, "url", "u", "", "The url for which to generate a seltabl struct.")
 	cmd.PersistentFlags().StringVarP(&name, "name", "n", "", "The name of the struct to generate.")
 	cmd.PersistentFlags().StringVarP(&llmModel, "llm-model", "m", "llama3-70b-8192", "The name of the llm model to use for generating the struct.")
+	cmd.PersistentFlags().StringVarP(&llmKey, "llm-key", "k", "", "The key for the llm model to use for generating the struct.")
+	cmd.PersistentFlags().StringArrayVarP(&ignoreElements, "ignore-elements", "i", []string{"script", "meta", "style", "link", "img", "footer", "header"}, "The elements to ignore when generating the struct.")
 	return cmd
 }
 
@@ -171,4 +187,10 @@ func getURL(url string) ([]byte, error) {
 		return nil, fmt.Errorf("failed to read body: %w", err)
 	}
 	return body, nil
+}
+
+// isURL checks if the string is a valid URL
+func isURL(s string) error {
+	_, err := url.ParseRequestURI(s)
+	return err
 }

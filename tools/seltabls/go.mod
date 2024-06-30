@@ -5,7 +5,6 @@ go 1.22.3
 require (
 	github.com/PuerkitoBio/goquery v1.9.2
 	github.com/mitchellh/go-homedir v1.1.0
-	github.com/sashabaranov/go-openai v1.26.0
 	github.com/sourcegraph/conc v0.3.0
 	github.com/spf13/cobra v1.8.0
 	github.com/stretchr/testify v1.9.0

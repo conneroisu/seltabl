@@ -51,7 +51,7 @@ type Field struct {
 
 // Tags represent a set of tags from a single struct field
 type Tags struct {
-	tags []*Tag `json:"-"`
+	tags []*Tag
 }
 
 // Tag defines a single struct's string literal tag

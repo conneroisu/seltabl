@@ -143,7 +143,7 @@ func TestSelectors(t *testing.T) {
 				"html body table tbody",
 				"html body table tbody tr",
 				"html body table tbody tr td",
-				"html body table tbody tr td a[href=https://example.com]",
+				"html body table tbody tr td a[href]",
 			},
 		},
 		{
@@ -187,7 +187,7 @@ func TestSelectors(t *testing.T) {
 				"html body table tbody",
 				"html body table tbody tr",
 				"html body table tbody tr td",
-				"html body table tbody tr td a[href=https://example.com]",
+				"html body table tbody tr td a[href]",
 			},
 		},
 	}

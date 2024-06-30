@@ -2,6 +2,7 @@ package cmds
 
 import (
 	"bufio"
+	"bytes"
 	"context"
 	"encoding/json"
 	"fmt"
@@ -12,6 +13,7 @@ import (
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/rpc"
 	"github.com/spf13/cobra"
+	"golang.org/x/sync/errgroup"
 )
 
 // LSPHandler is a struct for the LSP server
@@ -29,17 +31,51 @@ Language server provides completions, hovers, and code actions for seltabl defin
 	
 CLI provides a command line tool for verifying, linting, and reporting on seltabl defined structs.
 `,
-		RunE: func(_ *cobra.Command, _ []string) error {
+		RunE: func(cmd *cobra.Command, _ []string) error {
+			cmd.SetOut(writer)
+			cmd.SetContext(ctx)
 			scanner := bufio.NewScanner(os.Stdin)
 			scanner.Split(rpc.Split)
 			state, err := analysis.NewState()
 			if err != nil {
 				return fmt.Errorf("failed to create state: %w", err)
 			}
+			eg := errgroup.Group{}
 			for scanner.Scan() {
-				err := handle(ctx, &writer, &state, scanner.Bytes())
-				if err != nil {
-					return fmt.Errorf("failed to handle message: %w", err)
+				eg.Go(func() error {
+					msgCtx, cancel := context.WithCancel(ctx)
+					defer cancel()
+					msg := scanner.Bytes()
+					message, err := rpc.DecodeMessage(msg)
+					if err != nil {
+						return fmt.Errorf("failed to decode message: %w", err)
+					}
+					if message.ID != nil {
+						state.Ctxs.Put(*message.ID, analysis.ContextUnit{Ctx: msgCtx, Cancel: cancel})
+						if message.Method == "$/cancelRequest" {
+							unit, exists := state.Ctxs.Get(*message.ID)
+							if !exists {
+								return fmt.Errorf("no context found for id: %d", *message.ID)
+							}
+							unit.Cancel()
+							state.Ctxs.Remove(*message.ID)
+						}
+					}
+					content := bytes.ReplaceAll(message.Content, []byte("\r\n"), []byte(""))
+					content = bytes.ReplaceAll(content, []byte("\\"), []byte(""))
+					content = bytes.ReplaceAll(content, []byte("/"), []byte(""))
+					state.Logger.Printf("received message (%s): %s", message.Method, string(content))
+					err = handle(ctx, &writer, &state, msg)
+					if err != nil {
+						return fmt.Errorf("failed to handle message: %w", err)
+					}
+					return nil
+				})
+				if err := scanner.Err(); err != nil {
+					return fmt.Errorf("scanner error: %w", err)
+				}
+				if err := eg.Wait(); err != nil {
+					return fmt.Errorf("error group error: %w", err)
 				}
 			}
 			return nil
@@ -56,31 +92,31 @@ func HandleMessage(
 	state *analysis.State,
 	msg []byte,
 ) error {
-	method, contents, err := rpc.DecodeMessage(msg)
+	message, err := rpc.DecodeMessage(msg)
 	if err != nil {
 		return fmt.Errorf("failed to decode message: %w", err)
 	}
 	mux := lsp.DefaultMux
 	addRoutes(ctx, mux, state)
-	switch method {
+	switch message.Method {
 	case "initialize":
 		var request lsp.InitializeRequest
-		if err = json.Unmarshal([]byte(contents), &request); err != nil {
+		if err = json.Unmarshal([]byte(message.Content), &request); err != nil {
 			return fmt.Errorf("decode initialize request (initialize) failed: %w", err)
 		}
 		response := lsp.NewInitializeResponse(request.ID)
-		err = WriteResponse(ctx, writer, response)
+		err = WriteResponse(ctx, state, writer, response)
 		if err != nil {
 			return fmt.Errorf("failed to write (initialize) response: %w", err)
 		}
 	case "initialized":
 		var request lsp.InitializedParamsRequest
-		if err = json.Unmarshal([]byte(contents), &request); err != nil {
+		if err = json.Unmarshal([]byte(message.Content), &request); err != nil {
 			return fmt.Errorf("decode (initialized) request failed: %w", err)
 		}
 	case "textDocument/didOpen":
 		var request lsp.NotificationDidOpenTextDocument
-		if err = json.Unmarshal(contents, &request); err != nil {
+		if err = json.Unmarshal(message.Content, &request); err != nil {
 			return fmt.Errorf(
 				"decode (textDocument/didOpen) request failed: %w",
 				err,
@@ -104,19 +140,19 @@ func HandleMessage(
 				Diagnostics: diagnostics,
 			},
 		}
-		err = WriteResponse(ctx, writer, response)
+		err = WriteResponse(ctx, state, writer, response)
 		if err != nil {
 			return fmt.Errorf("failed to write response: %w", err)
 		}
 	case "textDocument/didClose":
 		var request lsp.DidCloseTextDocumentParamsNotification
-		if err = json.Unmarshal([]byte(contents), &request); err != nil {
+		if err = json.Unmarshal([]byte(message.Content), &request); err != nil {
 			return fmt.Errorf("decode (didClose) request failed: %w", err)
 		}
 		state.Documents[request.Params.TextDocument.URI] = ""
 	case "textDocument/completion":
 		var request lsp.CompletionRequest
-		err = json.Unmarshal(contents, &request)
+		err = json.Unmarshal(message.Content, &request)
 		if err != nil {
 			return fmt.Errorf(
 				"failed to unmarshal completion request (textDocument/completion): %w",
@@ -131,14 +167,13 @@ func HandleMessage(
 		if err != nil {
 			return fmt.Errorf("failed to get completions: %w", err)
 		}
-		err = WriteResponse(ctx, writer, response)
+		err = WriteResponse(ctx, state, writer, response)
 		if err != nil {
 			return fmt.Errorf("failed to write response: %w", err)
 		}
 	case "textDocument/didChange":
-		// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_didChange
 		var request lsp.TextDocumentDidChangeNotification
-		err = json.Unmarshal(contents, &request)
+		err = json.Unmarshal(message.Content, &request)
 		if err != nil {
 			return fmt.Errorf("decode (textDocument/didChange) request failed: %w", err)
 		}
@@ -163,14 +198,13 @@ func HandleMessage(
 				Diagnostics: diagnostics,
 			},
 		}
-		err = WriteResponse(ctx, writer, response)
+		err = WriteResponse(ctx, state, writer, response)
 		if err != nil {
 			return fmt.Errorf("failed to write response: %w", err)
 		}
 	case "textDocument/hover":
-		// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_hover
 		var request lsp.HoverRequest
-		err = json.Unmarshal(contents, &request)
+		err = json.Unmarshal(message.Content, &request)
 		if err != nil {
 			return fmt.Errorf("failed unmarshal of hover request (): %w", err)
 		}
@@ -182,14 +216,13 @@ func HandleMessage(
 		if err != nil {
 			return fmt.Errorf("failed to get hover: %w", err)
 		}
-		err = WriteResponse(ctx, writer, response)
+		err = WriteResponse(ctx, state, writer, response)
 		if err != nil {
 			return fmt.Errorf("failed to write response: %w", err)
 		}
 	case "textDocument/codeAction":
-		// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_codeAction
 		var request lsp.CodeActionRequest
-		err = json.Unmarshal(contents, &request)
+		err = json.Unmarshal(message.Content, &request)
 		if err != nil {
 			return fmt.Errorf("failed to unmarshal of codeAction request (textDocument/codeAction): %w", err)
 		}
@@ -200,29 +233,26 @@ func HandleMessage(
 		if err != nil {
 			return fmt.Errorf("failed to get code actions: %w", err)
 		}
-		err = WriteResponse(ctx, writer, response)
+		err = WriteResponse(ctx, state, writer, response)
 		if err != nil {
 			return fmt.Errorf("failed to write response: %w", err)
 		}
 	case "textDocument/didSave":
-		// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_didSave
 	case "shutdown":
-		// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#shutdown
 		var request lsp.ShutdownRequest
-		err = json.Unmarshal([]byte(contents), &request)
+		err = json.Unmarshal([]byte(message.Content), &request)
 		if err != nil {
 			return fmt.Errorf("decode (shutdown) request failed: %w", err)
 		}
 		response := lsp.NewShutdownResponse(request, nil)
-		err = WriteResponse(ctx, writer, response)
+		err = WriteResponse(ctx, state, writer, response)
 		if err != nil {
 			return fmt.Errorf("write (shutdown) response failed: %w", err)
 		}
 		os.Exit(0)
 	case "$/cancelRequest":
-		// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#$/cancelRequest
 		var request lsp.CancelRequest
-		err = json.Unmarshal(contents, &request)
+		err = json.Unmarshal(message.Content, &request)
 		if err != nil {
 			return fmt.Errorf(
 				"failed to unmarshal cancel request ($/cancelRequest): %w",
@@ -233,7 +263,7 @@ func HandleMessage(
 		if err != nil {
 			return fmt.Errorf("failed to cancel request: %w", err)
 		}
-		err = WriteResponse(ctx, writer, response)
+		err = WriteResponse(ctx, state, writer, response)
 		if err != nil {
 			return fmt.Errorf("failed to write response: %w", err)
 		}
@@ -241,7 +271,7 @@ func HandleMessage(
 		os.Exit(0)
 		return nil
 	default:
-		return fmt.Errorf("unknown method: %s", method)
+		state.Logger.Printf("unknown method: %s", message.Method)
 	}
 	return nil
 }

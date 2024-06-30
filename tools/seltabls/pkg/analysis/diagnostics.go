@@ -60,7 +60,7 @@ func (s *State) getDiagnosticsForStruct(
 			wg.Go(func() {
 				for k := range diagnosticKeys {
 					if diagnosticKeys[k] == strt.Fields[j].Tags.Tag(i).Key {
-						verified, err := s.validateSelector(strt.Fields[j].Tags.Tag(i).Value(), content)
+						verified, err := validateSelector(strt.Fields[j].Tags.Tag(i).Value(), content)
 						if !verified || err != nil {
 							diag := lsp.Diagnostic{
 								Range: lsp.LineRange(
@@ -96,7 +96,7 @@ func (s *State) getDiagnosticsForStruct(
 }
 
 // validateSelector validates a selector against a known url content in the form of a goquery document
-func (s *State) validateSelector(selector string, doc *goquery.Document) (bool, error) {
+func validateSelector(selector string, doc *goquery.Document) (bool, error) {
 	// Create a new goquery document from the response body
 	selection := doc.Find(selector)
 	// Check if the selector is in the response body

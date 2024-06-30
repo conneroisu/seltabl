@@ -20,7 +20,7 @@ type MethodActor interface {
 func EncodeMessage(msg MethodActor) (string, error) {
 	content, err := json.Marshal(msg)
 	if err != nil {
-		return "", err
+		return "", fmt.Errorf("failed to marshal message w/ method: %s: %w", msg.Method(), err)
 	}
 	return fmt.Sprintf(
 		"Content-Length: %d\r\n\r\n%s",

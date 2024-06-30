@@ -14,6 +14,12 @@ import (
 	"github.com/yosssi/gohtml"
 )
 
+// ContextUnit is a struct for a context and its cancel function
+type ContextUnit struct {
+	Ctx    context.Context
+	Cancel context.CancelFunc
+}
+
 // State is the state of the document analysis
 type State struct {
 	// Map of file names to contents
@@ -24,6 +30,8 @@ type State struct {
 	Database data.Database[master.Queries]
 	// Logger is the logger for the state
 	Logger *log.Logger
+	// Ctxs is the hash map of contexts for handling concurrency
+	Ctxs Map[int, ContextUnit]
 }
 
 // NewState returns a new state with no documents
@@ -51,6 +59,7 @@ func NewState() (state State, err error) {
 		Selectors: make(map[string][]master.Selector),
 		Database:  *db,
 		Logger:    logger,
+		Ctxs:      *New[int, ContextUnit](),
 	}
 	return state, nil
 }
@@ -68,8 +77,8 @@ func getLogger(fileName string) *log.Logger {
 	return log.New(logFile, "[seltabls#state]", log.LstdFlags)
 }
 
-// getSelectors gets all the selectors from the given URL and appends them to the selectors slice
-func (s State) getSelectors(
+// GetSelectors gets all the selectors from the given URL and appends them to the selectors slice
+func (s State) GetSelectors(
 	ctx context.Context,
 	url string,
 	ignores []string,

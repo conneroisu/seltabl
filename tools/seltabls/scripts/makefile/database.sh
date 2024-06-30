@@ -1,4 +1,8 @@
 #!/bin/bash
+# file: makefile/database.sh
+# url: https://github.com/conneroisu/seltab/tools/seltab-lsp/scripts/makefile/database.sh
+# title: Generates the database for the project
+# description: This script generates the database for the project
 dbs=(
 	"master"
 )

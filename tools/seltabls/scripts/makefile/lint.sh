@@ -1,8 +1,8 @@
 #!/bin/bash
-# file: makefile.js.sh
-# url: https://github.com/conneroisu/seltab/tools/seltab-lsp/scripts/makefile.js.sh
-# title: Running Webpack
-# description: This script runs Webpack to build the JavaScript files.
+# file: makefile/lint.sh
+# url: https://github.com/conneroisu/seltab/tools/seltab-lsp/scripts/makefile/lint.sh
+# title: Linting Script
+# description: This script runs the linting for the project.
 #
 # Usage: make js
 

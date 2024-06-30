@@ -1,6 +1,6 @@
 #!/bin/bash
-# file: makefile.coverage.sh
-# url: https://github.com/conneroisu/seltab/tools/seltab-lsp/scripts/makefile.coverage.sh
+# file: makefile/coverage.sh
+# url: https://github.com/conneroisu/seltab/tools/seltab-lsp/scripts/makefile/coverage.sh
 # title: Test Script
 # description: This script runs the test for the project.
 #

@@ -1,7 +1,7 @@
 #!/bin/bash
-# Name: makefile.docs.sh
+# Name: makefile/docs.sh
 # Url: 
-# https://github.com/conneroisu/seltabl/main/scripts/makefile.docs.sh
+# https://github.com/conneroisu/seltabl/main/scripts/makefile/docs.sh
 # 
 # Description: A script to generate the go docs for the project.
 # 

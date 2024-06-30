@@ -1,6 +1,6 @@
 #!/bin/bash
-# file: makefile.install.sh
-# url: https://github.com/conneroisu/seltab/tools/seltab-lsp/scripts/makefile.dev.requirements.sh
+# file: makefile/install.sh
+# url: https://github.com/conneroisu/seltab/tools/seltab-lsp/scripts/makefile/install.sh
 # title: Installing Development Requirements
 # description: This script installs the required development tools for the project.
 

@@ -1,6 +1,6 @@
 #!/bin/bash
-# file: makefile.fmt.sh
-# url: https://github.com/conneroisu/seltab/tools/seltab-lsp/scripts/makefile.fmt.sh
+# file: makefile/fmt.sh
+# url: https://github.com/conneroisu/seltab/tools/seltab-lsp/scripts/makefile/fmt.sh
 # title: Formatting Go Files
 # description: This script formats the Go files using gofmt and golines.
 #

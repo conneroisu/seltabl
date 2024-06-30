@@ -1,6 +1,6 @@
 #!/bin/bash
-# file: makefile.clean.sh
-# url: https://github.com/conneroisu/seltabl/tools/seltabls/scripts/makefile.clean.sh
+# file: makefile/clean.sh
+# url: https://github.com/conneroisu/seltabl/tools/seltabls/scripts/makefile/clean.sh
 # title: Cleaning Script
 # description: This script cleans the project
 

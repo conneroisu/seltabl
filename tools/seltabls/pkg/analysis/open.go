@@ -24,7 +24,7 @@ func (s *State) OpenDocument(
 	data, err := parsers.ParseStructComments(*content)
 	if err != nil {
 		s.Logger.Printf("failed to get urls and ignores: %s\n", err)
-		return nil, err
+		return diags, nil
 	}
 	for _, url := range data.URLs {
 		eg.Go(func() error {

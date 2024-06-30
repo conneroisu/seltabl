@@ -12,8 +12,8 @@ func (s *State) UpdateDocument(
 	s.Documents[uri] = content
 	data, err := parsers.ParseStructComments(content)
 	if err != nil {
-		s.Logger.Printf("failed to get urls and ignores: %s\n", err)
-		return nil, err
+		s.Logger.Printf("failed to get urls and ignores: %s", err)
+		return diags, nil
 	}
 	diags, err = s.GetDiagnosticsForFile(&content, data)
 	if err != nil {

@@ -11,9 +11,6 @@ import (
 
 // NewCompletionCmd returns the completion command
 func NewCompletionCmd(ctx context.Context, w io.Writer) *cobra.Command {
-	_, cancel := context.WithCancel(ctx)
-	defer cancel()
-	// completionCmd represents the completion command
 	var completionCmd = &cobra.Command{
 		Use:   "completion [bash|zsh|fish|powershell]",
 		Short: "Generates completion scripts for docuvet-tools for your shell",
@@ -56,6 +53,8 @@ func NewCompletionCmd(ctx context.Context, w io.Writer) *cobra.Command {
 	  # and source this file from your PowerShell profile.
 	`,
 		RunE: func(cmd *cobra.Command, args []string) (err error) {
+			_, cancel := context.WithCancel(ctx)
+			defer cancel()
 			if len(args) == 0 {
 				err = cmd.Help()
 				if err != nil {

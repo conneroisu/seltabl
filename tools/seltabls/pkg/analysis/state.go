@@ -15,17 +15,19 @@ import (
 	"github.com/yosssi/gohtml"
 )
 
-// State is the state of the document analysis
+// State is the state of the document analysis.
 type State struct {
-	// Map of file names to contents
+	// Map of file names to contents.
 	Documents map[string]string
-	// Selectors is the map of file names to selectors
+	// Selectors is the map of file names to selectors.
 	Selectors map[string][]master.Selector
-	// URLs is the map of file names to urls
+	// URLs is the map of file names to urls.
 	URLs map[string][]string
-	// Database is the database for the state
+	// Database is the database for the state.
 	Database data.Database[master.Queries]
-	// Logger is the logger for the state
+	// ResponseCtxs is the map of to response contexts indexed by grpc request id.
+	ResponseCtxs map[int]string
+	// Logger is the logger for the state.
 	Logger *log.Logger
 }
 

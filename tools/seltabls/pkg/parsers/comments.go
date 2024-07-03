@@ -36,9 +36,9 @@ func ParseStructComments(src string) (StructCommentData, error) {
 	}
 	var data StructCommentData
 	// @url: <url>
-	urlPattern := regexp.MustCompile(`@url:\s*(\S+)`)
+	urlPattern := regexp.MustCompile(`// @url:\s*(\S+)`)
 	// @ignore-elements: <element1>, <element2>, ...
-	ignorePattern := regexp.MustCompile(`@ignore-elements:\s*(.*)`)
+	ignorePattern := regexp.MustCompile(`// @ignore-elements:\s*(.*)`)
 	// Inspect the AST to find struct type declarations and their comments
 	ast.Inspect(node, func(n ast.Node) bool {
 		switch t := n.(type) {

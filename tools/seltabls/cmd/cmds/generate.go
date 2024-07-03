@@ -4,17 +4,18 @@ import (
 	"context"
 	"fmt"
 	"io"
-	"net/http"
-	"net/url"
 	"os"
 
 	"github.com/charmbracelet/huh"
 	"github.com/conneroisu/seltabl/tools/seltabls/domain/prompts"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/analysis"
+	"github.com/conneroisu/seltabl/tools/seltabls/pkg/generate"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/llm"
 	"github.com/sashabaranov/go-openai"
 	"github.com/spf13/cobra"
 )
+
+const content = `package main`
 
 // baseURL is the base url for the openai api of groq
 const baseURL = "https://api.groq.com/openai/v1"
@@ -28,31 +29,44 @@ func NewGenerateCmd(ctx context.Context, w io.Writer, r io.Reader) *cobra.Comman
 	var ignoreElements []string
 	cmd := &cobra.Command{
 		Use:   "generate", // the name of the command
-		Short: "Generates a new seltabl struct for a given url.",
+		Short: "Generates a new seltabl struct for a given url with test coverage.",
 		Long: `
 Generates a new seltabl struct for a given url.
 
-The command will create a new package in the current directory with the name "seltabl".
+The command will create a new package in the current directory with the name given.
+Additionally, it will generate a test file and configuration with the name "{name}_test.go" and "{name}_seltabl.yaml" respectively in the current directory.
+So the output fo the command:
+
+.
+└── name
+    ├── name.go
+    ├── name_test.go
+    └── name_seltabl.yaml	
+
 `,
-		RunE: func(cmd *cobra.Command, _ []string) error {
-			if url == "" {
-				input := huh.NewInput().
-					Title("Enter the url for which to generate a seltabl struct:").
-					Prompt("?").
-					Validate(isURL).
-					Value(&url)
-				input.Run()
-			}
+		PreRunE: func(cmd *cobra.Command, _ []string) error {
 			if llmKey == "" {
 				llmKey := os.Getenv("LLM_API_KEY")
 				if llmKey == "" {
 					return fmt.Errorf("LLM_API_KEY is not set")
 				}
 			}
+			return nil
+		},
+		RunE: func(cmd *cobra.Command, _ []string) error {
+			if url == "" {
+				input := huh.NewInput().
+					Title("Enter the url for which to generate a seltabl struct:").
+					Prompt("?").
+					Validate(generate.IsURL).
+					Value(&url)
+				input.Run()
+			}
 			client := llm.CreateClient(
 				url,
 				llmKey,
 			)
+			print(client)
 			state, err := analysis.NewState()
 			if err != nil {
 				return fmt.Errorf("failed to create state: %w", err)
@@ -67,7 +81,7 @@ The command will create a new package in the current directory with the name "se
 			if err != nil {
 				return fmt.Errorf("failed to get selectors: %w", err)
 			}
-			body, err := getURL(url)
+			body, err := generate.GetURL(url)
 			if err != nil {
 				return fmt.Errorf("failed to get url: %w", err)
 			}
@@ -76,29 +90,20 @@ The command will create a new package in the current directory with the name "se
 				string(body),
 				url,
 			)
-			history := []openai.ChatCompletionMessage{{
+			_ = []openai.ChatCompletionMessage{{
 				Role:    openai.ChatMessageRoleUser,
 				Content: basePrompt,
 			}}
-			content, history, err := Chat(
-				ctx,
-				client,
-				llmModel,
-				history,
-				basePrompt,
-			)
-			if err != nil {
-				return fmt.Errorf("failed to create chat completion: %w", err)
-			}
 			err = verify(ctx, cmd, name)
 			if err == nil {
 				print("verified generated struct")
 				return nil
 			}
-			_, err = prompts.NewErrPrompt(string(body), content, url, err)
+			prmpt, err := prompts.NewErrPrompt(string(body), content, url, err)
 			if err != nil {
 				return fmt.Errorf("failed to create err prompt: %w", err)
 			}
+			print(prmpt)
 			return nil
 		},
 	}
@@ -126,71 +131,4 @@ func verify(
 		return nil
 	}
 	return fmt.Errorf("failed to vet generated struct: %w", err)
-}
-
-// writeFile writes a file to the given path
-func writeFile(name string, content string) error {
-	f, err := os.Create(name + ".go")
-	if err != nil {
-		return fmt.Errorf("failed to create file: %w", err)
-	}
-	defer f.Close()
-	_, err = f.WriteString(content)
-	if err != nil {
-		return fmt.Errorf("failed to write file: %w", err)
-	}
-	return nil
-}
-
-// Chat is a struct for a chat
-func Chat(
-	ctx context.Context,
-	client *openai.Client,
-	model string,
-	history []openai.ChatCompletionMessage,
-	prompt string,
-) (string, []openai.ChatCompletionMessage, error) {
-	completion, err := client.CreateChatCompletion(
-		ctx, openai.ChatCompletionRequest{
-			Model: model,
-			Messages: append(history, openai.ChatCompletionMessage{
-				Role:    openai.ChatMessageRoleUser,
-				Content: prompt,
-			}),
-			ResponseFormat: &openai.ChatCompletionResponseFormat{
-				Type: "json",
-			},
-		})
-	if err != nil {
-		return "", history, fmt.Errorf("failed to create chat completion: %w", err)
-	}
-	content := completion.Choices[0].Message.Content
-	history = append(history, openai.ChatCompletionMessage{
-		Role:    openai.ChatMessageRoleAssistant,
-		Content: content})
-	return content, history, nil
-}
-
-// getURL gets the url and returns the body
-func getURL(url string) ([]byte, error) {
-	cli := http.DefaultClient
-	resp, err := cli.Get(url)
-	if err != nil {
-		return nil, fmt.Errorf("failed to get url: %w", err)
-	}
-	if resp.StatusCode != 200 {
-		return nil, fmt.Errorf("failed to get url: %s", resp.Status)
-	}
-	defer resp.Body.Close()
-	body, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, fmt.Errorf("failed to read body: %w", err)
-	}
-	return body, nil
-}
-
-// isURL checks if the string is a valid URL
-func isURL(s string) error {
-	_, err := url.ParseRequestURI(s)
-	return err
 }

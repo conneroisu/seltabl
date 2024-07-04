@@ -1,5 +1,7 @@
 package lsp
 
+import "github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp/methods"
+
 // DidCloseTextDocumentParamsNotification is a struct for the did close text document params notification
 //
 // Microsoft LSP Docs:
@@ -7,6 +9,11 @@ package lsp
 type DidCloseTextDocumentParamsNotification struct {
 	Notification
 	Params DidCloseTextDocumentParamsNotificationParams `json:"params"`
+}
+
+// Method returns the method for the did close text document params notification
+func (r DidCloseTextDocumentParamsNotification) Method() methods.Method {
+	return methods.MethodTextDocumentDidClose
 }
 
 // NewDidCloseTextDocumentParamsNotification returns a new did close text document params notification

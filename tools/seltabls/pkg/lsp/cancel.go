@@ -1,5 +1,7 @@
 package lsp
 
+import "github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp/methods"
+
 // CancelRequest is sent from the client to the server to cancel a request.
 type CancelRequest struct {
 	// CancelRequest embeds the Request struct
@@ -8,6 +10,11 @@ type CancelRequest struct {
 	ID string `json:"id"`
 	// Params are the parameters for the request to be cancelled.
 	Params CancelParams `json:"params"`
+}
+
+// Method returns the method for the cancel request
+func (r CancelRequest) Method() methods.Method {
+	return methods.MethodCancelRequest
 }
 
 // CancelParams are the parameters for a cancel request.

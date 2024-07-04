@@ -1,5 +1,7 @@
 package lsp
 
+import "github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp/methods"
+
 // DidSaveTextDocumentParamsNotification is a notification for when
 // the client saves a text document.
 //
@@ -10,6 +12,11 @@ type DidSaveTextDocumentParamsNotification struct {
 	Notification
 	// Params are the parameters for the notification.
 	Params DidSaveTextDocumentParams `json:"params"`
+}
+
+// Method returns the method for the did save text document params notification
+func (r DidSaveTextDocumentParamsNotification) Method() methods.Method {
+	return methods.MethodTextDocumentDidSave
 }
 
 // DidSaveTextDocumentParams contains the text document after it has been saved.

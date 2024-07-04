@@ -10,9 +10,9 @@ type InitializeRequest struct {
 	Params InitializeRequestParams `json:"params"`
 }
 
-// Method returns the method for the initialize request
-func (r InitializeRequest) Method() string {
-	return methods.MethodInitialize.String()
+// Method returns the method for the initialize request.
+func (r InitializeRequest) Method() methods.Method {
+	return methods.MethodInitialize
 }
 
 // InitializeRequestParams is a struct for the initialize request params
@@ -109,4 +109,9 @@ func NewInitializeResponse(id int) InitializeResponse {
 type InitializedParamsRequest struct {
 	// InitializedParamsRequest embeds the Request struct
 	Response
+}
+
+// Method returns the method for the initialized params request.
+func (r InitializedParamsRequest) Method() methods.Method {
+	return methods.MethodInitialized
 }

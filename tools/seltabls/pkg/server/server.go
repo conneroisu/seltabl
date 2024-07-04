@@ -23,8 +23,8 @@ func HandleMessage(
 ) (err error) {
 	method := msg.Method
 	contents := msg.Content
-	switch method {
-	case methods.MethodInitialize.String():
+	switch methods.GetMethod(method) {
+	case methods.MethodInitialize:
 		var request lsp.InitializeRequest
 		if err = json.Unmarshal([]byte(contents), &request); err != nil {
 			return fmt.Errorf("decode initialize request (initialize) failed: %w", err)
@@ -34,12 +34,12 @@ func HandleMessage(
 		if err != nil {
 			return fmt.Errorf("failed to write (initialize) response: %w", err)
 		}
-	case methods.MethodInitialized.String():
+	case methods.MethodInitialized:
 		var request lsp.InitializedParamsRequest
 		if err = json.Unmarshal([]byte(contents), &request); err != nil {
 			return fmt.Errorf("decode (initialized) request failed: %w", err)
 		}
-	case methods.MethodRequestTextDocumentDidOpen.String():
+	case methods.MethodRequestTextDocumentDidOpen:
 		var request lsp.NotificationDidOpenTextDocument
 		if err = json.Unmarshal(contents, &request); err != nil {
 			return fmt.Errorf(
@@ -69,13 +69,13 @@ func HandleMessage(
 		if err != nil {
 			return fmt.Errorf("failed to write response: %w", err)
 		}
-	case methods.MethodTextDocumentDidClose.String():
+	case methods.MethodTextDocumentDidClose:
 		var request lsp.DidCloseTextDocumentParamsNotification
 		if err = json.Unmarshal([]byte(contents), &request); err != nil {
 			return fmt.Errorf("decode (didClose) request failed: %w", err)
 		}
 		state.Documents[request.Params.TextDocument.URI] = ""
-	case methods.MethodRequestTextDocumentCompletion.String():
+	case methods.MethodRequestTextDocumentCompletion:
 		var request lsp.CompletionRequest
 		err = json.Unmarshal(contents, &request)
 		if err != nil {
@@ -96,7 +96,7 @@ func HandleMessage(
 		if err != nil {
 			return fmt.Errorf("failed to write response: %w", err)
 		}
-	case methods.NotificationMethodTextDocumentDidChange.String():
+	case methods.NotificationMethodTextDocumentDidChange:
 		var request lsp.TextDocumentDidChangeNotification
 		err = json.Unmarshal(contents, &request)
 		if err != nil {
@@ -127,7 +127,7 @@ func HandleMessage(
 		if err != nil {
 			return fmt.Errorf("failed to write response: %w", err)
 		}
-	case methods.MethodRequestTextDocumentHover.String():
+	case methods.MethodRequestTextDocumentHover:
 		var request lsp.HoverRequest
 		err = json.Unmarshal(contents, &request)
 		if err != nil {
@@ -145,7 +145,7 @@ func HandleMessage(
 		if err != nil {
 			return fmt.Errorf("failed to write response: %w", err)
 		}
-	case methods.MethodRequestTextDocumentCodeAction.String():
+	case methods.MethodRequestTextDocumentCodeAction:
 		var request lsp.CodeActionRequest
 		err = json.Unmarshal(contents, &request)
 		if err != nil {
@@ -162,9 +162,9 @@ func HandleMessage(
 		if err != nil {
 			return fmt.Errorf("failed to write response: %w", err)
 		}
-	case methods.MethodTextDocumentDidSave.String():
+	case methods.MethodTextDocumentDidSave:
 		// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_didSave
-	case methods.MethodShutdown.String():
+	case methods.MethodShutdown:
 		var request lsp.ShutdownRequest
 		err = json.Unmarshal([]byte(contents), &request)
 		if err != nil {
@@ -176,7 +176,7 @@ func HandleMessage(
 			return fmt.Errorf("write (shutdown) response failed: %w", err)
 		}
 		os.Exit(0)
-	case methods.MethodCancelRequest.String():
+	case methods.MethodCancelRequest:
 		// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#$/cancelRequest
 		var request lsp.CancelRequest
 		err = json.Unmarshal(contents, &request)
@@ -194,7 +194,7 @@ func HandleMessage(
 		if err != nil {
 			return fmt.Errorf("failed to write response: %w", err)
 		}
-	case methods.MethodExit.String():
+	case methods.MethodExit:
 		os.Exit(0)
 		return nil
 	default:
@@ -202,12 +202,3 @@ func HandleMessage(
 	}
 	return nil
 }
-
-var (
-	reqMap = map[methods.Method]interface{}{
-		methods.MethodInitialize:    lsp.InitializeRequest{},
-		methods.MethodInitialized:   lsp.InitializedParamsRequest{},
-		methods.MethodShutdown:      lsp.ShutdownRequest{},
-		methods.MethodCancelRequest: lsp.CancelRequest{},
-	}
-)

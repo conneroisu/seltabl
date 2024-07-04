@@ -16,15 +16,17 @@ import (
 // content is the content of the document
 func (s *State) OpenDocument(
 	ctx context.Context,
-	uri string,
-	content *string,
-) (diags []lsp.Diagnostic, err error) {
+	req lsp.NotificationDidOpenTextDocument,
+) (response *lsp.PublishDiagnosticsNotification, err error) {
+	uri := req.Params.TextDocument.URI
 	eg, ctx := errgroup.WithContext(ctx)
-	s.Documents[uri] = *content
-	data, err := parsers.ParseStructComments(*content)
+	s.Documents[uri] = req.Params.TextDocument.Text
+	data, err := parsers.ParseStructComments(
+		req.Params.TextDocument.Text,
+	)
 	if err != nil {
 		s.Logger.Printf("failed to get urls and ignores: %s\n", err)
-		return diags, nil
+		return response, nil
 	}
 	for _, url := range data.URLs {
 		eg.Go(func() error {
@@ -44,9 +46,23 @@ func (s *State) OpenDocument(
 	if err := eg.Wait(); err != nil {
 		return nil, fmt.Errorf("failed to get selectors for urls: %w", err)
 	}
-	diags, err = s.GetDiagnosticsForFile(content, data)
+	diags := []lsp.Diagnostic{}
+	diags, err = s.GetDiagnosticsForFile(
+		&req.Params.TextDocument.Text,
+		data,
+	)
 	if err != nil {
 		s.Logger.Printf("failed to get diagnostics for file: %s\n", err)
 	}
-	return diags, nil
+	response = &lsp.PublishDiagnosticsNotification{
+		Notification: lsp.Notification{
+			RPC:    "2.0",
+			Method: "textDocument/publishDiagnostics",
+		},
+		Params: lsp.PublishDiagnosticsParams{
+			URI:         req.Params.TextDocument.URI,
+			Diagnostics: diags,
+		},
+	}
+	return response, nil
 }

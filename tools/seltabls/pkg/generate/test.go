@@ -14,7 +14,7 @@ type TestFile struct {
 	Client *openai.Client
 }
 
-// GenerateTestFile generates a test file for the given name
+// Generate generates a test file for the given name
 func (t *TestFile) Generate() (err error) {
 	err = t.NotNil()
 	if err != nil {
@@ -23,6 +23,7 @@ func (t *TestFile) Generate() (err error) {
 	return nil
 }
 
+// NotNil checks if the client is nil
 func (t *TestFile) NotNil() error {
 	if t.Client == nil {
 		return fmt.Errorf("client is nil")

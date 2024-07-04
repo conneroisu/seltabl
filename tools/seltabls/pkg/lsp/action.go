@@ -13,6 +13,7 @@ type CodeActionRequest struct {
 	Params TextDocumentCodeActionParams `json:"params"`
 }
 
+// Method returns the method for the code action request
 func (r CodeActionRequest) Method() methods.Method {
 	return methods.MethodRequestTextDocumentCodeAction
 }

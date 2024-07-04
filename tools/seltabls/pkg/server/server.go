@@ -47,23 +47,12 @@ func HandleMessage(
 				err,
 			)
 		}
-		diagnostics, err := state.OpenDocument(
+		response, err := state.OpenDocument(
 			ctx,
-			request.Params.TextDocument.URI,
-			&request.Params.TextDocument.Text,
+			request,
 		)
 		if err != nil {
 			return fmt.Errorf("failed to open document: %w", err)
-		}
-		response := lsp.PublishDiagnosticsNotification{
-			Notification: lsp.Notification{
-				RPC:    "2.0",
-				Method: "textDocument/publishDiagnostics",
-			},
-			Params: lsp.PublishDiagnosticsParams{
-				URI:         request.Params.TextDocument.URI,
-				Diagnostics: diagnostics,
-			},
 		}
 		err = WriteResponse(ctx, writer, response)
 		if err != nil {

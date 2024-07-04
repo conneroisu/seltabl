@@ -10,7 +10,6 @@ import (
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/analysis"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp/methods"
-	"github.com/conneroisu/seltabl/tools/seltabls/pkg/rpc"
 )
 
 // HandleMessage handles a message sent from the client to the language server.
@@ -19,12 +18,9 @@ func HandleMessage(
 	ctx context.Context,
 	writer *io.Writer,
 	state *analysis.State,
-	msg []byte,
-) error {
-	method, contents, err := rpc.DecodeMessage(msg)
-	if err != nil {
-		return fmt.Errorf("failed to decode message: %w", err)
-	}
+	method string,
+	contents []byte,
+) (err error) {
 	switch method {
 	case "initialize":
 		var request lsp.InitializeRequest

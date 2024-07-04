@@ -11,9 +11,23 @@ import (
 
 // AddCommands adds the routes for the root command
 func AddCommands(ctx context.Context, root *cobra.Command) error {
-	root.AddCommand(cmds.NewVetCmd(ctx, os.Stdout))
-	root.AddCommand(cmds.NewLSPCmd(ctx, os.Stdout, server.HandleMessage))
-	root.AddCommand(cmds.NewCompletionCmd(ctx, os.Stdout))
-	root.AddCommand(cmds.NewGenerateCmd(ctx, os.Stdout, os.Stdin))
+	root.AddCommand(cmds.NewVetCmd(
+		ctx,
+		os.Stdout,
+	))
+	root.AddCommand(cmds.NewLSPCmd(
+		ctx,
+		os.Stdout,
+		server.HandleMessage,
+	))
+	root.AddCommand(cmds.NewCompletionCmd(
+		ctx,
+		os.Stdout,
+	))
+	root.AddCommand(cmds.NewGenerateCmd(
+		ctx,
+		os.Stdout,
+		os.Stdin,
+	))
 	return nil
 }

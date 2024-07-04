@@ -13,7 +13,12 @@ import (
 )
 
 // LSPHandler is a struct for the LSP server
-type LSPHandler func(ctx context.Context, writer *io.Writer, state *analysis.State, msg []byte) error
+type LSPHandler func(ctx context.Context, writer *io.Writer, state *analysis.State, method string, contents []byte) error
+
+type handleCtx struct {
+	ctx    context.Context
+	cancel context.CancelFunc
+}
 
 // NewLSPCmd creates a new command for the lsp subcommand
 func NewLSPCmd(ctx context.Context, writer io.Writer, handle LSPHandler) *cobra.Command {
@@ -34,21 +39,24 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 			if err != nil {
 				return fmt.Errorf("failed to create state: %w", err)
 			}
+			_, cancel := context.WithCancel(ctx)
+			defer cancel()
+			ctxs := make(map[int]handleCtx)
 			for scanner.Scan() {
-				_, cancel := context.WithCancel(ctx)
+				hCtx, cancel := context.WithCancel(ctx)
 				defer cancel()
-				msg := scanner.Bytes()
-				_, _, err := rpc.DecodeMessage(msg)
+				decoded, err := rpc.DecodeMessage(scanner.Bytes())
 				if err != nil {
 					return fmt.Errorf("failed to decode message: %w", err)
 				}
-				err = handle(ctx, &writer, &state, msg)
+				ctxs[decoded.ID] = handleCtx{ctx: hCtx, cancel: cancel}
+				err = handle(hCtx, &writer, &state, decoded.Method, decoded.Content)
 				if err != nil {
 					return fmt.Errorf("failed to handle message: %w", err)
 				}
-				if err := scanner.Err(); err != nil {
-					return fmt.Errorf("scanner error: %w", err)
-				}
+			}
+			if err := scanner.Err(); err != nil {
+				return fmt.Errorf("scanner error: %w", err)
 			}
 			return nil
 		},

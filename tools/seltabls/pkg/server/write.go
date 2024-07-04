@@ -43,7 +43,11 @@ func WriteResponse(
 		return nil
 	})
 	if err := eg.Wait(); err != nil {
-		return fmt.Errorf("failed to write message (%s): %w", msg.Method(), err)
+		return fmt.Errorf(
+			"failed to write message (%s): %w",
+			msg.Method(),
+			err,
+		)
 	}
 	return nil
 }

@@ -159,7 +159,10 @@ func CreateConfigDir(dirPath string) (string, error) {
 		if os.IsExist(err) {
 			return path, nil
 		}
-		return "", fmt.Errorf("failed to create or find config directory: %w", err)
+		return "", fmt.Errorf(
+			"failed to create or find config directory: %w",
+			err,
+		)
 	}
 	return path, nil
 }

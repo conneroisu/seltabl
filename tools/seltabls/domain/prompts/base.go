@@ -16,7 +16,10 @@ import (
 var BasePrompt string
 
 // NewBasePrompt returns a new base prompt
-func NewBasePrompt(selectors []master.Selector, content, url string) (string, error) {
+func NewBasePrompt(
+	selectors []master.Selector,
+	content, url string,
+) (string, error) {
 	t, err := template.New("base").Parse(BasePrompt)
 	if err != nil {
 		return "", fmt.Errorf("failed to parse base prompt: %w", err)

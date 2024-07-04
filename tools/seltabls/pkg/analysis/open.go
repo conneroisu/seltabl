@@ -38,7 +38,11 @@ func (s *State) OpenDocument(
 				data.IgnoreElements,
 			)
 			if err != nil {
-				return fmt.Errorf("failed to get selectors for url (%s): %w", url, err)
+				return fmt.Errorf(
+					"failed to get selectors for url (%s): %w",
+					url,
+					err,
+				)
 			}
 			return nil
 		})

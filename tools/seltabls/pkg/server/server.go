@@ -27,7 +27,10 @@ func HandleMessage(
 	case methods.MethodInitialize:
 		var request lsp.InitializeRequest
 		if err = json.Unmarshal([]byte(contents), &request); err != nil {
-			return fmt.Errorf("decode initialize request (initialize) failed: %w", err)
+			return fmt.Errorf(
+				"decode initialize request (initialize) failed: %w",
+				err,
+			)
 		}
 		response := lsp.NewInitializeResponse(request.ID)
 		err = WriteResponse(ctx, writer, response)
@@ -89,7 +92,10 @@ func HandleMessage(
 		var request lsp.TextDocumentDidChangeNotification
 		err = json.Unmarshal(contents, &request)
 		if err != nil {
-			return fmt.Errorf("decode (textDocument/didChange) request failed: %w", err)
+			return fmt.Errorf(
+				"decode (textDocument/didChange) request failed: %w",
+				err,
+			)
 		}
 		diagnostics := []lsp.Diagnostic{}
 		for _, change := range request.Params.ContentChanges {
@@ -138,7 +144,10 @@ func HandleMessage(
 		var request lsp.CodeActionRequest
 		err = json.Unmarshal(contents, &request)
 		if err != nil {
-			return fmt.Errorf("failed to unmarshal of codeAction request (textDocument/codeAction): %w", err)
+			return fmt.Errorf(
+				"failed to unmarshal of codeAction request (textDocument/codeAction): %w",
+				err,
+			)
 		}
 		response, err := state.TextDocumentCodeAction(
 			request.ID,

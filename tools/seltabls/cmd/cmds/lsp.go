@@ -21,7 +21,11 @@ type handleCtx struct {
 }
 
 // NewLSPCmd creates a new command for the lsp subcommand
-func NewLSPCmd(ctx context.Context, writer io.Writer, handle LSPHandler) *cobra.Command {
+func NewLSPCmd(
+	ctx context.Context,
+	writer io.Writer,
+	handle LSPHandler,
+) *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "lsp", // the name of the command
 		Short: "A command line tooling for package that parsing html tables and elements into structs",

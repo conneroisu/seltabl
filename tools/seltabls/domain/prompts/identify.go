@@ -12,7 +12,9 @@ var IdentifyPrompt string
 
 // NewIdentifyPrompt returns a new identify prompt
 // This prompt is used to identify the information that can be extracted from two given urls.
-func NewIdentifyPrompt(url1, url2, url1Content, url2Content string) (string, error) {
+func NewIdentifyPrompt(
+	url1, url2, url1Content, url2Content string,
+) (string, error) {
 	tmpl := template.New("identifyPrompt")
 	tmpl, err := tmpl.Parse(IdentifyPrompt)
 	if err != nil {

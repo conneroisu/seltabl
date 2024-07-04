@@ -75,7 +75,14 @@ So the output fo the command:
 			if err != nil {
 				return fmt.Errorf("failed to create state: %w", err)
 			}
-			ignores := []string{"script", "style", "link", "img", "footer", "header"}
+			ignores := []string{
+				"script",
+				"style",
+				"link",
+				"img",
+				"footer",
+				"header",
+			}
 			sels, err := analysis.GetSelectors(
 				ctx,
 				&state,

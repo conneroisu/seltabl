@@ -45,7 +45,10 @@ func Chat(
 			},
 		})
 	if err != nil {
-		return "", history, fmt.Errorf("failed to create chat completion: %w", err)
+		return "", history, fmt.Errorf(
+			"failed to create chat completion: %w",
+			err,
+		)
 	}
 	content := completion.Choices[0].Message.Content
 	history = append(history, openai.ChatCompletionMessage{

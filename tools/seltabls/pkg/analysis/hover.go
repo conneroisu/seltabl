@@ -73,7 +73,8 @@ func (s *State) GetSelectorHover(
 				fset,
 			)
 			if !inValue {
-				if parsers.PositionBeforeValue(position, text) != ':' && parsers.PositionBeforeValue(position, text) != '"' {
+				if parsers.PositionBeforeValue(position, text) != ':' &&
+					parsers.PositionBeforeValue(position, text) != '"' {
 					continue
 				}
 			}

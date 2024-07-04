@@ -81,25 +81,16 @@ func GetSelectors(
 	url string,
 	ignores []string,
 ) (selectors []master.Selector, err error) {
-	got, err := state.Database.Queries.GetURLByValue(
+	rows, err := state.Database.Queries.GetSelectorsByURL(
 		ctx,
-		master.GetURLByValueParams{Value: url},
+		master.GetSelectorsByURLParams{Value: url},
 	)
-	if err == nil && got != nil {
-		rows, err := state.Database.Queries.GetSelectorsByURL(
-			ctx,
-			master.GetSelectorsByURLParams{Value: got.Value},
-		)
-		if err != nil {
-			return nil, fmt.Errorf("failed to get selectors by url: %w", err)
+	if err == nil && rows != nil {
+		var selectors []master.Selector
+		for _, row := range rows {
+			selectors = append(selectors, *row)
 		}
-		if rows != nil {
-			var selectors []master.Selector
-			for _, row := range rows {
-				selectors = append(selectors, *row)
-			}
-			return selectors, nil
-		}
+		return selectors, nil
 	}
 	doc, err := parsers.GetMinifiedDoc(url, ignores)
 	if err != nil {

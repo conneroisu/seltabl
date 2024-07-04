@@ -21,7 +21,11 @@ const content = `package main`
 const baseURL = "https://api.groq.com/openai/v1"
 
 // NewGenerateCmd returns the generate command
-func NewGenerateCmd(ctx context.Context, w io.Writer, r io.Reader) *cobra.Command {
+func NewGenerateCmd(
+	ctx context.Context,
+	w io.Writer,
+	r io.Reader,
+) *cobra.Command {
 	var url string
 	var name string
 	var llmModel string
@@ -39,9 +43,9 @@ So the output fo the command:
 
 .
 └── name
-    ├── name.go
-    ├── name_test.go
-    └── name_seltabl.yaml	
+    ├── subitem.go
+    ├── subitem_test.go
+    └── subitem_seltabl.yaml	
 
 `,
 		PreRunE: func(cmd *cobra.Command, _ []string) error {
@@ -111,11 +115,41 @@ So the output fo the command:
 	cmd.SetIn(r)
 	cmd.SetErr(w)
 	cmd.SetContext(ctx)
-	cmd.PersistentFlags().StringVarP(&url, "url", "u", "", "The url for which to generate a seltabl struct.")
-	cmd.PersistentFlags().StringVarP(&name, "name", "n", "", "The name of the struct to generate.")
-	cmd.PersistentFlags().StringVarP(&llmModel, "llm-model", "m", "llama3-70b-8192", "The name of the llm model to use for generating the struct.")
-	cmd.PersistentFlags().StringVarP(&llmKey, "llm-key", "k", "", "The key for the llm model to use for generating the struct.")
-	cmd.PersistentFlags().StringArrayVarP(&ignoreElements, "ignore-elements", "i", []string{"script", "meta", "style", "link", "img", "footer", "header"}, "The elements to ignore when generating the struct.")
+	cmd.PersistentFlags().StringVarP(
+		&url,
+		"url",
+		"u",
+		"",
+		"The url for which to generate a seltabl struct.",
+	)
+	cmd.PersistentFlags().StringVarP(
+		&name,
+		"name",
+		"n",
+		"",
+		"The name of the struct to generate.",
+	)
+	cmd.PersistentFlags().StringVarP(
+		&llmModel,
+		"llm-model",
+		"m",
+		"llama3-70b-8192",
+		"The name of the llm model to use for generating the struct.",
+	)
+	cmd.PersistentFlags().StringVarP(
+		&llmKey,
+		"llm-key",
+		"k",
+		"",
+		"The key for the llm model to use for generating the struct.",
+	)
+	cmd.PersistentFlags().StringArrayVarP(
+		&ignoreElements,
+		"ignore-elements",
+		"i",
+		[]string{"script", "meta", "style", "link", "img", "footer", "header"},
+		"The elements to ignore when generating the struct.",
+	)
 	return cmd
 }
 

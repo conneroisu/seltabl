@@ -57,56 +57,56 @@ type CompletionItemTag struct {
 type CompletionItemKind int
 
 const (
-	// Text is a completion item kind
-	Text CompletionItemKind = iota + 1
-	// Method is a completion item kind for a method or function completion
-	Method
-	// Function is a completion item kind for a function completion
-	Function
-	// Constructor is a completion item kind for a constructor completion
-	Constructor
-	// Field is a completion item kind for a field completion
-	Field
-	// Variable is a completion item kind for a variable completion
-	Variable
-	// Class is a completion item kind for a class completion
-	Class
-	// Interface is a completion item kind for an interface completion
-	Interface
-	// Module is a completion item kind for a module completion
-	Module
-	// Property is a completion item kind for a property completion
-	Property
-	// Unit is a completion item kind for a unit
-	Unit
-	// Value is a completion item kind for a value
-	Value
-	// Enum is a completion item kind for an enum
-	Enum
-	// Keyword is a completion item kind for a keyword
-	Keyword
-	// Snippet is a completion item kind for a snippet
-	Snippet
-	// Color is a completion item kind for a color
-	Color
-	// File is a completion item kind for a file
-	File
-	// Reference is a completion item kind for a reference
-	Reference
-	// Folder is a completion item kind for a folder
-	Folder
-	// EnumMember is a completion item kind for an enum member
-	EnumMember
-	// Constant is a completion item kind for a constant
-	Constant
-	// Struct is a completion item kind for a struct
-	Struct
-	// Event is a completion item kind for an event
-	Event
-	// Operator is a completion item kind for an operator
-	Operator
-	// TypeParameter is a completion item kind for a type parameter
-	TypeParameter
+	// CompletionKindText is a completion item kind
+	CompletionKindText CompletionItemKind = iota + 1
+	// CompletionKindMethod is a completion item kind for a method or function completion
+	CompletionKindMethod
+	// CompletionKindFunction is a completion item kind for a function completion
+	CompletionKindFunction
+	// CompletionKindConstructor is a completion item kind for a constructor completion
+	CompletionKindConstructor
+	// CompletionKindField is a completion item kind for a field completion
+	CompletionKindField
+	// CompletionKindVariable is a completion item kind for a variable completion
+	CompletionKindVariable
+	// CompletionKindClass is a completion item kind for a class completion
+	CompletionKindClass
+	// CompletionKindInterface is a completion item kind for an interface completion
+	CompletionKindInterface
+	// CompletionKindModule is a completion item kind for a module completion
+	CompletionKindModule
+	// CompletionKindProperty is a completion item kind for a property completion
+	CompletionKindProperty
+	// CompletionKindUnit is a completion item kind for a unit
+	CompletionKindUnit
+	// CompletionKindValue is a completion item kind for a value
+	CompletionKindValue
+	// CompletionKindEnum is a completion item kind for an enum
+	CompletionKindEnum
+	// CompletionKindKeyword is a completion item kind for a keyword
+	CompletionKindKeyword
+	// CompletionKindSnippet is a completion item kind for a snippet
+	CompletionKindSnippet
+	// CompletionKindColor is a completion item kind for a color
+	CompletionKindColor
+	// CompletionKindFile is a completion item kind for a file
+	CompletionKindFile
+	// CompletionKindReference is a completion item kind for a reference
+	CompletionKindReference
+	// CompletionKindFolder is a completion item kind for a folder
+	CompletionKindFolder
+	// CompletionKindEnumMember is a completion item kind for an enum member
+	CompletionKindEnumMember
+	// CompletionKindConstant is a completion item kind for a constant
+	CompletionKindConstant
+	// CompletionKindStruct is a completion item kind for a struct
+	CompletionKindStruct
+	// CompletionindEvent is a completion item kind for an event
+	CompletionindEvent
+	// CompletionKindOperator is a completion item kind for an operator
+	CompletionKindOperator
+	// CompletionKindTypeParameter is a completion item kind for a type parameter
+	CompletionKindTypeParameter
 )
 
 // String returns the string representation of the CompletionItemKind.

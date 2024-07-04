@@ -37,7 +37,7 @@ func TestEncode(t *testing.T) {
 					Label:         "Test",
 					Detail:        "Test",
 					Documentation: "Test",
-					Kind:          lsp.Method,
+					Kind:          lsp.CompletionKindMethod,
 				},
 			},
 		},

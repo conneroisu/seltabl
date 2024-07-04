@@ -53,7 +53,7 @@ func (s *State) CreateTextDocumentCompletion(
 				Label:         key.Label,
 				Detail:        key.Detail,
 				Documentation: key.Documentation,
-				Kind:          lsp.Enum,
+				Kind:          lsp.CompletionKindEnum,
 			})
 		}
 	case parsers.StateInTagValue:
@@ -62,7 +62,7 @@ func (s *State) CreateTextDocumentCompletion(
 				Label:         selector.Value,
 				Detail:        "context: \n" + selector.Context,
 				Documentation: "seltabls",
-				Kind:          lsp.Reference,
+				Kind:          lsp.CompletionKindReference,
 			})
 		}
 	case parsers.StateAfterColon:
@@ -71,7 +71,7 @@ func (s *State) CreateTextDocumentCompletion(
 				Label:         "\"" + selector.Value + "\"",
 				Detail:        "context: \n" + selector.Context,
 				Documentation: "seltabls",
-				Kind:          lsp.Reference,
+				Kind:          lsp.CompletionKindReference,
 			})
 		}
 	case parsers.StateInvalid:

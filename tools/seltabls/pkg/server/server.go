@@ -24,7 +24,7 @@ func HandleMessage(
 	method := msg.Method
 	contents := msg.Content
 	switch method {
-	case "initialize":
+	case methods.MethodInitialize.String():
 		var request lsp.InitializeRequest
 		if err = json.Unmarshal([]byte(contents), &request); err != nil {
 			return fmt.Errorf("decode initialize request (initialize) failed: %w", err)
@@ -34,7 +34,7 @@ func HandleMessage(
 		if err != nil {
 			return fmt.Errorf("failed to write (initialize) response: %w", err)
 		}
-	case "initialized":
+	case methods.MethodInitialized.String():
 		var request lsp.InitializedParamsRequest
 		if err = json.Unmarshal([]byte(contents), &request); err != nil {
 			return fmt.Errorf("decode (initialized) request failed: %w", err)
@@ -202,3 +202,12 @@ func HandleMessage(
 	}
 	return nil
 }
+
+var (
+	reqMap = map[methods.Method]interface{}{
+		methods.MethodInitialize:    lsp.InitializeRequest{},
+		methods.MethodInitialized:   lsp.InitializedParamsRequest{},
+		methods.MethodShutdown:      lsp.ShutdownRequest{},
+		methods.MethodCancelRequest: lsp.CancelRequest{},
+	}
+)

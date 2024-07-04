@@ -49,7 +49,10 @@ func (s *State) GetDiagnosticsForFile(
 func (s *State) getDiagnosticsForStruct(
 	strt parsers.Structure,
 	data parsers.StructCommentData,
-) (diagnostics []lsp.Diagnostic, err error) {
+) (
+	diagnostics []lsp.Diagnostic,
+	err error,
+) {
 	content, err := s.clientGet(data.URLs[0])
 	if err != nil {
 		return nil, fmt.Errorf("failed to get the content of the url: %w", err)

@@ -1,11 +1,18 @@
 package lsp
 
+import "github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp/methods"
+
 // InitializeRequest is a struct for the initialize request.
 type InitializeRequest struct {
 	// InitializeRequest embeds the Request struct
 	Request
 	// Params are the parameters for the initialize request.
 	Params InitializeRequestParams `json:"params"`
+}
+
+// Method returns the method for the initialize request
+func (r InitializeRequest) Method() string {
+	return methods.MethodInitialize.String()
 }
 
 // InitializeRequestParams is a struct for the initialize request params

@@ -13,7 +13,7 @@ import (
 )
 
 // LSPHandler is a struct for the LSP server
-type LSPHandler func(ctx context.Context, writer *io.Writer, state *analysis.State, method string, contents []byte) error
+type LSPHandler func(ctx context.Context, writer *io.Writer, state *analysis.State, msg rpc.BaseMessage) error
 
 type handleCtx struct {
 	ctx    context.Context
@@ -50,7 +50,7 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 					return fmt.Errorf("failed to decode message: %w", err)
 				}
 				ctxs[decoded.ID] = handleCtx{ctx: hCtx, cancel: cancel}
-				err = handle(hCtx, &writer, &state, decoded.Method, decoded.Content)
+				err = handle(hCtx, &writer, &state, decoded)
 				if err != nil {
 					return fmt.Errorf("failed to handle message: %w", err)
 				}

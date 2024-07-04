@@ -47,13 +47,6 @@ type MethodHandler func(ctx context.Context, writer *io.Writer, state *analysis.
 // MethodHandlers is a map of method handlers
 type MethodHandlers map[Method]MethodHandler
 
-// MethodHandles is a map of method handlers
-var MethodHandles = map[Method]MethodHandler{
-	MethodInitialize:           analysis.CreateConfigDir(),
-	MethodInitialized:          analysis.NewInitialized,
-	MethodTextDocumentDidClose: analysis.NewTextDocumentDidClose,
-}
-
 // Handle handles a message
 func (m MethodHandlers) Handle(ctx context.Context, writer *io.Writer, state *analysis.State, msg []byte) error {
 	handler, ok := m[Method(msg[0])]

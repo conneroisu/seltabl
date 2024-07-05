@@ -15,6 +15,8 @@ func New(db generic.DBTX) *Queries {
 }
 
 // Queries is the object to use to interact with the database.
+//
+//go:generate mockgen -source=queries.go -destination=mock_queries.go -package=master
 type Queries struct {
 	db generic.DBTX
 }

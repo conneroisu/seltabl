@@ -2,12 +2,14 @@ package analysis
 
 import (
 	"bytes"
+	"context"
 	"fmt"
 	"go/parser"
 	"go/token"
 
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/parsers"
+	"golang.org/x/sync/errgroup"
 )
 
 var (
@@ -28,54 +30,64 @@ var (
 // It also checks if the position is within the struct tag value and returns the selectors
 // if the position is within the struct tag value.
 func (s *State) CreateTextDocumentCompletion(
+	ctx context.Context,
 	request lsp.CompletionRequest,
 ) (response lsp.CompletionResponse, err error) {
-	response.Response = lsp.Response{
-		RPC: "2.0",
-		ID:  request.ID,
+	response = lsp.CompletionResponse{
+		Response: lsp.Response{
+			RPC: "2.0",
+			ID:  request.ID,
+		},
+		Result: []lsp.CompletionItem{},
 	}
-	response.Result = []lsp.CompletionItem{}
-	// Get the content for the given document.
-	content := s.Documents[request.Params.TextDocument.URI]
-	// Get the selectors for the given document in current state.
-	selectors := s.Selectors[request.Params.TextDocument.URI]
-	// Check if the position is within a golang struct tag.
-	check, err := s.CheckPosition(request.Params.Position, content)
-	if err != nil {
-		return response, nil
-	}
-	switch check {
-	case parsers.StateInTag:
-		for _, key := range completionKeys {
-			response.Result = append(response.Result, lsp.CompletionItem{
-				Label:         key.Label,
-				Detail:        key.Detail,
-				Documentation: key.Documentation,
-				Kind:          lsp.CompletionKindEnum,
-			})
+	eg, ctx := errgroup.WithContext(ctx)
+	eg.Go(func() error {
+		// Get the content for the given document.
+		content := s.Documents[request.Params.TextDocument.URI]
+		// Get the selectors for the given document in current state.
+		selectors := s.Selectors[request.Params.TextDocument.URI]
+		// Check if the position is within a golang struct tag.
+		check, err := s.CheckPosition(request.Params.Position, content)
+		if err != nil {
+			return nil
 		}
-	case parsers.StateInTagValue:
-		for _, selector := range selectors {
-			response.Result = append(response.Result, lsp.CompletionItem{
-				Label:         selector.Value,
-				Detail:        "context: \n" + selector.Context,
-				Documentation: "seltabls",
-				Kind:          lsp.CompletionKindReference,
-			})
+		switch check {
+		case parsers.StateInTag:
+			for _, key := range completionKeys {
+				response.Result = append(response.Result, lsp.CompletionItem{
+					Label:         key.Label,
+					Detail:        key.Detail,
+					Documentation: key.Documentation,
+					Kind:          lsp.CompletionKindEnum,
+				})
+			}
+		case parsers.StateInTagValue:
+			for _, selector := range selectors {
+				response.Result = append(response.Result, lsp.CompletionItem{
+					Label:         selector.Value,
+					Detail:        "context: \n" + selector.Context,
+					Documentation: "seltabls",
+					Kind:          lsp.CompletionKindReference,
+				})
+			}
+		case parsers.StateAfterColon:
+			for _, selector := range selectors {
+				response.Result = append(response.Result, lsp.CompletionItem{
+					Label:         "\"" + selector.Value + "\"",
+					Detail:        "context: \n" + selector.Context,
+					Documentation: "seltabls",
+					Kind:          lsp.CompletionKindReference,
+				})
+			}
+		case parsers.StateInvalid:
+			return nil
+		default:
+			return nil
 		}
-	case parsers.StateAfterColon:
-		for _, selector := range selectors {
-			response.Result = append(response.Result, lsp.CompletionItem{
-				Label:         "\"" + selector.Value + "\"",
-				Detail:        "context: \n" + selector.Context,
-				Documentation: "seltabls",
-				Kind:          lsp.CompletionKindReference,
-			})
-		}
-	case parsers.StateInvalid:
-		return response, nil
-	default:
-		return response, nil
+		return nil
+	})
+	if err := eg.Wait(); err != nil {
+		return response, fmt.Errorf("failed to get completions: %w", err)
 	}
 	return response, nil
 }

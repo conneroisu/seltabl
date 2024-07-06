@@ -82,7 +82,7 @@ func HandleMessage(
 				err,
 			)
 		}
-		response, err := state.CreateTextDocumentCompletion(request)
+		response, err := state.CreateTextDocumentCompletion(ctx, request)
 		if err != nil {
 			return fmt.Errorf("failed to get completions: %w", err)
 		}

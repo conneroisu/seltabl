@@ -15,27 +15,27 @@ import (
 
 // Hover returns a hover response for the given uri and position
 func (s *State) Hover(
-	id int,
-	uri string,
-	position lsp.Position,
-) (*lsp.HoverResponse, error) {
-	text := s.Documents[uri]
-	urls := s.URLs[uri]
+	req lsp.HoverRequest,
+) (response *lsp.HoverResponse, err error) {
+	response = &lsp.HoverResponse{
+		Response: lsp.Response{
+			RPC: "2.0",
+			ID:  req.ID,
+		},
+		Result: lsp.HoverResult{},
+	}
+	text := s.Documents[req.Params.TextDocument.URI]
+	urls := s.URLs[req.Params.TextDocument.URI]
 	doc, err := http.DefaultClientGet(urls[0])
 	if err != nil {
 		return nil, fmt.Errorf("failed to get the content of the url: %w", err)
 	}
-	res, err := s.GetSelectorHover(position, text, doc)
+	res, err := s.GetSelectorHover(req.Params.Position, text, doc)
 	if err != nil {
 		return nil, fmt.Errorf("failed to get hover: %w", err)
 	}
-	return &lsp.HoverResponse{
-		Response: lsp.Response{
-			RPC: "2.0",
-			ID:  id,
-		},
-		Result: res,
-	}, nil
+	response.Result = res
+	return response, nil
 }
 
 // GetSelectorHover checks if the position is within the struct tag

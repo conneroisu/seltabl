@@ -83,7 +83,7 @@ type ServerInfo struct {
 func NewInitializeResponse(request *InitializeRequest) InitializeResponse {
 	return InitializeResponse{
 		Response: Response{
-			RPC: "2.0",
+			RPC: RPCVersion,
 			ID:  request.ID,
 		},
 		Result: InitializeResult{

@@ -34,7 +34,7 @@ func (r ShutdownResponse) Method() string {
 func NewShutdownResponse(request ShutdownRequest, err error) ShutdownResponse {
 	return ShutdownResponse{
 		Response: Response{
-			RPC: "2.0",
+			RPC: RPCVersion,
 			ID:  request.ID,
 		},
 		Result: nil,

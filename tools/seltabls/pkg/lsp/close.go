@@ -22,7 +22,7 @@ func NewDidCloseTextDocumentParamsNotification(
 ) DidCloseTextDocumentParamsNotification {
 	return DidCloseTextDocumentParamsNotification{
 		Notification: Notification{
-			RPC: "2.0",
+			RPC: RPCVersion,
 		},
 		Params: DidCloseTextDocumentParamsNotificationParams{
 			TextDocument: TextDocumentIdentifier{URI: uri},

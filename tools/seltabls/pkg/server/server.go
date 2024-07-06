@@ -110,11 +110,7 @@ func HandleMessage(
 		if err != nil {
 			return fmt.Errorf("failed unmarshal of hover request (): %w", err)
 		}
-		response, err := state.Hover(
-			request.ID,
-			request.Params.TextDocument.URI,
-			request.Params.Position,
-		)
+		response, err := state.Hover(request)
 		if err != nil {
 			return fmt.Errorf("failed to get hover: %w", err)
 		}
@@ -141,8 +137,7 @@ func HandleMessage(
 		if err != nil {
 			return fmt.Errorf("failed to write response: %w", err)
 		}
-	case methods.MethodTextDocumentDidSave:
-		// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_didSave
+	case methods.MethodNotificationTextDocumentDidSave:
 		state.Logger.Printf("Client sent a did save notification")
 	case methods.MethodShutdown:
 		var request lsp.ShutdownRequest
@@ -157,7 +152,6 @@ func HandleMessage(
 		}
 		os.Exit(0)
 	case methods.MethodCancelRequest:
-		// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#$/cancelRequest
 		var request lsp.CancelRequest
 		err = json.Unmarshal(contents, &request)
 		if err != nil {
@@ -166,7 +160,7 @@ func HandleMessage(
 				err,
 			)
 		}
-		response, err := state.CancelRequest(request.ID)
+		response, err := state.CancelRequest(request)
 		if err != nil {
 			return fmt.Errorf("failed to cancel request: %w", err)
 		}

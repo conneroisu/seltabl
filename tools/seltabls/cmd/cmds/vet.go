@@ -65,7 +65,7 @@ func vetFile(ctx context.Context, file string) ([]lsp.Diagnostic, error) {
 	}
 	response, err := state.OpenDocument(ctx, lsp.NotificationDidOpenTextDocument{
 		Notification: lsp.Notification{
-			RPC:    "2.0",
+			RPC:    lsp.RPCVersion,
 			Method: "textDocument/didOpen",
 		},
 		Params: lsp.DidOpenTextDocumentParams{

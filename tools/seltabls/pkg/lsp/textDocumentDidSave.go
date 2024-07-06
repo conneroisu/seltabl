@@ -16,7 +16,7 @@ type DidSaveTextDocumentParamsNotification struct {
 
 // Method returns the method for the did save text document params notification
 func (r DidSaveTextDocumentParamsNotification) Method() methods.Method {
-	return methods.MethodTextDocumentDidSave
+	return methods.MethodNotificationTextDocumentDidSave
 }
 
 // DidSaveTextDocumentParams contains the text document after it has been saved.

@@ -8,15 +8,15 @@ import (
 
 // CancelRequest cancels a request
 func (s *State) CancelRequest(
-	id string,
+	request lsp.CancelRequest,
 ) (response *lsp.CancelResponse, err error) {
-	i, err := strconv.ParseInt(id, 10, 64)
+	i, err := strconv.ParseInt(request.ID, 10, 64)
 	if err != nil {
 		return nil, err
 	}
 	return &lsp.CancelResponse{
 		Response: lsp.Response{
-			RPC: "2.0",
+			RPC: lsp.RPCVersion,
 			ID:  int(i),
 		},
 	}, nil

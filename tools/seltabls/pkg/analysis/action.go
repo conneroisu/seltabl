@@ -42,7 +42,7 @@ func (s *State) TextDocumentCodeAction(
 	}
 	response = lsp.TextDocumentCodeActionResponse{
 		Response: lsp.Response{
-			RPC: "2.0",
+			RPC: lsp.RPCVersion,
 			ID:  req.ID,
 		},
 		Result: actions,

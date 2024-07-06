@@ -8,11 +8,11 @@ const (
 	// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#initialize
 	MethodInitialize Method = "initialize"
 
-	// MethodInitialized is the initialized notification method for the language server protocol.
+	// MethodNotificationInitialized is the initialized notification method for the language server protocol.
 	//
 	// Microsoft LSP Docs:
 	// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#initialized
-	MethodInitialized Method = "initialized"
+	MethodNotificationInitialized Method = "initialized"
 
 	// MethodShutdown is the shutdown notification method for the language server protocol.
 	//

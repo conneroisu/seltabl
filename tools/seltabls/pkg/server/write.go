@@ -35,7 +35,7 @@ func WriteResponse(
 		}
 		if res != len(reply) {
 			return fmt.Errorf(
-				"failed to write all of response to request (%s): %w",
+				"failed writing all of response to (%s) request: %w",
 				msg.Method(),
 				err,
 			)

@@ -80,11 +80,11 @@ type ServerInfo struct {
 }
 
 // NewInitializeResponse creates a new initialize response.
-func NewInitializeResponse(id int) InitializeResponse {
+func NewInitializeResponse(request *InitializeRequest) InitializeResponse {
 	return InitializeResponse{
 		Response: Response{
 			RPC: "2.0",
-			ID:  id,
+			ID:  request.ID,
 		},
 		Result: InitializeResult{
 			Capabilities: ServerCapabilities{
@@ -113,5 +113,5 @@ type InitializedParamsRequest struct {
 
 // Method returns the method for the initialized params request.
 func (r InitializedParamsRequest) Method() methods.Method {
-	return methods.MethodInitialized
+	return methods.MethodNotificationInitialized
 }

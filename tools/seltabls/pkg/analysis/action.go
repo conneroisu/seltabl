@@ -8,17 +8,16 @@ import (
 
 // TextDocumentCodeAction returns the code actions for a given text document.
 func (s *State) TextDocumentCodeAction(
-	id int,
-	documentURI string,
-) (lsp.TextDocumentCodeActionResponse, error) {
+	req lsp.CodeActionRequest,
+) (response lsp.TextDocumentCodeActionResponse, err error) {
 	// Should be able to refresh selectors from the database by requesting the url
-	text := s.Documents[documentURI]
+	text := s.Documents[req.Params.TextDocument.URI]
 	actions := []lsp.CodeAction{}
 	for row, line := range strings.Split(text, "\n") {
 		idx := strings.Index(line, "VS Code")
 		if idx >= 0 {
 			replaceChange := map[string][]lsp.TextEdit{}
-			replaceChange[documentURI] = []lsp.TextEdit{
+			replaceChange[req.Params.TextDocument.URI] = []lsp.TextEdit{
 				{
 					Range:   lsp.LineRange(row, idx, idx+len("VS Code")),
 					NewText: "Neovim",
@@ -29,7 +28,7 @@ func (s *State) TextDocumentCodeAction(
 				Edit:  &lsp.WorkspaceEdit{Changes: replaceChange},
 			})
 			censorChange := map[string][]lsp.TextEdit{}
-			censorChange[documentURI] = []lsp.TextEdit{
+			censorChange[req.Params.TextDocument.URI] = []lsp.TextEdit{
 				{
 					Range:   lsp.LineRange(row, idx, idx+len("VS Code")),
 					NewText: "VS C*de",
@@ -41,10 +40,10 @@ func (s *State) TextDocumentCodeAction(
 			})
 		}
 	}
-	response := lsp.TextDocumentCodeActionResponse{
+	response = lsp.TextDocumentCodeActionResponse{
 		Response: lsp.Response{
 			RPC: "2.0",
-			ID:  id,
+			ID:  req.ID,
 		},
 		Result: actions,
 	}

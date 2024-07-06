@@ -32,15 +32,21 @@ func HandleMessage(
 				err,
 			)
 		}
-		response := lsp.NewInitializeResponse(request.ID)
+		response := lsp.NewInitializeResponse(&request)
 		err = WriteResponse(ctx, writer, response)
 		if err != nil {
-			return fmt.Errorf("failed to write (initialize) response: %w", err)
+			return fmt.Errorf(
+				"failed to write (initialize) response: %w",
+				err,
+			)
 		}
-	case methods.MethodInitialized:
+	case methods.MethodNotificationInitialized:
 		var request lsp.InitializedParamsRequest
 		if err = json.Unmarshal([]byte(contents), &request); err != nil {
-			return fmt.Errorf("decode (initialized) request failed: %w", err)
+			return fmt.Errorf(
+				"decode (initialized) request failed: %w",
+				err,
+			)
 		}
 	case methods.MethodRequestTextDocumentDidOpen:
 		var request lsp.NotificationDidOpenTextDocument
@@ -150,8 +156,7 @@ func HandleMessage(
 			)
 		}
 		response, err := state.TextDocumentCodeAction(
-			request.ID,
-			request.Params.TextDocument.URI,
+			request,
 		)
 		if err != nil {
 			return fmt.Errorf("failed to get code actions: %w", err)

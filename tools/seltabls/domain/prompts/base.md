@@ -1,6 +1,6 @@
-You are to generate a golang struct for a given url, {{ .URL }}.
-The struct must have a field with a header selector with the tag hSel, and a data selector with the tag dSel.
-The selectors responsibilities:
+You are to generate a json schema for a given url, {{ .URL }}.
+
+The json schema must have a number of attributes for each field in the struct.
 
 - header selector (hSel): used to find the header row and column for the field in the given struct.
 - data selector (dSel): used to find the data column for the field in the given struct.

@@ -7,7 +7,9 @@ import (
 	"text/template"
 )
 
-//go:embed identify.md
+// IdentifyPrompt is the identify prompt
+//
+//go:embed 01_identify.md
 var IdentifyPrompt string
 
 // NewIdentifyPrompt returns a new identify prompt

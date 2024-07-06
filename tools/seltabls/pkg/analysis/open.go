@@ -18,6 +18,17 @@ func (s *State) OpenDocument(
 	ctx context.Context,
 	req lsp.NotificationDidOpenTextDocument,
 ) (response *lsp.PublishDiagnosticsNotification, err error) {
+	diags := []lsp.Diagnostic{}
+	response = &lsp.PublishDiagnosticsNotification{
+		Notification: lsp.Notification{
+			RPC:    "2.0",
+			Method: "textDocument/publishDiagnostics",
+		},
+		Params: lsp.PublishDiagnosticsParams{
+			URI:         req.Params.TextDocument.URI,
+			Diagnostics: diags,
+		},
+	}
 	uri := req.Params.TextDocument.URI
 	eg, ctx := errgroup.WithContext(ctx)
 	s.Documents[uri] = req.Params.TextDocument.Text
@@ -50,14 +61,6 @@ func (s *State) OpenDocument(
 	if err := eg.Wait(); err != nil {
 		return nil, fmt.Errorf("failed to get selectors for urls: %w", err)
 	}
-	diags := []lsp.Diagnostic{}
-	diags, err = s.GetDiagnosticsForFile(
-		&req.Params.TextDocument.Text,
-		data,
-	)
-	if err != nil {
-		s.Logger.Printf("failed to get diagnostics for file: %s\n", err)
-	}
 	response = &lsp.PublishDiagnosticsNotification{
 		Notification: lsp.Notification{
 			RPC:    "2.0",
@@ -67,6 +70,13 @@ func (s *State) OpenDocument(
 			URI:         req.Params.TextDocument.URI,
 			Diagnostics: diags,
 		},
+	}
+	diags, err = s.GetDiagnosticsForFile(
+		&req.Params.TextDocument.Text,
+		data,
+	)
+	if err != nil {
+		s.Logger.Printf("failed to get diagnostics for file: %s\n", err)
 	}
 	return response, nil
 }

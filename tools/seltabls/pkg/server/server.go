@@ -162,6 +162,7 @@ func HandleMessage(
 		}
 	case methods.MethodTextDocumentDidSave:
 		// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_didSave
+		state.Logger.Printf("Client sent a did save notification")
 	case methods.MethodShutdown:
 		var request lsp.ShutdownRequest
 		err = json.Unmarshal([]byte(contents), &request)

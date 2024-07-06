@@ -7,6 +7,7 @@ import (
 	"go/token"
 
 	"github.com/PuerkitoBio/goquery"
+	"github.com/conneroisu/seltabl/tools/seltabls/pkg/http"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/parsers"
 	"github.com/yosssi/gohtml"
@@ -20,7 +21,7 @@ func (s *State) Hover(
 ) (*lsp.HoverResponse, error) {
 	text := s.Documents[uri]
 	urls := s.URLs[uri]
-	doc, err := s.clientGet(urls[0])
+	doc, err := http.DefaultClientGet(urls[0])
 	if err != nil {
 		return nil, fmt.Errorf("failed to get the content of the url: %w", err)
 	}

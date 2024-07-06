@@ -1,13 +1,11 @@
 package analysis
 
 import (
-	"bytes"
 	"context"
 	"fmt"
-	"io"
-	"net/http"
 
 	"github.com/PuerkitoBio/goquery"
+	"github.com/conneroisu/seltabl/tools/seltabls/pkg/http"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/parsers"
 	"github.com/sourcegraph/conc"
@@ -56,7 +54,7 @@ func (s *State) getDiagnosticsForStruct(
 	diagnostics []lsp.Diagnostic,
 	err error,
 ) {
-	content, err := s.clientGet(data.URLs[0])
+	content, err := http.DefaultClientGet(data.URLs[0])
 	if err != nil {
 		return nil, fmt.Errorf("failed to get the content of the url: %w", err)
 	}
@@ -116,34 +114,4 @@ func (s *State) validateSelector(
 		return false, nil
 	}
 	return true, nil
-}
-
-// clientValidateSelector validates a selector using a client
-func (s *State) clientGet(url string) (*goquery.Document, error) {
-	// Http request to the server
-	req, err := http.NewRequest("GET", url, nil)
-	if err != nil {
-		return nil, fmt.Errorf("failed to create a new request: %v", err)
-	}
-	req.Header.Set("Content-Type", "application/json")
-	// Send the request
-	client := &http.Client{}
-	done, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("failed to send the request: %v", err)
-	}
-	defer done.Body.Close()
-	// Read the response body
-	body, err := io.ReadAll(done.Body)
-	if err != nil {
-		return nil, fmt.Errorf("failed to read the response body: %v", err)
-	}
-	doc, err := goquery.NewDocumentFromReader(bytes.NewReader(body))
-	if err != nil {
-		return nil, fmt.Errorf(
-			"failed to create a new goquery document: %v",
-			err,
-		)
-	}
-	return doc, nil
 }

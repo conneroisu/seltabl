@@ -7,11 +7,9 @@ import (
 	"os"
 
 	"github.com/charmbracelet/huh"
-	"github.com/conneroisu/seltabl/tools/seltabls/domain/prompts"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/analysis"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/generate"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/llm"
-	"github.com/sashabaranov/go-openai"
 	"github.com/spf13/cobra"
 )
 
@@ -92,29 +90,22 @@ So the output fo the command:
 			if err != nil {
 				return fmt.Errorf("failed to get selectors: %w", err)
 			}
-			body, err := generate.GetURL(url)
+			htmlBody, err := generate.GetURL(url)
 			if err != nil {
 				return fmt.Errorf("failed to get url: %w", err)
 			}
-			basePrompt, err := prompts.NewBasePrompt(
-				sels,
-				string(body),
+			err = generate.GenerateSuite(
+				ctx,
+				client,
+				name,
 				url,
+				ignores,
+				string(htmlBody),
+				sels,
 			)
-			_ = []openai.ChatCompletionMessage{{
-				Role:    openai.ChatMessageRoleUser,
-				Content: basePrompt,
-			}}
-			err = verify(ctx, cmd, name)
-			if err == nil {
-				print("verified generated struct")
-				return nil
-			}
-			prmpt, err := prompts.NewErrPrompt(string(body), content, url, err)
 			if err != nil {
-				return fmt.Errorf("failed to create err prompt: %w", err)
+				return fmt.Errorf("failed to generate suite: %w", err)
 			}
-			print(prmpt)
 			return nil
 		},
 	}

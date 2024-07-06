@@ -99,27 +99,7 @@ func HandleMessage(
 				err,
 			)
 		}
-		diagnostics := []lsp.Diagnostic{}
-		for _, change := range request.Params.ContentChanges {
-			diags, err := state.UpdateDocument(
-				request.Params.TextDocument.URI,
-				change.Text,
-			)
-			if err != nil {
-				return fmt.Errorf("failed to update document: %w", err)
-			}
-			diagnostics = append(diagnostics, diags...)
-		}
-		response := lsp.PublishDiagnosticsNotification{
-			Notification: lsp.Notification{
-				RPC:    "2.0",
-				Method: "textDocument/publishDiagnostics",
-			},
-			Params: lsp.PublishDiagnosticsParams{
-				URI:         request.Params.TextDocument.URI,
-				Diagnostics: diagnostics,
-			},
-		}
+		response, err := state.UpdateDocument(ctx, &request)
 		err = WriteResponse(ctx, writer, response)
 		if err != nil {
 			return fmt.Errorf("failed to write response: %w", err)

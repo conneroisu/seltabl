@@ -1,26 +1,49 @@
 package analysis
 
 import (
+	"context"
+	"fmt"
+
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/parsers"
+	"golang.org/x/sync/errgroup"
 )
 
 // UpdateDocument updates the state with the given document
 func (s *State) UpdateDocument(
-	uri, content string,
-) (diags []lsp.Diagnostic, err error) {
-	s.Documents[uri] = content
-	data, err := parsers.ParseStructComments(content)
-	if err != nil {
-		s.Logger.Printf("failed to get urls and ignores: %s", err)
-		return diags, nil
+	ctx context.Context,
+	request *lsp.TextDocumentDidChangeNotification,
+) (response lsp.PublishDiagnosticsNotification, err error) {
+
+	response = lsp.PublishDiagnosticsNotification{
+		Notification: lsp.Notification{
+			RPC:    "2.0",
+			Method: "textDocument/publishDiagnostics",
+		},
+		Params: lsp.PublishDiagnosticsParams{
+			URI:         request.Params.TextDocument.URI,
+			Diagnostics: []lsp.Diagnostic{},
+		},
 	}
-	for _, url := range data.URLs {
-		s.URLs[uri] = append(s.URLs[uri], url)
+	eg, ctx := errgroup.WithContext(ctx)
+	eg.Go(func() error {
+		s.Documents[request.Params.TextDocument.URI] = request.Params.ContentChanges[0].Text
+		data, err := parsers.ParseStructComments(request.Params.ContentChanges[0].Text)
+		if err != nil {
+			return fmt.Errorf("failed to get urls and ignores: %w", err)
+		}
+		for _, url := range data.URLs {
+			s.URLs[request.Params.TextDocument.URI] = append(s.URLs[request.Params.TextDocument.URI], url)
+		}
+		diags, err := s.GetDiagnosticsForFile(&request.Params.ContentChanges[0].Text, data)
+		if err != nil {
+			return fmt.Errorf("failed to get diagnostics for file: %w", err)
+		}
+		response.Params.Diagnostics = diags
+		return nil
+	})
+	if err := eg.Wait(); err != nil {
+		return response, fmt.Errorf("failed to get urls and ignores: %w", err)
 	}
-	diags, err = s.GetDiagnosticsForFile(&content, data)
-	if err != nil {
-		s.Logger.Printf("failed to get diagnostics for file: %s\n", err)
-	}
-	return diags, nil
+	return response, nil
 }

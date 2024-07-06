@@ -13,7 +13,7 @@ type DidCloseTextDocumentParamsNotification struct {
 
 // Method returns the method for the did close text document params notification
 func (r DidCloseTextDocumentParamsNotification) Method() methods.Method {
-	return methods.MethodTextDocumentDidClose
+	return methods.MethodNotificationTextDocumentDidClose
 }
 
 // NewDidCloseTextDocumentParamsNotification returns a new did close text document params notification

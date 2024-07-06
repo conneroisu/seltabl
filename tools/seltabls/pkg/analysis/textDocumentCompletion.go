@@ -28,21 +28,19 @@ var (
 // It also checks if the position is within the struct tag value and returns the selectors
 // if the position is within the struct tag value.
 func (s *State) CreateTextDocumentCompletion(
-	id int,
-	document lsp.TextDocumentIdentifier,
-	pos lsp.Position,
+	request lsp.CompletionRequest,
 ) (response lsp.CompletionResponse, err error) {
 	response.Response = lsp.Response{
 		RPC: "2.0",
-		ID:  id,
+		ID:  request.ID,
 	}
 	response.Result = []lsp.CompletionItem{}
 	// Get the content for the given document.
-	content := s.Documents[document.URI]
+	content := s.Documents[request.Params.TextDocument.URI]
 	// Get the selectors for the given document in current state.
-	selectors := s.Selectors[document.URI]
+	selectors := s.Selectors[request.Params.TextDocument.URI]
 	// Check if the position is within a golang struct tag.
-	check, err := s.CheckPosition(pos, content)
+	check, err := s.CheckPosition(request.Params.Position, content)
 	if err != nil {
 		return response, nil
 	}

@@ -67,7 +67,7 @@ func HandleMessage(
 		if err != nil {
 			return fmt.Errorf("failed to write response: %w", err)
 		}
-	case methods.MethodTextDocumentDidClose:
+	case methods.MethodNotificationTextDocumentDidClose:
 		var request lsp.DidCloseTextDocumentParamsNotification
 		if err = json.Unmarshal([]byte(contents), &request); err != nil {
 			return fmt.Errorf("decode (didClose) request failed: %w", err)
@@ -82,11 +82,7 @@ func HandleMessage(
 				err,
 			)
 		}
-		response, err := state.CreateTextDocumentCompletion(
-			request.ID,
-			request.Params.TextDocument,
-			request.Params.Position,
-		)
+		response, err := state.CreateTextDocumentCompletion(request)
 		if err != nil {
 			return fmt.Errorf("failed to get completions: %w", err)
 		}

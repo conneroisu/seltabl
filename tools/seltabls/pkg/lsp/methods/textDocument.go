@@ -56,11 +56,11 @@ const (
 	// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_formatting
 	MethodTextDocumentFormatting Method = "textDocument/formatting"
 
-	// MethodTextDocumentDidClose is the text document did close notification method for the language server protocol.
+	// MethodNotificationTextDocumentDidClose is the text document did close notification method for the language server protocol.
 	//
 	// Microsoft LSP Docs:
 	// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_didClose
-	MethodTextDocumentDidClose Method = "textDocument/didClose"
+	MethodNotificationTextDocumentDidClose Method = "textDocument/didClose"
 
 	// MethodTextDocumentRangeFormatting is the text document range formatting method for the LSP
 	//

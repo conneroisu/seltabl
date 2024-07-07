@@ -61,19 +61,21 @@ func vetFile(ctx context.Context, file string) ([]lsp.Diagnostic, error) {
 	if err != nil {
 		return nil, fmt.Errorf("failed to create state: %w", err)
 	}
-	response, err := state.OpenDocument(ctx, lsp.NotificationDidOpenTextDocument{
-		Notification: lsp.Notification{
-			RPC:    lsp.RPCVersion,
-			Method: "textDocument/didOpen",
-		},
-		Params: lsp.DidOpenTextDocumentParams{
-			TextDocument: lsp.TextDocumentItem{
-				URI:        file,
-				Text:       string(readFile(file)),
-				LanguageID: "go",
+	response, err := analysis.OpenDocument(ctx,
+		&state,
+		lsp.NotificationDidOpenTextDocument{
+			Notification: lsp.Notification{
+				RPC:    lsp.RPCVersion,
+				Method: "textDocument/didOpen",
 			},
-		},
-	})
+			Params: lsp.DidOpenTextDocumentParams{
+				TextDocument: lsp.TextDocumentItem{
+					URI:        file,
+					Text:       string(readFile(file)),
+					LanguageID: "go",
+				},
+			},
+		})
 	return response.Params.Diagnostics, nil
 }
 

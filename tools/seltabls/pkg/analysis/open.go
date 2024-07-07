@@ -9,13 +9,17 @@ import (
 	"golang.org/x/sync/errgroup"
 )
 
-// OpenDocument opens a document in the state and returns any diagnostics for the document
+// OpenDocument opens a document in the state and returns any diagnostics for the document.
 //
-// uri is the uri of the document
+// uri is the uri of the document.
 //
-// content is the content of the document
-func (s *State) OpenDocument(
+// content is the content of the document.
+//
+// On the opening of any document, the state is updated with the content of the document
+// and the diagnostics for the document are returned.
+func OpenDocument(
 	ctx context.Context,
+	s *State,
 	req lsp.NotificationDidOpenTextDocument,
 ) (response *lsp.PublishDiagnosticsNotification, err error) {
 	response = &lsp.PublishDiagnosticsNotification{

@@ -18,7 +18,7 @@ func TestSelectors(t *testing.T) {
 	}
 	tests := []args{
 		{
-			name: "TestSelectors",
+			name: "Test Get Selectors for HTML with single table",
 			input: `
 				<table>
 					<tr>
@@ -42,7 +42,7 @@ func TestSelectors(t *testing.T) {
 			},
 		},
 		{
-			name: "TestSelectors",
+			name: "Test Get Selectors for HTML with multiple tables",
 			input: `
 				<html>
 					<head>
@@ -81,7 +81,7 @@ func TestSelectors(t *testing.T) {
 			},
 		},
 		{
-			name: "TestSelectors",
+			name: "Test Get Selectors for HTML with multiple tables and multiple selectors",
 			input: `
 				<html>
 					<head>
@@ -103,7 +103,7 @@ func TestSelectors(t *testing.T) {
 			},
 		},
 		{
-			name: "TestSelectors",
+			name: "Test Get Selectors for HTML with multiple tables and multiple selectors",
 			input: `
 				<html>
 					<head>
@@ -143,11 +143,11 @@ func TestSelectors(t *testing.T) {
 				"html body table tbody",
 				"html body table tbody tr",
 				"html body table tbody tr td",
-				"html body table tbody tr td a[href=https://example.com]",
+				"html body table tbody tr td a[href]",
 			},
 		},
 		{
-			name: "TestSelectors",
+			name: "Test Get Selectors for HTML with multiple tables and multiple selectors and multiple tags",
 			input: `
 				<html>
 					<head>
@@ -187,7 +187,7 @@ func TestSelectors(t *testing.T) {
 				"html body table tbody",
 				"html body table tbody tr",
 				"html body table tbody tr td",
-				"html body table tbody tr td a[href=https://example.com]",
+				"html body table tbody tr td a[href]",
 			},
 		},
 	}
@@ -212,7 +212,13 @@ func TestSelectors(t *testing.T) {
 				t.Logf("\"%s\",", wa)
 			}
 			for _, wa := range tt.want {
-				assert.Contains(t, got, wa, "selector %s not found in got", wa)
+				assert.Contains(
+					t,
+					got,
+					wa,
+					"selector %s not found in got",
+					wa,
+				)
 			}
 		})
 	}

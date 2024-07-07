@@ -50,5 +50,8 @@ func (c *ConfigFile) Generate() error {
 url: %s
 ignore-elements:`+strings.Join(c.IgnoreElements, "\n  - ")+`
 `, c.Name, c.URL))
+	if err != nil {
+		return fmt.Errorf("failed to write file: %w", err)
+	}
 	return nil
 }

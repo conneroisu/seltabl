@@ -75,7 +75,7 @@ func GetURL(url string) ([]byte, error) {
 	return body, nil
 }
 
-// isURL checks if the string is a valid URL
+// IsURL checks if the string is a valid URL
 func IsURL(s string) error {
 	_, err := url.ParseRequestURI(s)
 	return err

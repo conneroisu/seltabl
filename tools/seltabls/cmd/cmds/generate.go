@@ -94,7 +94,7 @@ So the output fo the command:
 			if err != nil {
 				return fmt.Errorf("failed to get url: %w", err)
 			}
-			err = generate.GenerateSuite(
+			err = generate.Suite(
 				ctx,
 				client,
 				name,

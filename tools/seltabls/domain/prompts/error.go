@@ -7,6 +7,8 @@ import (
 	"text/template"
 )
 
+// ErrorPrompt is the error prompt
+//
 //go:embed error.md
 var ErrorPrompt string
 

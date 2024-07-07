@@ -14,7 +14,7 @@ func (s *State) UpdateDocument(
 	ctx context.Context,
 	request *lsp.TextDocumentDidChangeNotification,
 ) (response lsp.PublishDiagnosticsNotification, err error) {
-
+	var eg *errgroup.Group
 	response = lsp.PublishDiagnosticsNotification{
 		Notification: lsp.Notification{
 			RPC:    "2.0",
@@ -25,7 +25,7 @@ func (s *State) UpdateDocument(
 			Diagnostics: []lsp.Diagnostic{},
 		},
 	}
-	eg, ctx := errgroup.WithContext(ctx)
+	eg, _ = errgroup.WithContext(ctx)
 	eg.Go(func() error {
 		s.Documents[request.Params.TextDocument.URI] = request.Params.ContentChanges[0].Text
 		data, err := parsers.ParseStructComments(request.Params.ContentChanges[0].Text)

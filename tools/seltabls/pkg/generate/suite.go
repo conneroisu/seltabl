@@ -7,8 +7,8 @@ import (
 	"github.com/sashabaranov/go-openai"
 )
 
-// GenerateSuite generates a suite for a given name
-func GenerateSuite(
+// Suite generates a suite for a given name
+func Suite(
 	ctx context.Context,
 	client *openai.Client,
 	name string,

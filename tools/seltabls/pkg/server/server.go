@@ -59,11 +59,8 @@ func HandleMessage(
 			)
 		}
 		response, err := analysis.OpenDocument(ctx, state, request)
-		if err != nil {
+		if err != nil || response == nil {
 			return fmt.Errorf("failed to open document: %w", err)
-		}
-		if len(response.Params.Diagnostics) == 0 {
-			return nil
 		}
 		err = WriteResponse(ctx, writer, response)
 		if err != nil {
@@ -78,8 +75,8 @@ func HandleMessage(
 				err,
 			)
 		}
-		response, err := state.CreateTextDocumentCompletion(ctx, request)
-		if err != nil {
+		response, err := analysis.CreateTextDocumentCompletion(ctx, state, request)
+		if err != nil || response == nil {
 			return fmt.Errorf("failed to get completions: %w", err)
 		}
 		err = WriteResponse(ctx, writer, response)
@@ -96,7 +93,7 @@ func HandleMessage(
 			)
 		}
 		response, err := analysis.UpdateDocument(ctx, state, &request)
-		if err != nil {
+		if err != nil || response == nil {
 			return fmt.Errorf("failed to update document: %w", err)
 		}
 		err = WriteResponse(ctx, writer, response)
@@ -126,8 +123,8 @@ func HandleMessage(
 				err,
 			)
 		}
-		response, err := analysis.TextDocumentCodeAction(request, state)
-		if err != nil {
+		response, err := analysis.TextDocumentCodeAction(ctx, request, state)
+		if err != nil || response == nil {
 			return fmt.Errorf("failed to get code actions: %w", err)
 		}
 		err = WriteResponse(ctx, writer, response)
@@ -156,7 +153,7 @@ func HandleMessage(
 			)
 		}
 		response, err := state.CancelRequest(request)
-		if err != nil {
+		if err != nil || response == nil {
 			return fmt.Errorf("failed to cancel request: %w", err)
 		}
 		err = WriteResponse(ctx, writer, response)

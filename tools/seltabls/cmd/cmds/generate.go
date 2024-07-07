@@ -47,6 +47,45 @@ So the output fo the command:
 
 `,
 		PreRunE: func(cmd *cobra.Command, _ []string) error {
+			cmd.SetOutput(w)
+			cmd.SetIn(r)
+			cmd.SetErr(w)
+			cmd.SetContext(ctx)
+			cmd.PersistentFlags().StringVarP(
+				&url,
+				"url",
+				"u",
+				"",
+				"The url for which to generate a seltabl struct.",
+			)
+			cmd.PersistentFlags().StringVarP(
+				&name,
+				"name",
+				"n",
+				"",
+				"The name of the struct to generate.",
+			)
+			cmd.PersistentFlags().StringVarP(
+				&llmModel,
+				"llm-model",
+				"m",
+				"llama3-70b-8192",
+				"The name of the llm model to use for generating the struct.",
+			)
+			cmd.PersistentFlags().StringVarP(
+				&llmKey,
+				"llm-key",
+				"k",
+				"",
+				"The key for the llm model to use for generating the struct.",
+			)
+			cmd.PersistentFlags().StringArrayVarP(
+				&ignoreElements,
+				"ignore-elements",
+				"i",
+				[]string{"script", "meta", "style", "link", "img", "footer", "header"},
+				"The elements to ignore when generating the struct.",
+			)
 			if llmKey == "" {
 				llmKey := os.Getenv("LLM_API_KEY")
 				if llmKey == "" {
@@ -55,7 +94,7 @@ So the output fo the command:
 			}
 			return nil
 		},
-		RunE: func(cmd *cobra.Command, _ []string) error {
+		RunE: func(_ *cobra.Command, _ []string) error {
 			if url == "" {
 				input := huh.NewInput().
 					Title("Enter the url for which to generate a seltabl struct:").
@@ -68,7 +107,6 @@ So the output fo the command:
 				url,
 				llmKey,
 			)
-			print(client)
 			state, err := analysis.NewState()
 			if err != nil {
 				return fmt.Errorf("failed to create state: %w", err)
@@ -109,45 +147,6 @@ So the output fo the command:
 			return nil
 		},
 	}
-	cmd.SetOutput(w)
-	cmd.SetIn(r)
-	cmd.SetErr(w)
-	cmd.SetContext(ctx)
-	cmd.PersistentFlags().StringVarP(
-		&url,
-		"url",
-		"u",
-		"",
-		"The url for which to generate a seltabl struct.",
-	)
-	cmd.PersistentFlags().StringVarP(
-		&name,
-		"name",
-		"n",
-		"",
-		"The name of the struct to generate.",
-	)
-	cmd.PersistentFlags().StringVarP(
-		&llmModel,
-		"llm-model",
-		"m",
-		"llama3-70b-8192",
-		"The name of the llm model to use for generating the struct.",
-	)
-	cmd.PersistentFlags().StringVarP(
-		&llmKey,
-		"llm-key",
-		"k",
-		"",
-		"The key for the llm model to use for generating the struct.",
-	)
-	cmd.PersistentFlags().StringArrayVarP(
-		&ignoreElements,
-		"ignore-elements",
-		"i",
-		[]string{"script", "meta", "style", "link", "img", "footer", "header"},
-		"The elements to ignore when generating the struct.",
-	)
 	return cmd
 }
 

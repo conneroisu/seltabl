@@ -28,11 +28,14 @@ func (r PublishDiagnosticsNotification) Method() string {
 }
 
 // PublishDiagnosticsParams are the parameters for the publish diagnostics notification.
+//
+// Microsoft LSP Docs:
+// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_publishDiagnostics
 type PublishDiagnosticsParams struct {
 	// URI is the uri for the diagnostics.
 	URI string `json:"uri"`
 	// Diagnostics are the diagnostics for the uri.
-	Diagnostics []Diagnostic `json:"diagnostics,omitempty"`
+	Diagnostics []Diagnostic `json:"diagnostics"`
 }
 
 // Diagnostic is a struct for a diagnostic.

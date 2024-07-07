@@ -18,7 +18,6 @@ func (s *State) OpenDocument(
 	ctx context.Context,
 	req lsp.NotificationDidOpenTextDocument,
 ) (response *lsp.PublishDiagnosticsNotification, err error) {
-	eg, ctx := errgroup.WithContext(ctx)
 	response = &lsp.PublishDiagnosticsNotification{
 		Notification: lsp.Notification{
 			RPC:    lsp.RPCVersion,
@@ -29,39 +28,44 @@ func (s *State) OpenDocument(
 			Diagnostics: []lsp.Diagnostic{},
 		},
 	}
-	diags := []lsp.Diagnostic{}
-	uri := req.Params.TextDocument.URI
-	s.Documents[uri] = req.Params.TextDocument.Text
-	data, err := parsers.ParseStructComments(req.Params.TextDocument.Text)
-	if err != nil {
+	select {
+	case <-ctx.Done():
+		return response, fmt.Errorf("context cancelled: %w", ctx.Err())
+	default:
+		eg, ctx := errgroup.WithContext(ctx)
+		uri := req.Params.TextDocument.URI
+		s.Documents[uri] = req.Params.TextDocument.Text
+		data, err := parsers.ParseStructComments(req.Params.TextDocument.Text)
+		if err != nil {
+			return response, nil
+		}
+		for _, url := range data.URLs {
+			eg.Go(func() error {
+				s.URLs[uri] = append(s.URLs[uri], url)
+				s.Selectors[uri], err = GetSelectors(
+					ctx,
+					s,
+					url,
+					data.IgnoreElements,
+				)
+				if err != nil {
+					return err
+				}
+				return nil
+			})
+		}
+		if err := eg.Wait(); err != nil {
+			return response, fmt.Errorf("failed to get selectors for urls: %w", err)
+		}
+		response.Params.Diagnostics, err = GetDiagnosticsForFile(
+			ctx,
+			s,
+			&req.Params.TextDocument.Text,
+			data,
+		)
+		if err != nil {
+			s.Logger.Printf("failed to get diagnostics for file: %s\n", err)
+		}
 		return response, nil
 	}
-	for _, url := range data.URLs {
-		eg.Go(func() error {
-			s.URLs[uri] = append(s.URLs[uri], url)
-			s.Selectors[uri], err = GetSelectors(
-				ctx,
-				s,
-				url,
-				data.IgnoreElements,
-			)
-			if err != nil {
-				return err
-			}
-			return nil
-		})
-	}
-	if err := eg.Wait(); err != nil {
-		return response, fmt.Errorf("failed to get selectors for urls: %w", err)
-	}
-	diags, err = GetDiagnosticsForFile(
-		s,
-		&req.Params.TextDocument.Text,
-		data,
-	)
-	response.Params.Diagnostics = diags
-	if err != nil {
-		s.Logger.Printf("failed to get diagnostics for file: %s\n", err)
-	}
-	return response, nil
 }

@@ -7,8 +7,9 @@ import (
 )
 
 // TextDocumentCodeAction returns the code actions for a given text document.
-func (s *State) TextDocumentCodeAction(
+func TextDocumentCodeAction(
 	req lsp.CodeActionRequest,
+	s *State,
 ) (response lsp.TextDocumentCodeActionResponse, err error) {
 	// Should be able to refresh selectors from the database by requesting the url
 	text := s.Documents[req.Params.TextDocument.URI]

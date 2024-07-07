@@ -6,49 +6,47 @@ import (
 
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/parsers"
-	"golang.org/x/sync/errgroup"
 )
 
 // UpdateDocument updates the state with the given document
-func (s *State) UpdateDocument(
+func UpdateDocument(
 	ctx context.Context,
+	s *State,
 	request *lsp.TextDocumentDidChangeNotification,
 ) (response lsp.PublishDiagnosticsNotification, err error) {
-	var eg *errgroup.Group
 	response = lsp.PublishDiagnosticsNotification{
 		Notification: lsp.Notification{
 			RPC:    "2.0",
 			Method: "textDocument/publishDiagnostics",
 		},
 		Params: lsp.PublishDiagnosticsParams{
-			URI:         request.Params.TextDocument.URI,
 			Diagnostics: []lsp.Diagnostic{},
+			URI:         request.Params.TextDocument.URI,
 		},
 	}
-	eg, _ = errgroup.WithContext(ctx)
-	eg.Go(func() error {
+	select {
+	case <-ctx.Done():
+		return response, fmt.Errorf("context cancelled: %w", ctx.Err())
+	default:
 		s.Documents[request.Params.TextDocument.URI] = request.Params.ContentChanges[0].Text
 		data, err := parsers.ParseStructComments(request.Params.ContentChanges[0].Text)
 		if err != nil {
-			return fmt.Errorf("failed to get urls and ignores: %w", err)
+			return response, fmt.Errorf("failed to get urls and ignores: %w", err)
 		}
 		s.URLs[request.Params.TextDocument.URI] = append(
 			s.URLs[request.Params.TextDocument.URI],
 			data.URLs...,
 		)
 		diags, err := GetDiagnosticsForFile(
+			ctx,
 			s,
-			&request.Params.ContentChanges[0].Text,
+			&request.Params.ContentChanges[len(request.Params.ContentChanges)-1].Text,
 			data,
 		)
 		if err != nil {
-			return fmt.Errorf("failed to get diagnostics for file: %w", err)
+			return response, fmt.Errorf("failed to get diagnostics for file: %w", err)
 		}
 		response.Params.Diagnostics = diags
-		return nil
-	})
-	if err := eg.Wait(); err != nil {
-		return response, fmt.Errorf("failed to get urls and ignores: %w", err)
+		return response, nil
 	}
-	return response, nil
 }

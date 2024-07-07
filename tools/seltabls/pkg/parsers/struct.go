@@ -3,6 +3,7 @@ package parsers
 import (
 	"bytes"
 	"context"
+	"encoding/json"
 	"errors"
 	"fmt"
 	"go/ast"
@@ -11,6 +12,9 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/PuerkitoBio/goquery"
+	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
+	"github.com/sourcegraph/conc"
 	"golang.org/x/sync/errgroup"
 )
 
@@ -33,6 +37,139 @@ type Structure struct {
 	Fields []Field `json:"fields"`
 }
 
+// String returns a string representation of the structure
+func (s *Structure) String() string {
+	return fmt.Sprintf("Structure{Fields: %s}", s.Fields)
+}
+
+// MarshalJSON implements the json.Marshaler interface.
+func (s *Structure) MarshalJSON() ([]byte, error) {
+	return json.Marshal(struct {
+		Fields []Field `json:"fields"`
+	}{
+		Fields: s.Fields,
+	})
+}
+
+// validateSelector validates a selector against a known url content in the form of a goquery document
+func validateSelector(
+	selector string,
+	doc *goquery.Document,
+) (bool, error) {
+	// Create a new goquery document from the response body
+	selection := doc.Find(selector)
+	// Check if the selector is in the response body
+	if selection.Length() < 1 {
+		return false, nil
+	}
+	return true, nil
+}
+
+var (
+	// selectorDataTag is the tag used to mark a data cell.
+	selectorDataTag = lsp.CompletionItem{Label: "dSel",
+		Detail:        "Title Text for the data selector",
+		Documentation: "This is the documentation for the data selector",
+	}
+	// selectorControlTag is the tag used to signify selecting aspects of a cell
+	selectorHeaderTag = lsp.CompletionItem{Label: "hSel",
+		Detail:        "Title Text for the header selector",
+		Documentation: "This is the documentation for the header selector",
+	}
+	// selectorQueryTag is the tag used to signify selecting aspects of a cell
+	selectorQueryTag = lsp.CompletionItem{Label: "qSel",
+		Detail:        "Title Text for the query selector",
+		Documentation: "This is the documentation for the query selector",
+	}
+	// selectorMustBePresentTag is the tag used to signify selecting aspects of a cell
+	selectorMustBePresentTag = lsp.CompletionItem{Label: "must",
+		Detail:        "Title Text for the must be present selector",
+		Documentation: "This is the documentation for the must be present selector",
+	}
+	// selectorControlTag is the tag used to signify selecting aspects of a cell
+	selectorControlTag = lsp.CompletionItem{Label: "ctl",
+		Detail:        "Title Text for the control selector",
+		Documentation: "This is the documentation for the control selector",
+	}
+)
+var (
+	diagnosticKeys = []string{
+		selectorDataTag.Label,
+		selectorHeaderTag.Label,
+		selectorQueryTag.Label,
+	}
+)
+
+// Verify checks if the selectors in the struct are valid against the given url and content.
+func (str *Structure) Verify(ctx context.Context, url string, content *goquery.Document) (diags []lsp.Diagnostic, err error) {
+	wg := conc.WaitGroup{}
+	for j := range len(str.Fields) {
+		for i := range str.Fields[j].Tags.Len() {
+			wg.Go(func() {
+				for k := range diagnosticKeys {
+					if diagnosticKeys[k] == str.Fields[j].Tags.Tag(i).Key {
+						verified, err := validateSelector(
+							str.Fields[j].Tags.Tag(i).Value(),
+							content,
+						)
+						if !verified || err != nil {
+							diag := lsp.Diagnostic{
+								Range: lsp.LineRange(
+									str.Fields[j].Line-1,
+									str.Fields[j].Tag(i).Start,
+									str.Fields[j].Tag(i).End,
+								),
+								Severity: lsp.DiagnosticWarning,
+								Source:   "seltabls",
+							}
+							if err != nil {
+								diag.Message = fmt.Sprintf(
+									"failed to validate selector `%s` against known url (%s) content: \n```html\n%s\n```",
+									func() string {
+										if str.Fields[j].Tags.Tag(i).Value() == "" {
+											return "<null>"
+										}
+										return str.Fields[j].Tags.Tag(i).Value()
+									}(),
+									url,
+									err.Error(),
+								)
+								diags = append(diags, diag)
+								return
+							}
+							diag.Message = fmt.Sprintf(
+								"could not verify selector `%s` against known url (%s) content",
+								func() string {
+									if str.Fields[j].Tags.Tag(i).Value() == "" {
+										return "<null>"
+									}
+									return str.Fields[j].Tags.Tag(i).Value()
+								}(),
+								url,
+							)
+							diags = append(diags, diag)
+						}
+					}
+				}
+			})
+		}
+	}
+	wg.Wait()
+	return diags, err
+}
+
+// UnmarshalJSON implements the json.Unmarshaler interface.
+func (s *Structure) UnmarshalJSON(b []byte) error {
+	var tmp struct {
+		Fields []Field `json:"fields"`
+	}
+	if err := json.Unmarshal(b, &tmp); err != nil {
+		return err
+	}
+	s.Fields = tmp.Fields
+	return nil
+}
+
 // Field is a struct for a field within a struct
 type Field struct {
 	// Name is the name of the field
@@ -47,6 +184,60 @@ type Field struct {
 	Start int `json:"start"`
 	// End is the end of the tag in the source code
 	End int `json:"end"`
+}
+
+// String returns a string representation of the field
+func (f *Field) String() string {
+	return fmt.Sprintf("Field{Name: %s, Type: %s, Tags: %s, Start: %d, End: %d, Line: %d}", f.Name, f.Type, f.Tags, f.Start, f.End, f.Line)
+}
+
+// MarshalJSON implements the json.Marshaler interface.
+func (f *Field) MarshalJSON() ([]byte, error) {
+	return json.Marshal(struct {
+		Name  string `json:"name"`
+		Type  string `json:"type"`
+		Tags  string `json:"tags"`
+		Start int    `json:"start"`
+		End   int    `json:"end"`
+		Line  int    `json:"line"`
+	}{
+		Name:  f.Name,
+		Type:  f.Type,
+		Tags:  f.Tags.String(),
+		Start: f.Start,
+		End:   f.End,
+		Line:  f.Line,
+	})
+}
+
+// UnmarshalJSON implements the json.Unmarshaler interface.
+func (f *Field) UnmarshalJSON(b []byte) error {
+	var tmp struct {
+		Name  string `json:"name"`
+		Type  string `json:"type"`
+		Tags  string `json:"tags"`
+		Start int    `json:"start"`
+		End   int    `json:"end"`
+		Line  int    `json:"line"`
+	}
+	if err := json.Unmarshal(b, &tmp); err != nil {
+		return err
+	}
+	f.Name = tmp.Name
+	f.Type = tmp.Type
+	f.Tags = Tags{tags: []*Tag{}}
+	if err := json.Unmarshal([]byte(tmp.Tags), &f.Tags); err != nil {
+		return err
+	}
+	f.Start = tmp.Start
+	f.End = tmp.End
+	f.Line = tmp.Line
+	return nil
+}
+
+// Tag returns the tag at the given index
+func (f *Field) Tag(i int) *Tag {
+	return f.Tags.Tag(i)
 }
 
 // Tags represent a set of tags from a single struct field
@@ -104,7 +295,7 @@ func ParseStructs(
 						fset.Position(field.Pos()).Line,
 					)
 					if err != nil {
-						return fmt.Errorf("failed to parse tags: %w", err)
+						return nil
 					}
 					structure.Fields[idx] = Field{
 						Name:  field.Names[0].Name,

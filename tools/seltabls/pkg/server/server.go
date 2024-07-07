@@ -93,7 +93,10 @@ func HandleMessage(
 				err,
 			)
 		}
-		response, err := state.UpdateDocument(ctx, &request)
+		response, err := analysis.UpdateDocument(ctx, state, &request)
+		if err != nil {
+			return fmt.Errorf("failed to update document: %w", err)
+		}
 		err = WriteResponse(ctx, writer, response)
 		if err != nil {
 			return fmt.Errorf("failed to write response: %w", err)
@@ -121,9 +124,7 @@ func HandleMessage(
 				err,
 			)
 		}
-		response, err := state.TextDocumentCodeAction(
-			request,
-		)
+		response, err := analysis.TextDocumentCodeAction(request, state)
 		if err != nil {
 			return fmt.Errorf("failed to get code actions: %w", err)
 		}

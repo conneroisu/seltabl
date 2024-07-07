@@ -30,3 +30,21 @@ fi
 if [ -f "coverage.out" ]; then
     rm -rf coverage.out
 fi
+
+# ask to remove the ~/.config/seltabls/state.log file
+if [ -f "$HOME/.config/seltabls/state.log" ]; then
+    echo "Do you want to remove the ~/.config/seltabls/state.log file? (y/n)"
+    read -r answer
+    if [ "$answer" = "y" ]; then
+        rm -rf "$HOME/.config/seltabls/state.log"
+    fi
+fi
+
+# ask to remove the ~/.config/seltabls/uri.sqlite file
+if [ -f "$HOME/.config/seltabls/uri.sqlite" ]; then
+    echo "Do you want to remove the ~/.config/seltabls/uri.sqlite file? (y/n)"
+    read -r answer
+    if [ "$answer" = "y" ]; then
+        rm -rf "$HOME/.config/seltabls/uri.sqlite"
+    fi
+fi

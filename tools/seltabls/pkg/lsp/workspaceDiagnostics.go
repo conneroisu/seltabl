@@ -32,7 +32,7 @@ type PublishDiagnosticsParams struct {
 	// URI is the uri for the diagnostics.
 	URI string `json:"uri"`
 	// Diagnostics are the diagnostics for the uri.
-	Diagnostics []Diagnostic `json:"diagnostics"`
+	Diagnostics []Diagnostic `json:"diagnostics,omitempty"`
 }
 
 // Diagnostic is a struct for a diagnostic.

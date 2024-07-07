@@ -81,16 +81,18 @@ func (s *State) getDiagnosticsForStruct(
 							}
 							if err != nil {
 								diag.Message = fmt.Sprintf(
-									"Failed to validate selector %s against known url content: %s",
+									"failed to validate selector %s against known url (%s) content: %s",
 									strt.Fields[j].Tags.Tag(i).Value(),
+									data.URLs[0],
 									err.Error(),
 								)
 								diagnostics = append(diagnostics, diag)
 								return
 							}
 							diag.Message = fmt.Sprintf(
-								"Could not verify selector %s against known url content",
+								"could not verify selector %s against known url (%s) content",
 								strt.Fields[j].Tags.Tag(i).Value(),
+								data.URLs[0],
 							)
 							diagnostics = append(diagnostics, diag)
 						}

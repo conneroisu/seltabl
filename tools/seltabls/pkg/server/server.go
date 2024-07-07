@@ -61,18 +61,12 @@ func HandleMessage(
 			return fmt.Errorf("failed to open document: %w", err)
 		}
 		if len(response.Params.Diagnostics) == 0 {
-			state.Logger.Printf("had zero diags for %s", request.Method)
+			return nil
 		}
 		err = WriteResponse(ctx, writer, response)
 		if err != nil {
 			return fmt.Errorf("failed to write response: %w", err)
 		}
-	case methods.MethodNotificationTextDocumentDidClose:
-		var request lsp.DidCloseTextDocumentParamsNotification
-		if err = json.Unmarshal([]byte(contents), &request); err != nil {
-			return fmt.Errorf("decode (didClose) request failed: %w", err)
-		}
-		state.Documents[request.Params.TextDocument.URI] = ""
 	case methods.MethodRequestTextDocumentCompletion:
 		var request lsp.CompletionRequest
 		err = json.Unmarshal(contents, &request)
@@ -137,8 +131,6 @@ func HandleMessage(
 		if err != nil {
 			return fmt.Errorf("failed to write response: %w", err)
 		}
-	case methods.MethodNotificationTextDocumentDidSave:
-		state.Logger.Printf("Client sent a did save notification")
 	case methods.MethodShutdown:
 		var request lsp.ShutdownRequest
 		err = json.Unmarshal([]byte(contents), &request)
@@ -171,6 +163,14 @@ func HandleMessage(
 	case methods.MethodExit:
 		os.Exit(0)
 		return nil
+	case methods.MethodNotificationTextDocumentDidSave:
+		state.Logger.Printf("Client sent a did save notification")
+	case methods.MethodNotificationTextDocumentDidClose:
+		var request lsp.DidCloseTextDocumentParamsNotification
+		if err = json.Unmarshal([]byte(contents), &request); err != nil {
+			return fmt.Errorf("decode (didClose) request failed: %w", err)
+		}
+		state.Documents[request.Params.TextDocument.URI] = ""
 	default:
 		return fmt.Errorf("unknown method: %s", method)
 	}

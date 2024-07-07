@@ -26,7 +26,7 @@ func main() {
 // @ignore-elements: script, style, link, img, footer, header
 type TableStruct struct {
 	A string `json:"a" hSel:"html body div.footer div" dSel:"tr td:nth-child(1)" ctl:"text"`
-	B string `json:"b" hSel:"tr:nth-child(1) td:nth-child(1)" dSel:"tr:nth-child(1)" ctl:"text"`
-	C string `json:"c" hSel:"html body" dSel:"tr td:nth-child(1)" ctl:"text"`
+	B string `json:"b" hSel:"html head title" dSel:"tr:nth-child(1)" ctl:"text"`
+	C string `json:"c" hSel:"html" dSel:"tr td:nth-child(1)" ctl:"text"`
 	D string `json:"d" hSel:"html" dSel:"html" ctl:"text"`
 }

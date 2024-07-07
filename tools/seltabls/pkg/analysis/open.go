@@ -39,9 +39,9 @@ func (s *State) OpenDocument(
 		if err != nil {
 			return response, nil
 		}
+		s.URLs[uri] = append(s.URLs[uri], data.URLs...)
 		for _, url := range data.URLs {
 			eg.Go(func() error {
-				s.URLs[uri] = append(s.URLs[uri], url)
 				s.Selectors[uri], err = GetSelectors(
 					ctx,
 					s,

@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"net/url"
 	"os"
 
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/analysis"
@@ -26,7 +27,8 @@ func HandleMessage(
 	switch methods.GetMethod(method) {
 	case methods.MethodInitialize:
 		var request lsp.InitializeRequest
-		if err = json.Unmarshal([]byte(contents), &request); err != nil {
+		err = json.Unmarshal([]byte(contents), &request)
+		if err != nil {
 			return fmt.Errorf(
 				"decode initialize request (initialize) failed: %w",
 				err,
@@ -42,7 +44,8 @@ func HandleMessage(
 		}
 	case methods.MethodNotificationInitialized:
 		var request lsp.InitializedParamsRequest
-		if err = json.Unmarshal([]byte(contents), &request); err != nil {
+		err = json.Unmarshal([]byte(contents), &request)
+		if err != nil {
 			return fmt.Errorf(
 				"decode (initialized) request failed: %w",
 				err,
@@ -50,7 +53,8 @@ func HandleMessage(
 		}
 	case methods.MethodRequestTextDocumentDidOpen:
 		var request lsp.NotificationDidOpenTextDocument
-		if err = json.Unmarshal(contents, &request); err != nil {
+		err = json.Unmarshal(contents, &request)
+		if err != nil {
 			return fmt.Errorf(
 				"decode (textDocument/didOpen) request failed: %w",
 				err,
@@ -166,6 +170,38 @@ func HandleMessage(
 		return nil
 	case methods.MethodNotificationTextDocumentDidSave:
 		state.Logger.Printf("Client sent a did save notification")
+		var request lsp.DidSaveTextDocumentParamsNotification
+		err = json.Unmarshal([]byte(contents), &request)
+		if err != nil {
+			return fmt.Errorf("decode (didSave) request failed: %w", err)
+		}
+		u, err := url.Parse(request.Params.TextDocument.URI)
+		content, err := os.ReadFile(u.Path)
+		if err != nil {
+			return fmt.Errorf("failed to read file: %w", err)
+		}
+		// repsond with diagnostics for the file
+		diagsResp, err := state.OpenDocument(ctx, lsp.NotificationDidOpenTextDocument{
+			Notification: lsp.Notification{
+				RPC:    lsp.RPCVersion,
+				Method: "textDocument/didOpen",
+			},
+			Params: lsp.DidOpenTextDocumentParams{
+				TextDocument: lsp.TextDocumentItem{
+					URI:        request.Params.TextDocument.URI,
+					Text:       string(content),
+					LanguageID: "go",
+				},
+			},
+		})
+		if err != nil {
+			return fmt.Errorf("failed to get diagnostics for file: %w", err)
+		}
+		err = WriteResponse(ctx, writer, diagsResp)
+		if err != nil {
+			return fmt.Errorf("failed to write response: %w", err)
+		}
+		state.Logger.Printf("Client completed a did save notification")
 	case methods.MethodNotificationTextDocumentDidClose:
 		var request lsp.DidCloseTextDocumentParamsNotification
 		if err = json.Unmarshal([]byte(contents), &request); err != nil {

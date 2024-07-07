@@ -37,16 +37,18 @@ func UpdateDocument(
 			s.URLs[request.Params.TextDocument.URI],
 			data.URLs...,
 		)
-		diags, err := GetDiagnosticsForFile(
-			ctx,
-			s,
-			&request.Params.ContentChanges[len(request.Params.ContentChanges)-1].Text,
-			data,
-		)
-		if err != nil {
-			return response, fmt.Errorf("failed to get diagnostics for file: %w", err)
+		for i := range request.Params.ContentChanges {
+			diags, err := GetDiagnosticsForFile(
+				ctx,
+				s,
+				&request.Params.ContentChanges[i].Text,
+				data,
+			)
+			if err != nil {
+				return response, fmt.Errorf("failed to get diagnostics for file: %w", err)
+			}
+			response.Params.Diagnostics = append(response.Params.Diagnostics, diags...)
 		}
-		response.Params.Diagnostics = diags
 		return response, nil
 	}
 }

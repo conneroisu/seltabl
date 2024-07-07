@@ -9,6 +9,11 @@ import (
 	"golang.org/x/sync/errgroup"
 )
 
+// ResponseWriter is an interface for writing a response
+type ResponseWriter interface {
+	WriteResponse(ctx context.Context, writer *io.Writer, msg rpc.MethodActor) error
+}
+
 // WriteResponse writes a message to the writer
 func WriteResponse(
 	ctx context.Context,

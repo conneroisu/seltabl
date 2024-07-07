@@ -5,13 +5,17 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+
+	"github.com/conneroisu/seltabl/tools/seltabls/data/master"
 )
 
 // ConfigFile is a struct for a config file
 type ConfigFile struct {
-	Name           string   `yaml:"name"`
-	URL            string   `yaml:"url"`
-	IgnoreElements []string `yaml:"ignore-elements"`
+	Name           string            `yaml:"name"`
+	URL            string            `yaml:"url"`
+	IgnoreElements []string          `yaml:"ignore-elements"`
+	HTMLBody       string            `yaml:"html-body"`
+	Selectors      []master.Selector `yaml:"selectors"`
 }
 
 // NewConfigFile returns a new config file with the given name, url, and ignore

@@ -9,11 +9,14 @@ import (
 	"github.com/sashabaranov/go-openai"
 )
 
-// StructFile is a struct for a struct file
+// StructFile is a struct for a struct file.
+//
+// It contains attributes relating to the name, url, and ignore elements of the struct file.
 type StructFile struct {
-	Name   string
-	URL    string
-	Client *openai.Client
+	Name           string
+	URL            string
+	Client         *openai.Client
+	IgnoreElements []string
 
 	fields []Field
 }

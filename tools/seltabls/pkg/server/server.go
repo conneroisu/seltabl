@@ -56,10 +56,7 @@ func HandleMessage(
 				err,
 			)
 		}
-		response, err := state.OpenDocument(
-			ctx,
-			request,
-		)
+		response, err := state.OpenDocument(ctx, request)
 		if err != nil {
 			return fmt.Errorf("failed to open document: %w", err)
 		}
@@ -110,7 +107,7 @@ func HandleMessage(
 		if err != nil {
 			return fmt.Errorf("failed unmarshal of hover request (): %w", err)
 		}
-		response, err := state.Hover(request)
+		response, err := analysis.NewHoverResponse(request, state)
 		if err != nil {
 			return fmt.Errorf("failed to get hover: %w", err)
 		}

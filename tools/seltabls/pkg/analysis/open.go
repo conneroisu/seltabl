@@ -18,6 +18,7 @@ func (s *State) OpenDocument(
 	ctx context.Context,
 	req lsp.NotificationDidOpenTextDocument,
 ) (response *lsp.PublishDiagnosticsNotification, err error) {
+	eg, ctx := errgroup.WithContext(ctx)
 	response = &lsp.PublishDiagnosticsNotification{
 		Notification: lsp.Notification{
 			RPC:    lsp.RPCVersion,
@@ -30,13 +31,9 @@ func (s *State) OpenDocument(
 	}
 	diags := []lsp.Diagnostic{}
 	uri := req.Params.TextDocument.URI
-	eg, ctx := errgroup.WithContext(ctx)
 	s.Documents[uri] = req.Params.TextDocument.Text
-	data, err := parsers.ParseStructComments(
-		req.Params.TextDocument.Text,
-	)
+	data, err := parsers.ParseStructComments(req.Params.TextDocument.Text)
 	if err != nil {
-		s.Logger.Printf("failed to get urls and ignores: %s\n", err)
 		return response, nil
 	}
 	for _, url := range data.URLs {
@@ -49,17 +46,13 @@ func (s *State) OpenDocument(
 				data.IgnoreElements,
 			)
 			if err != nil {
-				return fmt.Errorf(
-					"failed to get selectors for url (%s): %w",
-					url,
-					err,
-				)
+				return err
 			}
 			return nil
 		})
 	}
 	if err := eg.Wait(); err != nil {
-		return nil, fmt.Errorf("failed to get selectors for urls: %w", err)
+		return response, fmt.Errorf("failed to get selectors for urls: %w", err)
 	}
 	response.Params.Diagnostics = diags
 	diags, err = s.GetDiagnosticsForFile(

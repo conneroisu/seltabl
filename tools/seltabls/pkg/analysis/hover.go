@@ -13,9 +13,10 @@ import (
 	"github.com/yosssi/gohtml"
 )
 
-// Hover returns a hover response for the given uri and position
-func (s *State) Hover(
+// NewHoverResponse returns a hover response for the given uri and position
+func NewHoverResponse(
 	req lsp.HoverRequest,
+	s *State,
 ) (response *lsp.HoverResponse, err error) {
 	response = &lsp.HoverResponse{
 		Response: lsp.Response{

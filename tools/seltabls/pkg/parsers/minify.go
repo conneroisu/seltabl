@@ -2,11 +2,11 @@ package parsers
 
 import (
 	"bytes"
-	"fmt"
 	"io"
 	"net/http"
 
 	"github.com/PuerkitoBio/goquery"
+	"github.com/conneroisu/seltabl/tools/seltabls/domain"
 )
 
 // GetMinifiedDoc gets a minified goquery doc from a given url
@@ -19,17 +19,26 @@ func GetMinifiedDoc(
 	client := &http.Client{}
 	resp, err := client.Get(url)
 	if err != nil {
-		return nil, fmt.Errorf("error making request: %w", err)
+		return nil, domain.ErrHTTP{
+			URL:        url,
+			StatusCode: resp.StatusCode,
+		}
 	}
 	defer resp.Body.Close()
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
-		return nil, fmt.Errorf("error reading response body: %w", err)
+		return nil, domain.ErrHTTPParse{
+			URL:        url,
+			StatusCode: resp.StatusCode,
+		}
 	}
 	reader := bytes.NewReader(body)
 	doc, err = goquery.NewDocumentFromReader(reader)
 	if err != nil {
-		return nil, fmt.Errorf("error creating goquery document: %w", err)
+		return nil, domain.ErrDocumentFromReader{
+			URL:     url,
+			Content: string(body),
+		}
 	}
 	for _, v := range disallowedTags {
 		_ = doc.Find(v).Remove()

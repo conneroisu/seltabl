@@ -60,6 +60,9 @@ func HandleMessage(
 		if err != nil {
 			return fmt.Errorf("failed to open document: %w", err)
 		}
+		if len(response.Params.Diagnostics) == 0 {
+			state.Logger.Printf("had zero diags for %s", request.Method)
+		}
 		err = WriteResponse(ctx, writer, response)
 		if err != nil {
 			return fmt.Errorf("failed to write response: %w", err)

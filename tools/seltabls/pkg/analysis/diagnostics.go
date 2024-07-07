@@ -21,7 +21,8 @@ var (
 
 // GetDiagnosticsForFile returns diagnostics for a given file
 // text is all the characters in the file
-func (s *State) GetDiagnosticsForFile(
+func GetDiagnosticsForFile(
+	state *State,
 	text *string,
 	data parsers.StructCommentData,
 ) (diagnostics []lsp.Diagnostic, err error) {
@@ -31,7 +32,7 @@ func (s *State) GetDiagnosticsForFile(
 		return nil, fmt.Errorf("failed to parse structs: %w", err)
 	}
 	for _, st := range sts {
-		diags, err := s.getDiagnosticsForStruct(st, data)
+		diags, err := state.getDiagnosticsForStruct(st, data)
 		if err != nil {
 			return nil, fmt.Errorf(
 				"failed to get diagnostics for struct: %w",

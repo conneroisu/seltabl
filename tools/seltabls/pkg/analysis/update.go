@@ -32,8 +32,15 @@ func (s *State) UpdateDocument(
 		if err != nil {
 			return fmt.Errorf("failed to get urls and ignores: %w", err)
 		}
-		s.URLs[request.Params.TextDocument.URI] = append(s.URLs[request.Params.TextDocument.URI], data.URLs...)
-		diags, err := s.GetDiagnosticsForFile(&request.Params.ContentChanges[0].Text, data)
+		s.URLs[request.Params.TextDocument.URI] = append(
+			s.URLs[request.Params.TextDocument.URI],
+			data.URLs...,
+		)
+		diags, err := GetDiagnosticsForFile(
+			s,
+			&request.Params.ContentChanges[0].Text,
+			data,
+		)
 		if err != nil {
 			return fmt.Errorf("failed to get diagnostics for file: %w", err)
 		}

@@ -24,11 +24,9 @@ Evaluate code for common errors or invalid selectors.
 `,
 		RunE: func(cmd *cobra.Command, args []string) error {
 			_, ctx = errgroup.WithContext(ctx)
-
 			if len(args) == 0 {
 				return fmt.Errorf("no files provided")
 			}
-
 			files, err := filepath.Glob(args[0])
 			if err != nil {
 				return fmt.Errorf("failed to glob files: %w", err)
@@ -50,12 +48,12 @@ Evaluate code for common errors or invalid selectors.
 			return nil
 		},
 	}
+	cmd.SetOut(w)
 	return cmd
 }
 
 // vetFile vets a file
 func vetFile(ctx context.Context, file string) ([]lsp.Diagnostic, error) {
-	// if the filename is not a go file, return an error
 	if filepath.Ext(file) != ".go" {
 		return nil, fmt.Errorf("file is not a go file")
 	}

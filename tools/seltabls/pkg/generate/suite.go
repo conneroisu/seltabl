@@ -1,3 +1,4 @@
+// Package generate is a package for generating a suite of files for a given url.
 package generate
 
 import (
@@ -33,7 +34,7 @@ func Suite(
 			HTMLBody:       htmlBody,
 			Selectors:      selectors,
 		}
-		err = configFile.Generate()
+		err = configFile.Generate(ctx, client)
 		if err != nil {
 			return fmt.Errorf("failed to generate config file: %w", err)
 		}
@@ -42,16 +43,15 @@ func Suite(
 			URL:            url,
 			IgnoreElements: ignoreElements,
 		}
-		err = structFile.Generate()
+		err = structFile.Generate(ctx, client)
 		if err != nil {
 			return fmt.Errorf("failed to generate struct file: %w", err)
 		}
 		testFile := TestFile{
-			Name:   name,
-			URL:    url,
-			Client: client,
+			Name: name,
+			URL:  url,
 		}
-		err = testFile.Generate()
+		err = testFile.Generate(ctx, client)
 		if err != nil {
 			return fmt.Errorf("failed to generate test file: %w", err)
 		}

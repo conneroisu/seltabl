@@ -15,7 +15,7 @@ import (
 
 // NewVetCmd returns the vet command
 func NewVetCmd(ctx context.Context, w io.Writer) *cobra.Command {
-	cmd := &cobra.Command{
+	return &cobra.Command{
 		Use:   "vet",
 		Short: "Evaluate code for common errors or invalid selectors",
 		Long: `
@@ -23,6 +23,7 @@ Similar to go vet, but for seltabl.
 Evaluate code for common errors or invalid selectors.
 `,
 		RunE: func(cmd *cobra.Command, args []string) error {
+			cmd.SetOut(w)
 			_, ctx = errgroup.WithContext(ctx)
 			if len(args) == 0 {
 				return fmt.Errorf("no files provided")
@@ -48,8 +49,6 @@ Evaluate code for common errors or invalid selectors.
 			return nil
 		},
 	}
-	cmd.SetOut(w)
-	return cmd
 }
 
 // vetFile vets a file

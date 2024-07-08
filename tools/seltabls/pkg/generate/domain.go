@@ -25,6 +25,11 @@ func writeFile(name string, content string) error {
 	return nil
 }
 
+// Generatable is an interface for a generatable file.
+type Generatable interface {
+	Generate(ctx context.Context, client *openai.Client) error
+}
+
 // Chat is a struct for a chat
 func Chat(
 	ctx context.Context,
@@ -79,9 +84,4 @@ func GetURL(url string) ([]byte, error) {
 func IsURL(s string) error {
 	_, err := url.ParseRequestURI(s)
 	return err
-}
-
-// Generatable is an interface for a generatable
-type Generatable interface {
-	Generate() error
 }

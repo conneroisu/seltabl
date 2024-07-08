@@ -10,19 +10,11 @@ import (
 	"golang.org/x/sync/errgroup"
 )
 
-var (
-	DiagnosticKeys = []string{
-		selectorDataTag.Label,
-		selectorHeaderTag.Label,
-		selectorQueryTag.Label,
-	}
-)
-
 // GetDiagnosticsForFile returns diagnostics for a given file
 // text is all the characters in the file
 func GetDiagnosticsForFile(
 	ctx context.Context,
-	state *State,
+	_ *State,
 	text *string,
 	data parsers.StructCommentData,
 ) (diagnostics []lsp.Diagnostic, err error) {

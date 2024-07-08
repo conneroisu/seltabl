@@ -37,11 +37,6 @@ type Structure struct {
 	Fields []Field `json:"fields"`
 }
 
-// String returns a string representation of the structure
-func (s *Structure) String() string {
-	return fmt.Sprintf("Structure{Fields: %s}", s.Fields)
-}
-
 // MarshalJSON implements the json.Marshaler interface.
 func (s *Structure) MarshalJSON() ([]byte, error) {
 	return json.Marshal(struct {
@@ -101,61 +96,66 @@ var (
 )
 
 // Verify checks if the selectors in the struct are valid against the given url and content.
-func (str *Structure) Verify(ctx context.Context, url string, content *goquery.Document) (diags []lsp.Diagnostic, err error) {
-	wg := conc.WaitGroup{}
-	for j := range len(str.Fields) {
-		for i := range str.Fields[j].Tags.Len() {
-			wg.Go(func() {
-				for k := range diagnosticKeys {
-					if diagnosticKeys[k] == str.Fields[j].Tags.Tag(i).Key {
-						verified, err := validateSelector(
-							str.Fields[j].Tags.Tag(i).Value(),
-							content,
-						)
-						if !verified || err != nil {
-							diag := lsp.Diagnostic{
-								Range: lsp.LineRange(
-									str.Fields[j].Line-1,
-									str.Fields[j].Tag(i).Start,
-									str.Fields[j].Tag(i).End,
-								),
-								Severity: lsp.DiagnosticWarning,
-								Source:   "seltabls",
-							}
-							if err != nil {
+func (s *Structure) Verify(ctx context.Context, url string, content *goquery.Document) (diags []lsp.Diagnostic, err error) {
+	select {
+	case <-ctx.Done():
+		return diags, fmt.Errorf("context cancelled: %w", ctx.Err())
+	default:
+		wg := conc.WaitGroup{}
+		for j := range len(s.Fields) {
+			for i := range s.Fields[j].Tags.Len() {
+				wg.Go(func() {
+					for k := range diagnosticKeys {
+						if diagnosticKeys[k] == s.Fields[j].Tags.Tag(i).Key {
+							verified, err := validateSelector(
+								s.Fields[j].Tags.Tag(i).Value(),
+								content,
+							)
+							if !verified || err != nil {
+								diag := lsp.Diagnostic{
+									Range: lsp.LineRange(
+										s.Fields[j].Line-1,
+										s.Fields[j].Tag(i).Start,
+										s.Fields[j].Tag(i).End,
+									),
+									Severity: lsp.DiagnosticWarning,
+									Source:   "seltabls",
+								}
+								if err != nil {
+									diag.Message = fmt.Sprintf(
+										"failed to validate selector `%s` against known url (%s) content: \n```html\n%s\n```",
+										func() string {
+											if s.Fields[j].Tags.Tag(i).Value() == "" {
+												return "<null>"
+											}
+											return s.Fields[j].Tags.Tag(i).Value()
+										}(),
+										url,
+										err.Error(),
+									)
+									diags = append(diags, diag)
+									return
+								}
 								diag.Message = fmt.Sprintf(
-									"failed to validate selector `%s` against known url (%s) content: \n```html\n%s\n```",
+									"could not verify selector `%s` against known url (%s) content",
 									func() string {
-										if str.Fields[j].Tags.Tag(i).Value() == "" {
+										if s.Fields[j].Tags.Tag(i).Value() == "" {
 											return "<null>"
 										}
-										return str.Fields[j].Tags.Tag(i).Value()
+										return s.Fields[j].Tags.Tag(i).Value()
 									}(),
 									url,
-									err.Error(),
 								)
 								diags = append(diags, diag)
-								return
 							}
-							diag.Message = fmt.Sprintf(
-								"could not verify selector `%s` against known url (%s) content",
-								func() string {
-									if str.Fields[j].Tags.Tag(i).Value() == "" {
-										return "<null>"
-									}
-									return str.Fields[j].Tags.Tag(i).Value()
-								}(),
-								url,
-							)
-							diags = append(diags, diag)
 						}
 					}
-				}
-			})
+				})
+			}
 		}
+		wg.Wait()
+		return diags, err
 	}
-	wg.Wait()
-	return diags, err
 }
 
 // UnmarshalJSON implements the json.Unmarshaler interface.

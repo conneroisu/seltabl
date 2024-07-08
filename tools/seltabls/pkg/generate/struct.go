@@ -14,17 +14,35 @@ import (
 //
 // It contains attributes relating to the name, url, and ignore elements of the struct file.
 type StructFile struct {
-	Name           string   `json:"-"`
-	URL            string   `json:"-"`
+	// Name is the name of the struct file.
+	Name string `json:"-"`
+	// URL is the url for the struct file.
+	URL string `json:"-"`
+	// IgnoreElements is a list of elements to ignore when generating the struct.
 	IgnoreElements []string `json:"ignore-elements"`
 
+	// Fields is a list of fields for the struct.
 	Fields []Field `json:"fields"`
 }
 
 // Field is a struct for a field
 type Field struct {
+	// Name is the name of the field.
 	Name string `json:"name"`
+	// Type is the type of the field.
 	Type string `json:"type"`
+	// Description is a description of the field.
+	Description string `json:"description"`
+	// HeaderSelector is the header selector for the field.
+	HeaderSelector string `json:"header-selector"`
+	// DataSelector is the data selector for the field.
+	DataSelector string `json:"data-selector"`
+	// ControlSelector is the control selector for the field.
+	ControlSelector string `json:"control-selector"`
+	// QuerySelector is the query selector for the field.
+	QuerySelector string `json:"query-selector"`
+	// MustBePresent is the must be present selector for the field.
+	MustBePresent string `json:"must-be-present"`
 }
 
 // Generate generates a struct file for the given name.

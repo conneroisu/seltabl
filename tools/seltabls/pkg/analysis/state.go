@@ -119,17 +119,22 @@ func GetSelectors(
 		return nil, fmt.Errorf("failed to get selectors: %w", err)
 	}
 	for _, sel := range selectorStrs {
-		context, err := doc.Find(sel).Parent().Find(":nth-child(1)").Html()
+		found := doc.Find(sel)
+		context, err := found.Parent().First().Html()
 		if err != nil {
 			state.Logger.Printf("failed to get html: %s\n", err)
 		}
 		context = gohtml.Format(context)
+		state.Logger.Printf("context: %s\n", context)
+		state.Logger.Printf("found: %s\n", found.Text())
+		state.Logger.Printf("length: %d\n", found.Length())
 		selector, err := state.Database.Queries.InsertSelector(
 			ctx,
 			master.InsertSelectorParams{
-				Value:   sel,
-				UrlID:   URL.ID,
-				Context: context,
+				Value:      sel,
+				UrlID:      URL.ID,
+				Context:    context,
+				Occurances: int64(found.Length()),
 			},
 		)
 		if err != nil {

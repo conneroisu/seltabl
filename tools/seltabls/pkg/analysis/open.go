@@ -23,8 +23,8 @@ func OpenDocument(
 	req lsp.NotificationDidOpenTextDocument,
 ) (response *lsp.PublishDiagnosticsNotification, err error) {
 	select {
-	case <-ctx.Done():
-		return nil, fmt.Errorf("context cancelled: %w", ctx.Err())
+	case <-(ctx).Done():
+		return nil, fmt.Errorf("context cancelled: %w", (ctx).Err())
 	default:
 		response = &lsp.PublishDiagnosticsNotification{
 			Notification: lsp.Notification{
@@ -36,48 +36,43 @@ func OpenDocument(
 				Diagnostics: []lsp.Diagnostic{},
 			},
 		}
-		select {
-		case <-ctx.Done():
-			return response, fmt.Errorf("context cancelled: %w", ctx.Err())
-		default:
-			eg, ctx := errgroup.WithContext(ctx)
-			uri := req.Params.TextDocument.URI
-			s.Documents[uri] = req.Params.TextDocument.Text
-			data, err := parsers.ParseStructComments(req.Params.TextDocument.Text)
-			if err != nil {
-				return response, nil
-			}
-			s.URLs[uri] = append(s.URLs[uri], data.URLs...)
-			for _, url := range data.URLs {
-				eg.Go(func() error {
-					s.Selectors[uri], err = GetSelectors(
-						ctx,
-						s,
-						url,
-						data.IgnoreElements,
-					)
-					if err != nil {
-						return err
-					}
-					return nil
-				})
-			}
-			if err := eg.Wait(); err != nil {
-				return response, fmt.Errorf("failed to get selectors for urls: %w", err)
-			}
-			response.Params.Diagnostics, err = GetDiagnosticsForFile(
-				ctx,
-				s,
-				&req.Params.TextDocument.Text,
-				data,
-			)
-			if err != nil {
-				s.Logger.Printf("failed to get diagnostics for file: %s\n", err)
-			}
-			if len(response.Params.Diagnostics) == 0 {
-				return nil, nil
-			}
+		eg, ctx := errgroup.WithContext(ctx)
+		uri := req.Params.TextDocument.URI
+		s.Documents[uri] = req.Params.TextDocument.Text
+		data, err := parsers.ParseStructComments(req.Params.TextDocument.Text)
+		if err != nil {
 			return response, nil
 		}
+		s.URLs[uri] = append(s.URLs[uri], data.URLs...)
+		for _, url := range data.URLs {
+			eg.Go(func() error {
+				s.Selectors[uri], err = GetSelectors(
+					ctx,
+					s,
+					url,
+					data.IgnoreElements,
+				)
+				if err != nil {
+					return err
+				}
+				return nil
+			})
+		}
+		if err := eg.Wait(); err != nil {
+			return response, fmt.Errorf("failed to get selectors for urls: %w", err)
+		}
+		response.Params.Diagnostics, err = GetDiagnosticsForFile(
+			ctx,
+			s,
+			&req.Params.TextDocument.Text,
+			data,
+		)
+		if err != nil {
+			s.Logger.Printf("failed to get diagnostics for file: %s\n", err)
+		}
+		if len(response.Params.Diagnostics) == 0 {
+			return nil, nil
+		}
+		return response, nil
 	}
 }

@@ -7,6 +7,7 @@ import (
 	"go/parser"
 	"go/token"
 
+	"github.com/conneroisu/seltabl/tools/seltabls/data/master"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/parsers"
 	"golang.org/x/sync/errgroup"
@@ -70,7 +71,7 @@ func CreateTextDocumentCompletion(
 				for _, selector := range selectors {
 					response.Result = append(response.Result, lsp.CompletionItem{
 						Label:         selector.Value,
-						Detail:        "context: \n" + selector.Context,
+						Detail:        fmt.Sprintf("n: %d context: \n%s", selector.Occurances, selector.Context),
 						Documentation: "seltabls",
 						Kind:          lsp.CompletionKindReference,
 					})
@@ -79,7 +80,7 @@ func CreateTextDocumentCompletion(
 				for _, selector := range selectors {
 					response.Result = append(response.Result, lsp.CompletionItem{
 						Label:         "\"" + selector.Value + "\"",
-						Detail:        "context: \n" + selector.Context,
+						Detail:        fmt.Sprintf("n: %d context: \n%s", selector.Occurances, selector.Context),
 						Documentation: "seltabls",
 						Kind:          lsp.CompletionKindReference,
 					})
@@ -154,4 +155,29 @@ func (s *State) CheckPosition(
 		}
 	}
 	return parsers.StateInvalid, nil
+}
+
+// Partition function for quicksort
+func partition(items []master.Selector, low, high int) int {
+	pivot := items[high].Occurances
+	i := low - 1
+
+	for j := low; j < high; j++ {
+		if items[j].Occurances > pivot {
+			i++
+			items[i], items[j] = items[j], items[i]
+		}
+	}
+	items[i+1], items[high] = items[high], items[i+1]
+	return i + 1
+}
+
+// Quicksort function
+func quickSort(items []master.Selector, low, high int) (result []master.Selector) {
+	if low < high {
+		pi := partition(items, low, high)
+		quickSort(items, low, pi-1)
+		quickSort(items, pi+1, high)
+	}
+	return items
 }

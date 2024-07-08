@@ -22,7 +22,7 @@ func GetDiagnosticsForFile(
 	if err != nil {
 		return diagnostics, fmt.Errorf("failed to parse structs: %w", err)
 	}
-	eg, _ := errgroup.WithContext(ctx)
+	eg := errgroup.Group{}
 	for _, st := range sts {
 		eg.Go(func() error {
 			content, err := http.DefaultClientGet(data.URLs[0])

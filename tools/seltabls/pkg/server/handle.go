@@ -39,11 +39,11 @@ func HandleMessage(
 		if err != nil || response == nil {
 			return fmt.Errorf("failed to cancel request: %w", err)
 		}
-		err = WriteResponse(ctx, writer, response)
+		err = WriteResponse(hCtx, writer, response)
 		if err != nil {
 			return fmt.Errorf("failed to write response: %w", err)
 		}
-		return fmt.Errorf("context cancelled: %w", ctx.Err())
+		return fmt.Errorf("context cancelled: %w", hCtx.Err())
 	default:
 		switch methods.GetMethod(msg.Method) {
 		case methods.MethodInitialize:
@@ -56,7 +56,7 @@ func HandleMessage(
 				)
 			}
 			response := lsp.NewInitializeResponse(&request)
-			err = WriteResponse(ctx, writer, response)
+			err = WriteResponse(hCtx, writer, response)
 			if err != nil {
 				return fmt.Errorf(
 					"failed to write (initialize) response: %w",
@@ -81,11 +81,11 @@ func HandleMessage(
 					err,
 				)
 			}
-			response, err := analysis.OpenDocument(ctx, state, request)
+			response, err := analysis.OpenDocument(hCtx, state, request)
 			if err != nil || response == nil {
 				return fmt.Errorf("failed to open document: %w", err)
 			}
-			err = WriteResponse(ctx, writer, response)
+			err = WriteResponse(hCtx, writer, response)
 			if err != nil {
 				return fmt.Errorf("failed to write response: %w", err)
 			}
@@ -98,11 +98,11 @@ func HandleMessage(
 					err,
 				)
 			}
-			response, err := analysis.CreateTextDocumentCompletion(ctx, state, request)
+			response, err := analysis.CreateTextDocumentCompletion(hCtx, state, request)
 			if err != nil || response == nil {
 				return fmt.Errorf("failed to get completions: %w", err)
 			}
-			err = WriteResponse(ctx, writer, response)
+			err = WriteResponse(hCtx, writer, response)
 			if err != nil {
 				return fmt.Errorf("failed to write response: %w", err)
 			}
@@ -115,11 +115,11 @@ func HandleMessage(
 					err,
 				)
 			}
-			response, err := analysis.UpdateDocument(ctx, state, &request)
+			response, err := analysis.UpdateDocument(hCtx, state, &request)
 			if err != nil || response == nil {
 				return fmt.Errorf("failed to update document: %w", err)
 			}
-			err = WriteResponse(ctx, writer, response)
+			err = WriteResponse(hCtx, writer, response)
 			if err != nil {
 				return fmt.Errorf("failed to write response: %w", err)
 			}
@@ -133,7 +133,7 @@ func HandleMessage(
 			if err != nil {
 				return fmt.Errorf("failed to get hover: %w", err)
 			}
-			err = WriteResponse(ctx, writer, response)
+			err = WriteResponse(hCtx, writer, response)
 			if err != nil {
 				return fmt.Errorf("failed to write response: %w", err)
 			}
@@ -146,11 +146,11 @@ func HandleMessage(
 					err,
 				)
 			}
-			response, err := analysis.TextDocumentCodeAction(ctx, request, state)
+			response, err := analysis.TextDocumentCodeAction(hCtx, request, state)
 			if err != nil || response == nil {
 				return fmt.Errorf("failed to get code actions: %w", err)
 			}
-			err = WriteResponse(ctx, writer, response)
+			err = WriteResponse(hCtx, writer, response)
 			if err != nil {
 				return fmt.Errorf("failed to write response: %w", err)
 			}
@@ -161,7 +161,7 @@ func HandleMessage(
 				return fmt.Errorf("decode (shutdown) request failed: %w", err)
 			}
 			response := lsp.NewShutdownResponse(request, nil)
-			err = WriteResponse(ctx, writer, response)
+			err = WriteResponse(hCtx, writer, response)
 			if err != nil {
 				return fmt.Errorf("write (shutdown) response failed: %w", err)
 			}

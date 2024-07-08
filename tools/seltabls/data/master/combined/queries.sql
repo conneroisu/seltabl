@@ -135,9 +135,9 @@ WHERE
 /******************************************************************************/
 -- name: InsertSelector :one
 INSERT INTO
-	selectors (value, url_id, context)
+	selectors (value, url_id, context, occurances)
 VALUES
-	(?, ?, ?) RETURNING *;
+	(?, ?, ?, ?) RETURNING *;
 
 -- name: UpdateSelectorByID :exec
 UPDATE
@@ -145,7 +145,8 @@ UPDATE
 SET
 	value = ?,
 	url_id = ?,
-	context = ?
+	context = ?,
+	occurances = ?
 WHERE
 	id = ?;
 

@@ -15,8 +15,8 @@ import (
 
 const content = `package main`
 
-// baseURL is the base url for the openai api of groq
-const baseURL = "https://api.groq.com/openai/v1"
+// baseURLDefault is the base url for the openai api of groq
+const baseURLDefault = "https://api.groq.com/openai/v1"
 
 // NewGenerateCmd returns the generate command
 func NewGenerateCmd(
@@ -29,6 +29,7 @@ func NewGenerateCmd(
 	var llmModel string
 	var llmKey string
 	var ignoreElements []string
+	var baseURI string
 	cmd := &cobra.Command{
 		Use:   "generate", // the name of the command
 		Short: "Generates a new seltabl struct for a given url with test coverage.",
@@ -79,6 +80,13 @@ So the output fo the command:
 				"",
 				"The key for the llm model to use for generating the struct.",
 			)
+			cmd.PersistentFlags().StringVarP(
+				&baseURI,
+				"base-uri",
+				"b",
+				baseURLDefault,
+				fmt.Sprintf("The base uri for the openai api of groq. Defaults to %s", baseURLDefault),
+			)
 			cmd.PersistentFlags().StringArrayVarP(
 				&ignoreElements,
 				"ignore-elements",
@@ -104,7 +112,7 @@ So the output fo the command:
 				input.Run()
 			}
 			client := llm.CreateClient(
-				url,
+				baseURI,
 				llmKey,
 			)
 			state, err := analysis.NewState()

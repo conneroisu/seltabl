@@ -18,6 +18,7 @@ func AddCommands(ctx context.Context, root *cobra.Command) error {
 	root.AddCommand(cmds.NewLSPCmd(
 		ctx,
 		os.Stdout,
+		os.Stdin,
 		server.HandleMessage,
 	))
 	root.AddCommand(cmds.NewCompletionCmd(

@@ -5,7 +5,6 @@ import (
 	"context"
 	"fmt"
 	"io"
-	"os"
 
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/analysis"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp/methods"
@@ -26,6 +25,7 @@ type handleCtx struct {
 func NewLSPCmd(
 	ctx context.Context,
 	writer io.Writer,
+	reader io.Reader,
 	handle LSPHandler,
 ) *cobra.Command {
 	cmd := &cobra.Command{
@@ -39,7 +39,7 @@ Language server provides completions, hovers, and code actions for seltabl defin
 CLI provides a command line tool for verifying, linting, and reporting on seltabl defined structs.
 `,
 		RunE: func(_ *cobra.Command, _ []string) error {
-			scanner := bufio.NewScanner(os.Stdin)
+			scanner := bufio.NewScanner(reader)
 			scanner.Split(rpc.Split)
 			state, err := analysis.NewState()
 			if err != nil {

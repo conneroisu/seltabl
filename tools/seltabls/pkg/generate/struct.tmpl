@@ -37,12 +37,9 @@ Your html content:
 Your selectors with attriubutes (meaning without added specifiers; `:nth-child(1)`, `:not(:nth-child(2))`, etc):
 
 ```go
-{{ range $i, $selector := .Selectors }}
-	{{ if $i }}, {{ end }}{{ $selector.Value }} {{ $selector.Occurances }} 
-{{ end }}
+{{ .Selectors }}
 ```
 {{- end -}}
-
 
 {{- define "struct" -}}
 package {{ .Name }}
@@ -68,6 +65,10 @@ You are to cogregate the following json schemas into a single comprehensive and 
 - query-selector: used to query for the inner text or attribute of the cell.
 - control-selector: used to control what to query for the inner text or attribute of the cell.
 - must-be-present: used to ensure that the field is present in the given url.
+
+The valid base value selecors are:
+
+{{ .Selectors }}
 
 Your HTML content:
 

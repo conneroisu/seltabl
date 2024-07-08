@@ -8,6 +8,8 @@ import (
 	"io"
 	"os"
 
+	_ "embed"
+
 	"github.com/conneroisu/seltabl/tools/seltabls/data"
 	"github.com/conneroisu/seltabl/tools/seltabls/data/master"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/parsers"
@@ -37,6 +39,9 @@ type StructFile struct {
 	// Db is the database for the struct file.
 	Db *data.Database[master.Queries] `json:"-" yaml:"-"`
 }
+
+//go:embed struct.tmpl
+var structTmpl string
 
 // Field is a struct for a field
 type Field struct {

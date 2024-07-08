@@ -11,9 +11,6 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-//go:embed struct.tmpl
-var structTmpl string
-
 // TestStruct generates a struct from a given url
 func TestStructTemplateStruct(t *testing.T) {
 	a := assert.New(t)

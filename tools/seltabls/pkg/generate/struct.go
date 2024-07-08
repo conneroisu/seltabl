@@ -9,7 +9,7 @@ import (
 
 	"github.com/conneroisu/seltabl/tools/seltabls/data"
 	"github.com/conneroisu/seltabl/tools/seltabls/data/master"
-	"github.com/conneroisu/seltabl/tools/seltabls/pkg/analysis"
+	"github.com/conneroisu/seltabl/tools/seltabls/pkg/parsers"
 	"github.com/sashabaranov/go-openai"
 )
 
@@ -111,7 +111,7 @@ func (s *StructFile) generate(
 		return *s, fmt.Errorf("failed to get url: %w", err)
 	}
 	_ = string(content)
-	_, err = analysis.GetSelectors(
+	_, err = parsers.GetSelectors(
 		ctx,
 		s.Db,
 		s.URL,

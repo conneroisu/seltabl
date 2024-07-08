@@ -46,7 +46,7 @@ func OpenDocument(
 		s.URLs[uri] = append(s.URLs[uri], data.URLs...)
 		for _, url := range data.URLs {
 			eg.Go(func() error {
-				s.Selectors[uri], err = GetSelectors(
+				s.Selectors[uri], err = parsers.GetSelectors(
 					ctx,
 					&s.Database,
 					url,

@@ -10,6 +10,7 @@ import (
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/analysis"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/generate"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/llm"
+	"github.com/conneroisu/seltabl/tools/seltabls/pkg/parsers"
 	"github.com/spf13/cobra"
 )
 
@@ -153,7 +154,7 @@ So the output fo the command:
 				"footer",
 				"header",
 			}
-			sels, err := analysis.GetSelectors(
+			sels, err := parsers.GetSelectors(
 				ctx,
 				&state.Database,
 				url,

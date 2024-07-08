@@ -10,9 +10,7 @@ import (
 	"github.com/conneroisu/seltabl/tools/seltabls/data"
 
 	"github.com/conneroisu/seltabl/tools/seltabls/data/master"
-	"github.com/conneroisu/seltabl/tools/seltabls/pkg/parsers"
 	"github.com/mitchellh/go-homedir"
-	"github.com/yosssi/gohtml"
 )
 
 // State is the state of the document analysis.
@@ -72,74 +70,6 @@ func getLogger(fileName string) *log.Logger {
 		log.Fatal(err)
 	}
 	return log.New(logFile, "[seltabls#state]", log.LstdFlags)
-}
-
-// GetSelectors gets all the selectors from the given URL and appends them to the selectors slice
-func GetSelectors(
-	ctx context.Context,
-	db *data.Database[master.Queries],
-	url string,
-	ignores []string,
-) (selectors []master.Selector, err error) {
-	rows, err := db.Queries.GetSelectorsByURL(
-		ctx,
-		master.GetSelectorsByURLParams{Value: url},
-	)
-	if err == nil && rows != nil {
-		var selectors []master.Selector
-		for _, row := range rows {
-			selectors = append(selectors, *row)
-		}
-		return selectors, nil
-	}
-	doc, err := parsers.GetMinifiedDoc(url, ignores)
-	if err != nil {
-		return nil, fmt.Errorf("failed to get minified doc: %w", err)
-	}
-	docHTML, err := doc.Html()
-	if err != nil {
-		return nil, fmt.Errorf("failed to get html: %w", err)
-	}
-	HTML, err := db.Queries.InsertHTML(
-		ctx,
-		master.InsertHTMLParams{Value: docHTML},
-	)
-	if err != nil {
-		return nil, fmt.Errorf("failed to insert html: %w", err)
-	}
-	URL, err := db.Queries.InsertURL(
-		ctx,
-		master.InsertURLParams{Value: url, HtmlID: HTML.ID},
-	)
-	if err != nil {
-		return nil, fmt.Errorf("failed to insert url: %w", err)
-	}
-	selectorStrs, err := parsers.GetAllSelectors(doc)
-	if err != nil {
-		return nil, fmt.Errorf("failed to get selectors: %w", err)
-	}
-	for _, sel := range selectorStrs {
-		found := doc.Find(sel)
-		context, err := found.Parent().First().Html()
-		if err != nil {
-			return nil, fmt.Errorf("failed to get html: %w", err)
-		}
-		context = gohtml.Format(context)
-		selector, err := db.Queries.InsertSelector(
-			ctx,
-			master.InsertSelectorParams{
-				Value:      sel,
-				UrlID:      URL.ID,
-				Context:    context,
-				Occurances: int64(found.Length()),
-			},
-		)
-		if err != nil {
-			return nil, fmt.Errorf("failed to insert selector: %w", err)
-		}
-		selectors = append(selectors, *selector)
-	}
-	return selectors, nil
 }
 
 // CreateConfigDir creates a new config directory and returns the path.

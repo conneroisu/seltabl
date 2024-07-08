@@ -12,8 +12,8 @@ import (
 
 	"github.com/conneroisu/seltabl/tools/seltabls/data"
 	"github.com/conneroisu/seltabl/tools/seltabls/data/master"
-	"github.com/conneroisu/seltabl/tools/seltabls/pkg/parsers"
 	"github.com/sashabaranov/go-openai"
+	"golang.org/x/sync/errgroup"
 )
 
 // StructFile is a struct for a struct file.
@@ -28,13 +28,19 @@ type StructFile struct {
 	IgnoreElements []string `json:"ignore-elements" yaml:"ignore-elements"`
 	// Fields is a list of fields for the struct.
 	Fields []Field `json:"fields" yaml:"fields"`
+	// Model is the model for the struct file.
+	Model string `json:"-" yaml:"model"`
 
 	// TreeWidth is the width of the tree when generating the struct.
 	TreeWidth int `json:"-" yaml:"tree-width"`
+	// TreeDepth is the depth of the tree when generating the struct.
+	TreeDepth int `json:"-" yaml:"tree-depth"`
 	// ConfigFile is the config file for the struct file.
 	ConfigFile ConfigFile `json:"-" yaml:"config-file"`
 	// JSONValue is the json value for the struct yaml file.
 	JSONValue string `json:"-" yaml:"json-value"`
+	// HTMLContent is the html content for the struct file.
+	HTMLContent string `json:"-" yaml:"html-content"`
 
 	// Db is the database for the struct file.
 	Db *data.Database[master.Queries] `json:"-" yaml:"-"`
@@ -114,19 +120,32 @@ func (s *StructFile) generate(
 	writer io.Writer,
 	client *openai.Client,
 ) (StructFile, error) {
-	content, err := GetURL(s.URL, s.IgnoreElements)
-	if err != nil {
-		return *s, fmt.Errorf("failed to get url: %w", err)
+	eg, gCtx := errgroup.WithContext(ctx)
+	for _, field := range s.TreeWidth {
+		eg.Go(func() error {
+			return s.GenerateField(gCtx, client, field)
+		})
 	}
-	_ = string(content)
-	_, err = parsers.GetSelectors(
-		ctx,
-		s.Db,
+	prmpt, err := NewStructPrompt(
 		s.URL,
-		s.IgnoreElements,
+		s.HTMLContent,
+		s.ConfigFile.Selectors,
+	)
+	generation, history, err := Chat(
+		ctx,
+		client,
+		s.Model,
+		[]openai.ChatCompletionMessage{},
+		prmpt,
+	)
+	aggPrompt, err := NewAggregatePrompt(
+		s.URL,
+		s.HTMLContent,
+		s.ConfigFile.Selectors,
+		[]string{string(generation)},
 	)
 	if err != nil {
-		return *s, fmt.Errorf("failed to get selectors: %w", err)
+		return *s, fmt.Errorf("failed to create struct prompt: %w", err)
 	}
 	return *s, nil
 }

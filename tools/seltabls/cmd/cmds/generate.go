@@ -14,30 +14,30 @@ import (
 	"github.com/spf13/cobra"
 )
 
-const content = `package main`
+const (
+	// baseURLDefault is the base url for the openai api of groq
+	baseURLDefault = "https://api.groq.com/openai/v1"
+	// baseTreeWidthDefault is the default tree width for the openai api of groq
+	baseTreeWidthDefault = 10
+	// baseLLMModelDefault is the default model for the openai api of groq
+	baseLLMModelDefault = "llama3-70b-8192"
+	// baseTreeDepthDefault is the default tree depth for the openai api of groq
+	baseTreeDepthDefault = 10
+)
 
-// baseURLDefault is the base url for the openai api of groq
-const baseURLDefault = "https://api.groq.com/openai/v1"
-
+// baseIgnoreElementsDefault is the default ignore elements for the openai api of groq
 var baseIgnoreElementsDefault = []string{"script", "meta", "style", "link", "img", "footer", "header"}
-var baseTreeWidthDefault = 10
 
-var baseLLMModelDefault = "llama3-70b-8192"
-
-// NewGenerateCmd returns the generate command
+// NewGenerateCmd returns the generate command.
 func NewGenerateCmd(
 	ctx context.Context,
 	w io.Writer,
 	r io.Reader,
 ) *cobra.Command {
-	var url string
-	var name string
-	var llmModel string
-	var llmKey string
+	var url, name, llmModel, llmKey, baseURI string
 	var ignoreElements []string
-	var baseURI string
-	var treeWidth int
-	cmd := &cobra.Command{
+	var treeWidth, treeDepth int
+	return &cobra.Command{
 		Use:   "generate", // the name of the command
 		Short: "Generates a new seltabl struct for a given url with test coverage.",
 		Long: `
@@ -120,6 +120,16 @@ So the output fo the command:
 					baseTreeWidthDefault,
 				),
 			)
+			cmd.PersistentFlags().IntVarP(
+				&treeDepth,
+				"tree-depth",
+				"d",
+				baseTreeDepthDefault,
+				fmt.Sprintf(
+					"The depth of the tree when generating the struct. Defaults to %d.",
+					baseTreeDepthDefault,
+				),
+			)
 
 			if llmKey == "" {
 				llmKey := os.Getenv("LLM_API_KEY")
@@ -183,5 +193,4 @@ So the output fo the command:
 			return nil
 		},
 	}
-	return cmd
 }

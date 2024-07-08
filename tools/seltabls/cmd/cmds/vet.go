@@ -14,7 +14,7 @@ import (
 )
 
 // NewVetCmd returns the vet command
-func NewVetCmd(ctx context.Context, w io.Writer) *cobra.Command {
+func NewVetCmd(ctx context.Context, w io.Writer, r io.Reader) *cobra.Command {
 	return &cobra.Command{
 		Use:   "vet",
 		Short: "Evaluate code for common errors or invalid selectors",
@@ -24,6 +24,7 @@ Evaluate code for common errors or invalid selectors.
 `,
 		RunE: func(cmd *cobra.Command, args []string) error {
 			cmd.SetOut(w)
+			cmd.SetIn(r)
 			_, ctx = errgroup.WithContext(ctx)
 			if len(args) == 0 {
 				return fmt.Errorf("no files provided")

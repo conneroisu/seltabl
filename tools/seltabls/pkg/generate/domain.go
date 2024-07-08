@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"net/url"
 	"os"
+	"strings"
 
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/parsers"
 	"github.com/sashabaranov/go-openai"
@@ -56,6 +57,7 @@ func GetURL(url string, ignoreElements []string) ([]byte, error) {
 		return nil, fmt.Errorf("failed to get html: %w", err)
 	}
 	docHTML = gohtml.Format(docHTML)
+	docHTML = strings.ReplaceAll(docHTML, "\n", "")
 	return []byte(docHTML), nil
 }
 

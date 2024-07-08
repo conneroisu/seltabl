@@ -5,6 +5,7 @@ import (
 	"context"
 	"fmt"
 	"html/template"
+	"io"
 	"os"
 
 	"github.com/conneroisu/seltabl/tools/seltabls/data"
@@ -76,6 +77,7 @@ func (s *StructFile) Generate(ctx context.Context, client *openai.Client) error 
 		defer f.Close()
 		structFile, err := s.generate(
 			ctx,
+			f,
 			client,
 		)
 		if err != nil {
@@ -104,6 +106,7 @@ func (s *StructFile) Generate(ctx context.Context, client *openai.Client) error 
 // It generates the struct file by using the given url, contents, and ignore elements.
 func (s *StructFile) generate(
 	ctx context.Context,
+	writer io.Writer,
 	client *openai.Client,
 ) (StructFile, error) {
 	content, err := GetURL(s.URL, s.IgnoreElements)

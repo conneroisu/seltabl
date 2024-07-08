@@ -14,6 +14,7 @@ func AddCommands(ctx context.Context, root *cobra.Command) error {
 	root.AddCommand(cmds.NewVetCmd(
 		ctx,
 		os.Stdout,
+		os.Stdin,
 	))
 	root.AddCommand(cmds.NewLSPCmd(
 		ctx,
@@ -24,6 +25,7 @@ func AddCommands(ctx context.Context, root *cobra.Command) error {
 	root.AddCommand(cmds.NewCompletionCmd(
 		ctx,
 		os.Stdout,
+		os.Stdin,
 	))
 	root.AddCommand(cmds.NewGenerateCmd(
 		ctx,

@@ -353,6 +353,7 @@ func TestNewFromString(t *testing.T) {
 		}
 	})
 
+	// NoHeaderSelectorStruct is a test struct
 	type NoHeaderSelectorStruct struct {
 		A string `json:"a" seltabl:"a" dSel:"tr td:nth-child(1)" cSel:"$text"`
 		B string `json:"b" seltabl:"b" dSel:"tr td:nth-child(2)" cSel:"$text"`
@@ -475,6 +476,7 @@ func TestNewFromString(t *testing.T) {
 		}
 	})
 
+	// NoCellSelectorStruct is a test struct
 	type NoCellSelectorStruct struct {
 		A string `json:"a" seltabl:"a" dSel:"tr td:nth-child(1)" cSel:""`
 		B string `json:"b" seltabl:"b" dSel:"tr td:nth-child(2)" cSel:""`
@@ -539,6 +541,7 @@ func TestNewFromString(t *testing.T) {
 		}
 	})
 
+	// InvalidTGenericType is a test struct that is invalid.
 	type InvalidTGenericType func(a, b int) int
 
 	t.Run(
@@ -604,7 +607,7 @@ func TestNewFromString(t *testing.T) {
 		},
 	)
 
-	// test a struct with no seltabl field or blank one
+	// test a struct with no seltabl field or blank one.
 	type NoSeltablField struct {
 		A string `json:"a" dSel:"tr td:nth-child(1)" cSel:"$text"`
 		B string `json:"b" dSel:"tr td:nth-child(2)" cSel:"$text" seltabl:"b"`
@@ -667,7 +670,7 @@ func TestNewFromString(t *testing.T) {
 	})
 }
 
-// TestNewFromUrl tests the NewFromURL function
+// TestNewFromUrl tests the NewFromURL function.
 func TestNewFromUrl(t *testing.T) {
 	t.Run("TestNewFromUrl", func(t *testing.T) {
 		t.Parallel()

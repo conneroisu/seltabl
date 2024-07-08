@@ -77,11 +77,11 @@ func getLogger(fileName string) *log.Logger {
 // GetSelectors gets all the selectors from the given URL and appends them to the selectors slice
 func GetSelectors(
 	ctx context.Context,
-	state *State,
+	db *data.Database[master.Queries],
 	url string,
 	ignores []string,
 ) (selectors []master.Selector, err error) {
-	rows, err := state.Database.Queries.GetSelectorsByURL(
+	rows, err := db.Queries.GetSelectorsByURL(
 		ctx,
 		master.GetSelectorsByURLParams{Value: url},
 	)
@@ -100,14 +100,14 @@ func GetSelectors(
 	if err != nil {
 		return nil, fmt.Errorf("failed to get html: %w", err)
 	}
-	HTML, err := state.Database.Queries.InsertHTML(
+	HTML, err := db.Queries.InsertHTML(
 		ctx,
 		master.InsertHTMLParams{Value: docHTML},
 	)
 	if err != nil {
 		return nil, fmt.Errorf("failed to insert html: %w", err)
 	}
-	URL, err := state.Database.Queries.InsertURL(
+	URL, err := db.Queries.InsertURL(
 		ctx,
 		master.InsertURLParams{Value: url, HtmlID: HTML.ID},
 	)
@@ -122,13 +122,10 @@ func GetSelectors(
 		found := doc.Find(sel)
 		context, err := found.Parent().First().Html()
 		if err != nil {
-			state.Logger.Printf("failed to get html: %s\n", err)
+			return nil, fmt.Errorf("failed to get html: %w", err)
 		}
 		context = gohtml.Format(context)
-		state.Logger.Printf("context: %s\n", context)
-		state.Logger.Printf("found: %s\n", found.Text())
-		state.Logger.Printf("length: %d\n", found.Length())
-		selector, err := state.Database.Queries.InsertSelector(
+		selector, err := db.Queries.InsertSelector(
 			ctx,
 			master.InsertSelectorParams{
 				Value:      sel,

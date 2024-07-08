@@ -18,6 +18,11 @@ const content = `package main`
 // baseURLDefault is the base url for the openai api of groq
 const baseURLDefault = "https://api.groq.com/openai/v1"
 
+var baseIgnoreElementsDefault = []string{"script", "meta", "style", "link", "img", "footer", "header"}
+var baseTreeWidthDefault = 10
+
+var baseLLMModelDefault = "llama3-70b-8192"
+
 // NewGenerateCmd returns the generate command
 func NewGenerateCmd(
 	ctx context.Context,
@@ -30,6 +35,7 @@ func NewGenerateCmd(
 	var llmKey string
 	var ignoreElements []string
 	var baseURI string
+	var treeWidth int
 	cmd := &cobra.Command{
 		Use:   "generate", // the name of the command
 		Short: "Generates a new seltabl struct for a given url with test coverage.",
@@ -70,8 +76,11 @@ So the output fo the command:
 				&llmModel,
 				"llm-model",
 				"m",
-				"llama3-70b-8192",
-				"The name of the llm model to use for generating the struct.",
+				baseLLMModelDefault,
+				fmt.Sprintf(
+					"The name of the llm model to use for generating the struct. Defaults to %s.",
+					baseLLMModelDefault,
+				),
 			)
 			cmd.PersistentFlags().StringVarP(
 				&llmKey,
@@ -85,15 +94,32 @@ So the output fo the command:
 				"base-uri",
 				"b",
 				baseURLDefault,
-				fmt.Sprintf("The base uri for the openai api of groq. Defaults to %s", baseURLDefault),
+				fmt.Sprintf(
+					"The base uri for the openai api of groq. Defaults to %s.",
+					baseURLDefault,
+				),
 			)
 			cmd.PersistentFlags().StringArrayVarP(
 				&ignoreElements,
 				"ignore-elements",
 				"i",
-				[]string{"script", "meta", "style", "link", "img", "footer", "header"},
-				"The elements to ignore when generating the struct.",
+				baseIgnoreElementsDefault,
+				fmt.Sprintf(
+					"The elements to ignore when generating the struct. Defaults to %s.",
+					baseIgnoreElementsDefault,
+				),
 			)
+			cmd.PersistentFlags().IntVarP(
+				&treeWidth,
+				"tree-width",
+				"w",
+				baseTreeWidthDefault,
+				fmt.Sprintf(
+					"The width of the tree when generating the struct. Defaults to %d.",
+					baseTreeWidthDefault,
+				),
+			)
+
 			if llmKey == "" {
 				llmKey := os.Getenv("LLM_API_KEY")
 				if llmKey == "" {
@@ -129,19 +155,20 @@ So the output fo the command:
 			}
 			sels, err := analysis.GetSelectors(
 				ctx,
-				&state,
+				&state.Database,
 				url,
 				ignores,
 			)
 			if err != nil {
 				return fmt.Errorf("failed to get selectors: %w", err)
 			}
-			htmlBody, err := generate.GetURL(url)
+			htmlBody, err := generate.GetURL(url, ignores)
 			if err != nil {
 				return fmt.Errorf("failed to get url: %w", err)
 			}
 			err = generate.Suite(
 				ctx,
+				treeWidth,
 				client,
 				name,
 				url,
@@ -156,18 +183,4 @@ So the output fo the command:
 		},
 	}
 	return cmd
-}
-
-// verify verifies the generated struct
-func verify(
-	ctx context.Context,
-	cmd *cobra.Command,
-	name string,
-) error {
-	err := NewVetCmd(ctx, os.Stdout).RunE(cmd, []string{name + ".go"})
-	if err == nil {
-		fmt.Printf("Generated %s\n", name)
-		return nil
-	}
-	return fmt.Errorf("failed to vet generated struct: %w", err)
 }

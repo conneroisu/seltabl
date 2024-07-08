@@ -48,7 +48,7 @@ func OpenDocument(
 			eg.Go(func() error {
 				s.Selectors[uri], err = GetSelectors(
 					ctx,
-					s,
+					&s.Database,
 					url,
 					data.IgnoreElements,
 				)

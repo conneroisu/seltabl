@@ -8,7 +8,9 @@ import (
 	"net/url"
 	"os"
 
+	"github.com/conneroisu/seltabl/tools/seltabls/pkg/parsers"
 	"github.com/sashabaranov/go-openai"
+	"github.com/yosssi/gohtml"
 )
 
 // writeFile writes a file to the given path
@@ -31,7 +33,7 @@ type Generatable interface {
 }
 
 // GetURL gets the url and returns the body
-func GetURL(url string) ([]byte, error) {
+func GetURL(url string, ignoreElements []string) ([]byte, error) {
 	cli := http.DefaultClient
 	resp, err := cli.Get(url)
 	if err != nil {
@@ -45,7 +47,16 @@ func GetURL(url string) ([]byte, error) {
 	if err != nil {
 		return nil, fmt.Errorf("failed to read body: %w", err)
 	}
-	return body, nil
+	doc, err := parsers.GetMinifiedDoc(string(body), ignoreElements)
+	if err != nil {
+		return nil, fmt.Errorf("failed to get minified doc: %w", err)
+	}
+	docHTML, err := doc.Html()
+	if err != nil {
+		return nil, fmt.Errorf("failed to get html: %w", err)
+	}
+	docHTML = gohtml.Format(docHTML)
+	return []byte(docHTML), nil
 }
 
 // IsURL checks if the string is a valid URL

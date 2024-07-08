@@ -69,7 +69,7 @@ func (s *State) GetSelectorHover(
 		if inPosition && inTag {
 			var val string
 			// Check if the position is within a struct tag value (i.e. value inside and including " and " characters)
-			val, inValue = parsers.IsPositionInStructTagValue(
+			val, inValue = parsers.PositionInStructTagValue(
 				structNodes[i],
 				position,
 				fset,

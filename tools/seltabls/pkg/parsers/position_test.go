@@ -77,6 +77,7 @@ type MyStruct struct {
 	}
 }
 
+// TestIsPositionInStructTagValue tests the PositionInStructTagValue function.
 func TestIsPositionInStructTagValue(t *testing.T) {
 	source := `package main
 
@@ -134,7 +135,7 @@ type MyStruct struct {
 		t.Run(tc.name, func(t *testing.T) {
 			failed := false
 			for _, structNode := range structNodes {
-				_, is := IsPositionInStructTagValue(
+				_, is := PositionInStructTagValue(
 					structNode,
 					tc.position,
 					fset,
@@ -224,7 +225,7 @@ type TableStruct struct {
 		t.Run(tc.name, func(t *testing.T) {
 			failed := false
 			for _, structNode := range structNodes {
-				_, is := IsPositionInStructTagValue(
+				_, is := PositionInStructTagValue(
 					structNode,
 					tc.position,
 					fset,

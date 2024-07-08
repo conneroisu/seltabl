@@ -16,6 +16,7 @@ import (
 // The config file lives with the struct file for later use.
 func Suite(
 	ctx context.Context,
+	treeWidth int,
 	client *openai.Client,
 	name string,
 	url string,
@@ -42,14 +43,18 @@ func Suite(
 			Name:           name,
 			URL:            url,
 			IgnoreElements: ignoreElements,
+			ConfigFile:     configFile,
+			TreeWidth:      treeWidth,
 		}
 		err = structFile.Generate(ctx, client)
 		if err != nil {
 			return fmt.Errorf("failed to generate struct file: %w", err)
 		}
 		testFile := TestFile{
-			Name: name,
-			URL:  url,
+			Name:       name,
+			URL:        url,
+			ConfigFile: configFile,
+			StructFile: structFile,
 		}
 		err = testFile.Generate(ctx, client)
 		if err != nil {

@@ -7,6 +7,9 @@ import (
 	"html/template"
 	"os"
 
+	"github.com/conneroisu/seltabl/tools/seltabls/data"
+	"github.com/conneroisu/seltabl/tools/seltabls/data/master"
+	"github.com/conneroisu/seltabl/tools/seltabls/pkg/analysis"
 	"github.com/sashabaranov/go-openai"
 )
 
@@ -15,14 +18,23 @@ import (
 // It contains attributes relating to the name, url, and ignore elements of the struct file.
 type StructFile struct {
 	// Name is the name of the struct file.
-	Name string `json:"-"`
+	Name string `json:"-" yaml:"name"`
 	// URL is the url for the struct file.
-	URL string `json:"-"`
+	URL string `json:"-" yaml:"url"`
 	// IgnoreElements is a list of elements to ignore when generating the struct.
-	IgnoreElements []string `json:"ignore-elements"`
-
+	IgnoreElements []string `json:"ignore-elements" yaml:"ignore-elements"`
 	// Fields is a list of fields for the struct.
-	Fields []Field `json:"fields"`
+	Fields []Field `json:"fields" yaml:"fields"`
+
+	// TreeWidth is the width of the tree when generating the struct.
+	TreeWidth int `json:"-" yaml:"tree-width"`
+	// ConfigFile is the config file for the struct file.
+	ConfigFile ConfigFile `json:"-" yaml:"config-file"`
+	// JSONValue is the json value for the struct yaml file.
+	JSONValue string `json:"-" yaml:"json-value"`
+
+	// Db is the database for the struct file.
+	Db *data.Database[master.Queries] `json:"-" yaml:"-"`
 }
 
 // Field is a struct for a field
@@ -57,17 +69,24 @@ func (s *StructFile) Generate(ctx context.Context, client *openai.Client) error 
 			return fmt.Errorf("client is nil")
 		}
 		// Create a new file
-		f, err := os.Create(s.Name + ".go")
+		f, err := os.Create(s.Name + "_seltabl.go")
 		if err != nil {
 			return fmt.Errorf("failed to create file: %w", err)
 		}
 		defer f.Close()
+		structFile, err := s.generate(
+			ctx,
+			client,
+		)
+		if err != nil {
+			return fmt.Errorf("failed to generate struct: %w", err)
+		}
 		// Create a new buffer
 		w := new(bytes.Buffer)
 		// Create a new template
 		tmpl := template.New("struct_file_template")
 		// Execute the template
-		err = tmpl.Execute(w, s)
+		err = tmpl.ExecuteTemplate(w, "struct", structFile)
 		if err != nil {
 			return fmt.Errorf("failed to execute struct file template: %w", err)
 		}
@@ -78,4 +97,28 @@ func (s *StructFile) Generate(ctx context.Context, client *openai.Client) error 
 		}
 		return nil
 	}
+}
+
+// generate generates the struct file.
+//
+// It generates the struct file by using the given url, contents, and ignore elements.
+func (s *StructFile) generate(
+	ctx context.Context,
+	client *openai.Client,
+) (StructFile, error) {
+	content, err := GetURL(s.URL, s.IgnoreElements)
+	if err != nil {
+		return *s, fmt.Errorf("failed to get url: %w", err)
+	}
+	_ = string(content)
+	_, err = analysis.GetSelectors(
+		ctx,
+		s.Db,
+		s.URL,
+		s.IgnoreElements,
+	)
+	if err != nil {
+		return *s, fmt.Errorf("failed to get selectors: %w", err)
+	}
+	return *s, nil
 }

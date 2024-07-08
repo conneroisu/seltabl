@@ -7,7 +7,6 @@ import (
 	"go/parser"
 	"go/token"
 
-	"github.com/conneroisu/seltabl/tools/seltabls/data/master"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/parsers"
 	"golang.org/x/sync/errgroup"
@@ -128,20 +127,13 @@ func (s *State) CheckPosition(
 		inTag := parsers.IsPositionInTag(structNodes[i], position, fset)
 		if inPosition && inTag {
 			// Check if the position is within a struct tag value (i.e. value inside and including " and " characters)
-			_, inValue = parsers.IsPositionInStructTagValue(
+			_, inValue = parsers.PositionInStructTagValue(
 				structNodes[i],
 				position,
 				fset,
 			)
 			if inValue {
 				return parsers.StateInTagValue, nil
-			}
-			// Check if the position is after a colon
-			if parsers.PositionBeforeValue(position, text) == ':' {
-				// If the position is after a colon, return the state after the colon
-				// Also return the key of the struct tag before the colon
-				// TODO: Get the key of the struct tag before the colon
-				return parsers.StateAfterColon, nil
 			}
 			if parsers.PositionBeforeValue(position, text) == '"' {
 				// If the position is before a double quote, return the state in the tag Value
@@ -155,29 +147,4 @@ func (s *State) CheckPosition(
 		}
 	}
 	return parsers.StateInvalid, nil
-}
-
-// Partition function for quicksort
-func partition(items []master.Selector, low, high int) int {
-	pivot := items[high].Occurances
-	i := low - 1
-
-	for j := low; j < high; j++ {
-		if items[j].Occurances > pivot {
-			i++
-			items[i], items[j] = items[j], items[i]
-		}
-	}
-	items[i+1], items[high] = items[high], items[i+1]
-	return i + 1
-}
-
-// Quicksort function
-func quickSort(items []master.Selector, low, high int) (result []master.Selector) {
-	if low < high {
-		pi := partition(items, low, high)
-		quickSort(items, low, pi-1)
-		quickSort(items, pi+1, high)
-	}
-	return items
 }

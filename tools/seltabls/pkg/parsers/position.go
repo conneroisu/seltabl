@@ -8,12 +8,15 @@ import (
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
 )
 
-// IsPositionInStructTagValue checks if the given position is within the value of a struct tag.
-func IsPositionInStructTagValue(
+// PositionInStructTagValue checks if the given position is within the value of a struct tag.
+func PositionInStructTagValue(
 	node *ast.StructType,
 	pos lsp.Position,
 	fset *token.FileSet,
-) (string, bool) {
+) (
+	result string,
+	exists bool,
+) {
 	closestTagValue := ""
 	closestDistance := int(
 		^uint(0) >> 1,

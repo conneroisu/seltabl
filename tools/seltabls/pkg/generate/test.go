@@ -10,8 +10,14 @@ import (
 
 // TestFile is a struct for a test file
 type TestFile struct {
-	Name string
-	URL  string
+	// Name is the name of the test file
+	Name string `json:"name" yaml:"name"`
+	// URL is the url for the test file
+	URL string `json:"url" yaml:"url"`
+	// ConfigFile is the config file for the test file
+	ConfigFile ConfigFile `json:"-" yaml:"config-file"`
+	// StructFile is the struct file for the test file
+	StructFile StructFile `json:"-" yaml:"struct-file"`
 }
 
 // Generate generates a test file for the given name

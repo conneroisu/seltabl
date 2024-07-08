@@ -58,3 +58,23 @@ type {{ .Name }} struct {
 }}
 
 {{- end -}}
+
+{{- define "aggregate" -}}
+
+You are to cogregate the following json schemas into a single comprehensive and accurate json schema designed to be used to select elements using css selectors.
+
+- header selector: used to find the header row and column for the field in the given struct.
+- data-selector: used to find the data column for the field in the given struct.
+- query-selector: used to query for the inner text or attribute of the cell.
+- control-selector: used to control what to query for the inner text or attribute of the cell.
+- must-be-present: used to ensure that the field is present in the given url.
+
+Your HTML content:
+
+{{ .Content }}
+
+Your json schemas:
+
+{{ .Schemas }}
+
+{{- end -}}

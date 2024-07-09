@@ -3,8 +3,8 @@ package generate
 import (
 	"bytes"
 	"fmt"
-	"html/template"
 	"strings"
+	"text/template"
 
 	"github.com/conneroisu/seltabl/tools/seltabls/data/master"
 )
@@ -15,16 +15,24 @@ const (
 	promptTemplate    = "prompt"
 )
 
+var structTextTemplate *template.Template
+
+// init parses the struct template upon package initialization.
+func init() {
+	var err error
+	structTextTemplate = template.New("struct_file_template")
+	structTextTemplate, err = structTextTemplate.Parse(structTmpl)
+	if err != nil {
+		panic(fmt.Errorf("failed to parse struct: %w", err))
+	}
+}
+
 // NewStructPrompt creates a new filled out template for a prompt from the `struct.tmpl` template.
 func NewStructPrompt(
 	url, content string,
 	selectors []master.Selector,
+	section Section,
 ) (string, error) {
-	tmpl := template.New("struct_file_template")
-	tmpl, err := tmpl.Parse(structTmpl)
-	if err != nil {
-		return "", fmt.Errorf("failed to parse struct: %w", err)
-	}
 	sels := []string{}
 	for _, sel := range selectors {
 		sels = append(sels, fmt.Sprintf("%s: %d", sel.Value, sel.Occurances))
@@ -33,14 +41,13 @@ func NewStructPrompt(
 		URL       string
 		Content   string
 		Selectors string
-		Schemas   []string
 	}{
 		URL:       url,
 		Content:   content,
 		Selectors: strings.Join(sels, "\n"),
 	}
 	var buf bytes.Buffer
-	err = tmpl.ExecuteTemplate(&buf, "struct", args)
+	err := structTextTemplate.ExecuteTemplate(&buf, "struct", args)
 	if err != nil {
 		return "", fmt.Errorf(
 			"failed to execute struct file template: %w",
@@ -73,7 +80,7 @@ func NewStructStruct(
 		Fields:         fields,
 	}
 	var buf bytes.Buffer
-	err = tmpl.ExecuteTemplate(&buf, structTemplate, args)
+	err = structTextTemplate.ExecuteTemplate(&buf, structTemplate, args)
 	if err != nil {
 		return "", fmt.Errorf(
 			"failed to execute struct file template: %w",
@@ -89,11 +96,6 @@ func NewAggregatePrompt(
 	selectors []master.Selector,
 	schemas []string,
 ) (string, error) {
-	tmpl := template.New("aggregate_file_template")
-	tmpl, err := tmpl.Parse(structTmpl)
-	if err != nil {
-		return "", fmt.Errorf("failed to parse aggregate: %w", err)
-	}
 	sels := []string{}
 	for _, sel := range selectors {
 		sels = append(sels, fmt.Sprintf("%s: %d", sel.Value, sel.Occurances))
@@ -110,7 +112,7 @@ func NewAggregatePrompt(
 		Schemas:   schemas,
 	}
 	var buf bytes.Buffer
-	err = tmpl.ExecuteTemplate(&buf, aggregateTemplate, args)
+	err := structTextTemplate.ExecuteTemplate(&buf, aggregateTemplate, args)
 	if err != nil {
 		return "", fmt.Errorf(
 			"failed to execute aggregate file template: %w",

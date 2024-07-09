@@ -27,6 +27,9 @@ func Suite(
 	case <-ctx.Done():
 		return fmt.Errorf("context cancelled: %w", ctx.Err())
 	default:
+		if client == nil {
+			return fmt.Errorf("client is nil")
+		}
 		configFile := ConfigFile{
 			Name:           name,
 			URL:            url,
@@ -47,51 +50,6 @@ func Suite(
 			ConfigFile:     configFile,
 			TreeWidth:      treeWidth,
 			TreeDepth:      treeDepth,
-			HTMLContent:    htmlBody,
-		}
-		err = structFile.Generate(ctx, client)
-		if err != nil {
-			return fmt.Errorf("failed to generate struct file: %w", err)
-		}
-		testFile := TestFile{
-			Name:       name,
-			URL:        url,
-			ConfigFile: configFile,
-			StructFile: structFile,
-		}
-		err = testFile.Generate(ctx, client)
-		if err != nil {
-			return fmt.Errorf("failed to generate test file: %w", err)
-		}
-		return nil
-	}
-}
-
-// Configured generates a suite for a given name.
-//
-// This suite includes a config file, a struct file, and a test file.
-//
-// The config file lives with the struct file for later use.
-func Configured(
-	ctx context.Context,
-	treeWidth int,
-	client *openai.Client,
-	name, url, htmlBody string,
-	ignoreElements []string,
-	selectors []master.Selector,
-	configFile ConfigFile,
-) (err error) {
-	select {
-	case <-ctx.Done():
-		return fmt.Errorf("context cancelled: %w", ctx.Err())
-	default:
-		structFile := StructFile{
-			Name: name,
-			URL:  url,
-
-			IgnoreElements: ignoreElements,
-			ConfigFile:     configFile,
-			TreeWidth:      treeWidth,
 			HTMLContent:    htmlBody,
 		}
 		err = structFile.Generate(ctx, client)

@@ -37,8 +37,8 @@ func TestSelectors(t *testing.T) {
 				`,
 			want: []string{
 				"html",
-				"html body table",
-				"html body table tbody tr",
+				"html > body > table",
+				"html > body > table > tbody > tr",
 			},
 		},
 		{
@@ -72,12 +72,12 @@ func TestSelectors(t *testing.T) {
 				`,
 			want: []string{
 				"html",
-				"html head",
-				"html body",
-				"html body table",
-				"html body table tbody",
-				"html body table tbody tr",
-				"html body table tbody tr td",
+				"html > head",
+				"html > body",
+				"html > body > table",
+				"html > body > table > tbody",
+				"html > body > table > tbody > tr",
+				"html > body > table > tbody > tr > td",
 			},
 		},
 		{
@@ -96,10 +96,10 @@ func TestSelectors(t *testing.T) {
 				`,
 			want: []string{
 				"html",
-				"html head",
-				"html body",
-				"html body div",
-				"html body div h2",
+				"html > head",
+				"html > body",
+				"html > body > div",
+				"html > body > div > h2",
 			},
 		},
 		{
@@ -137,13 +137,13 @@ func TestSelectors(t *testing.T) {
 				`,
 			want: []string{
 				"html",
-				"html head",
-				"html body",
-				"html body table",
-				"html body table tbody",
-				"html body table tbody tr",
-				"html body table tbody tr td",
-				"html body table tbody tr td a[href]",
+				"html > head",
+				"html > body",
+				"html > body > table",
+				"html > body > table > tbody",
+				"html > body > table > tbody > tr",
+				"html > body > table > tbody > tr > td",
+				"html > body > table > tbody > tr > td > a[href]",
 			},
 		},
 		{
@@ -181,13 +181,13 @@ func TestSelectors(t *testing.T) {
 				`,
 			want: []string{
 				"html",
-				"html head",
-				"html body",
-				"html body table",
-				"html body table tbody",
-				"html body table tbody tr",
-				"html body table tbody tr td",
-				"html body table tbody tr td a[href]",
+				"html > head",
+				"html > body",
+				"html > body > table",
+				"html > body > table > tbody",
+				"html > body > table > tbody > tr",
+				"html > body > table > tbody > tr > td",
+				"html > body > table > tbody > tr > td > a[href]",
 			},
 		},
 	}
@@ -210,6 +210,15 @@ func TestSelectors(t *testing.T) {
 			}
 			for _, wa := range got {
 				t.Logf("\"%s\",", wa)
+				// verify that the selector can be found in the document
+				doc, err := goquery.NewDocumentFromReader(
+					strings.NewReader(tt.input),
+				)
+				if err != nil {
+					t.Fatalf("failed to create document: %v", err)
+				}
+				sel := doc.Find(wa)
+				assert.NotEqual(t, sel.Length(), 0)
 			}
 			for _, wa := range tt.want {
 				assert.Contains(

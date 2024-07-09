@@ -26,7 +26,7 @@ func HandleMessage(
 	defer cancel()
 	for {
 		select {
-		case <-ctx.Done():
+		case <-hCtx.Done():
 			return fmt.Errorf("context cancelled: %w", hCtx.Err())
 		default:
 			switch methods.GetMethod(msg.Method) {

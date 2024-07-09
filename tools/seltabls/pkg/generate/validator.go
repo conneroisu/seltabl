@@ -43,3 +43,19 @@ func IsURL(toValidateURL string) (err error) {
 	_, err = url.ParseRequestURI(toValidateURL)
 	return err
 }
+
+// isValidTreeWidth checks if the given tree width is valid
+func isValidTreeWidth(treeWidth int) bool {
+	if treeWidth%2 != 0 || treeWidth < 1 {
+		return false
+	}
+	return true
+}
+
+// isValidTreeDepth checks if the given tree depth is valid
+func isValidTreeDepth(treeDepth int) bool {
+	if treeDepth < 1 {
+		return false
+	}
+	return true
+}

@@ -10,14 +10,11 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-//go:embed test.tmpl
-var testTmpl string
-
 // TestTest generates a test from a given url.
 func TestTestTemplateTest(t *testing.T) {
 	a := assert.New(t)
 	tmpl := template.New("test_file_template")
-	tmpl, err := tmpl.Parse(testTmpl)
+	tmpl, err := tmpl.Parse(testTemplate)
 	if err != nil {
 		t.Fatalf("Failed to parse test: %v", err)
 	}

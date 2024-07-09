@@ -13,7 +13,6 @@ import (
 	"github.com/conneroisu/seltabl/tools/seltabls/data"
 	"github.com/conneroisu/seltabl/tools/seltabls/data/master"
 	"github.com/sashabaranov/go-openai"
-	"golang.org/x/sync/errgroup"
 )
 
 // StructFile is a struct for a struct file.
@@ -48,26 +47,6 @@ type StructFile struct {
 //go:embed struct.tmpl
 var structTmpl string
 
-// Field is a struct for a field
-type Field struct {
-	// Name is the name of the field.
-	Name string `json:"name"`
-	// Type is the type of the field.
-	Type string `json:"type"`
-	// Description is a description of the field.
-	Description string `json:"description"`
-	// HeaderSelector is the header selector for the field.
-	HeaderSelector string `json:"header-selector"`
-	// DataSelector is the data selector for the field.
-	DataSelector string `json:"data-selector"`
-	// ControlSelector is the control selector for the field.
-	ControlSelector string `json:"control-selector"`
-	// QuerySelector is the query selector for the field.
-	QuerySelector string `json:"query-selector"`
-	// MustBePresent is the must be present selector for the field.
-	MustBePresent string `json:"must-be-present"`
-}
-
 // Generate generates a struct file for the given name.
 //
 // If the context is cancelled, it returns an error from the context.
@@ -75,23 +54,43 @@ func (s *StructFile) Generate(
 	ctx context.Context,
 	client *openai.Client,
 ) error {
+	if !isValidTreeDepth(s.TreeDepth) || !isValidTreeWidth(s.TreeWidth) {
+		if isValidTreeDepth(s.TreeDepth) {
+			return fmt.Errorf("tree depth is not valid: %d", s.TreeDepth)
+		}
+		if isValidTreeWidth(s.TreeWidth) {
+			return fmt.Errorf("tree width is not valid: %d", s.TreeWidth)
+		}
+	}
 	select {
 	case <-ctx.Done():
 		return fmt.Errorf("context cancelled: %w", ctx.Err())
 	default:
-		if client == nil {
-			return fmt.Errorf("client is nil")
-		}
-		// Create a new file
 		f, err := os.Create(s.Name + "_seltabl.go")
 		if err != nil {
 			return fmt.Errorf("failed to create file: %w", err)
 		}
 		defer f.Close()
+		identity, err := generateIdentity(ctx, s, client)
+		if err != nil {
+			return fmt.Errorf("failed to generate identity: %w", err)
+		}
 		structFile, err := s.generate(
 			ctx,
 			f,
 			client,
+			identity,
+			[]Field{
+				{
+					Name:            "A",
+					Type:            "string",
+					Description:     "A description of the field",
+					HeaderSelector:  "tr:nth-child(1) td:nth-child(1)",
+					DataSelector:    "tr td:nth-child(1)",
+					ControlSelector: "$text",
+					MustBePresent:   "NCAA Codes",
+				},
+			},
 		)
 		if err != nil {
 			return fmt.Errorf("failed to generate struct: %w", err)
@@ -124,59 +123,14 @@ func (s *StructFile) generate(
 	ctx context.Context,
 	writer io.Writer,
 	client *openai.Client,
+	identity IdentifyResponse,
+	fields []Field,
 ) (StructFile, error) {
-	eg := errgroup.Group{}
-	for range make([]int, s.TreeDepth) {
-		eg.Go(func() error {
-			return nil
-		})
-	}
-	identifyPrompt, err := NewIdentifyPrompt(
-		s.URL,
-		s.HTMLContent,
-	)
-	out, history, err := Chat(
-		ctx,
-		client,
-		s.ConfigFile.SmartModel,
-		[]openai.ChatCompletionMessage{},
-		identifyPrompt,
-	)
-	if err != nil {
-		return *s, fmt.Errorf("failed to create identify prompt: %w", err)
-	}
-	structPrompt, err := NewStructPrompt(
-		s.URL,
-		s.HTMLContent,
-		s.ConfigFile.Selectors,
-	)
-	if err != nil {
-		return *s, fmt.Errorf("failed to create struct prompt: %w", err)
-	}
-	generation, history, err := Chat(
-		ctx,
-		client,
-		s.ConfigFile.SmartModel,
-		[]openai.ChatCompletionMessage{},
-		structPrompt,
-	)
-	if err != nil {
-		return *s, fmt.Errorf("failed to chat with llm provider: %w", err)
-	}
-	aggregatePrompt, err := NewAggregatePrompt(
-		s.URL,
-		s.HTMLContent,
-		s.ConfigFile.Selectors,
-		[]string{string(generation)},
-	)
-	if err != nil {
-		return *s, fmt.Errorf("failed to create struct prompt: %w", err)
-	}
 	structStruct, err := NewStructStruct(
 		s.Name,
 		s.URL,
 		s.IgnoreElements,
-		s.Fields,
+		fields,
 	)
 	if err != nil {
 		return *s, fmt.Errorf("failed to create struct prompt: %w", err)
@@ -186,6 +140,5 @@ func (s *StructFile) generate(
 	if err != nil {
 		return *s, fmt.Errorf("failed to write struct file: %w", err)
 	}
-	print(identifyPrompt, structPrompt, aggregatePrompt, history, out)
 	return *s, nil
 }

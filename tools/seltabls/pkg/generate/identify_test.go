@@ -23,7 +23,6 @@ func TestNewIdentifyPrompt(t *testing.T) {
 func TestNewIdentifyAggregatePrompt(t *testing.T) {
 	a := assert.New(t)
 	out, err := NewIdentifyAggregatePrompt(
-		"https://github.com/conneroisu/seltabl/blob/main/testdata/ab_num_table.html",
 		"<html></html>",
 		[]string{
 			`{

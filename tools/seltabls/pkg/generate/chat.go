@@ -32,9 +32,8 @@ func Chat(
 			err,
 		)
 	}
-	content := completion.Choices[0].Message.Content
 	history = append(history, openai.ChatCompletionMessage{
 		Role:    openai.ChatMessageRoleAssistant,
-		Content: content})
-	return content, history, nil
+		Content: completion.Choices[0].Message.Content})
+	return completion.Choices[0].Message.Content, history, nil
 }

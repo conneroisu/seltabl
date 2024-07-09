@@ -1,10 +1,18 @@
 package parsers
 
 import (
+	"context"
 	"fmt"
 	"strings"
 
 	"github.com/PuerkitoBio/goquery"
+	"github.com/conneroisu/seltabl/tools/seltabls/data"
+	"github.com/conneroisu/seltabl/tools/seltabls/data/master"
+	"github.com/yosssi/gohtml"
+)
+
+const (
+	childsep = " > "
 )
 
 // GetAllSelectors retrieves all selectors from the given HTML document
@@ -37,7 +45,7 @@ func getSelectorsFromSelection(s *goquery.Selection) string {
 	currentSelector := singleSelector(s)
 	// Combine the parent and current selectors
 	if parentSelector != "" && currentSelector != "" {
-		return parentSelector + " " + currentSelector
+		return parentSelector + childsep + currentSelector
 	} else if parentSelector != "" && currentSelector == "" {
 		return parentSelector
 	}
@@ -106,4 +114,69 @@ func singleSelector(selection *goquery.Selection) string {
 		selector = goquery.NodeName(selection)
 	}
 	return selector
+}
+
+// GetSelectors gets all the selectors from the given URL and appends them to the selectors slice
+func GetSelectors(
+	ctx context.Context,
+	db *data.Database[master.Queries],
+	url string,
+	ignores []string,
+) (selectors []master.Selector, err error) {
+	rows, err := db.Queries.GetSelectorsByURL(
+		ctx,
+		master.GetSelectorsByURLParams{Value: url},
+	)
+	if err == nil && rows != nil {
+		var selectors []master.Selector
+		for _, row := range rows {
+			selectors = append(selectors, *row)
+		}
+		return selectors, nil
+	}
+	doc, err := GetMinifiedDoc(url, ignores)
+	if err != nil {
+		return nil, fmt.Errorf("failed to get minified doc: %w", err)
+	}
+	docHTML, err := doc.Html()
+	if err != nil {
+		return nil, fmt.Errorf("failed to get html: %w", err)
+	}
+	HTML, err := db.Queries.InsertHTML(
+		ctx,
+		master.InsertHTMLParams{Value: docHTML},
+	)
+	URL, err := db.Queries.InsertURL(
+		ctx,
+		master.InsertURLParams{Value: url, HtmlID: HTML.ID},
+	)
+	if err != nil {
+		return nil, fmt.Errorf("failed to insert url: %w", err)
+	}
+	selectorStrings, err := GetAllSelectors(doc)
+	if err != nil {
+		return nil, fmt.Errorf("failed to get selectors: %w", err)
+	}
+	for _, selectorString := range selectorStrings {
+		found := doc.Find(selectorString)
+		selectorContext, err := found.Parent().First().Html()
+		if err != nil {
+			return nil, fmt.Errorf("failed to get html: %w", err)
+		}
+		selectorContext = gohtml.Format(selectorContext)
+		selector, err := db.Queries.InsertSelector(
+			ctx,
+			master.InsertSelectorParams{
+				Value:      selectorString,
+				UrlID:      URL.ID,
+				Context:    selectorContext,
+				Occurances: int64(found.Length()),
+			},
+		)
+		if err != nil {
+			return nil, fmt.Errorf("failed to insert selector: %w", err)
+		}
+		selectors = append(selectors, *selector)
+	}
+	return selectors, nil
 }

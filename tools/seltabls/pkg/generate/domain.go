@@ -53,7 +53,7 @@ func GetURL(url string, ignoreElements []string) ([]byte, error) {
 	if err != nil {
 		return nil, fmt.Errorf("failed to get html: %w", err)
 	}
-	docHTML = gohtml.Format(docHTML)
+	docHTML = gohtml.FormatWithLineNo(docHTML)
 	docHTML = strings.ReplaceAll(docHTML, "\n", "")
 	return []byte(docHTML), nil
 }

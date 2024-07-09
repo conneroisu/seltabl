@@ -34,6 +34,9 @@ type ConfigFile struct {
 	FastModel string `yaml:"fast-model"`
 	// Recycle is a flag indicating whether or not to recycle the configuration on each `seltabls generate` command.
 	Recycle bool `yaml:"recycle"`
+
+	// Sections is a list of sections in the html.
+	Sections []Section `json:"sections" yaml:"sections"`
 }
 
 // IdentifyResponse is a struct for the respond of an identify prompt.
@@ -60,7 +63,7 @@ type Section struct {
 	// End is the end of the section in the html.
 	End int `json:"end"         yaml:"end"`
 	// Fields is a list of fields in the section.
-	Fields []Field `json:"fields" yaml:"fields"`
+	Fields []Field `json:"fields"      yaml:"fields"`
 }
 
 // Field is a struct for a field
@@ -90,7 +93,7 @@ type TestFile struct {
 	// URL is the url for the test file
 	URL string `json:"url"  yaml:"url"`
 	// PackageName is the package name for the test file
-	PackageName string `json:"-" yaml:"package-name"`
+	PackageName string `json:"-"    yaml:"package-name"`
 }
 
 // WriteFile writes the test file to the file system
@@ -110,7 +113,7 @@ func (t *TestFile) WriteFile(p []byte) (n int, err error) {
 //
 // It contains attributes relating to the name, url, and ignore elements of the struct file.
 type StructFile struct {
-	File os.File `json:"-" yaml:"-"`
+	File os.File `json:"-"               yaml:"-"`
 	// Name is the name of the struct file.
 	Name string `json:"-"               yaml:"name"`
 	// URL is the url for the struct file.
@@ -134,6 +137,9 @@ type StructFile struct {
 
 	// Db is the database for the struct file.
 	Db *data.Database[master.Queries] `json:"-" yaml:"-"`
+
+	// Section is the section of the struct file.
+	Section Section `json:"-" yaml:"section"`
 }
 
 // Chat is a struct for a chat

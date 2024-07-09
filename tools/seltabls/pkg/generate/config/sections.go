@@ -1,4 +1,4 @@
-package sections
+package config
 
 import (
 	"context"
@@ -59,7 +59,18 @@ func decodeSection(s string) (domain.Section, error) {
 	var section domain.Section
 	err := json.Unmarshal([]byte(s), &section)
 	if err != nil {
-		return domain.Section{}, fmt.Errorf("failed to unmarshal section: %w", err)
+		return domain.Section{}, fmt.Errorf(
+			"failed to unmarshal section: %w",
+			err,
+		)
 	}
 	return section, nil
+}
+
+// NewAggregatePromptForData creates a prompt for aggregating data
+func NewAggregatePromptForData(url, content string, selectors []string, section []string) (string, error) {
+	// Implement the logic for creating an aggregate prompt for data
+	// This is a placeholder implementation, modify it as per your requirements
+	prompt := fmt.Sprintf("Aggregate the data from the following:\nURL: %s\nContent: %s\nSelectors: %v\nSections: %v", url, content, selectors, section)
+	return prompt, nil
 }

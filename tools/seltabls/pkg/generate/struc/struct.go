@@ -29,10 +29,12 @@ func Generate(
 	client *openai.Client,
 	sF *domain.StructFile,
 	cfg *domain.ConfigFile,
+	section *domain.Section,
 ) error {
 	log.Debugf("Generate called on stuct: %v", sF)
 	defer log.Debugf("Cenerate called on stuct: %v", sF)
-	if !domain.IsValidTreeDepth(sF.TreeDepth) || !domain.IsValidTreeWidth(sF.TreeWidth) {
+	if !domain.IsValidTreeDepth(sF.TreeDepth) ||
+		!domain.IsValidTreeWidth(sF.TreeWidth) {
 		if domain.IsValidTreeDepth(sF.TreeDepth) {
 			return fmt.Errorf("tree depth is not valid: %d", sF.TreeDepth)
 		}
@@ -96,7 +98,7 @@ func generate(
 		sF.Name,
 		sF.URL,
 		sF.IgnoreElements,
-		sF.Fields,
+		section,
 	)
 	if err != nil {
 		return *sF, fmt.Errorf("failed to create struct prompt: %w", err)

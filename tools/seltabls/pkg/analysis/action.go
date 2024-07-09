@@ -28,7 +28,11 @@ func TextDocumentCodeAction(
 					replaceChange := map[string][]lsp.TextEdit{}
 					replaceChange[req.Params.TextDocument.URI] = []lsp.TextEdit{
 						{
-							Range:   lsp.LineRange(row, idx, idx+len("VS Code")),
+							Range: lsp.LineRange(
+								row,
+								idx,
+								idx+len("VS Code"),
+							),
 							NewText: "Neovim",
 						},
 					}
@@ -39,7 +43,11 @@ func TextDocumentCodeAction(
 					censorChange := map[string][]lsp.TextEdit{}
 					censorChange[req.Params.TextDocument.URI] = []lsp.TextEdit{
 						{
-							Range:   lsp.LineRange(row, idx, idx+len("VS Code")),
+							Range: lsp.LineRange(
+								row,
+								idx,
+								idx+len("VS Code"),
+							),
 							NewText: "VS C*de",
 						},
 					}

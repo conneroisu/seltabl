@@ -32,20 +32,16 @@ func init() {
 func NewStructPrompt(
 	url, content string,
 	selectors []master.Selector,
-	section domain.Section,
+	section *domain.Section,
 ) (string, error) {
-	sels := []string{}
-	for _, sel := range selectors {
-		sels = append(sels, fmt.Sprintf("val: %s\noccurances: %d", sel.Value, sel.Occurances))
-	}
 	args := struct {
-		URL       string
-		Content   string
-		Selectors string
+		URL     string
+		Content string
+		Fields  []domain.Field
 	}{
-		URL:       url,
-		Content:   content,
-		Selectors: strings.Join(sels, "\n"),
+		URL:     url,
+		Content: content,
+		Fields:  section.Fields,
 	}
 	var buf bytes.Buffer
 	err := structTextTemplate.ExecuteTemplate(&buf, "struct", args)
@@ -62,7 +58,7 @@ func NewStructPrompt(
 func NewStructStruct(
 	name, url string,
 	ignoreElements []string,
-	fields []domain.Field,
+	section *domain.Section,
 ) (string, error) {
 	tmpl := template.New("struct_file_template")
 	tmpl, err := tmpl.Parse(structTmpl)
@@ -78,7 +74,7 @@ func NewStructStruct(
 		Name:           name,
 		URL:            url,
 		IgnoreElements: ignoreElements,
-		Fields:         fields,
+		Fields:         section.Fields,
 	}
 	var buf bytes.Buffer
 	err = structTextTemplate.ExecuteTemplate(&buf, structTemplate, args)

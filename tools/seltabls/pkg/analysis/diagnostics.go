@@ -25,7 +25,10 @@ func GetDiagnosticsForFile(
 		default:
 			sts, err := parsers.ParseStructs(ctx, []byte(*text))
 			if err != nil {
-				return diagnostics, fmt.Errorf("failed to parse structs: %w", err)
+				return diagnostics, fmt.Errorf(
+					"failed to parse structs: %w",
+					err,
+				)
 			}
 			eg := errgroup.Group{}
 			for _, st := range sts {

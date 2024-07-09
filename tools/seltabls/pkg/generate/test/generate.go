@@ -23,7 +23,12 @@ func Generate(
 		return fmt.Errorf("context cancelled: %w", ctx.Err())
 	default:
 		version := ctx.Value("version").(string)
-		ctn, err := NewTestFileContent(t.Name+"_test.go", t.URL, version, t.Name)
+		ctn, err := NewTestFileContent(
+			t.Name+"_test.go",
+			t.URL,
+			version,
+			t.Name,
+		)
 		if err != nil {
 			return fmt.Errorf("failed to create test file content: %w", err)
 		}

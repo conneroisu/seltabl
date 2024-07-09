@@ -80,7 +80,10 @@ func HandleMessage(
 					request,
 				)
 				if err != nil || response == nil {
-					return nil, fmt.Errorf("failed to get completions: %w", err)
+					return nil, fmt.Errorf(
+						"failed to get completions: %w",
+						err,
+					)
 				}
 				return response, nil
 			case methods.MethodRequestTextDocumentHover:
@@ -112,7 +115,10 @@ func HandleMessage(
 					state,
 				)
 				if err != nil || response == nil {
-					return nil, fmt.Errorf("failed to get code actions: %w", err)
+					return nil, fmt.Errorf(
+						"failed to get code actions: %w",
+						err,
+					)
 				}
 				return response, nil
 			case methods.MethodShutdown:
@@ -182,7 +188,10 @@ func HandleMessage(
 				}
 				response, err = analysis.UpdateDocument(hCtx, state, &request)
 				if err != nil || response == nil {
-					return nil, fmt.Errorf("failed to update document: %w", err)
+					return nil, fmt.Errorf(
+						"failed to update document: %w",
+						err,
+					)
 				}
 				return response, nil
 			default:

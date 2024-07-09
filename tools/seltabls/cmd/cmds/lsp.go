@@ -70,12 +70,18 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 					}
 					resp, err := handle(hCtx, &writer, &state, decoded)
 					if err != nil || resp == nil {
-						state.Logger.Printf("failed to handle message: %s\n", err)
+						state.Logger.Printf(
+							"failed to handle message: %s\n",
+							err,
+						)
 						return nil
 					}
 					err = server.WriteResponse(hCtx, &writer, resp)
 					if err != nil {
-						state.Logger.Printf("failed to write response: %s\n", err)
+						state.Logger.Printf(
+							"failed to write response: %s\n",
+							err,
+						)
 					}
 					return nil
 				})

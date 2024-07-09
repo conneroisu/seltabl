@@ -34,8 +34,8 @@ type HoverResponse struct {
 }
 
 // Method returns the method for the hover response
-func (r HoverResponse) Method() string {
-	return "textDocument/hover"
+func (r HoverResponse) Method() methods.Method {
+	return methods.MethodRequestTextDocumentHover
 }
 
 // HoverResult is a result from a hover request to the client from the

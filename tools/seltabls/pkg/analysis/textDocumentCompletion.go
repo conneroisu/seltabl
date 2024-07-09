@@ -65,7 +65,7 @@ func CreateTextDocumentCompletion(
 						lsp.CompletionItem{
 							Label: selector.Value,
 							Detail: fmt.Sprintf(
-								"n: %d context: \n%s",
+								"Occurances: '%d' \nContext: \n```html\n%s```",
 								selector.Occurances,
 								selector.Context,
 							),
@@ -81,7 +81,7 @@ func CreateTextDocumentCompletion(
 						lsp.CompletionItem{
 							Label: "\"" + selector.Value + "\"",
 							Detail: fmt.Sprintf(
-								"n: %d context: \n%s",
+								"Occurances: '%d' \nContext: \n```html\n%s```",
 								selector.Occurances,
 								selector.Context,
 							),
@@ -90,8 +90,6 @@ func CreateTextDocumentCompletion(
 						},
 					)
 				}
-			case parsers.StateInvalid:
-				return nil
 			default:
 				return nil
 			}

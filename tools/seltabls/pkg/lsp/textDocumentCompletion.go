@@ -36,8 +36,8 @@ type CompletionResponse struct {
 }
 
 // Method returns the method for the completion response
-func (r CompletionResponse) Method() string {
-	return "textDocument/completion"
+func (r CompletionResponse) Method() methods.Method {
+	return methods.MethodRequestTextDocumentCompletion
 }
 
 // CompletionItem is a struct for a completion item

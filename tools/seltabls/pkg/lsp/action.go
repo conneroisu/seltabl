@@ -37,8 +37,8 @@ type TextDocumentCodeActionResponse struct {
 }
 
 // Method returns the method for the code action response
-func (r TextDocumentCodeActionResponse) Method() string {
-	return "textDocument/codeAction"
+func (r TextDocumentCodeActionResponse) Method() methods.Method {
+	return methods.MethodRequestTextDocumentCodeAction
 }
 
 // CodeActionContext is the context for a code action request.

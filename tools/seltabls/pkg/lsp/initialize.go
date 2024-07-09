@@ -45,8 +45,8 @@ type InitializeResponse struct {
 }
 
 // Method returns the method for the initialize response
-func (r InitializeResponse) Method() string {
-	return "initialize"
+func (r InitializeResponse) Method() methods.Method {
+	return methods.MethodInitialize
 }
 
 // InitializeResult is a struct for the initialize result used in the initialize response.
@@ -80,8 +80,8 @@ type ServerInfo struct {
 }
 
 // NewInitializeResponse creates a new initialize response.
-func NewInitializeResponse(request *InitializeRequest) InitializeResponse {
-	return InitializeResponse{
+func NewInitializeResponse(request *InitializeRequest) *InitializeResponse {
+	return &InitializeResponse{
 		Response: Response{
 			RPC: RPCVersion,
 			ID:  request.ID,

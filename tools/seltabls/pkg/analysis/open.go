@@ -64,15 +64,16 @@ func OpenDocument(
 				err,
 			)
 		}
-		response.Params.Diagnostics, err = GetDiagnosticsForFile(
+		diags, err := GetDiagnosticsForFile(
 			ctx,
 			s,
 			&req.Params.TextDocument.Text,
 			data,
 		)
-		if err != nil {
+		if err != nil || len(diags) == 0 {
 			s.Logger.Printf("failed to get diagnostics for file: %s\n", err)
 		}
+		response.Params.Diagnostics = diags
 		if len(response.Params.Diagnostics) == 0 {
 			return nil, nil
 		}

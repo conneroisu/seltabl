@@ -13,6 +13,7 @@ import (
 
 const (
 	childsep = " > "
+	empty    = ""
 )
 
 // GetAllSelectors retrieves all selectors from the given HTML document
@@ -20,7 +21,7 @@ func GetAllSelectors(doc *goquery.Document) ([]string, error) {
 	strs := []string{}
 	doc.Find("*").Each(func(_ int, s *goquery.Selection) {
 		str := getSelectorsFromSelection(s)
-		if str != "" {
+		if str != empty {
 			if !contains(strs, str) {
 				strs = append(strs, str)
 			}
@@ -44,9 +45,9 @@ func getSelectorsFromSelection(s *goquery.Selection) string {
 	// Get the selector for the current node
 	currentSelector := singleSelector(s)
 	// Combine the parent and current selectors
-	if parentSelector != "" && currentSelector != "" {
+	if parentSelector != empty && currentSelector != "" {
 		return parentSelector + childsep + currentSelector
-	} else if parentSelector != "" && currentSelector == "" {
+	} else if parentSelector != empty && currentSelector == "" {
 		return parentSelector
 	}
 	return currentSelector

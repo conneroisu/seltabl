@@ -18,44 +18,49 @@ func GetDiagnosticsForFile(
 	text *string,
 	data parsers.StructCommentData,
 ) (diagnostics []lsp.Diagnostic, err error) {
-	select {
-	case <-ctx.Done():
-		return diagnostics, fmt.Errorf("context cancelled: %w", ctx.Err())
-	default:
-		sts, err := parsers.ParseStructs(ctx, []byte(*text))
-		if err != nil {
-			return diagnostics, fmt.Errorf("failed to parse structs: %w", err)
-		}
-		eg := errgroup.Group{}
-		for _, st := range sts {
-			eg.Go(func() error {
-				content, err := http.DefaultClientGet(data.URLs[0])
-				if err != nil {
-					return fmt.Errorf(
-						"failed to get the content of the url: %w",
-						err,
-					)
-				}
-				diags, err := st.Verify(ctx, data.URLs[0], content)
-				if err != nil {
-					return fmt.Errorf(
-						"failed to get diagnostics for struct: %w",
-						err,
-					)
-				}
-				diagnostics = append(
-					diagnostics,
-					diags...,
+	for {
+		select {
+		case <-ctx.Done():
+			return diagnostics, nil
+		default:
+			sts, err := parsers.ParseStructs(ctx, []byte(*text))
+			if err != nil {
+				return diagnostics, fmt.Errorf(
+					"failed to parse structs: %w",
+					err,
 				)
-				return nil
-			})
+			}
+			eg := errgroup.Group{}
+			for _, st := range sts {
+				eg.Go(func() error {
+					content, err := http.DefaultClientGet(data.URLs[0])
+					if err != nil {
+						return fmt.Errorf(
+							"failed to get the content of the url: %w",
+							err,
+						)
+					}
+					diags, err := st.Verify(ctx, data.URLs[0], content)
+					if err != nil {
+						return fmt.Errorf(
+							"failed to get diagnostics for struct: %w",
+							err,
+						)
+					}
+					diagnostics = append(
+						diagnostics,
+						diags...,
+					)
+					return nil
+				})
+			}
+			if err := eg.Wait(); err != nil {
+				return diagnostics, fmt.Errorf(
+					"failed to get diagnostics for struct: %w",
+					err,
+				)
+			}
+			return diagnostics, nil
 		}
-		if err := eg.Wait(); err != nil {
-			return diagnostics, fmt.Errorf(
-				"failed to get diagnostics for struct: %w",
-				err,
-			)
-		}
-		return diagnostics, nil
 	}
 }

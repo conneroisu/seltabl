@@ -5,15 +5,18 @@ import (
 	"context"
 	"fmt"
 	"io"
+	"os"
 
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/analysis"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp/methods"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/rpc"
+	"github.com/conneroisu/seltabl/tools/seltabls/pkg/server"
 	"github.com/spf13/cobra"
+	"golang.org/x/sync/errgroup"
 )
 
 // LSPHandler is a struct for the LSP server
-type LSPHandler func(ctx context.Context, writer *io.Writer, state *analysis.State, msg rpc.BaseMessage) error
+type LSPHandler func(ctx context.Context, writer *io.Writer, state *analysis.State, msg rpc.BaseMessage) (rpc.MethodActor, error)
 
 // handleCtx is a struct for the handle context.
 type handleCtx struct {
@@ -38,36 +41,58 @@ Language server provides completions, hovers, and code actions for seltabl defin
 	
 CLI provides a command line tool for verifying, linting, and reporting on seltabl defined structs.
 `,
-		RunE: func(_ *cobra.Command, _ []string) error {
+		RunE: func(cmd *cobra.Command, _ []string) error {
 			scanner := bufio.NewScanner(reader)
 			scanner.Split(rpc.Split)
 			state, err := analysis.NewState()
 			if err != nil {
 				return fmt.Errorf("failed to create state: %w", err)
 			}
-			_, cancel := context.WithCancel(ctx)
+			mw := io.MultiWriter(state.Logger.Writer(), os.Stderr)
+			state.Logger.SetOutput(mw)
+			cmd.SetErr(mw)
+			ctx, cancel := context.WithCancel(ctx)
+			eg, ctx := errgroup.WithContext(ctx)
 			defer cancel()
 			ctxs := make(map[int]handleCtx)
 			for scanner.Scan() {
-				hCtx, cancel := context.WithCancel(ctx)
-				defer cancel()
-				decoded, err := rpc.DecodeMessage(scanner.Bytes())
-				if err != nil {
-					return fmt.Errorf("failed to decode message: %w", err)
-				}
-				if decoded.Method == string(methods.MethodCancelRequest) {
-					ctxs[decoded.ID].cancel()
-					delete(ctxs, decoded.ID)
-					continue
-				}
-				ctxs[decoded.ID] = handleCtx{ctx: hCtx, cancel: cancel}
-				err = handle(hCtx, &writer, &state, decoded)
-				if err != nil {
-					state.Logger.Printf("failed to handle message: %s\n", err)
-				}
+				eg.Go(func() error {
+					hCtx, cancel := context.WithCancel(context.Background())
+					defer cancel()
+					decoded, err := rpc.DecodeMessage(scanner.Bytes())
+					if err != nil {
+						return fmt.Errorf("failed to decode message: %w", err)
+					}
+					ctxs[decoded.ID] = handleCtx{ctx: hCtx, cancel: cancel}
+					if decoded.Method == string(methods.MethodCancelRequest) {
+						ctxs[decoded.ID].cancel()
+						delete(ctxs, decoded.ID)
+					}
+					resp, err := handle(hCtx, &writer, &state, decoded)
+					if err != nil || resp == nil {
+						state.Logger.Printf(
+							"failed to handle message: %s\n",
+							err,
+						)
+						return nil
+					}
+					err = server.WriteResponse(hCtx, &writer, resp)
+					if err != nil {
+						state.Logger.Printf(
+							"failed to write response: %s\n",
+							err,
+						)
+					}
+					return nil
+				})
 			}
-			if err := scanner.Err(); err != nil {
+			err = scanner.Err()
+			if err != nil {
 				return fmt.Errorf("scanner error: %w", err)
+			}
+			err = eg.Wait()
+			if err != nil {
+				return fmt.Errorf("failed to wait for context: %w", err)
 			}
 			return nil
 		},

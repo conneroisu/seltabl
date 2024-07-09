@@ -33,6 +33,6 @@ type CancelResponse struct {
 }
 
 // Method returns the method for the cancel response
-func (r *CancelResponse) Method() string {
-	return "textDocument_cancel"
+func (r *CancelResponse) Method() methods.Method {
+	return methods.MethodCancelRequest
 }

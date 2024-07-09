@@ -1,0 +1,34 @@
+name: Reusable Unit Tests
+
+on: [ workflow_call ]
+
+jobs:
+  baseUnitTest:
+    name: Gradle 8.8 @ ubuntu-latest
+    uses: ./.github/workflows/reusable-single-unitTest.yml
+    with:
+      gradleVersion: "8.8"
+      os: ubuntu-latest
+
+  unitTests:
+    name: Gradle ${{ matrix.gradleVersion }} @ ${{ matrix.os }}
+    needs: baseUnitTest
+    uses: ./.github/workflows/reusable-single-unitTest.yml
+    with:
+      gradleVersion: ${{ matrix.gradleVersion }}
+      os: ${{ matrix.os }}
+      cacheReadOnly: true
+
+    strategy:
+      fail-fast: false
+      matrix:
+        gradleVersion:
+          - "8.2"
+          - "8.8"
+        os:
+          - windows-latest
+          - ubuntu-latest
+          - macos-latest
+        exclude:
+          - os: ubuntu-latest
+            gradleVersion: "8.8"

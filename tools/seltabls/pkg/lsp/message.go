@@ -3,6 +3,7 @@ package lsp
 import (
 	"fmt"
 
+	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp/methods"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/rpc"
 )
 
@@ -27,8 +28,8 @@ type Response struct {
 }
 
 // Method returns the method for the response
-func (r Response) Method() string {
-	return ""
+func (r Response) Method() methods.Method {
+	return methods.MethodInitialize
 }
 
 // String returns a string representation of the response

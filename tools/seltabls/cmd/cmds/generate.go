@@ -8,6 +8,7 @@ import (
 
 	"github.com/charmbracelet/huh"
 	"github.com/charmbracelet/log"
+	"github.com/conneroisu/seltabl/tools/seltabls/domain"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/analysis"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/generate"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/llm"
@@ -167,7 +168,7 @@ So the output fo the command:
 				input := huh.NewInput().
 					Title("Enter the url for which to generate a seltabl struct:").
 					Prompt("?").
-					Validate(generate.IsURL).
+					Validate(domain.IsURL).
 					Value(&url)
 				input.Run()
 			}

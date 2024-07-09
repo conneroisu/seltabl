@@ -12,7 +12,7 @@ import (
 	"github.com/sashabaranov/go-openai"
 )
 
-// ConfigFile is a struct for a config file
+// ConfigFile is a struct for a config file.
 type ConfigFile struct {
 	// Name is the name of the config file.
 	Name string `yaml:"name"`

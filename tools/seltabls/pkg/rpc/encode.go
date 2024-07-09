@@ -4,11 +4,13 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+
+	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp/methods"
 )
 
 // MethodActor is a type for responding to a request
 type MethodActor interface {
-	Method() string
+	Method() methods.Method
 }
 
 // EncodeMessage encodes a message into a string

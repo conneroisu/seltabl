@@ -1,5 +1,7 @@
 package lsp
 
+import "github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp/methods"
+
 // DiagnosticSeverity is an enum for diagnostic severities.
 type DiagnosticSeverity int
 
@@ -23,8 +25,8 @@ type PublishDiagnosticsNotification struct {
 }
 
 // Method returns the method for the publish diagnostics notification
-func (r PublishDiagnosticsNotification) Method() string {
-	return "textDocument/publishDiagnostics"
+func (r PublishDiagnosticsNotification) Method() methods.Method {
+	return methods.MethodNotificationTextDocumentDidSave
 }
 
 // PublishDiagnosticsParams are the parameters for the publish diagnostics notification.

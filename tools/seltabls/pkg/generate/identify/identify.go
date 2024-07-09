@@ -1,3 +1,4 @@
+// Package identify provides the identify functionality for the seltabl package.
 package identify
 
 import (
@@ -40,7 +41,7 @@ func decodeIdentify(
 		Role:    openai.ChatMessageRoleUser,
 		Content: prompt,
 	})
-	generation, history, err := Chat(
+	generation, history, err := domain.Chat(
 		ctx,
 		client,
 		model,
@@ -69,7 +70,7 @@ func generateIdentity(
 				s.URL,
 				s.HTMLContent,
 			)
-			out, _, err := Chat(
+			out, _, err := domain.Chat(
 				ctx,
 				client,
 				s.ConfigFile.FastModel,
@@ -125,7 +126,7 @@ func aggregateIdentity(
 						err,
 					)
 				}
-				out, history, err := Chat(
+				out, history, err := domain.Chat(
 					ctx,
 					client,
 					s.ConfigFile.SmartModel,

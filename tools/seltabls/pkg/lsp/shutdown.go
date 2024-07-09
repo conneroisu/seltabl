@@ -26,8 +26,8 @@ type ShutdownResponse struct {
 }
 
 // Method returns the method for the shutdown response
-func (r ShutdownResponse) Method() string {
-	return "shutdown"
+func (r ShutdownResponse) Method() methods.Method {
+	return methods.MethodShutdown
 }
 
 // NewShutdownResponse creates a new shutdown response

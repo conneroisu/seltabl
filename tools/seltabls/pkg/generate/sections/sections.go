@@ -1,4 +1,4 @@
-package generate
+package sections
 
 import (
 	"context"
@@ -6,17 +6,18 @@ import (
 	"fmt"
 
 	"github.com/charmbracelet/log"
+	"github.com/conneroisu/seltabl/tools/seltabls/domain"
 	"github.com/sashabaranov/go-openai"
 )
 
 // aggregateSections aggregates sections for the struct file.
 func aggregateSections(
 	ctx context.Context,
-	s *StructFile,
+	s *domain.StructFile,
 	client *openai.Client,
 	model string,
 	sectCh chan string,
-) (sec *Section, err error) {
+) (sec *domain.Section, err error) {
 	log.Debugf("aggregateSections called with s: %v", s)
 	defer log.Debugf("aggregateSections returned with sec: %v", sec)
 	select {
@@ -32,7 +33,7 @@ func aggregateSections(
 		if err != nil {
 			return nil, fmt.Errorf("failed to create struct prompt: %w", err)
 		}
-		generation, _, err := Chat(
+		generation, _, err := domain.Chat(
 			ctx,
 			client,
 			model,
@@ -53,12 +54,12 @@ func aggregateSections(
 }
 
 // decodeSection decodes a section from a string
-func decodeSection(s string) (Section, error) {
+func decodeSection(s string) (domain.Section, error) {
 	log.Debugf("decodeSection called with s: %s", s)
-	var section Section
+	var section domain.Section
 	err := json.Unmarshal([]byte(s), &section)
 	if err != nil {
-		return Section{}, fmt.Errorf("failed to unmarshal section: %w", err)
+		return domain.Section{}, fmt.Errorf("failed to unmarshal section: %w", err)
 	}
 	return section, nil
 }

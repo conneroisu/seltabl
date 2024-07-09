@@ -5,15 +5,17 @@ import (
 	"context"
 	"fmt"
 	"io"
+	"os"
 
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/analysis"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp/methods"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/rpc"
+	"github.com/conneroisu/seltabl/tools/seltabls/pkg/server"
 	"github.com/spf13/cobra"
 )
 
 // LSPHandler is a struct for the LSP server
-type LSPHandler func(ctx context.Context, writer *io.Writer, state *analysis.State, msg rpc.BaseMessage) error
+type LSPHandler func(ctx context.Context, writer *io.Writer, state *analysis.State, msg rpc.BaseMessage) (rpc.MethodActor, error)
 
 // handleCtx is a struct for the handle context.
 type handleCtx struct {
@@ -38,13 +40,16 @@ Language server provides completions, hovers, and code actions for seltabl defin
 	
 CLI provides a command line tool for verifying, linting, and reporting on seltabl defined structs.
 `,
-		RunE: func(_ *cobra.Command, _ []string) error {
+		RunE: func(cmd *cobra.Command, _ []string) error {
 			scanner := bufio.NewScanner(reader)
 			scanner.Split(rpc.Split)
 			state, err := analysis.NewState()
 			if err != nil {
 				return fmt.Errorf("failed to create state: %w", err)
 			}
+			mw := io.MultiWriter(state.Logger.Writer(), os.Stderr)
+			cmd.SetOut(mw)
+			cmd.SetErr(mw)
 			_, cancel := context.WithCancel(ctx)
 			defer cancel()
 			ctxs := make(map[int]handleCtx)
@@ -61,10 +66,17 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 					continue
 				}
 				ctxs[decoded.ID] = handleCtx{ctx: hCtx, cancel: cancel}
-				err = handle(hCtx, &writer, &state, decoded)
-				if err != nil {
+				resp, err := handle(hCtx, &writer, &state, decoded)
+				if err != nil || resp == nil {
 					state.Logger.Printf("failed to handle message: %s\n", err)
+					continue
 				}
+				err = server.WriteResponse(hCtx, &writer, resp)
+				if err != nil {
+					state.Logger.Printf("failed to write response: %s\n", err)
+				}
+				state.Logger.Printf("resp: %v\n", resp)
+
 			}
 			if err := scanner.Err(); err != nil {
 				return fmt.Errorf("scanner error: %w", err)

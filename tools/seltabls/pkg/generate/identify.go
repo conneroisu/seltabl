@@ -12,7 +12,7 @@ type IdentifyResponse struct {
 // Section is a struct for a section in the html.
 type Section struct {
 	// Name is the name of the section.
-	Name string `json:"name" yaml:"name"`
+	Name string `json:"name"        yaml:"name"`
 	// Description is a description of the section.
 	Description string `json:"description" yaml:"description"`
 	// Start is the start of the section in the html.

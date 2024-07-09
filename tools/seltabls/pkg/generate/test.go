@@ -13,11 +13,11 @@ type TestFile struct {
 	// Name is the name of the test file
 	Name string `json:"name" yaml:"name"`
 	// URL is the url for the test file
-	URL string `json:"url" yaml:"url"`
+	URL string `json:"url"  yaml:"url"`
 	// ConfigFile is the config file for the test file
-	ConfigFile ConfigFile `json:"-" yaml:"config-file"`
+	ConfigFile ConfigFile `json:"-"    yaml:"config-file"`
 	// StructFile is the struct file for the test file
-	StructFile StructFile `json:"-" yaml:"struct-file"`
+	StructFile StructFile `json:"-"    yaml:"struct-file"`
 }
 
 // Generate generates a test file for the given name
@@ -35,7 +35,11 @@ func (t *TestFile) Generate(ctx context.Context, client *openai.Client) error {
 
 // Write writes the test file to the file system
 func (t *TestFile) Write(p []byte) (n int, err error) {
-	err = os.WriteFile(t.Name, []byte(t.Content()), 0644)
+	err = os.WriteFile(
+		fmt.Sprintf("%s_test.go", t.Name),
+		[]byte(t.Content()),
+		0644,
+	)
 	if err != nil {
 		return 0, fmt.Errorf("failed to write test file: %w", err)
 	}
@@ -45,18 +49,4 @@ func (t *TestFile) Write(p []byte) (n int, err error) {
 // Content returns the content of the test file
 func (t *TestFile) Content() string {
 	return fmt.Sprint(`package main`)
-}
-
-// WriteTestFile writes the test file to the file system
-func WriteTestFile(name string, content string) error {
-	f, err := os.Create(name)
-	if err != nil {
-		return fmt.Errorf("failed to create file: %w", err)
-	}
-	defer f.Close()
-	_, err = f.WriteString(content)
-	if err != nil {
-		return fmt.Errorf("failed to write file: %w", err)
-	}
-	return nil
 }

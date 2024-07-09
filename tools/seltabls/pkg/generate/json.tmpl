@@ -1,0 +1,27 @@
+{{- define "prompt" -}}
+As an expert javascript developer, you are to reformat the current json content into a valid json file.
+
+You must not change the values in the json in any way.
+
+Additionally, you must return just the json as a result.
+
+Your json content:
+
+```json
+{{ .Content }}
+```
+{{- end -}}
+
+{{- define "aggregate" -}}
+You are to reformat the current json content into a valid json file.
+
+You must not change the values in the json in any way.
+
+Additionally, you must return just the json as a result.
+
+Your json content:
+
+```json
+{{ .Content }}
+```
+{{- end -}}

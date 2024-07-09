@@ -21,12 +21,17 @@ func StartContainer(ctx context.Context) (*Container, error) {
 		ExposedPorts: []string{
 			"80",
 		},
-		WaitingFor: wait.ForHTTP("/").WithPort("80").WithStartupTimeout(10 * time.Second),
+		WaitingFor: wait.ForHTTP("/").
+			WithPort("80").
+			WithStartupTimeout(10 * time.Second),
 	}
-	container, err := testcontainers.GenericContainer(ctx, testcontainers.GenericContainerRequest{
-		ContainerRequest: req,
-		Started:          true,
-	})
+	container, err := testcontainers.GenericContainer(
+		ctx,
+		testcontainers.GenericContainerRequest{
+			ContainerRequest: req,
+			Started:          true,
+		},
+	)
 	if err != nil {
 		return nil, err
 	}

@@ -42,7 +42,10 @@ func NewStructPrompt(
 	var buf bytes.Buffer
 	err = tmpl.ExecuteTemplate(&buf, "struct", args)
 	if err != nil {
-		return "", fmt.Errorf("failed to execute struct file template: %w", err)
+		return "", fmt.Errorf(
+			"failed to execute struct file template: %w",
+			err,
+		)
 	}
 	return buf.String(), nil
 }
@@ -72,7 +75,10 @@ func NewStructStruct(
 	var buf bytes.Buffer
 	err = tmpl.ExecuteTemplate(&buf, structTemplate, args)
 	if err != nil {
-		return "", fmt.Errorf("failed to execute struct file template: %w", err)
+		return "", fmt.Errorf(
+			"failed to execute struct file template: %w",
+			err,
+		)
 	}
 	return buf.String(), nil
 }
@@ -106,7 +112,10 @@ func NewAggregatePrompt(
 	var buf bytes.Buffer
 	err = tmpl.ExecuteTemplate(&buf, aggregateTemplate, args)
 	if err != nil {
-		return "", fmt.Errorf("failed to execute aggregate file template: %w", err)
+		return "", fmt.Errorf(
+			"failed to execute aggregate file template: %w",
+			err,
+		)
 	}
 	return buf.String(), nil
 }

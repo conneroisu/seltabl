@@ -12,17 +12,6 @@ import (
 	"golang.org/x/sync/errgroup"
 )
 
-var (
-	// completionKeys is the slice of completionKeys to return for completions inside a struct tag but not a "" selector
-	completionKeys = []lsp.CompletionItem{
-		selectorDataTag,
-		selectorHeaderTag,
-		selectorQueryTag,
-		selectorMustBePresentTag,
-		selectorControlTag,
-	}
-)
-
 // CreateTextDocumentCompletion returns the completions for a given text document.
 // It checks if the position is within the struct tag and returns the selectors
 // if the position is within the struct tag.
@@ -59,30 +48,47 @@ func CreateTextDocumentCompletion(
 			switch check {
 			case parsers.StateInTag:
 				for _, key := range completionKeys {
-					response.Result = append(response.Result, lsp.CompletionItem{
-						Label:         key.Label,
-						Detail:        key.Detail,
-						Documentation: key.Documentation,
-						Kind:          lsp.CompletionKindEnum,
-					})
+					response.Result = append(
+						response.Result,
+						lsp.CompletionItem{
+							Label:         key.Label,
+							Detail:        key.Detail,
+							Documentation: key.Documentation,
+							Kind:          lsp.CompletionKindEnum,
+						},
+					)
 				}
 			case parsers.StateInTagValue:
 				for _, selector := range selectors {
-					response.Result = append(response.Result, lsp.CompletionItem{
-						Label:         selector.Value,
-						Detail:        fmt.Sprintf("n: %d context: \n%s", selector.Occurances, selector.Context),
-						Documentation: "seltabls",
-						Kind:          lsp.CompletionKindReference,
-					})
+					response.Result = append(
+						response.Result,
+						lsp.CompletionItem{
+							Label: selector.Value,
+							Detail: fmt.Sprintf(
+								"n: %d context: \n%s",
+								selector.Occurances,
+								selector.Context,
+							),
+							Documentation: "seltabls",
+							Kind:          lsp.CompletionKindReference,
+						},
+					)
 				}
 			case parsers.StateAfterColon:
 				for _, selector := range selectors {
-					response.Result = append(response.Result, lsp.CompletionItem{
-						Label:         "\"" + selector.Value + "\"",
-						Detail:        fmt.Sprintf("n: %d context: \n%s", selector.Occurances, selector.Context),
-						Documentation: "seltabls",
-						Kind:          lsp.CompletionKindReference,
-					})
+					response.Result = append(
+						response.Result,
+						lsp.CompletionItem{
+							Label: "\"" + selector.Value + "\"",
+							Detail: fmt.Sprintf(
+								"n: %d context: \n%s",
+								selector.Occurances,
+								selector.Context,
+							),
+							Documentation: "seltabls",
+							Kind:          lsp.CompletionKindReference,
+						},
+					)
 				}
 			case parsers.StateInvalid:
 				return nil

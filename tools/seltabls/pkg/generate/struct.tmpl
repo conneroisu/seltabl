@@ -41,21 +41,6 @@ Your selectors with attriubutes (meaning without added specifiers; `:nth-child(1
 ```
 {{- end -}}
 
-{{- define "struct" -}}
-package {{ .Name }}
-
-// {{ .Name }} is a struct for a {{ .Name }}
-// @url: {{ .URL }}
-// @ignore-elements: {{ range $i, $element := .IgnoreElements }}{{ if $i }}, {{ end }}{{ $element }}{{ end }}
-type {{ .Name }} struct {
-	{{ range $i, $field := .Fields }}
-		// {{ $field.Name }} - {{ $field.Description }}
-		{{ $field.Name }} {{ $field.Type }} `json:"{{ $field.Name }}" hSel:"{{ $field.HeaderSelector }}" dSel:"{{ $field.DataSelector }}" ctl:"{{ $field.ControlSelector }}" {{ if $field.MustBePresent }}must:"{{ $field.MustBePresent }}"{{ end }}`
-	{{ end }}
-}}
-
-{{- end -}}
-
 {{- define "aggregate" -}}
 
 You are to cogregate the following json schemas into a single comprehensive and accurate json schema designed to be used to select elements using css selectors.
@@ -79,3 +64,19 @@ Your json schemas:
 {{ .Schemas }}
 
 {{- end -}}
+
+{{- define "struct" -}}
+package {{ .Name }}
+
+// {{ .Name }} is a struct for a {{ .Name }}
+// @url: {{ .URL }}
+// @ignore-elements: {{ range $i, $element := .IgnoreElements }}{{ if $i }}, {{ end }}{{ $element }}{{ end }}
+type {{ .Name }} struct {
+	{{ range $i, $field := .Fields }}
+		// {{ $field.Name }} - {{ $field.Description }}
+		{{ $field.Name }} {{ $field.Type }} `json:"{{ $field.Name }}" hSel:"{{ $field.HeaderSelector }}" dSel:"{{ $field.DataSelector }}" ctl:"{{ $field.ControlSelector }}" {{ if $field.MustBePresent }}must:"{{ $field.MustBePresent }}"{{ end }}`
+	{{ end }}
+}}
+
+{{- end -}}
+

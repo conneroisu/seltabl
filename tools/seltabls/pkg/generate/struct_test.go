@@ -26,9 +26,16 @@ func TestStructTemplateStruct(t *testing.T) {
 		IgnoreElements []string
 		Fields         []Field
 	}{
-		Name:           "TestStruct",
-		URL:            "https://github.com/conneroisu/seltabl/blob/main/testdata/ab_num_table.html",
-		IgnoreElements: []string{"script", "style", "link", "img", "footer", "header"},
+		Name: "TestStruct",
+		URL:  "https://github.com/conneroisu/seltabl/blob/main/testdata/ab_num_table.html",
+		IgnoreElements: []string{
+			"script",
+			"style",
+			"link",
+			"img",
+			"footer",
+			"header",
+		},
 		Fields: []Field{
 			{
 				Name:            "A",
@@ -58,7 +65,6 @@ func TestStructTemplateStruct(t *testing.T) {
 	// write the buffer to the file
 	a.NotEqual(buf.String(), "")
 	t.Logf("struct: %s", buf.String())
-	t.Fail()
 }
 
 func TestStructTemplatePrompt(t *testing.T) {
@@ -77,9 +83,16 @@ func TestStructTemplatePrompt(t *testing.T) {
 		Content        string
 		Selectors      []master.Selector
 	}{
-		Name:           "TestStruct",
-		URL:            "https://github.com/conneroisu/seltabl/blob/main/testdata/ab_num_table.html",
-		IgnoreElements: []string{"script", "style", "link", "img", "footer", "header"},
+		Name: "TestStruct",
+		URL:  "https://github.com/conneroisu/seltabl/blob/main/testdata/ab_num_table.html",
+		IgnoreElements: []string{
+			"script",
+			"style",
+			"link",
+			"img",
+			"footer",
+			"header",
+		},
 		Fields: []Field{
 			{
 				Name:            "A",
@@ -107,7 +120,6 @@ func TestStructTemplatePrompt(t *testing.T) {
 	// write the buffer to the file
 	a.NotEqual(buf.String(), "")
 	t.Logf("struct: %s", buf.String())
-	t.Fail()
 }
 
 // TestStructTemplateAggregatePrompt tests the struct file template for the aggregate prompt
@@ -125,10 +137,17 @@ func TestStructTemplateAggregatePrompt(t *testing.T) {
 		Selectors      []master.Selector
 		Schemas        []string
 	}{
-		Name:           "TestStruct",
-		URL:            "https://github.com/conneroisu/seltabl/blob/main/testdata/ab_num_table.html",
-		Content:        "<html><body><table><tr><td>a</td><td>b</td></tr><tr><td>1</td><td>2</td></tr></table></body></html>",
-		IgnoreElements: []string{"script", "style", "link", "img", "footer", "header"},
+		Name:    "TestStruct",
+		URL:     "https://github.com/conneroisu/seltabl/blob/main/testdata/ab_num_table.html",
+		Content: "<html><body><table><tr><td>a</td><td>b</td></tr><tr><td>1</td><td>2</td></tr></table></body></html>",
+		IgnoreElements: []string{
+			"script",
+			"style",
+			"link",
+			"img",
+			"footer",
+			"header",
+		},
 		Schemas: []string{
 			`{
 				"fields": [
@@ -180,5 +199,4 @@ func TestStructTemplateAggregatePrompt(t *testing.T) {
 	// write the buffer to the file
 	_ = a.NotEqual(buf.String(), "")
 	t.Logf("struct: %s", buf.String())
-	t.Fail()
 }

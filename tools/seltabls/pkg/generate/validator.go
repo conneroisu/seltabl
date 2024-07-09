@@ -1,5 +1,7 @@
 package generate
 
+import "net/url"
+
 // isvalidgotype checks if the given type is a valid go type
 func isvalidgotype(t string) bool {
 	switch t {
@@ -34,4 +36,10 @@ func isvalidgotype(t string) bool {
 	default:
 		return false
 	}
+}
+
+// IsURL checks if the given string is a valid url
+func IsURL(toValidateURL string) (err error) {
+	_, err = url.ParseRequestURI(toValidateURL)
+	return err
 }

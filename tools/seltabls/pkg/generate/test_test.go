@@ -39,5 +39,4 @@ func TestTestTemplateTest(t *testing.T) {
 	// write the buffer to the file
 	a.NotEqual(buf.String(), "")
 	t.Logf("test: %s", buf.String())
-	t.Fail()
 }

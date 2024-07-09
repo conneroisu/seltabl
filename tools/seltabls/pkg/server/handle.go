@@ -26,24 +26,7 @@ func HandleMessage(
 	defer cancel()
 	for {
 		select {
-		case <-hCtx.Done():
-			var request interface{}
-			err = json.Unmarshal(msg.Content, request)
-			if err != nil {
-				return fmt.Errorf("failed to unmarshal cancel request ($/cancelRequest): %w", err)
-			}
-			cnReq, ok := request.(lsp.CancelRequest)
-			if !ok {
-				return fmt.Errorf("failed to cast cancel request ($/cancelRequest): %w", err)
-			}
-			response, err := state.CancelRequest(cnReq)
-			if err != nil || response == nil {
-				return fmt.Errorf("failed to cancel request: %w", err)
-			}
-			err = WriteResponse(hCtx, writer, response)
-			if err != nil {
-				return fmt.Errorf("failed to write response: %w", err)
-			}
+		case <-ctx.Done():
 			return fmt.Errorf("context cancelled: %w", hCtx.Err())
 		default:
 			switch methods.GetMethod(msg.Method) {
@@ -99,7 +82,11 @@ func HandleMessage(
 						err,
 					)
 				}
-				response, err := analysis.CreateTextDocumentCompletion(hCtx, state, request)
+				response, err := analysis.CreateTextDocumentCompletion(
+					hCtx,
+					state,
+					request,
+				)
 				if err != nil || response == nil {
 					return fmt.Errorf("failed to get completions: %w", err)
 				}
@@ -128,7 +115,10 @@ func HandleMessage(
 				var request lsp.HoverRequest
 				err = json.Unmarshal(msg.Content, &request)
 				if err != nil {
-					return fmt.Errorf("failed unmarshal of hover request (): %w", err)
+					return fmt.Errorf(
+						"failed unmarshal of hover request (): %w",
+						err,
+					)
 				}
 				response, err := analysis.NewHoverResponse(request, state)
 				if err != nil {
@@ -147,7 +137,11 @@ func HandleMessage(
 						err,
 					)
 				}
-				response, err := analysis.TextDocumentCodeAction(hCtx, request, state)
+				response, err := analysis.TextDocumentCodeAction(
+					hCtx,
+					request,
+					state,
+				)
 				if err != nil || response == nil {
 					return fmt.Errorf("failed to get code actions: %w", err)
 				}
@@ -159,16 +153,37 @@ func HandleMessage(
 				var request lsp.ShutdownRequest
 				err = json.Unmarshal([]byte(msg.Content), &request)
 				if err != nil {
-					return fmt.Errorf("decode (shutdown) request failed: %w", err)
+					return fmt.Errorf(
+						"decode (shutdown) request failed: %w",
+						err,
+					)
 				}
 				response := lsp.NewShutdownResponse(request, nil)
 				err = WriteResponse(hCtx, writer, response)
 				if err != nil {
-					return fmt.Errorf("write (shutdown) response failed: %w", err)
+					return fmt.Errorf(
+						"write (shutdown) response failed: %w",
+						err,
+					)
 				}
 				os.Exit(0)
 			case methods.MethodCancelRequest:
-				cancel()
+				var request lsp.CancelRequest
+				err = json.Unmarshal(msg.Content, &request)
+				if err != nil {
+					return fmt.Errorf(
+						"failed to unmarshal cancel request ($/cancelRequest): %w",
+						err,
+					)
+				}
+				response, err := state.CancelRequest(request)
+				if err != nil || response == nil {
+					return fmt.Errorf("failed to cancel request: %w", err)
+				}
+				err = WriteResponse(hCtx, writer, response)
+				if err != nil {
+					return fmt.Errorf("failed to write response: %w", err)
+				}
 				return nil
 			case methods.MethodExit:
 				os.Exit(0)
@@ -178,7 +193,10 @@ func HandleMessage(
 				var request lsp.DidSaveTextDocumentParamsNotification
 				err = json.Unmarshal([]byte(msg.Content), &request)
 				if err != nil {
-					return fmt.Errorf("decode (didSave) request failed: %w", err)
+					return fmt.Errorf(
+						"decode (didSave) request failed: %w",
+						err,
+					)
 				}
 				u, err := url.Parse(request.Params.TextDocument.URI)
 				if err != nil {
@@ -192,13 +210,15 @@ func HandleMessage(
 			case methods.MethodNotificationTextDocumentDidClose:
 				var request lsp.DidCloseTextDocumentParamsNotification
 				if err = json.Unmarshal([]byte(msg.Content), &request); err != nil {
-					return fmt.Errorf("decode (didClose) request failed: %w", err)
+					return fmt.Errorf(
+						"decode (didClose) request failed: %w",
+						err,
+					)
 				}
 			default:
 				return fmt.Errorf("unknown method: %s", msg.Method)
 			}
 			return nil
 		}
-		return nil
 	}
 }

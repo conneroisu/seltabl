@@ -6,7 +6,6 @@ import (
 	"io"
 	"os"
 	"path/filepath"
-	"strings"
 
 	"github.com/conneroisu/seltabl/tools/seltabls/data/master"
 	"github.com/sashabaranov/go-openai"
@@ -15,11 +14,26 @@ import (
 
 // ConfigFile is a struct for a config file
 type ConfigFile struct {
-	Name           string            `yaml:"name"`
-	URL            string            `yaml:"url"`
-	IgnoreElements []string          `yaml:"ignore-elements"`
-	HTMLBody       string            `yaml:"html-body"`
-	Selectors      []master.Selector `yaml:"selectors"`
+	// Name is the name of the config file.
+	Name string `yaml:"name"`
+	// Description is the description of the config file.
+	Description *string `yaml:"description,omitempty"`
+	// URL is the url for the config file.
+	URL string `yaml:"url"`
+	// IgnoreElements is a list of elements to ignore when generating the struct.
+	IgnoreElements []string `yaml:"ignore-elements"`
+	// Selectors is a list of selectors for the config file.
+	Selectors []master.Selector `yaml:"selectors"`
+	// HTMLBody is the html body for the config file.
+	HTMLBody string `yaml:"html-body"`
+	// NumberedHTMLBody is the numbered html body for the config file.
+	NumberedHTMLBody string `yaml:"-"`
+	// SmartModel is the model for the config file.
+	SmartModel string `yaml:"model"`
+	// FastModel is the model for the config file.
+	FastModel string `yaml:"fast-model"`
+	// Recycle is a flag indicating whether or not to recycle the configuration on each `seltabls generate` command.
+	Recycle bool `yaml:"recycle"`
 }
 
 // ReadConfigFile reads a config file and unmarshals it into the
@@ -74,17 +88,17 @@ func (c *ConfigFile) Generate(
 	case <-ctx.Done():
 		return fmt.Errorf("context cancelled: %w", ctx.Err())
 	default:
-
 		path := filepath.Join(c.Name, c.Name+"_seltabl.yaml")
 		f, err := os.Create(path)
 		if err != nil {
 			return fmt.Errorf("failed to create file: %w", err)
 		}
+		out, err := yaml.Marshal(c)
 		defer f.Close()
-		_, err = f.WriteString(fmt.Sprintf(`name: %s
-url: %s
-ignore-elements:`+strings.Join(c.IgnoreElements, "\n  - ")+`
-`, c.Name, c.URL))
+		if err != nil {
+			return fmt.Errorf("failed to write file: %w", err)
+		}
+		_, err = f.Write(out)
 		if err != nil {
 			return fmt.Errorf("failed to write file: %w", err)
 		}

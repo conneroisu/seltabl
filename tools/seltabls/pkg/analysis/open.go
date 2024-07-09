@@ -59,7 +59,10 @@ func OpenDocument(
 			})
 		}
 		if err := eg.Wait(); err != nil {
-			return response, fmt.Errorf("failed to get selectors for urls: %w", err)
+			return response, fmt.Errorf(
+				"failed to get selectors for urls: %w",
+				err,
+			)
 		}
 		response.Params.Diagnostics, err = GetDiagnosticsForFile(
 			ctx,

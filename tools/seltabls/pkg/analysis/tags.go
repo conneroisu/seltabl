@@ -28,4 +28,12 @@ var (
 		Detail:        "Title Text for the control selector",
 		Documentation: "This is the documentation for the control selector",
 	}
+	// completionKeys is the slice of completionKeys to return for completions inside a struct tag but not a "" selector
+	completionKeys = []lsp.CompletionItem{
+		selectorDataTag,
+		selectorHeaderTag,
+		selectorQueryTag,
+		selectorMustBePresentTag,
+		selectorControlTag,
+	}
 )

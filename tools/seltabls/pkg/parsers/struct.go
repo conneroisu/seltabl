@@ -68,28 +68,34 @@ var (
 	selectorDataTag = lsp.CompletionItem{Label: "dSel",
 		Detail:        "Title Text for the data selector",
 		Documentation: "This is the documentation for the data selector",
+		Kind:          lsp.CompletionKindField,
 	}
 	// selectorControlTag is the tag used to signify selecting aspects of a cell
 	selectorHeaderTag = lsp.CompletionItem{Label: "hSel",
 		Detail:        "Title Text for the header selector",
 		Documentation: "This is the documentation for the header selector",
+		Kind:          lsp.CompletionKindField,
 	}
 	// selectorQueryTag is the tag used to signify selecting aspects of a cell
 	selectorQueryTag = lsp.CompletionItem{Label: "qSel",
 		Detail:        "Title Text for the query selector",
 		Documentation: "This is the documentation for the query selector",
+		Kind:          lsp.CompletionKindField,
 	}
 	// selectorMustBePresentTag is the tag used to signify selecting aspects of a cell
 	selectorMustBePresentTag = lsp.CompletionItem{Label: "must",
 		Detail:        "Title Text for the must be present selector",
 		Documentation: "This is the documentation for the must be present selector",
+		Kind:          lsp.CompletionKindField,
 	}
 	// selectorControlTag is the tag used to signify selecting aspects of a cell
 	selectorControlTag = lsp.CompletionItem{Label: "ctl",
 		Detail:        "Title Text for the control selector",
 		Documentation: "This is the documentation for the control selector",
+		Kind:          lsp.CompletionKindField,
 	}
 )
+
 var (
 	diagnosticKeys = []string{
 		selectorDataTag.Label,
@@ -99,7 +105,11 @@ var (
 )
 
 // Verify checks if the selectors in the struct are valid against the given url and content.
-func (s *Structure) Verify(ctx context.Context, url string, content *goquery.Document) (diags []lsp.Diagnostic, err error) {
+func (s *Structure) Verify(
+	ctx context.Context,
+	url string,
+	content *goquery.Document,
+) (diags []lsp.Diagnostic, err error) {
 	select {
 	case <-ctx.Done():
 		return diags, fmt.Errorf("context cancelled: %w", ctx.Err())
@@ -128,10 +138,13 @@ func (s *Structure) Verify(ctx context.Context, url string, content *goquery.Doc
 									diag.Message = fmt.Sprintf(
 										"failed to validate selector `%s` against known url (%s) content: \n```html\n%s\n```",
 										func() string {
-											if s.Fields[j].Tags.Tag(i).Value() == "" {
+											if s.Fields[j].Tags.Tag(i).
+												Value() ==
+												"" {
 												return "<null>"
 											}
-											return s.Fields[j].Tags.Tag(i).Value()
+											return s.Fields[j].Tags.Tag(i).
+												Value()
 										}(),
 										url,
 										err.Error(),
@@ -142,7 +155,9 @@ func (s *Structure) Verify(ctx context.Context, url string, content *goquery.Doc
 								diag.Message = fmt.Sprintf(
 									"could not verify selector `%s` against known url (%s) content",
 									func() string {
-										if s.Fields[j].Tags.Tag(i).Value() == "" {
+										if s.Fields[j].Tags.Tag(i).
+											Value() ==
+											"" {
 											return "<null>"
 										}
 										return s.Fields[j].Tags.Tag(i).Value()
@@ -191,7 +206,15 @@ type Field struct {
 
 // String returns a string representation of the field
 func (f *Field) String() string {
-	return fmt.Sprintf("Field{Name: %s, Type: %s, Tags: %s, Start: %d, End: %d, Line: %d}", f.Name, f.Type, f.Tags, f.Start, f.End, f.Line)
+	return fmt.Sprintf(
+		"Field{Name: %s, Type: %s, Tags: %s, Start: %d, End: %d, Line: %d}",
+		f.Name,
+		f.Type,
+		f.Tags,
+		f.Start,
+		f.End,
+		f.Line,
+	)
 }
 
 // MarshalJSON implements the json.Marshaler interface.
@@ -214,7 +237,7 @@ func (f *Field) MarshalJSON() ([]byte, error) {
 }
 
 // UnmarshalJSON implements the json.Unmarshaler interface.
-func (f *Field) UnmarshalJSON(b []byte) error {
+func (f *Field) UnmarshalJSON(b []byte) (err error) {
 	var tmp struct {
 		Name  string `json:"name"`
 		Type  string `json:"type"`
@@ -229,7 +252,8 @@ func (f *Field) UnmarshalJSON(b []byte) error {
 	f.Name = tmp.Name
 	f.Type = tmp.Type
 	f.Tags = Tags{tags: []*Tag{}}
-	if err := json.Unmarshal([]byte(tmp.Tags), &f.Tags); err != nil {
+	err = json.Unmarshal([]byte(tmp.Tags), &f.Tags)
+	if err != nil {
 		return err
 	}
 	f.Start = tmp.Start
@@ -555,6 +579,14 @@ func GetSelectors(
 		ctx,
 		master.InsertHTMLParams{Value: docHTML},
 	)
+	eg := errgroup.Group{}
+	eg.Go(func() error {
+		_, err = db.Queries.InsertFile(
+			ctx,
+			master.InsertFileParams{Uri: url},
+		)
+		return err
+	})
 	if err != nil {
 		return nil, fmt.Errorf("failed to insert html: %w", err)
 	}

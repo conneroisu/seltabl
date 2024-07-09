@@ -33,9 +33,14 @@ func UpdateDocument(
 			return response, fmt.Errorf("context cancelled: %w", ctx.Err())
 		default:
 			s.Documents[request.Params.TextDocument.URI] = request.Params.ContentChanges[0].Text
-			data, err := parsers.ParseStructComments(request.Params.ContentChanges[0].Text)
+			data, err := parsers.ParseStructComments(
+				request.Params.ContentChanges[0].Text,
+			)
 			if err != nil {
-				return response, fmt.Errorf("failed to get urls and ignores: %w", err)
+				return response, fmt.Errorf(
+					"failed to get urls and ignores: %w",
+					err,
+				)
 			}
 			s.URLs[request.Params.TextDocument.URI] = append(
 				s.URLs[request.Params.TextDocument.URI],
@@ -49,9 +54,14 @@ func UpdateDocument(
 					data,
 				)
 				if err != nil {
-					return response, fmt.Errorf("failed to get diagnostics for file: %w", err)
+					return response, fmt.Errorf(
+						"failed to get diagnostics for file: %w",
+						err,
+					)
 				}
-				response.Params.Diagnostics = append(response.Params.Diagnostics, diags...)
+				response.Params.Diagnostics = append(
+					response.Params.Diagnostics,
+					diags...)
 			}
 			return response, nil
 		}

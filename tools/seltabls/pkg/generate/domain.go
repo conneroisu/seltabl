@@ -1,22 +1,19 @@
 package generate
 
 import (
-	"context"
 	"fmt"
 	"io"
 	"net/http"
-	"net/url"
 	"os"
 	"strings"
 
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/parsers"
-	"github.com/sashabaranov/go-openai"
 	"github.com/yosssi/gohtml"
 )
 
 // writeFile writes a file to the given path
 func writeFile(name string, content string) error {
-	f, err := os.Create(name + ".go")
+	f, err := os.Create(name)
 	if err != nil {
 		return fmt.Errorf("failed to create file: %w", err)
 	}
@@ -28,12 +25,9 @@ func writeFile(name string, content string) error {
 	return nil
 }
 
-// Generatable is an interface for a generatable file.
-type Generatable interface {
-	Generate(ctx context.Context, client *openai.Client) error
-}
-
-// GetURL gets the url and returns the body
+// GetURL gets the url and returns the body of the http response.
+//
+// If an error occurs, it returns an error.
 func GetURL(url string, ignoreElements []string) ([]byte, error) {
 	cli := http.DefaultClient
 	resp, err := cli.Get(url)
@@ -48,7 +42,10 @@ func GetURL(url string, ignoreElements []string) ([]byte, error) {
 	if err != nil {
 		return nil, fmt.Errorf("failed to read body: %w", err)
 	}
-	doc, err := parsers.GetMinifiedDoc(string(body), ignoreElements)
+	doc, err := parsers.GetMinifiedDoc(
+		string(body),
+		ignoreElements,
+	)
 	if err != nil {
 		return nil, fmt.Errorf("failed to get minified doc: %w", err)
 	}
@@ -59,10 +56,4 @@ func GetURL(url string, ignoreElements []string) ([]byte, error) {
 	docHTML = gohtml.Format(docHTML)
 	docHTML = strings.ReplaceAll(docHTML, "\n", "")
 	return []byte(docHTML), nil
-}
-
-// IsURL checks if the string is a valid URL
-func IsURL(s string) error {
-	_, err := url.ParseRequestURI(s)
-	return err
 }

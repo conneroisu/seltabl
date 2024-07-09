@@ -21,20 +21,19 @@ import (
 // It contains attributes relating to the name, url, and ignore elements of the struct file.
 type StructFile struct {
 	// Name is the name of the struct file.
-	Name string `json:"-" yaml:"name"`
+	Name string `json:"-"               yaml:"name"`
 	// URL is the url for the struct file.
-	URL string `json:"-" yaml:"url"`
+	URL string `json:"-"               yaml:"url"`
 	// IgnoreElements is a list of elements to ignore when generating the struct.
 	IgnoreElements []string `json:"ignore-elements" yaml:"ignore-elements"`
 	// Fields is a list of fields for the struct.
-	Fields []Field `json:"fields" yaml:"fields"`
-	// Model is the model for the struct file.
-	Model string `json:"-" yaml:"model"`
+	Fields []Field `json:"fields"          yaml:"fields"`
 
 	// TreeWidth is the width of the tree when generating the struct.
 	TreeWidth int `json:"-" yaml:"tree-width"`
 	// TreeDepth is the depth of the tree when generating the struct.
 	TreeDepth int `json:"-" yaml:"tree-depth"`
+
 	// ConfigFile is the config file for the struct file.
 	ConfigFile ConfigFile `json:"-" yaml:"config-file"`
 	// JSONValue is the json value for the struct yaml file.
@@ -72,7 +71,10 @@ type Field struct {
 // Generate generates a struct file for the given name.
 //
 // If the context is cancelled, it returns an error from the context.
-func (s *StructFile) Generate(ctx context.Context, client *openai.Client) error {
+func (s *StructFile) Generate(
+	ctx context.Context,
+	client *openai.Client,
+) error {
 	select {
 	case <-ctx.Done():
 		return fmt.Errorf("context cancelled: %w", ctx.Err())
@@ -101,7 +103,10 @@ func (s *StructFile) Generate(ctx context.Context, client *openai.Client) error 
 		// Execute the template
 		err = tmpl.ExecuteTemplate(w, "struct", structFile)
 		if err != nil {
-			return fmt.Errorf("failed to execute struct file template: %w", err)
+			return fmt.Errorf(
+				"failed to execute struct file template: %w",
+				err,
+			)
 		}
 		// Write the buffer to the file
 		_, err = f.Write(w.Bytes())
@@ -120,25 +125,45 @@ func (s *StructFile) generate(
 	writer io.Writer,
 	client *openai.Client,
 ) (StructFile, error) {
-	eg, gCtx := errgroup.WithContext(ctx)
-	for _, field := range s.TreeWidth {
+	eg := errgroup.Group{}
+	for range make([]int, s.TreeDepth) {
 		eg.Go(func() error {
-			return s.GenerateField(gCtx, client, field)
+			return nil
 		})
 	}
-	prmpt, err := NewStructPrompt(
+	identifyPrompt, err := NewIdentifyPrompt(
+		s.URL,
+		s.HTMLContent,
+	)
+	out, history, err := Chat(
+		ctx,
+		client,
+		s.ConfigFile.SmartModel,
+		[]openai.ChatCompletionMessage{},
+		identifyPrompt,
+	)
+	if err != nil {
+		return *s, fmt.Errorf("failed to create identify prompt: %w", err)
+	}
+	structPrompt, err := NewStructPrompt(
 		s.URL,
 		s.HTMLContent,
 		s.ConfigFile.Selectors,
 	)
+	if err != nil {
+		return *s, fmt.Errorf("failed to create struct prompt: %w", err)
+	}
 	generation, history, err := Chat(
 		ctx,
 		client,
-		s.Model,
+		s.ConfigFile.SmartModel,
 		[]openai.ChatCompletionMessage{},
-		prmpt,
+		structPrompt,
 	)
-	aggPrompt, err := NewAggregatePrompt(
+	if err != nil {
+		return *s, fmt.Errorf("failed to chat with llm provider: %w", err)
+	}
+	aggregatePrompt, err := NewAggregatePrompt(
 		s.URL,
 		s.HTMLContent,
 		s.ConfigFile.Selectors,
@@ -147,5 +172,20 @@ func (s *StructFile) generate(
 	if err != nil {
 		return *s, fmt.Errorf("failed to create struct prompt: %w", err)
 	}
+	structStruct, err := NewStructStruct(
+		s.Name,
+		s.URL,
+		s.IgnoreElements,
+		s.Fields,
+	)
+	if err != nil {
+		return *s, fmt.Errorf("failed to create struct prompt: %w", err)
+	}
+	// write to the struct file
+	_, err = writer.Write([]byte(structStruct))
+	if err != nil {
+		return *s, fmt.Errorf("failed to write struct file: %w", err)
+	}
+	print(identifyPrompt, structPrompt, aggregatePrompt, history, out)
 	return *s, nil
 }

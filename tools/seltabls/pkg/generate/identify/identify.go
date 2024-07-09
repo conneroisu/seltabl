@@ -1,4 +1,4 @@
-package generate
+package identify
 
 import (
 	"context"
@@ -8,42 +8,23 @@ import (
 	// Embedded for the identify template
 	_ "embed"
 
+	"github.com/charmbracelet/log"
+	"github.com/conneroisu/seltabl/tools/seltabls/domain"
 	"github.com/sashabaranov/go-openai"
 	"golang.org/x/sync/errgroup"
 )
 
-// IdentifyResponse is a struct for the respond of an identify prompt.
-//
-// The identify prompt is used to describe the structure of a given
-// html returning this struct in the form of json.
-type IdentifyResponse struct {
-	// Sections is a list of sections in the html.
-	Sections []Section `json:"sections" yaml:"sections"`
-}
-
-// Section is a struct for a section in the html.
-type Section struct {
-	// Name is the name of the section.
-	Name string `json:"name"        yaml:"name"`
-	// Description is a description of the section.
-	Description string `json:"description" yaml:"description"`
-	// CSS is the css selector for the section.
-	CSS string `json:"css"         yaml:"css"`
-	// Start is the start of the section in the html.
-	Start int `json:"start"       yaml:"start"`
-	// End is the end of the section in the html.
-	End int `json:"end"         yaml:"end"`
-}
-
-// DecodeIdentify decodes the identify response.
-func DecodeIdentify(
+// decodeIdentify decodes the identify response.
+func decodeIdentify(
 	ctx context.Context,
 	client *openai.Client,
 	model string,
 	history []openai.ChatCompletionMessage,
 	out string,
-) (result IdentifyResponse, err error) {
-	var id IdentifyResponse
+) (result domain.IdentifyResponse, err error) {
+	log.Debugf("DecodeIdentify called with out: %s", out)
+	defer log.Debugf("DecodeIdentify called with out: %s", out)
+	var id domain.IdentifyResponse
 	err = json.Unmarshal([]byte(out), &id)
 	if err == nil {
 		return id, nil
@@ -69,15 +50,17 @@ func DecodeIdentify(
 	if err != nil {
 		return id, fmt.Errorf("failed to chat with llm provider: %w", err)
 	}
-	return DecodeIdentify(ctx, client, model, history, generation)
+	return decodeIdentify(ctx, client, model, history, generation)
 }
 
 // generateIdentity generates the identity for the struct file.
 func generateIdentity(
 	ctx context.Context,
-	s *StructFile,
+	s *domain.StructFile,
 	client *openai.Client,
-) (identity IdentifyResponse, err error) {
+) (identity domain.IdentifyResponse, err error) {
+	log.Debugf("generateIdentity called with s: %v", s)
+	defer log.Debugf("generateIdentity called with s: %v", s)
 	eg := errgroup.Group{}
 	outCh := make(chan string)
 	for range make([]int, s.TreeWidth) {
@@ -121,19 +104,19 @@ func generateIdentity(
 // aggregateIdentity aggregates the identify response.
 func aggregateIdentity(
 	ctx context.Context,
-	s *StructFile,
+	s *domain.StructFile,
 	client *openai.Client,
 	outCh chan string,
-) (identity IdentifyResponse, err error) {
+) (identity domain.IdentifyResponse, err error) {
+	log.Debugf("aggregateIdentity called with outCh: %v", outCh)
+	defer log.Debugf("aggregateIdentity called with outCh: %v", outCh)
 	eg := errgroup.Group{}
 	for range make([]int, s.TreeDepth) {
 		eg.Go(func() error {
 			channelLength := len(outCh)
 			if channelLength >= 3 {
-				aggPrompt, err := NewAggregatePrompt(
-					s.URL,
+				aggPrompt, err := NewIdentifyAggregatePrompt(
 					s.HTMLContent,
-					s.ConfigFile.Selectors,
 					[]string{<-outCh, <-outCh, <-outCh},
 				)
 				if err != nil {
@@ -160,7 +143,7 @@ func aggregateIdentity(
 						err,
 					)
 				}
-				identity, err = DecodeIdentify(
+				identity, err = decodeIdentify(
 					ctx,
 					client,
 					s.ConfigFile.FastModel,

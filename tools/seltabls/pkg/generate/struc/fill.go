@@ -1,4 +1,4 @@
-package generate
+package struc
 
 import (
 	"bytes"
@@ -7,6 +7,7 @@ import (
 	"text/template"
 
 	"github.com/conneroisu/seltabl/tools/seltabls/data/master"
+	"github.com/conneroisu/seltabl/tools/seltabls/domain"
 )
 
 const (
@@ -31,11 +32,11 @@ func init() {
 func NewStructPrompt(
 	url, content string,
 	selectors []master.Selector,
-	section Section,
+	section domain.Section,
 ) (string, error) {
 	sels := []string{}
 	for _, sel := range selectors {
-		sels = append(sels, fmt.Sprintf("%s: %d", sel.Value, sel.Occurances))
+		sels = append(sels, fmt.Sprintf("val: %s\noccurances: %d", sel.Value, sel.Occurances))
 	}
 	args := struct {
 		URL       string
@@ -61,7 +62,7 @@ func NewStructPrompt(
 func NewStructStruct(
 	name, url string,
 	ignoreElements []string,
-	fields []Field,
+	fields []domain.Field,
 ) (string, error) {
 	tmpl := template.New("struct_file_template")
 	tmpl, err := tmpl.Parse(structTmpl)
@@ -72,7 +73,7 @@ func NewStructStruct(
 		Name           string
 		URL            string
 		IgnoreElements []string
-		Fields         []Field
+		Fields         []domain.Field
 	}{
 		Name:           name,
 		URL:            url,

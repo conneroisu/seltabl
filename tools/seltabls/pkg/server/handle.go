@@ -29,7 +29,7 @@ func HandleMessage(
 		case <-hCtx.Done():
 			return fmt.Errorf("context cancelled: %w", hCtx.Err())
 		default:
-			switch methods.GetMethod(msg.Method) {
+			switch methods.Method(msg.Method) {
 			case methods.MethodInitialize:
 				var request lsp.InitializeRequest
 				err = json.Unmarshal([]byte(msg.Content), &request)

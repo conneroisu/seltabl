@@ -1,14 +1,12 @@
-package generate
+package domain
 
 import (
 	"fmt"
 	"net/url"
-
-	"github.com/conneroisu/seltabl/tools/seltabls/domain"
 )
 
-// isvalidgotype checks if the given type is a valid go type
-func isvalidgotype(t string) bool {
+// IsValidGoType checks if the given type is a valid go type
+func IsValidGoType(t string) bool {
 	switch t {
 	case "string":
 		return true
@@ -49,24 +47,24 @@ func IsURL(toValidateURL string) (err error) {
 	return err
 }
 
-// isValidTreeWidth checks if the given tree width is valid
-func isValidTreeWidth(treeWidth int) bool {
+// IsValidTreeWidth checks if the given tree width is valid
+func IsValidTreeWidth(treeWidth int) bool {
 	if treeWidth%2 != 0 || treeWidth < 1 {
 		return false
 	}
 	return true
 }
 
-// isValidTreeDepth checks if the given tree depth is valid
-func isValidTreeDepth(treeDepth int) bool {
+// IsValidTreeDepth checks if the given tree depth is valid
+func IsValidTreeDepth(treeDepth int) bool {
 	if treeDepth < 1 {
 		return false
 	}
 	return true
 }
 
-// validateConfig validates the given config file
-func validateConfig(cfg *domain.ConfigFile) error {
+// ValidateConfig validates the given config file
+func ValidateConfig(cfg *ConfigFile) error {
 	if cfg.Name == "" {
 		return fmt.Errorf("name is required")
 	}

@@ -1,4 +1,4 @@
-package generate
+package struc
 
 import (
 	"bytes"
@@ -8,6 +8,7 @@ import (
 	_ "embed"
 
 	"github.com/conneroisu/seltabl/tools/seltabls/data/master"
+	"github.com/conneroisu/seltabl/tools/seltabls/domain"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -24,7 +25,7 @@ func TestStructTemplateStruct(t *testing.T) {
 		Name           string
 		URL            string
 		IgnoreElements []string
-		Fields         []Field
+		Fields         []domain.Field
 	}{
 		Name: "TestStruct",
 		URL:  "https://github.com/conneroisu/seltabl/blob/main/testdata/ab_num_table.html",
@@ -36,7 +37,7 @@ func TestStructTemplateStruct(t *testing.T) {
 			"footer",
 			"header",
 		},
-		Fields: []Field{
+		Fields: []domain.Field{
 			{
 				Name:            "A",
 				Type:            "string",
@@ -79,7 +80,7 @@ func TestStructTemplatePrompt(t *testing.T) {
 		Name           string
 		URL            string
 		IgnoreElements []string
-		Fields         []Field
+		Fields         []domain.Field
 		Content        string
 		Selectors      []master.Selector
 	}{
@@ -93,7 +94,7 @@ func TestStructTemplatePrompt(t *testing.T) {
 			"footer",
 			"header",
 		},
-		Fields: []Field{
+		Fields: []domain.Field{
 			{
 				Name:            "A",
 				Type:            "string",
@@ -132,7 +133,7 @@ func TestStructTemplateAggregatePrompt(t *testing.T) {
 		Name           string
 		URL            string
 		IgnoreElements []string
-		Fields         []Field
+		Fields         []domain.Field
 		Content        string
 		Selectors      []master.Selector
 		Schemas        []string
@@ -172,7 +173,7 @@ func TestStructTemplateAggregatePrompt(t *testing.T) {
 				]
 			}`,
 		},
-		Fields: []Field{
+		Fields: []domain.Field{
 			{
 				Name:            "A",
 				Type:            "string",

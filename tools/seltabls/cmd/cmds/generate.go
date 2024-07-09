@@ -7,6 +7,7 @@ import (
 	"os"
 
 	"github.com/charmbracelet/huh"
+	"github.com/charmbracelet/log"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/analysis"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/generate"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/llm"
@@ -65,6 +66,8 @@ So the output fo the command:
 
 `,
 		PreRunE: func(cmd *cobra.Command, _ []string) error {
+			log.Debugf("PreRunE called for command: %s", cmd.Name())
+			defer log.Debugf("PreRunE completed for command: %s", cmd.Name())
 			cmd.SetOutput(w)
 			cmd.SetIn(r)
 			cmd.SetErr(w)
@@ -157,7 +160,9 @@ So the output fo the command:
 			}
 			return nil
 		},
-		RunE: func(_ *cobra.Command, _ []string) error {
+		RunE: func(cmd *cobra.Command, _ []string) error {
+			log.Debugf("RunE called for command: %s", cmd.Name())
+			defer log.Debugf("RunE completed for command: %s", cmd.Name())
 			if url == "" {
 				input := huh.NewInput().
 					Title("Enter the url for which to generate a seltabl struct:").
@@ -191,6 +196,7 @@ So the output fo the command:
 			if err != nil {
 				return fmt.Errorf("failed to get selectors: %w", err)
 			}
+			log.Infof("Getting URL: %s", url)
 			htmlBody, err := generate.GetURL(url, ignores)
 			if err != nil {
 				return fmt.Errorf("failed to get url: %w", err)

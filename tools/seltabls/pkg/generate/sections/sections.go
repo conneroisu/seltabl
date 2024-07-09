@@ -5,28 +5,9 @@ import (
 	"encoding/json"
 	"fmt"
 
+	"github.com/charmbracelet/log"
 	"github.com/sashabaranov/go-openai"
 )
-
-// Field is a struct for a field
-type Field struct {
-	// Name is the name of the field.
-	Name string `json:"name"`
-	// Type is the type of the field.
-	Type string `json:"type"`
-	// Description is a description of the field.
-	Description string `json:"description"`
-	// HeaderSelector is the header selector for the field.
-	HeaderSelector string `json:"header-selector"`
-	// DataSelector is the data selector for the field.
-	DataSelector string `json:"data-selector"`
-	// ControlSelector is the control selector for the field.
-	ControlSelector string `json:"control-selector"`
-	// QuerySelector is the query selector for the field.
-	QuerySelector string `json:"query-selector"`
-	// MustBePresent is the must be present selector for the field.
-	MustBePresent string `json:"must-be-present"`
-}
 
 // aggregateSections aggregates sections for the struct file.
 func aggregateSections(
@@ -36,6 +17,8 @@ func aggregateSections(
 	model string,
 	sectCh chan string,
 ) (sec *Section, err error) {
+	log.Debugf("aggregateSections called with s: %v", s)
+	defer log.Debugf("aggregateSections returned with sec: %v", sec)
 	select {
 	case <-ctx.Done():
 		return nil, fmt.Errorf("context cancelled: %w", ctx.Err())
@@ -71,6 +54,7 @@ func aggregateSections(
 
 // decodeSection decodes a section from a string
 func decodeSection(s string) (Section, error) {
+	log.Debugf("decodeSection called with s: %s", s)
 	var section Section
 	err := json.Unmarshal([]byte(s), &section)
 	if err != nil {

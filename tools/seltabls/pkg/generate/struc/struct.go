@@ -57,6 +57,7 @@ func Generate(
 			sF,
 			cfg,
 			client,
+			*section,
 		)
 		if err != nil {
 			return fmt.Errorf("failed to generate struct: %w", err)
@@ -91,6 +92,7 @@ func generate(
 	sF *domain.StructFile,
 	cfg *domain.ConfigFile,
 	client *openai.Client,
+	section domain.Section,
 ) (domain.StructFile, error) {
 	log.Debugf("generate called on stuct: %v", sF)
 	defer log.Debugf("generate called on stuct: %v", sF)
@@ -98,7 +100,7 @@ func generate(
 		sF.Name,
 		sF.URL,
 		sF.IgnoreElements,
-		section,
+		&section,
 	)
 	if err != nil {
 		return *sF, fmt.Errorf("failed to create struct prompt: %w", err)

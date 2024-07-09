@@ -83,20 +83,6 @@ func HandleMessage(
 					return nil, fmt.Errorf("failed to get completions: %w", err)
 				}
 				return response, nil
-			case methods.NotificationMethodTextDocumentDidChange:
-				var request lsp.TextDocumentDidChangeNotification
-				err = json.Unmarshal(msg.Content, &request)
-				if err != nil {
-					return nil, fmt.Errorf(
-						"decode (textDocument/didChange) request failed: %w",
-						err,
-					)
-				}
-				response, err = analysis.UpdateDocument(hCtx, state, &request)
-				if err != nil || response == nil {
-					return nil, fmt.Errorf("failed to update document: %w", err)
-				}
-				return response, nil
 			case methods.MethodRequestTextDocumentHover:
 				var request lsp.HoverRequest
 				err = json.Unmarshal(msg.Content, &request)
@@ -185,6 +171,20 @@ func HandleMessage(
 						err,
 					)
 				}
+			case methods.NotificationMethodTextDocumentDidChange:
+				var request lsp.TextDocumentDidChangeNotification
+				err = json.Unmarshal(msg.Content, &request)
+				if err != nil {
+					return nil, fmt.Errorf(
+						"decode (textDocument/didChange) request failed: %w",
+						err,
+					)
+				}
+				response, err = analysis.UpdateDocument(hCtx, state, &request)
+				if err != nil || response == nil {
+					return nil, fmt.Errorf("failed to update document: %w", err)
+				}
+				return response, nil
 			default:
 				return nil, fmt.Errorf("unknown method: %s", msg.Method)
 			}

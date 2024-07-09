@@ -12,6 +12,7 @@ import (
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/rpc"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/server"
 	"github.com/spf13/cobra"
+	"golang.org/x/sync/errgroup"
 )
 
 // LSPHandler is a struct for the LSP server
@@ -48,38 +49,44 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 				return fmt.Errorf("failed to create state: %w", err)
 			}
 			mw := io.MultiWriter(state.Logger.Writer(), os.Stderr)
-			cmd.SetOut(mw)
+			state.Logger.SetOutput(mw)
 			cmd.SetErr(mw)
-			_, cancel := context.WithCancel(ctx)
+			ctx, cancel := context.WithCancel(ctx)
+			eg, ctx := errgroup.WithContext(ctx)
 			defer cancel()
 			ctxs := make(map[int]handleCtx)
 			for scanner.Scan() {
-				hCtx, cancel := context.WithCancel(ctx)
-				defer cancel()
-				decoded, err := rpc.DecodeMessage(scanner.Bytes())
-				if err != nil {
-					return fmt.Errorf("failed to decode message: %w", err)
-				}
-				if decoded.Method == string(methods.MethodCancelRequest) {
-					ctxs[decoded.ID].cancel()
-					delete(ctxs, decoded.ID)
-					continue
-				}
-				ctxs[decoded.ID] = handleCtx{ctx: hCtx, cancel: cancel}
-				resp, err := handle(hCtx, &writer, &state, decoded)
-				if err != nil || resp == nil {
-					state.Logger.Printf("failed to handle message: %s\n", err)
-					continue
-				}
-				err = server.WriteResponse(hCtx, &writer, resp)
-				if err != nil {
-					state.Logger.Printf("failed to write response: %s\n", err)
-				}
-				state.Logger.Printf("resp: %v\n", resp)
-
+				eg.Go(func() error {
+					hCtx, cancel := context.WithCancel(context.Background())
+					defer cancel()
+					decoded, err := rpc.DecodeMessage(scanner.Bytes())
+					if err != nil {
+						return fmt.Errorf("failed to decode message: %w", err)
+					}
+					ctxs[decoded.ID] = handleCtx{ctx: hCtx, cancel: cancel}
+					if decoded.Method == string(methods.MethodCancelRequest) {
+						ctxs[decoded.ID].cancel()
+						delete(ctxs, decoded.ID)
+					}
+					resp, err := handle(hCtx, &writer, &state, decoded)
+					if err != nil || resp == nil {
+						state.Logger.Printf("failed to handle message: %s\n", err)
+						return nil
+					}
+					err = server.WriteResponse(hCtx, &writer, resp)
+					if err != nil {
+						state.Logger.Printf("failed to write response: %s\n", err)
+					}
+					return nil
+				})
 			}
-			if err := scanner.Err(); err != nil {
+			err = scanner.Err()
+			if err != nil {
 				return fmt.Errorf("scanner error: %w", err)
+			}
+			err = eg.Wait()
+			if err != nil {
+				return fmt.Errorf("failed to wait for context: %w", err)
 			}
 			return nil
 		},

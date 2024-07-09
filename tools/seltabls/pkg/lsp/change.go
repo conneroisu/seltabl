@@ -1,5 +1,7 @@
 package lsp
 
+import "github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp/methods"
+
 // TextDocumentDidChangeNotification is sent from the client to the server to signal
 // that the content of a text document has changed.
 //
@@ -10,6 +12,11 @@ type TextDocumentDidChangeNotification struct {
 	Notification
 	// Params are the parameters for the notification.
 	Params DidChangeTextDocumentParams `json:"params"`
+}
+
+// Method returns the method for the text document did change notification
+func (r TextDocumentDidChangeNotification) Method() methods.Method {
+	return methods.NotificationMethodTextDocumentDidChange
 }
 
 // DidChangeTextDocumentParams is sent from the client to the server to signal

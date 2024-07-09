@@ -10,9 +10,7 @@ import (
 	"github.com/conneroisu/seltabl/tools/seltabls/data"
 
 	"github.com/conneroisu/seltabl/tools/seltabls/data/master"
-	"github.com/conneroisu/seltabl/tools/seltabls/pkg/parsers"
 	"github.com/mitchellh/go-homedir"
-	"github.com/yosssi/gohtml"
 )
 
 // State is the state of the document analysis.
@@ -74,81 +72,6 @@ func getLogger(fileName string) *log.Logger {
 	return log.New(logFile, "[seltabls#state]", log.LstdFlags)
 }
 
-// GetSelectors gets all the selectors from the given URL and appends them to the selectors slice
-func GetSelectors(
-	ctx context.Context,
-	state *State,
-	url string,
-	ignores []string,
-) (selectors []master.Selector, err error) {
-	got, err := state.Database.Queries.GetURLByValue(
-		ctx,
-		master.GetURLByValueParams{Value: url},
-	)
-	if err == nil && got != nil {
-		rows, err := state.Database.Queries.GetSelectorsByURL(
-			ctx,
-			master.GetSelectorsByURLParams{Value: got.Value},
-		)
-		if err != nil {
-			return nil, fmt.Errorf("failed to get selectors by url: %w", err)
-		}
-		if rows != nil {
-			var selectors []master.Selector
-			for _, row := range rows {
-				selectors = append(selectors, *row)
-			}
-			return selectors, nil
-		}
-	}
-	doc, err := parsers.GetMinifiedDoc(url, ignores)
-	if err != nil {
-		return nil, fmt.Errorf("failed to get minified doc: %w", err)
-	}
-	docHTML, err := doc.Html()
-	if err != nil {
-		return nil, fmt.Errorf("failed to get html: %w", err)
-	}
-	HTML, err := state.Database.Queries.InsertHTML(
-		ctx,
-		master.InsertHTMLParams{Value: docHTML},
-	)
-	if err != nil {
-		return nil, fmt.Errorf("failed to insert html: %w", err)
-	}
-	URL, err := state.Database.Queries.InsertURL(
-		ctx,
-		master.InsertURLParams{Value: url, HtmlID: HTML.ID},
-	)
-	if err != nil {
-		return nil, fmt.Errorf("failed to insert url: %w", err)
-	}
-	selectorStrs, err := parsers.GetAllSelectors(doc)
-	if err != nil {
-		return nil, fmt.Errorf("failed to get selectors: %w", err)
-	}
-	for _, sel := range selectorStrs {
-		context, err := doc.Find(sel).Parent().Find(":nth-child(1)").Html()
-		if err != nil {
-			state.Logger.Printf("failed to get html: %s\n", err)
-		}
-		context = gohtml.Format(context)
-		selector, err := state.Database.Queries.InsertSelector(
-			ctx,
-			master.InsertSelectorParams{
-				Value:   sel,
-				UrlID:   URL.ID,
-				Context: context,
-			},
-		)
-		if err != nil {
-			return nil, fmt.Errorf("failed to insert selector: %w", err)
-		}
-		selectors = append(selectors, *selector)
-	}
-	return selectors, nil
-}
-
 // CreateConfigDir creates a new config directory and returns the path.
 func CreateConfigDir(dirPath string) (string, error) {
 	path, err := homedir.Expand(dirPath)
@@ -159,7 +82,10 @@ func CreateConfigDir(dirPath string) (string, error) {
 		if os.IsExist(err) {
 			return path, nil
 		}
-		return "", fmt.Errorf("failed to create or find config directory: %w", err)
+		return "", fmt.Errorf(
+			"failed to create or find config directory: %w",
+			err,
+		)
 	}
 	return path, nil
 }

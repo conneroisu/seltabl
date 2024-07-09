@@ -1,5 +1,7 @@
 package lsp
 
+import "github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp/methods"
+
 // CodeActionRequest is a request for a code action to the language server.
 //
 // Microsoft LSP Docs:
@@ -9,6 +11,11 @@ type CodeActionRequest struct {
 	Request
 	// Params are the parameters for the code action request.
 	Params TextDocumentCodeActionParams `json:"params"`
+}
+
+// Method returns the method for the code action request
+func (r CodeActionRequest) Method() methods.Method {
+	return methods.MethodRequestTextDocumentCodeAction
 }
 
 // TextDocumentCodeActionParams are the parameters for a code action request.

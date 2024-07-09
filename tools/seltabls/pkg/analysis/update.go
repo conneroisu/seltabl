@@ -1,26 +1,69 @@
 package analysis
 
 import (
+	"context"
+	"fmt"
+
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/parsers"
 )
 
 // UpdateDocument updates the state with the given document
-func (s *State) UpdateDocument(
-	uri, content string,
-) (diags []lsp.Diagnostic, err error) {
-	s.Documents[uri] = content
-	data, err := parsers.ParseStructComments(content)
-	if err != nil {
-		s.Logger.Printf("failed to get urls and ignores: %s", err)
-		return diags, nil
+func UpdateDocument(
+	ctx context.Context,
+	s *State,
+	request *lsp.TextDocumentDidChangeNotification,
+) (response *lsp.PublishDiagnosticsNotification, err error) {
+	select {
+	case <-ctx.Done():
+		return nil, fmt.Errorf("context cancelled: %w", ctx.Err())
+	default:
+		response = &lsp.PublishDiagnosticsNotification{
+			Notification: lsp.Notification{
+				RPC:    "2.0",
+				Method: "textDocument/publishDiagnostics",
+			},
+			Params: lsp.PublishDiagnosticsParams{
+				Diagnostics: []lsp.Diagnostic{},
+				URI:         request.Params.TextDocument.URI,
+			},
+		}
+		select {
+		case <-ctx.Done():
+			return response, fmt.Errorf("context cancelled: %w", ctx.Err())
+		default:
+			s.Documents[request.Params.TextDocument.URI] = request.Params.ContentChanges[0].Text
+			data, err := parsers.ParseStructComments(
+				request.Params.ContentChanges[0].Text,
+			)
+			if err != nil {
+				return response, fmt.Errorf(
+					"failed to get urls and ignores: %w",
+					err,
+				)
+			}
+			s.URLs[request.Params.TextDocument.URI] = append(
+				s.URLs[request.Params.TextDocument.URI],
+				data.URLs...,
+			)
+			for i := range request.Params.ContentChanges {
+				diags, err := GetDiagnosticsForFile(
+					ctx,
+					s,
+					&request.Params.ContentChanges[i].Text,
+					data,
+				)
+				if err != nil {
+					return response, fmt.Errorf(
+						"failed to get diagnostics for file: %w",
+						err,
+					)
+				}
+				response.Params.Diagnostics = append(
+					response.Params.Diagnostics,
+					diags...)
+			}
+			return response, nil
+		}
 	}
-	for _, url := range data.URLs {
-		s.URLs[uri] = append(s.URLs[uri], url)
-	}
-	diags, err = s.GetDiagnosticsForFile(&content, data)
-	if err != nil {
-		s.Logger.Printf("failed to get diagnostics for file: %s\n", err)
-	}
-	return diags, nil
 }

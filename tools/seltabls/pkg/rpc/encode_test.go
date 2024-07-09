@@ -8,6 +8,22 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+// var (
+//         EncodingInterfaces = []interface{}{
+//                 lsp.CompletionResponse{
+//                         Result: []lsp.CompletionItem{
+//                                 {
+//                                         Label:         "Test",
+//                                         Detail:        "Test",
+//                                         Documentation: "Test",
+//                                         Kind:          lsp.CompletionKindMethod,
+//                                 },
+//                         },
+//                 },
+//                 lsp.HoverResponse{},
+//         }
+// )
+
 // EncodingExample is a test struct
 type EncodingExample struct {
 	// Testing is a test field
@@ -29,7 +45,7 @@ func TestEncode(t *testing.T) {
 	actual, err := rpc.EncodeMessage(
 		lsp.CompletionResponse{
 			Response: lsp.Response{
-				RPC: "2.0",
+				RPC: lsp.RPCVersion,
 				ID:  1,
 			},
 			Result: []lsp.CompletionItem{

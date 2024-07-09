@@ -9,6 +9,28 @@ import (
 	"context"
 )
 
+const deleteFileByID = `-- name: DeleteFileByID :exec
+DELETE FROM
+    files
+WHERE
+    id = ?
+`
+
+type DeleteFileByIDParams struct {
+	ID int64 `db:"id" json:"id"`
+}
+
+// DeleteFileByID
+//
+//	DELETE FROM
+//	    files
+//	WHERE
+//	    id = ?
+func (q *Queries) DeleteFileByID(ctx context.Context, arg DeleteFileByIDParams) error {
+	_, err := q.db.ExecContext(ctx, deleteFileByID, arg.ID)
+	return err
+}
+
 const deleteHTMLByID = `-- name: DeleteHTMLByID :exec
 DELETE FROM
     htmls
@@ -28,6 +50,28 @@ type DeleteHTMLByIDParams struct {
 //	    id = ?
 func (q *Queries) DeleteHTMLByID(ctx context.Context, arg DeleteHTMLByIDParams) error {
 	_, err := q.db.ExecContext(ctx, deleteHTMLByID, arg.ID)
+	return err
+}
+
+const deleteLineByID = `-- name: DeleteLineByID :exec
+DELETE FROM
+    lines
+WHERE
+    id = ?
+`
+
+type DeleteLineByIDParams struct {
+	ID int64 `db:"id" json:"id"`
+}
+
+// DeleteLineByID
+//
+//	DELETE FROM
+//	    lines
+//	WHERE
+//	    id = ?
+func (q *Queries) DeleteLineByID(ctx context.Context, arg DeleteLineByIDParams) error {
+	_, err := q.db.ExecContext(ctx, deleteLineByID, arg.ID)
 	return err
 }
 
@@ -53,6 +97,50 @@ func (q *Queries) DeleteSelectorByID(ctx context.Context, arg DeleteSelectorByID
 	return err
 }
 
+const deleteStructByID = `-- name: DeleteStructByID :exec
+DELETE FROM
+    structs
+WHERE
+    id = ?
+`
+
+type DeleteStructByIDParams struct {
+	ID int64 `db:"id" json:"id"`
+}
+
+// DeleteStructByID
+//
+//	DELETE FROM
+//	    structs
+//	WHERE
+//	    id = ?
+func (q *Queries) DeleteStructByID(ctx context.Context, arg DeleteStructByIDParams) error {
+	_, err := q.db.ExecContext(ctx, deleteStructByID, arg.ID)
+	return err
+}
+
+const deleteTagByID = `-- name: DeleteTagByID :exec
+DELETE FROM
+    tags
+WHERE
+    id = ?
+`
+
+type DeleteTagByIDParams struct {
+	ID int64 `db:"id" json:"id"`
+}
+
+// DeleteTagByID
+//
+//	DELETE FROM
+//	    tags
+//	WHERE
+//	    id = ?
+func (q *Queries) DeleteTagByID(ctx context.Context, arg DeleteTagByIDParams) error {
+	_, err := q.db.ExecContext(ctx, deleteTagByID, arg.ID)
+	return err
+}
+
 const deleteURL = `-- name: DeleteURL :exec
 DELETE FROM
     urls
@@ -75,9 +163,109 @@ func (q *Queries) DeleteURL(ctx context.Context, arg DeleteURLParams) error {
 	return err
 }
 
+const getFileByID = `-- name: GetFileByID :one
+SELECT
+    id, uri, updated_at, created_at
+FROM
+    files
+WHERE
+    id = ? LIMIT 1
+`
+
+type GetFileByIDParams struct {
+	ID int64 `db:"id" json:"id"`
+}
+
+// GetFileByID
+//
+//	SELECT
+//	    id, uri, updated_at, created_at
+//	FROM
+//	    files
+//	WHERE
+//	    id = ? LIMIT 1
+func (q *Queries) GetFileByID(ctx context.Context, arg GetFileByIDParams) (*File, error) {
+	row := q.db.QueryRowContext(ctx, getFileByID, arg.ID)
+	var i File
+	err := row.Scan(
+		&i.ID,
+		&i.Uri,
+		&i.UpdatedAt,
+		&i.CreatedAt,
+	)
+	return &i, err
+}
+
+const getFileByURI = `-- name: GetFileByURI :one
+SELECT
+    id, uri, updated_at, created_at
+FROM
+    files
+WHERE
+    uri = ?
+`
+
+type GetFileByURIParams struct {
+	Uri string `db:"uri" json:"uri"`
+}
+
+// GetFileByURI
+//
+//	SELECT
+//	    id, uri, updated_at, created_at
+//	FROM
+//	    files
+//	WHERE
+//	    uri = ?
+func (q *Queries) GetFileByURI(ctx context.Context, arg GetFileByURIParams) (*File, error) {
+	row := q.db.QueryRowContext(ctx, getFileByURI, arg.Uri)
+	var i File
+	err := row.Scan(
+		&i.ID,
+		&i.Uri,
+		&i.UpdatedAt,
+		&i.CreatedAt,
+	)
+	return &i, err
+}
+
+const getLineByID = `-- name: GetLineByID :one
+SELECT
+    id, value, number
+FROM
+    lines
+WHERE
+    id = ?
+`
+
+type GetLineByIDParams struct {
+	ID int64 `db:"id" json:"id"`
+}
+
+type GetLineByIDRow struct {
+	ID     int64  `db:"id" json:"id"`
+	Value  string `db:"value" json:"value"`
+	Number int64  `db:"number" json:"number"`
+}
+
+// GetLineByID
+//
+//	SELECT
+//	    id, value, number
+//	FROM
+//	    lines
+//	WHERE
+//	    id = ?
+func (q *Queries) GetLineByID(ctx context.Context, arg GetLineByIDParams) (*GetLineByIDRow, error) {
+	row := q.db.QueryRowContext(ctx, getLineByID, arg.ID)
+	var i GetLineByIDRow
+	err := row.Scan(&i.ID, &i.Value, &i.Number)
+	return &i, err
+}
+
 const getSelectorByID = `-- name: GetSelectorByID :one
 SELECT
-	id, value, url_id, context
+	id, value, url_id, occurances, context
 FROM
 	selectors
 WHERE
@@ -91,7 +279,7 @@ type GetSelectorByIDParams struct {
 // GetSelectorByID
 //
 //	SELECT
-//		id, value, url_id, context
+//		id, value, url_id, occurances, context
 //	FROM
 //		selectors
 //	WHERE
@@ -103,6 +291,7 @@ func (q *Queries) GetSelectorByID(ctx context.Context, arg GetSelectorByIDParams
 		&i.ID,
 		&i.Value,
 		&i.UrlID,
+		&i.Occurances,
 		&i.Context,
 	)
 	return &i, err
@@ -110,7 +299,7 @@ func (q *Queries) GetSelectorByID(ctx context.Context, arg GetSelectorByIDParams
 
 const getSelectorByValue = `-- name: GetSelectorByValue :one
 SELECT
-	id, value, url_id, context
+	id, value, url_id, occurances, context
 FROM
 	selectors
 WHERE
@@ -124,7 +313,7 @@ type GetSelectorByValueParams struct {
 // GetSelectorByValue
 //
 //	SELECT
-//		id, value, url_id, context
+//		id, value, url_id, occurances, context
 //	FROM
 //		selectors
 //	WHERE
@@ -136,6 +325,7 @@ func (q *Queries) GetSelectorByValue(ctx context.Context, arg GetSelectorByValue
 		&i.ID,
 		&i.Value,
 		&i.UrlID,
+		&i.Occurances,
 		&i.Context,
 	)
 	return &i, err
@@ -143,7 +333,7 @@ func (q *Queries) GetSelectorByValue(ctx context.Context, arg GetSelectorByValue
 
 const getSelectorsByContext = `-- name: GetSelectorsByContext :many
 SELECT
-	id, value, url_id, context
+	id, value, url_id, occurances, context
 FROM
 	selectors
 WHERE
@@ -157,7 +347,7 @@ type GetSelectorsByContextParams struct {
 // GetSelectorsByContext
 //
 //	SELECT
-//		id, value, url_id, context
+//		id, value, url_id, occurances, context
 //	FROM
 //		selectors
 //	WHERE
@@ -175,6 +365,7 @@ func (q *Queries) GetSelectorsByContext(ctx context.Context, arg GetSelectorsByC
 			&i.ID,
 			&i.Value,
 			&i.UrlID,
+			&i.Occurances,
 			&i.Context,
 		); err != nil {
 			return nil, err
@@ -192,7 +383,7 @@ func (q *Queries) GetSelectorsByContext(ctx context.Context, arg GetSelectorsByC
 
 const getSelectorsByURL = `-- name: GetSelectorsByURL :many
 SELECT
-	selectors.id, selectors.value, selectors.url_id, selectors.context
+	selectors.id, selectors.value, selectors.url_id, selectors.occurances, selectors.context
 FROM
 	selectors
 	JOIN urls ON urls.id = selectors.url_id
@@ -207,7 +398,7 @@ type GetSelectorsByURLParams struct {
 // GetSelectorsByURL
 //
 //	SELECT
-//		selectors.id, selectors.value, selectors.url_id, selectors.context
+//		selectors.id, selectors.value, selectors.url_id, selectors.occurances, selectors.context
 //	FROM
 //		selectors
 //		JOIN urls ON urls.id = selectors.url_id
@@ -226,7 +417,634 @@ func (q *Queries) GetSelectorsByURL(ctx context.Context, arg GetSelectorsByURLPa
 			&i.ID,
 			&i.Value,
 			&i.UrlID,
+			&i.Occurances,
 			&i.Context,
+		); err != nil {
+			return nil, err
+		}
+		items = append(items, &i)
+	}
+	if err := rows.Close(); err != nil {
+		return nil, err
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
+const getStructByID = `-- name: GetStructByID :one
+SELECT
+    id, value, url_id, start_line_id, end_line_id, file_id, context
+FROM
+    structs
+WHERE
+    id = ?
+`
+
+type GetStructByIDParams struct {
+	ID int64 `db:"id" json:"id"`
+}
+
+// GetStructByID
+//
+//	SELECT
+//	    id, value, url_id, start_line_id, end_line_id, file_id, context
+//	FROM
+//	    structs
+//	WHERE
+//	    id = ?
+func (q *Queries) GetStructByID(ctx context.Context, arg GetStructByIDParams) (*Struct, error) {
+	row := q.db.QueryRowContext(ctx, getStructByID, arg.ID)
+	var i Struct
+	err := row.Scan(
+		&i.ID,
+		&i.Value,
+		&i.UrlID,
+		&i.StartLineID,
+		&i.EndLineID,
+		&i.FileID,
+		&i.Context,
+	)
+	return &i, err
+}
+
+const getStructByValue = `-- name: GetStructByValue :one
+SELECT
+    id, value, url_id, start_line_id, end_line_id, file_id, context
+FROM
+    structs
+WHERE
+    value = ?
+`
+
+type GetStructByValueParams struct {
+	Value string `db:"value" json:"value"`
+}
+
+// GetStructByValue
+//
+//	SELECT
+//	    id, value, url_id, start_line_id, end_line_id, file_id, context
+//	FROM
+//	    structs
+//	WHERE
+//	    value = ?
+func (q *Queries) GetStructByValue(ctx context.Context, arg GetStructByValueParams) (*Struct, error) {
+	row := q.db.QueryRowContext(ctx, getStructByValue, arg.Value)
+	var i Struct
+	err := row.Scan(
+		&i.ID,
+		&i.Value,
+		&i.UrlID,
+		&i.StartLineID,
+		&i.EndLineID,
+		&i.FileID,
+		&i.Context,
+	)
+	return &i, err
+}
+
+const getStructsByEndLineID = `-- name: GetStructsByEndLineID :many
+SELECT
+    id, value, url_id, start_line_id, end_line_id, file_id, context
+FROM
+    structs
+WHERE
+    end_line_id = ?
+`
+
+type GetStructsByEndLineIDParams struct {
+	EndLineID int64 `db:"end_line_id" json:"end_line_id"`
+}
+
+// GetStructsByEndLineID
+//
+//	SELECT
+//	    id, value, url_id, start_line_id, end_line_id, file_id, context
+//	FROM
+//	    structs
+//	WHERE
+//	    end_line_id = ?
+func (q *Queries) GetStructsByEndLineID(ctx context.Context, arg GetStructsByEndLineIDParams) ([]*Struct, error) {
+	rows, err := q.db.QueryContext(ctx, getStructsByEndLineID, arg.EndLineID)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []*Struct
+	for rows.Next() {
+		var i Struct
+		if err := rows.Scan(
+			&i.ID,
+			&i.Value,
+			&i.UrlID,
+			&i.StartLineID,
+			&i.EndLineID,
+			&i.FileID,
+			&i.Context,
+		); err != nil {
+			return nil, err
+		}
+		items = append(items, &i)
+	}
+	if err := rows.Close(); err != nil {
+		return nil, err
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
+const getStructsByFileID = `-- name: GetStructsByFileID :many
+SELECT
+    id, value, url_id, start_line_id, end_line_id, file_id, context
+FROM
+    structs
+WHERE
+    file_id = ?
+`
+
+type GetStructsByFileIDParams struct {
+	FileID int64 `db:"file_id" json:"file_id"`
+}
+
+// GetStructsByFileID
+//
+//	SELECT
+//	    id, value, url_id, start_line_id, end_line_id, file_id, context
+//	FROM
+//	    structs
+//	WHERE
+//	    file_id = ?
+func (q *Queries) GetStructsByFileID(ctx context.Context, arg GetStructsByFileIDParams) ([]*Struct, error) {
+	rows, err := q.db.QueryContext(ctx, getStructsByFileID, arg.FileID)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []*Struct
+	for rows.Next() {
+		var i Struct
+		if err := rows.Scan(
+			&i.ID,
+			&i.Value,
+			&i.UrlID,
+			&i.StartLineID,
+			&i.EndLineID,
+			&i.FileID,
+			&i.Context,
+		); err != nil {
+			return nil, err
+		}
+		items = append(items, &i)
+	}
+	if err := rows.Close(); err != nil {
+		return nil, err
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
+const getStructsByFileIDAndEndLineID = `-- name: GetStructsByFileIDAndEndLineID :many
+SELECT
+    id, value, url_id, start_line_id, end_line_id, file_id, context
+FROM
+    structs
+WHERE
+    file_id = ? AND end_line_id = ?
+`
+
+type GetStructsByFileIDAndEndLineIDParams struct {
+	FileID    int64 `db:"file_id" json:"file_id"`
+	EndLineID int64 `db:"end_line_id" json:"end_line_id"`
+}
+
+// GetStructsByFileIDAndEndLineID
+//
+//	SELECT
+//	    id, value, url_id, start_line_id, end_line_id, file_id, context
+//	FROM
+//	    structs
+//	WHERE
+//	    file_id = ? AND end_line_id = ?
+func (q *Queries) GetStructsByFileIDAndEndLineID(ctx context.Context, arg GetStructsByFileIDAndEndLineIDParams) ([]*Struct, error) {
+	rows, err := q.db.QueryContext(ctx, getStructsByFileIDAndEndLineID, arg.FileID, arg.EndLineID)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []*Struct
+	for rows.Next() {
+		var i Struct
+		if err := rows.Scan(
+			&i.ID,
+			&i.Value,
+			&i.UrlID,
+			&i.StartLineID,
+			&i.EndLineID,
+			&i.FileID,
+			&i.Context,
+		); err != nil {
+			return nil, err
+		}
+		items = append(items, &i)
+	}
+	if err := rows.Close(); err != nil {
+		return nil, err
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
+const getStructsByFileIDAndStartLineID = `-- name: GetStructsByFileIDAndStartLineID :many
+SELECT
+    id, value, url_id, start_line_id, end_line_id, file_id, context
+FROM
+    structs
+WHERE
+    file_id = ? AND start_line_id = ?
+`
+
+type GetStructsByFileIDAndStartLineIDParams struct {
+	FileID      int64 `db:"file_id" json:"file_id"`
+	StartLineID int64 `db:"start_line_id" json:"start_line_id"`
+}
+
+// GetStructsByFileIDAndStartLineID
+//
+//	SELECT
+//	    id, value, url_id, start_line_id, end_line_id, file_id, context
+//	FROM
+//	    structs
+//	WHERE
+//	    file_id = ? AND start_line_id = ?
+func (q *Queries) GetStructsByFileIDAndStartLineID(ctx context.Context, arg GetStructsByFileIDAndStartLineIDParams) ([]*Struct, error) {
+	rows, err := q.db.QueryContext(ctx, getStructsByFileIDAndStartLineID, arg.FileID, arg.StartLineID)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []*Struct
+	for rows.Next() {
+		var i Struct
+		if err := rows.Scan(
+			&i.ID,
+			&i.Value,
+			&i.UrlID,
+			&i.StartLineID,
+			&i.EndLineID,
+			&i.FileID,
+			&i.Context,
+		); err != nil {
+			return nil, err
+		}
+		items = append(items, &i)
+	}
+	if err := rows.Close(); err != nil {
+		return nil, err
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
+const getStructsByStartLineEndlineRange = `-- name: GetStructsByStartLineEndlineRange :many
+SELECT
+    structs.id, structs.value, url_id, start_line_id, end_line_id, structs.file_id, context, lines.id, lines.file_id, lines.value, lines.number, lines2.id, lines2.file_id, lines2.value, lines2.number
+FROM
+    structs
+JOIN lines ON lines.id = structs.start_line_id
+JOIN lines AS lines2 ON lines2.id = structs.end_line_id
+WHERE
+    lines.number <= ? AND lines2.number >= ?
+`
+
+type GetStructsByStartLineEndlineRangeParams struct {
+	Number   int64 `db:"number" json:"number"`
+	Number_2 int64 `db:"number_2" json:"number_2"`
+}
+
+type GetStructsByStartLineEndlineRangeRow struct {
+	ID          int64  `db:"id" json:"id"`
+	Value       string `db:"value" json:"value"`
+	UrlID       int64  `db:"url_id" json:"url_id"`
+	StartLineID int64  `db:"start_line_id" json:"start_line_id"`
+	EndLineID   int64  `db:"end_line_id" json:"end_line_id"`
+	FileID      int64  `db:"file_id" json:"file_id"`
+	Context     string `db:"context" json:"context"`
+	ID_2        int64  `db:"id_2" json:"id_2"`
+	FileID_2    int64  `db:"file_id_2" json:"file_id_2"`
+	Value_2     string `db:"value_2" json:"value_2"`
+	Number      int64  `db:"number" json:"number"`
+	ID_3        int64  `db:"id_3" json:"id_3"`
+	FileID_3    int64  `db:"file_id_3" json:"file_id_3"`
+	Value_3     string `db:"value_3" json:"value_3"`
+	Number_2    int64  `db:"number_2" json:"number_2"`
+}
+
+// GetStructsByStartLineEndlineRange
+//
+//	SELECT
+//	    structs.id, structs.value, url_id, start_line_id, end_line_id, structs.file_id, context, lines.id, lines.file_id, lines.value, lines.number, lines2.id, lines2.file_id, lines2.value, lines2.number
+//	FROM
+//	    structs
+//	JOIN lines ON lines.id = structs.start_line_id
+//	JOIN lines AS lines2 ON lines2.id = structs.end_line_id
+//	WHERE
+//	    lines.number <= ? AND lines2.number >= ?
+func (q *Queries) GetStructsByStartLineEndlineRange(ctx context.Context, arg GetStructsByStartLineEndlineRangeParams) ([]*GetStructsByStartLineEndlineRangeRow, error) {
+	rows, err := q.db.QueryContext(ctx, getStructsByStartLineEndlineRange, arg.Number, arg.Number_2)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []*GetStructsByStartLineEndlineRangeRow
+	for rows.Next() {
+		var i GetStructsByStartLineEndlineRangeRow
+		if err := rows.Scan(
+			&i.ID,
+			&i.Value,
+			&i.UrlID,
+			&i.StartLineID,
+			&i.EndLineID,
+			&i.FileID,
+			&i.Context,
+			&i.ID_2,
+			&i.FileID_2,
+			&i.Value_2,
+			&i.Number,
+			&i.ID_3,
+			&i.FileID_3,
+			&i.Value_3,
+			&i.Number_2,
+		); err != nil {
+			return nil, err
+		}
+		items = append(items, &i)
+	}
+	if err := rows.Close(); err != nil {
+		return nil, err
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
+const getStructsByStartLineID = `-- name: GetStructsByStartLineID :many
+SELECT
+    id, value, url_id, start_line_id, end_line_id, file_id, context
+FROM
+    structs
+WHERE
+    start_line_id = ?
+`
+
+type GetStructsByStartLineIDParams struct {
+	StartLineID int64 `db:"start_line_id" json:"start_line_id"`
+}
+
+// GetStructsByStartLineID
+//
+//	SELECT
+//	    id, value, url_id, start_line_id, end_line_id, file_id, context
+//	FROM
+//	    structs
+//	WHERE
+//	    start_line_id = ?
+func (q *Queries) GetStructsByStartLineID(ctx context.Context, arg GetStructsByStartLineIDParams) ([]*Struct, error) {
+	rows, err := q.db.QueryContext(ctx, getStructsByStartLineID, arg.StartLineID)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []*Struct
+	for rows.Next() {
+		var i Struct
+		if err := rows.Scan(
+			&i.ID,
+			&i.Value,
+			&i.UrlID,
+			&i.StartLineID,
+			&i.EndLineID,
+			&i.FileID,
+			&i.Context,
+		); err != nil {
+			return nil, err
+		}
+		items = append(items, &i)
+	}
+	if err := rows.Close(); err != nil {
+		return nil, err
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
+const getStructsByValue = `-- name: GetStructsByValue :many
+SELECT
+    id, value, url_id, start_line_id, end_line_id, file_id, context
+FROM
+    structs
+WHERE
+    value = ?
+`
+
+type GetStructsByValueParams struct {
+	Value string `db:"value" json:"value"`
+}
+
+// GetStructsByValue
+//
+//	SELECT
+//	    id, value, url_id, start_line_id, end_line_id, file_id, context
+//	FROM
+//	    structs
+//	WHERE
+//	    value = ?
+func (q *Queries) GetStructsByValue(ctx context.Context, arg GetStructsByValueParams) ([]*Struct, error) {
+	rows, err := q.db.QueryContext(ctx, getStructsByValue, arg.Value)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []*Struct
+	for rows.Next() {
+		var i Struct
+		if err := rows.Scan(
+			&i.ID,
+			&i.Value,
+			&i.UrlID,
+			&i.StartLineID,
+			&i.EndLineID,
+			&i.FileID,
+			&i.Context,
+		); err != nil {
+			return nil, err
+		}
+		items = append(items, &i)
+	}
+	if err := rows.Close(); err != nil {
+		return nil, err
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
+const getTagByFieldIDAndValue = `-- name: GetTagByFieldIDAndValue :one
+SELECT
+    id, value, start, "end", line_id, field_id
+FROM
+    tags
+WHERE
+    field_id = ? AND value = ?
+`
+
+type GetTagByFieldIDAndValueParams struct {
+	FieldID int64  `db:"field_id" json:"field_id"`
+	Value   string `db:"value" json:"value"`
+}
+
+// GetTagByFieldIDAndValue
+//
+//	SELECT
+//	    id, value, start, "end", line_id, field_id
+//	FROM
+//	    tags
+//	WHERE
+//	    field_id = ? AND value = ?
+func (q *Queries) GetTagByFieldIDAndValue(ctx context.Context, arg GetTagByFieldIDAndValueParams) (*Tag, error) {
+	row := q.db.QueryRowContext(ctx, getTagByFieldIDAndValue, arg.FieldID, arg.Value)
+	var i Tag
+	err := row.Scan(
+		&i.ID,
+		&i.Value,
+		&i.Start,
+		&i.End,
+		&i.LineID,
+		&i.FieldID,
+	)
+	return &i, err
+}
+
+const getTagByID = `-- name: GetTagByID :one
+SELECT
+    id, value, start, "end", line_id, field_id
+FROM
+    tags
+WHERE
+    id = ?
+`
+
+type GetTagByIDParams struct {
+	ID int64 `db:"id" json:"id"`
+}
+
+// GetTagByID
+//
+//	SELECT
+//	    id, value, start, "end", line_id, field_id
+//	FROM
+//	    tags
+//	WHERE
+//	    id = ?
+func (q *Queries) GetTagByID(ctx context.Context, arg GetTagByIDParams) (*Tag, error) {
+	row := q.db.QueryRowContext(ctx, getTagByID, arg.ID)
+	var i Tag
+	err := row.Scan(
+		&i.ID,
+		&i.Value,
+		&i.Start,
+		&i.End,
+		&i.LineID,
+		&i.FieldID,
+	)
+	return &i, err
+}
+
+const getTagByValue = `-- name: GetTagByValue :one
+SELECT
+    id, value, start, "end", line_id, field_id
+FROM
+    tags
+WHERE
+    value = ?
+`
+
+type GetTagByValueParams struct {
+	Value string `db:"value" json:"value"`
+}
+
+// GetTagByValue
+//
+//	SELECT
+//	    id, value, start, "end", line_id, field_id
+//	FROM
+//	    tags
+//	WHERE
+//	    value = ?
+func (q *Queries) GetTagByValue(ctx context.Context, arg GetTagByValueParams) (*Tag, error) {
+	row := q.db.QueryRowContext(ctx, getTagByValue, arg.Value)
+	var i Tag
+	err := row.Scan(
+		&i.ID,
+		&i.Value,
+		&i.Start,
+		&i.End,
+		&i.LineID,
+		&i.FieldID,
+	)
+	return &i, err
+}
+
+const getTagsByFieldID = `-- name: GetTagsByFieldID :many
+SELECT
+    id, value, start, "end", line_id, field_id
+FROM
+    tags
+WHERE
+    field_id = ?
+`
+
+type GetTagsByFieldIDParams struct {
+	FieldID int64 `db:"field_id" json:"field_id"`
+}
+
+// GetTagsByFieldID
+//
+//	SELECT
+//	    id, value, start, "end", line_id, field_id
+//	FROM
+//	    tags
+//	WHERE
+//	    field_id = ?
+func (q *Queries) GetTagsByFieldID(ctx context.Context, arg GetTagsByFieldIDParams) ([]*Tag, error) {
+	rows, err := q.db.QueryContext(ctx, getTagsByFieldID, arg.FieldID)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []*Tag
+	for rows.Next() {
+		var i Tag
+		if err := rows.Scan(
+			&i.ID,
+			&i.Value,
+			&i.Start,
+			&i.End,
+			&i.LineID,
+			&i.FieldID,
 		); err != nil {
 			return nil, err
 		}
@@ -269,6 +1087,35 @@ func (q *Queries) GetURLByValue(ctx context.Context, arg GetURLByValueParams) (*
 	return &i, err
 }
 
+const insertFile = `-- name: InsertFile :one
+INSERT INTO
+    files (uri)
+VALUES
+    (?) RETURNING id, uri, updated_at, created_at
+`
+
+type InsertFileParams struct {
+	Uri string `db:"uri" json:"uri"`
+}
+
+// InsertFile
+//
+//	INSERT INTO
+//	    files (uri)
+//	VALUES
+//	    (?) RETURNING id, uri, updated_at, created_at
+func (q *Queries) InsertFile(ctx context.Context, arg InsertFileParams) (*File, error) {
+	row := q.db.QueryRowContext(ctx, insertFile, arg.Uri)
+	var i File
+	err := row.Scan(
+		&i.ID,
+		&i.Uri,
+		&i.UpdatedAt,
+		&i.CreatedAt,
+	)
+	return &i, err
+}
+
 const insertHTML = `-- name: InsertHTML :one
 INSERT INTO
     htmls (value)
@@ -298,6 +1145,36 @@ func (q *Queries) InsertHTML(ctx context.Context, arg InsertHTMLParams) (*Html, 
 	return &i, err
 }
 
+const insertLine = `-- name: InsertLine :one
+INSERT INTO
+    lines (value)
+VALUES
+    (?) RETURNING id, value, number
+`
+
+type InsertLineParams struct {
+	Value string `db:"value" json:"value"`
+}
+
+type InsertLineRow struct {
+	ID     int64  `db:"id" json:"id"`
+	Value  string `db:"value" json:"value"`
+	Number int64  `db:"number" json:"number"`
+}
+
+// InsertLine
+//
+//	INSERT INTO
+//	    lines (value)
+//	VALUES
+//	    (?) RETURNING id, value, number
+func (q *Queries) InsertLine(ctx context.Context, arg InsertLineParams) (*InsertLineRow, error) {
+	row := q.db.QueryRowContext(ctx, insertLine, arg.Value)
+	var i InsertLineRow
+	err := row.Scan(&i.ID, &i.Value, &i.Number)
+	return &i, err
+}
+
 const insertSelector = `-- name: InsertSelector :one
 
 /*
@@ -306,15 +1183,16 @@ const insertSelector = `-- name: InsertSelector :one
  ** Dialect: sqlite3
  */
 INSERT INTO
-	selectors (value, url_id, context)
+	selectors (value, url_id, context, occurances)
 VALUES
-	(?, ?, ?) RETURNING id, value, url_id, context
+	(?, ?, ?, ?) RETURNING id, value, url_id, occurances, context
 `
 
 type InsertSelectorParams struct {
-	Value   string `db:"value" json:"value"`
-	UrlID   int64  `db:"url_id" json:"url_id"`
-	Context string `db:"context" json:"context"`
+	Value      string `db:"value" json:"value"`
+	UrlID      int64  `db:"url_id" json:"url_id"`
+	Context    string `db:"context" json:"context"`
+	Occurances int64  `db:"occurances" json:"occurances"`
 }
 
 // ****************************************************************************
@@ -326,19 +1204,97 @@ type InsertSelectorParams struct {
 //	 ** Dialect: sqlite3
 //	 */
 //	INSERT INTO
-//		selectors (value, url_id, context)
+//		selectors (value, url_id, context, occurances)
 //	VALUES
-//		(?, ?, ?) RETURNING id, value, url_id, context
+//		(?, ?, ?, ?) RETURNING id, value, url_id, occurances, context
 func (q *Queries) InsertSelector(ctx context.Context, arg InsertSelectorParams) (*Selector, error) {
-	row := q.db.QueryRowContext(ctx, insertSelector, arg.Value, arg.UrlID, arg.Context)
+	row := q.db.QueryRowContext(ctx, insertSelector,
+		arg.Value,
+		arg.UrlID,
+		arg.Context,
+		arg.Occurances,
+	)
 	var i Selector
 	err := row.Scan(
 		&i.ID,
 		&i.Value,
 		&i.UrlID,
+		&i.Occurances,
 		&i.Context,
 	)
 	return &i, err
+}
+
+const insertStruct = `-- name: InsertStruct :one
+INSERT INTO
+    structs (file_id, start_line_id, end_line_id, value)
+VALUES
+    (?, ?, ?, ?) RETURNING id, value, url_id, start_line_id, end_line_id, file_id, context
+`
+
+type InsertStructParams struct {
+	FileID      int64  `db:"file_id" json:"file_id"`
+	StartLineID int64  `db:"start_line_id" json:"start_line_id"`
+	EndLineID   int64  `db:"end_line_id" json:"end_line_id"`
+	Value       string `db:"value" json:"value"`
+}
+
+// InsertStruct
+//
+//	INSERT INTO
+//	    structs (file_id, start_line_id, end_line_id, value)
+//	VALUES
+//	    (?, ?, ?, ?) RETURNING id, value, url_id, start_line_id, end_line_id, file_id, context
+func (q *Queries) InsertStruct(ctx context.Context, arg InsertStructParams) (*Struct, error) {
+	row := q.db.QueryRowContext(ctx, insertStruct,
+		arg.FileID,
+		arg.StartLineID,
+		arg.EndLineID,
+		arg.Value,
+	)
+	var i Struct
+	err := row.Scan(
+		&i.ID,
+		&i.Value,
+		&i.UrlID,
+		&i.StartLineID,
+		&i.EndLineID,
+		&i.FileID,
+		&i.Context,
+	)
+	return &i, err
+}
+
+const insertTag = `-- name: InsertTag :exec
+INSERT INTO
+    tags (value, start, end, line_id, field_id)
+VALUES
+    (?, ?, ?, ?, ?)
+`
+
+type InsertTagParams struct {
+	Value   string `db:"value" json:"value"`
+	Start   int64  `db:"start" json:"start"`
+	End     int64  `db:"end" json:"end"`
+	LineID  int64  `db:"line_id" json:"line_id"`
+	FieldID int64  `db:"field_id" json:"field_id"`
+}
+
+// InsertTag
+//
+//	INSERT INTO
+//	    tags (value, start, end, line_id, field_id)
+//	VALUES
+//	    (?, ?, ?, ?, ?)
+func (q *Queries) InsertTag(ctx context.Context, arg InsertTagParams) error {
+	_, err := q.db.ExecContext(ctx, insertTag,
+		arg.Value,
+		arg.Start,
+		arg.End,
+		arg.LineID,
+		arg.FieldID,
+	)
+	return err
 }
 
 const insertURL = `-- name: InsertURL :one
@@ -424,7 +1380,61 @@ func (q *Queries) ListAll(ctx context.Context) ([]*ListAllRow, error) {
 	return items, nil
 }
 
+const listFiles = `-- name: ListFiles :many
+/*
+** File: files.sql
+** Description: This file contains the SQLite queries for the files table
+** Dialect: sqlite3
+*/
+
+SELECT
+    id, uri, updated_at, created_at
+from
+    files
+`
+
+// ****************************************************************************
+//
+//	/*
+//	** File: files.sql
+//	** Description: This file contains the SQLite queries for the files table
+//	** Dialect: sqlite3
+//	*/
+//
+//	SELECT
+//	    id, uri, updated_at, created_at
+//	from
+//	    files
+func (q *Queries) ListFiles(ctx context.Context) ([]*File, error) {
+	rows, err := q.db.QueryContext(ctx, listFiles)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []*File
+	for rows.Next() {
+		var i File
+		if err := rows.Scan(
+			&i.ID,
+			&i.Uri,
+			&i.UpdatedAt,
+			&i.CreatedAt,
+		); err != nil {
+			return nil, err
+		}
+		items = append(items, &i)
+	}
+	if err := rows.Close(); err != nil {
+		return nil, err
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
 const listHTMLs = `-- name: ListHTMLs :many
+
 /* 
  ** File: htmls.sql
  ** Description: This file contains the SQLite queries for the htmls table
@@ -436,6 +1446,7 @@ from
     htmls
 `
 
+// ****************************************************************************
 // ****************************************************************************
 //
 //	/*
@@ -475,8 +1486,177 @@ func (q *Queries) ListHTMLs(ctx context.Context) ([]*Html, error) {
 	return items, nil
 }
 
-const listURLs = `-- name: ListURLs :many
+const listLines = `-- name: ListLines :many
 
+/*
+** File: lines.sql
+** Description: This file contains the SQLite queries for the lines table
+** Dialect: sqlite3
+*/
+
+SELECT
+    id, file_id, value, number
+from
+    lines
+`
+
+// ****************************************************************************
+// ****************************************************************************
+//
+//	/*
+//	** File: lines.sql
+//	** Description: This file contains the SQLite queries for the lines table
+//	** Dialect: sqlite3
+//	*/
+//
+//	SELECT
+//	    id, file_id, value, number
+//	from
+//	    lines
+func (q *Queries) ListLines(ctx context.Context) ([]*Line, error) {
+	rows, err := q.db.QueryContext(ctx, listLines)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []*Line
+	for rows.Next() {
+		var i Line
+		if err := rows.Scan(
+			&i.ID,
+			&i.FileID,
+			&i.Value,
+			&i.Number,
+		); err != nil {
+			return nil, err
+		}
+		items = append(items, &i)
+	}
+	if err := rows.Close(); err != nil {
+		return nil, err
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
+const listStructs = `-- name: ListStructs :many
+
+/*
+** File: structs.sql
+** Description: This file contains the SQLite queries for the structs table
+** Dialect: sqlite3
+*/
+
+SELECT
+    id, value, url_id, start_line_id, end_line_id, file_id, context
+from
+    structs
+`
+
+// ****************************************************************************
+// ****************************************************************************
+//
+//	/*
+//	** File: structs.sql
+//	** Description: This file contains the SQLite queries for the structs table
+//	** Dialect: sqlite3
+//	*/
+//
+//	SELECT
+//	    id, value, url_id, start_line_id, end_line_id, file_id, context
+//	from
+//	    structs
+func (q *Queries) ListStructs(ctx context.Context) ([]*Struct, error) {
+	rows, err := q.db.QueryContext(ctx, listStructs)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []*Struct
+	for rows.Next() {
+		var i Struct
+		if err := rows.Scan(
+			&i.ID,
+			&i.Value,
+			&i.UrlID,
+			&i.StartLineID,
+			&i.EndLineID,
+			&i.FileID,
+			&i.Context,
+		); err != nil {
+			return nil, err
+		}
+		items = append(items, &i)
+	}
+	if err := rows.Close(); err != nil {
+		return nil, err
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
+const listTags = `-- name: ListTags :many
+
+/*
+** File: tags.sql
+** Description: This file contains the SQLite queries for the tags table
+** Dialect: sqlite3
+*/
+
+SELECT
+    id, value, start, "end", line_id, field_id
+from
+    tags
+`
+
+// ****************************************************************************
+// ****************************************************************************
+//
+//	/*
+//	** File: tags.sql
+//	** Description: This file contains the SQLite queries for the tags table
+//	** Dialect: sqlite3
+//	*/
+//
+//	SELECT
+//	    id, value, start, "end", line_id, field_id
+//	from
+//	    tags
+func (q *Queries) ListTags(ctx context.Context) ([]*Tag, error) {
+	rows, err := q.db.QueryContext(ctx, listTags)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []*Tag
+	for rows.Next() {
+		var i Tag
+		if err := rows.Scan(
+			&i.ID,
+			&i.Value,
+			&i.Start,
+			&i.End,
+			&i.LineID,
+			&i.FieldID,
+		); err != nil {
+			return nil, err
+		}
+		items = append(items, &i)
+	}
+	if err := rows.Close(); err != nil {
+		return nil, err
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
+const listURLs = `-- name: ListURLs :many
 /*
  ** File: urls.sql
  ** Description: This file contains the SQLite queries for the urls table
@@ -488,7 +1668,6 @@ from
     urls
 `
 
-// ****************************************************************************
 // ****************************************************************************
 //
 //	/*
@@ -521,6 +1700,40 @@ func (q *Queries) ListURLs(ctx context.Context) ([]*Url, error) {
 		return nil, err
 	}
 	return items, nil
+}
+
+const updateFileByID = `-- name: UpdateFileByID :one
+UPDATE
+    files
+SET
+    uri = ?
+WHERE
+    id = ? RETURNING id, uri, updated_at, created_at
+`
+
+type UpdateFileByIDParams struct {
+	Uri string `db:"uri" json:"uri"`
+	ID  int64  `db:"id" json:"id"`
+}
+
+// UpdateFileByID
+//
+//	UPDATE
+//	    files
+//	SET
+//	    uri = ?
+//	WHERE
+//	    id = ? RETURNING id, uri, updated_at, created_at
+func (q *Queries) UpdateFileByID(ctx context.Context, arg UpdateFileByIDParams) (*File, error) {
+	row := q.db.QueryRowContext(ctx, updateFileByID, arg.Uri, arg.ID)
+	var i File
+	err := row.Scan(
+		&i.ID,
+		&i.Uri,
+		&i.UpdatedAt,
+		&i.CreatedAt,
+	)
+	return &i, err
 }
 
 const updateHTMLByID = `-- name: UpdateHTMLByID :one
@@ -557,22 +1770,59 @@ func (q *Queries) UpdateHTMLByID(ctx context.Context, arg UpdateHTMLByIDParams) 
 	return &i, err
 }
 
+const updateLineByID = `-- name: UpdateLineByID :one
+UPDATE
+    lines
+SET
+    value = ?
+WHERE
+    id = ? RETURNING id, value, number
+`
+
+type UpdateLineByIDParams struct {
+	Value string `db:"value" json:"value"`
+	ID    int64  `db:"id" json:"id"`
+}
+
+type UpdateLineByIDRow struct {
+	ID     int64  `db:"id" json:"id"`
+	Value  string `db:"value" json:"value"`
+	Number int64  `db:"number" json:"number"`
+}
+
+// UpdateLineByID
+//
+//	UPDATE
+//	    lines
+//	SET
+//	    value = ?
+//	WHERE
+//	    id = ? RETURNING id, value, number
+func (q *Queries) UpdateLineByID(ctx context.Context, arg UpdateLineByIDParams) (*UpdateLineByIDRow, error) {
+	row := q.db.QueryRowContext(ctx, updateLineByID, arg.Value, arg.ID)
+	var i UpdateLineByIDRow
+	err := row.Scan(&i.ID, &i.Value, &i.Number)
+	return &i, err
+}
+
 const updateSelectorByID = `-- name: UpdateSelectorByID :exec
 UPDATE
 	selectors
 SET
 	value = ?,
 	url_id = ?,
-	context = ?
+	context = ?,
+	occurances = ?
 WHERE
 	id = ?
 `
 
 type UpdateSelectorByIDParams struct {
-	Value   string `db:"value" json:"value"`
-	UrlID   int64  `db:"url_id" json:"url_id"`
-	Context string `db:"context" json:"context"`
-	ID      int64  `db:"id" json:"id"`
+	Value      string `db:"value" json:"value"`
+	UrlID      int64  `db:"url_id" json:"url_id"`
+	Context    string `db:"context" json:"context"`
+	Occurances int64  `db:"occurances" json:"occurances"`
+	ID         int64  `db:"id" json:"id"`
 }
 
 // UpdateSelectorByID
@@ -582,7 +1832,8 @@ type UpdateSelectorByIDParams struct {
 //	SET
 //		value = ?,
 //		url_id = ?,
-//		context = ?
+//		context = ?,
+//		occurances = ?
 //	WHERE
 //		id = ?
 func (q *Queries) UpdateSelectorByID(ctx context.Context, arg UpdateSelectorByIDParams) error {
@@ -590,6 +1841,101 @@ func (q *Queries) UpdateSelectorByID(ctx context.Context, arg UpdateSelectorByID
 		arg.Value,
 		arg.UrlID,
 		arg.Context,
+		arg.Occurances,
+		arg.ID,
+	)
+	return err
+}
+
+const updateStructByID = `-- name: UpdateStructByID :one
+UPDATE
+    structs
+SET
+    value = ?,
+    start_line_id = ?,
+    end_line_id = ?
+WHERE
+    id = ? RETURNING id, value, url_id, start_line_id, end_line_id, file_id, context
+`
+
+type UpdateStructByIDParams struct {
+	Value       string `db:"value" json:"value"`
+	StartLineID int64  `db:"start_line_id" json:"start_line_id"`
+	EndLineID   int64  `db:"end_line_id" json:"end_line_id"`
+	ID          int64  `db:"id" json:"id"`
+}
+
+// UpdateStructByID
+//
+//	UPDATE
+//	    structs
+//	SET
+//	    value = ?,
+//	    start_line_id = ?,
+//	    end_line_id = ?
+//	WHERE
+//	    id = ? RETURNING id, value, url_id, start_line_id, end_line_id, file_id, context
+func (q *Queries) UpdateStructByID(ctx context.Context, arg UpdateStructByIDParams) (*Struct, error) {
+	row := q.db.QueryRowContext(ctx, updateStructByID,
+		arg.Value,
+		arg.StartLineID,
+		arg.EndLineID,
+		arg.ID,
+	)
+	var i Struct
+	err := row.Scan(
+		&i.ID,
+		&i.Value,
+		&i.UrlID,
+		&i.StartLineID,
+		&i.EndLineID,
+		&i.FileID,
+		&i.Context,
+	)
+	return &i, err
+}
+
+const updateTagByID = `-- name: UpdateTagByID :exec
+UPDATE
+    tags
+SET
+    value = ?,
+    start = ?,
+    end = ?,
+    line_id = ?,
+    field_id = ?
+WHERE
+    id = ?
+`
+
+type UpdateTagByIDParams struct {
+	Value   string `db:"value" json:"value"`
+	Start   int64  `db:"start" json:"start"`
+	End     int64  `db:"end" json:"end"`
+	LineID  int64  `db:"line_id" json:"line_id"`
+	FieldID int64  `db:"field_id" json:"field_id"`
+	ID      int64  `db:"id" json:"id"`
+}
+
+// UpdateTagByID
+//
+//	UPDATE
+//	    tags
+//	SET
+//	    value = ?,
+//	    start = ?,
+//	    end = ?,
+//	    line_id = ?,
+//	    field_id = ?
+//	WHERE
+//	    id = ?
+func (q *Queries) UpdateTagByID(ctx context.Context, arg UpdateTagByIDParams) error {
+	_, err := q.db.ExecContext(ctx, updateTagByID,
+		arg.Value,
+		arg.Start,
+		arg.End,
+		arg.LineID,
+		arg.FieldID,
 		arg.ID,
 	)
 	return err

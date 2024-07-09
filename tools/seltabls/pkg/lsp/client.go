@@ -13,3 +13,8 @@ type ClientCapabilities struct {
 	// CompletionProvider is a map of completion providers.
 	CompletionProvider map[string]any `json:"completionProvider"`
 }
+
+const (
+	// RPCVersion is the version of the RPC protocol.
+	RPCVersion = "2.0"
+)

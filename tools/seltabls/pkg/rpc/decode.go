@@ -27,11 +27,18 @@ func DecodeMessage(msg []byte) (BaseMessage, error) {
 	contentLengthBytes := header[len("Content-Length: "):]
 	contentLength, err := strconv.Atoi(string(contentLengthBytes))
 	if err != nil {
-		return BaseMessage{}, fmt.Errorf("failed to parse content length %s: %w", string(contentLengthBytes), err)
+		return BaseMessage{}, fmt.Errorf(
+			"failed to parse content length %s: %w",
+			string(contentLengthBytes),
+			err,
+		)
 	}
 	var baseMessage BaseMessage
 	if err := json.Unmarshal(content[:contentLength], &baseMessage); err != nil {
-		return BaseMessage{}, fmt.Errorf("failed to unmarshal base message: %w", err)
+		return BaseMessage{}, fmt.Errorf(
+			"failed to unmarshal base message: %w",
+			err,
+		)
 	}
 	baseMessage.Content = content[:contentLength]
 	baseMessage.Header = string(header)

@@ -1,5 +1,7 @@
 package lsp
 
+import "github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp/methods"
+
 // HoverRequest is sent from the client to the server to request hover
 // information.
 //
@@ -10,6 +12,11 @@ type HoverRequest struct {
 	Request
 	// Params are the parameters for the hover request.
 	Params HoverParams `json:"params"`
+}
+
+// Method returns the method for the hover request
+func (r HoverRequest) Method() methods.Method {
+	return methods.MethodRequestTextDocumentHover
 }
 
 // HoverParams is the parameters for a hover request.

@@ -7,34 +7,36 @@ import (
 	"go/token"
 
 	"github.com/PuerkitoBio/goquery"
+	"github.com/conneroisu/seltabl/tools/seltabls/pkg/http"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/parsers"
 	"github.com/yosssi/gohtml"
 )
 
-// Hover returns a hover response for the given uri and position
-func (s *State) Hover(
-	id int,
-	uri string,
-	position lsp.Position,
-) (*lsp.HoverResponse, error) {
-	text := s.Documents[uri]
-	urls := s.URLs[uri]
-	doc, err := s.clientGet(urls[0])
+// NewHoverResponse returns a hover response for the given uri and position
+func NewHoverResponse(
+	req lsp.HoverRequest,
+	s *State,
+) (response *lsp.HoverResponse, err error) {
+	response = &lsp.HoverResponse{
+		Response: lsp.Response{
+			RPC: "2.0",
+			ID:  req.ID,
+		},
+		Result: lsp.HoverResult{},
+	}
+	text := s.Documents[req.Params.TextDocument.URI]
+	urls := s.URLs[req.Params.TextDocument.URI]
+	doc, err := http.DefaultClientGet(urls[0])
 	if err != nil {
 		return nil, fmt.Errorf("failed to get the content of the url: %w", err)
 	}
-	res, err := s.GetSelectorHover(position, text, doc)
+	res, err := s.GetSelectorHover(req.Params.Position, text, doc)
 	if err != nil {
 		return nil, fmt.Errorf("failed to get hover: %w", err)
 	}
-	return &lsp.HoverResponse{
-		Response: lsp.Response{
-			RPC: "2.0",
-			ID:  id,
-		},
-		Result: res,
-	}, nil
+	response.Result = res
+	return response, nil
 }
 
 // GetSelectorHover checks if the position is within the struct tag
@@ -67,13 +69,14 @@ func (s *State) GetSelectorHover(
 		if inPosition && inTag {
 			var val string
 			// Check if the position is within a struct tag value (i.e. value inside and including " and " characters)
-			val, inValue = parsers.IsPositionInStructTagValue(
+			val, inValue = parsers.PositionInStructTagValue(
 				structNodes[i],
 				position,
 				fset,
 			)
 			if !inValue {
-				if parsers.PositionBeforeValue(position, text) != ':' && parsers.PositionBeforeValue(position, text) != '"' {
+				if parsers.PositionBeforeValue(position, text) != ':' &&
+					parsers.PositionBeforeValue(position, text) != '"' {
 					continue
 				}
 			}

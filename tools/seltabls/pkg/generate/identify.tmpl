@@ -1,0 +1,82 @@
+{{- define "prompt" -}}
+As a extremely diligent assistant, you are to identify sections of the following html that are processable.
+
+Processable sections are sections that contain data that can be extracted from the html.
+
+You are to identify sections of the following html that are processable.
+
+You should return a json object with the following attributes:
+
+- sections: a list of sections of the html that are processable.
+
+sections has the following attributes:
+
+- description: a description of the section. (should describe what the section is for and what it contains)
+- start: the start of the section in the html. (line number)
+- end: the end of the section in the html. (line number)
+- css: the css selector for the section. (should be a valid css selector that can be used to select the entire section in the html)
+
+Example Output:
+
+```json
+{
+	"sections": [
+		{
+			"description": "Section contains the stats for the team.",
+			"start": 0,
+			"end": 10
+			"css": "tr:nth-child(1) td:nth-child(1)"
+		},
+		{
+			"description": "Section contains the stats for the team statistical leaders.",
+			"start": 10,
+			"end": 20
+			"css": "div#contentContainer > div.container > div.row > div.col-md-12 > div:nth-child(1)  > div.table-responsive"
+		}
+	]
+}
+```
+
+The html is:
+
+{{ .Content }}
+{{- end -}}
+
+{{- define "aggregate" -}}
+As a diligent and experienced html developer, you are to fully describe the given html content in a comprehensive and accurate json response.
+
+Your interns have created a list of json schemas for the given html content, but you must congregate them into a single comprehensive and accurate json response that fully describes the given html content.
+
+You are to congregate the following json schemas into a single comprehensive and accurate json response that fully describes the given html content.
+
+Schemas:
+
+{{- range $i, $schema := .Schemas }}
+	{{- if $i }}{{- end }}
+```json
+{{ $schema }}
+```
+{{- end }}
+
+The html is:
+
+```html
+{{ .Content }}
+```
+{{- end -}}
+
+{{- define "error" -}}
+We encountered an error while processing your response.
+
+We encountered the following error:
+
+In reponse to this error, you must return the entire json response and nothing else.
+
+DO NOT return any additional text.
+DO NOT return any additional code.
+DO NOT remove any json keys or values.
+
+```text
+{{ .Error }}
+```
+{{- end -}}

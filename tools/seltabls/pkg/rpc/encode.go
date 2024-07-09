@@ -27,7 +27,7 @@ func EncodeMessage(msg MethodActor) (string, error) {
 	json.HTMLEscape(&buf, content)
 	return fmt.Sprintf(
 		"Content-Length: %d\r\n\r\n%s",
-		len(buf.Bytes()),
+		buf.Len(),
 		buf.String(),
 	), nil
 }

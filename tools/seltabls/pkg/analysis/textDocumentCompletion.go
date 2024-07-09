@@ -2,23 +2,14 @@ package analysis
 
 import (
 	"bytes"
+	"context"
 	"fmt"
 	"go/parser"
 	"go/token"
 
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/parsers"
-)
-
-var (
-	// completionKeys is the slice of completionKeys to return for completions inside a struct tag but not a "" selector
-	completionKeys = []lsp.CompletionItem{
-		selectorDataTag,
-		selectorHeaderTag,
-		selectorQueryTag,
-		selectorMustBePresentTag,
-		selectorControlTag,
-	}
+	"golang.org/x/sync/errgroup"
 )
 
 // CreateTextDocumentCompletion returns the completions for a given text document.
@@ -27,59 +18,90 @@ var (
 //
 // It also checks if the position is within the struct tag value and returns the selectors
 // if the position is within the struct tag value.
-func (s *State) CreateTextDocumentCompletion(
-	id int,
-	document lsp.TextDocumentIdentifier,
-	pos lsp.Position,
-) (response lsp.CompletionResponse, err error) {
-	response.Response = lsp.Response{
-		RPC: "2.0",
-		ID:  id,
-	}
-	response.Result = []lsp.CompletionItem{}
-	// Get the content for the given document.
-	content := s.Documents[document.URI]
-	// Get the selectors for the given document in current state.
-	selectors := s.Selectors[document.URI]
-	// Check if the position is within a golang struct tag.
-	check, err := s.CheckPosition(pos, content)
-	if err != nil {
-		return response, nil
-	}
-	switch check {
-	case parsers.StateInTag:
-		for _, key := range completionKeys {
-			response.Result = append(response.Result, lsp.CompletionItem{
-				Label:         key.Label,
-				Detail:        key.Detail,
-				Documentation: key.Documentation,
-				Kind:          lsp.CompletionKindEnum,
-			})
-		}
-	case parsers.StateInTagValue:
-		for _, selector := range selectors {
-			response.Result = append(response.Result, lsp.CompletionItem{
-				Label:         selector.Value,
-				Detail:        "context: \n" + selector.Context,
-				Documentation: "seltabls",
-				Kind:          lsp.CompletionKindReference,
-			})
-		}
-	case parsers.StateAfterColon:
-		for _, selector := range selectors {
-			response.Result = append(response.Result, lsp.CompletionItem{
-				Label:         "\"" + selector.Value + "\"",
-				Detail:        "context: \n" + selector.Context,
-				Documentation: "seltabls",
-				Kind:          lsp.CompletionKindReference,
-			})
-		}
-	case parsers.StateInvalid:
-		return response, nil
+func CreateTextDocumentCompletion(
+	ctx context.Context,
+	s *State,
+	request lsp.CompletionRequest,
+) (response *lsp.CompletionResponse, err error) {
+	select {
+	case <-ctx.Done():
+		return nil, fmt.Errorf("context cancelled: %w", ctx.Err())
 	default:
+		response = &lsp.CompletionResponse{
+			Response: lsp.Response{
+				RPC: "2.0",
+				ID:  request.ID,
+			},
+			Result: []lsp.CompletionItem{},
+		}
+		eg, _ := errgroup.WithContext(ctx)
+		eg.Go(func() error {
+			// Get the content for the given document.
+			content := s.Documents[request.Params.TextDocument.URI]
+			// Get the selectors for the given document in current state.
+			selectors := s.Selectors[request.Params.TextDocument.URI]
+			// Check if the position is within a golang struct tag.
+			check, err := s.CheckPosition(request.Params.Position, content)
+			if err != nil {
+				return nil
+			}
+			switch check {
+			case parsers.StateInTag:
+				for _, key := range completionKeys {
+					response.Result = append(
+						response.Result,
+						lsp.CompletionItem{
+							Label:         key.Label,
+							Detail:        key.Detail,
+							Documentation: key.Documentation,
+							Kind:          lsp.CompletionKindEnum,
+						},
+					)
+				}
+			case parsers.StateInTagValue:
+				for _, selector := range selectors {
+					response.Result = append(
+						response.Result,
+						lsp.CompletionItem{
+							Label: selector.Value,
+							Detail: fmt.Sprintf(
+								"n: %d context: \n%s",
+								selector.Occurances,
+								selector.Context,
+							),
+							Documentation: "seltabls",
+							Kind:          lsp.CompletionKindReference,
+						},
+					)
+				}
+			case parsers.StateAfterColon:
+				for _, selector := range selectors {
+					response.Result = append(
+						response.Result,
+						lsp.CompletionItem{
+							Label: "\"" + selector.Value + "\"",
+							Detail: fmt.Sprintf(
+								"n: %d context: \n%s",
+								selector.Occurances,
+								selector.Context,
+							),
+							Documentation: "seltabls",
+							Kind:          lsp.CompletionKindReference,
+						},
+					)
+				}
+			case parsers.StateInvalid:
+				return nil
+			default:
+				return nil
+			}
+			return nil
+		})
+		if err := eg.Wait(); err != nil {
+			return response, fmt.Errorf("failed to get completions: %w", err)
+		}
 		return response, nil
 	}
-	return response, nil
 }
 
 // CheckPosition checks if the position is within the struct tag
@@ -111,20 +133,13 @@ func (s *State) CheckPosition(
 		inTag := parsers.IsPositionInTag(structNodes[i], position, fset)
 		if inPosition && inTag {
 			// Check if the position is within a struct tag value (i.e. value inside and including " and " characters)
-			_, inValue = parsers.IsPositionInStructTagValue(
+			_, inValue = parsers.PositionInStructTagValue(
 				structNodes[i],
 				position,
 				fset,
 			)
 			if inValue {
 				return parsers.StateInTagValue, nil
-			}
-			// Check if the position is after a colon
-			if parsers.PositionBeforeValue(position, text) == ':' {
-				// If the position is after a colon, return the state after the colon
-				// Also return the key of the struct tag before the colon
-				// TODO: Get the key of the struct tag before the colon
-				return parsers.StateAfterColon, nil
 			}
 			if parsers.PositionBeforeValue(position, text) == '"' {
 				// If the position is before a double quote, return the state in the tag Value

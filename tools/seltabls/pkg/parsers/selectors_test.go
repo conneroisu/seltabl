@@ -18,7 +18,7 @@ func TestSelectors(t *testing.T) {
 	}
 	tests := []args{
 		{
-			name: "TestSelectors",
+			name: "Test Get Selectors for HTML with single table",
 			input: `
 				<table>
 					<tr>
@@ -37,12 +37,12 @@ func TestSelectors(t *testing.T) {
 				`,
 			want: []string{
 				"html",
-				"html body table",
-				"html body table tbody tr",
+				"html > body > table",
+				"html > body > table > tbody > tr",
 			},
 		},
 		{
-			name: "TestSelectors",
+			name: "Test Get Selectors for HTML with multiple tables",
 			input: `
 				<html>
 					<head>
@@ -72,16 +72,16 @@ func TestSelectors(t *testing.T) {
 				`,
 			want: []string{
 				"html",
-				"html head",
-				"html body",
-				"html body table",
-				"html body table tbody",
-				"html body table tbody tr",
-				"html body table tbody tr td",
+				"html > head",
+				"html > body",
+				"html > body > table",
+				"html > body > table > tbody",
+				"html > body > table > tbody > tr",
+				"html > body > table > tbody > tr > td",
 			},
 		},
 		{
-			name: "TestSelectors",
+			name: "Test Get Selectors for HTML with multiple tables and multiple selectors",
 			input: `
 				<html>
 					<head>
@@ -96,14 +96,14 @@ func TestSelectors(t *testing.T) {
 				`,
 			want: []string{
 				"html",
-				"html head",
-				"html body",
-				"html body div",
-				"html body div h2",
+				"html > head",
+				"html > body",
+				"html > body > div",
+				"html > body > div > h2",
 			},
 		},
 		{
-			name: "TestSelectors",
+			name: "Test Get Selectors for HTML with multiple tables and multiple selectors",
 			input: `
 				<html>
 					<head>
@@ -137,17 +137,17 @@ func TestSelectors(t *testing.T) {
 				`,
 			want: []string{
 				"html",
-				"html head",
-				"html body",
-				"html body table",
-				"html body table tbody",
-				"html body table tbody tr",
-				"html body table tbody tr td",
-				"html body table tbody tr td a[href=https://example.com]",
+				"html > head",
+				"html > body",
+				"html > body > table",
+				"html > body > table > tbody",
+				"html > body > table > tbody > tr",
+				"html > body > table > tbody > tr > td",
+				"html > body > table > tbody > tr > td > a[href]",
 			},
 		},
 		{
-			name: "TestSelectors",
+			name: "Test Get Selectors for HTML with multiple tables and multiple selectors and multiple tags",
 			input: `
 				<html>
 					<head>
@@ -181,13 +181,13 @@ func TestSelectors(t *testing.T) {
 				`,
 			want: []string{
 				"html",
-				"html head",
-				"html body",
-				"html body table",
-				"html body table tbody",
-				"html body table tbody tr",
-				"html body table tbody tr td",
-				"html body table tbody tr td a[href=https://example.com]",
+				"html > head",
+				"html > body",
+				"html > body > table",
+				"html > body > table > tbody",
+				"html > body > table > tbody > tr",
+				"html > body > table > tbody > tr > td",
+				"html > body > table > tbody > tr > td > a[href]",
 			},
 		},
 	}
@@ -210,9 +210,24 @@ func TestSelectors(t *testing.T) {
 			}
 			for _, wa := range got {
 				t.Logf("\"%s\",", wa)
+				// verify that the selector can be found in the document
+				doc, err := goquery.NewDocumentFromReader(
+					strings.NewReader(tt.input),
+				)
+				if err != nil {
+					t.Fatalf("failed to create document: %v", err)
+				}
+				sel := doc.Find(wa)
+				assert.NotEqual(t, sel.Length(), 0)
 			}
 			for _, wa := range tt.want {
-				assert.Contains(t, got, wa, "selector %s not found in got", wa)
+				assert.Contains(
+					t,
+					got,
+					wa,
+					"selector %s not found in got",
+					wa,
+				)
 			}
 		})
 	}

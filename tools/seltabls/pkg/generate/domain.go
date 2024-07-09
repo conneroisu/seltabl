@@ -1,19 +1,19 @@
 package generate
 
 import (
-	"context"
 	"fmt"
 	"io"
 	"net/http"
-	"net/url"
 	"os"
+	"strings"
 
-	"github.com/sashabaranov/go-openai"
+	"github.com/conneroisu/seltabl/tools/seltabls/pkg/parsers"
+	"github.com/yosssi/gohtml"
 )
 
 // writeFile writes a file to the given path
 func writeFile(name string, content string) error {
-	f, err := os.Create(name + ".go")
+	f, err := os.Create(name)
 	if err != nil {
 		return fmt.Errorf("failed to create file: %w", err)
 	}
@@ -25,37 +25,10 @@ func writeFile(name string, content string) error {
 	return nil
 }
 
-// Chat is a struct for a chat
-func Chat(
-	ctx context.Context,
-	client *openai.Client,
-	model string,
-	history []openai.ChatCompletionMessage,
-	prompt string,
-) (string, []openai.ChatCompletionMessage, error) {
-	completion, err := client.CreateChatCompletion(
-		ctx, openai.ChatCompletionRequest{
-			Model: model,
-			Messages: append(history, openai.ChatCompletionMessage{
-				Role:    openai.ChatMessageRoleUser,
-				Content: prompt,
-			}),
-			ResponseFormat: &openai.ChatCompletionResponseFormat{
-				Type: "json",
-			},
-		})
-	if err != nil {
-		return "", history, fmt.Errorf("failed to create chat completion: %w", err)
-	}
-	content := completion.Choices[0].Message.Content
-	history = append(history, openai.ChatCompletionMessage{
-		Role:    openai.ChatMessageRoleAssistant,
-		Content: content})
-	return content, history, nil
-}
-
-// GetURL gets the url and returns the body
-func GetURL(url string) ([]byte, error) {
+// GetURL gets the url and returns the body of the http response.
+//
+// If an error occurs, it returns an error.
+func GetURL(url string, ignoreElements []string) ([]byte, error) {
 	cli := http.DefaultClient
 	resp, err := cli.Get(url)
 	if err != nil {
@@ -69,16 +42,18 @@ func GetURL(url string) ([]byte, error) {
 	if err != nil {
 		return nil, fmt.Errorf("failed to read body: %w", err)
 	}
-	return body, nil
-}
-
-// isURL checks if the string is a valid URL
-func IsURL(s string) error {
-	_, err := url.ParseRequestURI(s)
-	return err
-}
-
-// Generatable is an interface for a generatable
-type Generatable interface {
-	Generate() error
+	doc, err := parsers.GetMinifiedDoc(
+		string(body),
+		ignoreElements,
+	)
+	if err != nil {
+		return nil, fmt.Errorf("failed to get minified doc: %w", err)
+	}
+	docHTML, err := doc.Html()
+	if err != nil {
+		return nil, fmt.Errorf("failed to get html: %w", err)
+	}
+	docHTML = gohtml.FormatWithLineNo(docHTML)
+	docHTML = strings.ReplaceAll(docHTML, "\n", "")
+	return []byte(docHTML), nil
 }

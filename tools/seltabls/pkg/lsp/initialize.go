@@ -1,11 +1,18 @@
 package lsp
 
+import "github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp/methods"
+
 // InitializeRequest is a struct for the initialize request.
 type InitializeRequest struct {
 	// InitializeRequest embeds the Request struct
 	Request
 	// Params are the parameters for the initialize request.
 	Params InitializeRequestParams `json:"params"`
+}
+
+// Method returns the method for the initialize request.
+func (r InitializeRequest) Method() methods.Method {
+	return methods.MethodInitialize
 }
 
 // InitializeRequestParams is a struct for the initialize request params
@@ -73,11 +80,11 @@ type ServerInfo struct {
 }
 
 // NewInitializeResponse creates a new initialize response.
-func NewInitializeResponse(id int) InitializeResponse {
+func NewInitializeResponse(request *InitializeRequest) InitializeResponse {
 	return InitializeResponse{
 		Response: Response{
-			RPC: "2.0",
-			ID:  id,
+			RPC: RPCVersion,
+			ID:  request.ID,
 		},
 		Result: InitializeResult{
 			Capabilities: ServerCapabilities{
@@ -102,4 +109,9 @@ func NewInitializeResponse(id int) InitializeResponse {
 type InitializedParamsRequest struct {
 	// InitializedParamsRequest embeds the Request struct
 	Response
+}
+
+// Method returns the method for the initialized params request.
+func (r InitializedParamsRequest) Method() methods.Method {
+	return methods.MethodNotificationInitialized
 }

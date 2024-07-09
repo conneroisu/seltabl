@@ -9,44 +9,73 @@ import (
 	"golang.org/x/sync/errgroup"
 )
 
-// OpenDocument opens a document in the state and returns any diagnostics for the document
+// OpenDocument opens a document in the state and returns any diagnostics for the document.
 //
-// uri is the uri of the document
+// uri is the uri of the document.
 //
-// content is the content of the document
-func (s *State) OpenDocument(
+// content is the content of the document.
+//
+// On the opening of any document, the state is updated with the content of the document
+// and the diagnostics for the document are returned.
+func OpenDocument(
 	ctx context.Context,
-	uri string,
-	content *string,
-) (diags []lsp.Diagnostic, err error) {
-	eg, ctx := errgroup.WithContext(ctx)
-	s.Documents[uri] = *content
-	data, err := parsers.ParseStructComments(*content)
-	if err != nil {
-		s.Logger.Printf("failed to get urls and ignores: %s\n", err)
-		return diags, nil
-	}
-	for _, url := range data.URLs {
-		eg.Go(func() error {
-			s.URLs[uri] = append(s.URLs[uri], url)
-			s.Selectors[uri], err = GetSelectors(
-				ctx,
-				s,
-				url,
-				data.IgnoreElements,
+	s *State,
+	req lsp.NotificationDidOpenTextDocument,
+) (response *lsp.PublishDiagnosticsNotification, err error) {
+	select {
+	case <-(ctx).Done():
+		return nil, fmt.Errorf("context cancelled: %w", (ctx).Err())
+	default:
+		response = &lsp.PublishDiagnosticsNotification{
+			Notification: lsp.Notification{
+				RPC:    lsp.RPCVersion,
+				Method: "textDocument/publishDiagnostics",
+			},
+			Params: lsp.PublishDiagnosticsParams{
+				URI:         req.Params.TextDocument.URI,
+				Diagnostics: []lsp.Diagnostic{},
+			},
+		}
+		eg, ctx := errgroup.WithContext(ctx)
+		uri := req.Params.TextDocument.URI
+		s.Documents[uri] = req.Params.TextDocument.Text
+		data, err := parsers.ParseStructComments(req.Params.TextDocument.Text)
+		if err != nil {
+			return response, nil
+		}
+		s.URLs[uri] = append(s.URLs[uri], data.URLs...)
+		for _, url := range data.URLs {
+			eg.Go(func() error {
+				s.Selectors[uri], err = parsers.GetSelectors(
+					ctx,
+					&s.Database,
+					url,
+					data.IgnoreElements,
+				)
+				if err != nil {
+					return err
+				}
+				return nil
+			})
+		}
+		if err := eg.Wait(); err != nil {
+			return response, fmt.Errorf(
+				"failed to get selectors for urls: %w",
+				err,
 			)
-			if err != nil {
-				return fmt.Errorf("failed to get selectors for url (%s): %w", url, err)
-			}
-			return nil
-		})
+		}
+		response.Params.Diagnostics, err = GetDiagnosticsForFile(
+			ctx,
+			s,
+			&req.Params.TextDocument.Text,
+			data,
+		)
+		if err != nil {
+			s.Logger.Printf("failed to get diagnostics for file: %s\n", err)
+		}
+		if len(response.Params.Diagnostics) == 0 {
+			return nil, nil
+		}
+		return response, nil
 	}
-	if err := eg.Wait(); err != nil {
-		return nil, fmt.Errorf("failed to get selectors for urls: %w", err)
-	}
-	diags, err = s.GetDiagnosticsForFile(content, data)
-	if err != nil {
-		s.Logger.Printf("failed to get diagnostics for file: %s\n", err)
-	}
-	return diags, nil
 }

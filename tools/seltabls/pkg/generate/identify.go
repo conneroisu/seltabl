@@ -2,9 +2,11 @@ package generate
 
 import (
 	"context"
-	_ "embed"
 	"encoding/json"
 	"fmt"
+
+	// Embedded for the identify template
+	_ "embed"
 
 	"github.com/sashabaranov/go-openai"
 	"golang.org/x/sync/errgroup"
@@ -33,8 +35,8 @@ type Section struct {
 	End int `json:"end"         yaml:"end"`
 }
 
-// IdentifyDecode decodes the identify response.
-func IdentifyDecode(
+// DecodeIdentify decodes the identify response.
+func DecodeIdentify(
 	ctx context.Context,
 	client *openai.Client,
 	model string,
@@ -67,7 +69,7 @@ func IdentifyDecode(
 	if err != nil {
 		return id, fmt.Errorf("failed to chat with llm provider: %w", err)
 	}
-	return IdentifyDecode(ctx, client, model, history, generation)
+	return DecodeIdentify(ctx, client, model, history, generation)
 }
 
 // generateIdentity generates the identity for the struct file.
@@ -89,7 +91,7 @@ func generateIdentity(
 				client,
 				s.ConfigFile.FastModel,
 				[]openai.ChatCompletionMessage{
-					openai.ChatCompletionMessage{
+					{
 						Role:    openai.ChatMessageRoleUser,
 						Content: identifyPrompt,
 					},
@@ -145,7 +147,7 @@ func aggregateIdentity(
 					client,
 					s.ConfigFile.SmartModel,
 					[]openai.ChatCompletionMessage{
-						openai.ChatCompletionMessage{
+						{
 							Role:    openai.ChatMessageRoleUser,
 							Content: aggPrompt,
 						},
@@ -158,7 +160,7 @@ func aggregateIdentity(
 						err,
 					)
 				}
-				identity, err = IdentifyDecode(
+				identity, err = DecodeIdentify(
 					ctx,
 					client,
 					s.ConfigFile.FastModel,

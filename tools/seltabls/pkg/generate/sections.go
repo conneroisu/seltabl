@@ -60,10 +60,11 @@ func aggregateSections(
 				}},
 			aggregatePrompt,
 		)
-		*sec, err = decodeSection(generation)
+		sc, err := decodeSection(generation)
 		if err != nil {
 			return nil, fmt.Errorf("failed to decode section: %w", err)
 		}
+		sec = &sc
 	}
 	return sec, nil
 }

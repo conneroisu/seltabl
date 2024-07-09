@@ -16,8 +16,9 @@ var sectionTemplate *template.Template
 
 // init initializes the section template
 func init() {
-	tmpl := template.New("sections_file_template")
-	tmpl, err := tmpl.Parse(sectionsTmpl)
+	var err error
+	sectionTemplate = template.New("sections_file_template")
+	sectionTemplate, err = sectionTemplate.Parse(sectionsTmpl)
 	if err != nil {
 		panic(err)
 	}

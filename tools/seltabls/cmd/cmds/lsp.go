@@ -53,7 +53,7 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 			state.Logger.SetOutput(mw)
 			cmd.SetErr(mw)
 			ctx, cancel := context.WithCancel(ctx)
-			eg, ctx := errgroup.WithContext(ctx)
+			eg, _ := errgroup.WithContext(ctx)
 			defer cancel()
 			ctxs := make(map[int]handleCtx)
 			scanner.Split(rpc.Split)

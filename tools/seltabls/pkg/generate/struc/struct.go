@@ -9,17 +9,13 @@ import (
 	"io"
 	"os"
 
+	// Embedded for the struct template
 	_ "embed"
 
 	"github.com/charmbracelet/log"
 	"github.com/conneroisu/seltabl/tools/seltabls/domain"
 	"github.com/sashabaranov/go-openai"
 )
-
-// structTmpl is the template for the struct file.
-//
-//go:embed struct.tmpl
-var structTmpl string
 
 // Generate generates a struct file for the given name.
 //

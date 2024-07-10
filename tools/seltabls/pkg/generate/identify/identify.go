@@ -66,10 +66,14 @@ func generateIdentity(
 	outCh := make(chan string)
 	for range make([]int, s.TreeWidth) {
 		eg.Go(func() error {
-			identifyPrompt, err := NewIdentifyPrompt(
+			var identifyPrompt string
+			identifyPrompt, err = NewIdentifyPrompt(
 				s.URL,
 				s.HTMLContent,
 			)
+			if err != nil {
+				return fmt.Errorf("failed to create identify prompt: %w", err)
+			}
 			out, _, err := domain.Chat(
 				ctx,
 				client,

@@ -233,32 +233,6 @@ func (f *Field) MarshalJSON() ([]byte, error) {
 	})
 }
 
-// UnmarshalJSON implements the json.Unmarshaler interface.
-func (f *Field) UnmarshalJSON(b []byte) (err error) {
-	var tmp struct {
-		Name  string `json:"name"`
-		Type  string `json:"type"`
-		Tags  string `json:"tags"`
-		Start int    `json:"start"`
-		End   int    `json:"end"`
-		Line  int    `json:"line"`
-	}
-	if err := json.Unmarshal(b, &tmp); err != nil {
-		return err
-	}
-	f.Name = tmp.Name
-	f.Type = tmp.Type
-	f.Tags = Tags{tags: []*Tag{}}
-	err = json.Unmarshal([]byte(tmp.Tags), &f.Tags)
-	if err != nil {
-		return err
-	}
-	f.Start = tmp.Start
-	f.End = tmp.End
-	f.Line = tmp.Line
-	return nil
-}
-
 // Tag returns the tag at the given index
 func (f *Field) Tag(i int) *Tag {
 	return f.Tags.Tag(i)

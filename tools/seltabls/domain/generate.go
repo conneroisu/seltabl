@@ -23,7 +23,7 @@ type ConfigFile struct {
 	// IgnoreElements is a list of elements to ignore when generating the struct.
 	IgnoreElements []string `yaml:"ignore-elements"`
 	// Selectors is a list of selectors for the config file.
-	Selectors []master.Selector `yaml:"selectors"`
+	Selectors master.Selectors `yaml:"selectors"`
 	// HTMLBody is the html body for the config file.
 	HTMLBody string `yaml:"html-body"`
 	// NumberedHTMLBody is the numbered html body for the config file.
@@ -46,6 +46,7 @@ type ConfigFile struct {
 type IdentifyResponse struct {
 	// Sections is a list of sections in the html.
 	Sections []Section `json:"sections" yaml:"sections"`
+
 	// URL is the url for the identify response.
 	URL string `json:"url"      yaml:"url"`
 }
@@ -64,6 +65,10 @@ type Section struct {
 	End int `json:"end"         yaml:"end"`
 	// Fields is a list of fields in the section.
 	Fields []Field `json:"fields"      yaml:"fields"`
+	// Selectors is a list of selectors for the section.
+	Selectors master.Selectors `yaml:"selectors"`
+	// HTMLContent is the html content for the section.
+	HTMLContent string `yaml:"html-content"`
 }
 
 // Field is a struct for a field

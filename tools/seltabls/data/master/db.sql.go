@@ -30,3 +30,30 @@ func (q *Queries) WithTx(tx *sql.Tx) *Queries {
 //
 //go:embed combined/schema.sql
 var MasterSchema string
+
+// Selectors is a slice of selectors
+type Selectors []Selector
+
+// Len returns the length of the slice.
+func (s Selectors) Len() int {
+	return len(s)
+}
+
+// Less reports whether the element with
+func (s Selectors) Less(i, j int) bool {
+	return s[i].Occurances < s[j].Occurances
+}
+
+// Swap swaps the elements with indexes i and j.
+func (s Selectors) Swap(i, j int) {
+	s[i], s[j] = s[j], s[i]
+}
+
+// Strings returns a slice of strings from the Selectors
+func (s Selectors) Strings() []string {
+	strs := make([]string, len(s))
+	for i, v := range s {
+		strs[i] = v.Value
+	}
+	return strs
+}

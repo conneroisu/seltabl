@@ -2,6 +2,8 @@ package struc
 
 import (
 	"bytes"
+	// Embedded for the identify template
+	_ "embed"
 	"fmt"
 	"strings"
 	"text/template"
@@ -16,6 +18,12 @@ const (
 	promptTemplate    = "prompt"
 )
 
+// structTmpl is the template for the struct file.
+//
+//go:embed struct.tmpl
+var structTmpl string
+
+// structTextTemplate is the template for the identify file.
 var structTextTemplate *template.Template
 
 // init parses the struct template upon package initialization.
@@ -64,12 +72,7 @@ func NewStructStruct(
 	name, url string,
 	ignoreElements []string,
 	section *domain.Section,
-) (string, error) {
-	tmpl := template.New("struct_file_template")
-	tmpl, err := tmpl.Parse(structTmpl)
-	if err != nil {
-		return "", fmt.Errorf("failed to parse struct: %w", err)
-	}
+) (result string, err error) {
 	args := struct {
 		Name           string
 		URL            string

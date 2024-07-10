@@ -49,7 +49,6 @@ func NewSectionsErrorPrompt(
 func NewSectionsAggregate(
 	sections []string,
 ) (string, error) {
-	// fill out the template
 	args := struct {
 		Sections []string
 	}{

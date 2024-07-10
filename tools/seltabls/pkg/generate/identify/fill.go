@@ -8,8 +8,15 @@ import (
 	_ "embed"
 )
 
+// identifyTmpl is the template for the identify file.
+// This is the embedded template string that contains the template
+// for Identity Prompt,  Aggregate Prompt, and Error Prompt.
+//
 //go:embed identify.tmpl
 var identifyTmpl string
+
+// identifyTemplate is the template for the identify file.
+// It is used to generate identify sections in the config file.
 var identifyTemplate *template.Template
 
 // init initializes the identify template.
@@ -22,11 +29,11 @@ func init() {
 	}
 }
 
-// NewIdentifyPrompt creates a new filled out template for a prompt from the `identify.tmpl` template.
+// NewIdentifyPrompt creates a new filled out template for a prompt from the
+// `identify.tmpl` template.
 func NewIdentifyPrompt(
 	url, content string,
 ) (result string, err error) {
-	// fill out the template
 	args := struct {
 		URL     string
 		Content string
@@ -45,12 +52,12 @@ func NewIdentifyPrompt(
 	return buf.String(), nil
 }
 
-// NewIdentifyAggregatePrompt creates a new filled out template for a prompt from the `identify.tmpl` template.
+// NewIdentifyAggregatePrompt creates a new filled out template for a prompt
+// from the `identify.tmpl` template.
 func NewIdentifyAggregatePrompt(
 	content string,
 	schemas []string,
 ) (result string, err error) {
-	// fill out the template
 	args := struct {
 		Content string
 		Schemas []string
@@ -69,7 +76,8 @@ func NewIdentifyAggregatePrompt(
 	return buf.String(), nil
 }
 
-// NewIdentifyErrorPrompt creates a new filled out template for an error prompt from the `identify.tmpl` template.
+// NewIdentifyErrorPrompt creates a new filled out template for an error prompt
+// from the `identify.tmpl` template.
 func NewIdentifyErrorPrompt(
 	err error,
 ) (string, error) {

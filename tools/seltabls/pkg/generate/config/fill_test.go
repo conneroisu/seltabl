@@ -23,9 +23,9 @@ func TestSections(t *testing.T) {
 	)
 	a.NoError(err)
 	a.NotEmpty(out)
-	t.Logf("sections: %s", out)
 }
 
+// TestSectionsAggregatePrompt tests the NewSectionsAggregate function
 func TestSectionsAggregatePrompt(t *testing.T) {
 	a := assert.New(t)
 	out, err := NewSectionsAggregate(
@@ -41,5 +41,4 @@ func TestSectionsAggregatePrompt(t *testing.T) {
 	)
 	a.NoError(err)
 	a.NotEmpty(out)
-	t.Logf("sections: %s", out)
 }

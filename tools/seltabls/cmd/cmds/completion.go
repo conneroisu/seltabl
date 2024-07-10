@@ -9,7 +9,9 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// NewCompletionCmd returns the completion command
+// NewCompletionCmd returns the completion command.
+//
+// This command generates completion scripts for the seltabls for your shell.
 func NewCompletionCmd(
 	ctx context.Context,
 	w io.Writer,
@@ -17,7 +19,7 @@ func NewCompletionCmd(
 ) *cobra.Command {
 	var completionCmd = &cobra.Command{
 		Use:   "completion [bash|zsh|fish|powershell]",
-		Short: "Generates completion scripts for docuvet-tools for your shell",
+		Short: "Generates completion scripts for seltabls for your shell",
 		Long: `To load completions:
 	Bash:
 

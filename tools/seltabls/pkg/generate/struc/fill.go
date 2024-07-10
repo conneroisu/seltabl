@@ -29,19 +29,24 @@ func init() {
 }
 
 // NewStructPrompt creates a new filled out template for a prompt from the `struct.tmpl` template.
+//
+// This is the function used to get and fill in the actual generate struct.
 func NewStructPrompt(
 	url, content string,
 	selectors []master.Selector,
 	section *domain.Section,
+	packageName string,
 ) (string, error) {
 	args := struct {
-		URL     string
-		Content string
-		Fields  []domain.Field
+		URL         string
+		Content     string
+		Fields      []domain.Field
+		PackageName string
 	}{
-		URL:     url,
-		Content: content,
-		Fields:  section.Fields,
+		URL:         url,
+		Content:     content,
+		Fields:      section.Fields,
+		PackageName: packageName,
 	}
 	var buf bytes.Buffer
 	err := structTextTemplate.ExecuteTemplate(&buf, "struct", args)

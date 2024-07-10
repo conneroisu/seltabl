@@ -24,11 +24,13 @@ func TestStructTemplateStruct(t *testing.T) {
 	args := struct {
 		Name           string
 		URL            string
+		PackageName    string
 		IgnoreElements []string
 		Fields         []domain.Field
 	}{
-		Name: "TestStruct",
-		URL:  "https://github.com/conneroisu/seltabl/blob/main/testdata/ab_num_table.html",
+		Name:        "TestStruct",
+		URL:         "https://github.com/conneroisu/seltabl/blob/main/testdata/ab_num_table.html",
+		PackageName: "main",
 		IgnoreElements: []string{
 			"script",
 			"style",

@@ -10,9 +10,11 @@ Aggregate the data from the following json structures into a single comprehensiv
 
 Remove duplicate fields and ensure the json schema is valid.
 
-{{- range .Sections }}
+{{- range $i, $section := .Sections }}
 ```json
-{{ . }}
+{{ $section }}
 ```
 {{- end -}}
+
+You must repond with just the json schema. That is, your response should be entirely be the combined json schema and in the syntax of the combined json schema.
 {{- end -}}

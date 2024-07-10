@@ -2,12 +2,23 @@ package parsers
 
 import (
 	"bytes"
+	"fmt"
 	"io"
 	"net/http"
 
 	"github.com/PuerkitoBio/goquery"
+	"github.com/charmbracelet/log"
 	"github.com/conneroisu/seltabl/tools/seltabls/domain"
 )
+
+var defaultDisallowedTags = []string{
+	"script",
+	"style",
+	"link",
+	"img",
+	"footer",
+	"header",
+}
 
 // GetMinifiedDoc gets a minified goquery doc from a given url
 // and returns goquery doc and error if there is an error while
@@ -16,13 +27,14 @@ func GetMinifiedDoc(
 	url string,
 	disallowedTags []string,
 ) (doc *goquery.Document, err error) {
+	if len(disallowedTags) == 0 || disallowedTags == nil {
+		disallowedTags = defaultDisallowedTags
+	}
 	client := &http.Client{}
+	log.Debugf("GetMinifiedDoc called with url: %s", url)
 	resp, err := client.Get(url)
 	if err != nil {
-		return nil, domain.ErrHTTP{
-			URL:        url,
-			StatusCode: resp.StatusCode,
-		}
+		return nil, fmt.Errorf("failed to get url: %w", err)
 	}
 	defer resp.Body.Close()
 	body, err := io.ReadAll(resp.Body)

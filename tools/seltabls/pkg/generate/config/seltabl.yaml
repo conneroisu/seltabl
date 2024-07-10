@@ -1,0 +1,35 @@
+name: TestStruct
+url: https://github.com/conneroisu/seltabl/blob/main/testdata/ab_num_table.html
+ignore-elements:
+- script
+- style
+- link
+- img
+- footer
+- header
+selectors:
+- id: 0
+  value: a
+  urlid: 0
+  occurances: 1
+  context: html head meta[name=csrf-param]
+- id: 0
+  value: b
+  urlid: 0
+  occurances: 1
+  context: html
+- id: 0
+  value: c
+  urlid: 0
+  occurances: 1
+  context: html body div.footer
+- id: 0
+  value: d
+  urlid: 0
+  occurances: 1
+  context: html > head > title
+html-body: <html><body><table><tr><td>a</td><td>b</td></tr><tr><td>1</td><td>2</td></tr></table></body></html>
+model: ""
+fast-model: ""
+recycle: false
+sections: []

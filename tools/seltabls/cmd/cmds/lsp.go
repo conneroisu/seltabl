@@ -3,6 +3,7 @@ package cmds
 import (
 	"bufio"
 	"context"
+	"encoding/json"
 	"fmt"
 	"io"
 	"os"
@@ -60,14 +61,22 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 			for scanner.Scan() {
 				eg.Go(func() error {
 					input := scanner.Bytes()
-					state.Logger.Printf("Received input: %s", input)
 					hCtx, cancel := context.WithCancel(context.Background())
 					defer cancel()
 					decoded, err := rpc.DecodeMessage(input)
 					if err != nil {
 						return fmt.Errorf("failed to decode message: %w", err)
 					}
-					ctxs[decoded.ID] = handleCtx{ctx: hCtx, cancel: cancel}
+					content, err := json.MarshalIndent(&decoded.Content, "", "  ")
+					if err != nil {
+						return fmt.Errorf("failed to marshal content: %w", err)
+					}
+					state.Logger.Printf(
+						"Received message: %s\n",
+						content,
+					)
+					handie := handleCtx{ctx: hCtx, cancel: cancel}
+					ctxs[decoded.ID] = handie
 					if decoded.Method == string(methods.MethodCancelRequest) {
 						ctxs[decoded.ID].cancel()
 						delete(ctxs, decoded.ID)
@@ -75,7 +84,20 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 					resp, err := handle(hCtx, state, decoded)
 					if err != nil || resp == nil {
 						state.Logger.Printf(
-							"failed to handle message: %v\n",
+							`failed to handle message: %v
+							
+							input: %s
+							id: %d
+							method: %s
+							ctx-canceled: %v
+							current-err: %v
+
+`,
+							err,
+							input,
+							decoded.ID,
+							decoded.Method,
+							ctx.Err(),
 							err,
 						)
 						return nil

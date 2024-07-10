@@ -66,15 +66,8 @@ So the output fo the command:
     └── subitem_seltabl.yaml	
 
 `,
-		PreRunE: func(cmd *cobra.Command, _ []string) error {
+		PersistentPreRunE: func(cmd *cobra.Command, _ []string) error {
 			var logLevel string
-			log.Debugf("PreRunE called for command: %s", cmd.Name())
-			defer log.Debugf("PreRunE completed for command: %s", cmd.Name())
-			cmd.SetOutput(w)
-			log.SetOutput(w)
-			cmd.SetIn(r)
-			cmd.SetErr(w)
-			cmd.SetContext(ctx)
 			cmd.PersistentFlags().StringVarP(
 				&logLevel,
 				"log-level",
@@ -87,11 +80,21 @@ So the output fo the command:
 				return fmt.Errorf("failed to parse log level: %w", err)
 			}
 			log.SetLevel(lev)
+			return nil
+		},
+		PreRunE: func(cmd *cobra.Command, _ []string) error {
+			log.Debugf("PreRunE called for command: %s", cmd.Name())
+			defer log.Debugf("PreRunE completed for command: %s", cmd.Name())
+			cmd.SetOutput(w)
+			log.SetOutput(w)
+			cmd.SetIn(r)
+			cmd.SetErr(w)
+			cmd.SetContext(ctx)
 			cmd.PersistentFlags().StringVarP(
 				&url,
 				"url",
 				"u",
-				"",
+				"https://stats.ncaa.org/team/2/stats/16540",
 				"The url for which to generate a seltabl struct go file, test file, and config file.",
 			)
 			cmd.PersistentFlags().StringVarP(
@@ -194,28 +197,21 @@ So the output fo the command:
 			if err != nil {
 				return fmt.Errorf("failed to create state: %w", err)
 			}
-			ignores := []string{
-				"script",
-				"style",
-				"link",
-				"img",
-				"footer",
-				"header",
-			}
 			sels, err := parsers.GetSelectors(
 				ctx,
 				&state.Database,
 				url,
-				ignores,
+				ignoreElements,
 			)
 			if err != nil {
 				return fmt.Errorf("failed to get selectors: %w", err)
 			}
 			log.Infof("Getting URL: %s", url)
-			htmlBody, err := generate.GetURL(url, ignores)
+			htmlBody, err := generate.GetURL(url, ignoreElements)
 			if err != nil {
 				return fmt.Errorf("failed to get url: %w", err)
 			}
+			log.Infof("Got HTML Body: %s", htmlBody)
 			err = generate.Suite(
 				ctx,
 				treeWidth,
@@ -226,7 +222,7 @@ So the output fo the command:
 				name,
 				url,
 				string(htmlBody),
-				ignores,
+				ignoreElements,
 				sels,
 			)
 			if err != nil {

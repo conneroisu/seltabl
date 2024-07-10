@@ -163,7 +163,11 @@ func GetSelectors(
 	}
 	for _, selectorString := range selectorStrings {
 		found := doc.Find(selectorString)
-		selectorContext, err := found.Parent().First().Html()
+		for i := range ignores {
+			_ = found.RemoveFiltered(ignores[i])
+		}
+		selectorContext, err := found.First().Html()
+		// selectorContext, err := found.Parent().First().Html()
 		if err != nil {
 			return nil, fmt.Errorf("failed to get html: %w", err)
 		}

@@ -34,3 +34,9 @@ jobs:
       uses: codecov/codecov-action@v4.0.1
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
+    - name: Test avaliable commands
+      id: test-commands
+      run: |
+          ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 -q -N ""
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H github.com >> ~/.ssh/known_hosts

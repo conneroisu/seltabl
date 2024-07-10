@@ -6,6 +6,7 @@ import (
 
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/parsers"
+	"github.com/conneroisu/seltabl/tools/seltabls/pkg/rpc"
 	"golang.org/x/sync/errgroup"
 )
 
@@ -21,26 +22,21 @@ func OpenDocument(
 	ctx context.Context,
 	s *State,
 	req lsp.NotificationDidOpenTextDocument,
-) (response *lsp.PublishDiagnosticsNotification, err error) {
+) (response rpc.MethodActor, err error) {
+	response = &lsp.Response{
+		RPC: lsp.RPCVersion,
+		ID:  *req.ID,
+	}
 	select {
 	case <-(ctx).Done():
-		return nil, fmt.Errorf("context cancelled: %w", (ctx).Err())
+		return response, fmt.Errorf("context cancelled: %w", (ctx).Err())
 	default:
-		response = &lsp.PublishDiagnosticsNotification{
-			Notification: lsp.Notification{
-				RPC:    lsp.RPCVersion,
-				Method: "textDocument/publishDiagnostics",
-			},
-			Params: lsp.PublishDiagnosticsParams{
-				URI: req.Params.TextDocument.URI,
-			},
-		}
 		eg, ctx := errgroup.WithContext(ctx)
 		uri := req.Params.TextDocument.URI
 		s.Documents[uri] = req.Params.TextDocument.Text
 		data, err := parsers.ParseStructComments(req.Params.TextDocument.Text)
 		if err != nil {
-			return nil, fmt.Errorf("failed to get selectors for urls: %w", err)
+			return response, fmt.Errorf("failed to get selectors for urls: %w", err)
 		}
 		s.URLs[uri] = append(s.URLs[uri], data.URLs...)
 		for _, url := range data.URLs {
@@ -58,7 +54,7 @@ func OpenDocument(
 			})
 		}
 		if err := eg.Wait(); err != nil {
-			return nil, fmt.Errorf(
+			return response, fmt.Errorf(
 				"failed to get selectors for urls: %w",
 				err,
 			)
@@ -71,9 +67,18 @@ func OpenDocument(
 			data,
 		)
 		if err != nil {
-			return nil, fmt.Errorf("failed to get diagnostics for file: %w", err)
+			return response, fmt.Errorf("failed to get diagnostics for file: %w", err)
 		}
-		response.Params.Diagnostics = diags
+		response = lsp.PublishDiagnosticsNotification{
+			Notification: lsp.Notification{
+				RPC:    lsp.RPCVersion,
+				Method: "textDocument/publishDiagnostics",
+			},
+			Params: lsp.PublishDiagnosticsParams{
+				URI:         req.Params.TextDocument.URI,
+				Diagnostics: diags,
+			},
+		}
 		return response, nil
 	}
 }

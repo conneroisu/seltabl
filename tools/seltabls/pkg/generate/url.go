@@ -2,8 +2,6 @@ package generate
 
 import (
 	"fmt"
-	"io"
-	"net/http"
 	"strings"
 
 	"github.com/charmbracelet/log"
@@ -15,23 +13,10 @@ import (
 //
 // If an error occurs, it returns an error.
 func GetURL(url string, ignoreElements []string) ([]byte, error) {
-	log.Debugf("Get URL called with url: %s", url)
-	defer log.Debugf("Get URL finished with url: %s", url)
-	cli := http.DefaultClient
-	resp, err := cli.Get(url)
-	if err != nil {
-		return nil, fmt.Errorf("failed to get url: %w", err)
-	}
-	if resp.StatusCode != 200 {
-		return nil, fmt.Errorf("failed to get url: %s", resp.Status)
-	}
-	defer resp.Body.Close()
-	body, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, fmt.Errorf("failed to read body: %w", err)
-	}
+	log.Debugf("Get URL called with url: %s and ignoreElements: %v", url, ignoreElements)
+	defer log.Debugf("Get URL finished with url: %s and ignoreElements: %v", url, ignoreElements)
 	doc, err := parsers.GetMinifiedDoc(
-		string(body),
+		url,
 		ignoreElements,
 	)
 	if err != nil {

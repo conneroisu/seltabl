@@ -2,21 +2,6 @@ package domain
 
 import "fmt"
 
-// ErrHTTP is an error for when a http request fails
-type ErrHTTP struct {
-	URL        string
-	StatusCode int
-}
-
-// Error implements the error interface
-func (e ErrHTTP) Error() string {
-	return fmt.Sprintf(
-		"failed to get url: %s with status code: %d",
-		e.URL,
-		e.StatusCode,
-	)
-}
-
 // ErrHTTPParse is an error for when a http request fails
 type ErrHTTPParse struct {
 	URL        string

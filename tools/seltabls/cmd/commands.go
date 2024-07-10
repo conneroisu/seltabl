@@ -19,23 +19,17 @@ func AddCommands(ctx context.Context, root *cobra.Command) error {
 			os.Stdout,
 			os.Stdin,
 		))
-	})
-	wg.Go(func() {
 		root.AddCommand(cmds.NewLSPCmd(
 			ctx,
 			os.Stdout,
 			os.Stdin,
 			server.HandleMessage,
 		))
-	})
-	wg.Go(func() {
 		root.AddCommand(cmds.NewCompletionCmd(
 			ctx,
 			os.Stdout,
 			os.Stdin,
 		))
-	})
-	wg.Go(func() {
 		root.AddCommand(cmds.NewGenerateCmd(
 			ctx,
 			os.Stdout,

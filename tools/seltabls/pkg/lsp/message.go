@@ -52,4 +52,6 @@ type Notification struct {
 	RPC string `json:"jsonrpc"`
 	// Method is the method for the notification.
 	Method string `json:"method"`
+	// ID is the id of the notification.
+	ID *int `json:"id,omitempty"`
 }

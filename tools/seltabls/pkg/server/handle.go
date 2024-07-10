@@ -16,12 +16,10 @@ import (
 // HandleMessage handles a message sent from the client to the language server.
 // It parses the message and returns with a response.
 func HandleMessage(
-	ctx context.Context,
+	hCtx context.Context,
 	state *analysis.State,
 	msg rpc.BaseMessage,
 ) (response rpc.MethodActor, err error) {
-	hCtx, cancel := context.WithCancel(ctx)
-	defer cancel()
 	for {
 		select {
 		case <-hCtx.Done():
@@ -58,11 +56,14 @@ func HandleMessage(
 						err,
 					)
 				}
-				response, err = analysis.OpenDocument(hCtx, state, request)
-				if err != nil || response == nil {
+				resp, err := analysis.OpenDocument(hCtx, state, request)
+				if err != nil {
 					return nil, fmt.Errorf("failed to open document: %w", err)
 				}
-				return response, nil
+				if err != nil {
+					return nil, fmt.Errorf("failed to publish diagnostics: %w", err)
+				}
+				return resp, nil
 			case methods.MethodRequestTextDocumentCompletion:
 				var request lsp.CompletionRequest
 				err = json.Unmarshal(msg.Content, &request)
@@ -77,21 +78,16 @@ func HandleMessage(
 					state,
 					request,
 				)
-				if err != nil || response == nil {
-					return nil, fmt.Errorf(
-						"failed to get completions: %w",
-						err,
-					)
+				resp, ok := response.(lsp.CompletionResponse)
+				if err != nil || !ok {
+					return nil, fmt.Errorf("failed to get completions: %w", err)
 				}
-				return response, nil
+				return resp, nil
 			case methods.MethodRequestTextDocumentHover:
 				var request lsp.HoverRequest
 				err = json.Unmarshal(msg.Content, &request)
 				if err != nil {
-					return nil, fmt.Errorf(
-						"failed unmarshal of hover request (): %w",
-						err,
-					)
+					return nil, fmt.Errorf("failed unmarshal of hover request (): %w", err)
 				}
 				response, err = analysis.NewHoverResponse(request, state)
 				if err != nil {
@@ -184,14 +180,16 @@ func HandleMessage(
 						err,
 					)
 				}
-				response, err = analysis.UpdateDocument(hCtx, state, &request)
-				if err != nil || response == nil {
+				var resp rpc.MethodActor
+				resp, err = analysis.UpdateDocument(hCtx, state, &request)
+				resp, ok := resp.(lsp.PublishDiagnosticsNotification)
+				if err != nil || !ok {
 					return nil, fmt.Errorf(
 						"failed to update document: %w",
 						err,
 					)
 				}
-				return response, nil
+				return resp, nil
 			default:
 				return nil, fmt.Errorf("unknown method: %s", msg.Method)
 			}

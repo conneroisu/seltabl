@@ -99,6 +99,12 @@ type TestFile struct {
 	URL string `json:"url"  yaml:"url"`
 	// PackageName is the package name for the test file
 	PackageName string `json:"-"    yaml:"package-name"`
+	// ConfigFile is the config file for the test file.
+	ConfigFile *ConfigFile `json:"-" yaml:"config-file"`
+	// StructFile is the struct file for the test file.
+	StructFile *StructFile `json:"-" yaml:"struct-file"`
+	// Section is the section for the test file.
+	Section *Section `json:"-" yaml:"section"`
 }
 
 // WriteFile writes the test file to the file system
@@ -134,7 +140,7 @@ type StructFile struct {
 	TreeDepth int `json:"-" yaml:"tree-depth"`
 
 	// ConfigFile is the config file for the struct file.
-	ConfigFile ConfigFile `json:"-" yaml:"config-file"`
+	ConfigFile *ConfigFile `json:"-" yaml:"config-file"`
 	// JSONValue is the json value for the struct yaml file.
 	JSONValue string `json:"-" yaml:"json-value"`
 	// HTMLContent is the html content for the struct file.

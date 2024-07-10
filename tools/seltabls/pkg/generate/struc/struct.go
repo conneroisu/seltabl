@@ -26,25 +26,25 @@ func Generate(
 	sF *domain.StructFile,
 	cfg *domain.ConfigFile,
 	section *domain.Section,
-) error {
+) (structFile *domain.StructFile, err error) {
 	log.Debugf("Generate called on stuct: %v", sF)
 	defer log.Debugf("Cenerate called on stuct: %v", sF)
 	if !domain.IsValidTreeDepth(sF.TreeDepth) ||
 		!domain.IsValidTreeWidth(sF.TreeWidth) {
 		if domain.IsValidTreeDepth(sF.TreeDepth) {
-			return fmt.Errorf("tree depth is not valid: %d", sF.TreeDepth)
+			return nil, fmt.Errorf("tree depth is not valid: %d", sF.TreeDepth)
 		}
 		if domain.IsValidTreeWidth(sF.TreeWidth) {
-			return fmt.Errorf("tree width is not valid: %d", sF.TreeWidth)
+			return nil, fmt.Errorf("tree width is not valid: %d", sF.TreeWidth)
 		}
 	}
 	select {
 	case <-ctx.Done():
-		return fmt.Errorf("context cancelled: %w", ctx.Err())
+		return nil, fmt.Errorf("context cancelled: %w", ctx.Err())
 	default:
 		f, err := os.Create(sF.Name + "_seltabl.go")
 		if err != nil {
-			return fmt.Errorf("failed to create file: %w", err)
+			return nil, fmt.Errorf("failed to create file: %w", err)
 		}
 		defer f.Close()
 		structFile, err := generate(
@@ -56,7 +56,7 @@ func Generate(
 			*section,
 		)
 		if err != nil {
-			return fmt.Errorf("failed to generate struct: %w", err)
+			return nil, fmt.Errorf("failed to generate struct: %w", err)
 		}
 		// Create a new buffer
 		w := new(bytes.Buffer)
@@ -65,7 +65,7 @@ func Generate(
 		// Execute the template
 		err = tmpl.ExecuteTemplate(w, "struct", structFile)
 		if err != nil {
-			return fmt.Errorf(
+			return nil, fmt.Errorf(
 				"failed to execute struct file template: %w",
 				err,
 			)
@@ -73,9 +73,9 @@ func Generate(
 		// Write the buffer to the file
 		_, err = f.Write(w.Bytes())
 		if err != nil {
-			return fmt.Errorf("failed to write struct file: %w", err)
+			return nil, fmt.Errorf("failed to write struct file: %w", err)
 		}
-		return nil
+		return &structFile, nil
 	}
 }
 

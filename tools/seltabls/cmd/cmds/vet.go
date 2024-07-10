@@ -78,7 +78,11 @@ func vetFile(ctx context.Context, file string) ([]lsp.Diagnostic, error) {
 				},
 			},
 		})
-	return response.Params.Diagnostics, nil
+	res, ok := response.(*lsp.PublishDiagnosticsNotification)
+	if !ok {
+		return nil, fmt.Errorf("failed to cast response to PublishDiagnosticsNotification")
+	}
+	return res.Params.Diagnostics, nil
 }
 
 // readFile reads a file

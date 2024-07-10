@@ -1,0 +1,3 @@
+return {
+	hidden_files = { ".git" },
+}

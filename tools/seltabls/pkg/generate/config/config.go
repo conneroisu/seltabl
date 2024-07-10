@@ -5,11 +5,9 @@ import (
 	"fmt"
 	"io"
 	"os"
-	"path/filepath"
 
 	"github.com/charmbracelet/log"
 	"github.com/conneroisu/seltabl/tools/seltabls/domain"
-	"github.com/sashabaranov/go-openai"
 	"gopkg.in/yaml.v2"
 )
 
@@ -67,9 +65,9 @@ func NewConfigFile(
 // Generate generates a config file for the given name.
 func Generate(
 	ctx context.Context,
-	_ *openai.Client,
+	writer io.Writer,
 	c *domain.ConfigFile,
-) error {
+) (configFile *domain.ConfigFile, err error) {
 	log.Debugf(
 		"Generate called with name: %s, url: %s, ignoreElements: %v",
 		c.Name,
@@ -82,26 +80,20 @@ func Generate(
 		c.URL,
 		c.IgnoreElements,
 	)
-	select {
-	case <-ctx.Done():
-		return fmt.Errorf("context cancelled: %w", ctx.Err())
-	default:
-		path := filepath.Join(".", "seltabl.yaml")
-		log.Debugf("Writing config file to path: %s", path)
-		defer log.Debugf("Config file written to path: %s", path)
-		f, err := os.Create(path)
-		if err != nil {
-			return fmt.Errorf("failed to create file: %w", err)
+	for {
+		select {
+		case <-ctx.Done():
+			return nil, fmt.Errorf("context cancelled: %w", ctx.Err())
+		default:
+			out, err := yaml.Marshal(c)
+			if err != nil {
+				return nil, fmt.Errorf("failed to write file: %w", err)
+			}
+			_, err = writer.Write(out)
+			if err != nil {
+				return nil, fmt.Errorf("failed to write file: %w", err)
+			}
+			return nil, nil
 		}
-		out, err := yaml.Marshal(c)
-		defer f.Close()
-		if err != nil {
-			return fmt.Errorf("failed to write file: %w", err)
-		}
-		_, err = f.Write(out)
-		if err != nil {
-			return fmt.Errorf("failed to write file: %w", err)
-		}
-		return nil
 	}
 }

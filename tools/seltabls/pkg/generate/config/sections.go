@@ -6,6 +6,7 @@ import (
 	"fmt"
 
 	"github.com/charmbracelet/log"
+	"github.com/conneroisu/seltabl/tools/seltabls/data/master"
 	"github.com/conneroisu/seltabl/tools/seltabls/domain"
 	"github.com/sashabaranov/go-openai"
 )
@@ -61,4 +62,17 @@ func Decode(s string) (domain.Section, error) {
 		)
 	}
 	return section, nil
+}
+
+// NewSections creates a new section for the given url, htmlBody, and selectors.
+func NewSections(
+	ctx context.Context,
+	client *openai.Client,
+	url, htmlBody string,
+	selectors []master.Selector,
+	fastModel, smartModel string,
+) (secs []domain.Section, err error) {
+	// generate sections per width of the tree
+	// combine section per the depth of the tree
+	return nil, nil
 }

@@ -67,12 +67,26 @@ So the output fo the command:
 
 `,
 		PreRunE: func(cmd *cobra.Command, _ []string) error {
+			var logLevel string
 			log.Debugf("PreRunE called for command: %s", cmd.Name())
 			defer log.Debugf("PreRunE completed for command: %s", cmd.Name())
 			cmd.SetOutput(w)
+			log.SetOutput(w)
 			cmd.SetIn(r)
 			cmd.SetErr(w)
 			cmd.SetContext(ctx)
+			cmd.PersistentFlags().StringVarP(
+				&logLevel,
+				"log-level",
+				"v",
+				"debug",
+				`The log verbosity level to use.`,
+			)
+			lev, err := log.ParseLevel(logLevel)
+			if err != nil {
+				return fmt.Errorf("failed to parse log level: %w", err)
+			}
+			log.SetLevel(lev)
 			cmd.PersistentFlags().StringVarP(
 				&url,
 				"url",

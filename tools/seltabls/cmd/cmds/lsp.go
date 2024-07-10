@@ -57,9 +57,11 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 			ctxs := make(map[int]handleCtx)
 			for scanner.Scan() {
 				eg.Go(func() error {
+					input := scanner.Bytes()
+					state.Logger.Printf("Received input: %s", input)
 					hCtx, cancel := context.WithCancel(context.Background())
 					defer cancel()
-					decoded, err := rpc.DecodeMessage(scanner.Bytes())
+					decoded, err := rpc.DecodeMessage(input)
 					if err != nil {
 						return fmt.Errorf("failed to decode message: %w", err)
 					}
@@ -71,7 +73,7 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 					resp, err := handle(hCtx, &state, decoded)
 					if err != nil || resp == nil {
 						state.Logger.Printf(
-							"failed to handle message: %s\n",
+							"failed to handle message: %v\n",
 							err,
 						)
 						return nil
@@ -83,6 +85,7 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 							err,
 						)
 					}
+					state.Logger.Printf("Sent response: %s", resp)
 					return nil
 				})
 			}

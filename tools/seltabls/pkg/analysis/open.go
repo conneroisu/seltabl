@@ -63,15 +63,17 @@ func OpenDocument(
 				err,
 			)
 		}
-		response.Params.Diagnostics, err = GetDiagnosticsForFile(
+		var diags []lsp.Diagnostic
+		diags, err = GetDiagnosticsForFile(
 			ctx,
 			s,
 			&req.Params.TextDocument.Text,
 			data,
 		)
 		if err != nil {
-			return nil, fmt.Errorf("failed to get diagnostics for file: %w", err)
+			return response, fmt.Errorf("failed to get diagnostics for file: %w", err)
 		}
+		response.Params.Diagnostics = diags
 		return response, nil
 	}
 }

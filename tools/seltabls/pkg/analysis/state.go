@@ -30,7 +30,7 @@ type State struct {
 }
 
 // NewState returns a new state with no documents
-func NewState() (state State, err error) {
+func NewState() (state *State, err error) {
 	ctx := context.Background()
 	configPath, err := CreateConfigDir("~/.config/seltabls/")
 	if err != nil {
@@ -49,14 +49,13 @@ func NewState() (state State, err error) {
 		return state, fmt.Errorf("failed to create database: %w", err)
 	}
 	logger := getLogger(path.Join(configPath, "state.log"))
-	state = State{
+	return &State{
 		Documents: make(map[string]string),
 		Selectors: make(map[string][]master.Selector),
 		Database:  *db,
 		Logger:    logger,
 		URLs:      make(map[string][]string),
-	}
-	return state, nil
+	}, nil
 }
 
 // getLogger returns a logger that writes to a file

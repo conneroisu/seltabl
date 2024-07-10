@@ -41,10 +41,11 @@ Language server provides completions, hovers, and code actions for seltabl defin
 	
 CLI provides a command line tool for verifying, linting, and reporting on seltabl defined structs.
 `,
-		RunE: func(cmd *cobra.Command, _ []string) error {
-			scanner := bufio.NewScanner(reader)
-			scanner.Split(rpc.Split)
-			state, err := analysis.NewState()
+		RunE: func(cmd *cobra.Command, _ []string) (err error) {
+			var scanner *bufio.Scanner
+			var state *analysis.State
+			scanner = bufio.NewScanner(reader)
+			state, err = analysis.NewState()
 			if err != nil {
 				return fmt.Errorf("failed to create state: %w", err)
 			}
@@ -55,6 +56,7 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 			eg, ctx := errgroup.WithContext(ctx)
 			defer cancel()
 			ctxs := make(map[int]handleCtx)
+			scanner.Split(rpc.Split)
 			for scanner.Scan() {
 				eg.Go(func() error {
 					input := scanner.Bytes()
@@ -70,7 +72,7 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 						ctxs[decoded.ID].cancel()
 						delete(ctxs, decoded.ID)
 					}
-					resp, err := handle(hCtx, &state, decoded)
+					resp, err := handle(hCtx, state, decoded)
 					if err != nil || resp == nil {
 						state.Logger.Printf(
 							"failed to handle message: %v\n",

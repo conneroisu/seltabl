@@ -22,19 +22,21 @@ func NewVetCmd(ctx context.Context, w io.Writer, r io.Reader) *cobra.Command {
 Similar to go vet, but for seltabl.
 Evaluate code for common errors or invalid selectors.
 `,
-		RunE: func(cmd *cobra.Command, args []string) error {
+		RunE: func(cmd *cobra.Command, args []string) (err error) {
 			cmd.SetOut(w)
 			cmd.SetIn(r)
 			_, ctx = errgroup.WithContext(ctx)
 			if len(args) == 0 {
 				return fmt.Errorf("no files provided")
 			}
-			files, err := filepath.Glob(args[0])
+			var files []string
+			files, err = filepath.Glob(args[0])
 			if err != nil {
 				return fmt.Errorf("failed to glob files: %w", err)
 			}
 			for _, file := range files {
-				vals, err := vetFile(ctx, file)
+				var vals []lsp.Diagnostic
+				vals, err = vetFile(ctx, file)
 				if err != nil {
 					return fmt.Errorf("failed to vet file: %w", err)
 				}
@@ -62,7 +64,7 @@ func vetFile(ctx context.Context, file string) ([]lsp.Diagnostic, error) {
 		return nil, fmt.Errorf("failed to create state: %w", err)
 	}
 	response, err := analysis.OpenDocument(ctx,
-		&state,
+		state,
 		lsp.NotificationDidOpenTextDocument{
 			Notification: lsp.Notification{
 				RPC:    lsp.RPCVersion,

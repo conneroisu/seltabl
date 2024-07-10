@@ -57,10 +57,10 @@ func IsValidTreeWidth(treeWidth int) bool {
 
 // IsValidTreeDepth checks if the given tree depth is valid
 func IsValidTreeDepth(treeDepth int) bool {
-	if treeDepth < 1 {
-		return false
+	if treeDepth >= 1 {
+		return true
 	}
-	return true
+	return false
 }
 
 // ValidateConfig validates the given config file

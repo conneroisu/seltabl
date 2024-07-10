@@ -40,7 +40,7 @@ func OpenDocument(
 		s.Documents[uri] = req.Params.TextDocument.Text
 		data, err := parsers.ParseStructComments(req.Params.TextDocument.Text)
 		if err != nil {
-			return response, nil
+			return nil, fmt.Errorf("failed to get selectors for urls: %w", err)
 		}
 		s.URLs[uri] = append(s.URLs[uri], data.URLs...)
 		for _, url := range data.URLs {
@@ -58,7 +58,7 @@ func OpenDocument(
 			})
 		}
 		if err := eg.Wait(); err != nil {
-			return response, fmt.Errorf(
+			return nil, fmt.Errorf(
 				"failed to get selectors for urls: %w",
 				err,
 			)
@@ -71,7 +71,7 @@ func OpenDocument(
 			data,
 		)
 		if err != nil {
-			return response, fmt.Errorf("failed to get diagnostics for file: %w", err)
+			return nil, fmt.Errorf("failed to get diagnostics for file: %w", err)
 		}
 		response.Params.Diagnostics = diags
 		return response, nil

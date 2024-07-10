@@ -149,7 +149,10 @@ func GetSelectors(
 	)
 	URL, err := db.Queries.InsertURL(
 		ctx,
-		master.InsertURLParams{Value: url, HtmlID: HTML.ID},
+		master.InsertURLParams{
+			Value:  url,
+			HtmlID: HTML.ID,
+		},
 	)
 	if err != nil {
 		return nil, fmt.Errorf("failed to insert url: %w", err)

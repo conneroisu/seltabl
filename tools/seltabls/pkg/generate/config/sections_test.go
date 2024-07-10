@@ -25,3 +25,21 @@ func TestSections(t *testing.T) {
 	a.NotEmpty(out)
 	t.Logf("sections: %s", out)
 }
+
+func TestSectionsAggregatePrompt(t *testing.T) {
+	a := assert.New(t)
+	out, err := NewSectionsAggregate(
+		[]string{
+			"html",
+			"html > body",
+			"html > body > table",
+			"html > body > table > tbody",
+			"html > body > table > tbody > tr",
+			"html > body > table > tbody > tr > td",
+			"html > body > table > tbody > tr > td > a[href]",
+		},
+	)
+	a.NoError(err)
+	a.NotEmpty(out)
+	t.Logf("sections: %s", out)
+}

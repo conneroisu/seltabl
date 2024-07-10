@@ -5,25 +5,14 @@ Oops, something went wrong parsing your json response.
 
 {{- end -}}
 
-{{- define "aggregate_json" -}}
-Please provide a single JSON object that aggregates the following multiple JSON structures:
+{{- define "aggregate" -}}
+Aggregate the data from the following json structures into a single comprehensive and accurate json schema.
 
-{{- range .Structs }}
-- {{ . }}
-{{- end }}
+Remove duplicate fields and ensure the json schema is valid.
 
-The aggregated JSON object should combine all the fields from the above structures. If there are any conflicting fields, please ensure they are merged appropriately.
-
-Example:
-
-Input JSON structures:
-{{- range .Structs }}
+{{- range .Sections }}
+```json
 {{ . }}
-{{- end }}
-
-Output aggregated JSON object:
-{
-  // Your aggregated JSON structure here
-}
-
+```
+{{- end -}}
 {{- end -}}

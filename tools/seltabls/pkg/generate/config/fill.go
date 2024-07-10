@@ -24,7 +24,7 @@ func init() {
 	}
 }
 
-// NewSectionsErrorPrompt creates a new filled out template for a prompt from the `sections.tmpl` template
+// NewSectionsErrorPrompt creates a new filled out template for a prompt from the `sections.tmpl` template.
 func NewSectionsErrorPrompt(
 	err error,
 ) (string, error) {
@@ -36,6 +36,27 @@ func NewSectionsErrorPrompt(
 	}
 	var buf bytes.Buffer
 	err = sectionTemplate.ExecuteTemplate(&buf, "error", args)
+	if err != nil {
+		return "", fmt.Errorf(
+			"failed to execute identify file template: %w",
+			err,
+		)
+	}
+	return buf.String(), nil
+}
+
+// NewSectionsAggregate creates a new filled out template for a prompt from the `sections.tmpl` template.
+func NewSectionsAggregate(
+	sections []string,
+) (string, error) {
+	// fill out the template
+	args := struct {
+		Sections []string
+	}{
+		Sections: sections,
+	}
+	var buf bytes.Buffer
+	err := sectionTemplate.ExecuteTemplate(&buf, "aggregate", args)
 	if err != nil {
 		return "", fmt.Errorf(
 			"failed to execute identify file template: %w",

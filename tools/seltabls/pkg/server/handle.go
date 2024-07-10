@@ -4,7 +4,6 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"io"
 	"net/url"
 	"os"
 
@@ -18,7 +17,6 @@ import (
 // It parses the message and returns with a response.
 func HandleMessage(
 	ctx context.Context,
-	writer *io.Writer,
 	state *analysis.State,
 	msg rpc.BaseMessage,
 ) (response rpc.MethodActor, err error) {

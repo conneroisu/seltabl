@@ -36,8 +36,15 @@ type TextDocumentCodeActionResponse struct {
 	Result []CodeAction `json:"result"`
 }
 
+// // Method returns the method for the code action response
+//
+//	func (r TextDocumentCodeActionResponse) Method() methods.Method {
+//	        return methods.MethodRequestTextDocumentCodeAction
+//	}
+//
+
 // Method returns the method for the code action response
-func (r TextDocumentCodeActionResponse) Method() methods.Method {
+func (r *TextDocumentCodeActionResponse) Method() methods.Method {
 	return methods.MethodRequestTextDocumentCodeAction
 }
 

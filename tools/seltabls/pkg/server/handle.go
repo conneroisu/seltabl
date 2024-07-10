@@ -60,9 +60,6 @@ func HandleMessage(
 				if err != nil {
 					return nil, fmt.Errorf("failed to open document: %w", err)
 				}
-				if err != nil {
-					return nil, fmt.Errorf("failed to publish diagnostics: %w", err)
-				}
 				return resp, nil
 			case methods.MethodRequestTextDocumentCompletion:
 				var request lsp.CompletionRequest
@@ -73,13 +70,12 @@ func HandleMessage(
 						err,
 					)
 				}
-				response, err = analysis.CreateTextDocumentCompletion(
+				resp, err := analysis.CreateTextDocumentCompletion(
 					hCtx,
 					state,
 					request,
 				)
-				resp, ok := response.(lsp.CompletionResponse)
-				if err != nil || !ok {
+				if err != nil || resp == nil {
 					return nil, fmt.Errorf("failed to get completions: %w", err)
 				}
 				return resp, nil
@@ -103,12 +99,12 @@ func HandleMessage(
 						err,
 					)
 				}
-				response, err = analysis.TextDocumentCodeAction(
+				resp, err := analysis.TextDocumentCodeAction(
 					hCtx,
 					request,
 					state,
 				)
-				if err != nil || response == nil {
+				if err != nil || resp == nil {
 					return nil, fmt.Errorf(
 						"failed to get code actions: %w",
 						err,
@@ -135,8 +131,8 @@ func HandleMessage(
 						err,
 					)
 				}
-				response, err = state.CancelRequest(request)
-				if err != nil || response == nil {
+				resp, err := state.CancelRequest(request)
+				if err != nil || resp == nil {
 					return nil, fmt.Errorf("failed to cancel request: %w", err)
 				}
 				return response, nil
@@ -180,10 +176,8 @@ func HandleMessage(
 						err,
 					)
 				}
-				var resp rpc.MethodActor
-				resp, err = analysis.UpdateDocument(hCtx, state, &request)
-				resp, ok := resp.(lsp.PublishDiagnosticsNotification)
-				if err != nil || !ok {
+				resp, err := analysis.UpdateDocument(hCtx, state, &request)
+				if err != nil || resp == nil {
 					return nil, fmt.Errorf(
 						"failed to update document: %w",
 						err,

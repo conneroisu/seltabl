@@ -25,7 +25,6 @@ func OpenDocument(
 ) (response rpc.MethodActor, err error) {
 	response = &lsp.Response{
 		RPC: lsp.RPCVersion,
-		ID:  *req.ID,
 	}
 	select {
 	case <-(ctx).Done():

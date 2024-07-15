@@ -63,7 +63,7 @@ from
     htmls;
 
 -- name: InsertHTML :one
-INSERT INTO
+INSERT OR IGNORE INTO
     htmls (value)
 VALUES
     (?) RETURNING *;

@@ -1117,7 +1117,7 @@ func (q *Queries) InsertFile(ctx context.Context, arg InsertFileParams) (*File, 
 }
 
 const insertHTML = `-- name: InsertHTML :one
-INSERT INTO
+INSERT OR IGNORE INTO
     htmls (value)
 VALUES
     (?) RETURNING id, value, updated_at, created_at
@@ -1129,7 +1129,7 @@ type InsertHTMLParams struct {
 
 // InsertHTML
 //
-//	INSERT INTO
+//	INSERT OR IGNORE INTO
 //	    htmls (value)
 //	VALUES
 //	    (?) RETURNING id, value, updated_at, created_at

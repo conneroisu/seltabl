@@ -147,6 +147,9 @@ func GetSelectors(
 		ctx,
 		master.InsertHTMLParams{Value: docHTML},
 	)
+	if err != nil {
+		return nil, fmt.Errorf("failed to insert html: %w", err)
+	}
 	URL, err := db.Queries.InsertURL(
 		ctx,
 		master.InsertURLParams{Value: url, HtmlID: HTML.ID},

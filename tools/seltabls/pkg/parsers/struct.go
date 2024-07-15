@@ -79,18 +79,6 @@ var (
 		Documentation: "This is the documentation for the query selector",
 		Kind:          lsp.CompletionKindField,
 	}
-	// selectorMustBePresentTag is the tag used to signify selecting aspects of a cell
-	selectorMustBePresentTag = lsp.CompletionItem{Label: "must",
-		Detail:        "Title Text for the must be present selector",
-		Documentation: "This is the documentation for the must be present selector",
-		Kind:          lsp.CompletionKindField,
-	}
-	// selectorControlTag is the tag used to signify selecting aspects of a cell
-	selectorControlTag = lsp.CompletionItem{Label: "ctl",
-		Detail:        "Title Text for the control selector",
-		Documentation: "This is the documentation for the control selector",
-		Kind:          lsp.CompletionKindField,
-	}
 )
 
 var (
@@ -231,32 +219,6 @@ func (f *Field) MarshalJSON() ([]byte, error) {
 		End:   f.End,
 		Line:  f.Line,
 	})
-}
-
-// UnmarshalJSON implements the json.Unmarshaler interface.
-func (f *Field) UnmarshalJSON(b []byte) (err error) {
-	var tmp struct {
-		Name  string `json:"name"`
-		Type  string `json:"type"`
-		Tags  string `json:"tags"`
-		Start int    `json:"start"`
-		End   int    `json:"end"`
-		Line  int    `json:"line"`
-	}
-	if err := json.Unmarshal(b, &tmp); err != nil {
-		return err
-	}
-	f.Name = tmp.Name
-	f.Type = tmp.Type
-	f.Tags = Tags{tags: []*Tag{}}
-	err = json.Unmarshal([]byte(tmp.Tags), &f.Tags)
-	if err != nil {
-		return err
-	}
-	f.Start = tmp.Start
-	f.End = tmp.End
-	f.Line = tmp.Line
-	return nil
 }
 
 // Tag returns the tag at the given index

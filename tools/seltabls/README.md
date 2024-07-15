@@ -55,15 +55,18 @@ seltabls config
 
 ### Run tests
 
-Using makefile (generally used for CI):
+Using makefile (generally used for CI) one can run the tests with:
+
 ```sh
 make test
 ```
-Using taskfile (generally used for local development):
+Using taskfile (generally used for local development), one can run the tests with:
+
 ```sh
 task test
 ```
-Manually:
+Manually, one can run the tests with:
+
 ```sh
 go test ./...
 ```

@@ -26,6 +26,8 @@ Install the [cli](https://github.com/conneroisu/seltabl/tree/main/tools/seltabls
 go install github.com/conneroisu/seltabl/tools/seltabls@latest
 ```
 
+<img width="1440" alt="Recording of Language Server" src="/assets/out.gif">
+
 ## Usage
 
 ```go

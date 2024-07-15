@@ -1,20 +1,19 @@
 module github.com/conneroisu/seltabl/tools/seltabls
 
-go 1.22.3
+go 1.22.5
 
 require (
 	github.com/PuerkitoBio/goquery v1.9.2
 	github.com/charmbracelet/huh v0.4.2
 	github.com/charmbracelet/log v0.4.0
 	github.com/mitchellh/go-homedir v1.1.0
-	github.com/sashabaranov/go-openai v1.26.1
+	github.com/sashabaranov/go-openai v1.26.3
 	github.com/sourcegraph/conc v0.3.0
 	github.com/spf13/cobra v1.8.0
 	github.com/stretchr/testify v1.9.0
 	github.com/testcontainers/testcontainers-go v0.32.0
 	github.com/yosssi/gohtml v0.0.0-20201013000340-ee4748c638f4
 	golang.org/x/sync v0.7.0
-	gopkg.in/yaml.v2 v2.4.0
 	modernc.org/sqlite v1.30.1
 )
 

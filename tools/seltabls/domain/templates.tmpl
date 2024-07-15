@@ -1,0 +1,275 @@
+{{/*
+Identify Error Template
+================================================================================
+*/}}
+{{- define "decode_error" -}}
+We encountered an error while processing your response.
+
+In reponse to this error, you must return the entire fixed json response and 
+nothing else.
+
+DO NOT remove any json keys or values.
+
+We encountered the following error:
+
+```text
+{{ .Error }}
+```
+{{- end -}}
+
+{{/*
+Section Error Template
+================================================================================
+*/}}
+{{- define "section_error" -}}
+As a extremely intelligent assistant for ai models, your are to improve the following error given to a 
+llama3 or gpt4 model.
+
+The error is:
+{{ .Error }}.
+
+Your task is to improve the error given to a llama3 or gpt4 model.
+
+You are to return a json object with the following attributes:
+{{- end -}}
+
+{{/*
+Section Aggregate Template
+================================================================================
+*/}}
+{{- define "section_aggregate" -}}
+Please provide a single JSON object that aggregates the following multiple JSON structures.
+The aggregated JSON object should combine all the fields from the above structures.
+If there are any conflicting fields, please ensure they are merged appropriately.
+
+
+{{- range .Structs }}
+```json
+- {{ . }}
+```
+{{- end }}
+
+The aggregated JSON object should combine all the fields from the above structures. If there are any conflicting fields, please ensure they are merged appropriately.
+
+The aggergated sections returned should be for the entire html:
+```html
+{{ .Content }}
+```
+Example:
+
+Input JSON structures:
+
+{{- range .Structs }}
+```json
+{{ . }}
+```
+{{- end }}
+{{- end -}}
+
+{{/*
+Identify Prompt Template
+================================================================================
+*/}}
+{{- define "identify_prompt" -}}
+As a extremely diligent web developer, you are to identify sections of the following formated and ruled html that contain good examples of statistics.
+Good examples of statistics are sections that contain data that can be extracted from the html that could be used to perform data science.
+
+You should return a json object with the following attributes:
+
+- package-name: the package name for the section. (should be a valid golang package name)
+- sections: a list of sections of the html that are processable.
+\- description: a description of the section. (should describe what the section is for and what it contains)
+\- start: the start of the section in the html. (line number)
+\- end: the end of the section in the html. (line number)
+\- css: the css selector for the section. (should be a valid css selector that can be used to select the entire section in the html)
+
+Example Output:
+
+```json
+{
+	"package-name": "softball-ncaa-stats-team-results",
+	"sections": [
+		{
+			"description": "Section contains the stats for the team.",
+			"start": 0,
+			"end": 10
+			"css": "tr:nth-child(1) td:nth-child(1)"
+		},
+		{
+			"description": "Section contains the stats for the team statistical leaders.",
+			"start": 10,
+			"end": 20
+			"css": "div#contentContainer > div.container > div.row > div.col-md-12 > div:nth-child(1)  > div.table-responsive"
+		}
+	]
+}
+```
+
+The html is:
+
+{{ .Content }}
+{{- end -}}
+
+{{/*
+Identify Aggregate Template
+================================================================================
+*/}}
+{{- define "identify_aggregate" -}}
+As a diligent and experienced html developer, you are to fully describe the 
+given html content in a comprehensive and accurate json response.
+
+Your interns have created a list of json schemas for the given html content, but 
+you must congregate them into a single comprehensive and accurate json response 
+that fully describes the given html content.
+
+You are to congregate the following json schemas into a single comprehensive and 
+accurate json response that fully describes the given html content.
+
+Schemas:
+
+{{- range $i, $schema := .Schemas }}
+	{{- if $i }}{{- end }}
+```json
+{{ $schema }}
+```
+{{- end }}
+
+The html is:
+
+```html
+{{ .Content }}
+```
+{{- end -}}
+
+{{/*
+Struct Prompt Template.
+================================================================================
+*/}}
+{{- define "struct_prompt" -}}
+As a diligent and experienced html developer, you are to generate a json schema
+that fully describes the given html content for a given url, {{ .URL }}.
+
+Your json schema must have a number of attributes for each field in the struct.
+
+- header selector: used to find the header row and column for the field in the given struct.
+- data-selector: used to find the data column for the field in the given struct.
+- query-selector: used to query for the inner text or attribute of the cell.
+- control-selector: used to control what to query for the inner text or attribute of the cell.
+- must-be-present: used to ensure that the field is present in the given url.
+
+Example Output:
+
+```go
+{
+	"fields": [
+		{
+			"name": "Average Exit Velocity",
+			"type": "int",
+			"description": "The average exit velocity of the player's hits on the team stats page in meters per second. (mps)",
+			"header-selector": "tr:nth-child(1) td:nth-child(1)",
+			"data-selector": "tr:not(:nth-child(2)) td",
+			"control-selector": "$text",
+			"query-selector": "$text",
+			"must-be-present": "must"
+		}
+	]
+}
+```
+
+Your html content:
+
+{{ .Content }}
+
+Your selectors with attriubutes (meaning without added specifiers; `:nth-child(1)`, `:not(:nth-child(2))`, etc):
+
+```txt
+{{- range $i, $selector := .Selectors }}
+	{{- if $i }}{{- end }}
+{{ $selector }}
+{{- end }}
+```
+
+{{- end -}}
+
+{{/*
+Struct Aggregate Template
+================================================================================
+*/}}
+{{- define "struct_aggregate" -}}
+
+You are to cogregate the following json schemas into a single comprehensive and accurate json schema designed to be used to select elements using css selectors.
+
+- header selector: used to find the header row and column for the field in the given struct.
+- data-selector: used to find the data column for the field in the given struct.
+- query-selector: used to query for the inner text or attribute of the cell.
+- control-selector: used to control what to query for the inner text or attribute of the cell.
+- must-be-present: used to ensure that the field is present in the given url.
+
+The valid base value selecors are:
+
+{{ .Selectors }}
+
+Your HTML content:
+
+{{ .Content }}
+
+Your json schemas:
+
+{{ .Schemas }}
+{{- end -}}
+
+{{/*
+Struct File Template
+================================================================================
+*/}}
+{{- define "struct_file" -}}
+package {{ .PackageName }}
+
+// {{ .Name }} is a struct for a {{ .Name }}
+// @url: {{ .URL }}
+// @ignore-elements: {{ range $i, $element := .IgnoreElements }}{{ if $i }}, {{ end }}{{ $element }}{{ end }}
+type {{ .Name }} struct {
+	{{ range $i, $field := .Fields }}
+		// {{ $field.Name }} - {{ $field.Description }}
+		{{ $field.Name }} {{ $field.Type }} `json:"{{ $field.Name }}" hSel:"{{ $field.HeaderSelector }}" dSel:"{{ $field.DataSelector }}" ctl:"{{ $field.ControlSelector }}" {{ if $field.MustBePresent }}must:"{{ $field.MustBePresent }}"{{ end }}`
+	{{ end }}
+}}
+{{- end -}}
+
+{{/*
+Test File Template
+================================================================================
+*/}}
+{{- define "test_file" -}}
+// Code generated by seltabls - DO NOT EDIT
+//
+// seltabls: version: v{{ .Version }}
+package {{ .PackageName }}
+
+import (
+	_ "embed"
+	"testing"
+
+	"github.com/stretchr/testify/assert"
+	"github.com/conneroisu/seltabl/tools/seltabls/pkg/generate"
+	"github.com/conneroisu/seltabl"
+)
+
+// {{ .Name }}Seltabl is the seltabl configuration for the {{ .Name }} struct.
+//
+//go:embed {{ .Name }}_seltabl.yaml
+var {{ .Name }}Seltabl string
+
+// Test{{ .Name }} tests the {{ .Name }} struct.
+func Test{{ .Name }}(t *testing.T) {
+	a := assert.New(t)
+	// Read the configuration file.
+	var config generate.ConfigFile
+	err = generate.ReadConfigFile("{{ .Name }}_seltabl.yaml", &config)
+	a.NoError(err)
+	body := config.HTMLBody
+	result, err := seltabl.NewFromString[{{ .Name }}](body)
+	a.NoError(err)
+	a.NotNil(result)
+}
+{{- end -}}

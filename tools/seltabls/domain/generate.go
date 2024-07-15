@@ -223,8 +223,8 @@ func InvokeJSON(
 	}
 }
 
-// InvokeJSON_N is a function for generating json using the OpenAI API multiple "N" times.
-func InvokeJSON_N(
+// InvokeJSONN is a function for generating json using the OpenAI API multiple "N" times.
+func InvokeJSONN(
 	ctx context.Context,
 	client *openai.Client,
 	model string,

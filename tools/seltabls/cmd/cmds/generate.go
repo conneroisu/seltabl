@@ -267,7 +267,7 @@ func runGenerate(
 	defer mut.Unlock()
 	log.Infof("calling runGenerate")
 	defer log.Infof("runGenerate completed")
-	identifyCompletions, identifyHistories, err := domain.InvokeJSON_N(
+	identifyCompletions, identifyHistories, err := domain.InvokeJSONN(
 		ctx,
 		client,
 		params.FastModel,
@@ -310,7 +310,7 @@ func runGenerate(
 	)
 	for _, section := range identified.Sections {
 		s, _ := domain.HTMLSel(doc, section.CSS)
-		selectorOuts, selectorHistories, err := domain.InvokeJSON_N(
+		selectorOuts, selectorHistories, err := domain.InvokeJSONN(
 			ctx,
 			client,
 			params.SmartModel,

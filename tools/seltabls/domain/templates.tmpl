@@ -30,13 +30,13 @@ Section Error Template
 As a extremely intelligent assistant for ai models, your are to improve the following error given to a 
 llama3 or gpt4 model.
 
-The error is:
+The error arising from the agents last response is:
 {{ .Error }}.
 
-Your task is to improve the error given to a llama3 or gpt4 model.
+Your task is to improve the error given to a llama3 or gpt4 model by providing detailed information within the current conversation context.
 
-You are to return a json object with the following attributes:
-{{- end -}}
+The current conversation:
+{{- end -}} {{/* append history */}}
 
 {{/*
 Section Aggregate Template

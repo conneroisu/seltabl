@@ -38,8 +38,17 @@ vim.api.nvim_create_autocmd("FileType", {
 
 ## Manual Usage
 
+Base Command:
 ```sh
 seltabls
+```
+Generate a new seltabl struct:
+```sh
+seltabls generate
+```
+Get the configuration for the cwd:
+```sh
+seltabls config
 ```
 
 ## Development

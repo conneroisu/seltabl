@@ -1,6 +1,7 @@
 package domain
 
 import (
+	"errors"
 	"fmt"
 	"testing"
 
@@ -23,7 +24,7 @@ func TestNewStructFileContent(t *testing.T) {
 func TestNewAggregatePrompt(t *testing.T) {
 	a := assert.New(t)
 	content, err := NewPrompt(
-		SectionAggregateArgs{Structs: []string{"ex json 1 ", "ex json 2 ", "ex json 3 "}, Content: `<html><body><table><tr><td>a</td><td>b</td></tr><tr><td>1</td><td>2</td></tr></table></body></html>`},
+		SectionAggregateArgs{Structs: []string{"ex json 1 ", "ex json 2 ", "ex json 3 "}, Content: `<html><body><table><tr><td>a</td><td>b</td></tr><tr><td>1</td><td>2</td></tr></table></body></html>`, Selectors: []master.Selector{{ID: 2, Value: "dsaf", UrlID: 2, Occurances: 2, Context: "<html>"}}},
 	)
 	a.NoError(err)
 	a.NotEmpty(content)
@@ -33,7 +34,7 @@ func TestNewAggregatePrompt(t *testing.T) {
 func TestIdentifyAggregateArgs(t *testing.T) {
 	a := assert.New(t)
 	content, err := NewPrompt(
-		IdentifyAggregateArgs{Content: "<html><body><table><tr><td>a</td><td>b</td></tr><tr><td>1</td><td>2</td></tr></table></body></html>", Schemas: []string{"dsafsd", "dsazfdasdfasf"}},
+		IdentifyAggregateArgs{Content: "<html><body><table><tr><td>a</td><td>b</td></tr><tr><td>1</td><td>2</td></tr></table></body></html>", Schemas: []string{"dsafsd", "dsazfdasdfasf"}, Selectors: []master.Selector{{ID: 2, Value: "dsaf", UrlID: 2, Occurances: 2, Context: "<html>"}}},
 	)
 	a.NoError(err)
 	a.NotEmpty(content)
@@ -85,6 +86,51 @@ func TestTestFilePromptArgs(t *testing.T) {
 	a := assert.New(t)
 	content, err := NewPrompt(
 		TestFilePromptArgs{Version: "v0.0.0", Name: "TestStruct", URL: "https://github.com/conneroisu/seltabl/blob/main/testdata/ab_num_table.html", PackageName: "main"},
+	)
+	a.NoError(err)
+	a.NotEmpty(content)
+	t.Logf("struct: %s", content)
+}
+
+func TestSectionErrorPromptArgs(t *testing.T) {
+	a := assert.New(t)
+	content, err := NewPrompt(
+		sectionErrorArgs{Error: errors.New("failed to get the content of the url: https://github.com/conneroisu/seltabl/blob/main/testdata/ab_num_table.html")},
+	)
+	a.NoError(err)
+	a.NotEmpty(content)
+	t.Logf("struct: %s", content)
+}
+
+func TestIdentifyErrorArgs(t *testing.T) {
+	a := assert.New(t)
+	content, err := NewPrompt(
+		IdentifyErrorArgs{Error: errors.New("failed to get the content of the url: https://github.com/conneroisu/seltabl/blob/main/testdata/ab_num_table.html")},
+	)
+	a.NoError(err)
+	a.NotEmpty(content)
+	t.Logf("struct: %s", content)
+}
+
+func TestIdentifyPromptArgs(t *testing.T) {
+	a := assert.New(t)
+	content, err := NewPrompt(
+		IdentifyPromptArgs{
+			URL:         "https://github.com/conneroisu/seltabl/blob/main/testdata/ab_num_table.html",
+			Content:     "<html><body><table><tr><td>a</td><td>b</td></tr><tr><td>1</td><td>2</td></tr></table></body></html>",
+			NumSections: 3,
+		},
+	)
+	a.NoError(err)
+	a.NotEmpty(content)
+	t.Logf("struct: %s", content)
+	t.Fail()
+}
+
+func TestDecodeErrorArgs(t *testing.T) {
+	a := assert.New(t)
+	content, err := NewPrompt(
+		DecodeErrorArgs{Error: errors.New("failed to decode structs: failed to decode struct: failed to get data rows html: failed to get html: failed to get doc: open /Users/hsz/Projects/github.com/conneroisu/seltabl/testdata/ab_num_table.html: no such file or directory"), Message: "Welcome to the world of seltabl!"},
 	)
 	a.NoError(err)
 	a.NotEmpty(content)

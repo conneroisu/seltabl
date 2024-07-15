@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"regexp"
 
 	"github.com/PuerkitoBio/goquery"
 	"github.com/yosssi/gohtml"
@@ -36,16 +37,19 @@ func GetRuledURL(
 			err,
 		)
 	}
+	var sel *goquery.Selection
 	for _, v := range ignores {
-		_ = doc.Find(v).Remove()
+		sel = doc.Find(v).Remove()
 	}
-	html, err := doc.Html()
+	html, err := sel.Html()
 	if err != nil {
 		return nil, fmt.Errorf(
 			"failed to get html: %w",
 			err,
 		)
 	}
-	html = gohtml.FormatWithLineNo(html)
-	return []byte(html), nil
+	html = gohtml.Format(html)
+	// remove spaces and newlines
+	re := regexp.MustCompile(`\s+`)
+	return []byte(re.ReplaceAllString(html, " ")), nil
 }

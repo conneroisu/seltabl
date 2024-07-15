@@ -1,9 +1,9 @@
 package domain
 
 import (
-	"errors"
-	"io"
+	"encoding/json"
 	"os"
+	"time"
 
 	"context"
 	"fmt"
@@ -11,6 +11,7 @@ import (
 	"github.com/charmbracelet/log"
 	"github.com/conneroisu/seltabl/tools/seltabls/data"
 	"github.com/conneroisu/seltabl/tools/seltabls/data/master"
+	"golang.org/x/sync/errgroup"
 
 	"github.com/sashabaranov/go-openai"
 )
@@ -60,12 +61,17 @@ type Section struct {
 	Description string `json:"description" yaml:"description"`
 	// CSS is the css selector for the section.
 	CSS string `json:"css"         yaml:"css"`
-	// Start is the start of the section in the html.
-	Start int `json:"start"       yaml:"start"`
-	// End is the end of the section in the html.
-	End int `json:"end"         yaml:"end"`
 	// Fields is a list of fields in the section.
 	Fields []Field `json:"fields"      yaml:"fields"`
+}
+
+// FieldsResponse is a struct for the fields response
+type FieldsResponse struct {
+	Fields []Field `json:"fields" yaml:"fields"`
+}
+
+func (f FieldsResponse) respond() string {
+	return "fields_response"
 }
 
 // Field is a struct for a field
@@ -146,187 +152,6 @@ type StructFile struct {
 	Section Section `json:"-" yaml:"section"`
 }
 
-// Chat is a struct for a chat by appending the prompt to the history.
-func Chat(
-	ctx context.Context,
-	client *openai.Client,
-	model string,
-	history []openai.ChatCompletionMessage,
-	prompt string,
-) (out string, postHistory []openai.ChatCompletionMessage, err error) {
-	log.Debugf("calling Chat in domain")
-	defer log.Debugf("Chat completed in domain")
-	for {
-		select {
-		case <-ctx.Done():
-			return "", postHistory, ctx.Err()
-		default:
-			stream, err := client.CreateChatCompletionStream(
-				ctx, openai.ChatCompletionRequest{
-					Model: model,
-					Messages: append(history, openai.ChatCompletionMessage{
-						Role:    openai.ChatMessageRoleSystem,
-						Content: prompt,
-					}),
-					ResponseFormat: &openai.ChatCompletionResponseFormat{
-						Type: "json",
-					},
-					StreamOptions: &openai.StreamOptions{},
-				},
-			)
-			defer stream.Close()
-
-			if err != nil {
-				return "", history, err
-			}
-			completion := ""
-			for {
-				response, err := stream.Recv()
-				if errors.Is(err, io.EOF) {
-					break
-				}
-				if err != nil {
-					return "", history, fmt.Errorf("failed to receive streamed response: %w", err)
-				}
-				log.Debugf("response: %+v", response)
-				completion += response.Choices[0].Delta.Content
-			}
-			history = append(history, openai.ChatCompletionMessage{
-				Role:    openai.ChatMessageRoleAssistant,
-				Content: completion})
-			return completion, history, nil
-		}
-	}
-}
-
-// ChatPre is a function for chatting with the model by prepending the prompt to the history.
-func ChatPre(
-	ctx context.Context,
-	client *openai.Client,
-	model string,
-	history []openai.ChatCompletionMessage,
-	prompt string,
-) (out string, postHistory []openai.ChatCompletionMessage, err error) {
-	log.Debugf("calling ChatPre in domain")
-	defer log.Debugf("ChatPre completed in domain")
-	for {
-		select {
-		case <-ctx.Done():
-			return "", postHistory, ctx.Err()
-		default:
-			stream, err := client.CreateChatCompletionStream(
-				ctx, openai.ChatCompletionRequest{
-					Model: model,
-					Messages: append(
-						[]openai.ChatCompletionMessage{{Role: openai.ChatMessageRoleSystem, Content: prompt}},
-						history...,
-					),
-				},
-			)
-			if err != nil {
-				return "", history, err
-			}
-			completion := ""
-			for {
-				response, err := stream.Recv()
-				if errors.Is(err, io.EOF) {
-					break
-				}
-				if err != nil {
-					return "", history, fmt.Errorf("failed to receive streamed response: %w", err)
-				}
-				log.Debugf("response: %+v", response)
-				completion += response.Choices[0].Delta.Content
-			}
-			log.Debugf("completion: %+v", completion)
-			history = append(history, openai.ChatCompletionMessage{
-				Role:    openai.ChatMessageRoleAssistant,
-				Content: completion,
-			})
-			return completion, history, nil
-		}
-	}
-}
-
-// ChatN is a function for chatting with the model multiple "N" times.
-func ChatN(
-	ctx context.Context,
-	client *openai.Client,
-	model string,
-	history []openai.ChatCompletionMessage,
-	prompt string,
-	n int,
-) (outs []string, postHistories [][]openai.ChatCompletionMessage, err error) {
-	log.Debugf("calling ChatN in domain")
-	defer log.Debugf("ChatN completed in domain")
-	for {
-		select {
-		case <-ctx.Done():
-			return nil, nil, ctx.Err()
-		default:
-			out, hist, err := Chat(
-				ctx,
-				client,
-				model,
-				history,
-				prompt,
-			)
-			if err != nil {
-				return nil, nil, err
-			}
-			outs = append(outs, out)
-			postHistories = append(postHistories, hist)
-			if len(outs) >= n {
-				return outs, postHistories, nil
-			}
-			history = append(history, openai.ChatCompletionMessage{
-				Role:    openai.ChatMessageRoleAssistant,
-				Content: out})
-			return outs, postHistories, nil
-		}
-	}
-}
-
-// ChatPreN is a function for chatting with the model by prepending the prompt
-// to the history multiple "N" times.
-func ChatPreN(
-	ctx context.Context,
-	client *openai.Client,
-	model string,
-	history []openai.ChatCompletionMessage,
-	prompt string,
-	n int,
-) (outs []string, postHistories [][]openai.ChatCompletionMessage, err error) {
-	log.Debugf("calling ChatPreN in domain")
-	defer log.Debugf("ChatPreN completed in domain")
-	for {
-		select {
-		case <-ctx.Done():
-			return nil, nil, ctx.Err()
-		default:
-			out, hist, err := ChatPre(
-				ctx,
-				client,
-				model,
-				history,
-				prompt,
-			)
-			if err != nil {
-				return nil, nil, err
-			}
-			outs = append(outs, out)
-			postHistories = append(postHistories, hist)
-			if len(outs) >= n {
-				return outs, postHistories, nil
-			}
-			history = append(history, openai.ChatCompletionMessage{
-				Role:    openai.ChatMessageRoleAssistant,
-				Content: out})
-			return outs, postHistories, nil
-		}
-	}
-}
-
 // CreateClient creates a new client for the given api key.
 func CreateClient(baseURL string, apiKey string) *openai.Client {
 	cfg := openai.DefaultConfig(apiKey)
@@ -336,16 +161,17 @@ func CreateClient(baseURL string, apiKey string) *openai.Client {
 	return openai.NewClientWithConfig(cfg)
 }
 
-// Generate is a function for generating text using the OpenAI API.
-func Generate(
+// InvokeJSON is a function for generating json using the OpenAI API with the given prompt.
+func InvokeJSON(
 	ctx context.Context,
 	client *openai.Client,
 	model string,
 	history []openai.ChatCompletionMessage,
 	prompt prompter,
+	output interface{},
 ) (out string, postHistory []openai.ChatCompletionMessage, err error) {
-	log.Debugf("calling Generate in domain")
-	defer log.Debugf("Generate completed in domain")
+	log.Debugf("calling InvokeJSON in domain with prompt: %s", prompt.prompt())
+	defer log.Debugf("InvokeJSON completed in domain with prompt: %s", prompt.prompt())
 	for {
 		select {
 		case <-ctx.Done():
@@ -355,71 +181,98 @@ func Generate(
 			if err != nil {
 				return "", history, err
 			}
+			genHistory := append(history, openai.ChatCompletionMessage{
+				Role:    openai.ChatMessageRoleUser,
+				Content: prmpt,
+			})
 			completion, err := client.CreateChatCompletion(
 				ctx, openai.ChatCompletionRequest{
-					Model: model,
-					Messages: append(history, openai.ChatCompletionMessage{
-						Role:    openai.ChatMessageRoleSystem,
-						Content: prmpt,
-					}),
+					Model:    model,
+					Messages: genHistory,
 					ResponseFormat: &openai.ChatCompletionResponseFormat{
 						Type: "json_object",
 					},
 				},
 			)
-			log.Debugf("completion: %+v", completion)
 			if err != nil {
-				return "", history, err
+				r, ok := err.(*openai.RequestError)
+				if ok {
+					log.Debugf("request error: %+v", err)
+					log.Debugf("request error status code: %+v", r.HTTPStatusCode)
+				}
+				r2, ok := err.(*openai.APIError)
+				if ok {
+					log.Debugf("rate limit error: %+v", err)
+					log.Debugf("rate limit error type: %+v", r2.Type)
+					log.Debugf("rate limit error param: %+v", r2.Param)
+					log.Debugf("rate limit error code: %+v", r2.Code)
+				}
+				return "", genHistory, err
 			}
-			history = append(history, openai.ChatCompletionMessage{
+			genHistory = append(genHistory, openai.ChatCompletionMessage{
 				Role:    openai.ChatMessageRoleAssistant,
 				Content: completion.Choices[0].Message.Content})
-			return completion.Choices[0].Message.Content, history, nil
+			log.Debugf("completion: %+v", completion.Choices[0].Message.Content)
+			log.Debugf("history: %+v", genHistory)
+			err = DecodeJSON(ctx, []byte(completion.Choices[0].Message.Content), output, genHistory, client, model)
+			if err != nil {
+				return "", genHistory, err
+			}
+			return completion.Choices[0].Message.Content, genHistory, nil
 		}
 	}
 }
 
-// GenerateTxt is a function for generating text using the OpenAI API.
-func GenerateTxt(
+// InvokeJSON_N is a function for generating json using the OpenAI API multiple "N" times.
+func InvokeJSON_N(
 	ctx context.Context,
 	client *openai.Client,
 	model string,
 	history []openai.ChatCompletionMessage,
 	prompt prompter,
-) (out string, postHistory []openai.ChatCompletionMessage, err error) {
-	log.Debugf("calling GenerateTxt in domain")
-	defer log.Debugf("GenerateTxt completed in domain")
-	for {
+	output Responder,
+	n int,
+) (outs []string, histories [][]openai.ChatCompletionMessage, err error) {
+	outs = make([]string, n)
+	histories = make([][]openai.ChatCompletionMessage, n)
+	var eg *errgroup.Group
+	var hCtx context.Context
+	eg, hCtx = errgroup.WithContext(ctx)
+	for idx := 0; idx < n; idx++ {
 		select {
 		case <-ctx.Done():
-			return "", postHistory, ctx.Err()
+			return nil, nil, ctx.Err()
 		default:
-			prmpt, err := NewPrompt(prompt)
-			if err != nil {
-				return "", history, err
-			}
-			completion, err := client.CreateChatCompletion(
-				ctx, openai.ChatCompletionRequest{
-					Model: model,
-					Messages: append(history, openai.ChatCompletionMessage{
-						Role:    openai.ChatMessageRoleSystem,
-						Content: prmpt,
-					}),
-				},
-			)
-			if err != nil {
-				return "", history, err
-			}
-			history = append(history, openai.ChatCompletionMessage{
-				Role:    openai.ChatMessageRoleAssistant,
-				Content: completion.Choices[0].Message.Content})
-			return completion.Choices[0].Message.Content, history, nil
+			eg.Go(func() error {
+				log.Debugf("calling Generate from GenerateN in domain with prompt: %s", prompt.prompt())
+				out, hist, err := InvokeJSON(
+					hCtx,
+					client,
+					model,
+					history,
+					prompt,
+					output,
+				)
+				if err != nil {
+					return err
+				}
+				outs[idx] = out
+				histories[idx] = hist
+				history = append(history, openai.ChatCompletionMessage{
+					Role:    openai.ChatMessageRoleAssistant,
+					Content: out})
+				return nil
+			})
 		}
 	}
+	if err := eg.Wait(); err != nil {
+		return nil, nil, err
+	}
+	return outs, histories, nil
 }
 
-// GenerateN is a function for generating text using the OpenAI API multiple "N" times.
-func GenerateN(
+// InvokeJSONTxtN is a function for generating text using the OpenAI API multiple "N" times.
+func InvokeJSONTxtN(
 	ctx context.Context,
 	client *openai.Client,
 	model string,
@@ -427,14 +280,15 @@ func GenerateN(
 	prompt prompter,
 	n int,
 ) (outs []string, histories [][]openai.ChatCompletionMessage, err error) {
-	log.Debugf("calling GenerateN in domain")
-	defer log.Debugf("GenerateN completed in domain")
-	for {
+	outs = make([]string, n)
+	histories = make([][]openai.ChatCompletionMessage, n)
+	for idx := 0; idx < n; idx++ {
 		select {
 		case <-ctx.Done():
 			return nil, nil, ctx.Err()
 		default:
-			out, hist, err := Generate(
+			log.Debugf("calling InvokeTxt from InvokeTxtN in domain with prompt: %s", prompt.prompt())
+			out, hist, err := InvokeTxt(
 				ctx,
 				client,
 				model,
@@ -444,28 +298,26 @@ func GenerateN(
 			if err != nil {
 				return nil, nil, err
 			}
-			outs = append(outs, out)
-			histories = append(histories, hist)
+			outs[idx] = out
+			histories[idx] = hist
 			if len(outs) >= n {
 				return outs, histories, nil
 			}
-			history = append(history, openai.ChatCompletionMessage{
-				Role:    openai.ChatMessageRoleAssistant,
-				Content: out})
-			return outs, histories, nil
 		}
 	}
+	return outs, histories, nil
 }
 
-// GeneratePre is a function for generating text using the OpenAI API by
-// prepending the prompt to the history.
-func GeneratePre(
+// InvokeTxt is a function for generating text using the OpenAI API.
+func InvokeTxt(
 	ctx context.Context,
 	client *openai.Client,
 	model string,
 	history []openai.ChatCompletionMessage,
 	prompt prompter,
 ) (out string, postHistory []openai.ChatCompletionMessage, err error) {
+	log.Debugf("calling InvokeTxt in domain with prompt: %s", prompt.prompt())
+	defer log.Debugf("InvokeTxt completed in domain with prompt: %s", prompt.prompt())
 	for {
 		select {
 		case <-ctx.Done():
@@ -478,13 +330,10 @@ func GeneratePre(
 			completion, err := client.CreateChatCompletion(
 				ctx, openai.ChatCompletionRequest{
 					Model: model,
-					Messages: append(
-						[]openai.ChatCompletionMessage{{Role: openai.ChatMessageRoleSystem, Content: prmpt}},
-						history...,
-					),
-					ResponseFormat: &openai.ChatCompletionResponseFormat{
-						Type: "json",
-					},
+					Messages: append(history, openai.ChatCompletionMessage{
+						Role:    openai.ChatMessageRoleSystem,
+						Content: prmpt,
+					}),
 				},
 			)
 			if err != nil {
@@ -492,54 +341,16 @@ func GeneratePre(
 			}
 			history = append(history, openai.ChatCompletionMessage{
 				Role:    openai.ChatMessageRoleAssistant,
-				Content: completion.Choices[0].Message.Content,
-			})
+				Content: completion.Choices[0].Message.Content})
+			log.Debugf("completion: %+v", completion.Choices[0].Message.Content)
 			return completion.Choices[0].Message.Content, history, nil
 		}
 	}
 }
 
-// GeneratePreN is a function for generating text using the OpenAI API by
-// prepending the prompt to the history multiple "N" times.
-func GeneratePreN(
-	ctx context.Context,
-	client *openai.Client,
-	model string,
-	history []openai.ChatCompletionMessage,
-	prompt prompter,
-	n int,
-) (outs []string, postHistories [][]openai.ChatCompletionMessage, err error) {
-	for {
-		select {
-		case <-ctx.Done():
-			return nil, nil, ctx.Err()
-		default:
-			out, hist, err := GeneratePre(
-				ctx,
-				client,
-				model,
-				history,
-				prompt,
-			)
-			if err != nil {
-				return nil, nil, err
-			}
-			outs = append(outs, out)
-			postHistories = append(postHistories, hist)
-			if len(outs) >= n {
-				return outs, postHistories, nil
-			}
-			history = append(history, openai.ChatCompletionMessage{
-				Role:    openai.ChatMessageRoleAssistant,
-				Content: out})
-			return outs, postHistories, nil
-		}
-	}
-}
-
-// GeneratePreTxt is a function for generating text using the OpenAI API by
+// InvokePreTxt is a function for generating text using the OpenAI API by
 // prepending the prompt to the history.
-func GeneratePreTxt(
+func InvokePreTxt(
 	ctx context.Context,
 	client *openai.Client,
 	model string,
@@ -561,7 +372,10 @@ func GeneratePreTxt(
 				ctx, openai.ChatCompletionRequest{
 					Model: model,
 					Messages: append(
-						[]openai.ChatCompletionMessage{{Role: openai.ChatMessageRoleSystem, Content: prmpt}},
+						[]openai.ChatCompletionMessage{{
+							Role:    openai.ChatMessageRoleSystem,
+							Content: prmpt,
+						}},
 						history...,
 					),
 				},
@@ -577,3 +391,65 @@ func GeneratePreTxt(
 		}
 	}
 }
+
+// DecodeJSON is a function for decoding json.
+//
+// It tries to fix the json if it fails.
+func DecodeJSON(
+	ctx context.Context,
+	data []byte,
+	v interface{},
+	history []openai.ChatCompletionMessage,
+	client *openai.Client,
+	model string,
+) error {
+	hCtx, cancel := context.WithTimeout(ctx, time.Second*12)
+	defer cancel()
+	for {
+		select {
+		case <-ctx.Done():
+			return ctx.Err()
+		default:
+			err := json.Unmarshal(data, v)
+			if err == nil {
+				return nil
+			}
+			out, hist, err := InvokePreTxt(
+				ctx,
+				client,
+				model,
+				history,
+				IdentifyErrorArgs{Error: err},
+			)
+			if err != nil {
+				return err
+			}
+			newHist := append(hist, openai.ChatCompletionMessage{
+				Role:    openai.ChatMessageRoleAssistant,
+				Content: out})
+			out, hist, err = InvokeJSON(
+				ctx,
+				client,
+				model,
+				newHist,
+				DecodeErrorArgs{Error: err},
+				v,
+			)
+			err = json.Unmarshal([]byte(out), v)
+			if err != nil {
+				return DecodeJSON(
+					hCtx,
+					data,
+					v,
+					hist,
+					client,
+					model,
+				)
+			}
+			return nil
+		}
+	}
+}
+
+// force type cast for Responder
+var _ Responder = (*IdentifyResponse)(nil)

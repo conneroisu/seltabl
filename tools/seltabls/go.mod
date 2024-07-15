@@ -6,6 +6,7 @@ require (
 	github.com/PuerkitoBio/goquery v1.9.2
 	github.com/charmbracelet/huh v0.4.2
 	github.com/charmbracelet/log v0.4.0
+	github.com/google/uuid v1.6.0
 	github.com/mitchellh/go-homedir v1.1.0
 	github.com/sashabaranov/go-openai v1.26.3
 	github.com/sourcegraph/conc v0.3.0
@@ -53,7 +54,6 @@ require (
 	github.com/go-ole/go-ole v1.2.6 // indirect
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/golang/protobuf v1.5.4 // indirect
-	github.com/google/uuid v1.6.0 // indirect
 	github.com/hashicorp/golang-lru/v2 v2.0.7 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/klauspost/compress v1.17.4 // indirect

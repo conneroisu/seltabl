@@ -2,11 +2,11 @@ package cmds
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
 	"io"
 	"os"
 	"strings"
+	"sync"
 
 	"github.com/PuerkitoBio/goquery"
 	"github.com/charmbracelet/huh"
@@ -15,17 +15,19 @@ import (
 	"github.com/conneroisu/seltabl/tools/seltabls/domain"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/analysis"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/parsers"
+	"github.com/google/uuid"
 	"github.com/sashabaranov/go-openai"
 	"github.com/spf13/cobra"
 )
 
 const (
 	// baseURLDefault is the base url for the openai api of groq
-	// baseURLDefault = "https://api.groq.com/openai/v1"
-	baseURLDefault = "https://api.openai.com/v1"
+	baseURLDefault = "https://api.groq.com/openai/v1"
+	// baseURLDefault = "https://api.openai.com/v1"
 	// baseTreeWidthDefault is the default tree width for the openai api of groq
-	baseTreeWidthDefault = 10
-	// baseFastModelDefault is the default fast model for the openai api of groq
+	baseTreeWidthDefault = 3
+	defaultNumSections   = 3
+	// // baseFastModelDefault is the default fast model for the openai api of groq
 	// baseFastModelDefault = "llama3-8b-8192"
 	// // baseSmartModelDefault is the default smart model for the openai api of groq
 	// baseSmartModelDefault = "llama3-70b-8192"
@@ -47,13 +49,13 @@ var baseIgnoreElementsDefault = []string{
 // GenerateCmdParams is a struct for the generate command parameters
 type GenerateCmdParams struct {
 	URL            string   `json:"url"`            // required
-	Name           string   `json:"name"`           // required
 	FastModel      string   `json:"fastModel"`      // required
 	SmartModel     string   `json:"smartModel"`     // required
 	LLMKey         string   `json:"llmKey"`         // required
 	BaseURI        string   `json:"baseUri"`        // required
 	IgnoreElements []string `json:"ignoreElements"` // required
 	TreeWidth      int      `json:"treeWidth"`      // required
+	NumSections    int      `json:"numSections"`    // required
 }
 
 // NewGenerateCmd returns the generate command.
@@ -94,12 +96,12 @@ So the output fo the command:
 				"https://stats.ncaa.org/team/2/stats/16540",
 				"The url for which to generate a seltabl struct go file, test file, and config file.",
 			)
-			cmd.PersistentFlags().StringVarP(
-				&params.Name,
-				"name",
-				"n",
-				"",
-				"The name of the struct to generate.",
+			cmd.PersistentFlags().IntVarP(
+				&params.NumSections,
+				"num-sections",
+				"z",
+				defaultNumSections,
+				"The number of sections to generate.",
 			)
 			cmd.PersistentFlags().StringVarP(
 				&params.FastModel,
@@ -164,6 +166,7 @@ So the output fo the command:
 					return fmt.Errorf("LLM_API_KEY is not set")
 				}
 			}
+			log.SetLevel(log.DebugLevel)
 
 			if params.URL == "" {
 				input := huh.NewInput().
@@ -176,21 +179,19 @@ So the output fo the command:
 			return nil
 		},
 		RunE: func(cmd *cobra.Command, _ []string) error {
-			println("Getting model, llmKey: ", params.LLMKey)
+			log.Debugf("RunE called for command: %s", cmd.Name())
+			defer log.Debugf("RunE completed for command: %s", cmd.Name())
 			client := openai.NewClient(params.LLMKey)
-			/*                  client := domain.CreateClient( */
+			/* client := domain.CreateClient( */
 			/* params.BaseURI, */
 			/* params.LLMKey, */
-			/*    ) */
+			/* ) */
 			a, err := client.GetModel(ctx, params.FastModel)
 			if err != nil {
 				return fmt.Errorf("failed to get model: %w", err)
 			}
 			log.Infof("model: %s", a.ID)
 			log.Infof("fastModel: %s", params.FastModel)
-			log.Infof("smartModel: %s", params.SmartModel)
-			log.Debugf("RunE called for command: %s", cmd.Name())
-			defer log.Debugf("RunE completed for command: %s", cmd.Name())
 			state, err := analysis.NewState()
 			if err != nil {
 				return fmt.Errorf("failed to create state: %w", err)
@@ -204,7 +205,6 @@ So the output fo the command:
 			if err != nil {
 				return fmt.Errorf("failed to get selectors: %w", err)
 			}
-			log.Infof("Getting URL: %s", params.URL)
 			htmlBody, err := domain.GetRuledURL(params.URL, params.IgnoreElements)
 			if err != nil {
 				return fmt.Errorf("failed to get url: %w", err)
@@ -213,7 +213,6 @@ So the output fo the command:
 			if err != nil {
 				return fmt.Errorf("failed to create document: %w", err)
 			}
-			log.Infof("calling mainGenerate")
 			if err := mainGenerate(
 				ctx,
 				sels,
@@ -222,9 +221,8 @@ So the output fo the command:
 				doc,
 				params,
 			); err != nil {
-				return fmt.Errorf("failed to generate suite: %w", err)
+				return err
 			}
-
 			return nil
 		},
 	}
@@ -238,22 +236,24 @@ func mainGenerate(
 	doc *goquery.Document,
 	params GenerateCmdParams,
 ) error {
-	log.Infof("calling runGenerate")
-	defer log.Infof("runGenerate completed")
-	select {
-	case <-ctx.Done():
-		return fmt.Errorf("context cancelled: %w", ctx.Err())
-	default:
-		return runGenerate(
-			ctx,
-			selectors,
-			client,
-			htmlBody,
-			doc,
-			params,
-		)
+	for {
+		select {
+		case <-ctx.Done():
+			return ctx.Err()
+		default:
+			return runGenerate(
+				ctx,
+				selectors,
+				client,
+				htmlBody,
+				doc,
+				params,
+			)
+		}
 	}
 }
+
+var mut sync.Mutex
 
 func runGenerate(
 	ctx context.Context,
@@ -263,92 +263,70 @@ func runGenerate(
 	doc *goquery.Document,
 	params GenerateCmdParams,
 ) error {
+	mut.Lock()
+	defer mut.Unlock()
 	log.Infof("calling runGenerate")
 	defer log.Infof("runGenerate completed")
-	log.Infof("calling domain.GenerateN")
-	identifyCompletions, identifyHistories, err := domain.GenerateN(
+	identifyCompletions, identifyHistories, err := domain.InvokeJSON_N(
 		ctx,
 		client,
 		params.FastModel,
-		[]openai.ChatCompletionMessage{
-			{
-				Role:    openai.ChatMessageRoleUser,
-				Content: string(htmlBody),
-			},
-		},
+		[]openai.ChatCompletionMessage{},
 		domain.IdentifyPromptArgs{
 			URL:     params.URL,
 			Content: string(htmlBody),
+
+			NumSections: params.NumSections,
 		},
+		domain.IdentifyResponse{},
 		params.TreeWidth,
 	)
 	if err != nil || len(identifyCompletions) == 0 || len(identifyHistories) == 0 {
 		return fmt.Errorf("failed to generate identify completions: %w", err)
 	}
-	identifyCompletion, identifyHistory, err := domain.Generate(
+	identifyCompletion, identifyHistory, err := domain.InvokeJSON(
 		ctx,
 		client,
-		params.FastModel,
-		[]openai.ChatCompletionMessage{
-			{
-				Role:    openai.ChatMessageRoleUser,
-				Content: string(htmlBody),
-			},
-		},
+		params.SmartModel,
+		[]openai.ChatCompletionMessage{},
 		domain.IdentifyAggregateArgs{
-			Schemas: identifyCompletions,
-			Content: string(htmlBody),
+			Schemas:   identifyCompletions,
+			Content:   string(htmlBody),
+			Selectors: selectors,
 		},
+		domain.IdentifyResponse{},
 	)
 	if err != nil || len(identifyCompletion) == 0 || len(identifyHistories) == 0 {
 		return fmt.Errorf("failed to generate identify completions: %w", err)
 	}
-retry:
 	var identified domain.IdentifyResponse
-	err = json.Unmarshal(
+	err = domain.DecodeJSON(
+		ctx,
 		[]byte(identifyCompletion),
 		&identified,
+		identifyHistory,
+		client,
+		params.SmartModel,
 	)
-	if err != nil {
-		betterErr, _, err := domain.GeneratePreTxt(
-			ctx,
-			client,
-			params.SmartModel,
-			identifyHistory,
-			domain.IdentifyErrorArgs{Error: err},
-		)
-		if err != nil {
-			return fmt.Errorf("failed to generate error: %w", err)
-		}
-		identifyCompletion, identifyHistory, err = domain.Generate(
-			ctx,
-			client,
-			params.FastModel,
-			append(identifyHistory, openai.ChatCompletionMessage{Role: openai.ChatMessageRoleAssistant, Content: betterErr}),
-			domain.IdentifyAggregateArgs{
-				Schemas: identifyCompletions,
-				Content: string(htmlBody),
-			},
-		)
-		goto retry
-	}
 	for _, section := range identified.Sections {
-		selectorOuts, selectorHistories, err := domain.GenerateN(
+		s, _ := domain.HTMLSel(doc, section.CSS)
+		selectorOuts, selectorHistories, err := domain.InvokeJSON_N(
 			ctx,
 			client,
 			params.SmartModel,
 			identifyHistory,
 			domain.StructPromptArgs{
 				URL:       params.URL,
-				Content:   domain.HTMLSel(doc, section.CSS),
+				Content:   s,
 				Selectors: domain.HTMLReduce(doc, selectors),
 			},
+			domain.FieldsResponse{},
 			params.TreeWidth,
 		)
 		if err != nil || len(selectorOuts) == 0 || len(selectorHistories) == 0 {
-			return fmt.Errorf("failed to generate struct completions: %w", err)
+			return fmt.Errorf("failed to generateN struct completions: %w", err)
 		}
-		selectorOut, selectorHistory, err := domain.Generate(
+		selectorOut, selectorHistory, err := domain.InvokeJSON(
 			ctx,
 			client,
 			params.SmartModel,
@@ -358,19 +336,20 @@ retry:
 				Content:   domain.HTMLReduct(doc, section.CSS),
 				Schemas:   selectorOuts,
 			},
+			domain.FieldsResponse{},
 		)
 		if err != nil || len(selectorOut) == 0 || len(selectorHistory) == 0 {
 			return fmt.Errorf("failed to generate struct aggregate: %w", err)
 		}
 		var structFile domain.StructFilePromptArgs
-		err = json.Unmarshal(
+		err = domain.DecodeJSON(
+			ctx,
 			[]byte(selectorOut),
 			&structFile,
+			selectorHistory,
+			client,
+			params.SmartModel,
 		)
-		if err != nil {
-			return fmt.Errorf("failed to unmarshal struct file: %w", err)
-		}
-		structFile.PackageName = params.Name
 		structFile.Name = section.Name
 		structFile.URL = params.URL
 		for _, s := range selectors {
@@ -380,14 +359,19 @@ retry:
 		if err != nil {
 			return fmt.Errorf("failed to create struct file: %w", err)
 		}
+		name := fmt.Sprintf("%s.go", structFile.Name)
+		if structFile.Name == "" {
+			name = fmt.Sprintf("%s.go", uuid.New().String())
+		}
 		err = os.WriteFile(
-			fmt.Sprintf("%s.go", structFile.Name),
+			name,
 			[]byte(out),
 			0644,
 		)
 		if err != nil {
 			return fmt.Errorf("failed to write struct file: %w", err)
 		}
+		log.Infof("Generated struct file: %s.go", structFile.Name)
 	}
 	return nil
 }

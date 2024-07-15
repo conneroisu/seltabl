@@ -78,6 +78,9 @@ func vetFile(ctx context.Context, file string) ([]lsp.Diagnostic, error) {
 				},
 			},
 		})
+	if err != nil {
+		return nil, err
+	}
 	return response.Params.Diagnostics, nil
 }
 

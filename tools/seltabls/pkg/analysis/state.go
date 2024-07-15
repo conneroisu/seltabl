@@ -49,6 +49,9 @@ func NewState() (state State, err error) {
 		return state, fmt.Errorf("failed to create database: %w", err)
 	}
 	logger, err := getLogger(path.Join(configPath, "state.log"))
+	if err != nil {
+		return state, fmt.Errorf("failed to create logger: %w", err)
+	}
 	state = State{
 		Documents: make(map[string]string),
 		Selectors: make(map[string][]master.Selector),

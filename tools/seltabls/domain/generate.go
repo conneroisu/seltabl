@@ -163,6 +163,79 @@ func CreateClient(baseURL string, apiKey string) *openai.Client {
 	return openai.NewClientWithConfig(cfg)
 }
 
+// InvokeJSONSimple is a function for generating json using the OpenAI API with the given prompt.
+//
+// It does not decode the json.
+func InvokeJSONSimple(
+	ctx context.Context,
+	client *openai.Client,
+	model string,
+	history []openai.ChatCompletionMessage,
+	prompt prompter,
+) (out string, postHistory []openai.ChatCompletionMessage, err error) {
+	log.Debugf("calling InvokeJSON in domain with prompt: %s", prompt.prompt())
+	defer log.Debugf(
+		"InvokeJSON completed in domain with prompt: %s",
+		prompt.prompt(),
+	)
+	for {
+		select {
+		case <-ctx.Done():
+			return "", postHistory, ctx.Err()
+		default:
+			prmpt, err := NewPrompt(prompt)
+			if err != nil {
+				return "", history, err
+			}
+			genHistory := append(history, openai.ChatCompletionMessage{
+				Role:    openai.ChatMessageRoleUser,
+				Content: prmpt,
+			})
+			completion, err := client.CreateChatCompletion(
+				ctx, openai.ChatCompletionRequest{
+					Model:    model,
+					Messages: genHistory,
+					ResponseFormat: &openai.ChatCompletionResponseFormat{
+						Type: "json_object",
+					},
+				},
+			)
+			if err != nil {
+				r, ok := err.(*openai.RequestError)
+				if ok {
+					log.Debugf("request error: %+v", err)
+					log.Debugf(
+						"request error status code: %+v",
+						r.HTTPStatusCode,
+					)
+				}
+				r2, ok := err.(*openai.APIError)
+				if ok {
+					log.Debugf("rate limit error: %+v", err)
+					log.Debugf("rate limit error type: %+v", r2.Type)
+					log.Debugf("rate limit error param: %+v", r2.Param)
+					log.Debugf("rate limit error code: %+v", r2.Code)
+				}
+				return "", genHistory, err
+			}
+			genHistory = append(genHistory, openai.ChatCompletionMessage{
+				Role:    openai.ChatMessageRoleAssistant,
+				Content: completion.Choices[0].Message.Content})
+			log.Debugf(
+				"completion: %+v",
+				completion.Choices[0].Message.Content,
+			)
+			if len(completion.Choices) == 0 {
+				return "", genHistory, fmt.Errorf("no choices found")
+			}
+			if len(completion.Choices[0].Message.Content) == 0 {
+				return "", genHistory, fmt.Errorf("no content found")
+			}
+			return completion.Choices[0].Message.Content, genHistory, nil
+		}
+	}
+}
+
 // InvokeJSON is a function for generating json using the OpenAI API with the given prompt.
 func InvokeJSON(
 	ctx context.Context,
@@ -479,14 +552,12 @@ func DecodeJSON(
 			newHist := append(hist, openai.ChatCompletionMessage{
 				Role:    openai.ChatMessageRoleAssistant,
 				Content: out})
-			out, hist, err = InvokeJSON(
+			out, hist, err = InvokeJSONSimple(
 				ctx,
 				client,
 				model,
 				newHist,
 				DecodeErrorArgs{Error: err},
-				v,
-				htmlBody,
 			)
 			err = json.Unmarshal([]byte(out), v)
 			if err != nil {
@@ -517,38 +588,34 @@ func (f *Field) Verify(htmlBody string) error {
 	if err != nil {
 		return fmt.Errorf("failed to create document: %w", err)
 	}
-	dSel := f.DataSelector
-	cSel := f.ControlSelector
-	qSel := f.QuerySelector
-	hSel := f.HeaderSelector
-	if dSel != "" {
-		sel := doc.Find(dSel)
+	if f.DataSelector != "" {
+		sel := doc.Find(f.DataSelector)
 		if sel.Length() == 0 {
-			return fmt.Errorf("failed to find selector: %s", dSel)
+			return fmt.Errorf("failed to find selector: %s", f.DataSelector)
 		}
 	} else {
-		return fmt.Errorf("no data found for selector %s with type %s in field %s with type %s", dSel, f.Type, f.Name, f.Type)
+		return fmt.Errorf("no data found for selector %s with type %s in field %s with type %s", f.DataSelector, f.Type, f.Name, f.Type)
 	}
-	if cSel != "" {
-		sel := doc.Find(cSel)
+	if f.ControlSelector != "" {
+		sel := doc.Find(f.ControlSelector)
 		if sel.Length() == 0 {
-			return fmt.Errorf("failed to find selector: %s", cSel)
+			return fmt.Errorf("failed to find selector: %s", f.ControlSelector)
 		}
 	} else {
-		return fmt.Errorf("no control found for selector %s with type %s in field %s with type %s", cSel, f.Type, f.Name, f.Type)
+		return fmt.Errorf("no control found for selector %s with type %s in field %s with type %s", f.ControlSelector, f.Type, f.Name, f.Type)
 	}
-	if qSel != "" {
-		sel := doc.Find(qSel)
+	if f.QuerySelector != "" {
+		sel := doc.Find(f.QuerySelector)
 		if sel.Length() == 0 {
-			return fmt.Errorf("failed to find selector: %s", qSel)
+			return fmt.Errorf("failed to find selector: %s", f.QuerySelector)
 		}
 	} else {
-		return fmt.Errorf("no query found for selector %s with type %s in field %s with type %s", qSel, f.Type, f.Name, f.Type)
+		return fmt.Errorf("no query found for selector %s with type %s in field %s with type %s", f.QuerySelector, f.Type, f.Name, f.Type)
 	}
-	if hSel != "" {
-		sel := doc.Find(hSel)
+	if f.HeaderSelector != "" {
+		sel := doc.Find(f.HeaderSelector)
 		if sel.Length() == 0 {
-			return fmt.Errorf("failed to find selector: %s", hSel)
+			return fmt.Errorf("failed to find selector: %s", f.HeaderSelector)
 		}
 	}
 	mbp := f.MustBePresent

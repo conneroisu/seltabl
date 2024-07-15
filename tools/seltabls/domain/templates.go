@@ -42,8 +42,8 @@ func (a sectionErrorArgs) prompt() string {
 
 // SectionAggregateArgs is the arguments for the section aggregate prompt.
 type SectionAggregateArgs struct {
-	Structs []string
-	Content string
+	Structs []string `json:"structs"`
+	Content string   `json:"content"`
 }
 
 func (a SectionAggregateArgs) prompt() string {
@@ -52,62 +52,62 @@ func (a SectionAggregateArgs) prompt() string {
 
 // IdentifyErrorArgs is the arguments for the identify error prompt.
 type IdentifyErrorArgs struct {
-	Error error
+	Error error `json:"error"`
 }
 
 func (a IdentifyErrorArgs) prompt() string { return "identify_error" }
 
 // StructAggregateArgs is the arguments for the struct aggregate prompt.
 type StructAggregateArgs struct {
-	Selectors []master.Selector
-	Content   string
-	Schemas   []string
+	Selectors []master.Selector `json:"selectors"`
+	Content   string            `json:"content"`
+	Schemas   []string          `json:"schemas"`
 }
 
 func (a StructAggregateArgs) prompt() string { return "struct_aggregate" }
 
 // IdentifyPromptArgs is the arguments for the identify prompt.
 type IdentifyPromptArgs struct {
-	URL     string
-	Content string
+	URL     string `json:"url"`
+	Content string `json:"content"`
 }
 
 func (a IdentifyPromptArgs) prompt() string { return "identify_prompt" }
 
 // IdentifyAggregateArgs is the arguments for the identify aggregate prompt.
 type IdentifyAggregateArgs struct {
-	Content string
-	Schemas []string
+	Content string   `json:"content"`
+	Schemas []string `json:"schemas"`
 }
 
 func (a IdentifyAggregateArgs) prompt() string { return "identify_aggregate" }
 
 // StructPromptArgs is the arguments for the struct prompt.
 type StructPromptArgs struct {
-	URL       string
-	Content   string
-	Selectors []master.Selector
+	URL       string            `json:"url"`
+	Content   string            `json:"content"`
+	Selectors []master.Selector `json:"selectors"`
 }
 
 func (a StructPromptArgs) prompt() string { return "struct_prompt" }
 
 // TestFilePromptArgs is the arguments for the test file prompt.
 type TestFilePromptArgs struct {
-	Version     string
-	Name        string
-	URL         string
-	PackageName string
+	Version     string `json:"version"`
+	Name        string `json:"name"`
+	URL         string `json:"url"`
+	PackageName string `json:"package-name"`
 }
 
 func (a TestFilePromptArgs) prompt() string { return "test_file" }
 
 // StructFilePromptArgs is the arguments for the struct file prompt.
 type StructFilePromptArgs struct {
-	Name           string
-	URL            string
-	IgnoreElements []string
-	Fields         []Field
-	PackageName    string
+	Name           string   `json:"name,omitempty"`
+	URL            string   `json:"url,omitempty"`
+	IgnoreElements []string `json:"ignore-elements,omitempty"`
+	Fields         []Field  `json:"fields"`
+	PackageName    string   `json:"package-name"`
 }
 
 func (a StructFilePromptArgs) prompt() string { return "struct_file" }

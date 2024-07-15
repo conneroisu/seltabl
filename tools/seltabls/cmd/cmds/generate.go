@@ -313,12 +313,25 @@ retry:
 		&identified,
 	)
 	if err != nil {
-		identifyCompletion, identifyHistory, err = domain.GeneratePre(
+		betterErr, _, err := domain.GeneratePre(
 			ctx,
 			client,
 			params.SmartModel,
 			identifyHistory,
 			domain.IdentifyErrorArgs{Error: err},
+		)
+		if err != nil {
+			return fmt.Errorf("failed to generate error: %w", err)
+		}
+		identifyCompletion, identifyHistory, err = domain.Generate(
+			ctx,
+			client,
+			params.FastModel,
+			append(identifyHistory, openai.ChatCompletionMessage{Role: openai.ChatMessageRoleAssistant, Content: betterErr}),
+			domain.IdentifyAggregateArgs{
+				Schemas: identifyCompletions,
+				Content: string(htmlBody),
+			},
 		)
 		goto retry
 	}
@@ -330,8 +343,8 @@ retry:
 			identifyHistory,
 			domain.StructPromptArgs{
 				URL:       params.URL,
-				Content:   domain.HtmlSel(doc, section.CSS),
-				Selectors: selectors,
+				Content:   domain.HTMLSel(doc, section.CSS),
+				Selectors: domain.HTMLReduce(doc, selectors),
 			},
 			params.TreeWidth,
 		)
@@ -343,7 +356,11 @@ retry:
 			client,
 			params.SmartModel,
 			[]openai.ChatCompletionMessage{},
-			domain.StructAggregateArgs{Selectors: selectors, Content: string(htmlBody), Schemas: selectorOuts},
+			domain.StructAggregateArgs{
+				Selectors: domain.HTMLReduce(doc, selectors),
+				Content:   domain.HTMLReduct(doc, section.CSS),
+				Schemas:   selectorOuts,
+			},
 		)
 		if err != nil || len(selectorOut) == 0 || len(selectorHistory) == 0 {
 			return fmt.Errorf("failed to generate struct aggregate: %w", err)
@@ -353,6 +370,27 @@ retry:
 			[]byte(selectorOut),
 			&structFile,
 		)
+		if err != nil {
+			return fmt.Errorf("failed to unmarshal struct file: %w", err)
+		}
+		structFile.PackageName = params.Name
+		structFile.Name = section.Name
+		structFile.URL = params.URL
+		for _, s := range selectors {
+			structFile.IgnoreElements = append(structFile.IgnoreElements, s.Value)
+		}
+		out, err := domain.NewPrompt(structFile)
+		if err != nil {
+			return fmt.Errorf("failed to create struct file: %w", err)
+		}
+		err = os.WriteFile(
+			fmt.Sprintf("%s.go", structFile.Name),
+			[]byte(out),
+			0644,
+		)
+		if err != nil {
+			return fmt.Errorf("failed to write struct file: %w", err)
+		}
 	}
 	return nil
 }

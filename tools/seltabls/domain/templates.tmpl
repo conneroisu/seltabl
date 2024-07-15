@@ -42,6 +42,7 @@ Please provide a single JSON object that aggregates the following multiple JSON 
 The aggregated JSON object should combine all the fields from the above structures.
 If there are any conflicting fields, please ensure they are merged appropriately.
 
+
 {{- range .Structs }}
 ```json
 - {{ . }}
@@ -75,6 +76,7 @@ Good examples of statistics are sections that contain data that can be extracted
 
 You should return a json object with the following attributes:
 
+- package-name: the package name for the section. (should be a valid golang package name)
 - sections: a list of sections of the html that are processable.
 \- description: a description of the section. (should describe what the section is for and what it contains)
 \- start: the start of the section in the html. (line number)
@@ -85,6 +87,7 @@ Example Output:
 
 ```json
 {
+	"package-name": "softball-ncaa-stats-team-results",
 	"sections": [
 		{
 			"description": "Section contains the stats for the team.",

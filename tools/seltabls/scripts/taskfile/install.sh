@@ -28,3 +28,8 @@ gum spin --spinner dot --title "Installing SQLDiff" --show-output -- \
 # Check if the command, sqlc, exists, if not install it
 gum spin --spinner dot --title "Installing SQLC" --show-output -- \
     command -v sqlc >/dev/null 2>&1 || brew install sqlc
+
+
+gum spin --spinner dot --title "Installing Staticcheck" --show-output -- \
+    go install honnef.co/go/tools/cmd/staticcheck@latest
+

@@ -20,11 +20,13 @@ Install the package in a project with:
 go get github.com/conneroisu/seltabl
 ```
 
-Install the cli with:
+Install the [cli](https://github.com/conneroisu/seltabl/tree/main/tools/seltabls) containing the language server and package command line utilities with:
 
 ```bash
 go install github.com/conneroisu/seltabl/tools/seltabls@latest
 ```
+
+<img width="1440" alt="Recording of Language Server" src="/assets/out.gif">
 
 ## Usage
 

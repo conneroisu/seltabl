@@ -52,12 +52,12 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 			state.Logger.SetOutput(mw)
 			cmd.SetErr(mw)
 			ctx, cancel := context.WithCancel(ctx)
-			eg, ctx := errgroup.WithContext(ctx)
 			defer cancel()
 			ctxs := make(map[int]handleCtx)
+			eg, hCtx := errgroup.WithContext(ctx)
 			for scanner.Scan() {
 				eg.Go(func() error {
-					hCtx, cancel := context.WithCancel(context.Background())
+					hCtx, cancel = context.WithCancel(context.Background())
 					defer cancel()
 					decoded, err := rpc.DecodeMessage(scanner.Bytes())
 					if err != nil {
@@ -68,7 +68,7 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 						ctxs[decoded.ID].cancel()
 						delete(ctxs, decoded.ID)
 					}
-					resp, err := handle(hCtx, &state, decoded)
+					resp, err := handle(hCtx, &state, *decoded)
 					if err != nil {
 						state.Logger.Printf(
 							"failed to handle message: %s\n",

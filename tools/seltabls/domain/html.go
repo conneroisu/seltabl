@@ -37,7 +37,10 @@ func HTMLContainsN(doc *goquery.Document, selectors []master.Selector) bool {
 }
 
 // HTMLReduce is a function for reducing a list of selectors to a selectors contained in the document.
-func HTMLReduce(doc *goquery.Document, selectors []master.Selector) (sels []master.Selector) {
+func HTMLReduce(
+	doc *goquery.Document,
+	selectors []master.Selector,
+) (sels []master.Selector) {
 	for _, selector := range selectors {
 		if !HTMLContains(doc, selector.Value) {
 			sels = append(sels, selector)

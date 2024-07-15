@@ -83,8 +83,6 @@ So the output fo the command:
 
 `,
 		PreRunE: func(cmd *cobra.Command, _ []string) error {
-			log.Debugf("PreRunE called for command: %s", cmd.Name())
-			defer log.Debugf("PreRunE completed for command: %s", cmd.Name())
 			cmd.SetOutput(w)
 			cmd.SetIn(r)
 			cmd.SetErr(w)
@@ -167,7 +165,6 @@ So the output fo the command:
 				}
 			}
 			log.SetLevel(log.DebugLevel)
-
 			if params.URL == "" {
 				input := huh.NewInput().
 					Title("Enter the url for which to generate a seltabl struct:").
@@ -178,24 +175,17 @@ So the output fo the command:
 			}
 			return nil
 		},
-		RunE: func(cmd *cobra.Command, _ []string) error {
-			log.Debugf("RunE called for command: %s", cmd.Name())
-			defer log.Debugf("RunE completed for command: %s", cmd.Name())
+		RunE: func(_ *cobra.Command, _ []string) error {
 			client := openai.NewClient(params.LLMKey)
 			/* client := domain.CreateClient( */
-			/* params.BaseURI, */
-			/* params.LLMKey, */
+			/*	params.BaseURI, */
+			/*	params.LLMKey, */
 			/* ) */
-			a, err := client.GetModel(ctx, params.FastModel)
-			if err != nil {
-				return fmt.Errorf("failed to get model: %w", err)
-			}
-			log.Infof("model: %s", a.ID)
-			log.Infof("fastModel: %s", params.FastModel)
 			state, err := analysis.NewState()
 			if err != nil {
 				return fmt.Errorf("failed to create state: %w", err)
 			}
+			log.Infof("calling GetSelectors")
 			sels, err := parsers.GetSelectors(
 				ctx,
 				&state.Database,
@@ -205,14 +195,22 @@ So the output fo the command:
 			if err != nil {
 				return fmt.Errorf("failed to get selectors: %w", err)
 			}
-			htmlBody, err := domain.GetRuledURL(params.URL, params.IgnoreElements)
+			log.Infof("calling GetRuledURL")
+			htmlBody, err := domain.GetRuledURL(
+				params.URL,
+				params.IgnoreElements,
+			)
 			if err != nil {
 				return fmt.Errorf("failed to get url: %w", err)
 			}
-			doc, err := goquery.NewDocumentFromReader(strings.NewReader(string(htmlBody)))
+			log.Infof("calling NewDocumentFromReader")
+			doc, err := goquery.NewDocumentFromReader(
+				strings.NewReader(string(htmlBody)),
+			)
 			if err != nil {
 				return fmt.Errorf("failed to create document: %w", err)
 			}
+			log.Infof("calling mainGenerate")
 			if err := mainGenerate(
 				ctx,
 				sels,
@@ -267,7 +265,7 @@ func runGenerate(
 	defer mut.Unlock()
 	log.Infof("calling runGenerate")
 	defer log.Infof("runGenerate completed")
-	identifyCompletions, identifyHistories, err := domain.InvokeJSON_N(
+	identifyCompletions, identifyHistories, err := domain.InvokeJSONN(
 		ctx,
 		client,
 		params.FastModel,
@@ -280,10 +278,13 @@ func runGenerate(
 		},
 		domain.IdentifyResponse{},
 		params.TreeWidth,
+		string(htmlBody),
 	)
-	if err != nil || len(identifyCompletions) == 0 || len(identifyHistories) == 0 {
+	if err != nil || len(identifyCompletions) == 0 ||
+		len(identifyHistories) == 0 {
 		return fmt.Errorf("failed to generate identify completions: %w", err)
 	}
+	var identified domain.IdentifyResponse
 	identifyCompletion, identifyHistory, err := domain.InvokeJSON(
 		ctx,
 		client,
@@ -294,23 +295,19 @@ func runGenerate(
 			Content:   string(htmlBody),
 			Selectors: selectors,
 		},
-		domain.IdentifyResponse{},
+		&identified,
+		string(htmlBody),
 	)
-	if err != nil || len(identifyCompletion) == 0 || len(identifyHistories) == 0 {
+	if err != nil || len(identifyCompletion) == 0 ||
+		len(identifyHistories) == 0 {
 		return fmt.Errorf("failed to generate identify completions: %w", err)
 	}
-	var identified domain.IdentifyResponse
-	err = domain.DecodeJSON(
-		ctx,
-		[]byte(identifyCompletion),
-		&identified,
-		identifyHistory,
-		client,
-		params.SmartModel,
-	)
 	for _, section := range identified.Sections {
-		s, _ := domain.HTMLSel(doc, section.CSS)
-		selectorOuts, selectorHistories, err := domain.InvokeJSON_N(
+		s, err := domain.HTMLSel(doc, section.CSS)
+		if err != nil {
+			return fmt.Errorf("failed to get html: %w", err)
+		}
+		selectorOuts, selectorHistories, err := domain.InvokeJSONN(
 			ctx,
 			client,
 			params.SmartModel,
@@ -322,11 +319,17 @@ func runGenerate(
 			},
 			domain.FieldsResponse{},
 			params.TreeWidth,
+			string(htmlBody),
 		)
-		if err != nil || len(selectorOuts) == 0 || len(selectorHistories) == 0 {
-			return fmt.Errorf("failed to generateN struct completions: %w", err)
+		if err != nil || len(selectorOuts) == 0 ||
+			len(selectorHistories) == 0 {
+			return fmt.Errorf(
+				"failed to generateN struct completions: %w",
+				err,
+			)
 		}
-		selectorOut, selectorHistory, err := domain.InvokeJSON(
+		var structFile = domain.StructFilePromptArgs{}
+		_, _, err = domain.InvokeJSON(
 			ctx,
 			client,
 			params.SmartModel,
@@ -336,25 +339,14 @@ func runGenerate(
 				Content:   domain.HTMLReduct(doc, section.CSS),
 				Schemas:   selectorOuts,
 			},
-			domain.FieldsResponse{},
+			&structFile,
+			string(htmlBody),
 		)
-		if err != nil || len(selectorOut) == 0 || len(selectorHistory) == 0 {
+		if err != nil {
 			return fmt.Errorf("failed to generate struct aggregate: %w", err)
 		}
-		var structFile domain.StructFilePromptArgs
-		err = domain.DecodeJSON(
-			ctx,
-			[]byte(selectorOut),
-			&structFile,
-			selectorHistory,
-			client,
-			params.SmartModel,
-		)
 		structFile.Name = section.Name
 		structFile.URL = params.URL
-		for _, s := range selectors {
-			structFile.IgnoreElements = append(structFile.IgnoreElements, s.Value)
-		}
 		out, err := domain.NewPrompt(structFile)
 		if err != nil {
 			return fmt.Errorf("failed to create struct file: %w", err)

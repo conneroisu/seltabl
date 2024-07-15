@@ -3,11 +3,13 @@ package domain
 import (
 	"encoding/json"
 	"os"
+	"strings"
 	"time"
 
 	"context"
 	"fmt"
 
+	"github.com/PuerkitoBio/goquery"
 	"github.com/charmbracelet/log"
 	"github.com/conneroisu/seltabl/tools/seltabls/data"
 	"github.com/conneroisu/seltabl/tools/seltabls/data/master"
@@ -48,7 +50,7 @@ type ConfigFile struct {
 // html returning this struct in the form of json.
 type IdentifyResponse struct {
 	// Sections is a list of sections in the html.
-	Sections []Section `json:"sections" yaml:"sections"`
+	Sections []Section `json:"sections"     yaml:"sections"`
 	// PackageName is the package name for the identify response.
 	PackageName string `json:"package-name" yaml:"package-name"`
 }
@@ -161,17 +163,21 @@ func CreateClient(baseURL string, apiKey string) *openai.Client {
 	return openai.NewClientWithConfig(cfg)
 }
 
-// InvokeJSON is a function for generating json using the OpenAI API with the given prompt.
-func InvokeJSON(
+// InvokeJSONSimple is a function for generating json using the OpenAI API with the given prompt.
+//
+// It does not decode the json.
+func InvokeJSONSimple(
 	ctx context.Context,
 	client *openai.Client,
 	model string,
 	history []openai.ChatCompletionMessage,
 	prompt prompter,
-	output interface{},
 ) (out string, postHistory []openai.ChatCompletionMessage, err error) {
 	log.Debugf("calling InvokeJSON in domain with prompt: %s", prompt.prompt())
-	defer log.Debugf("InvokeJSON completed in domain with prompt: %s", prompt.prompt())
+	defer log.Debugf(
+		"InvokeJSON completed in domain with prompt: %s",
+		prompt.prompt(),
+	)
 	for {
 		select {
 		case <-ctx.Done():
@@ -198,7 +204,10 @@ func InvokeJSON(
 				r, ok := err.(*openai.RequestError)
 				if ok {
 					log.Debugf("request error: %+v", err)
-					log.Debugf("request error status code: %+v", r.HTTPStatusCode)
+					log.Debugf(
+						"request error status code: %+v",
+						r.HTTPStatusCode,
+					)
 				}
 				r2, ok := err.(*openai.APIError)
 				if ok {
@@ -212,19 +221,108 @@ func InvokeJSON(
 			genHistory = append(genHistory, openai.ChatCompletionMessage{
 				Role:    openai.ChatMessageRoleAssistant,
 				Content: completion.Choices[0].Message.Content})
-			log.Debugf("completion: %+v", completion.Choices[0].Message.Content)
-			log.Debugf("history: %+v", genHistory)
-			err = DecodeJSON(ctx, []byte(completion.Choices[0].Message.Content), output, genHistory, client, model)
-			if err != nil {
-				return "", genHistory, err
+			log.Debugf(
+				"completion: %+v",
+				completion.Choices[0].Message.Content,
+			)
+			if len(completion.Choices) == 0 {
+				return "", genHistory, fmt.Errorf("no choices found")
+			}
+			if len(completion.Choices[0].Message.Content) == 0 {
+				return "", genHistory, fmt.Errorf("no content found")
 			}
 			return completion.Choices[0].Message.Content, genHistory, nil
 		}
 	}
 }
 
-// InvokeJSON_N is a function for generating json using the OpenAI API multiple "N" times.
-func InvokeJSON_N(
+// InvokeJSON is a function for generating json using the OpenAI API with the given prompt.
+func InvokeJSON(
+	ctx context.Context,
+	client *openai.Client,
+	model string,
+	history []openai.ChatCompletionMessage,
+	prompt prompter,
+	output interface{},
+	htmlBody string,
+) (out string, postHistory []openai.ChatCompletionMessage, err error) {
+	log.Debugf("calling InvokeJSON in domain with prompt: %s", prompt.prompt())
+	defer log.Debugf(
+		"InvokeJSON completed in domain with prompt: %s",
+		prompt.prompt(),
+	)
+	for {
+		select {
+		case <-ctx.Done():
+			return "", postHistory, ctx.Err()
+		default:
+			prmpt, err := NewPrompt(prompt)
+			if err != nil {
+				return "", history, err
+			}
+			genHistory := append(history, openai.ChatCompletionMessage{
+				Role:    openai.ChatMessageRoleUser,
+				Content: prmpt,
+			})
+			completion, err := client.CreateChatCompletion(
+				ctx, openai.ChatCompletionRequest{
+					Model:    model,
+					Messages: genHistory,
+					ResponseFormat: &openai.ChatCompletionResponseFormat{
+						Type: "json_object",
+					},
+				},
+			)
+			if err != nil {
+				r, ok := err.(*openai.RequestError)
+				if ok {
+					log.Debugf("request error: %+v", err)
+					log.Debugf(
+						"request error status code: %+v",
+						r.HTTPStatusCode,
+					)
+				}
+				r2, ok := err.(*openai.APIError)
+				if ok {
+					log.Debugf("rate limit error: %+v", err)
+					log.Debugf("rate limit error type: %+v", r2.Type)
+					log.Debugf("rate limit error param: %+v", r2.Param)
+					log.Debugf("rate limit error code: %+v", r2.Code)
+				}
+				return "", genHistory, err
+			}
+			genHistory = append(genHistory, openai.ChatCompletionMessage{
+				Role:    openai.ChatMessageRoleAssistant,
+				Content: completion.Choices[0].Message.Content})
+			log.Debugf(
+				"completion: %+v",
+				completion.Choices[0].Message.Content,
+			)
+			err = DecodeJSON(
+				ctx,
+				[]byte(completion.Choices[0].Message.Content),
+				output,
+				genHistory,
+				client,
+				model,
+				htmlBody,
+			)
+			if err != nil {
+				return "", genHistory, err
+			}
+			if len(completion.Choices) == 0 {
+				return "", genHistory, fmt.Errorf("no choices found")
+			}
+			if len(completion.Choices[0].Message.Content) == 0 {
+				return "", genHistory, fmt.Errorf("no content found")
+			}
+			return completion.Choices[0].Message.Content, genHistory, nil
+		}
+	}
+}
+
+// InvokeJSONN is a function for generating json using the OpenAI API multiple "N" times.
+func InvokeJSONN(
 	ctx context.Context,
 	client *openai.Client,
 	model string,
@@ -232,6 +330,7 @@ func InvokeJSON_N(
 	prompt prompter,
 	output Responder,
 	n int,
+	htmlBody string,
 ) (outs []string, histories [][]openai.ChatCompletionMessage, err error) {
 	outs = make([]string, n)
 	histories = make([][]openai.ChatCompletionMessage, n)
@@ -244,7 +343,10 @@ func InvokeJSON_N(
 			return nil, nil, ctx.Err()
 		default:
 			eg.Go(func() error {
-				log.Debugf("calling Generate from GenerateN in domain with prompt: %s", prompt.prompt())
+				log.Debugf(
+					"calling Generate from GenerateN in domain with prompt: %s",
+					prompt.prompt(),
+				)
 				out, hist, err := InvokeJSON(
 					hCtx,
 					client,
@@ -252,6 +354,7 @@ func InvokeJSON_N(
 					history,
 					prompt,
 					output,
+					htmlBody,
 				)
 				if err != nil {
 					return err
@@ -287,7 +390,10 @@ func InvokeJSONTxtN(
 		case <-ctx.Done():
 			return nil, nil, ctx.Err()
 		default:
-			log.Debugf("calling InvokeTxt from InvokeTxtN in domain with prompt: %s", prompt.prompt())
+			log.Debugf(
+				"calling InvokeTxt from InvokeTxtN in domain with prompt: %s",
+				prompt.prompt(),
+			)
 			out, hist, err := InvokeTxt(
 				ctx,
 				client,
@@ -317,7 +423,10 @@ func InvokeTxt(
 	prompt prompter,
 ) (out string, postHistory []openai.ChatCompletionMessage, err error) {
 	log.Debugf("calling InvokeTxt in domain with prompt: %s", prompt.prompt())
-	defer log.Debugf("InvokeTxt completed in domain with prompt: %s", prompt.prompt())
+	defer log.Debugf(
+		"InvokeTxt completed in domain with prompt: %s",
+		prompt.prompt(),
+	)
 	for {
 		select {
 		case <-ctx.Done():
@@ -342,7 +451,10 @@ func InvokeTxt(
 			history = append(history, openai.ChatCompletionMessage{
 				Role:    openai.ChatMessageRoleAssistant,
 				Content: completion.Choices[0].Message.Content})
-			log.Debugf("completion: %+v", completion.Choices[0].Message.Content)
+			log.Debugf(
+				"completion: %+v",
+				completion.Choices[0].Message.Content,
+			)
 			return completion.Choices[0].Message.Content, history, nil
 		}
 	}
@@ -402,7 +514,9 @@ func DecodeJSON(
 	history []openai.ChatCompletionMessage,
 	client *openai.Client,
 	model string,
+	htmlBody string,
 ) error {
+
 	hCtx, cancel := context.WithTimeout(ctx, time.Second*12)
 	defer cancel()
 	for {
@@ -410,9 +524,20 @@ func DecodeJSON(
 		case <-ctx.Done():
 			return ctx.Err()
 		default:
-			err := json.Unmarshal(data, v)
+			var err error
+			selR, ok := v.(FieldsResponse)
+			if ok {
+				for _, field := range selR.Fields {
+					err = field.Verify(
+						htmlBody,
+					)
+				}
+			}
 			if err == nil {
-				return nil
+				err = json.Unmarshal(data, &v)
+				if err == nil {
+					return nil
+				}
 			}
 			out, hist, err := InvokePreTxt(
 				ctx,
@@ -427,13 +552,12 @@ func DecodeJSON(
 			newHist := append(hist, openai.ChatCompletionMessage{
 				Role:    openai.ChatMessageRoleAssistant,
 				Content: out})
-			out, hist, err = InvokeJSON(
+			out, hist, err = InvokeJSONSimple(
 				ctx,
 				client,
 				model,
 				newHist,
 				DecodeErrorArgs{Error: err},
-				v,
 			)
 			err = json.Unmarshal([]byte(out), v)
 			if err != nil {
@@ -444,6 +568,7 @@ func DecodeJSON(
 					hist,
 					client,
 					model,
+					htmlBody,
 				)
 			}
 			return nil
@@ -453,3 +578,50 @@ func DecodeJSON(
 
 // force type cast for Responder
 var _ Responder = (*IdentifyResponse)(nil)
+var _ Responder = (*FieldsResponse)(nil)
+
+// Verify checks if the selectors are in the html
+func (f *Field) Verify(htmlBody string) error {
+	doc, err := goquery.NewDocumentFromReader(
+		strings.NewReader(htmlBody),
+	)
+	if err != nil {
+		return fmt.Errorf("failed to create document: %w", err)
+	}
+	if f.DataSelector != "" {
+		sel := doc.Find(f.DataSelector)
+		if sel.Length() == 0 {
+			return fmt.Errorf("failed to find selector: %s", f.DataSelector)
+		}
+	} else {
+		return fmt.Errorf("no data found for selector %s with type %s in field %s with type %s", f.DataSelector, f.Type, f.Name, f.Type)
+	}
+	if f.ControlSelector != "" {
+		sel := doc.Find(f.ControlSelector)
+		if sel.Length() == 0 {
+			return fmt.Errorf("failed to find selector: %s", f.ControlSelector)
+		}
+	} else {
+		return fmt.Errorf("no control found for selector %s with type %s in field %s with type %s", f.ControlSelector, f.Type, f.Name, f.Type)
+	}
+	if f.QuerySelector != "" {
+		sel := doc.Find(f.QuerySelector)
+		if sel.Length() == 0 {
+			return fmt.Errorf("failed to find selector: %s", f.QuerySelector)
+		}
+	} else {
+		return fmt.Errorf("no query found for selector %s with type %s in field %s with type %s", f.QuerySelector, f.Type, f.Name, f.Type)
+	}
+	if f.HeaderSelector != "" {
+		sel := doc.Find(f.HeaderSelector)
+		if sel.Length() == 0 {
+			return fmt.Errorf("failed to find selector: %s", f.HeaderSelector)
+		}
+	}
+	mbp := f.MustBePresent
+	docTxt := doc.Text()
+	if !strings.Contains(docTxt, mbp) {
+		return fmt.Errorf("must be present (%s) not found for field %s with type %s", mbp, f.Name, f.Type)
+	}
+	return nil
+}

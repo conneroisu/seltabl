@@ -24,7 +24,11 @@ type prompter interface {
 type Responder interface{ respond() string }
 
 func (i IdentifyResponse) respond() string {
-	return fmt.Sprintf("Sections:\n%s\nPackageName: %s", i.Sections, i.PackageName)
+	return fmt.Sprintf(
+		"Sections:\n%s\nPackageName: %s",
+		i.Sections,
+		i.PackageName,
+	)
 }
 
 // NewPrompt creates a new prompt for the given args
@@ -68,9 +72,9 @@ func (a IdentifyErrorArgs) prompt() string { return "section_error" }
 
 // StructAggregateArgs is the arguments for the struct aggregate prompt.
 type StructAggregateArgs struct {
-	Selectors []master.Selector `json:"selectors"`
-	Content   string            `json:"content"`
-	Schemas   []string          `json:"schemas"`
+	Selectors []master.Selector // required
+	Content   string            // required
+	Schemas   []string          // required
 }
 
 func (a StructAggregateArgs) prompt() string { return "struct_aggregate" }

@@ -48,7 +48,7 @@ func NewState() (state State, err error) {
 	if err != nil {
 		return state, fmt.Errorf("failed to create database: %w", err)
 	}
-	logger := getLogger(path.Join(configPath, "state.log"))
+	logger, err := getLogger(path.Join(configPath, "state.log"))
 	state = State{
 		Documents: make(map[string]string),
 		Selectors: make(map[string][]master.Selector),
@@ -60,16 +60,16 @@ func NewState() (state State, err error) {
 }
 
 // getLogger returns a logger that writes to a file
-func getLogger(fileName string) *log.Logger {
+func getLogger(fileName string) (*log.Logger, error) {
 	logFile, err := os.OpenFile(
 		fileName,
 		os.O_CREATE|os.O_APPEND|os.O_WRONLY,
 		0666,
 	)
 	if err != nil {
-		log.Fatal(err)
+		return nil, err
 	}
-	return log.New(logFile, "[seltabls#state]", log.LstdFlags)
+	return log.New(logFile, "[seltabls#state]", log.LstdFlags), nil
 }
 
 // CreateConfigDir creates a new config directory and returns the path.

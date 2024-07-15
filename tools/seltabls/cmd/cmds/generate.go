@@ -284,6 +284,7 @@ func runGenerate(
 	if err != nil || len(identifyCompletions) == 0 || len(identifyHistories) == 0 {
 		return fmt.Errorf("failed to generate identify completions: %w", err)
 	}
+	var identified domain.IdentifyResponse
 	identifyCompletion, identifyHistory, err := domain.InvokeJSON(
 		ctx,
 		client,
@@ -294,20 +295,11 @@ func runGenerate(
 			Content:   string(htmlBody),
 			Selectors: selectors,
 		},
-		domain.IdentifyResponse{},
+		&identified,
 	)
 	if err != nil || len(identifyCompletion) == 0 || len(identifyHistories) == 0 {
 		return fmt.Errorf("failed to generate identify completions: %w", err)
 	}
-	var identified domain.IdentifyResponse
-	err = domain.DecodeJSON(
-		ctx,
-		[]byte(identifyCompletion),
-		&identified,
-		identifyHistory,
-		client,
-		params.SmartModel,
-	)
 	for _, section := range identified.Sections {
 		s, _ := domain.HTMLSel(doc, section.CSS)
 		selectorOuts, selectorHistories, err := domain.InvokeJSONN(

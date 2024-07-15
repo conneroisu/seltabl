@@ -55,11 +55,11 @@ seltabls config
 
 ### Run tests
 
-Using makefile:
+Using makefile (generally used for CI):
 ```sh
 make test
 ```
-Using taskfile:
+Using taskfile (generally used for local development):
 ```sh
 task test
 ```

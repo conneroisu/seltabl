@@ -48,7 +48,7 @@ type ConfigFile struct {
 // html returning this struct in the form of json.
 type IdentifyResponse struct {
 	// Sections is a list of sections in the html.
-	Sections []Section `json:"sections" yaml:"sections"`
+	Sections []Section `json:"sections"     yaml:"sections"`
 	// PackageName is the package name for the identify response.
 	PackageName string `json:"package-name" yaml:"package-name"`
 }
@@ -171,7 +171,10 @@ func InvokeJSON(
 	output interface{},
 ) (out string, postHistory []openai.ChatCompletionMessage, err error) {
 	log.Debugf("calling InvokeJSON in domain with prompt: %s", prompt.prompt())
-	defer log.Debugf("InvokeJSON completed in domain with prompt: %s", prompt.prompt())
+	defer log.Debugf(
+		"InvokeJSON completed in domain with prompt: %s",
+		prompt.prompt(),
+	)
 	for {
 		select {
 		case <-ctx.Done():
@@ -198,7 +201,10 @@ func InvokeJSON(
 				r, ok := err.(*openai.RequestError)
 				if ok {
 					log.Debugf("request error: %+v", err)
-					log.Debugf("request error status code: %+v", r.HTTPStatusCode)
+					log.Debugf(
+						"request error status code: %+v",
+						r.HTTPStatusCode,
+					)
 				}
 				r2, ok := err.(*openai.APIError)
 				if ok {
@@ -212,11 +218,27 @@ func InvokeJSON(
 			genHistory = append(genHistory, openai.ChatCompletionMessage{
 				Role:    openai.ChatMessageRoleAssistant,
 				Content: completion.Choices[0].Message.Content})
-			log.Debugf("completion: %+v", completion.Choices[0].Message.Content)
+			log.Debugf(
+				"completion: %+v",
+				completion.Choices[0].Message.Content,
+			)
 			log.Debugf("history: %+v", genHistory)
-			err = DecodeJSON(ctx, []byte(completion.Choices[0].Message.Content), output, genHistory, client, model)
+			err = DecodeJSON(
+				ctx,
+				[]byte(completion.Choices[0].Message.Content),
+				output,
+				genHistory,
+				client,
+				model,
+			)
 			if err != nil {
 				return "", genHistory, err
+			}
+			if len(completion.Choices) == 0 {
+				return "", genHistory, fmt.Errorf("no choices found")
+			}
+			if len(completion.Choices[0].Message.Content) == 0 {
+				return "", genHistory, fmt.Errorf("no content found")
 			}
 			return completion.Choices[0].Message.Content, genHistory, nil
 		}
@@ -244,7 +266,10 @@ func InvokeJSONN(
 			return nil, nil, ctx.Err()
 		default:
 			eg.Go(func() error {
-				log.Debugf("calling Generate from GenerateN in domain with prompt: %s", prompt.prompt())
+				log.Debugf(
+					"calling Generate from GenerateN in domain with prompt: %s",
+					prompt.prompt(),
+				)
 				out, hist, err := InvokeJSON(
 					hCtx,
 					client,
@@ -287,7 +312,10 @@ func InvokeJSONTxtN(
 		case <-ctx.Done():
 			return nil, nil, ctx.Err()
 		default:
-			log.Debugf("calling InvokeTxt from InvokeTxtN in domain with prompt: %s", prompt.prompt())
+			log.Debugf(
+				"calling InvokeTxt from InvokeTxtN in domain with prompt: %s",
+				prompt.prompt(),
+			)
 			out, hist, err := InvokeTxt(
 				ctx,
 				client,
@@ -317,7 +345,10 @@ func InvokeTxt(
 	prompt prompter,
 ) (out string, postHistory []openai.ChatCompletionMessage, err error) {
 	log.Debugf("calling InvokeTxt in domain with prompt: %s", prompt.prompt())
-	defer log.Debugf("InvokeTxt completed in domain with prompt: %s", prompt.prompt())
+	defer log.Debugf(
+		"InvokeTxt completed in domain with prompt: %s",
+		prompt.prompt(),
+	)
 	for {
 		select {
 		case <-ctx.Done():
@@ -342,7 +373,10 @@ func InvokeTxt(
 			history = append(history, openai.ChatCompletionMessage{
 				Role:    openai.ChatMessageRoleAssistant,
 				Content: completion.Choices[0].Message.Content})
-			log.Debugf("completion: %+v", completion.Choices[0].Message.Content)
+			log.Debugf(
+				"completion: %+v",
+				completion.Choices[0].Message.Content,
+			)
 			return completion.Choices[0].Message.Content, history, nil
 		}
 	}

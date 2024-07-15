@@ -83,8 +83,6 @@ So the output fo the command:
 
 `,
 		PreRunE: func(cmd *cobra.Command, _ []string) error {
-			log.Debugf("PreRunE called for command: %s", cmd.Name())
-			defer log.Debugf("PreRunE completed for command: %s", cmd.Name())
 			cmd.SetOutput(w)
 			cmd.SetIn(r)
 			cmd.SetErr(w)
@@ -178,9 +176,7 @@ So the output fo the command:
 			}
 			return nil
 		},
-		RunE: func(cmd *cobra.Command, _ []string) error {
-			log.Debugf("RunE called for command: %s", cmd.Name())
-			defer log.Debugf("RunE completed for command: %s", cmd.Name())
+		RunE: func(_ *cobra.Command, _ []string) error {
 			client := openai.NewClient(params.LLMKey)
 			/* client := domain.CreateClient( */
 			/* params.BaseURI, */
@@ -205,11 +201,16 @@ So the output fo the command:
 			if err != nil {
 				return fmt.Errorf("failed to get selectors: %w", err)
 			}
-			htmlBody, err := domain.GetRuledURL(params.URL, params.IgnoreElements)
+			htmlBody, err := domain.GetRuledURL(
+				params.URL,
+				params.IgnoreElements,
+			)
 			if err != nil {
 				return fmt.Errorf("failed to get url: %w", err)
 			}
-			doc, err := goquery.NewDocumentFromReader(strings.NewReader(string(htmlBody)))
+			doc, err := goquery.NewDocumentFromReader(
+				strings.NewReader(string(htmlBody)),
+			)
 			if err != nil {
 				return fmt.Errorf("failed to create document: %w", err)
 			}
@@ -281,7 +282,8 @@ func runGenerate(
 		domain.IdentifyResponse{},
 		params.TreeWidth,
 	)
-	if err != nil || len(identifyCompletions) == 0 || len(identifyHistories) == 0 {
+	if err != nil || len(identifyCompletions) == 0 ||
+		len(identifyHistories) == 0 {
 		return fmt.Errorf("failed to generate identify completions: %w", err)
 	}
 	var identified domain.IdentifyResponse
@@ -297,7 +299,8 @@ func runGenerate(
 		},
 		&identified,
 	)
-	if err != nil || len(identifyCompletion) == 0 || len(identifyHistories) == 0 {
+	if err != nil || len(identifyCompletion) == 0 ||
+		len(identifyHistories) == 0 {
 		return fmt.Errorf("failed to generate identify completions: %w", err)
 	}
 	for _, section := range identified.Sections {
@@ -315,10 +318,15 @@ func runGenerate(
 			domain.FieldsResponse{},
 			params.TreeWidth,
 		)
-		if err != nil || len(selectorOuts) == 0 || len(selectorHistories) == 0 {
-			return fmt.Errorf("failed to generateN struct completions: %w", err)
+		if err != nil || len(selectorOuts) == 0 ||
+			len(selectorHistories) == 0 {
+			return fmt.Errorf(
+				"failed to generateN struct completions: %w",
+				err,
+			)
 		}
-		selectorOut, selectorHistory, err := domain.InvokeJSON(
+		var structFile = domain.StructFilePromptArgs{}
+		_, _, err = domain.InvokeJSON(
 			ctx,
 			client,
 			params.SmartModel,
@@ -328,25 +336,13 @@ func runGenerate(
 				Content:   domain.HTMLReduct(doc, section.CSS),
 				Schemas:   selectorOuts,
 			},
-			domain.FieldsResponse{},
+			&structFile,
 		)
-		if err != nil || len(selectorOut) == 0 || len(selectorHistory) == 0 {
+		if err != nil {
 			return fmt.Errorf("failed to generate struct aggregate: %w", err)
 		}
-		var structFile domain.StructFilePromptArgs
-		err = domain.DecodeJSON(
-			ctx,
-			[]byte(selectorOut),
-			&structFile,
-			selectorHistory,
-			client,
-			params.SmartModel,
-		)
 		structFile.Name = section.Name
 		structFile.URL = params.URL
-		for _, s := range selectors {
-			structFile.IgnoreElements = append(structFile.IgnoreElements, s.Value)
-		}
 		out, err := domain.NewPrompt(structFile)
 		if err != nil {
 			return fmt.Errorf("failed to create struct file: %w", err)

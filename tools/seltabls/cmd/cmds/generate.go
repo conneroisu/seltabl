@@ -165,7 +165,6 @@ So the output fo the command:
 				}
 			}
 			log.SetLevel(log.DebugLevel)
-
 			if params.URL == "" {
 				input := huh.NewInput().
 					Title("Enter the url for which to generate a seltabl struct:").
@@ -179,19 +178,14 @@ So the output fo the command:
 		RunE: func(_ *cobra.Command, _ []string) error {
 			client := openai.NewClient(params.LLMKey)
 			/* client := domain.CreateClient( */
-			/* params.BaseURI, */
-			/* params.LLMKey, */
+			/*	params.BaseURI, */
+			/*	params.LLMKey, */
 			/* ) */
-			a, err := client.GetModel(ctx, params.FastModel)
-			if err != nil {
-				return fmt.Errorf("failed to get model: %w", err)
-			}
-			log.Infof("model: %s", a.ID)
-			log.Infof("fastModel: %s", params.FastModel)
 			state, err := analysis.NewState()
 			if err != nil {
 				return fmt.Errorf("failed to create state: %w", err)
 			}
+			log.Infof("calling GetSelectors")
 			sels, err := parsers.GetSelectors(
 				ctx,
 				&state.Database,
@@ -201,6 +195,7 @@ So the output fo the command:
 			if err != nil {
 				return fmt.Errorf("failed to get selectors: %w", err)
 			}
+			log.Infof("calling GetRuledURL")
 			htmlBody, err := domain.GetRuledURL(
 				params.URL,
 				params.IgnoreElements,
@@ -208,12 +203,14 @@ So the output fo the command:
 			if err != nil {
 				return fmt.Errorf("failed to get url: %w", err)
 			}
+			log.Infof("calling NewDocumentFromReader")
 			doc, err := goquery.NewDocumentFromReader(
 				strings.NewReader(string(htmlBody)),
 			)
 			if err != nil {
 				return fmt.Errorf("failed to create document: %w", err)
 			}
+			log.Infof("calling mainGenerate")
 			if err := mainGenerate(
 				ctx,
 				sels,

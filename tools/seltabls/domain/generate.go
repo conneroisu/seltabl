@@ -222,7 +222,6 @@ func InvokeJSON(
 				"completion: %+v",
 				completion.Choices[0].Message.Content,
 			)
-			log.Debugf("history: %+v", genHistory)
 			err = DecodeJSON(
 				ctx,
 				[]byte(completion.Choices[0].Message.Content),
@@ -444,7 +443,7 @@ func DecodeJSON(
 		case <-ctx.Done():
 			return ctx.Err()
 		default:
-			err := json.Unmarshal(data, v)
+			err := json.Unmarshal(data, &v)
 			if err == nil {
 				return nil
 			}
@@ -487,3 +486,4 @@ func DecodeJSON(
 
 // force type cast for Responder
 var _ Responder = (*IdentifyResponse)(nil)
+var _ Responder = (*FieldsResponse)(nil)

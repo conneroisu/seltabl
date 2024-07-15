@@ -27,7 +27,7 @@ func (i IdentifyResponse) respond() string {
 	return fmt.Sprintf(
 		"Sections:\n%s\nPackageName: %s",
 		i.Sections,
-		i.PackageName,
+		i.Name,
 	)
 }
 
@@ -72,9 +72,9 @@ func (a IdentifyErrorArgs) prompt() string { return "section_error" }
 
 // StructAggregateArgs is the arguments for the struct aggregate prompt.
 type StructAggregateArgs struct {
-	Selectors []master.Selector // required
-	Content   string            // required
-	Schemas   []string          // required
+	Selectors []master.Selector `json:"selectors"` // required
+	Content   string            `json:"content"`   // required
+	Schemas   []string          `json:"schemas"`   // required
 }
 
 func (a StructAggregateArgs) prompt() string { return "struct_aggregate" }

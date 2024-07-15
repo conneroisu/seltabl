@@ -51,8 +51,8 @@ type ConfigFile struct {
 type IdentifyResponse struct {
 	// Sections is a list of sections in the html.
 	Sections []Section `json:"sections"     yaml:"sections"`
-	// PackageName is the package name for the identify response.
-	PackageName string `json:"package-name" yaml:"package-name"`
+	// Name is the name of the package.
+	Name string `json:"name" yaml:"name"`
 }
 
 // Section is a struct for a section in the html.

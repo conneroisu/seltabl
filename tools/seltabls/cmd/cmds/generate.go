@@ -280,7 +280,7 @@ func runGenerate(
 		params.TreeWidth,
 		string(htmlBody),
 	)
-	if err != nil || len(identifyCompletions) == 0 ||
+	if err != nil ||
 		len(identifyHistories) == 0 {
 		return fmt.Errorf("failed to generate identify completions: %w", err)
 	}
@@ -345,6 +345,7 @@ func runGenerate(
 		if err != nil {
 			return fmt.Errorf("failed to generate struct aggregate: %w", err)
 		}
+
 		structFile.Name = section.Name
 		structFile.URL = params.URL
 		out, err := domain.NewPrompt(structFile)

@@ -153,13 +153,14 @@ you must congregate them into a single comprehensive and accurate json response
 that fully describes the given html content.
 
 You are to congregate the following json schemas into a single comprehensive and 
-accurate json response that fully describes the given html content.
+accurate json response that fully describes the given html content, and you must 
+also provide a golang global struct name for the json response.
 
-Example Output showing 2 sections:
+Example Output showing 2 sections and a golang global struct name:
 
 ```json
 {
-	"package-name": "softball-ncaa-stats-team-results",
+	"name": "SoftballNCAAStatsTeamResults",
 	"sections": [
 		{
 			"description": "Section contains the stats for the team.",

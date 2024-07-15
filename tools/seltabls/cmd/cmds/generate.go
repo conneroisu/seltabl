@@ -278,6 +278,7 @@ func runGenerate(
 		},
 		domain.IdentifyResponse{},
 		params.TreeWidth,
+		string(htmlBody),
 	)
 	if err != nil || len(identifyCompletions) == 0 ||
 		len(identifyHistories) == 0 {
@@ -295,13 +296,17 @@ func runGenerate(
 			Selectors: selectors,
 		},
 		&identified,
+		string(htmlBody),
 	)
 	if err != nil || len(identifyCompletion) == 0 ||
 		len(identifyHistories) == 0 {
 		return fmt.Errorf("failed to generate identify completions: %w", err)
 	}
 	for _, section := range identified.Sections {
-		s, _ := domain.HTMLSel(doc, section.CSS)
+		s, err := domain.HTMLSel(doc, section.CSS)
+		if err != nil {
+			return fmt.Errorf("failed to get html: %w", err)
+		}
 		selectorOuts, selectorHistories, err := domain.InvokeJSONN(
 			ctx,
 			client,
@@ -314,6 +319,7 @@ func runGenerate(
 			},
 			domain.FieldsResponse{},
 			params.TreeWidth,
+			string(htmlBody),
 		)
 		if err != nil || len(selectorOuts) == 0 ||
 			len(selectorHistories) == 0 {
@@ -334,6 +340,7 @@ func runGenerate(
 				Schemas:   selectorOuts,
 			},
 			&structFile,
+			string(htmlBody),
 		)
 		if err != nil {
 			return fmt.Errorf("failed to generate struct aggregate: %w", err)

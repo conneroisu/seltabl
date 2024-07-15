@@ -166,7 +166,11 @@ func HandleMessage(
 					return nil, fmt.Errorf("failed to read file: %w", err)
 				}
 				state.Documents[request.Params.TextDocument.URI] = string(read)
-				return nil, nil
+				response := lsp.Response{
+					RPC: lsp.RPCVersion,
+				}
+
+				return response, nil
 			case methods.MethodNotificationTextDocumentDidClose:
 				var request lsp.DidCloseTextDocumentParamsNotification
 				if err = json.Unmarshal([]byte(msg.Content), &request); err != nil {

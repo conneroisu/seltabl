@@ -17,17 +17,17 @@ type BaseMessage struct {
 
 // DecodeMessage decodes a rpc message
 // returns the method, content, and error
-func DecodeMessage(msg []byte) (BaseMessage, error) {
+func DecodeMessage(msg []byte) (*BaseMessage, error) {
 	// Split the message into header and content
 	header, content, found := bytes.Cut(msg, []byte{'\r', '\n', '\r', '\n'})
 	if !found {
-		return BaseMessage{}, fmt.Errorf("no header found")
+		return nil, fmt.Errorf("no header found")
 	}
 	// Content-Length: <number>
 	contentLengthBytes := header[len("Content-Length: "):]
 	contentLength, err := strconv.Atoi(string(contentLengthBytes))
 	if err != nil {
-		return BaseMessage{}, fmt.Errorf(
+		return nil, fmt.Errorf(
 			"failed to parse content length %s: %w",
 			string(contentLengthBytes),
 			err,
@@ -35,12 +35,12 @@ func DecodeMessage(msg []byte) (BaseMessage, error) {
 	}
 	var baseMessage BaseMessage
 	if err := json.Unmarshal(content[:contentLength], &baseMessage); err != nil {
-		return BaseMessage{}, fmt.Errorf(
+		return nil, fmt.Errorf(
 			"failed to unmarshal base message: %w",
 			err,
 		)
 	}
 	baseMessage.Content = content[:contentLength]
 	baseMessage.Header = string(header)
-	return baseMessage, nil
+	return &baseMessage, nil
 }

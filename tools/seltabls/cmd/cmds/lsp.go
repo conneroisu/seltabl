@@ -68,7 +68,7 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 						ctxs[decoded.ID].cancel()
 						delete(ctxs, decoded.ID)
 					}
-					resp, err := handle(hCtx, &state, decoded)
+					resp, err := handle(hCtx, &state, *decoded)
 					if err != nil {
 						state.Logger.Printf(
 							"failed to handle message: %s\n",

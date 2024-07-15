@@ -19,16 +19,6 @@ func UpdateDocument(
 		case <-ctx.Done():
 			return nil, fmt.Errorf("context cancelled: %w", ctx.Err())
 		default:
-			response = &lsp.PublishDiagnosticsNotification{
-				Notification: lsp.Notification{
-					RPC:    "2.0",
-					Method: "textDocument/publishDiagnostics",
-				},
-				Params: lsp.PublishDiagnosticsParams{
-					Diagnostics: []lsp.Diagnostic{},
-					URI:         request.Params.TextDocument.URI,
-				},
-			}
 			select {
 			case <-ctx.Done():
 				return response, fmt.Errorf("context cancelled: %w", ctx.Err())
@@ -47,6 +37,16 @@ func UpdateDocument(
 					s.URLs[request.Params.TextDocument.URI],
 					data.URLs...,
 				)
+				response = &lsp.PublishDiagnosticsNotification{
+					Notification: lsp.Notification{
+						RPC:    "2.0",
+						Method: "textDocument/publishDiagnostics",
+					},
+					Params: lsp.PublishDiagnosticsParams{
+						Diagnostics: []lsp.Diagnostic{},
+						URI:         request.Params.TextDocument.URI,
+					},
+				}
 				for i := range request.Params.ContentChanges {
 					diags, err := GetDiagnosticsForFile(
 						ctx,

@@ -3,11 +3,13 @@ package domain
 import (
 	"encoding/json"
 	"os"
+	"strings"
 	"time"
 
 	"context"
 	"fmt"
 
+	"github.com/PuerkitoBio/goquery"
 	"github.com/charmbracelet/log"
 	"github.com/conneroisu/seltabl/tools/seltabls/data"
 	"github.com/conneroisu/seltabl/tools/seltabls/data/master"
@@ -169,6 +171,7 @@ func InvokeJSON(
 	history []openai.ChatCompletionMessage,
 	prompt prompter,
 	output interface{},
+	htmlBody string,
 ) (out string, postHistory []openai.ChatCompletionMessage, err error) {
 	log.Debugf("calling InvokeJSON in domain with prompt: %s", prompt.prompt())
 	defer log.Debugf(
@@ -229,6 +232,7 @@ func InvokeJSON(
 				genHistory,
 				client,
 				model,
+				htmlBody,
 			)
 			if err != nil {
 				return "", genHistory, err
@@ -253,6 +257,7 @@ func InvokeJSONN(
 	prompt prompter,
 	output Responder,
 	n int,
+	htmlBody string,
 ) (outs []string, histories [][]openai.ChatCompletionMessage, err error) {
 	outs = make([]string, n)
 	histories = make([][]openai.ChatCompletionMessage, n)
@@ -276,6 +281,7 @@ func InvokeJSONN(
 					history,
 					prompt,
 					output,
+					htmlBody,
 				)
 				if err != nil {
 					return err
@@ -435,7 +441,9 @@ func DecodeJSON(
 	history []openai.ChatCompletionMessage,
 	client *openai.Client,
 	model string,
+	htmlBody string,
 ) error {
+
 	hCtx, cancel := context.WithTimeout(ctx, time.Second*12)
 	defer cancel()
 	for {
@@ -443,9 +451,20 @@ func DecodeJSON(
 		case <-ctx.Done():
 			return ctx.Err()
 		default:
-			err := json.Unmarshal(data, &v)
+			var err error
+			selR, ok := v.(FieldsResponse)
+			if ok {
+				for _, field := range selR.Fields {
+					err = field.Verify(
+						htmlBody,
+					)
+				}
+			}
 			if err == nil {
-				return nil
+				err = json.Unmarshal(data, &v)
+				if err == nil {
+					return nil
+				}
 			}
 			out, hist, err := InvokePreTxt(
 				ctx,
@@ -467,6 +486,7 @@ func DecodeJSON(
 				newHist,
 				DecodeErrorArgs{Error: err},
 				v,
+				htmlBody,
 			)
 			err = json.Unmarshal([]byte(out), v)
 			if err != nil {
@@ -477,6 +497,7 @@ func DecodeJSON(
 					hist,
 					client,
 					model,
+					htmlBody,
 				)
 			}
 			return nil
@@ -487,3 +508,53 @@ func DecodeJSON(
 // force type cast for Responder
 var _ Responder = (*IdentifyResponse)(nil)
 var _ Responder = (*FieldsResponse)(nil)
+
+// Verify checks if the selectors are in the html
+func (f *Field) Verify(htmlBody string) error {
+	doc, err := goquery.NewDocumentFromReader(
+		strings.NewReader(htmlBody),
+	)
+	if err != nil {
+		return fmt.Errorf("failed to create document: %w", err)
+	}
+	dSel := f.DataSelector
+	cSel := f.ControlSelector
+	qSel := f.QuerySelector
+	hSel := f.HeaderSelector
+	if dSel != "" {
+		sel := doc.Find(dSel)
+		if sel.Length() == 0 {
+			return fmt.Errorf("failed to find selector: %s", dSel)
+		}
+	} else {
+		return fmt.Errorf("no data found for selector %s with type %s in field %s with type %s", dSel, f.Type, f.Name, f.Type)
+	}
+	if cSel != "" {
+		sel := doc.Find(cSel)
+		if sel.Length() == 0 {
+			return fmt.Errorf("failed to find selector: %s", cSel)
+		}
+	} else {
+		return fmt.Errorf("no control found for selector %s with type %s in field %s with type %s", cSel, f.Type, f.Name, f.Type)
+	}
+	if qSel != "" {
+		sel := doc.Find(qSel)
+		if sel.Length() == 0 {
+			return fmt.Errorf("failed to find selector: %s", qSel)
+		}
+	} else {
+		return fmt.Errorf("no query found for selector %s with type %s in field %s with type %s", qSel, f.Type, f.Name, f.Type)
+	}
+	if hSel != "" {
+		sel := doc.Find(hSel)
+		if sel.Length() == 0 {
+			return fmt.Errorf("failed to find selector: %s", hSel)
+		}
+	}
+	mbp := f.MustBePresent
+	docTxt := doc.Text()
+	if !strings.Contains(docTxt, mbp) {
+		return fmt.Errorf("must be present (%s) not found for field %s with type %s", mbp, f.Name, f.Type)
+	}
+	return nil
+}

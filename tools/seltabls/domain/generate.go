@@ -1,11 +1,14 @@
 package domain
 
 import (
+	"errors"
+	"io"
 	"os"
 
 	"context"
 	"fmt"
 
+	"github.com/charmbracelet/log"
 	"github.com/conneroisu/seltabl/tools/seltabls/data"
 	"github.com/conneroisu/seltabl/tools/seltabls/data/master"
 
@@ -151,12 +154,14 @@ func Chat(
 	history []openai.ChatCompletionMessage,
 	prompt string,
 ) (out string, postHistory []openai.ChatCompletionMessage, err error) {
+	log.Debugf("calling Chat in domain")
+	defer log.Debugf("Chat completed in domain")
 	for {
 		select {
 		case <-ctx.Done():
 			return "", postHistory, ctx.Err()
 		default:
-			completion, err := client.CreateChatCompletion(
+			stream, err := client.CreateChatCompletionStream(
 				ctx, openai.ChatCompletionRequest{
 					Model: model,
 					Messages: append(history, openai.ChatCompletionMessage{
@@ -166,15 +171,30 @@ func Chat(
 					ResponseFormat: &openai.ChatCompletionResponseFormat{
 						Type: "json",
 					},
+					StreamOptions: &openai.StreamOptions{},
 				},
 			)
+			defer stream.Close()
+
 			if err != nil {
 				return "", history, err
 			}
+			completion := ""
+			for {
+				response, err := stream.Recv()
+				if errors.Is(err, io.EOF) {
+					break
+				}
+				if err != nil {
+					return "", history, fmt.Errorf("failed to receive streamed response: %w", err)
+				}
+				log.Debugf("response: %+v", response)
+				completion += response.Choices[0].Delta.Content
+			}
 			history = append(history, openai.ChatCompletionMessage{
 				Role:    openai.ChatMessageRoleAssistant,
-				Content: completion.Choices[0].Message.Content})
-			return completion.Choices[0].Message.Content, history, nil
+				Content: completion})
+			return completion, history, nil
 		}
 	}
 }
@@ -187,12 +207,14 @@ func ChatPre(
 	history []openai.ChatCompletionMessage,
 	prompt string,
 ) (out string, postHistory []openai.ChatCompletionMessage, err error) {
+	log.Debugf("calling ChatPre in domain")
+	defer log.Debugf("ChatPre completed in domain")
 	for {
 		select {
 		case <-ctx.Done():
 			return "", postHistory, ctx.Err()
 		default:
-			completion, err := client.CreateChatCompletion(
+			stream, err := client.CreateChatCompletionStream(
 				ctx, openai.ChatCompletionRequest{
 					Model: model,
 					Messages: append(
@@ -204,11 +226,24 @@ func ChatPre(
 			if err != nil {
 				return "", history, err
 			}
+			completion := ""
+			for {
+				response, err := stream.Recv()
+				if errors.Is(err, io.EOF) {
+					break
+				}
+				if err != nil {
+					return "", history, fmt.Errorf("failed to receive streamed response: %w", err)
+				}
+				log.Debugf("response: %+v", response)
+				completion += response.Choices[0].Delta.Content
+			}
+			log.Debugf("completion: %+v", completion)
 			history = append(history, openai.ChatCompletionMessage{
 				Role:    openai.ChatMessageRoleAssistant,
-				Content: completion.Choices[0].Message.Content,
+				Content: completion,
 			})
-			return completion.Choices[0].Message.Content, history, nil
+			return completion, history, nil
 		}
 	}
 }
@@ -222,6 +257,8 @@ func ChatN(
 	prompt string,
 	n int,
 ) (outs []string, postHistories [][]openai.ChatCompletionMessage, err error) {
+	log.Debugf("calling ChatN in domain")
+	defer log.Debugf("ChatN completed in domain")
 	for {
 		select {
 		case <-ctx.Done():
@@ -260,6 +297,8 @@ func ChatPreN(
 	prompt string,
 	n int,
 ) (outs []string, postHistories [][]openai.ChatCompletionMessage, err error) {
+	log.Debugf("calling ChatPreN in domain")
+	defer log.Debugf("ChatPreN completed in domain")
 	for {
 		select {
 		case <-ctx.Done():
@@ -305,6 +344,8 @@ func Generate(
 	history []openai.ChatCompletionMessage,
 	prompt prompter,
 ) (out string, postHistory []openai.ChatCompletionMessage, err error) {
+	log.Debugf("calling Generate in domain")
+	defer log.Debugf("Generate completed in domain")
 	for {
 		select {
 		case <-ctx.Done():
@@ -322,8 +363,48 @@ func Generate(
 						Content: prmpt,
 					}),
 					ResponseFormat: &openai.ChatCompletionResponseFormat{
-						Type: "json",
+						Type: "json_object",
 					},
+				},
+			)
+			log.Debugf("completion: %+v", completion)
+			if err != nil {
+				return "", history, err
+			}
+			history = append(history, openai.ChatCompletionMessage{
+				Role:    openai.ChatMessageRoleAssistant,
+				Content: completion.Choices[0].Message.Content})
+			return completion.Choices[0].Message.Content, history, nil
+		}
+	}
+}
+
+// GenerateTxt is a function for generating text using the OpenAI API.
+func GenerateTxt(
+	ctx context.Context,
+	client *openai.Client,
+	model string,
+	history []openai.ChatCompletionMessage,
+	prompt prompter,
+) (out string, postHistory []openai.ChatCompletionMessage, err error) {
+	log.Debugf("calling GenerateTxt in domain")
+	defer log.Debugf("GenerateTxt completed in domain")
+	for {
+		select {
+		case <-ctx.Done():
+			return "", postHistory, ctx.Err()
+		default:
+			prmpt, err := NewPrompt(prompt)
+			if err != nil {
+				return "", history, err
+			}
+			completion, err := client.CreateChatCompletion(
+				ctx, openai.ChatCompletionRequest{
+					Model: model,
+					Messages: append(history, openai.ChatCompletionMessage{
+						Role:    openai.ChatMessageRoleSystem,
+						Content: prmpt,
+					}),
 				},
 			)
 			if err != nil {
@@ -346,6 +427,8 @@ func GenerateN(
 	prompt prompter,
 	n int,
 ) (outs []string, histories [][]openai.ChatCompletionMessage, err error) {
+	log.Debugf("calling GenerateN in domain")
+	defer log.Debugf("GenerateN completed in domain")
 	for {
 		select {
 		case <-ctx.Done():
@@ -450,6 +533,47 @@ func GeneratePreN(
 				Role:    openai.ChatMessageRoleAssistant,
 				Content: out})
 			return outs, postHistories, nil
+		}
+	}
+}
+
+// GeneratePreTxt is a function for generating text using the OpenAI API by
+// prepending the prompt to the history.
+func GeneratePreTxt(
+	ctx context.Context,
+	client *openai.Client,
+	model string,
+	history []openai.ChatCompletionMessage,
+	prompt prompter,
+) (out string, postHistory []openai.ChatCompletionMessage, err error) {
+	log.Debugf("calling GeneratePreTxt in domain")
+	defer log.Debugf("GeneratePreTxt completed in domain")
+	for {
+		select {
+		case <-ctx.Done():
+			return "", postHistory, ctx.Err()
+		default:
+			prmpt, err := NewPrompt(prompt)
+			if err != nil {
+				return "", history, err
+			}
+			completion, err := client.CreateChatCompletion(
+				ctx, openai.ChatCompletionRequest{
+					Model: model,
+					Messages: append(
+						[]openai.ChatCompletionMessage{{Role: openai.ChatMessageRoleSystem, Content: prmpt}},
+						history...,
+					),
+				},
+			)
+			if err != nil {
+				return "", history, err
+			}
+			history = append(history, openai.ChatCompletionMessage{
+				Role:    openai.ChatMessageRoleAssistant,
+				Content: completion.Choices[0].Message.Content,
+			})
+			return completion.Choices[0].Message.Content, history, nil
 		}
 	}
 }

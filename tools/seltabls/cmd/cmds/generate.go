@@ -21,15 +21,16 @@ import (
 
 const (
 	// baseURLDefault is the base url for the openai api of groq
-	baseURLDefault = "https://api.groq.com/openai/v1"
+	// baseURLDefault = "https://api.groq.com/openai/v1"
+	baseURLDefault = "https://api.openai.com/v1"
 	// baseTreeWidthDefault is the default tree width for the openai api of groq
 	baseTreeWidthDefault = 10
-	// baseTreeDepthDefault is the default tree depth for the openai api of groq
-	baseTreeDepthDefault = 10
 	// baseFastModelDefault is the default fast model for the openai api of groq
-	baseFastModelDefault = "llama3-8b-8192"
-	// baseSmartModelDefault is the default smart model for the openai api of groq
-	baseSmartModelDefault = "llama3-70b-8192"
+	// baseFastModelDefault = "llama3-8b-8192"
+	// // baseSmartModelDefault is the default smart model for the openai api of groq
+	// baseSmartModelDefault = "llama3-70b-8192"
+	baseSmartModelDefault = "gpt-4o"
+	baseFastModelDefault  = "gpt-4o"
 )
 
 // baseIgnoreElementsDefault is the default ignore elements for the openai api of groq
@@ -62,7 +63,6 @@ func NewGenerateCmd(
 	r io.Reader,
 ) *cobra.Command {
 	var params GenerateCmdParams
-	var client *openai.Client
 	return &cobra.Command{
 		Use:   "generate", // the name of the command
 		Short: "Generates a new seltabl struct for a given url with test coverage.",
@@ -91,7 +91,7 @@ So the output fo the command:
 				&params.URL,
 				"url",
 				"u",
-				"",
+				"https://stats.ncaa.org/team/2/stats/16540",
 				"The url for which to generate a seltabl struct go file, test file, and config file.",
 			)
 			cmd.PersistentFlags().StringVarP(
@@ -158,19 +158,9 @@ So the output fo the command:
 					baseTreeWidthDefault,
 				),
 			)
-			cmd.PersistentFlags().IntVarP(
-				&params.TreeWidth,
-				"tree-depth",
-				"d",
-				baseTreeDepthDefault,
-				fmt.Sprintf(
-					"The depth of the tree when generating the struct. Defaults to %d.",
-					baseTreeDepthDefault,
-				),
-			)
 			if params.LLMKey == "" {
-				llmKey := os.Getenv("LLM_API_KEY")
-				if llmKey == "" {
+				params.LLMKey = os.Getenv("LLM_API_KEY")
+				if params.LLMKey == "" {
 					return fmt.Errorf("LLM_API_KEY is not set")
 				}
 			}
@@ -183,38 +173,39 @@ So the output fo the command:
 					Value(&params.URL)
 				input.Run()
 			}
-			client = domain.CreateClient(
-				params.BaseURI,
-				params.LLMKey,
-			)
 			return nil
 		},
 		RunE: func(cmd *cobra.Command, _ []string) error {
+			println("Getting model, llmKey: ", params.LLMKey)
+			client := openai.NewClient(params.LLMKey)
+			/*                  client := domain.CreateClient( */
+			/* params.BaseURI, */
+			/* params.LLMKey, */
+			/*    ) */
+			a, err := client.GetModel(ctx, params.FastModel)
+			if err != nil {
+				return fmt.Errorf("failed to get model: %w", err)
+			}
+			log.Infof("model: %s", a.ID)
+			log.Infof("fastModel: %s", params.FastModel)
+			log.Infof("smartModel: %s", params.SmartModel)
 			log.Debugf("RunE called for command: %s", cmd.Name())
 			defer log.Debugf("RunE completed for command: %s", cmd.Name())
 			state, err := analysis.NewState()
 			if err != nil {
 				return fmt.Errorf("failed to create state: %w", err)
 			}
-			ignores := []string{
-				"script",
-				"style",
-				"link",
-				"img",
-				"footer",
-				"header",
-			}
 			sels, err := parsers.GetSelectors(
 				ctx,
 				&state.Database,
 				params.URL,
-				ignores,
+				params.IgnoreElements,
 			)
 			if err != nil {
 				return fmt.Errorf("failed to get selectors: %w", err)
 			}
 			log.Infof("Getting URL: %s", params.URL)
-			htmlBody, err := domain.GetRuledURL(params.URL, ignores)
+			htmlBody, err := domain.GetRuledURL(params.URL, params.IgnoreElements)
 			if err != nil {
 				return fmt.Errorf("failed to get url: %w", err)
 			}
@@ -222,6 +213,7 @@ So the output fo the command:
 			if err != nil {
 				return fmt.Errorf("failed to create document: %w", err)
 			}
+			log.Infof("calling mainGenerate")
 			if err := mainGenerate(
 				ctx,
 				sels,
@@ -246,6 +238,8 @@ func mainGenerate(
 	doc *goquery.Document,
 	params GenerateCmdParams,
 ) error {
+	log.Infof("calling runGenerate")
+	defer log.Infof("runGenerate completed")
 	select {
 	case <-ctx.Done():
 		return fmt.Errorf("context cancelled: %w", ctx.Err())
@@ -269,6 +263,9 @@ func runGenerate(
 	doc *goquery.Document,
 	params GenerateCmdParams,
 ) error {
+	log.Infof("calling runGenerate")
+	defer log.Infof("runGenerate completed")
+	log.Infof("calling domain.GenerateN")
 	identifyCompletions, identifyHistories, err := domain.GenerateN(
 		ctx,
 		client,
@@ -313,7 +310,7 @@ retry:
 		&identified,
 	)
 	if err != nil {
-		betterErr, _, err := domain.GeneratePre(
+		betterErr, _, err := domain.GeneratePreTxt(
 			ctx,
 			client,
 			params.SmartModel,

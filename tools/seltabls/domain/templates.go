@@ -3,6 +3,7 @@ package domain
 import (
 	"bytes"
 	_ "embed"
+	"fmt"
 	"text/template"
 
 	"github.com/conneroisu/seltabl/tools/seltabls/data/master"
@@ -17,6 +18,13 @@ var Template = template.Must(template.New("templates").Parse(templatesTmpl))
 // prompter is an interface for prompting it provided the template name to use.
 type prompter interface {
 	prompt() string
+}
+
+// Responder is an interface for responding to a given prompt.
+type Responder interface{ respond() string }
+
+func (i IdentifyResponse) respond() string {
+	return fmt.Sprintf("Sections:\n%s\nPackageName: %s", i.Sections, i.PackageName)
 }
 
 // NewPrompt creates a new prompt for the given args
@@ -42,8 +50,9 @@ func (a sectionErrorArgs) prompt() string {
 
 // SectionAggregateArgs is the arguments for the section aggregate prompt.
 type SectionAggregateArgs struct {
-	Structs []string `json:"structs"`
-	Content string   `json:"content"`
+	Structs   []string          `json:"structs"`   // required
+	Content   string            `json:"content"`   // required
+	Selectors []master.Selector `json:"selectors"` // required
 }
 
 func (a SectionAggregateArgs) prompt() string {
@@ -52,10 +61,10 @@ func (a SectionAggregateArgs) prompt() string {
 
 // IdentifyErrorArgs is the arguments for the identify error prompt.
 type IdentifyErrorArgs struct {
-	Error error `json:"error"`
+	Error error `json:"error"` // required
 }
 
-func (a IdentifyErrorArgs) prompt() string { return "identify_error" }
+func (a IdentifyErrorArgs) prompt() string { return "section_error" }
 
 // StructAggregateArgs is the arguments for the struct aggregate prompt.
 type StructAggregateArgs struct {
@@ -68,16 +77,18 @@ func (a StructAggregateArgs) prompt() string { return "struct_aggregate" }
 
 // IdentifyPromptArgs is the arguments for the identify prompt.
 type IdentifyPromptArgs struct {
-	URL     string `json:"url"`
-	Content string `json:"content"`
+	URL         string `json:"url"`
+	Content     string `json:"content"`
+	NumSections int    `json:"num-sections"`
 }
 
 func (a IdentifyPromptArgs) prompt() string { return "identify_prompt" }
 
 // IdentifyAggregateArgs is the arguments for the identify aggregate prompt.
 type IdentifyAggregateArgs struct {
-	Content string   `json:"content"`
-	Schemas []string `json:"schemas"`
+	Content   string            `json:"content"`
+	Schemas   []string          `json:"schemas"`
+	Selectors []master.Selector `json:"selectors"`
 }
 
 func (a IdentifyAggregateArgs) prompt() string { return "identify_aggregate" }
@@ -111,3 +122,11 @@ type StructFilePromptArgs struct {
 }
 
 func (a StructFilePromptArgs) prompt() string { return "struct_file" }
+
+// DecodeErrorArgs is the arguments for the decode error prompt.
+type DecodeErrorArgs struct {
+	Error   error  `json:"error"`
+	Message string `json:"message"`
+}
+
+func (a DecodeErrorArgs) prompt() string { return "decode_error" }

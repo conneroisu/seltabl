@@ -1,21 +1,23 @@
 package domain
 
 import (
+	"fmt"
+
 	"github.com/PuerkitoBio/goquery"
 	"github.com/conneroisu/seltabl/tools/seltabls/data/master"
 )
 
 // HTMLSel is a function for getting the html of a given css selector.
-func HTMLSel(doc *goquery.Document, css string) string {
+func HTMLSel(doc *goquery.Document, css string) (string, error) {
 	res := doc.Find(css)
 	if res.Length() == 0 {
-		panic("no result found")
+		return "", fmt.Errorf("no result found for selector: %s", css)
 	}
 	resp, err := res.Html()
 	if err != nil {
-		panic(err)
+		return "", err
 	}
-	return resp
+	return resp, nil
 }
 
 // HTMLContains is a function for checking if a given css selector exists in the html.

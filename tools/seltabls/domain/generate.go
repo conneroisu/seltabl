@@ -559,6 +559,17 @@ func DecodeJSON(
 				newHist,
 				DecodeErrorArgs{Error: err},
 			)
+			if err != nil {
+				return DecodeJSON(
+					hCtx,
+					data,
+					v,
+					hist,
+					client,
+					model,
+					htmlBody,
+				)
+			}
 			err = json.Unmarshal([]byte(out), v)
 			if err != nil {
 				return DecodeJSON(

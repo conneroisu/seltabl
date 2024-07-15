@@ -35,11 +35,13 @@ func (e ErrHTTPParse) Error() string {
 // ErrDocumentFromReader is an error for when a document cannot be created from
 // a reader with the given url and content.
 type ErrDocumentFromReader struct {
-	URL     string
+	// URL is the url for which failed to create a goquery document.
+	URL string
+	// Content is the content of the document.
 	Content string
 }
 
-// Error implements the error interface
+// Error implements the error interface for ErrDocumentFromReader.
 func (e ErrDocumentFromReader) Error() string {
 	return fmt.Sprintf(
 		"failed to create document from reader with url: %s and content: \n```html\n%s\n```",

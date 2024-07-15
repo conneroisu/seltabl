@@ -89,8 +89,5 @@ func ValidateConfig(cfg *ConfigFile) error {
 	if cfg.FastModel == "" {
 		return fmt.Errorf("fast-model is required")
 	}
-	if cfg.Recycle {
-		return fmt.Errorf("recycle is required")
-	}
 	return nil
 }

@@ -24,12 +24,12 @@ func main() {
 	}
 }
 
-// TableStruct is a test struct
+// TableStruct is a test struct.
 // @url: https://stats.ncaa.org/game_upload/team_codes
 // @ignore-elements: script, style, link, img, footer, header
 type TableStruct struct {
 	A string `json:"a" hSel:"html head meta[name=csrf-param]" dSel:"tr td:nth-child(1)" ctl:"text"`
 	B string `json:"b" hSel:"html"                            dSel:"tr:nth-child(1)"    ctl:"text"`
 	C string `json:"c" hSel:"html > body > div.footer"        dSel:"tr td:nth-child(1)" ctl:"text"`
-	D string `json:"d" hSel:"htmle > head > title"            dSel:"html"               ctl:"text"`
+	D string `json:"d" hSel:"html > head > title"            dSel:"html"               ctl:"text"`
 }

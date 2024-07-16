@@ -3,6 +3,7 @@ package domain
 import (
 	"context"
 	"os"
+	"time"
 
 	"fmt"
 
@@ -168,10 +169,12 @@ func InvokeJSONSimple(
 	history []openai.ChatCompletionMessage,
 	prompt prompter,
 ) (out string, postHistory []openai.ChatCompletionMessage, err error) {
+	hCtx, cancel := context.WithTimeout(ctx, time.Second*12)
+	defer cancel()
 	for {
 		select {
-		case <-ctx.Done():
-			return "", postHistory, ctx.Err()
+		case <-hCtx.Done():
+			return "", postHistory, hCtx.Err()
 		default:
 			prmpt, err := NewPrompt(prompt)
 			if err != nil {
@@ -184,7 +187,8 @@ func InvokeJSONSimple(
 					Content: prmpt,
 				})
 			completion, err := client.CreateChatCompletion(
-				ctx, openai.ChatCompletionRequest{
+				hCtx,
+				openai.ChatCompletionRequest{
 					Model:    model,
 					Messages: genHistory,
 					ResponseFormat: &openai.ChatCompletionResponseFormat{
@@ -204,9 +208,12 @@ func InvokeJSONSimple(
 				}
 				return "", genHistory, err
 			}
-			genHistory = append(genHistory, openai.ChatCompletionMessage{
-				Role:    openai.ChatMessageRoleAssistant,
-				Content: completion.Choices[0].Message.Content})
+			genHistory = append(
+				genHistory,
+				openai.ChatCompletionMessage{
+					Role:    openai.ChatMessageRoleAssistant,
+					Content: completion.Choices[0].Message.Content,
+				})
 			if len(completion.Choices) == 0 {
 				return "", genHistory, fmt.Errorf("no choices found")
 			}
@@ -299,7 +306,7 @@ func InvokeJSONN(
 	model string,
 	history []openai.ChatCompletionMessage,
 	prompt prompter,
-	output Responder,
+	output responder,
 	n int,
 	htmlBody string,
 ) (outs []string, histories [][]openai.ChatCompletionMessage, err error) {

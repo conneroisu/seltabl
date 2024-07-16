@@ -225,5 +225,5 @@ func DecodeJSON(
 }
 
 // force type cast for Responder
-var _ Responder = (*IdentifyResponse)(nil)
-var _ Responder = (*FieldsResponse)(nil)
+var _ responder = (*IdentifyResponse)(nil)
+var _ responder = (*FieldsResponse)(nil)

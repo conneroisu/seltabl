@@ -1,11 +1,15 @@
 package domain
 
 import (
+	"context"
+	"encoding/json"
 	"fmt"
 	"net/url"
 	"strings"
+	"time"
 
 	"github.com/PuerkitoBio/goquery"
+	"github.com/sashabaranov/go-openai"
 )
 
 // IsValidGoType checks if the given type is a valid go type
@@ -137,3 +141,89 @@ func (f *Field) Verify(htmlBody string) error {
 	}
 	return nil
 }
+
+// DecodeJSON is a function for decoding json.
+//
+// It tries to fix the json if it fails.
+func DecodeJSON(
+	ctx context.Context,
+	data []byte,
+	v interface{},
+	history []openai.ChatCompletionMessage,
+	client *openai.Client,
+	model string,
+	htmlBody string,
+) error {
+	hCtx, cancel := context.WithTimeout(ctx, time.Second*12)
+	defer cancel()
+	for {
+		select {
+		case <-ctx.Done():
+			return ctx.Err()
+		default:
+			var err error
+			selR, ok := v.(FieldsResponse)
+			if ok {
+				for _, field := range selR.Fields {
+					err = field.Verify(
+						htmlBody,
+					)
+				}
+			}
+			if err == nil {
+				err = json.Unmarshal(data, &v)
+				if err == nil {
+					return nil
+				}
+			}
+			out, hist, err := InvokePreTxt(
+				ctx,
+				client,
+				model,
+				history,
+				IdentifyErrorArgs{Error: err},
+			)
+			if err != nil {
+				return err
+			}
+			newHist := append(hist, openai.ChatCompletionMessage{
+				Role:    openai.ChatMessageRoleAssistant,
+				Content: out})
+			out, hist, err = InvokeJSONSimple(
+				ctx,
+				client,
+				model,
+				newHist,
+				DecodeErrorArgs{Error: err},
+			)
+			if err != nil {
+				return DecodeJSON(
+					hCtx,
+					data,
+					v,
+					hist,
+					client,
+					model,
+					htmlBody,
+				)
+			}
+			err = json.Unmarshal([]byte(out), v)
+			if err != nil {
+				return DecodeJSON(
+					hCtx,
+					data,
+					v,
+					hist,
+					client,
+					model,
+					htmlBody,
+				)
+			}
+			return nil
+		}
+	}
+}
+
+// force type cast for Responder
+var _ Responder = (*IdentifyResponse)(nil)
+var _ Responder = (*FieldsResponse)(nil)

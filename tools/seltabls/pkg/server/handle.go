@@ -59,7 +59,7 @@ func HandleMessage(
 					)
 				}
 				response, err = analysis.OpenDocument(hCtx, state, request)
-				if err != nil || response == nil {
+				if err != nil {
 					return nil, fmt.Errorf("failed to open document: %w", err)
 				}
 				return response, nil

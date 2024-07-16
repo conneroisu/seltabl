@@ -12,8 +12,8 @@ import (
 func UpdateDocument(
 	ctx context.Context,
 	s *State,
-	request *lsp.TextDocumentDidChangeNotification,
-) (response *lsp.PublishDiagnosticsNotification, err error) {
+	notification *lsp.TextDocumentDidChangeNotification,
+) (*lsp.PublishDiagnosticsNotification, error) {
 	for {
 		select {
 		case <-ctx.Done():
@@ -21,50 +21,50 @@ func UpdateDocument(
 		default:
 			select {
 			case <-ctx.Done():
-				return response, fmt.Errorf("context cancelled: %w", ctx.Err())
+				return nil, fmt.Errorf("context cancelled: %w", ctx.Err())
 			default:
-				s.Documents[request.Params.TextDocument.URI] = request.Params.ContentChanges[0].Text
+				s.Documents[notification.Params.TextDocument.URI] = notification.Params.ContentChanges[len(notification.Params.ContentChanges)-1].Text
 				data, err := parsers.ParseStructComments(
-					request.Params.ContentChanges[0].Text,
+					notification.Params.ContentChanges[len(notification.Params.ContentChanges)-1].Text,
 				)
 				if err != nil {
-					return response, fmt.Errorf(
+					return nil, fmt.Errorf(
 						"failed to get urls and ignores: %w",
 						err,
 					)
 				}
-				s.URLs[request.Params.TextDocument.URI] = append(
-					s.URLs[request.Params.TextDocument.URI],
+				s.URLs[notification.Params.TextDocument.URI] = append(
+					s.URLs[notification.Params.TextDocument.URI],
 					data.URLs...,
 				)
-				response = &lsp.PublishDiagnosticsNotification{
+				var ds []lsp.Diagnostic
+				for i := range notification.Params.ContentChanges {
+					diags, err := GetDiagnosticsForFile(
+						ctx,
+						s,
+						&notification.Params.ContentChanges[i].Text,
+						data,
+					)
+					if err != nil {
+						return nil, fmt.Errorf(
+							"failed to get diagnostics for file: %w",
+							err,
+						)
+					}
+					ds = append(
+						ds,
+						diags...)
+				}
+				return &lsp.PublishDiagnosticsNotification{
 					Notification: lsp.Notification{
 						RPC:    "2.0",
 						Method: "textDocument/publishDiagnostics",
 					},
 					Params: lsp.PublishDiagnosticsParams{
 						Diagnostics: []lsp.Diagnostic{},
-						URI:         request.Params.TextDocument.URI,
+						URI:         notification.Params.TextDocument.URI,
 					},
-				}
-				for i := range request.Params.ContentChanges {
-					diags, err := GetDiagnosticsForFile(
-						ctx,
-						s,
-						&request.Params.ContentChanges[i].Text,
-						data,
-					)
-					if err != nil {
-						return response, fmt.Errorf(
-							"failed to get diagnostics for file: %w",
-							err,
-						)
-					}
-					response.Params.Diagnostics = append(
-						response.Params.Diagnostics,
-						diags...)
-				}
-				return response, nil
+				}, nil
 			}
 		}
 	}

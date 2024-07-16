@@ -54,7 +54,7 @@ You should return a json object with the following attributes:
 \- description: a description of the section (should describe what the section is for and what it contains).
 \- css: the css selector for the section (should be a valid css selector to select the entire section in the html).
 
-The global base selectors are:
+The base selectors for the struct are:
 
 {{- range $i, $sel := .Selectors }}
 	{{- if $i }}{{- end }}

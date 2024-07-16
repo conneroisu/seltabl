@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"github.com/PuerkitoBio/goquery"
+	"github.com/liushuangls/go-anthropic/v2"
 	"github.com/sashabaranov/go-openai"
 )
 
@@ -149,8 +150,8 @@ func DecodeJSON(
 	ctx context.Context,
 	data []byte,
 	v interface{},
-	history []openai.ChatCompletionMessage,
-	client *openai.Client,
+	history []anthropic.Message,
+	client *anthropic.Client,
 	model string,
 	htmlBody string,
 ) error {
@@ -188,9 +189,9 @@ func DecodeJSON(
 			}
 			newHist := append(
 				hist,
-				openai.ChatCompletionMessage{
+				anthropic.Message{
 					Role:    openai.ChatMessageRoleAssistant,
-					Content: out,
+					Content: []anthropic.MessageContent{anthropic.NewTextMessageContent(out)},
 				})
 			out, hist, err = InvokeJSONSimple(
 				ctx,

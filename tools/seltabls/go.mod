@@ -7,6 +7,7 @@ require (
 	github.com/charmbracelet/huh v0.4.2
 	github.com/charmbracelet/log v0.4.0
 	github.com/google/uuid v1.6.0
+	github.com/liushuangls/go-anthropic/v2 v2.3.1
 	github.com/mitchellh/go-homedir v1.1.0
 	github.com/sashabaranov/go-openai v1.26.3
 	github.com/sourcegraph/conc v0.3.0

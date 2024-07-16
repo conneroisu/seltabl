@@ -16,15 +16,15 @@ import (
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/analysis"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/parsers"
 	"github.com/google/uuid"
-	"github.com/sashabaranov/go-openai"
+	"github.com/liushuangls/go-anthropic/v2"
 	"github.com/spf13/cobra"
 	"golang.org/x/sync/errgroup"
 )
 
 const (
 	// baseURLDefault is the base url for the openai api of groq
-	baseURLDefault = "https://api.groq.com/openai/v1"
-	// baseURLDefault = "https://api.openai.com/v1"
+	// baseURLDefault = "https://api.groq.com/openai/v1"
+	baseURLDefault = "https://api.openai.com/v1"
 	// baseTreeWidthDefault is the default tree width for the openai api of groq
 	baseTreeWidthDefault = 3
 	defaultNumSections   = 3
@@ -177,7 +177,7 @@ So the output fo the command:
 			return nil
 		},
 		RunE: func(_ *cobra.Command, _ []string) error {
-			client := openai.NewClient(params.LLMKey)
+			client := anthropic.NewClient(params.LLMKey)
 			/* client := domain.CreateClient( */
 			/*	params.BaseURI, */
 			/*	params.LLMKey, */
@@ -227,7 +227,7 @@ So the output fo the command:
 func mainGenerate(
 	ctx context.Context,
 	selectors []master.Selector,
-	client *openai.Client,
+	client *anthropic.Client,
 	htmlBody []byte,
 	doc *goquery.Document,
 	params GenerateCmdParams,
@@ -254,7 +254,7 @@ var mut sync.Mutex
 func runGenerate(
 	ctx context.Context,
 	selectors []master.Selector,
-	client *openai.Client,
+	client *anthropic.Client,
 	htmlBody []byte,
 	doc *goquery.Document,
 	params GenerateCmdParams,
@@ -265,7 +265,7 @@ func runGenerate(
 		ctx,
 		client,
 		params.FastModel,
-		[]openai.ChatCompletionMessage{},
+		[]anthropic.Message{},
 		domain.IdentifyPromptArgs{
 			URL:     params.URL,
 			Content: string(htmlBody),
@@ -286,7 +286,7 @@ func runGenerate(
 		ctx,
 		client,
 		params.SmartModel,
-		[]openai.ChatCompletionMessage{},
+		[]anthropic.Message{},
 		domain.IdentifyAggregateArgs{
 			Schemas:   identifyCompletions,
 			Content:   string(htmlBody),
@@ -333,7 +333,7 @@ func runGenerate(
 				ctx,
 				client,
 				params.SmartModel,
-				[]openai.ChatCompletionMessage{},
+				[]anthropic.Message{},
 				domain.StructAggregateArgs{
 					Selectors: domain.HTMLReduce(doc, selectors),
 					Content:   domain.HTMLReduct(doc, section.CSS),

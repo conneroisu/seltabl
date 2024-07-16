@@ -77,7 +77,7 @@ func HandleMessage(
 					state,
 					request,
 				)
-				if err != nil || response == nil {
+				if err != nil {
 					return nil, fmt.Errorf(
 						"failed to get completions: %w",
 						err,

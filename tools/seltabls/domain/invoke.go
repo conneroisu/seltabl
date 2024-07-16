@@ -49,8 +49,9 @@ func InvokeJSONSimple(
 			generation, err := client.CreateMessages(
 				hCtx,
 				anthropic.MessagesRequest{
-					Model:    model,
-					Messages: genHistory,
+					Model:     model,
+					Messages:  genHistory,
+					MaxTokens: 1000,
 				},
 			)
 			if err != nil {
@@ -105,8 +106,9 @@ func InvokeJSON(
 			completion, err := client.CreateMessages(
 				ctx,
 				anthropic.MessagesRequest{
-					Model:    model,
-					Messages: genHistory,
+					Model:     model,
+					Messages:  genHistory,
+					MaxTokens: 1000,
 				},
 			)
 			if err != nil {
@@ -251,9 +253,10 @@ func InvokeTxt(
 			}
 			completion, err := client.CreateMessages(
 				ctx, anthropic.MessagesRequest{
-					Model: model,
+					Model:     model,
+					MaxTokens: 1000,
 					Messages: append(history, anthropic.Message{
-						Role:    openai.ChatMessageRoleSystem,
+						Role:    openai.ChatMessageRoleUser,
 						Content: []anthropic.MessageContent{anthropic.NewTextMessageContent(prmpt)},
 					}),
 				},
@@ -292,10 +295,11 @@ func InvokePreTxt(
 			}
 			generation, err := client.CreateMessages(
 				ctx, anthropic.MessagesRequest{
-					Model: model,
+					Model:     model,
+					MaxTokens: 1000,
 					Messages: append(
 						[]anthropic.Message{{
-							Role:    openai.ChatMessageRoleSystem,
+							Role:    openai.ChatMessageRoleUser,
 							Content: []anthropic.MessageContent{anthropic.NewTextMessageContent(prmpt)},
 						}},
 						history...,

@@ -32,8 +32,8 @@ const (
 	// baseFastModelDefault = "llama3-8b-8192"
 	// // baseSmartModelDefault is the default smart model for the openai api of groq
 	// baseSmartModelDefault = "llama3-70b-8192"
-	baseSmartModelDefault = "gpt-4o"
-	baseFastModelDefault  = "gpt-4o"
+	baseSmartModelDefault = "claude-3-5-sonnet-20240620"
+	baseFastModelDefault  = "claude-3-5-sonnet-20240620"
 )
 
 // baseIgnoreElementsDefault is the default ignore elements for the openai api of groq
@@ -282,7 +282,7 @@ func runGenerate(
 		return fmt.Errorf("failed to generate identify completions: %w", err)
 	}
 	var identified domain.IdentifyResponse
-	identifyCompletion, identifyHistory, err := domain.InvokeJSON(
+	identifyCompletion, _, err := domain.InvokeJSON(
 		ctx,
 		client,
 		params.SmartModel,
@@ -298,7 +298,7 @@ func runGenerate(
 	log.Infof("identifyCompletion: %+v", identifyCompletion)
 	if err != nil || len(identifyCompletion) == 0 ||
 		len(identifyHistories) == 0 {
-		return fmt.Errorf("failed to generate identify completions: %w", err)
+		return fmt.Errorf("failed to generate identify completion: %w", err)
 	}
 	eg, ctx := errgroup.WithContext(ctx)
 	for _, section := range identified.Sections {
@@ -311,7 +311,7 @@ func runGenerate(
 				ctx,
 				client,
 				params.SmartModel,
-				identifyHistory,
+				[]anthropic.Message{},
 				domain.StructPromptArgs{
 					URL:       params.URL,
 					Content:   s,

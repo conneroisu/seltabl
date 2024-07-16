@@ -19,7 +19,7 @@ WHERE
     value = ?;
 
 -- name: InsertURL :one
-INSERT INTO
+INSERT OR IGNORE INTO
     urls (value, html_id)
 VALUES
     (?, ?) RETURNING *;

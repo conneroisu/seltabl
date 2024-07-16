@@ -1117,7 +1117,7 @@ func (q *Queries) InsertFile(ctx context.Context, arg InsertFileParams) (*File, 
 }
 
 const insertHTML = `-- name: InsertHTML :one
-INSERT INTO
+INSERT OR IGNORE INTO
     htmls (value)
 VALUES
     (?) RETURNING id, value, updated_at, created_at
@@ -1129,7 +1129,7 @@ type InsertHTMLParams struct {
 
 // InsertHTML
 //
-//	INSERT INTO
+//	INSERT OR IGNORE INTO
 //	    htmls (value)
 //	VALUES
 //	    (?) RETURNING id, value, updated_at, created_at
@@ -1298,7 +1298,7 @@ func (q *Queries) InsertTag(ctx context.Context, arg InsertTagParams) error {
 }
 
 const insertURL = `-- name: InsertURL :one
-INSERT INTO
+INSERT OR IGNORE INTO
     urls (value, html_id)
 VALUES
     (?, ?) RETURNING id, value, html_id
@@ -1311,7 +1311,7 @@ type InsertURLParams struct {
 
 // InsertURL
 //
-//	INSERT INTO
+//	INSERT OR IGNORE INTO
 //	    urls (value, html_id)
 //	VALUES
 //	    (?, ?) RETURNING id, value, html_id

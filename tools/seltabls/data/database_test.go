@@ -16,7 +16,7 @@ func TestSetupMasterDbSchema(t *testing.T) {
 		&Config{
 			Schema:   master.MasterSchema,
 			URI:      "sqlite://urls.sqlite",
-			FileName: "urls.sqlite",
+			FileName: ":memory:",
 		},
 	)
 	assert.NoError(t, err)
@@ -31,7 +31,7 @@ func TestSetupMasterDbSchemaInvalid(t *testing.T) {
 		&Config{
 			Schema:   "invalid",
 			URI:      "sqlite://urls.sqlite",
-			FileName: "urls.sqlite",
+			FileName: ":memory:",
 		},
 	)
 	assert.Error(t, err)

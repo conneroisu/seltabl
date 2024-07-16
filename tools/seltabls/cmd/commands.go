@@ -9,7 +9,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// AddCommands adds the routes for the root command
+// AddCommands adds the routes for the root command.
 func AddCommands(ctx context.Context, root *cobra.Command) error {
 	root.AddCommand(cmds.NewVetCmd(
 		ctx,

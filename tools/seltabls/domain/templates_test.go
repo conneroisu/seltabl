@@ -9,7 +9,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-// TestNewStructFileContent tests the NewStructFileContent function
+// TestNewStructFileContent tests the NewStructFileContent struct
 func TestNewStructFileContent(t *testing.T) {
 	a := assert.New(t)
 	content, err := NewPrompt(
@@ -24,7 +24,7 @@ func TestNewStructFileContent(t *testing.T) {
 	t.Logf("struct: %s", content)
 }
 
-// TestNewAggregatePrompt tests the NewAggregatePrompt function
+// TestNewAggregatePrompt tests the NewAggregatePrompt struct
 func TestNewAggregatePrompt(t *testing.T) {
 	a := assert.New(t)
 	content, err := NewPrompt(
@@ -69,6 +69,7 @@ func TestIdentifyAggregateArgs(t *testing.T) {
 	t.Logf("struct: %s", content)
 }
 
+// TestStructPromptArgs tests the StructPromptArgs struct.
 func TestStructPromptArgs(t *testing.T) {
 	a := assert.New(t)
 	content, err := NewPrompt(
@@ -90,6 +91,7 @@ func TestStructPromptArgs(t *testing.T) {
 	t.Logf("struct: %s", content)
 }
 
+// TestStructFilePromptArgs tests the StructFilePromptArgs struct.
 func TestStructFilePromptArgs(t *testing.T) {
 	a := assert.New(t)
 	content, err := NewPrompt(
@@ -132,6 +134,7 @@ func TestStructFilePromptArgs(t *testing.T) {
 	t.Logf("struct: %s", content)
 }
 
+// TestTestFilePromptArgs tests the TestFilePromptArgs struct.
 func TestTestFilePromptArgs(t *testing.T) {
 	a := assert.New(t)
 	content, err := NewPrompt(
@@ -147,6 +150,7 @@ func TestTestFilePromptArgs(t *testing.T) {
 	t.Logf("struct: %s", content)
 }
 
+// TestSectionErrorPromptArgs tests the SectionErrorPromptArgs struct.
 func TestSectionErrorPromptArgs(t *testing.T) {
 	a := assert.New(t)
 	content, err := NewPrompt(
@@ -161,6 +165,7 @@ func TestSectionErrorPromptArgs(t *testing.T) {
 	t.Logf("struct: %s", content)
 }
 
+// TestIdentifyErrorArgs tests the IdentifyErrorArgs struct.
 func TestIdentifyErrorArgs(t *testing.T) {
 	a := assert.New(t)
 	content, err := NewPrompt(
@@ -175,6 +180,7 @@ func TestIdentifyErrorArgs(t *testing.T) {
 	t.Logf("struct: %s", content)
 }
 
+// TestIdentifyPromptArgs tests the IdentifyPromptArgs struct.
 func TestIdentifyPromptArgs(t *testing.T) {
 	a := assert.New(t)
 	content, err := NewPrompt(
@@ -190,6 +196,7 @@ func TestIdentifyPromptArgs(t *testing.T) {
 	t.Fail()
 }
 
+// TestDecodeErrorArgs tests the DecodeErrorArgs struct.
 func TestDecodeErrorArgs(t *testing.T) {
 	a := assert.New(t)
 	content, err := NewPrompt(

@@ -24,7 +24,7 @@ func main() {
 	}
 }
 
-// TableStruct is a test struct
+// TableStruct is a test struct.
 // @url: https://stats.ncaa.org/game_upload/team_codes
 // @ignore-elements: script, style, link, img, footer, header
 type TableStruct struct {

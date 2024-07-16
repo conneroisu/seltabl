@@ -9,8 +9,8 @@ import (
 
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/analysis"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
+	"github.com/conneroisu/seltabl/tools/seltabls/pkg/parsers"
 	"github.com/spf13/cobra"
-	"golang.org/x/sync/errgroup"
 )
 
 // NewVetCmd returns the vet command which evaluates code for common errors or invalid selectors.
@@ -24,12 +24,14 @@ func NewVetCmd(ctx context.Context, w io.Writer, r io.Reader) *cobra.Command {
 Similar to go vet, but for seltabl.
 Evaluate code for common errors or invalid selectors.
 `,
-		RunE: func(cmd *cobra.Command, args []string) error {
+		PreRunE: func(cmd *cobra.Command, _ []string) error {
 			cmd.SetOut(w)
 			cmd.SetIn(r)
-			_, ctx = errgroup.WithContext(ctx)
+			return nil
+		},
+		RunE: func(cmd *cobra.Command, args []string) error {
 			if len(args) == 0 {
-				return fmt.Errorf("no files provided")
+				cmd.Println("No files provided")
 			}
 			files, err := filepath.Glob(args[0])
 			if err != nil {
@@ -54,46 +56,28 @@ Evaluate code for common errors or invalid selectors.
 	}
 }
 
-// vetFile vets a file
-func vetFile(ctx context.Context, file string) ([]lsp.Diagnostic, error) {
-	if filepath.Ext(file) != ".go" {
+// vetFile vets a file at the given path adhering to the given context's timeout.
+func vetFile(ctx context.Context, filePath string) (response []lsp.Diagnostic, err error) {
+	var state analysis.State
+	if filepath.Ext(filePath) != ".go" {
 		return nil, fmt.Errorf("file is not a go file")
 	}
-	state, err := analysis.NewState()
+	state, err = analysis.NewState()
 	if err != nil {
 		return nil, fmt.Errorf("failed to create state: %w", err)
 	}
-	response, err := analysis.OpenDocument(ctx,
-		&state,
-		lsp.NotificationDidOpenTextDocument{
-			Notification: lsp.Notification{
-				RPC:    lsp.RPCVersion,
-				Method: "textDocument/didOpen",
-			},
-			Params: lsp.DidOpenTextDocumentParams{
-				TextDocument: lsp.TextDocumentItem{
-					URI:        file,
-					Text:       string(readFile(file)),
-					LanguageID: "go",
-				},
-			},
-		})
+	content, err := os.ReadFile(filePath)
+	if err != nil {
+		return nil, fmt.Errorf("failed to read file: %w", err)
+	}
+	ctn := string(content)
+	data, err := parsers.ParseStructComments(ctn)
+	if err != nil {
+		return response, nil
+	}
+	diags, err := analysis.GetDiagnosticsForFile(ctx, &state, &ctn, data)
 	if err != nil {
 		return nil, err
 	}
-	return response.Params.Diagnostics, nil
-}
-
-// readFile reads a file
-func readFile(file string) []byte {
-	f, err := os.Open(file)
-	if err != nil {
-		panic(err)
-	}
-	defer f.Close()
-	b, err := io.ReadAll(f)
-	if err != nil {
-		panic(err)
-	}
-	return b
+	return diags, nil
 }

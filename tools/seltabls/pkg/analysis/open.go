@@ -24,7 +24,7 @@ func OpenDocument(
 ) (response *lsp.PublishDiagnosticsNotification, err error) {
 	select {
 	case <-(ctx).Done():
-		return nil, fmt.Errorf("context cancelled: %w", (ctx).Err())
+		return response, fmt.Errorf("context cancelled: %w", (ctx).Err())
 	default:
 		response = &lsp.PublishDiagnosticsNotification{
 			Notification: lsp.Notification{
@@ -70,13 +70,12 @@ func OpenDocument(
 			&req.Params.TextDocument.Text,
 			data,
 		)
-		if err != nil || len(diags) == 0 {
+		if err != nil {
 			s.Logger.Printf("failed to get diagnostics for file: %s\n", err)
+			return response, nil
 		}
 		response.Params.Diagnostics = diags
-		if len(response.Params.Diagnostics) == 0 {
-			return nil, nil
-		}
+		s.Logger.Printf("Found %d diagnostics for file: %s\n: %s", len(diags), err, diags)
 		return response, nil
 	}
 }

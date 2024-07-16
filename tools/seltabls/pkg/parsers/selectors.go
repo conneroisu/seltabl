@@ -124,18 +124,19 @@ func GetSelectors(
 	url string,
 	ignores []string,
 ) (selectors []master.Selector, err error) {
+	var doc *goquery.Document
 	rows, err := db.Queries.GetSelectorsByURL(
 		ctx,
 		master.GetSelectorsByURLParams{Value: url},
 	)
-	if err == nil && rows != nil {
+	if err == nil && len(rows) > 0 {
 		var selectors []master.Selector
 		for _, row := range rows {
 			selectors = append(selectors, *row)
 		}
 		return selectors, nil
 	}
-	doc, err := GetMinifiedDoc(url, ignores)
+	doc, err = GetMinifiedDoc(url, ignores)
 	if err != nil {
 		return nil, fmt.Errorf("failed to get minified doc: %w", err)
 	}
@@ -147,6 +148,9 @@ func GetSelectors(
 		ctx,
 		master.InsertHTMLParams{Value: docHTML},
 	)
+	if err != nil {
+		return nil, fmt.Errorf("failed to insert html: %w", err)
+	}
 	URL, err := db.Queries.InsertURL(
 		ctx,
 		master.InsertURLParams{Value: url, HtmlID: HTML.ID},

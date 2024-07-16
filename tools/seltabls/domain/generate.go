@@ -1,21 +1,17 @@
 package domain
 
 import (
-	"encoding/json"
+	"context"
 	"os"
-	"strings"
 	"time"
 
-	"context"
 	"fmt"
 
-	"github.com/PuerkitoBio/goquery"
 	"github.com/charmbracelet/log"
 	"github.com/conneroisu/seltabl/tools/seltabls/data"
 	"github.com/conneroisu/seltabl/tools/seltabls/data/master"
-	"golang.org/x/sync/errgroup"
-
 	"github.com/sashabaranov/go-openai"
+	"golang.org/x/sync/errgroup"
 )
 
 // ConfigFile is a struct for a config file.
@@ -51,8 +47,8 @@ type ConfigFile struct {
 type IdentifyResponse struct {
 	// Sections is a list of sections in the html.
 	Sections []Section `json:"sections"     yaml:"sections"`
-	// PackageName is the package name for the identify response.
-	PackageName string `json:"package-name" yaml:"package-name"`
+	// Name is the name of the package.
+	Name string `json:"name" yaml:"name"`
 }
 
 // Section is a struct for a section in the html.
@@ -173,26 +169,26 @@ func InvokeJSONSimple(
 	history []openai.ChatCompletionMessage,
 	prompt prompter,
 ) (out string, postHistory []openai.ChatCompletionMessage, err error) {
-	log.Debugf("calling InvokeJSON in domain with prompt: %s", prompt.prompt())
-	defer log.Debugf(
-		"InvokeJSON completed in domain with prompt: %s",
-		prompt.prompt(),
-	)
+	hCtx, cancel := context.WithTimeout(ctx, time.Second*12)
+	defer cancel()
 	for {
 		select {
-		case <-ctx.Done():
-			return "", postHistory, ctx.Err()
+		case <-hCtx.Done():
+			return "", postHistory, hCtx.Err()
 		default:
 			prmpt, err := NewPrompt(prompt)
 			if err != nil {
 				return "", history, err
 			}
-			genHistory := append(history, openai.ChatCompletionMessage{
-				Role:    openai.ChatMessageRoleUser,
-				Content: prmpt,
-			})
+			genHistory := append(
+				history,
+				openai.ChatCompletionMessage{
+					Role:    openai.ChatMessageRoleUser,
+					Content: prmpt,
+				})
 			completion, err := client.CreateChatCompletion(
-				ctx, openai.ChatCompletionRequest{
+				hCtx,
+				openai.ChatCompletionRequest{
 					Model:    model,
 					Messages: genHistory,
 					ResponseFormat: &openai.ChatCompletionResponseFormat{
@@ -201,30 +197,23 @@ func InvokeJSONSimple(
 				},
 			)
 			if err != nil {
-				r, ok := err.(*openai.RequestError)
+				var ok bool
+				_, ok = err.(*openai.RequestError)
 				if ok {
 					log.Debugf("request error: %+v", err)
-					log.Debugf(
-						"request error status code: %+v",
-						r.HTTPStatusCode,
-					)
 				}
-				r2, ok := err.(*openai.APIError)
+				_, ok = err.(*openai.APIError)
 				if ok {
 					log.Debugf("rate limit error: %+v", err)
-					log.Debugf("rate limit error type: %+v", r2.Type)
-					log.Debugf("rate limit error param: %+v", r2.Param)
-					log.Debugf("rate limit error code: %+v", r2.Code)
 				}
 				return "", genHistory, err
 			}
-			genHistory = append(genHistory, openai.ChatCompletionMessage{
-				Role:    openai.ChatMessageRoleAssistant,
-				Content: completion.Choices[0].Message.Content})
-			log.Debugf(
-				"completion: %+v",
-				completion.Choices[0].Message.Content,
-			)
+			genHistory = append(
+				genHistory,
+				openai.ChatCompletionMessage{
+					Role:    openai.ChatMessageRoleAssistant,
+					Content: completion.Choices[0].Message.Content,
+				})
 			if len(completion.Choices) == 0 {
 				return "", genHistory, fmt.Errorf("no choices found")
 			}
@@ -246,11 +235,6 @@ func InvokeJSON(
 	output interface{},
 	htmlBody string,
 ) (out string, postHistory []openai.ChatCompletionMessage, err error) {
-	log.Debugf("calling InvokeJSON in domain with prompt: %s", prompt.prompt())
-	defer log.Debugf(
-		"InvokeJSON completed in domain with prompt: %s",
-		prompt.prompt(),
-	)
 	for {
 		select {
 		case <-ctx.Done():
@@ -265,7 +249,8 @@ func InvokeJSON(
 				Content: prmpt,
 			})
 			completion, err := client.CreateChatCompletion(
-				ctx, openai.ChatCompletionRequest{
+				ctx,
+				openai.ChatCompletionRequest{
 					Model:    model,
 					Messages: genHistory,
 					ResponseFormat: &openai.ChatCompletionResponseFormat{
@@ -274,30 +259,23 @@ func InvokeJSON(
 				},
 			)
 			if err != nil {
-				r, ok := err.(*openai.RequestError)
+				var ok bool
+				_, ok = err.(*openai.RequestError)
 				if ok {
 					log.Debugf("request error: %+v", err)
-					log.Debugf(
-						"request error status code: %+v",
-						r.HTTPStatusCode,
-					)
 				}
-				r2, ok := err.(*openai.APIError)
+				_, ok = err.(*openai.APIError)
 				if ok {
 					log.Debugf("rate limit error: %+v", err)
-					log.Debugf("rate limit error type: %+v", r2.Type)
-					log.Debugf("rate limit error param: %+v", r2.Param)
-					log.Debugf("rate limit error code: %+v", r2.Code)
 				}
 				return "", genHistory, err
 			}
-			genHistory = append(genHistory, openai.ChatCompletionMessage{
-				Role:    openai.ChatMessageRoleAssistant,
-				Content: completion.Choices[0].Message.Content})
-			log.Debugf(
-				"completion: %+v",
-				completion.Choices[0].Message.Content,
-			)
+			genHistory = append(
+				genHistory,
+				openai.ChatCompletionMessage{
+					Role:    openai.ChatMessageRoleAssistant,
+					Content: completion.Choices[0].Message.Content,
+				})
 			err = DecodeJSON(
 				ctx,
 				[]byte(completion.Choices[0].Message.Content),
@@ -328,7 +306,7 @@ func InvokeJSONN(
 	model string,
 	history []openai.ChatCompletionMessage,
 	prompt prompter,
-	output Responder,
+	output responder,
 	n int,
 	htmlBody string,
 ) (outs []string, histories [][]openai.ChatCompletionMessage, err error) {
@@ -343,10 +321,6 @@ func InvokeJSONN(
 			return nil, nil, ctx.Err()
 		default:
 			eg.Go(func() error {
-				log.Debugf(
-					"calling Generate from GenerateN in domain with prompt: %s",
-					prompt.prompt(),
-				)
 				out, hist, err := InvokeJSON(
 					hCtx,
 					client,
@@ -374,8 +348,8 @@ func InvokeJSONN(
 	return outs, histories, nil
 }
 
-// InvokeJSONTxtN is a function for generating text using the OpenAI API multiple "N" times.
-func InvokeJSONTxtN(
+// InvokeTxtN is a function for generating text using the OpenAI API multiple "N" times.
+func InvokeTxtN(
 	ctx context.Context,
 	client *openai.Client,
 	model string,
@@ -390,10 +364,6 @@ func InvokeJSONTxtN(
 		case <-ctx.Done():
 			return nil, nil, ctx.Err()
 		default:
-			log.Debugf(
-				"calling InvokeTxt from InvokeTxtN in domain with prompt: %s",
-				prompt.prompt(),
-			)
 			out, hist, err := InvokeTxt(
 				ctx,
 				client,
@@ -422,11 +392,6 @@ func InvokeTxt(
 	history []openai.ChatCompletionMessage,
 	prompt prompter,
 ) (out string, postHistory []openai.ChatCompletionMessage, err error) {
-	log.Debugf("calling InvokeTxt in domain with prompt: %s", prompt.prompt())
-	defer log.Debugf(
-		"InvokeTxt completed in domain with prompt: %s",
-		prompt.prompt(),
-	)
 	for {
 		select {
 		case <-ctx.Done():
@@ -448,13 +413,12 @@ func InvokeTxt(
 			if err != nil {
 				return "", history, err
 			}
-			history = append(history, openai.ChatCompletionMessage{
-				Role:    openai.ChatMessageRoleAssistant,
-				Content: completion.Choices[0].Message.Content})
-			log.Debugf(
-				"completion: %+v",
-				completion.Choices[0].Message.Content,
-			)
+			history = append(
+				history,
+				openai.ChatCompletionMessage{
+					Role:    openai.ChatMessageRoleAssistant,
+					Content: completion.Choices[0].Message.Content,
+				})
 			return completion.Choices[0].Message.Content, history, nil
 		}
 	}
@@ -469,8 +433,6 @@ func InvokePreTxt(
 	history []openai.ChatCompletionMessage,
 	prompt prompter,
 ) (out string, postHistory []openai.ChatCompletionMessage, err error) {
-	log.Debugf("calling GeneratePreTxt in domain")
-	defer log.Debugf("GeneratePreTxt completed in domain")
 	for {
 		select {
 		case <-ctx.Done():
@@ -495,133 +457,13 @@ func InvokePreTxt(
 			if err != nil {
 				return "", history, err
 			}
-			history = append(history, openai.ChatCompletionMessage{
-				Role:    openai.ChatMessageRoleAssistant,
-				Content: completion.Choices[0].Message.Content,
-			})
+			history = append(
+				history,
+				openai.ChatCompletionMessage{
+					Role:    openai.ChatMessageRoleAssistant,
+					Content: completion.Choices[0].Message.Content,
+				})
 			return completion.Choices[0].Message.Content, history, nil
 		}
 	}
-}
-
-// DecodeJSON is a function for decoding json.
-//
-// It tries to fix the json if it fails.
-func DecodeJSON(
-	ctx context.Context,
-	data []byte,
-	v interface{},
-	history []openai.ChatCompletionMessage,
-	client *openai.Client,
-	model string,
-	htmlBody string,
-) error {
-
-	hCtx, cancel := context.WithTimeout(ctx, time.Second*12)
-	defer cancel()
-	for {
-		select {
-		case <-ctx.Done():
-			return ctx.Err()
-		default:
-			var err error
-			selR, ok := v.(FieldsResponse)
-			if ok {
-				for _, field := range selR.Fields {
-					err = field.Verify(
-						htmlBody,
-					)
-				}
-			}
-			if err == nil {
-				err = json.Unmarshal(data, &v)
-				if err == nil {
-					return nil
-				}
-			}
-			out, hist, err := InvokePreTxt(
-				ctx,
-				client,
-				model,
-				history,
-				IdentifyErrorArgs{Error: err},
-			)
-			if err != nil {
-				return err
-			}
-			newHist := append(hist, openai.ChatCompletionMessage{
-				Role:    openai.ChatMessageRoleAssistant,
-				Content: out})
-			out, hist, err = InvokeJSONSimple(
-				ctx,
-				client,
-				model,
-				newHist,
-				DecodeErrorArgs{Error: err},
-			)
-			err = json.Unmarshal([]byte(out), v)
-			if err != nil {
-				return DecodeJSON(
-					hCtx,
-					data,
-					v,
-					hist,
-					client,
-					model,
-					htmlBody,
-				)
-			}
-			return nil
-		}
-	}
-}
-
-// force type cast for Responder
-var _ Responder = (*IdentifyResponse)(nil)
-var _ Responder = (*FieldsResponse)(nil)
-
-// Verify checks if the selectors are in the html
-func (f *Field) Verify(htmlBody string) error {
-	doc, err := goquery.NewDocumentFromReader(
-		strings.NewReader(htmlBody),
-	)
-	if err != nil {
-		return fmt.Errorf("failed to create document: %w", err)
-	}
-	if f.DataSelector != "" {
-		sel := doc.Find(f.DataSelector)
-		if sel.Length() == 0 {
-			return fmt.Errorf("failed to find selector: %s", f.DataSelector)
-		}
-	} else {
-		return fmt.Errorf("no data found for selector %s with type %s in field %s with type %s", f.DataSelector, f.Type, f.Name, f.Type)
-	}
-	if f.ControlSelector != "" {
-		sel := doc.Find(f.ControlSelector)
-		if sel.Length() == 0 {
-			return fmt.Errorf("failed to find selector: %s", f.ControlSelector)
-		}
-	} else {
-		return fmt.Errorf("no control found for selector %s with type %s in field %s with type %s", f.ControlSelector, f.Type, f.Name, f.Type)
-	}
-	if f.QuerySelector != "" {
-		sel := doc.Find(f.QuerySelector)
-		if sel.Length() == 0 {
-			return fmt.Errorf("failed to find selector: %s", f.QuerySelector)
-		}
-	} else {
-		return fmt.Errorf("no query found for selector %s with type %s in field %s with type %s", f.QuerySelector, f.Type, f.Name, f.Type)
-	}
-	if f.HeaderSelector != "" {
-		sel := doc.Find(f.HeaderSelector)
-		if sel.Length() == 0 {
-			return fmt.Errorf("failed to find selector: %s", f.HeaderSelector)
-		}
-	}
-	mbp := f.MustBePresent
-	docTxt := doc.Text()
-	if !strings.Contains(docTxt, mbp) {
-		return fmt.Errorf("must be present (%s) not found for field %s with type %s", mbp, f.Name, f.Type)
-	}
-	return nil
 }

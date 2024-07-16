@@ -3,7 +3,6 @@ package domain
 import (
 	"bytes"
 	_ "embed"
-	"fmt"
 	"text/template"
 
 	"github.com/conneroisu/seltabl/tools/seltabls/data/master"
@@ -16,19 +15,13 @@ var templatesTmpl string
 var Template = template.Must(template.New("templates").Parse(templatesTmpl))
 
 // prompter is an interface for prompting it provided the template name to use.
-type prompter interface {
-	prompt() string
-}
+type prompter interface{ prompt() string }
 
-// Responder is an interface for responding to a given prompt.
-type Responder interface{ respond() string }
+// responder is an interface for responding to a given prompt.
+type responder interface{ respond() string }
 
 func (i IdentifyResponse) respond() string {
-	return fmt.Sprintf(
-		"Sections:\n%s\nPackageName: %s",
-		i.Sections,
-		i.PackageName,
-	)
+	return "identify_response"
 }
 
 // NewPrompt creates a new prompt for the given args
@@ -72,9 +65,9 @@ func (a IdentifyErrorArgs) prompt() string { return "section_error" }
 
 // StructAggregateArgs is the arguments for the struct aggregate prompt.
 type StructAggregateArgs struct {
-	Selectors []master.Selector // required
-	Content   string            // required
-	Schemas   []string          // required
+	Selectors []master.Selector `json:"selectors"` // required
+	Content   string            `json:"content"`   // required
+	Schemas   []string          `json:"schemas"`   // required
 }
 
 func (a StructAggregateArgs) prompt() string { return "struct_aggregate" }

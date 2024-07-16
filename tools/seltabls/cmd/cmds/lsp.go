@@ -76,6 +76,9 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 						)
 						return nil
 					}
+					if resp == nil {
+						return nil
+					}
 					err = server.WriteResponse(hCtx, &writer, resp)
 					if err != nil {
 						state.Logger.Printf(

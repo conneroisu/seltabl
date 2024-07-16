@@ -186,9 +186,12 @@ func DecodeJSON(
 			if err != nil {
 				return err
 			}
-			newHist := append(hist, openai.ChatCompletionMessage{
-				Role:    openai.ChatMessageRoleAssistant,
-				Content: out})
+			newHist := append(
+				hist,
+				openai.ChatCompletionMessage{
+					Role:    openai.ChatMessageRoleAssistant,
+					Content: out,
+				})
 			out, hist, err = InvokeJSONSimple(
 				ctx,
 				client,

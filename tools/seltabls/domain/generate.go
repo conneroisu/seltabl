@@ -370,8 +370,8 @@ func InvokeJSONN(
 	return outs, histories, nil
 }
 
-// InvokeJSONTxtN is a function for generating text using the OpenAI API multiple "N" times.
-func InvokeJSONTxtN(
+// InvokeTxtN is a function for generating text using the OpenAI API multiple "N" times.
+func InvokeTxtN(
 	ctx context.Context,
 	client *openai.Client,
 	model string,

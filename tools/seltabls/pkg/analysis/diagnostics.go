@@ -17,20 +17,21 @@ func GetDiagnosticsForFile(
 	_ *State,
 	text *string,
 	data parsers.StructCommentData,
-) (diagnostics []lsp.Diagnostic, err error) {
+) ([]lsp.Diagnostic, error) {
 	for {
 		select {
 		case <-ctx.Done():
-			return diagnostics, nil
+			return nil, nil
 		default:
 			sts, err := parsers.ParseStructs(ctx, []byte(*text))
 			if err != nil {
-				return diagnostics, fmt.Errorf(
+				return nil, fmt.Errorf(
 					"failed to parse structs: %w",
 					err,
 				)
 			}
 			eg := errgroup.Group{}
+			var diags []lsp.Diagnostic
 			for _, st := range sts {
 				eg.Go(func() error {
 					content, err := http.DefaultClientGet(data.URLs[0])
@@ -40,27 +41,24 @@ func GetDiagnosticsForFile(
 							err,
 						)
 					}
-					diags, err := st.Verify(ctx, data.URLs[0], content)
+					ds, err := st.Verify(ctx, data.URLs[0], content)
 					if err != nil {
 						return fmt.Errorf(
 							"failed to get diagnostics for struct: %w",
 							err,
 						)
 					}
-					diagnostics = append(
-						diagnostics,
-						diags...,
-					)
+					diags = append(diags, ds...)
 					return nil
 				})
 			}
 			if err := eg.Wait(); err != nil {
-				return diagnostics, fmt.Errorf(
+				return nil, fmt.Errorf(
 					"failed to get diagnostics for struct: %w",
 					err,
 				)
 			}
-			return diagnostics, nil
+			return diags, nil
 		}
 	}
 }

@@ -81,17 +81,3 @@ func vetFile(ctx context.Context, filePath string) (response []lsp.Diagnostic, e
 	}
 	return diags, nil
 }
-
-// readFile reads a file at the given path.
-func readFile(file string) []byte {
-	f, err := os.Open(file)
-	if err != nil {
-		panic(err)
-	}
-	defer f.Close()
-	b, err := io.ReadAll(f)
-	if err != nil {
-		panic(err)
-	}
-	return b
-}

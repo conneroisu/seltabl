@@ -1298,7 +1298,7 @@ func (q *Queries) InsertTag(ctx context.Context, arg InsertTagParams) error {
 }
 
 const insertURL = `-- name: InsertURL :one
-INSERT INTO
+INSERT OR IGNORE INTO
     urls (value, html_id)
 VALUES
     (?, ?) RETURNING id, value, html_id
@@ -1311,7 +1311,7 @@ type InsertURLParams struct {
 
 // InsertURL
 //
-//	INSERT INTO
+//	INSERT OR IGNORE INTO
 //	    urls (value, html_id)
 //	VALUES
 //	    (?, ?) RETURNING id, value, html_id

@@ -340,7 +340,6 @@ func runGenerate(
 		if err != nil {
 			return fmt.Errorf("failed to generate struct aggregate: %w", err)
 		}
-
 		structFile.Name = section.Name
 		structFile.URL = params.URL
 		out, err := domain.NewPrompt(structFile)

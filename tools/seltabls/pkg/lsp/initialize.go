@@ -3,6 +3,9 @@ package lsp
 import "github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp/methods"
 
 // InitializeRequest is a struct for the initialize request.
+//
+// Microsoft LSP Docs:
+// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#initialize
 type InitializeRequest struct {
 	// InitializeRequest embeds the Request struct
 	Request
@@ -23,6 +26,22 @@ type InitializeRequestParams struct {
 	RootPath string `json:"rootPath,omitempty"`
 	// Trace is the trace of the client in the request
 	Trace string `json:"trace,omitempty"`
+	// ProcessID is the process id of the client in the request
+	ProcessID int `json:"processId,omitempty"`
+	// Locale is the locale of the client in the request
+	Locale string `json:"locale,omitempty"`
+	// RootURI is the root uri of the client in the request
+	RootURI string `json:"rootUri,omitempty"`
+	// WorkspaceFolders is the workspace folders of the client in the request
+	WorkspaceFolders []WorkspaceFolder `json:"workspaceFolders,omitempty"`
+}
+
+// WorkspaceFolder is a struct for the workspace folder
+type WorkspaceFolder struct {
+	// URI is the uri of the workspace folder
+	URI string `json:"uri"`
+	// Name is the name of the workspace folder
+	Name string `json:"name"`
 }
 
 // ClientInfo is a struct for the client info

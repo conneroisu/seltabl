@@ -51,21 +51,18 @@ func ParseStructComments(src string) (StructCommentData, error) {
 						continue
 					}
 					// Check if the type specification is a struct
-					if _, ok := typeSpec.Type.(*ast.StructType); ok {
-						// Add comments associated with the struct type declaration
-						if t.Doc != nil {
-							for _, comment := range t.Doc.List {
-								text := strings.TrimSpace(comment.Text)
-								// Extract @url
-								if urlMatches := urlPattern.FindStringSubmatch(text); len(urlMatches) > 1 {
-									data.URLs = append(data.URLs, urlMatches[1])
-								}
-								// Extract @ignore-elements
-								if ignoreMatches := ignorePattern.FindStringSubmatch(text); len(ignoreMatches) > 1 {
-									elements := strings.Split(ignoreMatches[1], ",")
-									for _, elem := range elements {
-										data.IgnoreElements = append(data.IgnoreElements, strings.TrimSpace(elem))
-									}
+					if _, ok := typeSpec.Type.(*ast.StructType); ok && t.Doc != nil {
+						for _, comment := range t.Doc.List {
+							text := strings.TrimSpace(comment.Text)
+							// Extract @url of type string
+							if urlMatches := urlPattern.FindStringSubmatch(text); len(urlMatches) > 1 {
+								data.URLs = append(data.URLs, urlMatches[1])
+							}
+							// Extract @ignore-elements of type []string
+							if ignoreMatches := ignorePattern.FindStringSubmatch(text); len(ignoreMatches) > 1 {
+								elements := strings.Split(ignoreMatches[1], ",")
+								for _, elem := range elements {
+									data.IgnoreElements = append(data.IgnoreElements, strings.TrimSpace(elem))
 								}
 							}
 						}

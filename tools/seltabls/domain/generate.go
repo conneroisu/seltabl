@@ -7,8 +7,6 @@ import (
 
 	"github.com/conneroisu/seltabl/tools/seltabls/data"
 	"github.com/conneroisu/seltabl/tools/seltabls/data/master"
-
-	"github.com/sashabaranov/go-openai"
 )
 
 // ConfigFile is a struct for a config file.
@@ -145,13 +143,4 @@ type StructFile struct {
 
 	// Section is the section of the struct file.
 	Section Section `json:"-" yaml:"section"`
-}
-
-// CreateClient creates a new client for the given api key.
-func CreateClient(baseURL string, apiKey string) *openai.Client {
-	cfg := openai.DefaultConfig(apiKey)
-	cfg.BaseURL = baseURL
-	cfg.APIVersion = string(openai.APITypeOpenAI)
-	cfg.APIType = openai.APITypeOpenAI
-	return openai.NewClientWithConfig(cfg)
 }

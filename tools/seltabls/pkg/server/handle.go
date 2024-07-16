@@ -185,7 +185,7 @@ func HandleMessage(
 					)
 				}
 				response, err = analysis.UpdateDocument(hCtx, state, &request)
-				if err != nil || response == nil {
+				if err != nil {
 					return nil, fmt.Errorf(
 						"failed to update document: %w",
 						err,

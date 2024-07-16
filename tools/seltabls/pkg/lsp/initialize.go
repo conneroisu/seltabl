@@ -115,7 +115,7 @@ func NewInitializeResponse(request *InitializeRequest) *InitializeResponse {
 			},
 			ServerInfo: ServerInfo{
 				Name:    "seltabl_lsp",
-				Version: "0.0.0.0.0.0-beta1.final",
+				Version: "0.0.0.5.0.0-beta1.final",
 			},
 		},
 	}

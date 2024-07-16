@@ -107,7 +107,7 @@ func singleSelector(selection *goquery.Selection) string {
 	_, exists = selection.Attr("href")
 	if exists {
 		selector = fmt.Sprintf(
-			"%s[href]",
+			"%s[href='%s']",
 			goquery.NodeName(selection),
 		)
 	}
@@ -124,18 +124,19 @@ func GetSelectors(
 	url string,
 	ignores []string,
 ) (selectors []master.Selector, err error) {
+	var doc *goquery.Document
 	rows, err := db.Queries.GetSelectorsByURL(
 		ctx,
 		master.GetSelectorsByURLParams{Value: url},
 	)
-	if err == nil && rows != nil {
+	if err == nil && len(rows) > 0 {
 		var selectors []master.Selector
 		for _, row := range rows {
 			selectors = append(selectors, *row)
 		}
 		return selectors, nil
 	}
-	doc, err := GetMinifiedDoc(url, ignores)
+	doc, err = GetMinifiedDoc(url, ignores)
 	if err != nil {
 		return nil, fmt.Errorf("failed to get minified doc: %w", err)
 	}

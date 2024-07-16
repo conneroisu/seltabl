@@ -9,7 +9,7 @@ import (
 
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/analysis"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
-	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp/methods"
+	"github.com/conneroisu/seltabl/tools/seltabls/pkg/parsers"
 	"github.com/spf13/cobra"
 )
 
@@ -42,7 +42,7 @@ Evaluate code for common errors or invalid selectors.
 				if err != nil {
 					return fmt.Errorf("failed to vet file: %w", err)
 				}
-				for _, diag := range vals.Params.Diagnostics {
+				for _, diag := range vals {
 					fmt.Printf(
 						"%s\n%s\n%s\n",
 						diag.Message,
@@ -57,7 +57,7 @@ Evaluate code for common errors or invalid selectors.
 }
 
 // vetFile vets a file at the given path adhering to the given context's timeout.
-func vetFile(ctx context.Context, filePath string) (response *lsp.PublishDiagnosticsNotification, err error) {
+func vetFile(ctx context.Context, filePath string) (response []lsp.Diagnostic, err error) {
 	var state analysis.State
 	if filepath.Ext(filePath) != ".go" {
 		return nil, fmt.Errorf("file is not a go file")
@@ -66,27 +66,20 @@ func vetFile(ctx context.Context, filePath string) (response *lsp.PublishDiagnos
 	if err != nil {
 		return nil, fmt.Errorf("failed to create state: %w", err)
 	}
-	response, err = analysis.OpenDocument(
-		ctx,
-		&state,
-		lsp.NotificationDidOpenTextDocument{
-			Notification: lsp.Notification{
-				RPC:    lsp.RPCVersion,
-				Method: methods.MethodRequestTextDocumentDidOpen.String(),
-			},
-			Params: lsp.DidOpenTextDocumentParams{
-				TextDocument: lsp.TextDocumentItem{
-					URI:        filePath,
-					Version:    1,
-					Text:       string(readFile(filePath)),
-					LanguageID: "go",
-				},
-			},
-		})
+	content, err := os.ReadFile(filePath)
+	if err != nil {
+		return nil, fmt.Errorf("failed to read file: %w", err)
+	}
+	ctn := string(content)
+	data, err := parsers.ParseStructComments(ctn)
+	if err != nil {
+		return response, nil
+	}
+	diags, err := analysis.GetDiagnosticsForFile(ctx, &state, &ctn, data)
 	if err != nil {
 		return nil, err
 	}
-	return response, nil
+	return diags, nil
 }
 
 // readFile reads a file at the given path.

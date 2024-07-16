@@ -72,12 +72,10 @@ func OpenDocument(
 		)
 		if err != nil {
 			s.Logger.Printf("failed to get diagnostics for file: %s\n", err)
-		}
-		if len(diags) == 0 {
-			s.Logger.Printf("no diagnostics found for file: %s\n", err)
 			return response, nil
 		}
 		response.Params.Diagnostics = diags
+		s.Logger.Printf("Found %d diagnostics for file: %s\n: %s", len(diags), err, diags)
 		return response, nil
 	}
 }

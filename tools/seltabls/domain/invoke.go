@@ -28,6 +28,8 @@ func InvokeJSONSimple(
 	prompt prompter,
 ) (out string, postHistory []anthropic.Message, err error) {
 	hCtx, cancel := context.WithTimeout(ctx, time.Second*12)
+	hHistory := make([]anthropic.Message, len(history))
+	copy(hHistory, history)
 	defer cancel()
 	for {
 		select {
@@ -38,8 +40,8 @@ func InvokeJSONSimple(
 			if err != nil {
 				return "", history, err
 			}
-			genHistory := append(
-				history,
+			hHistory := append(
+				hHistory,
 				anthropic.Message{
 					Role: openai.ChatMessageRoleUser,
 					Content: []anthropic.MessageContent{
@@ -50,32 +52,32 @@ func InvokeJSONSimple(
 				hCtx,
 				anthropic.MessagesRequest{
 					Model:     model,
-					Messages:  genHistory,
-					MaxTokens: 1000,
+					Messages:  hHistory,
+					MaxTokens: 10_000,
 				},
 			)
 			if err != nil {
 				var e *anthropic.APIError
 				if errors.As(err, &e) {
 					fmt.Printf("Messages error, type: %s, message: %s", e.Type, e.Message)
-				} else {
-					fmt.Printf("Messages error: %v\n", err)
+					return "", hHistory, fmt.Errorf("messages error, type: %s, message: %s", e.Type, e.Message)
 				}
-				return "", genHistory, err
+				fmt.Printf("Messages error: %v\n", err)
+				return "", hHistory, fmt.Errorf("messages error: %v", err)
 			}
-			genHistory = append(
-				genHistory,
+			hHistory = append(
+				hHistory,
 				anthropic.Message{
 					Role:    openai.ChatMessageRoleAssistant,
 					Content: generation.Content,
 				})
 			if len(*generation.Content[0].Text) == 0 {
-				return "", genHistory, fmt.Errorf("no choices found")
+				return "", hHistory, fmt.Errorf("no choices found")
 			}
 			if len(*generation.Content[0].Text) == 0 {
-				return "", genHistory, fmt.Errorf("no content found")
+				return "", hHistory, fmt.Errorf("no content found")
 			}
-			return *generation.Content[0].Text, genHistory, nil
+			return *generation.Content[0].Text, hHistory, nil
 		}
 	}
 }
@@ -108,7 +110,7 @@ func InvokeJSON(
 				anthropic.MessagesRequest{
 					Model:     model,
 					Messages:  genHistory,
-					MaxTokens: 1000,
+					MaxTokens: 10_000,
 				},
 			)
 			if err != nil {
@@ -152,12 +154,12 @@ func InvokeJSON(
 	}
 }
 
-// InvokeJSONN is a function for generating json using the OpenAI API multiple "N" times.
-func InvokeJSONN(
+// InvokeN is a function for generating json using the OpenAI API multiple "N" times.
+func InvokeN(
 	ctx context.Context,
 	client *anthropic.Client,
 	model string,
-	history []anthropic.Message,
+	_ [][]anthropic.Message,
 	prompt prompter,
 	output responder,
 	n int,
@@ -174,11 +176,12 @@ func InvokeJSONN(
 			return nil, nil, ctx.Err()
 		default:
 			eg.Go(func() error {
-				out, hist, err := InvokeJSON(
+				var out string
+				out, histories[idx], err = InvokeJSON(
 					hCtx,
 					client,
 					model,
-					history,
+					histories[idx],
 					prompt,
 					output,
 					htmlBody,
@@ -187,7 +190,6 @@ func InvokeJSONN(
 					return err
 				}
 				outs[idx] = out
-				histories[idx] = hist
 				return nil
 			})
 		}
@@ -198,86 +200,9 @@ func InvokeJSONN(
 	return outs, histories, nil
 }
 
-// InvokeTxtN is a function for generating text using the OpenAI API multiple "N" times.
-func InvokeTxtN(
-	ctx context.Context,
-	client *anthropic.Client,
-	model string,
-	history []anthropic.Message,
-	prompt prompter,
-	n int,
-) (outs []string, histories [][]anthropic.Message, err error) {
-	outs = make([]string, n)
-	histories = make([][]anthropic.Message, n)
-	for idx := 0; idx < n; idx++ {
-		select {
-		case <-ctx.Done():
-			return nil, nil, ctx.Err()
-		default:
-			out, hist, err := InvokeTxt(
-				ctx,
-				client,
-				model,
-				history,
-				prompt,
-			)
-			if err != nil {
-				return nil, nil, err
-			}
-			outs[idx] = out
-			histories[idx] = hist
-			if len(outs) >= n {
-				return outs, histories, nil
-			}
-		}
-	}
-	return outs, histories, nil
-}
-
-// InvokeTxt is a function for generating text using the OpenAI API.
-func InvokeTxt(
-	ctx context.Context,
-	client *anthropic.Client,
-	model string,
-	history []anthropic.Message,
-	prompt prompter,
-) (out string, postHistory []anthropic.Message, err error) {
-	for {
-		select {
-		case <-ctx.Done():
-			return "", postHistory, ctx.Err()
-		default:
-			prmpt, err := NewPrompt(prompt)
-			if err != nil {
-				return "", history, err
-			}
-			completion, err := client.CreateMessages(
-				ctx, anthropic.MessagesRequest{
-					Model:     model,
-					MaxTokens: 1000,
-					Messages: append(history, anthropic.Message{
-						Role:    openai.ChatMessageRoleUser,
-						Content: []anthropic.MessageContent{anthropic.NewTextMessageContent(prmpt)},
-					}),
-				},
-			)
-			if err != nil {
-				return "", history, err
-			}
-			history = append(
-				history,
-				anthropic.Message{
-					Role:    openai.ChatMessageRoleAssistant,
-					Content: completion.Content,
-				})
-			return *completion.Content[0].Text, history, nil
-		}
-	}
-}
-
-// InvokePreTxt is a function for generating text using the OpenAI API by
+// InvokePre is a function for generating text using the OpenAI API by
 // prepending the prompt to the history.
-func InvokePreTxt(
+func InvokePre(
 	ctx context.Context,
 	client *anthropic.Client,
 	model string,
@@ -287,27 +212,31 @@ func InvokePreTxt(
 	for {
 		select {
 		case <-ctx.Done():
-			return "", postHistory, ctx.Err()
+			return ``, postHistory, ctx.Err()
 		default:
 			prmpt, err := NewPrompt(prompt)
 			if err != nil {
-				return "", history, err
+				return ``, history, err
 			}
 			generation, err := client.CreateMessages(
 				ctx, anthropic.MessagesRequest{
 					Model:     model,
-					MaxTokens: 1000,
+					MaxTokens: 10_000,
 					Messages: append(
 						[]anthropic.Message{{
 							Role:    openai.ChatMessageRoleUser,
 							Content: []anthropic.MessageContent{anthropic.NewTextMessageContent(prmpt)},
-						}},
+						},
+							{
+								Role:    openai.ChatMessageRoleAssistant,
+								Content: []anthropic.MessageContent{anthropic.NewTextMessageContent(`Okay, I am ready for the history of the conversation.`)},
+							}},
 						history...,
 					),
 				},
 			)
 			if err != nil {
-				return "", history, err
+				return ``, history, err
 			}
 			history = append(
 				history,

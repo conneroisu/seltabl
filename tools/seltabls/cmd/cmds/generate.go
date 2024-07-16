@@ -107,20 +107,14 @@ So the output fo the command:
 				"fast-model",
 				"f",
 				baseFastModelDefault,
-				fmt.Sprintf(
-					"The name of the fast model to use for generating the struct. Defaults to %s.",
-					baseFastModelDefault,
-				),
+				"The name of the fast model to use for generating the struct. ",
 			)
 			cmd.PersistentFlags().StringVarP(
 				&params.SmartModel,
 				"smart-model",
 				"s",
 				baseSmartModelDefault,
-				fmt.Sprintf(
-					"The name of the smart model to use for generating the struct. Defaults to %s.",
-					baseSmartModelDefault,
-				),
+				"The name of the smart model to use for generating the struct.",
 			)
 			cmd.PersistentFlags().StringVarP(
 				&params.LLMKey,
@@ -144,20 +138,14 @@ So the output fo the command:
 				"ignore-elements",
 				"i",
 				baseIgnoreElementsDefault,
-				fmt.Sprintf(
-					"The elements to ignore when generating the struct. Defaults to %s.",
-					baseIgnoreElementsDefault,
-				),
+				"The elements to ignore when generating the struct.",
 			)
 			cmd.PersistentFlags().IntVarP(
 				&params.TreeWidth,
 				"tree-width",
 				"w",
 				baseTreeWidthDefault,
-				fmt.Sprintf(
-					"The width of the tree when generating the struct. Defaults to %d.",
-					baseTreeWidthDefault,
-				),
+				"The width of the tree when generating the struct.",
 			)
 			if params.LLMKey == "" {
 				params.LLMKey = os.Getenv("LLM_API_KEY")
@@ -261,15 +249,14 @@ func runGenerate(
 ) error {
 	mut.Lock()
 	defer mut.Unlock()
-	identifyCompletions, identifyHistories, err := domain.InvokeJSONN(
+	identifyCompletions, identifyHistories, err := domain.InvokeN(
 		ctx,
 		client,
 		params.FastModel,
-		[]anthropic.Message{},
+		[][]anthropic.Message{},
 		domain.IdentifyPromptArgs{
-			URL:     params.URL,
-			Content: string(htmlBody),
-
+			URL:         params.URL,
+			Content:     string(htmlBody),
 			NumSections: params.NumSections,
 		},
 		domain.IdentifyResponse{},
@@ -307,11 +294,11 @@ func runGenerate(
 			if err != nil {
 				return fmt.Errorf("failed to get html: %w", err)
 			}
-			selectorOuts, selectorHistories, err := domain.InvokeJSONN(
+			selectorOuts, selectorHistories, err := domain.InvokeN(
 				ctx,
 				client,
 				params.SmartModel,
-				[]anthropic.Message{},
+				[][]anthropic.Message{},
 				domain.StructPromptArgs{
 					URL:       params.URL,
 					Content:   s,

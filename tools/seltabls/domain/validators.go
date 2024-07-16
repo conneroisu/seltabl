@@ -177,7 +177,7 @@ func DecodeJSON(
 					return nil
 				}
 			}
-			out, hist, err := InvokePreTxt(
+			out, hist, err := InvokePre(
 				ctx,
 				client,
 				model,

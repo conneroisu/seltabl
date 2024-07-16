@@ -21,6 +21,7 @@ type Database[
 	T master.Queries,
 ] struct {
 	Queries *T
+	DB      *sql.DB
 }
 
 // NewSQLDatabase creates a new database struct with the sql database and the
@@ -35,6 +36,7 @@ func NewSQLDatabase[
 	eg, ctx := errgroup.WithContext(parentCtx)
 	q := &Database[Q]{
 		Queries: newFunc(db),
+		DB:      db,
 	}
 	eg.Go(func() error {
 		<-ctx.Done()

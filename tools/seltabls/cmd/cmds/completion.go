@@ -4,7 +4,6 @@ import (
 	"context"
 	"fmt"
 	"io"
-	"os"
 
 	"github.com/spf13/cobra"
 )
@@ -76,7 +75,7 @@ func NewCompletionCmd(
 			case "fish":
 				err = cmd.Root().GenFishCompletion(w, true)
 			case "powershell":
-				err = cmd.Root().GenPowerShellCompletionWithDesc(os.Stdout)
+				err = cmd.Root().GenPowerShellCompletionWithDesc(cmd.OutOrStdout())
 			}
 			if err != nil {
 				return fmt.Errorf("failed to generate completions: %w", err)

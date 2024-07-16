@@ -148,7 +148,6 @@ func HandleMessage(
 				os.Exit(0)
 				return nil, nil
 			case methods.MethodNotificationTextDocumentDidSave:
-				state.Logger.Printf("Client sent a did save notification")
 				var request lsp.DidSaveTextDocumentParamsNotification
 				err = json.Unmarshal([]byte(msg.Content), &request)
 				if err != nil {
@@ -167,7 +166,7 @@ func HandleMessage(
 				}
 				state.Documents[request.Params.TextDocument.URI] = string(read)
 				return nil, nil
-			case methods.MethodNotificationTextDocumentDidClose:
+			case methods.NotificationTextDocumentDidClose:
 				var request lsp.DidCloseTextDocumentParamsNotification
 				if err = json.Unmarshal([]byte(msg.Content), &request); err != nil {
 					return nil, fmt.Errorf(

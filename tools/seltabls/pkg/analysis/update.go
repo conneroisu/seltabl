@@ -61,7 +61,7 @@ func UpdateDocument(
 						Method: "textDocument/publishDiagnostics",
 					},
 					Params: lsp.PublishDiagnosticsParams{
-						Diagnostics: []lsp.Diagnostic{},
+						Diagnostics: ds,
 						URI:         notification.Params.TextDocument.URI,
 					},
 				}, nil

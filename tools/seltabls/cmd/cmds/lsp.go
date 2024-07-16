@@ -82,7 +82,8 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 					err = server.WriteResponse(hCtx, &writer, resp)
 					if err != nil {
 						state.Logger.Printf(
-							"failed to write response: %s\n",
+							"failed to write (%s) response: %s\n",
+							resp.Method(),
 							err,
 						)
 					}

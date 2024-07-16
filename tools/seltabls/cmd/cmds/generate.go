@@ -185,7 +185,6 @@ So the output fo the command:
 			if err != nil {
 				return fmt.Errorf("failed to create state: %w", err)
 			}
-			log.Infof("calling GetSelectors")
 			sels, err := parsers.GetSelectors(
 				ctx,
 				&state.Database,
@@ -195,7 +194,6 @@ So the output fo the command:
 			if err != nil {
 				return fmt.Errorf("failed to get selectors: %w", err)
 			}
-			log.Infof("calling GetRuledURL")
 			htmlBody, err := domain.GetRuledURL(
 				params.URL,
 				params.IgnoreElements,
@@ -203,7 +201,6 @@ So the output fo the command:
 			if err != nil {
 				return fmt.Errorf("failed to get url: %w", err)
 			}
-			log.Infof("calling NewDocumentFromReader")
 			doc, err := goquery.NewDocumentFromReader(
 				strings.NewReader(string(htmlBody)),
 			)
@@ -263,8 +260,6 @@ func runGenerate(
 ) error {
 	mut.Lock()
 	defer mut.Unlock()
-	log.Infof("calling runGenerate")
-	defer log.Infof("runGenerate completed")
 	identifyCompletions, identifyHistories, err := domain.InvokeJSONN(
 		ctx,
 		client,

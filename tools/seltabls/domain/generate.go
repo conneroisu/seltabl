@@ -3,13 +3,11 @@ package domain
 import (
 	"encoding/json"
 	"os"
-	"strings"
 	"time"
 
 	"context"
 	"fmt"
 
-	"github.com/PuerkitoBio/goquery"
 	"github.com/charmbracelet/log"
 	"github.com/conneroisu/seltabl/tools/seltabls/data"
 	"github.com/conneroisu/seltabl/tools/seltabls/data/master"
@@ -516,7 +514,6 @@ func DecodeJSON(
 	model string,
 	htmlBody string,
 ) error {
-
 	hCtx, cancel := context.WithTimeout(ctx, time.Second*12)
 	defer cancel()
 	for {
@@ -590,49 +587,3 @@ func DecodeJSON(
 // force type cast for Responder
 var _ Responder = (*IdentifyResponse)(nil)
 var _ Responder = (*FieldsResponse)(nil)
-
-// Verify checks if the selectors are in the html
-func (f *Field) Verify(htmlBody string) error {
-	doc, err := goquery.NewDocumentFromReader(
-		strings.NewReader(htmlBody),
-	)
-	if err != nil {
-		return fmt.Errorf("failed to create document: %w", err)
-	}
-	if f.DataSelector != "" {
-		sel := doc.Find(f.DataSelector)
-		if sel.Length() == 0 {
-			return fmt.Errorf("failed to find selector: %s", f.DataSelector)
-		}
-	} else {
-		return fmt.Errorf("no data found for selector %s with type %s in field %s with type %s", f.DataSelector, f.Type, f.Name, f.Type)
-	}
-	if f.ControlSelector != "" {
-		sel := doc.Find(f.ControlSelector)
-		if sel.Length() == 0 {
-			return fmt.Errorf("failed to find selector: %s", f.ControlSelector)
-		}
-	} else {
-		return fmt.Errorf("no control found for selector %s with type %s in field %s with type %s", f.ControlSelector, f.Type, f.Name, f.Type)
-	}
-	if f.QuerySelector != "" {
-		sel := doc.Find(f.QuerySelector)
-		if sel.Length() == 0 {
-			return fmt.Errorf("failed to find selector: %s", f.QuerySelector)
-		}
-	} else {
-		return fmt.Errorf("no query found for selector %s with type %s in field %s with type %s", f.QuerySelector, f.Type, f.Name, f.Type)
-	}
-	if f.HeaderSelector != "" {
-		sel := doc.Find(f.HeaderSelector)
-		if sel.Length() == 0 {
-			return fmt.Errorf("failed to find selector: %s", f.HeaderSelector)
-		}
-	}
-	mbp := f.MustBePresent
-	docTxt := doc.Text()
-	if !strings.Contains(docTxt, mbp) {
-		return fmt.Errorf("must be present (%s) not found for field %s with type %s", mbp, f.Name, f.Type)
-	}
-	return nil
-}

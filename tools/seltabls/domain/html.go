@@ -20,13 +20,15 @@ func HTMLSel(doc *goquery.Document, css string) (string, error) {
 	return resp, nil
 }
 
-// HTMLContains is a function for checking if a given css selector exists in the html.
+// HTMLContains is a function for checking if a given css selector exists in
+// the html.
 func HTMLContains(doc *goquery.Document, css string) bool {
 	res := doc.Find(css)
 	return res.Length() > 0
 }
 
-// HTMLContainsN is a function for checking if a given css selector exists in the html.
+// HTMLContainsN is a function for checking if a given css selector exists in
+// the html.
 func HTMLContainsN(doc *goquery.Document, selectors []master.Selector) bool {
 	for _, selector := range selectors {
 		if HTMLContains(doc, selector.Value) {
@@ -36,7 +38,8 @@ func HTMLContainsN(doc *goquery.Document, selectors []master.Selector) bool {
 	return false
 }
 
-// HTMLReduce is a function for reducing a list of selectors to a selectors contained in the document.
+// HTMLReduce is a function for reducing a list of selectors to a selectors
+// contained in the document.
 func HTMLReduce(
 	doc *goquery.Document,
 	selectors []master.Selector,
@@ -49,7 +52,8 @@ func HTMLReduce(
 	return sels
 }
 
-// HTMLReduct is a function for reducing a list of selectors to a selectors contained in the html.
+// HTMLReduct is a function for reducing a list of selectors to a selectors
+// contained in the html.
 func HTMLReduct(doc *goquery.Document, css string) string {
 	res := doc.Find(css)
 	sels, err := res.Html()

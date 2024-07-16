@@ -18,6 +18,7 @@ import (
 	"github.com/google/uuid"
 	"github.com/sashabaranov/go-openai"
 	"github.com/spf13/cobra"
+	"golang.org/x/sync/errgroup"
 )
 
 const (
@@ -275,6 +276,7 @@ func runGenerate(
 		params.TreeWidth,
 		string(htmlBody),
 	)
+	log.Infof("identifyCompletions: %+v", identifyCompletions)
 	if err != nil ||
 		len(identifyHistories) == 0 {
 		return fmt.Errorf("failed to generate identify completions: %w", err)
@@ -293,72 +295,80 @@ func runGenerate(
 		&identified,
 		string(htmlBody),
 	)
+	log.Infof("identifyCompletion: %+v", identifyCompletion)
 	if err != nil || len(identifyCompletion) == 0 ||
 		len(identifyHistories) == 0 {
 		return fmt.Errorf("failed to generate identify completions: %w", err)
 	}
+	eg, ctx := errgroup.WithContext(ctx)
 	for _, section := range identified.Sections {
-		s, err := domain.HTMLSel(doc, section.CSS)
-		if err != nil {
-			return fmt.Errorf("failed to get html: %w", err)
-		}
-		selectorOuts, selectorHistories, err := domain.InvokeJSONN(
-			ctx,
-			client,
-			params.SmartModel,
-			identifyHistory,
-			domain.StructPromptArgs{
-				URL:       params.URL,
-				Content:   s,
-				Selectors: domain.HTMLReduce(doc, selectors),
-			},
-			domain.FieldsResponse{},
-			params.TreeWidth,
-			string(htmlBody),
-		)
-		if err != nil || len(selectorOuts) == 0 ||
-			len(selectorHistories) == 0 {
-			return fmt.Errorf(
-				"failed to generateN struct completions: %w",
-				err,
+		eg.Go(func() error {
+			s, err := domain.HTMLSel(doc, section.CSS)
+			if err != nil {
+				return fmt.Errorf("failed to get html: %w", err)
+			}
+			selectorOuts, selectorHistories, err := domain.InvokeJSONN(
+				ctx,
+				client,
+				params.SmartModel,
+				identifyHistory,
+				domain.StructPromptArgs{
+					URL:       params.URL,
+					Content:   s,
+					Selectors: domain.HTMLReduce(doc, selectors),
+				},
+				domain.FieldsResponse{},
+				params.TreeWidth,
+				string(htmlBody),
 			)
-		}
-		var structFile = domain.StructFilePromptArgs{}
-		_, _, err = domain.InvokeJSON(
-			ctx,
-			client,
-			params.SmartModel,
-			[]openai.ChatCompletionMessage{},
-			domain.StructAggregateArgs{
-				Selectors: domain.HTMLReduce(doc, selectors),
-				Content:   domain.HTMLReduct(doc, section.CSS),
-				Schemas:   selectorOuts,
-			},
-			&structFile,
-			string(htmlBody),
-		)
-		if err != nil {
-			return fmt.Errorf("failed to generate struct aggregate: %w", err)
-		}
-		structFile.Name = section.Name
-		structFile.URL = params.URL
-		out, err := domain.NewPrompt(structFile)
-		if err != nil {
-			return fmt.Errorf("failed to create struct file: %w", err)
-		}
-		name := fmt.Sprintf("%s.go", structFile.Name)
-		if structFile.Name == "" {
-			name = fmt.Sprintf("%s.go", uuid.New().String())
-		}
-		err = os.WriteFile(
-			name,
-			[]byte(out),
-			0644,
-		)
-		if err != nil {
-			return fmt.Errorf("failed to write struct file: %w", err)
-		}
-		log.Infof("Generated struct file: %s.go", structFile.Name)
+			if err != nil || len(selectorOuts) == 0 ||
+				len(selectorHistories) == 0 {
+				return fmt.Errorf(
+					"failed to generateN struct completions: %w",
+					err,
+				)
+			}
+			var structFile = domain.StructFilePromptArgs{}
+			_, _, err = domain.InvokeJSON(
+				ctx,
+				client,
+				params.SmartModel,
+				[]openai.ChatCompletionMessage{},
+				domain.StructAggregateArgs{
+					Selectors: domain.HTMLReduce(doc, selectors),
+					Content:   domain.HTMLReduct(doc, section.CSS),
+					Schemas:   selectorOuts,
+				},
+				&structFile,
+				string(htmlBody),
+			)
+			if err != nil {
+				return fmt.Errorf("failed to generate struct aggregate: %w", err)
+			}
+			structFile.Name = section.Name
+			structFile.URL = params.URL
+			out, err := domain.NewPrompt(structFile)
+			if err != nil {
+				return fmt.Errorf("failed to create struct file: %w", err)
+			}
+			name := fmt.Sprintf("%s.go", structFile.Name)
+			if structFile.Name == "" {
+				name = fmt.Sprintf("%s.go", uuid.New().String())
+			}
+			err = os.WriteFile(
+				name,
+				[]byte(out),
+				0644,
+			)
+			if err != nil {
+				return fmt.Errorf("failed to write struct file: %w", err)
+			}
+			log.Infof("Generated struct file: %s.go", structFile.Name)
+			return nil
+		})
+	}
+	if err := eg.Wait(); err != nil {
+		return fmt.Errorf("failed to generate structs: %w", err)
 	}
 	return nil
 }

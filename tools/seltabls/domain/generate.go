@@ -413,13 +413,12 @@ func InvokeTxt(
 			if err != nil {
 				return "", history, err
 			}
-			history = append(history, openai.ChatCompletionMessage{
-				Role:    openai.ChatMessageRoleAssistant,
-				Content: completion.Choices[0].Message.Content})
-			log.Debugf(
-				"completion: %+v",
-				completion.Choices[0].Message.Content,
-			)
+			history = append(
+				history,
+				openai.ChatCompletionMessage{
+					Role:    openai.ChatMessageRoleAssistant,
+					Content: completion.Choices[0].Message.Content,
+				})
 			return completion.Choices[0].Message.Content, history, nil
 		}
 	}
@@ -458,10 +457,12 @@ func InvokePreTxt(
 			if err != nil {
 				return "", history, err
 			}
-			history = append(history, openai.ChatCompletionMessage{
-				Role:    openai.ChatMessageRoleAssistant,
-				Content: completion.Choices[0].Message.Content,
-			})
+			history = append(
+				history,
+				openai.ChatCompletionMessage{
+					Role:    openai.ChatMessageRoleAssistant,
+					Content: completion.Choices[0].Message.Content,
+				})
 			return completion.Choices[0].Message.Content, history, nil
 		}
 	}

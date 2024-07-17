@@ -2,10 +2,10 @@ package cmds
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"io"
 	"os"
-	"regexp"
 	"strings"
 	"sync"
 
@@ -18,6 +18,7 @@ import (
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/parsers"
 	"github.com/google/uuid"
 	"github.com/liushuangls/go-anthropic/v2"
+	"github.com/ollama/ollama/api"
 	"github.com/spf13/cobra"
 	"golang.org/x/sync/errgroup"
 )
@@ -166,11 +167,6 @@ So the output fo the command:
 			return nil
 		},
 		RunE: func(_ *cobra.Command, _ []string) error {
-			defer func() {
-				if r := recover(); r != nil {
-					log.Error(r)
-				}
-			}()
 			client := anthropic.NewClient(params.LLMKey)
 			state, err := analysis.NewState()
 			if err != nil {
@@ -200,43 +196,25 @@ So the output fo the command:
 			}
 			print(doc, sels, client)
 			log.Infof("calling mainGenerate")
-			if err := mainGenerate(
-				ctx,
-				sels,
-				client,
-				htmlBody,
-				doc,
-				params,
-			); err != nil {
+			select {
+			case <-ctx.Done():
+				err = ctx.Err()
+			default:
+				err = runGenerate(
+					ctx,
+					sels,
+					client,
+					htmlBody,
+					doc,
+					params,
+				)
+				break
+			}
+			if err != nil {
 				return err
 			}
 			return nil
 		},
-	}
-}
-
-func mainGenerate(
-	ctx context.Context,
-	selectors []master.Selector,
-	client *anthropic.Client,
-	htmlBody []byte,
-	doc *goquery.Document,
-	params GenerateCmdParams,
-) error {
-	for {
-		select {
-		case <-ctx.Done():
-			return ctx.Err()
-		default:
-			return runGenerate(
-				ctx,
-				selectors,
-				client,
-				htmlBody,
-				doc,
-				params,
-			)
-		}
 	}
 }
 
@@ -250,10 +228,11 @@ func runGenerate(
 	doc *goquery.Document,
 	params GenerateCmdParams,
 ) error {
+	cli, err := api.ClientFromEnvironment()
 	mut.Lock()
 	defer mut.Unlock()
 	log.Debugf("Generating Sections")
-	identifyCompletions, identifyHistories, err := domain.InvokeN(
+	identifyCompletions, _, err := domain.InvokeN(
 		ctx,
 		client,
 		params.FastModel,
@@ -265,15 +244,13 @@ func runGenerate(
 		},
 		params.TreeWidth,
 	)
-	if err != nil ||
-		len(identifyHistories) == 0 {
+	if err != nil {
 		return fmt.Errorf("failed to generate identify completions: %w", err)
 	}
-	log.Debugf("Generated Sections got: %+v", identifyCompletions)
+	log.Debugf("Generated (%d) Smart Sections: %s", len(identifyCompletions), strings.Join(identifyCompletions, "\n\n===\n\n"))
 	log.Debugf("Aggregating Sections")
 	var identifyCompletion string
-	var history []anthropic.Message
-	identifyCompletion, history, err = domain.Invoke(
+	identifyCompletion, _, err = domain.Invoke(
 		ctx,
 		client,
 		params.SmartModel,
@@ -284,35 +261,34 @@ func runGenerate(
 			Selectors: selectors,
 		},
 	)
-	if err != nil || len(identifyCompletion) == 0 ||
-		len(identifyHistories) == 0 {
+	if err != nil {
 		return fmt.Errorf("failed to generate identify completion: %w", err)
 	}
 	log.Debugf("Generated Sections")
+	resp, _ := json.MarshalIndent(identifyCompletion, "", "  ")
+	log.Debugf("Generated Smart Sections: %s", string(resp))
 	eg, ctx := errgroup.WithContext(ctx)
 	var identified domain.IdentifyResponse
 	// from the opening { to the closing } in the response of the identifyCompletion
 	// we get the Sections
-	ext, err := extractJSON(identifyCompletion)
+	err = domain.ChatUnmarshal(ctx, cli, []byte(identifyCompletion), &identified)
 	if err != nil {
 		log.Debugf("Failed to extract JSON from identifyCompletion: %s", identifyCompletion)
 		return fmt.Errorf("failed to extract JSON from identifyCompletion: %w", err)
 	}
-	err = domain.ChatUnmarshal(ctx, client, params.FastModel, []byte(ext), &identified)
-	if err != nil {
-		return fmt.Errorf("failed to unmarshal identifyCompletion: %w", err)
-	}
+	resp, _ = json.MarshalIndent(identified, "", "  ")
+	log.Debugf("Unmarshaled Smart Sections: %s", string(resp))
 	for _, section := range identified.Sections {
 		var sectionSelectors = domain.HTMLReduce(doc, selectors)
 		s, err := domain.HTMLSel(doc, section.CSS)
 		if err != nil {
 			return fmt.Errorf("failed to get html: %w", err)
 		}
-		log.Debugf("Generating Selectors")
-		selectorOuts, selectorHistories, err := domain.InvokeN(
+		log.Debugf("Generating Fast Selectors")
+		selectorOuts, _, err := domain.InvokeN(
 			ctx,
 			client,
-			params.SmartModel,
+			params.FastModel,
 			domain.StructPromptArgs{
 				URL:       params.URL,
 				Content:   s,
@@ -320,17 +296,26 @@ func runGenerate(
 			},
 			params.TreeWidth,
 		)
-		if err != nil || len(selectorOuts) == 0 ||
-			len(selectorHistories) == 0 {
+		if err != nil {
 			return fmt.Errorf(
 				"failed to generateN struct completions: %w",
 				err,
 			)
 		}
+		for idx, selectorOut := range selectorOuts {
+			var structFile = domain.StructFilePromptArgs{}
+			err = domain.ChatUnmarshal(ctx, cli, []byte(selectorOut), &structFile)
+			if err != nil {
+				return fmt.Errorf("failed to unmarshal selectorOut: %w", err)
+			}
+			log.Debugf("Unmarshaled Fast Selectors (%d): %s", idx, structFile.Name)
+		}
+		log.Debugf("Generated (%d) Fast Selectors: %s", len(selectorOuts), strings.Join(selectorOuts, "\n\n===\n\n"))
 		var structFile = domain.StructFilePromptArgs{}
 		log.Debugf("Generated Selectors")
 		log.Debugf("Aggregating Selectors")
-		_, _, err = domain.Invoke(
+		var smartStructAggregateResponse string
+		smartStructAggregateResponse, _, err = domain.Invoke(
 			ctx,
 			client,
 			params.SmartModel,
@@ -347,14 +332,21 @@ func runGenerate(
 				err,
 			)
 		}
-		structFile.Name = section.Name
+		err = domain.ChatUnmarshal(
+			ctx,
+			cli,
+			[]byte(smartStructAggregateResponse),
+			&structFile,
+		)
 		structFile.URL = params.URL
+		structFile.IgnoreElements = params.IgnoreElements
+		structFile.Fields = section.Fields
 		out, err := domain.NewPrompt(structFile)
 		if err != nil {
 			return fmt.Errorf("failed to create struct file: %w", err)
 		}
-		name := fmt.Sprintf("%s.go", structFile.Name)
-		if structFile.Name == "" {
+		name := fmt.Sprintf("%s.go", section.Name)
+		if section.Name == "" {
 			name = fmt.Sprintf("%s.go", uuid.New().String())
 		}
 		err = os.WriteFile(
@@ -365,23 +357,10 @@ func runGenerate(
 		if err != nil {
 			return fmt.Errorf("failed to write struct file: %w", err)
 		}
-		log.Infof("Generated struct file: %s.go", structFile.Name)
+		log.Infof("Generated struct file: %s.go", name)
 	}
 	if err := eg.Wait(); err != nil {
 		return fmt.Errorf("failed to generate structs: %w", err)
 	}
 	return nil
-}
-
-func extractJSON(response string) (string, error) {
-	re := regexp.MustCompile(`(?s)<answer>(\{.*?\})</answer>`)
-	matches := re.FindStringSubmatch(response)
-	if len(matches) < 2 {
-		re = regexp.MustCompile("(?s)```({.*?})```(?s)")
-		matches = re.FindStringSubmatch(response)
-		if len(matches) < 2 {
-			return "", fmt.Errorf("failed to extract JSON from response: %s", response)
-		}
-	}
-	return matches[1], nil
 }

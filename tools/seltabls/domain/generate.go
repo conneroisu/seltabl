@@ -115,7 +115,6 @@ func (t *TestFile) WriteFile(p []byte) (n int, err error) {
 // It contains attributes relating to the name, url, and ignore elements of the
 // struct file.
 type StructFile struct {
-	File os.File `json:"-"               yaml:"-"`
 	// Name is the name of the struct file.
 	Name string `json:"-"               yaml:"name"`
 	// URL is the url for the struct file.
@@ -128,8 +127,6 @@ type StructFile struct {
 
 	// TreeWidth is the width of the tree when generating the struct.
 	TreeWidth int `json:"-" yaml:"tree-width"`
-	// TreeDepth is the depth of the tree when generating the struct.
-	TreeDepth int `json:"-" yaml:"tree-depth"`
 
 	// ConfigFile is the config file for the struct file.
 	ConfigFile ConfigFile `json:"-" yaml:"config-file"`

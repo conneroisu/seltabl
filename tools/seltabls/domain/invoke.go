@@ -5,10 +5,11 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"time"
 
 	"github.com/charmbracelet/log"
 	"github.com/liushuangls/go-anthropic/v2"
-	"github.com/sashabaranov/go-openai"
+	"github.com/ollama/ollama/api"
 	"golang.org/x/sync/errgroup"
 )
 
@@ -44,54 +45,80 @@ func invoke(
 	history []anthropic.Message,
 	prompt prompter,
 ) (out string, postHistory []anthropic.Message, err error) {
-	prmpt, err := NewPrompt(prompt)
-	if err != nil {
-		return "", history, err
-	}
-	genHistory := append(history, anthropic.Message{
-		Role: anthropic.RoleUser,
-		Content: []anthropic.MessageContent{
-			anthropic.NewTextMessageContent(prmpt),
-		},
-	})
-	completion, err := client.CreateMessages(
-		ctx,
-		anthropic.MessagesRequest{
-			Model:     model,
-			Messages:  genHistory,
-			MaxTokens: 4_096,
-		},
-	)
-	if err != nil {
-		var e *anthropic.APIError
-		if errors.As(err, &e) {
-			fmt.Printf(
-				"Messages error, type: %s, message: %s",
-				e.Type,
-				e.Message,
+	hCtx, cancel := context.WithTimeout(ctx, time.Second*90)
+	defer cancel()
+	for {
+		select {
+		case <-hCtx.Done():
+			return "", history, hCtx.Err()
+		default:
+			prmpt, err := NewPrompt(prompt)
+			if err != nil {
+				return "", history, err
+			}
+			genHistory := append(history, anthropic.Message{
+				Role: anthropic.RoleUser,
+				Content: []anthropic.MessageContent{
+					anthropic.NewTextMessageContent(prmpt),
+				},
+			})
+			completion, err := client.CreateMessages(
+				hCtx,
+				anthropic.MessagesRequest{
+					Model:     model,
+					Messages:  genHistory,
+					MaxTokens: 4_096,
+				},
 			)
-			return "", history, fmt.Errorf(
-				"messages error, type: %s, message: %s",
-				e.Type,
-				e.Message,
-			)
+			if err != nil {
+				var e *anthropic.APIError
+				if errors.As(err, &e) {
+					fmt.Printf(
+						"Messages error, type: %s, message: %s",
+						e.Type,
+						e.Message,
+					)
+					if e.Type == anthropic.ErrTypeRateLimit {
+						log.Debugf("Rate limit error: %s", e.Message)
+						time.Sleep(time.Second * 45)
+						return invoke(hCtx, client, model, history, prompt)
+					}
+					return "", history, fmt.Errorf(
+						"messages error, type: %s, message: %s",
+						e.Type,
+						e.Message,
+					)
+				}
+				log.Errorf("Messages error: %v", err)
+				return "", genHistory, err
+			}
+			genHistory = append(
+				genHistory,
+				anthropic.Message{
+					Role:    anthropic.RoleUser,
+					Content: completion.Content,
+				})
+			if len(completion.Content) == 0 {
+				return "", genHistory, fmt.Errorf("no choices found")
+			}
+			if len(*completion.Content[0].Text) == 0 {
+				return "", genHistory, fmt.Errorf("no content found")
+			}
+			return *completion.Content[0].Text, genHistory, nil
 		}
-		log.Errorf("Messages error: %v", err)
-		return "", genHistory, err
 	}
-	genHistory = append(
-		genHistory,
-		anthropic.Message{
-			Role:    anthropic.RoleUser,
-			Content: completion.Content,
-		})
-	if len(completion.Content) == 0 {
-		return "", genHistory, fmt.Errorf("no choices found")
-	}
-	if len(*completion.Content[0].Text) == 0 {
-		return "", genHistory, fmt.Errorf("no content found")
-	}
-	return *completion.Content[0].Text, genHistory, nil
+}
+
+// InvokeResponse is a struct for the Invoke response.
+type InvokeResponse struct {
+	Out  string
+	Hist []anthropic.Message
+}
+
+// InvokeNResponse is a struct for the InvokeN response.
+type InvokeNResponse struct {
+	Outs []string
+	Hist [][]anthropic.Message
 }
 
 // InvokeN is a function for generating json using the OpenAI API multiple "N" times.
@@ -102,7 +129,6 @@ func InvokeN(
 	prompt prompter,
 	n int,
 ) (outs []string, histories [][]anthropic.Message, err error) {
-	log.Debugf("Current invocation: %s", prompt.prompt())
 	outs = make([]string, n)
 	histories = make([][]anthropic.Message, n)
 	var eg *errgroup.Group
@@ -124,7 +150,6 @@ func InvokeN(
 				if err != nil {
 					return err
 				}
-				log.Debugf("History: %v", hist)
 				histories[idx] = hist
 				outs[idx] = out
 				return nil
@@ -137,64 +162,48 @@ func InvokeN(
 	return outs, histories, nil
 }
 
-// ChatUnmarshal ensures the given data is a valid JSON object.
-func ChatUnmarshal(
-	ctx context.Context,
-	client *anthropic.Client,
-	model string,
-	data []byte,
-	v interface{},
-) error {
-	tryID := func() error {
-		errMsg, _, err := Invoke(
-			ctx,
-			client,
-			model,
-			[]anthropic.Message{},
-			IdentifyErrorArgs{
-				History: history,
-				Error:   err,
-			},
-		)
-		if err != nil {
-			return fmt.Errorf("failed to generate identify completion: %w", err)
+var stream = false
+
+// ChatUnmarshal ensures the given data is a valid JSON object
+func ChatUnmarshal(ctx context.Context, client *api.Client, data []byte, v interface{}) error {
+	var err error
+	var prmpt string
+	var hCtx context.Context
+	hCtx, cancel := context.WithTimeout(ctx, time.Second*70)
+	defer cancel()
+	for {
+		select {
+		case <-hCtx.Done():
+			return hCtx.Err()
+		default:
+			err = json.Unmarshal(data, &v)
+			if err == nil {
+				return nil
+			}
+			prmpt, err = NewPrompt(FixJSONArgs{JSON: string(data)})
+			if err != nil {
+				return fmt.Errorf("failed to create fix json prompt: %w", err)
+			}
+			respFunc := func(resp api.GenerateResponse) error {
+				err = json.Unmarshal([]byte(resp.Response), &v)
+				if err == nil {
+					log.Debugf("unmarshaled: %s", resp.Response)
+					return nil
+				}
+				log.Debugf("retrying failed to unmarshal: %s\n response: %s", err, resp.Response)
+				ChatUnmarshal(hCtx, client, data, v)
+				return nil
+			}
+			err = client.Generate(hCtx, &api.GenerateRequest{
+				Format: "json",
+				Model:  "llama3",
+				Stream: &stream,
+				Prompt: prmpt,
+			}, respFunc)
+			if err != nil {
+				return fmt.Errorf("failed to generate fix json: %w", err)
+			}
+			return nil
 		}
-		history = append(
-			history,
-			anthropic.Message{
-				Role:    openai.ChatMessageRoleUser,
-				Content: []anthropic.MessageContent{anthropic.NewTextMessageContent(errMsg)},
-			})
-		identifyCompletion, history, err = domain.Invoke(
-			ctx,
-			client,
-			params.FastModel,
-			history,
-			domain.IdentifyAggregateArgs{
-				Schemas:   identifyCompletions,
-				Content:   string(htmlBody),
-				Selectors: selectors,
-			},
-		)
-		if err != nil {
-			return fmt.Errorf("failed to generate identify completion: %w", err)
-		}
-		ext, err := extractJSON(identifyCompletion)
-		if err != nil {
-			return fmt.Errorf("failed to extract JSON from identifyCompletion: %w", err)
-		}
-		err = json.Unmarshal([]byte(ext), &identified)
-		if err != nil {
-			return fmt.Errorf("failed to unmarshal identifyCompletion: %w", err)
-		}
-		return err
-	}
-	retryLimit := 3
-	for i := 0; i < retryLimit; i++ {
-		if err := tryID(); err == nil {
-			break
-		}
-		log.Debugf("Failed to extract JSON from identifyCompletion: %s", identifyCompletion)
-		log.Debugf("Retrying")
 	}
 }

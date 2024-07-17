@@ -5,7 +5,6 @@ import (
 	"context"
 	"fmt"
 	"io"
-	"os"
 
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/analysis"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp/methods"
@@ -48,9 +47,8 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 			if err != nil {
 				return fmt.Errorf("failed to create state: %w", err)
 			}
-			mw := io.MultiWriter(state.Logger.Writer(), os.Stderr)
-			state.Logger.SetOutput(mw)
-			cmd.SetErr(mw)
+			state.Logger.SetOutput(state.Logger.Writer())
+			cmd.SetErr(state.Logger.Writer())
 			ctx, cancel := context.WithCancel(ctx)
 			defer cancel()
 			ctxs := make(map[int]handleCtx)

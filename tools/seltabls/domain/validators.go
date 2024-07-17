@@ -58,11 +58,6 @@ func IsValidTreeWidth(treeWidth int) bool {
 	return true
 }
 
-// IsValidTreeDepth checks if the given tree depth is valid
-func IsValidTreeDepth(treeDepth int) bool {
-	return treeDepth >= 1
-}
-
 // ValidateConfig validates the given config file
 func ValidateConfig(cfg *ConfigFile) error {
 	if cfg.Name == "" {
@@ -142,91 +137,6 @@ func (f *Field) Verify(htmlBody string) error {
 	}
 	return nil
 }
-
-// // DecodeJSON is a function for decoding json.
-// //
-// // It tries to fix the json if it fails.
-// func DecodeJSON(
-//         ctx context.Context,
-//         data []byte,
-//         v interface{},
-//         history []anthropic.Message,
-//         client *anthropic.Client,
-//         model string,
-//         htmlBody string,
-// ) error {
-//         hCtx, cancel := context.WithTimeout(ctx, time.Second*12)
-//         defer cancel()
-//         for {
-//                 select {
-//                 case <-ctx.Done():
-//                         return ctx.Err()
-//                 default:
-//                         var err error
-//                         selR, ok := v.(FieldsResponse)
-//                         if ok {
-//                                 for _, field := range selR.Fields {
-//                                         err = field.Verify(
-//                                                 htmlBody,
-//                                         )
-//                                 }
-//                         }
-//                         if err == nil {
-//                                 err = json.Unmarshal(data, &v)
-//                                 if err == nil {
-//                                         return nil
-//                                 }
-//                         }
-//                         out, hist, err := InvokePre(
-//                                 ctx,
-//                                 client,
-//                                 model,
-//                                 history,
-//                                 IdentifyErrorArgs{Error: err},
-//                         )
-//                         if err != nil {
-//                                 return err
-//                         }
-//                         newHist := append(
-//                                 hist,
-//                                 anthropic.Message{
-//                                         Role:    openai.ChatMessageRoleAssistant,
-//                                         Content: []anthropic.MessageContent{anthropic.NewTextMessageContent(out)},
-//                                 })
-//                         out, hist, err = InvokeJSONSimple(
-//                                 ctx,
-//                                 client,
-//                                 model,
-//                                 newHist,
-//                                 DecodeErrorArgs{Error: err},
-//                         )
-//                         if err != nil {
-//                                 return DecodeJSON(
-//                                         hCtx,
-//                                         data,
-//                                         v,
-//                                         hist,
-//                                         client,
-//                                         model,
-//                                         htmlBody,
-//                                 )
-//                         }
-//                         err = json.Unmarshal([]byte(out), v)
-//                         if err != nil {
-//                                 return DecodeJSON(
-//                                         hCtx,
-//                                         data,
-//                                         v,
-//                                         hist,
-//                                         client,
-//                                         model,
-//                                         htmlBody,
-//                                 )
-//                         }
-//                         return nil
-//                 }
-//         }
-// }
 
 // force type cast for Responder
 var _ responder = (*IdentifyResponse)(nil)

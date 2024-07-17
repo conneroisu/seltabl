@@ -96,7 +96,7 @@ func CreateTextDocumentCompletion(
 			return nil
 		})
 		if err := eg.Wait(); err != nil {
-			return response, fmt.Errorf("failed to get completions: %w", err)
+			return nil, fmt.Errorf("failed to get completions: %w", err)
 		}
 		return response, nil
 	}

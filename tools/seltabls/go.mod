@@ -6,9 +6,11 @@ require (
 	github.com/PuerkitoBio/goquery v1.9.2
 	github.com/charmbracelet/huh v0.4.2
 	github.com/charmbracelet/log v0.4.0
+	github.com/go-echarts/go-echarts/v2 v2.4.0
 	github.com/google/uuid v1.6.0
 	github.com/liushuangls/go-anthropic/v2 v2.3.1
 	github.com/mitchellh/go-homedir v1.1.0
+	github.com/ollama/ollama v0.2.6
 	github.com/sashabaranov/go-openai v1.26.3
 	github.com/sourcegraph/conc v0.3.0
 	github.com/spf13/cobra v1.8.0
@@ -58,7 +60,6 @@ require (
 	github.com/hashicorp/golang-lru/v2 v2.0.7 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/klauspost/compress v1.17.4 // indirect
-	github.com/kr/text v0.2.0 // indirect
 	github.com/lucasb-eyer/go-colorful v1.2.0 // indirect
 	github.com/lufia/plan9stats v0.0.0-20211012122336-39d0f177ccd0 // indirect
 	github.com/magiconair/properties v1.8.7 // indirect
@@ -75,7 +76,6 @@ require (
 	github.com/muesli/cancelreader v0.2.2 // indirect
 	github.com/muesli/termenv v0.15.2 // indirect
 	github.com/ncruces/go-strftime v0.1.9 // indirect
-	github.com/ollama/ollama v0.2.6 // indirect
 	github.com/opencontainers/go-digest v1.0.0 // indirect
 	github.com/opencontainers/image-spec v1.1.0 // indirect
 	github.com/pkg/errors v0.9.1 // indirect

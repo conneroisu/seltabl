@@ -125,3 +125,10 @@ type StructFilePromptArgs struct {
 }
 
 func (a StructFilePromptArgs) prompt() string { return "struct_file" }
+
+// FixJSONArgs is the arguments for the fix json prompt.
+type FixJSONArgs struct {
+	JSON string `json:"json"`
+}
+
+func (a FixJSONArgs) prompt() string { return "fix_json" }

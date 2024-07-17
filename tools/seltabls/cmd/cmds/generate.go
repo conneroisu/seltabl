@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"regexp"
 	"strings"
 	"sync"
 
@@ -33,7 +34,7 @@ const (
 	// // baseSmartModelDefault is the default smart model for the openai api of groq
 	// baseSmartModelDefault = "llama3-70b-8192"
 	baseSmartModelDefault = "claude-3-5-sonnet-20240620"
-	baseFastModelDefault  = "claude-3-5-sonnet-20240620"
+	baseFastModelDefault  = "claude-3-haiku-20240307"
 )
 
 // baseIgnoreElementsDefault is the default ignore elements for the openai api of groq
@@ -165,11 +166,12 @@ So the output fo the command:
 			return nil
 		},
 		RunE: func(_ *cobra.Command, _ []string) error {
+			defer func() {
+				if r := recover(); r != nil {
+					log.Error(r)
+				}
+			}()
 			client := anthropic.NewClient(params.LLMKey)
-			/* client := domain.CreateClient( */
-			/*	params.BaseURI, */
-			/*	params.LLMKey, */
-			/* ) */
 			state, err := analysis.NewState()
 			if err != nil {
 				return fmt.Errorf("failed to create state: %w", err)
@@ -196,6 +198,7 @@ So the output fo the command:
 			if err != nil {
 				return fmt.Errorf("failed to create document: %w", err)
 			}
+			print(doc, sels, client)
 			log.Infof("calling mainGenerate")
 			if err := mainGenerate(
 				ctx,
@@ -249,27 +252,28 @@ func runGenerate(
 ) error {
 	mut.Lock()
 	defer mut.Unlock()
+	log.Debugf("Generating Sections")
 	identifyCompletions, identifyHistories, err := domain.InvokeN(
 		ctx,
 		client,
 		params.FastModel,
-		[][]anthropic.Message{},
 		domain.IdentifyPromptArgs{
 			URL:         params.URL,
 			Content:     string(htmlBody),
 			NumSections: params.NumSections,
+			Selectors:   selectors,
 		},
-		domain.IdentifyResponse{},
 		params.TreeWidth,
-		string(htmlBody),
 	)
-	log.Infof("identifyCompletions: %+v", identifyCompletions)
 	if err != nil ||
 		len(identifyHistories) == 0 {
 		return fmt.Errorf("failed to generate identify completions: %w", err)
 	}
-	var identified domain.IdentifyResponse
-	identifyCompletion, _, err := domain.InvokeJSON(
+	log.Debugf("Generated Sections got: %+v", identifyCompletions)
+	log.Debugf("Aggregating Sections")
+	var identifyCompletion string
+	var history []anthropic.Message
+	identifyCompletion, history, err = domain.Invoke(
 		ctx,
 		client,
 		params.SmartModel,
@@ -279,83 +283,105 @@ func runGenerate(
 			Content:   string(htmlBody),
 			Selectors: selectors,
 		},
-		&identified,
-		string(htmlBody),
 	)
-	log.Infof("identifyCompletion: %+v", identifyCompletion)
 	if err != nil || len(identifyCompletion) == 0 ||
 		len(identifyHistories) == 0 {
 		return fmt.Errorf("failed to generate identify completion: %w", err)
 	}
+	log.Debugf("Generated Sections")
 	eg, ctx := errgroup.WithContext(ctx)
+	var identified domain.IdentifyResponse
+	// from the opening { to the closing } in the response of the identifyCompletion
+	// we get the Sections
+	ext, err := extractJSON(identifyCompletion)
+	if err != nil {
+		log.Debugf("Failed to extract JSON from identifyCompletion: %s", identifyCompletion)
+		return fmt.Errorf("failed to extract JSON from identifyCompletion: %w", err)
+	}
+	err = domain.ChatUnmarshal(ctx, client, params.FastModel, []byte(ext), &identified)
+	if err != nil {
+		return fmt.Errorf("failed to unmarshal identifyCompletion: %w", err)
+	}
 	for _, section := range identified.Sections {
-		eg.Go(func() error {
-			s, err := domain.HTMLSel(doc, section.CSS)
-			if err != nil {
-				return fmt.Errorf("failed to get html: %w", err)
-			}
-			selectorOuts, selectorHistories, err := domain.InvokeN(
-				ctx,
-				client,
-				params.SmartModel,
-				[][]anthropic.Message{},
-				domain.StructPromptArgs{
-					URL:       params.URL,
-					Content:   s,
-					Selectors: domain.HTMLReduce(doc, selectors),
-				},
-				domain.FieldsResponse{},
-				params.TreeWidth,
-				string(htmlBody),
+		var sectionSelectors = domain.HTMLReduce(doc, selectors)
+		s, err := domain.HTMLSel(doc, section.CSS)
+		if err != nil {
+			return fmt.Errorf("failed to get html: %w", err)
+		}
+		log.Debugf("Generating Selectors")
+		selectorOuts, selectorHistories, err := domain.InvokeN(
+			ctx,
+			client,
+			params.SmartModel,
+			domain.StructPromptArgs{
+				URL:       params.URL,
+				Content:   s,
+				Selectors: sectionSelectors,
+			},
+			params.TreeWidth,
+		)
+		if err != nil || len(selectorOuts) == 0 ||
+			len(selectorHistories) == 0 {
+			return fmt.Errorf(
+				"failed to generateN struct completions: %w",
+				err,
 			)
-			if err != nil || len(selectorOuts) == 0 ||
-				len(selectorHistories) == 0 {
-				return fmt.Errorf(
-					"failed to generateN struct completions: %w",
-					err,
-				)
-			}
-			var structFile = domain.StructFilePromptArgs{}
-			_, _, err = domain.InvokeJSON(
-				ctx,
-				client,
-				params.SmartModel,
-				[]anthropic.Message{},
-				domain.StructAggregateArgs{
-					Selectors: domain.HTMLReduce(doc, selectors),
-					Content:   domain.HTMLReduct(doc, section.CSS),
-					Schemas:   selectorOuts,
-				},
-				&structFile,
-				string(htmlBody),
+		}
+		var structFile = domain.StructFilePromptArgs{}
+		log.Debugf("Generated Selectors")
+		log.Debugf("Aggregating Selectors")
+		_, _, err = domain.Invoke(
+			ctx,
+			client,
+			params.SmartModel,
+			[]anthropic.Message{},
+			domain.StructAggregateArgs{
+				Selectors: sectionSelectors,
+				Content:   domain.HTMLReduct(doc, section.CSS),
+				Schemas:   selectorOuts,
+			},
+		)
+		if err != nil {
+			return fmt.Errorf(
+				"failed to generate struct aggregate: %w",
+				err,
 			)
-			if err != nil {
-				return fmt.Errorf("failed to generate struct aggregate: %w", err)
-			}
-			structFile.Name = section.Name
-			structFile.URL = params.URL
-			out, err := domain.NewPrompt(structFile)
-			if err != nil {
-				return fmt.Errorf("failed to create struct file: %w", err)
-			}
-			name := fmt.Sprintf("%s.go", structFile.Name)
-			if structFile.Name == "" {
-				name = fmt.Sprintf("%s.go", uuid.New().String())
-			}
-			err = os.WriteFile(
-				name,
-				[]byte(out),
-				0644,
-			)
-			if err != nil {
-				return fmt.Errorf("failed to write struct file: %w", err)
-			}
-			log.Infof("Generated struct file: %s.go", structFile.Name)
-			return nil
-		})
+		}
+		structFile.Name = section.Name
+		structFile.URL = params.URL
+		out, err := domain.NewPrompt(structFile)
+		if err != nil {
+			return fmt.Errorf("failed to create struct file: %w", err)
+		}
+		name := fmt.Sprintf("%s.go", structFile.Name)
+		if structFile.Name == "" {
+			name = fmt.Sprintf("%s.go", uuid.New().String())
+		}
+		err = os.WriteFile(
+			name,
+			[]byte(out),
+			0644,
+		)
+		if err != nil {
+			return fmt.Errorf("failed to write struct file: %w", err)
+		}
+		log.Infof("Generated struct file: %s.go", structFile.Name)
 	}
 	if err := eg.Wait(); err != nil {
 		return fmt.Errorf("failed to generate structs: %w", err)
 	}
 	return nil
+}
+
+func extractJSON(response string) (string, error) {
+	re := regexp.MustCompile(`(?s)<answer>(\{.*?\})</answer>`)
+	matches := re.FindStringSubmatch(response)
+	if len(matches) < 2 {
+		re = regexp.MustCompile("(?s)```({.*?})```(?s)")
+		matches = re.FindStringSubmatch(response)
+		if len(matches) < 2 {
+			return "", fmt.Errorf("failed to extract JSON from response: %s", response)
+		}
+	}
+	return matches[1], nil
 }

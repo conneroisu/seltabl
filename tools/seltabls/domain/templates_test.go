@@ -6,6 +6,8 @@ import (
 	"testing"
 
 	"github.com/conneroisu/seltabl/tools/seltabls/data/master"
+	"github.com/liushuangls/go-anthropic/v2"
+	"github.com/sashabaranov/go-openai"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -17,6 +19,16 @@ func TestNewStructFileContent(t *testing.T) {
 			Error: fmt.Errorf(
 				"failed to parse struct: failed to get data rows html: failed to get html: failed to get doc: open /Users/hsz/Projects/github.com/conneroisu/seltabl/testdata/ab_num_table.html: no such file or directory",
 			),
+			History: []anthropic.Message{
+				{
+					Role:    openai.ChatMessageRoleUser,
+					Content: []anthropic.MessageContent{anthropic.NewTextMessageContent("foo")},
+				},
+				{
+					Role:    openai.ChatMessageRoleAssistant,
+					Content: []anthropic.MessageContent{anthropic.NewTextMessageContent("bar")},
+				},
+			},
 		},
 	)
 	a.NoError(err)
@@ -188,23 +200,14 @@ func TestIdentifyPromptArgs(t *testing.T) {
 			URL:         "https://github.com/conneroisu/seltabl/blob/main/testdata/ab_num_table.html",
 			Content:     "<html><body><table><tr><td>a</td><td>b</td></tr><tr><td>1</td><td>2</td></tr></table></body></html>",
 			NumSections: 3,
-		},
-	)
-	a.NoError(err)
-	a.NotEmpty(content)
-	t.Logf("struct: %s", content)
-	t.Fail()
-}
-
-// TestDecodeErrorArgs tests the DecodeErrorArgs struct.
-func TestDecodeErrorArgs(t *testing.T) {
-	a := assert.New(t)
-	content, err := NewPrompt(
-		DecodeErrorArgs{
-			Error: errors.New(
-				"failed to decode structs: failed to decode struct: failed to get data rows html: failed to get html: failed to get doc: open /Users/hsz/Projects/github.com/conneroisu/seltabl/testdata/ab_num_table.html: no such file or directory",
-			),
-			Message: "Welcome to the world of seltabl!",
+			Selectors: []master.Selector{
+				{
+					ID:         1,
+					Value:      "html > body > table > tbody > tr > td:nth-child(1)",
+					Occurances: 1,
+					Context:    "<html></html>",
+				},
+			},
 		},
 	)
 	a.NoError(err)

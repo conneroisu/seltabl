@@ -57,14 +57,12 @@ Evaluate code for common errors or invalid selectors.
 }
 
 // vetFile vets a file at the given path adhering to the given context's timeout.
-func vetFile(ctx context.Context, filePath string) (response []lsp.Diagnostic, err error) {
-	var state analysis.State
+func vetFile(
+	ctx context.Context,
+	filePath string,
+) (response []lsp.Diagnostic, err error) {
 	if filepath.Ext(filePath) != ".go" {
 		return nil, fmt.Errorf("file is not a go file")
-	}
-	state, err = analysis.NewState()
-	if err != nil {
-		return nil, fmt.Errorf("failed to create state: %w", err)
 	}
 	content, err := os.ReadFile(filePath)
 	if err != nil {
@@ -75,7 +73,7 @@ func vetFile(ctx context.Context, filePath string) (response []lsp.Diagnostic, e
 	if err != nil {
 		return response, nil
 	}
-	diags, err := analysis.GetDiagnosticsForFile(ctx, &state, &ctn, data)
+	diags, err := analysis.GetDiagnosticsForFile(ctx, &ctn, data)
 	if err != nil {
 		return nil, err
 	}

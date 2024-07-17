@@ -1,16 +1,11 @@
 package domain
 
 import (
-	"context"
-	"encoding/json"
 	"fmt"
 	"net/url"
 	"strings"
-	"time"
 
 	"github.com/PuerkitoBio/goquery"
-	"github.com/liushuangls/go-anthropic/v2"
-	"github.com/sashabaranov/go-openai"
 )
 
 // IsValidGoType checks if the given type is a valid go type
@@ -138,95 +133,100 @@ func (f *Field) Verify(htmlBody string) error {
 	mbp := f.MustBePresent
 	docTxt := doc.Text()
 	if !strings.Contains(docTxt, mbp) {
-		return fmt.Errorf("must be present (%s) not found for field %s with type %s", mbp, f.Name, f.Type)
+		return fmt.Errorf(
+			"must be present (%s) not found for field %s with type %s",
+			mbp,
+			f.Name,
+			f.Type,
+		)
 	}
 	return nil
 }
 
-// DecodeJSON is a function for decoding json.
-//
-// It tries to fix the json if it fails.
-func DecodeJSON(
-	ctx context.Context,
-	data []byte,
-	v interface{},
-	history []anthropic.Message,
-	client *anthropic.Client,
-	model string,
-	htmlBody string,
-) error {
-	hCtx, cancel := context.WithTimeout(ctx, time.Second*12)
-	defer cancel()
-	for {
-		select {
-		case <-ctx.Done():
-			return ctx.Err()
-		default:
-			var err error
-			selR, ok := v.(FieldsResponse)
-			if ok {
-				for _, field := range selR.Fields {
-					err = field.Verify(
-						htmlBody,
-					)
-				}
-			}
-			if err == nil {
-				err = json.Unmarshal(data, &v)
-				if err == nil {
-					return nil
-				}
-			}
-			out, hist, err := InvokePre(
-				ctx,
-				client,
-				model,
-				history,
-				IdentifyErrorArgs{Error: err},
-			)
-			if err != nil {
-				return err
-			}
-			newHist := append(
-				hist,
-				anthropic.Message{
-					Role:    openai.ChatMessageRoleAssistant,
-					Content: []anthropic.MessageContent{anthropic.NewTextMessageContent(out)},
-				})
-			out, hist, err = InvokeJSONSimple(
-				ctx,
-				client,
-				model,
-				newHist,
-				DecodeErrorArgs{Error: err},
-			)
-			if err != nil {
-				return DecodeJSON(
-					hCtx,
-					data,
-					v,
-					hist,
-					client,
-					model,
-					htmlBody,
-				)
-			}
-			err = json.Unmarshal([]byte(out), v)
-			if err != nil {
-				return DecodeJSON(
-					hCtx,
-					data,
-					v,
-					hist,
-					client,
-					model,
-					htmlBody,
-				)
-			}
-			return nil
-		}
-	}
-}
+// // DecodeJSON is a function for decoding json.
+// //
+// // It tries to fix the json if it fails.
+// func DecodeJSON(
+//         ctx context.Context,
+//         data []byte,
+//         v interface{},
+//         history []anthropic.Message,
+//         client *anthropic.Client,
+//         model string,
+//         htmlBody string,
+// ) error {
+//         hCtx, cancel := context.WithTimeout(ctx, time.Second*12)
+//         defer cancel()
+//         for {
+//                 select {
+//                 case <-ctx.Done():
+//                         return ctx.Err()
+//                 default:
+//                         var err error
+//                         selR, ok := v.(FieldsResponse)
+//                         if ok {
+//                                 for _, field := range selR.Fields {
+//                                         err = field.Verify(
+//                                                 htmlBody,
+//                                         )
+//                                 }
+//                         }
+//                         if err == nil {
+//                                 err = json.Unmarshal(data, &v)
+//                                 if err == nil {
+//                                         return nil
+//                                 }
+//                         }
+//                         out, hist, err := InvokePre(
+//                                 ctx,
+//                                 client,
+//                                 model,
+//                                 history,
+//                                 IdentifyErrorArgs{Error: err},
+//                         )
+//                         if err != nil {
+//                                 return err
+//                         }
+//                         newHist := append(
+//                                 hist,
+//                                 anthropic.Message{
+//                                         Role:    openai.ChatMessageRoleAssistant,
+//                                         Content: []anthropic.MessageContent{anthropic.NewTextMessageContent(out)},
+//                                 })
+//                         out, hist, err = InvokeJSONSimple(
+//                                 ctx,
+//                                 client,
+//                                 model,
+//                                 newHist,
+//                                 DecodeErrorArgs{Error: err},
+//                         )
+//                         if err != nil {
+//                                 return DecodeJSON(
+//                                         hCtx,
+//                                         data,
+//                                         v,
+//                                         hist,
+//                                         client,
+//                                         model,
+//                                         htmlBody,
+//                                 )
+//                         }
+//                         err = json.Unmarshal([]byte(out), v)
+//                         if err != nil {
+//                                 return DecodeJSON(
+//                                         hCtx,
+//                                         data,
+//                                         v,
+//                                         hist,
+//                                         client,
+//                                         model,
+//                                         htmlBody,
+//                                 )
+//                         }
+//                         return nil
+//                 }
+//         }
+// }
 
 // force type cast for Responder
 var _ responder = (*IdentifyResponse)(nil)

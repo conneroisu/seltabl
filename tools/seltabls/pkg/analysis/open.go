@@ -57,12 +57,14 @@ func OpenDocument(
 		}
 		diags, err := GetDiagnosticsForFile(
 			ctx,
-			s,
 			&req.Params.TextDocument.Text,
 			data,
 		)
 		if err != nil {
-			return nil, fmt.Errorf("failed to get diagnostics for file: %w", err)
+			return nil, fmt.Errorf(
+				"failed to get diagnostics for file: %w",
+				err,
+			)
 		}
 		return &lsp.PublishDiagnosticsNotification{
 			Notification: lsp.Notification{

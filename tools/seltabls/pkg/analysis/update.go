@@ -41,7 +41,6 @@ func UpdateDocument(
 				for i := range notification.Params.ContentChanges {
 					diags, err := GetDiagnosticsForFile(
 						ctx,
-						s,
 						&notification.Params.ContentChanges[i].Text,
 						data,
 					)

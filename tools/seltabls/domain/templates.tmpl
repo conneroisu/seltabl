@@ -1,28 +1,4 @@
 {{/*
-Identify Error Template
-================================================================================
-*/}}
-{{- define "decode_error" -}}
-We encountered an error while processing your response.
-
-In reponse to this error, you must return the entire fixed json response and 
-nothing else. 
-
-DO NOT remove any json keys or values.
-
-More details:
-{{ .Message }}
-
-We encountered the following error:
-
-```text
-{{ .Error }}
-```
-
-
-{{- end -}}
-
-{{/*
 Section Error Template
 ================================================================================
 */}}
@@ -31,12 +7,33 @@ As a extremely intelligent assistant for ai models, your are to improve the foll
 llama3 or gpt4 model.
 
 The error arising from the agents last response is:
+<error>
 {{ .Error }}.
+</error>
 
-Your task is to improve the error given to a llama3 or gpt4 model by providing detailed information within the current conversation context.
+In reponse to this error, you must return the entire fixed json response and 
+nothing else. 
 
-You will be provided with a conversation history. 
-{{- end -}} {{/* append history */}}
+DO NOT remove any json keys or values.
+We encountered the following error:
+
+
+Your task is to improve the error given to a language model by providing detailed information within the current conversation context.
+
+You must not fix the error given to the language model, but instead provide:
+- a detailed description of the error.
+- a suggested way to fix the error in a paragraph.
+- extra information that may be useful in fixing the error.
+- a list of possible solutions to the error with their pros and cons.
+
+The history is:
+<history>
+{{- range $i, $msg := .History }}
+	{{- if $i }}{{- end }}
+- {{ $msg.Role }}: {{ $msg.Content }}
+{{- end }}
+</history>
+{{- end -}}
 
 {{/*
 Section Aggregate Template
@@ -46,6 +43,7 @@ Section Aggregate Template
 Please provide a single JSON object that aggregates the following multiple JSON structures.
 The aggregated JSON object should combine all the fields from the above structures.
 If there are any conflicting fields, please ensure they are merged appropriately.
+Your response must be valid json.
 
 You should return a json object with the following attributes:
 
@@ -56,13 +54,16 @@ You should return a json object with the following attributes:
 
 The base selectors for the struct are:
 
+<base-selectors>
 {{- range $i, $sel := .Selectors }}
 	{{- if $i }}{{- end }}
 - {{ $sel.Value }}
 {{- end }}
+</base-selectors>
 
 Example:
 
+<example>
 ```json
 {
 	"name": "softball-ncaa-stats-team-results",
@@ -77,26 +78,34 @@ Example:
 		}
 	]
 }
-
-{{- range .Structs }}
-```json
-- {{ . }}
-```
-{{- end }}
+</example>
 
 The aggregated JSON object should combine all the fields from the above structures. If there are any conflicting fields, please ensure they are merged appropriately.
 
 The aggergated sections returned should be for the entire html:
+
 ```html
 {{ .Content }}
 ```
+
 Input JSON structures:
 
+<structs>
 {{- range .Structs }}
+
 ```json
 {{ . }}
 ```
+
 {{- end }}
+</structs>
+
+Your response:
+<answer>
+{
+... (the json response)
+}
+</answer>
 {{- end -}}
 
 {{/*
@@ -104,16 +113,26 @@ Identify Prompt Template
 ================================================================================
 */}}
 {{- define "identify_prompt" -}}
-As a extremely diligent web developer, you are to identify sections of the following formated and ruled html that contain good examples of statistics.
-Good examples of statistics are sections that contain data that can be extracted from the html that could be used to perform data science.
+As a extremely diligent web developer, you are to identify sections of the following formated and ruled html.
+Your response must be valid json.
 
-You must only return {{ .NumSections }} sections of the html that contain good examples of statistics.
+Sections that should be returned are sections that contain data that can be extracted from the html.
+Examples: sections that contain tables, options that contain seemingly important numbers, sections that contain repeated patterns, etc.
+You must only return {{ .NumSections }} sections of the html.
+
+The valid css selectors for the html are:
+<valid-selectors>
+{{- range $i, $sel := .Selectors }}
+	{{- if $i }}{{- end }}
+- {{ $sel.Value }}
+{{- end }}
+</valid-selectors>
 
 DO NOT include any extraneous features in the returned json object.
 Your json object must only contain the following attributes:
 
 - name: the struct name for the section (should be a valid golang struct name).
-- sections: a list of sections of the html that are processable.
+- sections: a list of sections of the html.
 \- description: a description of the section. (should describe what the section is for and what it contains)
 \- css: the css selector for the section. (should be a valid css selector that can be used to select the entire section in the html)
 
@@ -140,6 +159,12 @@ Your given html is:
 ```html
 {{ .Content }}
 ```
+
+Your response:
+<answer>
+{
+... (the json response)
+}
 {{- end -}}
 
 {{/*
@@ -147,10 +172,12 @@ Identify Aggregate Template
 ================================================================================
 */}}
 {{- define "identify_aggregate" -}}
-As a diligent and experienced html developer, you are to create a structured json object that represents the sections of the given html content.
+As a diligent and experienced html developer, you are to create a structured json
+object that represents the sections of the given html content.
 Your interns have created a list of json schemas for the given html content, but 
 you must congregate them into a single comprehensive and accurate json response 
 that fully describes the given html content.
+Your response must be valid json.
 
 You are to congregate the following json schemas into a single comprehensive and 
 accurate json response that fully describes the given html content, and you must 
@@ -188,6 +215,12 @@ The html is:
 ```html
 {{ .Content }}
 ```
+
+Your response:
+<answer>
+{
+... (the json response)
+}
 {{- end -}}
 
 {{/*
@@ -197,6 +230,7 @@ Struct Prompt Template.
 {{- define "struct_prompt" -}}
 As a diligent and experienced html developer, you are to generate a json schema
 that fully describes the given html content for a given url, {{ .URL }}.
+Your response must be valid json.
 
 Your json schema must have a number of attributes for each field in the struct.
 
@@ -248,8 +282,8 @@ Struct Aggregate Template
 ================================================================================
 */}}
 {{- define "struct_aggregate" -}}
-
 You are to cogregate the following json schemas into a single comprehensive and accurate json schema designed to be used to select elements using css selectors.
+Your response must be valid json.
 
 - header selector: used to find the header row and column for the field in the given struct.
 - data-selector: used to find the data column for the field in the given struct.
@@ -271,6 +305,12 @@ Your HTML content:
 Your json schemas:
 
 {{ .Schemas }}
+
+Your response:
+<answer>
+{
+... (the json response)
+}
 {{- end -}}
 
 {{/*

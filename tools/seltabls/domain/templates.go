@@ -6,6 +6,7 @@ import (
 	"text/template"
 
 	"github.com/conneroisu/seltabl/tools/seltabls/data/master"
+	"github.com/liushuangls/go-anthropic/v2"
 )
 
 //go:embed templates.tmpl
@@ -15,7 +16,9 @@ var templatesTmpl string
 var Template = template.Must(template.New("templates").Parse(templatesTmpl))
 
 // prompter is an interface for prompting it provided the template name to use.
-type prompter interface{ prompt() string }
+type prompter interface {
+	prompt() string
+}
 
 // responder is an interface for responding to a given prompt.
 type responder interface{ respond() string }
@@ -38,7 +41,8 @@ func NewPrompt(
 }
 
 type sectionErrorArgs struct {
-	Error error
+	Error   error
+	History []anthropic.Message
 }
 
 func (a sectionErrorArgs) prompt() string {
@@ -58,7 +62,8 @@ func (a SectionAggregateArgs) prompt() string {
 
 // IdentifyErrorArgs is the arguments for the identify error prompt.
 type IdentifyErrorArgs struct {
-	Error error `json:"error"` // required
+	Error   error               `json:"error"`   // required
+	History []anthropic.Message `json:"history"` // required
 }
 
 func (a IdentifyErrorArgs) prompt() string { return "section_error" }
@@ -74,9 +79,10 @@ func (a StructAggregateArgs) prompt() string { return "struct_aggregate" }
 
 // IdentifyPromptArgs is the arguments for the identify prompt.
 type IdentifyPromptArgs struct {
-	URL         string `json:"url"`
-	Content     string `json:"content"`
-	NumSections int    `json:"num-sections"`
+	URL         string            `json:"url"`
+	Content     string            `json:"content"`
+	NumSections int               `json:"num-sections"`
+	Selectors   []master.Selector `json:"selectors"`
 }
 
 func (a IdentifyPromptArgs) prompt() string { return "identify_prompt" }
@@ -119,11 +125,3 @@ type StructFilePromptArgs struct {
 }
 
 func (a StructFilePromptArgs) prompt() string { return "struct_file" }
-
-// DecodeErrorArgs is the arguments for the decode error prompt.
-type DecodeErrorArgs struct {
-	Error   error  `json:"error"`
-	Message string `json:"message"`
-}
-
-func (a DecodeErrorArgs) prompt() string { return "decode_error" }

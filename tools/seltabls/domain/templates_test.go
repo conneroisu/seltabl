@@ -192,11 +192,11 @@ func TestIdentifyErrorArgs(t *testing.T) {
 	t.Logf("struct: %s", content)
 }
 
-// TestIdentifyPromptArgs tests the IdentifyPromptArgs struct.
-func TestIdentifyPromptArgs(t *testing.T) {
+// TestNewPromptIdentifyArgs tests the IdentifyPromptArgs struct with a single selector.
+func TestNewPromptIdentifyArgs(t *testing.T) {
 	a := assert.New(t)
 	content, err := NewPrompt(
-		IdentifyPromptArgs{
+		IdentifyArgs{
 			URL:         "https://github.com/conneroisu/seltabl/blob/main/testdata/ab_num_table.html",
 			Content:     "<html><body><table><tr><td>a</td><td>b</td></tr><tr><td>1</td><td>2</td></tr></table></body></html>",
 			NumSections: 3,
@@ -213,4 +213,29 @@ func TestIdentifyPromptArgs(t *testing.T) {
 	a.NoError(err)
 	a.NotEmpty(content)
 	t.Logf("struct: %s", content)
+}
+
+// TestNewPromptPickSelectorArgs tests the NewPrompt function with a PickSelectorArgs struct.
+func TestNewPromptPickSelectorArgs(t *testing.T) {
+	a := assert.New(t)
+	content, err := NewPrompt(
+		PickSelectorArgs{
+			Selectors: []master.Selector{
+				{
+					Value: "html > body > table#dataTable > tr:nth-child(1) > td:nth-child(1)",
+				},
+			},
+			HTML: "<html><body><table id=\"dataTable\"><tr><td>a</td><td>b</td></tr><tr><td>1</td><td>2</td></tr></table></body></html>",
+			Section: Section{
+				Name:        "Test",
+				Description: "Test Section",
+				CSS:         "html > body > table#dataTable > tr:nth-child(1) > td:nth-child(1)",
+			},
+		},
+	)
+
+	a.NoError(err)
+	a.NotEmpty(content)
+	t.Logf("struct: %s", content)
+	t.Fail()
 }

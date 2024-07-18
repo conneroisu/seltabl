@@ -77,15 +77,15 @@ type StructAggregateArgs struct {
 
 func (a StructAggregateArgs) prompt() string { return "struct_aggregate" }
 
-// IdentifyPromptArgs is the arguments for the identify prompt.
-type IdentifyPromptArgs struct {
+// IdentifyArgs is the arguments for the identify prompt.
+type IdentifyArgs struct {
 	URL         string            `json:"url"`
 	Content     string            `json:"content"`
 	NumSections int               `json:"num-sections"`
 	Selectors   []master.Selector `json:"selectors"`
 }
 
-func (a IdentifyPromptArgs) prompt() string { return "identify_prompt" }
+func (a IdentifyArgs) prompt() string { return "identify_prompt" }
 
 // IdentifyAggregateArgs is the arguments for the identify aggregate prompt.
 type IdentifyAggregateArgs struct {
@@ -132,3 +132,12 @@ type FixJSONArgs struct {
 }
 
 func (a FixJSONArgs) prompt() string { return "fix_json" }
+
+// PickSelectorArgs is the arguments for the pick selector prompt.
+type PickSelectorArgs struct {
+	Selectors []master.Selector `json:"selectors"`
+	HTML      string            `json:"html"`
+	Section   Section           `json:"section"`
+}
+
+func (a PickSelectorArgs) prompt() string { return "pick_selector" }

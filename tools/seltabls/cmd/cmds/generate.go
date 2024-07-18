@@ -220,6 +220,8 @@ So the output fo the command:
 
 var mut sync.Mutex
 
+// TODO: need to rethink this with channels and goroutines
+// TODO: each node in the tree has treeWidth.
 func runGenerate(
 	ctx context.Context,
 	selectors []master.Selector,
@@ -229,6 +231,9 @@ func runGenerate(
 	params GenerateCmdParams,
 ) error {
 	cli, err := api.ClientFromEnvironment()
+	if err != nil {
+		return fmt.Errorf("failed to create client: %w", err)
+	}
 	mut.Lock()
 	defer mut.Unlock()
 	log.Debugf("Generating Sections")
@@ -236,7 +241,7 @@ func runGenerate(
 		ctx,
 		client,
 		params.FastModel,
-		domain.IdentifyPromptArgs{
+		domain.IdentifyArgs{
 			URL:         params.URL,
 			Content:     string(htmlBody),
 			NumSections: params.NumSections,
@@ -264,13 +269,11 @@ func runGenerate(
 	if err != nil {
 		return fmt.Errorf("failed to generate identify completion: %w", err)
 	}
-	log.Debugf("Generated Sections")
 	resp, _ := json.MarshalIndent(identifyCompletion, "", "  ")
+	log.Debugf("Generated Sections")
 	log.Debugf("Generated Smart Sections: %s", string(resp))
 	eg, ctx := errgroup.WithContext(ctx)
 	var identified domain.IdentifyResponse
-	// from the opening { to the closing } in the response of the identifyCompletion
-	// we get the Sections
 	err = domain.ChatUnmarshal(ctx, cli, []byte(identifyCompletion), &identified)
 	if err != nil {
 		log.Debugf("Failed to extract JSON from identifyCompletion: %s", identifyCompletion)
@@ -338,6 +341,9 @@ func runGenerate(
 			[]byte(smartStructAggregateResponse),
 			&structFile,
 		)
+		if err != nil {
+			return fmt.Errorf("failed to unmarshal struct file: %w", err)
+		}
 		structFile.URL = params.URL
 		structFile.IgnoreElements = params.IgnoreElements
 		structFile.Fields = section.Fields

@@ -9,7 +9,8 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-// TestFindStructNode tests the findStructNode function.
+// TestFindStructNode tests the findStructNode function with a valid struct node
+// as input.
 func TestFindStructNode(t *testing.T) {
 	source := `package main
 

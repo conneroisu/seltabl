@@ -41,17 +41,17 @@ Section Aggregate Template
 */}}
 {{- define "section_aggregate" -}}
 Please provide a single JSON object that aggregates the following multiple JSON structures.
-The aggregated JSON object should combine all the fields from the above structures.
+The aggregated JSON object must combine all the fields from the above structures.
 If there are any conflicting fields, please ensure they are merged appropriately.
 Your response must be valid json.
 
-You should return a json object with the following attributes:
+You must return a json object with the following attributes:
 
-- name: the golang struct name for the section (should be a valid golang struct name).
-- description: a description of the section (should describe what the section is for and what it contains).
+- name: the golang struct name for the section (must be a valid golang struct name).
+- description: a description of the section (must describe what the section is for and what it contains).
 - sections: a list of sections of the html that are processable.
-\- description: a description of the section (should describe what the section is for and what it contains).
-\- css: the css selector for the section (should be a valid css selector to select the entire section in the html).
+\- description: a description of the section (must describe what the section is for and what it contains).
+\- css: the css selector for the section (must be a valid css selector to select the entire section in the html).
 
 The base selectors for the struct are:
 
@@ -79,11 +79,12 @@ Example:
 		}
 	]
 }
+```
 </example>
 
-The aggregated JSON object should combine all the fields from the above structures. If there are any conflicting fields, please ensure they are merged appropriately.
+The aggregated JSON object must combine all the fields from the above structures. If there are any conflicting fields, please ensure they are merged appropriately.
 
-The aggergated sections returned should be for the entire html:
+The aggergated sections returned must be for the entire html:
 
 ```html
 {{ .Content }}
@@ -117,7 +118,7 @@ Identify Prompt Template
 As a extremely diligent web developer, you are to identify sections of the following formated and ruled html.
 Your response must be valid json.
 
-Sections that should be returned are sections that contain data that can be extracted from the html.
+Sections that must be returned are sections that contain data that can be extracted from the html.
 Examples: sections that contain tables, options that contain seemingly important numbers, sections that contain repeated patterns, etc.
 You must only return {{ .NumSections }} sections of the html.
 
@@ -132,10 +133,10 @@ The valid css selectors for the html are:
 DO NOT include any extraneous features in the returned json object.
 Your json object must only contain the following attributes:
 
-- name: the struct name for the section (should be a valid golang struct name).
+- name: the struct name for the section (must be a valid golang struct name).
 - sections: a list of sections of the html.
-\- description: a description of the section. (should describe what the section is for and what it contains)
-\- css: the css selector for the section. (should be a valid css selector that can be used to select the entire section in the html)
+\- description: a description of the section. (must describe what the section is for and what it contains)
+\- css: the css selector for the section. (must be a valid css selector that can be used to select the entire section in the html)
 
 Example Output showing 2 sections:
 
@@ -222,6 +223,7 @@ Your response:
 {
 ... (the json response)
 }
+</answer>
 {{- end -}}
 
 {{/*
@@ -235,8 +237,8 @@ Your response must be valid json.
 
 Your json schema must have a number of attributes for each field in the struct.
 
-- name: the name of the field in the struct (should be a valid golang struct field name).
-- type: the type of the field in the struct (should be a valid golang type).
+- name: the name of the field in the struct (must be a valid golang struct field name).
+- type: the type of the field in the struct (must be a valid golang type).
 
 - header selector: used to find the header row and column for the field in the given struct.
 - data-selector: used to find the data column for the field in the given struct.
@@ -276,6 +278,12 @@ Your selectors with attriubutes (meaning without added specifiers; `:nth-child(1
 {{- end }}
 ```
 
+Your response:
+<answer>
+{
+... (the json response)
+}
+</answer>
 {{- end -}}
 
 {{/*
@@ -380,4 +388,31 @@ Here is the json:
 ```json
 {{ .JSON }}
 ```
+{{- end -}}
+
+{{- define "pick_selector" -}}
+From the following selectors, pick the one that best matches the given section.
+The selector must be a valid css selector and select the entire section in the html.
+
+Your response must be valid json and in the following format:
+
+```json
+{
+	"selector": <index-of-the-selector> (e.g. 1)
+}
+```
+
+Section:
+name: {{ .Section.Name }}
+desc: {{ .Section.Description }}
+
+Selectors:
+
+{{- range $i, $sel := .Selectors }}
+	{{- if $i }}{{- end }}
+- ({{$i}}) '{{ $sel.Value }}'
+{{- end }}
+
+HTML:
+{{ .HTML }}
 {{- end -}}

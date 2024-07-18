@@ -383,6 +383,23 @@ func runGenerate(
 			URL:         params.URL,
 			PackageName: params.PackageName,
 		}
+		out, err = domain.NewFile(fT)
+		if err != nil {
+			return fmt.Errorf("failed to create test file: %w", err)
+		}
+		name = fmt.Sprintf("%s_test.go", section.Name)
+		if section.Name == "" {
+			name = fmt.Sprintf("%s_test.go", uuid.New().String())
+		}
+		err = os.WriteFile(
+			name,
+			[]byte(out),
+			0644,
+		)
+		if err != nil {
+			return fmt.Errorf("failed to write test file: %w", err)
+		}
+		log.Infof("Generated test file: %s.go", name)
 	}
 	if err := eg.Wait(); err != nil {
 		return fmt.Errorf("failed to generate structs: %w", err)

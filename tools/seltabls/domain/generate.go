@@ -15,24 +15,12 @@ type ConfigFile struct {
 	Name string `yaml:"name"`
 	// Description is the description of the config file.
 	Description *string `yaml:"description,omitempty"`
-	// URL is the url for the config file.
-	URL string `yaml:"url"`
-	// IgnoreElements is a list of elements to ignore when generating the
-	// struct.
-	IgnoreElements []string `yaml:"ignore-elements"`
-	// Selectors is a list of selectors for the config file.
-	Selectors []master.Selector `yaml:"selectors"`
-	// HTMLBody is the html body for the config file.
-	HTMLBody string `yaml:"html-body"`
-	// NumberedHTMLBody is the numbered html body for the config file.
-	NumberedHTMLBody string `yaml:"-"`
-	// SmartModel is the model for the config file.
-	SmartModel string `yaml:"model"`
-	// FastModel is the model for the config file.
-	FastModel string `yaml:"fast-model"`
-
-	// Sections is a list of sections in the html.
-	Sections []Section `json:"sections" yaml:"sections"`
+	URLs        []struct {
+		// URL is the url for the config file.
+		URL string `yaml:"url"`
+		// Sections is a list of sections in the html.
+		Sections []Section `json:"sections" yaml:"sections"`
+	} `yaml:"urls"`
 }
 
 // IdentifyResponse is a struct for the respond of an identify prompt.
@@ -48,43 +36,22 @@ type IdentifyResponse struct {
 
 // Section is a struct for a section in the html.
 type Section struct {
-	// Name is the name of the section.
-	Name string `json:"name"        yaml:"name"`
-	// Description is a description of the section.
-	Description string `json:"description" yaml:"description"`
-	// CSS is the css selector for the section.
-	CSS string `json:"css"         yaml:"css"`
-	// Fields is a list of fields in the section.
-	Fields []Field `json:"fields"      yaml:"fields"`
-}
-
-// FieldsResponse is a struct for the fields response
-type FieldsResponse struct {
-	Fields []Field `json:"fields" yaml:"fields"`
-}
-
-func (f FieldsResponse) respond() string {
-	return "fields_response"
+	Name        string  `json:"name"        yaml:"name"`        // Name is the name of the section.
+	Description string  `json:"description" yaml:"description"` // Description is a description of the section.
+	CSS         string  `json:"css"         yaml:"css"`         // CSS is the css selector for the section.
+	Fields      []Field `json:"fields"      yaml:"-"`           // Fields is a list of fields in the section.
 }
 
 // Field is a struct for a field
 type Field struct {
-	// Name is the name of the field.
-	Name string `json:"name"`
-	// Type is the type of the field.
-	Type string `json:"type"`
-	// Description is a description of the field.
-	Description string `json:"description"`
-	// HeaderSelector is the header selector for the field.
-	HeaderSelector string `json:"header-selector"`
-	// DataSelector is the data selector for the field.
-	DataSelector string `json:"data-selector"`
-	// ControlSelector is the control selector for the field.
-	ControlSelector string `json:"control-selector"`
-	// QuerySelector is the query selector for the field.
-	QuerySelector string `json:"query-selector"`
-	// MustBePresent is the must be present selector for the field.
-	MustBePresent string `json:"must-be-present"`
+	Name            string `json:"name"`             // Name is the name of the field.
+	Type            string `json:"type"`             // Type is the type of the field.
+	Description     string `json:"description"`      // Description is a description of the field.
+	HeaderSelector  string `json:"header-selector"`  // HeaderSelector is the header selector for the field.
+	DataSelector    string `json:"data-selector"`    // DataSelector is the data selector for the field.
+	ControlSelector string `json:"control-selector"` // ControlSelector is the control selector for the field.
+	QuerySelector   string `json:"query-selector"`   // QuerySelector is the query selector for the field.
+	MustBePresent   string `json:"must-be-present"`  // MustBePresent is the must be present selector for the field.
 }
 
 // TestFile is a struct for a test file
@@ -128,8 +95,6 @@ type StructFile struct {
 	// TreeWidth is the width of the tree when generating the struct.
 	TreeWidth int `json:"-" yaml:"tree-width"`
 
-	// ConfigFile is the config file for the struct file.
-	ConfigFile ConfigFile `json:"-" yaml:"config-file"`
 	// JSONValue is the json value for the struct yaml file.
 	JSONValue string `json:"-" yaml:"json-value"`
 	// HTMLContent is the html content for the struct file.
@@ -140,4 +105,10 @@ type StructFile struct {
 
 	// Section is the section of the struct file.
 	Section Section `json:"-" yaml:"section"`
+}
+
+// EmbedFile is a struct for the embed file.
+// The embed file contains the html to use in the generated test file.
+type EmbedFile struct {
+	HTMLContent string `json:"html-content" yaml:"html-content"`
 }

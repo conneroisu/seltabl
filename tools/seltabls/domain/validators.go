@@ -58,35 +58,6 @@ func IsValidTreeWidth(treeWidth int) bool {
 	return true
 }
 
-// ValidateConfig validates the given config file
-func ValidateConfig(cfg *ConfigFile) error {
-	if cfg.Name == "" {
-		return fmt.Errorf("name is required")
-	}
-	if cfg.URL == "" {
-		return fmt.Errorf("url is required")
-	}
-	if cfg.IgnoreElements == nil {
-		return fmt.Errorf("ignore-elements is required")
-	}
-	if cfg.Selectors == nil {
-		return fmt.Errorf("selectors is required")
-	}
-	if cfg.HTMLBody == "" {
-		return fmt.Errorf("html-body is required")
-	}
-	if cfg.NumberedHTMLBody == "" {
-		return fmt.Errorf("numbered-html-body is required")
-	}
-	if cfg.SmartModel == "" {
-		return fmt.Errorf("smart-model is required")
-	}
-	if cfg.FastModel == "" {
-		return fmt.Errorf("fast-model is required")
-	}
-	return nil
-}
-
 // Verify checks if the selectors are in the html
 func (f *Field) Verify(htmlBody string) error {
 	doc, err := goquery.NewDocumentFromReader(
@@ -137,7 +108,3 @@ func (f *Field) Verify(htmlBody string) error {
 	}
 	return nil
 }
-
-// force type cast for Responder
-var _ responder = (*IdentifyResponse)(nil)
-var _ responder = (*FieldsResponse)(nil)

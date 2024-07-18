@@ -20,13 +20,6 @@ type prompter interface {
 	prompt() string
 }
 
-// responder is an interface for responding to a given prompt.
-type responder interface{ respond() string }
-
-func (i IdentifyResponse) respond() string {
-	return "identify_response"
-}
-
 // NewPrompt creates a new prompt for the given args
 func NewPrompt(
 	promptArgs prompter,

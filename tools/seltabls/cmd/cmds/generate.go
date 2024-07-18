@@ -235,7 +235,10 @@ func runGenerate(
 		return fmt.Errorf("failed to create client: %w", err)
 	}
 	mut.Lock()
-	defer mut.Unlock()
+	defer func() {
+		log.Debugf("Unlocking mutex")
+		mut.Unlock()
+	}()
 	log.Debugf("Generating Sections")
 	identifyCompletions, _, err := domain.InvokeN(
 		ctx,
@@ -252,7 +255,7 @@ func runGenerate(
 	if err != nil {
 		return fmt.Errorf("failed to generate identify completions: %w", err)
 	}
-	log.Debugf("Generated (%d) Smart Sections: %s", len(identifyCompletions), strings.Join(identifyCompletions, "\n\n===\n\n"))
+	log.Debugf("Generated (%d) Fast Sections: %s", len(identifyCompletions), strings.Join(identifyCompletions, "\n\n===\n\n"))
 	log.Debugf("Aggregating Sections")
 	var identifyCompletion string
 	identifyCompletion, _, err = domain.Invoke(
@@ -271,9 +274,11 @@ func runGenerate(
 	}
 	resp, _ := json.MarshalIndent(identifyCompletion, "", "  ")
 	log.Debugf("Generated Sections")
-	log.Debugf("Generated Smart Sections: %s", string(resp))
+	log.Debugf("Generated 1 Smart Sections: %s", string(resp))
 	eg, ctx := errgroup.WithContext(ctx)
 	var identified domain.IdentifyResponse
+	// from the opening { to the closing } in the response of the identifyCompletion
+	// we get the Sections
 	err = domain.ChatUnmarshal(ctx, cli, []byte(identifyCompletion), &identified)
 	if err != nil {
 		log.Debugf("Failed to extract JSON from identifyCompletion: %s", identifyCompletion)
@@ -306,7 +311,7 @@ func runGenerate(
 			)
 		}
 		for idx, selectorOut := range selectorOuts {
-			var structFile = domain.StructFilePromptArgs{}
+			var structFile = domain.FileStruct{}
 			err = domain.ChatUnmarshal(ctx, cli, []byte(selectorOut), &structFile)
 			if err != nil {
 				return fmt.Errorf("failed to unmarshal selectorOut: %w", err)
@@ -314,7 +319,7 @@ func runGenerate(
 			log.Debugf("Unmarshaled Fast Selectors (%d): %s", idx, structFile.Name)
 		}
 		log.Debugf("Generated (%d) Fast Selectors: %s", len(selectorOuts), strings.Join(selectorOuts, "\n\n===\n\n"))
-		var structFile = domain.StructFilePromptArgs{}
+		var structFile = domain.FileStruct{}
 		log.Debugf("Generated Selectors")
 		log.Debugf("Aggregating Selectors")
 		var smartStructAggregateResponse string
@@ -323,7 +328,7 @@ func runGenerate(
 			client,
 			params.SmartModel,
 			[]anthropic.Message{},
-			domain.StructAggregateArgs{
+			domain.PromptAggregateStructs{
 				Selectors: sectionSelectors,
 				Content:   domain.HTMLReduct(doc, section.CSS),
 				Schemas:   selectorOuts,
@@ -347,7 +352,7 @@ func runGenerate(
 		structFile.URL = params.URL
 		structFile.IgnoreElements = params.IgnoreElements
 		structFile.Fields = section.Fields
-		out, err := domain.NewPrompt(structFile)
+		out, err := domain.NewFile(structFile)
 		if err != nil {
 			return fmt.Errorf("failed to create struct file: %w", err)
 		}

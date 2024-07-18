@@ -9,11 +9,11 @@ import (
 	"github.com/liushuangls/go-anthropic/v2"
 )
 
-//go:embed templates.tmpl
-var templatesTmpl string
+//go:embed prompts.tmpl
+var promptsTmpl string
 
-// Template is the must compile template
-var Template = template.Must(template.New("templates").Parse(templatesTmpl))
+// PromptTemplate is the must compile template
+var PromptTemplate = template.Must(template.New("templates").Parse(promptsTmpl))
 
 // prompter is an interface for prompting it provided the template name to use.
 type prompter interface {
@@ -33,49 +33,40 @@ func NewPrompt(
 ) (string, error) {
 	name := promptArgs.prompt()
 	buf := new(bytes.Buffer)
-	err := Template.ExecuteTemplate(buf, name, promptArgs)
+	err := PromptTemplate.ExecuteTemplate(buf, name, promptArgs)
 	if err != nil {
 		return "", err
 	}
 	return buf.String(), nil
 }
 
-type sectionErrorArgs struct {
+// PromptBetterError is the arguments for the better error prompt.
+type PromptBetterError struct {
 	Error   error
 	History []anthropic.Message
 }
 
-func (a sectionErrorArgs) prompt() string {
+func (a PromptBetterError) prompt() string {
 	return "section_error"
 }
 
-// SectionAggregateArgs is the arguments for the section aggregate prompt.
-type SectionAggregateArgs struct {
+// PromptAggregateSections is the arguments for the section aggregate prompt.
+type PromptAggregateSections struct {
 	Structs   []string          `json:"structs"`   // required
 	Content   string            `json:"content"`   // required
 	Selectors []master.Selector `json:"selectors"` // required
 }
 
-func (a SectionAggregateArgs) prompt() string {
-	return "section_aggregate"
-}
+func (a PromptAggregateSections) prompt() string { return "section_aggregate" }
 
-// IdentifyErrorArgs is the arguments for the identify error prompt.
-type IdentifyErrorArgs struct {
-	Error   error               `json:"error"`   // required
-	History []anthropic.Message `json:"history"` // required
-}
-
-func (a IdentifyErrorArgs) prompt() string { return "section_error" }
-
-// StructAggregateArgs is the arguments for the struct aggregate prompt.
-type StructAggregateArgs struct {
+// PromptAggregateStructs is the arguments for the struct aggregate prompt.
+type PromptAggregateStructs struct {
 	Selectors []master.Selector `json:"selectors"` // required
 	Content   string            `json:"content"`   // required
 	Schemas   []string          `json:"schemas"`   // required
 }
 
-func (a StructAggregateArgs) prompt() string { return "struct_aggregate" }
+func (a PromptAggregateStructs) prompt() string { return "struct_aggregate" }
 
 // IdentifyArgs is the arguments for the identify prompt.
 type IdentifyArgs struct {
@@ -104,27 +95,6 @@ type StructPromptArgs struct {
 }
 
 func (a StructPromptArgs) prompt() string { return "struct_prompt" }
-
-// TestFilePromptArgs is the arguments for the test file prompt.
-type TestFilePromptArgs struct {
-	Version     string `json:"version"`
-	Name        string `json:"name"`
-	URL         string `json:"url"`
-	PackageName string `json:"package-name"`
-}
-
-func (a TestFilePromptArgs) prompt() string { return "test_file" }
-
-// StructFilePromptArgs is the arguments for the struct file prompt.
-type StructFilePromptArgs struct {
-	Name           string   `json:"name,omitempty"`
-	URL            string   `json:"url,omitempty"`
-	IgnoreElements []string `json:"ignore-elements,omitempty"`
-	Fields         []Field  `json:"fields"`
-	PackageName    string   `json:"package-name"`
-}
-
-func (a StructFilePromptArgs) prompt() string { return "struct_file" }
 
 // FixJSONArgs is the arguments for the fix json prompt.
 type FixJSONArgs struct {

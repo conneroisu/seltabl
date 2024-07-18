@@ -165,7 +165,12 @@ func InvokeN(
 var stream = false
 
 // ChatUnmarshal ensures the given data is a valid JSON object
-func ChatUnmarshal(ctx context.Context, client *api.Client, data []byte, v interface{}) error {
+func ChatUnmarshal(
+	ctx context.Context,
+	client *api.Client,
+	data []byte,
+	v interface{},
+) error {
 	var err error
 	var prmpt string
 	var hCtx context.Context
@@ -204,6 +209,76 @@ func ChatUnmarshal(ctx context.Context, client *api.Client, data []byte, v inter
 				return fmt.Errorf("failed to generate fix json: %w", err)
 			}
 			return nil
+		}
+	}
+}
+
+// InvokeC invokes the client.
+func InvokeC(
+	ctx context.Context,
+	client *api.Client,
+	model string,
+	historyInput []api.Message,
+	prompt prompter,
+	v interface{},
+) (string, []api.Message, error) {
+	var out string
+	var err error
+	hCtx, cancel := context.WithTimeout(ctx, time.Second*120)
+	defer cancel()
+	for {
+		select {
+		case <-hCtx.Done():
+			return "", nil, hCtx.Err()
+		default:
+			var invokationPrompt string
+			invokationPrompt, err = NewPrompt(prompt)
+			if err != nil {
+				return "", nil, fmt.Errorf(
+					"failed to create (%s) prompt: %w",
+					prompt.prompt(),
+					err,
+				)
+			}
+			historyInput = append(historyInput, api.Message{
+				Role:    "system",
+				Content: invokationPrompt,
+			})
+			var respFunc api.GenerateResponseFunc
+			respFunc = func(resp api.GenerateResponse) error {
+				if v == nil {
+					out = resp.Response
+				}
+				err = ChatUnmarshal(
+					hCtx,
+					client,
+					[]byte(resp.Response),
+					v,
+				)
+				if err == nil {
+					return nil
+				}
+				return fmt.Errorf(
+					"failed to unmarshal response (%s): %w",
+					resp.Response,
+					err,
+				)
+			}
+			err = client.Generate(
+				hCtx,
+				&api.GenerateRequest{
+					Format: "json",
+					Stream: &stream,
+					Model:  model,
+					Prompt: invokationPrompt,
+				},
+				respFunc,
+			)
+			historyInput = append(historyInput, api.Message{
+				Role:    "assistant",
+				Content: out,
+			})
+			return out, historyInput, err
 		}
 	}
 }

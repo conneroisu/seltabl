@@ -11,36 +11,11 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-// TestNewStructFileContent tests the NewStructFileContent struct
-func TestNewStructFileContent(t *testing.T) {
-	a := assert.New(t)
-	content, err := NewPrompt(
-		sectionErrorArgs{
-			Error: fmt.Errorf(
-				"failed to parse struct: failed to get data rows html: failed to get html: failed to get doc: open /Users/hsz/Projects/github.com/conneroisu/seltabl/testdata/ab_num_table.html: no such file or directory",
-			),
-			History: []anthropic.Message{
-				{
-					Role:    openai.ChatMessageRoleUser,
-					Content: []anthropic.MessageContent{anthropic.NewTextMessageContent("foo")},
-				},
-				{
-					Role:    openai.ChatMessageRoleAssistant,
-					Content: []anthropic.MessageContent{anthropic.NewTextMessageContent("bar")},
-				},
-			},
-		},
-	)
-	a.NoError(err)
-	a.NotEmpty(content)
-	t.Logf("struct: %s", content)
-}
-
 // TestNewAggregatePrompt tests the NewAggregatePrompt struct
 func TestNewAggregatePrompt(t *testing.T) {
 	a := assert.New(t)
 	content, err := NewPrompt(
-		SectionAggregateArgs{
+		PromptAggregateSections{
 			Structs: []string{"ex json 1 ", "ex json 2 ", "ex json 3 "},
 			Content: `<html><body><table><tr><td>a</td><td>b</td></tr><tr><td>1</td><td>2</td></tr></table></body></html>`,
 			Selectors: []master.Selector{
@@ -103,85 +78,11 @@ func TestStructPromptArgs(t *testing.T) {
 	t.Logf("struct: %s", content)
 }
 
-// TestStructFilePromptArgs tests the StructFilePromptArgs struct.
-func TestStructFilePromptArgs(t *testing.T) {
-	a := assert.New(t)
-	content, err := NewPrompt(
-		StructFilePromptArgs{
-			PackageName: "main",
-			Name:        "TestStruct",
-			URL:         "https://github.com/conneroisu/seltabl/blob/main/testdata/ab_num_table.html",
-			IgnoreElements: []string{
-				"script",
-				"style",
-				"link",
-				"img",
-				"footer",
-				"header",
-			},
-			Fields: []Field{
-				{
-					Name:            "A",
-					Type:            "string",
-					Description:     "A description of the field",
-					HeaderSelector:  "tr:nth-child(1) td:nth-child(1)",
-					DataSelector:    "tr td:nth-child(1)",
-					ControlSelector: "$text",
-					MustBePresent:   "NCAA Codes",
-				},
-				{
-					Name:            "B",
-					Type:            "int",
-					Description:     "A description of the field",
-					HeaderSelector:  "tr:nth-child(1) td:nth-child(2)",
-					DataSelector:    "tr td:nth-child(2)",
-					ControlSelector: "$text",
-					MustBePresent:   "NCAA Codes",
-				},
-			},
-		},
-	)
-	a.NoError(err)
-	a.NotEmpty(content)
-	t.Logf("struct: %s", content)
-}
-
-// TestTestFilePromptArgs tests the TestFilePromptArgs struct.
-func TestTestFilePromptArgs(t *testing.T) {
-	a := assert.New(t)
-	content, err := NewPrompt(
-		TestFilePromptArgs{
-			Version:     "v0.0.0",
-			Name:        "TestStruct",
-			URL:         "https://github.com/conneroisu/seltabl/blob/main/testdata/ab_num_table.html",
-			PackageName: "main",
-		},
-	)
-	a.NoError(err)
-	a.NotEmpty(content)
-	t.Logf("struct: %s", content)
-}
-
 // TestSectionErrorPromptArgs tests the SectionErrorPromptArgs struct.
 func TestSectionErrorPromptArgs(t *testing.T) {
 	a := assert.New(t)
 	content, err := NewPrompt(
-		sectionErrorArgs{
-			Error: errors.New(
-				"failed to get the content of the url: https://github.com/conneroisu/seltabl/blob/main/testdata/ab_num_table.html",
-			),
-		},
-	)
-	a.NoError(err)
-	a.NotEmpty(content)
-	t.Logf("struct: %s", content)
-}
-
-// TestIdentifyErrorArgs tests the IdentifyErrorArgs struct.
-func TestIdentifyErrorArgs(t *testing.T) {
-	a := assert.New(t)
-	content, err := NewPrompt(
-		IdentifyErrorArgs{
+		PromptBetterError{
 			Error: errors.New(
 				"failed to get the content of the url: https://github.com/conneroisu/seltabl/blob/main/testdata/ab_num_table.html",
 			),
@@ -215,8 +116,8 @@ func TestNewPromptIdentifyArgs(t *testing.T) {
 	t.Logf("struct: %s", content)
 }
 
-// TestNewPromptPickSelectorArgs tests the NewPrompt function with a PickSelectorArgs struct.
-func TestNewPromptPickSelectorArgs(t *testing.T) {
+// TestNewPromptPickSelector tests the NewPrompt function with a PickSelectorArgs struct.
+func TestNewPromptPickSelector(t *testing.T) {
 	a := assert.New(t)
 	content, err := NewPrompt(
 		PickSelectorArgs{
@@ -237,5 +138,29 @@ func TestNewPromptPickSelectorArgs(t *testing.T) {
 	a.NoError(err)
 	a.NotEmpty(content)
 	t.Logf("struct: %s", content)
-	t.Fail()
+}
+
+// TestNewPromptBetterError tests the NewStructFileContent struct
+func TestNewPromptBetterError(t *testing.T) {
+	a := assert.New(t)
+	content, err := NewPrompt(
+		PromptBetterError{
+			Error: fmt.Errorf(
+				"failed to parse struct: failed to get data rows html: failed to get html: failed to get doc: open /Users/hsz/Projects/github.com/conneroisu/seltabl/testdata/ab_num_table.html: no such file or directory",
+			),
+			History: []anthropic.Message{
+				{
+					Role:    openai.ChatMessageRoleUser,
+					Content: []anthropic.MessageContent{anthropic.NewTextMessageContent("foo")},
+				},
+				{
+					Role:    openai.ChatMessageRoleAssistant,
+					Content: []anthropic.MessageContent{anthropic.NewTextMessageContent("bar")},
+				},
+			},
+		},
+	)
+	a.NoError(err)
+	a.NotEmpty(content)
+	t.Logf("struct: %s", content)
 }

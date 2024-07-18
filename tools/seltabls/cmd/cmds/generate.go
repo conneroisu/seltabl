@@ -59,6 +59,7 @@ type GenerateCmdParams struct {
 	IgnoreElements []string `json:"ignoreElements"` // required
 	TreeWidth      int      `json:"treeWidth"`      // required
 	NumSections    int      `json:"numSections"`    // required
+	PackageName    string   `json:"packageName"`    // required
 }
 
 // NewGenerateCmd returns the generate command.
@@ -90,6 +91,13 @@ So the output fo the command:
 			cmd.SetIn(r)
 			cmd.SetErr(w)
 			cmd.SetContext(ctx)
+			cmd.PersistentFlags().StringVarP(
+				&params.PackageName,
+				"package-name",
+				"p",
+				"main",
+				"The package name for the generated files.",
+			)
 			cmd.PersistentFlags().StringVarP(
 				&params.URL,
 				"url",
@@ -369,6 +377,12 @@ func runGenerate(
 			return fmt.Errorf("failed to write struct file: %w", err)
 		}
 		log.Infof("Generated struct file: %s.go", name)
+		fT := domain.FileTest{
+			Version:     "v0.0.0",
+			Name:        name,
+			URL:         params.URL,
+			PackageName: params.PackageName,
+		}
 	}
 	if err := eg.Wait(); err != nil {
 		return fmt.Errorf("failed to generate structs: %w", err)

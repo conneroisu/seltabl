@@ -174,7 +174,7 @@ func ChatUnmarshal(
 	var err error
 	var prmpt string
 	var hCtx context.Context
-	hCtx, cancel := context.WithTimeout(ctx, time.Second*70)
+	hCtx, cancel := context.WithTimeout(ctx, time.Second*90)
 	defer cancel()
 	for {
 		select {

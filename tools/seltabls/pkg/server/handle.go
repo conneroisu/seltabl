@@ -144,7 +144,7 @@ func HandleMessage(
 					return nil, fmt.Errorf("failed to cancel request: %w", err)
 				}
 				return response, nil
-			case methods.MethodExit:
+			case methods.MethodNotificationExit:
 				os.Exit(0)
 				return nil, nil
 			case methods.MethodNotificationTextDocumentDidSave:

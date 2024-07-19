@@ -14,11 +14,11 @@ const (
 	// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#initialized
 	MethodNotificationInitialized Method = "initialized"
 
-	// MethodExit is the exit notification method for the language server protocol.
+	// MethodNotificationExit is the exit notification method for the language server protocol.
 	//
 	// Microsoft LSP Docs:
 	// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#exit
-	MethodExit Method = "exit"
+	MethodNotificationExit Method = "exit"
 )
 
 // General Request Methods

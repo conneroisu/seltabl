@@ -17,7 +17,7 @@ const (
 )
 
 // GetAllSelectors retrieves all selectors from the given HTML document
-func GetAllSelectors(doc *goquery.Document) ([]string, error) {
+func GetAllSelectors(doc *goquery.Selection) ([]string, error) {
 	strs := []string{}
 	doc.Find("*").Each(func(_ int, s *goquery.Selection) {
 		str := getSelectorsFromSelection(s)
@@ -28,7 +28,8 @@ func GetAllSelectors(doc *goquery.Document) ([]string, error) {
 		}
 	})
 	if len(strs) == 0 {
-		return nil, fmt.Errorf("no selectors found in document")
+		html, _ := doc.Html()
+		return nil, fmt.Errorf("no selectors found in document: %s", html)
 	}
 	return strs, nil
 }
@@ -164,7 +165,7 @@ func GetSelectors(
 	if err != nil {
 		return nil, fmt.Errorf("failed to insert url: %w", err)
 	}
-	selectorStrings, err := GetAllSelectors(doc)
+	selectorStrings, err := GetAllSelectors(doc.Selection)
 	if err != nil {
 		return nil, fmt.Errorf("failed to get selectors: %w", err)
 	}

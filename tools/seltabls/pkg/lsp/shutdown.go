@@ -49,5 +49,5 @@ type ExitRequest struct {
 
 // Method returns the method for the exit request
 func (r ExitRequest) Method() methods.Method {
-	return methods.MethodExit
+	return methods.MethodNotificationExit
 }

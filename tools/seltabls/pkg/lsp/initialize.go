@@ -99,7 +99,10 @@ type ServerInfo struct {
 }
 
 // NewInitializeResponse creates a new initialize response.
-func NewInitializeResponse(ctx context.Context, request *InitializeRequest) (*InitializeResponse, error) {
+func NewInitializeResponse(
+	ctx context.Context,
+	request *InitializeRequest,
+) (*InitializeResponse, error) {
 	for {
 		select {
 		case <-ctx.Done():

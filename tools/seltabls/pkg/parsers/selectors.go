@@ -12,7 +12,7 @@ import (
 )
 
 const (
-	childsep = " > "
+	childsep = ">"
 	empty    = ""
 )
 

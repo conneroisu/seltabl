@@ -25,7 +25,9 @@ func UpdateDocument(
 			default:
 				s.Documents[notification.Params.TextDocument.URI] = notification.Params.ContentChanges[0].Text
 				text := s.Documents[notification.Params.TextDocument.URI]
-				comments, err := parsers.ParseStructComments(notification.Params.ContentChanges[0].Text)
+				comments, err := parsers.ParseStructComments(
+					notification.Params.ContentChanges[0].Text,
+				)
 				if err != nil {
 					return nil, fmt.Errorf(
 						"failed to get urls and ignores: %w",
@@ -42,7 +44,10 @@ func UpdateDocument(
 					comments,
 				)
 				if err != nil {
-					return nil, fmt.Errorf("failed to get diagnostics: %w", err)
+					return nil, fmt.Errorf(
+						"failed to get diagnostics: %w",
+						err,
+					)
 				}
 				if len(diags) == 0 {
 					return nil, nil

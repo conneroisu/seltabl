@@ -75,7 +75,11 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 					log.Debugf("received message: %s", decoded.Method)
 					resp, err := handle(hCtx, &state, *decoded, lspCancel)
 					if err != nil {
-						log.Errorf("failed to handle message (%s): %s", decoded.Method, err)
+						log.Errorf(
+							"failed to handle message (%s): %s",
+							decoded.Method,
+							err,
+						)
 						return nil
 					}
 					if isNull(resp) || resp == nil {

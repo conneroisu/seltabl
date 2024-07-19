@@ -28,11 +28,10 @@ func main() {
 // TableStruct is a test struct.
 // @url: https://stats.ncaa.org/game_upload/team_codes
 // @ignore-elements: script, style, link, img, footer, header
-// @must-occur: 3
 type TableStruct struct {
 	A string `json:"a" hSel:"html>body" dSel:"tr td:nth-child(1)" ctl:"$text"`
 	B string `json:"b" hSel:"html>body>div.footer>div>span>a[href]" dSel:"" ctl:"$text"`
-	C string `json:"c" hSel:"html>head>meta[name=csrf-token]" dSel:"tr td:nth-child(1)" ctl:"$text"`
+	C string `json:"c" hSel:"html>body>div.contentArea>table>tbody>tr.row_odd>td" dSel:"tr td:nth-child(1)" ctl:"$text"`
 	D string `json:"d" hSel:"" dSel:"html" ctl:"$text"`
 	E string `json:"e" hSel:"" dSel:"html" ctl:"$text"`
 }

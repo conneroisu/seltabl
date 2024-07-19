@@ -63,7 +63,7 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 					mu.Lock()
 					cnMap[decoded.ID] = cancel
 					mu.Unlock()
-					// log.Debugf("received message: %s", decoded.Method)
+					log.Debugf("received message: %s", decoded.Method)
 					resp, err := handle(hCtx, &state, *decoded, lspCancel, cnMap, &mu)
 					if err != nil {
 						log.Errorf(
@@ -84,7 +84,7 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 							err,
 						)
 					}
-					// go log.Debugf("sent message: %s", marshal(resp))
+					go log.Debugf("sent message: %s", marshal(resp))
 					mu.Lock()
 					delete(cnMap, decoded.ID)
 					mu.Unlock()
@@ -109,11 +109,17 @@ func marshal(mA rpc.MethodActor) string {
 	return string(b)
 }
 
+// isNull checks if the given interface is nil or points to a nil value
 func isNull(i interface{}) bool {
-	defer func() {
-		if r := recover(); r != nil {
-			log.Debugf("recovered from panic: %v", r)
-		}
-	}()
-	return i == nil || reflect.ValueOf(i).IsNil()
+	if i == nil {
+		return true
+	}
+
+	// Use reflect.ValueOf only if the kind is valid for checking nil
+	v := reflect.ValueOf(i)
+	switch v.Kind() {
+	case reflect.Chan, reflect.Func, reflect.Interface, reflect.Map, reflect.Ptr, reflect.Slice:
+		return v.IsNil()
+	}
+	return false
 }

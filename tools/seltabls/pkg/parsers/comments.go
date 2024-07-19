@@ -8,7 +8,6 @@ import (
 	"go/parser"
 	"go/token"
 	"regexp"
-	"strconv"
 	"strings"
 
 	"github.com/dave/dst"
@@ -19,7 +18,6 @@ import (
 type StructCommentData struct {
 	URLs           []string
 	IgnoreElements []string
-	MustOccur      int
 }
 
 var (
@@ -30,8 +28,6 @@ var (
 	urlPattern = regexp.MustCompile(`@url:\s*(\S+)`)
 	// @ignore-elements: <element1>, <element2>, ...
 	ignorePattern = regexp.MustCompile(`@ignore-elements:\s*(.*)`)
-	// @must-occur: <number>
-	mustOccurPattern = regexp.MustCompile(`@must-occur:\s*(\d+)`)
 )
 
 // ParseStructComments parses the comments from struct type declarations in the provided Go source code
@@ -45,7 +41,6 @@ func ParseStructComments(src string) (StructCommentData, error) {
 		return StructCommentData{}, err
 	}
 	var data StructCommentData
-
 	// Inspect the AST to find struct type declarations and their comments
 	dst.Inspect(node, func(n dst.Node) bool {
 		switch t := n.(type) {
@@ -72,14 +67,6 @@ func ParseStructComments(src string) (StructCommentData, error) {
 									data.IgnoreElements = append(data.IgnoreElements, strings.TrimSpace(elem))
 								}
 							}
-							// Extract @must-occur of type int
-							if mustOccurMatches := mustOccurPattern.FindStringSubmatch(text); len(mustOccurMatches) > 1 {
-								mO, err := strconv.Atoi(mustOccurMatches[1])
-								if err != nil {
-									return true
-								}
-								data.MustOccur = mO
-							}
 						}
 					}
 				}
@@ -87,7 +74,6 @@ func ParseStructComments(src string) (StructCommentData, error) {
 		}
 		return true
 	})
-
 	hasNoURLs := len(data.URLs) == 0
 	if hasNoURLs && len(data.IgnoreElements) != 0 {
 		return StructCommentData{}, errIgnoreOnly

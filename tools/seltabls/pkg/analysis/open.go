@@ -42,7 +42,7 @@ func OpenDocument(
 					&s.Database,
 					url,
 					data.IgnoreElements,
-					data.MustOccur,
+					2,
 				)
 				if err != nil {
 					return err

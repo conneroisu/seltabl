@@ -135,7 +135,6 @@ func GetSelectors(
 		}
 		return selectors, nil
 	}
-
 	doc, err = GetMinifiedDoc(url, ignores)
 	if err != nil {
 		return nil, fmt.Errorf("failed to get minified doc: %w", err)
@@ -164,6 +163,10 @@ func GetSelectors(
 	}
 	for _, selectorString := range selectorStrings {
 		found := doc.Find(selectorString)
+		// TODO: check if this is the right way to do this
+		if found.Length() == 0 {
+			continue
+		}
 		selectorContext, err := found.Parent().First().Html()
 		if err != nil {
 			return nil, fmt.Errorf("failed to get html: %w", err)

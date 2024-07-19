@@ -7,6 +7,7 @@ import (
 	"strings"
 
 	"github.com/PuerkitoBio/goquery"
+	"github.com/charmbracelet/log"
 )
 
 // GetMinifiedDoc gets a minified goquery doc from a given url
@@ -32,7 +33,8 @@ func GetMinifiedDoc(
 		return nil, err
 	}
 	for _, v := range disallowedTags {
-		_ = doc.RemoveFiltered(v)
+		_ = doc.Find(v).Remove()
+		log.Debugf("removed tag: %s", v)
 	}
 	html, err := doc.Html()
 	if err != nil {

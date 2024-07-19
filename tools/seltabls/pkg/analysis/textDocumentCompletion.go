@@ -9,7 +9,6 @@ import (
 
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/parsers"
-	"golang.org/x/sync/errgroup"
 )
 
 // CreateTextDocumentCompletion returns the completions for a given text document.
@@ -34,69 +33,59 @@ func CreateTextDocumentCompletion(
 			},
 			Result: []lsp.CompletionItem{},
 		}
-		eg, _ := errgroup.WithContext(ctx)
-		eg.Go(func() error {
-			// Get the content for the given document.
-			content := s.Documents[request.Params.TextDocument.URI]
-			// Get the selectors for the given document in current state.
-			selectors := s.Selectors[request.Params.TextDocument.URI]
-			// Check if the position is within a golang struct tag.
-			check, err := s.CheckPosition(request.Params.Position, content)
-			if err != nil {
-				return nil
+		content := s.Documents[request.Params.TextDocument.URI]
+		selectors := s.Selectors[request.Params.TextDocument.URI]
+		check, err := s.CheckPosition(request.Params.Position, content)
+		if err != nil {
+			return nil, fmt.Errorf("failed to check position: %w", err)
+		}
+		switch check {
+		case parsers.StateInTag:
+			for _, key := range completionKeys {
+				response.Result = append(
+					response.Result,
+					lsp.CompletionItem{
+						Label:         key.Label,
+						Detail:        key.Detail,
+						Documentation: key.Documentation,
+						Kind:          lsp.CompletionKindEnum,
+					},
+				)
 			}
-			switch check {
-			case parsers.StateInTag:
-				for _, key := range completionKeys {
-					response.Result = append(
-						response.Result,
-						lsp.CompletionItem{
-							Label:         key.Label,
-							Detail:        key.Detail,
-							Documentation: key.Documentation,
-							Kind:          lsp.CompletionKindEnum,
-						},
-					)
-				}
-			case parsers.StateInTagValue:
-				for _, selector := range selectors {
-					response.Result = append(
-						response.Result,
-						lsp.CompletionItem{
-							Label: selector.Value,
-							Detail: fmt.Sprintf(
-								"Occurances: '%d' \nContext: \n%s",
-								selector.Occurances,
-								selector.Context,
-							),
-							Documentation: "seltabls",
-							Kind:          lsp.CompletionKindReference,
-						},
-					)
-				}
-			case parsers.StateAfterColon:
-				for _, selector := range selectors {
-					response.Result = append(
-						response.Result,
-						lsp.CompletionItem{
-							Label: "\"" + selector.Value + "\"",
-							Detail: fmt.Sprintf(
-								"Occurances: '%d' \nContext: \n```html\n%s```",
-								selector.Occurances,
-								selector.Context,
-							),
-							Documentation: "seltabls",
-							Kind:          lsp.CompletionKindReference,
-						},
-					)
-				}
-			default:
-				return nil
+		case parsers.StateInTagValue:
+			for _, selector := range selectors {
+				response.Result = append(
+					response.Result,
+					lsp.CompletionItem{
+						Label: selector.Value,
+						Detail: fmt.Sprintf(
+							"Occurances: '%d' \nContext: \n%s",
+							selector.Occurances,
+							selector.Context,
+						),
+						Documentation: "seltabls",
+						Kind:          lsp.CompletionKindReference,
+					},
+				)
 			}
-			return nil
-		})
-		if err := eg.Wait(); err != nil {
-			return nil, fmt.Errorf("failed to get completions: %w", err)
+		case parsers.StateAfterColon:
+			for _, selector := range selectors {
+				response.Result = append(
+					response.Result,
+					lsp.CompletionItem{
+						Label: "\"" + selector.Value + "\"",
+						Detail: fmt.Sprintf(
+							"Occurances: '%d' \nContext: \n```html\n%s```",
+							selector.Occurances,
+							selector.Context,
+						),
+						Documentation: "seltabls",
+						Kind:          lsp.CompletionKindReference,
+					},
+				)
+			}
+		default:
+			return nil, nil
 		}
 		return response, nil
 	}

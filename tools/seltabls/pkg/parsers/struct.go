@@ -13,6 +13,7 @@ import (
 	"strings"
 
 	"github.com/PuerkitoBio/goquery"
+	"github.com/charmbracelet/log"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
 	"github.com/sourcegraph/conc"
 	"golang.org/x/sync/errgroup"
@@ -237,6 +238,7 @@ func ParseStructs(
 	ctx context.Context,
 	src []byte,
 ) (structures []Structure, err error) {
+	log.Debugf("parsers.ParseStructs called with src: %s", src)
 	// add a package main to the source
 	var eg *errgroup.Group
 	eg, _ = errgroup.WithContext(ctx)
@@ -257,7 +259,7 @@ func ParseStructs(
 				field, idx := field, idx
 				eg.Go(func() error {
 					tags, err := ParseTags(
-						field.Tag.Value[1:len(field.Tag.Value)-1],
+						field.Tag.Value,
 						fset.Position(field.Pos()).Offset,
 						fset.Position(field.End()).Offset,
 						fset.Position(field.Pos()).Line,
@@ -290,6 +292,7 @@ func ParseStructs(
 
 // ParseTags parses a single struct field tag and returns the set of tags.
 func ParseTags(tag string, start, end, line int) (*Tags, error) {
+	log.Debugf("parsers.ParseTags called with tag: %s start: %d end: %d line: %d", tag, start, end, line)
 	var tags []*Tag
 	hasTag := tag != ""
 	for tag != "" {

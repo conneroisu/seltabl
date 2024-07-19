@@ -4,56 +4,63 @@
 package parsers
 
 import (
-	"errors"
-	"go/ast"
+	"fmt"
 	"go/parser"
 	"go/token"
 	"regexp"
+	"strconv"
 	"strings"
+
+	"github.com/dave/dst"
+	"github.com/dave/dst/decorator"
 )
-
-// errNoURLs is an error for when no @urls are found in a file
-var errNoURLs = errors.New("no urls found in file")
-
-// errIgnoreOnly is an error for when only @ignore-elements are found in a file
-var errIgnoreOnly = errors.New("ignores only found in file")
 
 // StructCommentData holds the parsed URLs and ignore-elements.
 type StructCommentData struct {
 	URLs           []string
 	IgnoreElements []string
+	MustOccur      int
 }
+
+var (
+	errIgnoreOnly = fmt.Errorf("ignore elements found but no URLs")
+	errNoURLs     = fmt.Errorf("no URLs found")
+
+	// @url: <url>
+	urlPattern = regexp.MustCompile(`@url:\s*(\S+)`)
+	// @ignore-elements: <element1>, <element2>, ...
+	ignorePattern = regexp.MustCompile(`@ignore-elements:\s*(.*)`)
+	// @must-occur: <number>
+	mustOccurPattern = regexp.MustCompile(`@must-occur:\s*(\d+)`)
+)
 
 // ParseStructComments parses the comments from struct type declarations in the provided Go source code
 // and extracts @url and @ignore-elements into separate arrays.
 func ParseStructComments(src string) (StructCommentData, error) {
 	// Create a new file set for the source code
 	fset := token.NewFileSet()
-	// Parse the source code into an ast.File.
-	node, err := parser.ParseFile(fset, "", src, parser.ParseComments)
+	// Parse the source code into an dst.File.
+	node, err := decorator.ParseFile(fset, "", src, parser.ParseComments)
 	if err != nil {
 		return StructCommentData{}, err
 	}
 	var data StructCommentData
-	// @url: <url>
-	urlPattern := regexp.MustCompile(`@url:\s*(\S+)`)
-	// @ignore-elements: <element1>, <element2>, ...
-	ignorePattern := regexp.MustCompile(`@ignore-elements:\s*(.*)`)
+
 	// Inspect the AST to find struct type declarations and their comments
-	ast.Inspect(node, func(n ast.Node) bool {
+	dst.Inspect(node, func(n dst.Node) bool {
 		switch t := n.(type) {
-		case *ast.GenDecl:
+		case *dst.GenDecl:
 			// Look for type declarations
 			if t.Tok == token.TYPE {
 				for _, spec := range t.Specs {
-					typeSpec, ok := spec.(*ast.TypeSpec)
+					typeSpec, ok := spec.(*dst.TypeSpec)
 					if !ok {
 						continue
 					}
 					// Check if the type specification is a struct
-					if _, ok := typeSpec.Type.(*ast.StructType); ok && t.Doc != nil {
-						for _, comment := range t.Doc.List {
-							text := strings.TrimSpace(comment.Text)
+					if _, ok := typeSpec.Type.(*dst.StructType); ok && t.Decs.NodeDecs.Start != nil {
+						for _, comment := range t.Decs.NodeDecs.Start {
+							text := strings.TrimSpace(comment)
 							// Extract @url of type string
 							if urlMatches := urlPattern.FindStringSubmatch(text); len(urlMatches) > 1 {
 								data.URLs = append(data.URLs, urlMatches[1])
@@ -65,6 +72,14 @@ func ParseStructComments(src string) (StructCommentData, error) {
 									data.IgnoreElements = append(data.IgnoreElements, strings.TrimSpace(elem))
 								}
 							}
+							// Extract @must-occur of type int
+							if mustOccurMatches := mustOccurPattern.FindStringSubmatch(text); len(mustOccurMatches) > 1 {
+								mO, err := strconv.Atoi(mustOccurMatches[1])
+								if err != nil {
+									return true
+								}
+								data.MustOccur = mO
+							}
 						}
 					}
 				}
@@ -72,6 +87,7 @@ func ParseStructComments(src string) (StructCommentData, error) {
 		}
 		return true
 	})
+
 	hasNoURLs := len(data.URLs) == 0
 	if hasNoURLs && len(data.IgnoreElements) != 0 {
 		return StructCommentData{}, errIgnoreOnly

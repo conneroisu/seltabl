@@ -11,7 +11,6 @@ import (
 
 	"github.com/charmbracelet/log"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/analysis"
-	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp/methods"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/rpc"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/server"
 	"github.com/spf13/cobra"
@@ -19,7 +18,7 @@ import (
 )
 
 // LSPHandler is a struct for the LSP server
-type LSPHandler func(ctx context.Context, state *analysis.State, msg rpc.BaseMessage, cancel context.CancelFunc) (rpc.MethodActor, error)
+type LSPHandler func(ctx context.Context, state *analysis.State, msg rpc.BaseMessage, cancel context.CancelFunc, cnMap map[int]context.CancelFunc, mu *sync.Mutex) (rpc.MethodActor, error)
 
 var (
 	mu    sync.Mutex
@@ -64,16 +63,8 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 					mu.Lock()
 					cnMap[decoded.ID] = cancel
 					mu.Unlock()
-					if decoded.Method == string(methods.MethodCancelRequest) {
-						log.Debugf("canceling request: %s", decoded.Method)
-						cnMap[decoded.ID]()
-						mu.Lock()
-						delete(cnMap, decoded.ID)
-						mu.Unlock()
-						return nil
-					}
-					log.Debugf("received message: %s", decoded.Method)
-					resp, err := handle(hCtx, &state, *decoded, lspCancel)
+					// log.Debugf("received message: %s", decoded.Method)
+					resp, err := handle(hCtx, &state, *decoded, lspCancel, cnMap, &mu)
 					if err != nil {
 						log.Errorf(
 							"failed to handle message (%s): %s",
@@ -82,7 +73,7 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 						)
 						return nil
 					}
-					if isNull(resp) || resp == nil {
+					if isNull(resp) {
 						return nil
 					}
 					err = server.WriteResponse(hCtx, &writer, resp)
@@ -93,7 +84,7 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 							err,
 						)
 					}
-					go log.Debugf("sent message: %s", marshal(resp))
+					// go log.Debugf("sent message: %s", marshal(resp))
 					mu.Lock()
 					delete(cnMap, decoded.ID)
 					mu.Unlock()

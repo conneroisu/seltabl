@@ -20,7 +20,7 @@ func (r CancelRequest) Method() methods.Method {
 // CancelParams are the parameters for a cancel request.
 type CancelParams struct {
 	// ID is the id of the request to be cancelled.
-	ID string `json:"id"`
+	ID int `json:"id"`
 }
 
 // CancelResponse is the response for a cancel request.
@@ -33,6 +33,6 @@ type CancelResponse struct {
 }
 
 // Method returns the method for the cancel response
-func (r *CancelResponse) Method() methods.Method {
+func (r CancelResponse) Method() methods.Method {
 	return methods.MethodCancelRequest
 }

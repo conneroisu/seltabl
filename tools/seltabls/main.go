@@ -31,5 +31,5 @@ type TableStruct struct {
 	A string `json:"a" hSel:"html head meta[name=csrf-param]"     dSel:"tr td:nth-child(1)" ctl:"text"`
 	B string `json:"b" hSel:"html"                                dSel:"tr:nth-child(1)"    ctl:"text"`
 	C string `json:"c" hSel:"html > head > meta[name=csrf-token]" dSel:"tr td:nth-child(1)" ctl:"text"`
-	D string `json:"d" hSel:"html > body > div.contentArea > table > tbody > tr.row_odd"                 dSel:"html"               ctl:"text"`
+	D string `json:"d" hSel:"html > body > div.contentArea" dSel:"html" ctl:"text"`
 }

@@ -19,13 +19,7 @@ import (
 )
 
 // LSPHandler is a struct for the LSP server
-type LSPHandler func(ctx context.Context, state *analysis.State, msg rpc.BaseMessage) (rpc.MethodActor, error)
-
-// handleCtx is a struct for the handle context.
-type handleCtx struct {
-	ctx    context.Context
-	cancel context.CancelFunc
-}
+type LSPHandler func(ctx context.Context, state *analysis.State, msg rpc.BaseMessage, cancel context.CancelFunc) (rpc.MethodActor, error)
 
 var (
 	mu    sync.Mutex
@@ -57,30 +51,34 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 				return fmt.Errorf("failed to create state: %w", err)
 			}
 			cmd.SetErr(state.Logger.Writer())
-			ctx, cancel := context.WithCancel(ctx)
-			defer cancel()
-			ctxs := make(map[int]handleCtx)
-			eg, hCtx := errgroup.WithContext(ctx)
+			lspCtx, lspCancel := context.WithCancel(ctx)
+			defer lspCancel()
+			eg, hCtx := errgroup.WithContext(lspCtx)
 			for scanner.Scan() {
 				eg.Go(func() error {
-					hCtx, cancel = context.WithCancel(context.Background())
-					defer cancel()
 					decoded, err := rpc.DecodeMessage(scanner.Bytes())
 					if err != nil {
 						return fmt.Errorf("failed to decode message: %w", err)
 					}
-					ctxs[decoded.ID] = handleCtx{ctx: hCtx, cancel: cancel}
+					hCtx, cancel := context.WithCancel(hCtx)
+					mu.Lock()
+					cnMap[decoded.ID] = cancel
+					mu.Unlock()
 					if decoded.Method == string(methods.MethodCancelRequest) {
-						ctxs[decoded.ID].cancel()
-						delete(ctxs, decoded.ID)
+						log.Debugf("canceling request: %s", decoded.Method)
+						cnMap[decoded.ID]()
+						mu.Lock()
+						delete(cnMap, decoded.ID)
+						mu.Unlock()
+						return nil
 					}
 					log.Debugf("received message: %s", decoded.Method)
-					resp, err := handle(hCtx, &state, *decoded)
+					resp, err := handle(hCtx, &state, *decoded, lspCancel)
 					if err != nil {
 						log.Errorf("failed to handle message (%s): %s", decoded.Method, err)
 						return nil
 					}
-					if isNull(resp) {
+					if isNull(resp) || resp == nil {
 						return nil
 					}
 					err = server.WriteResponse(hCtx, &writer, resp)
@@ -92,16 +90,15 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 						)
 					}
 					go log.Debugf("sent message: %s", marshal(resp))
+					mu.Lock()
+					delete(cnMap, decoded.ID)
+					mu.Unlock()
 					return nil
 				})
 			}
 			err = scanner.Err()
 			if err != nil {
 				return fmt.Errorf("scanner error: %w", err)
-			}
-			err = eg.Wait()
-			if err != nil {
-				return fmt.Errorf("failed to wait for context: %w", err)
 			}
 			return nil
 		},
@@ -118,5 +115,58 @@ func marshal(mA rpc.MethodActor) string {
 }
 
 func isNull(i interface{}) bool {
+	defer func() {
+		if r := recover(); r != nil {
+			log.Debugf("recovered from panic: %v", r)
+		}
+	}()
 	return i == nil || reflect.ValueOf(i).IsNil()
 }
+
+// // in a go routine listent to stdin and print to ~/.config/seltabls/io.log
+// go func() {
+//         file, err := os.OpenFile(
+//                 "io.log",
+//                 os.O_CREATE|os.O_APPEND|os.O_WRONLY,
+//                 0666,
+//         )
+//         if err != nil {
+//                 panic(err)
+//         }
+//         defer file.Close()
+//         // Create a buffered writer for efficiency
+//         writer := bufio.NewWriter(file)
+//         defer writer.Flush()
+//
+//         // Create a buffered reader for stdin
+//         reader := bufio.NewReader(os.Stdin)
+//
+//         // Read from stdin and write to file until the context is canceled
+//         for {
+//                 select {
+//                 case <-ctx.Done():
+//                         log.Debugf("Context cancelled, exiting io logger routine.")
+//                         return
+//                 default:
+//                         line, err := reader.ReadString('\n')
+//                         if err != nil {
+//                                 if err == io.EOF {
+//                                         // End of input, break the loop
+//                                         log.Debugf("End of input, exiting io logger routine.")
+//                                         return
+//                                 }
+//                                 log.Fatalf("Failed to read from stdin: %s", err)
+//                         }
+//                         _, err = writer.WriteString(line)
+//                         if err != nil {
+//                                 log.Fatalf("Failed to write to file: %s", err)
+//                         }
+//                         log.Debugf("wrote to file: %s", line)
+//                         // Flush the writer to ensure the data is written to file
+//                         err = writer.Flush()
+//                         if err != nil {
+//                                 log.Fatalf("Failed to flush writer: %s", err)
+//                         }
+//                 }
+//         }
+// }()

@@ -41,6 +41,12 @@ func UpdateDocument(
 					&text,
 					comments,
 				)
+				if err != nil {
+					return nil, fmt.Errorf("failed to get diagnostics: %w", err)
+				}
+				if len(diags) == 0 {
+					return nil, nil
+				}
 				return &lsp.PublishDiagnosticsNotification{
 					Notification: lsp.Notification{
 						RPC:    lsp.RPCVersion,

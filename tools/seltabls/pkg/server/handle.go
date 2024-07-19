@@ -19,13 +19,12 @@ func HandleMessage(
 	ctx context.Context,
 	state *analysis.State,
 	msg rpc.BaseMessage,
+	cancel context.CancelFunc,
 ) (response rpc.MethodActor, err error) {
-	hCtx, cancel := context.WithCancel(ctx)
-	defer cancel()
 	for {
 		select {
-		case <-hCtx.Done():
-			return nil, fmt.Errorf("context cancelled: %w", hCtx.Err())
+		case <-ctx.Done():
+			return nil, fmt.Errorf("context cancelled: %w", ctx.Err())
 		default:
 			switch methods.Method(msg.Method) {
 			case methods.MethodInitialize:
@@ -37,7 +36,7 @@ func HandleMessage(
 						err,
 					)
 				}
-				return lsp.NewInitializeResponse(&request)
+				return lsp.NewInitializeResponse(ctx, &request)
 			case methods.MethodRequestTextDocumentDidOpen:
 				var request lsp.NotificationDidOpenTextDocument
 				err = json.Unmarshal(msg.Content, &request)
@@ -47,7 +46,7 @@ func HandleMessage(
 						err,
 					)
 				}
-				return analysis.OpenDocument(hCtx, state, request)
+				return analysis.OpenDocument(ctx, state, request)
 			case methods.MethodRequestTextDocumentCompletion:
 				var request lsp.CompletionRequest
 				err = json.Unmarshal(msg.Content, &request)
@@ -58,7 +57,7 @@ func HandleMessage(
 					)
 				}
 				return analysis.CreateTextDocumentCompletion(
-					hCtx,
+					ctx,
 					state,
 					request,
 				)
@@ -82,7 +81,7 @@ func HandleMessage(
 					)
 				}
 				return analysis.TextDocumentCodeAction(
-					hCtx,
+					ctx,
 					request,
 					state,
 				)
@@ -95,6 +94,7 @@ func HandleMessage(
 						err,
 					)
 				}
+				cancel()
 				return lsp.NewShutdownResponse(request, nil)
 			case methods.MethodCancelRequest:
 				var request lsp.CancelRequest
@@ -156,7 +156,7 @@ func HandleMessage(
 						err,
 					)
 				}
-				return analysis.UpdateDocument(hCtx, state, &request)
+				return analysis.UpdateDocument(ctx, state, &request)
 			default:
 				return nil, fmt.Errorf("unknown method: %s", msg.Method)
 			}

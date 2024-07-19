@@ -1,6 +1,11 @@
 package lsp
 
-import "github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp/methods"
+import (
+	"context"
+	"fmt"
+
+	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp/methods"
+)
 
 // InitializeRequest is a struct for the initialize request.
 //
@@ -78,16 +83,11 @@ type InitializeResult struct {
 
 // ServerCapabilities is a struct for the server capabilities
 type ServerCapabilities struct {
-	// TextDocumentSync is what the server supports for syncing text documents.
-	TextDocumentSync int `json:"textDocumentSync"`
-	// HoverProvider is a boolean indicating whether the server provides.
-	HoverProvider bool `json:"hoverProvider"`
-	// DefinitionProvider is a boolean indicating whether the server provides definition capabilities.
-	DefinitionProvider bool `json:"definitionProvider"`
-	// CodeActionProvider is a boolean indicating whether the server provides code actions.
-	CodeActionProvider bool `json:"codeActionProvider"`
-	// CompletionProvider is a map of completion providers.
-	CompletionProvider map[string]any `json:"completionProvider"`
+	TextDocumentSync   int            `json:"textDocumentSync"`   // TextDocumentSync is what the server supports for syncing text documents.
+	HoverProvider      bool           `json:"hoverProvider"`      // HoverProvider is a boolean indicating whether the server provides.
+	DefinitionProvider bool           `json:"definitionProvider"` // DefinitionProvider is a boolean indicating whether the server provides definition capabilities.
+	CodeActionProvider bool           `json:"codeActionProvider"` // CodeActionProvider is a boolean indicating whether the server provides code actions.
+	CompletionProvider map[string]any `json:"completionProvider"` // CompletionProvider is a map of completion providers.
 }
 
 // ServerInfo is a struct for the server info.
@@ -99,26 +99,33 @@ type ServerInfo struct {
 }
 
 // NewInitializeResponse creates a new initialize response.
-func NewInitializeResponse(request *InitializeRequest) (*InitializeResponse, error) {
-	return &InitializeResponse{
-		Response: Response{
-			RPC: RPCVersion,
-			ID:  request.ID,
-		},
-		Result: InitializeResult{
-			Capabilities: ServerCapabilities{
-				TextDocumentSync:   1,
-				HoverProvider:      true,
-				DefinitionProvider: true,
-				CodeActionProvider: true,
-				CompletionProvider: map[string]any{},
-			},
-			ServerInfo: ServerInfo{
-				Name:    "seltabl_lsp",
-				Version: "0.0.0.5.0.0-beta1.final",
-			},
-		},
-	}, nil
+func NewInitializeResponse(ctx context.Context, request *InitializeRequest) (*InitializeResponse, error) {
+	for {
+		select {
+		case <-ctx.Done():
+			return nil, fmt.Errorf("context cancelled: %w", ctx.Err())
+		default:
+			return &InitializeResponse{
+				Response: Response{
+					RPC: RPCVersion,
+					ID:  request.ID,
+				},
+				Result: InitializeResult{
+					Capabilities: ServerCapabilities{
+						TextDocumentSync:   1,
+						HoverProvider:      true,
+						DefinitionProvider: true,
+						CodeActionProvider: false,
+						CompletionProvider: map[string]any{},
+					},
+					ServerInfo: ServerInfo{
+						Name:    "seltabl_lsp",
+						Version: "0.0.0.5.0.0-beta1.final",
+					},
+				},
+			}, nil
+		}
+	}
 }
 
 // InitializedParamsRequest is a struct for the initialized params.

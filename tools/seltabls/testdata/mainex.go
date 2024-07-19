@@ -10,8 +10,7 @@ import (
 	"github.com/conneroisu/seltabl/tools/cmd"
 )
 
-// main is the entry point for the command line tool, a
-// language server for the seltabl package
+// main is the entry point for the command line tool, a language server for the seltabl package.
 func main() {
 	if err := cmd.Execute(); err != nil {
 		// log to logs.txt

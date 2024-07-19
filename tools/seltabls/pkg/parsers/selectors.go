@@ -163,7 +163,6 @@ func GetSelectors(
 	}
 	for _, selectorString := range selectorStrings {
 		found := doc.Find(selectorString)
-		// TODO: check if this is the right way to do this
 		if found.Length() == 0 {
 			continue
 		}

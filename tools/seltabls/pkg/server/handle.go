@@ -71,11 +71,7 @@ func HandleMessage(
 						err,
 					)
 				}
-				response, err = analysis.NewHoverResponse(request, state)
-				if err != nil {
-					return nil, fmt.Errorf("failed to get hover: %w", err)
-				}
-				return response, nil
+				return analysis.NewHoverResponse(request, state)
 			case methods.MethodRequestTextDocumentCodeAction:
 				var request lsp.CodeActionRequest
 				err = json.Unmarshal(msg.Content, &request)
@@ -109,12 +105,7 @@ func HandleMessage(
 						err,
 					)
 				}
-				response, err = state.CancelRequest(request)
-				if err != nil || response == nil {
-					return nil, fmt.Errorf("failed to cancel request: %w", err)
-				}
-				return response, nil
-
+				return state.CancelRequest(request)
 			case methods.MethodNotificationInitialized:
 				var request lsp.InitializedParamsRequest
 				err = json.Unmarshal([]byte(msg.Content), &request)
@@ -155,6 +146,7 @@ func HandleMessage(
 						err,
 					)
 				}
+				return nil, nil
 			case methods.NotificationMethodTextDocumentDidChange:
 				var request lsp.TextDocumentDidChangeNotification
 				err = json.Unmarshal(msg.Content, &request)

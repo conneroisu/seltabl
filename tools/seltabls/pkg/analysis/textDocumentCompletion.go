@@ -29,7 +29,7 @@ func CreateTextDocumentCompletion(
 	default:
 		response = &lsp.CompletionResponse{
 			Response: lsp.Response{
-				RPC: "2.0",
+				RPC: lsp.RPCVersion,
 				ID:  request.ID,
 			},
 			Result: []lsp.CompletionItem{},

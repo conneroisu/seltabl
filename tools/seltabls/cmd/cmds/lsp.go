@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"io"
 	"reflect"
+	"sync"
 
 	"github.com/charmbracelet/log"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/analysis"
@@ -25,6 +26,11 @@ type handleCtx struct {
 	ctx    context.Context
 	cancel context.CancelFunc
 }
+
+var (
+	mu    sync.Mutex
+	cnMap = make(map[int]context.CancelFunc)
+)
 
 // NewLSPCmd creates a new command for the lsp subcommand
 func NewLSPCmd(

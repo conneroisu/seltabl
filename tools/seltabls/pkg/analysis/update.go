@@ -23,10 +23,9 @@ func UpdateDocument(
 			case <-ctx.Done():
 				return nil, fmt.Errorf("context cancelled: %w", ctx.Err())
 			default:
-				s.Documents[notification.Params.TextDocument.URI] = notification.Params.ContentChanges[len(notification.Params.ContentChanges)-1].Text
-				data, err := parsers.ParseStructComments(
-					notification.Params.ContentChanges[len(notification.Params.ContentChanges)-1].Text,
-				)
+				s.Documents[notification.Params.TextDocument.URI] = notification.Params.ContentChanges[0].Text
+				text := s.Documents[notification.Params.TextDocument.URI]
+				comments, err := parsers.ParseStructComments(notification.Params.ContentChanges[0].Text)
 				if err != nil {
 					return nil, fmt.Errorf(
 						"failed to get urls and ignores: %w",
@@ -35,32 +34,20 @@ func UpdateDocument(
 				}
 				s.URLs[notification.Params.TextDocument.URI] = append(
 					s.URLs[notification.Params.TextDocument.URI],
-					data.URLs...,
+					comments.URLs...,
 				)
-				var ds []lsp.Diagnostic
-				for i := range notification.Params.ContentChanges {
-					diags, err := GetDiagnosticsForFile(
-						ctx,
-						&notification.Params.ContentChanges[i].Text,
-						data,
-					)
-					if err != nil {
-						return nil, fmt.Errorf(
-							"failed to get diagnostics for file: %w",
-							err,
-						)
-					}
-					ds = append(
-						ds,
-						diags...)
-				}
+				diags, err := GetDiagnosticsForFile(
+					ctx,
+					&text,
+					comments,
+				)
 				return &lsp.PublishDiagnosticsNotification{
 					Notification: lsp.Notification{
-						RPC:    "2.0",
+						RPC:    lsp.RPCVersion,
 						Method: "textDocument/publishDiagnostics",
 					},
 					Params: lsp.PublishDiagnosticsParams{
-						Diagnostics: ds,
+						Diagnostics: diags,
 						URI:         notification.Params.TextDocument.URI,
 					},
 				}, nil

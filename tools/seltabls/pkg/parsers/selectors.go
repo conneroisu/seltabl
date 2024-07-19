@@ -3,7 +3,6 @@ package parsers
 import (
 	"context"
 	"fmt"
-	"sort"
 	"strings"
 
 	"github.com/PuerkitoBio/goquery"
@@ -184,8 +183,13 @@ func GetSelectors(
 		}
 		selectors = append(selectors, *selector)
 	}
-	sort.Slice(selectors, func(i, j int) bool {
-		return selectors[i].Occurances > 2
-	})
-	return selectors, nil
+	// return only selectors with more than 2 occurances
+	returnSelectors := []master.Selector{}
+	for _, sel := range selectors {
+		if sel.Occurances < 2 {
+			continue
+		}
+		returnSelectors = append(returnSelectors, sel)
+	}
+	return returnSelectors, nil
 }

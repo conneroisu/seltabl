@@ -29,7 +29,7 @@ func CreateTextDocumentCompletion(
 	default:
 		response = &lsp.CompletionResponse{
 			Response: lsp.Response{
-				RPC: "2.0",
+				RPC: lsp.RPCVersion,
 				ID:  request.ID,
 			},
 			Result: []lsp.CompletionItem{},
@@ -96,7 +96,7 @@ func CreateTextDocumentCompletion(
 			return nil
 		})
 		if err := eg.Wait(); err != nil {
-			return response, fmt.Errorf("failed to get completions: %w", err)
+			return nil, fmt.Errorf("failed to get completions: %w", err)
 		}
 		return response, nil
 	}

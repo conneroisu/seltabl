@@ -1,8 +1,16 @@
 package lsp
 
-import "github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp/methods"
+import (
+	"context"
+	"fmt"
+
+	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp/methods"
+)
 
 // InitializeRequest is a struct for the initialize request.
+//
+// Microsoft LSP Docs:
+// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#initialize
 type InitializeRequest struct {
 	// InitializeRequest embeds the Request struct
 	Request
@@ -23,6 +31,22 @@ type InitializeRequestParams struct {
 	RootPath string `json:"rootPath,omitempty"`
 	// Trace is the trace of the client in the request
 	Trace string `json:"trace,omitempty"`
+	// ProcessID is the process id of the client in the request
+	ProcessID int `json:"processId,omitempty"`
+	// Locale is the locale of the client in the request
+	Locale string `json:"locale,omitempty"`
+	// RootURI is the root uri of the client in the request
+	RootURI string `json:"rootUri,omitempty"`
+	// WorkspaceFolders is the workspace folders of the client in the request
+	WorkspaceFolders []WorkspaceFolder `json:"workspaceFolders,omitempty"`
+}
+
+// WorkspaceFolder is a struct for the workspace folder
+type WorkspaceFolder struct {
+	// URI is the uri of the workspace folder
+	URI string `json:"uri"`
+	// Name is the name of the workspace folder
+	Name string `json:"name"`
 }
 
 // ClientInfo is a struct for the client info
@@ -59,16 +83,11 @@ type InitializeResult struct {
 
 // ServerCapabilities is a struct for the server capabilities
 type ServerCapabilities struct {
-	// TextDocumentSync is what the server supports for syncing text documents.
-	TextDocumentSync int `json:"textDocumentSync"`
-	// HoverProvider is a boolean indicating whether the server provides.
-	HoverProvider bool `json:"hoverProvider"`
-	// DefinitionProvider is a boolean indicating whether the server provides definition capabilities.
-	DefinitionProvider bool `json:"definitionProvider"`
-	// CodeActionProvider is a boolean indicating whether the server provides code actions.
-	CodeActionProvider bool `json:"codeActionProvider"`
-	// CompletionProvider is a map of completion providers.
-	CompletionProvider map[string]any `json:"completionProvider"`
+	TextDocumentSync   int            `json:"textDocumentSync"`   // TextDocumentSync is what the server supports for syncing text documents.
+	HoverProvider      bool           `json:"hoverProvider"`      // HoverProvider is a boolean indicating whether the server provides.
+	DefinitionProvider bool           `json:"definitionProvider"` // DefinitionProvider is a boolean indicating whether the server provides definition capabilities.
+	CodeActionProvider bool           `json:"codeActionProvider"` // CodeActionProvider is a boolean indicating whether the server provides code actions.
+	CompletionProvider map[string]any `json:"completionProvider"` // CompletionProvider is a map of completion providers.
 }
 
 // ServerInfo is a struct for the server info.
@@ -80,25 +99,32 @@ type ServerInfo struct {
 }
 
 // NewInitializeResponse creates a new initialize response.
-func NewInitializeResponse(request *InitializeRequest) *InitializeResponse {
-	return &InitializeResponse{
-		Response: Response{
-			RPC: RPCVersion,
-			ID:  request.ID,
-		},
-		Result: InitializeResult{
-			Capabilities: ServerCapabilities{
-				TextDocumentSync:   1,
-				HoverProvider:      true,
-				DefinitionProvider: true,
-				CodeActionProvider: true,
-				CompletionProvider: map[string]any{},
-			},
-			ServerInfo: ServerInfo{
-				Name:    "seltabl_lsp",
-				Version: "0.0.0.0.0.0-beta1.final",
-			},
-		},
+func NewInitializeResponse(ctx context.Context, request *InitializeRequest) (*InitializeResponse, error) {
+	for {
+		select {
+		case <-ctx.Done():
+			return nil, fmt.Errorf("context cancelled: %w", ctx.Err())
+		default:
+			return &InitializeResponse{
+				Response: Response{
+					RPC: RPCVersion,
+					ID:  request.ID,
+				},
+				Result: InitializeResult{
+					Capabilities: ServerCapabilities{
+						TextDocumentSync:   1,
+						HoverProvider:      true,
+						DefinitionProvider: true,
+						CodeActionProvider: false,
+						CompletionProvider: map[string]any{},
+					},
+					ServerInfo: ServerInfo{
+						Name:    "seltabl_lsp",
+						Version: "0.0.0.5.0.0-beta1.final",
+					},
+				},
+			}, nil
+		}
 	}
 }
 

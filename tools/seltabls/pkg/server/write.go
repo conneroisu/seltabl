@@ -15,9 +15,6 @@ func WriteResponse(
 	msg rpc.MethodActor,
 ) error {
 	for {
-		if ctx.Err() != nil {
-			return fmt.Errorf("context cancelled: %w", ctx.Err())
-		}
 		select {
 		case <-ctx.Done():
 			return fmt.Errorf("context cancelled: %w", ctx.Err())

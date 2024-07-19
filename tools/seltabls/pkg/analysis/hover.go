@@ -20,7 +20,7 @@ func NewHoverResponse(
 ) (response *lsp.HoverResponse, err error) {
 	response = &lsp.HoverResponse{
 		Response: lsp.Response{
-			RPC: "2.0",
+			RPC: lsp.RPCVersion,
 			ID:  req.ID,
 		},
 		Result: lsp.HoverResult{},

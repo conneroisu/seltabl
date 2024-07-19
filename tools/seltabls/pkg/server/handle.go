@@ -19,13 +19,12 @@ func HandleMessage(
 	ctx context.Context,
 	state *analysis.State,
 	msg rpc.BaseMessage,
+	cancel context.CancelFunc,
 ) (response rpc.MethodActor, err error) {
-	hCtx, cancel := context.WithCancel(ctx)
-	defer cancel()
 	for {
 		select {
-		case <-hCtx.Done():
-			return nil, fmt.Errorf("context cancelled: %w", hCtx.Err())
+		case <-ctx.Done():
+			return nil, fmt.Errorf("context cancelled: %w", ctx.Err())
 		default:
 			switch methods.Method(msg.Method) {
 			case methods.MethodInitialize:
@@ -37,8 +36,76 @@ func HandleMessage(
 						err,
 					)
 				}
-				response := lsp.NewInitializeResponse(&request)
-				return response, nil
+				return lsp.NewInitializeResponse(ctx, &request)
+			case methods.MethodRequestTextDocumentDidOpen:
+				var request lsp.NotificationDidOpenTextDocument
+				err = json.Unmarshal(msg.Content, &request)
+				if err != nil {
+					return nil, fmt.Errorf(
+						"decode (textDocument/didOpen) request failed: %w",
+						err,
+					)
+				}
+				return analysis.OpenDocument(ctx, state, request)
+			case methods.MethodRequestTextDocumentCompletion:
+				var request lsp.CompletionRequest
+				err = json.Unmarshal(msg.Content, &request)
+				if err != nil {
+					return nil, fmt.Errorf(
+						"failed to unmarshal completion request (textDocument/completion): %w",
+						err,
+					)
+				}
+				return analysis.CreateTextDocumentCompletion(
+					ctx,
+					state,
+					request,
+				)
+			case methods.MethodRequestTextDocumentHover:
+				var request lsp.HoverRequest
+				err = json.Unmarshal(msg.Content, &request)
+				if err != nil {
+					return nil, fmt.Errorf(
+						"failed unmarshal of hover request (): %w",
+						err,
+					)
+				}
+				return analysis.NewHoverResponse(request, state)
+			case methods.MethodRequestTextDocumentCodeAction:
+				var request lsp.CodeActionRequest
+				err = json.Unmarshal(msg.Content, &request)
+				if err != nil {
+					return nil, fmt.Errorf(
+						"failed to unmarshal of codeAction request (textDocument/codeAction): %w",
+						err,
+					)
+				}
+				return analysis.TextDocumentCodeAction(
+					ctx,
+					request,
+					state,
+				)
+			case methods.MethodShutdown:
+				var request lsp.ShutdownRequest
+				err = json.Unmarshal([]byte(msg.Content), &request)
+				if err != nil {
+					return nil, fmt.Errorf(
+						"decode (shutdown) request failed: %w",
+						err,
+					)
+				}
+				cancel()
+				return lsp.NewShutdownResponse(request, nil)
+			case methods.MethodCancelRequest:
+				var request lsp.CancelRequest
+				err = json.Unmarshal(msg.Content, &request)
+				if err != nil {
+					return nil, fmt.Errorf(
+						"failed to unmarshal cancel request ($/cancelRequest): %w",
+						err,
+					)
+				}
+				return state.CancelRequest(request)
 			case methods.MethodNotificationInitialized:
 				var request lsp.InitializedParamsRequest
 				err = json.Unmarshal([]byte(msg.Content), &request)
@@ -49,106 +116,10 @@ func HandleMessage(
 					)
 				}
 				return nil, nil
-			case methods.MethodRequestTextDocumentDidOpen:
-				var request lsp.NotificationDidOpenTextDocument
-				err = json.Unmarshal(msg.Content, &request)
-				if err != nil {
-					return nil, fmt.Errorf(
-						"decode (textDocument/didOpen) request failed: %w",
-						err,
-					)
-				}
-				response, err = analysis.OpenDocument(hCtx, state, request)
-				if err != nil || response == nil {
-					return nil, fmt.Errorf("failed to open document: %w", err)
-				}
-				return response, nil
-			case methods.MethodRequestTextDocumentCompletion:
-				var request lsp.CompletionRequest
-				err = json.Unmarshal(msg.Content, &request)
-				if err != nil {
-					return nil, fmt.Errorf(
-						"failed to unmarshal completion request (textDocument/completion): %w",
-						err,
-					)
-				}
-				response, err = analysis.CreateTextDocumentCompletion(
-					hCtx,
-					state,
-					request,
-				)
-				if err != nil || response == nil {
-					return nil, fmt.Errorf(
-						"failed to get completions: %w",
-						err,
-					)
-				}
-				return response, nil
-			case methods.MethodRequestTextDocumentHover:
-				var request lsp.HoverRequest
-				err = json.Unmarshal(msg.Content, &request)
-				if err != nil {
-					return nil, fmt.Errorf(
-						"failed unmarshal of hover request (): %w",
-						err,
-					)
-				}
-				response, err = analysis.NewHoverResponse(request, state)
-				if err != nil {
-					return nil, fmt.Errorf("failed to get hover: %w", err)
-				}
-				return response, nil
-			case methods.MethodRequestTextDocumentCodeAction:
-				var request lsp.CodeActionRequest
-				err = json.Unmarshal(msg.Content, &request)
-				if err != nil {
-					return nil, fmt.Errorf(
-						"failed to unmarshal of codeAction request (textDocument/codeAction): %w",
-						err,
-					)
-				}
-				response, err = analysis.TextDocumentCodeAction(
-					hCtx,
-					request,
-					state,
-				)
-				if err != nil || response == nil {
-					return nil, fmt.Errorf(
-						"failed to get code actions: %w",
-						err,
-					)
-				}
-				return response, nil
-			case methods.MethodShutdown:
-				var request lsp.ShutdownRequest
-				err = json.Unmarshal([]byte(msg.Content), &request)
-				if err != nil {
-					return nil, fmt.Errorf(
-						"decode (shutdown) request failed: %w",
-						err,
-					)
-				}
-				response = lsp.NewShutdownResponse(request, nil)
-				return response, nil
-			case methods.MethodCancelRequest:
-				var request lsp.CancelRequest
-				err = json.Unmarshal(msg.Content, &request)
-				if err != nil {
-					return nil, fmt.Errorf(
-						"failed to unmarshal cancel request ($/cancelRequest): %w",
-						err,
-					)
-				}
-				response, err = state.CancelRequest(request)
-				if err != nil || response == nil {
-					return nil, fmt.Errorf("failed to cancel request: %w", err)
-				}
-				return response, nil
-			case methods.MethodExit:
+			case methods.MethodNotificationExit:
 				os.Exit(0)
 				return nil, nil
 			case methods.MethodNotificationTextDocumentDidSave:
-				state.Logger.Printf("Client sent a did save notification")
 				var request lsp.DidSaveTextDocumentParamsNotification
 				err = json.Unmarshal([]byte(msg.Content), &request)
 				if err != nil {
@@ -167,7 +138,7 @@ func HandleMessage(
 				}
 				state.Documents[request.Params.TextDocument.URI] = string(read)
 				return nil, nil
-			case methods.MethodNotificationTextDocumentDidClose:
+			case methods.NotificationTextDocumentDidClose:
 				var request lsp.DidCloseTextDocumentParamsNotification
 				if err = json.Unmarshal([]byte(msg.Content), &request); err != nil {
 					return nil, fmt.Errorf(
@@ -175,6 +146,7 @@ func HandleMessage(
 						err,
 					)
 				}
+				return nil, nil
 			case methods.NotificationMethodTextDocumentDidChange:
 				var request lsp.TextDocumentDidChangeNotification
 				err = json.Unmarshal(msg.Content, &request)
@@ -184,14 +156,7 @@ func HandleMessage(
 						err,
 					)
 				}
-				response, err = analysis.UpdateDocument(hCtx, state, &request)
-				if err != nil || response == nil {
-					return nil, fmt.Errorf(
-						"failed to update document: %w",
-						err,
-					)
-				}
-				return response, nil
+				return analysis.UpdateDocument(ctx, state, &request)
 			default:
 				return nil, fmt.Errorf("unknown method: %s", msg.Method)
 			}

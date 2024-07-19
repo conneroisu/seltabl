@@ -31,7 +31,7 @@ func (r ShutdownResponse) Method() methods.Method {
 }
 
 // NewShutdownResponse creates a new shutdown response
-func NewShutdownResponse(request ShutdownRequest, err error) ShutdownResponse {
+func NewShutdownResponse(request ShutdownRequest, err error) (ShutdownResponse, error) {
 	return ShutdownResponse{
 		Response: Response{
 			RPC: RPCVersion,
@@ -39,7 +39,7 @@ func NewShutdownResponse(request ShutdownRequest, err error) ShutdownResponse {
 		},
 		Result: nil,
 		Error:  &err,
-	}
+	}, nil
 }
 
 // ExitRequest is a struct for the exit request
@@ -49,5 +49,5 @@ type ExitRequest struct {
 
 // Method returns the method for the exit request
 func (r ExitRequest) Method() methods.Method {
-	return methods.MethodExit
+	return methods.MethodNotificationExit
 }

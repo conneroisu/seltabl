@@ -8,6 +8,30 @@ import (
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
 )
 
+// State represents the state of a position within a struct.
+type State int
+
+const (
+	// StateInTag is the state for when the position is within a struct tag.
+	StateInTag State = iota
+	// StateInTagValue is the state for when the position is within a struct tag value.
+	StateInTagValue
+	// StateAfterColon is the state for when the position is after a colon.
+	StateAfterColon
+	// StateInvalid is the state for when the position is invalid or not within a struct.
+	StateInvalid
+)
+
+// String returns the string representation of the State.
+func (s State) String() string {
+	return [...]string{
+		"StateInTag",
+		"StateInTagValue",
+		"StateAfterColon",
+		"StateInvalid",
+	}[s]
+}
+
 // PositionInStructTagValue checks if the given position is within the value of a struct tag.
 func PositionInStructTagValue(
 	node *ast.StructType,
@@ -21,7 +45,6 @@ func PositionInStructTagValue(
 	closestDistance := int(
 		^uint(0) >> 1,
 	) // Initialize with the maximum possible integer value
-
 	for _, field := range node.Fields.List {
 		if field.Tag != nil {
 			inNode := IsPositionInNode(field.Tag, pos, fset)
@@ -52,7 +75,6 @@ func PositionInStructTagValue(
 					}
 				}
 			}
-
 			// Calculate the distance to the current tag for the closest tag logic
 			start := fset.Position(field.Tag.Pos())
 			distance := (start.Line-pos.Line)*(start.Line-pos.Line) + (start.Column-pos.Character)*(start.Column-pos.Character)
@@ -62,7 +84,6 @@ func PositionInStructTagValue(
 			}
 		}
 	}
-
 	return closestTagValue, false
 }
 
@@ -123,40 +144,4 @@ func PositionBeforeValue(pos lsp.Position, text string) byte {
 		return '\n'
 	}
 	return line[pos.Character-1]
-}
-
-// State represents the state of a position within a struct.
-type State int
-
-const (
-	// StateInTag is the state for when the position is within a struct tag.
-	StateInTag State = iota
-	// StateInTagValue is the state for when the position is within a struct tag value.
-	StateInTagValue
-	// StateAfterColon is the state for when the position is after a colon.
-	StateAfterColon
-	// StateInvalid is the state for when the position is invalid or not within a struct.
-	StateInvalid
-)
-
-// String returns the string representation of the State.
-func (s State) String() string {
-	return [...]string{
-		"StateInTag",
-		"StateInTagValue",
-		"StateAfterColon",
-		"StateInvalid",
-	}[s]
-}
-
-// GetLineRangeFromNode returns a range for a given node
-func GetLineRangeFromNode(node ast.Node, fset *token.FileSet) lsp.Range {
-	start := fset.Position(node.Pos())
-	end := fset.Position(node.End())
-	// Check if the position is within the node's range
-	if (end.Line > start.Line || (end.Line == start.Line && end.Column >= start.Column)) &&
-		(start.Line < end.Line || (start.Line == end.Line && start.Column <= end.Column)) {
-		return lsp.LineRange(start.Line, start.Column, end.Column)
-	}
-	return lsp.LineRange(start.Line, start.Column, start.Column)
 }

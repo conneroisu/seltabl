@@ -28,7 +28,8 @@ func GetAllSelectors(doc *goquery.Document) ([]string, error) {
 		}
 	})
 	if len(strs) == 0 {
-		return nil, fmt.Errorf("no selectors found in document")
+		html, _ := doc.Html()
+		return nil, fmt.Errorf("no selectors found in document: %s", html)
 	}
 	return strs, nil
 }
@@ -36,12 +37,10 @@ func GetAllSelectors(doc *goquery.Document) ([]string, error) {
 // getSelectorsFromSelection returns the CSS selector for the given goquery selection
 func getSelectorsFromSelection(s *goquery.Selection) string {
 	if s.Length() == 0 {
-		return ""
+		return empty
 	}
-	// Get the parent node
-	parent := s.Parent()
 	// Recursive call for the parent
-	parentSelector := getSelectorsFromSelection(parent)
+	parentSelector := getSelectorsFromSelection(s.Parent())
 	// Get the selector for the current node
 	currentSelector := singleSelector(s)
 	// Combine the parent and current selectors
@@ -164,6 +163,10 @@ func GetSelectors(
 	}
 	for _, selectorString := range selectorStrings {
 		found := doc.Find(selectorString)
+		// TODO: check if this is the right way to do this
+		if found.Length() == 0 {
+			continue
+		}
 		selectorContext, err := found.Parent().First().Html()
 		if err != nil {
 			return nil, fmt.Errorf("failed to get html: %w", err)
@@ -183,5 +186,13 @@ func GetSelectors(
 		}
 		selectors = append(selectors, *selector)
 	}
-	return selectors, nil
+	// return only selectors with more than 2 occurances
+	returnSelectors := []master.Selector{}
+	for _, sel := range selectors {
+		if sel.Occurances < 2 {
+			continue
+		}
+		returnSelectors = append(returnSelectors, sel)
+	}
+	return returnSelectors, nil
 }

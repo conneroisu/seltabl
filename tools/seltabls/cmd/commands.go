@@ -27,10 +27,5 @@ func AddCommands(ctx context.Context, root *cobra.Command) error {
 		os.Stdout,
 		os.Stdin,
 	))
-	root.AddCommand(cmds.NewGenerateCmd(
-		ctx,
-		os.Stdout,
-		os.Stdin,
-	))
 	return nil
 }

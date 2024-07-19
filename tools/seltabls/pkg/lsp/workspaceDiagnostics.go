@@ -26,7 +26,7 @@ type PublishDiagnosticsNotification struct {
 
 // Method returns the method for the publish diagnostics notification
 func (r PublishDiagnosticsNotification) Method() methods.Method {
-	return methods.MethodNotificationTextDocumentDidSave
+	return methods.NotificationPublishDiagnostics
 }
 
 // PublishDiagnosticsParams are the parameters for the publish diagnostics notification.

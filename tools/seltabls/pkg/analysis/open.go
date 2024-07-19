@@ -5,6 +5,7 @@ import (
 	"fmt"
 
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
+	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp/methods"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/parsers"
 	"golang.org/x/sync/errgroup"
 )
@@ -21,27 +22,17 @@ func OpenDocument(
 	ctx context.Context,
 	s *State,
 	req lsp.NotificationDidOpenTextDocument,
-) (response *lsp.PublishDiagnosticsNotification, err error) {
+) (*lsp.PublishDiagnosticsNotification, error) {
 	select {
 	case <-(ctx).Done():
-		return response, fmt.Errorf("context cancelled: %w", (ctx).Err())
+		return nil, fmt.Errorf("context cancelled: %w", (ctx).Err())
 	default:
-		response = &lsp.PublishDiagnosticsNotification{
-			Notification: lsp.Notification{
-				RPC:    lsp.RPCVersion,
-				Method: "textDocument/publishDiagnostics",
-			},
-			Params: lsp.PublishDiagnosticsParams{
-				URI:         req.Params.TextDocument.URI,
-				Diagnostics: []lsp.Diagnostic{},
-			},
-		}
 		eg, ctx := errgroup.WithContext(ctx)
 		uri := req.Params.TextDocument.URI
 		s.Documents[uri] = req.Params.TextDocument.Text
 		data, err := parsers.ParseStructComments(req.Params.TextDocument.Text)
 		if err != nil {
-			return response, nil
+			return nil, nil
 		}
 		s.URLs[uri] = append(s.URLs[uri], data.URLs...)
 		for _, url := range data.URLs {
@@ -58,24 +49,36 @@ func OpenDocument(
 				return nil
 			})
 		}
-		if err := eg.Wait(); err != nil {
-			return response, fmt.Errorf(
+		err = eg.Wait()
+		if err != nil {
+			return nil, fmt.Errorf(
 				"failed to get selectors for urls: %w",
 				err,
 			)
 		}
 		diags, err := GetDiagnosticsForFile(
 			ctx,
-			s,
 			&req.Params.TextDocument.Text,
 			data,
 		)
 		if err != nil {
-			s.Logger.Printf("failed to get diagnostics for file: %s\n", err)
-			return response, nil
+			return nil, fmt.Errorf(
+				"failed to get diagnostics for file: %w",
+				err,
+			)
 		}
-		response.Params.Diagnostics = diags
-		s.Logger.Printf("Found %d diagnostics for file: %s\n: %s", len(diags), err, diags)
-		return response, nil
+		if len(diags) == 0 {
+			return nil, nil
+		}
+		return &lsp.PublishDiagnosticsNotification{
+			Notification: lsp.Notification{
+				RPC:    lsp.RPCVersion,
+				Method: string(methods.NotificationPublishDiagnostics),
+			},
+			Params: lsp.PublishDiagnosticsParams{
+				URI:         req.Params.TextDocument.URI,
+				Diagnostics: diags,
+			},
+		}, nil
 	}
 }

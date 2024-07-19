@@ -7,6 +7,7 @@ import (
 	"os"
 	"path"
 
+	loge "github.com/charmbracelet/log"
 	"github.com/conneroisu/seltabl/tools/seltabls/data"
 
 	"github.com/conneroisu/seltabl/tools/seltabls/data/master"
@@ -72,6 +73,8 @@ func getLogger(fileName string) (*log.Logger, error) {
 	if err != nil {
 		return nil, err
 	}
+	loge.SetOutput(logFile)
+	loge.SetLevel(loge.DebugLevel)
 	return log.New(logFile, "[seltabls#state]", log.LstdFlags), nil
 }
 

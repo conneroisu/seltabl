@@ -99,7 +99,7 @@ type ServerInfo struct {
 }
 
 // NewInitializeResponse creates a new initialize response.
-func NewInitializeResponse(request *InitializeRequest) *InitializeResponse {
+func NewInitializeResponse(request *InitializeRequest) (*InitializeResponse, error) {
 	return &InitializeResponse{
 		Response: Response{
 			RPC: RPCVersion,
@@ -118,7 +118,7 @@ func NewInitializeResponse(request *InitializeRequest) *InitializeResponse {
 				Version: "0.0.0.5.0.0-beta1.final",
 			},
 		},
-	}
+	}, nil
 }
 
 // InitializedParamsRequest is a struct for the initialized params.

@@ -37,18 +37,7 @@ func HandleMessage(
 						err,
 					)
 				}
-				response := lsp.NewInitializeResponse(&request)
-				return response, nil
-			case methods.MethodNotificationInitialized:
-				var request lsp.InitializedParamsRequest
-				err = json.Unmarshal([]byte(msg.Content), &request)
-				if err != nil {
-					return nil, fmt.Errorf(
-						"decode (initialized) request failed: %w",
-						err,
-					)
-				}
-				return nil, nil
+				return lsp.NewInitializeResponse(&request)
 			case methods.MethodRequestTextDocumentDidOpen:
 				var request lsp.NotificationDidOpenTextDocument
 				err = json.Unmarshal(msg.Content, &request)
@@ -58,11 +47,7 @@ func HandleMessage(
 						err,
 					)
 				}
-				response, err = analysis.OpenDocument(hCtx, state, request)
-				if err != nil {
-					return nil, fmt.Errorf("failed to open document: %w", err)
-				}
-				return response, nil
+				return analysis.OpenDocument(hCtx, state, request)
 			case methods.MethodRequestTextDocumentCompletion:
 				var request lsp.CompletionRequest
 				err = json.Unmarshal(msg.Content, &request)
@@ -72,18 +57,11 @@ func HandleMessage(
 						err,
 					)
 				}
-				response, err = analysis.CreateTextDocumentCompletion(
+				return analysis.CreateTextDocumentCompletion(
 					hCtx,
 					state,
 					request,
 				)
-				if err != nil {
-					return nil, fmt.Errorf(
-						"failed to get completions: %w",
-						err,
-					)
-				}
-				return response, nil
 			case methods.MethodRequestTextDocumentHover:
 				var request lsp.HoverRequest
 				err = json.Unmarshal(msg.Content, &request)
@@ -107,18 +85,11 @@ func HandleMessage(
 						err,
 					)
 				}
-				response, err = analysis.TextDocumentCodeAction(
+				return analysis.TextDocumentCodeAction(
 					hCtx,
 					request,
 					state,
 				)
-				if err != nil || response == nil {
-					return nil, fmt.Errorf(
-						"failed to get code actions: %w",
-						err,
-					)
-				}
-				return response, nil
 			case methods.MethodShutdown:
 				var request lsp.ShutdownRequest
 				err = json.Unmarshal([]byte(msg.Content), &request)
@@ -128,8 +99,7 @@ func HandleMessage(
 						err,
 					)
 				}
-				response = lsp.NewShutdownResponse(request, nil)
-				return response, nil
+				return lsp.NewShutdownResponse(request, nil)
 			case methods.MethodCancelRequest:
 				var request lsp.CancelRequest
 				err = json.Unmarshal(msg.Content, &request)
@@ -144,6 +114,17 @@ func HandleMessage(
 					return nil, fmt.Errorf("failed to cancel request: %w", err)
 				}
 				return response, nil
+
+			case methods.MethodNotificationInitialized:
+				var request lsp.InitializedParamsRequest
+				err = json.Unmarshal([]byte(msg.Content), &request)
+				if err != nil {
+					return nil, fmt.Errorf(
+						"decode (initialized) request failed: %w",
+						err,
+					)
+				}
+				return nil, nil
 			case methods.MethodNotificationExit:
 				os.Exit(0)
 				return nil, nil
@@ -183,14 +164,7 @@ func HandleMessage(
 						err,
 					)
 				}
-				response, err = analysis.UpdateDocument(hCtx, state, &request)
-				if err != nil {
-					return nil, fmt.Errorf(
-						"failed to update document: %w",
-						err,
-					)
-				}
-				return response, nil
+				return analysis.UpdateDocument(hCtx, state, &request)
 			default:
 				return nil, fmt.Errorf("unknown method: %s", msg.Method)
 			}

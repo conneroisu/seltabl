@@ -3,6 +3,7 @@ package parsers
 import (
 	"context"
 	"fmt"
+	"sort"
 	"strings"
 
 	"github.com/PuerkitoBio/goquery"
@@ -37,7 +38,7 @@ func GetAllSelectors(doc *goquery.Document) ([]string, error) {
 // getSelectorsFromSelection returns the CSS selector for the given goquery selection
 func getSelectorsFromSelection(s *goquery.Selection) string {
 	if s.Length() == 0 {
-		return ""
+		return empty
 	}
 	// Recursive call for the parent
 	parentSelector := getSelectorsFromSelection(s.Parent())
@@ -135,6 +136,7 @@ func GetSelectors(
 		}
 		return selectors, nil
 	}
+
 	doc, err = GetMinifiedDoc(url, ignores)
 	if err != nil {
 		return nil, fmt.Errorf("failed to get minified doc: %w", err)
@@ -182,5 +184,8 @@ func GetSelectors(
 		}
 		selectors = append(selectors, *selector)
 	}
+	sort.Slice(selectors, func(i, j int) bool {
+		return selectors[i].Occurances > 2
+	})
 	return selectors, nil
 }

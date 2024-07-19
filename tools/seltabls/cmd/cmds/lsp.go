@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"reflect"
 
 	"github.com/charmbracelet/log"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/analysis"
@@ -73,7 +74,7 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 						log.Errorf("failed to handle message (%s): %s", decoded.Method, err)
 						return nil
 					}
-					if resp == nil {
+					if isNull(resp) {
 						return nil
 					}
 					err = server.WriteResponse(hCtx, &writer, resp)
@@ -108,4 +109,8 @@ func marshal(mA rpc.MethodActor) string {
 		return ""
 	}
 	return string(b)
+}
+
+func isNull(i interface{}) bool {
+	return i == nil || reflect.ValueOf(i).IsNil()
 }

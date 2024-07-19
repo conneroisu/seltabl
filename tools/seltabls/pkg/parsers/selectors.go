@@ -185,13 +185,5 @@ func GetSelectors(
 		}
 		selectors = append(selectors, *selector)
 	}
-	// return only selectors with more than 2 occurances
-	returnSelectors := []master.Selector{}
-	for _, sel := range selectors {
-		if sel.Occurances < 2 {
-			continue
-		}
-		returnSelectors = append(returnSelectors, sel)
-	}
-	return returnSelectors, nil
+	return selectors, nil
 }

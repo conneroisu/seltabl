@@ -3,9 +3,11 @@ package cmds
 import (
 	"bufio"
 	"context"
+	"encoding/json"
 	"fmt"
 	"io"
 
+	"github.com/charmbracelet/log"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/analysis"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp/methods"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/rpc"
@@ -47,7 +49,6 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 			if err != nil {
 				return fmt.Errorf("failed to create state: %w", err)
 			}
-			state.Logger.SetOutput(state.Logger.Writer())
 			cmd.SetErr(state.Logger.Writer())
 			ctx, cancel := context.WithCancel(ctx)
 			defer cancel()
@@ -66,12 +67,10 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 						ctxs[decoded.ID].cancel()
 						delete(ctxs, decoded.ID)
 					}
+					log.Debugf("received message: %s", decoded.Method)
 					resp, err := handle(hCtx, &state, *decoded)
 					if err != nil {
-						state.Logger.Printf(
-							"failed to handle message: %s\n",
-							err,
-						)
+						log.Errorf("failed to handle message (%s): %s", decoded.Method, err)
 						return nil
 					}
 					if resp == nil {
@@ -79,12 +78,13 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 					}
 					err = server.WriteResponse(hCtx, &writer, resp)
 					if err != nil {
-						state.Logger.Printf(
+						log.Errorf(
 							"failed to write (%s) response: %s\n",
 							resp.Method(),
 							err,
 						)
 					}
+					go log.Debugf("sent message: %s", marshal(resp))
 					return nil
 				})
 			}
@@ -100,4 +100,12 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 		},
 	}
 	return cmd
+}
+
+func marshal(mA rpc.MethodActor) string {
+	b, err := json.Marshal(mA)
+	if err != nil {
+		return ""
+	}
+	return string(b)
 }

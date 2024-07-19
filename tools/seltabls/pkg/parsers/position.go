@@ -145,15 +145,3 @@ func PositionBeforeValue(pos lsp.Position, text string) byte {
 	}
 	return line[pos.Character-1]
 }
-
-// GetLineRangeFromNode returns a range for a given node
-func GetLineRangeFromNode(node ast.Node, fset *token.FileSet) lsp.Range {
-	start := fset.Position(node.Pos())
-	end := fset.Position(node.End())
-	// Check if the position is within the node's range
-	if (end.Line > start.Line || (end.Line == start.Line && end.Column >= start.Column)) &&
-		(start.Line < end.Line || (start.Line == end.Line && start.Column <= end.Column)) {
-		return lsp.LineRange(start.Line, start.Column, end.Column)
-	}
-	return lsp.LineRange(start.Line, start.Column, start.Column)
-}

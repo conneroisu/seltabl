@@ -13,6 +13,9 @@ command -v go >/dev/null 2>&1 || brew install go
 # Check if the command, gum, exists, if not install it
 command -v gum >/dev/null 2>&1 || go install github.com/charmbracelet/gum@latest
 
+# Chik if the command, gocovsh, exists, if not install it
+command -v gocovsh >/dev/null 2>&1 || go install github.com/orlangure/gocovsh@latest
+
 # Check if the command, protoc, exists, if not install it
 gum spin --spinner dot --title "Installing Protoc" --show-output -- \
     command -v protoc >/dev/null 2>&1 || go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.28 &&  go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.2
@@ -32,4 +35,5 @@ gum spin --spinner dot --title "Installing SQLC" --show-output -- \
 
 gum spin --spinner dot --title "Installing Staticcheck" --show-output -- \
     go install honnef.co/go/tools/cmd/staticcheck@latest
+
 

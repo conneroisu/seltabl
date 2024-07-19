@@ -31,11 +31,10 @@ func GetMinifiedDoc(
 	if err != nil {
 		return nil, err
 	}
-	var sel *goquery.Selection
 	for _, v := range disallowedTags {
-		sel = doc.Find(v).Remove()
+		_ = doc.RemoveFiltered(v)
 	}
-	html, err := sel.Html()
+	html, err := doc.Html()
 	if err != nil {
 		return nil, err
 	}

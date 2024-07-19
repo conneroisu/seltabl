@@ -5,6 +5,7 @@ import (
 	"fmt"
 
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
+	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp/methods"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/parsers"
 	"golang.org/x/sync/errgroup"
 )
@@ -66,10 +67,13 @@ func OpenDocument(
 				err,
 			)
 		}
+		if len(diags) == 0 {
+			return nil, nil
+		}
 		return &lsp.PublishDiagnosticsNotification{
 			Notification: lsp.Notification{
 				RPC:    lsp.RPCVersion,
-				Method: "textDocument/publishDiagnostics",
+				Method: string(methods.NotificationPublishDiagnostics),
 			},
 			Params: lsp.PublishDiagnosticsParams{
 				URI:         req.Params.TextDocument.URI,

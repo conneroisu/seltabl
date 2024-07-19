@@ -201,7 +201,7 @@ func TestSelectors(t *testing.T) {
 			if err != nil {
 				t.Fatalf("failed to create document: %v", err)
 			}
-			got, err := GetAllSelectors(doc.Selection)
+			got, err := GetAllSelectors(doc)
 			if err != nil {
 				if tt.wantErr {
 					return

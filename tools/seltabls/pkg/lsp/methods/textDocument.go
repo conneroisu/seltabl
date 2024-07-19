@@ -98,3 +98,8 @@ const (
 	// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_documentLink
 	MethodTextDocumentDocumentLink Method = "textDocument/documentLink"
 )
+
+// Notification methods
+const (
+	NotificationPublishDiagnostics Method = "textDocument/publishDiagnostics"
+)

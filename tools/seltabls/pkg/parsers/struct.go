@@ -37,15 +37,6 @@ type Structure struct {
 	Fields []Field `json:"fields"`
 }
 
-// MarshalJSON implements the json.Marshaler interface.
-func (s *Structure) MarshalJSON() ([]byte, error) {
-	return json.Marshal(struct {
-		Fields []Field `json:"fields"`
-	}{
-		Fields: s.Fields,
-	})
-}
-
 // validateSelector validates a selector against a known url content in the form of a goquery document
 func validateSelector(
 	selector string,
@@ -228,26 +219,17 @@ func (f *Field) Tag(i int) *Tag {
 
 // Tags represent a set of tags from a single struct field
 type Tags struct {
-	tags []*Tag
+	tags []*Tag // tags is a slice of tags.
 }
 
 // Tag defines a single struct's string literal tag
 type Tag struct {
-	// Key is the tag key, such as json, xml, etc..
-	// i.e: `json:"foo,omitempty". Here key is: "json"
-	Key string `json:"key"`
-	// Name is a part of the value
-	// i.e: `json:"foo,omitempty". Here name is: "foo"
-	Name string `json:"name"`
-	// Options is a part of the value. It contains a slice of tag options i.e:
-	// `json:"foo,omitempty". Here options is: ["omitempty"]
-	Options []string `json:"options"`
-	// Line is the line of the tag in the source code
-	Line int `json:"line"`
-	// Start is the start of the tag in the source code horizontally
-	Start int `json:"start"`
-	// End is the end of the tag in the source code horizontally
-	End int `json:"end"`
+	Key     string   `json:"key"`     // Key is the tag key, such as json, xml, etc.. i.e: `json:"foo,omitempty". Here key is: "json".
+	Name    string   `json:"name"`    // Name is a part of the value i.e: `json:"foo,omitempty". Here name is: "foo".
+	Options []string `json:"options"` // Options is a part of the value. It contains a slice of tag options i.e: `json:"foo,omitempty". Here options is: ["omitempty"].
+	Line    int      `json:"line"`    // Line is the line of the tag in the source code.
+	Start   int      `json:"start"`   // Start is the start of the tag in the source code horizontally.
+	End     int      `json:"end"`     // End is the end of the tag in the source code horizontally.
 }
 
 // ParseStructs checks if the struct tag is in the url and returns a
@@ -275,7 +257,7 @@ func ParseStructs(
 				field, idx := field, idx
 				eg.Go(func() error {
 					tags, err := ParseTags(
-						field.Tag.Value[1:len(field.Tag.Value)-1],
+						field.Tag.Value,
 						fset.Position(field.Pos()).Offset,
 						fset.Position(field.End()).Offset,
 						fset.Position(field.Pos()).Line,

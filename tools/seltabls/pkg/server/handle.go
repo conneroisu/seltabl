@@ -6,7 +6,9 @@ import (
 	"fmt"
 	"net/url"
 	"os"
+	"sync"
 
+	"github.com/charmbracelet/log"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/analysis"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp/methods"
@@ -20,6 +22,8 @@ func HandleMessage(
 	state *analysis.State,
 	msg rpc.BaseMessage,
 	cancel context.CancelFunc,
+	cnMap map[int]context.CancelFunc,
+	mu *sync.Mutex,
 ) (response rpc.MethodActor, err error) {
 	for {
 		select {
@@ -71,20 +75,20 @@ func HandleMessage(
 					)
 				}
 				return analysis.NewHoverResponse(request, state)
-			case methods.MethodRequestTextDocumentCodeAction:
-				var request lsp.CodeActionRequest
-				err = json.Unmarshal(msg.Content, &request)
-				if err != nil {
-					return nil, fmt.Errorf(
-						"failed to unmarshal of codeAction request (textDocument/codeAction): %w",
-						err,
-					)
-				}
-				return analysis.TextDocumentCodeAction(
-					ctx,
-					request,
-					state,
-				)
+			// case methods.MethodRequestTextDocumentCodeAction:
+			//         var request lsp.CodeActionRequest
+			//         err = json.Unmarshal(msg.Content, &request)
+			//         if err != nil {
+			//                 return nil, fmt.Errorf(
+			//                         "failed to unmarshal of codeAction request (textDocument/codeAction): %w",
+			//                         err,
+			//                 )
+			//         }
+			//         return analysis.TextDocumentCodeAction(
+			//                 ctx,
+			//                 request,
+			//                 state,
+			//         )
 			case methods.MethodShutdown:
 				var request lsp.ShutdownRequest
 				err = json.Unmarshal([]byte(msg.Content), &request)
@@ -105,6 +109,15 @@ func HandleMessage(
 						err,
 					)
 				}
+				log.Debugf("canceling request: %d", request.Params.ID)
+				value, exists := cnMap[request.Params.ID]
+				if !exists {
+					return nil, fmt.Errorf("request not found: %d", request.Params.ID)
+				}
+				value()
+				mu.Lock()
+				delete(cnMap, request.Params.ID)
+				mu.Unlock()
 				return state.CancelRequest(request)
 			case methods.MethodNotificationInitialized:
 				var request lsp.InitializedParamsRequest

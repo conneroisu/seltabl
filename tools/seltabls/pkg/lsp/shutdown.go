@@ -31,7 +31,10 @@ func (r ShutdownResponse) Method() methods.Method {
 }
 
 // NewShutdownResponse creates a new shutdown response
-func NewShutdownResponse(request ShutdownRequest, err error) (ShutdownResponse, error) {
+func NewShutdownResponse(
+	request ShutdownRequest,
+	err error,
+) (ShutdownResponse, error) {
 	return ShutdownResponse{
 		Response: Response{
 			RPC: RPCVersion,

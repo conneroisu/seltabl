@@ -19,6 +19,7 @@ func main() {
 	err = cmd.Execute(ctx)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "failed to execute command: %s\n", err)
+
 		println("failed to execute command: " + err.Error())
 		panic(err)
 	}
@@ -28,6 +29,9 @@ func main() {
 // @url: https://stats.ncaa.org/game_upload/team_codes
 // @ignore-elements: script, style, link, img, footer, header
 type TableStruct struct {
-	A string `json:"a" hSel:"html head meta[name=csrf-param]"     dSel:"tr td:nth-child(1)" ctl:"text"`
-	B string `json:"b" hSel:"html"                                dSel:"tr:nth-child(1)"    ctl:"text"`
+	A string `json:"a" hSel:"html>body" dSel:"tr td:nth-child(1)" ctl:"$text"`
+	B string `json:"b" hSel:"html>body>div.footer>div>span>a[href]" dSel:"" ctl:"$text"`
+	C string `json:"c" hSel:"html>body>div.contentArea>table>tbody>tr.row_odd>td" dSel:"tr td:nth-child(1)" ctl:"$text"`
+	D string `json:"d" hSel:"" dSel:"html" ctl:"$text"`
+	E string `json:"e" hSel:"" dSel:"html" ctl:"$text"`
 }

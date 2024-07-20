@@ -12,7 +12,7 @@ import (
 )
 
 const (
-	childsep = " > "
+	childsep = ">"
 	empty    = ""
 )
 
@@ -122,6 +122,7 @@ func GetSelectors(
 	db *data.Database[master.Queries],
 	url string,
 	ignores []string,
+	mustOccur int,
 ) (selectors []master.Selector, err error) {
 	var doc *goquery.Document
 	rows, err := db.Queries.GetSelectorsByURL(
@@ -163,8 +164,10 @@ func GetSelectors(
 	}
 	for _, selectorString := range selectorStrings {
 		found := doc.Find(selectorString)
-		// TODO: check if this is the right way to do this
 		if found.Length() == 0 {
+			continue
+		}
+		if mustOccur > 0 && found.Length() < mustOccur {
 			continue
 		}
 		selectorContext, err := found.Parent().First().Html()
@@ -186,13 +189,5 @@ func GetSelectors(
 		}
 		selectors = append(selectors, *selector)
 	}
-	// return only selectors with more than 2 occurances
-	returnSelectors := []master.Selector{}
-	for _, sel := range selectors {
-		if sel.Occurances < 2 {
-			continue
-		}
-		returnSelectors = append(returnSelectors, sel)
-	}
-	return returnSelectors, nil
+	return selectors, nil
 }

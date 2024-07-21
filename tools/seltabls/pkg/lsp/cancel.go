@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"sync"
 
+	"github.com/charmbracelet/log"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp/methods"
 )
 
@@ -29,6 +30,7 @@ func (c CCancelMap) Add(id int, cancel context.CancelFunc) {
 	mu.Lock()
 	defer mu.Unlock()
 	c[id] = cancel
+	log.Debugf("added cancel function for id: %d", id)
 }
 
 // Remove removes the cancel function for the given id.
@@ -36,6 +38,7 @@ func (c CCancelMap) Remove(id int) {
 	mu.Lock()
 	defer mu.Unlock()
 	delete(c, id)
+	log.Debugf("removed cancel function for id: %d", id)
 }
 
 // Contains checks if the cancel map contains the given id.

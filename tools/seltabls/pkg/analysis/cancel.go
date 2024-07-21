@@ -11,7 +11,7 @@ func (s *State) CancelRequest(
 	return &lsp.CancelResponse{
 		Response: lsp.Response{
 			RPC: lsp.RPCVersion,
-			ID:  int(request.ID),
+			ID:  request.Params.ID,
 		},
 	}, nil
 }

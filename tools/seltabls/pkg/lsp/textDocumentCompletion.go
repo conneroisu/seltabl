@@ -1,6 +1,8 @@
 package lsp
 
-import "github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp/methods"
+import (
+	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp/methods"
+)
 
 // CompletionRequest is a request for a completion to the language server
 //

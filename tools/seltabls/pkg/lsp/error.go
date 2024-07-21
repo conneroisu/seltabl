@@ -1,5 +1,11 @@
 package lsp
 
+// Error is a struct for the error
+type Error struct {
+	Code    int    `json:"code"`
+	Message string `json:"message"`
+}
+
 // ErrorCode represents the error codes defined by JSON-RPC and LSP.
 type ErrorCode int
 

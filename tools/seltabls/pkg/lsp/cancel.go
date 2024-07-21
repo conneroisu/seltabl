@@ -100,8 +100,10 @@ type CancelParams struct {
 // Microsoft LSP Docs:
 // https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_cancel
 type CancelResponse struct {
-	// CancelResponse embeds the Response struct
-	Response
+	RPC string `json:"jsonrpc"`
+	ID  int    `json:"id"`
+	// Error is the error for the cancel response.
+	Error *Error `json:"error,omitempty"`
 }
 
 // Method returns the method for the cancel response

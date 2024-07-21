@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"net/url"
 	"os"
-	"sync"
 
 	"github.com/charmbracelet/log"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/analysis"
@@ -22,8 +21,6 @@ func HandleMessage(
 	state *analysis.State,
 	msg rpc.BaseMessage,
 	cancel context.CancelFunc,
-	cnMap map[int]context.CancelFunc,
-	mu *sync.Mutex,
 ) (response rpc.MethodActor, err error) {
 	for {
 		select {
@@ -110,14 +107,7 @@ func HandleMessage(
 					)
 				}
 				log.Debugf("canceling request: %d", request.Params.ID)
-				value, exists := cnMap[request.Params.ID]
-				if !exists {
-					return nil, fmt.Errorf("request not found: %d", request.Params.ID)
-				}
-				value()
-				mu.Lock()
-				delete(cnMap, request.Params.ID)
-				mu.Unlock()
+				lsp.CancelMap.Cancel(request.Params.ID)
 				return state.CancelRequest(request)
 			case methods.MethodNotificationInitialized:
 				var request lsp.InitializedParamsRequest

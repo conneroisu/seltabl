@@ -26,10 +26,13 @@ func EncodeMessage(msg MethodActor) (string, error) {
 		return "", err
 	}
 	var buf bytes.Buffer
-	json.HTMLEscape(&buf, content)
+	n, err := buf.WriteString(string(content))
+	if err != nil {
+		return "", err
+	}
 	return fmt.Sprintf(
 		"Content-Length: %d\r\n\r\n%s",
-		buf.Len(),
+		n,
 		buf.String(),
 	), nil
 }

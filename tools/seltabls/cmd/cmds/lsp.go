@@ -11,6 +11,7 @@ import (
 
 	"github.com/charmbracelet/log"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/analysis"
+	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/rpc"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/server"
 	"github.com/spf13/cobra"
@@ -18,7 +19,12 @@ import (
 )
 
 // LSPHandler is a struct for the LSP server
-type LSPHandler func(ctx context.Context, state *analysis.State, msg rpc.BaseMessage, cancel context.CancelFunc, cnMap map[int]context.CancelFunc, mu *sync.Mutex) (rpc.MethodActor, error)
+type LSPHandler func(
+	ctx context.Context,
+	state *analysis.State,
+	msg rpc.BaseMessage,
+	cancel context.CancelFunc,
+) (rpc.MethodActor, error)
 
 var (
 	mu    sync.Mutex
@@ -60,11 +66,10 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 						return fmt.Errorf("failed to decode message: %w", err)
 					}
 					hCtx, cancel := context.WithCancel(hCtx)
-					mu.Lock()
-					cnMap[decoded.ID] = cancel
-					mu.Unlock()
+					lsp.CancelMap.Add(decoded.ID, cancel)
+					defer lsp.CancelMap.Remove(decoded.ID)
 					log.Debugf("received message: %s", decoded.Method)
-					resp, err := handle(hCtx, &state, *decoded, lspCancel, cnMap, &mu)
+					resp, err := handle(hCtx, &state, *decoded, lspCancel)
 					if err != nil {
 						log.Errorf(
 							"failed to handle message (%s): %s",
@@ -85,9 +90,6 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 						)
 					}
 					go log.Debugf("sent message: %s", marshal(resp))
-					mu.Lock()
-					delete(cnMap, decoded.ID)
-					mu.Unlock()
 					return nil
 				})
 			}

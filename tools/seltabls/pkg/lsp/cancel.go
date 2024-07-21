@@ -76,7 +76,7 @@ type CancelRequest struct {
 	// CancelRequest embeds the Request struct
 	Request
 	// ID is the id of the request to be cancelled.
-	ID string `json:"id"`
+	ID int `json:"id"`
 	// Params are the parameters for the request to be cancelled.
 	Params CancelParams `json:"params"`
 }

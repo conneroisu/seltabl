@@ -1,6 +1,73 @@
 package lsp
 
-import "github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp/methods"
+import (
+	"context"
+	"fmt"
+	"sync"
+
+	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp/methods"
+)
+
+var (
+	CancelMap = make(CCancelMap)
+	mu        sync.Mutex
+)
+
+type CCancelMap map[int]context.CancelFunc
+
+// Cancel cancels the cancel function for the given id
+func (c CCancelMap) Cancel(id int) {
+	if cancel, ok := c[id]; ok {
+		cancel()
+	}
+}
+
+// Add adds a cancel function for the given id
+func (c CCancelMap) Add(id int, cancel context.CancelFunc) {
+	mu.Lock()
+	defer mu.Unlock()
+	c[id] = cancel
+}
+
+// Remove removes the cancel function for the given id
+func (c CCancelMap) Remove(id int) {
+	mu.Lock()
+	defer mu.Unlock()
+	delete(c, id)
+}
+
+// Contains checks if the cancel map contains the given id
+func (c CCancelMap) Contains(id int) bool {
+	mu.Lock()
+	defer mu.Unlock()
+	_, ok := c[id]
+	return ok
+}
+
+// Len returns the length of the cancel map
+func (c CCancelMap) Len() int {
+	mu.Lock()
+	defer mu.Unlock()
+	return len(c)
+}
+
+// Clear clears the cancel map
+func (c CCancelMap) Clear() {
+	mu.Lock()
+	defer mu.Unlock()
+	for k := range c {
+		delete(c, k)
+	}
+}
+
+// String returns a string representation of the cancel map
+func (c CCancelMap) String() string {
+	str := ""
+	for k, v := range c {
+		str += fmt.Sprintf("%d: %v\n", k, v)
+	}
+	return str
+}
 
 // CancelRequest is sent from the client to the server to cancel a request.
 type CancelRequest struct {

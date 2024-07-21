@@ -2,9 +2,11 @@ package server
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"io"
 
+	"github.com/charmbracelet/log"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/rpc"
 )
 
@@ -14,6 +16,9 @@ func WriteResponse(
 	writer *io.Writer,
 	msg rpc.MethodActor,
 ) error {
+	go func() {
+		log.Debugf("sent message (%s): %s", msg.Method(), marshal(msg))
+	}()
 	for {
 		select {
 		case <-ctx.Done():
@@ -45,4 +50,12 @@ func WriteResponse(
 			return nil
 		}
 	}
+}
+
+func marshal(mA rpc.MethodActor) string {
+	b, err := json.Marshal(mA)
+	if err != nil {
+		return ""
+	}
+	return string(b)
 }

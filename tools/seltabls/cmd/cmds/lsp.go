@@ -3,11 +3,9 @@ package cmds
 import (
 	"bufio"
 	"context"
-	"encoding/json"
 	"fmt"
 	"io"
 	"reflect"
-	"sync"
 
 	"github.com/charmbracelet/log"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/analysis"
@@ -25,11 +23,6 @@ type LSPHandler func(
 	msg rpc.BaseMessage,
 	cancel context.CancelFunc,
 ) (rpc.MethodActor, error)
-
-var (
-	mu    sync.Mutex
-	cnMap = make(map[int]context.CancelFunc)
-)
 
 // NewLSPCmd creates a new command for the lsp subcommand
 func NewLSPCmd(
@@ -68,7 +61,7 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 					hCtx, cancel := context.WithCancel(hCtx)
 					lsp.CancelMap.Add(decoded.ID, cancel)
 					defer lsp.CancelMap.Remove(decoded.ID)
-					log.Debugf("received message: %s", decoded.Method)
+					log.Debugf("received message (%s): %s", decoded.Method, decoded.Content)
 					resp, err := handle(hCtx, &state, *decoded, lspCancel)
 					if err != nil {
 						log.Errorf(
@@ -89,7 +82,6 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 							err,
 						)
 					}
-					go log.Debugf("sent message: %s", marshal(resp))
 					return nil
 				})
 			}
@@ -101,14 +93,6 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 		},
 	}
 	return cmd
-}
-
-func marshal(mA rpc.MethodActor) string {
-	b, err := json.Marshal(mA)
-	if err != nil {
-		return ""
-	}
-	return string(b)
 }
 
 // isNull checks if the given interface is nil or points to a nil value

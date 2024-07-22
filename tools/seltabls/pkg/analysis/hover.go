@@ -24,53 +24,50 @@ func NewHoverResponse(
 	documents *safe.Map[uri.URI, string],
 	urls *safe.Map[uri.URI, []string],
 ) (response *lsp.HoverResponse, err error) {
-	for {
-		select {
-		case <-ctx.Done():
-			return nil, fmt.Errorf("context cancelled: %w", ctx.Err())
-		default:
-			response = &lsp.HoverResponse{
-				Response: lsp.Response{
-					RPC: lsp.RPCVersion,
-					ID:  req.ID,
-				},
-			}
-			text, ok := documents.Get(req.Params.TextDocument.URI)
-			if !ok {
-				return nil, nil
-			}
-			urls, ok := urls.Get(req.Params.TextDocument.URI)
-			if !ok {
-				return nil, nil
-			}
-			if len(*urls) == 0 {
-				return nil, nil
-			}
-			doc, err := http.DefaultClientGet((*urls)[0])
-			if err != nil {
-				return nil, fmt.Errorf(
-					"failed to get the content of the url: %w",
-					err,
-				)
-			}
-			res, err := GetSelectorHover(
-				req.Params.Position,
-				*text,
-				doc,
-			)
-			if err != nil {
-				return nil, fmt.Errorf("failed to get hover: %w", err)
-			}
-			response.Result = res
-			return response, nil
+	select {
+	case <-ctx.Done():
+		return nil, fmt.Errorf("context cancelled: %w", ctx.Err())
+	default:
+		response = &lsp.HoverResponse{
+			Response: lsp.Response{
+				RPC: lsp.RPCVersion,
+				ID:  req.ID,
+			},
 		}
+		text, ok := documents.Get(req.Params.TextDocument.URI)
+		if !ok {
+			return nil, nil
+		}
+		urls, ok := urls.Get(req.Params.TextDocument.URI)
+		if !ok {
+			return nil, nil
+		}
+		if len(*urls) == 0 {
+			return nil, nil
+		}
+		doc, err := http.DefaultClientGet((*urls)[0])
+		if err != nil {
+			return nil, fmt.Errorf(
+				"failed to get the content of the url: %w",
+				err,
+			)
+		}
+		response.Result, err = GetSelectorHover(
+			req.Params.Position,
+			text,
+			doc,
+		)
+		if err != nil {
+			return nil, fmt.Errorf("failed to get hover: %w", err)
+		}
+		return response, nil
 	}
 }
 
 // GetSelectorHover checks if the position is within the struct tag
 func GetSelectorHover(
 	position protocol.Position,
-	text string,
+	text *string,
 	doc *goquery.Document,
 ) (res lsp.HoverResult, err error) {
 	var inValue bool
@@ -81,7 +78,7 @@ func GetSelectorHover(
 	node, err := parser.ParseFile(
 		fset,
 		"",
-		bytes.NewBufferString(text),
+		bytes.NewBufferString(*text),
 		parser.Trace,
 	)
 	if err != nil {

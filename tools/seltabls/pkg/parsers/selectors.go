@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"strings"
+	"text/template"
 
 	"github.com/PuerkitoBio/goquery"
 	"github.com/conneroisu/seltabl/tools/seltabls/data"
@@ -57,23 +58,32 @@ func singleSelector(selection *goquery.Selection) string {
 	var selector string
 	id, exists := selection.Attr("id")
 	if exists {
-		selector = fmt.Sprintf("%s#%s", goquery.NodeName(selection), id)
+		checkingVal := strings.Join(strings.Fields(id), ".")
+		if !strings.Contains(checkingVal, "contentArea") {
+			selector = fmt.Sprintf("%s#%s", goquery.NodeName(selection), id)
+		}
 	}
 	attr, exists := selection.Attr("class")
 	if exists {
-		selector = fmt.Sprintf(
-			"%s.%s",
-			goquery.NodeName(selection),
-			strings.Join(strings.Fields(attr), "."),
-		)
+		checkingVal := strings.Join(strings.Fields(attr), ".")
+		if !strings.Contains(checkingVal, "contentArea") {
+			selector = fmt.Sprintf(
+				"%s.%s",
+				goquery.NodeName(selection),
+				strings.Join(strings.Fields(attr), "."),
+			)
+		}
 	}
 	attr, exists = selection.Attr("name")
 	if exists {
-		selector = fmt.Sprintf(
-			"%s[name=%s]",
-			goquery.NodeName(selection),
-			attr,
-		)
+		checkingVal := strings.Join(strings.Fields(attr), ".")
+		if !strings.Contains(checkingVal, "contentArea") {
+			selector = fmt.Sprintf(
+				"%s[name=%s]",
+				goquery.NodeName(selection),
+				attr,
+			)
+		}
 	}
 	attr, exists = selection.Attr("type")
 	if exists {
@@ -175,6 +185,7 @@ func GetSelectors(
 			return nil, fmt.Errorf("failed to get html: %w", err)
 		}
 		selectorContext = gohtml.Format(selectorContext)
+		selectorContext = template.HTMLEscapeString(selectorContext)
 		selector, err := db.Queries.InsertSelector(
 			ctx,
 			master.InsertSelectorParams{

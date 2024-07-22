@@ -21,9 +21,9 @@ import (
 // LSPHandler is a struct for the LSP server
 type LSPHandler func(
 	ctx context.Context,
-	msg rpc.BaseMessage,
-	cancel context.CancelFunc,
-	db *data.Database[master.Queries],
+	cancel *context.CancelFunc, // cancel is a pointer to the cancel function to avoid copying
+	msg *rpc.BaseMessage, // msg is a pointer to the message to avoid copying
+	db *data.Database[master.Queries], // db is a pointer to the database to avoid copying
 	documents *safe.Map[uri.URI, string],
 	selectors *safe.Map[uri.URI, []master.Selector],
 	urls *safe.Map[uri.URI, []string],
@@ -48,18 +48,15 @@ Language server provides completions, hovers, and code actions for seltabl defin
 CLI provides a command line tool for verifying, linting, and reporting on seltabl defined structs.
 `,
 		RunE: func(_ *cobra.Command, _ []string) (err error) {
-			var eg *errgroup.Group
-			var lspCtx context.Context
-			var lspCancel context.CancelFunc
-			var scanner *bufio.Scanner
-			var documents = safe.NewSafeMap[uri.URI, string]()
-			var selectors = safe.NewSafeMap[uri.URI, []master.Selector]()
-			var urls = safe.NewSafeMap[uri.URI, []string]()
-			scanner = bufio.NewScanner(reader)
+			documents := safe.NewSafeMap[uri.URI, string]()
+			selectors := safe.NewSafeMap[uri.URI, []master.Selector]()
+			urls := safe.NewSafeMap[uri.URI, []string]()
+			scanner := bufio.NewScanner(reader)
 			scanner.Split(rpc.Split)
-			lspCtx, lspCancel = context.WithCancel(ctx)
+			lspCtx, lspCancel := context.WithCancel(ctx)
 			defer lspCancel()
-			eg, lspCtx = errgroup.WithContext(lspCtx)
+			eg, lspCtx := errgroup.WithContext(lspCtx)
+			eg.SetLimit(3)
 			for scanner.Scan() {
 				eg.Go(func() error {
 					decoded, err := rpc.DecodeMessage(scanner.Bytes())
@@ -77,8 +74,8 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 					)
 					resp, err := handle(
 						hCtx,
-						*decoded,
-						lspCancel,
+						&lspCancel,
+						decoded,
 						db,
 						documents,
 						selectors,

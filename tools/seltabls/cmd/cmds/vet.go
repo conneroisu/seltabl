@@ -77,7 +77,11 @@ func vetFile(
 	if err != nil {
 		return response, nil
 	}
-	diags, err := analysis.GetDiagnosticsForFile(ctx, &ctn, data)
+	diags, err := analysis.GetDiagnosticsForFile(
+		ctx,
+		&ctn,
+		&data,
+	)
 	if err != nil {
 		return nil, err
 	}

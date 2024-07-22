@@ -52,6 +52,15 @@ type DidSaveTextDocumentNotification struct {
 	Params protocol.DidSaveTextDocumentParams `json:"params"`
 }
 
+// WillSaveTextDocumentNotification is a struct for the will save text document notification
+//
+// Microsoft LSP Docs:
+// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_willSave
+type WillSaveTextDocumentNotification struct {
+	Notification
+	Params protocol.WillSaveTextDocumentParams `json:"params"`
+}
+
 // Method returns the method for the did save text document params notification
 func (r DidSaveTextDocumentNotification) Method() methods.Method {
 	return methods.MethodNotificationTextDocumentDidSave

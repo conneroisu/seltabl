@@ -40,12 +40,12 @@ const (
 	RPCVersion = "2.0"
 )
 
-// DidSaveTextDocumentParamsNotification is a notification for when
+// DidSaveTextDocumentNotification is a notification for when
 // the client saves a text document.
 //
 // Microsoft LSP Docs:
 // https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_didSave
-type DidSaveTextDocumentParamsNotification struct {
+type DidSaveTextDocumentNotification struct {
 	// DidSaveTextDocumentParams embeds the Notification struct
 	Notification
 	// Params are the parameters for the notification.
@@ -53,7 +53,7 @@ type DidSaveTextDocumentParamsNotification struct {
 }
 
 // Method returns the method for the did save text document params notification
-func (r DidSaveTextDocumentParamsNotification) Method() methods.Method {
+func (r DidSaveTextDocumentNotification) Method() methods.Method {
 	return methods.MethodNotificationTextDocumentDidSave
 }
 

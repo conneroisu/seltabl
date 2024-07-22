@@ -5,6 +5,7 @@ import (
 	"fmt"
 
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp/methods"
+	"go.lsp.dev/protocol"
 )
 
 // InitializeRequest is a struct for the initialize request.
@@ -15,30 +16,12 @@ type InitializeRequest struct {
 	// InitializeRequest embeds the Request struct
 	Request
 	// Params are the parameters for the initialize request.
-	Params InitializeRequestParams `json:"params"`
+	Params protocol.InitializeParams `json:"params"`
 }
 
 // Method returns the method for the initialize request.
 func (r InitializeRequest) Method() methods.Method {
 	return methods.MethodInitialize
-}
-
-// InitializeRequestParams is a struct for the initialize request params
-type InitializeRequestParams struct {
-	// ClientInfo is the client info of the client in the request
-	ClientInfo *ClientInfo `json:"clientInfo"`
-	// InitializationOptions is the initialization options of the client in the request
-	RootPath string `json:"rootPath,omitempty"`
-	// Trace is the trace of the client in the request
-	Trace string `json:"trace,omitempty"`
-	// ProcessID is the process id of the client in the request
-	ProcessID int `json:"processId,omitempty"`
-	// Locale is the locale of the client in the request
-	Locale string `json:"locale,omitempty"`
-	// RootURI is the root uri of the client in the request
-	RootURI string `json:"rootUri,omitempty"`
-	// WorkspaceFolders is the workspace folders of the client in the request
-	WorkspaceFolders []WorkspaceFolder `json:"workspaceFolders,omitempty"`
 }
 
 // WorkspaceFolder is a struct for the workspace folder
@@ -65,7 +48,7 @@ type ClientInfo struct {
 type InitializeResponse struct {
 	Response
 	// Result is the result of the initialize request
-	Result InitializeResult `json:"result"`
+	Result protocol.InitializeResult `json:"result"`
 }
 
 // Method returns the method for the initialize response
@@ -73,12 +56,9 @@ func (r InitializeResponse) Method() methods.Method {
 	return methods.MethodInitialize
 }
 
-// InitializeResult is a struct for the initialize result used in the initialize response.
-type InitializeResult struct {
-	// Capabilities are the capabilities of the server for the initialize response.
-	Capabilities ServerCapabilities `json:"capabilities"`
-	// ServerInfo is the server info for the initialize response.
-	ServerInfo ServerInfo `json:"serverInfo"`
+// General is a struct for the general capabilities.
+type General struct {
+	SupportsCancellation bool `json:"supportsCancellation"`
 }
 
 // ServerCapabilities is a struct for the server capabilities
@@ -119,15 +99,23 @@ func NewInitializeResponse(
 					RPC: RPCVersion,
 					ID:  request.ID,
 				},
-				Result: InitializeResult{
-					Capabilities: ServerCapabilities{
-						TextDocumentSync:   1,
+				Result: protocol.InitializeResult{
+					Capabilities: protocol.ServerCapabilities{
+						TextDocumentSync: protocol.TextDocumentSyncOptions{
+							OpenClose: true,
+							Change:    protocol.TextDocumentSyncKindFull,
+						},
+						CompletionProvider: &protocol.CompletionOptions{
+							ResolveProvider: false,
+							TriggerCharacters: []string{
+								":", "\"",
+							},
+						},
 						HoverProvider:      true,
-						DefinitionProvider: true,
+						DefinitionProvider: false,
 						CodeActionProvider: false,
-						CompletionProvider: map[string]any{},
 					},
-					ServerInfo: ServerInfo{
+					ServerInfo: &protocol.ServerInfo{
 						Name:    "seltabl_lsp",
 						Version: "0.0.0.5.0.0-beta1.final",
 					},

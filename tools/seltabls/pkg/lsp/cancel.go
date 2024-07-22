@@ -102,8 +102,6 @@ type CancelParams struct {
 type CancelResponse struct {
 	RPC string `json:"jsonrpc"`
 	ID  int    `json:"id"`
-	// Error is the error for the cancel response.
-	Error *Error `json:"error,omitempty"`
 }
 
 // Method returns the method for the cancel response

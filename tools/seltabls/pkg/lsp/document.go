@@ -1,6 +1,10 @@
 package lsp
 
-import "fmt"
+import (
+	"fmt"
+
+	"go.lsp.dev/protocol"
+)
 
 // TextDocumentItem is a text document.
 type TextDocumentItem struct {
@@ -36,7 +40,7 @@ type TextDocumentPositionParams struct {
 	// TextDocument is the text document for the position parameters.
 	TextDocument TextDocumentIdentifier `json:"textDocument"`
 	// Position is the position for the text document.
-	Position Position `json:"position"`
+	Position protocol.Position `json:"position"`
 }
 
 // Position is a position inside a text document.

@@ -2,6 +2,7 @@ package lsp
 
 import (
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp/methods"
+	"go.lsp.dev/protocol"
 )
 
 // CompletionRequest is a request for a completion to the language server
@@ -12,7 +13,7 @@ type CompletionRequest struct {
 	// CompletionRequest embeds the Request struct
 	Request
 	// Params are the parameters for the completion request
-	Params CompletionParams `json:"params"`
+	Params protocol.CompletionParams `json:"params"`
 }
 
 // Method returns the method for the completion request

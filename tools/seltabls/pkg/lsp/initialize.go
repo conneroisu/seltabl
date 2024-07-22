@@ -56,11 +56,6 @@ func (r InitializeResponse) Method() methods.Method {
 	return methods.MethodInitialize
 }
 
-// General is a struct for the general capabilities.
-type General struct {
-	SupportsCancellation bool `json:"supportsCancellation"`
-}
-
 // NewInitializeResponse creates a new initialize response.
 func NewInitializeResponse(
 	ctx context.Context,

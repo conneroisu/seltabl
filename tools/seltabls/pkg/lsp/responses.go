@@ -8,36 +8,54 @@ import (
 	"go.lsp.dev/protocol"
 )
 
-// InitializeRequest is a struct for the initialize request.
+// CancelResponse is the response for a cancel request.
 //
 // Microsoft LSP Docs:
-// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#initialize
-type InitializeRequest struct {
-	// InitializeRequest embeds the Request struct
-	Request
-	// Params are the parameters for the initialize request.
-	Params protocol.InitializeParams `json:"params"`
+// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_cancel
+type CancelResponse struct {
+	RPC string `json:"jsonrpc"`
+	ID  int    `json:"id"`
 }
 
-// Method returns the method for the initialize request.
-func (r InitializeRequest) Method() methods.Method {
-	return methods.MethodInitialize
+// Method returns the method for the cancel response
+func (r CancelResponse) Method() methods.Method {
+	return methods.MethodCancelRequest
 }
 
-// WorkspaceFolder is a struct for the workspace folder
-type WorkspaceFolder struct {
-	// URI is the uri of the workspace folder
-	URI string `json:"uri"`
-	// Name is the name of the workspace folder
-	Name string `json:"name"`
+// TextDocumentCodeActionResponse is the response for a code action request.
+type TextDocumentCodeActionResponse struct {
+	// TextDocumentCodeActionResponse embeds the Response struct
+	Response
+	// Result is the result for the code action request.
+	Result []protocol.CodeAction `json:"result"`
 }
 
-// ClientInfo is a struct for the client info
-type ClientInfo struct {
-	// Name is the name of the client
-	Name string `json:"name"`
-	// Version is the version of the client
-	Version string `json:"version"`
+// Method returns the method for the code action response
+func (r TextDocumentCodeActionResponse) Method() methods.Method {
+	return methods.MethodRequestTextDocumentCodeAction
+}
+
+// HoverResponse is the response from the server to a hover request.
+type HoverResponse struct {
+	// Response is the response for the hover request.
+	Response
+	// Result is the result for the hover request.
+	Result HoverResult `json:"result"`
+}
+
+// Method returns the method for the hover response
+func (r HoverResponse) Method() methods.Method {
+	return methods.MethodRequestTextDocumentHover
+}
+
+// HoverResult is a result from a hover request to the client from the
+// language server.
+//
+// Microsoft LSP Docs:
+// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_hover
+type HoverResult struct {
+	// Contents is the contents for the hover result.
+	Contents string `json:"contents"`
 }
 
 // InitializeResponse is a struct for the initialize response.
@@ -95,18 +113,4 @@ func NewInitializeResponse(
 			}, nil
 		}
 	}
-}
-
-// InitializedParamsRequest is a struct for the initialized params.
-//
-// Microsoft LSP Docs:
-// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#initialized
-type InitializedParamsRequest struct {
-	// InitializedParamsRequest embeds the Request struct
-	Response
-}
-
-// Method returns the method for the initialized params request.
-func (r InitializedParamsRequest) Method() methods.Method {
-	return methods.MethodNotificationInitialized
 }

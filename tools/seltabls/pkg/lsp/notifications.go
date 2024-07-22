@@ -39,3 +39,48 @@ const (
 	// RPCVersion is the version of the RPC protocol.
 	RPCVersion = "2.0"
 )
+
+// DidSaveTextDocumentParamsNotification is a notification for when
+// the client saves a text document.
+//
+// Microsoft LSP Docs:
+// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_didSave
+type DidSaveTextDocumentParamsNotification struct {
+	// DidSaveTextDocumentParams embeds the Notification struct
+	Notification
+	// Params are the parameters for the notification.
+	Params protocol.DidSaveTextDocumentParams `json:"params"`
+}
+
+// Method returns the method for the did save text document params notification
+func (r DidSaveTextDocumentParamsNotification) Method() methods.Method {
+	return methods.MethodNotificationTextDocumentDidSave
+}
+
+// DidCloseTextDocumentParamsNotification is a struct for the did close text document params notification
+//
+// Microsoft LSP Docs:
+// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_didClose
+type DidCloseTextDocumentParamsNotification struct {
+	Notification
+	Params protocol.DidCloseTextDocumentParams `json:"params"`
+}
+
+// Method returns the method for the did close text document params notification
+func (r DidCloseTextDocumentParamsNotification) Method() methods.Method {
+	return methods.NotificationTextDocumentDidClose
+}
+
+// NewDidCloseTextDocumentParamsNotification returns a new did close text document params notification
+func NewDidCloseTextDocumentParamsNotification(
+	uri protocol.DocumentURI,
+) DidCloseTextDocumentParamsNotification {
+	return DidCloseTextDocumentParamsNotification{
+		Notification: Notification{
+			RPC: RPCVersion,
+		},
+		Params: protocol.DidCloseTextDocumentParams{
+			TextDocument: protocol.TextDocumentIdentifier{URI: uri},
+		},
+	}
+}

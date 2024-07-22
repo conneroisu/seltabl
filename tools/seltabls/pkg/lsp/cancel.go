@@ -95,17 +95,3 @@ type CancelParams struct {
 	// ID is the id of the request to be cancelled.
 	ID int `json:"id"`
 }
-
-// CancelResponse is the response for a cancel request.
-//
-// Microsoft LSP Docs:
-// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_cancel
-type CancelResponse struct {
-	RPC string `json:"jsonrpc"`
-	ID  int    `json:"id"`
-}
-
-// Method returns the method for the cancel response
-func (r CancelResponse) Method() methods.Method {
-	return methods.MethodCancelRequest
-}

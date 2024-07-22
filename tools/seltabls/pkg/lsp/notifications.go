@@ -34,3 +34,8 @@ type PublishDiagnosticsNotification struct {
 func (r PublishDiagnosticsNotification) Method() methods.Method {
 	return methods.NotificationPublishDiagnostics
 }
+
+const (
+	// RPCVersion is the version of the RPC protocol.
+	RPCVersion = "2.0"
+)

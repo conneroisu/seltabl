@@ -28,7 +28,7 @@ func TextDocumentCodeAction(
 				return nil, fmt.Errorf("document not found")
 			}
 			actions := []protocol.CodeAction{}
-			for row, line := range strings.Split(text, "\n") {
+			for row, line := range strings.Split(*text, "\n") {
 				idx := strings.Index(line, "VS Code")
 				if idx >= 0 {
 					replaceChange := map[string][]protocol.TextEdit{}

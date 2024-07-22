@@ -23,12 +23,12 @@ func NewSafeMap[K comparable, V any]() *Map[K, V] {
 }
 
 // Get returns the value for the given key.
-func (sm *Map[K, V]) Get(key K) (V, bool) {
-	log.Debugf("safe.Map.Get called with key: %v", key)
+func (sm *Map[K, V]) Get(key K) (*V, bool) {
+	log.Debugf("safe.Map.Get called with key: %v, state: %v", key, sm.String())
 	sm.mu.RLock()
 	defer sm.mu.RUnlock()
 	val, ok := sm.m[key]
-	return val, ok
+	return &val, ok
 }
 
 // Set sets the value for the given key.
@@ -65,12 +65,22 @@ func (sm *Map[K, V]) Clear() {
 
 // String returns a string representation of the map.
 func (sm *Map[K, V]) String() string {
-	log.Debugf("safe.Map.String called")
 	sm.mu.RLock()
 	defer sm.mu.RUnlock()
 	var b strings.Builder
 	for k, v := range sm.m {
-		b.WriteString(fmt.Sprintf("%v: %v\n", k, v))
+		b.WriteString("{")
+		value := fmt.Sprintf("%v", v)
+		value = limitString(value, 100)
+		b.WriteString(fmt.Sprintf("%v: %v\n", k, value))
+		b.WriteString("}")
 	}
 	return b.String()
+}
+
+func limitString(s string, limit int) string {
+	if len(s) > limit {
+		return s[:limit] + "..."
+	}
+	return s
 }

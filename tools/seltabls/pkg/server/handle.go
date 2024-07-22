@@ -133,7 +133,7 @@ func HandleMessage(
 				if !ok {
 					return nil, fmt.Errorf("failed to get cancel func")
 				}
-				c()
+				(*c)()
 				return analysis.CancelResponse(request)
 			case methods.MethodNotificationInitialized:
 				var request lsp.InitializedParamsRequest

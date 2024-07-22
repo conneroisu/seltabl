@@ -176,12 +176,12 @@ func TestSafeMap_GetSet(t *testing.T) {
 	// Test Set and Get
 	sm.Set("key1", 10)
 	val, ok := sm.Get("key1")
-	if !ok || val != 10 {
+	if !ok || *val != 10 {
 		t.Errorf("Expected (10, true), got (%v, %v)", val, ok)
 	}
 	// Test Get for non-existent key
 	val, ok = sm.Get("key2")
-	if ok || val != 0 {
+	if ok || *val != 0 {
 		t.Errorf("Expected (0, false), got (%v, %v)", val, ok)
 	}
 }

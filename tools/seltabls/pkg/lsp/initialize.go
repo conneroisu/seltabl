@@ -61,29 +61,6 @@ type General struct {
 	SupportsCancellation bool `json:"supportsCancellation"`
 }
 
-// ServerCapabilities is a struct for the server capabilities
-type ServerCapabilities struct {
-	TextDocumentSync      int                   `json:"textDocumentSync"`                // TextDocumentSync is what the server supports for syncing text documents.
-	HoverProvider         bool                  `json:"hoverProvider"`                   // HoverProvider is a boolean indicating whether the server provides.
-	DefinitionProvider    bool                  `json:"definitionProvider"`              // DefinitionProvider is a boolean indicating whether the server provides definition capabilities.
-	CodeActionProvider    bool                  `json:"codeActionProvider"`              // CodeActionProvider is a boolean indicating whether the server provides code actions.
-	CompletionProvider    map[string]any        `json:"completionProvider"`              // CompletionProvider is a map of completion providers.
-	SignatureHelpProvider *SignatureHelpOptions `json:"signatureHelpProvider,omitempty"` // SignatureHelpProvider is a boolean indicating whether the server provides signature help.
-	CancellationProvider  bool                  `json:"cancellationProvider,omitempty"`  // CancellationProvider is a boolean indicating whether the server supports cancellation.
-}
-
-type SignatureHelpOptions struct {
-	TriggerCharacters []string `json:"triggerCharacters,omitempty"`
-}
-
-// ServerInfo is a struct for the server info.
-type ServerInfo struct {
-	// Name is the name of the server
-	Name string `json:"name"`
-	// Version is the version of the server
-	Version string `json:"version"`
-}
-
 // NewInitializeResponse creates a new initialize response.
 func NewInitializeResponse(
 	ctx context.Context,

@@ -6,6 +6,7 @@ import (
 	"testing"
 
 	"github.com/PuerkitoBio/goquery"
+	"github.com/stretchr/testify/assert"
 )
 
 // TestSelect tests the Run function
@@ -225,4 +226,54 @@ func TestSelect(t *testing.T) {
 		}
 	})
 
+}
+
+func TestSelects(t *testing.T) {
+	// Test case: ctlInnerTextSelector with a valid element
+	{
+		html := `<div>Test Text</div>`
+		doc, _ := goquery.NewDocumentFromReader(strings.NewReader(html))
+		s := selector{control: ctlInnerTextSelector}
+		cellValue := doc.Find("div")
+
+		text, err := s.Select(cellValue)
+		assert.NoError(t, err)
+		assert.Equal(t, "Test Text", text)
+	}
+
+	// Test case: ctlAttrSelector with an existing attribute
+	{
+		html := `<div id="123">Test Text</div>`
+		doc, _ := goquery.NewDocumentFromReader(strings.NewReader(html))
+		s := selector{control: ctlAttrSelector, query: "id"}
+		cellValue := doc.Find("div")
+
+		text, err := s.Select(cellValue)
+		assert.NoError(t, err)
+		assert.Equal(t, "123", text)
+	}
+
+	// Test case: ctlAttrSelector with a non-existing attribute
+	{
+		html := `<div>Test Text</div>`
+		doc, _ := goquery.NewDocumentFromReader(strings.NewReader(html))
+		s := selector{control: ctlAttrSelector, query: "id"}
+		cellValue := doc.Find("div")
+
+		text, err := s.Select(cellValue)
+		assert.Error(t, err)
+		assert.Equal(t, "", text)
+	}
+
+	// Test case: Unsupported control value
+	{
+		html := `<div>Test Text</div>`
+		doc, _ := goquery.NewDocumentFromReader(strings.NewReader(html))
+		s := selector{control: "UnsupportedSelector"}
+		cellValue := doc.Find("div")
+
+		text, err := s.Select(cellValue)
+		assert.Error(t, err)
+		assert.Equal(t, "", text)
+	}
 }

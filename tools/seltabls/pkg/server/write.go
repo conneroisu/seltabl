@@ -17,7 +17,12 @@ func WriteResponse(
 	msg rpc.MethodActor,
 ) error {
 	go func() {
-		log.Debugf("sent message [%d] (%s): %s", len(marshal(msg)), msg.Method(), marshal(msg))
+		log.Debugf(
+			"sent message [%d] (%s): %s",
+			len(marshal(msg)),
+			msg.Method(),
+			marshal(msg),
+		)
 	}()
 	for {
 		select {

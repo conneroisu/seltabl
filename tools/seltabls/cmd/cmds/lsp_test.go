@@ -34,7 +34,12 @@ func TestIsNull(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			result := isNull(tt.input)
 			if result != tt.expected {
-				t.Errorf("isNull(%v) = %v; want %v", tt.input, result, tt.expected)
+				t.Errorf(
+					"isNull(%v) = %v; want %v",
+					tt.input,
+					result,
+					tt.expected,
+				)
 			}
 		})
 	}

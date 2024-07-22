@@ -61,7 +61,11 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 					hCtx, cancel := context.WithCancel(hCtx)
 					lsp.CancelMap.Add(decoded.ID, cancel)
 					defer lsp.CancelMap.Remove(decoded.ID)
-					log.Debugf("received message (%s): %s", decoded.Method, decoded.Content)
+					log.Debugf(
+						"received message (%s): %s",
+						decoded.Method,
+						decoded.Content,
+					)
 					resp, err := handle(hCtx, &state, *decoded, lspCancel)
 					if err != nil {
 						log.Errorf(
@@ -104,7 +108,12 @@ func isNull(i interface{}) bool {
 	// Use reflect.ValueOf only if the kind is valid for checking nil
 	v := reflect.ValueOf(i)
 	switch v.Kind() {
-	case reflect.Chan, reflect.Func, reflect.Interface, reflect.Map, reflect.Ptr, reflect.Slice:
+	case reflect.Chan,
+		reflect.Func,
+		reflect.Interface,
+		reflect.Map,
+		reflect.Ptr,
+		reflect.Slice:
 		return v.IsNil()
 	}
 	return false

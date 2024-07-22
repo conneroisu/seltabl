@@ -63,8 +63,12 @@ func UpdateDocument(
 					//         URI:         notification.Params.TextDocument.URI,
 					// },
 					Params: protocol.PublishDiagnosticsParams{
-						URI:         protocol.DocumentURI(notification.Params.TextDocument.URI),
-						Version:     uint32(notification.Params.TextDocument.Version),
+						URI: protocol.DocumentURI(
+							notification.Params.TextDocument.URI,
+						),
+						Version: uint32(
+							notification.Params.TextDocument.Version,
+						),
 						Diagnostics: diags,
 					},
 				}, nil

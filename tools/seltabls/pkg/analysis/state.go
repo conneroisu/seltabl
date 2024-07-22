@@ -3,11 +3,9 @@ package analysis
 import (
 	"context"
 	"fmt"
-	"log"
 	"os"
 	"path"
 
-	loge "github.com/charmbracelet/log"
 	"github.com/conneroisu/seltabl/tools/seltabls/data"
 
 	"github.com/conneroisu/seltabl/tools/seltabls/data/master"
@@ -24,10 +22,6 @@ type State struct {
 	URLs map[string][]string
 	// Database is the database for the state.
 	Database data.Database[master.Queries]
-	// ResponseCtxs is the map of to response contexts indexed by grpc request id.
-	ResponseCtxs map[int]string
-	// Logger is the logger for the state.
-	Logger *log.Logger
 }
 
 // NewState returns a new state with no documents
@@ -49,33 +43,13 @@ func NewState() (state State, err error) {
 	if err != nil {
 		return state, fmt.Errorf("failed to create database: %w", err)
 	}
-	logger, err := getLogger(path.Join(configPath, "state.log"))
-	if err != nil {
-		return state, fmt.Errorf("failed to create logger: %w", err)
-	}
 	state = State{
 		Documents: make(map[string]string),
 		Selectors: make(map[string][]master.Selector),
 		Database:  *db,
-		Logger:    logger,
 		URLs:      make(map[string][]string),
 	}
 	return state, nil
-}
-
-// getLogger returns a logger that writes to a file
-func getLogger(fileName string) (*log.Logger, error) {
-	logFile, err := os.OpenFile(
-		fileName,
-		os.O_CREATE|os.O_APPEND|os.O_WRONLY,
-		0666,
-	)
-	if err != nil {
-		return nil, err
-	}
-	loge.SetOutput(logFile)
-	loge.SetLevel(loge.DebugLevel)
-	return log.New(logFile, "[seltabls#state]", log.LstdFlags), nil
 }
 
 // CreateConfigDir creates a new config directory and returns the path.

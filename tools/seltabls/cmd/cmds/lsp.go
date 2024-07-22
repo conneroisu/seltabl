@@ -8,6 +8,8 @@ import (
 	"reflect"
 
 	"github.com/charmbracelet/log"
+	"github.com/conneroisu/seltabl/tools/seltabls/data"
+	"github.com/conneroisu/seltabl/tools/seltabls/data/master"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/analysis"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/rpc"
@@ -29,6 +31,7 @@ func NewLSPCmd(
 	writer io.Writer,
 	reader io.Reader,
 	handle LSPHandler,
+	db *data.Database[master.Queries],
 ) *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "lsp", // the name of the command
@@ -40,15 +43,19 @@ Language server provides completions, hovers, and code actions for seltabl defin
 	
 CLI provides a command line tool for verifying, linting, and reporting on seltabl defined structs.
 `,
-		RunE: func(cmd *cobra.Command, _ []string) error {
-			scanner := bufio.NewScanner(reader)
+		RunE: func(cmd *cobra.Command, _ []string) (err error) {
+			var eg *errgroup.Group
+			var lspCtx context.Context
+			var lspCancel context.CancelFunc
+			var scanner *bufio.Scanner
+			var state analysis.State
+			scanner = bufio.NewScanner(reader)
 			scanner.Split(rpc.Split)
-			state, err := analysis.NewState()
+			state, err = analysis.NewState()
 			if err != nil {
 				return fmt.Errorf("failed to create state: %w", err)
 			}
-			cmd.SetErr(state.Logger.Writer())
-			lspCtx, lspCancel := context.WithCancel(ctx)
+			lspCtx, lspCancel = context.WithCancel(ctx)
 			defer lspCancel()
 			eg, hCtx := errgroup.WithContext(lspCtx)
 			for scanner.Scan() {
@@ -65,7 +72,12 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 						decoded.Method,
 						decoded.Content,
 					)
-					resp, err := handle(hCtx, &state, *decoded, lspCancel)
+					resp, err := handle(
+						hCtx,
+						&state,
+						*decoded,
+						lspCancel,
+					)
 					if err != nil {
 						log.Errorf(
 							"failed to handle message (%s): %s",

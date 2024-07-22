@@ -2,6 +2,7 @@ package analysis
 
 import (
 	"bytes"
+	"context"
 	"fmt"
 	"go/parser"
 	"go/token"
@@ -10,37 +11,58 @@ import (
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/http"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/parsers"
+	"github.com/conneroisu/seltabl/tools/seltabls/pkg/safe"
 	"github.com/yosssi/gohtml"
 	"go.lsp.dev/protocol"
+	"go.lsp.dev/uri"
 )
 
 // NewHoverResponse returns a hover response for the given uri and position
 func NewHoverResponse(
+	ctx context.Context,
 	req lsp.HoverRequest,
-	s *State,
+	documents *safe.Map[uri.URI, string],
+	urls *safe.Map[uri.URI, []string],
 ) (response *lsp.HoverResponse, err error) {
-	response = &lsp.HoverResponse{
-		Response: lsp.Response{
-			RPC: lsp.RPCVersion,
-			ID:  req.ID,
-		},
+	for {
+		select {
+		case <-ctx.Done():
+			return nil, fmt.Errorf("context cancelled: %w", ctx.Err())
+		default:
+			response = &lsp.HoverResponse{
+				Response: lsp.Response{
+					RPC: lsp.RPCVersion,
+					ID:  req.ID,
+				},
+			}
+			text, ok := documents.Get(req.Params.TextDocument.URI)
+			if !ok {
+				return nil, nil
+			}
+			urls, ok := urls.Get(req.Params.TextDocument.URI)
+			if !ok {
+				return nil, nil
+			}
+			doc, err := http.DefaultClientGet(urls[0])
+			if err != nil {
+				return nil, fmt.Errorf("failed to get the content of the url: %w", err)
+			}
+			res, err := GetSelectorHover(
+				req.Params.Position,
+				text,
+				doc,
+			)
+			if err != nil {
+				return nil, fmt.Errorf("failed to get hover: %w", err)
+			}
+			response.Result = res
+			return response, nil
+		}
 	}
-	text := s.Documents[string(req.Params.TextDocument.URI)]
-	urls := s.URLs[string(req.Params.TextDocument.URI)]
-	doc, err := http.DefaultClientGet(urls[0])
-	if err != nil {
-		return nil, fmt.Errorf("failed to get the content of the url: %w", err)
-	}
-	res, err := s.GetSelectorHover(req.Params.Position, text, doc)
-	if err != nil {
-		return nil, fmt.Errorf("failed to get hover: %w", err)
-	}
-	response.Result = res
-	return response, nil
 }
 
 // GetSelectorHover checks if the position is within the struct tag
-func (s *State) GetSelectorHover(
+func GetSelectorHover(
 	position protocol.Position,
 	text string,
 	doc *goquery.Document,
@@ -68,7 +90,8 @@ func (s *State) GetSelectorHover(
 		inTag := parsers.IsPositionInTag(structNodes[i], position, fset)
 		if inPosition && inTag {
 			var val string
-			// Check if the position is within a struct tag value (i.e. value inside and including " and " characters)
+			// Check if the position is within a struct tag value
+			// (i.e. value inside and including " and " characters)
 			val, inValue = parsers.PositionInStructTagValue(
 				structNodes[i],
 				position,

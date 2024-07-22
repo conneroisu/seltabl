@@ -7,6 +7,7 @@ import (
 
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/rpc"
+	"github.com/conneroisu/seltabl/tools/seltabls/pkg/safe"
 	"go.lsp.dev/protocol"
 	"go.lsp.dev/uri"
 )
@@ -15,14 +16,17 @@ import (
 func TextDocumentCodeAction(
 	ctx context.Context,
 	req lsp.TextDocumentCodeActionRequest,
-	s *State,
+	documents *safe.Map[uri.URI, string],
 ) (response rpc.MethodActor, err error) {
 	for {
 		select {
 		case <-ctx.Done():
 			return nil, fmt.Errorf("context cancelled: %w", ctx.Err())
 		default:
-			text := s.Documents[string(req.Params.TextDocument.URI)]
+			text, ok := documents.Get(req.Params.TextDocument.URI)
+			if !ok {
+				return nil, fmt.Errorf("document not found")
+			}
 			actions := []protocol.CodeAction{}
 			for row, line := range strings.Split(text, "\n") {
 				idx := strings.Index(line, "VS Code")

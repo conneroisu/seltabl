@@ -7,8 +7,6 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/conneroisu/seltabl/tools/seltabls/data"
-	"github.com/conneroisu/seltabl/tools/seltabls/data/master"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/analysis"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/parsers"
 	"github.com/spf13/cobra"
@@ -22,7 +20,6 @@ func NewVetCmd(
 	ctx context.Context,
 	w io.Writer,
 	r io.Reader,
-	db *data.Database[master.Queries],
 ) *cobra.Command {
 	return &cobra.Command{
 		Use:   "vet",

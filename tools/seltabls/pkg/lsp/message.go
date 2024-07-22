@@ -1,10 +1,17 @@
 package lsp
 
 import (
+	"context"
 	"fmt"
 
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp/methods"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/rpc"
+	"github.com/conneroisu/seltabl/tools/seltabls/pkg/safe"
+)
+
+var (
+	// CancelMap is a map of cancel functions
+	CancelMap = safe.NewSafeMap[int, context.CancelFunc]()
 )
 
 // Request is the request to a LSP

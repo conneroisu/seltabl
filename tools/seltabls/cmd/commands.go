@@ -21,7 +21,6 @@ func AddCommands(
 		ctx,
 		os.Stdout,
 		os.Stdin,
-		db,
 	))
 	root.AddCommand(cmds.NewLSPCmd(
 		ctx,

@@ -10,19 +10,23 @@ import (
 	"github.com/charmbracelet/log"
 	"github.com/conneroisu/seltabl/tools/seltabls/data"
 	"github.com/conneroisu/seltabl/tools/seltabls/data/master"
-	"github.com/conneroisu/seltabl/tools/seltabls/pkg/analysis"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/rpc"
+	"github.com/conneroisu/seltabl/tools/seltabls/pkg/safe"
 	"github.com/spf13/cobra"
+	"go.lsp.dev/uri"
 	"golang.org/x/sync/errgroup"
 )
 
 // LSPHandler is a struct for the LSP server
 type LSPHandler func(
 	ctx context.Context,
-	state *analysis.State,
 	msg rpc.BaseMessage,
 	cancel context.CancelFunc,
+	db *data.Database[master.Queries],
+	documents *safe.Map[uri.URI, string],
+	selectors *safe.Map[uri.URI, []master.Selector],
+	urls *safe.Map[uri.URI, []string],
 ) (rpc.MethodActor, error)
 
 // NewLSPCmd creates a new command for the lsp subcommand
@@ -43,18 +47,16 @@ Language server provides completions, hovers, and code actions for seltabl defin
 	
 CLI provides a command line tool for verifying, linting, and reporting on seltabl defined structs.
 `,
-		RunE: func(cmd *cobra.Command, _ []string) (err error) {
+		RunE: func(_ *cobra.Command, _ []string) (err error) {
 			var eg *errgroup.Group
 			var lspCtx context.Context
 			var lspCancel context.CancelFunc
 			var scanner *bufio.Scanner
-			var state analysis.State
+			var documents = safe.NewSafeMap[uri.URI, string]()
+			var selectors = safe.NewSafeMap[uri.URI, []master.Selector]()
+			var urls = safe.NewSafeMap[uri.URI, []string]()
 			scanner = bufio.NewScanner(reader)
 			scanner.Split(rpc.Split)
-			state, err = analysis.NewState()
-			if err != nil {
-				return fmt.Errorf("failed to create state: %w", err)
-			}
 			lspCtx, lspCancel = context.WithCancel(ctx)
 			defer lspCancel()
 			eg, hCtx := errgroup.WithContext(lspCtx)
@@ -65,8 +67,8 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 						return fmt.Errorf("failed to decode message: %w", err)
 					}
 					hCtx, cancel := context.WithCancel(hCtx)
-					lsp.CancelMap.Add(decoded.ID, cancel)
-					defer lsp.CancelMap.Remove(decoded.ID)
+					lsp.CancelMap.Set(decoded.ID, cancel)
+					defer lsp.CancelMap.Delete(decoded.ID)
 					log.Debugf(
 						"received message (%s): %s",
 						decoded.Method,
@@ -74,9 +76,12 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 					)
 					resp, err := handle(
 						hCtx,
-						&state,
 						*decoded,
 						lspCancel,
+						db,
+						documents,
+						selectors,
+						urls,
 					)
 					if err != nil {
 						log.Errorf(

@@ -8,19 +8,26 @@ import (
 	"os"
 
 	"github.com/charmbracelet/log"
+	"github.com/conneroisu/seltabl/tools/seltabls/data"
+	"github.com/conneroisu/seltabl/tools/seltabls/data/master"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/analysis"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp/methods"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/rpc"
+	"github.com/conneroisu/seltabl/tools/seltabls/pkg/safe"
+	"go.lsp.dev/uri"
 )
 
 // HandleMessage handles a message sent from the client to the language server.
 // It parses the message and returns with a response.
 func HandleMessage(
 	ctx context.Context,
-	state *analysis.State,
 	msg rpc.BaseMessage,
 	cancel context.CancelFunc,
+	db *data.Database[master.Queries],
+	documents *safe.Map[uri.URI, string],
+	selectors *safe.Map[uri.URI, []master.Selector],
+	urls *safe.Map[uri.URI, []string],
 ) (response rpc.MethodActor, err error) {
 	for {
 		select {
@@ -47,7 +54,14 @@ func HandleMessage(
 						err,
 					)
 				}
-				return analysis.OpenDocument(ctx, state, request)
+				return analysis.OpenDocument(
+					ctx,
+					request,
+					db,
+					documents,
+					urls,
+					selectors,
+				)
 			case methods.MethodRequestTextDocumentCompletion:
 				var request lsp.TextDocumentCompletionRequest
 				err = json.Unmarshal(msg.Content, &request)
@@ -59,8 +73,9 @@ func HandleMessage(
 				}
 				return analysis.CreateTextDocumentCompletion(
 					ctx,
-					state,
 					request,
+					documents,
+					selectors,
 				)
 			case methods.MethodRequestTextDocumentHover:
 				var request lsp.HoverRequest
@@ -71,7 +86,12 @@ func HandleMessage(
 						err,
 					)
 				}
-				return analysis.NewHoverResponse(request, state)
+				return analysis.NewHoverResponse(
+					ctx,
+					request,
+					documents,
+					urls,
+				)
 			// case methods.MethodRequestTextDocumentCodeAction:
 			//         var request lsp.CodeActionRequest
 			//         err = json.Unmarshal(msg.Content, &request)
@@ -107,8 +127,12 @@ func HandleMessage(
 					)
 				}
 				log.Debugf("canceling request: %d", request.Params.ID)
-				lsp.CancelMap.Cancel(request.Params.ID.(int))
-				return state.CancelRequest(request)
+				c, ok := lsp.CancelMap.Get(request.Params.ID.(int))
+				if !ok {
+					return nil, fmt.Errorf("failed to get cancel func")
+				}
+				c()
+				return analysis.CancelResponse(request)
 			case methods.MethodNotificationInitialized:
 				var request lsp.InitializedParamsRequest
 				err = json.Unmarshal([]byte(msg.Content), &request)
@@ -139,9 +163,7 @@ func HandleMessage(
 				if err != nil {
 					return nil, fmt.Errorf("failed to read file: %w", err)
 				}
-				state.Documents[string(request.Params.TextDocument.URI)] = string(
-					read,
-				)
+				documents.Set(request.Params.TextDocument.URI, string(read))
 				return nil, nil
 			case methods.NotificationTextDocumentDidClose:
 				var request lsp.DidCloseTextDocumentParamsNotification
@@ -161,7 +183,7 @@ func HandleMessage(
 						err,
 					)
 				}
-				return analysis.UpdateDocument(ctx, state, &request)
+				return analysis.UpdateDocument(ctx, &request, documents, urls)
 			default:
 				return nil, fmt.Errorf("unknown method: %s", msg.Method)
 			}

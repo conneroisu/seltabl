@@ -14,7 +14,7 @@ import (
 // TextDocumentCodeAction returns the code actions for a given text document.
 func TextDocumentCodeAction(
 	ctx context.Context,
-	req lsp.CodeActionRequest,
+	req lsp.TextDocumentCodeActionRequest,
 	s *State,
 ) (response rpc.MethodActor, err error) {
 	for {

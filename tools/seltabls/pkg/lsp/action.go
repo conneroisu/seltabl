@@ -5,11 +5,11 @@ import (
 	"go.lsp.dev/protocol"
 )
 
-// CodeActionRequest is a request for a code action to the language server.
+// TextDocumentCodeActionRequest is a request for a code action to the language server.
 //
 // Microsoft LSP Docs:
 // https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_codeAction
-type CodeActionRequest struct {
+type TextDocumentCodeActionRequest struct {
 	// CodeActionRequest embeds the Request struct
 	Request
 	// Params are the parameters for the code action request.
@@ -17,7 +17,7 @@ type CodeActionRequest struct {
 }
 
 // Method returns the method for the code action request
-func (r CodeActionRequest) Method() methods.Method {
+func (r TextDocumentCodeActionRequest) Method() methods.Method {
 	return methods.MethodRequestTextDocumentCodeAction
 }
 

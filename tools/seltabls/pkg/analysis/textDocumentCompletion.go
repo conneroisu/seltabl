@@ -7,6 +7,7 @@ import (
 	"go/parser"
 	"go/token"
 
+	"github.com/charmbracelet/log"
 	"github.com/conneroisu/seltabl/tools/seltabls/data/master"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/parsers"
@@ -153,11 +154,13 @@ func CheckPosition(
 			if inValue {
 				return parsers.StateInTagValue, nil
 			}
-			if parsers.PositionBeforeValue(position, text) == '"' {
+			beforeValue := parsers.PositionBeforeValue(position, text)
+			log.Debugf("beforeValue: %c", beforeValue)
+			if beforeValue == ':' {
 				// If the position is before a double quote, return the state in the tag Value
 				// Also return the key of the struct tag before the double quote aka our position.
 				// TODO: Get the key of the struct tag before the double quote
-				return parsers.StateInTagValue, nil
+				return parsers.StateAfterColon, nil
 			}
 			// If we are in the tag, we should return completion items for the struct tag
 			// that are not yet set/defined

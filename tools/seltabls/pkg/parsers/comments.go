@@ -7,18 +7,13 @@ import (
 	"fmt"
 	"go/token"
 	"regexp"
+	"strconv"
 	"strings"
 
 	"github.com/charmbracelet/log"
 	"github.com/dave/dst"
 	"github.com/dave/dst/decorator"
 )
-
-// StructCommentData holds the parsed URLs and ignore-elements.
-type StructCommentData struct {
-	URLs           []string
-	IgnoreElements []string
-}
 
 var (
 	errIgnoreOnly = fmt.Errorf("ignore elements found but no URLs")
@@ -28,7 +23,16 @@ var (
 	urlPattern = regexp.MustCompile(`@url:\s*(\S+)`)
 	// @ignore-elements: <element1>, <element2>, ...
 	ignorePattern = regexp.MustCompile(`@ignore-elements:\s*(.*)`)
+	// @occurrences: <number>
+	occurrencesPattern = regexp.MustCompile(`@occurrences:\s*(\d+)`)
 )
+
+// StructCommentData holds the parsed URLs and ignore-elements.
+type StructCommentData struct {
+	URLs           []string
+	IgnoreElements [][]string
+	Occurrences    []int
+}
 
 // ParseStructComments parses the comments from struct type declarations in the provided Go source code
 // and extracts @url and @ignore-elements into separate arrays.
@@ -38,7 +42,6 @@ func ParseStructComments(src string) (StructCommentData, error) {
 			log.Errorf("parsers.ParseStructComments recovered: %v", r)
 		}
 	}()
-	// Parse the source code into an dst.File.
 	node, err := decorator.Parse(src)
 	if err != nil {
 		return StructCommentData{}, err
@@ -67,8 +70,16 @@ func ParseStructComments(src string) (StructCommentData, error) {
 							if ignoreMatches := ignorePattern.FindStringSubmatch(text); len(ignoreMatches) > 1 {
 								elements := strings.Split(ignoreMatches[1], ",")
 								for _, elem := range elements {
-									data.IgnoreElements = append(data.IgnoreElements, strings.TrimSpace(elem))
+									data.IgnoreElements = append(data.IgnoreElements, []string{strings.TrimSpace(elem)})
 								}
+							}
+							// Extract @occurrences of type int
+							if occurrencesMatches := occurrencesPattern.FindStringSubmatch(text); len(occurrencesMatches) > 1 {
+								occurrences, err := strconv.Atoi(occurrencesMatches[1])
+								if err != nil {
+									return false
+								}
+								data.Occurrences = append(data.Occurrences, occurrences)
 							}
 						}
 					}

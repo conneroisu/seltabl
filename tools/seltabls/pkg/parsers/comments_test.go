@@ -31,7 +31,7 @@ type Structure struct {
 				URLs: []string{
 					"https://github.com/conneroisu/seltabl/blob/main/testdata/ab_num_table.html",
 				},
-				IgnoreElements: []string{"div", "script"},
+				IgnoreElements: [][]string{{"div", "script"}},
 			},
 			wantErr: false,
 		},
@@ -55,7 +55,7 @@ type SecondStruct struct {
 					"https://example.com/one",
 					"https://example.com/two",
 				},
-				IgnoreElements: []string{"p", "span", "div", "style"},
+				IgnoreElements: [][]string{{"p", "span", "div", "style"}},
 			},
 			wantErr: false,
 		},
@@ -109,7 +109,7 @@ type MultipleAnnotationsStruct struct {
 					"https://example.com/multiple1",
 					"https://example.com/multiple2",
 				},
-				IgnoreElements: []string{"header", "footer", "nav"},
+				IgnoreElements: [][]string{{"header", "footer", "nav"}},
 			},
 			wantErr: false,
 		},
@@ -126,7 +126,7 @@ type MixedCommentStruct struct {
 }`,
 			expected: StructCommentData{
 				URLs:           []string{"https://example.com/mixed"},
-				IgnoreElements: []string{"aside", "section"},
+				IgnoreElements: [][]string{{"aside", "section"}},
 			},
 			wantErr: false,
 		},
@@ -141,7 +141,7 @@ type SpacedCommentStruct struct {
 }`,
 			expected: StructCommentData{
 				URLs:           []string{"https://example.com/spaced"},
-				IgnoreElements: []string{"div", "span"},
+				IgnoreElements: [][]string{{"div", "span"}},
 			},
 			wantErr: false,
 		},
@@ -156,7 +156,7 @@ type InvalidFormatStruct struct {
 }`,
 			expected: StructCommentData{
 				URLs:           []string{"https://example.com/valid"},
-				IgnoreElements: []string{"valid", "invalid elements here"},
+				IgnoreElements: [][]string{{"valid", "invalid elements here"}},
 			},
 			wantErr: false,
 		},
@@ -171,7 +171,7 @@ type AdditionalCommentMarkersStruct struct {
 }`,
 			expected: StructCommentData{
 				URLs:           []string{"https://example.com/additional"},
-				IgnoreElements: []string{"div", "span"},
+				IgnoreElements: [][]string{{"div", "span"}},
 			},
 			wantErr: false,
 		},
@@ -190,7 +190,7 @@ type SecondMixedStruct struct {
 }`,
 			expected: StructCommentData{
 				URLs:           []string{"https://example.com/first"},
-				IgnoreElements: []string{"header", "footer"},
+				IgnoreElements: [][]string{{"header", "footer"}},
 			},
 			wantErr: false,
 		},
@@ -219,7 +219,7 @@ type SpecialCharsStruct struct {
 				URLs: []string{
 					"https://example.com/special?chars&test=true",
 				},
-				IgnoreElements: []string{"#id", ".class"},
+				IgnoreElements: [][]string{{"#id", ".class"}},
 			},
 			wantErr: false,
 		},
@@ -235,7 +235,7 @@ type MixedOrderStruct struct {
 }`,
 			expected: StructCommentData{
 				URLs:           []string{"https://example.com/mixedorder"},
-				IgnoreElements: []string{"aside", "section"},
+				IgnoreElements: [][]string{{"aside", "section"}},
 			},
 			wantErr: false,
 		},

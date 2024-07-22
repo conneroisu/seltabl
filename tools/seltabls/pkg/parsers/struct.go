@@ -165,7 +165,7 @@ func (s *Structure) Verify(
 				}
 			}
 			wg.Wait()
-			return diags, err
+			return diags, nil
 		}
 	}
 }

@@ -1,6 +1,9 @@
 package lsp
 
-import "github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp/methods"
+import (
+	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp/methods"
+	"go.lsp.dev/protocol"
+)
 
 // DidCloseTextDocumentParamsNotification is a struct for the did close text document params notification
 //
@@ -8,7 +11,7 @@ import "github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp/methods"
 // https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_didClose
 type DidCloseTextDocumentParamsNotification struct {
 	Notification
-	Params DidCloseTextDocumentParamsNotificationParams `json:"params"`
+	Params protocol.DidCloseTextDocumentParams `json:"params"`
 }
 
 // Method returns the method for the did close text document params notification
@@ -18,14 +21,14 @@ func (r DidCloseTextDocumentParamsNotification) Method() methods.Method {
 
 // NewDidCloseTextDocumentParamsNotification returns a new did close text document params notification
 func NewDidCloseTextDocumentParamsNotification(
-	uri string,
+	uri protocol.DocumentURI,
 ) DidCloseTextDocumentParamsNotification {
 	return DidCloseTextDocumentParamsNotification{
 		Notification: Notification{
 			RPC: RPCVersion,
 		},
-		Params: DidCloseTextDocumentParamsNotificationParams{
-			TextDocument: TextDocumentIdentifier{URI: uri},
+		Params: protocol.DidCloseTextDocumentParams{
+			TextDocument: protocol.TextDocumentIdentifier{URI: uri},
 		},
 	}
 }

@@ -27,7 +27,10 @@ func UpdateDocument(
 			case <-ctx.Done():
 				return nil, fmt.Errorf("context cancelled: %w", ctx.Err())
 			default:
-				documents.Set(notification.Params.TextDocument.URI, notification.Params.ContentChanges[0].Text)
+				documents.Set(
+					notification.Params.TextDocument.URI,
+					notification.Params.ContentChanges[0].Text,
+				)
 				text, ok := documents.Get(notification.Params.TextDocument.URI)
 				if !ok {
 					return nil, fmt.Errorf("failed to get text")

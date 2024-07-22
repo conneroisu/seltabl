@@ -48,7 +48,10 @@ func NewHoverResponse(
 			}
 			doc, err := http.DefaultClientGet((*urls)[0])
 			if err != nil {
-				return nil, fmt.Errorf("failed to get the content of the url: %w", err)
+				return nil, fmt.Errorf(
+					"failed to get the content of the url: %w",
+					err,
+				)
 			}
 			res, err := GetSelectorHover(
 				req.Params.Position,

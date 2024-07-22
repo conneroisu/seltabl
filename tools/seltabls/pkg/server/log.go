@@ -28,7 +28,10 @@ func LogMessage(
 		default:
 			var err error
 			err = rpc.WriteResponse(ctx, &writer, lsp.LogMessageNotification{
-				Notification: lsp.Notification{RPC: lsp.RPCVersion, Method: "window/logMessage"},
+				Notification: lsp.Notification{
+					RPC:    lsp.RPCVersion,
+					Method: "window/logMessage",
+				},
 				Params: protocol.LogMessageParams{
 					Message: msg,
 					Type:    typ,

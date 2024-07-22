@@ -60,4 +60,13 @@ FROM
 WHERE
 	context = ?;
 
+-- name: GetSelectorsByMinOccurances :many
+SELECT
+    selectors.*
+FROM
+    selectors
+    JOIN urls ON urls.id = selectors.url_id
+WHERE
+    selectors.occurances >= ? AND
+    urls.value = ?;
 /******************************************************************************/

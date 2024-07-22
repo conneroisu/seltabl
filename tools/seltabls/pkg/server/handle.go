@@ -55,7 +55,7 @@ func HandleMessage(
 				)
 			}
 			if !strings.HasSuffix(
-				request.Params.TextDocument.URI.Filename(),
+				string(request.Params.TextDocument.URI),
 				".go",
 			) {
 				return nil, nil
@@ -194,7 +194,14 @@ func HandleMessage(
 					err,
 				)
 			}
-			return analysis.UpdateDocument(ctx, &request, documents, urls)
+			return analysis.UpdateDocument(
+				ctx,
+				&request,
+				db,
+				documents,
+				urls,
+				selectors,
+			)
 		default:
 			return nil, fmt.Errorf("unknown method: %s", msg.Method)
 		}

@@ -381,6 +381,61 @@ func (q *Queries) GetSelectorsByContext(ctx context.Context, arg GetSelectorsByC
 	return items, nil
 }
 
+const getSelectorsByMinOccurances = `-- name: GetSelectorsByMinOccurances :many
+SELECT
+    selectors.id, selectors.value, selectors.url_id, selectors.occurances, selectors.context
+FROM
+    selectors
+    JOIN urls ON urls.id = selectors.url_id
+WHERE
+    selectors.occurances >= ? AND
+    urls.value = ?
+`
+
+type GetSelectorsByMinOccurancesParams struct {
+	Occurances int64  `db:"occurances" json:"occurances"`
+	Value      string `db:"value" json:"value"`
+}
+
+// GetSelectorsByMinOccurances
+//
+//	SELECT
+//	    selectors.id, selectors.value, selectors.url_id, selectors.occurances, selectors.context
+//	FROM
+//	    selectors
+//	    JOIN urls ON urls.id = selectors.url_id
+//	WHERE
+//	    selectors.occurances >= ? AND
+//	    urls.value = ?
+func (q *Queries) GetSelectorsByMinOccurances(ctx context.Context, arg GetSelectorsByMinOccurancesParams) ([]*Selector, error) {
+	rows, err := q.db.QueryContext(ctx, getSelectorsByMinOccurances, arg.Occurances, arg.Value)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []*Selector
+	for rows.Next() {
+		var i Selector
+		if err := rows.Scan(
+			&i.ID,
+			&i.Value,
+			&i.UrlID,
+			&i.Occurances,
+			&i.Context,
+		); err != nil {
+			return nil, err
+		}
+		items = append(items, &i)
+	}
+	if err := rows.Close(); err != nil {
+		return nil, err
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
 const getSelectorsByURL = `-- name: GetSelectorsByURL :many
 SELECT
 	selectors.id, selectors.value, selectors.url_id, selectors.occurances, selectors.context

@@ -4,7 +4,6 @@ import (
 	"context"
 	"fmt"
 	"strings"
-	"text/template"
 
 	"github.com/PuerkitoBio/goquery"
 	"github.com/conneroisu/seltabl/tools/seltabls/data"
@@ -135,9 +134,12 @@ func GetSelectors(
 	mustOccur int,
 ) (selectors []master.Selector, err error) {
 	var doc *goquery.Document
-	rows, err := db.Queries.GetSelectorsByURL(
+	rows, err := db.Queries.GetSelectorsByMinOccurances(
 		ctx,
-		master.GetSelectorsByURLParams{Value: url},
+		master.GetSelectorsByMinOccurancesParams{
+			Value:      url,
+			Occurances: int64(mustOccur),
+		},
 	)
 	if err == nil && len(rows) > 0 {
 		var selectors []master.Selector
@@ -177,15 +179,11 @@ func GetSelectors(
 		if found.Length() == 0 {
 			continue
 		}
-		if mustOccur > 0 && found.Length() < mustOccur {
-			continue
-		}
 		selectorContext, err := found.Parent().First().Html()
 		if err != nil {
 			return nil, fmt.Errorf("failed to get html: %w", err)
 		}
 		selectorContext = gohtml.Format(selectorContext)
-		selectorContext = template.HTMLEscapeString(selectorContext)
 		selector, err := db.Queries.InsertSelector(
 			ctx,
 			master.InsertSelectorParams{
@@ -198,7 +196,10 @@ func GetSelectors(
 		if err != nil {
 			return nil, fmt.Errorf("failed to insert selector: %w", err)
 		}
-		selectors = append(selectors, *selector)
+
+		if found.Length() >= mustOccur {
+			selectors = append(selectors, *selector)
+		}
 	}
 	return selectors, nil
 }

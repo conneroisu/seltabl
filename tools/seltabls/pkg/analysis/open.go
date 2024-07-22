@@ -47,14 +47,20 @@ func OpenDocument(
 			return nil, nil
 		}
 		urls.Set(req.Params.TextDocument.URI, data.URLs)
-		for _, url := range data.URLs {
+		for i, url := range data.URLs {
 			eg.Go(func() error {
+				var occur int
+				if data.Occurrences[i] > 0 {
+					occur = data.Occurrences[i]
+				} else {
+					occur = 2
+				}
 				sels, err := parsers.GetSelectors(
 					ctx,
 					db,
 					url,
-					data.IgnoreElements,
-					2,
+					data.IgnoreElements[i],
+					occur,
 				)
 				if err != nil {
 					return err

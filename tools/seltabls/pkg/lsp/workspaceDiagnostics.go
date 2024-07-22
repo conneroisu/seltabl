@@ -1,6 +1,9 @@
 package lsp
 
-import "github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp/methods"
+import (
+	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp/methods"
+	"go.lsp.dev/protocol"
+)
 
 // DiagnosticSeverity is an enum for diagnostic severities.
 type DiagnosticSeverity int
@@ -21,7 +24,7 @@ type PublishDiagnosticsNotification struct {
 	// PublishDiagnosticsNotification embeeds the notification struct.
 	Notification
 	// Params are the parameters for the publish diagnostics notification.
-	Params PublishDiagnosticsParams `json:"params"`
+	Params protocol.PublishDiagnosticsParams `json:"params"`
 }
 
 // Method returns the method for the publish diagnostics notification

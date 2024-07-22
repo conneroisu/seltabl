@@ -8,9 +8,9 @@ import (
 	"path/filepath"
 
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/analysis"
-	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/parsers"
 	"github.com/spf13/cobra"
+	"go.lsp.dev/protocol"
 )
 
 // NewVetCmd returns the vet command which evaluates code for common errors or invalid selectors.
@@ -60,7 +60,7 @@ Evaluate code for common errors or invalid selectors.
 func vetFile(
 	ctx context.Context,
 	filePath string,
-) (response []lsp.Diagnostic, err error) {
+) (response []protocol.Diagnostic, err error) {
 	if filepath.Ext(filePath) != ".go" {
 		return nil, fmt.Errorf("file is not a go file")
 	}

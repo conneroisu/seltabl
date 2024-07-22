@@ -13,8 +13,8 @@ import (
 	"strings"
 
 	"github.com/PuerkitoBio/goquery"
-	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
 	"github.com/sourcegraph/conc"
+	"go.lsp.dev/protocol"
 	"golang.org/x/sync/errgroup"
 )
 
@@ -53,22 +53,22 @@ func validateSelector(
 
 var (
 	// selectorDataTag is the tag used to mark a data cell.
-	selectorDataTag = lsp.CompletionItem{Label: "dSel",
+	selectorDataTag = protocol.CompletionItem{Label: "dSel",
 		Detail:        "Title Text for the data selector",
 		Documentation: "This is the documentation for the data selector",
-		Kind:          lsp.CompletionKindField,
+		Kind:          protocol.CompletionItemKindField,
 	}
 	// selectorControlTag is the tag used to signify selecting aspects of a cell
-	selectorHeaderTag = lsp.CompletionItem{Label: "hSel",
+	selectorHeaderTag = protocol.CompletionItem{Label: "hSel",
 		Detail:        "Title Text for the header selector",
 		Documentation: "This is the documentation for the header selector",
-		Kind:          lsp.CompletionKindField,
+		Kind:          protocol.CompletionItemKindField,
 	}
 	// selectorQueryTag is the tag used to signify selecting aspects of a cell
-	selectorQueryTag = lsp.CompletionItem{Label: "qSel",
+	selectorQueryTag = protocol.CompletionItem{Label: "qSel",
 		Detail:        "Title Text for the query selector",
 		Documentation: "This is the documentation for the query selector",
-		Kind:          lsp.CompletionKindField,
+		Kind:          protocol.CompletionItemKindField,
 	}
 )
 
@@ -85,7 +85,7 @@ func (s *Structure) Verify(
 	ctx context.Context,
 	url string,
 	content *goquery.Document,
-) (diags []lsp.Diagnostic, err error) {
+) (diags []protocol.Diagnostic, err error) {
 	select {
 	case <-ctx.Done():
 		return diags, fmt.Errorf("context cancelled: %w", ctx.Err())
@@ -101,13 +101,18 @@ func (s *Structure) Verify(
 								content,
 							)
 							if !verified || err != nil {
-								diag := lsp.Diagnostic{
-									Range: lsp.LineRange(
-										s.Fields[j].Line-1,
-										s.Fields[j].Tag(i).Start,
-										s.Fields[j].Tag(i).End,
-									),
-									Severity: lsp.DiagnosticWarning,
+								diag := protocol.Diagnostic{
+									Range: protocol.Range{
+										Start: protocol.Position{
+											Line:      uint32(s.Fields[j].Line - 1),
+											Character: uint32(s.Fields[j].Tag(i).Start),
+										},
+										End: protocol.Position{
+											Line:      uint32(s.Fields[j].Line - 1),
+											Character: uint32(s.Fields[j].Tag(i).End),
+										},
+									},
+									Severity: protocol.DiagnosticSeverityWarning,
 									Source:   "seltabls",
 								}
 								if err != nil {

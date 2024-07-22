@@ -7,6 +7,7 @@ import (
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp/methods"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/parsers"
+	"go.lsp.dev/protocol"
 	"golang.org/x/sync/errgroup"
 )
 
@@ -76,8 +77,12 @@ func OpenDocument(
 				RPC:    lsp.RPCVersion,
 				Method: string(methods.NotificationPublishDiagnostics),
 			},
-			Params: lsp.PublishDiagnosticsParams{
-				URI:         req.Params.TextDocument.URI,
+			// Params: lsp.PublishDiagnosticsParams{
+			//         URI:         req.Params.TextDocument.URI,
+			//         Diagnostics: diags,
+			// },
+			Params: protocol.PublishDiagnosticsParams{
+				URI:         protocol.DocumentURI(req.Params.TextDocument.URI),
 				Diagnostics: diags,
 			},
 		}, nil

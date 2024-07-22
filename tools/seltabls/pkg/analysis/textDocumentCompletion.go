@@ -32,7 +32,7 @@ func CreateTextDocumentCompletion(
 				RPC: lsp.RPCVersion,
 				ID:  request.ID,
 			},
-			Result: []lsp.CompletionItem{},
+			Result: []protocol.CompletionItem{},
 		}
 		content := s.Documents[string(request.Params.TextDocument.URI)]
 		selectors := s.Selectors[string(request.Params.TextDocument.URI)]
@@ -45,11 +45,11 @@ func CreateTextDocumentCompletion(
 			for _, key := range completionKeys {
 				response.Result = append(
 					response.Result,
-					lsp.CompletionItem{
+					protocol.CompletionItem{
 						Label:         key.Label,
 						Detail:        key.Detail,
 						Documentation: key.Documentation,
-						Kind:          lsp.CompletionKindEnum,
+						Kind:          protocol.CompletionItemKindEnum,
 					},
 				)
 			}
@@ -57,7 +57,7 @@ func CreateTextDocumentCompletion(
 			for _, selector := range selectors {
 				response.Result = append(
 					response.Result,
-					lsp.CompletionItem{
+					protocol.CompletionItem{
 						Label: selector.Value,
 						Detail: fmt.Sprintf(
 							"Occurances: '%d' \nContext: \n%s",
@@ -65,7 +65,7 @@ func CreateTextDocumentCompletion(
 							selector.Context,
 						),
 						Documentation: "seltabls",
-						Kind:          lsp.CompletionKindReference,
+						Kind:          protocol.CompletionItemKindReference,
 					},
 				)
 			}
@@ -73,7 +73,7 @@ func CreateTextDocumentCompletion(
 			for _, selector := range selectors {
 				response.Result = append(
 					response.Result,
-					lsp.CompletionItem{
+					protocol.CompletionItem{
 						Label: "\"" + selector.Value + "\"",
 						Detail: fmt.Sprintf(
 							"Occurances: '%d' \nContext: \n```html\n%s```",
@@ -81,7 +81,7 @@ func CreateTextDocumentCompletion(
 							selector.Context,
 						),
 						Documentation: "seltabls",
-						Kind:          lsp.CompletionKindReference,
+						Kind:          protocol.CompletionItemKindReference,
 					},
 				)
 			}

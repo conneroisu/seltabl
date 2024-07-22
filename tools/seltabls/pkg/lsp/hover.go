@@ -22,12 +22,6 @@ func (r HoverRequest) Method() methods.Method {
 	return methods.MethodRequestTextDocumentHover
 }
 
-// HoverParams is the parameters for a hover request.
-type HoverParams struct {
-	// TextDocumentPositionParams is the text document position parameters.
-	TextDocumentPositionParams
-}
-
 // HoverResponse is the response from the server to a hover request.
 type HoverResponse struct {
 	// Response is the response for the hover request.
@@ -43,6 +37,9 @@ func (r HoverResponse) Method() methods.Method {
 
 // HoverResult is a result from a hover request to the client from the
 // language server.
+//
+// Microsoft LSP Docs:
+// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_hover
 type HoverResult struct {
 	// Contents is the contents for the hover result.
 	Contents string `json:"contents"`

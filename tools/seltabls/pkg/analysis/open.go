@@ -7,6 +7,7 @@ import (
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp/methods"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/parsers"
+	"go.lsp.dev/protocol"
 	"golang.org/x/sync/errgroup"
 )
 
@@ -29,15 +30,15 @@ func OpenDocument(
 	default:
 		eg, ctx := errgroup.WithContext(ctx)
 		uri := req.Params.TextDocument.URI
-		s.Documents[uri] = req.Params.TextDocument.Text
+		s.Documents[string(uri)] = req.Params.TextDocument.Text
 		data, err := parsers.ParseStructComments(req.Params.TextDocument.Text)
 		if err != nil {
 			return nil, nil
 		}
-		s.URLs[uri] = append(s.URLs[uri], data.URLs...)
+		s.URLs[string(uri)] = append(s.URLs[string(uri)], data.URLs...)
 		for _, url := range data.URLs {
 			eg.Go(func() error {
-				s.Selectors[uri], err = parsers.GetSelectors(
+				s.Selectors[string(uri)], err = parsers.GetSelectors(
 					ctx,
 					&s.Database,
 					url,
@@ -76,8 +77,8 @@ func OpenDocument(
 				RPC:    lsp.RPCVersion,
 				Method: string(methods.NotificationPublishDiagnostics),
 			},
-			Params: lsp.PublishDiagnosticsParams{
-				URI:         req.Params.TextDocument.URI,
+			Params: protocol.PublishDiagnosticsParams{
+				URI:         protocol.DocumentURI(req.Params.TextDocument.URI),
 				Diagnostics: diags,
 			},
 		}, nil

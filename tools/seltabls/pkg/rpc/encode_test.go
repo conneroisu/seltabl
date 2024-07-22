@@ -6,6 +6,7 @@ import (
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/rpc"
 	"github.com/stretchr/testify/assert"
+	"go.lsp.dev/protocol"
 )
 
 // var (
@@ -41,19 +42,19 @@ func (e EncodingExample) Method() string {
 
 // TestEncode tests the EncodeMessage function
 func TestEncode(t *testing.T) {
-	expected := "Content-Length: 100\r\n\r\n{\"jsonrpc\":\"2.0\",\"id\":1,\"result\":[{\"label\":\"Test\",\"detail\":\"Test\",\"documentation\":\"Test\",\"kind\":2}]}"
+	expected := "Content-Length: 100\r\n\r\n{\"jsonrpc\":\"2.0\",\"id\":1,\"result\":[{\"detail\":\"Test\",\"documentation\":\"Test\",\"kind\":2,\"label\":\"Test\"}]}"
 	actual, err := rpc.EncodeMessage(
-		lsp.CompletionResponse{
+		lsp.TextDocumentCompletionResponse{
 			Response: lsp.Response{
 				RPC: lsp.RPCVersion,
 				ID:  1,
 			},
-			Result: []lsp.CompletionItem{
+			Result: []protocol.CompletionItem{
 				{
 					Label:         "Test",
 					Detail:        "Test",
 					Documentation: "Test",
-					Kind:          lsp.CompletionKindMethod,
+					Kind:          protocol.CompletionItemKindMethod,
 				},
 			},
 		},

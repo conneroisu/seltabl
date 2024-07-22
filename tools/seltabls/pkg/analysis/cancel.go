@@ -1,8 +1,6 @@
 package analysis
 
 import (
-	"strconv"
-
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
 )
 
@@ -10,14 +8,8 @@ import (
 func (s *State) CancelRequest(
 	request lsp.CancelRequest,
 ) (response *lsp.CancelResponse, err error) {
-	i, err := strconv.ParseInt(request.ID, 10, 64)
-	if err != nil {
-		return nil, err
-	}
 	return &lsp.CancelResponse{
-		Response: lsp.Response{
-			RPC: lsp.RPCVersion,
-			ID:  int(i),
-		},
+		RPC: lsp.RPCVersion,
+		ID:  request.Params.ID.(int),
 	}, nil
 }

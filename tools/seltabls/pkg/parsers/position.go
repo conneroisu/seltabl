@@ -5,7 +5,7 @@ import (
 	"go/token"
 	"strings"
 
-	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
+	"go.lsp.dev/protocol"
 )
 
 // State represents the state of a position within a struct.
@@ -35,7 +35,7 @@ func (s State) String() string {
 // PositionInStructTagValue checks if the given position is within the value of a struct tag.
 func PositionInStructTagValue(
 	node *ast.StructType,
-	pos lsp.Position,
+	pos protocol.Position,
 	fset *token.FileSet,
 ) (
 	result string,
@@ -66,9 +66,9 @@ func PositionInStructTagValue(
 						tagRow := start.Line
 						tagColumnStart := start.Column + startQuote
 						tagColumnEnd := start.Column + endQuote
-						if pos.Line == tagRow &&
-							pos.Character >= tagColumnStart &&
-							pos.Character <= tagColumnEnd {
+						if int(pos.Line) == tagRow &&
+							int(pos.Character) >= tagColumnStart &&
+							int(pos.Character) <= tagColumnEnd {
 							return tagContent[startQuote:endQuote], true
 						}
 						i = endQuote
@@ -77,7 +77,7 @@ func PositionInStructTagValue(
 			}
 			// Calculate the distance to the current tag for the closest tag logic
 			start := fset.Position(field.Tag.Pos())
-			distance := (start.Line-pos.Line)*(start.Line-pos.Line) + (start.Column-pos.Character)*(start.Column-pos.Character)
+			distance := (start.Line-int(pos.Line))*(start.Line-int(pos.Line)) + (start.Column-int(pos.Character))*(start.Column-int(pos.Character))
 			if distance < closestDistance {
 				closestDistance = distance
 				closestTagValue = strings.Trim(field.Tag.Value, "`")
@@ -90,14 +90,14 @@ func PositionInStructTagValue(
 // IsPositionInNode checks if a given position is within the range of an AST node.
 func IsPositionInNode(
 	node ast.Node,
-	pos lsp.Position,
+	pos protocol.Position,
 	fset *token.FileSet,
 ) bool {
 	start := fset.Position(node.Pos())
 	end := fset.Position(node.End())
 	// Check if the position is within the node's range
-	if (pos.Line > start.Line || (pos.Line == start.Line && pos.Character >= start.Column)) &&
-		(pos.Line < end.Line || (pos.Line == end.Line && pos.Character <= end.Column)) {
+	if (int(pos.Line) > start.Line || (pos.Line == uint32(start.Line) && pos.Character >= uint32(start.Column))) &&
+		(pos.Line < uint32(end.Line) || (pos.Line == uint32(end.Line) && pos.Character <= uint32(end.Column))) {
 		return true
 	}
 	return false
@@ -120,7 +120,7 @@ func FindStructNodes(node ast.Node) (structNodes []*ast.StructType) {
 // IsPositionInTag checks if the given position is within a struct tag.
 func IsPositionInTag(
 	node *ast.StructType,
-	pos lsp.Position,
+	pos protocol.Position,
 	fset *token.FileSet,
 ) bool {
 	for _, field := range node.Fields.List {
@@ -134,13 +134,13 @@ func IsPositionInTag(
 }
 
 // PositionBeforeValue returns the value of the position in a file
-func PositionBeforeValue(pos lsp.Position, text string) byte {
+func PositionBeforeValue(pos protocol.Position, text string) byte {
 	split := strings.Split(text, "\n")
-	if pos.Line > len(split) {
+	if int(pos.Line) > len(split) {
 		return '\n'
 	}
 	line := split[pos.Line]
-	if pos.Character > len(line) {
+	if int(pos.Character) > len(line) {
 		return '\n'
 	}
 	return line[pos.Character-1]

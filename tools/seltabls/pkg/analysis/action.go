@@ -7,12 +7,14 @@ import (
 
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/rpc"
+	"go.lsp.dev/protocol"
+	"go.lsp.dev/uri"
 )
 
 // TextDocumentCodeAction returns the code actions for a given text document.
 func TextDocumentCodeAction(
 	ctx context.Context,
-	req lsp.CodeActionRequest,
+	req lsp.TextDocumentCodeActionRequest,
 	s *State,
 ) (response rpc.MethodActor, err error) {
 	for {
@@ -20,40 +22,67 @@ func TextDocumentCodeAction(
 		case <-ctx.Done():
 			return nil, fmt.Errorf("context cancelled: %w", ctx.Err())
 		default:
-			text := s.Documents[req.Params.TextDocument.URI]
-			actions := []lsp.CodeAction{}
+			text := s.Documents[string(req.Params.TextDocument.URI)]
+			actions := []protocol.CodeAction{}
 			for row, line := range strings.Split(text, "\n") {
 				idx := strings.Index(line, "VS Code")
 				if idx >= 0 {
-					replaceChange := map[string][]lsp.TextEdit{}
-					replaceChange[req.Params.TextDocument.URI] = []lsp.TextEdit{
+					replaceChange := map[string][]protocol.TextEdit{}
+					replaceChange[string(req.Params.TextDocument.URI)] = []protocol.TextEdit{
 						{
-							Range: lsp.LineRange(
-								row,
-								idx,
-								idx+len("VS Code"),
-							),
+							Range: protocol.Range{
+								Start: protocol.Position{
+									Line:      uint32(row),
+									Character: uint32(row),
+								},
+								End: protocol.Position{
+									Line:      uint32(row),
+									Character: uint32(row),
+								},
+							},
 							NewText: "Neovim",
 						},
 					}
-					actions = append(actions, lsp.CodeAction{
-						Title: "Replace VS C*de with a superior editor",
-						Edit:  &lsp.WorkspaceEdit{Changes: replaceChange},
-					})
-					censorChange := map[string][]lsp.TextEdit{}
-					censorChange[req.Params.TextDocument.URI] = []lsp.TextEdit{
+					var a = make(map[uri.URI][]protocol.TextEdit)
+					a[uri.URI(req.Params.TextDocument.URI)] = []protocol.TextEdit{
 						{
-							Range: lsp.LineRange(
-								row,
-								idx,
-								idx+len("VS Code"),
-							),
+							Range: protocol.Range{
+								Start: protocol.Position{
+									Line:      uint32(row),
+									Character: uint32(row),
+								},
+								End: protocol.Position{
+									Line:      uint32(row),
+									Character: uint32(row),
+								},
+							},
+							NewText: "Neovim",
+						},
+					}
+					actions = append(actions, protocol.CodeAction{
+						Title: "Replace VS C*de with a superior editor",
+						Edit:  &protocol.WorkspaceEdit{Changes: a},
+					})
+					censorChange := map[string][]protocol.TextEdit{}
+					censorChange[string(req.Params.TextDocument.URI)] = []protocol.TextEdit{
+						{
+							Range: protocol.Range{
+								Start: protocol.Position{
+									Line:      uint32(row),
+									Character: uint32(row),
+								},
+								End: protocol.Position{
+									Line:      uint32(row),
+									Character: uint32(row),
+								},
+							},
 							NewText: "VS C*de",
 						},
 					}
-					actions = append(actions, lsp.CodeAction{
+					actions = append(actions, protocol.CodeAction{
 						Title: "Censor to VS C*de",
-						Edit:  &lsp.WorkspaceEdit{Changes: censorChange},
+						Kind:  protocol.QuickFix,
+						Edit:  &protocol.WorkspaceEdit{Changes: a},
 					})
 				}
 			}

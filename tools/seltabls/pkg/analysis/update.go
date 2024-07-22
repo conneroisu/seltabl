@@ -6,6 +6,7 @@ import (
 
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/parsers"
+	"go.lsp.dev/protocol"
 )
 
 // UpdateDocument updates the state with the given document
@@ -23,8 +24,8 @@ func UpdateDocument(
 			case <-ctx.Done():
 				return nil, fmt.Errorf("context cancelled: %w", ctx.Err())
 			default:
-				s.Documents[notification.Params.TextDocument.URI] = notification.Params.ContentChanges[0].Text
-				text := s.Documents[notification.Params.TextDocument.URI]
+				s.Documents[string(notification.Params.TextDocument.URI)] = notification.Params.ContentChanges[0].Text
+				text := s.Documents[string(notification.Params.TextDocument.URI)]
 				comments, err := parsers.ParseStructComments(
 					notification.Params.ContentChanges[0].Text,
 				)
@@ -34,8 +35,8 @@ func UpdateDocument(
 						err,
 					)
 				}
-				s.URLs[notification.Params.TextDocument.URI] = append(
-					s.URLs[notification.Params.TextDocument.URI],
+				s.URLs[string(notification.Params.TextDocument.URI)] = append(
+					s.URLs[string(notification.Params.TextDocument.URI)],
 					comments.URLs...,
 				)
 				diags, err := GetDiagnosticsForFile(
@@ -57,9 +58,14 @@ func UpdateDocument(
 						RPC:    lsp.RPCVersion,
 						Method: "textDocument/publishDiagnostics",
 					},
-					Params: lsp.PublishDiagnosticsParams{
+					// Params: lsp.PublishDiagnosticsParams{
+					//         Diagnostics: diags,
+					//         URI:         notification.Params.TextDocument.URI,
+					// },
+					Params: protocol.PublishDiagnosticsParams{
+						URI:         protocol.DocumentURI(notification.Params.TextDocument.URI),
+						Version:     uint32(notification.Params.TextDocument.Version),
 						Diagnostics: diags,
-						URI:         notification.Params.TextDocument.URI,
 					},
 				}, nil
 			}

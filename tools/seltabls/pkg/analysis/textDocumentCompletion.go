@@ -9,6 +9,7 @@ import (
 
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/parsers"
+	"go.lsp.dev/protocol"
 )
 
 // CreateTextDocumentCompletion returns the completions for a given text document.
@@ -20,21 +21,21 @@ import (
 func CreateTextDocumentCompletion(
 	ctx context.Context,
 	s *State,
-	request lsp.CompletionRequest,
-) (response *lsp.CompletionResponse, err error) {
+	request lsp.TextDocumentCompletionRequest,
+) (response *lsp.TextDocumentCompletionResponse, err error) {
 	select {
 	case <-ctx.Done():
 		return nil, fmt.Errorf("context cancelled: %w", ctx.Err())
 	default:
-		response = &lsp.CompletionResponse{
+		response = &lsp.TextDocumentCompletionResponse{
 			Response: lsp.Response{
 				RPC: lsp.RPCVersion,
 				ID:  request.ID,
 			},
-			Result: []lsp.CompletionItem{},
+			Result: []protocol.CompletionItem{},
 		}
-		content := s.Documents[request.Params.TextDocument.URI]
-		selectors := s.Selectors[request.Params.TextDocument.URI]
+		content := s.Documents[string(request.Params.TextDocument.URI)]
+		selectors := s.Selectors[string(request.Params.TextDocument.URI)]
 		check, err := s.CheckPosition(request.Params.Position, content)
 		if err != nil {
 			return nil, fmt.Errorf("failed to check position: %w", err)
@@ -44,11 +45,11 @@ func CreateTextDocumentCompletion(
 			for _, key := range completionKeys {
 				response.Result = append(
 					response.Result,
-					lsp.CompletionItem{
+					protocol.CompletionItem{
 						Label:         key.Label,
 						Detail:        key.Detail,
 						Documentation: key.Documentation,
-						Kind:          lsp.CompletionKindEnum,
+						Kind:          protocol.CompletionItemKindEnum,
 					},
 				)
 			}
@@ -56,7 +57,7 @@ func CreateTextDocumentCompletion(
 			for _, selector := range selectors {
 				response.Result = append(
 					response.Result,
-					lsp.CompletionItem{
+					protocol.CompletionItem{
 						Label: selector.Value,
 						Detail: fmt.Sprintf(
 							"Occurances: '%d' \nContext: \n%s",
@@ -64,7 +65,7 @@ func CreateTextDocumentCompletion(
 							selector.Context,
 						),
 						Documentation: "seltabls",
-						Kind:          lsp.CompletionKindReference,
+						Kind:          protocol.CompletionItemKindReference,
 					},
 				)
 			}
@@ -72,7 +73,7 @@ func CreateTextDocumentCompletion(
 			for _, selector := range selectors {
 				response.Result = append(
 					response.Result,
-					lsp.CompletionItem{
+					protocol.CompletionItem{
 						Label: "\"" + selector.Value + "\"",
 						Detail: fmt.Sprintf(
 							"Occurances: '%d' \nContext: \n```html\n%s```",
@@ -80,7 +81,7 @@ func CreateTextDocumentCompletion(
 							selector.Context,
 						),
 						Documentation: "seltabls",
-						Kind:          lsp.CompletionKindReference,
+						Kind:          protocol.CompletionItemKindReference,
 					},
 				)
 			}
@@ -93,7 +94,7 @@ func CreateTextDocumentCompletion(
 
 // CheckPosition checks if the position is within the struct tag
 func (s *State) CheckPosition(
-	position lsp.Position,
+	position protocol.Position,
 	text string,
 ) (res parsers.State, err error) {
 	var inValue bool

@@ -5,8 +5,8 @@ import (
 	"fmt"
 
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/http"
-	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/parsers"
+	"go.lsp.dev/protocol"
 	"golang.org/x/sync/errgroup"
 )
 
@@ -16,7 +16,7 @@ func GetDiagnosticsForFile(
 	ctx context.Context,
 	text *string,
 	data parsers.StructCommentData,
-) ([]lsp.Diagnostic, error) {
+) ([]protocol.Diagnostic, error) {
 	for {
 		select {
 		case <-ctx.Done():
@@ -30,7 +30,7 @@ func GetDiagnosticsForFile(
 				)
 			}
 			eg := errgroup.Group{}
-			var diags []lsp.Diagnostic
+			var diags []protocol.Diagnostic
 			for _, st := range sts {
 				eg.Go(func() error {
 					content, err := http.DefaultClientGet(data.URLs[0])

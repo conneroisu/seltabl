@@ -11,6 +11,7 @@ import (
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/parsers"
 	"github.com/yosssi/gohtml"
+	"go.lsp.dev/protocol"
 )
 
 // NewHoverResponse returns a hover response for the given uri and position
@@ -25,8 +26,8 @@ func NewHoverResponse(
 		},
 		Result: lsp.HoverResult{},
 	}
-	text := s.Documents[req.Params.TextDocument.URI]
-	urls := s.URLs[req.Params.TextDocument.URI]
+	text := s.Documents[string(req.Params.TextDocument.URI)]
+	urls := s.URLs[string(req.Params.TextDocument.URI)]
 	doc, err := http.DefaultClientGet(urls[0])
 	if err != nil {
 		return nil, fmt.Errorf("failed to get the content of the url: %w", err)
@@ -41,7 +42,7 @@ func NewHoverResponse(
 
 // GetSelectorHover checks if the position is within the struct tag
 func (s *State) GetSelectorHover(
-	position lsp.Position,
+	position protocol.Position,
 	text string,
 	doc *goquery.Document,
 ) (res lsp.HoverResult, err error) {

@@ -5,8 +5,8 @@ import (
 	"go/token"
 	"testing"
 
-	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
 	"github.com/stretchr/testify/assert"
+	"go.lsp.dev/protocol"
 )
 
 // TestFindStructNode tests the findStructNode function with a valid struct node
@@ -52,12 +52,12 @@ type MyStruct struct {
 	// Define test cases
 	testCases := []struct {
 		name     string
-		position lsp.Position
+		position protocol.Position
 		expected bool
 	}{
-		{"Position in Field1 tag", lsp.Position{Line: 4, Character: 20}, true},
-		{"Position in Field2 tag", lsp.Position{Line: 5, Character: 20}, true},
-		{"Position outside tags", lsp.Position{Line: 3, Character: 1}, false},
+		{"Position in Field1 tag", protocol.Position{Line: 4, Character: 20}, true},
+		{"Position in Field2 tag", protocol.Position{Line: 5, Character: 20}, true},
+		{"Position outside tags", protocol.Position{Line: 3, Character: 1}, false},
 	}
 
 	for _, tc := range testCases {
@@ -101,35 +101,35 @@ type MyStruct struct {
 	// Define test cases
 	testCases := []struct {
 		name     string
-		position lsp.Position
+		position protocol.Position
 		expected bool
 	}{
 		{
 			"Position in Field1 tag value",
-			lsp.Position{Line: 5, Character: 22},
+			protocol.Position{Line: 5, Character: 22},
 			true,
 		},
 		{
 			"Position in Field2 tag value",
-			lsp.Position{Line: 6, Character: 22},
+			protocol.Position{Line: 6, Character: 22},
 			true,
 		},
 		{
 			"Position out Field1 tag value",
-			lsp.Position{Line: 5, Character: 21},
+			protocol.Position{Line: 5, Character: 21},
 			false,
 		},
 		{
 			"Position out Field2 tag value",
-			lsp.Position{Line: 6, Character: 21},
+			protocol.Position{Line: 6, Character: 21},
 			false,
 		},
 		{
 			"Position outside tag values",
-			lsp.Position{Line: 4, Character: 1},
+			protocol.Position{Line: 4, Character: 1},
 			false,
 		},
-		{"Position out of range", lsp.Position{Line: 7, Character: 99}, false},
+		{"Position out of range", protocol.Position{Line: 7, Character: 99}, false},
 	}
 
 	for _, tc := range testCases {
@@ -192,32 +192,32 @@ type TableStruct struct {
 	// Define test cases
 	testCases := []struct {
 		name     string
-		position lsp.Position
+		position protocol.Position
 		expected bool
 	}{
 		{
 			"Position out Field1 tag value",
-			lsp.Position{Line: 5, Character: 22},
+			protocol.Position{Line: 5, Character: 22},
 			false,
 		},
 		{
 			"Position out Field2 tag value",
-			lsp.Position{Line: 6, Character: 22},
+			protocol.Position{Line: 6, Character: 22},
 			false,
 		},
 		{
 			"Position out Field1 tag value",
-			lsp.Position{Line: 5, Character: 0},
+			protocol.Position{Line: 5, Character: 0},
 			false,
 		},
 		{
 			"Position out Field2 tag value",
-			lsp.Position{Line: 6, Character: 0},
+			protocol.Position{Line: 6, Character: 0},
 			false,
 		},
 		{
 			"Position in Field1 tag value",
-			lsp.Position{Line: 24, Character: 18},
+			protocol.Position{Line: 24, Character: 18},
 			true,
 		},
 	}

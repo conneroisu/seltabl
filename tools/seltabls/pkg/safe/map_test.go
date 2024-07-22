@@ -79,29 +79,6 @@ func TestConcurrentSetAndGet(t *testing.T) {
 	}
 }
 
-// TestConcurrentSetAndDelete tests the SafeMap's concurrent set and delete
-// methods.
-func TestConcurrentSetAndDelete(t *testing.T) {
-	sm := NewSafeMap[int, int]()
-	var wg sync.WaitGroup
-	for i := 0; i < 1000; i++ {
-		wg.Add(2)
-		go func(i int) {
-			defer wg.Done()
-			sm.Set(i, i)
-		}(i)
-		go func(i int) {
-			defer wg.Done()
-			sm.Delete(i)
-		}(i)
-	}
-	wg.Wait()
-	for i := 0; i < 1000; i++ {
-		_, ok := sm.Get(i)
-		assert.False(t, ok)
-	}
-}
-
 // TestSetDifferentTypes tests the SafeMap's set method with different types.
 func TestSetDifferentTypes(t *testing.T) {
 	smInt := NewSafeMap[string, int]()

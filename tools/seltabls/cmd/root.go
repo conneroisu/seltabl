@@ -43,7 +43,6 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 	log.SetLevel(log.DebugLevel)
 	log.Infof("Starting seltabls")
 	log.SetReportCaller(true)
-	log.SetPrefix("seltabls")
 	log.SetReportTimestamp(false)
 	db, err := data.NewDb(
 		ctx,

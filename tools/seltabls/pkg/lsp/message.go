@@ -2,10 +2,8 @@ package lsp
 
 import (
 	"context"
-	"fmt"
 
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp/methods"
-	"github.com/conneroisu/seltabl/tools/seltabls/pkg/rpc"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/safe"
 )
 
@@ -37,20 +35,6 @@ type Response struct {
 // Method returns the method for the response
 func (r Response) Method() methods.Method {
 	return methods.MethodInitialize
-}
-
-// String returns a string representation of the response
-func (r *Response) String() string {
-	resp, err := rpc.EncodeMessage(r)
-	if err != nil {
-		return fmt.Sprintf(
-			"failed to even encode response of type %s of id: %d due to error: %s",
-			r.RPC,
-			r.ID,
-			err,
-		)
-	}
-	return resp
 }
 
 // Notification is a notification from a LSP

@@ -37,8 +37,13 @@ func OpenDocument(
 			return nil, fmt.Errorf("context cancelled: %w", (ctx).Err())
 		default:
 			eg, ctx := errgroup.WithContext(ctx)
-			documents.Set(req.Params.TextDocument.URI, req.Params.TextDocument.Text)
-			data, err := parsers.ParseStructComments(req.Params.TextDocument.Text)
+			documents.Set(
+				req.Params.TextDocument.URI,
+				req.Params.TextDocument.Text,
+			)
+			data, err := parsers.ParseStructComments(
+				req.Params.TextDocument.Text,
+			)
 			if err != nil {
 				return nil, nil
 			}
@@ -86,7 +91,9 @@ func OpenDocument(
 					Method: string(methods.NotificationPublishDiagnostics),
 				},
 				Params: protocol.PublishDiagnosticsParams{
-					URI:         protocol.DocumentURI(req.Params.TextDocument.URI),
+					URI: protocol.DocumentURI(
+						req.Params.TextDocument.URI,
+					),
 					Diagnostics: diags,
 				},
 			}, nil

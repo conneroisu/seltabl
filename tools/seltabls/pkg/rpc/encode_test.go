@@ -1,6 +1,7 @@
 package rpc_test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
@@ -42,8 +43,9 @@ func (e EncodingExample) Method() string {
 
 // TestEncode tests the EncodeMessage function
 func TestEncode(t *testing.T) {
+	ctx := context.Background()
 	expected := "Content-Length: 100\r\n\r\n{\"jsonrpc\":\"2.0\",\"id\":1,\"result\":[{\"detail\":\"Test\",\"documentation\":\"Test\",\"kind\":2,\"label\":\"Test\"}]}"
-	actual, err := rpc.EncodeMessage(
+	actual, err := rpc.Encode(ctx,
 		lsp.TextDocumentCompletionResponse{
 			Response: lsp.Response{
 				RPC: lsp.RPCVersion,

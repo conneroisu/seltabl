@@ -11,7 +11,9 @@ import (
 	"go.lsp.dev/uri"
 )
 
-// UpdateDocument updates the state with the given document
+// UpdateDocument updates the state with the given document.
+//
+// Upon updating the document, it returns new diagnostics for the document.
 func UpdateDocument(
 	ctx context.Context,
 	notification *lsp.TextDocumentDidChangeNotification,
@@ -27,7 +29,10 @@ func UpdateDocument(
 			case <-ctx.Done():
 				return nil, fmt.Errorf("context cancelled: %w", ctx.Err())
 			default:
-				documents.Set(notification.Params.TextDocument.URI, notification.Params.ContentChanges[0].Text)
+				documents.Set(
+					notification.Params.TextDocument.URI,
+					notification.Params.ContentChanges[0].Text,
+				)
 				text, ok := documents.Get(notification.Params.TextDocument.URI)
 				if !ok {
 					return nil, fmt.Errorf("failed to get text")
@@ -41,7 +46,10 @@ func UpdateDocument(
 						err,
 					)
 				}
-				urls.Set(notification.Params.TextDocument.URI, comments.URLs)
+				urls.Set(
+					notification.Params.TextDocument.URI,
+					comments.URLs,
+				)
 				diags, err := GetDiagnosticsForFile(
 					ctx,
 					text,

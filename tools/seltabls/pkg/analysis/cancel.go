@@ -10,6 +10,6 @@ func CancelResponse(
 ) (response *lsp.CancelResponse, err error) {
 	return &lsp.CancelResponse{
 		RPC: lsp.RPCVersion,
-		ID:  request.Params.ID.(int),
+		ID:  int(request.Params.ID.(float64)),
 	}, nil
 }

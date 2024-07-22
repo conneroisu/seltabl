@@ -55,9 +55,21 @@ type MyStruct struct {
 		position protocol.Position
 		expected bool
 	}{
-		{"Position in Field1 tag", protocol.Position{Line: 4, Character: 20}, true},
-		{"Position in Field2 tag", protocol.Position{Line: 5, Character: 20}, true},
-		{"Position outside tags", protocol.Position{Line: 3, Character: 1}, false},
+		{
+			"Position in Field1 tag",
+			protocol.Position{Line: 4, Character: 20},
+			true,
+		},
+		{
+			"Position in Field2 tag",
+			protocol.Position{Line: 5, Character: 20},
+			true,
+		},
+		{
+			"Position outside tags",
+			protocol.Position{Line: 3, Character: 1},
+			false,
+		},
 	}
 
 	for _, tc := range testCases {
@@ -129,7 +141,11 @@ type MyStruct struct {
 			protocol.Position{Line: 4, Character: 1},
 			false,
 		},
-		{"Position out of range", protocol.Position{Line: 7, Character: 99}, false},
+		{
+			"Position out of range",
+			protocol.Position{Line: 7, Character: 99},
+			false,
+		},
 	}
 
 	for _, tc := range testCases {

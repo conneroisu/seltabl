@@ -5,11 +5,11 @@ package parsers
 
 import (
 	"fmt"
-	"go/parser"
 	"go/token"
 	"regexp"
 	"strings"
 
+	"github.com/charmbracelet/log"
 	"github.com/dave/dst"
 	"github.com/dave/dst/decorator"
 )
@@ -33,10 +33,13 @@ var (
 // ParseStructComments parses the comments from struct type declarations in the provided Go source code
 // and extracts @url and @ignore-elements into separate arrays.
 func ParseStructComments(src string) (StructCommentData, error) {
-	// Create a new file set for the source code
-	fset := token.NewFileSet()
+	defer func() {
+		if r := recover(); r != nil {
+			log.Errorf("parsers.ParseStructComments recovered: %v", r)
+		}
+	}()
 	// Parse the source code into an dst.File.
-	node, err := decorator.ParseFile(fset, "", src, parser.ParseComments)
+	node, err := decorator.Parse(src)
 	if err != nil {
 		return StructCommentData{}, err
 	}

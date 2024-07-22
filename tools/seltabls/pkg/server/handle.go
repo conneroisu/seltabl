@@ -123,7 +123,7 @@ func HandleMessage(
 				os.Exit(0)
 				return nil, nil
 			case methods.MethodNotificationTextDocumentDidSave:
-				var request lsp.DidSaveTextDocumentParamsNotification
+				var request lsp.DidSaveTextDocumentNotification
 				err = json.Unmarshal([]byte(msg.Content), &request)
 				if err != nil {
 					return nil, fmt.Errorf(
@@ -139,7 +139,9 @@ func HandleMessage(
 				if err != nil {
 					return nil, fmt.Errorf("failed to read file: %w", err)
 				}
-				state.Documents[string(request.Params.TextDocument.URI)] = string(read)
+				state.Documents[string(request.Params.TextDocument.URI)] = string(
+					read,
+				)
 				return nil, nil
 			case methods.NotificationTextDocumentDidClose:
 				var request lsp.DidCloseTextDocumentParamsNotification

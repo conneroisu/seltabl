@@ -6,8 +6,6 @@ import (
 	"sync"
 
 	"github.com/charmbracelet/log"
-	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp/methods"
-	"go.lsp.dev/protocol"
 )
 
 var (
@@ -73,25 +71,4 @@ func (c CCancelMap) String() string {
 		str += fmt.Sprintf("%d: %v\n", k, v)
 	}
 	return str
-}
-
-// CancelRequest is sent from the client to the server to cancel a request.
-type CancelRequest struct {
-	// CancelRequest embeds the Request struct
-	Request
-	// ID is the id of the request to be cancelled.
-	ID int `json:"id"`
-	// Params are the parameters for the request to be cancelled.
-	Params protocol.CancelParams `json:"params"`
-}
-
-// Method returns the method for the cancel request
-func (r CancelRequest) Method() methods.Method {
-	return methods.MethodCancelRequest
-}
-
-// CancelParams are the parameters for a cancel request.
-type CancelParams struct {
-	// ID is the id of the request to be cancelled.
-	ID int `json:"id"`
 }

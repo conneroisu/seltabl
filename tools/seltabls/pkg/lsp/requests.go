@@ -99,3 +99,31 @@ type InitializedParamsRequest struct {
 func (r InitializedParamsRequest) Method() methods.Method {
 	return methods.MethodNotificationInitialized
 }
+
+// CancelRequest is sent from the client to the server to cancel a request.
+type CancelRequest struct {
+	// CancelRequest embeds the Request struct
+	Request
+	// ID is the id of the request to be cancelled.
+	ID int `json:"id"`
+	// Params are the parameters for the request to be cancelled.
+	Params protocol.CancelParams `json:"params"`
+}
+
+// Method returns the method for the cancel request
+func (r CancelRequest) Method() methods.Method {
+	return methods.MethodCancelRequest
+}
+
+// ShutdownRequest is the request
+//
+// Microsoft LSP Docs:
+// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#shutdown
+type ShutdownRequest struct {
+	Request
+}
+
+// Method returns the method for the shutdown request
+func (r ShutdownRequest) Method() methods.Method {
+	return methods.MethodShutdown
+}

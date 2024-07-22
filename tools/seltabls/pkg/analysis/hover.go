@@ -24,7 +24,6 @@ func NewHoverResponse(
 			RPC: lsp.RPCVersion,
 			ID:  req.ID,
 		},
-		Result: lsp.HoverResult{},
 	}
 	text := s.Documents[string(req.Params.TextDocument.URI)]
 	urls := s.URLs[string(req.Params.TextDocument.URI)]

@@ -32,8 +32,3 @@ func NewDidCloseTextDocumentParamsNotification(
 		},
 	}
 }
-
-// DidCloseTextDocumentParamsNotificationParams is a struct for the did close text document params notification params
-type DidCloseTextDocumentParamsNotificationParams struct {
-	TextDocument TextDocumentIdentifier `json:"textDocument"`
-}

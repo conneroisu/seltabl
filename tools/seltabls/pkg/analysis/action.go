@@ -27,14 +27,19 @@ func TextDocumentCodeAction(
 			for row, line := range strings.Split(text, "\n") {
 				idx := strings.Index(line, "VS Code")
 				if idx >= 0 {
-					replaceChange := map[string][]lsp.TextEdit{}
-					replaceChange[string(req.Params.TextDocument.URI)] = []lsp.TextEdit{
+					replaceChange := map[string][]protocol.TextEdit{}
+					replaceChange[string(req.Params.TextDocument.URI)] = []protocol.TextEdit{
 						{
-							Range: lsp.LineRange(
-								row,
-								idx,
-								idx+len("VS Code"),
-							),
+							Range: protocol.Range{
+								Start: protocol.Position{
+									Line:      uint32(row),
+									Character: uint32(row),
+								},
+								End: protocol.Position{
+									Line:      uint32(row),
+									Character: uint32(row),
+								},
+							},
 							NewText: "Neovim",
 						},
 					}
@@ -58,14 +63,19 @@ func TextDocumentCodeAction(
 						Title: "Replace VS C*de with a superior editor",
 						Edit:  &protocol.WorkspaceEdit{Changes: a},
 					})
-					censorChange := map[string][]lsp.TextEdit{}
-					censorChange[string(req.Params.TextDocument.URI)] = []lsp.TextEdit{
+					censorChange := map[string][]protocol.TextEdit{}
+					censorChange[string(req.Params.TextDocument.URI)] = []protocol.TextEdit{
 						{
-							Range: lsp.LineRange(
-								row,
-								idx,
-								idx+len("VS Code"),
-							),
+							Range: protocol.Range{
+								Start: protocol.Position{
+									Line:      uint32(row),
+									Character: uint32(row),
+								},
+								End: protocol.Position{
+									Line:      uint32(row),
+									Character: uint32(row),
+								},
+							},
 							NewText: "VS C*de",
 						},
 					}

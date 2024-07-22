@@ -131,7 +131,7 @@ func HandleMessage(
 						err,
 					)
 				}
-				u, err := url.Parse(request.Params.TextDocument.URI)
+				u, err := url.Parse(string(request.Params.TextDocument.URI))
 				if err != nil {
 					return nil, fmt.Errorf("failed to parse uri: %w", err)
 				}
@@ -139,7 +139,7 @@ func HandleMessage(
 				if err != nil {
 					return nil, fmt.Errorf("failed to read file: %w", err)
 				}
-				state.Documents[request.Params.TextDocument.URI] = string(read)
+				state.Documents[string(request.Params.TextDocument.URI)] = string(read)
 				return nil, nil
 			case methods.NotificationTextDocumentDidClose:
 				var request lsp.DidCloseTextDocumentParamsNotification

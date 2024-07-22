@@ -10,4 +10,10 @@ const (
 	// Microsoft LSP Docs:
 	// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_didChange
 	NotificationMethodTextDocumentDidChange Method = "textDocument/didChange"
+
+	// NotificationMethodLogMessage is the log message notification method for the language server protocol.
+	//
+	// Microsoft LSP Docs:
+	// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#window_logMessage
+	NotificationMethodLogMessage Method = "window/logMessage"
 )

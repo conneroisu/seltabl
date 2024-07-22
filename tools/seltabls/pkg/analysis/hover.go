@@ -43,6 +43,9 @@ func NewHoverResponse(
 			if !ok {
 				return nil, nil
 			}
+			if len(urls) == 0 {
+				return nil, nil
+			}
 			doc, err := http.DefaultClientGet(urls[0])
 			if err != nil {
 				return nil, fmt.Errorf("failed to get the content of the url: %w", err)

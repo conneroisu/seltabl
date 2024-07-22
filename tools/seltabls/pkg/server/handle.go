@@ -15,6 +15,7 @@ import (
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp/methods"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/rpc"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/safe"
+	"go.lsp.dev/protocol"
 	"go.lsp.dev/uri"
 )
 
@@ -44,6 +45,7 @@ func HandleMessage(
 						err,
 					)
 				}
+				LogMessage(ctx, "initialize request", protocol.MessageTypeInfo)
 				return lsp.NewInitializeResponse(ctx, &request)
 			case methods.MethodRequestTextDocumentDidOpen:
 				var request lsp.NotificationDidOpenTextDocument

@@ -15,6 +15,7 @@ import (
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp/methods"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/rpc"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/safe"
+	"go.lsp.dev/protocol"
 	"go.lsp.dev/uri"
 )
 
@@ -44,6 +45,7 @@ func HandleMessage(
 						err,
 					)
 				}
+				LogMessage(ctx, "initialize request", protocol.MessageTypeInfo)
 				return lsp.NewInitializeResponse(ctx, &request)
 			case methods.MethodRequestTextDocumentDidOpen:
 				var request lsp.NotificationDidOpenTextDocument
@@ -127,11 +129,11 @@ func HandleMessage(
 					)
 				}
 				log.Debugf("canceling request: %d", request.Params.ID)
-				c, ok := lsp.CancelMap.Get(request.Params.ID.(int))
+				c, ok := lsp.CancelMap.Get(int(request.Params.ID.(float64)))
 				if !ok {
 					return nil, fmt.Errorf("failed to get cancel func")
 				}
-				c()
+				(*c)()
 				return analysis.CancelResponse(request)
 			case methods.MethodNotificationInitialized:
 				var request lsp.InitializedParamsRequest

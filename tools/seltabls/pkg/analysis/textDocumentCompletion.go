@@ -46,7 +46,7 @@ func CreateTextDocumentCompletion(
 		if !ok {
 			return nil, nil
 		}
-		check, err := CheckPosition(request.Params.Position, content)
+		check, err := CheckPosition(request.Params.Position, *content)
 		if err != nil {
 			return nil, fmt.Errorf("failed to check position: %w", err)
 		}
@@ -64,7 +64,7 @@ func CreateTextDocumentCompletion(
 				)
 			}
 		case parsers.StateInTagValue:
-			for _, selector := range selectors {
+			for _, selector := range *selectors {
 				response.Result = append(
 					response.Result,
 					protocol.CompletionItem{
@@ -80,7 +80,7 @@ func CreateTextDocumentCompletion(
 				)
 			}
 		case parsers.StateAfterColon:
-			for _, selector := range selectors {
+			for _, selector := range *selectors {
 				response.Result = append(
 					response.Result,
 					protocol.CompletionItem{

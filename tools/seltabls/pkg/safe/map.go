@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"strings"
 	"sync"
+
+	"github.com/charmbracelet/log"
 )
 
 // Map is a thread-safe map.
@@ -14,21 +16,24 @@ type Map[K comparable, V any] struct {
 
 // NewSafeMap creates a new SafeMap.
 func NewSafeMap[K comparable, V any]() *Map[K, V] {
+	log.Debugf("safe.NewSafeMap called")
 	return &Map[K, V]{
 		m: make(map[K]V),
 	}
 }
 
 // Get returns the value for the given key.
-func (sm *Map[K, V]) Get(key K) (V, bool) {
+func (sm *Map[K, V]) Get(key K) (*V, bool) {
+	log.Debugf("safe.Map.Get called with key: %v, state: %v", key, sm.String())
 	sm.mu.RLock()
 	defer sm.mu.RUnlock()
 	val, ok := sm.m[key]
-	return val, ok
+	return &val, ok
 }
 
 // Set sets the value for the given key.
 func (sm *Map[K, V]) Set(key K, value V) {
+	log.Debugf("safe.Map.Set called with key: %v", key)
 	sm.mu.Lock()
 	defer sm.mu.Unlock()
 	sm.m[key] = value
@@ -36,6 +41,7 @@ func (sm *Map[K, V]) Set(key K, value V) {
 
 // Delete deletes the value for the given key.
 func (sm *Map[K, V]) Delete(key K) {
+	log.Debugf("safe.Map.Delete called with key: %v", key)
 	sm.mu.Lock()
 	defer sm.mu.Unlock()
 	delete(sm.m, key)
@@ -43,6 +49,7 @@ func (sm *Map[K, V]) Delete(key K) {
 
 // Len returns the length of the map.
 func (sm *Map[K, V]) Len() int {
+	log.Debugf("safe.Map.Len called")
 	sm.mu.RLock()
 	defer sm.mu.RUnlock()
 	return len(sm.m)
@@ -50,6 +57,7 @@ func (sm *Map[K, V]) Len() int {
 
 // Clear clears the map.
 func (sm *Map[K, V]) Clear() {
+	log.Debugf("safe.Map.Clear called")
 	sm.mu.Lock()
 	defer sm.mu.Unlock()
 	sm.m = make(map[K]V)
@@ -61,7 +69,18 @@ func (sm *Map[K, V]) String() string {
 	defer sm.mu.RUnlock()
 	var b strings.Builder
 	for k, v := range sm.m {
-		b.WriteString(fmt.Sprintf("%v: %v\n", k, v))
+		b.WriteString("{")
+		value := fmt.Sprintf("%v", v)
+		value = limitString(value, 100)
+		b.WriteString(fmt.Sprintf("%v: %v\n", k, value))
+		b.WriteString("}")
 	}
 	return b.String()
+}
+
+func limitString(s string, limit int) string {
+	if len(s) > limit {
+		return s[:limit] + "..."
+	}
+	return s
 }

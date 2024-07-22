@@ -101,9 +101,12 @@ func NewInitializeResponse(
 								":", "\"",
 							},
 						},
-						HoverProvider:      true,
-						DefinitionProvider: false,
-						CodeActionProvider: false,
+						HoverProvider:          true,
+						DefinitionProvider:     false,
+						CodeActionProvider:     false,
+						RenameProvider:         false,
+						FoldingRangeProvider:   false,
+						TypeDefinitionProvider: false,
 					},
 					ServerInfo: &protocol.ServerInfo{
 						Name:    "seltabl_lsp",
@@ -143,4 +146,15 @@ func NewShutdownResponse(
 		Result: nil,
 		Error:  &err,
 	}, nil
+}
+
+// LogMessageNotification is a notification for a log message.
+type LogMessageNotification struct {
+	Notification
+	Params protocol.LogMessageParams `json:"params"`
+}
+
+// Method returns the method for the log message notification.
+func (r LogMessageNotification) Method() methods.Method {
+	return methods.NotificationMethodLogMessage
 }

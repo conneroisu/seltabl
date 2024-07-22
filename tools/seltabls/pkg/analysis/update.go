@@ -44,7 +44,7 @@ func UpdateDocument(
 				urls.Set(notification.Params.TextDocument.URI, comments.URLs)
 				diags, err := GetDiagnosticsForFile(
 					ctx,
-					&text,
+					text,
 					comments,
 				)
 				if err != nil {

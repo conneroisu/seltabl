@@ -37,7 +37,7 @@ func NewLSPCmd(
 	handle LSPHandler,
 	db *data.Database[master.Queries],
 ) *cobra.Command {
-	cmd := &cobra.Command{
+	return &cobra.Command{
 		Use:   "lsp", // the name of the command
 		Short: "A command line tooling for package that parsing html tables and elements into structs",
 		Long: `
@@ -59,18 +59,19 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 			scanner.Split(rpc.Split)
 			lspCtx, lspCancel = context.WithCancel(ctx)
 			defer lspCancel()
-			eg, hCtx := errgroup.WithContext(lspCtx)
+			eg, lspCtx = errgroup.WithContext(lspCtx)
 			for scanner.Scan() {
 				eg.Go(func() error {
 					decoded, err := rpc.DecodeMessage(scanner.Bytes())
 					if err != nil {
 						return fmt.Errorf("failed to decode message: %w", err)
 					}
-					hCtx, cancel := context.WithCancel(hCtx)
+					hCtx, cancel := context.WithCancel(lspCtx)
 					lsp.CancelMap.Set(decoded.ID, cancel)
 					defer lsp.CancelMap.Delete(decoded.ID)
 					log.Debugf(
-						"received message (%s): %s",
+						"received message [%s] (%s): %s",
+						decoded.Header,
 						decoded.Method,
 						decoded.Content,
 					)
@@ -112,7 +113,6 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 			return nil
 		},
 	}
-	return cmd
 }
 
 // isNull checks if the given interface is nil or points to a nil value
@@ -120,7 +120,6 @@ func isNull(i interface{}) bool {
 	if i == nil {
 		return true
 	}
-
 	// Use reflect.ValueOf only if the kind is valid for checking nil
 	v := reflect.ValueOf(i)
 	switch v.Kind() {

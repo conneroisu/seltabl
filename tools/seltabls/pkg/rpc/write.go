@@ -17,7 +17,7 @@ func WriteResponse(
 ) error {
 	go func() {
 		log.Debugf(
-			"sent message [%d] (%s): %s",
+			"wrote msg [%d] (%s): %s",
 			len(marshal(msg)),
 			msg.Method(),
 			marshal(msg),

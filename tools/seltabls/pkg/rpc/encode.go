@@ -1,7 +1,6 @@
 package rpc
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 
@@ -25,14 +24,9 @@ func EncodeMessage(msg MethodActor) (string, error) {
 	if err != nil {
 		return "", err
 	}
-	var buf bytes.Buffer
-	n, err := buf.WriteString(string(content))
-	if err != nil {
-		return "", err
-	}
 	return fmt.Sprintf(
 		"Content-Length: %d\r\n\r\n%s",
-		n,
-		buf.String(),
+		len(content),
+		content,
 	), nil
 }

@@ -40,6 +40,11 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 		return nil, fmt.Errorf("failed to create log file: %w", err)
 	}
 	log.SetOutput(logFile)
+	log.SetLevel(log.DebugLevel)
+	log.Infof("Starting seltabls")
+	log.SetReportCaller(true)
+	log.SetPrefix("seltabls")
+	log.SetReportTimestamp(false)
 	db, err := data.NewDb(
 		ctx,
 		master.New,

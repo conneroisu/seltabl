@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"net/url"
 	"os"
+	"strings"
 
 	"github.com/charmbracelet/log"
 	"github.com/conneroisu/seltabl/tools/seltabls/data"
@@ -52,6 +53,12 @@ func HandleMessage(
 					"decode (textDocument/didOpen) request failed: %w",
 					err,
 				)
+			}
+			if !strings.HasSuffix(
+				request.Params.TextDocument.URI.Filename(),
+				".go",
+			) {
+				return nil, nil
 			}
 			return analysis.OpenDocument(
 				ctx,

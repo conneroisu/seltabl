@@ -21,13 +21,13 @@ import (
 func CreateTextDocumentCompletion(
 	ctx context.Context,
 	s *State,
-	request lsp.CompletionRequest,
-) (response *lsp.CompletionResponse, err error) {
+	request lsp.TextDocumentCompletionRequest,
+) (response *lsp.TextDocumentCompletionResponse, err error) {
 	select {
 	case <-ctx.Done():
 		return nil, fmt.Errorf("context cancelled: %w", ctx.Err())
 	default:
-		response = &lsp.CompletionResponse{
+		response = &lsp.TextDocumentCompletionResponse{
 			Response: lsp.Response{
 				RPC: lsp.RPCVersion,
 				ID:  request.ID,

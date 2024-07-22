@@ -5,11 +5,11 @@ import (
 	"go.lsp.dev/protocol"
 )
 
-// CompletionRequest is a request for a completion to the language server
+// TextDocumentCompletionRequest is a request for a completion to the language server
 //
 // Microsoft LSP Docs:
 // https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_completion
-type CompletionRequest struct {
+type TextDocumentCompletionRequest struct {
 	// CompletionRequest embeds the Request struct
 	Request
 	// Params are the parameters for the completion request
@@ -17,15 +17,15 @@ type CompletionRequest struct {
 }
 
 // Method returns the method for the completion request
-func (r CompletionRequest) Method() methods.Method {
+func (r TextDocumentCompletionRequest) Method() methods.Method {
 	return methods.MethodRequestTextDocumentCompletion
 }
 
-// CompletionResponse is a response for a completion to the language server
+// TextDocumentCompletionResponse is a response for a completion to the language server
 //
 // Microsoft LSP Docs:
 // https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_completion
-type CompletionResponse struct {
+type TextDocumentCompletionResponse struct {
 	// CompletionResponse embeds the Response struct
 	Response
 	// Result is the result of the completion request
@@ -33,6 +33,6 @@ type CompletionResponse struct {
 }
 
 // Method returns the method for the completion response
-func (r CompletionResponse) Method() methods.Method {
+func (r TextDocumentCompletionResponse) Method() methods.Method {
 	return methods.MethodRequestTextDocumentCompletion
 }

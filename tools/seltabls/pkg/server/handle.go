@@ -49,7 +49,7 @@ func HandleMessage(
 				}
 				return analysis.OpenDocument(ctx, state, request)
 			case methods.MethodRequestTextDocumentCompletion:
-				var request lsp.CompletionRequest
+				var request lsp.TextDocumentCompletionRequest
 				err = json.Unmarshal(msg.Content, &request)
 				if err != nil {
 					return nil, fmt.Errorf(

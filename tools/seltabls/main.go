@@ -18,7 +18,11 @@ func main() {
 	ctx = context.Background()
 	err = cmd.Execute(ctx)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "failed to execute command: %s\n", err)
+		fmt.Fprintf(
+			os.Stderr,
+			"failed to execute command: %s\n",
+			err,
+		)
 		println("failed to execute command: " + err.Error())
 		panic(err)
 	}
@@ -30,7 +34,7 @@ func main() {
 type TableStruct struct {
 	A string `json:"a" hSel:"html>body>div.footer>div>span>a[href]"             dSel:"html>body>div.footer>div>span>a[href]" ctl:"$text"`
 	B string `json:"b" hSel:"html>body>div.footer>div>span>a[href]"             dSel:"html>body>div.footer>div>span>a[href]" ctl:"$text"`
-	C string `json:"c" hSel:"html>body>div.contentArea>table>tbody>tr.row_odd" dSel:""                                      ctl:"$text"`
+	C string `json:"c" hSel:"" dSel:"html>body>div.footer>div>span>a[href]" ctl:"$text"`
 	D string `json:"d" hSel:""                                                  dSel:""                                      ctl:"$text"`
 	E string `json:"e" hSel:""                                                  dSel:"html"                                  ctl:"$text"`
 }

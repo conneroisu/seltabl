@@ -21,3 +21,16 @@ type NotificationDidOpenTextDocument struct {
 func (r NotificationDidOpenTextDocument) Method() methods.Method {
 	return methods.MethodRequestTextDocumentDidOpen
 }
+
+// PublishDiagnosticsNotification is the notification for publishing diagnostics.
+type PublishDiagnosticsNotification struct {
+	// PublishDiagnosticsNotification embeeds the notification struct.
+	Notification
+	// Params are the parameters for the publish diagnostics notification.
+	Params protocol.PublishDiagnosticsParams `json:"params"`
+}
+
+// Method returns the method for the publish diagnostics notification
+func (r PublishDiagnosticsNotification) Method() methods.Method {
+	return methods.NotificationPublishDiagnostics
+}

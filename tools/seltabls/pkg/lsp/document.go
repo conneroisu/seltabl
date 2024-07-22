@@ -6,21 +6,6 @@ import (
 	"go.lsp.dev/protocol"
 )
 
-// TextDocumentItem is a text document.
-type TextDocumentItem struct {
-	// URI is the uri for the text document.
-	URI string `json:"uri"`
-
-	// LanguageID is the language id for the text document.
-	LanguageID string `json:"languageId"`
-
-	// Version is the version number of a given text document.
-	Version int `json:"version"`
-
-	// Text is the text of the text document.
-	Text string `json:"text"`
-}
-
 // TextDocumentIdentifier is a unique identifier for a text document.
 type TextDocumentIdentifier struct {
 	// URI is the uri for the text document.

@@ -1,4 +1,4 @@
-package server
+package http
 
 import (
 	"fmt"
@@ -24,5 +24,4 @@ func OpenBrowser(url string) {
 	if err != nil {
 		log.Fatal(err)
 	}
-
 }

@@ -23,7 +23,7 @@ const (
 
 // General Request Methods
 const (
-	// MethodCancelRequest is the cancel request method for the LSP
+	// MethodCancelRequest is the cancel request method for the language server protocol.
 	//
 	// Microsoft LSP Docs:
 	// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#cancelRequest

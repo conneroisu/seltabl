@@ -33,10 +33,6 @@ func UpdateDocument(
 					notification.Params.TextDocument.URI,
 					notification.Params.ContentChanges[0].Text,
 				)
-				text, ok := documents.Get(notification.Params.TextDocument.URI)
-				if !ok {
-					return nil, fmt.Errorf("failed to get text")
-				}
 				comments, err := parsers.ParseStructComments(
 					notification.Params.ContentChanges[0].Text,
 				)
@@ -52,8 +48,8 @@ func UpdateDocument(
 				)
 				diags, err := GetDiagnosticsForFile(
 					ctx,
-					text,
-					comments,
+					&notification.Params.ContentChanges[0].Text,
+					&comments,
 				)
 				if err != nil {
 					return nil, fmt.Errorf(

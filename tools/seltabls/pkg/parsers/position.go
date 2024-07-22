@@ -134,8 +134,11 @@ func IsPositionInTag(
 }
 
 // PositionBeforeValue returns the value of the position in a file
-func PositionBeforeValue(pos protocol.Position, text string) byte {
-	split := strings.Split(text, "\n")
+func PositionBeforeValue(
+	pos protocol.Position,
+	text *string,
+) byte {
+	split := strings.Split(*text, "\n")
 	if int(pos.Line) > len(split) {
 		return '\n'
 	}

@@ -4,6 +4,11 @@ import (
 	"context"
 	"fmt"
 	"io"
+	"sync"
+)
+
+var (
+	mu sync.Mutex
 )
 
 // WriteResponse writes a message to the writer
@@ -12,6 +17,8 @@ func WriteResponse(
 	writer *io.Writer,
 	msg MethodActor,
 ) error {
+	mu.Lock()
+	defer mu.Unlock()
 	for {
 		select {
 		case <-ctx.Done():

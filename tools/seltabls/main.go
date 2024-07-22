@@ -13,10 +13,8 @@ import (
 // main is the entry point for the command line tool, a
 // language server for the seltabl package
 func main() {
-	var ctx context.Context
-	var err error
-	ctx = context.Background()
-	err = cmd.Execute(ctx)
+	ctx := context.Background()
+	err := cmd.Execute(ctx)
 	if err != nil {
 		fmt.Fprintf(
 			os.Stderr,
@@ -32,9 +30,9 @@ func main() {
 // @url: https://stats.ncaa.org/game_upload/team_codes
 // @ignore-elements: script, style, link, img, footer, header
 type TableStruct struct {
-	A string `json:"a" hSel:"html>body>div.footer>div>span>a[href]"             dSel:"html>body>div.footer>div>span>a[href]" ctl:"$text"`
-	B string `json:"b" hSel:"html>body>div.footer>div>span>a[href]"             dSel:"html>body>div.footer>div>span>a[href]" ctl:"$text"`
-	C string `json:"c" hSel:"html>body>div.contentArea>table>tbody>tr.row_odd" dSel:"" ctl:"$text"`
-	D string `json:"d" hSel:""                                                  dSel:""                                      ctl:"$text"`
-	E string `json:"e" hSel:""                                                  dSel:"html"                                  ctl:"$text"`
+	A string `hSel:"html>body>div.footer>div>span>a[href]" dSel:"html>body>div.footer>div>span>a[href]"    ctl:"$text"`
+	B string `hSel:"html>body>div.footer>div>span>a[href]" dSel:"html>body>div>table>tbody>tr.row_odd"     ctl:"$text"`
+	C string `hSel:"html>body>div>table>tbody>tr.grey_heading>td" dSel:"html>body>div" ctl:"$text"`
+	D string `hSel:"html>body>div.footer>div>span>a[href]" dSel:"html>body>div.footer>div>span>a[href]"    ctl:"$text"`
+	E string `hSel:"html>body>div.footer>div>span>a[href]" dSel:"html>body>div.footer>div>span>a[href]"    ctl:"$text"`
 }

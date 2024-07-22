@@ -15,7 +15,7 @@ import (
 func GetDiagnosticsForFile(
 	ctx context.Context,
 	text *string,
-	data parsers.StructCommentData,
+	data *parsers.StructCommentData,
 ) ([]protocol.Diagnostic, error) {
 	for {
 		select {

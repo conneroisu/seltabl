@@ -46,7 +46,10 @@ func CreateTextDocumentCompletion(
 		if !ok {
 			return nil, nil
 		}
-		check, err := CheckPosition(request.Params.Position, *content)
+		check, err := CheckPosition(
+			request.Params.Position,
+			content,
+		)
 		if err != nil {
 			return nil, fmt.Errorf("failed to check position: %w", err)
 		}
@@ -59,7 +62,7 @@ func CreateTextDocumentCompletion(
 						Label:         key.Label,
 						Detail:        key.Detail,
 						Documentation: key.Documentation,
-						Kind:          protocol.CompletionItemKindEnum,
+						Kind:          protocol.CompletionItemKindField,
 					},
 				)
 			}
@@ -72,10 +75,14 @@ func CreateTextDocumentCompletion(
 						Detail: fmt.Sprintf(
 							"Occurances: '%d' \nContext: \n%s",
 							selector.Occurances,
-							selector.Context,
+							textLimit(selector.Context, 200),
 						),
-						Documentation: "seltabls",
-						Kind:          protocol.CompletionItemKindReference,
+						CommitCharacters: []string{":", ">", "#"},
+						Documentation:    "seltabls",
+						Deprecated:       false,
+						Kind:             protocol.CompletionItemKindValue,
+						InsertTextFormat: protocol.InsertTextFormatPlainText,
+						InsertTextMode:   protocol.InsertTextModeAsIs,
 					},
 				)
 			}
@@ -84,14 +91,21 @@ func CreateTextDocumentCompletion(
 				response.Result = append(
 					response.Result,
 					protocol.CompletionItem{
-						Label: "\"" + selector.Value + "\"",
+						AdditionalTextEdits: []protocol.TextEdit{},
+						Deprecated:          false,
 						Detail: fmt.Sprintf(
-							"Occurances: '%d' \nContext: \n```html\n%s```",
+							"Occurances: '%d' \nContext: \n%s",
 							selector.Occurances,
-							selector.Context,
+							textLimit(selector.Context, 200),
 						),
-						Documentation: "seltabls",
-						Kind:          protocol.CompletionItemKindReference,
+						Documentation:    "seltabls",
+						InsertTextFormat: protocol.InsertTextFormatPlainText,
+						InsertTextMode:   protocol.InsertTextModeAsIs,
+						Kind:             protocol.CompletionItemKindValue,
+						Label: fmt.Sprintf(
+							`"%s"`,
+							selector.Value,
+						),
 					},
 				)
 			}
@@ -105,7 +119,7 @@ func CreateTextDocumentCompletion(
 // CheckPosition checks if the position is within the struct tag
 func CheckPosition(
 	position protocol.Position,
-	text string,
+	text *string,
 ) (res parsers.State, err error) {
 	var inValue bool
 	// Create a new token file set
@@ -115,7 +129,7 @@ func CheckPosition(
 	node, err := parser.ParseFile(
 		fset,
 		"",
-		bytes.NewBufferString(text),
+		bytes.NewBufferString(*text),
 		parser.Trace,
 	)
 	if err != nil {
@@ -151,4 +165,12 @@ func CheckPosition(
 		}
 	}
 	return parsers.StateInvalid, nil
+}
+
+// textLimit limits the length of the given text to the given limit.
+func textLimit(text string, limit int) string {
+	if len(text) > limit {
+		return text[:limit] + "..."
+	}
+	return text
 }

@@ -30,18 +30,18 @@ func Encode(
 	case <-ctx.Done():
 		return "", fmt.Errorf("context cancelled: %w", ctx.Err())
 	default:
-		var err error
-		var buffer *bytes.Buffer
-		var encoder *json.Encoder
-		buffer = &bytes.Buffer{}
-		encoder = json.NewEncoder(buffer)
+		buffer := &bytes.Buffer{}
+		encoder := json.NewEncoder(buffer)
 		encoder.SetEscapeHTML(false)
-		err = encoder.Encode(msg)
+		err := encoder.Encode(msg)
 		if err != nil {
 			return "", err
 		}
-		var body []byte
-		body = bytes.TrimSuffix(buffer.Bytes(), []byte("\n"))
+		body := buffer.Bytes()
+		// body := bytes.TrimSuffix(
+		//         buffer.Bytes(),
+		//         []byte("\n"),
+		// )
 		log.Debugf(
 			"wrote msg [%d] (%s): %s",
 			len(body),

@@ -7,6 +7,7 @@ import (
 
 	"github.com/charmbracelet/log"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp/methods"
+	"go.lsp.dev/protocol"
 )
 
 var (
@@ -81,7 +82,7 @@ type CancelRequest struct {
 	// ID is the id of the request to be cancelled.
 	ID int `json:"id"`
 	// Params are the parameters for the request to be cancelled.
-	Params CancelParams `json:"params"`
+	Params protocol.CancelParams `json:"params"`
 }
 
 // Method returns the method for the cancel request

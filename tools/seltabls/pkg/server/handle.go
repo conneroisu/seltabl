@@ -107,7 +107,7 @@ func HandleMessage(
 					)
 				}
 				log.Debugf("canceling request: %d", request.Params.ID)
-				lsp.CancelMap.Cancel(request.Params.ID)
+				lsp.CancelMap.Cancel(request.Params.ID.(int))
 				return state.CancelRequest(request)
 			case methods.MethodNotificationInitialized:
 				var request lsp.InitializedParamsRequest

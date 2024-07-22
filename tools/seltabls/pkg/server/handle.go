@@ -127,7 +127,7 @@ func HandleMessage(
 					)
 				}
 				log.Debugf("canceling request: %d", request.Params.ID)
-				c, ok := lsp.CancelMap.Get(request.Params.ID.(int))
+				c, ok := lsp.CancelMap.Get(int(request.Params.ID.(float64)))
 				if !ok {
 					return nil, fmt.Errorf("failed to get cancel func")
 				}

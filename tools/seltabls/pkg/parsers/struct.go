@@ -309,9 +309,7 @@ func ParseTags(tag string, start, end, line int) (*Tags, error) {
 		}
 		// Scan to colon. A space, a quote or a control character is a syntax
 		// error. Strictly speaking, control chars include the range [0x7f,
-		// 0x9f], not just [0x00, 0x1f], but in practice, we ignore the
-		// multi-byte control characters as it is simpler to inspect the tag's
-		// bytes than the tag's runes.
+		// 0x9f], not just [0x00, 0x1f].
 		i = 0
 		for i < len(tag) && tag[i] > ' ' && tag[i] != ':' && tag[i] != '"' && tag[i] != 0x7f {
 			i++

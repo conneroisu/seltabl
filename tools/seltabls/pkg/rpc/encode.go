@@ -1,6 +1,7 @@
 package rpc
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 
@@ -20,13 +21,20 @@ type MethodActor interface {
 //
 // It also returns an error if there is an error while encoding the message.
 func EncodeMessage(msg MethodActor) (string, error) {
-	content, err := json.Marshal(msg)
+	var err error
+	var buffer *bytes.Buffer
+	var encoder *json.Encoder
+	buffer = &bytes.Buffer{}
+	encoder = json.NewEncoder(buffer)
+	encoder.SetEscapeHTML(false)
+	encoder.SetIndent("", "  ")
+	err = encoder.Encode(msg)
 	if err != nil {
 		return "", err
 	}
 	return fmt.Sprintf(
 		"Content-Length: %d\r\n\r\n%s",
-		len(content),
-		content,
+		buffer.Len(),
+		buffer.String(),
 	), nil
 }

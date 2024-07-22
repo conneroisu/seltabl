@@ -16,7 +16,11 @@ import (
 // NewVetCmd returns the vet command which evaluates code for common errors or invalid selectors.
 //
 // Similar to go vet, but for seltabl defined structs.
-func NewVetCmd(ctx context.Context, w io.Writer, r io.Reader) *cobra.Command {
+func NewVetCmd(
+	ctx context.Context,
+	w io.Writer,
+	r io.Reader,
+) *cobra.Command {
 	return &cobra.Command{
 		Use:   "vet",
 		Short: "Evaluate code for common errors or invalid selectors",

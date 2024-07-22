@@ -4,8 +4,8 @@ import (
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
 )
 
-// CancelRequest cancels a request
-func (s *State) CancelRequest(
+// CancelResponse cancels a request
+func CancelResponse(
 	request lsp.CancelRequest,
 ) (response *lsp.CancelResponse, err error) {
 	return &lsp.CancelResponse{

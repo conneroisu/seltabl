@@ -7,9 +7,12 @@ import (
 	"go/parser"
 	"go/token"
 
+	"github.com/conneroisu/seltabl/tools/seltabls/data/master"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/parsers"
+	"github.com/conneroisu/seltabl/tools/seltabls/pkg/safe"
 	"go.lsp.dev/protocol"
+	"go.lsp.dev/uri"
 )
 
 // CreateTextDocumentCompletion returns the completions for a given text document.
@@ -20,8 +23,9 @@ import (
 // if the position is within the struct tag value.
 func CreateTextDocumentCompletion(
 	ctx context.Context,
-	s *State,
 	request lsp.TextDocumentCompletionRequest,
+	documents *safe.Map[uri.URI, string],
+	selectors *safe.Map[uri.URI, []master.Selector],
 ) (response *lsp.TextDocumentCompletionResponse, err error) {
 	select {
 	case <-ctx.Done():
@@ -34,9 +38,15 @@ func CreateTextDocumentCompletion(
 			},
 			Result: []protocol.CompletionItem{},
 		}
-		content := s.Documents[string(request.Params.TextDocument.URI)]
-		selectors := s.Selectors[string(request.Params.TextDocument.URI)]
-		check, err := s.CheckPosition(request.Params.Position, content)
+		content, ok := documents.Get(request.Params.TextDocument.URI)
+		if !ok {
+			return nil, nil
+		}
+		selectors, ok := selectors.Get(request.Params.TextDocument.URI)
+		if !ok {
+			return nil, nil
+		}
+		check, err := CheckPosition(request.Params.Position, content)
 		if err != nil {
 			return nil, fmt.Errorf("failed to check position: %w", err)
 		}
@@ -93,7 +103,7 @@ func CreateTextDocumentCompletion(
 }
 
 // CheckPosition checks if the position is within the struct tag
-func (s *State) CheckPosition(
+func CheckPosition(
 	position protocol.Position,
 	text string,
 ) (res parsers.State, err error) {

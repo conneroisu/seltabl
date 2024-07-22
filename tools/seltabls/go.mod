@@ -12,6 +12,7 @@ require (
 	github.com/stretchr/testify v1.9.0
 	github.com/yosssi/gohtml v0.0.0-20201013000340-ee4748c638f4
 	go.lsp.dev/protocol v0.12.0
+	go.lsp.dev/uri v0.3.0
 	golang.org/x/sync v0.7.0
 	modernc.org/sqlite v1.30.1
 )
@@ -42,7 +43,6 @@ require (
 	github.com/spf13/pflag v1.0.5 // indirect
 	go.lsp.dev/jsonrpc2 v0.10.0 // indirect
 	go.lsp.dev/pkg v0.0.0-20210717090340-384b27a52fb2 // indirect
-	go.lsp.dev/uri v0.3.0 // indirect
 	go.uber.org/atomic v1.9.0 // indirect
 	go.uber.org/multierr v1.9.0 // indirect
 	go.uber.org/zap v1.21.0 // indirect

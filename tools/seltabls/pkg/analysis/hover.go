@@ -26,8 +26,8 @@ func NewHoverResponse(
 		},
 		Result: lsp.HoverResult{},
 	}
-	text := s.Documents[req.Params.TextDocument.URI]
-	urls := s.URLs[req.Params.TextDocument.URI]
+	text := s.Documents[string(req.Params.TextDocument.URI)]
+	urls := s.URLs[string(req.Params.TextDocument.URI)]
 	doc, err := http.DefaultClientGet(urls[0])
 	if err != nil {
 		return nil, fmt.Errorf("failed to get the content of the url: %w", err)

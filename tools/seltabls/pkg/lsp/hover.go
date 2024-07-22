@@ -1,6 +1,9 @@
 package lsp
 
-import "github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp/methods"
+import (
+	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp/methods"
+	"go.lsp.dev/protocol"
+)
 
 // HoverRequest is sent from the client to the server to request hover
 // information.
@@ -11,7 +14,7 @@ type HoverRequest struct {
 	// HoverRequest embeeds the request struct.
 	Request
 	// Params are the parameters for the hover request.
-	Params HoverParams `json:"params"`
+	Params protocol.HoverParams `json:"params"`
 }
 
 // Method returns the method for the hover request

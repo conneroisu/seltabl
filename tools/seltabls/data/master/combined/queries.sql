@@ -82,6 +82,15 @@ DELETE FROM
 WHERE
     id = ?;
 
+-- name: GetHTMLByURL :one
+SELECT
+    htmls.*
+FROM
+    htmls
+    JOIN urls ON urls.html_id = htmls.id
+WHERE
+    urls.value = ?;
+
 /******************************************************************************/
 
 /*

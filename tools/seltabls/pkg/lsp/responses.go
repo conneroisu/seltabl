@@ -102,7 +102,7 @@ func NewInitializeResponse(
 						CompletionProvider: &protocol.CompletionOptions{
 							TriggerCharacters: []string{":"},
 						},
-						HoverProvider:                    false,
+						HoverProvider:                    true,
 						SignatureHelpProvider:            &protocol.SignatureHelpOptions{},
 						DeclarationProvider:              false,
 						DefinitionProvider:               false,

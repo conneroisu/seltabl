@@ -95,6 +95,7 @@ func HandleMessage(
 			return analysis.NewHoverResponse(
 				ctx,
 				request,
+				db,
 				documents,
 				urls,
 			)

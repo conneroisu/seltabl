@@ -229,6 +229,41 @@ func (q *Queries) GetFileByURI(ctx context.Context, arg GetFileByURIParams) (*Fi
 	return &i, err
 }
 
+const getHTMLByURL = `-- name: GetHTMLByURL :one
+SELECT
+    htmls.id, htmls.value, htmls.updated_at, htmls.created_at
+FROM
+    htmls
+    JOIN urls ON urls.html_id = htmls.id
+WHERE
+    urls.value = ?
+`
+
+type GetHTMLByURLParams struct {
+	Value string `db:"value" json:"value"`
+}
+
+// GetHTMLByURL
+//
+//	SELECT
+//	    htmls.id, htmls.value, htmls.updated_at, htmls.created_at
+//	FROM
+//	    htmls
+//	    JOIN urls ON urls.html_id = htmls.id
+//	WHERE
+//	    urls.value = ?
+func (q *Queries) GetHTMLByURL(ctx context.Context, arg GetHTMLByURLParams) (*Html, error) {
+	row := q.db.QueryRowContext(ctx, getHTMLByURL, arg.Value)
+	var i Html
+	err := row.Scan(
+		&i.ID,
+		&i.Value,
+		&i.UpdatedAt,
+		&i.CreatedAt,
+	)
+	return &i, err
+}
+
 const getLineByID = `-- name: GetLineByID :one
 SELECT
     id, value, number

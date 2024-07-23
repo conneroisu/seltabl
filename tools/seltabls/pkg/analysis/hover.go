@@ -6,9 +6,12 @@ import (
 	"fmt"
 	"go/parser"
 	"go/token"
+	"strings"
 
 	"github.com/PuerkitoBio/goquery"
-	"github.com/conneroisu/seltabl/tools/seltabls/pkg/http"
+	"github.com/charmbracelet/log"
+	"github.com/conneroisu/seltabl/tools/seltabls/data"
+	"github.com/conneroisu/seltabl/tools/seltabls/data/master"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/parsers"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/safe"
@@ -21,6 +24,7 @@ import (
 func NewHoverResponse(
 	ctx context.Context,
 	req lsp.HoverRequest,
+	db *data.Database[master.Queries],
 	documents *safe.Map[uri.URI, string],
 	urls *safe.Map[uri.URI, []string],
 ) (response *lsp.HoverResponse, err error) {
@@ -45,14 +49,13 @@ func NewHoverResponse(
 		if len(*urls) == 0 {
 			return nil, nil
 		}
-		doc, err := http.DefaultClientGet((*urls)[0])
+		h, err := db.Queries.GetHTMLByURL(ctx, master.GetHTMLByURLParams{Value: (*urls)[0]})
 		if err != nil {
-			return nil, fmt.Errorf(
-				"failed to get the content of the url: %w",
-				err,
-			)
+			return nil, fmt.Errorf("failed to get html: %w", err)
 		}
+		doc, err := goquery.NewDocumentFromReader(strings.NewReader(h.Value))
 		response.Result, err = GetSelectorHover(
+			ctx,
 			req.Params.Position,
 			text,
 			doc,
@@ -66,6 +69,7 @@ func NewHoverResponse(
 
 // GetSelectorHover checks if the position is within the struct tag
 func GetSelectorHover(
+	ctx context.Context,
 	position protocol.Position,
 	text *string,
 	doc *goquery.Document,
@@ -86,34 +90,44 @@ func GetSelectorHover(
 	}
 	// Find the struct node in the AST
 	structNodes := parsers.FindStructNodes(node)
+	var resCh chan lsp.HoverResult = make(chan lsp.HoverResult)
 	for i := range structNodes {
-		// Check if the position is within the struct node
-		inPosition := parsers.IsPositionInNode(structNodes[i], position, fset)
-		// Check if the position is within a struct tag
-		inTag := parsers.IsPositionInTag(structNodes[i], position, fset)
-		if inPosition && inTag {
-			var val string
-			// Check if the position is within a struct tag value
-			// (i.e. value inside and including " and " characters)
-			val, inValue = parsers.PositionInStructTagValue(
-				structNodes[i],
-				position,
-				fset,
-			)
-			if !inValue {
-				if parsers.PositionBeforeValue(position, text) != ':' &&
-					parsers.PositionBeforeValue(position, text) != '"' {
-					continue
+		go func(i int) {
+			// Check if the position is within the struct node
+			inPosition := parsers.IsPositionInNode(structNodes[i], position, fset)
+			// Check if the position is within a struct tag
+			inTag := parsers.IsPositionInTag(structNodes[i], position, fset)
+			if inPosition && inTag {
+				var val string
+				// Check if the position is within a struct tag value
+				// (i.e. value inside and including " and " characters)
+				val, inValue = parsers.PositionInStructTagValue(
+					structNodes[i],
+					position,
+					fset,
+				)
+				if !inValue {
+					return
 				}
+				var HTMLs []string
+				found := doc.Find(val)
+				found.Each(func(i int, s *goquery.Selection) {
+					HTML, err := s.Parent().Html()
+					if err != nil {
+						log.Errorf("failed to get html: %s", err)
+					}
+					HTML = gohtml.Format(HTML)
+					HTMLs = append(HTMLs, HTML)
+				})
+				HTML := strings.Join(HTMLs, "\n================\n")
+				res.Contents = fmt.Sprintf(
+					"`%s`:\n%s",
+					val,
+					HTML,
+				)
+				resCh <- res
 			}
-			HTML, err := doc.Find(val).Parent().Html()
-			if err != nil {
-				return res, fmt.Errorf("failed to get html: %w", err)
-			}
-			HTML = gohtml.Format(HTML)
-			res.Contents = HTML
-			return res, nil
-		}
+		}(i)
 	}
-	return res, nil
+	return <-resCh, nil
 }

@@ -58,17 +58,20 @@ func OpenDocument(
 				} else {
 					occur = 2
 				}
-				sels, err := parsers.GetSelectors(
-					ctx,
-					db,
-					url,
-					data.IgnoreElements[i],
-					occur,
-				)
-				if err != nil {
-					return err
+				var sels []master.Selector
+				for _, ele := range data.IgnoreElements {
+					sels, err = parsers.GetSelectors(
+						ctx,
+						db,
+						url,
+						ele,
+						occur,
+					)
+					if err != nil {
+						return err
+					}
+					selectors.Set(req.Params.TextDocument.URI, append(sels, sels...))
 				}
-				selectors.Set(req.Params.TextDocument.URI, sels)
 				return nil
 			})
 		}

@@ -50,6 +50,9 @@ func OpenDocument(
 		for i, url := range data.URLs {
 			eg.Go(func() error {
 				var occur int
+				if len(data.Occurrences) <= 0 {
+					return nil
+				}
 				if data.Occurrences[i] > 0 {
 					occur = data.Occurrences[i]
 				} else {

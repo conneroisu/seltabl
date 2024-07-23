@@ -7,7 +7,6 @@ import (
 	"go/parser"
 	"go/token"
 
-	"github.com/charmbracelet/log"
 	"github.com/conneroisu/seltabl/tools/seltabls/data/master"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/parsers"
@@ -92,14 +91,14 @@ func CreateTextDocumentCompletion(
 				response.Result = append(
 					response.Result,
 					protocol.CompletionItem{
-						AdditionalTextEdits: []protocol.TextEdit{},
-						Deprecated:          false,
+						Deprecated: false,
 						Detail: fmt.Sprintf(
 							"Occurances: '%d' \nContext: \n%s",
 							selector.Occurances,
 							textLimit(selector.Context, 200),
 						),
 						Documentation:    "seltabls",
+						CommitCharacters: []string{},
 						InsertTextFormat: protocol.InsertTextFormatPlainText,
 						InsertTextMode:   protocol.InsertTextModeAsIs,
 						Kind:             protocol.CompletionItemKindValue,
@@ -122,8 +121,6 @@ func CheckPosition(
 	position protocol.Position,
 	text *string,
 ) (res parsers.State, err error) {
-	var inValue bool
-	// Create a new token file set
 	fset := token.NewFileSet()
 	position.Line = position.Line + 1
 	// Parse the source code from a new buffer
@@ -141,12 +138,18 @@ func CheckPosition(
 	structNodes := parsers.FindStructNodes(node)
 	for i := range structNodes {
 		// Check if the position is within the struct node
-		inPosition := parsers.IsPositionInNode(structNodes[i], position, fset)
-		// Check if the position is within a struct tag
-		inTag := parsers.IsPositionInTag(structNodes[i], position, fset)
+		inPosition := parsers.IsPositionInNode(
+			structNodes[i],
+			position,
+			fset,
+		)
+		inTag := parsers.IsPositionInTag(
+			structNodes[i],
+			position,
+			fset,
+		)
 		if inPosition && inTag {
-			// Check if the position is within a struct tag value (i.e. value inside and including " and " characters)
-			_, inValue = parsers.PositionInStructTagValue(
+			_, inValue := parsers.PositionInStructTagValue(
 				structNodes[i],
 				position,
 				fset,
@@ -154,11 +157,15 @@ func CheckPosition(
 			if inValue {
 				return parsers.StateInTagValue, nil
 			}
-			beforeValue := parsers.PositionBeforeValue(position, text)
-			log.Debugf("beforeValue: %c", beforeValue)
+			beforeValue := parsers.PositionBeforeValue(
+				position,
+				text,
+			)
 			if beforeValue == ':' {
-				// If the position is before a double quote, return the state in the tag Value
-				// Also return the key of the struct tag before the double quote aka our position.
+				// If the position is before a double quote,
+				// return the state in the tag Value. Also,
+				// return the key of the struct tag before the
+				// double quote aka our position.
 				// TODO: Get the key of the struct tag before the double quote
 				return parsers.StateAfterColon, nil
 			}

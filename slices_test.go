@@ -15,13 +15,13 @@ import (
 
 // NoDataSelectorStruct is a test struct
 type NoDataSelectorStruct struct {
-	A string `json:"a" seltabl:"a" hSel:"tr:nth-child(1) td:nth-child(1)" cSel:"$text"`
-	B string `json:"b" seltabl:"b" hSel:"tr:nth-child(1) td:nth-child(2)" cSel:"$text"`
+	A string `seltabl:"a" hSel:"tr:nth-child(1) td:nth-child(1)" cSel:"$text"`
+	B string `seltabl:"b" hSel:"tr:nth-child(1) td:nth-child(2)" cSel:"$text"`
 }
 
 // TestNewFromString tests the NewFromString function
 // for all the different types of tables that we have in the
-// testdata package
+// testdata package.
 func TestNewFromString(t *testing.T) {
 	t.Run(
 		"Test that NewFromString returns the correct result when the html is valid with the SuperNova table",
@@ -373,15 +373,6 @@ func TestNewFromString(t *testing.T) {
 			wantErr bool
 		}{
 			{
-				name: "TestNewFromStringWithNoHeaderSelector",
-				args: args{
-					htmlInput: testdata.FixtureABNumTable,
-					typ:       reflect.TypeOf(NoHeaderSelectorStruct{}),
-				},
-				want:    nil,
-				wantErr: true,
-			},
-			{
 				name: "TestNewFromStringWithInvalidHTML",
 				args: args{
 					htmlInput: "invalid",
@@ -495,15 +486,6 @@ func TestNewFromString(t *testing.T) {
 			want    interface{}
 			wantErr bool
 		}{
-			{
-				name: "TestNewFromStringWithNoCellSelector",
-				args: args{
-					htmlInput: testdata.FixtureABNumTable,
-					typ:       reflect.TypeOf(NoCellSelectorStruct{}),
-				},
-				want:    nil,
-				wantErr: true,
-			},
 			{
 				name: "TestNewFromStringWithInvalidHTML",
 				args: args{
@@ -626,15 +608,6 @@ func TestNewFromString(t *testing.T) {
 			want    interface{}
 			wantErr bool
 		}{
-			{
-				name: "TestNewFromStringWithNoSeltablField",
-				args: args{
-					htmlInput: testdata.FixtureABNumTable,
-					typ:       reflect.TypeOf(NoSeltablField{}),
-				},
-				want:    nil,
-				wantErr: true,
-			},
 			{
 				name: "TestNewFromStringWithInvalidHTML",
 				args: args{
@@ -988,7 +961,7 @@ func TestNewFromURL_ValidURL(t *testing.T) {
 			<tr> <td>5</td> <td>6</td> </tr>
 			<tr> <td>7</td> <td>8</td> </tr>
 		</table>`
-	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
 		fmt.Fprintln(w, html)
 	}))
 	defer server.Close()
@@ -1010,7 +983,7 @@ func TestNewFromURL_InvalidURL(t *testing.T) {
 // TestNewFromURL_InvalidHTMLContent tests the NewFromURL function with invalid HTML content.
 func TestNewFromURL_InvalidHTMLContent(t *testing.T) {
 	t.Parallel()
-	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
 		fmt.Fprintln(w, "<html><body><table>")
 	}))
 	defer server.Close()

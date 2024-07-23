@@ -66,22 +66,22 @@ func New[T any](doc *goquery.Document) ([]T, error) {
 	for i := 0; i < dType.NumField(); i++ {
 		field := dType.Field(i)
 		cfg = NewSelectorConfig(field.Tag)
-		if cfg.HeadSelector == "" {
-			return nil, &ErrSelectorNotFound{dType, field, cfg, doc}
-		}
 		if cfg.DataSelector == "" {
 			return nil, &ErrSelectorNotFound{dType, field, cfg, doc}
-		}
-		if cfg.MustBePresent != "" &&
-			!strings.Contains(doc.Text(), cfg.MustBePresent) {
-			return nil, &ErrMissingMustBePresent{field, cfg}
 		}
 		dataRows := doc.Find(cfg.DataSelector)
 		if dataRows.Length() == 0 {
 			return nil, &ErrNoDataFound{dType, field, cfg, doc}
 		}
+		_ = dataRows.RemoveFiltered(cfg.HeadSelector)
 		if len(results) == 0 {
 			results = make([]T, dataRows.Length())
+		}
+		if cfg.MustBePresent != "" {
+			txt := doc.Text()
+			if !strings.Contains(txt, cfg.MustBePresent) {
+				return nil, &ErrMissingMustBePresent{field, cfg}
+			}
 		}
 		for j := 0; j < dataRows.Length(); j++ {
 			if err := SetStructField(

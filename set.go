@@ -8,11 +8,10 @@ import (
 	"github.com/PuerkitoBio/goquery"
 )
 
-// SetStructField sets a struct field to a value.
-// It uses generics to specify the type of the struct
-// and the field name. It also uses the selector interface
-// to find the value and uses the type of the selector to
-// parse and set the value.
+// SetStructField sets a struct field to a value. It uses generics to specify
+// the type of the struct and the field name. It also uses the selector
+// interface to find the value and uses the type of the selector to parse and
+// set the value.
 //
 // It is used by the NewFromString function.
 func SetStructField[T any](
@@ -46,10 +45,11 @@ func SetStructField[T any](
 
 // setFieldValue sets the value of a field
 //
-// It is used by the SetStructField function to set the value of a struct field after
-// selecting the value from a html node.
+// It is used by the SetStructField function to set the value of a struct field
+// after selecting the value from a html node.
 //
-// It ensures that the type of the field is compatible with the type of the value.
+// It ensures that the type of the field is compatible with the type of the
+// value.
 func setFieldValue(
 	fieldType reflect.Kind,
 	cellText string,

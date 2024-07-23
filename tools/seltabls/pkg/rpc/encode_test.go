@@ -44,7 +44,7 @@ func (e EncodingExample) Method() string {
 // TestEncode tests the EncodeMessage function
 func TestEncode(t *testing.T) {
 	ctx := context.Background()
-	expected := "Content-Length: 100\r\n\r\n{\"jsonrpc\":\"2.0\",\"id\":1,\"result\":[{\"detail\":\"Test\",\"documentation\":\"Test\",\"kind\":2,\"label\":\"Test\"}]}"
+	expected := "Content-Length: 101\r\n\r\n{\"jsonrpc\":\"2.0\",\"id\":1,\"result\":[{\"detail\":\"Test\",\"documentation\":\"Test\",\"kind\":2,\"label\":\"Test\"}]}\n"
 	actual, err := rpc.Encode(ctx,
 		lsp.TextDocumentCompletionResponse{
 			Response: lsp.Response{

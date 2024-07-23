@@ -15,12 +15,12 @@ import (
 	"go.lsp.dev/uri"
 )
 
-// CreateTextDocumentCompletion returns the completions for a given text document.
-// It checks if the position is within the struct tag and returns the selectors
-// if the position is within the struct tag.
+// CreateTextDocumentCompletion returns the completions for a given text
+// document. It checks if the position is within the struct tag and returns the
+// selectors if the position is within the struct tag.
 //
-// It also checks if the position is within the struct tag value and returns the selectors
-// if the position is within the struct tag value.
+// It also checks if the position is within the struct tag value and returns
+// the selectors if the position is within the struct tag value.
 func CreateTextDocumentCompletion(
 	ctx context.Context,
 	request lsp.TextDocumentCompletionRequest,
@@ -51,7 +51,10 @@ func CreateTextDocumentCompletion(
 			content,
 		)
 		if err != nil {
-			return nil, fmt.Errorf("failed to check position: %w", err)
+			return nil, fmt.Errorf(
+				"failed to check position: %w",
+				err,
+			)
 		}
 		switch check {
 		case parsers.StateInTag:
@@ -73,7 +76,7 @@ func CreateTextDocumentCompletion(
 					protocol.CompletionItem{
 						Label: selector.Value,
 						Detail: fmt.Sprintf(
-							"Occurances: '%d' \nContext: \n%s",
+							"Occurances: '%d'\nContext:\n%s",
 							selector.Occurances,
 							textLimit(selector.Context, 200),
 						),
@@ -93,7 +96,7 @@ func CreateTextDocumentCompletion(
 					protocol.CompletionItem{
 						Deprecated: false,
 						Detail: fmt.Sprintf(
-							"Occurances: '%d' \nContext: \n%s",
+							"Occurances: '%d'\nContext: \n%s",
 							selector.Occurances,
 							textLimit(selector.Context, 200),
 						),
@@ -162,15 +165,8 @@ func CheckPosition(
 				text,
 			)
 			if beforeValue == ':' {
-				// If the position is before a double quote,
-				// return the state in the tag Value. Also,
-				// return the key of the struct tag before the
-				// double quote aka our position.
-				// TODO: Get the key of the struct tag before the double quote
 				return parsers.StateAfterColon, nil
 			}
-			// If we are in the tag, we should return completion items for the struct tag
-			// that are not yet set/defined
 			return parsers.StateInTag, nil
 		}
 	}

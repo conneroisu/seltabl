@@ -76,6 +76,7 @@ func TestNewFromString(t *testing.T) {
 						return
 					}
 					if !reflect.DeepEqual(got, tt.want) {
+						t.Logf("NewFromString() got = %v, want %v", got, tt.want)
 						t.Errorf(
 							"NewFromString() got = %v, want %v",
 							got,

@@ -5,8 +5,11 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"path"
 	"path/filepath"
 
+	"github.com/conneroisu/seltabl/tools/seltabls/data"
+	"github.com/conneroisu/seltabl/tools/seltabls/data/master"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/analysis"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/parsers"
 	"github.com/spf13/cobra"
@@ -72,6 +75,22 @@ func vetFile(
 	if err != nil {
 		return nil, fmt.Errorf("failed to read file: %w", err)
 	}
+	configPath, err := CreateConfigDir("~/.config/seltabls/")
+	if err != nil {
+		return nil, fmt.Errorf("failed to create config directory: %w", err)
+	}
+	db, err := data.NewDb(
+		ctx,
+		master.New,
+		&data.Config{
+			Schema:   master.MasterSchema,
+			URI:      "sqlite://uris.sqlite",
+			FileName: path.Join(configPath, "uris.sqlite"),
+		},
+	)
+	if err != nil {
+		return nil, fmt.Errorf("failed to create database: %w", err)
+	}
 	ctn := string(content)
 	data, err := parsers.ParseStructComments(ctn)
 	if err != nil {
@@ -81,6 +100,7 @@ func vetFile(
 		ctx,
 		&ctn,
 		&data,
+		db,
 	)
 	if err != nil {
 		return nil, err

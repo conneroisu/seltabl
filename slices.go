@@ -74,15 +74,18 @@ func New[T any](doc *goquery.Document) ([]T, error) {
 			return nil, &ErrNoDataFound{dType, field, cfg, doc}
 		}
 		_ = dataRows.RemoveFiltered(cfg.HeadSelector)
+		if cfg.MustBePresent != "" {
+			dataRows = reduceHTML(dataRows, cfg.MustBePresent)
+			if dataRows.Length() == 0 {
+				return nil, &ErrNoDataFound{dType, field, cfg, doc}
+			}
+		}
 		if len(results) == 0 {
 			results = make([]T, dataRows.Length())
 		}
-		if cfg.MustBePresent != "" {
-			dataRows = reduceHTML(dataRows, cfg.MustBePresent)
-		}
 		for j := 0; j < dataRows.Length(); j++ {
 			if err := SetStructField(
-				&results[j],    // result row for this data row
+				&results[j],
 				field.Name,     // name of the field to set
 				dataRows.Eq(j), // goquery selection for cell
 				&selector{cfg.ControlTag, cfg.QuerySelector}, // selector for the inner cell

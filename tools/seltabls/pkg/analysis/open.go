@@ -31,82 +31,85 @@ func OpenDocument(
 	urls *safe.Map[uri.URI, []string],
 	selectors *safe.Map[uri.URI, []master.Selector],
 ) (*lsp.PublishDiagnosticsNotification, error) {
-	select {
-	case <-(ctx).Done():
-		return nil, fmt.Errorf("context cancelled: %w", (ctx).Err())
-	default:
-		eg, ctx := errgroup.WithContext(ctx)
-		documents.Set(
-			req.Params.TextDocument.URI,
-			req.Params.TextDocument.Text,
-		)
-		data, err := parsers.ParseStructComments(
-			req.Params.TextDocument.Text,
-		)
-		if err != nil {
-			return nil, nil
-		}
-		urls.Set(req.Params.TextDocument.URI, data.URLs)
-		for i, url := range data.URLs {
-			eg.Go(func() error {
-				var occur int
-				if len(data.Occurrences) <= 0 {
-					return nil
-				}
-				if data.Occurrences[i] > 0 {
-					occur = data.Occurrences[i]
-				} else {
-					occur = 2
-				}
-				var sels []master.Selector
-				for _, ele := range data.IgnoreElements {
-					sels, err = parsers.GetSelectors(
-						ctx,
-						db,
-						url,
-						ele,
-						occur,
-					)
-					if err != nil {
-						return err
+	for {
+		select {
+		case <-(ctx).Done():
+			return nil, fmt.Errorf("context cancelled: %w", (ctx).Err())
+		default:
+			eg, ctx := errgroup.WithContext(ctx)
+			documents.Set(
+				req.Params.TextDocument.URI,
+				req.Params.TextDocument.Text,
+			)
+			data, err := parsers.ParseStructComments(
+				req.Params.TextDocument.Text,
+			)
+			if err != nil {
+				return nil, nil
+			}
+			urls.Set(req.Params.TextDocument.URI, data.URLs)
+			for i, url := range data.URLs {
+				eg.Go(func() error {
+					var occur int
+					if len(data.Occurrences) <= 0 {
+						return nil
 					}
-					selectors.Set(req.Params.TextDocument.URI, append(sels, sels...))
-				}
-				return nil
-			})
-		}
-		err = eg.Wait()
-		if err != nil {
-			return nil, fmt.Errorf(
-				"failed to get selectors for urls: %w",
-				err,
+					if data.Occurrences[i] > 0 {
+						occur = data.Occurrences[i]
+					} else {
+						occur = 2
+					}
+					var sels []master.Selector
+					for _, ele := range data.IgnoreElements {
+						sels, err = parsers.GetSelectors(
+							ctx,
+							db,
+							url,
+							ele,
+							occur,
+						)
+						if err != nil {
+							return err
+						}
+						selectors.Set(req.Params.TextDocument.URI, append(sels, sels...))
+					}
+					return nil
+				})
+			}
+			err = eg.Wait()
+			if err != nil {
+				return nil, fmt.Errorf(
+					"failed to get selectors for urls: %w",
+					err,
+				)
+			}
+			diags, err := GetDiagnosticsForFile(
+				ctx,
+				&req.Params.TextDocument.Text,
+				&data,
+				db,
 			)
+			if err != nil {
+				return nil, fmt.Errorf(
+					"failed to get diagnostics for file: %w",
+					err,
+				)
+			}
+			if len(diags) == 0 {
+				return nil, nil
+			}
+			return &lsp.PublishDiagnosticsNotification{
+				Notification: lsp.Notification{
+					RPC:    lsp.RPCVersion,
+					Method: string(methods.NotificationPublishDiagnostics),
+				},
+				Params: protocol.PublishDiagnosticsParams{
+					URI: protocol.DocumentURI(
+						req.Params.TextDocument.URI,
+					),
+					Diagnostics: diags,
+				},
+			}, nil
 		}
-		diags, err := GetDiagnosticsForFile(
-			ctx,
-			&req.Params.TextDocument.Text,
-			&data,
-		)
-		if err != nil {
-			return nil, fmt.Errorf(
-				"failed to get diagnostics for file: %w",
-				err,
-			)
-		}
-		if len(diags) == 0 {
-			return nil, nil
-		}
-		return &lsp.PublishDiagnosticsNotification{
-			Notification: lsp.Notification{
-				RPC:    lsp.RPCVersion,
-				Method: string(methods.NotificationPublishDiagnostics),
-			},
-			Params: protocol.PublishDiagnosticsParams{
-				URI: protocol.DocumentURI(
-					req.Params.TextDocument.URI,
-				),
-				Diagnostics: diags,
-			},
-		}, nil
 	}
 }

@@ -147,3 +147,47 @@ func TestErrSelectorNotFound_Error_FailedHtml(t *testing.T) {
 		t.Errorf("Expected error message to contain '%s', but it doesn't it is '%s'", expected, errorMsg)
 	}
 }
+
+func TestErrNoDataFound_Error2(t *testing.T) {
+	invalidHTML := "<html<head><title>Test</title></head><body><div>Some Content</div</body></html>" // Notice the missing '>'
+	doc, err := goquery.NewDocumentFromReader(strings.NewReader(invalidHTML))
+	if err != nil {
+		t.Fatalf("Failed to create document from invalid HTML: %s", err)
+	}
+
+	errNoDataFound := &ErrNoDataFound{
+		Typ:   reflect.TypeOf("string"),
+		Field: reflect.StructField{Name: "TestField", Type: reflect.TypeOf("string")},
+		Cfg:   &SelectorConfig{QuerySelector: "div.invalid"},
+		Doc:   doc,
+	}
+
+	expected := "failed to get data rows html: EOF"
+	if strings.Contains(errNoDataFound.Error(), expected) {
+		t.Errorf("ErrNoDataFound.Error() should not contain '%s', but it does", expected)
+	}
+}
+
+// TestErrSelectorNotFound_Error2 tests the Error method of ErrSelectorNotFound
+// with a valid HTML document.
+//
+// It ensures the error message includes the selector, field name, types, and
+// HTML content.
+func TestErrSelectorNotFound_Error2(t *testing.T) {
+	invalidHTML := "<html<head><title>Test</title></head><body><div>Some Content</div</body></html>" // Notice the missing '>'
+	doc, err := goquery.NewDocumentFromReader(strings.NewReader(invalidHTML))
+	if err != nil {
+		t.Fatalf("Failed to create document from invalid HTML: %s", err)
+	}
+	errSelectorNotFound := &ErrSelectorNotFound{
+		Typ:   reflect.TypeOf("string"),
+		Field: reflect.StructField{Name: "TestField", Type: reflect.TypeOf("string")},
+		Cfg:   &SelectorConfig{QuerySelector: "div.invalid"},
+		Doc:   doc,
+	}
+	expected := "selector div.invalid with type string not found for field TestField with type string\n html: EOF"
+	if strings.Contains(errSelectorNotFound.Error(), expected) {
+		t.Errorf("ErrSelectorNotFound.Error() should not contain '%s', but it does", expected)
+	}
+
+}

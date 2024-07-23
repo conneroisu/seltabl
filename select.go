@@ -9,8 +9,9 @@ import (
 
 // SelectorI is an interface for running a goquery selector on a cellValue
 //
-// It is an interface that defines a Select method that takes a cellValue (goquery.Selection)
-// and returns a string of the applied selection and an error.
+// It is an interface that defines a Select method that takes a cellValue
+// (goquery.Selection) and returns a string of the applied selection and an
+// error.
 type SelectorI interface {
 	Select(cellValue *goquery.Selection) (string, error)
 }
@@ -26,9 +27,10 @@ type selector struct {
 }
 
 // Select runs the selector on the cellValue and sets the cellText
-// and returns the cellText
+// and returns the cellText.
 //
-// It returns the output of running a  selector and an error if the selector is not supported or fails.
+// It returns the output of running a selector and an error if the selector is
+// not supported or fails.
 func (s selector) Select(cellValue *goquery.Selection) (string, error) {
 	var cellText string
 	var exists bool

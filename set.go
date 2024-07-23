@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"reflect"
 	"strconv"
+	"strings"
 
 	"github.com/PuerkitoBio/goquery"
 )
@@ -146,4 +147,16 @@ func setFieldValue(
 	default:
 		return fmt.Errorf("unsupported type: %s", fieldType)
 	}
+}
+
+// reduceHTML removes all nodes from the selection that do not contain the
+// text.
+func reduceHTML(sel *goquery.Selection, text string) *goquery.Selection {
+	sel.Each(func(_ int, s *goquery.Selection) {
+		body := s.Text()
+		if !strings.Contains(body, text) {
+			s.Remove()
+		}
+	})
+	return sel
 }

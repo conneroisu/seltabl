@@ -25,6 +25,6 @@ func ScrapeTeamCodes(
 // NCAATeamCode is a struct for a team code
 // @url:
 type NCAATeamCode struct {
-	ID   int    `json:"id"   seltabl:"ID"   hSel:"tr.grey_heading td:nth-child(1)" dSel:"tr:not(.grey_heading):not(.heading) td:nth-child(1)" cSel:"$text" must:"NCAA Codes"`
+	ID   int    `json:"id"   seltabl:"ID"   hSel:"tr.grey_heading td:nth-child(1)" dSel:"tr:not(.grey_heading):not(.heading) td:nth-child(1)" cSel:"$text"`
 	Name string `json:"name" seltabl:"Name" hSel:"tr.grey_heading td:nth-child(2)" dSel:"tr:not(.grey_heading):not(.heading) td:nth-child(2)" cSel:"$text"`
 }

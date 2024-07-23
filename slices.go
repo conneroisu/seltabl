@@ -78,10 +78,7 @@ func New[T any](doc *goquery.Document) ([]T, error) {
 			results = make([]T, dataRows.Length())
 		}
 		if cfg.MustBePresent != "" {
-			txt := doc.Text()
-			if !strings.Contains(txt, cfg.MustBePresent) {
-				return nil, &ErrMissingMustBePresent{field, cfg}
-			}
+			dataRows = reduceHTML(dataRows, cfg.MustBePresent)
 		}
 		for j := 0; j < dataRows.Length(); j++ {
 			if err := SetStructField(

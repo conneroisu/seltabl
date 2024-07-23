@@ -58,14 +58,14 @@ func singleSelector(selection *goquery.Selection) string {
 	id, exists := selection.Attr("id")
 	if exists {
 		checkingVal := strings.Join(strings.Fields(id), ".")
-		if !strings.Contains(checkingVal, "contentArea") {
+		if !strings.Contains(checkingVal, "content") {
 			selector = fmt.Sprintf("%s#%s", goquery.NodeName(selection), id)
 		}
 	}
 	attr, exists := selection.Attr("class")
 	if exists {
 		checkingVal := strings.Join(strings.Fields(attr), ".")
-		if !strings.Contains(checkingVal, "contentArea") {
+		if !strings.Contains(checkingVal, "content") {
 			selector = fmt.Sprintf(
 				"%s.%s",
 				goquery.NodeName(selection),
@@ -76,7 +76,7 @@ func singleSelector(selection *goquery.Selection) string {
 	attr, exists = selection.Attr("name")
 	if exists {
 		checkingVal := strings.Join(strings.Fields(attr), ".")
-		if !strings.Contains(checkingVal, "contentArea") {
+		if !strings.Contains(checkingVal, "content") {
 			selector = fmt.Sprintf(
 				"%s[name=%s]",
 				goquery.NodeName(selection),

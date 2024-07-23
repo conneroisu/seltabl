@@ -22,7 +22,7 @@ var (
 	// @url: <url>
 	urlPattern = regexp.MustCompile(`@url:\s*(\S+)`)
 	// @ignore-elements: <element1>, <element2>, ...
-	ignorePattern = regexp.MustCompile(`@ignore-elements:\s*(.*)`)
+	ignorePattern = regexp.MustCompile(`@ignore:\s*(.*)`)
 	// @occurrences: <number>
 	occurrencesPattern = regexp.MustCompile(`@occurrences:\s*(\d+)`)
 )
@@ -66,7 +66,7 @@ func ParseStructComments(src string) (StructCommentData, error) {
 							if urlMatches := urlPattern.FindStringSubmatch(text); len(urlMatches) > 1 {
 								data.URLs = append(data.URLs, urlMatches[1])
 							}
-							// Extract @ignore-elements of type []string
+							// Extract @ignore of type []string
 							if ignoreMatches := ignorePattern.FindStringSubmatch(text); len(ignoreMatches) > 1 {
 								elements := strings.Split(ignoreMatches[1], ",")
 								for _, elem := range elements {

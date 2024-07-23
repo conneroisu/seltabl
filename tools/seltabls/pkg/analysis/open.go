@@ -34,7 +34,8 @@ func OpenDocument(
 	for {
 		select {
 		case <-(ctx).Done():
-			return nil, fmt.Errorf("context cancelled: %w", (ctx).Err())
+			return nil,
+				fmt.Errorf("context cancelled: %w", (ctx).Err())
 		default:
 			eg, ctx := errgroup.WithContext(ctx)
 			documents.Set(

@@ -78,6 +78,7 @@ func UpdateDocument(
 				ctx,
 				&notification.Params.ContentChanges[0].Text,
 				&comments,
+				db,
 			)
 			if err != nil {
 				return nil, fmt.Errorf(

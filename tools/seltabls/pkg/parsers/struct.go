@@ -236,7 +236,6 @@ func ParseStructs(
 	ctx context.Context,
 	src []byte,
 ) (structures []Structure, err error) {
-	// add a package main to the source
 	var eg *errgroup.Group
 	eg, _ = errgroup.WithContext(ctx)
 	fset := token.NewFileSet()

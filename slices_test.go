@@ -1,6 +1,7 @@
 package seltabl
 
 import (
+	"fmt"
 	"net/http"
 	"net/http/httptest"
 	"reflect"
@@ -832,4 +833,188 @@ func httpTestServer(t *testing.T, body string) *httptest.Server {
 			}
 		}),
 	)
+}
+
+// Helper function to create a goquery document from a string
+func createDocFromString(htmlStr string) (*goquery.Document, error) {
+	return goquery.NewDocumentFromReader(strings.NewReader(htmlStr))
+}
+
+// TestieStruct is a test struct that is used for testing. It
+// has a field with the tag hSel, dSel, and cSel.
+type TestieStruct struct {
+	A string `json:"a" hSel:"tr:nth-child(1) td:nth-child(1)" dSel:"tr:not(:first-child) td:nth-child(1)" cSel:"$text"`
+	B string `json:"b" hSel:"tr:nth-child(1) td:nth-child(2)" dSel:"tr:not(:first-child) td:nth-child(2)" cSel:"$text"`
+}
+
+// TestNew_ValidStruct tests the New function with a valid struct.
+func TestNew_ValidStruct(t *testing.T) {
+	t.Parallel()
+	html := `
+		<table>
+			<tr> <td>a</td> <td>b</td> </tr>
+			<tr> <td>1</td> <td>2</td> </tr>
+			<tr> <td>3</td> <td>4</td> </tr>
+			<tr> <td>5</td> <td>6</td> </tr>
+			<tr> <td>7</td> <td>8</td> </tr>
+		</table>`
+	doc, _ := createDocFromString(html)
+	result, err := New[TestieStruct](doc)
+	assert.NoError(t, err)
+	assert.Equal(t, 4, len(result))
+	assert.Equal(t, "1", result[0].A)
+	assert.Equal(t, "2", result[0].B)
+}
+
+// TestNew_InvalidType tests the New function with an invalid type.
+func TestNew_InvalidType(t *testing.T) {
+	html := `
+		<table>
+			<tr> <td>a</td> <td>b</td> </tr>
+			<tr> <td>1</td> <td>2</td> </tr>
+		</table>`
+	doc, _ := createDocFromString(html)
+	type InvalidType int
+	_, err := New[InvalidType](doc)
+	assert.Error(t, err)
+}
+
+// TestNew_MissingSelectors tests the New function with a struct that is missing selectors.
+func TestNew_MissingSelectors(t *testing.T) {
+	html := `
+		<table>
+			<tr> <td>a</td> <td>b</td> </tr>
+			<tr> <td>1</td> <td>2</td> </tr>
+		</table>`
+	doc, _ := createDocFromString(html)
+	type MissingSelectors struct {
+		A string `json:"a"`
+		B string `json:"b"`
+	}
+	_, err := New[MissingSelectors](doc)
+	assert.Error(t, err)
+}
+
+// TestNew_MissingMustBePresent tests the New function with a struct that is missing a mustBePresent selector.
+func TestNew_MissingMustBePresent(t *testing.T) {
+	html := `
+		<table>
+			<tr> <td>a</td> <td>b</td> </tr>
+			<tr> <td>1</td> <td>2</td> </tr>
+		</table>`
+	doc, _ := createDocFromString(html)
+	type MustBePresentStruct struct {
+		A string `json:"a" hSel:"tr:nth-child(1) td:nth-child(1)" dSel:"tr:not(:first-child) td:nth-child(1)" cSel:"$text" mustBePresent:"c"`
+	}
+	_, err := New[MustBePresentStruct](doc)
+	assert.Error(t, err)
+}
+
+// TestNew_NoDataFound tests the New function with a struct that does not have data.
+func TestNew_NoDataFound(t *testing.T) {
+	html := `
+		<table>
+			<tr> <td>a</td> <td>b</td> </tr>
+		</table>`
+	doc, _ := createDocFromString(html)
+	_, err := New[TestieStruct](doc)
+	assert.Error(t, err)
+}
+
+// TestNewFromString_ValidHTML tests the NewFromString function with valid HTML.
+func TestNewFromString_ValidHTML(t *testing.T) {
+	t.Parallel()
+	html := `
+		<table>
+			<tr> <td>a</td> <td>b</td> </tr>
+			<tr> <td>1</td> <td>2</td> </tr>
+			<tr> <td>3</td> <td>4</td> </tr>
+			<tr> <td>5</td> <td>6</td> </tr>
+			<tr> <td>7</td> <td>8</td> </tr>
+		</table>`
+	result, err := NewFromString[TestieStruct](html)
+	assert.NoError(t, err)
+	assert.Equal(t, 4, len(result))
+	assert.Equal(t, "1", result[0].A)
+	assert.Equal(t, "2", result[0].B)
+}
+
+// TestNewFromString_InvalidHTML tests the NewFromString function with invalid HTML.
+func TestNewFromString_InvalidHTML(t *testing.T) {
+	html := `
+		<table>
+			<tr> <td>a</td> <td>b</td> </tr>
+			<tr> <td>1</td> <td>2</td> </tr>
+		`
+	_, err := NewFromString[TestieStruct](html)
+	assert.Error(t, err)
+}
+
+// TestNewFromReader_ValidReader tests the NewFromReader function with a
+func TestNewFromReader_ValidReader(t *testing.T) {
+	t.Parallel()
+	html := `
+		<table>
+			<tr> <td>a</td> <td>b</td> </tr>
+			<tr> <td>1</td> <td>2</td> </tr>
+			<tr> <td>3</td> <td>4</td> </tr>
+			<tr> <td>5</td> <td>6</td> </tr>
+			<tr> <td>7</td> <td>8</td> </tr>
+		</table>`
+	reader := strings.NewReader(html)
+	result, err := NewFromReader[TestieStruct](reader)
+	assert.NoError(t, err)
+	assert.Equal(t, 4, len(result))
+	assert.Equal(t, "1", result[0].A)
+	assert.Equal(t, "2", result[0].B)
+}
+
+// TestNewFromReader_InvalidReader tests the NewFromReader function with an invalid reader.
+func TestNewFromReader_InvalidReader(t *testing.T) {
+	t.Parallel()
+	reader := strings.NewReader("<html><body><table>")
+	_, err := NewFromReader[TestieStruct](reader)
+	assert.Error(t, err)
+}
+
+// TestNewFromURL_ValidURL tests the NewFromURL function with a valid URL.
+func TestNewFromURL_ValidURL(t *testing.T) {
+	t.Parallel()
+	html := `
+		<table>
+			<tr> <td>a</td> <td>b</td> </tr>
+			<tr> <td>1</td> <td>2</td> </tr>
+			<tr> <td>3</td> <td>4</td> </tr>
+			<tr> <td>5</td> <td>6</td> </tr>
+			<tr> <td>7</td> <td>8</td> </tr>
+		</table>`
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintln(w, html)
+	}))
+	defer server.Close()
+
+	result, err := NewFromURL[TestieStruct](server.URL)
+	assert.NoError(t, err)
+	assert.Equal(t, 4, len(result))
+	assert.Equal(t, "1", result[0].A)
+	assert.Equal(t, "2", result[0].B)
+}
+
+// TestNewFromURL_InvalidURL tests the NewFromURL function with an invalid URL.
+func TestNewFromURL_InvalidURL(t *testing.T) {
+	t.Parallel()
+	_, err := NewFromURL[TestieStruct]("http://invalid.url")
+	assert.Error(t, err)
+}
+
+// TestNewFromURL_InvalidHTMLContent tests the NewFromURL function with invalid HTML content.
+func TestNewFromURL_InvalidHTMLContent(t *testing.T) {
+	t.Parallel()
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintln(w, "<html><body><table>")
+	}))
+	defer server.Close()
+
+	_, err := NewFromURL[TestieStruct](server.URL)
+	assert.Error(t, err)
 }

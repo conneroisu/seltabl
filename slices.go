@@ -74,11 +74,11 @@ func New[T any](doc *goquery.Document) ([]T, error) {
 			return nil, &ErrNoDataFound{dType, field, cfg, doc}
 		}
 		_ = dataRows.RemoveFiltered(cfg.HeadSelector)
-		if len(results) == 0 {
-			results = make([]T, dataRows.Length())
-		}
 		if cfg.MustBePresent != "" {
 			dataRows = reduceHTML(dataRows, cfg.MustBePresent)
+		}
+		if len(results) == 0 {
+			results = make([]T, dataRows.Length())
 		}
 		for j := 0; j < dataRows.Length(); j++ {
 			if err := SetStructField(

@@ -56,40 +56,54 @@ import (
 //		}
 //	}
 func New[T any](doc *goquery.Document) ([]T, error) {
-	results := make([]T, 0)
 	dType := reflect.TypeOf((*T)(nil)).Elem()
 
 	if dType.Kind() != reflect.Struct && dType.Kind() != reflect.Ptr {
 		return nil, fmt.Errorf("expected struct, got %s", dType.Kind())
 	}
+	results := make([]T, 0)
 	var cfg *SelectorConfig
 	for i := 0; i < dType.NumField(); i++ {
 		field := dType.Field(i)
 		cfg = NewSelectorConfig(field.Tag)
 		if cfg.DataSelector == "" {
-			return nil, &ErrSelectorNotFound{dType, field, cfg, doc}
+			return nil, &ErrSelectorNotFound{
+				Typ:   dType,
+				Field: field,
+				Cfg:   cfg,
+				Doc:   doc,
+			}
 		}
 		dataRows := doc.Find(cfg.DataSelector)
-		if dataRows.Length() == 0 {
-			return nil, &ErrNoDataFound{dType, field, cfg, doc}
+		if dataRows.Length() <= 0 {
+			return nil, &ErrNoDataFound{
+				Typ:   dType,
+				Field: field,
+				Cfg:   cfg,
+				Doc:   doc,
+			}
 		}
 		_ = dataRows.RemoveFiltered(cfg.HeadSelector)
 		if cfg.MustBePresent != "" {
 			dataRows = reduceHTML(dataRows, cfg.MustBePresent)
 			if dataRows.Length() == 0 {
-				return nil, &ErrNoDataFound{dType, field, cfg, doc}
+				return nil, &ErrMissingMustBePresent{
+					Field: field,
+					Cfg:   cfg,
+				}
 			}
 		}
-		if len(results) == 0 {
+		if len(results) < dataRows.Length() {
 			results = make([]T, dataRows.Length())
 		}
 		for j := 0; j < dataRows.Length(); j++ {
-			if err := SetStructField(
+			err := SetStructField(
 				&results[j],
 				field.Name,     // name of the field to set
 				dataRows.Eq(j), // goquery selection for cell
 				&selector{cfg.ControlTag, cfg.QuerySelector}, // selector for the inner cell
-			); err != nil {
+			)
+			if err != nil {
 				return nil, fmt.Errorf(
 					"failed to set field %s: %s",
 					field.Name,

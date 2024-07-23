@@ -61,11 +61,9 @@ func (sm *Map[K, V]) String() string {
 	defer sm.mu.RUnlock()
 	var b strings.Builder
 	for k, v := range sm.m {
-		b.WriteString("{")
 		value := fmt.Sprintf("%v", v)
 		value = limitString(value, 100)
 		b.WriteString(fmt.Sprintf("%v: %v\n", k, value))
-		b.WriteString("}")
 	}
 	return b.String()
 }

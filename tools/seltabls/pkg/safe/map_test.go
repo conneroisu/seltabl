@@ -19,7 +19,7 @@ func TestSetAndGet(t *testing.T) {
 	sm.Set("key1", 10)
 	val, ok := sm.Get("key1")
 	assert.True(t, ok)
-	assert.Equal(t, 10, val)
+	assert.Equal(t, 10, *val)
 }
 
 // TestGetNonExistentKey tests the SafeMap's get method for a non-existent key.
@@ -27,7 +27,7 @@ func TestGetNonExistentKey(t *testing.T) {
 	sm := NewSafeMap[string, int]()
 	val, ok := sm.Get("nonexistent")
 	assert.False(t, ok)
-	assert.Equal(t, 0, val)
+	assert.Equal(t, 0, *val)
 }
 
 // TestOverwriteValue tests the SafeMap's overwrite behavior.
@@ -37,7 +37,7 @@ func TestOverwriteValue(t *testing.T) {
 	sm.Set("key1", 20)
 	val, ok := sm.Get("key1")
 	assert.True(t, ok)
-	assert.Equal(t, 20, val)
+	assert.Equal(t, 20, *val)
 }
 
 // TestDeleteKey tests the SafeMap's delete method.
@@ -47,7 +47,7 @@ func TestDeleteKey(t *testing.T) {
 	sm.Delete("key1")
 	val, ok := sm.Get("key1")
 	assert.False(t, ok)
-	assert.Equal(t, 0, val)
+	assert.Equal(t, 0, *val)
 }
 
 // TestLen tests the SafeMap's length method.
@@ -75,7 +75,7 @@ func TestConcurrentSetAndGet(t *testing.T) {
 	for i := 0; i < 1000; i++ {
 		val, ok := sm.Get(i)
 		assert.True(t, ok)
-		assert.Equal(t, i, val)
+		assert.Equal(t, i, *val)
 	}
 }
 
@@ -85,12 +85,12 @@ func TestSetDifferentTypes(t *testing.T) {
 	smInt.Set("int", 123)
 	valInt, okInt := smInt.Get("int")
 	assert.True(t, okInt)
-	assert.Equal(t, 123, valInt)
+	assert.Equal(t, 123, *valInt)
 	smStr := NewSafeMap[string, string]()
 	smStr.Set("str", "value")
 	valStr, okStr := smStr.Get("str")
 	assert.True(t, okStr)
-	assert.Equal(t, "value", valStr)
+	assert.Equal(t, "value", *valStr)
 }
 
 // TestSetNilValue tests the SafeMap's set method with a nil value.
@@ -99,7 +99,7 @@ func TestSetNilValue(t *testing.T) {
 	sm.Set("key", nil)
 	val, ok := sm.Get("key")
 	assert.True(t, ok)
-	assert.Nil(t, val)
+	assert.Nil(t, *val)
 }
 func TestOverwriteWithNilValue(t *testing.T) {
 	sm := NewSafeMap[string, *int]()
@@ -108,7 +108,7 @@ func TestOverwriteWithNilValue(t *testing.T) {
 	sm.Set("key", nil)
 	val, ok := sm.Get("key")
 	assert.True(t, ok)
-	assert.Nil(t, val)
+	assert.Nil(t, *val)
 }
 
 // TestLenAfterDelete tests the SafeMap's length method after a delete.
@@ -131,7 +131,7 @@ func TestOverwriteAfterDelete(t *testing.T) {
 	sm.Set("key1", 20)
 	val, ok := sm.Get("key1")
 	assert.True(t, ok)
-	assert.Equal(t, 20, val)
+	assert.Equal(t, 20, *val)
 }
 
 // TestDeleteNonExistentKey tests the SafeMap's delete method for a non-existent
@@ -141,7 +141,7 @@ func TestDeleteNonExistentKey(t *testing.T) {
 	sm.Delete("nonexistent")
 	val, ok := sm.Get("nonexistent")
 	assert.False(t, ok)
-	assert.Equal(t, 0, val)
+	assert.Equal(t, 0, *val)
 }
 
 // TestConcurrentLen tests the SafeMap's concurrent length method.

@@ -36,12 +36,17 @@ func GetDiagnosticsForFile(
 		eg := errgroup.Group{}
 		var diags []protocol.Diagnostic
 		log.Debugf("getting htmls for url: %s", data.URLs[0])
-		html, err := db.Queries.GetHTMLByURL(ctx, master.GetHTMLByURLParams{Value: data.URLs[0]})
+		html, err := db.Queries.GetHTMLByURL(
+			ctx,
+			master.GetHTMLByURLParams{Value: data.URLs[0]},
+		)
 		if err != nil {
 			return nil, fmt.Errorf("failed to get html: %w", err)
 		}
 		log.Debugf("creating goquery doc from html: %s", data.URLs[0])
-		doc, err := goquery.NewDocumentFromReader(strings.NewReader(html.Value))
+		doc, err := goquery.NewDocumentFromReader(
+			strings.NewReader(html.Value),
+		)
 		if err != nil {
 			return nil, fmt.Errorf(
 				"failed to get html: %w",
@@ -50,7 +55,6 @@ func GetDiagnosticsForFile(
 		}
 		for _, st := range sts {
 			eg.Go(func() error {
-				log.Debugf("getting diagnostics for struct: %v", st)
 				ds, err := st.Verify(ctx, data.URLs[0], doc)
 				if err != nil {
 					return fmt.Errorf(

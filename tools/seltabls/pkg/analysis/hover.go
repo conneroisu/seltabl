@@ -49,7 +49,10 @@ func NewHoverResponse(
 		if len(*urls) == 0 {
 			return nil, nil
 		}
-		h, err := db.Queries.GetHTMLByURL(ctx, master.GetHTMLByURLParams{Value: (*urls)[0]})
+		h, err := db.Queries.GetHTMLByURL(
+			ctx,
+			master.GetHTMLByURLParams{Value: (*urls)[0]},
+		)
 		if err != nil {
 			return nil, fmt.Errorf("failed to get html: %w", err)
 		}
@@ -101,9 +104,17 @@ func GetSelectorHover(
 		for i := range structNodes {
 			go func(i int) {
 				// Check if the position is within the struct node
-				inPosition := parsers.IsPositionInNode(structNodes[i], position, fset)
+				inPosition := parsers.IsPositionInNode(
+					structNodes[i],
+					position,
+					fset,
+				)
 				// Check if the position is within a struct tag
-				inTag := parsers.IsPositionInTag(structNodes[i], position, fset)
+				inTag := parsers.IsPositionInTag(
+					structNodes[i],
+					position,
+					fset,
+				)
 				if inPosition && inTag {
 					var val string
 					// Check if the position is within a struct tag value

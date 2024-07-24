@@ -16,6 +16,11 @@ import (
 	"go.lsp.dev/uri"
 )
 
+const (
+	maxCompletionLabelLength = 50
+	hiddenText               = "..."
+)
+
 // CreateTextDocumentCompletion returns the completions for a given text
 // document. It checks if the position is within the struct tag and returns the
 // selectors if the position is within the struct tag.
@@ -61,57 +66,73 @@ func CreateTextDocumentCompletion(
 		switch check {
 		case parsers.StateInTag:
 			for _, key := range completionKeys {
+				item := protocol.CompletionItem{
+					Label:         key.Label,
+					Detail:        key.Detail,
+					Documentation: key.Documentation,
+					Kind:          protocol.CompletionItemKindField,
+				}
+				if len(item.Label) > maxCompletionLabelLength {
+					item.InsertText = item.Label
+					// get the last character to the max length
+					item.Label = hiddenText + item.Label[len(item.Label)-maxCompletionLabelLength-len(hiddenText):]
+				}
 				response.Result = append(
 					response.Result,
-					protocol.CompletionItem{
-						Label:         key.Label,
-						Detail:        key.Detail,
-						Documentation: key.Documentation,
-						Kind:          protocol.CompletionItemKindField,
-					},
+					item,
 				)
 			}
 		case parsers.StateInTagValue:
 			for _, selector := range *selectors {
+				item := protocol.CompletionItem{
+					Label: selector.Value,
+					Detail: fmt.Sprintf(
+						"Occurances: '%d'\nContext:\n%s",
+						selector.Occurances,
+						selector.Context,
+					),
+					CommitCharacters: []string{":", ">", "#"},
+					Documentation:    "seltabls",
+					Deprecated:       false,
+					Kind:             protocol.CompletionItemKindValue,
+					InsertTextFormat: protocol.InsertTextFormatPlainText,
+					InsertTextMode:   protocol.InsertTextModeAsIs,
+				}
+				if len(item.Label) > maxCompletionLabelLength {
+					item.InsertText = item.Label
+					item.Label = hiddenText + item.Label[len(item.Label)-maxCompletionLabelLength-len(hiddenText):]
+				}
 				response.Result = append(
 					response.Result,
-					protocol.CompletionItem{
-						Label: selector.Value,
-						Detail: fmt.Sprintf(
-							"Occurances: '%d'\nContext:\n%s",
-							selector.Occurances,
-							textLimit(selector.Context, 200),
-						),
-						CommitCharacters: []string{":", ">", "#"},
-						Documentation:    "seltabls",
-						Deprecated:       false,
-						Kind:             protocol.CompletionItemKindValue,
-						InsertTextFormat: protocol.InsertTextFormatPlainText,
-						InsertTextMode:   protocol.InsertTextModeAsIs,
-					},
+					item,
 				)
 			}
 		case parsers.StateAfterColon:
 			for _, selector := range *selectors {
+				item := protocol.CompletionItem{
+					Deprecated: false,
+					Detail: fmt.Sprintf(
+						"Occurances: '%d'\nContext: \n%s",
+						selector.Occurances,
+						selector.Context,
+					),
+					Documentation:    "seltabls",
+					CommitCharacters: []string{},
+					InsertTextFormat: protocol.InsertTextFormatPlainText,
+					InsertTextMode:   protocol.InsertTextModeAsIs,
+					Kind:             protocol.CompletionItemKindValue,
+					Label: fmt.Sprintf(
+						`"%s"`,
+						selector.Value,
+					),
+				}
+				if len(item.Label) > maxCompletionLabelLength {
+					item.InsertText = item.Label
+					item.Label = hiddenText + item.Label[len(item.Label)-maxCompletionLabelLength-len(hiddenText):]
+				}
 				response.Result = append(
 					response.Result,
-					protocol.CompletionItem{
-						Deprecated: false,
-						Detail: fmt.Sprintf(
-							"Occurances: '%d'\nContext: \n%s",
-							selector.Occurances,
-							textLimit(selector.Context, 200),
-						),
-						Documentation:    "seltabls",
-						CommitCharacters: []string{},
-						InsertTextFormat: protocol.InsertTextFormatPlainText,
-						InsertTextMode:   protocol.InsertTextModeAsIs,
-						Kind:             protocol.CompletionItemKindValue,
-						Label: fmt.Sprintf(
-							`"%s"`,
-							selector.Value,
-						),
-					},
+					item,
 				)
 			}
 		default:
@@ -173,12 +194,4 @@ func CheckPosition(
 		}
 	}
 	return parsers.StateInvalid, nil
-}
-
-// textLimit limits the length of the given text to the given limit.
-func textLimit(text string, limit int) string {
-	if len(text) > limit {
-		return text[:limit] + "..."
-	}
-	return text
 }

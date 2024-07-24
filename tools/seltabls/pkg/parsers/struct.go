@@ -86,66 +86,48 @@ func (s *Structure) Verify(
 	url string,
 	content *goquery.Document,
 ) (diags []protocol.Diagnostic, err error) {
-	for {
-		select {
-		case <-ctx.Done():
-			return diags, fmt.Errorf("context cancelled: %w", ctx.Err())
-		default:
-			wg := conc.WaitGroup{}
-			for j := range len(s.Fields) {
-				for i := range s.Fields[j].Tags.Len() {
-					wg.Go(func() {
-						for k := range diagnosticKeys {
-							if diagnosticKeys[k] == s.Fields[j].Tags.Tag(
-								i,
-							).Key {
-								verified, err := validateSelector(
-									s.Fields[j].Tags.Tag(i).Value(),
-									content,
-								)
-								if !verified || err != nil {
-									diag := protocol.Diagnostic{
-										Range: protocol.Range{
-											Start: protocol.Position{
-												Line: uint32(
-													s.Fields[j].Line - 1,
-												),
-												Character: uint32(
-													s.Fields[j].Tag(i).Start,
-												),
-											},
-											End: protocol.Position{
-												Line: uint32(
-													s.Fields[j].Line - 1,
-												),
-												Character: uint32(
-													s.Fields[j].Tag(i).End,
-												),
-											},
+	select {
+	case <-ctx.Done():
+		return diags, fmt.Errorf("context cancelled: %w", ctx.Err())
+	default:
+		wg := conc.WaitGroup{}
+		for j := range len(s.Fields) {
+			for i := range s.Fields[j].Tags.Len() {
+				wg.Go(func() {
+					for k := range diagnosticKeys {
+						if diagnosticKeys[k] == s.Fields[j].Tags.Tag(
+							i,
+						).Key {
+							verified, err := validateSelector(
+								s.Fields[j].Tags.Tag(i).Value(),
+								content,
+							)
+							if !verified || err != nil {
+								diag := protocol.Diagnostic{
+									Range: protocol.Range{
+										Start: protocol.Position{
+											Line: uint32(
+												s.Fields[j].Line - 1,
+											),
+											Character: uint32(
+												s.Fields[j].Tag(i).Start,
+											),
 										},
-										Severity: protocol.DiagnosticSeverityWarning,
-										Source:   "seltabls",
-									}
-									if err != nil {
-										diag.Message = fmt.Sprintf(
-											"failed to validate selector `%s` against known url (%s) content: \n```html\n%s\n```",
-											func() string {
-												if s.Fields[j].Tags.Tag(i).
-													Value() ==
-													"" {
-													return "<null>"
-												}
-												return s.Fields[j].Tags.Tag(i).
-													Value()
-											}(),
-											url,
-											err.Error(),
-										)
-										diags = append(diags, diag)
-										return
-									}
+										End: protocol.Position{
+											Line: uint32(
+												s.Fields[j].Line - 1,
+											),
+											Character: uint32(
+												s.Fields[j].Tag(i).End,
+											),
+										},
+									},
+									Severity: protocol.DiagnosticSeverityWarning,
+									Source:   "seltabls",
+								}
+								if err != nil {
 									diag.Message = fmt.Sprintf(
-										"could not verify selector `%s` against known url (%s) content",
+										"failed to validate selector `%s` against known url (%s) content: \n```html\n%s\n```",
 										func() string {
 											if s.Fields[j].Tags.Tag(i).
 												Value() ==
@@ -156,17 +138,33 @@ func (s *Structure) Verify(
 												Value()
 										}(),
 										url,
+										err.Error(),
 									)
 									diags = append(diags, diag)
+									return
 								}
+								diag.Message = fmt.Sprintf(
+									"could not verify selector `%s` against known url (%s) content",
+									func() string {
+										if s.Fields[j].Tags.Tag(i).
+											Value() ==
+											"" {
+											return "<null>"
+										}
+										return s.Fields[j].Tags.Tag(i).
+											Value()
+									}(),
+									url,
+								)
+								diags = append(diags, diag)
 							}
 						}
-					})
-				}
+					}
+				})
 			}
-			wg.Wait()
-			return diags, nil
 		}
+		wg.Wait()
+		return diags, nil
 	}
 }
 

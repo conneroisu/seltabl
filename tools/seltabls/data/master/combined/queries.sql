@@ -206,7 +206,7 @@ FROM
     JOIN urls ON urls.id = selectors.url_id
 WHERE
     selectors.occurances >= ? AND
-    urls.value = ?;
+    urls.value LIKE ?;
 /******************************************************************************/
 
 /*

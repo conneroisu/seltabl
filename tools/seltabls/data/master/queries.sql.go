@@ -424,7 +424,7 @@ FROM
     JOIN urls ON urls.id = selectors.url_id
 WHERE
     selectors.occurances >= ? AND
-    urls.value = ?
+    urls.value LIKE ?
 `
 
 type GetSelectorsByMinOccurancesParams struct {
@@ -441,7 +441,7 @@ type GetSelectorsByMinOccurancesParams struct {
 //	    JOIN urls ON urls.id = selectors.url_id
 //	WHERE
 //	    selectors.occurances >= ? AND
-//	    urls.value = ?
+//	    urls.value LIKE ?
 func (q *Queries) GetSelectorsByMinOccurances(ctx context.Context, arg GetSelectorsByMinOccurancesParams) ([]*Selector, error) {
 	rows, err := q.db.QueryContext(ctx, getSelectorsByMinOccurances, arg.Occurances, arg.Value)
 	if err != nil {

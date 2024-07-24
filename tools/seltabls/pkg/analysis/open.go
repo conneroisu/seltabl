@@ -72,7 +72,10 @@ func OpenDocument(
 						if err != nil {
 							return err
 						}
-						selectors.Set(req.Params.TextDocument.URI, append(sels, sels...))
+						selectors.Set(
+							req.Params.TextDocument.URI,
+							append(sels, sels...),
+						)
 					}
 					return nil
 				})

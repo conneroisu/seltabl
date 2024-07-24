@@ -83,7 +83,9 @@ func New[T any](doc *goquery.Document) ([]T, error) {
 				Doc:   doc,
 			}
 		}
-		_ = dataRows.RemoveFiltered(cfg.HeadSelector)
+		if cfg.HeadSelector != "" && cfg.HeadSelector != "-" {
+			_ = dataRows.RemoveFiltered(cfg.HeadSelector)
+		}
 		if cfg.MustBePresent != "" {
 			dataRows = reduceHTML(dataRows, cfg.MustBePresent)
 			if dataRows.Length() == 0 {
@@ -101,7 +103,10 @@ func New[T any](doc *goquery.Document) ([]T, error) {
 				&results[j],
 				field.Name,     // name of the field to set
 				dataRows.Eq(j), // goquery selection for cell
-				&selector{cfg.ControlTag, cfg.QuerySelector}, // selector for the inner cell
+				&selector{
+					control: cfg.ControlTag,
+					query:   cfg.QuerySelector,
+				}, // selector for the inner cell
 			)
 			if err != nil {
 				return nil, fmt.Errorf(

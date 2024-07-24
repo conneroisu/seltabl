@@ -7,6 +7,7 @@ import (
 	"go/parser"
 	"go/token"
 
+	"github.com/charmbracelet/log"
 	"github.com/conneroisu/seltabl/tools/seltabls/data/master"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/parsers"
@@ -46,6 +47,7 @@ func CreateTextDocumentCompletion(
 		if !ok {
 			return nil, nil
 		}
+		log.Debugf("selectors: %v", selectors)
 		check, err := CheckPosition(
 			request.Params.Position,
 			content,

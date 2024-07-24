@@ -54,6 +54,9 @@ func NewHoverResponse(
 			return nil, fmt.Errorf("failed to get html: %w", err)
 		}
 		doc, err := goquery.NewDocumentFromReader(strings.NewReader(h.Value))
+		if err != nil {
+			return nil, fmt.Errorf("failed to get html: %w", err)
+		}
 		response.Result, err = GetSelectorHover(
 			ctx,
 			req.Params.Position,
@@ -74,60 +77,65 @@ func GetSelectorHover(
 	text *string,
 	doc *goquery.Document,
 ) (res lsp.HoverResult, err error) {
-	var inValue bool
-	// Create a new token file set
-	fset := token.NewFileSet()
-	position.Line = position.Line + 1
-	// Parse the source code from a new buffer
-	node, err := parser.ParseFile(
-		fset,
-		"",
-		bytes.NewBufferString(*text),
-		parser.Trace,
-	)
-	if err != nil {
-		return res, fmt.Errorf("failed to parse struct: %w", err)
-	}
-	// Find the struct node in the AST
-	structNodes := parsers.FindStructNodes(node)
-	var resCh chan lsp.HoverResult = make(chan lsp.HoverResult)
-	for i := range structNodes {
-		go func(i int) {
-			// Check if the position is within the struct node
-			inPosition := parsers.IsPositionInNode(structNodes[i], position, fset)
-			// Check if the position is within a struct tag
-			inTag := parsers.IsPositionInTag(structNodes[i], position, fset)
-			if inPosition && inTag {
-				var val string
-				// Check if the position is within a struct tag value
-				// (i.e. value inside and including " and " characters)
-				val, inValue = parsers.PositionInStructTagValue(
-					structNodes[i],
-					position,
-					fset,
-				)
-				if !inValue {
-					return
-				}
-				var HTMLs []string
-				found := doc.Find(val)
-				found.Each(func(i int, s *goquery.Selection) {
-					HTML, err := s.Parent().Html()
-					if err != nil {
-						log.Errorf("failed to get html: %s", err)
+	select {
+	case <-ctx.Done():
+		return res, fmt.Errorf("context cancelled: %w", ctx.Err())
+	default:
+		var inValue bool
+		// Create a new token file set
+		fset := token.NewFileSet()
+		position.Line = position.Line + 1
+		// Parse the source code from a new buffer
+		node, err := parser.ParseFile(
+			fset,
+			"",
+			bytes.NewBufferString(*text),
+			parser.Trace,
+		)
+		if err != nil {
+			return res, fmt.Errorf("failed to parse struct: %w", err)
+		}
+		// Find the struct node in the AST
+		structNodes := parsers.FindStructNodes(node)
+		var resCh chan lsp.HoverResult = make(chan lsp.HoverResult)
+		for i := range structNodes {
+			go func(i int) {
+				// Check if the position is within the struct node
+				inPosition := parsers.IsPositionInNode(structNodes[i], position, fset)
+				// Check if the position is within a struct tag
+				inTag := parsers.IsPositionInTag(structNodes[i], position, fset)
+				if inPosition && inTag {
+					var val string
+					// Check if the position is within a struct tag value
+					// (i.e. value inside and including " and " characters)
+					val, inValue = parsers.PositionInStructTagValue(
+						structNodes[i],
+						position,
+						fset,
+					)
+					if !inValue {
+						return
 					}
-					HTML = gohtml.Format(HTML)
-					HTMLs = append(HTMLs, HTML)
-				})
-				HTML := strings.Join(HTMLs, "\n================\n")
-				res.Contents = fmt.Sprintf(
-					"`%s`:\n%s",
-					val,
-					HTML,
-				)
-				resCh <- res
-			}
-		}(i)
+					var HTMLs []string
+					found := doc.Find(val)
+					found.Each(func(i int, s *goquery.Selection) {
+						HTML, err := s.Parent().Html()
+						if err != nil {
+							log.Errorf("failed to get html: %s", err)
+						}
+						HTML = gohtml.Format(HTML)
+						HTMLs = append(HTMLs, fmt.Sprintf("%d:\n%s", i, HTML))
+					})
+					HTML := strings.Join(HTMLs, "\n================\n")
+					res.Contents = fmt.Sprintf(
+						"`%s`:\n%s",
+						val,
+						HTML,
+					)
+					resCh <- res
+				}
+			}(i)
+		}
+		return <-resCh, nil
 	}
-	return <-resCh, nil
 }

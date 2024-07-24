@@ -22,7 +22,6 @@ func GetDiagnosticsForFile(
 	data *parsers.StructCommentData,
 	db *data.Database[master.Queries],
 ) ([]protocol.Diagnostic, error) {
-	log.Debug("getting diagnostics for file")
 	select {
 	case <-ctx.Done():
 		return nil, nil

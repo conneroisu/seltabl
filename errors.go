@@ -19,7 +19,7 @@ func (e *ErrNoDataFound) Error() string {
 		e.Typ,
 		e.Field.Type,
 		e.Field.Name,
-		e.Cfg.QuerySelector,
+		e.Cfg.DataSelector,
 	)
 }
 

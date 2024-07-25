@@ -71,7 +71,6 @@ func New[T any](doc *goquery.Document) ([]T, error) {
 				Typ:   dType,
 				Field: field,
 				Cfg:   cfg,
-				Doc:   doc,
 			}
 		}
 		dataRows := doc.Find(cfg.DataSelector)
@@ -80,7 +79,6 @@ func New[T any](doc *goquery.Document) ([]T, error) {
 				Typ:   dType,
 				Field: field,
 				Cfg:   cfg,
-				Doc:   doc,
 			}
 		}
 		if cfg.HeadSelector != "" && cfg.HeadSelector != "-" {
@@ -103,7 +101,6 @@ func New[T any](doc *goquery.Document) ([]T, error) {
 				Typ:   dType,
 				Field: field,
 				Cfg:   cfg,
-				Doc:   doc,
 			}
 		}
 		for j := 0; j < dataRows.Length(); j++ {

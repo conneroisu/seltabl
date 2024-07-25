@@ -413,12 +413,12 @@ func (t *Tags) Tags() []*Tag {
 	return t.tags
 }
 
-// Len returns the length of the tags
+// Len returns the length of the tags.
 func (t *Tags) Len() int {
 	return len(t.tags)
 }
 
-// Tag returns a tag at the given index
+// Tag returns a tag at the given index.
 func (t *Tags) Tag(idx int) *Tag {
 	return t.tags[idx]
 }
@@ -468,7 +468,7 @@ func (t *Tag) Value() string {
 	return t.Name
 }
 
-// GoString implements the fmt.GoStringer interface
+// GoString implements the GoStringer interface.
 func (t *Tag) GoString() string {
 	template := `{
 		Key:    '%s',

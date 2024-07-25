@@ -15,7 +15,6 @@ import (
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/safe"
 	"github.com/spf13/cobra"
 	"go.lsp.dev/uri"
-	"golang.org/x/sync/errgroup"
 )
 
 // LSPHandler is a struct for the LSP server
@@ -55,13 +54,11 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 			scanner.Split(rpc.Split)
 			lspCtx, lspCancel := context.WithCancel(ctx)
 			defer lspCancel()
-			eg, lspCtx := errgroup.WithContext(lspCtx)
-			eg.SetLimit(3)
 			for scanner.Scan() {
-				eg.Go(func() error {
+				go func() {
 					decoded, err := rpc.DecodeMessage(scanner.Bytes())
 					if err != nil {
-						return fmt.Errorf("failed to decode message: %w", err)
+						log.Errorf("failed to decode message: %s", err)
 					}
 					hCtx, cancel := context.WithCancel(lspCtx)
 					lsp.CancelMap.Set(decoded.ID, cancel)
@@ -87,21 +84,18 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 							decoded.Method,
 							err,
 						)
-						return nil
 					}
-					if isNull(resp) {
-						return nil
+					if !isNull(resp) {
+						err = rpc.WriteResponse(hCtx, &writer, resp)
+						if err != nil {
+							log.Errorf(
+								"failed to write (%s) response: %s",
+								resp.Method(),
+								err,
+							)
+						}
 					}
-					err = rpc.WriteResponse(hCtx, &writer, resp)
-					if err != nil {
-						log.Errorf(
-							"failed to write (%s) response: %s\n",
-							resp.Method(),
-							err,
-						)
-					}
-					return nil
-				})
+				}()
 			}
 			err = scanner.Err()
 			if err != nil {

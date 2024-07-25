@@ -128,3 +128,9 @@ make doc
 ## License
 
 MIT
+
+Types of ctl selectors:
+
+- text (default) (queries the text of the selected element)
+- spaces (queries the text of the selected element split by spaces)
+- query (queries the attributes of the selected elemente)

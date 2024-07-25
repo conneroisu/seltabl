@@ -152,10 +152,12 @@ type MyStruct struct {
 		t.Run(tc.name, func(t *testing.T) {
 			failed := false
 			for _, structNode := range structNodes {
+				p := ""
 				_, is := PositionInStructTagValue(
 					structNode,
 					tc.position,
 					fset,
+					&p,
 				)
 				assert.Equal(t, tc.expected, is)
 			}
@@ -242,10 +244,12 @@ type TableStruct struct {
 		t.Run(tc.name, func(t *testing.T) {
 			failed := false
 			for _, structNode := range structNodes {
+				p := ""
 				_, is := PositionInStructTagValue(
 					structNode,
 					tc.position,
 					fset,
+					&p,
 				)
 				if is != tc.expected {
 					t.Errorf("expected %v, got %v", tc.expected, is)

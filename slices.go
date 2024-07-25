@@ -112,7 +112,11 @@ func New[T any](doc *goquery.Document) ([]T, error) {
 		}
 	}
 	if len(results) < 1 {
-		return nil, fmt.Errorf("no data found for struct %s", dType.Name())
+		return nil, &ErrNoDataFound{
+			Typ:   dType,
+			Field: reflect.StructField{},
+			Cfg:   cfg,
+		}
 	}
 	return results, nil
 }

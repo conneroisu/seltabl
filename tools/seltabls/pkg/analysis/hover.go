@@ -182,7 +182,6 @@ func GetSelectorHover(
 							val,
 							HTML,
 						)
-						resCh <- res
 						doneCancel()
 					}
 				}

@@ -270,20 +270,6 @@ func setFieldValue(
 	}
 }
 
-// reduceHTML removes all nodes from the selection that do not contain the
-// text.
-func reduceHTML(sel *goquery.Selection, text string) *goquery.Selection {
-	var out *goquery.Selection
-	for i := range sel.Length() {
-		s := sel.Eq(i)
-		body := s.Text()
-		if !strings.Contains(body, text) {
-			out = s.Remove()
-		}
-	}
-	return out
-}
-
 // extractNumbers extracts all numbers from a string.
 func extractNumbers(input string) string {
 	var builder strings.Builder

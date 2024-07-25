@@ -73,7 +73,7 @@ func (e *ErrSelectorNotFound) Error() string {
 
 // ErrParsing is returned when a field's value cannot be parsed.
 type ErrParsing struct {
-	Field reflect.StructField
+	Field reflect.Type
 	Value string
 	Err   error
 }
@@ -82,8 +82,8 @@ type ErrParsing struct {
 func (e ErrParsing) Error() string {
 	return fmt.Sprintf(
 		"failed to parse field %s of type %s from value %s: %s",
-		e.Field.Name,
-		e.Field.Type,
+		e.Field.Name(),
+		e.Field.String(),
 		e.Value,
 		e.Err,
 	)

@@ -67,7 +67,7 @@ func setFieldValue(
 			in, err = strconv.Atoi(extractNumbers(cellText))
 			if err != nil {
 				return ErrParsing{
-					Field: field.Type().Field(0),
+					Field: field.Type(),
 					Value: cellText,
 					Err:   err,
 				}
@@ -81,7 +81,7 @@ func setFieldValue(
 			in, err = strconv.Atoi(extractNumbers(cellText))
 			if err != nil {
 				return ErrParsing{
-					Field: field.Type().Field(0),
+					Field: field.Type(),
 					Value: cellText,
 					Err:   err,
 				}
@@ -95,7 +95,7 @@ func setFieldValue(
 			in, err = strconv.Atoi(extractNumbers(cellText))
 			if err != nil {
 				return ErrParsing{
-					Field: field.Type().Field(0),
+					Field: field.Type(),
 					Value: cellText,
 					Err:   err,
 				}
@@ -109,7 +109,7 @@ func setFieldValue(
 			in, err = strconv.Atoi(extractNumbers(cellText))
 			if err != nil {
 				return ErrParsing{
-					Field: field.Type().Field(0),
+					Field: field.Type(),
 					Value: cellText,
 					Err:   err,
 				}
@@ -123,7 +123,7 @@ func setFieldValue(
 			in, err = strconv.ParseInt(extractNumbers(cellText), 10, 64)
 			if err != nil {
 				return ErrParsing{
-					Field: field.Type().Field(0),
+					Field: field.Type(),
 					Value: cellText,
 					Err:   err,
 				}
@@ -137,7 +137,7 @@ func setFieldValue(
 			in, err = strconv.ParseUint(extractNumbers(cellText), 10, 64)
 			if err != nil {
 				return ErrParsing{
-					Field: field.Type().Field(0),
+					Field: field.Type(),
 					Value: cellText,
 					Err:   err,
 				}
@@ -151,7 +151,7 @@ func setFieldValue(
 			in, err = strconv.ParseUint(extractNumbers(cellText), 10, 64)
 			if err != nil {
 				return ErrParsing{
-					Field: field.Type().Field(0),
+					Field: field.Type(),
 					Value: cellText,
 					Err:   err,
 				}
@@ -165,7 +165,7 @@ func setFieldValue(
 			in, err = strconv.ParseUint(extractNumbers(cellText), 10, 64)
 			if err != nil {
 				return ErrParsing{
-					Field: field.Type().Field(0),
+					Field: field.Type(),
 					Value: cellText,
 					Err:   err,
 				}
@@ -179,7 +179,7 @@ func setFieldValue(
 			in, err = strconv.ParseUint(extractNumbers(cellText), 10, 64)
 			if err != nil {
 				return ErrParsing{
-					Field: field.Type().Field(0),
+					Field: field.Type(),
 					Value: cellText,
 					Err:   err,
 				}
@@ -193,7 +193,7 @@ func setFieldValue(
 			in, err = strconv.ParseUint(extractNumbers(cellText), 10, 64)
 			if err != nil {
 				return ErrParsing{
-					Field: field.Type().Field(0),
+					Field: field.Type(),
 					Value: cellText,
 					Err:   err,
 				}
@@ -207,7 +207,7 @@ func setFieldValue(
 			in, err = strconv.ParseFloat(extractFloatNumbers(cellText), 32)
 			if err != nil {
 				return ErrParsing{
-					Field: field.Type().Field(0),
+					Field: field.Type(),
 					Value: cellText,
 					Err:   err,
 				}
@@ -221,7 +221,7 @@ func setFieldValue(
 			in, err = strconv.ParseFloat(extractFloatNumbers(cellText), 64)
 			if err != nil {
 				return ErrParsing{
-					Field: field.Type().Field(0),
+					Field: field.Type(),
 					Value: cellText,
 					Err:   err,
 				}
@@ -237,13 +237,15 @@ func setFieldValue(
 // reduceHTML removes all nodes from the selection that do not contain the
 // text.
 func reduceHTML(sel *goquery.Selection, text string) *goquery.Selection {
-	sel.Each(func(_ int, s *goquery.Selection) {
+	var out *goquery.Selection
+	for i := range sel.Length() {
+		s := sel.Eq(i)
 		body := s.Text()
 		if !strings.Contains(body, text) {
-			s.Remove()
+			out = s.Remove()
 		}
-	})
-	return sel
+	}
+	return out
 }
 
 // extractNumbers extracts all numbers from a string.

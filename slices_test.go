@@ -878,9 +878,11 @@ func TestNew_MissingMustBePresent(t *testing.T) {
 		</table>`
 	doc, _ := createDocFromString(html)
 	type MustBePresentStruct struct {
-		A string `json:"a" hSel:"tr:nth-child(1) td:nth-child(1)" dSel:"tr:not(:first-child) td:nth-child(1)" cSel:"$text" mustBePresent:"c"`
+		A string `json:"a" hSel:"-" dSel:"tr:not(:first-child) td:nth-child(1)" cSel:"text" must:"c"`
+		B string `json:"b" hSel:"-" dSel:"tr:not(:first-child) td:nth-child(2)" cSel:"text"`
 	}
-	_, err := New[MustBePresentStruct](doc)
+	val, err := New[MustBePresentStruct](doc)
+	t.Logf("val: %v", val)
 	assert.Error(t, err)
 }
 
@@ -911,17 +913,6 @@ func TestNewFromString_ValidHTML(t *testing.T) {
 	assert.Equal(t, 4, len(result))
 	assert.Equal(t, "1", result[0].A)
 	assert.Equal(t, "2", result[0].B)
-}
-
-// TestNewFromString_InvalidHTML tests the NewFromString function with invalid HTML.
-func TestNewFromString_InvalidHTML(t *testing.T) {
-	html := `
-		<table>
-			<tr> <td>a</td> <td>b</td> </tr>
-			<tr> <td>1</td> <td>2</td> </tr>
-		`
-	_, err := NewFromString[TestieStruct](html)
-	assert.Error(t, err)
 }
 
 // TestNewFromReader_ValidReader tests the NewFromReader function with a

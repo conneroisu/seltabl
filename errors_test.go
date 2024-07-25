@@ -4,8 +4,6 @@ import (
 	"reflect"
 	"strings"
 	"testing"
-
-	"github.com/PuerkitoBio/goquery"
 )
 
 // TestErrMissingMustBePresent_Error tests the Error method of ErrMissingMustBePresent.
@@ -40,12 +38,10 @@ func TestErrNoDataFound_Error(t *testing.T) {
 	cfg := &SelectorConfig{
 		QuerySelector: "test-selector",
 	}
-	doc, _ := goquery.NewDocumentFromReader(strings.NewReader("<html><body><p>Test</p></body></html>"))
 	err := &ErrNoDataFound{
 		Typ:   reflect.TypeOf(struct{}{}),
 		Field: field,
 		Cfg:   cfg,
-		Doc:   doc,
 	}
 
 	errorMsg := err.Error()
@@ -73,13 +69,10 @@ func TestErrNoDataFound_Error_FailedHtml(t *testing.T) {
 	cfg := &SelectorConfig{
 		QuerySelector: "test-selector",
 	}
-	// Create an invalid document that will fail to generate HTML
-	doc, _ := goquery.NewDocumentFromReader(strings.NewReader("<invalid>"))
 	err := &ErrNoDataFound{
 		Typ:   reflect.TypeOf(struct{}{}),
 		Field: field,
 		Cfg:   cfg,
-		Doc:   doc,
 	}
 
 	errorMsg := err.Error()
@@ -99,12 +92,10 @@ func TestErrSelectorNotFound_Error(t *testing.T) {
 	cfg := &SelectorConfig{
 		QuerySelector: "test-selector",
 	}
-	doc, _ := goquery.NewDocumentFromReader(strings.NewReader("<html><body><p>Test</p></body></html>"))
 	err := &ErrSelectorNotFound{
 		Typ:   reflect.TypeOf(struct{}{}),
 		Field: field,
 		Cfg:   cfg,
-		Doc:   doc,
 	}
 
 	errorMsg := err.Error()
@@ -132,13 +123,10 @@ func TestErrSelectorNotFound_Error_FailedHtml(t *testing.T) {
 	cfg := &SelectorConfig{
 		QuerySelector: "test-selector",
 	}
-	// Create an invalid document that will fail to generate HTML
-	doc, _ := goquery.NewDocumentFromReader(strings.NewReader("<invalid>"))
 	err := &ErrSelectorNotFound{
 		Typ:   reflect.TypeOf(struct{}{}),
 		Field: field,
 		Cfg:   cfg,
-		Doc:   doc,
 	}
 
 	errorMsg := err.Error()
@@ -149,17 +137,10 @@ func TestErrSelectorNotFound_Error_FailedHtml(t *testing.T) {
 }
 
 func TestErrNoDataFound_Error2(t *testing.T) {
-	invalidHTML := "<html<head><title>Test</title></head><body><div>Some Content</div</body></html>" // Notice the missing '>'
-	doc, err := goquery.NewDocumentFromReader(strings.NewReader(invalidHTML))
-	if err != nil {
-		t.Fatalf("Failed to create document from invalid HTML: %s", err)
-	}
-
 	errNoDataFound := &ErrNoDataFound{
 		Typ:   reflect.TypeOf("string"),
 		Field: reflect.StructField{Name: "TestField", Type: reflect.TypeOf("string")},
 		Cfg:   &SelectorConfig{QuerySelector: "div.invalid"},
-		Doc:   doc,
 	}
 
 	expected := "failed to get data rows html: EOF"
@@ -174,16 +155,10 @@ func TestErrNoDataFound_Error2(t *testing.T) {
 // It ensures the error message includes the selector, field name, types, and
 // HTML content.
 func TestErrSelectorNotFound_Error2(t *testing.T) {
-	invalidHTML := "<html<head><title>Test</title></head><body><div>Some Content</div</body></html>" // Notice the missing '>'
-	doc, err := goquery.NewDocumentFromReader(strings.NewReader(invalidHTML))
-	if err != nil {
-		t.Fatalf("Failed to create document from invalid HTML: %s", err)
-	}
 	errSelectorNotFound := &ErrSelectorNotFound{
 		Typ:   reflect.TypeOf("string"),
 		Field: reflect.StructField{Name: "TestField", Type: reflect.TypeOf("string")},
 		Cfg:   &SelectorConfig{QuerySelector: "div.invalid"},
-		Doc:   doc,
 	}
 	expected := "selector div.invalid with type string not found for field TestField with type string\n html: EOF"
 	if strings.Contains(errSelectorNotFound.Error(), expected) {

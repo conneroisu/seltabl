@@ -18,6 +18,7 @@ import (
 	"github.com/yosssi/gohtml"
 	"go.lsp.dev/protocol"
 	"go.lsp.dev/uri"
+	"golang.org/x/sync/errgroup"
 )
 
 // NewHoverResponse returns a hover response for the given uri and position
@@ -85,10 +86,8 @@ func GetSelectorHover(
 		return res, fmt.Errorf("context cancelled: %w", ctx.Err())
 	default:
 		var inValue bool
-		// Create a new token file set
 		fset := token.NewFileSet()
 		position.Line = position.Line + 1
-		// Parse the source code from a new buffer
 		node, err := parser.ParseFile(
 			fset,
 			"",
@@ -98,7 +97,6 @@ func GetSelectorHover(
 		if err != nil {
 			return res, fmt.Errorf("failed to parse struct: %w", err)
 		}
-		// Find the struct node in the AST
 		structNodes := parsers.FindStructNodes(node)
 		var resCh chan lsp.HoverResult = make(chan lsp.HoverResult)
 		for i := range structNodes {
@@ -143,14 +141,26 @@ func GetSelectorHover(
 				}
 				var HTMLs []string
 				found := doc.Find(val)
+				HTMLs = make([]string, found.Length())
+				eg := errgroup.Group{}
 				found.Each(func(i int, s *goquery.Selection) {
-					HTML, err := s.Parent().Html()
-					if err != nil {
-						log.Errorf("failed to get html: %s", err)
-					}
-					HTML = gohtml.Format(HTML)
-					HTMLs = append(HTMLs, fmt.Sprintf("%d:\n%s", i, HTML))
+					eg.Go(func() error {
+						HTML, err := s.Parent().Html()
+						if err != nil {
+							return fmt.Errorf("failed to get html: %w", err)
+						}
+						HTMLs[i] = fmt.Sprintf(
+							"%d:\n%s",
+							i,
+							gohtml.Format(HTML),
+						)
+						return nil
+					})
 				})
+				err := eg.Wait()
+				if err != nil {
+					log.Errorf("failed to get html: %s", err)
+				}
 				HTML := strings.Join(HTMLs, "\n================\n")
 				res.Contents = fmt.Sprintf(
 					"`%s`:\n%s",

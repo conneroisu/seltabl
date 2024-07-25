@@ -17,7 +17,7 @@ const (
 	empty    = ""
 )
 
-// GetAllSelectors retrieves all selectors from the given HTML document
+// GetAllSelectors retrieves all selectors from the given HTML document.
 func GetAllSelectors(doc *goquery.Document) ([]string, error) {
 	strs := []string{}
 	doc.Find("*").Each(func(_ int, s *goquery.Selection) {
@@ -53,7 +53,8 @@ func getSelectorsFromSelection(s *goquery.Selection) string {
 	return currentSelector
 }
 
-// GetSelectors gets all the selectors from the given URL and appends them to the selectors slice
+// GetSelectors gets all the selectors from the given URL and appends them to
+// the selectors slice.
 func GetSelectors(
 	ctx context.Context,
 	db *data.Database[master.Queries],
@@ -138,7 +139,7 @@ func GetSelectors(
 	return selectors, nil
 }
 
-// singleSelector returns a single CSS selector for the given node
+// singleSelector returns a single CSS selector for the given node.
 func singleSelector(selection *goquery.Selection) string {
 	var selector string
 	id, exists := selection.Attr("id")

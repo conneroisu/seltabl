@@ -18,6 +18,8 @@ const (
 	StateInTagValue
 	// StateAfterColon is the state for when the position is after a colon.
 	StateAfterColon
+	// StateOnURL is the state for when the position is on a url.
+	StateOnURL
 	// StateInvalid is the state for when the position is invalid or not within a struct.
 	StateInvalid
 )
@@ -28,6 +30,7 @@ func (s State) String() string {
 		"StateInTag",
 		"StateInTagValue",
 		"StateAfterColon",
+		"StateOnURL",
 		"StateInvalid",
 	}[s]
 }
@@ -37,14 +40,23 @@ func PositionInStructTagValue(
 	node *ast.StructType,
 	pos protocol.Position,
 	fset *token.FileSet,
+	text *string,
 ) (
 	result string,
 	exists bool,
 ) {
 	closestTagValue := ""
-	closestDistance := int(
-		^uint(0) >> 1,
-	) // Initialize with the maximum possible integer value
+	// Initialize with the maximum possible integer value
+	closestDistance := int(^uint(0) >> 1)
+
+	split := strings.Split(*text, "\n")
+	line := split[pos.Line]
+	if strings.Contains(line, "@url:") {
+		if urlMatches := urlPattern.FindStringSubmatch(line); len(urlMatches) > 1 {
+			return urlMatches[1], false
+		}
+	}
+
 	for _, field := range node.Fields.List {
 		if field.Tag != nil {
 			inNode := IsPositionInNode(field.Tag, pos, fset)

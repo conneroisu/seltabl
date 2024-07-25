@@ -252,6 +252,9 @@ func ParseStructs(
 			for idx, field := range s.Fields.List {
 				field, idx := field, idx
 				eg.Go(func() error {
+					if field.Tag == nil {
+						return nil
+					}
 					tags, err := ParseTags(
 						field.Tag.Value,
 						fset.Position(field.Pos()).Offset,

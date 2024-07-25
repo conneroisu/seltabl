@@ -35,6 +35,6 @@ type TableStruct struct {
 	A string `hSel:"html>body>div"                         dSel:"html>body>div.footer>div>span>a[href]"  ctl:"$text"`
 	B string `hSel:""                                      dSel:"html>body>div>table>tbody>tr.row_odd"   ctl:"$text"`
 	C string `hSel:"html>head>link[href]"                                    dSel:"html>body>div"                          ctl:"$text"`
-	D string `hSel:"html>body>div.footer>div>span>a[href]" dSel:"html>body>div.footer>div>span>a[href]"  ctl:"$text"`
+	D string `hSel:"" dSel:"html>body>div.footer>div>span>a[href]"  ctl:"$text"`
 	E string `hSel:""                                      dSel:"htmle>body>div.footer>div>span>a[href]" ctl:"$text"`
 }

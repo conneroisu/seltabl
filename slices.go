@@ -86,7 +86,7 @@ func New[T any](doc *goquery.Document) ([]T, error) {
 		}
 		if cfg.MustBePresent != "" {
 			dataRows = reduceHTML(dataRows, cfg.MustBePresent)
-			if len(dataRows.Nodes) == 0 {
+			if dataRows.Nodes != nil && len(dataRows.Nodes) == 0 {
 				return nil, &ErrMissingMustBePresent{
 					Field: field,
 					Cfg:   cfg,

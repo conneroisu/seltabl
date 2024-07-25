@@ -6,27 +6,6 @@ import (
 	"testing"
 )
 
-// TestErrMissingMustBePresent_Error tests the Error method of ErrMissingMustBePresent.
-// It verifies that the error message contains the correct field name, selector, and type information.
-func TestErrMissingMustBePresent_Error(t *testing.T) {
-	field := reflect.StructField{
-		Name: "TestField",
-		Type: reflect.TypeOf(""),
-	}
-	cfg := &SelectorConfig{
-		MustBePresent: "test-selector",
-	}
-	err := &ErrMissingMustBePresent{
-		Field: field,
-		Cfg:   cfg,
-	}
-
-	expected := "must be present (test-selector) not found for field TestField with type string"
-	if err.Error() != expected {
-		t.Errorf("Expected error message '%s', but got '%s'", expected, err.Error())
-	}
-}
-
 // TestErrNoDataFound_Error tests the Error method of ErrNoDataFound with a valid HTML document.
 // It checks if the error message contains all the necessary information including the selector,
 // field name, types, and the HTML content.

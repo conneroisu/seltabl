@@ -57,7 +57,6 @@ import (
 //	}
 func New[T any](doc *goquery.Document) ([]T, error) {
 	dType := reflect.TypeOf((*T)(nil)).Elem()
-
 	if dType.Kind() != reflect.Struct && dType.Kind() != reflect.Ptr {
 		return nil, fmt.Errorf("expected struct, got %s", dType.Kind())
 	}

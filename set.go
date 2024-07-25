@@ -62,6 +62,9 @@ func setFieldValue(
 		field.SetString(cellText)
 		return nil
 	case reflect.Int:
+		if cellText == "" {
+			cellText = "0"
+		}
 		in, err := strconv.Atoi(cellText)
 		if err != nil {
 			in, err = strconv.Atoi(extractNumbers(cellText))
@@ -76,6 +79,9 @@ func setFieldValue(
 		field.SetInt(int64(in))
 		return nil
 	case reflect.Int8:
+		if cellText == "" {
+			cellText = "0"
+		}
 		in, err := strconv.Atoi(cellText)
 		if err != nil {
 			in, err = strconv.Atoi(extractNumbers(cellText))
@@ -90,6 +96,9 @@ func setFieldValue(
 		field.SetInt(int64(in))
 		return nil
 	case reflect.Int16:
+		if cellText == "" {
+			cellText = "0"
+		}
 		in, err := strconv.Atoi(cellText)
 		if err != nil {
 			in, err = strconv.Atoi(extractNumbers(cellText))
@@ -104,6 +113,9 @@ func setFieldValue(
 		field.SetInt(int64(in))
 		return nil
 	case reflect.Int32:
+		if cellText == "" {
+			cellText = "0"
+		}
 		in, err := strconv.Atoi(cellText)
 		if err != nil {
 			in, err = strconv.Atoi(extractNumbers(cellText))
@@ -118,6 +130,9 @@ func setFieldValue(
 		field.SetInt(int64(in))
 		return nil
 	case reflect.Int64:
+		if cellText == "" {
+			cellText = "0"
+		}
 		in, err := strconv.ParseInt(cellText, 10, 64)
 		if err != nil {
 			in, err = strconv.ParseInt(extractNumbers(cellText), 10, 64)
@@ -132,6 +147,9 @@ func setFieldValue(
 		field.SetInt(in)
 		return nil
 	case reflect.Uint:
+		if cellText == "" {
+			cellText = "0"
+		}
 		in, err := strconv.ParseUint(cellText, 10, 64)
 		if err != nil {
 			in, err = strconv.ParseUint(extractNumbers(cellText), 10, 64)
@@ -146,6 +164,9 @@ func setFieldValue(
 		field.SetUint(in)
 		return nil
 	case reflect.Uint8:
+		if cellText == "" {
+			cellText = "0"
+		}
 		in, err := strconv.ParseUint(cellText, 10, 64)
 		if err != nil {
 			in, err = strconv.ParseUint(extractNumbers(cellText), 10, 64)
@@ -160,6 +181,9 @@ func setFieldValue(
 		field.SetUint(in)
 		return nil
 	case reflect.Uint16:
+		if cellText == "" {
+			cellText = "0"
+		}
 		in, err := strconv.ParseUint(cellText, 10, 64)
 		if err != nil {
 			in, err = strconv.ParseUint(extractNumbers(cellText), 10, 64)
@@ -174,6 +198,9 @@ func setFieldValue(
 		field.SetUint(in)
 		return nil
 	case reflect.Uint32:
+		if cellText == "" {
+			cellText = "0"
+		}
 		in, err := strconv.ParseUint(cellText, 10, 64)
 		if err != nil {
 			in, err = strconv.ParseUint(extractNumbers(cellText), 10, 64)
@@ -188,6 +215,9 @@ func setFieldValue(
 		field.SetUint(in)
 		return nil
 	case reflect.Uint64:
+		if cellText == "" {
+			cellText = "0"
+		}
 		in, err := strconv.ParseUint(cellText, 10, 64)
 		if err != nil {
 			in, err = strconv.ParseUint(extractNumbers(cellText), 10, 64)
@@ -202,6 +232,9 @@ func setFieldValue(
 		field.SetUint(in)
 		return nil
 	case reflect.Float32:
+		if cellText == "" {
+			cellText = "0"
+		}
 		in, err := strconv.ParseFloat(cellText, 32)
 		if err != nil {
 			in, err = strconv.ParseFloat(extractFloatNumbers(cellText), 32)
@@ -216,6 +249,9 @@ func setFieldValue(
 		field.SetFloat(in)
 		return nil
 	case reflect.Float64:
+		if cellText == "" {
+			cellText = "0"
+		}
 		in, err := strconv.ParseFloat(cellText, 64)
 		if err != nil {
 			in, err = strconv.ParseFloat(extractFloatNumbers(cellText), 64)

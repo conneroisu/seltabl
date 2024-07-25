@@ -70,3 +70,21 @@ func (e *ErrSelectorNotFound) Error() string {
 		doc,
 	)
 }
+
+// ErrParsing is returned when a field's value cannot be parsed.
+type ErrParsing struct {
+	Field reflect.Type
+	Value string
+	Err   error
+}
+
+// Error returns the error message. It implements the error interface.
+func (e ErrParsing) Error() string {
+	return fmt.Sprintf(
+		"failed to parse field %s of type %s from value %s: %s",
+		e.Field.Name(),
+		e.Field.String(),
+		e.Value,
+		e.Err,
+	)
+}

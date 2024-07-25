@@ -98,6 +98,14 @@ func New[T any](doc *goquery.Document) ([]T, error) {
 		if len(results) < dataRows.Length() {
 			results = make([]T, dataRows.Length())
 		}
+		if dataRows.Length() == 0 {
+			return nil, &ErrNoDataFound{
+				Typ:   dType,
+				Field: field,
+				Cfg:   cfg,
+				Doc:   doc,
+			}
+		}
 		for j := 0; j < dataRows.Length(); j++ {
 			err := SetStructField(
 				&results[j],

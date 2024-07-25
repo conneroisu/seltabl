@@ -15,11 +15,11 @@ type ErrNoDataFound struct {
 // Error implements the error interface for ErrNoDataFound
 func (e *ErrNoDataFound) Error() string {
 	return fmt.Sprintf(
-		"no data found for selector %s with type %s in field %s with type %s\n html",
-		e.Cfg.QuerySelector,
+		"(%s) [%s] <%s> no data found for selector %s\n html",
 		e.Typ,
-		e.Field.Name,
 		e.Field.Type,
+		e.Field.Name,
+		e.Cfg.QuerySelector,
 	)
 }
 

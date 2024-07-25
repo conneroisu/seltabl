@@ -7,6 +7,7 @@ import (
 	"go/parser"
 	"go/token"
 	"strings"
+	"time"
 
 	"github.com/PuerkitoBio/goquery"
 	"github.com/charmbracelet/log"
@@ -29,6 +30,7 @@ func NewHoverResponse(
 	documents *safe.Map[uri.URI, string],
 	urls *safe.Map[uri.URI, []string],
 ) (response *lsp.HoverResponse, err error) {
+	start := time.Now()
 	select {
 	case <-ctx.Done():
 		return nil, fmt.Errorf("context cancelled: %w", ctx.Err())
@@ -57,10 +59,13 @@ func NewHoverResponse(
 		if err != nil {
 			return nil, fmt.Errorf("failed to get html: %w", err)
 		}
-		doc, err := goquery.NewDocumentFromReader(strings.NewReader(h.Value))
+		doc, err := goquery.NewDocumentFromReader(
+			strings.NewReader(h.Value),
+		)
 		if err != nil {
 			return nil, fmt.Errorf("failed to get html: %w", err)
 		}
+		log.Debugf("calling GetSelectorHover time: %s\n", time.Since(start))
 		response.Result, err = GetSelectorHover(
 			ctx,
 			req.Params.Position,
@@ -81,6 +86,7 @@ func GetSelectorHover(
 	text *string,
 	doc *goquery.Document,
 ) (res lsp.HoverResult, err error) {
+	start := time.Now()
 	select {
 	case <-ctx.Done():
 		return res, fmt.Errorf("context cancelled: %w", ctx.Err())
@@ -97,78 +103,91 @@ func GetSelectorHover(
 		if err != nil {
 			return res, fmt.Errorf("failed to parse struct: %w", err)
 		}
+		log.Debugf("calling FindStructNodes time: %s\n", time.Since(start))
 		structNodes := parsers.FindStructNodes(node)
+		log.Debugf("called FindStructNodes time: %s\n", time.Since(start))
 		var resCh chan lsp.HoverResult = make(chan lsp.HoverResult)
+		doneCtx, doneCancel := context.WithCancel(ctx)
+		defer doneCancel()
 		for i := range structNodes {
 			go func(i int) {
-				// Check if the position is within the struct node
-				inPosition := parsers.IsPositionInNode(
-					structNodes[i],
-					position,
-					fset,
-				)
-				// Check if the position is within a struct tag
-				inTag := parsers.IsPositionInTag(
-					structNodes[i],
-					position,
-					fset,
-				)
-				if !inPosition && !inTag {
-					return
-				}
-				var val string
-				// Check if the position is within a struct tag value
-				// (i.e. value inside and including " and " characters)
-				val, inValue = parsers.PositionInStructTagValue(
-					structNodes[i],
-					position,
-					fset,
-					text,
-				)
-				if !inValue && val != "" {
-					docHTML, err := doc.Html()
-					if err != nil {
-						log.Errorf("failed to get html: %s", err)
-					}
-					val = fmt.Sprintf(
-						"`%s`\n%s",
-						val,
-						docHTML,
-					)
-					res.Contents = val
-					resCh <- res
-					return
-				}
-				var HTMLs []string
-				found := doc.Find(val)
-				HTMLs = make([]string, found.Length())
-				eg := errgroup.Group{}
-				found.Each(func(i int, s *goquery.Selection) {
-					eg.Go(func() error {
-						HTML, err := s.Parent().Html()
-						if err != nil {
-							return fmt.Errorf("failed to get html: %w", err)
-						}
-						HTMLs[i] = fmt.Sprintf(
-							"%d:\n%s",
-							i,
-							gohtml.Format(HTML),
+				for {
+					select {
+					case <-doneCtx.Done():
+						return
+					default:
+						// Check if the position is within the struct node
+						inPosition := parsers.IsPositionInNode(
+							structNodes[i],
+							position,
+							fset,
 						)
-						return nil
-					})
-				})
-				err := eg.Wait()
-				if err != nil {
-					log.Errorf("failed to get html: %s", err)
+						// Check if the position is within a struct tag
+						inTag := parsers.IsPositionInTag(
+							structNodes[i],
+							position,
+							fset,
+						)
+						if !inPosition && !inTag {
+							return
+						}
+						var val string
+						// Check if the position is within a struct tag value
+						// (i.e. value inside and including " and " characters)
+						val, inValue = parsers.PositionInStructTagValue(
+							structNodes[i],
+							position,
+							fset,
+							text,
+						)
+						if !inValue && val != "" {
+							docHTML, err := doc.Html()
+							if err != nil {
+								log.Errorf("failed to get html: %s", err)
+							}
+							val = fmt.Sprintf(
+								"`%s`\n%s",
+								val,
+								docHTML,
+							)
+							res.Contents = val
+							resCh <- res
+							return
+						}
+						var HTMLs []string
+						found := doc.Find(val)
+						HTMLs = make([]string, found.Length())
+						eg := errgroup.Group{}
+						found.Each(func(i int, s *goquery.Selection) {
+							eg.Go(func() error {
+								HTML, err := s.Parent().Html()
+								if err != nil {
+									return fmt.Errorf("failed to get html: %w", err)
+								}
+								HTMLs[i] = fmt.Sprintf(
+									"%d:\n%s",
+									i,
+									gohtml.Format(HTML),
+								)
+								return nil
+							})
+						})
+						err := eg.Wait()
+						if err != nil {
+							log.Errorf("failed to get html: %s", err)
+						}
+						HTML := strings.Join(HTMLs, "\n================\n")
+						res.Contents = fmt.Sprintf(
+							"`%s`:\n%s",
+							val,
+							HTML,
+						)
+						resCh <- res
+						doneCancel()
+					}
 				}
-				HTML := strings.Join(HTMLs, "\n================\n")
-				res.Contents = fmt.Sprintf(
-					"`%s`:\n%s",
-					val,
-					HTML,
-				)
-				resCh <- res
 			}(i)
+
 		}
 		return <-resCh, nil
 	}

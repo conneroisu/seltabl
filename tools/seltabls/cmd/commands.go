@@ -34,5 +34,9 @@ func AddCommands(
 		os.Stdout,
 		os.Stdin,
 	))
+	root.AddCommand(cmds.NewStaticCmd(
+		ctx,
+	))
+	root.AddCommand(cmds.NewVersionCmd())
 	return nil
 }

@@ -34,8 +34,9 @@ type StructCommentData struct {
 	Occurrences    []int
 }
 
-// ParseStructComments parses the comments from struct type declarations in the provided Go source code
-// and extracts @url and @ignore-elements into separate arrays.
+// ParseStructComments parses the comments from struct type declarations in the
+// provided Go source code and extracts @url and @ignore-elements into separate
+// arrays.
 func ParseStructComments(src string) (StructCommentData, error) {
 	defer func() {
 		if r := recover(); r != nil {
@@ -47,11 +48,11 @@ func ParseStructComments(src string) (StructCommentData, error) {
 		return StructCommentData{}, err
 	}
 	var data StructCommentData
-	// Inspect the AST to find struct type declarations and their comments
+	// Inspect the AST to find struct type declarations and their comments.
 	dst.Inspect(node, func(n dst.Node) bool {
 		switch t := n.(type) {
 		case *dst.GenDecl:
-			// Look for type declarations
+			// Look for type declarations.
 			if t.Tok == token.TYPE {
 				for _, spec := range t.Specs {
 					typeSpec, ok := spec.(*dst.TypeSpec)

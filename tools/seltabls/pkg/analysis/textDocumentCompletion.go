@@ -17,7 +17,7 @@ import (
 )
 
 const (
-	maxCompletionLabelLength = 50
+	maxCompletionLabelLength = 70
 	hiddenText               = "..."
 )
 

@@ -63,12 +63,11 @@ func New[T any](doc *goquery.Document) ([]T, error) {
 	results := make([]T, 0)
 	var cfg *SelectorConfig
 	for i := 0; i < dType.NumField(); i++ {
-		field := dType.Field(i)
-		cfg = NewSelectorConfig(field.Tag)
+		cfg = NewSelectorConfig(dType.Field(i).Tag)
 		if cfg.DataSelector == "" {
 			return nil, &ErrSelectorNotFound{
 				Typ:   dType,
-				Field: field,
+				Field: dType.Field(i),
 				Cfg:   cfg,
 			}
 		}
@@ -76,7 +75,7 @@ func New[T any](doc *goquery.Document) ([]T, error) {
 		if dataRows.Length() <= 0 {
 			return nil, &ErrNoDataFound{
 				Typ:   dType,
-				Field: field,
+				Field: dType.Field(i),
 				Cfg:   cfg,
 			}
 		}
@@ -89,15 +88,15 @@ func New[T any](doc *goquery.Document) ([]T, error) {
 		if dataRows.Length() == 0 {
 			return nil, &ErrNoDataFound{
 				Typ:   dType,
-				Field: field,
+				Field: dType.Field(i),
 				Cfg:   cfg,
 			}
 		}
 		for j := 0; j < dataRows.Length(); j++ {
 			err := SetStructField(
 				&results[j],
-				field.Name,     // name of the field to set
-				dataRows.Eq(j), // goquery selection for cell
+				dType.Field(i).Name, // name of the field to set
+				dataRows.Eq(j),      // goquery selection for cell
 				&selector{
 					control: cfg.ControlTag,
 					query:   cfg.QuerySelector,
@@ -106,7 +105,7 @@ func New[T any](doc *goquery.Document) ([]T, error) {
 			if err != nil {
 				return nil, fmt.Errorf(
 					"failed to set field %s: %s",
-					field.Name,
+					dType.Field(i).Name,
 					err,
 				)
 			}

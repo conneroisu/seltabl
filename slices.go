@@ -84,9 +84,6 @@ func New[T any](doc *goquery.Document) ([]T, error) {
 		if cfg.HeadSelector != "" && cfg.HeadSelector != "-" {
 			_ = dataRows.RemoveFiltered(cfg.HeadSelector)
 		}
-		if cfg.MustBePresent != "" {
-			dataRows = reduceHTML(dataRows, cfg.MustBePresent)
-		}
 		if len(results) < dataRows.Length() {
 			results = make([]T, dataRows.Length())
 		}

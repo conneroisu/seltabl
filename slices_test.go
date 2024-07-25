@@ -878,7 +878,7 @@ func TestNew_MissingMustBePresent(t *testing.T) {
 		</table>`
 	doc, _ := createDocFromString(html)
 	type MustBePresentStruct struct {
-		A string `json:"a" hSel:"-" dSel:"tr:not(:first-child) td:nth-child(1)" cSel:"text" must:"c"`
+		A string `json:"a" hSel:"-" dSel:"tr:not(:first-child) td:nth-child(1):contains('c')" cSel:"text"`
 		B string `json:"b" hSel:"-" dSel:"tr:not(:first-child) td:nth-child(2)" cSel:"text"`
 	}
 	val, err := New[MustBePresentStruct](doc)

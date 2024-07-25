@@ -66,7 +66,11 @@ func setFieldValue(
 		if err != nil {
 			in, err = strconv.Atoi(extractNumbers(cellText))
 			if err != nil {
-				return fmt.Errorf("failed to parse int: %s", err)
+				return ErrParsing{
+					Field: field.Type().Field(0),
+					Value: cellText,
+					Err:   err,
+				}
 			}
 		}
 		field.SetInt(int64(in))
@@ -76,7 +80,11 @@ func setFieldValue(
 		if err != nil {
 			in, err = strconv.Atoi(extractNumbers(cellText))
 			if err != nil {
-				return fmt.Errorf("failed to parse int: %s", err)
+				return ErrParsing{
+					Field: field.Type().Field(0),
+					Value: cellText,
+					Err:   err,
+				}
 			}
 		}
 		field.SetInt(int64(in))
@@ -86,7 +94,11 @@ func setFieldValue(
 		if err != nil {
 			in, err = strconv.Atoi(extractNumbers(cellText))
 			if err != nil {
-				return fmt.Errorf("failed to parse int: %s", err)
+				return ErrParsing{
+					Field: field.Type().Field(0),
+					Value: cellText,
+					Err:   err,
+				}
 			}
 		}
 		field.SetInt(int64(in))
@@ -96,7 +108,11 @@ func setFieldValue(
 		if err != nil {
 			in, err = strconv.Atoi(extractNumbers(cellText))
 			if err != nil {
-				return fmt.Errorf("failed to parse int: %s", err)
+				return ErrParsing{
+					Field: field.Type().Field(0),
+					Value: cellText,
+					Err:   err,
+				}
 			}
 		}
 		field.SetInt(int64(in))
@@ -106,7 +122,11 @@ func setFieldValue(
 		if err != nil {
 			in, err = strconv.ParseInt(extractNumbers(cellText), 10, 64)
 			if err != nil {
-				return fmt.Errorf("failed to parse int: %s", err)
+				return ErrParsing{
+					Field: field.Type().Field(0),
+					Value: cellText,
+					Err:   err,
+				}
 			}
 		}
 		field.SetInt(in)
@@ -116,7 +136,11 @@ func setFieldValue(
 		if err != nil {
 			in, err = strconv.ParseUint(extractNumbers(cellText), 10, 64)
 			if err != nil {
-				return fmt.Errorf("failed to parse uint: %s", err)
+				return ErrParsing{
+					Field: field.Type().Field(0),
+					Value: cellText,
+					Err:   err,
+				}
 			}
 		}
 		field.SetUint(in)
@@ -126,7 +150,11 @@ func setFieldValue(
 		if err != nil {
 			in, err = strconv.ParseUint(extractNumbers(cellText), 10, 64)
 			if err != nil {
-				return fmt.Errorf("failed to parse uint: %s", err)
+				return ErrParsing{
+					Field: field.Type().Field(0),
+					Value: cellText,
+					Err:   err,
+				}
 			}
 		}
 		field.SetUint(in)
@@ -136,7 +164,11 @@ func setFieldValue(
 		if err != nil {
 			in, err = strconv.ParseUint(extractNumbers(cellText), 10, 64)
 			if err != nil {
-				return fmt.Errorf("failed to parse uint: %s", err)
+				return ErrParsing{
+					Field: field.Type().Field(0),
+					Value: cellText,
+					Err:   err,
+				}
 			}
 		}
 		field.SetUint(in)
@@ -146,7 +178,11 @@ func setFieldValue(
 		if err != nil {
 			in, err = strconv.ParseUint(extractNumbers(cellText), 10, 64)
 			if err != nil {
-				return fmt.Errorf("failed to parse uint: %s", err)
+				return ErrParsing{
+					Field: field.Type().Field(0),
+					Value: cellText,
+					Err:   err,
+				}
 			}
 		}
 		field.SetUint(in)
@@ -156,7 +192,11 @@ func setFieldValue(
 		if err != nil {
 			in, err = strconv.ParseUint(extractNumbers(cellText), 10, 64)
 			if err != nil {
-				return fmt.Errorf("failed to parse uint: %s", err)
+				return ErrParsing{
+					Field: field.Type().Field(0),
+					Value: cellText,
+					Err:   err,
+				}
 			}
 		}
 		field.SetUint(in)
@@ -166,7 +206,11 @@ func setFieldValue(
 		if err != nil {
 			in, err = strconv.ParseFloat(extractFloatNumbers(cellText), 32)
 			if err != nil {
-				return fmt.Errorf("failed to parse float: %s", err)
+				return ErrParsing{
+					Field: field.Type().Field(0),
+					Value: cellText,
+					Err:   err,
+				}
 			}
 		}
 		field.SetFloat(in)
@@ -176,7 +220,11 @@ func setFieldValue(
 		if err != nil {
 			in, err = strconv.ParseFloat(extractFloatNumbers(cellText), 64)
 			if err != nil {
-				return fmt.Errorf("failed to parse float: %s", err)
+				return ErrParsing{
+					Field: field.Type().Field(0),
+					Value: cellText,
+					Err:   err,
+				}
 			}
 		}
 		field.SetFloat(in)

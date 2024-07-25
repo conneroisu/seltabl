@@ -179,6 +179,7 @@ func CheckPosition(
 				structNodes[i],
 				position,
 				fset,
+				text,
 			)
 			if inValue {
 				return parsers.StateInTagValue, nil

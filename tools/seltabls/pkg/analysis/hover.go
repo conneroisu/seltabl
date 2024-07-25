@@ -73,7 +73,7 @@ func NewHoverResponse(
 	}
 }
 
-// GetSelectorHover checks if the position is within the struct tag
+// GetSelectorHover checks if the position is within the struct tag.
 func GetSelectorHover(
 	ctx context.Context,
 	position protocol.Position,
@@ -115,36 +115,49 @@ func GetSelectorHover(
 					position,
 					fset,
 				)
-				if inPosition && inTag {
-					var val string
-					// Check if the position is within a struct tag value
-					// (i.e. value inside and including " and " characters)
-					val, inValue = parsers.PositionInStructTagValue(
-						structNodes[i],
-						position,
-						fset,
-					)
-					if !inValue {
-						return
-					}
-					var HTMLs []string
-					found := doc.Find(val)
-					found.Each(func(i int, s *goquery.Selection) {
-						HTML, err := s.Parent().Html()
-						if err != nil {
-							log.Errorf("failed to get html: %s", err)
-						}
-						HTML = gohtml.Format(HTML)
-						HTMLs = append(HTMLs, fmt.Sprintf("%d:\n%s", i, HTML))
-					})
-					HTML := strings.Join(HTMLs, "\n================\n")
-					res.Contents = fmt.Sprintf(
-						"`%s`:\n%s",
-						val,
-						HTML,
-					)
-					resCh <- res
+				if !inPosition && !inTag {
+					return
 				}
+				var val string
+				// Check if the position is within a struct tag value
+				// (i.e. value inside and including " and " characters)
+				val, inValue = parsers.PositionInStructTagValue(
+					structNodes[i],
+					position,
+					fset,
+					text,
+				)
+				if !inValue && val != "" {
+					docHTML, err := doc.Html()
+					if err != nil {
+						log.Errorf("failed to get html: %s", err)
+					}
+					val = fmt.Sprintf(
+						"`%s`\n%s",
+						val,
+						docHTML,
+					)
+					res.Contents = val
+					resCh <- res
+					return
+				}
+				var HTMLs []string
+				found := doc.Find(val)
+				found.Each(func(i int, s *goquery.Selection) {
+					HTML, err := s.Parent().Html()
+					if err != nil {
+						log.Errorf("failed to get html: %s", err)
+					}
+					HTML = gohtml.Format(HTML)
+					HTMLs = append(HTMLs, fmt.Sprintf("%d:\n%s", i, HTML))
+				})
+				HTML := strings.Join(HTMLs, "\n================\n")
+				res.Contents = fmt.Sprintf(
+					"`%s`:\n%s",
+					val,
+					HTML,
+				)
+				resCh <- res
 			}(i)
 		}
 		return <-resCh, nil

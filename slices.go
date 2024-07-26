@@ -305,3 +305,65 @@ func NewFromURL[T any](url string) ([]T, error) {
 	}
 	return New[T](doc)
 }
+
+// NewFromBytes parses a byte slice into a slice of structs adhering to the
+// given generic type.
+//
+// The byte slice must be a valid html page with a single table.
+//
+// The passed in generic type must be a struct with valid selectors for the
+// table and data (hSel, dSel, cSel).
+//
+// The selectors responsibilities:
+//
+//   - header selector (hSel): used to find the header row and column for the
+//     field in the given struct.
+//   - data selector (dSel): used to find the data column for the field in the
+//     given struct.
+//   - query selector (qSel): used to query for the inner text or attribute of
+//     the cell.
+//   - control selector (cSel): used to control what to query for the inner
+//     text or attribute of the cell.
+//
+// Example:
+//
+//	package main
+//
+//	import (
+//		"fmt"
+//		"github.com/conneroisu/seltabl"
+//	)
+//
+//	type FixtureStruct struct {
+//	        A string `json:"a" hSel:"tr:nth-child(1)" dSel:"table tr:not(:first-child) td:nth-child(1)" cSel:"$text"`
+//	        B string `json:"b" hSel:"tr:nth-child(1)" dSel:"table tr:not(:first-child) td:nth-child(2)" cSel:"$text"`
+//	}
+//
+//	func main() {
+//		p, err := seltabl.NewFromBytes[TableStruct]([]byte(`
+//		<table>
+//			<tr> <td>a</td> <td>b</td> </tr>
+//			<tr> <td>1</td> <td>2</td> </tr>
+//			<tr> <td>3</td> <td>4</td> </tr>
+//			<tr> <td>5</td> <td>6</td> </tr>
+//			<tr> <td>7</td> <td>8</td> </tr>
+//		</table>
+//		`))
+//		if err != nil {
+//			panic(err)
+//		}
+//		for _, pp := range p {
+//			fmt.Printf("pp %+v\n", pp)
+//		}
+//	}
+func NewFromBytes[T any](b []byte) ([]T, error) {
+	doc, err := goquery.NewDocumentFromReader(
+		strings.NewReader(
+			string(b),
+		),
+	)
+	if err != nil {
+		return nil, fmt.Errorf("failed to parse html: %w", err)
+	}
+	return New[T](doc)
+}

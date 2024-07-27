@@ -18,18 +18,18 @@ import (
 // It is used by the NewFromString function.
 func SetStructField[T any](
 	structPtr *T,
-	fieldName string,
+	structField reflect.StructField,
 	cellValue *goquery.Selection,
 	selector SelectorI,
 ) error {
 	var err error
 	v := reflect.ValueOf(structPtr).Elem()
-	field := v.FieldByName(fieldName)
+	field := v.FieldByName(structField.Name)
 	if !field.IsValid() {
-		return fmt.Errorf("no such field: %s in struct", fieldName)
+		return fmt.Errorf("no such field: %s in struct", structField.Name)
 	}
 	if !field.CanSet() {
-		return fmt.Errorf("cannot change the value of field: %s", fieldName)
+		return fmt.Errorf("cannot change the value of field: %s", structField.Name)
 	}
 	fieldType := field.Type().Kind()
 	// select the value from the cell

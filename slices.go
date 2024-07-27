@@ -10,6 +10,13 @@ import (
 	"github.com/PuerkitoBio/goquery"
 )
 
+// BaseModel is a struct for a base struct.
+type BaseModel struct{}
+
+var (
+	baseModelType = reflect.TypeOf((*BaseModel)(nil)).Elem()
+)
+
 // New parses a goquery doc into a slice of structs.
 //
 // The struct given as an argument must have a field with the
@@ -95,8 +102,8 @@ func New[T any](doc *goquery.Document) ([]T, error) {
 		for j := 0; j < dataRows.Length(); j++ {
 			err := SetStructField(
 				&results[j],
-				dType.Field(i).Name, // name of the field to set
-				dataRows.Eq(j),      // goquery selection for cell
+				dType.Field(i), // name of the field to set
+				dataRows.Eq(j), // goquery selection for cell
 				&selector{
 					control: cfg.ControlTag,
 					query:   cfg.QuerySelector,
@@ -366,4 +373,109 @@ func NewFromBytes[T any](b []byte) ([]T, error) {
 		return nil, fmt.Errorf("failed to parse html: %w", err)
 	}
 	return New[T](doc)
+}
+
+// NewCh parses a goquery doc into a slice of structs delivered to a channel.
+//
+// The struct given as an argument must have a field with the
+// tag seltabl, a header selector with the tag hSel, and a data
+// selector with the tag key dSel.
+func NewCh[T any](doc *goquery.Document, ch chan T) error {
+	dType := reflect.TypeOf((*T)(nil)).Elem()
+	if dType.Kind() != reflect.Struct && dType.Kind() != reflect.Ptr {
+		return fmt.Errorf("expected struct, got %s", dType.Kind())
+	}
+	results := make([]T, 0)
+	var cfg *SelectorConfig
+	for i := 0; i < dType.NumField(); i++ {
+		cfg = NewSelectorConfig(dType.Field(i).Tag)
+		if cfg.DataSelector == "" {
+			return ErrSelectorNotFound{
+				Typ:   dType,
+				Field: dType.Field(i),
+				Cfg:   cfg,
+			}
+		}
+		dataRows := doc.Find(cfg.DataSelector)
+		if dataRows.Length() <= 0 {
+			return ErrNoDataFound{
+				Typ:   dType,
+				Field: dType.Field(i),
+				Cfg:   cfg,
+			}
+		}
+		if cfg.HeadSelector != "" && cfg.HeadSelector != "-" {
+			_ = dataRows.RemoveFiltered(cfg.HeadSelector)
+		}
+		if len(results) < dataRows.Length() {
+			results = make([]T, dataRows.Length())
+		}
+		if dataRows.Length() == 0 {
+			return ErrNoDataFound{
+				Typ:   dType,
+				Field: dType.Field(i),
+				Cfg:   cfg,
+			}
+		}
+		for j := 0; j < dataRows.Length(); j++ {
+			err := SetStructField(
+				&results[j],
+				dType.Field(i), // name of the field to set
+				dataRows.Eq(j), // goquery selection for cell
+				&selector{
+					control: cfg.ControlTag,
+					query:   cfg.QuerySelector,
+				}, // selector for the inner cell
+			)
+			if err != nil {
+				return fmt.Errorf(
+					"failed to set field %s: %s",
+					dType.Field(i).Name,
+					err,
+				)
+			}
+			ch <- results[j]
+		}
+	}
+	return nil
+}
+
+// NewFromReaderCh parses a reader into a slice of structs.
+func NewFromReaderCh[T any](r io.Reader, ch chan T) error {
+	doc, err := goquery.NewDocumentFromReader(r)
+	if err != nil {
+		return fmt.Errorf("failed to parse html: %w", err)
+	}
+	return NewCh(doc, ch)
+}
+
+// NewFromStringCh parses a string into a slice of structs.
+func NewFromStringCh[T any](htmlInput string, ch chan T) error {
+	reader := strings.NewReader(
+		htmlInput,
+	)
+	doc, err := goquery.NewDocumentFromReader(
+		reader,
+	)
+	if err != nil {
+		return fmt.Errorf(
+			"failed to create new goquery document from reader: %w",
+			err,
+		)
+	}
+	return NewCh(doc, ch)
+}
+
+// NewFromBytesCh parses a byte slice into a slice of structs adhering to the
+// given generic type.
+func NewFromBytesCh[T any](b []byte, ch chan T) error {
+	doc, err := goquery.NewDocumentFromReader(
+		strings.NewReader(
+			string(b),
+		),
+	)
+	if err != nil {
+		return fmt.Errorf("failed to parse html: %w", err)
+	}
+	return NewCh(doc, ch)
 }

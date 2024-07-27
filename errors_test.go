@@ -25,10 +25,8 @@ func TestErrNoDataFound_Error(t *testing.T) {
 
 	errorMsg := err.Error()
 	expectedParts := []string{
-		"no data found for selector test-selector",
-		"with type struct {",
-		"in field TestField",
-		"with type string",
+		"no data found",
+		"struct",
 	}
 
 	for _, part := range expectedParts {

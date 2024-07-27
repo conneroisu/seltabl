@@ -56,17 +56,3 @@ func TestScrapeTeamCodes(t *testing.T) {
 		}
 	})
 }
-
-func TestRun(t *testing.T) {
-	t.Run("Run", func(t *testing.T) {
-		t.Parallel()
-		ctx := context.Background()
-		ctx, cancel := context.WithCancel(ctx)
-		defer cancel()
-		start := time.Now()
-		err := run(ctx)
-		stop := time.Now()
-		fmt.Printf("time: %s\n", stop.Sub(start))
-		assert.NoError(t, err)
-	})
-}

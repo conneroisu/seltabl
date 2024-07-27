@@ -107,8 +107,14 @@ func GetSelectorHover(
 		structNodes := parsers.FindStructNodes(node)
 		log.Debugf("called FindStructNodes time: %s\n", time.Since(start))
 		var resCh chan lsp.HoverResult = make(chan lsp.HoverResult)
-		doneCtx, doneCancel := context.WithCancel(ctx)
+		doneCtx, doneCancel := context.WithTimeout(ctx, time.Second*10)
 		defer doneCancel()
+		go func() {
+			<-doneCtx.Done()
+			resCh <- lsp.HoverResult{
+				Contents: "Hover timed out",
+			}
+		}()
 		for i := range structNodes {
 			go func(i int) {
 				for {
@@ -186,7 +192,6 @@ func GetSelectorHover(
 					}
 				}
 			}(i)
-
 		}
 		return <-resCh, nil
 	}

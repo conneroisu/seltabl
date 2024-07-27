@@ -68,7 +68,7 @@ func GetSelectors(
 		return nil, fmt.Errorf("failed to begin transaction: %w", err)
 	}
 	queries := db.Queries.WithTx(tx)
-	defer tx.Commit()
+	defer tx.Rollback()
 	rows, err := queries.GetSelectorsByMinOccurances(
 		ctx,
 		master.GetSelectorsByMinOccurancesParams{
@@ -135,6 +135,9 @@ func GetSelectors(
 		if found.Length() >= mustOccur {
 			selectors = append(selectors, *selector)
 		}
+	}
+	if err := tx.Commit(); err != nil {
+		return nil, fmt.Errorf("failed to commit transaction: %w", err)
 	}
 	return selectors, nil
 }

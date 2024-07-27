@@ -13,7 +13,7 @@ type ErrNoDataFound struct {
 }
 
 // Error implements the error interface for ErrNoDataFound
-func (e *ErrNoDataFound) Error() string {
+func (e ErrNoDataFound) Error() string {
 	return fmt.Sprintf(
 		"(%s) [%s] <%s> no data found for selector %s\n html",
 		e.Typ,
@@ -31,7 +31,7 @@ type ErrSelectorNotFound struct {
 }
 
 // Error implements the error interface for ErrSelectorNotFound
-func (e *ErrSelectorNotFound) Error() string {
+func (e ErrSelectorNotFound) Error() string {
 	return fmt.Sprintf(
 		"selector %s with type %s not found for field %s with type %s\n html",
 		e.Cfg.QuerySelector,

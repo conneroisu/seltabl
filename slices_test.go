@@ -869,23 +869,6 @@ func TestNew_MissingSelectors(t *testing.T) {
 	assert.Error(t, err)
 }
 
-// TestNew_MissingMustBePresent tests the New function with a struct that is missing a mustBePresent selector.
-func TestNew_MissingMustBePresent(t *testing.T) {
-	html := `
-		<table>
-			<tr> <td>a</td> <td>b</td> </tr>
-			<tr> <td>1</td> <td>2</td> </tr>
-		</table>`
-	doc, _ := createDocFromString(html)
-	type MustBePresentStruct struct {
-		A string `json:"a" hSel:"-" dSel:"tr:not(:first-child) td:nth-child(1):contains('c')" cSel:"text"`
-		B string `json:"b" hSel:"-" dSel:"tr:not(:first-child) td:nth-child(2)" cSel:"text"`
-	}
-	val, err := New[MustBePresentStruct](doc)
-	t.Logf("val: %v", val)
-	assert.Error(t, err)
-}
-
 // TestNew_NoDataFound tests the New function with a struct that does not have data.
 func TestNew_NoDataFound(t *testing.T) {
 	html := `

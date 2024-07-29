@@ -105,13 +105,11 @@ func GetSelectorHover(
 		structNodes := parsers.FindStructNodes(node)
 		log.Debugf("called FindStructNodes time: %s\n", time.Since(start))
 		var resCh chan lsp.HoverResult = make(chan lsp.HoverResult, 1)
-		doneCtx, doneCancel := context.WithTimeout(ctx, time.Second*10)
-		defer doneCancel()
 		for i := range structNodes {
 			go func(i int) {
 				for {
 					select {
-					case <-doneCtx.Done():
+					case <-ctx.Done():
 						return
 					default:
 						// Check if the position is within the struct node
@@ -141,20 +139,6 @@ func GetSelectorHover(
 							text,
 						)
 						log.Debugf("calling PositionInStructTagValue: %v value: %v time: %s\n", inValue, val, time.Since(start))
-						if inValue && val != "" {
-							docHTML, err := doc.Html()
-							if err != nil {
-								log.Errorf("failed to get html: %s", err)
-							}
-							val = fmt.Sprintf(
-								"`%s`\n%s",
-								val,
-								docHTML,
-							)
-							res.Contents = val
-							resCh <- res
-							return
-						}
 						var HTMLs []string
 						found := doc.Find(val)
 						HTMLs = make([]string, found.Length())
@@ -183,7 +167,7 @@ func GetSelectorHover(
 							val,
 							HTML,
 						)
-						doneCancel()
+						resCh <- res
 					}
 				}
 			}(i)

@@ -81,6 +81,7 @@ func HandleMessage(
 				ctx,
 				request,
 				documents,
+				urls,
 				selectors,
 			)
 		case methods.MethodRequestTextDocumentHover:

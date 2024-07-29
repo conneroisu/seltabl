@@ -20,7 +20,7 @@ var (
 	errNoURLs     = fmt.Errorf("no URLs found")
 
 	// @url: <url>
-	urlPattern = regexp.MustCompile(`@url:\s*(\S+)`)
+	urlPattern = regexp.MustCompile(`@url:\s*(https?://[^\s]+)`)
 	// @ignore-elements: <element1>, <element2>, ...
 	ignorePattern = regexp.MustCompile(`@ignore:\s*(.*)`)
 	// @occurrences: <number>

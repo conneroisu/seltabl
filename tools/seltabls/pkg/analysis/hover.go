@@ -30,7 +30,6 @@ func NewHoverResponse(
 	documents *safe.Map[uri.URI, string],
 	urls *safe.Map[uri.URI, []string],
 ) (response *lsp.HoverResponse, err error) {
-	start := time.Now()
 	select {
 	case <-ctx.Done():
 		return nil, fmt.Errorf("context cancelled: %w", ctx.Err())
@@ -65,7 +64,6 @@ func NewHoverResponse(
 		if err != nil {
 			return nil, fmt.Errorf("failed to get html: %w", err)
 		}
-		log.Debugf("calling GetSelectorHover time: %s\n", time.Since(start))
 		response.Result, err = GetSelectorHover(
 			ctx,
 			req.Params.Position,
@@ -106,7 +104,7 @@ func GetSelectorHover(
 		log.Debugf("calling FindStructNodes time: %s\n", time.Since(start))
 		structNodes := parsers.FindStructNodes(node)
 		log.Debugf("called FindStructNodes time: %s\n", time.Since(start))
-		var resCh chan lsp.HoverResult = make(chan lsp.HoverResult)
+		var resCh chan lsp.HoverResult = make(chan lsp.HoverResult, 1)
 		doneCtx, doneCancel := context.WithTimeout(ctx, time.Second*10)
 		defer doneCancel()
 		for i := range structNodes {
@@ -122,12 +120,14 @@ func GetSelectorHover(
 							position,
 							fset,
 						)
+						log.Debugf("calling IsPositionInNode: %v time: %s\n", inPosition, time.Since(start))
 						// Check if the position is within a struct tag
 						inTag := parsers.IsPositionInTag(
 							structNodes[i],
 							position,
 							fset,
 						)
+						log.Debugf("calling IsPositionInTag: %v time: %s\n", inTag, time.Since(start))
 						if !inPosition && !inTag {
 							return
 						}
@@ -140,7 +140,8 @@ func GetSelectorHover(
 							fset,
 							text,
 						)
-						if !inValue && val != "" {
+						log.Debugf("calling PositionInStructTagValue: %v value: %v time: %s\n", inValue, val, time.Since(start))
+						if inValue && val != "" {
 							docHTML, err := doc.Html()
 							if err != nil {
 								log.Errorf("failed to get html: %s", err)

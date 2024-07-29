@@ -1,6 +1,7 @@
 package seltabl
 
 import (
+	"bytes"
 	"fmt"
 	"io"
 	"net/http"
@@ -503,11 +504,7 @@ func NewFromURLCh[T any](url string, ch chan T) error {
 	if err != nil {
 		return fmt.Errorf("failed to read body: %w", err)
 	}
-	doc, err := goquery.NewDocumentFromReader(
-		strings.NewReader(
-			string(body),
-		),
-	)
+	doc, err := goquery.NewDocumentFromReader(bytes.NewReader(body))
 	if err != nil {
 		return fmt.Errorf("failed to parse html: %w", err)
 	}

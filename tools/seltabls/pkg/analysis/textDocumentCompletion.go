@@ -31,6 +31,7 @@ func CreateTextDocumentCompletion(
 	ctx context.Context,
 	request lsp.TextDocumentCompletionRequest,
 	documents *safe.Map[uri.URI, string],
+	urls *safe.Map[uri.URI, []string],
 	selectors *safe.Map[uri.URI, []master.Selector],
 ) (response *lsp.TextDocumentCompletionResponse, err error) {
 	select {
@@ -49,6 +50,10 @@ func CreateTextDocumentCompletion(
 			return nil, nil
 		}
 		selectors, ok := selectors.Get(request.Params.TextDocument.URI)
+		if !ok {
+			return nil, nil
+		}
+		url, ok := urls.Get(request.Params.TextDocument.URI)
 		if !ok {
 			return nil, nil
 		}
@@ -87,7 +92,8 @@ func CreateTextDocumentCompletion(
 				item := protocol.CompletionItem{
 					Label: selector.Value,
 					Detail: fmt.Sprintf(
-						"Occurances: '%d'\nContext:\n%s",
+						"url: '%s'\n Occurances: '%d'\nContext:\n%s",
+						(*url)[0],
 						selector.Occurances,
 						selector.Context,
 					),

@@ -81,11 +81,7 @@ func New[T any](doc *goquery.Document) ([]T, error) {
 		}
 		dataRows := doc.Find(cfg.DataSelector)
 		if dataRows.Length() <= 0 {
-			return nil, ErrNoDataFound{
-				Typ:   dType,
-				Field: dType.Field(i),
-				Cfg:   cfg,
-			}
+			continue
 		}
 		if cfg.HeadSelector != "" && cfg.HeadSelector != "-" {
 			_ = dataRows.RemoveFiltered(cfg.HeadSelector)
@@ -113,11 +109,7 @@ func New[T any](doc *goquery.Document) ([]T, error) {
 		}
 	}
 	if len(results) < 1 {
-		return nil, ErrNoDataFound{
-			Typ:   dType,
-			Field: reflect.StructField{},
-			Cfg:   cfg,
-		}
+		return nil, fmt.Errorf("no data found")
 	}
 	return results, nil
 }
@@ -384,11 +376,7 @@ func NewCh[T any](doc *goquery.Document, ch chan T) error {
 		}
 		dataRows := doc.Find(cfg.DataSelector)
 		if dataRows.Length() <= 0 {
-			return ErrNoDataFound{
-				Typ:   dType,
-				Field: dType.Field(i),
-				Cfg:   cfg,
-			}
+			continue
 		}
 		if cfg.HeadSelector != "" && cfg.HeadSelector != "-" {
 			_ = dataRows.RemoveFiltered(cfg.HeadSelector)
@@ -539,11 +527,7 @@ func NewChFn[
 	for i := 0; i < dType.NumField(); i++ {
 		cfg = NewSelectorConfig(dType.Field(i).Tag)
 		if cfg.DataSelector == "" {
-			return ErrSelectorNotFound{
-				Typ:   dType,
-				Field: dType.Field(i),
-				Cfg:   cfg,
-			}
+			continue
 		}
 		dataRows := doc.Find(cfg.DataSelector)
 		if dataRows.Length() <= 0 {

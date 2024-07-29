@@ -24,7 +24,9 @@ func GetAllSelectors(doc *goquery.Document) ([]string, error) {
 		str := getSelectorsFromSelection(s)
 		if str != empty {
 			if !contains(strs, str) {
-				strs = append(strs, str)
+				if doc.Find(str).Length() == 0 {
+					strs = append(strs, str)
+				}
 			}
 		}
 	})
@@ -45,11 +47,12 @@ func getSelectorsFromSelection(s *goquery.Selection) string {
 	// Get the selector for the current node
 	currentSelector := singleSelector(s)
 	// Combine the parent and current selectors
-	if parentSelector != empty && currentSelector != "" {
-		return parentSelector + childsep + currentSelector
+	if parentSelector != empty && currentSelector != "" && parentSelector != currentSelector {
+		return parentSelector + currentSelector
 	} else if parentSelector != empty && currentSelector == "" {
 		return parentSelector
 	}
+
 	return currentSelector
 }
 
@@ -67,9 +70,7 @@ func GetSelectors(
 	if err != nil {
 		return nil, fmt.Errorf("failed to begin transaction: %w", err)
 	}
-	queries := db.Queries.WithTx(tx)
-	defer tx.Rollback()
-	rows, err := queries.GetSelectorsByMinOccurances(
+	rows, err := db.Queries.GetSelectorsByMinOccurances(
 		ctx,
 		master.GetSelectorsByMinOccurancesParams{
 			Value:      url,
@@ -91,14 +92,14 @@ func GetSelectors(
 	if err != nil {
 		return nil, fmt.Errorf("failed to get html: %w", err)
 	}
-	HTML, err := queries.InsertHTML(
+	HTML, err := db.Queries.InsertHTML(
 		ctx,
 		master.InsertHTMLParams{Value: docHTML},
 	)
 	if err != nil {
 		return nil, fmt.Errorf("failed to insert html: %w", err)
 	}
-	URL, err := queries.InsertURL(
+	URL, err := db.Queries.InsertURL(
 		ctx,
 		master.InsertURLParams{Value: url, HtmlID: HTML.ID},
 	)
@@ -119,7 +120,7 @@ func GetSelectors(
 			return nil, fmt.Errorf("failed to get html: %w", err)
 		}
 		selectorContext = gohtml.Format(selectorContext)
-		selector, err := queries.InsertSelector(
+		selector, err := db.Queries.InsertSelector(
 			ctx,
 			master.InsertSelectorParams{
 				Value:      selectorString,
@@ -168,7 +169,7 @@ func singleSelector(selection *goquery.Selection) string {
 		checkingVal := strings.Join(strings.Fields(attr), ".")
 		if !strings.Contains(checkingVal, "content") {
 			selector = fmt.Sprintf(
-				"%s[name=%s]",
+				"%s[name='%s']",
 				goquery.NodeName(selection),
 				attr,
 			)
@@ -177,7 +178,7 @@ func singleSelector(selection *goquery.Selection) string {
 	attr, exists = selection.Attr("type")
 	if exists {
 		selector = fmt.Sprintf(
-			"%s[type=%s]",
+			"%s[type='%s']",
 			goquery.NodeName(selection),
 			attr,
 		)
@@ -193,14 +194,14 @@ func singleSelector(selection *goquery.Selection) string {
 	attr, exists = selection.Attr("value")
 	if exists {
 		selector = fmt.Sprintf(
-			"%s[value=%s]",
+			"%s[value='%s']",
 			goquery.NodeName(selection),
 			attr,
 		)
 	}
 	attr, exists = selection.Attr("src")
 	if exists {
-		selector = fmt.Sprintf("%s[src=%s]", goquery.NodeName(selection), attr)
+		selector = fmt.Sprintf("%s[src='%s']", goquery.NodeName(selection), attr)
 	}
 	_, exists = selection.Attr("href")
 	if exists {

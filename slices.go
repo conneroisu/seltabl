@@ -81,7 +81,11 @@ func New[T any](doc *goquery.Document) ([]T, error) {
 		}
 		dataRows := doc.Find(cfg.DataSelector)
 		if dataRows.Length() <= 0 {
-			continue
+			return nil, ErrNoDataFound{
+				Typ:   dType,
+				Field: dType.Field(i),
+				Cfg:   cfg,
+			}
 		}
 		if cfg.HeadSelector != "" && cfg.HeadSelector != "-" {
 			_ = dataRows.RemoveFiltered(cfg.HeadSelector)
@@ -380,7 +384,11 @@ func NewCh[T any](doc *goquery.Document, ch chan T) error {
 		}
 		dataRows := doc.Find(cfg.DataSelector)
 		if dataRows.Length() <= 0 {
-			continue
+			return ErrNoDataFound{
+				Typ:   dType,
+				Field: dType.Field(i),
+				Cfg:   cfg,
+			}
 		}
 		if cfg.HeadSelector != "" && cfg.HeadSelector != "-" {
 			_ = dataRows.RemoveFiltered(cfg.HeadSelector)
@@ -539,7 +547,11 @@ func NewChFn[
 		}
 		dataRows := doc.Find(cfg.DataSelector)
 		if dataRows.Length() <= 0 {
-			continue
+			return ErrNoDataFound{
+				Typ:   dType,
+				Field: dType.Field(i),
+				Cfg:   cfg,
+			}
 		}
 		if cfg.HeadSelector != "" && cfg.HeadSelector != "-" {
 			_ = dataRows.RemoveFiltered(cfg.HeadSelector)

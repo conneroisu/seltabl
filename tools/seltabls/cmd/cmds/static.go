@@ -178,7 +178,10 @@ func getURLFileName(fileURL string) (string, error) {
 
 	// Check for a successful response status
 	if resp.StatusCode != http.StatusOK {
-		return "", fmt.Errorf("received non-200 response code: %d", resp.StatusCode)
+		return "", fmt.Errorf(
+			"received non-200 response code: %d",
+			resp.StatusCode,
+		)
 	}
 
 	body, err := io.ReadAll(resp.Body)

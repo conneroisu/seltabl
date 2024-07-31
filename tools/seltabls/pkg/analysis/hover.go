@@ -118,14 +118,22 @@ func GetSelectorHover(
 							position,
 							fset,
 						)
-						log.Debugf("calling IsPositionInNode: %v time: %s\n", inPosition, time.Since(start))
+						log.Debugf(
+							"calling IsPositionInNode: %v time: %s\n",
+							inPosition,
+							time.Since(start),
+						)
 						// Check if the position is within a struct tag
 						inTag := parsers.IsPositionInTag(
 							structNodes[i],
 							position,
 							fset,
 						)
-						log.Debugf("calling IsPositionInTag: %v time: %s\n", inTag, time.Since(start))
+						log.Debugf(
+							"calling IsPositionInTag: %v time: %s\n",
+							inTag,
+							time.Since(start),
+						)
 						if !inPosition && !inTag {
 							return
 						}
@@ -138,7 +146,12 @@ func GetSelectorHover(
 							fset,
 							text,
 						)
-						log.Debugf("calling PositionInStructTagValue: %v value: %v time: %s\n", inValue, val, time.Since(start))
+						log.Debugf(
+							"calling PositionInStructTagValue: %v value: %v time: %s\n",
+							inValue,
+							val,
+							time.Since(start),
+						)
 						var HTMLs []string
 						found := doc.Find(val)
 						HTMLs = make([]string, found.Length())
@@ -147,7 +160,10 @@ func GetSelectorHover(
 							eg.Go(func() error {
 								HTML, err := s.Parent().Html()
 								if err != nil {
-									return fmt.Errorf("failed to get html: %w", err)
+									return fmt.Errorf(
+										"failed to get html: %w",
+										err,
+									)
 								}
 								HTMLs[i] = fmt.Sprintf(
 									"%d:\n%s",

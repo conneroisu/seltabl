@@ -22,7 +22,9 @@ func ValidatePackageName(name string) error {
 	// Check the rest of the characters
 	for _, ch := range name[1:] {
 		if !unicode.IsLetter(ch) && !unicode.IsDigit(ch) && ch != '_' {
-			return fmt.Errorf("package name must only contain letters, digits, and underscores")
+			return fmt.Errorf(
+				"package name must only contain letters, digits, and underscores",
+			)
 		}
 	}
 
@@ -57,7 +59,9 @@ func ValidateFileName(name string) error {
 	// Check the rest of the characters
 	for _, ch := range name[1:] {
 		if !unicode.IsLetter(ch) && !unicode.IsDigit(ch) && ch != '_' {
-			return fmt.Errorf("file name must only contain letters, digits, and underscores")
+			return fmt.Errorf(
+				"file name must only contain letters, digits, and underscores",
+			)
 		}
 	}
 	return nil

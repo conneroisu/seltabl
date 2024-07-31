@@ -45,7 +45,8 @@ func getSelectorsFromSelection(s *goquery.Selection) string {
 	// Get the selector for the current node
 	currentSelector := singleSelector(s)
 	// Combine the parent and current selectors
-	if parentSelector != empty && currentSelector != "" && parentSelector != currentSelector {
+	if parentSelector != empty && currentSelector != "" &&
+		parentSelector != currentSelector {
 		return parentSelector + childsep + currentSelector
 	} else if parentSelector != empty && currentSelector == "" {
 		return parentSelector
@@ -199,7 +200,11 @@ func singleSelector(selection *goquery.Selection) string {
 	}
 	attr, exists = selection.Attr("src")
 	if exists {
-		selector = fmt.Sprintf("%s[src='%s']", goquery.NodeName(selection), attr)
+		selector = fmt.Sprintf(
+			"%s[src='%s']",
+			goquery.NodeName(selection),
+			attr,
+		)
 	}
 	_, exists = selection.Attr("href")
 	if exists {

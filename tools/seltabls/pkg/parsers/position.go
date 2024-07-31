@@ -52,7 +52,9 @@ func PositionInStructTagValue(
 	split := strings.Split(*text, "\n")
 	line := split[pos.Line]
 	if strings.Contains(line, "@url:") {
-		if urlMatches := urlPattern.FindStringSubmatch(line); len(urlMatches) > 1 {
+		if urlMatches := urlPattern.FindStringSubmatch(line); len(
+			urlMatches,
+		) > 1 {
 			return urlMatches[1], false
 		}
 	}

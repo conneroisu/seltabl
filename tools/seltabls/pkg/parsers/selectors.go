@@ -24,9 +24,7 @@ func GetAllSelectors(doc *goquery.Document) ([]string, error) {
 		str := getSelectorsFromSelection(s)
 		if str != empty {
 			if !contains(strs, str) {
-				if doc.Find(str).Length() == 0 {
-					strs = append(strs, str)
-				}
+				strs = append(strs, str)
 			}
 		}
 	})
@@ -99,9 +97,9 @@ func GetSelectors(
 	if err != nil {
 		return nil, fmt.Errorf("failed to insert html: %w", err)
 	}
-	URL, err := db.Queries.InsertURL(
+	URL, err := db.Queries.UpsertURL(
 		ctx,
-		master.InsertURLParams{Value: url, HtmlID: HTML.ID},
+		master.UpsertURLParams{Value: url, HtmlID: HTML.ID},
 	)
 	if err != nil {
 		return nil, fmt.Errorf("failed to insert url: %w", err)

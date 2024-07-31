@@ -34,6 +34,7 @@ func CreateTextDocumentCompletion(
 	urls *safe.Map[uri.URI, []string],
 	selectors *safe.Map[uri.URI, []master.Selector],
 ) (response *lsp.TextDocumentCompletionResponse, err error) {
+	log.Debugf("CreateTextDocumentCompletion")
 	select {
 	case <-ctx.Done():
 		return nil, fmt.Errorf("context cancelled: %w", ctx.Err())

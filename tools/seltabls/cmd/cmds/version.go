@@ -8,7 +8,7 @@ func NewVersionCmd() *cobra.Command {
 		Use:   "version",
 		Short: "Print the version number of the seltabls command",
 		Long:  `All software has versions. This is seltabls's`,
-		Run: func(cmd *cobra.Command, args []string) {
+		Run: func(cmd *cobra.Command, _ []string) {
 			cmd.Println("seltabls version 0.1.0.5.0.0-beta1.final")
 		},
 	}

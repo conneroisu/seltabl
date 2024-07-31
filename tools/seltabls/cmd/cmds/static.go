@@ -42,14 +42,14 @@ var (
 )
 
 // NewStaticCmd createa a new command for the static command.
-func NewStaticCmd(ctx context.Context) *cobra.Command {
+func NewStaticCmd(_ context.Context) *cobra.Command {
 	return &cobra.Command{
 		Use:   "static",
 		Short: "Statically define html given a url.",
 		Long: `
 Statically define html given a url.
 `,
-		RunE: func(cmd *cobra.Command, args []string) error {
+		RunE: func(cmd *cobra.Command, _ []string) error {
 			cmd.PersistentFlags().StringVarP(
 				&uuri,
 				"url",

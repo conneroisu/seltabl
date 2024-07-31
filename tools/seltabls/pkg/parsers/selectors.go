@@ -46,7 +46,7 @@ func getSelectorsFromSelection(s *goquery.Selection) string {
 	currentSelector := singleSelector(s)
 	// Combine the parent and current selectors
 	if parentSelector != empty && currentSelector != "" && parentSelector != currentSelector {
-		return parentSelector + currentSelector
+		return parentSelector + childsep + currentSelector
 	} else if parentSelector != empty && currentSelector == "" {
 		return parentSelector
 	}

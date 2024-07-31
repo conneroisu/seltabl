@@ -18,6 +18,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         id: checkout
+      - name: Install go
+        id: install-go
+        uses: actions/setup-go@v3
+        with:
+          go-version: 1.22.5
       - name: Install Task
         id: install-task
         uses: arduino/setup-task@v1
@@ -27,6 +32,7 @@ jobs:
       - name: Run all tasks in the workflow 
         id: run-all-tasks
         run: |
+          go install github.com/segmentio/golines@latest
           # Capture the list of all tasks
           OUTPUT=$(task --list-all)
 

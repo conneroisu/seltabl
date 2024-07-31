@@ -68,6 +68,7 @@ func (sm *Map[K, V]) String() string {
 	return b.String()
 }
 
+// limitString limits the length of a string to the given limit.
 func limitString(s string, limit int) string {
 	if len(s) > limit {
 		return s[:limit] + "..."

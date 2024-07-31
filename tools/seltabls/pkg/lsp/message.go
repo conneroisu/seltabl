@@ -5,6 +5,7 @@ import (
 
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp/methods"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/safe"
+	"go.lsp.dev/protocol"
 )
 
 var (
@@ -34,7 +35,7 @@ type Response struct {
 
 // Method returns the method for the response
 func (r Response) Method() methods.Method {
-	return methods.MethodInitialize
+	return protocol.MethodInitialize
 }
 
 // Notification is a notification from a LSP

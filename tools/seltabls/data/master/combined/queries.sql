@@ -451,4 +451,14 @@ ON CONFLICT (value)
 DO UPDATE
     SET
         html_id = excluded.html_id RETURNING *;
+
+-- name: UpsertURLOnURL :one
+INSERT INTO
+    urls (value, html_id)
+VALUES
+    (?, ?)
+ON CONFLICT (value)
+DO UPDATE
+    SET
+        html_id = excluded.html_id RETURNING id, value, html_id;
 /******************************************************************************/

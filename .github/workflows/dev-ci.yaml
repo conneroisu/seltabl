@@ -1,0 +1,48 @@
+# workflow to ensure development tooling and environment is properly set up
+name: Dev Environment Contingency
+run-name: Dev Environment Contingency
+
+
+permissions:
+  contents: write
+
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  test-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        id: checkout
+      - name: Install Task
+        id: install-task
+        uses: arduino/setup-task@v1
+        with:
+          version: 3.x
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Run all tasks in the workflow 
+        id: run-all-tasks
+        run: |
+          # Capture the list of all tasks
+          OUTPUT=$(task --list-all)
+
+          # Parse the list of tasks from the output
+          TASKS=$(echo "$OUTPUT" | grep -oP '(?<=\* ).*(?=:)')
+
+          # Check if TASKS variable is not empty
+          if [ -z "$TASKS" ]; then
+              echo "No tasks found."
+              exit 1
+          fi
+
+          # Iterate over each task and execute it
+          for TASK in $TASKS; do
+              echo "Executing task: $TASK"
+              task "$TASK"
+              echo "Completed task: $TASK"
+              echo "----------------------------"
+          done

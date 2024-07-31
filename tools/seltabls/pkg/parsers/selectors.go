@@ -24,9 +24,7 @@ func GetAllSelectors(doc *goquery.Document) ([]string, error) {
 		str := getSelectorsFromSelection(s)
 		if str != empty {
 			if !contains(strs, str) {
-				if doc.Find(str).Length() == 0 {
-					strs = append(strs, str)
-				}
+				strs = append(strs, str)
 			}
 		}
 	})
@@ -48,7 +46,7 @@ func getSelectorsFromSelection(s *goquery.Selection) string {
 	currentSelector := singleSelector(s)
 	// Combine the parent and current selectors
 	if parentSelector != empty && currentSelector != "" && parentSelector != currentSelector {
-		return parentSelector + currentSelector
+		return parentSelector + childsep + currentSelector
 	} else if parentSelector != empty && currentSelector == "" {
 		return parentSelector
 	}
@@ -99,9 +97,9 @@ func GetSelectors(
 	if err != nil {
 		return nil, fmt.Errorf("failed to insert html: %w", err)
 	}
-	URL, err := db.Queries.InsertURL(
+	URL, err := db.Queries.UpsertURL(
 		ctx,
-		master.InsertURLParams{Value: url, HtmlID: HTML.ID},
+		master.UpsertURLParams{Value: url, HtmlID: HTML.ID},
 	)
 	if err != nil {
 		return nil, fmt.Errorf("failed to insert url: %w", err)

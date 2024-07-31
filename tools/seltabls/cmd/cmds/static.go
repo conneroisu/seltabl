@@ -23,8 +23,6 @@ var (
 	packageName string
 	fileName    string
 
-	body string
-
 	form = huh.NewForm(
 		huh.NewGroup(
 			huh.NewInput().
@@ -43,6 +41,7 @@ var (
 	)
 )
 
+// NewStaticCmd createa a new command for the static command.
 func NewStaticCmd(ctx context.Context) *cobra.Command {
 	return &cobra.Command{
 		Use:   "static",
@@ -87,6 +86,9 @@ Statically define html given a url.
 				PackageName: packageName,
 				FileName:    staticFileName,
 			})
+			if err != nil {
+				return fmt.Errorf("failed to get url: %w", err)
+			}
 			err = os.WriteFile(fileName+"_test.go", []byte(content), 0644)
 			if err != nil {
 				return fmt.Errorf("failed to write file: %w", err)
@@ -189,7 +191,10 @@ func getURLFileName(fileURL string) (string, error) {
 		return "", fmt.Errorf("failed to create file: %w", err)
 	}
 	defer f.Close()
-	f.Write(body)
+	_, err = f.Write(body)
+	if err != nil {
+		return "", fmt.Errorf("failed to write file: %w", err)
+	}
 
 	return safeFileName + ".html", nil
 }

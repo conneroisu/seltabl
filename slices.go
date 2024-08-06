@@ -11,13 +11,6 @@ import (
 	"github.com/PuerkitoBio/goquery"
 )
 
-// BaseModel is a struct for a base struct.
-type BaseModel struct{}
-
-var (
-	baseModelType = reflect.TypeOf((*BaseModel)(nil)).Elem()
-)
-
 // New parses a goquery doc into a slice of structs.
 //
 // The struct given as an argument must have a field with the

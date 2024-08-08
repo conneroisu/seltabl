@@ -663,8 +663,12 @@ func NewPl[T any](doc *goquery.Document) ([]T, error) {
 						err,
 					)
 				}
+				errCh <- nil
 			}
 		}(i)
+	}
+	for i := 0; i < dType.NumField(); i++ {
+		<-errCh
 	}
 	if len(results) < 1 {
 		return nil, fmt.Errorf("no data found")

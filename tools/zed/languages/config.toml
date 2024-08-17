@@ -1,0 +1,4 @@
+name = "seltabl"
+group = "go"
+path_suffixes = [".go"]
+line_comments = ["//"]

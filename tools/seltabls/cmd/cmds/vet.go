@@ -92,7 +92,7 @@ func vetFile(
 		return nil, fmt.Errorf("failed to create database: %w", err)
 	}
 	ctn := string(content)
-	data, err := parsers.ParseStructComments(ctn)
+	data, err := parsers.ParseSource(ctn, filePath, true)
 	if err != nil {
 		return response, nil
 	}

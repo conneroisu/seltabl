@@ -510,7 +510,6 @@ func NewChFn[
 	ch chan T,
 	fn F,
 ) error {
-
 	dType := reflect.TypeOf((*T)(nil)).Elem()
 	if dType.Kind() != reflect.Struct && dType.Kind() != reflect.Ptr {
 		return fmt.Errorf("expected struct, got %s", dType.Kind())

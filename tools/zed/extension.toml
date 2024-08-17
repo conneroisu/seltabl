@@ -1,0 +1,7 @@
+id = "seltabls"
+name = "seltabls"
+version = "0.1.0"
+schema_version = 1
+authors = ["Conner Ohnesorge conneroisu@outlook.com"]
+description = "A language server for the seltabl package."
+repository = "https://github.com/conneroisu/seltabl"

@@ -19,20 +19,13 @@ import (
 func GetDiagnosticsForFile(
 	ctx context.Context,
 	text *string,
-	data *parsers.StructCommentData,
+	data *parsers.GoFile,
 	db *data.Database[master.Queries],
 ) ([]protocol.Diagnostic, error) {
 	select {
 	case <-ctx.Done():
 		return nil, nil
 	default:
-		sts, err := parsers.ParseStructs(ctx, []byte(*text))
-		if err != nil {
-			return nil, fmt.Errorf(
-				"failed to parse structs: %w",
-				err,
-			)
-		}
 		eg := errgroup.Group{}
 		var diags []protocol.Diagnostic
 		log.Debugf("getting htmls for url: %s", data.URLs[0])

@@ -28,15 +28,15 @@ var (
 			huh.NewInput().
 				Title("Enter the URL.").
 				Value(&uuri).
-				Validate(parsers.ValidateURL),
+				Validate(parsers.IsValidURL),
 			huh.NewInput().
 				Title("Enter the package name.").
 				Value(&packageName).
-				Validate(parsers.ValidatePackageName),
+				Validate(parsers.IsValidPackageName),
 			huh.NewInput().
 				Title("Enter the file name.").
 				Value(&fileName).
-				Validate(parsers.ValidateFileName),
+				Validate(parsers.IsValidFileName),
 		),
 	)
 )

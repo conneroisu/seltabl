@@ -52,6 +52,7 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 			urls := safe.NewSafeMap[uri.URI, []string]()
 			scanner := bufio.NewScanner(reader)
 			scanner.Split(rpc.Split)
+			rpcWriter := rpc.NewWriter(writer)
 			lspCtx, lspCancel := context.WithCancel(ctx)
 			defer lspCancel()
 			for scanner.Scan() {
@@ -86,7 +87,7 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 						)
 					}
 					if !isNull(resp) {
-						err = rpc.WriteResponse(hCtx, &writer, resp)
+						err = rpcWriter.WriteResponse(hCtx, resp)
 						if err != nil {
 							log.Errorf(
 								"failed to write (%s) response: %s",

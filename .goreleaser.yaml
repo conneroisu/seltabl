@@ -78,7 +78,7 @@ brews:
   - homepage: https://github.com/conneroisu/seltabls
     description: "A mock code autogenerator for Go"
     tap:
-        owner: vektra
+        owner: conneroisu
         name: homebrew-tap
         token: "{{ .Env.HOMEBREW_TAP_TOKEN }}"
     folder: Formula

@@ -14,6 +14,7 @@ import (
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/analysis"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp/methods"
+	"github.com/conneroisu/seltabl/tools/seltabls/pkg/parsers"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/rpc"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/safe"
 	"go.lsp.dev/uri"
@@ -26,8 +27,7 @@ func HandleMessage(
 	cancel *context.CancelFunc,
 	msg *rpc.BaseMessage,
 	db *data.Database[master.Queries],
-	documents *safe.Map[uri.URI, string],
-	selectors *safe.Map[uri.URI, []master.Selector],
+	documents *safe.Map[uri.URI, *parsers.GoFile],
 	urls *safe.Map[uri.URI, []string],
 ) (response rpc.MethodActor, err error) {
 	select {

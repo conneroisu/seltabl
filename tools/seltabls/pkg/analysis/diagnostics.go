@@ -18,9 +18,8 @@ import (
 // text is all the characters in the file
 func GetDiagnosticsForFile(
 	ctx context.Context,
-	text *string,
-	data *parsers.GoFile,
 	db *data.Database[master.Queries],
+	source *parsers.GoFile,
 ) ([]protocol.Diagnostic, error) {
 	select {
 	case <-ctx.Done():

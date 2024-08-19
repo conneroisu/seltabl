@@ -21,7 +21,7 @@ var (
 // ParseStructComments parses the comments from struct type declarations in the
 // provided Go source code and extracts @url and @ignore-elements into separate
 // arrays.
-func ParseStructComments(commentSrc string) (
+func parseStructComments(commentSrc string) (
 	url string,
 	ignoreElements []string,
 	occurrences int,

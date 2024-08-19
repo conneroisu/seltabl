@@ -1,13 +1,11 @@
 package analysis
 
 import (
-	"bytes"
 	"context"
 	"fmt"
-	"go/parser"
-	"go/token"
 
 	"github.com/charmbracelet/log"
+	"github.com/conneroisu/seltabl/tools/seltabls/data"
 	"github.com/conneroisu/seltabl/tools/seltabls/data/master"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/parsers"
@@ -30,9 +28,8 @@ const (
 func CreateTextDocumentCompletion(
 	ctx context.Context,
 	request lsp.TextDocumentCompletionRequest,
-	documents *safe.Map[uri.URI, string],
-	urls *safe.Map[uri.URI, []string],
-	selectors *safe.Map[uri.URI, []master.Selector],
+	db *data.Database[master.Queries],
+	documents *safe.Map[uri.URI, *parsers.GoFile],
 ) (response *lsp.TextDocumentCompletionResponse, err error) {
 	log.Debugf("CreateTextDocumentCompletion")
 	select {
@@ -50,16 +47,7 @@ func CreateTextDocumentCompletion(
 		if !ok {
 			return nil, nil
 		}
-		selectors, ok := selectors.Get(request.Params.TextDocument.URI)
-		if !ok {
-			return nil, nil
-		}
-		url, ok := urls.Get(request.Params.TextDocument.URI)
-		if !ok {
-			return nil, nil
-		}
-		log.Debugf("selectors: %v", selectors)
-		check, err := CheckPosition(
+		check, err := parsers.ParsePosState(
 			request.Params.Position,
 			content,
 		)
@@ -147,59 +135,4 @@ func CreateTextDocumentCompletion(
 		}
 		return response, nil
 	}
-}
-
-// CheckPosition checks if the position is within the struct tag
-func CheckPosition(
-	position protocol.Position,
-	text *string,
-) (res parsers.State, err error) {
-	fset := token.NewFileSet()
-	position.Line = position.Line + 1
-	// Parse the source code from a new buffer
-	node, err := parser.ParseFile(
-		fset,
-		"",
-		bytes.NewBufferString(*text),
-		parser.Trace,
-	)
-	if err != nil {
-		return parsers.StateInvalid,
-			fmt.Errorf("failed to parse struct: %w", err)
-	}
-	// Find the struct node in the AST
-	structNodes := parsers.FindStructNodes(node)
-	for i := range structNodes {
-		// Check if the position is within the struct node
-		inPosition := parsers.IsPositionInNode(
-			structNodes[i],
-			position,
-			fset,
-		)
-		inTag := parsers.IsPositionInTag(
-			structNodes[i],
-			position,
-			fset,
-		)
-		if inPosition && inTag {
-			_, inValue := parsers.PositionInStructTagValue(
-				structNodes[i],
-				position,
-				fset,
-				text,
-			)
-			if inValue {
-				return parsers.StateInTagValue, nil
-			}
-			beforeValue := parsers.PositionBeforeValue(
-				position,
-				text,
-			)
-			if beforeValue == ':' {
-				return parsers.StateAfterColon, nil
-			}
-			return parsers.StateInTag, nil
-		}
-	}
-	return parsers.StateInvalid, nil
 }

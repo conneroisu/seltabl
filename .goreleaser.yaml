@@ -9,7 +9,7 @@ builds:
     ldflags:
       - -s -w -X github.com/conneroisu/seltabls/v2/pkg/logging.SemVer=v{{.Version}}
     env:
-      - CGO_ENABLED=0
+      - CGO_ENABLED=1
     goos:
       - darwin
       - linux

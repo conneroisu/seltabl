@@ -29,7 +29,7 @@ func CreateTextDocumentCompletion(
 	ctx context.Context,
 	request lsp.TextDocumentCompletionRequest,
 	db *data.Database[master.Queries],
-	documents *safe.Map[uri.URI, *parsers.GoFile],
+	documents *safe.Map[uri.URI, parsers.GoFile],
 ) (response *lsp.TextDocumentCompletionResponse, err error) {
 	log.Debugf("CreateTextDocumentCompletion")
 	select {
@@ -49,7 +49,6 @@ func CreateTextDocumentCompletion(
 		}
 		check, err := parsers.ParsePosState(
 			request.Params.Position,
-			content,
 		)
 		if err != nil {
 			return nil, fmt.Errorf(

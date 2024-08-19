@@ -7,6 +7,7 @@ import (
 	"reflect"
 	"strings"
 	"testing"
+	"time"
 
 	"github.com/PuerkitoBio/goquery"
 	"github.com/conneroisu/seltabl/testdata"
@@ -965,4 +966,224 @@ func TestNewFromURL_InvalidHTMLContent(t *testing.T) {
 
 	_, err := NewFromURL[TestieStruct](server.URL)
 	assert.Error(t, err)
+}
+
+// TestNewCh tests the NewCh function.
+func TestNewCh(t *testing.T) {
+	a := assert.New(t)
+	html := `
+		<table>
+			<tr> <td>a</td> <td>b</td> </tr>
+			<tr> <td>1</td> <td>2</td> </tr>
+			<tr> <td>3</td> <td>4</td> </tr>
+			<tr> <td>5</td> <td>6</td> </tr>
+			<tr> <td>7</td> <td>8</td> </tr>
+		</table>`
+	ch := make(chan TestieStruct, 4)
+	doc, err := goquery.NewDocumentFromReader(strings.NewReader(html))
+	a.NoError(err)
+	go func() {
+		err := NewCh(doc, ch)
+		a.NoError(err)
+	}()
+	a.NotNil(ch)
+	go func() {
+		chVal := <-ch
+		a.Equal("1", chVal.A)
+		a.Equal("2", chVal.B)
+		t.Logf("chVal: %v", chVal.A)
+		t.Logf("chVal: %v", chVal.B)
+		chVal = <-ch
+		a.Equal("3", chVal.A)
+		a.Equal("4", chVal.B)
+		t.Logf("chVal: %v", chVal.A)
+		t.Logf("chVal: %v", chVal.B)
+		chVal = <-ch
+		a.Equal("5", chVal.A)
+		a.Equal("6", chVal.B)
+		chVal = <-ch
+		a.Equal("7", chVal.A)
+		a.Equal("8", chVal.B)
+	}()
+	defer close(ch)
+	time.Sleep(time.Second)
+}
+
+func TestNewFromStringCh(t *testing.T) {
+	html := `
+		<table>
+			<tr> <td>a</td> <td>b</td> </tr>
+			<tr> <td>1</td> <td>2</td> </tr>
+			<tr> <td>3</td> <td>4</td> </tr>
+			<tr> <td>5</td> <td>6</td> </tr>
+			<tr> <td>7</td> <td>8</td> </tr>
+		</table>`
+	ch := make(chan TestieStruct, 4)
+	go func() {
+		err := NewFromStringCh(html, ch)
+		assert.NoError(t, err)
+	}()
+	assert.NotNil(t, ch)
+	go func() {
+		chVal := <-ch
+		assert.Equal(t, "1", chVal.A)
+		assert.Equal(t, "2", chVal.B)
+		t.Logf("chVal: %v", chVal.A)
+		t.Logf("chVal: %v", chVal.B)
+		chVal = <-ch
+		assert.Equal(t, "3", chVal.A)
+		assert.Equal(t, "4", chVal.B)
+		t.Logf("chVal: %v", chVal.A)
+		t.Logf("chVal: %v", chVal.B)
+		chVal = <-ch
+		assert.Equal(t, "5", chVal.A)
+		assert.Equal(t, "6", chVal.B)
+		chVal = <-ch
+		assert.Equal(t, "7", chVal.A)
+		assert.Equal(t, "8", chVal.B)
+	}()
+	defer close(ch)
+	time.Sleep(time.Second)
+}
+
+func TestNewFromBytesCh(t *testing.T) {
+	html := `
+		<table>
+			<tr> <td>a</td> <td>b</td> </tr>
+			<tr> <td>1</td> <td>2</td> </tr>
+			<tr> <td>3</td> <td>4</td> </tr>
+			<tr> <td>5</td> <td>6</td> </tr>
+			<tr> <td>7</td> <td>8</td> </tr>
+		</table>`
+	ch := make(chan TestieStruct, 4)
+	go func() {
+		err := NewFromBytesCh([]byte(html), ch)
+		assert.NoError(t, err)
+	}()
+	assert.NotNil(t, ch)
+	go func() {
+		chVal := <-ch
+		assert.Equal(t, "1", chVal.A)
+		assert.Equal(t, "2", chVal.B)
+		chVal = <-ch
+		assert.Equal(t, "3", chVal.A)
+		assert.Equal(t, "4", chVal.B)
+		chVal = <-ch
+		assert.Equal(t, "5", chVal.A)
+		assert.Equal(t, "6", chVal.B)
+		chVal = <-ch
+		assert.Equal(t, "7", chVal.A)
+		assert.Equal(t, "8", chVal.B)
+	}()
+	defer close(ch)
+	time.Sleep(time.Second)
+}
+
+func TestNewFromURLCh(t *testing.T) {
+	t.Parallel()
+	html := `
+		<table>
+			<tr> <td>a</td> <td>b</td> </tr>
+			<tr> <td>1</td> <td>2</td> </tr>
+			<tr> <td>3</td> <td>4</td> </tr>
+			<tr> <td>5</td> <td>6</td> </tr>
+			<tr> <td>7</td> <td>8</td> </tr>
+		</table>`
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
+		fmt.Fprintln(w, html)
+	}))
+	defer server.Close()
+
+	ch := make(chan TestieStruct, 4)
+	go func() {
+		err := NewFromURLCh(server.URL, ch)
+		assert.NoError(t, err)
+	}()
+	assert.NotNil(t, ch)
+	go func() {
+		chVal := <-ch
+		assert.Equal(t, "1", chVal.A)
+		assert.Equal(t, "2", chVal.B)
+		chVal = <-ch
+		assert.Equal(t, "3", chVal.A)
+		assert.Equal(t, "4", chVal.B)
+		chVal = <-ch
+		assert.Equal(t, "5", chVal.A)
+		assert.Equal(t, "6", chVal.B)
+		chVal = <-ch
+		assert.Equal(t, "7", chVal.A)
+		assert.Equal(t, "8", chVal.B)
+	}()
+	defer close(ch)
+	time.Sleep(time.Second)
+}
+
+func TestNewFromReaderCh(t *testing.T) {
+	t.Parallel()
+	html := `
+		<table>
+			<tr> <td>a</td> <td>b</td> </tr>
+			<tr> <td>1</td> <td>2</td> </tr>
+			<tr> <td>3</td> <td>4</td> </tr>
+			<tr> <td>5</td> <td>6</td> </tr>
+			<tr> <td>7</td> <td>8</td> </tr>
+		</table>`
+	reader := strings.NewReader(html)
+	ch := make(chan TestieStruct, 4)
+	go func() {
+		err := NewFromReaderCh(reader, ch)
+		assert.NoError(t, err)
+	}()
+	assert.NotNil(t, ch)
+	go func() {
+		chVal := <-ch
+		assert.Equal(t, "1", chVal.A)
+		assert.Equal(t, "2", chVal.B)
+		chVal = <-ch
+		assert.Equal(t, "3", chVal.A)
+		assert.Equal(t, "4", chVal.B)
+		chVal = <-ch
+		assert.Equal(t, "5", chVal.A)
+		assert.Equal(t, "6", chVal.B)
+		chVal = <-ch
+		assert.Equal(t, "7", chVal.A)
+		assert.Equal(t, "8", chVal.B)
+	}()
+	defer close(ch)
+	time.Sleep(time.Second)
+}
+
+func TestNewFromStringChFn(t *testing.T) {
+	html := `
+		<table>
+			<tr> <td>a</td> <td>b</td> </tr>
+			<tr> <td>1</td> <td>2</td> </tr>
+			<tr> <td>3</td> <td>4</td> </tr>
+			<tr> <td>5</td> <td>6</td> </tr>
+			<tr> <td>7</td> <td>8</td> </tr>
+		</table>`
+	ch := make(chan TestieStruct, 4)
+	go func() {
+		err := NewFromStringChFn(html, ch, func(s TestieStruct) bool {
+			return true
+		})
+		assert.NoError(t, err)
+	}()
+	assert.NotNil(t, ch)
+	go func() {
+		chVal := <-ch
+		assert.Equal(t, "1", chVal.A)
+		assert.Equal(t, "2", chVal.B)
+		chVal = <-ch
+		assert.Equal(t, "3", chVal.A)
+		assert.Equal(t, "4", chVal.B)
+		chVal = <-ch
+		assert.Equal(t, "5", chVal.A)
+		assert.Equal(t, "6", chVal.B)
+		chVal = <-ch
+		assert.Equal(t, "7", chVal.A)
+		assert.Equal(t, "8", chVal.B)
+	}()
+	defer close(ch)
+	time.Sleep(time.Second * 1)
 }

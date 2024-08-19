@@ -348,6 +348,8 @@ func NewFromBytes[T any](b []byte) ([]T, error) {
 
 // NewCh parses a goquery doc into a slice of structs delivered to a channel.
 //
+// It parse the html for each slice of the structs.
+//
 // The struct given as an argument must have a field with the
 // tag seltabl, a header selector with the tag hSel, and a data
 // selector with the tag key dSel.
@@ -358,30 +360,27 @@ func NewCh[T any](doc *goquery.Document, ch chan T) error {
 	}
 	results := make([]T, 0)
 	var cfg *SelectorConfig
-	for i := 0; i < dType.NumField(); i++ {
-		cfg = NewSelectorConfig(dType.Field(i).Tag)
-		if cfg.DataSelector == "" {
-			return ErrSelectorNotFound{
-				Typ:   dType,
-				Field: dType.Field(i),
-				Cfg:   cfg,
+	cfg = NewSelectorConfig(dType.Field(0).Tag)
+	dRows := doc.Find(cfg.DataSelector)
+	for i := 0; i < dRows.Length(); i++ {
+		if len(results) < dRows.Length() {
+			results = make([]T, dRows.Length())
+		}
+		// now we get the data row of i instead of for each field
+		// so apply downwards kinda only on this row
+		for j := 0; j < dType.NumField(); j++ {
+			cfg = NewSelectorConfig(dType.Field(j).Tag)
+			if cfg.DataSelector == "" {
+				continue
 			}
-		}
-		dataRows := doc.Find(cfg.DataSelector)
-		if dataRows.Length() <= 0 {
-			continue
-		}
-		if cfg.HeadSelector != "" && cfg.HeadSelector != "-" {
-			_ = dataRows.RemoveFiltered(cfg.HeadSelector)
-		}
-		if len(results) < dataRows.Length() {
-			results = make([]T, dataRows.Length())
-		}
-		for j := 0; j < dataRows.Length(); j++ {
+			dataRows := doc.Find(cfg.DataSelector).Eq(i)
+			if cfg.HeadSelector != "" && cfg.HeadSelector != "-" {
+				_ = dataRows.RemoveFiltered(cfg.HeadSelector)
+			}
 			err := SetStructField(
-				&results[j],
-				dType.Field(i), // name of the field to set
-				dataRows.Eq(j), // goquery selection for cell
+				&results[i],
+				dType.Field(j), // name of the field to set
+				dataRows,       // goquery selection for cell
 				&selector{
 					control: cfg.ControlTag,
 					query:   cfg.QuerySelector,
@@ -390,12 +389,12 @@ func NewCh[T any](doc *goquery.Document, ch chan T) error {
 			if err != nil {
 				return fmt.Errorf(
 					"failed to set field %s: %s",
-					dType.Field(i).Name,
+					dType.Field(j).Name,
 					err,
 				)
 			}
-			ch <- results[j]
 		}
+		ch <- results[i]
 	}
 	return nil
 }
@@ -517,30 +516,25 @@ func NewChFn[
 	}
 	results := make([]T, 0)
 	var cfg *SelectorConfig
-	for i := 0; i < dType.NumField(); i++ {
-		cfg = NewSelectorConfig(dType.Field(i).Tag)
-		if cfg.DataSelector == "" {
-			continue
+	cfg = NewSelectorConfig(dType.Field(0).Tag)
+	dRows := doc.Find(cfg.DataSelector)
+	for i := 0; i < dRows.Length(); i++ {
+		if len(results) < dRows.Length() {
+			results = make([]T, dRows.Length())
 		}
-		dataRows := doc.Find(cfg.DataSelector)
-		if dataRows.Length() <= 0 {
-			return ErrNoDataFound{
-				Typ:   dType,
-				Field: dType.Field(i),
-				Cfg:   cfg,
+		for j := 0; j < dType.NumField(); j++ {
+			cfg = NewSelectorConfig(dType.Field(j).Tag)
+			if cfg.DataSelector == "" {
+				continue
 			}
-		}
-		if cfg.HeadSelector != "" && cfg.HeadSelector != "-" {
-			_ = dataRows.RemoveFiltered(cfg.HeadSelector)
-		}
-		if len(results) < dataRows.Length() {
-			results = make([]T, dataRows.Length())
-		}
-		for j := 0; j < dataRows.Length(); j++ {
+			dataRows := doc.Find(cfg.DataSelector).Eq(i)
+			if cfg.HeadSelector != "" && cfg.HeadSelector != "-" {
+				_ = dataRows.RemoveFiltered(cfg.HeadSelector)
+			}
 			err := SetStructField(
-				&results[j],
-				dType.Field(i), // name of the field to set
-				dataRows.Eq(j), // goquery selection for cell
+				&results[i],
+				dType.Field(j), // name of the field to set
+				dataRows,       // goquery selection for cell
 				&selector{
 					control: cfg.ControlTag,
 					query:   cfg.QuerySelector,
@@ -549,13 +543,13 @@ func NewChFn[
 			if err != nil {
 				return fmt.Errorf(
 					"failed to set field %s: %s",
-					dType.Field(i).Name,
+					dType.Field(j).Name,
 					err,
 				)
 			}
-			if fn(results[j]) {
-				ch <- results[j]
-			}
+		}
+		if fn(results[i]) {
+			ch <- results[i]
 		}
 	}
 	return nil

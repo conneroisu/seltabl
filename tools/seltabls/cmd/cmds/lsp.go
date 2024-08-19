@@ -11,6 +11,7 @@ import (
 	"github.com/conneroisu/seltabl/tools/seltabls/data"
 	"github.com/conneroisu/seltabl/tools/seltabls/data/master"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/lsp"
+	"github.com/conneroisu/seltabl/tools/seltabls/pkg/parsers"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/rpc"
 	"github.com/conneroisu/seltabl/tools/seltabls/pkg/safe"
 	"github.com/spf13/cobra"
@@ -23,8 +24,7 @@ type LSPHandler func(
 	cancel *context.CancelFunc, // cancel is a pointer to the cancel function to avoid copying
 	msg *rpc.BaseMessage, // msg is a pointer to the message to avoid copying
 	db *data.Database[master.Queries], // db is a pointer to the database to avoid copying
-	documents *safe.Map[uri.URI, string],
-	selectors *safe.Map[uri.URI, []master.Selector],
+	documents *safe.Map[uri.URI, *parsers.GoFile],
 	urls *safe.Map[uri.URI, []string],
 ) (rpc.MethodActor, error)
 
@@ -47,11 +47,11 @@ Language server provides completions, hovers, and code actions for seltabl defin
 CLI provides a command line tool for verifying, linting, and reporting on seltabl defined structs.
 `,
 		RunE: func(_ *cobra.Command, _ []string) (err error) {
-			documents := safe.NewSafeMap[uri.URI, string]()
-			selectors := safe.NewSafeMap[uri.URI, []master.Selector]()
+			documents := safe.NewSafeMap[uri.URI, *parsers.GoFile]()
 			urls := safe.NewSafeMap[uri.URI, []string]()
 			scanner := bufio.NewScanner(reader)
 			scanner.Split(rpc.Split)
+			rpcWriter := rpc.NewWriter(writer)
 			lspCtx, lspCancel := context.WithCancel(ctx)
 			defer lspCancel()
 			for scanner.Scan() {
@@ -75,7 +75,6 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 						decoded,
 						db,
 						documents,
-						selectors,
 						urls,
 					)
 					if err != nil {
@@ -86,7 +85,7 @@ CLI provides a command line tool for verifying, linting, and reporting on seltab
 						)
 					}
 					if !isNull(resp) {
-						err = rpc.WriteResponse(hCtx, &writer, resp)
+						err = rpcWriter.WriteResponse(hCtx, resp)
 						if err != nil {
 							log.Errorf(
 								"failed to write (%s) response: %s",

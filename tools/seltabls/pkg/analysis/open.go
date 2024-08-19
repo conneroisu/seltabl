@@ -27,41 +27,31 @@ func OpenDocument(
 	ctx context.Context,
 	req *lsp.NotificationDidOpenTextDocument,
 	db *data.Database[master.Queries],
-	documents *safe.Map[uri.URI, string],
-	urls *safe.Map[uri.URI, []string],
-	selectors *safe.Map[uri.URI, []master.Selector],
+	documents *safe.Map[uri.URI, *parsers.GoFile],
 ) (*lsp.PublishDiagnosticsNotification, error) {
 	for {
 		select {
 		case <-(ctx).Done():
-			return nil,
-				fmt.Errorf("context cancelled: %w", (ctx).Err())
+			return nil, ctx.Err()
 		default:
 			eg, ctx := errgroup.WithContext(ctx)
+			source, err := parsers.ParseSource(
+				req.Params.TextDocument.Text,
+				req.Params.TextDocument.URI.Filename(),
+				true,
+			)
 			documents.Set(
 				req.Params.TextDocument.URI,
-				req.Params.TextDocument.Text,
+				source,
 			)
-			data, err := parsers.ParseStructComments(
-				req.Params.TextDocument.Text,
-			)
-			if err != nil {
-				return nil, nil
-			}
-			urls.Set(req.Params.TextDocument.URI, data.URLs)
-			for i, url := range data.URLs {
+			for _, structure := range source.Structs {
 				eg.Go(func() error {
 					var occur int
-					if len(data.Occurrences) <= 0 {
+					if len(structure.Fields) <= 0 {
 						return nil
 					}
-					if data.Occurrences[i] > 0 {
-						occur = data.Occurrences[i]
-					} else {
-						occur = 2
-					}
 					var sels []master.Selector
-					for _, ele := range data.IgnoreElements {
+					for _, ele := range structure.SeltablIgnores {
 						sels, err = parsers.GetSelectors(
 							ctx,
 							db,
@@ -89,9 +79,9 @@ func OpenDocument(
 			}
 			diags, err := GetDiagnosticsForFile(
 				ctx,
-				&req.Params.TextDocument.Text,
-				&data,
 				db,
+				(*string)(&req.Params.TextDocument.URI),
+				documents,
 			)
 			if err != nil {
 				return nil, fmt.Errorf(

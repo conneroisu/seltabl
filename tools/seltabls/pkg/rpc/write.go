@@ -7,18 +7,26 @@ import (
 	"sync"
 )
 
-var (
+// Writer is a struct for writing a response to a writer.
+//
+// It implements the io.Writer interface.
+type Writer struct {
+	io.Writer
 	mu sync.Mutex
-)
+}
+
+// NewWriter creates a new writer.
+func NewWriter(w io.Writer) *Writer {
+	return &Writer{Writer: w}
+}
 
 // WriteResponse writes a message to the writer
-func WriteResponse(
+func (w *Writer) WriteResponse(
 	ctx context.Context,
-	writer *io.Writer,
 	msg MethodActor,
 ) error {
-	mu.Lock()
-	defer mu.Unlock()
+	w.mu.Lock()
+	defer w.mu.Unlock()
 	for {
 		select {
 		case <-ctx.Done():
@@ -35,7 +43,7 @@ func WriteResponse(
 					err,
 				)
 			}
-			res, err := (*writer).Write([]byte(reply))
+			res, err := w.Write([]byte(reply))
 			if err != nil {
 				return fmt.Errorf(
 					"failed to encode response to request (%s): %w",

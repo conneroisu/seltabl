@@ -1,10 +1,16 @@
 package parsers
 
 import (
+	"bytes"
 	"context"
 	"database/sql"
 	"fmt"
+	"io"
+	"net/http"
+	"net/url"
 	"strings"
+	"unicode"
+	"unicode/utf8"
 
 	"github.com/PuerkitoBio/goquery"
 	"github.com/conneroisu/seltabl/tools/seltabls/data"
@@ -217,4 +223,101 @@ func singleSelector(selection *goquery.Selection) string {
 		selector = goquery.NodeName(selection)
 	}
 	return selector
+}
+
+func contains(s []string, e string) bool {
+	for _, a := range s {
+		if a == e {
+			return true
+		}
+	}
+	return false
+}
+
+// GetMinifiedDoc gets a minified goquery doc from a given url
+// and returns goquery doc and error if there is an error while
+// getting the doc.
+func GetMinifiedDoc(
+	url string,
+	disallowedTags []string,
+) (doc *goquery.Document, err error) {
+	client := &http.Client{}
+	resp, err := client.Get(url)
+	if err != nil {
+		return nil, err
+	}
+	defer resp.Body.Close()
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return nil, err
+	}
+	reader := bytes.NewReader(body)
+	doc, err = goquery.NewDocumentFromReader(reader)
+	if err != nil {
+		return nil, err
+	}
+	for _, v := range disallowedTags {
+		_ = doc.Find(v).Remove()
+	}
+	html, err := doc.Html()
+	if err != nil {
+		return nil, err
+	}
+	doc, err = goquery.NewDocumentFromReader(strings.NewReader(html))
+	if err != nil {
+		return nil, err
+	}
+	return doc, nil
+}
+
+// IsValidURL checks if the given URL is valid.
+func IsValidURL(uri string) error {
+	u, err := url.Parse(uri)
+	if err != nil {
+		return err
+	}
+	if u.Scheme != "" && u.Host != "" {
+		return fmt.Errorf("invalid URL: %s", uri)
+	}
+	return nil
+}
+
+func IsValidFileName(fileName string) error {
+	if fileName == "" {
+		return fmt.Errorf("file name is required")
+	}
+	// Check if the first character is a letter
+	firstChar, _ := utf8.DecodeRuneInString(fileName)
+	if !unicode.IsLetter(firstChar) {
+		return fmt.Errorf("file name must start with a letter")
+	}
+	// Check the rest of the characters
+	for _, ch := range fileName[1:] {
+		if !unicode.IsLetter(ch) && !unicode.IsDigit(ch) && ch != '_' {
+			return fmt.Errorf(
+				"file name must only contain letters, digits, and underscores",
+			)
+		}
+	}
+	return nil
+}
+
+func IsValidPackageName(packageName string) error {
+	if packageName == "" {
+		return fmt.Errorf("package name cannot be empty")
+	}
+	// Check if the first character is a letter
+	firstChar, _ := utf8.DecodeRuneInString(packageName)
+	if !unicode.IsLetter(firstChar) {
+		return fmt.Errorf("package name must start with a letter")
+	}
+	// Check the rest of the characters
+	for _, ch := range packageName[1:] {
+		if !unicode.IsLetter(ch) && !unicode.IsDigit(ch) && ch != '_' {
+			return fmt.Errorf(
+				"package name must only contain letters, digits, and underscores",
+			)
+		}
+	}
+	return nil
 }

@@ -66,15 +66,15 @@ func New[T any](doc *goquery.Document) ([]T, error) {
 	for i := 0; i < dType.NumField(); i++ {
 		cfg = NewSelectorConfig(dType.Field(i).Tag)
 		if cfg.DataSelector == "" {
+			continue
+		}
+		dataRows := doc.Find(cfg.DataSelector)
+		if dataRows.Length() <= 0 {
 			return nil, ErrSelectorNotFound{
 				Typ:   dType,
 				Field: dType.Field(i),
 				Cfg:   cfg,
 			}
-		}
-		dataRows := doc.Find(cfg.DataSelector)
-		if dataRows.Length() <= 0 {
-			continue
 		}
 		if cfg.HeadSelector != "" && cfg.HeadSelector != "-" {
 			_ = dataRows.RemoveFiltered(cfg.HeadSelector)

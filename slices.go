@@ -611,6 +611,11 @@ func NewFromBytesChFn[
 	return NewChFn(doc, ch, fn)
 }
 
+// NewChFnErr parses a reader into a channel of structs.
+//
+// It also applies a function to each struct before adding it to the channel.
+//
+// It ignores errors per row selected.
 func NewChFnErr[
 	T any,
 	F func(T) bool,
@@ -658,4 +663,23 @@ func NewChFnErr[
 		}
 	}
 	return nil
+}
+
+// NewFromStringChFnErr parses a string into a channel of structs.
+//
+// It also applies a function to each struct before adding it to the channel.
+//
+// It ignores errors per row selected.
+func NewFromStringChFnErr[T any](
+	htmlInput string,
+	ch chan T,
+	fn func(T) bool,
+) error {
+	doc, err := goquery.NewDocumentFromReader(
+		strings.NewReader(htmlInput),
+	)
+	if err != nil {
+		return fmt.Errorf("failed to parse html: %w", err)
+	}
+	return NewChFnErr(doc, ch, fn)
 }

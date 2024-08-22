@@ -610,3 +610,52 @@ func NewFromBytesChFn[
 	}
 	return NewChFn(doc, ch, fn)
 }
+
+func NewChFnErr[
+	T any,
+	F func(T) bool,
+](
+	doc *goquery.Document,
+	ch chan T,
+	fn F,
+) error {
+	dType := reflect.TypeOf((*T)(nil)).Elem()
+	if dType.Kind() != reflect.Struct && dType.Kind() != reflect.Ptr {
+		return fmt.Errorf("expected struct, got %s", dType.Kind())
+	}
+	results := make([]T, 0)
+	var cfg *SelectorConfig
+	cfg = NewSelectorConfig(dType.Field(0).Tag)
+	dRows := doc.Find(cfg.DataSelector)
+	for i := 0; i < dRows.Length(); i++ {
+		if len(results) < dRows.Length() {
+			results = make([]T, dRows.Length())
+		}
+		for j := 0; j < dType.NumField(); j++ {
+			cfg = NewSelectorConfig(dType.Field(j).Tag)
+			if cfg.DataSelector == "" {
+				continue
+			}
+			dataRows := doc.Find(cfg.DataSelector).Eq(i)
+			if cfg.HeadSelector != "" && cfg.HeadSelector != "-" {
+				_ = dataRows.RemoveFiltered(cfg.HeadSelector)
+			}
+			err := SetStructField(
+				&results[i],
+				dType.Field(j), // name of the field to set
+				dataRows,       // goquery selection for cell
+				&selector{
+					control: cfg.ControlTag,
+					query:   cfg.QuerySelector,
+				}, // selector for the inner cell
+			)
+			if err != nil {
+				break
+			}
+		}
+		if fn(results[i]) {
+			ch <- results[i]
+		}
+	}
+	return nil
+}

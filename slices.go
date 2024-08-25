@@ -155,8 +155,9 @@ func New[T any](doc *goquery.Document) ([]T, error) {
 //		}
 //	}
 func NewFromString[T any](htmlInput string) ([]T, error) {
-	reader := strings.NewReader(htmlInput)
-	doc, err := goquery.NewDocumentFromReader(reader)
+	doc, err := goquery.NewDocumentFromReader(
+		strings.NewReader(htmlInput),
+	)
 	if err != nil {
 		return nil,
 			fmt.Errorf(
@@ -360,6 +361,8 @@ func NewCh[T any](doc *goquery.Document, ch chan T) error {
 	}
 	results := make([]T, 0)
 	var cfg *SelectorConfig
+	var dataRows *goquery.Selection
+	var err error
 	cfg = NewSelectorConfig(dType.Field(0).Tag)
 	dRows := doc.Find(cfg.DataSelector)
 	for i := 0; i < dRows.Length(); i++ {
@@ -373,11 +376,11 @@ func NewCh[T any](doc *goquery.Document, ch chan T) error {
 			if cfg.DataSelector == "" {
 				continue
 			}
-			dataRows := doc.Find(cfg.DataSelector).Eq(i)
+			dataRows = doc.Find(cfg.DataSelector).Eq(i)
 			if cfg.HeadSelector != "" && cfg.HeadSelector != "-" {
 				_ = dataRows.RemoveFiltered(cfg.HeadSelector)
 			}
-			err := SetStructField(
+			err = SetStructField(
 				&results[i],
 				dType.Field(j), // name of the field to set
 				dataRows,       // goquery selection for cell
@@ -518,6 +521,8 @@ func NewChFn[
 	var cfg *SelectorConfig
 	cfg = NewSelectorConfig(dType.Field(0).Tag)
 	dRows := doc.Find(cfg.DataSelector)
+	var dataRows *goquery.Selection
+	var err error
 	for i := 0; i < dRows.Length(); i++ {
 		if len(results) < dRows.Length() {
 			results = make([]T, dRows.Length())
@@ -527,11 +532,11 @@ func NewChFn[
 			if cfg.DataSelector == "" {
 				continue
 			}
-			dataRows := doc.Find(cfg.DataSelector).Eq(i)
+			dataRows = doc.Find(cfg.DataSelector).Eq(i)
 			if cfg.HeadSelector != "" && cfg.HeadSelector != "-" {
 				_ = dataRows.RemoveFiltered(cfg.HeadSelector)
 			}
-			err := SetStructField(
+			err = SetStructField(
 				&results[i],
 				dType.Field(j), // name of the field to set
 				dataRows,       // goquery selection for cell
@@ -630,6 +635,8 @@ func NewChFnErr[
 	}
 	results := make([]T, 0)
 	var cfg *SelectorConfig
+	var dataRows *goquery.Selection
+	var err error
 	cfg = NewSelectorConfig(dType.Field(0).Tag)
 	dRows := doc.Find(cfg.DataSelector)
 	for i := 0; i < dRows.Length(); i++ {
@@ -641,11 +648,11 @@ func NewChFnErr[
 			if cfg.DataSelector == "" {
 				continue
 			}
-			dataRows := doc.Find(cfg.DataSelector).Eq(i)
+			dataRows = doc.Find(cfg.DataSelector).Eq(i)
 			if cfg.HeadSelector != "" && cfg.HeadSelector != "-" {
 				_ = dataRows.RemoveFiltered(cfg.HeadSelector)
 			}
-			err := SetStructField(
+			err = SetStructField(
 				&results[i],
 				dType.Field(j), // name of the field to set
 				dataRows,       // goquery selection for cell

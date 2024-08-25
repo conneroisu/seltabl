@@ -14,6 +14,17 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+const (
+	basicHTML = `
+		<table>
+			<tr> <td>a</td> <td>b</td> </tr>
+			<tr> <td>1</td> <td>2</td> </tr>
+			<tr> <td>3</td> <td>4</td> </tr>
+			<tr> <td>5</td> <td>6</td> </tr>
+			<tr> <td>7</td> <td>8</td> </tr>
+		</table>`
+)
+
 // NoDataSelectorStruct is a test struct
 type NoDataSelectorStruct struct {
 	A string `seltabl:"a" hSel:"tr:nth-child(1) td:nth-child(1)" cSel:"$text"`
@@ -825,15 +836,7 @@ type TestieStruct struct {
 // TestNew_ValidStruct tests the New function with a valid struct.
 func TestNew_ValidStruct(t *testing.T) {
 	t.Parallel()
-	html := `
-		<table>
-			<tr> <td>a</td> <td>b</td> </tr>
-			<tr> <td>1</td> <td>2</td> </tr>
-			<tr> <td>3</td> <td>4</td> </tr>
-			<tr> <td>5</td> <td>6</td> </tr>
-			<tr> <td>7</td> <td>8</td> </tr>
-		</table>`
-	doc, _ := createDocFromString(html)
+	doc, _ := createDocFromString(basicHTML)
 	result, err := New[TestieStruct](doc)
 	assert.NoError(t, err)
 	assert.Equal(t, 4, len(result))
@@ -856,12 +859,7 @@ func TestNew_InvalidType(t *testing.T) {
 
 // TestNew_MissingSelectors tests the New function with a struct that is missing selectors.
 func TestNew_MissingSelectors(t *testing.T) {
-	html := `
-		<table>
-			<tr> <td>a</td> <td>b</td> </tr>
-			<tr> <td>1</td> <td>2</td> </tr>
-		</table>`
-	doc, _ := createDocFromString(html)
+	doc, _ := createDocFromString(basicHTML)
 	type MissingSelectors struct {
 		A string `json:"a"`
 		B string `json:"b"`
@@ -884,15 +882,7 @@ func TestNew_NoDataFound(t *testing.T) {
 // TestNewFromString_ValidHTML tests the NewFromString function with valid HTML.
 func TestNewFromString_ValidHTML(t *testing.T) {
 	t.Parallel()
-	html := `
-		<table>
-			<tr> <td>a</td> <td>b</td> </tr>
-			<tr> <td>1</td> <td>2</td> </tr>
-			<tr> <td>3</td> <td>4</td> </tr>
-			<tr> <td>5</td> <td>6</td> </tr>
-			<tr> <td>7</td> <td>8</td> </tr>
-		</table>`
-	result, err := NewFromString[TestieStruct](html)
+	result, err := NewFromString[TestieStruct](basicHTML)
 	assert.NoError(t, err)
 	assert.Equal(t, 4, len(result))
 	assert.Equal(t, "1", result[0].A)
@@ -902,15 +892,7 @@ func TestNewFromString_ValidHTML(t *testing.T) {
 // TestNewFromReader_ValidReader tests the NewFromReader function with a
 func TestNewFromReader_ValidReader(t *testing.T) {
 	t.Parallel()
-	html := `
-		<table>
-			<tr> <td>a</td> <td>b</td> </tr>
-			<tr> <td>1</td> <td>2</td> </tr>
-			<tr> <td>3</td> <td>4</td> </tr>
-			<tr> <td>5</td> <td>6</td> </tr>
-			<tr> <td>7</td> <td>8</td> </tr>
-		</table>`
-	reader := strings.NewReader(html)
+	reader := strings.NewReader(basicHTML)
 	result, err := NewFromReader[TestieStruct](reader)
 	assert.NoError(t, err)
 	assert.Equal(t, 4, len(result))
@@ -929,16 +911,8 @@ func TestNewFromReader_InvalidReader(t *testing.T) {
 // TestNewFromURL_ValidURL tests the NewFromURL function with a valid URL.
 func TestNewFromURL_ValidURL(t *testing.T) {
 	t.Parallel()
-	html := `
-		<table>
-			<tr> <td>a</td> <td>b</td> </tr>
-			<tr> <td>1</td> <td>2</td> </tr>
-			<tr> <td>3</td> <td>4</td> </tr>
-			<tr> <td>5</td> <td>6</td> </tr>
-			<tr> <td>7</td> <td>8</td> </tr>
-		</table>`
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
-		fmt.Fprintln(w, html)
+		fmt.Fprintln(w, basicHTML)
 	}))
 	defer server.Close()
 
@@ -1047,17 +1021,9 @@ func TestNewFromStringCh(t *testing.T) {
 }
 
 func TestNewFromBytesCh(t *testing.T) {
-	html := `
-		<table>
-			<tr> <td>a</td> <td>b</td> </tr>
-			<tr> <td>1</td> <td>2</td> </tr>
-			<tr> <td>3</td> <td>4</td> </tr>
-			<tr> <td>5</td> <td>6</td> </tr>
-			<tr> <td>7</td> <td>8</td> </tr>
-		</table>`
 	ch := make(chan TestieStruct, 4)
 	go func() {
-		err := NewFromBytesCh([]byte(html), ch)
+		err := NewFromBytesCh([]byte(basicHTML), ch)
 		assert.NoError(t, err)
 	}()
 	assert.NotNil(t, ch)
@@ -1081,16 +1047,8 @@ func TestNewFromBytesCh(t *testing.T) {
 
 func TestNewFromURLCh(t *testing.T) {
 	t.Parallel()
-	html := `
-		<table>
-			<tr> <td>a</td> <td>b</td> </tr>
-			<tr> <td>1</td> <td>2</td> </tr>
-			<tr> <td>3</td> <td>4</td> </tr>
-			<tr> <td>5</td> <td>6</td> </tr>
-			<tr> <td>7</td> <td>8</td> </tr>
-		</table>`
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
-		fmt.Fprintln(w, html)
+		fmt.Fprintln(w, basicHTML)
 	}))
 	defer server.Close()
 
@@ -1120,15 +1078,7 @@ func TestNewFromURLCh(t *testing.T) {
 
 func TestNewFromReaderCh(t *testing.T) {
 	t.Parallel()
-	html := `
-		<table>
-			<tr> <td>a</td> <td>b</td> </tr>
-			<tr> <td>1</td> <td>2</td> </tr>
-			<tr> <td>3</td> <td>4</td> </tr>
-			<tr> <td>5</td> <td>6</td> </tr>
-			<tr> <td>7</td> <td>8</td> </tr>
-		</table>`
-	reader := strings.NewReader(html)
+	reader := strings.NewReader(basicHTML)
 	ch := make(chan TestieStruct, 4)
 	go func() {
 		err := NewFromReaderCh(reader, ch)
@@ -1154,17 +1104,9 @@ func TestNewFromReaderCh(t *testing.T) {
 }
 
 func TestNewFromStringChFn(t *testing.T) {
-	html := `
-		<table>
-			<tr> <td>a</td> <td>b</td> </tr>
-			<tr> <td>1</td> <td>2</td> </tr>
-			<tr> <td>3</td> <td>4</td> </tr>
-			<tr> <td>5</td> <td>6</td> </tr>
-			<tr> <td>7</td> <td>8</td> </tr>
-		</table>`
 	ch := make(chan TestieStruct, 4)
 	go func() {
-		err := NewFromStringChFn(html, ch, func(s TestieStruct) bool {
+		err := NewFromStringChFn(basicHTML, ch, func(s TestieStruct) bool {
 			return true
 		})
 		assert.NoError(t, err)
